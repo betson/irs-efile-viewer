@@ -22,6 +22,8 @@
 <!-- Updated 11/25/2015 per IBM DEFECT 44775  by Robert L Jones -->
 <!-- Updated 12/01/2015 per IBM DEFECT 44775 Paid Preparer not displaying on inline. Removed toggle button but left scroll bars by Robert L Jones -->
 <!-- Updated 12/01/2015 per IBM DEFECT 44775 Paid Preparer not displaying on inline. Removed toggle button but left scroll bars by Robert L Jones -->
+<!-- Updated 3/15/2016 per Kisam IM02429318 Line 52 overlaping Removed scroll bars by Robert L Jones -->
+<!-- Updated 1/24/2017 per Kisam IM02849630 Line 50(f) overlaping onto 51 in Browser but not on Printout. NPF but put in auto height. by Robert L Jones -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -2984,7 +2986,7 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
 							</xsl:call-template>-->
 							<!-- end button display logic -->
 						</div>
-						<div class="styTableContainerNBB" style="height: 44mm;width: 187mm;" id="HDctn">
+						<div class="styTable" style="height: 44mm;width: 187mm;" id="HDctn">
 							<!--print logic-->
 						<xsl:call-template name="SetInitialState"/>
 							<!--end-->
@@ -3063,19 +3065,20 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
 								
 							</table>
 						</div>
-						<xsl:call-template name="SetInitialDynamicTableHeight">
+					<!--	<xsl:call-template name="SetInitialDynamicTableHeight">
 							<xsl:with-param name="TargetNode" select="$IRS990EZData/OfficerDirectorTrusteeEmplGrp"/>
 							<xsl:with-param name="containerHeight" select="5"/>
 							<xsl:with-param name="containerID" select=" 'HDctn' "/>
 						</xsl:call-template>
-						
+						-->
+						<br></br>
 						<div style="width:187mm;float:none;">
-			<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:2mm;width:10mm;padding-left:4mm;">f</div>
+			<div class="styLNLeftNumBox" style="height:auto;padding-top:2mm;width:10mm;padding-left:4mm;">f</div>
 							
-					<div class="styLNDesc" style="width:120mm;height:7.5mm;padding-top:2mm;">
+					<div class="styLNDesc" style="width:170mm;height:auto;padding-top:2mm;">
                          <span style="float:left;">Total number of other employees paid over $100,000  </span>
                          <span style="float:right;">
-                         <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;">...</span>
+                         <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;">.............</span>
 		                 <!--<img src="{$ImagePath}/990EZ_Bullet_Lg.gif" alt="bullet"/>  -->   
 		                 <img alt="bullet" src="{$ImagePath}/990EZ_Bullet_Lg.gif"/>   						
 									<span class="styIRS990EZUnderlinedBox" style="text-align: right;width:28mm ">									
@@ -3085,12 +3088,13 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
 										</span>
 						 </span>
 						</div>
-					</div><br/>
+					</div>
+<br/>
 						<!-- END LINE 50 -->	
 						<!--  BEGIN LINE 51 -->
 						<div style="width:187mm;float:none;">
-							<div class="styLNLeftNumBox" style="height:7.5mm;padding-top:0mm;">51</div>
-							<div class="styLNDesc" style="width:177mm;height:7.5mm;padding-top:0mm;">
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:0mm;">51</div>
+							<div class="styLNDesc" style="width:177mm;height:auto;padding-top:0mm;">
       Complete this table for the organization's five highest compensated independent contractors who each received more than $100,000 of compensation from the organization. If there is none, enter "None."
      </div>
 						</div>
@@ -3104,7 +3108,7 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
 							</xsl:call-template>-->
 							<!-- end button display logic -->
 						</div>
-						<div class="styTableContainerNBB" style="height: 44mm;width: 187mm;" id="CDctn">
+						<div class="styTable" style="height: 44mm;width: 187mm;" id="CDctn">
 							<!--print logic-->
 						<xsl:call-template name="SetInitialState"/>
 							<!--end-->
@@ -3224,6 +3228,9 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
 			 </span></span>
 		</div>
 	</div>
+	<br></br>
+	<br></br>
+	
 					<!-- END LINE 51 -->					
             <div style="width:187mm;float:none;">
             <div class="styLNLeftNumBox" style="height:4.5mm;padding-top:2mm;">52</div>
@@ -3441,7 +3448,7 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
                 </div>
               </div>
               <div style="width:164mm;float:left;clear:none;">
-                <div class="styLNDesc" style="height:9mm;width:108.5mm;border-right:1px solid black;border-left:1px solid black;padding-left:1mm;">
+                <div class="styLNDesc" style="height:auto;width:108.5mm;border-right:1px solid black;border-left:1px solid black;padding-left:1mm;">
                   <div class="styGenericDiv" style="padding-right:.5mm;">Firm's address 
                   <img src="{$ImagePath}/990EZ_Bullet_Md.gif" alt="bullet"/>
                   </div>

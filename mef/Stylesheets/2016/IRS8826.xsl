@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <!-- Last modified on 11/19/2013 by Robert Jones for ETA PDF Review various including the link  -->
 <!-- Last modified on 1/14/2015 by Harold Nadel for KISAM #IM01963330 changed font to 8pt for the name and identifying numbers so they would both be the same font.  -->
+<!-- Last modified on 9/27/2017 by Harold Nadel for KISAM #  IM03083088  corrected the error in the Return Header-->
 
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
@@ -92,19 +93,25 @@
      <div style="font-family:verdana;font-size:8pt;height:7mm">
  		  <xsl:choose>
 		    <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-		      <br/>
+		    <xsl:call-template name="PopulateFilerName">
+                             <xsl:with-param name="TargetNode" select="$FormData"/>
+                   </xsl:call-template> 
+		      <!--<br/>
 		      <xsl:call-template name="PopulateReturnHeaderFiler">
 		            <xsl:with-param name="TargetNode">Name</xsl:with-param>
-		              </xsl:call-template>
+		              </xsl:call-template>-->
 		            </xsl:when>
                     <xsl:otherwise>
-		      <xsl:call-template name="PopulateReturnHeaderFiler">
+                    <xsl:call-template name="PopulateFilerName">
+                             <xsl:with-param name="TargetNode" select="$FormData"/>
+                   </xsl:call-template> 
+		     <!-- <xsl:call-template name="PopulateReturnHeaderFiler">
 		            <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
 		              </xsl:call-template>
 		              <br/> 
 		              <xsl:call-template name="PopulateReturnHeaderFiler">
 		            <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-		              </xsl:call-template>		
+		              </xsl:call-template>	-->	
 		  </xsl:otherwise>
                   </xsl:choose>
      </div>      
@@ -114,14 +121,20 @@
 	<span style="font-weight:normal;">
 		<xsl:choose>
 		  <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
- 		     <xsl:call-template name="PopulateReturnHeaderFiler">
+		   <xsl:call-template name="PopulateFilerTIN">
+                            <xsl:with-param name="TargetNode" select="$FormData"/>
+                     </xsl:call-template>
+ 		     <!--<xsl:call-template name="PopulateReturnHeaderFiler">
 		        <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-		     </xsl:call-template>
+		     </xsl:call-template>-->
 		  </xsl:when>
 		  <xsl:otherwise>
-		     <xsl:call-template name="PopulateReturnHeaderFiler">
+		  <xsl:call-template name="PopulateFilerTIN">
+                            <xsl:with-param name="TargetNode" select="$FormData"/>
+                     </xsl:call-template>
+		     <!--<xsl:call-template name="PopulateReturnHeaderFiler">
 		       <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-		     </xsl:call-template>
+		     </xsl:call-template>-->
 		  </xsl:otherwise>
 		</xsl:choose>
       </span>    

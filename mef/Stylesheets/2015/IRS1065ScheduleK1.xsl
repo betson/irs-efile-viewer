@@ -2516,7 +2516,7 @@
 																	<span style="width:1mm"/>
 																    <xsl:call-template name="SetFormLinkInline">
 																	  <xsl:with-param name="TargetNode"
-																	   select="$FormData/SchK1ForeignTransactionsGrp/CountryOrPossessionCd"/>
+																	   select="$FormData/SchK1ForeignTransactionsGrp/SchK1ForeignTransactionsCd"/>
 																    </xsl:call-template>
 																  </span>
 																  <span style="float:right;">
@@ -2548,7 +2548,7 @@
 																	<span style="width:1mm"/>
 																    <xsl:call-template name="SetFormLinkInline">
 																	  <xsl:with-param name="TargetNode"
-																	   select="$FormData/SchK1ForeignTransactionsGrp/CountryOrPossessionCd"/>
+																	   select="$FormData/SchK1ForeignTransactionsGrp/SchK1ForeignTransactionsCd"/>
 																    </xsl:call-template>
 																  </span>
 																  <span style="float:right;">

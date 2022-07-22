@@ -31,10 +31,10 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-					<xsl:if test="not($Print) or $Print=''">
+					<!--<xsl:if test="not($Print) or $Print=''">-->
 						<xsl:call-template name="IRS8840Style"/>
 						<xsl:call-template name="AddOnStyle"/>
-					</xsl:if>
+					<!--</xsl:if>-->
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
@@ -68,20 +68,25 @@
 					</div>
 					<!-- Begin Form -->
 					<div class="styStdDiv">
-						<div class="styNameBox" style="width:100mm;height:6mm;">
+						<div class="styNameBox" style="width:100mm;height:9mm;">
 							Your first name and initial<br />
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
 							</xsl:call-template>
 						</div>
-						<div class="styNameBox" style="width:27mm;height:6mm;padding-left:0.5mm;">
+						<div class="styNameBox" style="width:27mm;height:9mm;padding-left:0.5mm;">
 							Last name<br/> &#8194;
 						</div>
-						<div class="styEINBox" style="width:60mm;height:6mm;font-weight:normal;padding-left:0.5mm;">
+						<div class="styEINBox" style="width:60mm;height:9mm;font-weight:normal;padding-left:0.5mm;font-size:7pt;">
 							Your U.S. taxpayer identification number, if any<br/>
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-							</xsl:call-template>
+								<span style="width:40mm;text-align:center;font-weight:normal;">
+									<xsl:call-template name="PopulateReturnHeaderFilerTIN"></xsl:call-template>
+								</span>
+								<span style="width:40mm;text-align:center;font-weight:normal;">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">SpouseSSN</xsl:with-param>
+									</xsl:call-template>
+								</span>
 						</div>
 					</div>
 					<div class="styStdDiv" style="border-top:1px solid black;">
@@ -312,6 +317,12 @@
 									<xsl:with-param name="TargetNode" select="$FormData/LocRemainderPYTaxHomeCountryCd"/>
 								</xsl:call-template>
 							</span>
+							<span style="width:100%;border-bottom:1px dashed black;">
+							    <span style="width:1px;"/>
+							</span>
+							<span style="width:100%;border-bottom:1px dashed black;">
+							    <span style="width:1px;"/>
+							</span>
 						</div>
 					</div>
 					<!-- Line 11 -->
@@ -443,6 +454,9 @@
 							If "No" to either line 12 or line 13, please explain &#9658; 
 							<span style="width:113mm;border-bottom:1px dashed black;">&#8194;</span>
 							<br />
+							<span style="width:100%;border-bottom:1px dashed black;">
+							    <span style="width:1px;"/>
+							</span>
 							<strong>Next, </strong> complete Part IV.
 						</div>
 					</div>
@@ -556,6 +570,9 @@
 								</xsl:for-each>
 							</span>
 						</div>
+					    <div class="sty8840DescA" style="width:179mm;border-bottom:1px dashed black;float:right;">
+                             <span style="width:1px;"/>
+						</div>
 					</div>
 					<!-- Line 19 -->
 					<div class="styStdDiv">
@@ -573,6 +590,9 @@
 									<span style="width:12px;"/>
 								</xsl:for-each>
 							</span>
+						</div>
+						<div class="sty8840DescA" style="width:179mm;border-bottom:1px dashed black;float:right;">
+                             <span style="width:1px;"/>
 						</div>
 					</div>
 					<!-- Line 20 -->
@@ -697,6 +717,9 @@
 									<span style="width:12px;"/>
 								</xsl:for-each>
 							</span>
+						</div>
+						<div class="sty8840DescA" style="width:179mm;border-bottom:1px dashed black;float:right;">
+								<span style="width:1px;"/>			
 						</div>
 					</div>
 					<!-- Line 23 -->
@@ -1013,7 +1036,7 @@
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBox">30</div>
 						<div class="sty8840DescA" style="width:179mm;">
-							Did you qualify for any type of "national" health plan sponsored by a foreign government 
+							Did you qualify for any type of "national" health plan sponsored by a foreign government?
 							<span style="letter-spacing:3.3mm;font-weight:bold;padding-left:8px;">..........</span><span style="height:3mm;"> </span>
 							<span style="float:right;">
 								<xsl:call-template name="PopulateSpan">

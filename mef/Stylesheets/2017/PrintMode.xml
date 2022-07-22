@@ -11,6 +11,7 @@
 		<Document documentName="AltMinTxblIncmAdjSimplifiedSch"/>
 		<Document documentName="AmortizationSchedule"/>
 		<Document documentName="BorrowedFundsElection"/>
+		<Document documentName="Category3FilerStatement"/>
 		<Document documentName="CharitableContriStatement"/>
 		<Document documentName="CodeSectPropDeprecOrAmortzStmt"/>
 		<Document documentName="CompensationSchedule"/>
@@ -37,7 +38,13 @@
 		<Document documentName="IRS1118AMT"/>
 		<Document documentName="IRS1118ScheduleI"/>
 		<Document documentName="IRS1118ScheduleK"/>
+		<Document documentName="IRS499W2PR"/>
 		<Document documentName="IRS5471ScheduleJ"/>
+		<Document documentName="IRS8975"/>
+		<Document documentName="IRS8975ScheduleA"/>
+		<Document documentName="IRS940ScheduleR"/>
+		<Document documentName="IRS941ScheduleR"/>
+		<Document documentName="IRS943ScheduleR"/>
 		<Document documentName="IRS990ScheduleF"/>
 		<Document documentName="IRS990ScheduleI"/>
 		<Document documentName="IRS990ScheduleJ"/>
@@ -49,6 +56,7 @@
 		<Document documentName="ItemizedOtherIncomeSchedule"/>
 		<Document documentName="ItemizedOtherInterbrnchLiabSch"/>
 		<Document documentName="ItemizedOtherThirdPartyLiabSch"/>
+		<Document documentName="ItemizedTotalForeignTaxesSch"/>
 		<Document documentName="ItemRelatingReportableTransSch"/>
 		<Document documentName="ItmzInterbranchCurrentAstSch"/>
 		<Document documentName="ItmzLoanInvstNonUSAssetsSch"/>
@@ -59,11 +67,13 @@
 		<Document documentName="MortgEtcPyblLT1Yr3rdPrtyLiabSc"/>
 		<Document documentName="MortgEtcPyblLT1YrIntrbrLiabSch"/>
 		<Document documentName="MultipleBuildingProjectSch"/>
+		<Document documentName="NonincludibleForeignEntitySch"/>
 		<Document documentName="OtherAdjRqrReconcileAmtSch"/>
 		<Document documentName="OtherAdjustmentsToReconcileSch"/>
 		<Document documentName="OtherNotesLoansRcvblLongSch"/>
 		<Document documentName="OtherTaxAndInterestSchedule"/>
 		<Document documentName="OthExpenseDedItemsWithDiffSch"/>
+		<Document documentName="OthIncomeLossItemsWithDiffSch"/>
 		<Document documentName="Owned10PctIntForeignPrtshpStmt"/>
 		<Document documentName="OtherNonCurrentUSAssets"/>
 		<Document documentName="PartialIntContributionStmt"/>
@@ -77,7 +87,7 @@
 		<Document documentName="PrpsdChgPoolingInventoriesStmt"/>
 		<Document documentName="QlfyReforestationCostsStmt"/>
 		<Document documentName="ScheduleK1SupplementalInfoStmt"/>
-		<Document documentName="Section118ExclusionSchedule"/>		
+		<Document documentName="Section118ExclusionSchedule"/>
 		<Document documentName="SecOrCommoditiesHeldByTrader"/>
 		<Document documentName="ShareholdersStockOwnershipAtt"/>
 		<Document documentName="ShareholdersStockOwnershipStmt"/>

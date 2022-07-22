@@ -30,6 +30,7 @@
 <!-- Last Modified on 10/22/15 per PDF REVIEW - Robert L Jones-->
 <!-- Last Modified on 11/24/15 per IBM Defect 44924 Part VI overlapping  - Robert L Jones-->
 <!-- Last Modified on 02/11/16 per Kisam IM02466377  - Robert L Jones-->
+<!-- Last Modified on 3/25/2016 per Kisam#IM02518925 sep print not populating at 11g Table col iii -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -746,7 +747,7 @@ instructions). <b>You must complete Part IV, Sections A and D, and Part V.</b>
         <!-- additional data table -->
         <xsl:if test="count($FormData/SupportedOrgInformationGrp) &lt; 1 or             (($Print = $Separated) and (count($FormData/SupportedOrgInformationGrp) &gt; 2)) ">
           <tr>
-            <td class="IRS990ScheduleA_GenericCell" style="border-right-width:1px;">
+            <td class="IRS990ScheduleA_GenericCell" style="border-right-width:0px;">
               <xsl:call-template name="PopulateAdditionalDataTableMessage">
                 <xsl:with-param name="TargetNode" select="$FormData/SupportedOrgInformationGrp"/>
               </xsl:call-template>
@@ -5417,7 +5418,7 @@ instructions)
                  <!-- Type of Organization -->           
             <td class="IRS990ScheduleA_GenericCell" style="text-align:center;vertical-align:top;">
                 <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="OrganizationTypeDesc"/>
+                  <xsl:with-param name="TargetNode" select="OrganizationTypeCd"/>
                 </xsl:call-template> 
               </td>      
   

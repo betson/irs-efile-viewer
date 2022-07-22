@@ -33,10 +33,10 @@
           <xsl:if test="not($Print) or $Print=''">
             <xsl:call-template name="IRSW2GStyle"/>
             <xsl:call-template name="AddOnStyle"/>
-          </xsl:if>
+        </xsl:if>
         </style>
         <xsl:call-template name="GlobalStylesForm"/>
-       <!-- Remove this -->
+     <!--  Hold on to this-->
       </head>
       <body class="styBodyClass">
         <form name="FormW2G">
@@ -81,7 +81,7 @@
             <!-- END: Header    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
             <!-- BEGIN: Top Left  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
           
-            <div class="styIRSW2GLeftTopFrame" style="width:187mm;height:105mm;border-right-width:0px">
+            <div class="styIRSW2GLeftTopFrame" style="width:187mm;height:110mm;border-right-width:0px">
             
              <div style="width:187mm;">        
                  <div class="styIRSW2GRowItem" style="width:77.4mm;height:39mm;float:left;padding-top:0mm;">
@@ -312,20 +312,35 @@
                       </xsl:call-template>
                        
                 
-                 <div class="styIRSW2GRowItem" style="height:18mm;width:77.4mm;float:left;border:0px solid black;border-top-width:1px;black;border-bottom-width:1px;">
+                 <div class="styIRSW2GRowItem" style="height:11mm;width:77.4mm;float:left;border:0px solid black;border-top-width:1px;black;border-bottom-width:1px;">
                   <div class="styIRSW2GDataTitleLeft">
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial;">WINNER'S name</span>
                   </div><br/>
                   <div class="styIRSW2GDataLTxtField" style="height:2mm;">
-                    <xsl:call-template name="PopulateText">
+                   <xsl:choose>
+                                        <!-- Form Level text-->
+					     <xsl:when test="$FormW2GData/RecipientNm !=''">
+								<br/>
+								<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$FormW2GData/RecipientNm"/>
+								</xsl:call-template>
+						 </xsl:when>
+						  <!-- Name from 1040/1040NR Return Header -->
+                         <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+                                   <xsl:call-template name="PopulateText">
+                                   <xsl:with-param name="TargetNode" select="$FormW2GData/RecipientNm"/>
+                                    </xsl:call-template>
+                                    </xsl:when>
+                                 </xsl:choose>
+                    <!--<xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormW2GData/RecipientNm"/>
-                    </xsl:call-template>
+                    </xsl:call-template>-->
                   </div>
-                 <div style="height:23mm;width:77.4mm;float:left;border:0px solid black;border-top-width:0px;black;border-bottom-width:1px;padding-top:3mm;">
+                 <div style="height:20mm;width:77.4mm;float:left;border:0px solid black;border-top-width:0px;black;border-bottom-width:1px;">
                   <!--<div class="styIRSW2GDataTitleLeft">-->
                     <!--<span style="width:3px;"/>-->
-                    <span style="font-size:6pt;font-family:Arial;padding-bottom:1mm;padding-top:9.5mm;padding-left:2mm">Street address (including apt. no.)</span>
+                    <span style="font-size:6pt;font-family:Arial;padding-bottom:1mm;padding-top:6.5mm;padding-left:2mm">Street address (including apt. no.)</span>
                  <!-- </div>-->
                   <div class="styIRSW2GDataLTxtField">
                     <xsl:choose>
@@ -394,7 +409,7 @@
                   </div>
                 </div>
                 
-                <div class="styIRSW2GRowItem" style="width:77.4mm;height:11.5mm;float:left;background-color:lightgrey;border:0px black solid;border-top-width:1px;"/>
+                <div class="styIRSW2GRowItem" style="width:77.4mm;height:19.5mm;float:left;background-color:lightgrey;border:0px black solid;border-top-width:1px;"/>
 				
               
                 </div>
@@ -407,10 +422,45 @@
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial Narrow;">Winner's taxpayer identification no.</span>
                   </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:center;height:7mm;">
-                    <xsl:call-template name="PopulateText">
+                  <div class="styIRSW2GDataMRTxtFields" style="text-align:center;height:7.5mm;">
+                  <xsl:choose>
+                                          <!--         Form Level Recipient SSN        -->
+									      <xsl:when test="$FormW2GData/RecipientSSN !=''">
+                                                <xsl:call-template name="PopulateSSN">
+                                                <xsl:with-param name="TargetNode" select="$FormW2GData/RecipientSSN"/>
+                                                </xsl:call-template>												
+                 	                      </xsl:when>
+				                         <xsl:when test="$FormW2GData/RecipientEIN">
+					                          <xsl:call-template name="PopulateEIN">
+                                             <xsl:with-param name="TargetNode" select="$FormW2GData/RecipientEIN"/>
+                                             </xsl:call-template>
+				                     </xsl:when>	                      
+                                       <!-- TIN from 1040, 1040NR return headers-->
+					           <xsl:when test="$RtnHdrData/Filer/PrimarySSN"> 
+                                         <xsl:call-template name="PopulateReturnHeaderFiler">
+                                          <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+                                          </xsl:call-template>
+                               </xsl:when>
+                               
+				                
+                                 <!--   <xsl:otherwise>
+                                    <xsl:choose>
+                                           <xsl:when test="$FormW2GData/RecipientSSN">
+				                                 <xsl:call-template name="PopulateSSN">
+                                                 <xsl:with-param name="TargetNode" select="$FormW2GData/RecipientSSN"/>
+                                                 </xsl:call-template>												
+					                        </xsl:when>
+					                      <xsl:when test="$FormW2GData/RecipientEIN">
+					                                 <xsl:call-template name="PopulateEIN">
+                                                      <xsl:with-param name="TargetNode" select="$FormW2GData/RecipientEIN"/>
+                                                      </xsl:call-template>
+				                               </xsl:when>
+                                    </xsl:choose>	
+                                    </xsl:otherwise>-->
+				       </xsl:choose>    <!--thiis it-->
+                    <!--<xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormW2GData/RecipientSSN"/>
-                    </xsl:call-template>
+                    </xsl:call-template>-->
                   </div>
                   <!-- (11) First I.D.>>>>>>>>>>>>>>>>>>>>>>>>-->
                   <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
@@ -426,8 +476,7 @@
                   </div>
                   
                   
-                <!--<xsl:choose>
-				  <xsl:when test="count($FormW2GData/W2GStateLocalTaxGrp) &lt; 1 and count($FormW2GData/W2GStateLocalTaxGrp/W2GLocalTaxGrp) &lt; 1">		          ggggg-->
+              
 					<div class="styIRSW2GRowItem">
 					   <!-- (13) State/Payer's state identification no. >>>>>>>>>>>>>>>>>>>>>>>>-->
 					       <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
@@ -436,15 +485,47 @@
                                 <span style="width:3px;"/>
                                <span style="font-size:6pt;font-family:Arial Narrow;">State/Payer's state identification no.</span>
                   </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:center;height:7mm;">
-                    <xsl:call-template name="PopulateText">
+                   <div class="styIRSW2GDataMRTxtFields" style="text-align:center;height:11mm;">
+                  
+                    <xsl:choose>
+					<xsl:when test="count($FormW2GData/W2GStateLocalTaxGrp) &gt; 1 and ($Print != $Separated)">
+									<!--<span style="width:3mm"/>-->
+						<xsl:call-template name="LinkToLeftoverDataTableInline">
+                          <xsl:with-param name="Desc">Lines 13-18 Data Table</xsl:with-param>
+                          <xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp"/>
+                        </xsl:call-template>
+                         
+                       <!-- <span style="width:2mm"/>
+                        See Additional Data Table-->
+					</xsl:when>
+					<xsl:otherwise>
+
+                        
+					
+					     <xsl:if test="count($FormW2GData/W2GStateLocalTaxGrp) &lt; 2 and ($Print != $Separated)">
+					     
+							<xsl:call-template name="PopulateText">
 						<xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp/StateAbbreviationCd"/>
-                    </xsl:call-template>
+                        </xsl:call-template>
                     <span style="width:6px;"/>
                     <xsl:call-template name="PopulateText">
 						<xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp/PayerStateIdNum"/>
-                    </xsl:call-template>
+                    </xsl:call-template>				
+											
+						</xsl:if>
+					 	</xsl:otherwise>
+                  </xsl:choose>
+                  <xsl:if test="((count($FormW2GData/W2GStateLocalTaxGrp) &gt; 1 or count($FormW2GData/W2GStateLocalTaxGrp/W2GLocalTaxGrp) &gt; 1) and 
+                             ($Print = $Separated))">
+				
+				     <span style="width:4px"/>
+                                <xsl:call-template name="PopulateAdditionalDataTableMessage">
+                                 <xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp"/>
+                                </xsl:call-template>																										
+				 </xsl:if>
+              
                   </div>
+                 
                   <!-- (15) State income tax withheld >>>>>>>>>>>>>>>>>>>>>>>>-->
 					   <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
 					   <div class="styIRSW2GDataMRTitle">
@@ -452,25 +533,62 @@
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial Narrow;">State income tax withheld</span>
 					   </div>
-					   		<div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:7mm;">
+					   		<div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:8.3mm;">
+					   		
+                            <xsl:choose>
+                      <xsl:when test="count($FormW2GData/W2GStateLocalTaxGrp) &gt; 1 and ($Print != $Separated)">
+															
+					                      <span style="width:2mm"/>
+                        
+					</xsl:when>
+					<xsl:otherwise>
+					     <xsl:if test="count($FormW2GData/W2GStateLocalTaxGrp) &lt; 2 and ($Print != $Separated)">
+					             <div style="text-align:left;float:left;">$</div>
+                                  <xsl:call-template name="PopulateAmount">
+                                  <xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp/StateTaxWithheldAmt"/>
+                              </xsl:call-template>
+						</xsl:if>
+					 	</xsl:otherwise>
+                  </xsl:choose>
+
+				       </div>		
+					  <!-- 		<div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:7mm;">
                     <div style="text-align:left;float:left;">$</div>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp/StateTaxWithheldAmt"/>
                     </xsl:call-template>
-                  </div>		
+                  </div>		-->
                   	  <!-- (17) Local income tax withheld >>>>>>>>>>>>>>>>>>>>>>>>-->
                   	  <div class="styIRSW2GRowItem" style="width:37mm;float:left;height:10.2mm;">
                   	      <div class="styIRSW2GDataMRTitle" style="height:10.2mm;;">
                             <b>17</b>
-                    <span style="width:3px;"/>
-                    <span style="font-size:6pt;font-family:Arial Narrow;">Local income tax withheld</span>                    	    
-                  	   	     </div>
-                  	     <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:10.2mm;border-bottom-width:0px;">
+                            <span style="width:3px;"/>
+                             <span style="font-size:6pt;font-family:Arial Narrow;">Local income tax withheld</span>                    	    
+                     </div>
+                     	     <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:9mm;border-bottom-width:0px;">
+                  	     
+                                                  <xsl:choose>
+                      <xsl:when test="count($FormW2GData/W2GStateLocalTaxGrp) &gt; 1 and ($Print != $Separated)">
+															
+					                      <span style="width:2mm"/>
+                        
+					</xsl:when>
+					<xsl:otherwise>
+					     <xsl:if test="count($FormW2GData/W2GStateLocalTaxGrp) &lt; 2 and ($Print != $Separated)">
+					             <div style="text-align:left;float:left;">$</div>
+                                  <xsl:call-template name="PopulateAmount">
+                                  <xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp/W2GLocalTaxGrp/LocalIncomeTaxAmt"/>
+                              </xsl:call-template>
+						</xsl:if>
+					 	</xsl:otherwise>
+                  </xsl:choose>
+                   </div>
+                  	  <!--   <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:10.2mm;border-bottom-width:0px;">
                     <div style="text-align:left;float:left;">$</div>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp/W2GLocalTaxGrp/LocalIncomeTaxAmt"/>
                     </xsl:call-template>
-                  </div>
+                  </div>-->
                   
                    </div>
 				   </div>
@@ -479,43 +597,7 @@
 					</div>
                        					
 					
-				 <!--</xsl:when>-->
-				<!--  <xsl:otherwise>
-				    --><!-- (13) State/Payer's state identification no. >>>>>>>>>>>>>>>>>>>>>>>>--><!--
-                 <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
-                    <div class="styIRSW2GDataMRTitle">
-                    <b>13</b>
-                    <span style="width:3px;"/>
-                    <span style="font-size:6pt;font-family:Arial Narrow;">State/Payer's state identification no.</span>
-                  </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:center;height:7mm;">
-                    
-                  </div>
-                  --><!-- (15) State income tax withheld >>>>>>>>>>>>>>>>>>>>>>>>--><!--
-                  <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
-                  <div class="styIRSW2GDataMRTitle">
-                    <b>15</b>
-                    <span style="width:3px;"/>
-                    <span style="font-size:6pt;font-family:Arial Narrow;">State income tax withheld</span>
-                  </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:7mm;">
-                    <div style="text-align:left;float:left;">$</div>
-                  </div>
-                    --><!-- (17) Local income tax withheld >>>>>>>>>>>>>>>>>>>>>>>>--><!--
-                <div class="styIRSW2GRowItem" style="width:37mm;float:left;height:13.2mm">
-                  <div class="styIRSW2GDataMRTitle">
-                    <b>17</b>
-                    <span style="width:3px;"/>
-                    <span style="font-size:6pt;font-family:Arial Narrow;">Local income tax withheld</span>
-                  </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:15.7mm;border-bottom-width:0px;">
-                   <div style="text-align:left;float:left;">$</div>
-                  </div>
-                </div>
-                </div>
-                </div>
-				  </xsl:otherwise>-->
-    			<!--	</xsl:choose>-->
+				 
                   </div>
                  
                   </div>
@@ -527,7 +609,7 @@
                        <span style="width:3px;"/>
                        <span style="font-size:6pt;font-family:Arial;">Window</span>
                     </div>
-                    <div class="styIRSW2GDataMRTxtFields" style="height:7mm;border-right-width:1px;">
+                    <div class="styIRSW2GDataMRTxtFields" style="height:7.5mm;border-right-width:1px;">
                     <span style="width:7px;"/>
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormW2GData/GamblingWinWindowNum"/>
@@ -555,12 +637,31 @@
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial;">State winnings </span>
                   </div> 
-                    <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:7mm;border-right-width:1px;">
+                  
+                    <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:11mm;border-right-width:1px;"> 
+                      <xsl:choose>
+                      <xsl:when test="count($FormW2GData/W2GStateLocalTaxGrp) &gt; 1 and ($Print != $Separated)">
+															
+					                      <span style="width:2mm"/>
+                        
+					</xsl:when>
+					<xsl:otherwise>
+					     <xsl:if test="count($FormW2GData/W2GStateLocalTaxGrp) &lt; 2 and ($Print != $Separated)">
+					             <div style="text-align:left;float:left;">$</div>
+                                  <xsl:call-template name="PopulateAmount">
+                                  <xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp/GamblingWinningAmt"/>
+                              </xsl:call-template>
+						</xsl:if>
+					 	</xsl:otherwise>
+                  </xsl:choose>
+                 
+                  </div>
+                   <!-- <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:7mm;border-right-width:1px;">
                     <div style="text-align:left;float:left;">$</div>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp/GamblingWinningAmt"/>
                     </xsl:call-template>
-                  </div>
+                  </div>-->
                   <!-- (16) Local winnings >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
                   <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
                   <div class="styIRSW2GDataMRTitle" style="width:37.7mm;border-right-width:1px;">
@@ -568,12 +669,33 @@
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial;">Local winnings</span>
                   </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:7mm;border-right-width:1px;">
+                  <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:8.1mm;border-right-width:1px;">
+                  
+                                                               <xsl:choose>
+                      <xsl:when test="count($FormW2GData/W2GStateLocalTaxGrp) &gt; 1 and ($Print != $Separated)">
+															
+					                      <span style="width:2mm"/>
+                       
+					</xsl:when>
+					<xsl:otherwise>
+					     <xsl:if test="count($FormW2GData/W2GStateLocalTaxGrp) &lt; 2 and ($Print != $Separated)">
+					             <div style="text-align:left;float:left;">$</div>
+                                  <xsl:call-template name="PopulateAmount">
+                                  <xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp/W2GLocalTaxGrp/GamblingWinningAmt"/>
+                              </xsl:call-template>
+						</xsl:if>
+					 	</xsl:otherwise>
+                  </xsl:choose>
+                
+				
+                  
+                  </div>
+                  <!--<div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:7mm;border-right-width:1px;">
                     <div style="text-align:left;float:left;">$</div>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp/W2GLocalTaxGrp/GamblingWinningAmt"/>
                     </xsl:call-template>
-                  </div>
+                  </div>-->
                  <!-- (18) Name of locality >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
                 <div class="styIRSW2GRowItem" style="width:37mm;float:left;height: 10.2mm;">
                   <div class="styIRSW2GDataMRTitle" style="width:37.7mm;border-right-width:1px;">
@@ -581,11 +703,33 @@
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial;">Name of locality</span>
                   </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:left;height:15.8mm;border-bottom-width:0px;border-right-width:1px;padding-top:6mm;">
+                  <div class="styIRSW2GDataMRTxtFields" style="text-align:left;height:16mm;border-bottom-width:0px;border-right-width:1px;">
+                  
+                                                      <xsl:choose>
+                      <xsl:when test="count($FormW2GData/W2GStateLocalTaxGrp) &gt; 1 and ($Print != $Separated)">
+															
+					                      <span style="width:2mm"/>
+                        
+					</xsl:when>
+					<xsl:otherwise>
+					     <xsl:if test="count($FormW2GData/W2GStateLocalTaxGrp) &lt; 2 and ($Print != $Separated)">
+					             
+                                  <xsl:call-template name="PopulateAmount">
+                                  <xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp/W2GLocalTaxGrp/LocalityNm"/>
+                              </xsl:call-template>
+						</xsl:if>
+					 	</xsl:otherwise>
+                  </xsl:choose>
+                  
+                  
+  
+				
+                  </div>
+                  <!--<div class="styIRSW2GDataMRTxtFields" style="text-align:left;height:15.8mm;border-bottom-width:0px;border-right-width:1px;padding-top:6mm;">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp/W2GLocalTaxGrp/LocalityNm"/>
                     </xsl:call-template>
-                  </div>
+                  </div>-->
                   </div>
                 </div>
                 </div>				
@@ -637,7 +781,7 @@
                  <div class="styIRSW2GRightBottomFrame" style="width:31.5mm;height:22.5mm;border-top-width:0px;border-bottom-width:0px;">
                        <br/>
               <br/>
-              <div class="styIRSW2GRightBottomFrame" style="font-family:Arial;font-size:6.5pt;padding-left:6mm;height:16.4mm; ">
+              <div class="styIRSW2GRightBottomFrame" style="font-family:Arial;font-size:6.5pt;padding-left:6mm;height:31.5mm; ">
                     For Privacy Act and<br/>
                     Paperwork Reduction Act<br/>
                     Notice, see the <b>2015</b>
@@ -648,17 +792,18 @@
                     Returns.</b>
                     
               </div>
-               <div class="styIRSW2GRightBottomFrame" style="width:31.5mm;height:21.5mm;border-top-width:0px;border-bottom-width:0p;">
+               <div class="styIRSW2GRightBottomFrame" style="width:31.5mm;height:12mm;border-top-width:0px;border-bottom-width:0p;">
                     <div style="width:100%;text-align:right;float:right;">
-                        <div style="font-family:Arial;font-size:7.7pt;padding-top:4mm;float:left;">
-                        <b>	<div class="styBB" style="padding-top:4mm;width:31mm;height:10.5mm;border-bottom-width:0px">
+                        <div style="font-family:Arial;font-size:7.7pt;padding-top:2mm;float:left;">
+                        <b>	<div class="styBB" style="padding-top:2mm;width:31mm;height:10.5mm;border-bottom-width:0px">
+                        
 				    	<xsl:call-template name="LinkToLeftoverDataTableInline">
                           <xsl:with-param name="Desc">Standard Or Non Standard Code</xsl:with-param>
                           <xsl:with-param name="TargetNode" select="$FormW2GData/StandardOrNonStandardCd"/>
-                        </xsl:call-template>
+                        </xsl:call-template><span style="width:2mm"/>
 					    <span style="font-size:6.5pt;border-top-width:2px; solid black;border-bottom-width:1px">File with Form 1096</span>
 					</div></b>
-                      <span style="width:4px;"/><br/><br/><br/><br/>
+                      <span style="width:4px;"/><br/>
                                 <b>  <div style="width:31mm;height:11mm;" >
                           <span  style="height:4mm"> Copy A</span><br/>
                              <span  style="height:3.5mm"> For Internal Revenue</span><br/>Service Center
@@ -717,7 +862,7 @@
           <!-- BEGIN Left Over Table -->
           <!-- Additonal Data Title Bar and Button -->
           <div class="styLeftOverTitleLine" id="LeftoverData">
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             <div class="styLeftOverTitle" style="float:left;">
               Additional Data        
             </div>
@@ -743,21 +888,24 @@
               <xsl:with-param name="TargetNode" select="$FormW2GData/StandardOrNonStandardCd"/>
               <xsl:with-param name="DescWidth" select="100"/>
             </xsl:call-template>
-            <xsl:if test="count($FormW2GData/W2GStateLocalTaxGrp) &gt; 1 or count($FormW2GData/W2GStateLocalTaxGrp/W2GLocalTaxGrp) &gt; 1">
-            <tr>
+            <xsl:if test="($Print != $Separated)">
+		            <xsl:if test="(count($FormW2GData/W2GStateLocalTaxGrp) &gt; 1) or (count($FormW2GData/W2GStateLocalTaxGrp/W2GLocalTaxGrp) &gt; 1) ">
+                   <tr>
 			  <td class="styLeftOverTableRowDesc" style="width:100mm;" scope="row">Lines 13-18 - Data Table:</td>  
 			  <td class="styLeftOverTableRowAmount" style="width:87mm;"/>                     
 			</tr>
 			</xsl:if>
+			</xsl:if>
           </table>
-           
-          <xsl:if test="count($FormW2GData/W2GStateLocalTaxGrp) &gt; 1 or count($FormW2GData/W2GStateLocalTaxGrp/W2GLocalTaxGrp) &gt; 1">
+           <xsl:if test="($Print != $Separated)">
+          <xsl:if test="(count($FormW2GData/W2GStateLocalTaxGrp) &gt; 1) or (count($FormW2GData/W2GStateLocalTaxGrp/W2GLocalTaxGrp) &gt; 1)">
+        
           <div class="styTable" style="margin-top:0mm;margin-bottom:2mm;">
           <table class="styTableContainer" cellspacing="0" cellpadding="0" style="font-size:8pt;width:187mm;border-width: 1px 1px 1px 1px;">
 				<tbody>
 					<tr style="font-size: 7pt;">
-						<th scope="col">13<span style="width:10px"/>State </th>
-						<th scope="col" style="border-right:1px solid black">/Payer's state identification no.</th>
+						<th scope="col" style="border-right:1px solid black">13<span style="width:10px"/>State </th>
+						<th scope="col" style="border-right:1px solid black">Payer's state identification no.</th>
 						<th scope="col" style="border-right:1px solid black">14 State winnings</th>
 						<th scope="col" style="border-right:2px solid black">15 State income tax <br/> withheld</th>
 						<th scope="col" style="border-right:1px solid black">16 Local winnings</th>
@@ -836,6 +984,108 @@
 			</table>
 			</div>
 			</xsl:if>
+			</xsl:if>
+			
+				<!--Separated Code -->  
+			
+			
+			
+			 <xsl:if test="((count($FormW2GData/W2GStateLocalTaxGrp) &gt; 1 or count($FormW2GData/W2GStateLocalTaxGrp/W2GLocalTaxGrp) &gt; 1) and 
+          ($Print = $Separated))">
+
+          <div class="styTable" style="margin-top:0mm;margin-bottom:2mm;">
+          <span class="styRepeatingDataTitle" style="width:80mm"> Form W2G, Lines 13-18,</span>
+          <table class="styTableContainer" cellspacing="0" cellpadding="0" style="font-size:8pt;width:187mm;border-width: 1px 1px 1px 1px;">
+				<tbody>
+					<tr  class="styDepTblHdr">
+						<th scope="col"  style="border-right:1px solid black">13<span style="width:10px"/>State </th>
+						<th scope="col" style="border-right:1px solid black">Payer's state identification no.</th>
+						<th scope="col" style="border-right:1px solid black">14 State winnings</th>
+						<th scope="col" style="border-right:2px solid black">15 State income tax <br/> withheld</th>
+						<th scope="col" style="border-right:1px solid black">16 Local winnings</th>
+						<th scope="col" style="border-right:1px solid black">17 Local income tax<br/> withheld</th>
+						<th scope="col" style="">18 Name of locality</th>
+					</tr>
+
+					<xsl:for-each select="$FormW2GData/W2GStateLocalTaxGrp">
+					<tr style="border-color:black;">
+					<!-- Define background colors to the rows -->
+                          <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+						<td class="styIRSW2GCell" align="center">
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="StateAbbreviationCd"/>
+							</xsl:call-template>
+						</td>
+
+						<td class="styIRSW2GCell" align="center">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="PayerStateIdNum"/>
+							</xsl:call-template>
+						</td>
+						<td class="styIRSW2GCell" align="right">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="GamblingWinningAmt"/>
+							</xsl:call-template>
+						</td>
+						<td class="styIRSW2GCell" align="right" style="border-right:2px solid black">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="StateTaxWithheldAmt"/>
+							</xsl:call-template>
+						</td>
+						<xsl:for-each select="W2GLocalTaxGrp">
+						
+					
+							<xsl:if test="position()=1">
+							
+								<td class="styIRSW2GCell" align="right">
+									<xsl:call-template name="PopulateAmount">
+										<xsl:with-param name="TargetNode" select="GamblingWinningAmt"/>
+									</xsl:call-template>
+								</td>
+								<td class="styIRSW2GCell" align="right">
+									<xsl:call-template name="PopulateAmount">
+										<xsl:with-param name="TargetNode" select="LocalIncomeTaxAmt"/>
+									</xsl:call-template>
+								</td>
+								<td class="styIRSW2GCell" style="border-right-width:0">
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="LocalityNm"/>
+									</xsl:call-template>
+								</td>
+							</xsl:if>
+							<xsl:if test="position()!=1">
+								<tr style="border-color:black;">   
+									<!-- Define background colors to the rows -->
+                          <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when><xsl:otherwise>styDepTblRow1</xsl:otherwise></xsl:choose></xsl:attribute>
+									<td class="styIRSW2GCell" style="background-color:lightgrey;border-top-width:0px;"><br/></td>
+									<td class="styIRSW2GCell" style="background-color:lightgrey;border-top-width:0px;"><br/></td>
+									<td class="styIRSW2GCell" style="background-color:lightgrey;border-top-width:0px;"><br/></td>
+									<td class="styIRSW2GCell" style="border-right:2px solid black;background-color:lightgrey;border-top-width:0px;"><br/></td>
+									<td class="styIRSW2GCell" align="right">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="GamblingWinningAmt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styIRSW2GCell" align="right">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="LocalIncomeTaxAmt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styIRSW2GCell" style="border-right-width:0">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="LocalityNm"/>
+										</xsl:call-template>
+									</td>
+								</tr>
+							</xsl:if>
+						</xsl:for-each>
+					</tr>
+					</xsl:for-each>
+				</tbody>
+			</table>
+			</div>
+			</xsl:if>
+			
 		  <div class="styGenericDiv" style="height:5mm;"/>
         </form>
       </body>

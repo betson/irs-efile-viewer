@@ -58,7 +58,7 @@
 	-->
 	<xsl:template name="DocumentHeaderContent">
 		<xsl:param name="Parameters" select="/AppData/Parameters" />
-		<span class="styDoNotProcess">
+		<span class="styDoNotProcess" style="overflow:hidden;">
 			<xsl:value-of select="$AppProp/FormHeaderGeneric" />
 			<span style="width:12px;"></span>
 			<span class="styDataStage">
@@ -83,32 +83,26 @@
 					Rejected
         		</span>
 			</xsl:if>
-
-			<span>
+			<xsl:if test="not($Print and $Print!='')">
 			  <xsl:choose>
 				<xsl:when
 					test="$NeedEngSpanButton ='true' and $Language='SPANISH'">
-					<span>
 						<span style="width:40px;" />
 						<button type="button" tabIndex="1" class="styEnglishBtn" name="English Button" id="EnglishBtn" 
 							onclick="top.ReturnTree.EngSpanBtnClick( '{$DocId}', '{$DocumentName}'+'ENGLISH');" 
-							style="vertical-align:top;cursor:pointer;">
+							style="vertical-align:top;cursor:pointer;margin-top:-1px;">
 						</button>
-					</span>
 				</xsl:when>
 				<xsl:when
 					test="$NeedEngSpanButton ='true' and $Language='ENGLISH'">
-					<span>
 						<span style="width:40px;" />
 						<button type="button" tabIndex="1" class="stySpanishBtn" name="Spanish Button" id="SpanishBtn" 
 							onclick="top.ReturnTree.EngSpanBtnClick( '{$DocId}', '{$DocumentName}'+'SPANISH');" 
-							style="vertical-align:top;cursor:pointer;">
-						</button>						
-					</span>
+							style="vertical-align:top;cursor:pointer;margin-top:-1px;">
+						</button>
 				</xsl:when>
 			  </xsl:choose>
-			</span>
-
+			</xsl:if>
 		</span>
 
 

@@ -43,21 +43,20 @@
 					<xsl:call-template name="DocumentHeader"/>
 					<!-- END WARNING LINE -->
 					<!-- Begin Form Number and Name -->
-					<div class="styBB" style="width:187mm;">
-						<div class="styFNBox" style="width:31mm;height:22mm;">
+					<div class="styBB" style="width:187mm;height:22mm;">
+						<div class="styFNBox" style="width:31mm;height:22mm">
             Form<span class="styFormNumber" style="padding-left:2mm"> 2120</span>
             <div>(Rev. October 2005)</div>
 							<div class="styAgency" style="padding-top:3mm;">Department of the Treasury<br/>Internal Revenue Service</div>
 						</div>
-						<div class="styFTBox" style="width:125mm;height:auto;">
-							<div class="styMainTitle" style="height:auto;padding-top:2mm;">Multiple Support Declaration</div><br/>
-						<div class="styFST" style="height:auto;font-size:7pt;padding-top:4mm;">
+						<div class="styFTBox" style="width:125mm;height:22mm;">
+							<div class="styMainTitle" style="padding-top:2mm;">Multiple Support Declaration</div><br/>
+						<div class="styFST" style="font-size:7pt;padding-top:4mm;">
 							<img src="{$ImagePath}/2120_Bullet.gif" width="9" height="9" alt="bullet image"/> Attach to Form 1040 or Form 1040A.</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;height:22mm;">
-							<div class="styOMB" style="height:auto; padding-top:3mm;padding-bottom:2mm;">OMB No. 1545-0074</div>
-							<div class="styTY" style="height:7mm;font-size:22pt;"></div>
-							<div class="stySequence" style="height:9mm;border-bottom-width:0px;padding-left:1mm;padding-top:2mm;border-left-width:0px;">
+						<div class="styTYBox" style="width:31mm;height:22mm;">
+							<div class="styOMB" style="padding-top:3mm;padding-bottom:4mm;">OMB No. 1545-0074</div>
+							<div class="stySequence" style="border-bottom-width:0px;padding-left:1mm;padding-top:2mm;border-left-width:0px;">
 								Attachment<br/>
 								Sequence No. <span class="styBoldText">114</span>
 							</div>
@@ -68,21 +67,37 @@
 					<div class="styBB" style="width:187mm;float:none;clear:none;">
 						<div class="styNameBox" style="width:136mm;height:8mm;font-size:7pt;">
 							Name(s) shown on return<br/>
+				 <xsl:choose>
+				 		<xsl:when test="normalize-space($Form2120Data/QualifyingPersonName) != ''">
 							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="TargetNode" select="$Form2120Data/QualifyingPersonName/PersonFirstNm"/>
 							</xsl:call-template>
+							<span style="width:1mm;"/>
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$Form2120Data/QualifyingPersonName/PersonLastNm"/>
+							</xsl:call-template>
+							</xsl:when>
+					    <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+							</xsl:call-template>
+					   </xsl:when>
+				</xsl:choose>			
 						</div>
-						<div class="styEINBox" style="width:50mm;height:4mm;padding-left:2mm;font-size:7pt;">
-								Your social security number<br/>
-								<span style="width:40mm;text-align:center;font-weight:normal;">
-									<xsl:call-template name="PopulateSSN">
-										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimarySSN"/>
-									</xsl:call-template>
-								</span>
+						<div class="styEINBox" style="width:50mm;height:4mm;padding-left:2mm;font-size:7pt;display:block;">
+							Your social security number<br/>
+							<span style="width:40mm;text-align:center;font-weight:normal;">
+							<xsl:choose>
+							<xsl:when test="$RtnHdrData/Filer/PrimarySSN">
+								<xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+							   </xsl:call-template>
+				   		  </xsl:when>
+					    </xsl:choose>
+      				   </span>
 						</div>
 					</div>
 					<!-- End Names and Identifying number section -->
-					<div style="width:187mm;">
 						<div style="width:187mm;font-size:8pt;"><span style="line-height:8mm;">During the calendar year 
 						<span style="border-bottom:1px dashed black;width:30mm;">
 							<xsl:call-template name="PopulateText">
@@ -102,7 +117,7 @@
 						<div style="width:187mm;text-align:center;">Name of your qualifying relative</div>
 						<div style="width:187mm;font-size:8pt;padding:2mm 0mm;">
 							I have a signed statement from each eligible person waiving his or her right to claim this person as a dependent for any tax year that began in the above calendar year.
-						</div>
+							</div>
 						<xsl:call-template name="makeRow">
 							<xsl:with-param name="TargetNode" select="$Form2120Data/EligiblePersonWaivingDepdRight[1]"/>
 						</xsl:call-template>
@@ -120,7 +135,6 @@
 								<xsl:with-param name="TargetNode" select="."/>
 							</xsl:call-template>
 						</xsl:for-each>
-					</div>
 					<!-- capturing the page bottom info -->
 					<div class="pageEnd" style="width:187mm; font-size:7pt;  border-top:1 solid black; padding-top:0.5mm">
 						<div style="float:right">
@@ -164,13 +178,13 @@
 			</div>
 			Eligible person's name
 		</div>
-		<div style="width:35mm;float:right;text-align:center">
-			<div style="width:35mm;border-bottom:1px dashed black;">
+		<div style="width:55mm;text-align:center;padding-left:10mm">
+			<div style="width:35mm;border-bottom:1px dashed black;padding-left:10mm">
 				<xsl:call-template name="PopulateSSN">
 					<xsl:with-param name="TargetNode" select="$TargetNode/SSN"/>
 				</xsl:call-template>
 			</div>
-			Social security number
+			<span style="padding-left:3mm;">Social security number</span>
 		</div>
 		<div style="width:187mm;clear:both;padding-top:1.5mm;padding-bottom:4mm;">
 			<div style="width:187mm;border-bottom:1px dashed black;">

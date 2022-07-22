@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Last Modified by Steven Fook on 9/23/2014 -->
 <!-- Last Modified by James Ganzy on 11/20/2014 -->
-<!-- Last Modified by Eugenia McDonald on 11/10/2016 -->
+<!-- Last Modified by Eugenia McDonald on 11/16/2017 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -4570,7 +4570,7 @@
 						<xsl:with-param name="DescWidth" select="100"/>
 					</xsl:call-template>
 					<xsl:call-template name="PopulateLeftoverRowAmount">
-						<xsl:with-param name="Desc">Line 74 - Form 8689 Code</xsl:with-param>
+						<xsl:with-param name="Desc">Line 74 - Form 8689 Amount</xsl:with-param>
 						<xsl:with-param name="TargetNode" select="$FormData/TotalPaymentsAmt/@form8689Amt"/>
 						<xsl:with-param name="DescWidth" select="100"/>
 					</xsl:call-template>

@@ -11,9 +11,9 @@
   <xsl:param name="IRS5471ScheduleMData" select="$RtnDoc/IRS5471ScheduleM"/>
   <xsl:template match="/">
   <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
-		<html>
+	<html>
     <head>
-				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
       <title>
         <xsl:call-template name="FormTitle">
           <xsl:with-param name="RootElement" select="local-name($IRS5471ScheduleMData)"/>
@@ -37,7 +37,7 @@
       </style>
       <xsl:call-template name="GlobalStylesForm"/>
     </head>
-    <body class="styBodyClass" style="font-family:verdana, arial,sans-serif;font-size:7pt;width:187mm;">
+    <body class="styBodyClass" style="width:187mm;">
       <form name="IRS5471ScheduleM">
       <!--   BEGIN WARNING LINE  -->
       <xsl:call-template name="DocumentHeader"/>
@@ -75,72 +75,48 @@
         <!--   END FORM HEADER   -->
         <!--   BEGIN TAXPAYER INFO   -->
         <div style="width:187mm;">
-          <div class="styNameBox" style="width:116mm;height:9mm;font-size:7pt;">Name of person filing Form 5471
+          <div class="styNameBox" style="width:110mm;height:9mm;font-size:7pt;">Name of person filing Form 5471
             <br/>
-            <xsl:choose>
-              <xsl:when test="$IRS5471ScheduleMData/BusinessName/BusinessNameLine1Txt">
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$IRS5471ScheduleMData/BusinessName/BusinessNameLine1Txt"/>
-                </xsl:call-template>
-                <br/>
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$IRS5471ScheduleMData/BusinessName/BusinessNameLine2Txt"/>
-                </xsl:call-template>                
-              </xsl:when>
-              <xsl:otherwise>
-                <br/>
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$IRS5471ScheduleMData/PersonNm"/>
-                </xsl:call-template>                
-              </xsl:otherwise>
-            </xsl:choose>
+            <!-- Template below address a choice of input data and Return Header data for 1120, 99X, 1065, 1040/NR and 1041-->
+			<xsl:call-template name="PopulateFilerName">
+				<xsl:with-param name="TargetNode" select="$IRS5471ScheduleMData"/>
+			</xsl:call-template>
           </div>
-          <div class="styEINBox" style="width:69mm;height:9mm;padding-left:2mm;font-size:7pt;">Identifying number
+          <div class="styEINBox" style="width:75mm;height:9mm;padding-left:2mm;font-size:7pt;">Identifying number
             <span style="font-weight:normal;padding-top:3mm;width:60mm;">  
-              <xsl:choose>
-                <xsl:when test="$IRS5471ScheduleMData/SSN">
-                  <xsl:call-template name="PopulateSSN">
-                    <xsl:with-param name="TargetNode" select="$IRS5471ScheduleMData/SSN"/>
-                  </xsl:call-template>
-                </xsl:when>
-                <xsl:when test="$IRS5471ScheduleMData/EIN">
-                  <xsl:call-template name="PopulateEIN">
-                    <xsl:with-param name="TargetNode" select="$IRS5471ScheduleMData/EIN"/>
-                  </xsl:call-template>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$IRS5471ScheduleMData/MissingSSNEINReasonCd"/>
-                  </xsl:call-template>
-                </xsl:otherwise>
-              </xsl:choose>
+                <!-- Template below address a choice of input data and Return Header data for 1120, 99X, 1065, 1040/NR and 1041-->
+				<xsl:call-template name="PopulateFilerTIN">
+				  <xsl:with-param name="TargetNode" select="$IRS5471ScheduleMData"/>
+				</xsl:call-template>
             </span>
           </div>
         </div>
         <!--   END TAXPAYER INFO   -->
         <!--   BEGIN NAME OF FOREIGN CORPORATION   -->
         <div class="styBB" style="width:187mm;border-top-width:1px;">
-          <div class="styNameBox" style="width:88mm;height:9mm;font-size:7pt;">Name of foreign corporation
-<span style="font-size:6pt;">
-         <xsl:choose>
-          <xsl:when test="$IRS5471ScheduleMData/ForeignCorporationName/BusinessNameLine2Txt">
-          <xsl:attribute name="style">padding-top:1mm;font-size:6pt;</xsl:attribute>
-          </xsl:when>
-		<xsl:otherwise>
-		<xsl:attribute name="style">padding-top:3mm;font-size:6pt;</xsl:attribute>
-		</xsl:otherwise>
-		</xsl:choose>
-              <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="$IRS5471ScheduleMData/ForeignCorporationName/BusinessNameLine1Txt"/>
-              </xsl:call-template>
-              <br/>
-              <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="$IRS5471ScheduleMData/ForeignCorporationName/BusinessNameLine2Txt"/>
-              </xsl:call-template>
- </span>
+          <div class="styNameBox" style="width:110mm;height:10mm;font-size:7pt;">Name of foreign corporation          
+			<xsl:if test="not($IRS5471ScheduleMData/ForeignCorporationName/BusinessNameLine2Txt)">
+				<br/>
+			</xsl:if>
+			<br/>			
+				<xsl:choose>
+				 <xsl:when test="$IRS5471ScheduleMData/ForeignCorporationName/BusinessNameLine2Txt">
+				 <xsl:attribute name="style">padding-top:1mm;font-size:6pt;</xsl:attribute>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:attribute name="style">padding-top:3mm;font-size:6pt;</xsl:attribute>
+				</xsl:otherwise>
+				</xsl:choose>
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$IRS5471ScheduleMData/ForeignCorporationName/BusinessNameLine1Txt"/>
+				  </xsl:call-template>
+				  <br/>
+				  <xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$IRS5471ScheduleMData/ForeignCorporationName/BusinessNameLine2Txt"/>
+				</xsl:call-template>			
           </div>
           <!--  Foreign EIN-->
-          <div class="styNameBox" style="width:28mm;height:9mm;padding-left:2mm;font-size:7pt;">EIN (if any)   
+          <div class="styNameBox" style="width:26mm;height:10mm;padding-left:2mm;font-size:7pt;">EIN (if any)   
             <br/><br/>
             <span style="font-weight:normal;">  
               <xsl:choose>
@@ -158,15 +134,18 @@
             </span>
           </div>
           <!--Reference Number ID-->
-          <div class="styNameBox" style="font-size:7pt;width:69mm;height:9mm;padding-left:2mm;border-left:none;border-right:none;">
+          <div class="styNameBox" style="font-size:7pt;width:49mm;height:10mm;padding-left:2mm;border-left:none;border-right:none;">
             Reference ID number (see instructions) 
-            <br/><br/>
+            <br/>
             <xsl:choose>
-		      <xsl:when test="(count($IRS5471ScheduleMData/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNum) &gt; 1)">
+            <xsl:when test="string-length($IRS5471ScheduleMData/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNum) &gt; 30 or
+			   (count($IRS5471ScheduleMData/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNum) &gt; 1)">
+			   <!--8/29/17 WT: Modified code because display of max data was extending beyond right border -->
+			   <!--<xsl:if test="(count($IRS5471ScheduleMData/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNum) &gt; 1)">-->
 		        <span style="width:60mm;text-align:center;">-See Add'l Data-</span>
               </xsl:when>
               <xsl:otherwise>
-                <span style="font-weight:normal;font-size:6pt;" nowrap="false">  
+                <span style="font-weight:normal;font-size:7pt;" nowrap="false">  
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="$IRS5471ScheduleMData/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNum"/>
                   </xsl:call-template>

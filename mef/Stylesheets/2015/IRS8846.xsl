@@ -13,6 +13,9 @@
 <!--Updated per IBM Defect on 09/02/2015 Additional Data shld not be on page by itself when form is half page or less-rlj -->
 <!--Updated per IBM Defect 44849 for 2015 09/29/2015 Additional Data shld not be on page by itself when form is half page or less-rlj -->
 <!--Updated per Kisam Im2394173 on 12/15/2015 By Robert Jones -->
+<!-- Last modified on 5/18/2017 by Robert Jones UWR 194393 and 195664 Return Headers for 1120, 1041, 1040 and 1040NR  -->
+<!-- Last modified on 5/23/2017 by Robert Jones UWR 194393 and 195664 Return Headers for 1120, 1041, 1040 and 1040NR  -->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
@@ -102,7 +105,7 @@
             <br/>
               <div style="font-family:verdana;font-size:7pt;height:auto;">
               <!-- Added per UWR 31342 to allow 1040/ssn filer to use this form -->
-              <xsl:choose>
+         <!--     <xsl:choose>
 								    <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
 						<br/>
 								      <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -118,14 +121,18 @@
                   <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
                 </xsl:call-template>
                 </xsl:otherwise>
-			   </xsl:choose>
+			   </xsl:choose>-->
+			    <!-- Choice between 1120, 1041, 1040 and 1040NR Return Header Filer info -->
+                                                         <xsl:call-template name="PopulateFilerName">
+                                                            <xsl:with-param name="TargetNode" select="$Form8846Data"/>
+                                                         </xsl:call-template> 
               </div>
             </div>
             <div class="styEINBox" style="width:30mm;height:auto;padding-left:2mm;font-size:7pt;">
               Identifying number<br/>
               <br/>
               <span style="font-weight:normal;">
-              <xsl:choose>
+         <!--     <xsl:choose>
 								  <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
 									<xsl:call-template name="PopulateReturnHeaderFiler">
 								      <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
@@ -136,8 +143,15 @@
                   <xsl:with-param name="TargetNode">EIN</xsl:with-param>
                 </xsl:call-template>
                 </xsl:otherwise>
-			</xsl:choose>
+			</xsl:choose>-->
               </span>
+              
+
+                <!-- Choice between 1120, 1041, 1040 and 1040NR Return Header Filer info -->
+                                                     <xsl:call-template name="PopulateFilerTIN">
+                                                       <xsl:with-param name="TargetNode" select="$Form8846Data"/>
+                                                     </xsl:call-template>
+             
             </div>
           </div>
           <!-- End Names and Identifying number section -->

@@ -31,10 +31,10 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-					<!--<xsl:if test="not($Print) or $Print=''">-->
+					<xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS3468Style"/>
 						<xsl:call-template name="AddOnStyle"/>
-					<!--</xsl:if>-->
+					</xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
@@ -45,7 +45,7 @@
 					<div class="styTBB" style="width:187mm;height:24mm;">
 						<div class="styFNBox" style="width:30mm;">
 							<div style="height:13.5mm;">
-            Form <span class="styFormNumber">3468</span>
+								Form <span class="styFormNumber">3468</span>
 								<div style="height:0mm;float:left">
 									<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form3468Data"/>
@@ -59,7 +59,7 @@
 							</div>
 						</div>
 						<div class="styFTBox" style="width:113mm;height:20mm;padding-top:1mm;">
-							<div class="styMainTitle" style="height:5mm;">Investment Credit</div>
+							<div class="styMainTitle" style="height:5mm;">Investment Credit</div><br/>
 					<!--		<div class="styFBT" style="padding-top:0mm;">
 								--><!--<img src="{$ImagePath}/3468_Bullet.gif" alt="bullet image"/> See separate instructions.--><!--
 							</div>-->
@@ -67,7 +67,8 @@
 								<img src="{$ImagePath}/3468_Bullet.gif" alt="bullet image"/> Attach to your tax return. 
 							</div>
 							<div class="styFBT" style="padding-top:0mm;">
-								<img src="{$ImagePath}/3468_Bullet.gif" alt="bullet image"/> Information on Form 3468 and its instructions is available at 						<span style="font-style:italic"> www.irs.gov/form3468</span>. 
+								<img src="{$ImagePath}/3468_Bullet.gif" alt="bullet image"/> Information on Form 3468 and its instructions is available at 						
+								<span style="font-style:italic"> www.irs.gov/Form3468</span>. 
 							</div>							
 						</div>
 						<div class="styTYBox" style="width:38mm;height:24mm;">
@@ -89,39 +90,65 @@
           Name(s) shown on return<br/>
 							<span>
 								<xsl:choose>
-									<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-										<br/>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">Name</xsl:with-param>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-										</xsl:call-template>
-										<br/>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
-								</xsl:choose>
+							  <!-- This process changed 170509 by gdy per UWR 164393 -->
+								<!--Business Name from F1120 Return Header-->
+								<xsl:when test="$RtnHdrData/Filer/BusinessName">
+								  <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+								  </xsl:call-template>
+								  <br/>
+								  <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+								  </xsl:call-template>
+								</xsl:when>
+								<!--Individual Name from F1040/NR Return Header-->
+								<xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+								  <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+								  </xsl:call-template>
+								</xsl:when>
+								<!--Business Name from F1041 Return Header-->
+								<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+								  <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+								  </xsl:call-template>
+								  <br/>
+								  <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+								  </xsl:call-template>            
+								</xsl:when>
+								<!--National Morgage Association Code from F1041 Return Header-->
+								<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
+								  <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">NationalMortgageAssocCd</xsl:with-param>
+								  </xsl:call-template>
+								</xsl:when>
+							  </xsl:choose>
 							</span>
 						</div>
 						<div class="styEINBox" style="width:30mm;height:9mm;font-size:7pt;font-weight:bold;padding-left:2mm;">
-          Identifying number<br/>
-							<br/>
+						  Identifying number<br/>
+						  <br/>
 							<span style="width:25mm;text-align:left;font-size:7pt;font-weight:normal;">
 								<xsl:choose>
-									<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
+							  <!-- This process changed 170509 by gdy per UWR 164393 -->
+								  <xsl:when test="$RtnHdrData/Filer/PrimarySSN">
+									 <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+									 </xsl:call-template>
+								  </xsl:when>
+								  <xsl:when test="$RtnHdrData/Filer/SSN">
+									 <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+									 </xsl:call-template>
+								  </xsl:when>
+								  <xsl:when test="$RtnHdrData/Filer/EIN">
+									 <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+									 </xsl:call-template>
+								  </xsl:when>
+								  <xsl:otherwise>
+								  </xsl:otherwise>
 								</xsl:choose>
 							</span>
 						</div>
@@ -633,7 +660,7 @@
 								<span class="styDotLn"	style="float:none">..................</span>
 								<img src="{$ImagePath}/3468_Bullet.gif" style="float" alt="right arrow"/>
 								<span style="width:2mm;"/>
-								<input type="checkbox" alt="alt" class="styCkbox">
+								<input type="checkbox" alt="RehabilitationExpendituresUsed" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form3468Data/RehabilitationExpendElectInd"/>
 										<xsl:with-param name="BackupName">
@@ -934,7 +961,7 @@ treated as incurred, during the period on line 11b above
 					<!-- header -->
 					<div style="width:187mm;font-size:8pt">
 						<div class="styLNLeftNumBox" style="padding-top:0mm;"/>
-						<div class="styLNDesc" style="width:130mm;padding-top:0mm;">
+						<div class="styLNDesc" style="width:130mm;padding-top:0mm;padding-left:2mm">
                                             For properties identified on lines 11h, 11i, or 11j, complete lines 11k and 11l.</div>
 						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4mm"/>
 						<div class="styLNAmountBox" style="border-bottom-width: 0px; height: 4mm"/>
@@ -1016,7 +1043,7 @@ treated as incurred, during the period on line 11b above
 					<!-- Start of Line 12 -->
 					<div style="width:187mm;font-size:8pt">
 						<div class="styLNLeftNumBox" style="; ">12</div>
-						<div class="styLNDesc" style="width:130mm;">
+						<div class="styLNDesc" style="width:130mm;padding-left:2mm">
                                                    Energy credit: </div>
 						<div class="styLNRightNumBoxNBB" style="height:4.5mm;"/>
 						<div class="styLNAmountBoxNBB" style="height:4.5mm"/>
@@ -1095,7 +1122,7 @@ treated as incurred, during the period on line 11b above
 					<!-- Line 12c -->
 					<div style="width:187mm;font-size:8pt">
 						<div class="styLNLeftNumBox" style="height:4.5mm; padding-left:1mm; "/>
-						<div class="styLNDesc" style="width:130mm;height:4.5mm;">
+						<div class="styLNDesc" style="width:130mm;height:4.5mm;padding-left:2mm">
                                                    Qualified fuel cell property (see instructions): </div>
 						<div class="styLNRightNumBoxNBB" style="height:4.5mm;"/>
 						<div class="styLNAmountBoxNBB" style="height:4.5mm"/>
@@ -1238,7 +1265,7 @@ treated as incurred, during the period on line 11b above
 					<!-- End of line 12h -->
 					<div style="width:187mm;font-size:8pt">
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left:3mm;"/>
-						<div class="styLNDesc" style="width:130mm;">
+						<div class="styLNDesc" style="width:130mm;padding-left:2mm">
                                  Qualified microturbine property (see instructions):	</div>
 						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:5mm"/>
 						<div class="styLNAmountBox" style="border-bottom-width: 0px; height:5mm"/>
@@ -1342,7 +1369,7 @@ treated as incurred, during the period on line 11b above
 					</div>
 					<div style="width:187mm;font-size:8pt">
 						<div class="styLNLeftNumBox" style="padding-left:3mm;"/>
-						<div class="styLNDesc" style="width:130mm;">
+						<div class="styLNDesc" style="width:130mm;padding-left:2mm">
                                  Combined heat and power system property (see instructions):   <br/>								
                             <b>Caution:</b> You cannot claim this credit if the electrical capacity of the property is more
 								 than 50 megawatts or 67,000 horsepower.</div>
@@ -1415,7 +1442,7 @@ treated as incurred, during the period on line 11b above
 					<!-- Line 12o-->
 					<div style="width:187mm;font-size:8pt">
 						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;"/>
-						<div class="styLNDesc" style="width:130mm;height:4.5mm;">
+						<div class="styLNDesc" style="width:130mm;height:4.5mm;padding-left:2mm">
                                  Qualified small wind energy property (see instructions):</div>
 						<!--						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm"/>  -->
 						<div class="styLNRightNumBoxNBB" style="height:6mm"/>
@@ -1497,7 +1524,7 @@ treated as incurred, during the period on line 11b above
 					<!-- End of line 12q -->
 					<div style="width:187mm;font-size:8pt">
 						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;"/>
-						<div class="styLNDesc" style="width:130mm;height:4.5mm;">
+						<div class="styLNDesc" style="width:130mm;height:4.5mm;padding-left:2mm">
                                  Geothermal heat pump systems (see instructions):</div>
 						<!--						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm"/>  -->
 						<div class="styLNRightNumBoxNBB" style="height:4.5mm"/>
@@ -1536,7 +1563,7 @@ treated as incurred, during the period on line 11b above
 					<!-- Line 12s -->
 					<div style="width:187mm;font-size:8pt">
 						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;"/>
-						<div class="styLNDesc" style="width:130mm;height:4.5mm;">
+						<div class="styLNDesc" style="width:130mm;height:4.5mm;padding-left:2mm">
                                  Qualified investment credit facility property (see instructions):</div>
 						<div class="styLNRightNumBoxNBB" style="height:4.5mm"/>
 						<div class="styLNAmountBox" style="border-bottom-width: 0px; height: 4.5mm"/>

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Andrew Werner on 8/18/2011 --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<!-- Last Modified by Andrew Werner on 8/18/2011 -->
+<!-- Last Modified by Eugenia McDonald on 4/20/2017 -->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -91,9 +93,18 @@
 								Name of person with <b>self-employment</b> income <span style="font-size:6.5pt;">(as shown on Form 1040 or Form 1040NR)</span><br/>
 							</div>
 							<div class="styNameBox" style="width: 112mm; height: 5mm; padding-bottom: 1mm; font-size: 7pt;">
-								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleSEData/PersonNm"/>
-								</xsl:call-template>
+								<xsl:choose>
+									<xsl:when test="normalize-space($Form1040ScheduleSEData/PersonNm) !=''">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$Form1040ScheduleSEData/PersonNm"/>
+										</xsl:call-template>	
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+										</xsl:call-template>	
+									</xsl:otherwise>		
+								</xsl:choose>
 							</div>
 						</div>
 						<div class="styEINBox" style="width: 46mm; height: 10mm; padding-top: 1.5mm; padding-left: 1mm; font-size: 7pt; font-weight: normal; border-right-width: 1px; border-bottom-width: 0px;">
@@ -101,9 +112,18 @@
 							<img src="{$ImagePath}/1040SchSE_Bullet_Md.gif" alt="MediumBullet"/>
 						</div>
 						<div class="styLNAmountBox" style="width: 29mm; height: 10mm; text-align: center; padding-top: 5mm; border-bottom-width: 0px;">
-							<xsl:call-template name="PopulateSSN">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleSEData/SSN"/>
-							</xsl:call-template>
+							<xsl:choose>
+								<xsl:when test="normalize-space($Form1040ScheduleSEData/SSN) !=''">
+									<xsl:call-template name="PopulateSSN">
+										<xsl:with-param name="TargetNode" select="$Form1040ScheduleSEData/SSN"/>
+									</xsl:call-template>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+										</xsl:call-template>	
+								</xsl:otherwise>		
+							</xsl:choose>
 						</div>
 					</div>
 					<!-- Comments-->
@@ -686,17 +706,38 @@
                  Name of person with <b>self-employment</b> income <span style="font-size:6.5pt;">(as shown on Form 1040 or Form 1040NR)</span><br/>
                </div>
                <div class="styNameBox" style="width: 112mm; height: 5mm; padding-bottom: 1mm; font-size: 7pt;">
-                  <xsl:call-template name="PopulateText">
-                     <xsl:with-param name="TargetNode" select="$Form1040ScheduleSEData/PersonNm"/></xsl:call-template></div>
+				   <xsl:choose>
+						<xsl:when test="normalize-space($Form1040ScheduleSEData/PersonNm) !=''">
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$Form1040ScheduleSEData/PersonNm"/>
+							</xsl:call-template>	
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+							</xsl:call-template>	
+						</xsl:otherwise>		
+					</xsl:choose>
+               </div>
             </div>
             <div class="styEINBox" style="width: 46mm; height: 10mm; padding-top: 1.5mm; padding-left: 1mm; font-size: 7pt; font-weight: normal; border-right-width: 1px; border-bottom-width: 0px;">
               Social security number of person with <b>self-employment </b>income
-               <img src="{$ImagePath}/1040SchSE_Bullet_Md.gif" alt="MediumBullet"/></div>
+               <img src="{$ImagePath}/1040SchSE_Bullet_Md.gif" alt="MediumBullet"/>
+            </div>
             <div class="styLNAmountBox" style="width: 29mm; height: 10mm; text-align: center; padding-top: 5mm; border-bottom-width: 0px;">
-               <!--<span style="width:25mm;text-align:left;font-weight:normal;">-->
-                   <xsl:call-template name="PopulateSSN">
-                      <xsl:with-param name="TargetNode" select="$Form1040ScheduleSEData/SSN"/>
-                   </xsl:call-template><!--</span>--></div>
+                <xsl:choose>
+					<xsl:when test="normalize-space($Form1040ScheduleSEData/SSN) !=''">
+						<xsl:call-template name="PopulateSSN">
+							<xsl:with-param name="TargetNode" select="$Form1040ScheduleSEData/SSN"/>
+						</xsl:call-template>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:call-template name="PopulateReturnHeaderFiler">
+							<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+						</xsl:call-template>	
+					</xsl:otherwise>		
+				</xsl:choose>
+            </div>
          </div>
          <!-- BEGIN Section B -->
          <div class="styBB" style="width:187mm;border-top-width:1px;">

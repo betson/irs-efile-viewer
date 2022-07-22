@@ -4,6 +4,10 @@
 <!-- 06/23/2015 - Changes made for UWR 151655 - Jeremy Nichols -->
 <!-- 06/14/2016 - Changes made for UWR 182766 - Jeremy Nichols -->
 <!-- 08/16/2016 - Changes made for defect 46561 - Jeremy Nichols -->
+<!-- 05/11/2017 - Changes made for UWR 194393 - Jeremy Nichols -->
+<!-- 08/08/2017 - Changes made for KISAM IM03060847 - Jeremy Nichols -->
+<!-- 11/01/2017 - Changes made for defect 125473 - Jeremy Nichols -->
+<!-- 11/22/2017 - Changes made for KISAM IM03060847 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -94,41 +98,53 @@
 						<tr>
 						  <td colspan="2" style="width:116mm;font-size:6pt;vertical-align:top;border-right:1px solid black;border-bottom:1px solid black;">
 							<b>Name of transferor</b><br/>
-							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/TransferorName/BusinessNameLine1Txt"/>
-							</xsl:call-template>
-							<br/>
-							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/TransferorName/BusinessNameLine2Txt"/>
-							</xsl:call-template>
-							<br/>
+							<span style="vertical-align:bottom">
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/TransferorName/BusinessNameLine1Txt"/>
+								</xsl:call-template>
+								<xsl:if test="$Form8865ScheduleOData/TransferorName/BusinessNameLine2Txt">
+									<br/>
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/TransferorName/BusinessNameLine2Txt"/>
+									</xsl:call-template>
+								</xsl:if>
+							</span>
 						  </td>
 						  <td style="font-size:6pt;vertical-align:top;padding-left:0.5mm;border-right:0 solid black;border-bottom:1px solid black;">
 							<b>Filer's identifying number</b><br/>
 							<br/>
-							<span style="font-weight:normal;">
-								<xsl:choose>
-									<xsl:when test="$Form8865ScheduleOData/FilersEIN">
-										<span style="width: 30mm;  ">
-											<xsl:call-template name="PopulateEIN">
-												<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/FilersEIN"/>
-											</xsl:call-template>
-										</span>
-									</xsl:when>
-									<xsl:when test="$Form8865ScheduleOData/FilersSSN">
-										<span style="width: 30mm; ">
-											<xsl:call-template name="PopulateSSN">
-												<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/FilersSSN"/>
-											</xsl:call-template>
-										</span>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/MissingEINReasonCd"/>
-										</xsl:call-template>
-									</xsl:otherwise>
-								</xsl:choose>
-							</span>
+							<xsl:choose>
+								<!-- EIN-->
+								<xsl:when test="$Form8865ScheduleOData/FilersEIN">
+									<xsl:call-template name="PopulateEIN">
+										<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/FilersEIN"/>
+									</xsl:call-template>
+								</xsl:when>
+								<!-- SSN -->
+								<xsl:when test="$Form8865ScheduleOData/FilersSSN">
+									<xsl:call-template name="PopulateSSN">
+										<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/FilersSSN"/>
+									</xsl:call-template>
+								</xsl:when>
+								<!-- Missing EIN Reason-->
+								<xsl:when test="$Form8865ScheduleOData/MissingEINReasonCd">
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/MissingEINReasonCd"/>
+									</xsl:call-template>
+								</xsl:when>
+								<xsl:otherwise>
+									<!-- Pull Data from Return Header-->
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+									</xsl:call-template>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+									</xsl:call-template>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+									</xsl:call-template>
+								</xsl:otherwise>
+							</xsl:choose>
 						</td>
 					</tr>
 					<tr>

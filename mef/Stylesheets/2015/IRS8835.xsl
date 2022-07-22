@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE xsl:stylesheet [
 	<!ENTITY nbsp "&#160;">
+	
+<!-- Last modified on -->
+<!-- Last modified on 5/3/2016     by Harold Nadel for UWR# 177234-->
 <!-- Last modified on 01/13/2016 by Harold Nadel for WR # 172666-->
 <!-- Last modified on 12/4/2015   by Harold Nadel for defect # 59621-->
 <!-- Last modified on 11/10/2015 by Harold Nadel for WR #166114 -->
@@ -387,8 +390,8 @@
 						<div class="styLNDesc" style="width:137mm;height:4.5mm;">
                       Part I renewable electricity production credit from partnerships, S corporations,
                        cooperatives, estates, and <br/>
-                       <span style="float:left;padding-top:1mm;">trusts</span> 
-                       <span style="letter-spacing:4mm;font-weight:bold;float:right;padding-right:1mm;skiplink:display:none;padding-top:1mm;">..........................</span>
+                       <span style="float:left;padding-top:1mm;">trusts (see instructions) </span> 
+                       <span style="letter-spacing:4mm;font-weight:bold;float:right;padding-right:1mm;skiplink:display:none;padding-top:1mm;">.....................</span>
 						</div>
 					
 						<div class="styLNRightNumBoxNBB" style="height:4.3mm;background-color:lightgrey;"/>
@@ -1132,28 +1135,28 @@
 							</span>
 							</span>
 							<span style="border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; border-bottom-width: 1px; width: 35mm">
-								<!--<xsl:call-template name="PopulateAmount">
+								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="MaxSize" select="18"/>
 									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/IndianCoalTonPrdcdSoldQty"/>
-								</xsl:call-template>-->
+								</xsl:call-template>
 								
 							</span>
 							<span style="width: 21mm">
-								<span style="width: 2mm"/> X<span style="width: 2mm"/>$X.XXX</span>
+								<span style="width: 2mm"/> X<span style="width: 2mm"/>$2.354</span>
 						 </span>
 						 
 						
 						<span class="styLNRightNumBox" style="height: 5mm;border-bottom-width:1px;">22</span>
 						
 					
-						 <span class="styLNAmountBox" style="width: 34mm; height: 5mm;border-bottom-width:1px;"/>
-						 <!--
+						 <!--<span class="styLNAmountBox" style="width: 34mm; height: 5mm;border-bottom-width:1px;"/>-->
+						 
 						<span class="styLNAmountBox" style="width: 34mm; height: 5mm;border-bottom-width:1px;">
 							<span style="float: left; clear:none"/>
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/TotIndianCoalTonPrdcdSoldCrAmt"/>
 							</xsl:call-template>
-						</span>-->
+						</span>
 						
 						<!--<span class="styLNRightNumBox" style="border-bottom-width: 0px"/>
 						<span class="styLNAmountBox" style="width: 34mm; border-bottom-width: 0px"/>

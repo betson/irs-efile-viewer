@@ -9,7 +9,8 @@
 <!-- 08/18/2016 - Changes made for defect 46562 - Jeremy Nichols -->
 <!-- 10/27/2016 - Changes made for defect 46555 - Jeremy Nichols -->
 <!-- 10/28/2016 - Changes made for defect 46563 - Jeremy Nichols -->
-
+<!-- 05/11/2017 - Changes made for UWR 194393 - Jeremy Nichols -->
+<!-- 10/18/2017 - Additional changes made for defect 46563 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -125,59 +126,17 @@
 				<!-- Name and Address -->
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_NameBox" style=" width:150mm;line-height:100%;      font-size:7pt;">Name of person filing this return<br/>
-            <xsl:choose>
-              <xsl:when test="normalize-space($FormData/FilerPersonNm)!=''">
-				<div style="padding-top:1.5mm;">
-					<xsl:call-template name="PopulateText">
-					  <xsl:with-param name="TargetNode" select="$FormData/FilerPersonNm"/>
-					</xsl:call-template>
-                </div>  
-              </xsl:when>
-              <xsl:otherwise>   
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$FormData/FilerName/BusinessNameLine1Txt"/>
-                </xsl:call-template>
-                <xsl:if test="normalize-space($FormData/FilerName/BusinessNameLine2Txt)!=''">
-                  <br/>
-                  <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$FormData/FilerName/BusinessNameLine2Txt"/>
-                  </xsl:call-template>
-                </xsl:if>
-              </xsl:otherwise>
-            </xsl:choose> 
+						<xsl:call-template name="PopulateFilerName">
+						  <xsl:with-param name="TargetNode" select="$FormData"/>
+						</xsl:call-template>
 					</div>
 					<div class="IRS8865_EINBox" style=" width:37mm;padding-left:1mm;font-size:7pt;">
 						<span style="font-weight:bold">Filer's identifying number</span>
 						<span style="height:4.5mm;"/>
 						<span style="font-weight:normal;">
-							<xsl:if test="$FormData/FilerSSN">
-								<xsl:call-template name="PopulateSSN">
-									<xsl:with-param name="TargetNode" select="$FormData/FilerSSN"/>
-								</xsl:call-template>
-							</xsl:if>
-							<xsl:if test="$FormData/FilerEIN">
-								<xsl:call-template name="PopulateEIN">
-									<xsl:with-param name="TargetNode" select="$FormData/FilerEIN"/>
-								</xsl:call-template>
-							</xsl:if>
-							<xsl:if test="$FormData/MissingEINReasonCd">
-								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$FormData/MissingEINReasonCd"/>
-								</xsl:call-template>
-							</xsl:if>
-							<!--         <xsl:choose>
-              <xsl:when test="$FormData/FilerSSN">
-                      <xsl:call-template name="PopulateSSN">
-                    <xsl:with-param name="TargetNode" select="$FormData/FilerSSN"/>
-                  </xsl:call-template>
-             </xsl:when>
-             <xsl:otherwise>
-                     <xsl:call-template name="PopulateEIN">
-                    <xsl:with-param name="TargetNode" select="$FormData/FilerEIN"/>
-                  </xsl:call-template>
-
-             </xsl:otherwise>
-            </xsl:choose>      -->
+							<xsl:call-template name="PopulateFilerTIN">
+							   <xsl:with-param name="TargetNode" select="$FormData"/>
+							</xsl:call-template>
 						</span>
 					</div>
 				</div>
@@ -2091,8 +2050,8 @@ based on all information of which preparer has any knowledge. </td>
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_PartIndex" style="background-color:white;border-top-width:0px;"/>
 					<div class="IRS8865_LineDescLong" style="font-size:8pt;padding-left:4px;border-right-width:0px;width:177mm;">
-    direct interest or indirectly owns a 10% interest.
-  </div>
+						<span style="width:27mm;"/>direct interest or indirectly owns a 10% interest.
+					  </div>
 					<div class="IRS8865_LineDescLong" style="font-size:8pt;padding-top:2px;text-align:right;border-right-width:0px;width:10mm;">
 						<!-- button display logic -->
 						<xsl:call-template name="SetDynamicTableToggleButton">
@@ -3473,7 +3432,7 @@ based on all information of which preparer has any knowledge. </td>
 					<!-- Schedule K line 16e -->
 					<div class="IRS8865_LineDescLongSchK" style="height:4.5mm;width:31mm;padding-left:5px; border-right-width:0px;">
 						<span style="font-weight:bold;">e</span>
-						<span style="font-size:6pt"> General category
+						<span style="font-size:6pt"><span style="width:0.5mm;"/>General category
 						</span>
 						<xsl:call-template name="SetFormLinkInline">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleK/DistributiveShareItemsFrgnTxs[$pos]/PrtshpLvlFrgnGroIncmGenCatAmt"/>
@@ -3564,7 +3523,7 @@ based on all information of which preparer has any knowledge. </td>
 					<!-- Schedule K line 16J -->
 					<div class="IRS8865_LineDescLongSchK" style="height:4.5mm;width:31mm;padding-left:5px; border-right-width:0px;">
 						<span style="font-weight:bold;">j</span>
-						<span style="font-size:6pt"> General category
+						<span style="font-size:6pt"><span style="width:0.5mm;"/>General category
 						</span>
 						<xsl:call-template name="SetFormLinkInline">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleK/DistributiveShareItemsFrgnTxs[$pos]/PrtshpFrgnIncmDedGenCatAmt"/>
@@ -3767,7 +3726,7 @@ based on all information of which preparer has any knowledge. </td>
 					<!-- Schedule K line 16e -->
 					<div class="IRS8865_LineDescLongSchK" style="height:4.5mm;width:31mm;padding-left:5px; border-right-width:0px;">
 						<span style="font-weight:bold;">e</span>
-						<span style="font-size:6pt"> General category
+						<span style="font-size:6pt"><span style="width:0.5mm;"/> General category
 						</span>
 						<xsl:call-template name="SetFormLinkInline">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleK/DistributiveShareItemsFrgnTxs[$pos]/PrtshpLvlFrgnGroIncmGenCatAmt"/>
@@ -3858,7 +3817,7 @@ based on all information of which preparer has any knowledge. </td>
 					<!-- Schedule K line 16J -->
 					<div class="IRS8865_LineDescLongSchK" style="height:4.5mm;width:31mm;padding-left:5px; border-right-width:0px;">
 						<span style="font-weight:bold;">j</span>
-						<span style="font-size:6pt"> General category
+						<span style="font-size:6pt"><span style="width:0.5mm;"/> General category
 						</span>
 						<xsl:call-template name="SetFormLinkInline">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleK/DistributiveShareItemsFrgnTxs[$pos]/PrtshpFrgnIncmDedGenCatAmt"/>

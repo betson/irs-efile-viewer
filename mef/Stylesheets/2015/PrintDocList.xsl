@@ -566,7 +566,7 @@
         featureList += ",left=" + xPos;
                
         <!--  Open new window to display print documents -->
-        printWindow = window.open("{{ site.github.url }}/mef/rrprd/sdi/pages/templates/print_msg_content", "PrintMsgContentWindow", featureList);
+        printWindow = window.open("{{ site.github.url }}/mef/rrprd/sdi/proxy/printMsgContent", "PrintMsgContentWindow", featureList);
         
         <!-- Wait for new window to become 'available' before setting target for form and submitting -->
         setTimeout(printDocsHelper, 100);

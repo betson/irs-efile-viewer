@@ -292,12 +292,6 @@
 					</div>
 					<!-- END PART I TABLE -->
 					<!-- BEGIN LINE 4 -->
-					<!--<div class="styGenericDiv" style="width:187mm;background-color:plum">
-						<div class="styLNLeftNumBox"/>
-						<div class="styLNDesc" style="width:143.7mm;"/>
-						<div class="styLNRightNumBox" style="width:7mm;border-bottom-width:0px;"/>
-						<div class="styLNAmountBox" style="width:28mm;border-bottom-width:0px;"/>
-					</div>      -->   
 					<div class="styBB" style="width:187mm;border-bottom-width:0px;">
 						<div class="styLNLeftNumBoxSD">4</div>
 						<div class="styLNDesc" style="width:143.7mm;">
@@ -314,12 +308,6 @@
 					</div>
 					<!-- END LINE 4 -->
 					<!-- BEGIN LINE 5 -->
-					<!--<div class="styGenericDiv" style="width:187mm;">
-						<div class="styLNLeftNumBox"/>
-						<div class="styLNDesc" style="width:143.7mm;"/>
-						<div class="styLNRightNumBox" style="width:7mm;border-bottom-width:0px;"/>
-						<div class="styLNAmountBox" style="width:28mm;border-bottom-width:0px;"/>
-					</div>         -->
 					<div class="styBB" style="width:187mm;border-bottom-width:0px;">
 						<div class="styLNLeftNumBoxSD">5</div>
 						<div class="styLNDesc" style="width:143.7mm;">
@@ -654,7 +642,7 @@
 					</div>
 					<!-- END LINE 16 -->
 					<!-- page footer -->
-					<div class="pageEnd" style="width:187mm;padding-top:1mm;border-top:1px solid black;border-top-width:2px;">
+					<div class="pageEnd" style="width:187mm;border-top:1px solid black;border-top-width:2px;">
 						<div class="stySmallText" style="width:110mm;">
 							<span class="styBoldText">For Paperwork Reduction Act Notice, see the Instructions for Form 1041.</span>
 						</div>

@@ -2455,7 +2455,7 @@ Log:
 <xsl:template name="GlobalStylesForm">  
   <!-- If the Print parameter is empty -->
 
- <!-- <xsl:if test="not(string($Print))">-->
+  <!--<xsl:if test="not(string($Print))">-->
 
     <link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
     <link rel="stylesheet" type="text/css" name="BodyStyleSheet" href="{$CSSPath}/body.css"/>
@@ -2480,9 +2480,9 @@ Log:
 -->
 <xsl:template name="GlobalStylesDep">  
   <!-- If the Print parameter is empty -->
-  <!--<xsl:if test="not(string($Print))">-->
+ <!-- <xsl:if test="not(string($Print))">-->
     <link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
- <!-- </xsl:if> --> 
+  <!--</xsl:if>  -->
 </xsl:template>
 
 
@@ -2679,7 +2679,7 @@ Calls:          none
 Log:
 ***************************************************************************************************************************************************************
 -->
-   <xsl:template name="SetFormLinkInlineRRD">
+  <xsl:template name="SetFormLinkInlineRRD">
     <xsl:param name="TargetNode"/>
     <xsl:param name="TabOrder">1</xsl:param>
     <xsl:param name="IDstring">
@@ -2721,6 +2721,7 @@ Log:
     </xsl:if>
     <!--/xsl:if-->
   </xsl:template>  
+  
   
   <!--
 ***************************************************************************************************************************************************************

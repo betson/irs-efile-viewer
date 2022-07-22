@@ -105,11 +105,11 @@
 							<xsl:otherwise>
 							<div style="font-family:verdana;font-size:6pt;">
                 <xsl:call-template name="PopulateReturnHeaderFiler">
-                  <xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
+                  <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
                 </xsl:call-template>
                 <br/>
                 <xsl:call-template name="PopulateReturnHeaderFiler">
-                  <xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
+                  <xsl:with-param name="TargetNode">BusinessNameLine2TxT</xsl:with-param>
                 </xsl:call-template>
               </div>
               </xsl:otherwise>

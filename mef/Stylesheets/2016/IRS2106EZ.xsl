@@ -70,43 +70,60 @@
 						</div>
 					</div>
 					<!--Name Line -->
-					<div class="styBB" style="width:187mm; height: 7mm;">
-						<div class="styNameBox" style="width:80mm; height:7mm; font-size:7pt; font-weight:normal;">
+					<div class="styBB" style="width:187mm; height: 9mm;">
+						<div class="styNameBox" style="width:80mm; height:9mm; font-size:7pt; font-weight:normal;">
           Your Name<br/>
-							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$FormData/PersonNm"/>
-							</xsl:call-template>
+                                <!-- Name from Form level -->
+                                <xsl:choose>
+									<xsl:when test="normalize-space($FormData/PersonNm)!=''">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$FormData/PersonNm"/>
+										</xsl:call-template>		
+							    	</xsl:when>
+									<xsl:otherwise>	
+								<!-- Name from 1040 Return Header--> 						
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										 <xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+									</xsl:call-template>		
+									</xsl:otherwise>
+								</xsl:choose>
 						</div>
-						<div class="styNameBox" style="width:59mm; height:7mm; font-size:7pt; font-weight:normal; padding-left:1mm;">
+						<div class="styNameBox" style="width:59mm; height:9mm; font-size:7pt; font-weight:normal; padding-left:1mm;">
 						Occupation in which you incurred expenses<br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$FormData/OccupationTxt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styEINBox" style="width:48mm;height:8mm;padding-left:1mm;font-size:7pt;font-weight:bold;">
+						<div class="styEINBox" style="width:48mm;height:9mm;padding-left:1mm;font-size:7pt;font-weight:bold;">
           Social security number<br/>
-							<span style="width: 40mm; text-align: center;font-weight:normal;">
-								<xsl:call-template name="PopulateSSN">
-									<xsl:with-param name="TargetNode" select="$FormData/SSN"/>
-								</xsl:call-template>
+							<span style="width: 40mm; text-align: center;font-weight:normal;">					
+								<xsl:choose>
+									<xsl:when test="normalize-space($FormData/SSN)!=''">
+										<xsl:call-template name="PopulateSSN">
+											<xsl:with-param name="TargetNode" select="$FormData/SSN"/>
+										</xsl:call-template>	
+								    </xsl:when>
+						           <xsl:otherwise>
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+										</xsl:call-template>							   										
+									</xsl:otherwise>
+								</xsl:choose>
 							</span>
 						</div>
 					</div>
 					<!--Note Line -->
-					<div class="styBB" style="padding: 1mm 0mm; width: 187mm; height: 44mm; clear: left; float: left;">
+					<div class="styBB" style="padding: 1mm 0mm; width: 187mm; height: 32mm; clear: left; float: left;">
 						<span style="width: 187mm; height: 5mm; font-weight: bold;">You Can Use This Form Only if All of the Following Apply.</span>
 							<li><img src="{$ImagePath}/8911_Bullet_Round.gif" width="5" height="5" alt="Bullet"/> You are an employee deducting ordinary and necessary expenses attributable to your job. An ordinary expense is one that is
 								  common and accepted in your field of trade, business, or profession. A necessary expense is one that is helpful and appropriate for
 								  your business. An expense does not have to be required to be considered necessary.</li>
-								  <br/>
 							<li><img src="{$ImagePath}/8911_Bullet_Round.gif" width="5" height="5" alt="Bullet"/> You <span style="font-weight:bold">do not</span> get reimbursed by your employer for any expenses (amounts your employer 
 								  included in box 1 of your Form W-2 are not considered reimbursements for this purpose).</li>
-								  <br/>
 							<li><img src="{$ImagePath}/8911_Bullet_Round.gif" width="5" height="5" alt="Bullet"/> If you are claiming vehicle expense, you are using the standard mileage rate for 2016.</li>
-							<br/>
-								<span style="font-weight:bold">Caution:</span> <span style="font-style:italic;">
+							<span style="font-weight:bold">Caution:</span> <i>
 									You can use the standard mileage rate for 2016 <span style="font-weight:bold">only if: (a)</span> you owned the vehicle and used the standard mileage rate for the first year
-									you placed the vehicle in service, <span style="font-weight:bold">or (b)</span> you leased the vehicle and used the standard mileage rate for the portion of the lease period after 1997.</span>
+									you placed the vehicle in service, <span style="font-weight:bold">or (b)</span> you leased the vehicle and used the standard mileage rate for the portion of the lease period after 1997.</i>
 					</div>
 					<!-- BEGIN PART I TITLE -->
 					<div class="styBB" style="padding: 1mm 0mm; width: 187mm; height: 6mm; clear: left; float: left;">
@@ -375,7 +392,7 @@ entertainment<span style="letter-spacing:3mm;">...</span></div>
 								</label>
 							</div>
 					</div>
-					<div style="width:187mm;height:7mm; clear: left; float: left;"/>
+					<div style="width:187mm;height:1.5mm; clear: left; float: left;"/>
 					<div style="width:187mm;height:5mm; clear: left; float: left;">
 						<div class="styLNLeftNumBox" style="padding-left:1mm;width:7mm;height:5mm;margin-top:1mm;">10</div>
 							<div class="styLNDesc" style="width:156mm;height:5mm;margin-top:1mm">

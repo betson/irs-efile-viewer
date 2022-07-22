@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Ken Dulabhan (Comteq Federal Inc) --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
@@ -108,29 +108,26 @@
               </span>
             </div>
           </div>
-          <!--  End Name and Employer indentification number  -->
-          <!--Begin Check Line -->
-          <div style="width:187mm;height:8mm;padding-top:4mm;">
-            <div style="float:left;">
-              <label>
-                <xsl:call-template name="PopulateLabel">
-                  <xsl:with-param name="TargetNode" select="$Form8926Data/FiledForSec1504aAfflGroupInd"/>
-                  <xsl:with-param name="BackupName">IRS8926Section1504aAffiliatedGroup</xsl:with-param>
-                </xsl:call-template>
-                  Check here if the form is being filed on behalf of an affiliated group described in section 1504(a)                          
-              </label>
-            </div>
-            <div style="float:right">
+          <!-- End Name and Employer indentification number  -->
+          <!-- Begin Check Line -->
+          <div style="width:187mm;padding-top:4mm;">
+            <div class="styLNDesc" style="width:179mm;">
+			  <span style="float:left;">Check here if the form is being filed on behalf of an affiliated group described in section 1504(a) </span>                          
               <!--Dotted Line-->
-              <span class="styDotLn" style="padding-right:1mm;">.............</span>
-              <span style="width:5mm;"/>
-              <input type="checkbox" class="styCkbox">
+              <span class="styDotLn" style="padding-right:1mm;">..............</span> 
+            </div>
+            <input type="checkbox" class="styCkbox" alt="Section 1504a Affiliated Group Indicator">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form8926Data/FiledForSec1504aAfflGroupInd"/>
                   <xsl:with-param name="BackupName">IRS8926Section1504aAffiliatedGroup</xsl:with-param>
                 </xsl:call-template>
               </input>
-            </div>
+              <!--<label>
+                <xsl:call-template name="PopulateLabel">
+                  <xsl:with-param name="TargetNode" select="$Form8926Data/FiledForSec1504aAfflGroupInd"/>
+                  <xsl:with-param name="BackupName">IRS8926Section1504aAffiliatedGroup</xsl:with-param>
+                </xsl:call-template>                                        
+              </label>-->
           </div>
           <!--L1a -->
           <div style="width:187mm;padding-top:1mm;">
@@ -264,20 +261,20 @@
           <div style="width:187mm;height:7mm;">
             <div style="float:left;clear:none;">
               <div class="styLNLeftNumBoxSD" style="padding-left:4mm;">g</div>
-              <div class="styLNDesc" style="width:137mm;">
-                Is the corporation including as part of its assets on line 1b stock described in Regulations section 
-                <span style="float:left;">1.7874-1(d) that it holds in a corporation to whom it paid disqualified interest?</span>
+              <div class="styLNDesc" style="width:147mm;">
+                Is the corporation including as part of its assets on line 1b stock described in Regulations section 1.7874-1(d) that it
+                <span style="float:left;"> holds in a corporation to whom it paid disqualified interest?</span>
                 <!--Dotted Line-->
-                <span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">.................</span>
               </div>
             </div>
             <div style="float:right;clear:none;">
-              <div class="styLNDesc" style="width:20mm;text-align:right;padding-top:4mm;padding-bottom:0mm;">
+              <div class="styLNDesc" style="width:16mm;text-align:right;padding-top:3.5mm;">
                 <span>
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8926Data/DisregardAffltOwnStkInd"/>
                   </xsl:call-template>
-                  <input type="Checkbox" class="styCkbox">
+                  <input type="Checkbox" class="styCkbox"  alt="Regulations Section 1.7874-1(d) Stock Yes Indicator">
                     <xsl:call-template name="PopulateYesCheckbox">
                       <xsl:with-param name="TargetNode" select="$Form8926Data/DisregardAffltOwnStkInd"/>                      
                       <xsl:with-param name="BackupName">IRS8926RegSect178741dStock</xsl:with-param>
@@ -291,14 +288,14 @@
                   </xsl:call-template>
                   <span style="font-weight:bold;"> Yes</span>
                 </label>
-                <span style="width:9mm;"/>
+                <span style="width:4mm;"/>
               </div>
-              <div class="styLNDesc" style="width:20mm;text-align:right;padding-top:4mm;padding-bottom:0mm;">
+              <div class="styLNDesc" style="width:16mm;text-align:right;padding-top:3.5mm;">
                 <span>
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8926Data/DisregardAffltOwnStkInd"/>
                   </xsl:call-template>
-                  <input type="Checkbox" class="styCkbox">
+                  <input type="Checkbox" class="styCkbox" alt="Regulations Section 1.7874-1(d) Stock No Indicator">
                     <xsl:call-template name="PopulateNoCheckbox">
                       <xsl:with-param name="TargetNode" select="$Form8926Data/DisregardAffltOwnStkInd"/>
                       <xsl:with-param name="BackupName">IRS8926RegSect178741dStock</xsl:with-param>
@@ -312,11 +309,12 @@
                   </xsl:call-template>
                   <span style="font-weight:bold;"> No</span>
                 </label>
-                <span style="width:9mm;"/>
+                <span style="width:4mm;"/>
               </div>
             </div>
           </div>
           <!-- L1g If Yes line -->
+          <!-- NOTE: checkbox does not belong to the yes line -->
           <div style="width:187mm;height:6mm;">
             <div style="float:left;clear:none;">
               <div class="styLNLeftNumBoxSD"/>
@@ -330,7 +328,7 @@
                 <img src="{$ImagePath}/8886_Bullet.gif" alt="Right Arrow Bullet"/>
                 <span style="width:1px;"/>$
                 <!--Underline -->
-                <span style="border-bottom:1 solid black; width:35mm;text-align:right;">
+                <span style="border-bottom:1 solid black;width:35mm;text-align:right;padding-top:1mm;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$Form8926Data/DisregardAffltOwnStkAdjBssAmt"/>
                   </xsl:call-template>
@@ -346,21 +344,22 @@
           <div style="width:187mm">
             <div style="float:left;clear:none;">
               <div class="styLNLeftNumBoxSD" style="padding-left:4mm;">h</div>
-              <div class="styLNDesc" style="width:137mm;">
-                Is the corporation including as part of its assets on line 1b stock it holds in foreign subsidiaries? 
+              <div class="styLNDesc" style="width:147mm;">
+                <span style="float:left;">Is the corporation including as part of its assets on line 1b stock it holds in foreign subsidiaries? </span>
+                <!--Dotted Line-->
+                <span class="styDotLn" style="float:right;padding-right:1mm;">......</span> 
               </div>
             </div>
             <div style="float:right;clear:none;">
-              <div class="styLNDesc" style="width:20mm;text-align:right;padding-bottom:0mm;">
+              <div class="styLNDesc" style="width:16mm;text-align:right;">
                 <span>
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8926Data/ForeignSubsidiaryStockInd"/>
                   </xsl:call-template>
-                  <input type="Checkbox" class="styCkbox">
+                  <input type="Checkbox" class="styCkbox" alt="Foreign Subsidiary Stock Yes Indicator">
                     <xsl:call-template name="PopulateYesCheckbox">
                       <xsl:with-param name="TargetNode" select="$Form8926Data/ForeignSubsidiaryStockInd"/>
-                      <xsl:with-param name="BackupName">IRS8926ForeignSubsidiaryStock</xsl:with-param>
-                      
+                      <xsl:with-param name="BackupName">IRS8926ForeignSubsidiaryStock</xsl:with-param>                      
                     </xsl:call-template>
                   </input>
                 </span>
@@ -371,14 +370,14 @@
                   </xsl:call-template>
                   <span style="font-weight:bold;"> Yes</span>
                 </label>
-                <span style="width:9mm;"/>
+                <span style="width:4mm;"/>
               </div>
-              <div class="styLNDesc" style="width:20mm;text-align:right;padding-bottom:0mm;">
+              <div class="styLNDesc" style="width:16mm;text-align:right;">
                 <span>
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8926Data/ForeignSubsidiaryStockInd"/>
                   </xsl:call-template>
-                  <input type="Checkbox" class="styCkbox">
+                  <input type="Checkbox" class="styCkbox"  alt="Foreign Subsidiary Stock No Indicator">
                     <xsl:call-template name="PopulateNoCheckbox">
                       <xsl:with-param name="TargetNode" select="$Form8926Data/ForeignSubsidiaryStockInd"/>
                       <xsl:with-param name="BackupName">IRS8926ForeignSubsidiaryStock</xsl:with-param>
@@ -392,11 +391,12 @@
                   </xsl:call-template>
                   <span style="font-weight:bold;"> No</span>
                 </label>
-                <span style="width:9mm;"/>
+                <span style="width:4mm;"/>
               </div>
             </div>
           </div>
           <!-- L1h If Yes line -->
+          <!-- NOTE: checkbox does not belong to the yes line -->
           <div style="width:187mm;height:6mm;">
             <div style="float:left;clear:none;">
               <div class="styLNLeftNumBoxSD"/>
@@ -410,7 +410,7 @@
                 <img src="{$ImagePath}/8886_Bullet.gif" alt="Right Arrow Bullet"/>
                 <span style="width:1px;"/>$
                 <!--Underline -->
-                <span style="border-bottom:1 solid black; width:35mm; text-align:right;">
+                <span style="border-bottom:1 solid black;width:35mm;text-align:right;padding-top:1mm;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$Form8926Data/ForeignSubsidiaryStkAdjBssAmt"/>
                   </xsl:call-template>
@@ -426,20 +426,20 @@
           <div style="width:187mm;height:7mm;">
             <div style="float:left;clear:none;">
               <div class="styLNLeftNumBoxSD" style="padding-left:4mm;">i</div>
-              <div class="styLNDesc" style="width:137mm;">
-                Is the corporation including as part of its assets on line 1b tangible assets it directly holds that are 
-                <span style="float:left;">located in a foreign country? (see instructions) </span>
+              <div class="styLNDesc" style="width:147mm;">
+                Is the corporation including as part of its assets on line 1b tangible assets it directly holds that are located in a  
+                <span style="float:left;"> foreign country? (see instructions) </span>
                 <!--Dotted Line-->
-                <span class="styDotLn" style="float:right;padding-right:1mm;">...................</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">.........................</span>
               </div>
             </div>
             <div style="float:right;clear:none;">
-              <div class="styLNDesc" style="width:20mm;text-align:right;padding-top:4mm;padding-bottom:0mm;">
+              <div class="styLNDesc" style="width:16mm;text-align:right;padding-top:3.5mm;">
                 <span>
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8926Data/TangibleAssetsForeignCntryInd"/>
                   </xsl:call-template>
-                  <input type="Checkbox" class="styCkbox">
+                  <input type="Checkbox" class="styCkbox" alt="Tangible Assets Foreign Country Yes Indicator">
                     <xsl:call-template name="PopulateYesCheckbox">
                       <xsl:with-param name="TargetNode" select="$Form8926Data/TangibleAssetsForeignCntryInd"/>
                       <xsl:with-param name="BackupName">IRS8926TangibleAssetsForeignCntry</xsl:with-param>
@@ -453,14 +453,14 @@
                   </xsl:call-template>
                   <span style="font-weight:bold;"> Yes</span>
                 </label>
-                <span style="width:9mm;"/>
+                <span style="width:4mm;"/>
               </div>
-              <div class="styLNDesc" style="width:20mm;text-align:right;padding-top:4mm;padding-bottom:0mm;">
+              <div class="styLNDesc" style="width:16mm;text-align:right;padding-top:3.5mm;">
                 <span>
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8926Data/TangibleAssetsForeignCntryInd"/>
                   </xsl:call-template>
-                  <input type="Checkbox" class="styCkbox">
+                  <input type="Checkbox" class="styCkbox"  alt="Tangible Assets Foreign Country No Indicator">
                     <xsl:call-template name="PopulateNoCheckbox">
                       <xsl:with-param name="TargetNode" select="$Form8926Data/TangibleAssetsForeignCntryInd"/>
                       <xsl:with-param name="BackupName">IRS8926TangibleAssetsForeignCntry</xsl:with-param>
@@ -474,11 +474,12 @@
                   </xsl:call-template>
                   <span style="font-weight:bold;"> No</span>
                 </label>
-                <span style="width:9mm;"/>
+                <span style="width:4mm;"/>
               </div>
             </div>
           </div>
           <!-- L1i If Yes line -->
+          <!-- NOTE: checkbox does not belong to the yes line -->
           <div style="width:187mm;height:6mm;">
             <div style="float:left;clear:none;">
               <div class="styLNLeftNumBoxSD"/>
@@ -492,7 +493,7 @@
                 <img src="{$ImagePath}/8886_Bullet.gif" alt="Right Arrow Bullet"/>
                 <span style="width:1px;"/>$
                 <!--Underline -->
-                <span style="border-bottom:1 solid black; width:35mm; text-align:right;">
+                <span style="border-bottom:1 solid black;width:35mm;text-align:right;padding-top:1mm;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$Form8926Data/TangibleAstsFrgnCntryAdjBssAmt"/>
                   </xsl:call-template>
@@ -508,18 +509,20 @@
           <div style="width:187mm">
             <div style="float:left;clear:none;">
               <div class="styLNLeftNumBoxSD" style="padding-left:4mm;">j</div>
-              <div class="styLNDesc" style="width:137mm;">
-                Is the corporation including as part of its assets on line 1b any intangible assets? 
+              <div class="styLNDesc" style="width:147mm;">
+                <span style="float:left;">Is the corporation including as part of its assets on line 1b any intangible assets? </span>
+                <!--Dotted Line-->
+                <span class="styDotLn" style="float:right;padding-right:1mm;">...........</span> 
               </div>
             </div>
             <div style="float:right;clear:none;">
-              <div class="styLNDesc" style="width:20mm;text-align:right;padding-bottom:0mm;">
+              <div class="styLNDesc" style="width:16mm;text-align:right;">
                 <span>
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8926Data/IntangibleAssetsInd"/>
                     <xsl:with-param name="BackupName">IRS8926IntangibleAssets</xsl:with-param>
                   </xsl:call-template>
-                  <input type="Checkbox" class="styCkbox">
+                  <input type="Checkbox" class="styCkbox" alt="Intangible Assets Yes Indicator">
                     <xsl:call-template name="PopulateYesCheckbox">
                       <xsl:with-param name="TargetNode" select="$Form8926Data/IntangibleAssetsInd"/>
                       <xsl:with-param name="BackupName">IRS8926IntangibleAssets</xsl:with-param>
@@ -533,14 +536,14 @@
                   </xsl:call-template>
                   <span style="font-weight:bold;"> Yes</span>
                 </label>
-                <span style="width:9mm;"/>
+                <span style="width:4mm;"/>
               </div>
-              <div class="styLNDesc" style="width:20mm;text-align:right;padding-bottom:0mm;">
+              <div class="styLNDesc" style="width:16mm;text-align:right;">
                 <span>
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8926Data/IntangibleAssetsInd"/>
                   </xsl:call-template>
-                  <input type="Checkbox" class="styCkbox">
+                  <input type="Checkbox" class="styCkbox" alt="Intangible Assets No Indicator">
                     <xsl:call-template name="PopulateNoCheckbox">
                       <xsl:with-param name="TargetNode" select="$Form8926Data/IntangibleAssetsInd"/>
                       <xsl:with-param name="BackupName">IRS8926IntangibleAssets</xsl:with-param>
@@ -554,11 +557,12 @@
                   </xsl:call-template>
                   <span style="font-weight:bold;"> No</span>
                 </label>
-                <span style="width:9mm;"/>
+                <span style="width:4mm;"/>
               </div>
             </div>
           </div>
           <!-- L1j If Yes line -->
+          <!-- NOTE: checkbox does not belong to the yes line -->
           <div style="width:187mm;height:6mm;">
             <div style="float:left;clear:none;">
               <div class="styLNLeftNumBoxSD"/>
@@ -572,7 +576,7 @@
                 <img src="{$ImagePath}/8886_Bullet.gif" alt="Right Arrow Bullet"/>
                 <span style="width:1px;"/>$
                 <!--Underline -->
-                <span style="border-bottom:1 solid black; width:35mm; text-align:right;">
+                <span style="border-bottom:1 solid black;width:35mm;text-align:right;padding-top:1mm;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$Form8926Data/IntangibleAssetsAdjustedBssAmt"/>
                   </xsl:call-template>

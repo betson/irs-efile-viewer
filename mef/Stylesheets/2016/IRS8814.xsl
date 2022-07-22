@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 06/14/2016 -->
+<!-- Last Modified by Eugenia McDonald on 04/20/2017 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -159,7 +159,7 @@
 						<div class="styNameBox" style="width:137mm;height:8mm;font-weight:normal;font-size:7pt;">
 							Name(s) shown on your return<br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">Name</xsl:with-param>
+								<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
 							</xsl:call-template>
 						</div>
 						<div style="height:8mm;width:50mm;height:4mm;padding:0px 0px 0px 2mm;font-size:7pt;" class="styEINBox">
@@ -209,14 +209,13 @@
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;">
-						<span style="width:100%;padding-bottom:3px;">
-							<span class="styBoldText" style="width:2mm;padding-left:1.5mm;padding-right:2mm;
-							  padding-bottom:1.2mm;">C</span>
+						<span style="width:100%;">
+							<span class="styBoldText" style="width:2mm;padding-left:1.5mm;padding-top:3mm;">C</span>
 							<span>
 								<span style="width:.75mm"/>
-								<span style="padding-top:2mm;">If more than one Form 8814 is attached, check here</span>
+								<span style="padding-left:2mm;padding-top:2mm;">If more than one Form 8814 is attached, check here</span>
 								<!--Dotted Line-->
-								<span class="styDotLn" style="float:right;padding-right:1mm;padding-top:1.5mm;">.........................</span>
+								<span class="styDotLn" style="float:right;padding-left:1mm;padding-top:2mm;">.........................</span>
 							</span>
 						    <img src="{$ImagePath}/8814_Bullet_Sm.gif" alt="SmallBullet"/>
 							<span style="width:6px;"/>
@@ -226,7 +225,7 @@
 									<xsl:with-param name="BackupName">Form8814DataMultipleForm8814Ind</xsl:with-param>
 								</xsl:call-template>
 							</label>
-							<input class="styCkbox" type="checkbox" style="width:4mm;">
+							<input class="styCkbox" alt="Multiple 8814's attached" type="checkbox" style="height: 5mm; width: 5mm;">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form8814Data/MultipleForm8814Ind"/>
 									<xsl:with-param name="BackupName">Form8814DataMultipleForm8814Ind</xsl:with-param>
@@ -798,7 +797,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd"/>
 											</xsl:call-template>
-											<input type="checkbox" class="styCkbox">
+											<input type="checkbox" alt="No" class="styCkbox">
 												<xsl:if test="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd">
 													<xsl:call-template name="PopulateNoCheckbox">
 														<xsl:with-param name="TargetNode" select="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd"/>
@@ -822,7 +821,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd"/>
 											</xsl:call-template>
-											<input type="checkbox" class="styCkbox">
+											<input type="checkbox" alt="Yes" class="styCkbox">
 												<xsl:if test="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd">
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd"/>
@@ -886,7 +885,7 @@
 						</div>
 						<div style="float:right;">
 							<span style="width:20px;"/>
-							Form<span class="styBoldText" style="font-size:7pt;"> 8814 </span>(2016)
+							Form <span class="styBoldText" style="font-size:7pt;">8814 </span> (2016)
 						</div>
 					</div>
 					<!-- END Page Break and Footer-->

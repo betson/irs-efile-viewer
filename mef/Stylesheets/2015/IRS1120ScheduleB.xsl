@@ -241,7 +241,7 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD" style="height:4mm;">4a</div>
 						<div class="styLNDesc" style="width:158mm;height:4mm;">
-							During the tax year, did the corporation enter into a cost-sharing agreement with any related foreign party on whose
+							During the tax year, did the corporation enter into a cost-sharing arrangement with any related foreign party on whose
 						</div>
 						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 						<div class="styShadingCell" style="height:4mm;width:10mm;"/>

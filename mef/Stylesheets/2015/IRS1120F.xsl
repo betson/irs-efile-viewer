@@ -1516,6 +1516,8 @@
 											<xsl:with-param name="TargetNode" select="$FormData/OverpaymentInfo1120SchFGrp/AppliedToEsTaxAmt"/>
 										</xsl:call-template>
 									</span>
+									<!-- DO NOT add these attributes "border-style:solid;border-color:black;border-top-width:0px;border-bottom-width:0px;border-left-width: 1px;
+									  border-right-width:0px;" that display a vertical line sepated estimated and refund provided impression of Dollar and cents Per Style Sheet Guideline amount is display dollars only-->
 									<span style="padding-left:6mm;">
 										<b>Refunded</b>
 										<span style="width:1px"/>
@@ -5399,7 +5401,8 @@
 										<span style="width:1px"/>
 									</td>
 									<td class="sty1120FTableCellAmount">
-										<div style="float:right;clear:none;padding-top:2.5mm">
+									<!-- remove padding-top:2.5mm to remove excess space -->
+										<div style="float:right;clear:none;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$FormData/IRS1120FScheduleL/OtherInvestmentsUSAssets/TotalBalanceSheetPerBksBOYAmt"/>
 											</xsl:call-template>
@@ -5409,7 +5412,8 @@
 										<span style="width:1px"/>
 									</td>
 									<td class="sty1120FTableCellAmountLastCol">
-										<div style="float:right;clear:none;padding-top:2.5mm">
+									<!-- remove padding-top:2.5mm to remove excess space -->
+										<div style="float:right;clear:none;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$FormData/IRS1120FScheduleL/OtherInvestmentsUSAssets/TotalBalanceSheetPerBksEOYAmt"/>
 											</xsl:call-template>
@@ -5417,7 +5421,7 @@
 									</td>
 								</tr>
 								<!--Line 10a-->
-								<tr>
+								<!--R10.1 package 3 Remove excess line <tr>
 									<td class="sty1120FTableCellNumDD" style="padding-right:1mm;">10a</td>
 									<td class="sty1120FTableCellDesc" scope="row">
 									  Buildings and other depreciable
@@ -5434,14 +5438,11 @@
 									<td class="sty1120FTableCellAmountShadedLastCol">
 										<span style="width:1px"/>
 									</td>
-								</tr>
+								</tr>-->
 								<tr>
-									<td class="sty1120FTableCellNum">
-										<span style="width:1px"/>
-									</td>
-									<td class="sty1120FTableCellDesc" scope="row">
-										<span style="float:left;">assets</span>
-										<span class="styDotLn" style="float:right;padding-right:1mm">............</span>
+									<td class="sty1120FTableCellNumDD" style="padding-right:1mm;">10a</td>
+									<td class="sty1120FTableCellDesc" scope="row"> Buildings and other depreciable assets
+										<span class="styDotLn" style="float:right;padding-right:1mm">..</span>
 									</td>
 									<td class="sty1120FTableCellAmount">
 										<xsl:call-template name="PopulateAmount">
@@ -6161,7 +6162,7 @@
 											<b>a </b>Preferred stock</span>
 										<span class="styDotLn" style="float:right;padding-right:1mm">...</span>
 									</td>
-									<td class="sty1120FTableCellAmount">
+									<td class="sty1120FTableCellAmount" style="border-top-width:1pt;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$FormData/IRS1120FScheduleL/CapitalPreferredStockEquity/BalanceSheetPerBooksBOYAmt"/>
 										</xsl:call-template>
@@ -6169,7 +6170,7 @@
 									<td class="sty1120FTableCellAmountShaded" style="border-bottom-width:1px">
 										<span style="width:1px"/>
 									</td>
-									<td class="sty1120FTableCellAmount">
+									<td class="sty1120FTableCellAmount" style="border-top-width:1pt;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$FormData/IRS1120FScheduleL/CapitalPreferredStockEquity/BalanceSheetPerBooksEOYAmt"/>
 										</xsl:call-template>

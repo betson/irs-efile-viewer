@@ -7,7 +7,7 @@
 	<xsl:include href="IRS1040ScheduleFStyle.xsl"/>
 	<xsl:output method="html" indent="yes"/>
 	<xsl:strip-space elements="*"/>
-	<xsl:param name="Form1040ScheduleFData" select="$RtnDoc/IRS1040ScheduleF"/>
+	<xsl:param name="Form1040SchFData" select="$RtnDoc/IRS1040ScheduleF"/>
 	<xsl:template match="/">
 		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
@@ -15,14 +15,14 @@
 				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
-						<xsl:with-param name="RootElement" select="local-name($Form1040ScheduleFData)"/>
+						<xsl:with-param name="RootElement" select="local-name($Form1040SchFData)"/>
 					</xsl:call-template>
 				</title>
 				<!--  No Browser Caching  -->
 				<meta http-equiv="Pragma" content="no-cache"/>
 				<meta http-equiv="Cache-Control" content="no-cache"/>
 				<meta http-equiv="Expires" content="0"/>
-				<!-- No Proxy Caching  -->
+				<!-- No Proxy Caching -->
 				<meta http-equiv="Cache-Control" content="private"/>
 				<!-- Define Character Set  -->
 				<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
@@ -31,10 +31,10 @@
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
 				<xsl:if test="not($Print) or $Print=''">
-						<!-- Form 1040ScheduleF CSS Styles are located in the template called below -->
-						<xsl:call-template name="IRS1040ScheduleFStyle"/>
-						<xsl:call-template name="AddOnStyle"/>
-					</xsl:if>
+					<!-- Form 1040ScheduleF CSS Styles are located in the template called below -->
+					<xsl:call-template name="IRS1040ScheduleFStyle"/>
+					<xsl:call-template name="AddOnStyle"/>
+				</xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
@@ -43,7 +43,6 @@
 					<!-- WARNING LINE -->
 					<xsl:call-template name="DocumentHeader"/>
 					<!-- Begin Form Number and Name -->
-					<!-- put comment here -->
 					<div class="styBB" style="width:187mm;height:21mm;">
 						<div class="styFNBox" style="width:31mm;height:21mm;">
 							<div style="padding-top:1mm;">
@@ -52,9 +51,9 @@
 							</div>
 							<div style="padding-top:4mm;">
 								<span class="styAgency">Department of the Treasury</span>
-								<!--  puch pen -->
+								<!--  push pen -->
 								<xsl:call-template name="SetFormLinkInline">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData"/>
 								</xsl:call-template>
 								<br/>
 								<span class="styAgency">Internal Revenue Service <span style="width:1mm"/> (99)</span>
@@ -62,16 +61,14 @@
 						</div>
 						<div class="styFTBox" style="width:125mm;height:20mm; padding-top:2mm;">
 							<div class="styMainTitle" style="height:6mm;">Profit or Loss From Farming</div>
-							
-							<div class="styFBT" style="height:5mm;padding-top:2mm;">
+							<div class="styFBT" style="height:5mm;padding-top:1mm;">
 								<img src="{$ImagePath}/1040SchF_Bullet_Sm.gif" alt="Bullet Image"/>
 								 Attach to Form 1040, Form 1040NR, Form 1041, Form 1065, or Form 1065-B.
-								<br/>
-								<div class="styFST" style="height:5mm;font-size:5.6pt;padding-top:1mm;">
+								<div class="styFST" style="height:5mm;padding-top:1mm;">
 									<img src="{$ImagePath}/1120_Bullet_Md.gif" alt="MediumBullet"/>
-                 Information about Schedule F and its separate instructions is at 
-                 <a href="http://www.irs.gov/form1120-PC" title="Link to irs.gov">
-										<i>www.irs.gov/schedulef </i>
+									 Information about Schedule F and its separate instructions is at 
+									 <a style="text-decoration:none;color:black;" href="http://www.irs.gov/schedulef" title="Link to irs.gov">
+										<i>www.irs.gov/schedulef. </i>
 									</a>
 								</div>
 							</div>
@@ -89,156 +86,184 @@
 					<!-- End Form Number and Name section -->
 					<!-- Start Name and ID number  -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:140mm;font-size:7pt;height:10mm">
+						<div class="styNameBox" style="width:135mm;font-size:7pt;height:10mm">
 							Name of proprietor<br/>
-							 <xsl:choose>
-							<!-- Name from Form level -->
-						<xsl:when test="normalize-space($Form1040ScheduleFData/FarmProprietorName/BusinessNameLine1Txt) != ''">
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmProprietorName/BusinessNameLine1Txt"/>
-								</xsl:call-template>
-								<br/>
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmProprietorName/BusinessNameLine2Txt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<!-- Name from 1120/990/1065 Return Header -->
-							<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-								</xsl:call-template>
-								<br/>
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<!-- Name from 1040 Return Header -->
-							<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
-								<br/>
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<!-- Name from 1041 Return Header -->
-							<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
-								</xsl:call-template>
-								<br/>
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
-								</xsl:call-template>
-								<br/>
-							</xsl:when>
+							<!-- Template below address a choice of input data and Return Header data for 1120, 1065, 1040 and 1041-->
+							<!--<xsl:call-template name="PopulateFilerName">
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData"/>
+							</xsl:call-template>-->
+							<span>
+							<!-- Choice between input name versus Name from 1120 (Parent/Subsidiary) 1040, 1040NR and 1041Return Headers Filer info -->
+							<!--Input Name per schema-->
+							<xsl:choose>
+								<!-- Name from Form level -->
+								<xsl:when test="normalize-space($Form1040SchFData/FarmProprietorName/BusinessNameLine1Txt) != ''">
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmProprietorName/BusinessNameLine1Txt"/>
+									</xsl:call-template>
+									<br/>
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmProprietorName/BusinessNameLine2Txt"/>
+									</xsl:call-template>
+								</xsl:when>
+								<!-- Name from 1120/990/1065 Return Header-->
+								<xsl:when test="$RtnHdrData/Filer/BusinessName">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param> 
+									</xsl:call-template>
+									<br/>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+									</xsl:call-template>
+								</xsl:when>
+								<!-- Name from 1040 Return Header-->
+								<xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+								  <br/>
+								  <xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+								  </xsl:call-template>
+								</xsl:when>
+								<!-- Name from 1041 Return Header-->
+								<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+									</xsl:call-template>
+									<br/>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+									</xsl:call-template>									
+								</xsl:when>
+								<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
+									<br/>
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+									</xsl:call-template>
+									<br/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param> 
+									</xsl:call-template>
+									<br/>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+									</xsl:call-template>
+								</xsl:otherwise>								
 							</xsl:choose>
+                            </span>
 						</div>
-						<div class="styEINBox" style="width:45mm;font-size:7pt;padding-left:2mm;font-weight:normal; text-align:left;;height:10mm">
+						<div class="styEINBox" style="width:50mm;font-size:7pt;padding-left:2mm;font-weight:normal; text-align:left;;height:10mm">
 							<b>Social security number (SSN)</b>
 							<br/>
 							<br/>
+							<!-- Template below address a choice of input data and Return Header data for 1120, 1065, 1040 and 1041
+							<xsl:call-template name="PopulateFilerTIN">
+							  <xsl:with-param name="TargetNode" select="$Form1040SchFData"/>
+							</xsl:call-template>-->
+							<!-- Choice between input name versus Name from 1120 (Parent/Subsidiary) 1040, 1040NR and 1041Return Headers Filer info -->
 							<xsl:choose>
-								<xsl:when test="$Form1040ScheduleFData/SSN!='' ">
+								<xsl:when test="normalize-space($Form1040SchFData/SSN) != ''">
 									<xsl:call-template name="PopulateSSN">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/SSN"/>
+										<xsl:with-param name="TargetNode" select="$Form1040SchFData/SSN"/>
 									</xsl:call-template>
 								</xsl:when>
-								  <xsl:when test="$RtnHdrData/Filer/EIN">
+								<!--Choice from input versus 1040 return headers-->
+								<xsl:when test="$RtnHdrData/Filer/PrimarySSN">
 									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+										<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
 									</xsl:call-template>
-								  </xsl:when>
-								  <xsl:otherwise>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-									</xsl:call-template>
-								  </xsl:otherwise>
+								</xsl:when>
+								<xsl:otherwise>
+									<!--<xsl:call-template name="PopulateSSN">
+										  <xsl:with-param name="TargetNode" select="$Form1040SchFData/SSN"/>
+								    </xsl:call-template>-->
+								</xsl:otherwise>
 							</xsl:choose>
 						</div>
 					</div>
-			<!-- Box A-->
+					<!-- Box A-->
 					<div class="styBB" style="width:187mm;">
-					<div class="styLNLeftNumBox" style="width:3mm; height:20mm;padding-left: 0px">A</div>
-						<div class="styNameBox" 
-						style="width:40mm;height:20mm;padding-top:0mm;font-size:7pt;border-right-width: 0px">
-							<span style="width:4px;"/>
-							Principal crop or activity<br/>
-							<span style="width:4px"/>
-							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/PrincipalProductDesc"/>
-							</xsl:call-template>
+					<div class="styLNLeftNumBox" style="width:3mm; height:15mm;padding-left:0px;">A</div>
+						<div class="styNameBox" style="width:40mm;height:15mm;padding-top:0mm;font-size:7pt;border-right-width: 0px">
+							<span style="float:left;">
+								Principal crop or activity<br/>
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/PrincipalProductDesc"/>
+								</xsl:call-template>
+							</span>
 						</div>
 						<!-- Box B-->
-						<div class="styForm1040ScheduleFEINFullBox" style="width:47mm;height:20mm;float:left;">
+						<div class="styForm1040ScheduleFEINFullBox" style="width:47mm;height:15mm;float:left;">
 							<span><span style="width:2px;"/>B<span style="width:3mm"/>Enter code from Part IV</span>
-							<br/><br/><br/><br/><br/>
+							<br/><br/><br/>
 							<span style="padding-left:11mm;">
-								<img src="{$ImagePath}/1040SchF_Bullet_Lg.gif" alt="Bullet Image"/>
+								<img src="{$ImagePath}/1120_Bullet_Md.gif" alt="Bullet Image"/>
 							</span>
-							<span class="styEINFld" style="width:30mm;font-size:6pt; text-align:left;">
+							<span class="styEINFld" style="width:30mm;text-align:left;padding-left:2mm;">
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/AgriculturalActivityCd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/AgriculturalActivityCd"/>
 								</xsl:call-template>
 							</span>
 						</div>
 						<!-- Box C-->
-						<div class="styLNLeftNumBox" style="width:4mm;padding-left:2mm;padding-top:1mm;height:20mm;">C</div>
-						<div class="styNameBox" style="width:46mm;height:20mm;padding-left:2mm;padding-top:1mm;font-size:7pt;">
-							Accounting method:	<br/><br/><br/><br/>
+						<div class="styLNLeftNumBox" style="width:4mm;padding-left:2mm;padding-top:1mm;height:15mm;">C</div>
+						<div class="styNameBox" style="width:41mm;height:15mm;padding-left:2mm;padding-top:1mm;font-size:7pt;">
+							Accounting method:	<br/><br/><br/>
 							<input type="checkbox" alt="Accounting Method Cash" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/MethodOfAccountingCashInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/MethodOfAccountingCashInd"/>
 									<xsl:with-param name="BackupName">IRS1040ScheduleFAccountingMethodCash</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/MethodOfAccountingCashInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/MethodOfAccountingCashInd"/>
 									<xsl:with-param name="BackupName">IRS1040ScheduleFAccountingMethodCash</xsl:with-param>
 								</xsl:call-template>
 								Cash
 							</label>
 							<span style="width:24px;"/>
-							<input type="checkbox" alt="Accounting Method Accrual" class="styCkbox" >
+							<input type="checkbox" alt="Accounting Method Accrual" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/MethodOfAccountingAccrualInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/MethodOfAccountingAccrualInd"/>
 									<xsl:with-param name="BackupName">IRS1040ScheduleFAccountingMethodAccrual</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/MethodOfAccountingAccrualInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/MethodOfAccountingAccrualInd"/>
 									<xsl:with-param name="BackupName">IRS1040ScheduleFAccountingMethodAccrual</xsl:with-param>
 								</xsl:call-template>
 								Accrual
 							</label>
 						</div>
 						<!-- Box D-->
-						<div class="styEINBox" style="width:46mm;height:20mm;font-size:7pt;">
-							<div class="styLNLeftNumBox" style="width:3mm;font-size:6pt;font-weight:bold;padding-left:1.5mm;">D</div>
-							<span style="width:2px;"/>
-							<span style="padding-top:0mm;font-size:5pt;font-weight:bold;">Employer ID number (EIN), (see instr)</span>
+						<div class="styEINBox" style="width:51mm;height:15mm;font-size:7pt;">
+							<div class="styLNLeftNumBox" style="width:3mm;font-weight:bold;padding-left:1.5mm;">D</div>
+							<span style="width:1.5mm;"/>
+							<span style="padding-top:0mm;font-weight:bold;font-size:6pt;">Employer ID number (EIN), (see instr)</span>
 							<br/>
 							<span class="styEINFld" style="width:46mm;text-align:left;padding-left:2mm;font-weight:normal;padding-top:2mm">
-								<br/><br/><br/>
+								<br/><br/>
 								<xsl:choose>
-									<xsl:when test="normalize-space($Form1040ScheduleFData/EIN) != ''">
+									<xsl:when test="normalize-space($Form1040SchFData/EIN) != ''">
 										<xsl:call-template name="PopulateEIN">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/EIN"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/EIN"/>
 										</xsl:call-template>
 									</xsl:when>
-									<xsl:when test="normalize-space($Form1040ScheduleFData/MissingEINReasonCd) != ''">
+									<xsl:when test="normalize-space($Form1040SchFData/MissingEINReasonCd) != ''">
 										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/MissingEINReasonCd"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/MissingEINReasonCd"/>
 										</xsl:call-template>
 									</xsl:when>
+									<!--<xsl:when test="$RtnHdrData/Filer/EIN">
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">MissingEINReasonCd</xsl:with-param>
+										</xsl:call-template>
+									</xsl:when>									-->
 									<xsl:otherwise>
 										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/EIN"/>
+											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
 										</xsl:call-template>
 									</xsl:otherwise>
 								</xsl:choose>
@@ -246,26 +271,29 @@
 						</div>
 					</div>
 					<!-- Line E-->
-					<div style="width:187mm;;font-size:7pt;">
-						<div class="styLNLeftNumBox" style="width:3mm;padding-top:3.5mm;padding-left: 0px">E</div>
-						<div class="styLNDesc" style="width:152mm;height:4.5mm;padding-top:3.5mm;font-size:6pt">
-	<span style="float:left;">
-	Did you "materially participate" in the operation of this business during 2016? If "No," see instructions for limit on passive losses.
-				</span>
-				<span class="styDotLn" style="float:right;padding-right:1mm;">...</span>	          
+					<div style="width:187mm;">
+						<div class="styLNLeftNumBox" style="width:3mm;padding-top:1.5mm;padding-left: 0px">E</div>
+						<div class="styLNDesc" style="width:152mm;height:4.5mm;padding-top:1.5mm;">
+							<span style="float:left;">
+								Did you "materially participate" in the operation of this business during 2016? If "No," see instructions for limit on passive losses
+							    <span class="styDotLn" style="float:right;padding-right:1mm;">.................................</span>
+							</span>	          
 						</div>
 						<div class="styLNDesc" style="width:15mm;height:4.5mm;text-align:right;">
 							<br/>
-							<input type="checkbox" alt="Materially Participate Indicator" class="styCkbox" name="Checkbox" >
+							<xsl:call-template name="PopulateSpan">
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/MateriallyParticipatedInd"/>
+							</xsl:call-template>
+							<input type="checkbox" alt="Materially Participate Indicator" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/MateriallyParticipatedInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/MateriallyParticipatedInd"/>
 									<xsl:with-param name="BackupName">MateriallyParticipateIndicatorYesBox</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/MateriallyParticipatedInd"/>
-									<xsl:with-param name="BackupName">Materially Participate Indicator Yes Box</xsl:with-param>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/MateriallyParticipatedInd"/>
+									<xsl:with-param name="BackupName">MateriallyParticipateIndicatorYesBox</xsl:with-param>
 								</xsl:call-template>
 								<span style="width:1mm;"/>
 								 Yes
@@ -274,15 +302,15 @@
 						<div class="styLNDesc" style="width:15mm;height:4.5mm;text-align:right;">
 							<span style="width:5mm;"/>
 							<br/>
-							<input type="checkbox" alt="Materially Participate Indicator " class="styCkbox" name="Checkbox">
+							<input type="checkbox" alt="Materially Participate Indicator" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateNoCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/MateriallyParticipatedInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/MateriallyParticipatedInd"/>
 									<xsl:with-param name="BackupName">MateriallyParticipateIndicatorNoBox</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/MateriallyParticipatedInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/MateriallyParticipatedInd"/>
 									<xsl:with-param name="BackupName">Materially Participate Indicator No Box</xsl:with-param>
 								</xsl:call-template>
 								<span style="width:1mm;"/>
@@ -291,26 +319,25 @@
 						</div>
 					</div><br/>
 					<!-- Line F-->
-					<div style="width:187mm;font-size:pt">
+					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="width:3mm;padding-top:3.5mm;padding-left: 0px">F</div>
-						<div class="styLNDesc" style="width:152mm;height:4.5mm;padding-top:3.5mm;font-size:6pt">
-	<span style="float:left;;font-size:7pt;">
-	Did you make any payments in 2016 that would require you to file Form(s) 1099 (see instructions)?
-				</span>
-				<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>	          
+						<div class="styLNDesc" style="width:152mm;height:4.5mm;padding-top:3.5mm;">
+							<span style="float:left;font-size:7pt;">
+								Did you make any payments in 2016 that would require you to file Form(s) 1099 (see instructions)?
+							</span>
+							<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>	          
 						</div>
 						<div class="styLNDesc" style="width:15mm;height:4.5mm;text-align:right;">
 							<br/>
-							<input type="checkbox" alt="Required To File Forms 1099 Ind Yes Box" class="styCkbox"
-							 name="Checkbox">
+							<input type="checkbox" alt="Required To File Forms 1099 Ind Yes Box" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/RequiredToFileForms1099Ind"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/RequiredToFileForms1099Ind"/>
 									<xsl:with-param name="BackupName">Required To File Forms 1099 Ind Yes Box</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/RequiredToFileForms1099Ind"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/RequiredToFileForms1099Ind"/>
 									<xsl:with-param name="BackupName">Required To File Forms 1099 Ind Yes Box</xsl:with-param>
 								</xsl:call-template>
 								<span style="width:1mm;"/>
@@ -322,13 +349,13 @@
 							<br/>
 							<input type="checkbox" alt="Required To File Forms 1099 Ind No Box" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateNoCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/RequiredToFileForms1099Ind"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/RequiredToFileForms1099Ind"/>
 									<xsl:with-param name="BackupName">Required To File Forms 1099 Ind No Box</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/RequiredToFileForms1099Ind"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/RequiredToFileForms1099Ind"/>
 									<xsl:with-param name="BackupName">Required To File Forms 1099 Ind No Box</xsl:with-param>
 								</xsl:call-template>
 								<span style="width:1mm;"/>
@@ -337,25 +364,25 @@
 						</div>
 					</div><br/>
                     <!-- Line G -->
-					<div style="width:187mm;font-size:pt">
+					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="width:3mm;padding-top:3.5mm;padding-left: 0px">G</div>
-						<div class="styLNDesc" style="width:152mm;height:5mm;padding-top:3.5mm;font-size:6pt">
-	<span style="float:left;;font-size:7pt;">
-	If "Yes," did you or will you file required Forms 1099?  
-				</span>
-				<span class="styDotLn" style="float:right;padding-right:1mm;">....................</span>	
+						<div class="styLNDesc" style="width:152mm;height:5mm;padding-top:3.5mm;">
+							<span style="float:left;font-size:7pt;">
+								If "Yes," did you or will you file required Forms 1099?  
+							</span>
+							<span class="styDotLn" style="float:right;padding-right:1mm;">....................</span>	
 						</div>
 						<div class="styLNDesc" style="width:15mm;height:4.5mm;text-align:right;">
 							<br/>
 								<input type="checkbox" alt="Required Forms 1099 Filed Ind Yes Box" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/RequiredForms1099FiledInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/RequiredForms1099FiledInd"/>
 									<xsl:with-param name="BackupName">Required Forms 1099 Filed Ind Yes Box</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/RequiredForms1099FiledInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/RequiredForms1099FiledInd"/>
 									<xsl:with-param name="BackupName">Required Forms 1099 Filed Ind Yes Box</xsl:with-param>
 								</xsl:call-template>
 								<span style="width:1mm;"/>
@@ -367,13 +394,14 @@
 							<br/>
 							<input type="checkbox" alt="Required Forms 1099 Filed Ind No Box" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateNoCheckbox">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/RequiredForms1099FiledInd"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/RequiredForms1099FiledInd"/>
 									<xsl:with-param name="BackupName">Required Forms 1099 Filed Ind No Box</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/RequiredForms1099FiledInd"/>								<xsl:with-param name="BackupName">Required Forms 1099 Filed Ind No Box</xsl:with-param>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/RequiredForms1099FiledInd"/>
+										<xsl:with-param name="BackupName">Required Forms 1099 Filed Ind No Box</xsl:with-param>
 								</xsl:call-template>
 								<span style="width:1mm;"/>
 								No
@@ -403,7 +431,7 @@
 						<div class="styLNRightNumBox" style="height:4mm;">1a</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/SalesOfLvstckBghtForResaleAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/SalesOfLvstckBghtForResaleAmt"/>
 							</xsl:call-template>
 						</div>
 					<div class="styLNRightNumBox" style="height:4mm;background-color:lightgrey;width:8mm;border-bottom-width:0px"></div>
@@ -422,7 +450,7 @@
 						<div class="styLNRightNumBox" style="height:4mm;">1b</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/CostOfLvstckBghtForResaleAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/CostOfLvstckBghtForResaleAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styLNRightNumBox" style="height:4mm;background-color:lightgrey;width:8mm;;border-bottom-width:0px"></div>
@@ -434,14 +462,13 @@
 					<div  style="height:4mm;float:left;width:8mm;
 						padding-left:5mm;padding-top:.5mm;"><b>c</b></div>
 						<div class="styLNDesc" style="width:139mm;height:4mm;">
-							<span style="float:left">
-								Subtract line 1b from line 1a</span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">.......................</span>
+							<span style="float:left">Subtract line 1b from line 1a</span>
+							<span class="styDotLn" style="float:right;padding-right:1mm;">.........................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4mm;">1c</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/PurchasedProfitAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/PurchasedProfitAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -458,21 +485,20 @@
 						<div class="styLNRightNumBox" style="height:4mm;padding-right:1.5mm">2</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/SaleOfProductsRaisedAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/SaleOfProductsRaisedAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
 					<!-- Line 3a and b-->
 					<div style="width:187mm;">
-				<div  style="height:4mm;float:left;width:8mm;padding-top:.5mm;
-						padding-left:3mm"><b>3a</b></div>
+						<div  style="height:4mm;float:left;width:8mm;padding-top:.5mm;padding-left:3mm"><b>3a</b></div>
 						<div class="styLNDesc" style="width:67.5mm;height:4mm;">
 							Cooperative distributions (Form(s) 1099-PATR)
 						</div>
 						<div class="styLNRightNumBox" style="height:4mm;">3a</div>
 						<div class="styLNAmountBox" style="width: 32mm;border-bottom-width:1px;height:4mm;border-right-width:1px;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/CooperativeDistributionsAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/CooperativeDistributionsAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styLNDesc" style="width:31.5mm;height:4mm;">
@@ -484,7 +510,7 @@
 						<div class="styLNRightNumBox" style="height:4mm;">3b</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/CooperativeDistriTxblAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/CooperativeDistriTxblAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -496,7 +522,7 @@
 						<div class="styLNRightNumBox" style="height:4mm;">4a</div>
 						<div class="styLNAmountBox" style="width: 32mm;border-bottom-width:1px;height:4mm;border-right-width:1px;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/AgriculturalProgramPymtAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/AgriculturalProgramPymtAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styLNDesc" style="width:31.5mm;height:4mm;">
@@ -508,7 +534,7 @@
 						<div class="styLNRightNumBox" style="height:4mm;">4b</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/AgriculturalProgramPymtTxblAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/AgriculturalProgramPymtTxblAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -520,7 +546,7 @@
 							<span style="float:left">
 								Commodity Credit Corporation (CCC) loans reported under election
 								<xsl:call-template name="SetFormLinkInline">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/CCCLoanReportedElectionAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/CCCLoanReportedElectionAmt"/>
 								</xsl:call-template>
 							</span>
 							<span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
@@ -528,7 +554,7 @@
 						<div class="styLNRightNumBox" style="height:4.5mm;">5a</div>
 						<div class="styLNAmountBox" style="height:4.5mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/CCCLoanReportedElectionAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/CCCLoanReportedElectionAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -545,7 +571,7 @@
 						<div class="styLNRightNumBox" style="height:4mm;">5b</div>
 						<div class="styLNAmountBox" style="width: 32mm;border-bottom-width:1px;height:4mm;border-right-width:1px;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/CCCLoansForfeitedAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/CCCLoansForfeitedAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styLNDesc" style="width:31.5mm;height:4mm;">
@@ -558,7 +584,7 @@
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="
-$Form1040ScheduleFData/FarmIncomeCashMethodGrp/CCCLoansForfeitedTaxableAmt"/>								
+$Form1040SchFData/FarmIncomeCashMethodGrp/CCCLoansForfeitedTaxableAmt"/>								
 							</xsl:call-template>
 						</div>
 					</div>
@@ -584,7 +610,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/CCCLoansForfeitedTaxableAmt"/>
 						<div class="styLNRightNumBox" style="height:4mm;">6a</div>
 						<div class="styLNAmountBox" style="width: 32mm;border-bottom-width:1px;height:4mm;border-right-width:1px;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/CropInsProcAndDsstrPymtAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/CropInsProcAndDsstrPymtAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styLNDesc" style="width:31.5mm;height:4mm;">
@@ -596,7 +622,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/CCCLoansForfeitedTaxableAmt"/>
 						<div class="styLNRightNumBox" style="height:4mm;">6b</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/CropInsProcAndDsstrPymtTxblAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/CropInsProcAndDsstrPymtTxblAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -609,12 +635,12 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/CCCLoansForfeitedTaxableAmt"/>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="
-$Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>									
+$Form1040SchFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>									
 									<xsl:with-param name="BackupName">IRS1040ScheduleFElectionToDeferCropInsProc</xsl:with-param>
 								</xsl:call-template>
 								
 								<xsl:call-template name="SetFormLinkInline">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 								</xsl:call-template>
 								<span style="width:5px;"/>
 							</label>
@@ -622,7 +648,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						
 							<input type="checkbox" alt="Election To Defer CropIns Proc" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<xsl:with-param name="BackupName">IRS1040ScheduleFElectionToDeferCropInsProc</xsl:with-param>
 								</xsl:call-template>
 							</input>
@@ -637,7 +663,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:4.5mm;">6d</div>
 						<div class="styLNAmountBox" style="height:4.5mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/CropInsProcDefrdPrevTYAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/CropInsProcDefrdPrevTYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -655,7 +681,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:4mm;padding-right:1.5mm">7</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/CustomHireIncomeAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/CustomHireIncomeAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -673,7 +699,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:4mm;padding-right:1.5mm">8</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/OtherIncomeAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/OtherIncomeAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -698,7 +724,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						</div>
 						<div class="styLNAmountBoxNBB" style="height:8mm;padding-top:4mm">            
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeCashMethodGrp/GrossIncomeAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeCashMethodGrp/GrossIncomeAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -730,7 +756,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNAmountBox" style="border-right-width:1px;height: 9mm;padding-top:5mm">
 										
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/CarAndTruckExpensesAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/CarAndTruckExpensesAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -746,7 +772,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNRightNumBox">11</td>
 									<td class="styLNAmountBox" style="border-right-width:1px;padding-left:1mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/ChemicalExpenseAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/ChemicalExpenseAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -763,7 +789,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNRightNumBox" style="height: 7mm;padding-top:3.5mm">12</td>
 									<td class="styLNAmountBox" style="border-right-width:1px;vertical-align:bottom;height: 7mm;;padding-top:3.5mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/ConservationExpenseAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/ConservationExpenseAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -778,7 +804,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNRightNumBox" style="height:4.5mm;padding-top:1mm">13</td>
 									<td class="styLNAmountBox" style="height:4.5mm;border-right-width:1px;padding-left:1mm;padding-top:1mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/CustomHireExpenseAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/CustomHireExpenseAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -795,7 +821,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNAmountBox" style="border-right-width:1px;height:7mm;">
 										<br/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/DeprecAndSect179ExpnsDedAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/DeprecAndSect179ExpnsDedAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -811,7 +837,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNAmountBox" style="height:8mm;border-right-width:1px;padding-top:1mm">
 										<br/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/EmployeeBenefitProgramAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/EmployeeBenefitProgramAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -826,7 +852,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNRightNumBox" style="height:4.5mm;">16</td>
 									<td class="styLNAmountBox" style="height:4.5mm;border-right-width:1px;;padding-left:1mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/FeedPurchasedExpenseAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/FeedPurchasedExpenseAmt"/>
 										</xsl:call-template>
 										</td>
 								</tr>
@@ -841,7 +867,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNRightNumBox" style="height:4.5mm;">17</td>
 									<td class="styLNAmountBox" style="height:4.5mm;border-right-width:1px;;padding-left:1mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/FertilizerAndLimeExpenseAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/FertilizerAndLimeExpenseAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -856,7 +882,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNRightNumBox" style="height:4.5mm;">18</td>
 									<td class="styLNAmountBox" style="height:4.5mm;border-right-width:1px;;padding-left:1mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/FreightAndTruckingExpenseAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/FreightAndTruckingExpenseAmt"/>
 										</xsl:call-template>
 										</td>
 								</tr>
@@ -871,7 +897,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNRightNumBox" style="height:4.5mm;">19</td>
 									<td class="styLNAmountBox" style="height:4.5mm;border-right-width:1px;;padding-left:1mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/GasolineFuelAndOilExpenseAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/GasolineFuelAndOilExpenseAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -886,7 +912,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNRightNumBox" style="height:4.5mm;">20</td>
 									<td class="styLNAmountBox" style="height:4.5mm;border-right-width:1px;;padding-left:1mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/InsuranceAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/InsuranceAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -906,14 +932,14 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 											etc.)
 											<span style="width:1px;"/>
 											<xsl:call-template name="SetFormLinkInline">
-												<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/MortgageInterestPaidBanksAmt"/>
+												<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/MortgageInterestPaidBanksAmt"/>
 											</xsl:call-template>
 										</span>
 								</td>
 									<td class="styLNRightNumBox" style="height:4.5mm;">21a</td>
 									<td class="styLNAmountBox" style="height:4.5mm;border-right-width:1px; vertical-align: bottom;;padding-left:1mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/MortgageInterestPaidBanksAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/MortgageInterestPaidBanksAmt"/>
 										</xsl:call-template>
 								</td>
 								</tr>
@@ -923,7 +949,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 										
 											<span style="width:1px;"/>
 											<xsl:call-template name="SetFormLinkInline">
-												<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/MortgageInterestPaidOtherAmt"/>
+												<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/MortgageInterestPaidOtherAmt"/>
 											</xsl:call-template>
 													<span style="width:2mm"/>
 											<span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
@@ -932,7 +958,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNRightNumBox" style="height:4.5mm;">21b</td>
 									<td class="styLNAmountBox" style="height:4.5mm;border-right-width:1px; vertical-align: bottom;;padding-left:1mm">
 									<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/MortgageInterestPaidOtherAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/MortgageInterestPaidOtherAmt"/>
 										</xsl:call-template>
 								</td>
 								</tr>
@@ -946,7 +972,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNRightNumBox" style="height:6mm;border-bottom-width:0px;;padding-top:2.5mm">22</td>
 									<td class="styLNAmountBox" style="height:6mm;border-right-width:1px;border-bottom-width:0px;padding-left:1mm;padding-top:2.5mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/LaborHiredExpenseAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/LaborHiredExpenseAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -966,7 +992,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNRightNumBox" style="height:4.5mm;width:7.25mm;padding-right:1.5mm">23</td>
 									<td class="styLNAmountBox" style="height:4.5mm;width:31.5mm;vertical-align:bottom;">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/PensionProfitSharingPlansAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/PensionProfitSharingPlansAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -988,7 +1014,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNRightNumBox" style="height:4.5mm;width:7.25mm;">24a</td>
 									<td class="styLNAmountBox" style="height:4.5mm;width:31.5mm;">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/MachineryAndEquipmentRentAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/MachineryAndEquipmentRentAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1003,7 +1029,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNRightNumBox" style="height:4.5mm;width:7.25mm;">24b</td>
 									<td class="styLNAmountBox" style="height:4.5mm;width:31.5mm;padding-left:5mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/OtherBusinessPropertyRentAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/OtherBusinessPropertyRentAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1013,12 +1039,12 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 										<span style="float:left">
 											Repairs and maintenance
 										</span>
-										<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
+										<span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
 									</td>
 									<td class="styLNRightNumBox" style="height:4.5mm;width:7.25mm;padding-right:1.5mm">25</td>
 									<td class="styLNAmountBox" style="height:4.5mm;width:31.5mm;;padding-left:1mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/RepairsAndMaintenanceAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/RepairsAndMaintenanceAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1033,7 +1059,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNRightNumBox" style="height:4.5mm;width:7.25mm;padding-right:1.5mm">26</td>
 									<td class="styLNAmountBox" style="height:4.5mm;width:31.5mm;padding-left:1mm;">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/SeedAndPlantExpenseAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/SeedAndPlantExpenseAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1043,12 +1069,12 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 										<span style="float:left">
 											Storage and warehousing
 										</span>
-										<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
+										<span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
 									</td>
 									<td class="styLNRightNumBox" style="height:4.5mm;width:7.25mm;padding-right:1.5mm">27</td>
 									<td class="styLNAmountBox" style="height:4.5mm;width:31.5mm;;padding-left:1mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/StorageAndWarehousingExpnsAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/StorageAndWarehousingExpnsAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1058,14 +1084,14 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 										<span style="float:left">
 											Supplies
 										</span>
-										<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
+										<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
 									</td>
 									<td class="styLNRightNumBox" style="height:4.5mm;width:7.25mm;padding-right:1.5mm">28</td>
 									<td class="styLNAmountBox" style="height:4.5mm;width:31.5mm;;padding-left:1mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/SuppliesAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/SuppliesAmt"/>
 										</xsl:call-template>
-										</td>
+									</td>
 								</tr>
 								<tr><!-- Line 29-->
 									<td class="styLNLeftNumBox" style="height:4.5mm;width:5mm;">29</td>
@@ -1073,12 +1099,12 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 										<span style="float:left">
 											Taxes
 										</span>
-										<span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
+										<span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
 									</td>
 									<td class="styLNRightNumBox" style="height:4.5mm;width:7.25mm;padding-right:1.5mm">29</td>
 									<td class="styLNAmountBox" style="height:4.5mm;width:31.5mm;;padding-left:1mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/TaxExpenseAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/TaxExpenseAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1093,7 +1119,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNRightNumBox" style="height:4.5mm;width:7.25mm;padding-right:1.5mm">30</td>
 									<td class="styLNAmountBox" style="height:4.5mm;width:31.5mm;;padding-left:1mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/UtilitiesAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/UtilitiesAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1105,7 +1131,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									<td class="styLNRightNumBox" style="height:4.5mm;width:7.25mm;padding-right:1.5mm">31</td>
 									<td class="styLNAmountBox" style="height:4.5mm;width:31.5mm;vertical-align:bottom;;padding-left:1mm">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/VtrnryBreedingMedicineExpnsAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/VtrnryBreedingMedicineExpnsAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1118,12 +1144,12 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									</td>
 								</tr>
 								<!-- Line 32 repeat begin for table with data but the last set of repeating data will not display a underline to separate the data from line 32f-->
-								<xsl:if test="($Print != $Separated) or (count($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &lt;= 5) ">
-									<xsl:for-each select="$Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense">
+								<xsl:if test="($Print != $Separated) or (count($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &lt;= 5) ">
+									<xsl:for-each select="$Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense">
 										<tr>
 											<td class="styLNLeftNumBox" style="height:4.5mm;vertical-align:top;width:4mm;padding-left:4mm;">
 												<xsl:call-template name="AddPositionNumber"/>
-												<xsl:if test="position() = 6 and not($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/
+												<xsl:if test="position() = 6 and not($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/
 												TotalPreproductivePrdExpnsAmt)">f
 	                                        </xsl:if>
 											</td>
@@ -1139,7 +1165,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 												<xsl:if test="position() &lt;= 5">
 													32<xsl:call-template name="AddPositionNumber"/>
 												</xsl:if>
-												<xsl:if test="position() = 6 and not($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/
+												<xsl:if test="position() = 6 and not($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/
 												TotalPreproductivePrdExpnsAmt)">32f
 													<span>32f</span>
 												</xsl:if>
@@ -1150,20 +1176,20 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 												</xsl:call-template>
 												</td>
 										</tr>
-										<xsl:if test="position() = 5 and $Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt">
+										<xsl:if test="position() = 5 and $Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt">
                                     </xsl:if>
 									</xsl:for-each>
 								</xsl:if>
 								<!--Filler rows when there are no elements or the element does not exist-->
 								<!-- Other Filler rows-->
-								<xsl:if test="count($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &lt; 1 or 
-								((count($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &gt; 5) and ($Print = $Separated))">
+								<xsl:if test="count($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &lt; 1 or 
+								((count($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &gt; 5) and ($Print = $Separated))">
 									<tr><!-- Line 32a-->
 							<td class="styLNLeftLtrBox" style="height:4.5mm;vertical-align:top;width:6mm;padding-left:4mm;">a</td>
 										<td class="styGenericDiv" style="width:47mm;height:4.5mm;" colspan="2">
 											<span class="styUnderlineAmount" style="width: 37mm;float: none; text-align:left;">
 												<xsl:call-template name="PopulateAdditionalDataTableMessage">
-													<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense"/>
+													<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense"/>
 												</xsl:call-template>
 											</span>
 										</td>
@@ -1172,8 +1198,8 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									</td>
 									</tr>
 								</xsl:if>
-								<xsl:if test="count($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &lt; 2 or 
-								((count($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &gt; 5) 
+								<xsl:if test="count($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &lt; 2 or 
+								((count($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &gt; 5) 
 								and ($Print = $Separated))">
 									<tr><!-- Line 32b-->
 										<td class="styLNLeftLtrBox" style="height:4.5mm;vertical-align:top;width:6mm;padding-left:4mm;">b</td>
@@ -1185,7 +1211,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									</td>
 									</tr>
 								</xsl:if>
-								<xsl:if test="count($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &lt; 3 or ((count($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &gt; 5) and ($Print = $Separated))">
+								<xsl:if test="count($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &lt; 3 or ((count($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &gt; 5) and ($Print = $Separated))">
 									<tr><!-- Line 32c-->
 										<td class="styLNLeftLtrBox" style="height:4.5mm;vertical-align:top;width:6mm;padding-left:4mm;">c</td>
 										<td class="styGenericDiv" style="width:47mm;height:4.5mm;" colspan="2">
@@ -1196,7 +1222,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									</td>
 									</tr>
 								</xsl:if>
-								<xsl:if test="count($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &lt; 4 or ((count($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &gt; 5) and ($Print = $Separated))">
+								<xsl:if test="count($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &lt; 4 or ((count($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &gt; 5) and ($Print = $Separated))">
 									<tr><!-- Line 32d-->
 										<td class="styLNLeftLtrBox" style="height:4.5mm;vertical-align:top;width:6mm;padding-left:4mm;">d</td>
 										<td class="styGenericDiv" style="width:47mm;height:4.5mm;" colspan="2">
@@ -1207,8 +1233,8 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									</td>
 									</tr>
 								</xsl:if>
-								<xsl:if test="count($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &lt; 5 or
-								 ((count($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &gt; 5) and ($Print = $Separated))">
+								<xsl:if test="count($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &lt; 5 or
+								 ((count($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &gt; 5) and ($Print = $Separated))">
 									<tr><!-- Line 32e-->
 										<td class="styLNLeftLtrBox" style="height:4.5mm;vertical-align:top;width:6mm;padding-left:4mm;">e</td>
 										<td class="styGenericDiv" style="width:47mm;height:4.5mm;" colspan="2">
@@ -1219,10 +1245,10 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									</td>
 									</tr>
 								</xsl:if>
-								<xsl:if test="count($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &lt;5">
+								<xsl:if test="count($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &lt;5">
                             </xsl:if>
-	<xsl:if test="($Print = $Separated) or (count($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &lt;= 5) ">
-										<xsl:if test="position() = 5 and $Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt">
+	<xsl:if test="($Print = $Separated) or (count($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &lt;= 5) ">
+										<xsl:if test="position() = 5 and $Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt">
                               </xsl:if>
 								</xsl:if>
 									<tr>
@@ -1234,18 +1260,18 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 				                       <span style="width:1mm"/>
 							<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" 
-													select="$Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt/@section263AIndicatorCd"/>
+													select="$Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt/@section263AIndicatorCd"/>
 												</xsl:call-template>
 											</span>
 										</td>
 										<!-- Code for line f right of line 32-->
 										<td class="styLNRightNumBox" style="height:5mm;width:7.2mm;border-bottom-width:0px;padding-top:1.5mm">32f</td>
 										<td class="styLNAmountBoxNBB" style="vertical-align:bottom;height:5mm;width:31mm;">
-											<xsl:if test="$Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt"/>
+											<xsl:if test="$Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt"/>
 											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt"/>
+												<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt"/>
 											</xsl:call-template>
-											<xsl:if test="$Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt"/>
+											<xsl:if test="$Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt"/>
 										</td>
 									</tr>
 							</tbody>
@@ -1270,7 +1296,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
                      	<div class="styLNRightNumBox" style="height:4mm;width:7.3mm;padding-right:1.5mm">33</div>
 						<div class="styLNAmountBox" style="height:4mm;width:31mm">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/TotalExpensesAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/TotalExpensesAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -1282,14 +1308,14 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
                              Subtract line 33 from line 9 
    							<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="Desc">Part II Line 34 - Passive activity loss literal code</xsl:with-param>
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/PassiveActivityLossLiteralCd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/PassiveActivityLossLiteralCd"/>
 								</xsl:call-template>
 							<span class="styDotLn" style="float:right;padding-right:1mm;">................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4mm;width:7.3mm;padding-right:1.5mm">34</div>
 						<div class="styLNAmountBox" style="height:4mm;width:31mm">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/NetFarmProfitLossAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/NetFarmProfitLossAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -1304,13 +1330,13 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 							<span style="width:10px"/>
 							<input type="checkbox"  alt="Subsidy Received Yes Ind" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/SubsidyReceivedInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/SubsidyReceivedInd"/>
 									<xsl:with-param name="BackupName">IRS1040ScheduleFSubsidyReceivedInd</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/SubsidyReceivedInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/SubsidyReceivedInd"/>
 									<xsl:with-param name="BackupName">IRS1040ScheduleFSubsidyReceivedYesInd</xsl:with-param>
 								</xsl:call-template>
 								<span style="width:1mm;"/>
@@ -1319,13 +1345,13 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 							<span style="width:5mm;"/>
 							<input type="checkbox" alt="Subsidy Received No Ind" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateNoCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/SubsidyReceivedInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/SubsidyReceivedInd"/>
 									<xsl:with-param name="BackupName">IRS1040ScheduleFSubsidyReceivedNoInd</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/SubsidyReceivedInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/SubsidyReceivedInd"/>
 									<xsl:with-param name="BackupName">IRS1040ScheduleFSubsidyReceivedInd</xsl:with-param>
 								</xsl:call-template>
 								<span style="width:1mm;"/>
@@ -1341,13 +1367,13 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 								<span style="width:4px"/>
 								<input type="checkbox" alt="All Investment Is At Risk Ind"  class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/AllInvestmentIsAtRiskInd"/>
+										<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/AllInvestmentIsAtRiskInd"/>
 										<xsl:with-param name="BackupName">IRS1040ScheduleFAllInvestmentIsAtRiskInd</xsl:with-param>
 									</xsl:call-template>
 								</input>
 								<label>
 									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/AllInvestmentIsAtRiskInd"/>
+										<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/AllInvestmentIsAtRiskInd"/>
 										<xsl:with-param name="BackupName">IRS1040ScheduleFAllInvestmentIsAtRiskInd</xsl:with-param>
 									</xsl:call-template>
 									<span style="width:1mm;"/>
@@ -1360,13 +1386,13 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 								<span style="width:4px"/>
 								<input type="checkbox" alt="Some Investment Is Not At Risk" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/SomeInvestmentIsNotAtRiskInd"/>
+										<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/SomeInvestmentIsNotAtRiskInd"/>
 										<xsl:with-param name="BackupName">IRS1040ScheduleFSomeInvestmentIsNotAtRisk</xsl:with-param>
 									</xsl:call-template>
 								</input>
 								<label>
 									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/SomeInvestmentIsNotAtRiskInd"/>
+										<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/SomeInvestmentIsNotAtRiskInd"/>
 										<xsl:with-param name="BackupName">IRS1040ScheduleFSomeInvestmentIsNotAtRisk</xsl:with-param>
 									</xsl:call-template>
 									<span style="width:1mm;"/>
@@ -1417,7 +1443,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:4mm;">37</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/SalesLivestockProduceProdAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/SalesLivestockProduceProdAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -1428,7 +1454,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:4mm;">38a</div>
 						<div class="styLNAmountBox" style="width: 32mm;border-bottom-width:1px;height:4mm;border-right-width:1px;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/CooperativeDistributionsAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/CooperativeDistributionsAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styLNDesc" style="width:31.5mm;height:4mm;">
@@ -1440,7 +1466,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:4mm;">38b</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/CooperativeDistriTxblAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/CooperativeDistriTxblAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -1462,7 +1488,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:4mm;">39a</div>
 						<div class="styLNAmountBox" style="width: 32mm;border-bottom-width:1px;height:4mm;border-right-width:1px;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/AgriculturalProgramPymtAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/AgriculturalProgramPymtAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styLNDesc" style="width:31.5mm;height:4mm;">
@@ -1474,7 +1500,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:4mm;">39b</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/AgriculturalProgramPymtTxblAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/AgriculturalProgramPymtTxblAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -1494,7 +1520,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 								CCC loans reported under election
 								<span style="width:1px;"/>
 								<xsl:call-template name="SetFormLinkInline">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/CCCLoanReportedElectionAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/CCCLoanReportedElectionAmt"/>
 								</xsl:call-template>
 							</span>
 							<span class="styDotLn" style="float:right;padding-right:1mm;">....................</span>
@@ -1502,7 +1528,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:5.25mm;padding-top:1.5mm">40a</div>
 						<div class="styLNAmountBox" style="height:5.25mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/CCCLoanReportedElectionAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/CCCLoanReportedElectionAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -1518,7 +1544,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:4mm;">40b</div>
 						<div class="styLNAmountBox" style="width: 32mm;border-bottom-width:1px;height:4mm;border-right-width:1px;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/CCCLoansForfeitedAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/CCCLoansForfeitedAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styLNDesc" style="width:31.5mm;height:4mm;">
@@ -1530,7 +1556,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:4mm;">40c</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/CCCLoansForfeitedTaxableAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/CCCLoansForfeitedTaxableAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -1546,7 +1572,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:4mm;">41</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/CropInsProcAndDsstrPymtAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/CropInsProcAndDsstrPymtAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -1560,7 +1586,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox">42</div>
 						<div class="styLNAmountBox">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/CustomHireIncomeAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/CustomHireIncomeAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -1574,7 +1600,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:4mm;">43</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/AccrualOtherIncomeAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/AccrualOtherIncomeAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -1588,7 +1614,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox">44</div>
 						<div class="styLNAmountBox">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/TotalIncomeAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/TotalIncomeAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -1605,7 +1631,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">45</div>
 						<div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/InventoryOfProductsAtBOYAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/InventoryOfProductsAtBOYAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="width=8.25mm;background-color:lightgrey;
@@ -1625,7 +1651,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:7mm;padding-top:3.5mm;">46</div>
 						<div class="styLNAmountBox" style="border-bottom-width:1px;height:7mm;padding-top:3.5mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/CostOfProductsPrchsDuringYrAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/CostOfProductsPrchsDuringYrAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="width=8.25mm;background-color:lightgrey;
@@ -1644,7 +1670,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:4mm;">47</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/InvntryAtBOYPlusCostOfPrchsAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/InvntryAtBOYPlusCostOfPrchsAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="width=8.25mm;background-color:lightgrey;
@@ -1663,7 +1689,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:4mm;">48</div>
 						<div class="styLNAmountBox" style="border-bottom-width:1px;height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/InventoryOfProductsAtEOYAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/InventoryOfProductsAtEOYAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="width=8.25mm;background-color:lightgrey;
@@ -1682,7 +1708,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBox" style="height:4mm;">49</div>
 						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/CostOfProductsSoldAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/CostOfProductsSoldAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -1704,7 +1730,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 						<div class="styLNRightNumBoxNBB" style="height:4mm;">50</div>
 						<div class="styLNAmountBoxNBB" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmIncomeAccrualMethodGrp/GrossIncomeAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/GrossIncomeAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -1740,19 +1766,19 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 					<!-- Additional Data Table -->
 					<table class="styLeftOverTbl">
 						<xsl:call-template name="PopulateCommonLeftover">
-							<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData"/>
+							<xsl:with-param name="TargetNode" select="$Form1040SchFData"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Part II Line 34 - Passive activity loss literal code</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="$Form1040ScheduleFData/FarmExpensesGrp/PassiveActivityLossLiteralCd"/>
+							<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/PassiveActivityLossLiteralCd"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 					</table>
 					<!-- END Left Over Table -->
 					<!-- Begin separated repeating data table -->
-					<xsl:if test="($Print = $Separated and (count($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &gt; 5))">
-						<xsl:variable name="CountExpenses" select="count($Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense)"/>
+					<xsl:if test="($Print = $Separated and (count($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &gt; 5))">
+						<xsl:variable name="CountExpenses" select="count($Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense)"/>
 						<span class="styRepeatingDataTitle">Form 1040 Schedule F, Part II, Line 32 - Other expenses (specify):</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
 							<thead class="styTableThead">
@@ -1763,11 +1789,11 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 							</thead>
 							<tfoot/>
 							<tbody>
-								<xsl:for-each select="$Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense">
+								<xsl:for-each select="$Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense">
 									<tr>
 										<xsl:if test="position() &gt; 5">
 											<xsl:choose>
-												<xsl:when test="$Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt">
+												<xsl:when test="$Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt">
 													<xsl:attribute name="class">
 													<xsl:choose>
 																			<xsl:when test="position() mod 2 = 0">styDepTblRow2
@@ -1806,7 +1832,7 @@ $Form1040ScheduleFData/FarmIncomeCashMethodGrp/ElectionDeferCropInsProcInd"/>
 									</tr>
 								</xsl:for-each>
 								<!-- Line f will be displayed if the element  "TotalPreproductivePeriodExpnss" exists.  If not then the regular iteration would continue and line f would be displayed with description and amount-->
-									<xsl:if test="$Form1040ScheduleFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt">
+									<xsl:if test="$Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt">
 									
 									</xsl:if>
 							</tbody>

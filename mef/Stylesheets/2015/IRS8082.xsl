@@ -60,7 +60,7 @@
 							<div style="height:9mm;font-size:7pt;padding-top:.5mm;font-weight: bold;">
     (For use by partners, S corporation shareholders, estate and domestic trust beneficiaries,
     foreign trust owners and beneficiaries, REMIC residual interest holders, and TMPs.) </div>
-							<div style="height:3.5mm;font-size:7pt;padding-top:.5mm;" class="styFST">
+							<div style="height:3.5mm;font-size:7pt;padding-top:1.5mm;" class="styFST">
 								<img src="{$ImagePath}/8082_Bullet.gif" alt="Bullet Image"/>
     See separate instructions.
   </div>
@@ -75,83 +75,21 @@
 						</div>
 					</div>
 					<div style="width:187mm;" class="styBB">
-						<div style="width:138mm;height:8mm;font-weight:normal;font-size:7pt;" class="styNameBox">
+						<div style="width:138mm;height:auto;font-weight:normal;font-size:7pt;" class="styNameBox">
     Name(s) shown on return<br/>
-    
-    
-							<span>
-							
-              <!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
-			  <xsl:choose>
-			  <!-- Name from 1120/990/1065 Return Header -->
-				<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
-				  <xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-				  </xsl:call-template>
-				  <br/>
-				  <xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
-				  </xsl:call-template>
-				</xsl:when>
-				<!-- Name from 1040 Return Header -->
-				<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
-				  <br/>
-				  <xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
-				  </xsl:call-template>
-				</xsl:when>
-				<!-- Name from 1041 Return Header 
-				<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
-				  <xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
-				  </xsl:call-template>
-				  <br/>
-				  <xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
-				  </xsl:call-template>
-				</xsl:when>
-				<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
-				  <xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
-				  </xsl:call-template>
-				  <br/>
-				</xsl:when> -->
-			  </xsl:choose>
-<!--								<xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+ 							<span>
+								<xsl:call-template name="PopulateFilerName">
+									<xsl:with-param name="TargetNode" select="$Form8082Data"/>
 								</xsl:call-template>
-								<br/>
-								<xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-								</xsl:call-template>-->
 							</span>
-							
-							
 						</div>
 						<div style="width:49mm;height:auto;padding-left:2mm;font-weight:normal;font-size:7pt;" class="styEINBox">
     Identifying number<br/>
 							<br/>
-							<span style="font-weight:normal;text-align:center;">
-<span style="font-weight:normal;">
-				<!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
-				<xsl:choose>
-		          <xsl:when test="$RtnHdrData/Filer/EIN">
-					<xsl:call-template name="PopulateReturnHeaderFiler">
-					  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-					</xsl:call-template>
-				  </xsl:when>
-				  <xsl:otherwise>
-					<xsl:call-template name="PopulateReturnHeaderFiler">
-					  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-					</xsl:call-template>
-				  </xsl:otherwise>
-				</xsl:choose>
-</span>							
-							
-<!--								<xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-								</xsl:call-template>-->
-								
+							<span style="font-size: 7pt; font-weight: normal;text-align:left; vertical-align: bottom;">
+								<xsl:call-template name="PopulateFilerTIN">
+									<xsl:with-param name="TargetNode" select="$Form8082Data"/>
+								</xsl:call-template>
 							</span>
 						</div>
 					</div>
@@ -170,7 +108,7 @@
       <span style="width:5mm;"/>
 								<span class="styBoldText">(a)</span>
 								<span style="width:2mm;"/>
-								<input alt="alt" type="checkbox" class="styCkbox" onclick="return false;">
+								<input alt="IRS8082NoticeOfInconsistentTrtmntInd" type="checkbox" class="styCkbox" onclick="return false;">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8082Data/NoticeOfInconsistentTrtmntInd"/>
 									</xsl:call-template>
@@ -184,7 +122,7 @@
 								<span style="width:5mm;"/>
 								<span class="styBoldText">(b)</span>
 								<span style="width:2mm;"/>
-								<input alt="alt" type="checkbox" class="styCkbox" onclick="return false;">
+								<input alt="IRS8082AdministrativeAdjustmentReqInd" type="checkbox" class="styCkbox" onclick="return false;">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8082Data/AdministrativeAdjustmentReqInd"/>
 									</xsl:call-template>
@@ -210,7 +148,7 @@
 							<div style="float:left;width:179mm;">
 								<span class="styBoldText">(a)</span>
 								<span style="width:1.5mm;"/>
-								<input alt="alt" type="checkbox" class="styCkbox" onclick="return false;">
+								<input alt="IRS8082PartnershipEntityInd" type="checkbox" class="styCkbox" onclick="return false;">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8082Data/PartnershipEntityInd"/>
 									</xsl:call-template>
@@ -225,7 +163,7 @@
 								<span style="width:4mm;"/>
 								<span class="styBoldText">(b)</span>
 								<span style="width:1.5mm;"/>
-								<input alt="alt" type="checkbox" class="styCkbox" onclick="return false;">
+								<input alt="IRS8082SCorporationEntityInd" type="checkbox" class="styCkbox" onclick="return false;">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8082Data/SCorporationEntityInd"/>
 									</xsl:call-template>
@@ -240,7 +178,7 @@
 								<span style="width:5mm;"/>
 								<span class="styBoldText">(c)</span>
 								<span style="width:2mm;"/>
-								<input alt="alt" type="checkbox" class="styCkbox" onclick="return false;">
+								<input alt="IRS8082EstateEntityInd" type="checkbox" class="styCkbox" onclick="return false;">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8082Data/EstateEntityInd"/>
 									</xsl:call-template>
@@ -254,7 +192,7 @@
 								<span style="width:15mm;"/>
 								<span class="styBoldText">(d)</span>
 								<span style="width:2mm;"/>
-								<input alt="alt" type="checkbox" class="styCkbox" onclick="return false;">
+								<input alt="IRS8082TrustEntityInd" type="checkbox" class="styCkbox" onclick="return false;">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8082Data/TrustEntityInd"/>
 									</xsl:call-template>
@@ -268,7 +206,7 @@
 								<span style="width:15mm;"/>
 								<span class="styBoldText">(e)</span>
 								<span style="width:2mm;"/>
-								<input alt="alt" type="checkbox" class="styCkbox" onclick="return false;">
+								<input alt="IRS8082REMICEntityInd" type="checkbox" class="styCkbox" onclick="return false;">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8082Data/REMICEntityInd"/>
 									</xsl:call-template>

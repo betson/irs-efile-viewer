@@ -49,7 +49,7 @@
                            <xsl:with-param name="TargetNode" select="$Form1099RData/StandardOrNonStandardCd"/>
                         </xsl:call-template>
                         <span style="width:54.66mm;"/>
-						<input type="checkbox" class="styCkbox" style="height:4mm;width:4mm;">
+						<input type="checkbox" alt="Corrected" class="styCkbox" style="height:4mm;width:4mm;">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form1099RData/CorrectedInd"/>
 								<xsl:with-param name="BackupName">Form1099RDataCorrectedInd</xsl:with-param>
@@ -81,25 +81,32 @@
 								<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="Desc">Payer Name Control</xsl:with-param>
 									<xsl:with-param name="TargetNode" select="$Form1099RData/PayerNameControlTxt"/>
-								</xsl:call-template>
-								<!--<span style="width:.5mm;"/>
-								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$FormW2Data/EmployerNameControl"/>
-								</xsl:call-template>-->
-								<br/>
-								<span style="width:1mm;"/>
-								<span style="font-size:6pt;">
+								</xsl:call-template><br/>
+								<xsl:choose>
+		                   	 <xsl:when test="normalize-space($Form1099RData/PayerName/BusinessNameLine1Txt) != ''">
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$Form1099RData/PayerName//BusinessNameLine1Txt"/>
+							</xsl:call-template>
+							<br/>
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$Form1099RData/PayerName//BusinessNameLine2Txt"/>
+							</xsl:call-template>
+							</xsl:when>
+					<!-- Name from 1041 Return Header-->
+						<xsl:when test="$RtnHdrData/ReturnTypeCd='1041'">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form1099RData/PayerName/BusinessNameLine1Txt"/>
-									</xsl:call-template>
-								</span>
-								<br/>
-								<span style="width:1mm;"/>
-								<span style="font-size:6pt">
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt" />
+									</xsl:call-template><br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form1099RData/PayerName/BusinessNameLine2Txt"/>
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt" />
 									</xsl:call-template>
-								</span>
+								</xsl:when>
+					    <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+							</xsl:call-template>
+					   </xsl:when>		
+								</xsl:choose>		
 								<br/>
 								<xsl:if test="$Form1099RData/PayerUSAddress">
 									<span style="width:1mm;"/>
@@ -136,7 +143,7 @@
                                                  <xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form1099RData/PayerForeignAddress/ForeignPostalCd"/>
 										</xsl:call-template>
-										<span style="width:1mm;"/>
+										<br/>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form1099RData/PayerForeignAddress/CountryCd"/>
 										</xsl:call-template>
@@ -168,16 +175,28 @@
 								<span style="width:6px;"/>
 								<br/><br/><br/>
 								<span style="width:100%;text-align:center;">
-                                <xsl:if test="$Form1099RData/RecipientSSN">
-                                <xsl:call-template name="PopulateSSN">
-                                <xsl:with-param name="TargetNode" select="$Form1099RData/RecipientSSN"/>
-                                </xsl:call-template>
-                                </xsl:if>
-                                <xsl:if test="$Form1099RData/RecipientEIN">
-                                <xsl:call-template name="PopulateEIN">
-                                <xsl:with-param name="TargetNode" select="$Form1099RData/RecipientEIN"/>
-                                </xsl:call-template>
-                                </xsl:if>
+														<xsl:choose>
+							   <xsl:when test="normalize-space($Form1099RData/RecipientSSN) != ''">
+								  <xsl:call-template name="PopulateSSN">
+									<xsl:with-param name="TargetNode" select="$Form1099RData/RecipientSSN"/>
+								  </xsl:call-template>
+							   </xsl:when>
+							   <xsl:when test="normalize-space($Form1099RData/RecipientEIN) != ''">
+								  <xsl:call-template name="PopulateSSN">
+									<xsl:with-param name="TargetNode" select="$Form1099RData/RecipientEIN"/>
+								  </xsl:call-template>
+							   </xsl:when>
+							<xsl:when test="$RtnHdrData/Filer/PrimarySSN">
+								<xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+							   </xsl:call-template>
+				   		    </xsl:when>
+				   		    <xsl:when test="$RtnHdrData/Filer/EIN">
+				   		          <xsl:call-template name="PopulateReturnHeaderFiler"> 
+				   		              <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+                                  </xsl:call-template>
+                             </xsl:when>
+				   		  </xsl:choose>
 								</span>
 							</div>
 							<!--RECIPIENT'S Name -->
@@ -274,7 +293,7 @@
                                                     <span style="font-size:6.5pt;padding-left:7mm;">not determined</span>
 												</label>
 											</span>
-											<input type="checkbox" class="styCkbox" style="height:4mm;width:4mm;">
+											<input type="checkbox" alt="Taxable Amount Not Determined" class="styCkbox" style="height:4mm;width:4mm;">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form1099RData/TxblAmountNotDeterminedInd"/>
 													<xsl:with-param name="BackupName">Form1099RTxblAmountNotDeterminedInd</xsl:with-param>
@@ -295,7 +314,7 @@
 														<span style="font-size:6.5pt;padding-left:6mm;">distribution</span>
 												</label>
 												</span>
-												<input type="checkbox" class="styCkbox" style="height:4mm;width:4mm;">
+												<input type="checkbox" alt="Total Distribution" class="styCkbox" style="height:4mm;width:4mm;">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form1099RData/TotalDistributionInd"/>
 													<xsl:with-param name="BackupName">Form1099RTotalDistributionInd</xsl:with-param>
@@ -472,7 +491,7 @@
 										<br/>
 									</label>
 									<span style="padding-left:4mm;">
-										<input type="checkbox" class="styCkbox" style="height:4mm;width:4mm;">
+										<input type="checkbox" alt="IRA SEP SIMPLE" class="styCkbox" style="height:4mm;width:4mm;">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$Form1099RData/IRASEPSIMPLEInd"/>
 												<xsl:with-param name="BackupName">Form1099RDataIRASEPSIMPLEInd</xsl:with-param>
@@ -587,9 +606,12 @@
 									</span>
 								</span>
 								<!--FATCA filing requirement. -->
-								<span class="styIRS1099RleftBoxWithBottom" style="padding-left:.5mm;height:10.9mm;                                      width:20mm;">
-									<span style="font-size: 7pt;">FATCA filing requirement</span><br/>
-									<input type="checkbox" class="styCkbox" style="height:4mm;width:4mm;float:right;margin:0mm 1.5mm .5mm 0mm;">
+								<span class="styIRS1099RleftBoxWithBottom" style="padding-left:.5mm;height:10.9mm;width:20mm;">
+									<span style="font-size: 7pt;"><label><xsl:call-template name="PopulateLabel">
+											<xsl:with-param name="TargetNode" select="$Form1099RData/FATCAFilingRequirementInd"/>
+											<xsl:with-param name="BackupName">Form1099RFATCAFilingRequirementInd</xsl:with-param>
+										</xsl:call-template>FATCA filing requirement</label></span><br/>
+									<input type="checkbox" alt="FATCA" class="styCkbox" style="height:4mm;width:4mm;float:right;margin:0mm 1.5mm .5mm 0mm;">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form1099RData/FATCAFilingRequirementInd"/>
 											<xsl:with-param name="BackupName">Form1099RFATCAFilingRequirementInd</xsl:with-param>
@@ -598,10 +620,10 @@
 								</span>
 							</div>
 							<!-- Box for Account number (see instructions) -->
-							<span class="styIRS1099RleftBoxWithBottom" style="padding-left:2mm;height:11.2mm;                                 width:98.04mm;">
+							<span class="styIRS1099RleftBoxWithBottom" style="padding-left:2mm;height:11.2mm;width:98.04mm;">
 								<span style="font-size: 6.5pt;">Account number (see instructions)</span>
 								<br/>
-								<span style="padding-top:4mm;width:50mm;float:bottom;text-align:left">
+								<span style="padding-top:4mm;width:40mm;float:bottom;text-align:left">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$Form1099RData/PayerRecipientAccountNum"/>
 									</xsl:call-template>

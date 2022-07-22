@@ -205,120 +205,24 @@
 		</div>
 		<!-- Name and Address -->
 		<div class="styBB" style="width:187mm;border-top-width:1px">
-					  <div class="styNameBox" style="font-family:verdana;font-size:7pt;width:136mm;min-height:8mm;height:auto;">
-						  Name
+		  <div class="styNameBox" style="font-family:verdana;font-size:7pt;width:136mm;min-height:8mm;height:auto;">
+			  Name
 		    <br/>
-			<!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
-			<xsl:if test="$Form5713Data/NameLine1Txt!=''">
-		      <br/>
-              <xsl:call-template name="PopulateText">
-			    <xsl:with-param name="TargetNode" select="$Form5713Data/NameLine1Txt"/>
-			  </xsl:call-template>
-            </xsl:if>
-            <xsl:if test="$Form5713Data/BusinessName/BusinessNameLine1Txt!=''">
-              <xsl:call-template name="PopulateText">
-				<xsl:with-param name="TargetNode" select="$Form5713Data/BusinessName/BusinessNameLine1Txt"/>
-			  </xsl:call-template>
-			  <br/>
-			  <xsl:call-template name="PopulateText">
-				<xsl:with-param name="TargetNode" select="$Form5713Data/BusinessName/BusinessNameLine2Txt"/>
-			  </xsl:call-template>
-            </xsl:if>
-			<xsl:if test="$Form5713Data/NameLine1Txt=''">
-              <xsl:choose>
-			    <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-			      <br/>
-				  <xsl:call-template name="PopulateReturnHeaderFiler">
-			        <xsl:with-param name="TargetNode">Name</xsl:with-param>
-			      </xsl:call-template>
-			    </xsl:when>
-			    <xsl:otherwise>
-			      <xsl:call-template name="PopulateReturnHeaderFiler">
-			        <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-			      </xsl:call-template>
-			      <br/>
-			      <xsl:call-template name="PopulateReturnHeaderFiler">
-				    <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-			      </xsl:call-template>				  
-			    </xsl:otherwise>
-			  </xsl:choose>
-            </xsl:if>
-			<xsl:if test="$Form5713Data/BusinessName=''">
-              <xsl:choose>
-			    <xsl:when test="$RtnHdrData/ReturnTypeCd='1120'">
-				  <xsl:call-template name="PopulateReturnHeaderFiler">
-				    <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-			      </xsl:call-template>
-			      <br/>
-			      <xsl:call-template name="PopulateReturnHeaderFiler">
-				    <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-			      </xsl:call-template>
-			    </xsl:when>
-			    <xsl:otherwise>
-			      <br/>
-				  <xsl:call-template name="PopulateReturnHeaderFiler">
-			        <xsl:with-param name="TargetNode">Name</xsl:with-param>
-			      </xsl:call-template>
-			    </xsl:otherwise>
-			  </xsl:choose>
-            </xsl:if>	  
+			<span>
+				<xsl:call-template name="PopulateFilerName">
+					<xsl:with-param name="TargetNode" select="$Form5713Data"/>
+				</xsl:call-template>
+			</span>
 		</div>
 		<!-- EIN -->
 		<div class="styEINBox" style="font-family:verdana;font-size:7pt;width:47mm;height:4mm;font-weight:bold;padding-left:2mm;">
 		  Identifying number
 		  <br/>
 		  <span style="font-weight:normal;">
-		  <!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
-		  <xsl:if test="$Form5713Data/SSN!=''">
-		    <br/>
-            <xsl:call-template name="PopulateSSN">
-			  <xsl:with-param name="TargetNode" select="$Form5713Data/SSN"/>
+			  <br/>
+			<xsl:call-template name="PopulateFilerTIN">
+				<xsl:with-param name="TargetNode" select="$Form5713Data"/>
 			</xsl:call-template>
-          </xsl:if>
-          <xsl:if test="$Form5713Data/EIN!=''">
-            <br/>
-            <xsl:call-template name="PopulateEIN">
-			  <xsl:with-param name="TargetNode" select="$Form5713Data/EIN"/>
-			</xsl:call-template>
-          </xsl:if>
-          <xsl:if test="$Form5713Data/MissingEINReasonCd!=''">
-            <br/>
-            <xsl:call-template name="PopulateText">
-			  <xsl:with-param name="TargetNode" select="$Form5713Data/MissingEINReasonCd"/>
-			</xsl:call-template>
-          </xsl:if>
-          <xsl:if test="$Form5713Data/SSN=''">
-            <xsl:choose>
-			  <xsl:when test="$RtnHdrData/ReturnTypeCd='1120'">
-			    <br/>
-				<xsl:call-template name="PopulateReturnHeaderFiler">
-				  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-				</xsl:call-template>
-			  </xsl:when>
-			  <xsl:otherwise>
-			    <br/>
-				<xsl:call-template name="PopulateReturnHeaderFiler">
-				  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-				</xsl:call-template>
-			  </xsl:otherwise>
-			</xsl:choose>
-          </xsl:if>
-          <xsl:if test="$Form5713Data/EIN=''">
-            <xsl:choose>
-			  <xsl:when test="$RtnHdrData/ReturnTypeCd='1120'">
-			    <br/>
-				<xsl:call-template name="PopulateReturnHeaderFiler">
-				  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-				</xsl:call-template>
-			  </xsl:when>
-			  <xsl:otherwise>
-			    <br/>
-				<xsl:call-template name="PopulateReturnHeaderFiler">
-				  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-				</xsl:call-template>
-			  </xsl:otherwise>
-			</xsl:choose>
-          </xsl:if>
 		</span>
 	  </div>
 	</div>  
@@ -378,7 +282,7 @@
 		</div>
 		<div style="font-family:verdana;font-size:7pt;width:187mm;padding-left:3mm">
 		  <!-- Individual checkbox -->
-		  <input type="checkbox" name="Checkbox" class="styckbox">
+		  <input type="checkbox" alt="Individual" name="Checkbox" class="styckbox">
 			<xsl:call-template name="PopulateCheckbox">
 		  	  <xsl:with-param name="TargetNode" select="$Form5713Data/IndividualInd"/>
 		  	  <xsl:with-param name="BackupName">IRS5713IndividualFileType</xsl:with-param>
@@ -394,7 +298,7 @@
 		  </label>
 		  <span style="width:15mm;"/>
 		  <!--Partnership  checkbox -->
-		  <input type="checkbox" name="Checkbox" class="styckbox">
+		  <input type="checkbox" alt="Partnership" name="Checkbox" class="styckbox">
 			<xsl:call-template name="PopulateCheckbox">
 			  <xsl:with-param name="TargetNode" select="$Form5713Data/PartnershipInd"/>
 			  <xsl:with-param name="BackupName">IRS5713PartnershipFileType</xsl:with-param>
@@ -410,7 +314,7 @@
 		  </label>
 		  <span style="width:15mm;"/>
 		  <!--Corporation  checkbox -->
-		  <input type="checkbox" name="Checkbox" class="styckbox">
+		  <input type="checkbox" alt="Corporation" name="Checkbox" class="styckbox">
 			<xsl:call-template name="PopulateCheckbox">
 			  <xsl:with-param name="TargetNode" select="$Form5713Data/CorporationInd"/>
 			  <xsl:with-param name="BackupName">IRS5713CorporationFileType</xsl:with-param>
@@ -426,7 +330,7 @@
 		  </label>
 		  <span style="width:15mm;"/>
 		  <!--Trust  checkbox -->
-		  <input type="checkbox" name="Checkbox" class="styckbox">
+		  <input type="checkbox" alt="Trust" name="Checkbox" class="styckbox">
 			<xsl:call-template name="PopulateCheckbox">
 			  <xsl:with-param name="TargetNode" select="$Form5713Data/TrustInd"/>
 			  <xsl:with-param name="BackupName">IRS5713TrustFileType</xsl:with-param>
@@ -442,7 +346,7 @@
 		  </label>
 		  <span style="width:15mm;"/>
 		  <!--Estate  checkbox -->
-		  <input type="checkbox" name="Checkbox" class="styckbox">
+		  <input type="checkbox" alt="Estate" name="Checkbox" class="styckbox">
 			<xsl:call-template name="PopulateCheckbox">
 			  <xsl:with-param name="TargetNode" select="$Form5713Data/EstateInd"/>
 			  <xsl:with-param name="BackupName">IRS5713EstateFileType</xsl:with-param>
@@ -458,7 +362,7 @@
 		  </label>
 		  <span style="width:13mm;"/>
 		  <!-- Other  checkbox -->
-		  <input type="checkbox" name="Checkbox" class="styckbox">
+		  <input type="checkbox" alt="Other" name="Checkbox" class="styckbox">
 			<xsl:call-template name="PopulateCheckbox">
 			  <xsl:with-param name="TargetNode" select="$Form5713Data/OtherInd"/>
 			  <xsl:with-param name="BackupName">IRS5713OtherFileType</xsl:with-param>
@@ -687,7 +591,7 @@
 			  </xsl:call-template>
 			  <span style="width:2mm;text-align:right;"/>
 			</label>
-			<input type="checkbox" class="styckbox" name="Checkbox">
+			<input type="checkbox" alt="attach additional sheets and check this box" class="styckbox" name="Checkbox">
 			  <xsl:call-template name="PopulateCheckbox">
 				<xsl:with-param name="TargetNode" select="$Form5713Data/AdditionalSpaceRequiredInd"/>
 				<xsl:with-param name="BackupName">IRS5713AdditionalCorpInfoIncluded</xsl:with-param>
@@ -727,13 +631,13 @@
 		<!--Note: Per Business Analyst (Stephanie Taylor) approval to increase height of the code and description box to allow the maximum data to be display properly. -->
 		<div class="styBB" style="width:187mm;">
 		  <div class="styLNLeftLtrBox">d</div>
-			<div class="styLNDesc" style="width:99mm;">IC-DISCs &#8211; Enter principal product or service code and description (see instructions)</div>
-			<div class="styLNCtrNumBox" style="width:24mm;height:7mm;border-top-width:1px;border-right-width:0px;border-bottom-width:0px;font-weight:normal;">
+			<div class="styLNDesc" style="width:99mm;height:auto;">IC-DISCs &#8211; Enter principal product or service code and description (see instructions)</div>
+			<div class="styLNCtrNumBox" style="width:24mm;height:auto;border-top-width:1px;border-right-width:0px;border-bottom-width:0px;font-weight:normal;">
 			  <xsl:call-template name="PopulateText">
 				<xsl:with-param name="TargetNode" select="$Form5713Data/PrincipalProductCodeDesc"/>
 			  </xsl:call-template>
 			</div>
-			<div class="styLNCtrNumBox" style="width:56mm;height:7mm;border-top-width:1px;border-right-width:0px;border-bottom-width:0px;font-weight:normal;text-align:left;padding-left:1mm;">
+			<div class="styLNCtrNumBox" style="width:56mm;height:7.3mm;border-top-width:1px;border-right-width:0px;border-bottom-width:0px;font-weight:normal;text-align:left;padding-left:1mm;">
 			  <xsl:call-template name="PopulateText">
 				<xsl:with-param name="TargetNode" select="$Form5713Data/PrincipalProductDesc"/>
 			  </xsl:call-template>
@@ -1326,7 +1230,7 @@ section 957(a))? </div>
 							  <xsl:with-param name="BackupName">IRS5713AddnlInfoNonlistedByctIsrael</xsl:with-param>							  
 							</xsl:call-template>
 						  </label>
-						  <input type="checkbox" class="styckbox" name="Checkbox">
+						  <input type="checkbox" alt="attach additional sheets using the exact format and check this box" class="styckbox" name="Checkbox">
 							<xsl:call-template name="PopulateCheckbox">
 							  <xsl:with-param name="TargetNode" select="$Form5713Data/AddnlInfoNonlistByctIsraelInd"/>
 							  <xsl:with-param name="BackupName">IRS5713AddnlInfoNonlistedByctIsrael</xsl:with-param>
@@ -1888,7 +1792,7 @@ section 957(a))? </div>
 							</xsl:call-template>
 							<xsl:attribute name="for"><xsl:value-of select="1"/></xsl:attribute>
 						  </label>
-						  <input type="checkbox" class="styckbox" name="Checkbox">
+						  <input type="checkbox" alt="attach additional sheets using the exact format and check this box" class="styckbox" name="Checkbox">
 							<xsl:call-template name="PopulateCheckbox">
 							  <xsl:with-param name="TargetNode" select="$Form5713Data/AddnlInfoNonlistByctIsraelInd"/>
 							  <xsl:with-param name="BackupName">IRS5713AddnlInfoNonlistedByctIsrael</xsl:with-param>
@@ -2294,7 +2198,7 @@ section 957(a))? </div>
 							  <xsl:with-param name="BackupName">IRS5713AddnlInfoOprNonIsraelByctCtry</xsl:with-param>
 							</xsl:call-template>
 						  </label>
-						  <input type="checkbox" class="styckbox" name="Checkbox">
+						  <input type="checkbox" alt="attach additional sheets using the exact format and check this box" class="styckbox" name="Checkbox">
 							<xsl:call-template name="PopulateCheckbox">
 							  <xsl:with-param name="TargetNode" select="$Form5713Data/AddnlInfoOprNonIsrlByctCtryInd"/>
 							  <xsl:with-param name="BackupName">IRS5713AddnlInfoOprNonIsraelByctCtry</xsl:with-param>
@@ -2753,8 +2657,8 @@ section 957(a))? </div>
 						<div class="styIRS5713LNYesNoBox" style="width:14.75mm;height:4mm;font-weight:bold;border-bottom-width:1px;">Requests</div>
 						<div class="styIRS5713LNYesNoBox" style="width:16.75mm;height:4mm;font-weight:bold;border-bottom-width:1px;">Agreements</div>
 						<div class="styIRS5713LNYesNoBox" style="width:7.5mm;height:4mm;font-weight:bold;border-bottom-width:0px;">Yes</div>
-						<div class="styIRS5713LNYesNoBox" style="width:7.5mm;height:4mm;font-weight:bold;border-bottom-width:0px;">No</div>
-						<div class="styIRS5713LNYesNoBox" style="width:7.5mm;height:4mm;font-weight:bold;border-bottom-width:0px;">Yes</div>
+						<div class="styIRS5713LNYesNoBox" style="width:7.4mm;height:4mm;font-weight:bold;border-bottom-width:0px;">No</div>
+						<div class="styIRS5713LNYesNoBox" style="width:7.6mm;height:4mm;font-weight:bold;border-bottom-width:0px;">Yes</div>
 						<div class="styIRS5713LNYesNoBox" style="width:7.5mm;height:4mm;font-weight:bold;border-bottom-width:0px;">No</div>
 					  </div>
 					  <!-- Part II, L13a -->
@@ -2762,12 +2666,12 @@ section 957(a))? </div>
 						<div class="styLNLeftNumBox">13a</div>
 						<div class="styLNDesc" style="width:147mm;">Did you receive requests to enter into, or did you enter into, any agreement (see instructions):</div>
 						<div class="styShadingCell" style="width:7.5mm;height:4.5mm;"/>
-						<div class="styShadingCell" style="width:7.5mm;height:4.5mm;"/>
-						<div class="styShadingCell" style="width:7.5mm;height:4.5mm;"/>
+						<div class="styShadingCell" style="width:7.4mm;height:4.5mm;"/>
+						<div class="styShadingCell" style="width:7.6mm;height:4.5mm;"/>
 						<div class="styShadingCell" style="width:9.5mm;height:4.5mm;"/>
 					  </div>
 					  <!-- Part II, L13a(1) -->
-					  <div style="width:187mm;">
+					  <div class="styGenericDiv" style="width:187mm;">
 						<div class="styLNLeftLtrBox" style="height:4.5mm;width:5mm;"/>
 						<div class="styLNLeftLtrBox" style="height:4.5mm;">(1)</div>
 						<div class="styLNDesc" style="width:142mm;height:4mm;">
@@ -2779,7 +2683,7 @@ section 957(a))? </div>
 						<br/>
 					  </div>
 					  <!-- Part II, L13a(1)(a) -->
-					  <div style="width:187mm;">
+					  <div class="styGenericDiv" style="width:187mm;">
 						<div class="styLNLeftLtrBox" style="height:4.5mm;width:5mm;"/>
 						  <div class="styLNLeftLtrBox" style="height:4.5mm;">
 						</div>
@@ -2812,7 +2716,7 @@ section 957(a))? </div>
 					  </div>
 					</div>
 					<!-- Part II, L13a(1)(b) -->
-					<div style="width:187mm;">
+					<div class="styGenericDiv" style="width:187mm;">
 					  <div class="styLNLeftLtrBox" style="height:4.5mm;width:5mm;"/>
 						<div class="styLNLeftLtrBox" style="height:4.5mm;">
 					  </div>
@@ -2845,7 +2749,7 @@ section 957(a))? </div>
 					  </div>
 					</div>
 					<!-- Part II, L13a(1)(c) -->
-					<div style="width:187mm;">
+					<div class="styGenericDiv" style="width:187mm;">
 					  <div class="styLNLeftLtrBox" style="height:4.5mm;width:5mm;"/>
 						<div class="styLNLeftLtrBox" style="height:4.5mm;">
 					  </div>
@@ -2879,7 +2783,7 @@ section 957(a))? </div>
 					  </div>
 					</div>
 					<!-- Part II, L13a(1)(d) -->
-					<div style="width:187mm;">
+					<div class="styGenericDiv" style="width:187mm;">
 					  <div class="styLNLeftLtrBox" style="height:4.5mm;width:5mm;"/>
 						<div class="styLNLeftLtrBox" style="height:4.5mm;">
 					  </div>
@@ -2943,7 +2847,7 @@ section 957(a))? </div>
 					  </div>
 					</div>
 					<!-- Part II, L13b -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styNBB" style="width:187mm;">
 					  <div class="styLNLeftLtrBox" style="padding-left:4mm;float:left;clear:none;">b</div>
 					  <div class="styLNDesc" style="width:163mm;height:7mm;">
 						<b>Requests and agreements &#8211; </b>
@@ -2962,7 +2866,7 @@ section 957(a))? </div>
 							<xsl:with-param name="BackupName">IRS5713AddnlByctRequestAndAgrmtIncld</xsl:with-param>
 						  </xsl:call-template>
 						</label>
-						<input type="checkbox" class="styckbox" name="Checkbox">
+						<input type="checkbox" alt="attach additional sheets using the exact format and check this box" class="styckbox" name="Checkbox">
 						  <xsl:call-template name="PopulateCheckbox">
 							<xsl:with-param name="TargetNode" select="$Form5713Data/AddnlByctReqAndAgrmtIncldInd"/>
 							<xsl:with-param name="BackupName">IRS5713AddnlByctRequestAndAgrmtIncld</xsl:with-param>							
@@ -2987,34 +2891,34 @@ section 957(a))? </div>
 					<!-- Show table in expanded form -->
 					  <xsl:call-template name="SetInitialState"/>
 					  <!-- end -->
-					  <table cellspacing="0" summary="Requests and Agreements" style="width:187mm;height:87mm;clear:both;float:none;">
+					  <table cellspacing="0" summary="Requests and Agreements" style="width:187mm;height:auto;border-top:1px solid black;">
 						<thead class="styTableThead">
 						  <tr>
-							<th rowspan="3" class="styTableCell" style="width:15mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;left-margin:3mm;" scope="col">Name of country</th>
-							<th rowspan="3" class="styTableCell" style="width:50mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;" scope="col">Identifying number of person receiving the request or having the agreement</th>
-							<th rowspan="2" colspan="2" class="styTableCell" style="width:41mm;padding-bottom:0mm;padding-top:0mm;left-margin:0mm;text-align:center;font-size:7pt;border-color:black;" scope="col">Principal business activity</th>
-							<th rowspan="3" class="styTableCell" style="width:15mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;" scope="col">IC-DISCs only-Enter product code</th>
-							<th colspan="4" class="styTableCell" style="width:64mm;text-align:center;font-size:7pt;border-color:black;border-right:none;" scope="col">Type of cooperation or participation</th>
+							<th rowspan="3" class="styTableCell" style="width:15mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;left-margin:3mm;height:auto;" scope="col">Name of country</th>
+							<th rowspan="3" class="styTableCell" style="width:50mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;height:auto;" scope="col">Identifying number of person receiving the request or having the agreement</th>
+							<th rowspan="2" colspan="2" class="styTableCell" style="width:41mm;padding-bottom:0mm;padding-top:0mm;left-margin:0mm;text-align:center;font-size:7pt;border-color:black;height:auto;" scope="col">Principal business activity</th>
+							<th rowspan="3" class="styTableCell" style="width:15mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;height:auto;" scope="col">IC-DISCs only-Enter product code</th>
+							<th colspan="4" class="styTableCell" style="width:64mm;text-align:center;font-size:7pt;border-color:black;border-right:none;height:auto;" scope="col">Type of cooperation or participation</th>
 						  </tr>
 						  <tr>
-							<th colspan="2" class="styTableCell" style="width:32mm;text-align:center;font-size:7pt;border-color:black;border-right-width:1px;" scope="col">Number of requests</th>
-							<th colspan="2" class="styTableCell" style="width:32mm;text-align:center;padding-left:5mm;font-size:7pt;border-color:black;border-bottom-width:1px;border-right:none;" scope="col">Number of agreements</th>
+							<th colspan="2" class="styTableCell" style="width:32mm;text-align:center;font-size:7pt;border-color:black;border-right-width:1px;height:auto;" scope="col">Number of requests</th>
+							<th colspan="2" class="styTableCell" style="width:32mm;text-align:center;padding-left:5mm;font-size:7pt;border-color:black;border-bottom-width:1px;border-right:none;height:auto;" scope="col">Number of agreements</th>
 						  </tr>
 						  <tr>
-							<th class="styTableCell" style="width:15mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;" scope="col">Code</th>
-							<th class="styTableCell" style="width:26mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;" scope="col">Description</th>
-							<th class="styTableCell" style="width:24mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;" scope="col">Total</th>
-							<th class="styTableCell" style="width:8mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;" scope="col">Code</th>
-							<th class="styTableCell" style="width:24mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;" scope="col">Total</th>
+							<th class="styTableCell" style="width:15mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;height:auto;" scope="col">Code</th>
+							<th class="styTableCell" style="width:26mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;height:auto;" scope="col">Description</th>
+							<th class="styTableCell" style="width:24mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;height:auto;" scope="col">Total</th>
+							<th class="styTableCell" style="width:8mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;height:auto;" scope="col">Code</th>
+							<th class="styTableCell" style="width:24mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;height:auto;" scope="col">Total</th>
 							<th class="styTableCell" style="width:8mm;text-align:center;font-size:7pt;border-right:none;border-color:black;border-bottom:none;" scope="col">Code</th>
 						  </tr>
 						  <tr>
-							<th class="styTableCell" style="width:15mm;text-align:center;font-size:7pt;font-weight:bold;border-color:black;" scope="col">(1)</th>
-							<th class="styTableCell" style="width:50mm;text-align:center;font-size:7pt;font-weight:bold;border-color:black;" scope="col">(2)</th>
-							<th class="styTableCell" style="width:15mm;text-align:center;font-size:7pt;font-weight:bold;border-color:black;" scope="col">(3)</th>
-							<th class="styTableCell" style="width:26mm;text-align:center;font-size:7pt;font-weight:bold;border-color:black;" scope="col">(4)</th>
-							<th class="styTableCell" style="width:15mm;text-align:center;font-size:7pt;font-weight:bold;border-color:black;" scope="col">(5)</th>
-							<th class="styTableCell" style="width:24mm;text-align:center;font-size:7pt;font-weight:bold;border-color:black;" scope="col">(6)</th>
+							<th class="styTableCell" style="width:15mm;text-align:center;font-size:7pt;font-weight:bold;border-color:black;height:auto;" scope="col">(1)</th>
+							<th class="styTableCell" style="width:50mm;text-align:center;font-size:7pt;font-weight:bold;border-color:black;height:auto;" scope="col">(2)</th>
+							<th class="styTableCell" style="width:15mm;text-align:center;font-size:7pt;font-weight:bold;border-color:black;height:auto;" scope="col">(3)</th>
+							<th class="styTableCell" style="width:26mm;text-align:center;font-size:7pt;font-weight:bold;border-color:black;height:auto;" scope="col">(4)</th>
+							<th class="styTableCell" style="width:15mm;text-align:center;font-size:7pt;font-weight:bold;border-color:black;height:auto;" scope="col">(5)</th>
+							<th class="styTableCell" style="width:24mm;text-align:center;font-size:7pt;font-weight:bold;border-color:blackheight:auto;" scope="col">(6)</th>
 							<th class="styTableCell" style="width:8mm;text-align:center;font-size:7pt;font-weight:bold;border-color:black;" scope="col">(7)</th>
 							<th class="styTableCell" style="width:24mm;text-align:center;font-size:7pt;font-weight:bold;border-color:black;" scope="col">(8)</th>
 							<th class="styTableCell" style="width:8mm;text-align:center;font-size:7pt;font-weight:bold;border-right:none;border-color:black;" scope="col">(9)</th>

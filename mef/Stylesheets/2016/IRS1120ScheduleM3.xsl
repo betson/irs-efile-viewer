@@ -2687,14 +2687,14 @@
 							<div class="styGenericDiv" style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(1)</div>
 							<input type="checkbox" alt="ConsolidatedGroupInd" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/IncomeLossItems   /ConsolidatedGroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItems/ConsolidatedGroupInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="id"><xsl:value-of select="concat($consolidatedGroup2BaseID, 'ConsolidatedGroupInd[2]')"/>
 								</xsl:attribute>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/IncomeLossItems/ConsolidatedGroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItems/ConsolidatedGroupInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="for"><xsl:value-of select="concat($consolidatedGroup2BaseID, 'ConsolidatedGroupInd[2]')"/>
 								</xsl:attribute>
@@ -2705,14 +2705,14 @@
 							<div class="styGenericDiv" style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(2)</div>
 							<input type="checkbox" alt="ParentCorporationInd" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/IncomeLossItems/ParentCorporationInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItems/ParentCorporationInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="id"><xsl:value-of select="concat($parentCorporation2BaseID, 'ParentCorporationInd[2]')"/>
 								</xsl:attribute>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/IncomeLossItems/ParentCorporationInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItems/ParentCorporationInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="for"><xsl:value-of select="concat($parentCorporation2BaseID, 'ParentCorporationInd[2]')"/>
 								</xsl:attribute>
@@ -2723,14 +2723,14 @@
 							<div class="styGenericDiv" style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(3)</div>
 							<input type="checkbox" alt="ConsolidatedEliminationsInd" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/IncomeLossItems/ConsolidatedEliminationsInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItems/ConsolidatedEliminationsInd"/>
 									</xsl:call-template>
 								<xsl:attribute name="id"><xsl:value-of select="concat($consolidatedEliminations2BaseID, 'ConsolidatedEliminationsInd[2]')"/>
 								</xsl:attribute>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/IncomeLossItems/ConsolidatedEliminationsInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItems/ConsolidatedEliminationsInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="for"><xsl:value-of select="concat($consolidatedEliminations2BaseID, 'ConsolidatedEliminationsInd[2]')"/>
 								</xsl:attribute>
@@ -2741,14 +2741,14 @@
 							<div class="styGenericDiv" style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(4)</div>
 							<input type="checkbox" alt="SubsidiaryCorporationInd" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/IncomeLossItems/SubsidiaryCorporationInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItems/SubsidiaryCorporationInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="id"><xsl:value-of select="concat($subsidiaryCorporation2BaseID, 'SubsidiaryCorporationInd[2]')"/>
 								</xsl:attribute>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/IncomeLossItems/SubsidiaryCorporationInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItems/SubsidiaryCorporationInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="for"><xsl:value-of select="concat($subsidiaryCorporation2BaseID, 'SubsidiaryCorporationInd[2]')"/>
 								</xsl:attribute>
@@ -2759,14 +2759,14 @@
 							<div class="styGenericDiv" style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(5)</div>
 							<input type="checkbox" alt="Mixed1120LPCGroupInd" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/IncomeLossItems/Mixed1120LPCGroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItems/Mixed1120LPCGroupInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="id"><xsl:value-of select="concat($mixed1120LPCGroup2BaseID, 'Mixed1120LPCGroupInd[2]')"/>
 								</xsl:attribute>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/IncomeLossItems/Mixed1120LPCGroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItems/Mixed1120LPCGroupInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="for"><xsl:value-of select="concat($mixed1120LPCGroup2BaseID, 'Mixed1120LPCGroupInd[2]')"/>
 								</xsl:attribute>								
@@ -2782,13 +2782,13 @@
 							<div class="styGenericDiv" style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(6)</div>
 							<input type="checkbox" alt="Is1120GroupInd" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/IncomeLossItems/Is1120GroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItems/Is1120GroupInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="id"><xsl:value-of select="concat($is1120Group2BaseID, 'Is1120GroupInd[2]')"/></xsl:attribute>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/IncomeLossItems/Is1120GroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItems/Is1120GroupInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="for"><xsl:value-of select="concat($is1120Group2BaseID, 'Is1120GroupInd[2]')"/></xsl:attribute>
 							</label>
@@ -2798,14 +2798,14 @@
 							<div class="styGenericDiv" style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(7)</div>
 							<input type="checkbox" alt="Is1120EliminationsInd" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/IncomeLossItems/Is1120EliminationsInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItems/Is1120EliminationsInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="id"><xsl:value-of select="concat($is1120Eliminations2BaseID, 'Is1120EliminationsInd[2]')"/>
 								</xsl:attribute>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/IncomeLossItems/Is1120EliminationsInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItems/Is1120EliminationsInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="for"><xsl:value-of select="concat($is1120Eliminations2BaseID, 'Is1120EliminationsInd[2]')"/>
 								</xsl:attribute>

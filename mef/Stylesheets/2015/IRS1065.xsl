@@ -143,7 +143,7 @@
 									</xsl:call-template>
 								</span>
 							</div>
-							<div class="styEINDateAssets" style="width:34mm;height:13mm;">
+							<div class="styEINDateAssets" style="width:34mm;height:17mm;">
 								<span class="styBoldText">B</span> Principal product or service
                 <br/>
 								<span class="styEINFld">
@@ -152,7 +152,7 @@
 									</xsl:call-template>
 								</span>
 							</div>
-							<div class="styEINDateAssets" style="width:34mm;height:8mm;border-bottom-width:1px;border-right-width:0px;">
+							<div class="styEINDateAssets" style="width:34mm;height:8.5mm;border-bottom-width:1px;border-right-width:0px;">
 								<span class="styBoldText">C</span> Business code number<br/>
 								<br/>
 								<span class="styEINFld">
@@ -164,7 +164,7 @@
 						</div>
 						<!-- return header address box -->
 						<div class="styLblNameAddr" style="width:118.5mm;height:auto;">
-							<div class="styUseLbl" style="width:15mm;height:28mm;border-right-width:0px;font-size:6pt;          padding-top:3mm">
+							<div class="styUseLbl" style="width:15mm;height:37mm;border-right-width:0px;font-size:6pt;          padding-top:3mm">
 							   <br/><br/><br/><span style="width:3.5mm"/>Type<br/><span style="width:5.5mm"/>or 
 							   <br/><span style="width:3.5mm"/>Print
                             </div>
@@ -195,7 +195,7 @@
 									</xsl:call-template>
 								</span>
 							</div>
-							<div class="styNameAddr" style="border-bottom-width:0px;width:89mm;height:9mm;border-left-width:1px;">City or town, state or 
+							<div class="styNameAddr" style="border-bottom-width:0px;width:89mm;height:13mm;border-left-width:1px;">City or town, state or 
 province, country, and ZIP or foreign postal code<br/><br/>
 								<span class="stySmallText" style="width:87mm;padding-left:2mm;">
 									<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -236,7 +236,7 @@ province, country, and ZIP or foreign postal code<br/><br/>
 								</span>
 							</span>
 						</div>
-						<div class="styEINDateAssets" style="width:34mm;height:13mm;
+						<div class="styEINDateAssets" style="width:34mm;height:17.5mm;
 						  border-bottom-width:1px;padding-left:.5mm">
 							<span class="styBoldText">F</span> Total assets (see the <br/>
 							  <span style="padding-left:2mm">instructions)</span>
@@ -338,7 +338,6 @@ province, country, and ZIP or foreign postal code<br/><br/>
 						</div>
 					</div>
 					<div class="styNBB" style="width:187mm;">
-						<div class="styBoldText" style="width:6mm;float:left;clear:none;padding-left:3mm;"/>
 						<div class="styGenericDiv" style="width:180mm;">
 							<span style="width:35mm;"/>
 							<span class="styBoldText">(6)</span>
@@ -1125,7 +1124,7 @@ province, country, and ZIP or foreign postal code<br/><br/>
 											<xsl:with-param name="TargetNode">CityStateInfo</xsl:with-param>
 										</xsl:call-template>
 										<xsl:if test="$RtnHdrData/PreparerFirmGrp/PreparerUSAddress/CountryCd">
-										   <br/><span style="width:19.2mm"/>
+										   <br/>
 										   <xsl:call-template name="PopulateReturnHeaderPreparerFirm">
 												<xsl:with-param name="TargetNode">CountryCd</xsl:with-param>
 										   </xsl:call-template>
@@ -1136,17 +1135,17 @@ province, country, and ZIP or foreign postal code<br/><br/>
 											<xsl:with-param name="TargetNode">AddressLine1Txt</xsl:with-param>
 										</xsl:call-template>
 										<xsl:if test="$RtnHdrData/PreparerFirmGrp/PreparerForeignAddress/AddressLine2Txt">
-											<br/><span style="width:19.2mm"/>
+											<br/>
 											<xsl:call-template name="PopulateReturnHeaderPreparerFirm">
 												<xsl:with-param name="TargetNode">AddressLine2Txt</xsl:with-param>
 											</xsl:call-template>
 										</xsl:if>
-										<br/><span style="width:19.2mm"/>
+										<br/>
 										<xsl:call-template name="PopulateReturnHeaderPreparerFirm">
 											<xsl:with-param name="TargetNode">CityStateInfo</xsl:with-param>
 										</xsl:call-template>
 										<xsl:if test="$RtnHdrData/PreparerFirmGrp/PreparerForeignAddress/CountryCd">
-											<br/><span style="width:19.2mm"/>
+											<br/>
 										    <xsl:call-template name="PopulateReturnHeaderPreparerFirm">
 												<xsl:with-param name="TargetNode">CountryCd</xsl:with-param>
 										    </xsl:call-template>
@@ -2824,10 +2823,12 @@ province, country, and ZIP or foreign postal code<br/><br/>
 									  </xsl:call-template>
 									  <!--<span style="width:8px;"/>-->
                                         Type <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
-									  <div style="width:60.7mm;padding-left:1mm;height:5mm;overflow:auto;">
-										<xsl:call-template name="PopulateText">
-										  <xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherIncomeLossAmt/@otherIncomeTyp"/>
-										</xsl:call-template>
+									  <div style="width:60.7mm;padding-left:1mm;height:5mm;padding-top:1.5mm;">
+											<xsl:call-template name="LinkToLeftoverDataTableInline">
+												<xsl:with-param name="Desc">
+													  Form 1065, Schedule K, Line 11 - Other income (loss) (see instructions)</xsl:with-param>
+												<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherIncomeLossAmt/@otherIncomeTyp"/>
+											</xsl:call-template>
 									  </div>
 								  </div>
 								  <div style="height:5.5mm;">
@@ -2846,7 +2847,7 @@ province, country, and ZIP or foreign postal code<br/><br/>
 								<!-- End Schedule K section "Income (Loss)", Line 1-11 -->
 								<!-- Schedule K, Line 12-13d Column Label -->
 								<div style="width:187mm;">
-									<div class="styIRS1065VTImageBox" style="width:11mm;height:23.2mm;padding-left:3mm;border-bottom:1px solid black;">
+									<div class="styIRS1065VTImageBox" style="width:11mm;height:23.7mm;padding-left:3mm;border-bottom:1px solid black;">
 										<img src="{$ImagePath}/1065_Deductions.gif" alt="VertDeductions" style="padding-top:3mm;"/>
 									</div>
 
@@ -2898,27 +2899,31 @@ province, country, and ZIP or foreign postal code<br/><br/>
 											</xsl:call-template>
 										</div>
 								<!-- Schedule K, Line 13c -->
-									<div class="styGenericDiv" style="width:131.9mm;height:5.5mm;padding-top:1mm;padding-bottom:.5mm;float:left;clear:none;">
-										<span class="styIRS1065LNLeftLtrBoxTD">c</span>
-										<span class="styIRS1065LNDesc" style="width:56mm;height:5.5mm;padding-top:1mm;">
-										  Section 59(e)(2) expenditures:<span style="width:2mm"/>
+										<div class="styIRS1065LNLeftLtrBoxTD" style="padding-top:3mm;">c</div>
+										<div class="styIRS1065LNDesc" style="width:124.5mm;padding-top:1mm;">
+										  Section 59(e)(2) expenditures:
 										  <span class="styBoldText">(1)</span>
+										<span style="padding-left:1mm;">
 										Type <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
 										</span>
-									    <div class="styIRS1065LNDesc" style="width:42.5mm;padding-left:.3mm;height:5mm;padding-top:.5mm;padding-bottom:.5mm;border-bottom:dashed 1px;overflow:auto;">
-										  <xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/Sect59e2ExpenditureDesc"/>
-										  </xsl:call-template>
-									  	</div>
-										<div style="width:25mm;text-align:left;height:5.5mm;padding-top:.5mm;padding-bottom:.5mm;float:right;clear:none">
+										<span style="width:1mm;"/>
+									    <div style="width:42mm;padding-left:.3mm;height:5mm;padding-top:1mm;border-bottom:dashed 1px;">
+											<xsl:call-template name="LinkToLeftoverDataTableInline">
+												<xsl:with-param name="Desc">
+												  Form 1065, Schedule K, Line 13c - Section 59(e)(2) expenditures</xsl:with-param>
+												<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/Sect59e2ExpenditureDesc"/>
+											</xsl:call-template>
+										</div>
+										<div style="width:25mm;text-align:left;height:5.5mm;padding-top:.5mm;padding-bottom:.5mm;float:right">
 										  <span class="styBoldText">(2)</span>
 									      Amount <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
 										  <xsl:call-template name="SetFormLinkInline">
 											<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/Section59e2ExpenditureAmt"/>
 										  </xsl:call-template>
 										</div>
-									</div>
-								  <div style="height:5.5mm;padding-left:2px;">
+										</div>
+
+								  <div style="height:6mm;">
 									<span class="styLNRightNumBox" style="width:11.5mm;height:100%">
 									  13c(2)<span style="vertical-align:baseline;height:100%;"/> 
 									</span>
@@ -2943,9 +2948,11 @@ province, country, and ZIP or foreign postal code<br/><br/>
 									<span style="width:6px;"/>
                                         Type <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
 
-									  <div style="width:64.5mm;padding-left:.3mm;overflow:auto;height:5mm;">
-										<xsl:call-template name="PopulateText">
-										  <xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherDeductionsAmt/@otherDeductionsDesc"/>
+									  <div style="width:64.5mm;padding-left:.3mm;height:5mm;padding-top:1.5mm;">
+										<xsl:call-template name="LinkToLeftoverDataTableInline">
+											<xsl:with-param name="Desc">
+												  Form 1065, Schedule K, Line 13d - Other deductions (see instructions)</xsl:with-param>
+											<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherDeductionsAmt/@otherDeductionsDesc"/>
 										</xsl:call-template>
 									  </div>
 									</div>
@@ -2964,9 +2971,10 @@ province, country, and ZIP or foreign postal code<br/><br/>
 								</div>
 								<!-- End Schedule K section "Other Deductions", line 11-13d -->
 								<!-- Schedule K, Line 14a-14c Column Label -->
-								<div style="width:187mm;height:auto;">
-									<div class="styIRS1065VTImageBox" style="width:11mm;height:12.7mm;border-bottom:1px solid black;padding-left:0mm;">
-										<img src="{$ImagePath}/1065_SelfEmp.gif" alt="VertSelfEmp" style="padding-top:1.5mm;"/>
+								<div style="width:187mm;">
+									<div class="styIRS1065VTImageBox" style="width:11mm;height:12.3mm;border-bottom:1px solid black;
+														padding-left:0mm;padding-top:1.5mm;">
+										<img src="{$ImagePath}/1065_SelfEmp.gif" alt="VertSelfEmp" style="height:10mm;"/>
 									</div>
 
 										<div class="styLNLeftNumBox">14a</div>
@@ -3003,16 +3011,16 @@ province, country, and ZIP or foreign postal code<br/><br/>
 											<span class="styIRS1065DotLn">......................</span>
 										</span>
 										</div>
-										<div class="styLNRightNumBox" style="width:11.5mm;height:4.5mm;padding-top:1mm;padding-bottom:0mm;border-bottom-width:0px;">14c</div>
-										<div class="styLNAmountBox" style="height:4.5mm;padding-top:1mm;padding-bottom:0mm;border-bottom-width:0px;">
+										<div class="styLNRightNumBox" style="width:11.5mm;border-bottom-width:0px;">14c</div>
+										<div class="styLNAmountBox" style="border-bottom-width:0px;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/GrossNonfarmIncomeAmt"/>
 											</xsl:call-template>
 										</div>
-										</div>
+									</div>
 								<!-- Begin Schedule K section "Credit and Credit Recapture", Line 15a-f -->
-									<div style="width:187mm;height:auto;">
-									<div class="styIRS1065VTImageBox" style="width:11mm;height:29.2mm;padding-left:1mm;border-bottom:1px solid black;">
+									<div style="width:187mm;">
+									<div class="styIRS1065VTImageBox" style="width:11mm;height:32.2mm;padding-left:1mm;border-bottom:1px solid black;">
 										<img src="{$ImagePath}/1065_Recapture.gif" alt="Credits and Credit Recapture" style="padding-top:0px;"/>
 									</div>
 								<!-- Schedule K, Line 15a -->
@@ -3062,7 +3070,7 @@ province, country, and ZIP or foreign postal code<br/><br/>
 											</xsl:call-template>
 										<!--<span style="width:11px;"/>-->
 										<span style="float:right;">
-											<span class="styIRS1065DotLn">..</span>
+											<span class="styIRS1065DotLn">.</span>
 										</span>
 										</div>
 										<div class="styLNRightNumBox" style="width:11.5mm;height:4.6mm;">15c</div>
@@ -3074,23 +3082,25 @@ province, country, and ZIP or foreign postal code<br/><br/>
 
 								<!-- Schedule K, Line 15d -->
 
-									<div class="styIRS1065LNLeftLtrBoxTD" style="padding-top:1mm;">d</div>
-									<div class="styIRS1065LNDesc" style="padding-top:1mm;width:65.2mm;">
+									<div class="styIRS1065LNLeftLtrBoxTD" style="padding-top:2.5mm;">d</div>
+									<div class="styIRS1065LNDesc" style="padding-top:1mm;width:124.5mm;">
 									  Other rental real estate credits (see instructions)
 									  <xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherRentalRealEstateAmt"/>
 									  </xsl:call-template>
-										</div>
 										<span style="width:6mm;"/>
 										<span style="padding-left:2mm;">
                                         Type <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
 										</span>
-										<div style="width:39.4mm;border-bottom:dashed 1px;padding-left:1mm;height:5mm;overflow:auto;">
-											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherRentalRealEstateAmt/@otherRentalRealEstateCrDesc"/>
-											</xsl:call-template>
+										<div style="width:39.4mm;border-bottom:dashed 1px;padding-left:1mm;padding-top:1mm;">
+										<xsl:call-template name="LinkToLeftoverDataTableInline">
+											<xsl:with-param name="Desc">
+											  Form 1065, Schedule K, Line 15d - Other rental real estate credits (see instructions)</xsl:with-param>
+											<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherRentalRealEstateAmt/@otherRentalRealEstateCrDesc"/>
+										</xsl:call-template>
 									</div>
-								  <div style="height:5mm;">
+									</div>	
+									 <div style="height:6mm;">
 									<div class="styLNRightNumBox" style="width:11.5mm;height:100%;">15d
 										<div style="vertical-align:baseline;height:100%;"/>
 									</div>
@@ -3104,22 +3114,24 @@ province, country, and ZIP or foreign postal code<br/><br/>
 
 								<!-- Schedule K, Line 15e -->
 
-									<div class="styIRS1065LNLeftLtrBoxTD" style="padding-top:1mm;">e</div>
-									<div class="styIRS1065LNDesc" style="padding-top:1mm;width:51.2mm;">Other rental credits (see instructions)
+									<div class="styIRS1065LNLeftLtrBoxTD" style="padding-top:2.5mm;">e</div>
+									<div class="styIRS1065LNDesc" style="padding-top:1mm;width:124.5mm;">Other rental credits (see instructions)
 									  <xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherRentalCreditsAmt"/>
 									  </xsl:call-template>
-									</div>
 									<span style="width:20mm;"/>
 									  <span style="padding-left:2mm;">
                                         Type <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
 									  </span>
-									  <div style="width:39.4mm;border-bottom:dashed 1px;padding-left:1mm;height:5mm;overflow:auto;">
-									    <xsl:call-template name="PopulateText">
-										  <xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherRentalCreditsAmt/@otherRentalCreditDesc"/>
-									    </xsl:call-template>
+									  <div style="width:39.4mm;border-bottom:dashed 1px;padding-left:1mm;padding-top:1mm;">
+										<xsl:call-template name="LinkToLeftoverDataTableInline">
+											<xsl:with-param name="Desc">
+											  Form 1065, Schedule K, Line 15e - Other rental credits (see instructions)</xsl:with-param>
+											<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherRentalCreditsAmt/@otherRentalCreditDesc"/>
+										</xsl:call-template>
 									  </div>
-								  <div style="height:5mm">
+									</div>
+									<div style="height:6mm">
 									<div class="styLNRightNumBox" style="width:11.5mm;height:100%;">
 									  15e<div style="vertical-align:baseline;height:100%;"/>
 									</div>
@@ -3134,22 +3146,24 @@ province, country, and ZIP or foreign postal code<br/><br/>
 								<!-- Schedule K, Line 15f -->
 
 								  <div style="border-bottom:1px solid black;">
-									<div class="styIRS1065LNLeftLtrBoxTD" style="height:5mm;padding-top:1mm;">f</div>
-									<div class="styIRS1065LNDesc" style="padding-bottom:0mm;padding-top:1mm;height:5mm;width:43.2mm;">Other credits (see instructions)
+									<div class="styIRS1065LNLeftLtrBoxTD" style="padding-top:2.5mm;">f</div>
+									<div class="styIRS1065LNDesc" style="padding-bottom:0mm;padding-top:1.5mm;width:124.5mm;">Other credits (see instructions)
 									  <xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherCreditsAmt "/>
 									  </xsl:call-template>
-									</div>
 									<span style="width:28mm;"/>
-									  <span style="padding-left:2mm;padding-bottom:3px;">
+									  <span style="padding-left:2mm;">
                                         Type <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
 									  </span>
-									  <div style="width:39.4mm;padding-left:1mm;border-bottom:1 solid black;padding-bottom:2px;height:5mm;overflow:auto;">
-									    <xsl:call-template name="PopulateText">
-										  <xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherCreditsAmt/@otherCreditsTotalDesc "/>
+									  <div style="width:39.4mm;padding-left:1mm;border-bottom:1 solid black;padding-top:1mm;">
+										<xsl:call-template name="LinkToLeftoverDataTableInline">
+											<xsl:with-param name="Desc">
+											  Form 1065, Schedule K, Line 15f - Other credits (see instructions)</xsl:with-param>
+										  <xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherCreditsAmt/@otherCreditsTotalDesc"/>
 									    </xsl:call-template>
 									  </div>
-								  <div style="height:5mm;">
+									</div>
+									<div style="height:6mm;">
 								    <div class="styLNRightNumBoxNBB" style="width:11.5mm;height:100%;">
 								      15f<div style="vertical-align:baseline;height:100%;"/>
 								    </div>
@@ -3176,8 +3190,8 @@ province, country, and ZIP or foreign postal code<br/><br/>
 									</xsl:otherwise>
 								</xsl:choose>
 								<!-- Begin Schedule K section "Alternative Minimum Tax (AMT) Items", Line 17a-f -->
-								<div style="width:187mm;height:auto;">
-									<div class="styIRS1065VTImageBox" style="width:11mm;height:27.2mm;padding-top:5mm;border-bottom:1px solid black;">
+								<div style="width:187mm;">
+									<div class="styIRS1065VTImageBox" style="width:11mm;height:27.3mm;padding-top:5mm;border-bottom:1px solid black;">
 										<img src="{$ImagePath}/1065_Items.gif" alt="Alternative Minimum Tax AMT Items"/>
 									</div>
 
@@ -3289,8 +3303,8 @@ province, country, and ZIP or foreign postal code<br/><br/>
 								<!-- End Schedule K section "Alternative Minimum Tax (AMT) Items", Line 17a-f -->
 								<!-- Begin Schedule K section "Other Information", Line 18a-20c -->
 
-									<div class="styIRS1065VTImageBox" style="width:11mm;height:36mm;padding-left:3mm;">
-										<img src="{$ImagePath}/1065_Information.gif" alt="Other information" style="padding-top:3mm;"/>
+									<div class="styIRS1065VTImageBox" style="width:11mm;height:35.5mm;padding-left:3mm;padding-top:2mm;">
+										<img src="{$ImagePath}/1065_Information.gif" alt="Other information"/>
 									</div>
 
 								<!-- Schedule K, Line 18a -->
@@ -3407,16 +3421,17 @@ province, country, and ZIP or foreign postal code<br/><br/>
 								<!-- Schedule K, Line 20c -->
 
 										<div class="styIRS1065LNLeftLtrBoxTD">c</div>
-										<div class="styIRS1065LNDesc" style="width:124.5mm;">Other items and amounts (attach statement)
+										<div class="styIRS1065LNDesc" style="width:124.5mm;height:4mm;">Other items and amounts (attach statement)
 
-										<span style="float:right;">
-											<span class="styIRS1065DotLn">................</span>
-										</span>
+											<span class="styIRS1065DotLn"  style="float:right;clear: none;" >................</span>
+
 									</div>
-										<div class="styLNRightNumBoxNBB" style="width:11.5mm;height:4.5mm;border-bottom-width: 0px;background-color:lightgrey"/>
-										<div class="styLNAmountBoxNBB" style="height:4.5mm;border-bottom-width: 0px;background-color:lightgrey">
-											<!-- No element in the schema correspond to this line -->
-										</div>
+									<div style="width:43.5mm;">
+										<div class="styLNRightNumBoxNBB" style="width:11.5mm;height:4mm;border-bottom-width: 0px;background-color:lightgrey;"/>
+										<div class="styLNAmountBoxNBB" style="height:4mm;border-bottom-width: 0px;background-color:lightgrey"/>
+										
+									</div>		<!-- No element in the schema correspond to this line -->
+
 
 
 								<!-- End Schedule K section "Foreign Transactions", Line 18a-20c -->
@@ -3439,6 +3454,7 @@ province, country, and ZIP or foreign postal code<br/><br/>
 						</div>
 					</div>
 					<!-- END Page Header -->
+				<div style="width:187mm;">
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartDesc" style="width:187mm;padding-left:0mm;">Analysis of Net Income (Loss)
 						</div>
@@ -4352,13 +4368,15 @@ province, country, and ZIP or foreign postal code<br/><br/>
 						</div>
 					</div>
 					<!-- END Schedule L Line Items -->
+				</div>
 					<br style="page-break-after:always;"/>
 					<!-- BEGIN Schedule M-1 Title -->
-					<div class="styBB" style="width:187mm;height:8mm;">
+				<div style="width:187mm;">
+					<div class="styBB" style="width:187mm;height:10mm;">
 						<div class="styPartName" style="width:28mm;">Schedule M-1</div>
 						<div class="styPartDesc" style="width:158mm;">
 						  Reconciliation of Income (Loss) per Books With Income (Loss) per Return
-							<br/>Note. <span style="font-weight:normal">
+							Note. <br/><span style="font-weight:normal">
 							 The partnership may be required to file Schedule M-3  (see instructions).</span>
 						</div>
 					</div>
@@ -4790,6 +4808,7 @@ province, country, and ZIP or foreign postal code<br/><br/>
 						<!-- END Right Side Table of Schedule M-2-->
 					</div>
 					<!-- END Schedule M-2 Line Items -->
+				</div>
 					<!--div class="styBB" style="width:187mm;">
 					</div-->
 					<!-- Page Break and Footer-->
@@ -4975,20 +4994,42 @@ province, country, and ZIP or foreign postal code<br/><br/>
 						   <xsl:with-param name="TargetNode" select="$Form1065ScheduleB/ReceivedDistributionFrgnTrInd/@form3520Cd"/>
 						   <xsl:with-param name="DescWidth" select="130"/>
 						</xsl:call-template>
-						<!--<xsl:call-template name="PopulateLeftoverRow">
-                           <xsl:with-param name="Desc">Form 1065, Schedule B, Line 12a - Section 754 Election
-                           </xsl:with-param>
-                           <xsl:with-param name="TargetNode"    
-                             select="$Form1065ScheduleB/Section754ElectionMade/@referenceDocumentId"/>
-                           <xsl:with-param name="DescWidth" select="100"/>
-                        </xsl:call-template>
-                        <xsl:call-template name="PopulateLeftoverRow">
-                           <xsl:with-param name="Desc">Form 1065, Schedule B, Line 15 - Number of Forms 8858
-                           </xsl:with-param>
-                           <xsl:with-param name="TargetNode"
-                             select="$Form1065ScheduleB/NumberOfF8858/@referenceDocumentId"/>
-                           <xsl:with-param name="DescWidth" select="101"/>
-                        </xsl:call-template>-->
+						<xsl:call-template name="PopulateLeftoverRowAmount">
+						   <xsl:with-param name="Desc">Form 1065, Schedule K, Line 11 - Other income (loss) (see instructions)
+						   </xsl:with-param>
+						   <xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherIncomeLossAmt/@otherIncomeTyp"/>
+						   <xsl:with-param name="DescWidth" select="130"/>
+						</xsl:call-template>
+						<xsl:call-template name="PopulateLeftoverRowAmount">
+						   <xsl:with-param name="Desc">Form 1065, Schedule K, Line 13c - Section 59(e)(2) expenditures
+						   </xsl:with-param>
+						   <xsl:with-param name="TargetNode" select="$Form1065ScheduleK/Sect59e2ExpenditureDesc"/>
+						   <xsl:with-param name="DescWidth" select="130"/>
+						</xsl:call-template>
+						<xsl:call-template name="PopulateLeftoverRowAmount">
+							<xsl:with-param name="Desc">Form 1065, Schedule K, Line 13d - Other deductions (see instructions)
+						   </xsl:with-param>
+							<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherDeductionsAmt/@otherDeductionsDesc"/>
+							<xsl:with-param name="DescWidth" select="130"/>
+						</xsl:call-template>
+						<xsl:call-template name="PopulateLeftoverRowAmount">
+						   <xsl:with-param name="Desc">Form 1065, Schedule K, Line 15d - Other rental real estate credits (see instructions)
+						   </xsl:with-param>
+						   <xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherRentalRealEstateAmt/@otherRentalRealEstateCrDesc"/>
+						   <xsl:with-param name="DescWidth" select="130"/>
+						</xsl:call-template>
+						<xsl:call-template name="PopulateLeftoverRowAmount">
+						   <xsl:with-param name="Desc">Form 1065, Schedule K, Line 15e - Other rental credits (see instructions)
+						   </xsl:with-param>
+						   <xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherRentalCreditsAmt/@otherRentalCreditDesc"/>
+						   <xsl:with-param name="DescWidth" select="130"/>
+						</xsl:call-template>
+						<xsl:call-template name="PopulateLeftoverRowAmount">
+						   <xsl:with-param name="Desc">Form 1065, Schedule K, Line 15f - Other credits (see instructions)
+						   </xsl:with-param>
+						   <xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OtherCreditsAmt/@otherCreditsTotalDesc"/>
+						   <xsl:with-param name="DescWidth" select="130"/>
+						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRowAmount">
 						   <xsl:with-param name="Desc">Form 1065, Schedule K, Line 17b - Adjusted gain or loss
 						   </xsl:with-param>
@@ -5392,9 +5433,9 @@ province, country, and ZIP or foreign postal code<br/><br/>
 	</xsl:template>
 	<!-- Begin Foreign Transaction Schedule K -->
 	<xsl:template name="FrnTran">
-		<div style="width:187mm;height:auto;">
-			<div class="styIRS1065VTImageBox" style="width:11mm;height:61.4mm;border-bottom:1px solid black;padding-left:3mm;">
-				<img src="{$ImagePath}/1065_Transactions.gif" alt="Foreign Transactions" style="padding-top:12mm;"/>
+		<div style="width:187mm;">
+			<div class="styIRS1065VTImageBox" style="width:11mm;height:58.8mm;border-bottom:1px solid black;padding-left:3mm;padding-top:11mm;">
+				<img src="{$ImagePath}/1065_Transactions.gif" alt="Foreign Transactions"/>
 			</div>
 		<!-- Schedule K, Line 16a -->
 				<div class="styLNLeftNumBox" style="padding-top:1mm;height:4mm;">16a
@@ -5418,7 +5459,7 @@ province, country, and ZIP or foreign postal code<br/><br/>
 					<span style="width:10px;"/>
 					<img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
 					<span style="width:4px;"/>
-					<div style="width:69.5mm;height:4mm;border-bottom:dashed 1px;">
+					<div style="width:65mm;height:4mm;border-bottom:dashed 1px;">
 						<xsl:if test="ForeignCountryOrUSPossessionCd">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="ForeignCountryOrUSPossessionCd"/>
@@ -5486,46 +5527,48 @@ province, country, and ZIP or foreign postal code<br/><br/>
 
 		<!-- Schedule K, Line 16d,e,f -->
 
-				<div class="styIRS1065LNLeftLtrBoxTD" style="height:4mm;padding-top:1mm">d</div>
-				<div class="styIRS1065LNDesc" style="height:4mm;width:124.5mm;">Passive category
+			<div style="height:5mm;width:55mm;float:left; clear: none;padding-top:1mm;">	
+				<div class="styIRS1065LNLeftLtrBoxTD" style="height:5mm;padding-top:1mm;">d</div>
+				<div class="styIRS1065LNDesc" style="height:5mm;width:25mm;">Passive category
                           <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
-					<div style="width:22mm;font-family:arial; font-size:7pt; text-align:right; border-bottom:dashed 1px;height:4mm;padding-top:1mm;">
+					</div>          
+					<div style="height:4mm;width:22mm;font-family:arial; font-size:7pt; text-align:right; border-bottom:dashed 1px;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="FrgnGroIncmPrtshpLvlPssvAmt"/>
 						</xsl:call-template>
 					</div>
-
-						<div style="font-size:7pt;font-weight:bold; padding-left:3mm; height:4mm; padding-top:1.2mm;">e
-					<span style="width=1mm;"/></div>
-					<div style="font-size:7pt; height:4mm; vertical-align:bottom;">General category
+			</div>
+			<div style="height:5mm;width:54mm;float:left; clear: none;">
+					<div style="height:5mm;float:left; clear: none;width:6mm;font-size:7pt;font-weight:bold; padding-left:3mm;padding-top:1mm;">e</div>
+					<div class="styIRS1065LNDesc" style="height:5mm;width:25mm;font-size:7pt;vertical-align:bottom;padding-top:1mm;">General category
                           <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
-					<div style="width:22mm;font-family:arial; font-size:7pt; text-align:right; border-bottom:dashed 1px;height:4mm;padding-top:1mm;">
+                    </div>
+					<div style="height:4mm;width:22mm;font-family:arial; font-size:7pt; text-align:right; border-bottom:dashed 1px;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="FrgnGroIncmPrtshpLvlGenAmt"/>
 						</xsl:call-template>
 					</div>
-
-				<div style="font-size:7pt; font-weight:bold; padding-left:3mm; height:4mm; padding-top:1.2mm;">f
-				<span style="width:1mm;"/></div>
-				<div style="font-size:7pt; height:4mm; vertical-align:bottom;padding-top:1.2mm;">Other 
+			</div>
+			<div style="height:5mm;width:23mm;float:left; clear: none;">
+				<div style="height:5mm;float:left; clear: none;width:6mm;font-size:7pt; font-weight:bold; padding-left:3mm;padding-top:1mm;">f</div>
+				<div class="styIRS1065LNDesc" style="height:5mm;width:12mm;font-size:7pt;vertical-align:bottom;padding-top:1mm;">Other 
+					<img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
+				</div>
+				<div style="height:5mm;width:5mm;"> 
                     <xsl:call-template name="SetFormLinkInline">
 						<xsl:with-param name="TargetNode" select="FrgnGroIncmPrtshpLvlOtherAmt"/>
 					</xsl:call-template>
-					<span style="width:1mm;"/>
-					<img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
+
 				</div>
-				<div style="font-size:7pt; font-weight:bold; padding-left:5.7mm; height:4mm; padding-top:1.2mm;">
-					<span style="1mm"/></div>
-					
-					</div>
-					</div>
-				<div class="styLNRightNumBox" style="width:11.5mm;height:5.5mm;padding-top:1mm;">16f</div>
-				<div class="styLNAmountBox" style="height:5.5mm;padding-top:1mm;">
+			</div>
+			<div style="height:5mm;width:43.5mm;float:right; clear: none;">		
+				<div class="styLNRightNumBox" style="height:5mm;width:11.5mm;padding-top:1mm;">16f</div>
+				<div class="styLNAmountBox" style="height:5mm;padding-top:1mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="FrgnGroIncmPrtshpLvlOtherAmt"/>
 					</xsl:call-template>
 				</div>
-
+			</div>
 		<!-- Schedule K - Line 16d expla -->
 
 				<div class="styIRS1065LNLeftLtrBoxTD" style="height:4mm;"/>
@@ -5539,26 +5582,26 @@ province, country, and ZIP or foreign postal code<br/><br/>
 
 		<!-- Schedule K, Line 16g and 16h-->
 
-				<div class="styIRS1065LNLeftLtrBoxTD" style="height:4mm; padding-top:1.3mm;">g</div>
-				<div class="styIRS1065LNDesc" style="height:4mm;width:124.5mm;">Interest expense
+				<div class="styIRS1065LNLeftLtrBoxTD" style="height:4mm; padding-top:1.5mm;">g</div>
+				<div class="styIRS1065LNDesc" style="width:124.5mm;">Interest expense
                           <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
-					<div style="width:32mm;text-align:right; border-bottom:dashed 1px; height:4mm;">
+					<div style="width:32mm;text-align:right; border-bottom:dashed 1px;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="DedAllocApprtnPrtnrLvlIntAmt"/>
 						</xsl:call-template>
 					</div>
 					<div style="width:2mm;"/>
-					<div style="font-weight:bold;height:4mm;padding-left:1.5mm;padding-top:1.2mm">h</div>
+					<div style="font-weight:bold;padding-left:1.5mm;padding-top:1.2mm">h</div>
                     Other
 
 				<div style="float:right;padding-top:1.5mm;padding-left:2.8mm">
-					<span class="styIRS1065DotLn">...........</span>
+					<span class="styIRS1065DotLn">..........</span>
 					<img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
 					<span style="width:2mm;"/>
 				</div>
                 </div>
-				<div class="styLNRightNumBox" style="width:11.5mm;height:5.6mm;">16h</div>
-				<div class="styLNAmountBox" style="height:5.6mm;">
+				<div class="styLNRightNumBox" style="width:11.5mm;height:5.5mm;padding-top:2mm;">16h</div>
+				<div class="styLNAmountBox" style="height:5.5mm;padding-top:2mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="DedAllocApprtnPrtnrLvlOthAmt"/>
 					</xsl:call-template>
@@ -5576,47 +5619,51 @@ province, country, and ZIP or foreign postal code<br/><br/>
 
 		<!-- Schedule K, Line 16i,16j,16k -->
 
-				<div class="styIRS1065LNLeftLtrBoxTD" style="height:4mm;padding-top:1.2mm">i</div>
-				<div class="styIRS1065LNDesc" style="height:4mm;padding-top:1mm;width:124.5mm;">Passive category
+			<div style="height:5mm;width:55mm;float:left; clear: none;padding-top:1mm;">	
+				<div class="styIRS1065LNLeftLtrBoxTD" style="height:5mm;padding-top:1mm;">i</div>
+				<div class="styIRS1065LNDesc" style="height:5mm;width:25mm;">Passive category
                           <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
-					<div style="width:22mm; font-family:arial ;font-size:7pt; text-align:right; border-bottom:dashed 1px;height:4mm;padding-top:1mm;">
+                </div>
+					<div style="height:4mm;width:22mm;font-family:arial; font-size:7pt; text-align:right; border-bottom:dashed 1px;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="DedAllocApprtnPrtshpLvlPssvAmt"/>
 						</xsl:call-template>
 					</div>
-				<div style="font-size:7pt;font-weight:bold; padding-left:3mm; height:4mm; padding-top:1.2mm;">j
-				<span style="width=1mm;"/></div>
-				<div style="font-size:7pt; height:4mm; vertical-align:bottom;">General category
+			</div>
+			<div style="height:5mm;width:54mm;float:left; clear: none;">
+				<div style="height:5mm;float:left; clear: none;width:6mm;font-size:7pt;font-weight:bold; padding-left:3mm;padding-top:1mm;">j</div>
+				<div class="styIRS1065LNDesc" style="height:5mm;width:25mm;font-size:7pt;vertical-align:bottom;padding-top:1mm;">General category
                           <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
-					<div style="width:22mm;font-family:arial; font-size:7pt; text-align:right; border-bottom:dashed 1px;height:4mm;padding-top:1mm;">
+                </div>
+					<div style="height:4mm;width:22mm;font-family:arial; font-size:7pt; text-align:right; border-bottom:dashed 1px;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="DedAllocApprtnPrtshpLvlGenAmt"/>
 						</xsl:call-template>
 					</div>
-				<div style="font-size:7pt; font-weight:bold; padding-left:3mm; height:4mm; padding-top:1.2mm;">k
-				<span style="width:1mm;"/></div>
-				<div style="font-size:7pt; height:4mm; vertical-align:bottom;padding-top:1.2mm;">Other
+				</div>
+				<div style="height:5mm;width:23mm;float:left; clear: none;">
+				<div style="height:5mm;float:left; clear: none;width:6mm;font-size:7pt; font-weight:bold; padding-left:3mm;padding-top:1mm;">k</div>
+				<div class="styIRS1065LNDesc" style="height:5mm;width:12mm;font-size:7pt;vertical-align:bottom;padding-top:1mm;">Other 
+					<img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
+				</div>
+				<div style="height:5mm;width:5mm;">
                     <xsl:call-template name="SetFormLinkInline">
 						<xsl:with-param name="TargetNode" select="DedAllocApprtnPrtshpLvlOthAmt"/>
 					</xsl:call-template>
-					<span style="width:1mm;"/>
-					<img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
+					</div>
 				</div>
-					<div style="font-size:7pt; font-weight:bold; padding-left:5.8mm; height:4mm; padding-top:1.2mm;">
-						<span style="1mm"/></div>
-				</div>
-				</div>
-								<div class="styLNRightNumBox" style="width:11.5mm;height:5.5mm;">16k</div>
-				<div class="styLNAmountBox" style="height:5.5mm;">
+				<div style="height:5mm;width:43.5mm;float:right; clear: none;">		
+				<div class="styLNRightNumBox" style="height:5mm;width:11.5mm;padding-top:1mm;">16k</div>
+				<div class="styLNAmountBox" style="height:5mm;padding-top:1mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="DedAllocApprtnPrtshpLvlOthAmt"/>
 					</xsl:call-template>
 				</div>
-
+			</div>
 		<!-- Schedule K, Line 16l -->
 
-				<div class="styIRS1065LNLeftLtrBoxTD" style="height:4mm;padding-top:2.8mm;">l</div>
-				<div class="styIRS1065LNDesc" style="height:4mm;width:124.5mm;">Total foreign taxes (check one): 
+				<div class="styIRS1065LNLeftLtrBoxTD" style="padding-top:2.5mm;">l</div>
+				<div class="styIRS1065LNDesc" style="width:124.5mm;">Total foreign taxes (check one): 
                           <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
 					<xsl:call-template name="SetFormLinkInline">
 						<xsl:with-param name="TargetNode" select="TotalForeignTaxesAmt"/>
@@ -5628,7 +5675,7 @@ province, country, and ZIP or foreign postal code<br/><br/>
 							<xsl:with-param name="BackupName">IRS1065ScheduleKTotalForeignTaxesPaid
                                          </xsl:with-param>
 						</xsl:call-template>
-						<div style="padding-top:1mm;padding-bottom:0mm;height:4mm;"> Paid</div>
+						<div style="padding-top:1mm;padding-bottom:0mm;"> Paid</div>
 					</label>
 					<span style="width:1mm"/>
 					<input type="checkbox" class="styCkbox">
@@ -5645,7 +5692,7 @@ province, country, and ZIP or foreign postal code<br/><br/>
 							<xsl:with-param name="BackupName">IRS1065ScheduleKTotalForeignTaxesAccrued
 							</xsl:with-param>
 						</xsl:call-template>
-						<span style="padding-top:2mm;padding-bottom:0mm;height:4mm;">Accrued</span>
+						<span style="padding-top:2mm;padding-bottom:0mm;">Accrued</span>
 					</label>
 					<span style="width:1mm"/>
 					<input type="checkbox" class="styCkbox">
@@ -5656,10 +5703,10 @@ province, country, and ZIP or foreign postal code<br/><br/>
 						</xsl:call-template>
 					</input>
 				<span style="width:13px;"/>
-				<span class="styIRS1065DotLn" style="float:right;padding-top:3mm;">.........</span>
+				<span class="styIRS1065DotLn" style="float:right;padding-top:2mm;">.........</span>
 				</div>
-				<div class="styLNRightNumBox" style="width:11.5mm; height:7mm; padding-top:2mm;">16l</div>
-				<div class="styLNAmountBox" style="height:7mm;padding-top:2mm">
+				<div class="styLNRightNumBox" style="width:11.5mm; height:5.5mm; padding-top:2mm;">16l</div>
+				<div class="styLNAmountBox" style="height:5.5mm;padding-top:2mm">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="TotalForeignTaxesAmt"/>
 					</xsl:call-template>
@@ -5667,18 +5714,18 @@ province, country, and ZIP or foreign postal code<br/><br/>
 
 		<!-- Schedule K, Line 16m -->
 
-				<div class="styIRS1065LNLeftLtrBoxTD" style="height:4mm;">m</div>
-				<div class="styIRS1065LNDesc" style="height:4mm;width:124.5mm;">
+				<div class="styIRS1065LNLeftLtrBoxTD" style="padding-top:1.5mm;">m</div>
+				<div class="styIRS1065LNDesc" style="width:124.5mm;padding-top:1mm;">
 				  Reduction in taxes available for credit (attach statement)
 					<xsl:call-template name="SetFormLinkInline">
 						<xsl:with-param name="TargetNode" select="ReductionInTaxesAvlblForCrAmt"/>
 					</xsl:call-template>
-				<span style="float:right;">
+				<span style="float:right;padding-top:1mm;">
 					<span class="styIRS1065DotLn">...........</span>
 				</span>
 				</div>
-				<div class="styLNRightNumBox" style="width:11.5mm;height:5mm;">16m</div>
-				<div class="styLNAmountBox" style="height:5mm;">
+				<div class="styLNRightNumBox" style="width:11.5mm;height:5.5mm;padding-top:2mm;">16m</div>
+				<div class="styLNAmountBox" style="height:5.5mm;padding-top:2mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="ReductionInTaxesAvlblForCrAmt"/>
 					</xsl:call-template>
@@ -5693,8 +5740,8 @@ province, country, and ZIP or foreign postal code<br/><br/>
 					<span class="styIRS1065DotLn">...............</span>
 				</span>
 				</div>
-				<div class="styLNRightNumBoxNBB" style="width:11.5mm;height:4.5mm;background-color:lightgrey;"/>
-				<div class="styLNAmountBoxNBB" style="height:4.5mm;background-color:lightgrey;">
+				<div class="styLNRightNumBoxNBB" style="width:11.5mm;height:4mm;background-color:lightgrey;"/>
+				<div class="styLNAmountBoxNBB" style="height:4mm;background-color:lightgrey;">
 					<span style="width:2mm;"/>
 				</div>
 			</div>

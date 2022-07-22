@@ -42,7 +42,7 @@
 					<xsl:call-template name="DocumentHeader"/>
 					<div class="styTBB" style="width:187mm;">
 						<div class="styFNBox" style="width:31mm;border-right-width:2px;">
-							<div style="height:20mm">
+							<div style="height:18mm">
 								<span class="styIRS5471ScheduleOScheduleFN">Schedule O<br/>(Form 5471)</span>
 								<span style="width:2px;"/>
 								<br/>
@@ -59,94 +59,43 @@
 							</div>
 						</div>
 						<div class="styFTBox" style="width:125mm;">
-							<div class="styMainTitle" style="height:18mm;">
-								Organization or Reorganization of Foreign <br/>Corporation, and Acquisitions
-								and <br/>Dispositions of its Stock
+							<div class="styMainTitle" style="height:16mm;">
+								Organization or Reorganization of Foreign <br/>Corporation, and Acquisitions	and <br/>Dispositions of its Stock
 							</div>
 							<div class="styFBT" style="height:5mm;font-size:6pt;padding-top:2mm;">
 								Information about Schedule O (Form 5471) and its instructions is at 
-								<a href="http://www.irs.gov/form5471" title="Link to irs.gov">	<i>www.irs.gov/form5471 </i>	</a>
+								<a style="text-decoration:none;color:black;" href="http://www.irs.gov/form5471" title="Link to irs.gov">	<i>www.irs.gov/form5471 </i>	</a>
 								<span style="width:80mm;">
 									<img src="{$ImagePath}/5471_Bullet_Title.gif" alt="bullet"/>
 									Attach to Form 5471.
 								</span>
 							</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;border-bottom-width:0px;border-left-width:2px;">
-							<div class="styOMB" style="height:28mm; border-bottom: 0px;padding-top:12mm;">OMB No. 1545-0704</div>
+						<div class="styTYBox" style="width:30mm;height:26mm;border-bottom-width:0px;border-left-width:2px;">
+							<div class="styOMB" style="border-bottom: 0px;padding-top:12mm;">OMB No. 1545-0704</div>
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:142mm;height:11mm;font-size:7pt;">
-							Name of person filing Form 5471<br/>
-							<span style="padding-top:1mm;">
-							<!-- Start choise of name from header or data elements for shared file/1040/1120  -->
-								<xsl:if test="$Form5471ScheduleO/PersonNm!=''">
-									<br/>
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/PersonNm"/>
-									</xsl:call-template>
-								</xsl:if>
-								<xsl:if test="$Form5471ScheduleO/BusinessName/BusinessNameLine1Txt!=''">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/BusinessName/BusinessNameLine1Txt"/>
-									</xsl:call-template>
-									<br/>
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/BusinessName/BusinessNameLine2Txt"/>
-									</xsl:call-template>
-								</xsl:if>
-								<xsl:if test="$Form5471ScheduleO/PersonNm=''">
-									<xsl:choose>
-											<!-- Name from 1040 Return Header -->
-											<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
-											<br/>
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">Name</xsl:with-param>
-											</xsl:call-template>
-										</xsl:when>
-										<xsl:otherwise>
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-											</xsl:call-template>
-											<br/>
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-											</xsl:call-template>
-										</xsl:otherwise>
-									</xsl:choose>
-								</xsl:if>
-								<xsl:if test="$Form5471ScheduleO/BusinessName=''">
-									<xsl:choose>
-										  <!-- Name from 1120/990/1065 Return Header -->
-											<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-											</xsl:call-template>
-											<br/>
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-											</xsl:call-template>
-										</xsl:when>
-										<xsl:otherwise>
-											<br/>
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">Name</xsl:with-param>
-											</xsl:call-template>
-										</xsl:otherwise>
-									</xsl:choose>
-								</xsl:if>
-							</span>
+						<div class="styNameBox" style="width:142mm;height:8mm;">
+							Name of person filing Form 5471
+							<br/>
+							<!-- Template below address a choice of input data and Return Header data for 1120, 1065, 99X, 1040 and 1041-->
+							<xsl:call-template name="PopulateFilerName">
+								<xsl:with-param name="TargetNode" select="$Form5471ScheduleO"/>
+							</xsl:call-template>
 						</div>
-						<!--  End choise of name from header or data elements for shared file 1040/1120  -->
 						<!-- EIN LIne choice from input and Return header 1120 or 1040   -->
-						<div class="styINBox" style="float:left;clear:none;padding-left:1mm;width:43mm;height:11mm;">
-							<span class="styBoldText">Identifying number<br/>
-							</span>
+						<div class="styEINBox" style="padding-left:1mm;width:43mm;height:8mm;">
+							<span class="styBoldText">Identifying number<br/></span>
 							<br/>
 							<br/>
-							<span style="font-weight: normal;padding-top:1mm;">
-								<xsl:choose>
+							<span style="font-weight:normal;">
+							<!-- Template below address a choice of input data and Return Header data for 1120, 1065, 99X, 1040 and 1041-->
+								<!--<xsl:call-template name="PopulateFilerTIN">
+								  <xsl:with-param name="TargetNode" select="$Form5471ScheduleO"/>
+								</xsl:call-template>-->
+								 <xsl:choose>
+								<!-- TIN from Form level -->
 									<xsl:when test="$Form5471ScheduleO/FilerSSN != '' ">
 										<xsl:call-template name="PopulateSSN">
 											<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/FilerSSN"/>
@@ -162,38 +111,33 @@
 											<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/MissingSSNEINReasonCd"/>
 										</xsl:call-template>
 									</xsl:when>
-									<xsl:otherwise>
-										<xsl:choose>
-											<xsl:when test="$RtnHdrData/Filer/PrimarySSN">
-												<xsl:call-template name="PopulateReturnHeaderFiler">
-													<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-												</xsl:call-template>
-											</xsl:when>
-											<xsl:when test="$RtnHdrData/Filer/SSN">
-												<xsl:call-template name="PopulateReturnHeaderFiler">
-													<xsl:with-param name="TargetNode">SSN</xsl:with-param>
-												</xsl:call-template>
-											</xsl:when>
-											<xsl:when test="$RtnHdrData/Filer/EIN">
-												<xsl:call-template name="PopulateReturnHeaderFiler">
-													<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-												</xsl:call-template>
-											</xsl:when>
-											<xsl:otherwise>
-												<xsl:call-template name="PopulateReturnHeaderFiler">
-													<xsl:with-param name="TargetNode">MissingEINReasonCd</xsl:with-param>
-												</xsl:call-template>
-											</xsl:otherwise>
-										</xsl:choose>
-									</xsl:otherwise>
+								  <xsl:otherwise>
+								<!--	<xsl:choose>-->
+									<xsl:call-template name="PopulateFilerTIN">
+								  <xsl:with-param name="TargetNode" select="$Form5471ScheduleO"/>
+								</xsl:call-template>
+									<!-- TIN from 1120, 990, 1065, ETEC, 1041 return headers-->
+									<!--	<xsl:when test="$RtnHdrData/Filer/EIN">
+											<xsl:call-template name="PopulateReturnHeaderFiler">
+												<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+											</xsl:call-template>
+										</xsl:when>-->
+									<!--	<xsl:otherwise>-->
+										<!-- TIN from 1040, 1040NR return headers-->
+											<!--<xsl:call-template name="PopulateReturnHeaderFiler">
+												<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+											</xsl:call-template>
+										</xsl:otherwise>-->
+								<!--	</xsl:choose>-->
+								  </xsl:otherwise>
 								</xsl:choose>
 							</span>
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:115mm;height:11mm;font-size:7pt;">
+						<div class="styNameBox" style="width:115mm;height:11mm;">
 							Name of foreign corporation<br/>
-							<span style="padding-top:1mm;">
+							<span style="padding-top:3mm;">
 								<!-- Start choise of name from header or data elements for shared file/1040/1120  -->
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/ForeignCorporationName/BusinessNameLine1Txt"/>
@@ -204,7 +148,6 @@
 								</xsl:call-template>
 							</span>
 						</div>
-						<!--  End choise of name from header or data elements for shared file 1040/1120  -->
 						<!-- EIN LIne choice from input and Return header 1120 or 1040   -->
 						<div class="styNameBox" style="float:left;clear:none;padding-left:1mm;width:27mm;height:11mm;border-right-width:1px;border-color:black">
 							EIN (if any)<br/>
@@ -413,7 +356,7 @@
 										<td class="styTableCellCtr" style="width:30mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellCtr" style="width:30mm;">
+										<td class="styTableCellCtr" style="width:30mm;border-right-width:0mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -439,7 +382,7 @@
 										<td class="styTableCellCtr" style="width:30mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellCtr" style="width:30mm;">
+										<td class="styTableCellCtr" style="width:30mm;border-right-width:0mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -465,7 +408,7 @@
 										<td class="styTableCellCtr" style="width:30mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellCtr" style="width:30mm;">
+										<td class="styTableCellCtr" style="width:30mm;border-right-width:0mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -491,7 +434,7 @@
 										<td class="styTableCellCtr" style="width:30mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellCtr" style="width:30mm;">
+										<td class="styTableCellCtr" style="width:30mm;border-right-width:0mm;padding-bottom:2mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -674,7 +617,7 @@
 											<td class="styTableCellCtr" style="width:20mm;">
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellCtr" style="width:20mm;">
+											<td class="styTableCellCtr" style="width:20mm;border-right-width:0mm;">
 												<span style="width:4px"/>
 											</td>
 										</tr>
@@ -704,7 +647,7 @@
 											<td class="styTableCellCtr" style="width:20mm;">
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellCtr" style="width:20mm;">
+											<td class="styTableCellCtr" style="width:20mm;border-right-width:0mm;">
 												<span style="width:4px"/>
 											</td>
 										</tr>
@@ -734,7 +677,7 @@
 											<td class="styTableCellCtr" style="width:20mm;">
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellCtr" style="width:20mm;">
+											<td class="styTableCellCtr" style="width:20mm;border-right-width:0mm;padding-bottom:2mm;">
 												<span style="width:4px"/>
 											</td>
 										</tr>
@@ -869,7 +812,7 @@
 											<td class="styTableCellCtr" style="width:10mm;">
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellCtr" style="width:10mm;">
+											<td class="styTableCellCtr" style="width:10mm;border-right-width:0mm;">
 												<span style="width:4px"/>
 											</td>
 										</tr>
@@ -895,7 +838,7 @@
 											<td class="styTableCellCtr" style="width:10mm;">
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellCtr" style="width:10mm;">
+											<td class="styTableCellCtr" style="width:10mm;border-right-width:0mm;">
 												<span style="width:4px"/>
 											</td>
 										</tr>
@@ -921,7 +864,7 @@
 											<td class="styTableCellCtr" style="width:10mm;">
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellCtr" style="width:10mm;">
+											<td class="styTableCellCtr" style="width:10mm;border-right-width:0mm;padding-bottom:2mm;">
 												<span style="width:4px"/>
 											</td>
 										</tr>
@@ -1076,7 +1019,7 @@
 										<td class="styTableCellSmall">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellSmall">
+										<td class="styTableCellSmall" style="border-right-width:0mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1102,7 +1045,7 @@
 										<td class="styTableCellSmall">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellSmall">
+										<td class="styTableCellSmall" style="border-right-width:0mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1128,7 +1071,7 @@
 										<td class="styTableCellSmall">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellSmall">
+										<td class="styTableCellSmall" style="border-right-width:0mm;padding-bottom:2mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1242,7 +1185,7 @@
 												</xsl:call-template>
 											</xsl:if>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellText" style="width:142mm;">
+										<td class="styTableCellText" style="width:142mm;border-right-width:0mm;">
 											<span style="width:4px"/>
 											<br/>
 											<span style="width:4px"/>
@@ -1261,7 +1204,7 @@
 										<td class="styTableCell" style="width:45mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellText" style="width:142mm;">
+										<td class="styTableCellText" style="width:142mm;border-right-width:0mm;">
 											<span style="width:4px"/>
 											<br/>
 											<span style="width:4px"/>
@@ -1280,7 +1223,7 @@
 										<td class="styTableCell" style="width:45mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellText" style="width:142mm;">
+										<td class="styTableCellText" style="border-right-width:0mm;padding-bottom:2mm;">
 											<span style="width:4px"/>
 											<br/>
 											<span style="width:4px"/>
@@ -1441,7 +1384,7 @@
 										<td class="styTableCellSmall">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellSmall">
+										<td class="styTableCellSmall" style="border-right-width:0mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1467,7 +1410,7 @@
 										<td class="styTableCellSmall">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellSmall">
+										<td class="styTableCellSmall" style="border-right-width:0mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1493,7 +1436,7 @@
 										<td class="styTableCellSmall">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellSmall">
+										<td class="styTableCellSmall" style="border-right-width:0mm;padding-bottom:2mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1594,7 +1537,7 @@
 												</xsl:call-template>
 											</xsl:if>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellText" style="width:142mm;">
+										<td class="styTableCellText" style="width:142mm;border-right-width:0mm;">
 											<span style="width:4px;"/>
 											<br/>
 											<span style="width:4px"/>
@@ -1613,7 +1556,7 @@
 										<td class="styTableCell" style="width:45mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellText" style="width:142mm;">
+										<td class="styTableCellText" style="width:142mm;border-right-width:0mm;">
 											<span style="width:4px"/>
 											<br/>
 											<span style="width:4px"/>
@@ -1632,7 +1575,7 @@
 										<td class="styTableCell" style="width:45mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellText" style="width:142mm;">
+										<td class="styTableCellText" style="border-right-width:0mm;padding-bottom:2mm;">
 											<span style="width:4px"/>
 											<br/>
 											<span style="width:4px"/>
@@ -1778,7 +1721,7 @@
 										<td class="styTableCellCtr" style="width:30mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellCtr" style="width:30mm;">
+										<td class="styTableCellCtr" style="width:30mm;border-right-width:0mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1800,7 +1743,7 @@
 										<td class="styTableCellCtr" style="width:30mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellCtr" style="width:30mm;">
+										<td class="styTableCellCtr" style="width:30mm;border-right-width:0mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1822,7 +1765,7 @@
 										<td class="styTableCellCtr" style="width:30mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellCtr" style="width:30mm;">
+										<td class="styTableCellCtr" style="width:30mm;border-right-width:0mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1899,7 +1842,7 @@
 												</xsl:call-template>
 												<span style="width:4px"/>
 											</td>
-											<td class="styTableCell" style="width:53mm;border-right-width:0mm">
+											<td class="styTableCellText" style="width:53mm;border-right-width:0mm;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="AssetsTransferredNotesSecDesc"/>
 												</xsl:call-template>
@@ -1924,7 +1867,7 @@
 										<td class="styTableCell" style="width:45mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCell" style="width:53mm;">
+										<td class="styTableCellText" style="width:53mm;border-right-width:0mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1941,7 +1884,7 @@
 										<td class="styTableCell" style="width:45mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCell" style="width:53mm;">
+										<td class="styTableCellText" style="width:53mm;border-right-width:0mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1958,7 +1901,7 @@
 										<td class="styTableCell" style="width:45mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCell" style="width:53mm;">
+										<td class="styTableCellText" style="width:53mm;border-right-width:0mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -2047,7 +1990,8 @@
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
 									<th class="styDepTblCell" scope="col" rowspan="2" style="width:179mm;font-size:8pt;">
-									Reference ID number </th>
+
+Special Condition Description</th>
 								</tr>
 							</thead>
 							<tfoot/>

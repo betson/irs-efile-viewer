@@ -387,27 +387,30 @@
 					</div>
 					<!-- Line 11 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="font-size:7pt;height:3mm;padding-left: 2.25mm">11</div>
-						<div style="float:left;position:relative;">
-							<div style="position:absolute;top:0;right:3mm;">
-								<img alt="right bracket" src="{$ImagePath}/CurlyBrace1.77x28.49mm.png" style="float:right;clear:none;margin-top:2.5mm;margin-right:2.5mm;"/>
-							</div>
-							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:3mm;padding-left:2mm;padding-right:15mm;">
-								<li style="margin:0mm 0mm 2mm 3.5mm;">
-									If <b>for 2014</b> you filed Form 2555 or 2555-EZ, see instructions for the amount to enter.</li>
-								<li style="margin-left:3.5mm;">
-									If <b>for 2014</b> you reported capital gain distributions directly on Form 1040, line 13; you reported qualified dividends on Form 1040, line 9b (Form 1041, line 2b(2)); 
-									<b>or</b> you had a gain on both lines 15 and 16 of Schedule D (Form 1040) (lines 18a and 19, column (2), of Schedule D (Form 1041)), complete Part III of Form 8801 and enter the amount from line 55 here. Form 1040NR filers, see instructions.</li>
-								<li style="margin:2mm 0mm 0mm 3.5mm;">
-									<b>All others:</b> If line 10 is $182,500 or less ($91,250 or less if married filing separately for 2014), multiply line 10 by 26% (0.26). Otherwise, multiply line 10 by 28% (0.28) and subtract $3,650 ($1,825 if married filing separately for 2014) from the result. Form 1040NR filers, see instructions.</li>
-							</div>
+						<div style="float:left;">
+							<div class="styLNLeftNumBox" style="font-size:7pt;padding-left: 2.25mm">11</div>
 						</div>
+						<div style="font-size:7pt;width:127.85mm;height:3mm;padding-top:.75mm;padding-left:2mm;float:left;">
+						&#8226;<span style="margin:0mm 0mm 0mm 2mm;"/>If <b>for 2014</b> you filed Form 2555 or 2555-EZ, see instructions for the amount to enter.<br/>
+						&#8226;<span style="margin:4.5mm 0mm 0mm 2mm;"/>If <b>for 2014</b> you reported capital gain distributions directly on Form 1040, line 13; you<br/>
+									<span style="margin:0mm 0mm 0mm 3mm;"/>reported qualified dividends on Form 1040, line 9b (Form 1041, line 2b(2)); 
+<b>or</b> you had a <br/>
+									<span style="margin:0mm 0mm 0mm 3mm;"/>gain on both lines 15 and 16 of Schedule D (Form 1040) (lines 18a and 19, column (2), of<br/>
+									<span style="margin:0mm 0mm 0mm 3mm;"/>Schedule D (Form 1041)), complete Part III of Form 8801 and enter the amount from line<br/>
+									<span style="margin:0mm 0mm 0mm 3mm;"/>55 here. Form 1040NR filers, see instructions.<br/> 
+						&#8226;<span style="margin:4.5mm 0mm 0mm 2mm;"/><b>All others:</b> If line 10 is $182,500 or less ($91,250 or less if married filing separately for<br/>
+									<span style="margin:0mm 0mm 0mm 3mm;"/>2014), multiply line 10 by 26% (0.26). Otherwise, multiply line 10 by 28% (0.28) and<br/>
+									<span style="margin:0mm 0mm 0mm 3mm;"/>subtract $3,650 ($1,825 if married filing separately for 2014) from the result. Form<br/> 									 <span style="margin:0mm 0mm 0mm 3mm;"/>1040NR filers, see instructions
+						</div>
+							<div style="float:left;clear:none;margin-top:2.5mm;margin-right:5mm;">
+								<img alt="right bracket" src="{$ImagePath}/CurlyBrace1.77x28.49mm.png"/>
+							</div>
 						<div style="float:left;">
 							<div class="styLNRightNumBox" style="height:19mm;background-color:lightgrey;padding-bottom:0mm;border-bottom:0;"/>
 							<div class="styLNRightNumBox" style="clear:left;height:4.5mm;">11</div>
 							<div class="styLNRightNumBox" style="clear:left;height:15mm;background-color:lightgrey;padding-bottom:0mm;border-bottom:0;"/>
 						</div>
-						<div style="float:left;">
+						<div style="float:right;">
 							<div class="styLNAmountBox" style="width:36mm;height:19mm;padding-bottom:0mm;border-bottom-width:0px;"/>
 							<div class="styLNAmountBox" style="width:36mm;padding-bottom:0mm;border-bottom-width:1px;clear:left;height:4.5mm;">
 								<xsl:call-template name="PopulateAmount">
@@ -972,19 +975,22 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:20.5mm;font-size:7pt;padding-left: 2.25mm">34</div>
 						<div style="float:left;">
-							<div class="styLNDesc" style="font-size:7pt;width:135mm;padding-left:2mm;">
-								  <span style="float:right;text-align:right;letter-spacing:3mm;font-weight:bold;margin-top:8mm;margin-left:1mm;margin-right:2mm;">......</span>
-									   <img alt="right bracket" src="{$ImagePath}/6765_Bracket_Md.gif" style="float:right;clear:none;margin-top:2mm;"/>
-							  Enter:
-								<li style="margin-left:15mm;">$73,800 if married filing jointly or qualifying widow(er) for 2014,</li>
-								<li style="margin-left:15mm;">$36,900 if single or married filing separately for 2014,</li>
-								<li style="margin-left:15mm;">$49,400 if head of household for 2014, or</li>
-								<li style="margin-left:15mm;">$2,500 for an estate or trust.</li>
-								<span style="margin-left:11.5mm;">Form 1040NR filers, see instructions.</span>
+						<div class="styLNDesc" style="font-size:7pt;width:102mm;padding-left:2mm;">				
+							  Enter:<br/>
+								<span style="margin-left:11.5mm;"/>&#8226;<span style="width:2mm"/>$73,800 if married filing jointly or qualifying widow(er) for 2014,<br/>
+								<span style="margin-left:11.5mm;"/>&#8226;<span style="width:2mm"/>$36,900 if single or married filing separately for 2014,<br/>
+								<span style="margin-left:11.5mm;"/>&#8226;<span style="width:2mm"/>$49,400 if head of household for 2014, or<br/>
+								<span style="margin-left:11.5mm;"/>&#8226;<span style="width:2mm"/>$2,500 for an estate or trust.<br/>
+								<span style="margin-left:11.5mm;">Form 1040NR filers, see instructions.
+							</span>
 							</div>
 						</div>
-							<div style="float:left;">
-								<div class="styLNRightNumBox" style="height:10mm;width:8mm;background-color:lightgrey;padding-bottom:0mm;border-bottom:0;"/>				
+						<div style="float:left;margin-top:2mm;margin-left:4.5mm;">						
+						   <img alt="right bracket" src="{$ImagePath}/6765_Bracket_Md.gif"/>
+						   <span style="float:right;text-align:right;letter-spacing:3mm;font-weight:bold;margin-top:8mm;margin-left:1mm;margin-right:2mm;">......</span>	
+						</div>						
+							<div style="float:right;">
+								<div class="styLNRightNumBox" style="height:10mm;width:8mm;background-color:lightgrey;padding-bottom:0mm;border-bottom:0;"/>
 								<div class="styLNAmountBox" style="height:10mm;width:36mm;padding-bottom:0mm;border-bottom-width:0px;"/>	
 								<div class="styLNRightNumBox" style="height:4mm;clear:left;padding-top:.5mm;padding-bottom:0mm;">34</div>
 								<div class="styLNAmountBox" style="width:36mm;height:4mm;padding-bottom:0mm;border-bottom:1px solid black;">
@@ -1085,20 +1091,23 @@
 					<div style="width:187mm;">
 						  <div class="styLNLeftNumBox" style="height:17mm;font-size:7pt;padding-left: 2.25mm">40</div>
 						  <div style="float:left;">
-								<div class="styLNDesc" style="font-size:7pt;width:135mm;padding-left:2mm;">
-								  <span style="float:right;text-align:right;letter-spacing:3mm;font-weight:bold;margin-top:8mm;margin-left:1mm;margin-right:2mm;">......</span>
-									   <img alt="right bracket" src="{$ImagePath}/6251_rt_bracket_lg.gif" style="float:right;clear:none;margin-top:2mm;"/>
-								  Enter:
-									  <li style="margin-left:15mm;">$406,750 if single for 2014,</li>
-									  <li style="margin-left:15mm;">$228,800 if married filing separately for 2014,</li>
-									  <li style="margin-left:15mm;">$457,600 if married filing jointly or qualifying widow(er) for 2014,</li>
-									  <li style="margin-left:15mm;">$432,200 if head of household for 2014, or</li>
-									  <li style="margin-left:15mm;">$12,150 for an estate or trust.</li>
-									  <span style="margin-left:11.5mm;">Form 1040NR filers, see instructions.</span>
-								</div>
-                           </div>
-                            <div style="float:left;">
-								<div class="styLNRightNumBox" style="height:10mm;width:8mm;background-color:lightgrey;padding-bottom:0mm;border-bottom:0;"/>				
+									<div class="styLNDesc" style="font-size:7pt;width:102mm;padding-left:2mm;">				
+								  Enter:<br/>
+								<span style="margin-left:11.5mm;"/>&#8226;<span style="width:2mm"/>$406,750 if single for 2014,<br/>
+								<span style="margin-left:11.5mm;"/>&#8226;<span style="width:2mm"/>$228,800 if married filing separately for 2014,<br/>
+								<span style="margin-left:11.5mm;"/>&#8226;<span style="width:2mm"/>$457,600 if married filing jointly or qualifying widow(er) for 2014,<br/>
+								<span style="margin-left:11.5mm;"/>&#8226;<span style="width:2mm"/>$432,200 if head of household for 2014, or<br/>
+								<span style="margin-left:11.5mm;"/>&#8226;<span style="width:2mm"/>$12,150 for an estate or trust.<br/>							
+								<span style="margin-left:11.5mm;">Form 1040NR filers, see instructions.
+							</span>
+							</div>
+						</div>
+						<div style="float:left;margin-top:2mm;margin-left:4.25mm;">						
+						   <img alt="right bracket" src="{$ImagePath}/6251_rt_bracket_lg.gif"/>
+						   <span style="float:right;text-align:right;letter-spacing:3mm;font-weight:bold;margin-top:8mm;margin-left:1mm;margin-right:2mm;">......</span>	
+						</div>					  
+                            <div style="float:right;">
+								<div class="styLNRightNumBox" style="height:10mm;width:8mm;background-color:lightgrey;padding-bottom:0mm;border-bottom:0;"/>
 								<div class="styLNAmountBox" style="height:10mm;width:36mm;padding-bottom:0mm;border-bottom-width:0px;"/>	
 								<div class="styLNRightNumBox" style="height:4mm;clear:left;padding-top:.5mm;padding-bottom:0mm;">40</div>
 								<div class="styLNAmountBox" style="width:36mm;height:4mm;padding-top:.5mm;padding-bottom:0mm;border-bottom:1px solid black;">

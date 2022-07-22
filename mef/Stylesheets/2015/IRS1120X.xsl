@@ -156,6 +156,7 @@
 							<div class="styNameAddr" style="border-bottom-width:0px;width:131mm;height:8.6mm;border-left-width:1px;">
 							City or town, state, and ZIP code<br/>
 								<span class="stySmallText" style="padding-left:2mm;">
+								<!-- per schema foreign address exist for return header since 2003 and 1120X since 2007-->
 									<xsl:choose>
 										<xsl:when test="$RtnHdrData/Filer/USAddress">
 											<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -165,13 +166,12 @@
 											<xsl:call-template name="PopulateReturnHeaderFiler">
 												<xsl:with-param name="TargetNode">StateAbbreviationCd</xsl:with-param>
 											</xsl:call-template>
-											<span style="width;2mm;"/>
+											<span style="width:2mm;"/>
 											<xsl:call-template name="PopulateReturnHeaderFiler">
 												<xsl:with-param name="TargetNode">ZIPCd</xsl:with-param>
 											</xsl:call-template>
 										</xsl:when>
-										<!-- Commented out becz there is no approved UWR to display foreign address choice -->
-										<!--<xsl:when test="$RtnHdrData/Filer/ForeignAddress">
+										<xsl:when test="$RtnHdrData/Filer/ForeignAddress">
 											<xsl:call-template name="PopulateReturnHeaderFiler">
 												<xsl:with-param name="TargetNode">CityNm</xsl:with-param>
 											</xsl:call-template>
@@ -179,7 +179,7 @@
 											<xsl:call-template name="PopulateReturnHeaderFiler">
 												<xsl:with-param name="TargetNode">ProvinceOrStateNm</xsl:with-param>
 											</xsl:call-template>
-											<span style="width;2mm;"/>
+											<span style="width:2mm;"/>
 											<xsl:call-template name="PopulateReturnHeaderFiler">
 												<xsl:with-param name="TargetNode">ForeignPostalCd</xsl:with-param>
 											</xsl:call-template>
@@ -187,7 +187,7 @@
 											<xsl:call-template name="PopulateReturnHeaderFiler">
 												<xsl:with-param name="TargetNode">CountryCd</xsl:with-param>
 											</xsl:call-template>
-											</xsl:when>-->
+											</xsl:when>
 											<xsl:otherwise>											
 											</xsl:otherwise>
 										</xsl:choose>
@@ -296,7 +296,7 @@
 							(see instructions)</span>
 								</span>
 							</th>
-							<th class="styTblAmountCell " scope="col" style="width:31mm;font-size:6pt;font-weight:bold;text-align:center;border-left-width:1px;">(a) <span style="font-weight:normal;display:inline;">As originally<br/>reported or as <br/>previously adjusted</span>
+							<th class="styTblAmountCell " scope="col" style="width:31mm;font-size:6pt;font-weight:bold;text-align:center;border-left-width:1">(a) <span style="font-weight:normal;display:inline;">As originally<br/>reported or as <br/>previously adjusted</span>
 							</th>
 							<th class="styTblAmountCell " scope="col" style="width:31mm;font-size:6pt;font-weight:bold;text-align:center">(b) <span style="font-weight:normal;display:inline;">Net change—<br/>increase or (decrease)—<br/>explain in Part II </span>
 							</th>

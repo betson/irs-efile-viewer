@@ -267,13 +267,13 @@
                   <th class="styTableCell" scope="col" style="width:22mm;text-align:center;vertical-align:top;padding-top:1mm;font-size:6pt;font-weight:normal;border-color:black;">
                     <b>(b)</b> Number of offices in the region</th>
                   <th class="styTableCell" scope="col" style="width:22mm;text-align:center;vertical-align:top;padding-top:1mm;font-size:6pt;font-weight:normal;border-color:black;">
-                    <b>(c)</b> Number of employees, agents, and independent contractors in region</th>
+                    <b>(c)</b> Number of employees, agents, and independent contractors in the region</th>
                   <th class="styTableCell" scope="col" style="width:34mm;text-align:center;vertical-align:top;padding-top:1mm;font-size:6pt;font-weight:normal;border-color:black;">
-                    <b>(d)</b> Activities conducted in region (by type) (e.g., fundraising, program services, investments, grants to recipients located in the region)</th>
+                    <b>(d)</b> Activities conducted in region (by type) (such as, fundraising, program services, investments, grants to recipients located in the region)</th>
                   <th class="styTableCell" scope="col" style="width:35mm;text-align:center;vertical-align:top;padding-top:1mm;font-size:6pt;font-weight:normal;border-color:black;">
-                    <b>(e)</b> If activity listed in (d) is a program service, describe specific type of<br/> service(s) in region</th>
+                    <b>(e)</b> If activity listed in (d) is a program service, describe specific type of<br/> service(s) in the region</th>
                   <th class="styTableCell" scope="col" style="width:33mm;vertical-align:top;padding-top:1mm;text-align:center;font-size:6pt;font-weight:normal;border-color:black;border-right:none;">
-                    <b>(f)</b> Total expenditures<br/> for and investments<br/> in region  </th>
+                    <b>(f)</b> Total expenditures<br/> for and investments<br/> in the region  </th>
                 </tr>
               </thead>
               <tbody>

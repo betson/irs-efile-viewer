@@ -804,7 +804,7 @@
                   <span class="styBoldText">Net income (loss) per income statement of the corporation.</span> Combine lines 4 through 10 </span>
 				  <span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
 				  <br/>
-				  <b>Note: </b>Part I, line 11, must equal Part II, line 26, column (a) or Schedule M-1, line 1 (see instructions).
+				  <b>Note. </b>Part I, line 11, must equal Part II, line 26, column (a) or Schedule M-1, line 1 (see instructions).
               </div>
             </div>
             <div style="float:right;">
@@ -1821,11 +1821,10 @@
             <!-- Part II - Line 21g -->
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col" style="padding-left:5mm">g</td>
-              <td style="padding-top:.5mm;padding-left:2mm;">
-                 <span style="float:left;padding-right:12px;">Other gain/loss on disposition of assets other than inventory
-					<span class="styDotLn" style="float:right;padding-right:1mm;">...............</span>
-                 </span>
-              </td>
+                <td style="padding-top:.5mm;padding-left:2mm;">
+                    <span style="float:left;">Other gain/loss on disposition of assets other than inventory          
+					</span>
+              </td>  
               <td class="styIRS1120SScheduleM3ShadedCell" scope="col" style="border-bottom-width:1px;">
                 <span style="width:1mm"/>
               </td>
@@ -1912,7 +1911,7 @@
                 <span style="padding-top:.5mm;padding-left:2mm;"><b>Total expense/deduction items </b>(from Part III, line 32)</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
-                <xsl:call-template name="PopulateAmount">
+                <xsl:call-template name="PopulateNegativeNumber">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/TotalExpenseDeductionItems/IncomeLossPerIncomeStmtAmt"/>
                 </xsl:call-template>
               </td>
@@ -1927,7 +1926,7 @@
                 </xsl:call-template>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
-                <xsl:call-template name="PopulateAmount">
+                <xsl:call-template name="PopulateNegativeNumber">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/TotalExpenseDeductionItems/IncomeLossPerTaxReturnAmt"/>
                 </xsl:call-template>
               </td>
@@ -1988,7 +1987,7 @@
           <br/>
           <br/>
           <div class="styBB" style="width:187mm;padding-left:8mm;padding-top:1mm;border-bottom-width: 2px;">
-            <span class="styBoldText">Note:</span> 
+            <span class="styBoldText">Note.</span> 
          Line 26, column (a), must equal Part I, line 11, and column (d) must equal Form 1120S, Schedule K, line 18.</div>
           <div class="pageEnd" style="width:187mm;">
             <div class="styBoldText" style="float:right;padding-top:1mm;">Schedule M-3 (Form 1120S) 2016</div>

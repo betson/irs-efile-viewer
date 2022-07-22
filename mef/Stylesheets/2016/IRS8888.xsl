@@ -76,25 +76,69 @@
 						<div class="styNameBox" style="width:135mm;font-size:7.5pt;font-weight:normal;padding-top:0mm;padding-bottom:0mm;height:9mm;">
           Name(s) shown on return<br/>
 							<div style="padding-top:2mm;padding-bottom:0mm;">
-								<xsl:call-template name="PopulateReturnHeaderFiler">
+							
+                                				<xsl:choose>
+                                               
+                                                                                     <!-- Name from 1040 Return Header-->
+                                          <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+                                                   <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                 <xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+                                                 </xsl:call-template>
+                                          </xsl:when>
+                                                                                     <!-- Name from 1041 Return Header-->
+                                          <xsl:when test="$RtnHdrData/Filer/BusinessNameLine1Txt">
+                                                      <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                      <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+                                                      </xsl:call-template>
+                                               <br/>
+                                                      <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                      <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+                                                      </xsl:call-template>                                                                                                       
+                                          </xsl:when>
+                                          <xsl:otherwise> 
+                                                  <xsl:call-template name="PopulateReturnHeaderFiler"> 
+                                                  <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param> 
+                                                  </xsl:call-template>
+                                             <br/>
+                                                   <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                   <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+                                                   </xsl:call-template>
+                                            </xsl:otherwise>                                                                                                
+                                       </xsl:choose>			
+							
+								<!--<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
 								</xsl:call-template>
 								<br/>
 								<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
-								</xsl:call-template>
+								</xsl:call-template>-->
 							</div>
 						</div>
 						<div class="styIRS8888SSNBox" style="width:45mm;font-size:7pt;font-weight:normal;padding-top:0mm;padding-bottom:0mm;height:8mm;">
 							<b>Your social security number</b>
 							<br/>
 							<div style="padding-top:2mm;padding-bottom:0mm;text-align:left">
-								<xsl:call-template name="PopulateReturnHeaderFiler">
+                                    <xsl:choose>
+                                                               
+                                                                        <xsl:when test="$RtnHdrData/Filer/PrimarySSN"> 
+                                                                            <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                                            <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+                                                                            </xsl:call-template>
+                                                                        </xsl:when>
+                                                                        <xsl:when test="$RtnHdrData/Filer/EIN"> 
+                                                                               <xsl:call-template name="PopulateReturnHeaderFiler"> 
+                                                                               <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+                                                                               </xsl:call-template>
+                                                                         </xsl:when>
+                                                                </xsl:choose>							
+							
+								<!--<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">EIN</xsl:with-param>
 								</xsl:call-template>
 								<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-								</xsl:call-template>
+								</xsl:call-template>-->
 							</div>
 						</div>
 					</div>

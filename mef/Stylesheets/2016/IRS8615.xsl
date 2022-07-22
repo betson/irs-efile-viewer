@@ -421,7 +421,7 @@
 									</xsl:call-template>
 									Enter the parent's tax from Form 1040, line 44; Form 1040A, line 28, minus any alternative
 									minimum tax; Form 1040EZ, line 10; Form 1040NR, line 42; or Form 1040NR-EZ, line 15. 
-									<b>Do not</b> include any tax from <b>Form 4972</b> or <b>8814</b> or any tax from
+									<b>Do not</b> include any tax from <br/><b>Form 4972, </b><b>8814, </b> or <b>8885</b> or any tax from
 									recapture of an education credit. If the parent files Form 2555 or 2555-EZ, see the instructions.
 									If the Qualified Dividends and Capital Gain Tax Worksheet, Schedule D Tax Worksheet, 
 									or Schedule J (Form 1040) was used to figure	the tax, check here

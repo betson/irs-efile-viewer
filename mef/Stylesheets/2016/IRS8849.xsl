@@ -5,6 +5,7 @@
 <!-- 03/04/2016 - Changes made for defect 42849 - Jeremy Nichols -->
 <!-- 03/10/2016 - Changes made for defect 59728 - Jeremy Nichols -->
 <!-- 03/25/2016 - Changes made for defect 45737 - Jeremy Nichols -->
+<!-- 05/11/2017 - Changes made for UWR 194393 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -101,154 +102,574 @@
 				<tr>
 					<td style="height:4mm; width:141mm;">
 					  <div style="border-right:1px solid black;">
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="1"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="2"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="3"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="4"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="5"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="6"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="7"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="8"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="9"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="10"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="11"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="12"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="13"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="14"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="15"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="16"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="17"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="18"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="19"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="20"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="21"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="22"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="23"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="24"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="25"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="26"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-						<xsl:with-param name="BoxNum" select="27"/>
-					  </xsl:call-template>
+                        <xsl:choose>
+						  <!-- Business Name data from 1120 Return Header-->
+                          <xsl:when test="$RtnHdrData/Filer/BusinessName">
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="1"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="2"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="3"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="4"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="5"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="6"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="7"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="8"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="9"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="10"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="11"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="12"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="13"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="14"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="15"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="16"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="17"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="18"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="19"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="20"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="21"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="22"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="23"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="24"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="25"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="26"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="27"/>
+							  </xsl:call-template>
+						  </xsl:when>
+                          <!-- Individual Name data from 1040 and 1040NR Return Header-->
+						  <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="1"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="2"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="3"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="4"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="5"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="6"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="7"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="8"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="9"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="10"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="11"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="12"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="13"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="14"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="15"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="16"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="17"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="18"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="19"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="20"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="21"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="22"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="23"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="24"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="25"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="26"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="27"/>
+							  </xsl:call-template>
+						  </xsl:when>
+                          <!-- Business Name data choice from 1041 Return Header-->
+						  <xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+							<xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="1"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="2"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="3"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="4"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="5"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="6"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="7"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="8"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="9"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="10"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="11"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="12"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="13"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="14"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="15"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="16"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="17"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="18"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="19"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="20"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="21"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="22"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="23"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="24"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="25"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="26"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								<xsl:with-param name="BoxNum" select="27"/>
+							  </xsl:call-template>
+						  </xsl:when>
+                          <!-- National Mortgage Assoc Code data choice from 1041 Return Header-->
+						  <xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
+							<xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="1"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="2"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="3"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="4"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="5"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="6"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="7"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="8"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="9"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="10"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="11"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="12"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="13"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="14"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="15"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="16"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="17"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="18"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="19"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="20"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="21"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="22"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="23"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="24"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="25"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="26"/>
+							  </xsl:call-template>
+							  <xsl:call-template name="PopulateIndividualLetterBox">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								<xsl:with-param name="BoxNum" select="27"/>
+							  </xsl:call-template>
+						  </xsl:when>
+						  <xsl:otherwise>                                               
+						  </xsl:otherwise>                                                                                              
+						</xsl:choose>
 					  </div>
 					</td>
 					<td style="height:4mm; width:46mm;">
 					  <div style="border-right:1px solid black;">
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
-						<xsl:with-param name="BoxNum" select="1"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
-						<xsl:with-param name="BoxNum" select="2"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
-						<xsl:with-param name="BoxNum" select="3"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
-						<xsl:with-param name="BoxNum" select="4"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
-						<xsl:with-param name="BoxNum" select="5"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
-						<xsl:with-param name="BoxNum" select="6"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
-						<xsl:with-param name="BoxNum" select="7"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
-						<xsl:with-param name="BoxNum" select="8"/>
-					  </xsl:call-template>
-					  <xsl:call-template name="PopulateIndividualLetterBox">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
-						<xsl:with-param name="BoxNum" select="9"/>
-					  </xsl:call-template>
+					  <xsl:choose>
+						<xsl:when test="$RtnHdrData/Filer/EIN">
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
+							<xsl:with-param name="BoxNum" select="1"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
+							<xsl:with-param name="BoxNum" select="2"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
+							<xsl:with-param name="BoxNum" select="3"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
+							<xsl:with-param name="BoxNum" select="4"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
+							<xsl:with-param name="BoxNum" select="5"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
+							<xsl:with-param name="BoxNum" select="6"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
+							<xsl:with-param name="BoxNum" select="7"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
+							<xsl:with-param name="BoxNum" select="8"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
+							<xsl:with-param name="BoxNum" select="9"/>
+						  </xsl:call-template>
+						</xsl:when>
+						<xsl:when test="$RtnHdrData/Filer/SSN">
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/SSN"/>
+							<xsl:with-param name="BoxNum" select="1"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/SSN"/>
+							<xsl:with-param name="BoxNum" select="2"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/SSN"/>
+							<xsl:with-param name="BoxNum" select="3"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/SSN"/>
+							<xsl:with-param name="BoxNum" select="4"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/SSN"/>
+							<xsl:with-param name="BoxNum" select="5"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/SSN"/>
+							<xsl:with-param name="BoxNum" select="6"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/SSN"/>
+							<xsl:with-param name="BoxNum" select="7"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/SSN"/>
+							<xsl:with-param name="BoxNum" select="8"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/SSN"/>
+							<xsl:with-param name="BoxNum" select="9"/>
+						  </xsl:call-template>
+						</xsl:when>
+						<xsl:when test="$RtnHdrData/Filer/MissingEINReasonCd">
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/MissingEINReasonCd"/>
+							<xsl:with-param name="BoxNum" select="1"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/MissingEINReasonCd"/>
+							<xsl:with-param name="BoxNum" select="2"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/MissingEINReasonCd"/>
+							<xsl:with-param name="BoxNum" select="3"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/MissingEINReasonCd"/>
+							<xsl:with-param name="BoxNum" select="4"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/MissingEINReasonCd"/>
+							<xsl:with-param name="BoxNum" select="5"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/MissingEINReasonCd"/>
+							<xsl:with-param name="BoxNum" select="6"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/MissingEINReasonCd"/>
+							<xsl:with-param name="BoxNum" select="7"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/MissingEINReasonCd"/>
+							<xsl:with-param name="BoxNum" select="8"/>
+						  </xsl:call-template>
+						  <xsl:call-template name="PopulateIndividualLetterBox">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/MissingEINReasonCd"/>
+							<xsl:with-param name="BoxNum" select="9"/>
+						  </xsl:call-template>
+						</xsl:when>
+					  </xsl:choose>
 					  </div>
 					</td>
 				</tr>

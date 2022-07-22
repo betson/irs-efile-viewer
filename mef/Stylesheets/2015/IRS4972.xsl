@@ -82,13 +82,47 @@
 					</div>
 					<!-- Name(s) shown on return -->
 					<div class="styBB" style="width:{$pageWidth}mm;">
-						<div class="styFNBox" style="width:150mm; height:8mm;text-align:left;font-size:6.5pt;">
+						<div class="styFNBox" style="width:150mm; height:10.5mm;text-align:left;font-size:6.5pt;">
 							<b>Name of recipient of distribution</b>
 							<br/>
 							<div style="font-size:6.5pt;padding-left:1mm;padding-top:2mm;">
-								<xsl:call-template name="PopulateText">
+							
+							  <xsl:choose>
+                                                                                        <!-- Name from Form level -->
+                                          <xsl:when test="$Form4972Data/PersonNm != ''">
+                                                     <xsl:call-template name="PopulateText">
+                                                     <xsl:with-param name="TargetNode" select="$Form4972Data/PersonNm"/>
+                                                     </xsl:call-template>
+                                          </xsl:when>
+                                         <!--                                      --><!-- Name from 1040 Return Header--><!--
+                                          <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+                                                 <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                 <xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+                                                 </xsl:call-template>
+                                          </xsl:when>-->
+                                                                                 <!-- Name from 1041 Return Header -->
+                                                <xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+                                                    <xsl:call-template name="PopulateText">
+                                                    <xsl:with-param name="TargetNode" 
+                                                             select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+                                                    </xsl:call-template>
+                                          <br/>
+                                                    <xsl:call-template name="PopulateText">
+                                                    <xsl:with-param name="TargetNode" 
+                                                               select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
+                                                   </xsl:call-template>
+                                          </xsl:when>
+
+                              <!--   
+                                          <xsl:otherwise> 
+                                             <xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form4972Data/PersonNm"/>
 								</xsl:call-template>
+                                            </xsl:otherwise>              -->                                                                                  
+                                       </xsl:choose>
+								<!--<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$Form4972Data/PersonNm"/>
+								</xsl:call-template>-->
 							</div>	
 							<br/>
 						</div>
@@ -97,9 +131,29 @@
 						</b>
 						<br/>
 						<div style="font-size:6.5pt;padding-left:1mm;padding-top:2mm;">
-							<xsl:call-template name="PopulateSSN">
+						 <xsl:choose>
+						                       <!--     Form Level SSN      -->
+						      <xsl:when test="$Form4972Data/SSN != ''"> 
+                                     <xsl:call-template name="PopulateSSN">
+								     <xsl:with-param name="TargetNode" select="$Form4972Data/SSN"/>
+							         </xsl:call-template>
+                              </xsl:when>
+                              <!--<xsl:when test="$RtnHdrData/Filer/PrimarySSN"> 
+                                    <xsl:call-template name="PopulateReturnHeaderFiler">
+                                    <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+                                   </xsl:call-template>
+                              </xsl:when>-->
+                                                   <!-- TIN for 1041 return headers-->
+                              <xsl:when test="$RtnHdrData/Filer/EIN"> 
+                                     <xsl:call-template name="PopulateReturnHeaderFiler"> 
+                                     <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+                                     </xsl:call-template>
+                              </xsl:when>
+                       
+                         </xsl:choose>
+							<!--<xsl:call-template name="PopulateSSN">
 								<xsl:with-param name="TargetNode" select="$Form4972Data/SSN"/>
-							</xsl:call-template>
+							</xsl:call-template>-->
 						</div>
 					</div>
 					<!-- Part I -->

@@ -24,6 +24,10 @@
 <!-- Last modified on 6/3/2015 by Robert Jones IBM Defect 43145 IE11 Upgrade Fixes  -->
 <!-- Last modified on 5/6/2015 by Robert Jones UWR 123023 IE11 Upgrade Fixes  -->
 <!-- Last modified on 1/7/2016 by Robert Jones UWR 172430 Extender Updates  -->
+<!-- Last modified on 3/1/2016 by Robert Jones per IBM Defect 45833 Moved spans at lines 17 and 34 checkboxes because in RRD they would not Populate per Mitchell B -->
+<!-- Last modified on 5/18/2017 by Robert Jones UWR 194393 and 195664 Return Headers for 1120, 1041, 1040 and 1040NR  -->
+<!-- Last modified on 5/23/2017 by Robert Jones UWR 194393 and 195664 Return Headers for 1120, 1041, 1040 and 1040NR  -->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -118,10 +122,11 @@
 					<div class="styBB" style="width:187mm;">
 						<div class="styNameBox" style="width:147mm;height:auto;font-weight:normal;font-size:7pt;">
         Name(s) shown on return<br/>
-        <xsl:choose>
-         <xsl:when test="$RtnHdrData/ReturnTypeCd='1040' ">
+       <!-- <xsl:choose>
+        <xsl:when test="$RtnHdrData/ReturnTypeCd='1040' ">-->
+         
         <span style="font-weight:normal;">
-        		<xsl:call-template name="PopulateReturnHeaderFiler">
+        		<!--<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
 							</xsl:call-template>
 							<br/>
@@ -142,15 +147,22 @@
 							</span>
 							
 							</xsl:otherwise>
-			 </xsl:choose>
+
+			 </xsl:choose>-->
+			   <!-- Choice between 1120, 1041, 1040 and 1040NR Return Header Filer info -->
+                                                         <xsl:call-template name="PopulateFilerName">
+                                                            <xsl:with-param name="TargetNode" select="$Form6765Data"/>
+                                                         </xsl:call-template>
+                                                         </span>
 						</div>
 						<div class="styEINBox" style="width:39mm;height:4mm;padding-left:2mm;font-size:7pt;">
         Identifying number<br/>
 							<br/>
-							<xsl:choose>
-								    <xsl:when test="$RtnHdrData/ReturnTypeCd='1040' ">
+							<!--<xsl:choose>
+								 <xsl:when test="$RtnHdrData/ReturnTypeCd='1040' ">
+								    -->
 							<span style="font-weight:normal;">
-								<xsl:call-template name="PopulateReturnHeaderFilerTIN">
+							<!--	<xsl:call-template name="PopulateReturnHeaderFilerTIN">
 									<xsl:with-param name="TargetNode">SSN</xsl:with-param>
 								</xsl:call-template>
 							</span>
@@ -162,7 +174,12 @@
 								</xsl:call-template>
 							</span>
 							</xsl:otherwise>
-			 </xsl:choose>
+			 </xsl:choose>-->
+			  <!-- Choice between 1120, 1041, 1040 and 1040NR Return Header Filer info -->
+			   <xsl:call-template name="PopulateFilerTIN">
+                                                       <xsl:with-param name="TargetNode" select="$Form6765Data"/>
+                                                     </xsl:call-template>
+                                                     </span>
 						</div>
 					</div>
 					<!-- End Names and Identifying number section -->
@@ -553,6 +570,9 @@
 							<!-- yes checkbox -->
 						
 						<span>
+							<xsl:call-template name="PopulateSpan">
+                  <xsl:with-param name="TargetNode" select="$Form6765Data/RegularRedSect280CCrElectInd"/>
+								</xsl:call-template>
 							<label>
 					<xsl:call-template name="PopulateLabelYes">
                   <xsl:with-param name="TargetNode" select="$Form6765Data/RegularRedSect280CCrElectInd"/>
@@ -568,11 +588,12 @@
 									</xsl:call-template>
 								</input>
 							</span>
+					
+							<!-- no checkbox-->
+						<span>
 						<xsl:call-template name="PopulateSpan">
                   <xsl:with-param name="TargetNode" select="$Form6765Data/RegularRedSect280CCrElectInd"/>
 								</xsl:call-template>
-							<!-- no checkbox-->
-						<span>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
                   <xsl:with-param name="TargetNode" select="$Form6765Data/RegularRedSect280CCrElectInd"/>
@@ -589,9 +610,7 @@
 									</xsl:call-template>
 								</input>
 							</span>
-							<xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form6765Data/RegularRedSect280CCrElectInd"/>
-								</xsl:call-template>
+							
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:6.5mm;background-color:lightgrey;"/>
 						<div class="styLNAmountBoxNBB" style="height:6.5mm;"/>
@@ -990,6 +1009,10 @@ Are you electing the reduced credit under section 280C?
        <img src="{$ImagePath}/6765_Bullet.gif" alt="Bullet Image"/>
 								<!-- yes checkbox -->
 							<span>
+							  <xsl:call-template name="PopulateSpan">
+                    <xsl:with-param name="TargetNode" 
+                    select="$Form6765Data/AltRedSect280CCrElectInd"/>
+                  </xsl:call-template>
 								<label>
                   <xsl:call-template name="PopulateLabelYes">
                <xsl:with-param name="TargetNode" select="$Form6765Data/AltRedSect280CCrElectInd"/>
@@ -1008,11 +1031,11 @@ Are you electing the reduced credit under section 280C?
                     </xsl:call-template>
                </input>
                 </span>
-             <xsl:call-template name="PopulateSpan">
-                    <xsl:with-param name="TargetNode" 
-                    select="$Form6765Data/AltRedSect280CCrElectInd"/>
-                  </xsl:call-template>
+           
                 <!-- no checkbox -->
+                	<xsl:call-template name="PopulateSpan">
+               <xsl:with-param name="TargetNode" select="$Form6765Data/AltRedSect280CCrElectInd"/>
+                  </xsl:call-template>
               <label>
                  <xsl:call-template name="PopulateLabelNo">
                  <xsl:with-param name="TargetNode" select="$Form6765Data/AltRedSect280CCrElectInd"/>
@@ -1032,9 +1055,7 @@ Are you electing the reduced credit under section 280C?
                 </input>
                 </span>
                 
-							<xsl:call-template name="PopulateSpan">
-               <xsl:with-param name="TargetNode" select="$Form6765Data/AltRedSect280CCrElectInd"/>
-                  </xsl:call-template>
+						
                   </span>
 							</div>
 							<div class="styLNRightNumBoxNBB" style="height:4.5mm;"/>

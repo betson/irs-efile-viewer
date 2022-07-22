@@ -114,7 +114,7 @@
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
 				  </xsl:call-template>
 				</xsl:when>
-				<!-- Name from 1041 Return Header 
+				<!-- Name from 1041 Return Header -->
 				<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
 				  <xsl:call-template name="PopulateText">
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
@@ -124,13 +124,13 @@
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
 				  </xsl:call-template>
 				</xsl:when>
-				<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
+				<!--<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
 				  <xsl:call-template name="PopulateText">
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
 				  </xsl:call-template>
 				  <br/>
 				</xsl:when> -->
-			  </xsl:choose>
+				</xsl:choose>
 				  </div>
 				  <div class="styEINBox" style="width:30mm;height:4mm;padding-left:2mm;font-size:7pt;font-weight:bold;">
 					Identifying number<br/>

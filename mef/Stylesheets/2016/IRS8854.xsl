@@ -156,18 +156,19 @@
 					</span>
 				</div>
 			</xsl:if>
-			<div style="float:right;">
-				<span style="width:40px;"/>  
-				Form <span class="styBoldText" style="font-size:8pt;">8854</span> (2016)
-			</div>
 			<xsl:if test="$CatNumber">
-				<div style="float:right;">
+				<div style="float:left;">
 					<span>
+						<span style="width:30mm"/>
 						<xsl:attribute name="style"><xsl:value-of select="$CatNumberSpanWidth"/></xsl:attribute>
 						<xsl:value-of select="$CatNumber"/>
 					</span>
 				</div>
 			</xsl:if>
+			<div style="float:right;">
+				<span style="width:40px;"/>  
+				Form <span class="styBoldText" style="font-size:8pt;">8854</span> (2016)
+			</div>
 		</div>
 		<!-- END Page Break and Footer-->
 		<!-- BEGIN Page Header -->
@@ -237,6 +238,16 @@
 		<xsl:param name="Number"/>
 		<xsl:param name="Width">28mm</xsl:param>
 		<xsl:param name="Height">4.3mm</xsl:param>
+		<div class="styLNRightNumBox">
+			<xsl:attribute name="style">
+				padding:3px 0px 0px 0px;
+				border-right-width:0px;
+				height:<xsl:value-of select="$Height"/>;
+				<xsl:if test="$NumberBoxStyle"><xsl:value-of select="$NumberBoxStyle"/></xsl:if></xsl:attribute>
+			<xsl:if test="$Number">
+				<xsl:value-of select="$Number"/>
+			</xsl:if>
+		</div>
 		<div class="styLNAmountBox">
 			<xsl:attribute name="style">
 				width:26mm;
@@ -252,17 +263,6 @@
 						<xsl:with-param name="TargetNode" select="$TargetNode"/>
 					</xsl:call-template>
 				</xsl:if>
-			</xsl:if>
-		</div>
-		<div class="styLNRightNumBox">
-			<xsl:attribute name="style">
-				float:right;
-				padding:3px 0px 0px 0px;
-				border-right-width:0px;
-				height:<xsl:value-of select="$Height"/>;
-				<xsl:if test="$NumberBoxStyle"><xsl:value-of select="$NumberBoxStyle"/></xsl:if></xsl:attribute>
-			<xsl:if test="$Number">
-				<xsl:value-of select="$Number"/>
 			</xsl:if>
 		</div>
 	</xsl:template>
@@ -370,17 +370,22 @@
 					</div>
 					<!-- BEGIN: Header section 1 -->
 					<div class="styBB" style="width:187mm;height:auto;">
-						<div class="styNameBox" style="width:132mm;height:8mm;font-size:7pt;">
+						<div class="styNameBox" style="width:132mm;height:9mm;font-size:7pt;">
 							Name<br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">Name</xsl:with-param>
 							</xsl:call-template>
 						</div>
-						<div class="styEINBox" style="width:54.8mm;height:8mm;font-size:7pt;padding-left:2mm;">
+						<div class="styEINBox" style="width:54.8mm;height:9mm;font-size:7pt;padding-left:2mm;">
 							<span class="styNormalText">Identifying number (see instructions)</span>
 							<br/>
 							<span class="styEINFld" style="width:100%; text-align:left;font-weight:normal;text-align:center;">
 								<xsl:call-template name="PopulateReturnHeaderFilerTIN"></xsl:call-template>
+							</span>
+							<span style="width:100%;text-align:center;font-weight:normal;">
+								<xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">SpouseSSN</xsl:with-param>
+								</xsl:call-template>
 							</span>
 						</div>
 					</div>
@@ -441,7 +446,9 @@
 						<div class="styIRS8854LineItem">
 							<div class="styIRS8854LNLeftNumBox">2</div>
 							<div class="styIRS8854LNDesc" style="width:179mm">
-								Address of principal foreign residence (if different from line 1)<br/>
+								<span style="width:84mm;">Address of principal foreign residence (if different from line 1)</span>
+								<span style="width:92mm;border-bottom:1px dashed black;"/>
+								<br/>
 								<span style="width:100%;border-bottom:1px dashed black;">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/ForeignResidenceAddress/AddressLine1Txt"/>
@@ -860,7 +867,7 @@
 									</xsl:call-template>
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
-											<xsl:with-param name="TargetNode" select="$Form8854Data/ExptrtPeriod1Grp/Form8854FiledGrp/USPresence30To60DaysInd"/>
+											<xsl:with-param name="TargetNode" select="$Form8854Data/ExptrtPeriod1Grp/Form8854FiledGrp/USPresence30To60DaysInd"/>								                                                                                                                                                
 											<xsl:with-param name="BackupName">IRS8854USPresence30To60DaysInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
@@ -2352,7 +2359,7 @@
 						<!-- End (Line) 7d -->
 						<!-- Begin (Line) 8 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem">
+						<div class="styIRS8854LineItem" style="display:block;">
 							<div class="styIRS8854LNLeftNumBox">8</div>
 							<div class="styIRS8854LNDesc" style="width:179mm;margin-bottom:2mm;">
 								Recognition of gain or loss on the deemed sale of mark-to-market property. <span class="styBoldText">Caution</span>. Don't include in column (a) any property<br/>
@@ -2768,7 +2775,7 @@
 						<!-- End (Line) 8 -->
 						<!-- Begin (Line) 9 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem">
+						<div class="styIRS8854LineItem" style="display:block;">
 							<div class="styIRS8854LNLeftNumBox" style="padding-top:3mm;">
 								9
 							</div>
@@ -2805,7 +2812,7 @@
 						<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 						<!-- End (Line) 9 -->
 					</div>
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm;float:none;display:block;">
 						<!-- Begin (Line) 10 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 						<div class="styIRS8854LineItem">
@@ -2852,7 +2859,7 @@
 						<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 						<!-- End (Line) 10 -->
 					</div>
-					<div class="styTBB" style="width:187mm;">
+					<div class="styTBB" style="width:187mm;float:none;">
 						<span style="padding-top:7px;"/>
 						<span class="stySmallText" style="padding-left:3px;">
 							*You must identify as "(h)(2)" any property for which you are making the special basis election under section 877A(h)(2). 
@@ -2869,7 +2876,7 @@
 						<xsl:with-param name="PageNumber">4</xsl:with-param>
 					</xsl:call-template>
 					<!-- BEGIN Section C Header -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm;float:none;">
 						<div class="styIRS8854LNDesc" style="width:18mm;border-top-width:0px;border-bottom-width:0px;border-right-width:1px;border-left-width:0px;border-color:#000000;">
 							<span class="styBoldText">Section C</span>
 						</div>
@@ -3941,9 +3948,9 @@
 								<xsl:with-param name="A" select="$Form8854ScheduleA/TotalLiabilityAmt"/>
 								<xsl:with-param name="Height">4.5mm</xsl:with-param>
 								<xsl:with-param name="AStyle">border-bottom-width:0px;</xsl:with-param>
-								<xsl:with-param name="BStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
-								<xsl:with-param name="CStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
-								<xsl:with-param name="DStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
+								<xsl:with-param name="BStyle">background-color:lightgrey;border-bottom-width:1px;</xsl:with-param>
+								<xsl:with-param name="CStyle">background-color:lightgrey;border-bottom-width:1px;</xsl:with-param>
+								<xsl:with-param name="DStyle">background-color:lightgrey;border-bottom-width:1px;</xsl:with-param>
 							</xsl:call-template>
 						</div>
 						<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -4026,7 +4033,7 @@
 						<!-- End (Line) 1-->
 						<!-- Begin (Line) 1a -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
+						<div class="styIRS8854LineItem" style="height:4mm;width:187mm;float:left">
 							<div class="styIRS8854LNDesc" style="width:100%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
 								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-right:7px;text-align:right;">a</div>
 								<div class="styIRS8854LNDesc" style="height:4mm;width:108mm;padding:0px 0px 0px 0px;">
@@ -4060,14 +4067,18 @@
 									</div>
 								</div>
 								<div class="styIRS8854LNDesc" style="height:4mm;width:68mm;padding:0px 0px 0px 0px;float:right;">
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-									</xsl:call-template>
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="Number">1a</xsl:with-param>
-										<xsl:with-param name="TargetNode" select="$Form8854ScheduleB/GrossIncmNECUSTrdBusGrp/InterestAmt"/>
-									</xsl:call-template>
+									<div class="styIRS8854LNDesc" style="height:4mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
+											<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+										</xsl:call-template>
+									</div>
+									<div class="styIRS8854LNDesc" style="height:4mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="Number">1a</xsl:with-param>
+											<xsl:with-param name="TargetNode" select="$Form8854ScheduleB/GrossIncmNECUSTrdBusGrp/InterestAmt"/>
+										</xsl:call-template>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -4075,7 +4086,7 @@
 						<!-- End (Line) 1a-->
 						<!-- Begin (Line) 1b -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
+						<div class="styIRS8854LineItem" style="height:4mm;width:187mm;float:left">
 							<div class="styIRS8854LNDesc" style="width:100%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
 								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-right:7px;text-align:right;">b</div>
 								<div class="styIRS8854LNDesc" style="height:4mm;width:108mm;padding:0px 0px 0px 0px;">
@@ -4108,14 +4119,18 @@
 									</div>
 								</div>
 								<div class="styIRS8854LNDesc" style="height:4mm;width:68mm;padding:0px 0px 0px 0px;float:right;">
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-									</xsl:call-template>
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="Number">1b</xsl:with-param>
-										<xsl:with-param name="TargetNode" select="$Form8854ScheduleB/GrossIncmNECUSTrdBusGrp/DividendAmt"/>
-									</xsl:call-template>
+									<div class="styIRS8854LNDesc" style="height:4mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
+											<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+										</xsl:call-template>
+									</div>
+									<div class="styIRS8854LNDesc" style="height:4mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="Number">1b</xsl:with-param>
+											<xsl:with-param name="TargetNode" select="$Form8854ScheduleB/GrossIncmNECUSTrdBusGrp/DividendAmt"/>
+										</xsl:call-template>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -4156,14 +4171,18 @@
 									</div>
 								</div>
 								<div class="styIRS8854LNDesc" style="height:4mm;width:68mm;padding:0px 0px 0px 0px;float:right;">
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-									</xsl:call-template>
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="Number">1c</xsl:with-param>
-										<xsl:with-param name="TargetNode" select="$Form8854ScheduleB/GrossIncmNECUSTrdBusGrp/RoyaltyAmt"/>
-									</xsl:call-template>
+									<div class="styIRS8854LNDesc" style="height:4mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
+											<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+										</xsl:call-template>
+									</div>
+									<div class="styIRS8854LNDesc" style="height:4mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="Number">1c</xsl:with-param>
+											<xsl:with-param name="TargetNode" select="$Form8854ScheduleB/GrossIncmNECUSTrdBusGrp/RoyaltyAmt"/>
+										</xsl:call-template>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -4201,14 +4220,18 @@
 									</div>
 								</div>
 								<div class="styIRS8854LNDesc" style="height:4mm;width:68mm;padding:0px 0px 0px 0px;float:right;">
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-									</xsl:call-template>
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="Number">1d</xsl:with-param>
-										<xsl:with-param name="TargetNode" select="$Form8854ScheduleB/GrossIncmNECUSTrdBusGrp/PensionDistributionAmt"/>
-									</xsl:call-template>
+									<div class="styIRS8854LNDesc" style="height:4mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
+											<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+										</xsl:call-template>
+									</div>
+									<div class="styIRS8854LNDesc" style="height:4mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="Number">1d</xsl:with-param>
+											<xsl:with-param name="TargetNode" select="$Form8854ScheduleB/GrossIncmNECUSTrdBusGrp/PensionDistributionAmt"/>
+										</xsl:call-template>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -4250,14 +4273,18 @@
 									</div>
 								</div>
 								<div class="styIRS8854LNDesc" style="height:4mm;width:68mm;padding:0px 0px 0px 0px;float:right;">
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-									</xsl:call-template>
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="Number">1e</xsl:with-param>
-										<xsl:with-param name="TargetNode" select="$Form8854ScheduleB/GrossIncmNECUSTrdBusGrp/OtherAmt"/>
-									</xsl:call-template>
+									<div class="styIRS8854LNDesc" style="height:4mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
+											<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+										</xsl:call-template>
+									</div>
+									<div class="styIRS8854LNDesc" style="height:4mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="Number">1e</xsl:with-param>
+											<xsl:with-param name="TargetNode" select="$Form8854ScheduleB/GrossIncmNECUSTrdBusGrp/OtherAmt"/>
+										</xsl:call-template>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -4406,7 +4433,6 @@
 										<br/>States
 										<!--Dotted Line-->
 										<span class="styBoldText" style="float:right;">
-											.
 											<span style="width:11px"/>.
 											<span style="width:11px"/>.
 											<span style="width:11px"/>.
@@ -4432,24 +4458,28 @@
 									</div>
 								</div>
 								<div class="styIRS8854LNDesc" style="height:7mm;width:68mm;padding:0px 0px 0px 0px;float:right;">
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="Height">3mm</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-									</xsl:call-template>
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="Height">3mm</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-									</xsl:call-template>
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-									</xsl:call-template>
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="Number">4a</xsl:with-param>
-										<xsl:with-param name="TargetNode" select="$Form8854ScheduleB/GainFromSalePropertyInUSAmt"/>
-									</xsl:call-template>
+									<div class="styIRS8854LNDesc" style="height:7mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="Height">3mm</xsl:with-param>
+											<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
+											<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+										</xsl:call-template>
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
+											<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+										</xsl:call-template>
+									</div>
+									<div class="styIRS8854LNDesc" style="height:7mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="Height">3mm</xsl:with-param>
+											<xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
+											<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+										</xsl:call-template>
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="Number">4a</xsl:with-param>
+											<xsl:with-param name="TargetNode" select="$Form8854ScheduleB/GainFromSalePropertyInUSAmt"/>
+										</xsl:call-template>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -4479,14 +4509,18 @@
 									</div>
 								</div>
 								<div class="styIRS8854LNDesc" style="height:4mm;width:68mm;padding:0px 0px 0px 0px;float:right;">
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-									</xsl:call-template>
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="Number">4b</xsl:with-param>
-										<xsl:with-param name="TargetNode" select="$Form8854ScheduleB/GainFromSaleStockIssueInUSAmt"/>
-									</xsl:call-template>
+									<div class="styIRS8854LNDesc" style="height:4mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
+											<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+										</xsl:call-template>
+									</div>
+									<div class="styIRS8854LNDesc" style="height:4mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="Number">4b</xsl:with-param>
+											<xsl:with-param name="TargetNode" select="$Form8854ScheduleB/GainFromSaleStockIssueInUSAmt"/>
+										</xsl:call-template>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -4514,24 +4548,28 @@
 									</div>
 								</div>
 								<div class="styIRS8854LNDesc" style="height:7mm;width:68mm;padding:0px 0px 0px 0px;float:right;">
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="Height">3mm</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-									</xsl:call-template>
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="Height">3mm</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-									</xsl:call-template>
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-									</xsl:call-template>
-									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="Number">4c</xsl:with-param>
-										<xsl:with-param name="TargetNode" select="$Form8854ScheduleB/GainSaleDebtObligNotCnnctUSAmt"/>
-									</xsl:call-template>
+									<div class="styIRS8854LNDesc" style="height:7mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="Height">3mm</xsl:with-param>
+											<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
+											<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+										</xsl:call-template>
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="NumberBoxStyle">background-color:lightgrey;border-bottom-width:0px;</xsl:with-param>
+											<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+										</xsl:call-template>
+									</div>
+									<div class="styIRS8854LNDesc" style="height:7mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="Height">3mm</xsl:with-param>
+											<xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
+											<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+										</xsl:call-template>
+										<xsl:call-template name="CreateBox">
+											<xsl:with-param name="Number">4c</xsl:with-param>
+											<xsl:with-param name="TargetNode" select="$Form8854ScheduleB/GainSaleDebtObligNotCnnctUSAmt"/>
+										</xsl:call-template>
+									</div>
 								</div>
 							</div>
 						</div>

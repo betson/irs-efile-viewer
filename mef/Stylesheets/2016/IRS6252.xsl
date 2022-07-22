@@ -108,7 +108,7 @@
 							<br/>
 							<span style="font-weight:normal;">
 								<xsl:choose>
-								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
+								<xsl:when test="$RtnHdrData/Filer/PrimarySSN">
 									 <xsl:call-template name="PopulateReturnHeaderFiler">
 										<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
 									 </xsl:call-template>

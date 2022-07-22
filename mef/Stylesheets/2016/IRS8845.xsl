@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Last modified on 9/27/2017 by Harold Nadel for KISAM #  IM03083096 corrected the error in the Return Header-->
 <!-- Last modified on 11/16/2016 by Harold Nadel for Defect # 47376 updated 2nd bullet in header with correct verbage, #46791 updated  -->
 <!-- Last modified on 11/02/2016 by Harold Nadel for Defect # 46791 updated amount lines with blue shading per PDF review-->
 <!-- Last modified on 9/30/2016 by Harold Nadel for WR# 183722 update tax year to TY2016-->
@@ -95,19 +96,25 @@
         Name(s) as shown on return<br/>
 		  <xsl:choose>
 		    <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-		      <br/>
+		    <xsl:call-template name="PopulateFilerName">
+                             <xsl:with-param name="TargetNode" select="$Form8845Data"/>
+                   </xsl:call-template> 
+		      <!--<br/>
 		      <xsl:call-template name="PopulateReturnHeaderFiler">
 		            <xsl:with-param name="TargetNode">Name</xsl:with-param>
-		              </xsl:call-template>
+		              </xsl:call-template>-->
 		            </xsl:when>
                   <xsl:otherwise>
-		      <xsl:call-template name="PopulateReturnHeaderFiler">
+                  <xsl:call-template name="PopulateFilerName">
+                             <xsl:with-param name="TargetNode" select="$Form8845Data"/>
+                   </xsl:call-template> 
+		     <!-- <xsl:call-template name="PopulateReturnHeaderFiler">
 		            <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
 		              </xsl:call-template>
 		              <br/> 
 		              <xsl:call-template name="PopulateReturnHeaderFiler">
 		            <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-		              </xsl:call-template>		
+		              </xsl:call-template>		-->
 		                </xsl:otherwise>
                   </xsl:choose>
             </div>
@@ -117,14 +124,20 @@
               <span style="font-weight:normal;">
 		<xsl:choose>
 		  <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-		<xsl:call-template name="PopulateReturnHeaderFiler">
+		   <xsl:call-template name="PopulateFilerTIN">
+                 <xsl:with-param name="TargetNode" select="$Form8845Data"/>
+            </xsl:call-template>
+		<!--<xsl:call-template name="PopulateReturnHeaderFiler">
 		      <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-		</xsl:call-template>
+		</xsl:call-template>-->
 		  </xsl:when>
 		  <xsl:otherwise>
-		<xsl:call-template name="PopulateReturnHeaderFiler">
+		   <xsl:call-template name="PopulateFilerTIN">
+                 <xsl:with-param name="TargetNode" select="$Form8845Data"/>
+            </xsl:call-template>
+		<!--<xsl:call-template name="PopulateReturnHeaderFiler">
 		  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-		</xsl:call-template>
+		</xsl:call-template>-->
 		  </xsl:otherwise>
 		</xsl:choose>
               </span>

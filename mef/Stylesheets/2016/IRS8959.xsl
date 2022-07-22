@@ -185,12 +185,20 @@
 						<div class="styLNLeftNumBoxSD">5</div>
 						<div class="styLNDesc" style="width:92.8mm;">
 							Enter the following amount for your filing status:<br/>
-							<span style="float:left;">Married filing jointly</span><span style="float:right;padding-right:3mm;">$250,000</span>
-							<span class="styIRS8959Dots">.........</span><br/>					
-							<span style="float:left;">Married filing separately</span><span style="float:right;padding-right:3mm;">$125,000</span>
-							<span class="styIRS8959Dots">........</span><br/>
-							<span style="float:left;">Single, Head of household, or Qualifying widow(er) </span>
-							<span style="float:right;padding-right:3mm;">$200,000</span><span class="styIRS8959Dots">..</span>					
+							Married filing jointly
+							<!--Dotted Line-->
+							    <span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">............</span>	
+							<span style="float:right;padding-right:3mm;">$250,000</span>
+							<br/>
+							Married filing separately					
+							<!--Dotted Line-->
+							    <span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">...........</span>	
+							<span style="float:right;padding-right:3mm;">$125,000</span>
+							<br/>
+							Single, Head of household, or Qualifying widow(er)
+							<!--Dotted Line-->
+							    <span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">..</span>	
+							<span style="float:right;padding-right:3mm;">$200,000</span>					
 						</div>
 						<div class="styLNRightNumBox" style="height:14mm;width:8mm;"><br/><br/><br/>5</div>
 						<div class="styLNAmountBox" style="height:14mm;width:35mm;"><br/><br/><br/>
@@ -258,12 +266,20 @@
 						<div class="styLNLeftNumBoxSD">9</div>
 						<div class="styLNDesc" style="width:92.8mm;">
 							Enter the following amount for your filing status:<br/>
-							<span style="float:left;">Married filing jointly</span><span style="float:right;padding-right:3mm;">$250,000</span>
-							<span class="styIRS8959Dots">.........</span><br/>					
-							<span style="float:left;">Married filing separately</span><span style="float:right;padding-right:3mm;">$125,000</span>
-							<span class="styIRS8959Dots">........</span><br/>
-							<span style="float:left;">Single, Head of household, or Qualifying widow(er) </span>
-							<span style="float:right;padding-right:3mm;">$200,000</span><span class="styIRS8959Dots">..</span>					
+							Married filing jointly
+							<!--Dotted Line-->
+							    <span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">............</span>	
+							<span style="float:right;padding-right:3mm;">$250,000</span>
+							<br/>
+							Married filing separately					
+							<!--Dotted Line-->
+							    <span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">...........</span>	
+							<span style="float:right;padding-right:3mm;">$125,000</span>
+							<br/>
+							Single, Head of household, or Qualifying widow(er)
+							<!--Dotted Line-->
+							    <span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">..</span>	
+							<span style="float:right;padding-right:3mm;">$200,000</span>					
 						</div>
 						<div class="styLNRightNumBox" style="height:14mm;"><br/><br/><br/>9</div>
 						<div class="styLNAmountBox" style="height:14mm;width:35mm;"><br/><br/><br/>
@@ -363,12 +379,20 @@
 						<div class="styLNLeftNumBox">15</div>
 						<div class="styLNDesc" style="width:92.8mm;">
 							Enter the following amount for your filing status:<br/>
-							<span style="float:left;">Married filing jointly</span><span style="float:right;padding-right:3mm;">$250,000</span>
-							<span class="styIRS8959Dots">.........</span><br/>					
-							<span style="float:left;">Married filing separately</span><span style="float:right;padding-right:3mm;">$125,000</span>
-							<span class="styIRS8959Dots">........</span><br/>
-							<span style="float:left;">Single, Head of household, or Qualifying widow(er) </span>
-							<span style="float:right;padding-right:3mm;">$200,000</span><span class="styIRS8959Dots">..</span>					
+							Married filing jointly
+							<!--Dotted Line-->
+							    <span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">............</span>	
+							<span style="float:right;padding-right:3mm;">$250,000</span>
+							<br/>
+							Married filing separately					
+							<!--Dotted Line-->
+							    <span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">...........</span>	
+							<span style="float:right;padding-right:3mm;">$125,000</span>
+							<br/>
+							Single, Head of household, or Qualifying widow(er)
+							<!--Dotted Line-->
+							    <span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">..</span>	
+							<span style="float:right;padding-right:3mm;">$200,000</span>					
 						</div>
 						<div class="styLNRightNumBox" style="height:14mm;"><br/><br/><br/>15</div>
 						<div class="styLNAmountBox" style="height:14mm;width:35mm;"><br/><br/><br/>

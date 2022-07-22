@@ -126,9 +126,10 @@
 		 <div class="styBB" style="width:15mm; border-bottom-width: 0px;height: 15mm;padding-top:3mm;font-size:7pt;">
 		<img src="{$ImagePath}/1040SchEIC2_Caution.gif" alt="Bullet"/>
 		</div>   
-		<div class="styLNDesc" style="width:172mm;height:15mm;padding-top:3mm;">       
+		<div class="styLNDesc" style="width:172mm;height:15mm;padding-top:1mm;">       
 			<li>You can't claim the EIC for a child who didn't live with you for more than half of the year. </li>         
-			<li style="padding-top:1mm;">If you take the EIC even though you are not eligible, you may not be allowed to take the credit for up to 10 years. See the instructions for details.</li> 
+			<li style="padding-top:1mm;">If you take the EIC even though you are not eligible, you may not be allowed to take the credit for up to 10 years. See the 
+				instructions for details.</li> 
 			<li style="padding-top:1mm;">It will take us longer to process your return and issue your refund if you do not fill in all lines that apply for each qualifying child.</li> 
 		</div>
      </div>

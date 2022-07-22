@@ -7,7 +7,8 @@
 <!-- 01/28/2016 - Changes made for defect 45262 - Jeremy Nichols -->
 <!-- 10/26/2016 - Changes made for defect 46100 - Jeremy Nichols -->
 <!-- 10/28/2016 - Changes made for pdf review under defect 60593 - Jeremy Nichols -->
-<!-- 02/28/2017 - Changes made for defect 47853 - Jeremy Nichols -->
+<!-- 06/20/2017 - Changes made for defect 47853 - Jeremy Nichols -->
+<!-- 11/06/2017 - Changes made for defect 125623 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="PopulateTemplate.xsl"/>
@@ -51,15 +52,15 @@
 					<xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS1118AMTStyle"/>
 						<xsl:call-template name="AddOnStyle"/>
-					 </xsl:if>
+					</xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
 			<body class="styBodyClass">
 				<form name="Form1118">
 					<xsl:call-template name="DocumentHeaderLandscape"/>
-					<div class="styTBB" style="width:256mm;height:22mm;border-bottom-width:1px;">
-						<div class="styFNBox" style="width:31mm;height:22mm;">
+					<div class="styTBB" style="width:256mm;height:21mm;border-bottom-width:1px;">
+						<div class="styFNBox" style="width:31mm;height:21mm;">
 							<div style="height:8mm;display:inline;">
 								Form<span class="styFormNumber"> 1118</span><br/>            
 								(Rev. December 2015)
@@ -74,7 +75,7 @@
 								<span class="styAgency">Internal Revenue Service</span>
 							</div>
 						</div>
-						<div class="styFTBox" style="width:178mm;height:22mm;">
+						<div class="styFTBox" style="width:178mm;height:21mm;">
 							<div class="styMainTitle">Foreign Tax Credit—Corporations</div>
 							<div class="styFBT">
 								<img src="{$ImagePath}/1118_Bullet_Title.gif" alt="bulletpoint"/> Information about Form 1118 and its separate instructions is at <i>www.irs.gov/form1118</i>.
@@ -97,13 +98,13 @@
 								</span>
 							</div>
 						</div>
-						<div class="styTYBox" style="width:45mm;height:22mm;">
+						<div class="styTYBox" style="width:45mm;height:21mm;">
 							<div style="text-align:center;padding-top:10mm;">OMB No. 1545-0123</div>
 						</div>
 					</div>
 					<div class="styBB" style="height:9mm;width:256mm;">
 						<div class="styNameBox" style="width:189mm;height:9mm;font-size:7pt;">
-						    sName of corporation<br/>
+          Name of corporation<br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form1118Data/CorporationName/BusinessNameLine1Txt"/>
 							</xsl:call-template>
@@ -113,7 +114,7 @@
 							</xsl:call-template>
 						</div>
 						<div class="styEINBox" style="width:65mm;height:9mm;font-size:7pt;font-weight:bold;padding-left:2mm;">
-						    Employer identification number<br/>
+          Employer identification number<br/>
 							<br/>
 							<span class="styNormalText">
 								<xsl:choose>
@@ -138,10 +139,10 @@
 					</div>
 					<!--BEGIN CATEGORY OF INCOME SECTION -->
 					<div class="styBB" style="width:256mm;">
-						Use a <span class="styBoldText">separate</span> Form 1118 for each applicable category of income
-						listed below. See <span class="styBoldText">Categories of Income</span> in the instructions.
-						Also, see <span class="styBoldText">Specific Instructions</span>.<br/>
-						Check only one box on each form.<br/>
+        Use a <span class="styBoldText">separate</span> Form 1118 for each applicable category of income
+        listed below. See <span class="styBoldText">Categories of Income</span> in the instructions.
+        Also, see <span class="styBoldText">Specific Instructions</span>.<br/>
+        Check only one box on each form.<br/>
 						<div style="height:12mm;width:47mm;float:left;padding-top:1mm;">
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
@@ -201,7 +202,7 @@
 									<xsl:with-param name="TargetNode" select="$Form1118Data/ForeignIncResourcedTreatyInd"/>
 									<xsl:with-param name="BackupName">IRS1118DataTreatyResourcedIncome</xsl:with-param>
 								</xsl:call-template>Income Re-sourced by Treaty
-							</label>: Name of Country <img src="{$ImagePath}/1118_Bullet_Line.gif" alt="bulletpoint"/>
+          </label>: Name of Country <img src="{$ImagePath}/1118_Bullet_Line.gif" alt="bulletpoint"/>
 							<span style="border-color:black; border-style:solid; border-right-width: 0px; border-left-width: 0px; border-top-width:0px; border-bottom-width: 1px; width: 30mm">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form1118Data/ForeignIncResourcedTreatyInd/@countryCd"/>
@@ -232,7 +233,7 @@
 					</div>
 					<!-- END SCHEDULE A TITLE -->
 					<!-- BEGIN INCOMEORLOSS TABLE -->
-					<div class="styTableContainerLandscape" id="IBActn" style="height:auto;width:256mm;display:block;">
+					<div class="styTableContainerLandscape" id="IBActn" style="height:71mm;display:block;">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
@@ -240,38 +241,38 @@
 							<thead class="styTableThead">
 								<tr>
 									<th class="styIRS1118TableCellLtr" rowspan="3">
-										<span style="width:6mm;height:20mm;"/>
+										<span style="width:6mm;height:18mm;"/>
 									</th>
-									<th class="styIRS1118TableCellHeaderSmall" style="width:21mm;height:20mm;" rowspan="3" scope="col">1. <span class="styNormalText" style="display:Inline;">Foreign Country or U.S. Possession (Enter two-letter code; see instructions. Use a separate line for each.)*</span>
+									<th class="styIRS1118TableCellHeaderSmall" style="width:21mm;height:18mm;" rowspan="3" scope="col">1. <span class="styNormalText" style="display:Inline;">Foreign Country or U.S. Possession (Enter two-letter code; see instructions. Use a separate line for each.)*</span>
 									</th>
-									<th class="styIRS1118TableCellHeaderSmall" style="width:229mm;height:5mm;" colspan="9" scope="col">Gross Income or (Loss) From Sources Outside the United States (<span class="styItalicText">INCLUDE</span> Foreign Branch Gross Income here <span class="styItalicText">and</span> on Schedule F)</th>
+									<th class="styIRS1118TableCellHeaderSmall" style="width:229mm;height:4mm;" colspan="9" scope="col">Gross Income or (Loss) From Sources Outside the United States (<span class="styItalicText">INCLUDE</span> Foreign Branch Gross Income here <span class="styItalicText">and</span> on Schedule F)</th>
 								</tr>
 								<tr>
-									<th class="styIRS1118TableCellHeaderSmall" style="width:50mm;height:9mm;" colspan="2" scope="col">2. <span class="styNormalText" style="display:Inline;">Deemed Dividends (see instructions)</span>
+									<th class="styIRS1118TableCellHeaderSmall" style="width:50mm;height:8mm;" colspan="2" scope="col">2. <span class="styNormalText" style="display:Inline;">Deemed Dividends (see instructions)</span>
 									</th>
-									<th class="styIRS1118TableCellHeaderSmall" style="width:50mm;height:9mm;" colspan="2" scope="col">3. <span class="styNormalText" style="display:Inline;">Other Dividends</span>
+									<th class="styIRS1118TableCellHeaderSmall" style="width:50mm;height:8mm;" colspan="2" scope="col">3. <span class="styNormalText" style="display:Inline;">Other Dividends</span>
 									</th>
-									<th class="styIRS1118TableCellHeaderSmall" style="width:25mm;height:18mm;" rowspan="2" scope="col">4. <span class="styNormalText" style="display:Inline;">Interest</span>
+									<th class="styIRS1118TableCellHeaderSmall" style="width:25mm;height:16mm;" rowspan="2" scope="col">4. <span class="styNormalText" style="display:Inline;">Interest</span>
 									</th>
-									<th class="styIRS1118TableCellHeaderSmall" style="width:25mm;height:18mm;" rowspan="2" scope="col">5. <span class="styNormalText" style="display:Inline;">Gross Rents, Royalties, and License Fees</span>
+									<th class="styIRS1118TableCellHeaderSmall" style="width:25mm;height:16mm;" rowspan="2" scope="col">5. <span class="styNormalText" style="display:Inline;">Gross Rents, Royalties, and License Fees</span>
 									</th>
-									<th class="styIRS1118TableCellHeaderSmall" style="width:25mm;height:18mm;" rowspan="2" scope="col">6. <span class="styNormalText" style="display:Inline;">Gross Income From Performance of Services</span>
+									<th class="styIRS1118TableCellHeaderSmall" style="width:25mm;height:16mm;" rowspan="2" scope="col">6. <span class="styNormalText" style="display:Inline;">Gross Income From Performance of Services</span>
 									</th>
-									<th class="styIRS1118TableCellHeaderSmall" style="width:29mm;height:18mm;" rowspan="2" scope="col">7. <span class="styNormalText" style="display:Inline;">Other (attach schedule)</span>
+									<th class="styIRS1118TableCellHeaderSmall" style="width:29mm;height:16mm;" rowspan="2" scope="col">7. <span class="styNormalText" style="display:Inline;">Other (attach schedule)</span>
 										<br/>
 									</th>
-									<th class="styIRS1118TableCellHeaderSmall" style="width:25mm;height:18mm;" rowspan="2" scope="col">8. <span class="styNormalText" style="display:Inline;">Total (add columns 2(a) through 7)</span>
+									<th class="styIRS1118TableCellHeaderSmall" style="width:25mm;height:16mm;" rowspan="2" scope="col">8. <span class="styNormalText" style="display:Inline;">Total (add columns 2(a) through 7)</span>
 										<span style="width:4px"/>
 									</th>
 								</tr>
 								<tr>
-									<th class="styIRS1118TableCellHeaderSmall" style="width:25mm;height:9mm;" scope="col">(a) <span class="styNormalText" style="display:Inline;">Exclude gross-up</span>
+									<th class="styIRS1118TableCellHeaderSmall" style="width:25mm;height:8mm;" scope="col">(a) <span class="styNormalText" style="display:Inline;">Exclude gross-up</span>
 									</th>
-									<th class="styIRS1118TableCellHeaderSmall" style="width:25mm;height:9mm;" scope="col">(b) <span class="styNormalText" style="display:Inline;">Gross-up (sec. 78)</span>
+									<th class="styIRS1118TableCellHeaderSmall" style="width:25mm;height:8mm;" scope="col">(b) <span class="styNormalText" style="display:Inline;">Gross-up (sec. 78)</span>
 									</th>
-									<th class="styIRS1118TableCellHeaderSmall" style="width:25mm;height:9mm;" scope="col">(a) <span class="styNormalText" style="display:Inline;">Exclude gross-up</span>
+									<th class="styIRS1118TableCellHeaderSmall" style="width:25mm;height:8mm;" scope="col">(a) <span class="styNormalText" style="display:Inline;">Exclude gross-up</span>
 									</th>
-									<th class="styIRS1118TableCellHeaderSmall" style="width:25mm;height:9mm;" scope="col">(b) <span class="styNormalText" style="display:Inline;">Gross-up (sec. 78)</span>
+									<th class="styIRS1118TableCellHeaderSmall" style="width:25mm;height:8mm;" scope="col">(b) <span class="styNormalText" style="display:Inline;">Gross-up (sec. 78)</span>
 									</th>
 								</tr>
 							</thead>
@@ -520,13 +521,6 @@
 							</tbody>
 						</table>
 					</div>
-					<xsl:call-template name="SetInitialDynamicTableHeight">
-						<xsl:with-param name="TargetNode" select="$Form1118ScheduleA/IncmLossBfrAdjFrgnTxsPdAccrGrp"/>
-						<xsl:with-param name="containerHeight" select="6"/>
-						<xsl:with-param name="headerHeight" select="2"/>
-						<xsl:with-param name="containerID" select=" 'IBActn' "/>
-					</xsl:call-template>
-					
 					<div class="styBB" style="width:256mm;border-bottom-width:0px;">* For section 863(b) income, NOLs, income from RICs, and high-taxed income, use a single line (see instructions). 
 						<!-- button display logic -->
 						<div class="styGenericDiv" style="width:24mm;text-align:right;border-bottom-width:0px;border-top-width:0px;border-left:0px solid black;border-right:1px solid black;float:right;">
@@ -808,7 +802,7 @@
 					</xsl:call-template>
 					<!-- END DEDUCTIONS TABLE -->
 					<xsl:if test="($Print = $Separated)">
-						<br/><br/><br/><br/><br/><br/><br/>
+						<br/><br/><br/><br/><br/><br/>
 					</xsl:if>
 					<!--BEGIN FOOTER-->
 					<div style="width:256mm;padding-top:0.5mm;border-top:1px solid black;">
@@ -854,21 +848,23 @@
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form1118ScheduleA/IncmLossBfrAdjFrgnTxsPdAccrGrp"/>
 								<xsl:with-param name="containerHeight" select="6"/>
-								<xsl:with-param name="headerHeight" select="2"/>
+								<xsl:with-param name="headerHeight" select="4"/>
 								<xsl:with-param name="containerID" select=" 'FTPctn' "/>
 							</xsl:call-template>
 							<!-- end button display logic -->
 						</div>
 					</div>
-					<div id="FTPctn" style="width:256mm;height:auto;float:none;clear:both;border-bottom-width:0px;overflow-y: auto;display:inline;">
+					<div style="border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+			width: 256mm; height:auto;float:none;clear:both;overflow-y: auto;" id="FTPctn">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
-						<table class="styTable" cellspacing="0" style="border-bottom-width:0px;height: auto;">
+						<table class="styTable" cellspacing="0" style="height: auto;">
 							<thead class="styTableThead">
 								<tr>
-									<th class="styIRS1118TableCellLtr" style="width:10mm;height:20mm;" rowspan="3">
-										<span class="styTableCellPad" style="width:10mm;font-weight:bold"/>
+									<th class="styIRS1118TableCellLtr" style="width:8mm;height:20mm;" rowspan="3">
+										<span class="styTableCellPad" style="font-weight:bold"/>
 									</th>
 									<th class="styIRS1118TableCellHeaderSmall" scope="col" rowspan="2" colspan="2" style="width:30mm;height:14mm;">
 										<br/>
@@ -957,88 +953,75 @@
 									<xsl:for-each select="$Form1118ScheduleA/IncmLossBfrAdjFrgnTxsPdAccrGrp">
 										<tr style="height:6mm;">
 											<td class="styIRS1118TableCellLtr" scope="row">
-												<span class="styTableCellPad" style="width:10mm;font-weight:bold;">
+												<span class="styTableCellPad" style="font-weight:bold;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="RowId"/>
 													</xsl:call-template>
 												</span>
 											</td>
 											<td class="styTableCellSmall" style="width:15mm;text-align:center;border-color:black;">
-												<span style="width:15mm;">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PaidDt"/>
-													</xsl:call-template>
-												</span>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PaidDt"/>
+												</xsl:call-template>
 											</td>
 											<td class="styTableCellSmall" style="width:15mm;text-align:center;border-color:black;">
-												<span style="width:15mm;">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="AccruedDt"/>
-													</xsl:call-template>
-												</span>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="AccruedDt"/>
+												</xsl:call-template>
 											</td>
 											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
-												<span style="width:23mm;">
-													<xsl:call-template name="PopulateAmount">
-														<xsl:with-param name="TargetNode" select="TaxWithheldDividendsAmt"/>
-													</xsl:call-template>
-												</span>
+												<xsl:call-template name="PopulateAmount">
+													<xsl:with-param name="TargetNode" select="TaxWithheldDividendsAmt"/>
+												</xsl:call-template>
+												<span style="width:1px;"/>
 											</td>
 											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
-												<span style="width:23mm;">
-													<xsl:call-template name="PopulateAmount">
-														<xsl:with-param name="TargetNode" select="TaxWithheldInterestAmt"/>
-													</xsl:call-template>
-												</span>
+												<xsl:call-template name="PopulateAmount">
+													<xsl:with-param name="TargetNode" select="TaxWithheldInterestAmt"/>
+												</xsl:call-template>
+												<span style="width:1px;"/>
 											</td>
 											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
-												<span style="width:23mm;">
-													<xsl:call-template name="PopulateAmount">
-														<xsl:with-param name="TargetNode" select="TaxWithheldRentsRyltsLcnsAmt"/>
-													</xsl:call-template>
-												</span>
+												<xsl:call-template name="PopulateAmount">
+													<xsl:with-param name="TargetNode" select="TaxWithheldRentsRyltsLcnsAmt"/>
+												</xsl:call-template>
+												<span style="width:1px;"/>
 											</td>
 											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
-												<span style="width:23mm;">
-													<xsl:call-template name="PopulateAmount">
-														<xsl:with-param name="TargetNode" select="TxPdOrAccrSect863bIncmAmt"/>
-													</xsl:call-template>
-												</span>
+												<xsl:call-template name="PopulateAmount">
+													<xsl:with-param name="TargetNode" select="TxPdOrAccrSect863bIncmAmt"/>
+												</xsl:call-template>
+												<span style="width:1px;"/>
 											</td>
 											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
-												<span style="width:23mm;">
-													<xsl:call-template name="PopulateAmount">
-														<xsl:with-param name="TargetNode" select="TxPdOrAccrFrgnBranchIncmAmt"/>
-													</xsl:call-template>
-												</span>
+												<xsl:call-template name="PopulateAmount">
+													<xsl:with-param name="TargetNode" select="TxPdOrAccrFrgnBranchIncmAmt"/>
+												</xsl:call-template>
+												<span style="width:1px;"/>
 											</td>
 											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
-												<span style="width:23mm;">
-													<xsl:call-template name="PopulateAmount">
-														<xsl:with-param name="TargetNode" select="TxPdOrAccrServicesIncmAmt"/>
-													</xsl:call-template>
-												</span>
+												<xsl:call-template name="PopulateAmount">
+													<xsl:with-param name="TargetNode" select="TxPdOrAccrServicesIncmAmt"/>
+												</xsl:call-template>
+												<span style="width:1px;"/>
 											</td>
 											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
-												<span style="width:23mm;">
-													<xsl:call-template name="PopulateAmount">
-														<xsl:with-param name="TargetNode" select="TxPdOrAccrOtherIncmAmt"/>
-													</xsl:call-template>
-												</span>
+												<xsl:call-template name="PopulateAmount">
+													<xsl:with-param name="TargetNode" select="TxPdOrAccrOtherIncmAmt"/>
+												</xsl:call-template>
+												<span style="width:1px;"/>
 											</td>
 											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
-												<span style="width:23mm;">
-													<xsl:call-template name="PopulateAmount">
-														<xsl:with-param name="TargetNode" select="TotalForeignTaxesPaidOrAccrAmt"/>
-													</xsl:call-template>
-												</span>
+												<xsl:call-template name="PopulateAmount">
+													<xsl:with-param name="TargetNode" select="TotalForeignTaxesPaidOrAccrAmt"/>
+												</xsl:call-template>
+												<span style="width:1px;"/>
 											</td>
 											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
-												<span style="width:23mm;">
-													<xsl:call-template name="PopulateAmount">
-														<xsl:with-param name="TargetNode" select="TaxesDeemedPaidAmt"/>
-													</xsl:call-template>
-												</span>
+												<xsl:call-template name="PopulateAmount">
+													<xsl:with-param name="TargetNode" select="TaxesDeemedPaidAmt"/>
+												</xsl:call-template>
+												<span style="width:1px;"/>
 											</td>
 										</tr>
 									</xsl:for-each>
@@ -1187,10 +1170,9 @@
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form1118ScheduleA/IncmLossBfrAdjFrgnTxsPdAccrGrp"/>
 						<xsl:with-param name="containerHeight" select="6"/>
-						<xsl:with-param name="headerHeight" select="2"/>
+						<xsl:with-param name="headerHeight" select="4"/>
 						<xsl:with-param name="containerID" select=" 'FTPctn' "/>
 					</xsl:call-template>
-					
 					<!-- End Set Initial Height of Above Table -->
 					<!-- END SCHEDULE B PART I TABLE -->
 					<!-- END SCHEDULE B PART I-->
@@ -1198,7 +1180,7 @@
 						<br/><br/><br/><br/>
 					</xsl:if>
 					<!-- BEGIN SCHEDULE B PART II TITLE -->
-					<div class="styBB" style="width:256mm;border-top-width:0px;">
+					<div class="styBB" style="width:256mm;border-top-width:1px;">
 						<div class="styIRS1118TitleDesc" style="padding-left:0;border-top-width:0px;">Part II—Separate Foreign Tax Credit
 							<span class="styItalicText" style="font-weight:normal">(Complete a </span> <span style="width:1mm;" />
 							<span class="styItalicText" style="font-weight:bold">separate </span> <span style="width:1mm;" />
@@ -1688,8 +1670,8 @@
 					</div>
 					<!-- END SCHEDULE B PART II-->
 					<!-- BEGIN SCHEDULE B PART III TITLE -->
-					<div class="styBB" style="height:8mm;width:256mm;">
-						<div class="styIRS1118TitleDesc" style="height:8mm;width:256mm;font-weight:normal;padding-left:0;">
+					<div class="styBB" style="height:auto;width:256mm;display:block;">
+						<div class="styIRS1118TitleDesc" style="height:auto;width:256mm;font-weight:normal;padding-left:0;display:block;">
 							<b>Part III—Summary of Separate Credits</b> (Enter amounts from Part II, line 12 for each applicable category of income. 
 							<b> Do not </b>include taxes paid to sanctioned countries.)
 						</div>

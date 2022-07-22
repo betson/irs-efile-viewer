@@ -4,10 +4,10 @@
 <!-- 07/31/2015 - Modified per UWR 161465 - Jeremy Nichols-->
 <!-- 09/30/2015 - Modified per UWR 44890 - Jeremy Nichols-->
 <!-- 10/01/2015 - Modified per UWR 44892 - Jeremy Nichols-->
-<!-- 10/07/2015 - Modified per UWR 44894 - Jeremy Nichols-->
-<!-- 12/14/2015 - Modified per defect 44970 - Jeremy Nichols-->
 <!-- 02/02/2016 - Modified per defect 45335 - Jeremy Nichols-->
 <!-- 02/02/2016 - Modified per defect 45379 - Jeremy Nichols-->
+<!-- 02/24/2016 - Modified per UWR 44894 - Jeremy Nichols-->
+<!-- 05/18/2016 - Modified per defect 44970 - Jeremy Nichols-->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -2650,10 +2650,10 @@
             <div class="styBB" style="width:187mm; padding-bottom:.5mm;">
               <div style="float:left;">Schedule H (Form 990) 2015</div>
               <div style="float:right;">Page 
-              <span style="font-weight:bold;font-size:8pt;">
-                <script language="JavaScript" type="text/javascript">
+              <span style="font-weight:bold;font-size:8pt;">4
+                <!--<script language="JavaScript" type="text/javascript">
                   nextPage();
-                </script>
+                </script>-->
               </span>
               </div>
             </div>
@@ -2745,13 +2745,13 @@
                 </tr> 
                 <!-- Part V Section B line 1 -->
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:1px;text-align:right;vertical-align:top;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:1px;text-align:left;vertical-align:top;font-size:7pt;font-weight:bold;">
                     1<span style="width:1.5mm"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:1px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:1px;text-align:left;font-size:7pt;font-weight:normal;">
                     Was the hospital facility first licensed, registered, or similarly recognized by a state as a hospital
 					facility in the current tax year or the immediately preceding tax year?<span style="width:2mm;display:inline;"/>
-                    <span class="styDotLn" style="float:none;display:inline;">.....................</span>
+                    <span class="styDotLn" style="float:none;display:inline;">........................</span>
                   </td>
                   <td class="IRS990ScheduleH_LineIndexMid" style="width:8mm;height:7.5mm;padding-top:4mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;text-align:center;vertical-align:bottom;vertical-align:bottom;">
                     1
@@ -2773,10 +2773,10 @@
                 </tr> 
                 <!-- Part V Section B line 2 -->
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;font-size:7pt;font-weight:bold;">
                     2<span style="width:1.5mm"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     Was the hospital facility acquired or placed into service as a tax-exempt hospital in the
 					current tax year or the immediately preceding tax year?  If “Yes,” provide details of the acquisition in Section C.<span style="width:4mm;"/>
                     <span class="styDotLn" style="float:none">..............</span>
@@ -2801,10 +2801,10 @@
                 </tr>
                 <!-- Part V Section B line 3 -->
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;font-size:7pt;font-weight:bold;">
                     3<span style="width:1.5mm"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     During the tax year or either of the two immediately preceding tax years, did the hospital facility conduct
 					a community health needs assessment (CHNA)? If "No," skip to line 12.<span style="width:4mm;"/>
                     <span class="styDotLn" style="float:none">.....................</span>
@@ -2828,10 +2828,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:normal;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     If "Yes," indicate what the CHNA report describes (check all that apply):
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:1px;font-size:7pt;font-weight:bold;">
@@ -2845,10 +2845,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;padding-right:0.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
                     a
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="CommunityDefinitionInd"/>
@@ -2874,10 +2874,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;padding-right:0.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
                     b
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="CommunityDemographicsInd"/>
@@ -2903,10 +2903,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:6mm;padding-top:1.5mm;padding-right:0.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-size:7pt;font-weight:bold;">
                     c
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:6mm;padding-top:.75mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
 					<table cellspacing="0" cellpadding="0" style="font-size:7pt;">
 						<tr>
 							<td style="text-align:left;vertical-align:top;">
@@ -2917,7 +2917,7 @@
 								  </xsl:call-template>
 								</input>
 							</td>
-							<td style="padding-left:0.5mm;">
+							<td style="padding-left:0.5mm;padding-top:1mm;">
 								<label>
 								  <xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="ExistingResourcesInd"/>
@@ -2929,21 +2929,21 @@
 						</tr>
 					</table>
                   </td>
-                  <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
+                  <td class="styShadingCell" style="width:8mm;height:6mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
+                  <td class="styShadingCell" style="width:8mm;height:6mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
+                  <td class="styShadingCell" style="width:8mm;height:6mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;padding-right:0.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
                     d
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="HowDataObtainedInd"/>
@@ -2969,10 +2969,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;padding-right:0.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
                     e
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="CommunityHealthNeedsInd"/>
@@ -2998,10 +2998,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:6mm;padding-top:1.5mm;padding-right:0.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-size:7pt;font-weight:bold;">
                     f
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:6mm;padding-top:.75mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <table cellspacing="0" cellpadding="0" style="font-size:7pt;">
 						<tr>
 							<td style="text-align:left;vertical-align:top;">
@@ -3012,7 +3012,7 @@
 								  </xsl:call-template>
 								</input>					
 							</td>
-							<td style="padding-left:0.5mm;">
+							<td style="padding-left:0.5mm;padding-top:1mm;">
 								<label>
 								  <xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="OtherHealthIssuesInd"/>
@@ -3024,21 +3024,21 @@
 						</tr>
 					</table> 
                   </td>
-                  <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
+                  <td class="styShadingCell" style="width:8mm;height:6mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
+                  <td class="styShadingCell" style="width:8mm;height:6mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
+                  <td class="styShadingCell" style="width:8mm;height:6mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;padding-right:0.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-size:7pt;font-weight:bold;">
                     g
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <table cellspacing="0" cellpadding="0" style="font-size:7pt;">
 						<tr>
 							<td style="text-align:left;vertical-align:top;">
@@ -3072,10 +3072,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;padding-right:0.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
                     h
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="ConsultingProcessInd"/>
@@ -3101,10 +3101,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;padding-right:0.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
                     i
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="InformationGapsInd"/>
@@ -3130,10 +3130,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;padding-right:0.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
                     j
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="OtherInd"/>
@@ -3159,10 +3159,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
                     4<span style="width:1.5mm"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     Indicate the tax year the hospital facility last conducted a CHNA: 20
                     <span class="styIRS990ScheduleHUnderlinedText" style="width:5mm;">
                       <xsl:call-template name="PopulateText">
@@ -3181,10 +3181,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:13mm;padding-top:0.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:13mm;padding-top:0.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
                     5<span style="width:1.5mm"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:13mm;padding-top:0.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:13mm;padding-top:0.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     In conducting its most recent CHNA, did the hospital facility take into account input from persons who represent the broad interests of the
                     community served by the hospital facility, including those with special knowledge of or expertise in public
                     health? If "Yes," describe in Section C how the hospital facility took into account input from
@@ -3210,10 +3210,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
-                    6a<span style="width:1.5mm"/>
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
+                    6 a<span style="width:1.5mm"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     Was the hospital facility’s CHNA conducted with one or more other hospital facilities? If "Yes," list the other hospital facilities in Section C<span style="width:2mm;"/>
                     <span class="styDotLn" style="float:none">..................................</span>
                   </td>
@@ -3236,13 +3236,13 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7mm;padding-top:.25mm;padding-right:0.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
                     b
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     Was the hospital facility’s CHNA conducted with one or more organizations other than hospital
 					facilities?” If “Yes,” list the other organizations in Section C.
-                    <span class="styDotLn" style="float:none;display:inline;">.......................</span>
+                    <span class="styDotLn" style="float:none">............................</span>
                   </td>
                   <td class="IRS990ScheduleH_LineIndexMid" style="width:8mm;height:7mm;padding-top:3mm;border-bottom-width:1px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;text-align:center;vertical-align:bottom;vertical-align:bottom;">
                     6b
@@ -3263,10 +3263,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
                     7<span style="width:1.5mm"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     Did the hospital facility make its CHNA report widely available to the public?<span style="width:2mm;"/>
                     <span class="styDotLn" style="float:none">..............</span>
                   </td>
@@ -3289,10 +3289,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:normal;">
                     
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     If "Yes," indicate how the CHNA report was made widely available (check all that apply):
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
@@ -3306,10 +3306,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:6.5mm;padding-top:2mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:6.5mm;padding-top:1mm;padding-right:0.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
                     a
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:6.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:6.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="RptAvailableOnOwnWebsiteInd"/>
@@ -3340,10 +3340,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:6mm;padding-top:2.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:6mm;padding-top:1mm;padding-right:0.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
                     b
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:6mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:6mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="OtherWebsiteInd "/>
@@ -3374,10 +3374,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;padding-right:0.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
                     c
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="PaperCopyPublicInspectionInd"/>
@@ -3403,10 +3403,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;padding-right:0.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
                     d
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="RptAvailableThruOtherMethodInd"/>
@@ -3432,10 +3432,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
                     8<span style="width:1.5mm"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     Did the hospital facility adopt an implementation strategy to meet the significant community health needs<br/>
 					identified through its most recently conducted CHNA? If "No," skip to line 11.
                     <span class="styDotLn" style="float:none">..............</span>
@@ -3459,10 +3459,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
                     9<span style="width:1.5mm"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     Indicate the tax year the hospital facility last adopted an implementation strategy: 20
                     <span class="styIRS990ScheduleHUnderlinedText" style="width:5mm;">
                       <xsl:call-template name="PopulateText">
@@ -3481,10 +3481,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
                     10<span style="width:1.5mm;"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     Is the hospital facility's most recently adopted implementation strategy posted on a website?<span style="width:1mm;"/>
                     <span class="styDotLn" style="float:none">.........</span>
                   </td>
@@ -3507,10 +3507,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7.5mm;padding-top:3mm;padding-right:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7.5mm;padding-top:0.5mm;padding-right:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
                     a
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                      If "Yes" (list url):
 					  <span class="styIRS990ScheduleHUnderlinedText" style="width:105mm;">
 						  <xsl:call-template name="PopulateText">
@@ -3529,10 +3529,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
                     b
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     If "No," is the hospital facility’s most recently adopted implementation strategy attached to this return?
                     <span class="styDotLn" style="float:none">......</span>
                   </td>
@@ -3555,10 +3555,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
                     11<span style="width:1.5mm"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     Describe in Section C how the hospital facility is addressing the significant needs identified in its
 					most recently conducted CHNA and any such needs that are not being addressed together with the
 					reasons why such needs are not being addressed.
@@ -3574,11 +3574,11 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
                     12a
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
-                    <span style="width:1mm;"/>Did the organization incur an excise tax under section 4959 for the hospital facility's failure to conduct a CHNA as required by section 501(r)(3)?<span style="width:1mm;"/>
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                    Did the organization incur an excise tax under section 4959 for the hospital facility's failure to conduct a CHNA as required by section 501(r)(3)?<span style="width:1mm;"/>
                     <span class="styDotLn" style="float:none">...............................</span>
                   </td>
                   <td class="IRS990ScheduleH_LineIndexMid" style="width:8mm;height:7mm;padding-left:0mm;padding-top:3mm;border-bottom-width:1px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;text-align:center;vertical-align:bottom;vertical-align:bottom;">
@@ -3600,10 +3600,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
                     b
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     If "Yes" on line 12a, did the organization file Form 4720 to report the section 4959 excise tax?<span style="width:2mm;"/>
                     <span class="styDotLn" style="float:none">........</span>
                   </td>
@@ -3626,10 +3626,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7.5mm;padding-top:.25mm;padding-right:1mm;border-bottom-width:1px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7.5mm;padding-top:.25mm;padding-right:1mm;border-bottom-width:1px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-size:7pt;font-weight:bold;">
                     c
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7.5mm;padding-top:.25mm;border-bottom-width:1px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7.5mm;padding-top:.25mm;border-bottom-width:1px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     If "Yes" on line 12b, what is the total amount of section 4959 excise tax the organization reported on Form 4720 for all of its hospital facilities? 
                     $<span class="styIRS990ScheduleHUnderlinedText" style="width:50mm;">
                       <xsl:call-template name="PopulateAmount">
@@ -3650,7 +3650,6 @@
               </tbody>
             </table>
             </div>
-            
             <!-- footer line -->
             <div style="width:187mm;float:none;clear:both;padding-top:.5mm;">
               <div style="font-weight:bold;width:95mm;font-size:6pt;float:left;border-bottom-width:1px;"/>
@@ -3664,10 +3663,10 @@
             <div class="styBB" style="width:187mm; padding-bottom:.5mm;">
               <div style="float:left;">Schedule H (Form 990) 2015</div>
               <div style="float:right;">Page 
-              <span style="font-weight:bold;font-size:8pt;">
-                <script language="JavaScript" type="text/javascript">
+              <span style="font-weight:bold;font-size:8pt;">5
+                <!--<script language="JavaScript" type="text/javascript">
                   nextPage();
-                </script>
+                </script>-->
               </span>
               </div>
             </div>
@@ -3682,6 +3681,11 @@
             
             <table border="0" cellspacing="0" cellpadding="0" style="height:auto;width:187mm;font-size:7pt;">
               <tbody>
+                <tr>
+                  <td class="IRS990ScheduleH_LineIndexMid" colspan="5" style="width:187mm;height:5mm;padding-top:0.5mm;border-bottom-width:1px;border-left-width:0px;border-right-width:0px;border-top-width:1px;text-align:left;padding-left:1mm;font-size:8pt;font-weight:bold;">
+                    Financial Assistance Policy (FAP)
+                  </td>
+                </tr>
                 <tr>
                   <td class="IRS990ScheduleH_LineIndexMid" colspan="5" style="width:187mm;height:9mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;padding-left:1mm;font-size:7pt;font-weight:bold;">
                     <table border="0" cellspacing="0" cellpadding="0" style="height:auto;width:187mm;font-size:7pt;">
@@ -3713,10 +3717,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" colspan="2" style="width:163mm;height:4mm;padding-bottom:.25mm;border-bottom-width:1px;border-left-width:0px;border-right-width:0px;border-top-width:1px;text-align:left;padding-left:1mm;font-size:7pt;font-weight:bold;">
-                    Financial Assistance Policy (FAP)
+                  <td class="IRS990ScheduleH_LineIndexMid" colspan="2" style="width:163mm;height:4mm;padding-bottom:.25mm;border-bottom-width:0;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;padding-left:1mm;font-size:7pt;font-weight:bold;">
+                    <span style="width:160mm;" />
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:1px;border-left-width:0px;border-right-width:0px;border-top-width:1px;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:1px;border-left-width:0px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
                   <td class="IRS990ScheduleH_LineIndexMid" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:1px;border-left-width:1px;border-right-width:0px;border-top-width:1px;font-size:7pt;font-weight:bold;text-align:bottom;">
@@ -3727,10 +3731,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:normal;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     Did the hospital facility have in place during the tax year a written financial assistance policy that: 
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
@@ -3744,10 +3748,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;text-align:top;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:bold;">
                     13
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     Explained eligibility criteria for financial assistance, and whether such assistance included free or discounted care?
                   </td>
                   <td class="IRS990ScheduleH_LineIndexMid" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:1px;border-left-width:1px;border-right-width:0px;border-top-width:0px;text-align:center;vertical-align:bottom;font-size:7pt;font-weight:bold;">
@@ -3769,10 +3773,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-size:7pt;font-weight:normal;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     If “Yes,” indicate the eligibility criteria explained in the FAP: 
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
@@ -3786,10 +3790,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;vertical-align:top;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;vertical-align:top;height:7mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     a
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
 					<input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="FPGFamilyIncmLmtFreeDscntInd"/>
@@ -3806,8 +3810,7 @@
 						  <xsl:call-template name="PopulateText">
 							<xsl:with-param name="TargetNode" select="FPGFamilyIncmLmtFreeCarePct"/>
 						  </xsl:call-template>
-						</span>% 
-						<br/><span style="width:5mm;"/>
+						</span><span style="width:5mm;" />% 
 						and FPG family income limit for eligibility for discounted care of 
 						<span class="styIRS990ScheduleHUnderlinedText" style="width:36mm;">
 						  <xsl:call-template name="PopulateText">
@@ -3827,10 +3830,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     b
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="IncomeLevelCriteriaInd"/>
@@ -3856,10 +3859,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     c
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="AssetLevelCriteriaInd"/>
@@ -3885,10 +3888,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     d
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="MedicalIndigencyCriteriaInd"/>
@@ -3914,10 +3917,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     e
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="InsuranceStatusCriteriaInd"/>
@@ -3943,10 +3946,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     f
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="UnderinsuranceStatCriteriaInd"/>
@@ -3972,10 +3975,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     g
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="ResidencyCriteriaInd"/>
@@ -4001,10 +4004,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:5mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     h
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="OtherCriteriaInd"/>
@@ -4019,21 +4022,21 @@
                       Other (describe in Section C)
 					</label>
                   </td>
-                  <td class="styShadingCell" style="width:8mm;height:4.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
+                  <td class="styShadingCell" style="width:8mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="styShadingCell" style="width:8mm;height:4.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
+                  <td class="styShadingCell" style="width:8mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="styShadingCell" style="width:8mm;height:4.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
+                  <td class="styShadingCell" style="width:8mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-weight:bold;">
                     14
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     Explained the basis for calculating amounts charged to patients?<span style="width:3mm;"/>
                     <span class="styDotLn" style="float:none">.................</span>
                   </td>
@@ -4056,10 +4059,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-weight:bold;">
                     15
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                    Explained the method for applying for financial assistance?<span style="width:2mm;"/>
                     <span class="styDotLn" style="float:none">...................</span>
                   </td>
@@ -4082,10 +4085,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     If “Yes,” indicate how the hospital facility’s FAP or FAP application form (including accompanying
 					instructions) explained the method for applying for financial assistance (check all that apply):
                   </td>
@@ -4100,10 +4103,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     a
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="DescribedInfoInd"/>
@@ -4115,7 +4118,7 @@
 						<xsl:with-param name="TargetNode" select="DescribedInfoInd"/>
 						<xsl:with-param name="BackupName">Form990ScheduleHDescribedInfoInd</xsl:with-param>
 					  </xsl:call-template>
-                      Described the information the hospital facility may require an individual to provide as part of his or her application.
+                      Described the information the hospital facility may require an individual to provide as part of his or her application
 					</label>
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
@@ -4129,10 +4132,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
                     b
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="DescribedSuprtDocInd"/>
@@ -4145,7 +4148,7 @@
 						<xsl:with-param name="BackupName">Form990ScheduleHDescribedSuprtDocInd</xsl:with-param>
 					  </xsl:call-template>
                       Described the supporting documentation the hospital facility may require an individual to submit as part of his or 
-                      <br/><span style="width:5mm;"/>her application.
+                      <br/><span style="width:5mm;"/>her application
 					</label>
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
@@ -4159,10 +4162,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7m;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7m;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
                     c
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="ProvidedHospitalContactInd"/>
@@ -4175,7 +4178,7 @@
 						<xsl:with-param name="BackupName">Form990ScheduleHProvidedHospitalContactInd</xsl:with-param>
 					  </xsl:call-template>
                       Provided the contact information of hospital facility staff who can provide an individual with information about the 
-                      <br/><span style="width:5mm;"/>FAP and FAP application process.
+                      <br/><span style="width:5mm;"/>FAP and FAP application process
 					</label>
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
@@ -4189,10 +4192,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
                     d
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="ProvidedNonprofitContactInd"/>
@@ -4205,7 +4208,7 @@
 						<xsl:with-param name="BackupName">Form990ScheduleHProvidedNonprofitContactInd</xsl:with-param>
 					  </xsl:call-template>
                       Provided the contact information of nonprofit organizations or government agencies that may be sources of 
-                      <br/><span style="width:5mm;"/>assistance with FAP applications.
+                      <br/><span style="width:5mm;"/>assistance with FAP applications
 					</label>
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
@@ -4219,10 +4222,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:5mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
                     e
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="OtherMethodInd"/>
@@ -4248,10 +4251,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-weight:bold;">
                     16
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     Included measures to publicize the policy within the community served by the hospital facility?<span style="width:2mm;"/>
                     <span class="styDotLn" style="float:none">........</span>
                   </td>
@@ -4274,10 +4277,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:4mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:159mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     If "Yes," indicate how the hospital facility publicized the policy (check all that apply):
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
@@ -4291,10 +4294,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     a
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="FAPAvailableOnWebsiteInd"/>
@@ -4307,11 +4310,6 @@
 						<xsl:with-param name="BackupName">Form990ScheduleHFAPAvailableOnWebsiteInd</xsl:with-param>
 					  </xsl:call-template>
                      The FAP was widely available on a website (list url):
-					  <span class="styIRS990ScheduleHUnderlinedText" style="width:80mm;">
-						  <xsl:call-template name="PopulateText">
-							  <xsl:with-param name="TargetNode" select="FAPAvailableOnWebsiteURLTxt"/>
-						  </xsl:call-template>
-					  </span>
 					</label>
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
@@ -4325,10 +4323,32 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:6mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                    <span style="width:5mm;"/>
+                  </td>
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:6mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                    <span style="width:5mm;"/>
+                    <span class="styIRS990ScheduleHUnderlinedText" style="width:150mm;">
+						  <xsl:call-template name="PopulateText">
+							  <xsl:with-param name="TargetNode" select="FAPAvailableOnWebsiteURLTxt"/>
+						  </xsl:call-template>
+					  </span>
+                  </td>
+                  <td class="styShadingCell" style="width:8mm;height:6mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
+                    <span style="width:5mm;"/>
+                  </td>
+                  <td class="styShadingCell" style="width:8mm;height:6mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
+                    <span style="width:5mm;"/>
+                  </td>
+                  <td class="styShadingCell" style="width:8mm;height:6mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
+                    <span style="width:5mm;"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     b
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="FAPAppAvailableOnWebsiteInd"/>
@@ -4341,11 +4361,6 @@
 						<xsl:with-param name="BackupName">Form990ScheduleHFAPAppAvailableOnWebsiteInd</xsl:with-param>
 					  </xsl:call-template>
                       The FAP application form was widely available on a website (list url):
-					  <span class="styIRS990ScheduleHUnderlinedText" style="width:58mm;">
-						  <xsl:call-template name="PopulateText">
-							  <xsl:with-param name="TargetNode" select="FAPAppAvailableOnWebsiteURLTxt"/>
-						  </xsl:call-template>
-					  </span>
 					</label>
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
@@ -4359,10 +4374,32 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:5.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                    <span style="width:5mm;"/>
+                  </td>
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:5.5mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                    <span style="width:5mm;"/>
+                    <span class="styIRS990ScheduleHUnderlinedText" style="width:150mm;">
+						  <xsl:call-template name="PopulateText">
+							  <xsl:with-param name="TargetNode" select="FAPAppAvailableOnWebsiteURLTxt"/>
+						  </xsl:call-template>
+					  </span>
+                  </td>
+                  <td class="styShadingCell" style="width:8mm;height:5.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
+                    <span style="width:5mm;"/>
+                  </td>
+                  <td class="styShadingCell" style="width:8mm;height:5.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
+                    <span style="width:5mm;"/>
+                  </td>
+                  <td class="styShadingCell" style="width:8mm;height:5.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
+                    <span style="width:5mm;"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7.5mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
                     c
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="FAPSummaryOnWebsiteInd"/>
@@ -4375,7 +4412,8 @@
 						<xsl:with-param name="BackupName">Form990ScheduleHFAPSummaryOnWebsiteInd</xsl:with-param>
 					  </xsl:call-template>
                       A plain language summary of the FAP was widely available on a website (list url):
-					  <br/><span style="width:5mm;"/><span class="styIRS990ScheduleHUnderlinedText" style="width:80mm;">
+					  <br/><span style="width:6mm;"/>
+					  <span class="styIRS990ScheduleHUnderlinedText" style="width:150mm;">
 						  <xsl:call-template name="PopulateText">
 							  <xsl:with-param name="TargetNode" select="FAPSummaryOnWebsiteURLTxt"/>
 						  </xsl:call-template>
@@ -4393,10 +4431,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     d
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="FAPAvlblOnRequestNoChargeInd"/>
@@ -4422,10 +4460,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
                     e
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="FAPAppAvlblOnRequestNoChrgInd"/>
@@ -4438,7 +4476,7 @@
 						<xsl:with-param name="BackupName">Form990ScheduleHFAPAppAvlblOnRequestNoChrgInd</xsl:with-param>
 					  </xsl:call-template>
                       The FAP application form was available upon request and without charge (in public locations in the hospital facility 
-                      <br/><span style="width:5mm;"/>and by mail)
+                      <br/><span style="width:6mm;"/>and by mail)
 					</label>
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
@@ -4452,10 +4490,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
                     f
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="FAPSumAvlblOnRequestNoChrgInd"/>
@@ -4482,10 +4520,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     g
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="FAPNoticeDisplayedInd"/>
@@ -4511,10 +4549,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     h
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="CommuntityNotifiedFAPInd"/>
@@ -4540,10 +4578,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:5mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     i
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="OtherPublicityInd"/>
@@ -4574,10 +4612,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:10mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:10mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-weight:bold;">
                     17
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:10mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:10mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     Did the hospital facility have in place during the tax year a separate billing and collections policy, or a written financial
                     assistance policy (FAP) that explained all of the actions the hospital facility or other authorized party may take upon non-payment?<span style="width:2mm;"/>
                     <span class="styDotLn" style="float:none">..................................</span>
@@ -4601,10 +4639,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-weight:bold;">
                     18
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     Check all of the following actions against an individual that were permitted under the hospital facility's policies during the tax year before making reasonable efforts to determine the individual’s eligibility under the facility’s FAP:
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
@@ -4618,10 +4656,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     a
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="PermitReportToCreditAgencyInd"/>
@@ -4647,10 +4685,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     b
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="PermitSellingDebtInd"/>
@@ -4676,10 +4714,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     c
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="PermitLegalJudicialProcessInd"/>
@@ -4705,10 +4743,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     d
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="PermitOtherActionsInd"/>
@@ -4734,10 +4772,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:5mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     e
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="PermitNoActionsInd"/>
@@ -4765,7 +4803,6 @@
               </tbody>
             </table>
             </div>
-            
             <!-- footer line -->
             <div style="width:187mm;float:none;clear:both;padding-top:.5mm;border-top:1px solid black;">
               <div style="font-weight:bold;width:95mm;font-size:6pt;float:left;border-bottom-width:1px;"/>
@@ -4779,10 +4816,10 @@
             <div class="styBB" style="width:187mm; padding-bottom:.5mm;">
               <div style="float:left;">Schedule H (Form 990) 2015</div>
               <div style="float:right;">Page 
-              <span style="font-weight:bold;font-size:8pt;">
-                <script language="JavaScript" type="text/javascript">
+              <span style="font-weight:bold;font-size:8pt;">6
+                <!--<script language="JavaScript" type="text/javascript">
                   nextPage();
-                </script>
+                </script>-->
               </span>
               </div>
             </div>
@@ -4828,10 +4865,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" colspan="2" style="width:163mm;height:4mm;padding-bottom:.25mm;border-bottom-width:1px;border-left-width:0px;border-right-width:0px;border-top-width:1px;text-align:left;padding-left:1mm;font-size:7pt;font-weight:bold;">
-                    Financial Assistance Policy (FAP)
+                  <td class="IRS990ScheduleH_LineIndexMid" colspan="2" style="width:163mm;height:4mm;padding-bottom:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;padding-left:1mm;font-size:7pt;font-weight:bold;">
+                    <span style="width:160mm;"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:1px;border-left-width:0px;border-right-width:0px;border-top-width:1px;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:1px;border-left-width:0px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
                   <td class="IRS990ScheduleH_LineIndexMid" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:1px;border-left-width:1px;border-right-width:0px;border-top-width:1px;font-size:7pt;font-weight:bold;text-align:bottom;">
@@ -4842,11 +4879,11 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-weight:bold;">
                     19
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
-                    Did the hospital facility or other authorized third party perform any of the following actions
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                    Did the hospital facility or other authorized party perform any of the following actions
                     during the tax year before making reasonable efforts to determine the individual’s eligibility under
                     the facility’s FAP?<span style="width:3mm;"/>
                     <span class="styDotLn" style="float:none">............</span>
@@ -4870,10 +4907,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:normal;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     If "Yes," check all actions in which the hospital facility or a third party engaged:
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
@@ -4887,10 +4924,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     a
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="ReportingToCreditAgencyInd"/>
@@ -4916,10 +4953,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     b
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="EngagedSellingDebtInd"/>
@@ -4945,10 +4982,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     c
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="EngagedLegalJudicialProcessInd"/>
@@ -4974,10 +5011,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:5mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     d
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="OtherActionsInd"/>
@@ -5003,11 +5040,11 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:6.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:6.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-weight:bold;">
                     20
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:6.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
-                    Indicate which efforts the hospital facility or other authorized party made before initiating any of the actions listed (whether or not checked) in line 18. (check all that apply):
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:6.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                    Indicate which efforts the hospital facility or other authorized party made before initiating any of the actions listed (whether or not checked) in line 19. (check all that apply):
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:6.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
                     <span style="width:5mm;"/>
@@ -5020,10 +5057,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     a
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="FAPNotifiedUponAdmissionInd"/>
@@ -5049,10 +5086,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     b
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="FAPNotifiedBeforeDischargeInd"/>
@@ -5078,10 +5115,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:6mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
                     c
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:6mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="FAPNotifiedAllPatientsInd"/>
@@ -5093,24 +5130,25 @@
 						<xsl:with-param name="TargetNode" select="FAPNotifiedAllPatientsInd"/>
 						<xsl:with-param name="BackupName">Form990ScheduleHNotifiedAllPatients</xsl:with-param>
 					  </xsl:call-template>
-                      Notified individuals of the financial assistance policy in communications with the individuals regarding the individuals’ bills
+                      Notified individuals of the financial assistance policy in communications with the individuals regarding the individuals’ 
+                      <span style="width:6mm;"/>bills
 					</label>
                   </td>
-                  <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
+                  <td class="styShadingCell" style="width:8mm;height:6mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
+                  <td class="styShadingCell" style="width:8mm;height:6mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
+                  <td class="styShadingCell" style="width:8mm;height:6mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-size:7pt;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:6.5mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:6.5mm;padding-top:1.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
                     d
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:6.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:6.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <table cellspacing="0" cellpadding="0" style="font-size:7pt;">
 						<tr>
 							<td style="text-align:left;vertical-align:top;">
@@ -5144,10 +5182,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     e
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="OtherActionsTakenInd"/>
@@ -5173,10 +5211,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:5mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     f
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="NoneMadeInd"/>
@@ -5207,10 +5245,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:10mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:10mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-weight:bold;">
                     21
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:10mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:10mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     Did the hospital facility have in place during the tax year a written policy relating to emergency medical care that required the
                     hospital facility to provide, without discrimination, care for emergency medical conditions to individuals regardless of their
                     eligibility under the hospital facility’s financial assistance policy?<span style="width:2mm;"/>
@@ -5235,10 +5273,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     If "No," indicate why:
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
@@ -5252,10 +5290,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
                     a
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="NoEmergencyCareInd"/>
@@ -5281,10 +5319,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
                     b
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="NoEmergencyCarePolicyInd"/>
@@ -5310,10 +5348,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-size:7pt;font-weight:bold;">
                     c
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="EmergencyCareLimitedInd"/>
@@ -5339,10 +5377,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:5mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-size:7pt;font-weight:bold;">
                     d
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-size:7pt;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="OtherReasonInd"/>
@@ -5373,10 +5411,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-weight:bold;">
                     22
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     Indicate how the hospital facility determined, during the tax year, the maximum amounts that can be charged
                     to FAP-eligible individuals for emergency or other medically necessary care.
                   </td>
@@ -5391,10 +5429,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:6.5mm;padding-top:0.5mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:6.5mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
                     a
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:6.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:6.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <table cellspacing="0" cellpadding="0" style="font-size:7pt;">
 						<tr>
 							<td style="text-align:left;vertical-align:top;"> 
@@ -5428,10 +5466,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:6.5mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:6.5mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;font-weight:bold;">
                     b
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:6.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:6.5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <table cellspacing="0" cellpadding="0" style="font-size:7pt;">
 						<tr>
 							<td style="text-align:left;vertical-align:top;"> 
@@ -5465,10 +5503,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     c
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="MedicareRatesInd"/>
@@ -5494,10 +5532,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:5mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:5mm;padding-top:1mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;font-weight:bold;">
                     d
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:5mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     <input type="checkbox" class="IRS990ScheduleH_Checkbox" style="height:3mm;width:3mm;">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="OtherMethodUsedInd"/>
@@ -5523,10 +5561,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:10mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:10mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-weight:bold;">
                     23
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:10mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:10mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     During the tax year, did the hospital facility charge any FAP-eligible individual to whom the hospital facility provided emergency or other medically necessary services more than the amounts generally billed to individuals who had insurance covering such care?
                     <span class="styDotLn" style="float:none">...............................</span>
                   </td>
@@ -5549,10 +5587,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:normal;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     If "Yes," explain in Section C.
                   </td>
                   <td class="styShadingCell" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:1px;border-right-width:0px;border-top-width:0px;font-weight:bold;">
@@ -5566,10 +5604,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;vertical-align:top;padding-right:1mm;font-weight:bold;">
                     24
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:7mm;padding-top:.25mm;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     During the tax year, did the hospital facility charge any FAP-eligible individual an amount equal to the gross charge for any service provided to that individual?
                     <span class="styDotLn" style="float:none">...........................</span>
                   </td>
@@ -5592,10 +5630,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:5mm;height:4mm;padding-top:.25mm;border-bottom-width:1px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:6mm;height:4mm;padding-top:.25mm;border-bottom-width:1px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right;vertical-align:top;padding-right:1mm;font-weight:bold;">
                     <span style="width:5mm;"/>
                   </td>
-                  <td class="IRS990ScheduleH_LineIndexMid" style="width:158mm;height:4mm;padding-top:.25mm;border-bottom-width:1px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
+                  <td class="IRS990ScheduleH_LineIndexMid" style="width:157mm;height:4mm;padding-top:.25mm;border-bottom-width:1px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:left;font-weight:normal;">
                     If "Yes," explain in Section C.
                   </td>
                   <td class="IRS990ScheduleH_LineIndexMid" style="width:8mm;height:4mm;padding-top:.25mm;border-bottom-width:1px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:center;vertical-align:bottom;font-size:7pt;font-weight:bold;">
@@ -8702,7 +8740,7 @@
                       <xsl:with-param name="NumEmptyRows" select="$RowsToShow - $SupplementalSize"/>
                     </xsl:call-template>
                   </xsl:if>
-                  <xsl:if test="($Print = $Separated) and (count($Form990ScheduleHData/SupplementalInformationGrp) &gt; 20) ">
+                  <xsl:if test="($Print = $Separated) and (count($Form990ScheduleHData/SupplementalInformationGrp) &gt;= 20) ">
                     <xsl:call-template name="EmptyIteratorTemp">
                       <xsl:with-param name="NumEmptyRows" select="20"/>
                       <xsl:with-param name="IsSeparated" select="'yes' "/>
@@ -9128,14 +9166,12 @@
           
           <!-- BEGIN Part V Section A Repeating Table -->
           <xsl:if test="($Print = $Separated)">
-            <span class="styRepeatingDataTitle">Form 990 Schedule H, Part V Section  A. Hospital Facilities</span>
             <table border="0" cellspacing="0" cellpadding="0" style="height:auto;width:187mm;font-size:7pt;display:inline;">
               <thead class="styTableThead" style="font-size:7pt;border-left-width:0;border-top-width:0;">
                 <tr style="styDepTblHdr">
                   <th class="styTableCellHeader" colspan="2" scope="col" style="height:41.5mm;text-align:left;vertical-align:top;padding-top:2mm;width:70mm;border-bottom-width:1px; border-style:solid;border-color:black;border-right-width:0px;font-size:8pt;padding-bottom:1mm;display:inline;float:left;clear:none;">
-                    <div class="IRS990ScheduleH_LineDesc" style="height:41.5mm;width:70mm;height:4mm;border-right-width:0px;border-top-width:0px;display:inline;">
-                      <b>Section  A. Hospital Facilities</b>
-                    </div>                    
+					<span class="styRepeatingDataTitle">Form 990 Schedule H, Part V <br/>
+					Section  A. Hospital Facilities</span>
                     <span style="height:10mm;"/>
                     <span style="width:68mm;font-weight:normal;">(list in order of size from largest to smallest—see instructions)</span><br/>                    
                     <span style="width:68mm;font-weight:normal;">How many hospital facilities did the organization operate during the tax year?</span>
@@ -9187,12 +9223,12 @@
                   <tr>
                     <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
                      <xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-                      <td class="styTableCellCtr " style="height:22mm;width:12mm;vertical-align:top;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
+                      <td class="styTableCellCtr " style="height:50mm;width:12mm;vertical-align:top;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
                         <xsl:call-template name="PopulateText">
                           <xsl:with-param name="TargetNode" select="FacilityNum"/>
                         </xsl:call-template>
                       </td>
-                      <td class="styTableCellText" style="height:22mm;width:58mm;padding-left:1mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
+                      <td class="styTableCellText" style="height:50mm;width:58mm;padding-left:1mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
                         <xsl:call-template name="PopulateText">
                           <xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1Txt"/>
                         </xsl:call-template>
@@ -9219,60 +9255,60 @@
                           </xsl:call-template>
                         </xsl:if>
                       </td>
-                      <td class="styTableCellCtr " style="height:22mm;width:7mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
+                      <td class="styTableCellCtr " style="height:50mm;width:7mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
                         <xsl:call-template name="PopulateText">
                           <xsl:with-param name="TargetNode" select="LicensedHospitalInd"/>
                         </xsl:call-template>
                       </td>
-                      <td class="styTableCellCtr " style="height:22mm;width:7mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
+                      <td class="styTableCellCtr " style="height:50mm;width:7mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
                         <xsl:call-template name="PopulateText">
                           <xsl:with-param name="TargetNode" select="GeneralMedicalAndSurgicalInd"/>
                         </xsl:call-template>
                         <span style="width:1px"/>
                       </td>
-                      <td class="styTableCellCtr " style="height:22mm;width:7mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
+                      <td class="styTableCellCtr " style="height:50mm;width:7mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
                         <xsl:call-template name="PopulateText">
                           <xsl:with-param name="TargetNode" select="ChildrensHospitalInd"/>
                         </xsl:call-template>
                         <span style="width:1px"/>
                       </td>
-                      <td class="styTableCellCtr " style="height:22mm;width:7mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
+                      <td class="styTableCellCtr " style="height:50mm;width:7mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
                         <xsl:call-template name="PopulateText">
                           <xsl:with-param name="TargetNode" select="TeachingHospitalInd"/>
                         </xsl:call-template>
                         <span style="width:1px"/>
                       </td>
-                      <td class="styTableCellCtr " style="height:22mm;width:7mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
+                      <td class="styTableCellCtr " style="height:50mm;width:7mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
                         <xsl:call-template name="PopulateText">
                           <xsl:with-param name="TargetNode" select="CriticalAccessHospitalInd"/>
                         </xsl:call-template>
                         <span style="width:1px"/>
                       </td>
-                      <td class="styTableCellCtr " style="height:22mm;width:7mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
+                      <td class="styTableCellCtr " style="height:50mm;width:7mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
                         <xsl:call-template name="PopulateText">
                           <xsl:with-param name="TargetNode" select="ResearchFacilityInd"/>
                         </xsl:call-template>
                         <span style="width:1px"/>
                       </td>
-                      <td class="styTableCellCtr " style="height:22mm;width:7mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
+                      <td class="styTableCellCtr " style="height:50mm;width:7mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
                         <xsl:call-template name="PopulateText">
                           <xsl:with-param name="TargetNode" select="EmergencyRoom24HrsInd"/>
                         </xsl:call-template>
                         <span style="width:1px"/>
                       </td>
-                      <td class="styTableCellCtr " style="height:22mm;width:7mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
+                      <td class="styTableCellCtr " style="height:50mm;width:7mm;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
                         <xsl:call-template name="PopulateText">
                           <xsl:with-param name="TargetNode" select="EmergencyRoomOtherInd"/>
                         </xsl:call-template>
                         <span style="width:1px"/>
                       </td>
-                      <td class="styTableCellCtr" style="height:22mm;width:35mm;padding-left:1mm;text-align:left;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
+                      <td class="styTableCellCtr" style="height:50mm;width:35mm;padding-left:1mm;text-align:left;border-bottom-width:1px;border-right-width:1px;border-color:black;float:left;clear:none;display:inline;">
                         <xsl:call-template name="PopulateText">
                           <xsl:with-param name="TargetNode" select="OtherDesc"/>
                         </xsl:call-template>
                         <span style="width:1px;"/>
                       </td>
-                      <td class="styTableCellCtr" style="height:22mm;width:24mm;padding-left:1mm;text-align:left;border-bottom-width:1px;border-right-width:0px;border-color:black;float:left;clear:none;display:inline;">
+                      <td class="styTableCellCtr" style="height:50mm;width:24mm;padding-left:1mm;text-align:left;border-bottom-width:1px;border-right-width:0px;border-color:black;float:left;clear:none;display:inline;">
 						<xsl:call-template name="PopulateText">
                           <xsl:with-param name="TargetNode" select="FacilityReportingGroupCd"/>
                         </xsl:call-template>

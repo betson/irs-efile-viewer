@@ -18,6 +18,16 @@
     <xsl:param name="NumberBoxStyle"/>
     <xsl:param name="Width">29mm</xsl:param>
     <xsl:param name="Height">4mm</xsl:param>
+    <div class="styLNRightNumBox">
+      <xsl:attribute name="style">
+        padding:.75mm 0mm .25mm 0mm;
+        border-right-width:0px;
+        height:4mm;<xsl:value-of select="$Height"/>;
+        <xsl:if test="$NumberBoxStyle"><xsl:value-of select="$NumberBoxStyle"/></xsl:if></xsl:attribute>
+        <xsl:if test="$Number">
+        <xsl:value-of select="$Number"/>
+      </xsl:if>
+    </div>  
     <div class="styLNAmountBox">
       <xsl:attribute name="style">
         width:<xsl:value-of select="$Width"/>;height:4mm;<xsl:value-of select="$Height"/>;
@@ -50,17 +60,6 @@
           </xsl:choose>
         </xsl:when>
       </xsl:choose>
-    </div>
-    <div class="styLNRightNumBox">
-      <xsl:attribute name="style">
-        float:right;
-        padding:.75mm 0mm .25mm 0mm;
-        border-right-width:0px;
-        height:4mm;<xsl:value-of select="$Height"/>;
-        <xsl:if test="$NumberBoxStyle"><xsl:value-of select="$NumberBoxStyle"/></xsl:if></xsl:attribute>
-        <xsl:if test="$Number">
-        <xsl:value-of select="$Number"/>
-      </xsl:if>
     </div>
   </xsl:template>
   <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -437,7 +436,7 @@
                       <xsl:with-param name="BackupName">Form8853DataArcherMSADistriMeetTaxExcInd</xsl:with-param>
                     </xsl:call-template>
                   </label>
-                  <input class="styCkbox" type="checkbox" style="width:3mm;">
+                  <input class="styCkbox" type="checkbox" alt="Exceptions to the Additional 20% Tax Checkbox" style="width:3mm;">
                     <xsl:call-template name="PopulateCheckbox">
                       <xsl:with-param name="TargetNode" select="$Form8853Data/ArcherMSAAndMedcrAdvntgMSAGrp/ArcherMSADistriMeetTaxExcInd"/>
                       <xsl:with-param name="BackupName">Form8853DataArcherMSADistriMeetTaxExcInd</xsl:with-param>
@@ -564,7 +563,7 @@
                       <xsl:with-param name="BackupName">Form8853DataMedicareMSADistriMeetTaxExcInd</xsl:with-param>
                     </xsl:call-template>
                   </label>
-                  <input class="styCkbox" type="checkbox" style="width:3mm;">
+                  <input class="styCkbox" type="checkbox" alt="Exceptions to the Additional 50% Tax Checkbox" style="width:3mm;">
                     <xsl:call-template name="PopulateCheckbox">
                       <xsl:with-param name="TargetNode" select="$Form8853Data/ArcherMSAAndMedcrAdvntgMSAGrp/MedicareMSADistriMeetTaxExcInd"/>
                       <xsl:with-param name="BackupName">Form8853DataMedicareMSADistriMeetTaxExcInd</xsl:with-param>
@@ -614,14 +613,13 @@
               <span class="styBoldText">
                 For Paperwork Reduction Act Notice, see your tax return instructions.
               </span>
+     		  <span style="width:17mm;"/>
+				  Cat. No. 24091H               
             </div>
             <div style="float:right;">
               <span style="width:50px;"/>  
                 Form 
               <span class="styBoldText" style="font-size:8pt;">8853</span> (2015)
-            </div>
-            <div style="float:right;text-align:center;width:26mm;font-size:7pt;">
-              Cat. No. 24091H
             </div>
           </div>
  		  <p style="page-break-before: always"/>
@@ -631,13 +629,14 @@
             <div style="float:left;">
               Form 8853 (2015)
             </div>
-            <div style="float:right;">
+            <span style="width:105mm;"/>
+            <span style="width:45mm;font-size:7pt;padding-right:5mm;">
+              Attachment Sequence No. 
+				  <span class="styBoldText" style="font-size:8pt;">39</span>
+			</span>
+           <div style="float:right;">
               Page <span style="font-weight:bold;font-size:8pt;">2</span>
-            </div>
-            <span style="float:right;width:10mm;"/>
-            <div style="float:right;width:50mm;font-size:7pt;padding-right:5mm;">
-              Attachment Sequence No. <span class="styBoldText" style="font-size:8pt;">39</span>
-            </div>
+           </div>
           </div>
           <!-- END Page Header -->
           <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
@@ -699,7 +698,7 @@
                       <xsl:with-param name="BackupName">Form8853DataForm8853LTCMultipleCopiesInd</xsl:with-param>
                     </xsl:call-template>
                   </label>
-                  <input class="styCkbox" type="checkbox" style="width:3mm;">
+                  <input class="styCkbox" type="checkbox" alt="More than on Section C attached Checkbox" style="width:3mm;">
                     <xsl:call-template name="PopulateCheckbox">
                       <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/Form8853LTCMultipleCopiesInd"/>
                       <xsl:with-param name="BackupName">Form8853DataForm8853LTCMultipleCopiesInd</xsl:with-param>
@@ -767,7 +766,7 @@
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
                   </xsl:call-template>
-                  <input type="checkbox" class="styCkbox">
+                  <input type="checkbox" class="styCkbox" alt="Yes Checkbox">
                     <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd">
                       <xsl:call-template name="PopulateYesCheckbox">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
@@ -777,6 +776,9 @@
                   </input>
                 </span>
                 <label>
+                 <xsl:call-template name="PopulateSpan">
+                    <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
+                  </xsl:call-template>                
                   <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd">
                     <xsl:call-template name="PopulateLabelYes">
                       <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
@@ -791,7 +793,7 @@
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
                   </xsl:call-template>
-                  <input type="checkbox" class="styCkbox">
+                  <input type="checkbox" class="styCkbox" alt="No Checkbox">
                     <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd">
                       <xsl:call-template name="PopulateNoCheckbox">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
@@ -801,6 +803,9 @@
                   </input>
                 </span>
                 <label>
+                 <xsl:call-template name="PopulateSpan">
+                    <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
+                  </xsl:call-template>                
                   <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd">
                     <xsl:call-template name="PopulateLabelNo">
                       <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
@@ -813,13 +818,11 @@
               </div>
             </div>
             <!-- (16) ////////////////////////////////////////////////////-->
-            <div class="styIRS8853LineItem" style="height:10.5mm;">
+            <div class="styIRS8853LineItem" style="height:11.5mm;">
               <div class="styIRS8853LNLeftNumBox" style="padding-top:1mm;" >16</div>
               <div class="styIRS8853LNDesc" style="width:153mm">
                 Was the insured a terminally ill individual?
         			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1mm;">.......................</span>
-                <b>Note:</b>  <i> If &#8220;Yes&#8221; and the <b>only</b> payments you received in 2015 were accelerated death benefits that were paid
-					  to you because the insured was terminally ill, skip lines 17 through 25 and enter -0- on line 26.</i> 
               </div>
               <div class="styIRS8853LNDesc" style="width:28mm;padding-bottom:6mm;">
                 <!-- ++++++++++++++ Yes Checkbox +++++++++++++ -->
@@ -827,7 +830,7 @@
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
                   </xsl:call-template>
-                  <input type="checkbox" class="styCkbox">
+                  <input type="checkbox" class="styCkbox" alt="Yes Checkbox">
                     <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd">
                       <xsl:call-template name="PopulateYesCheckbox">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
@@ -837,6 +840,9 @@
                   </input>
                 </span>
                 <label>
+				  <xsl:call-template name="PopulateSpan">
+                    <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
+                  </xsl:call-template>                
                   <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd">
                     <xsl:call-template name="PopulateLabelYes">
                       <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
@@ -851,7 +857,7 @@
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
                   </xsl:call-template>
-                  <input type="checkbox" class="styCkbox">
+                  <input type="checkbox" class="styCkbox" alt="No Checkbox">
                     <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd">
                       <xsl:call-template name="PopulateNoCheckbox">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
@@ -861,6 +867,9 @@
                   </input>
                 </span>
                 <label>
+                 <xsl:call-template name="PopulateSpan">
+                    <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
+                  </xsl:call-template>                
                   <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd">
                     <xsl:call-template name="PopulateLabelNo">
                       <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
@@ -870,6 +879,10 @@
                   <span class="styBoldText">No</span>
                 </label>
                 <br/>
+			    <div class="styIRS8853LNDesc" style="width:181mm;padding:0mm 0mm 1mm 3mm;float:right;clear:none;">              
+					 <b>Note:</b>  <i> If &#8220;Yes&#8221; and the <b>only</b> payments you received in 2015 were accelerated death benefits that were paid
+					  to you because the insured was terminally ill, skip lines 17 through 25 and enter -0- on line 26.</i>              
+				</div>                                
               </div>
             </div>
             <!-- (17) ////////////////////////////////////////////////////-->
@@ -949,8 +962,8 @@
             </div>
             <div class="styIRS8853LineItem">
               <xsl:call-template name="CreateBox">
-                <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+                <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 0px;padding:0px 0px 0px 0px;</xsl:with-param>
+                <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 0px;padding:0px 0px 0px 0px;</xsl:with-param>
               </xsl:call-template>
             </div>
             <!-- (20) ////////////////////////////////////////////////////-->
@@ -1224,7 +1237,7 @@
               </xsl:call-template>
             <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredNameControlTxt">
               <xsl:call-template name="PopulateLeftoverRow">
-                <xsl:with-param name="Desc">Part II, Section C., Line 14a - LTC Insured Name Control</xsl:with-param>
+                <xsl:with-param name="Desc">Part II, Section C, Line 14a - LTC Insured Name Control</xsl:with-param>
                 <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredNameControlTxt"/>
                 <xsl:with-param name="DescWidth" select="$TableWidth"/>
               </xsl:call-template>

@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <!-- 05/01/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <!-- 01/13/2016 - Changes made for defect 45031 - Jeremy Nichols -->
+<!-- 05/11/2017 - Changes made for UWR 194393 - Jeremy Nichols -->
+<!-- 10/18/2017 - Changes made for UWR 125005 - Jeremy Nichols -->
+<!-- 10/20/2017 - Changes made for UWR 125006 - Jeremy Nichols -->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -76,50 +80,18 @@
 					<!-- Begin Filer Name and Address Section -->
 					<div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;">
 						<div class="styFNBox" style="width:144mm;height:9mm;">
-          Name(s) shown on return (individuals enter last name, first name, middle initial)<br/>
-							<xsl:choose>
-								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">Name</xsl:with-param>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-									</xsl:call-template>
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-									</xsl:call-template>
-								</xsl:otherwise>
-							</xsl:choose>
+							Name(s) shown on return (individuals enter last name, first name, middle initial)<br/>
+							<xsl:call-template name="PopulateFilerName">
+							  <xsl:with-param name="TargetNode" select="$Form8886Data"/>
+							</xsl:call-template>
 						</div>
 						<div class="styGenericDiv" style="width:42mm;height:9mm;padding-left:1mm;">
 							<span class="styBoldText">Identifying number</span>
 							<br/>
 							<br/>
-							<xsl:choose>
-								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:choose>
-										<xsl:when test="$RtnHdrData/ReturnTypeCd='1040A'">
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-											</xsl:call-template>
-										</xsl:when>
-										<xsl:otherwise>
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-											</xsl:call-template>
-										</xsl:otherwise>
-									</xsl:choose>
-								</xsl:otherwise>
-							</xsl:choose>
+							<xsl:call-template name="PopulateFilerTIN">
+							   <xsl:with-param name="TargetNode" select="$Form8886Data"/>
+							</xsl:call-template>
 						</div>
 					</div>
 					<div class="styBB" style="font-family:verdana;font-size:7pt; width:187mm; height:9.5mm">
@@ -656,7 +628,7 @@
 											<td style="height:8mm;width:6mm;float:left;clear:none;font-weight:bold;padding-left:2mm;border-bottom:1px solid black;" valign="top">
 												<xsl:number value="position()" format="a"/>
 											</td>
-											<td style="height:8mm;width:93mm;float:left;clear:none;padding-left:3px;text-align:left;border-bottom:1px solid black;border-right:1px solid black;">Name
+											<td style="height:8mm;width:78mm;float:left;clear:none;padding-left:3px;text-align:left;border-bottom:1px solid black;border-right:1px solid black;">Name
 												<br/>
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="PersonNm"/>
@@ -684,7 +656,7 @@
 												</xsl:choose>
 												<span class="styTableCellPad"/>
 											</td>
-											<td style="height:8mm;width:36mm;float:left;clear:none;padding-left:3px;text-align:left;border-bottom:1px solid black;" colspan="2">Fees paid
+											<td style="height:8mm;width:55mm;float:left;clear:none;padding-left:3px;text-align:left;border-bottom:1px solid black;" colspan="2">Fees paid
 												<br/>
 												  $ <span style="width:4mm;"/>
 												<span style="text-align:right;width:28mm;">
@@ -696,7 +668,7 @@
 										</tr>
 										<!-- Line 6 Row 2 street address -->
 										<tr>
-											<td style="height:12mm;width:99mm;float:left;clear:none;padding-left:9mm;border-bottom:1px solid black;border-right:1px solid black;" colspan="2">Number, street, and room or suite no.
+											<td style="height:12mm;width:84mm;float:left;clear:none;padding-left:9mm;border-bottom:1px solid black;border-right:1px solid black;" colspan="2">Number, street, and room or suite no.
 												<br/>
 												<!-- A Choice of US or Foreign Street Address-->
 												<xsl:choose>
@@ -733,7 +705,7 @@
 															<xsl:with-param name="TargetNode" select="USAddress//CityNm"/>
 														</xsl:call-template>,
 													</td>
-													<td style="height:12mm;width:18mm;float:left;clear:none;padding-left:3px;border-bottom:1px solid black;border-right:1px solid black;padding-bottom:3.5mm;">State<br/>
+													<td style="height:12mm;width:37mm;float:left;clear:none;padding-left:3px;border-bottom:1px solid black;border-right:1px solid black;padding-bottom:3.5mm;">State<br/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="USAddress//StateAbbreviationCd"/>
 														</xsl:call-template><span style="width:1px;"/>
@@ -751,15 +723,15 @@
 															<xsl:with-param name="TargetNode" select="ForeignAddress/CityNm"/>
 														</xsl:call-template>,
 													</td>
-													<td style="height:12mm;width:20mm;float:left;clear:none;padding-left:3px;border-bottom:1px solid black;border-right:1px solid black;padding-bottom:3.5mm;">State<br/>
+													<td style="height:12mm;width:37mm;float:left;clear:none;padding-left:3px;border-bottom:1px solid black;border-right:1px solid black;padding-bottom:3.5mm;">State<br/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/ProvinceOrStateNm"/>
-														</xsl:call-template> <span style="width:2mm;"/>
+														</xsl:call-template> <br/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
 														</xsl:call-template>
 													</td>
-													<td style="height:12mm;width:20mm;float:left;clear:none;padding-left:3px;border-bottom:1px solid black;padding-bottom:3.5mm;">Zip code<br/>
+													<td style="height:12mm;width:18mm;float:left;clear:none;padding-left:3px;border-bottom:1px solid black;padding-bottom:3.5mm;">Zip code<br/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
 														</xsl:call-template>
@@ -774,7 +746,7 @@
 									<tr style="width:187mm;">
 											<td style="height:8mm;width:6mm;float:left;clear:none;font-weight:bold;padding-left:2mm;border-bottom:1px solid black;" rowspan="3" valign="top">b
                       </td>
-											<td style="height:8mm;width:93mm;float:left;clear:none;padding-left:3px;float:left;border-bottom:1px solid black;border-right:1px solid black;">Name
+											<td style="height:8mm;width:78mm;float:left;clear:none;padding-left:3px;float:left;border-bottom:1px solid black;border-right:1px solid black;">Name
                         <br/>
 												<span class="styTableCellPad"/>
 											</td>
@@ -783,7 +755,7 @@
 												<span valign="center"/>
 												<span class="styTableCellPad"/>
 											</td>
-											<td style="height:8mm;width:40mm;float:left;clear:none;padding-left:3px;text-align:left;border-bottom:1px solid black;" colspan="2">Fees paid											
+											<td style="height:8mm;width:55mm;float:left;clear:none;padding-left:3px;text-align:left;border-bottom:1px solid black;" colspan="2">Fees paid											
                         <br/>
                           $ <span style="width:4mm;"/>
 												<span style="text-align:right;width:32mm;"/>
@@ -791,15 +763,15 @@
 										</tr>
 										<!-- Line 6 Row 2 street address -->
 										<tr >
-											<td style="height:12mm;width:99mm;padding-left:3px;float:left;clear:none;border-bottom:1px solid black;border-right:1px solid black;">Number, street, and room or suite no.
+											<td style="height:12mm;width:84mm;padding-left:3px;float:left;clear:none;border-bottom:1px solid black;border-right:1px solid black;">Number, street, and room or suite no.
 											<br/>
 												<span class="styTableCellPad"/>
 											</td>
 											<td style="height:12mm;width:48mm;padding-left:3px;float:left;clear:none;border-bottom:1px solid black;border-right:1px solid black;padding-bottom:3.5mm;">City or town<br/>
 											</td>
-											<td style="height:12mm;width:20mm;padding-left:3px;float:left;clear:none;border-bottom:1px solid black;border-right:1px solid black;padding-bottom:3.5mm;">State<br/>
+											<td style="height:12mm;width:37mm;padding-left:3px;float:left;clear:none;border-bottom:1px solid black;border-right:1px solid black;padding-bottom:3.5mm;">State<br/>
 											</td>											
-											<td style="float:left;clear:none;height:12mm;width:20mm;padding-left:3px;border-bottom:1px solid black;">ZIP code
+											<td style="float:left;clear:none;height:12mm;width:18mm;padding-left:3px;border-bottom:1px solid black;">ZIP code
 											<br/>
 												<span class="styTableCellPad"/>
 											</td>
@@ -812,7 +784,7 @@
 										<td style="float:left;clear:none;height:8mm;width:6mm;font-weight:bold;padding-left:2mm;border-bottom:1px solid black;border-right:1px solid black;" rowspan="3" valign="top">
 											<xsl:number value="position()" format="a"/>
 										</td>
-										<td style="float:left;clear:none;height:8mm;width:93mm;padding-left:3px;border-bottom:1px solid black;border-right:1px solid black;">Name
+										<td style="float:left;clear:none;height:8mm;width:78mm;padding-left:3px;border-bottom:1px solid black;border-right:1px solid black;">Name
                       <br/>
 											<xsl:call-template name="PopulateAdditionalDataTableMessage">
 												<xsl:with-param name="TargetNode" select="$Form8886Data/PersonsYouPaidAFeeInfo"/>
@@ -824,7 +796,7 @@
 											<span valign="center"/>
 											<span class="styTableCellPad"/>
 										</td>
-										<td style="float:left;clear:none;height:8mm;width:40mm;padding-left:3px;text-align:left;border-bottom:1px solid black;">Fees paid
+										<td style="float:left;clear:none;height:8mm;width:55mm;padding-left:3px;text-align:left;border-bottom:1px solid black;">Fees paid
                       <br/>
                         $ <span style="width:4mm;"/>
 											<span style="text-align:right;width:32mm;"/>
@@ -848,7 +820,7 @@
 										<tr style="width:187mm;">
 											<td style="float:left;clear:none;height:12mm;width:6mm;float:left;font-weight:bold;padding-left:2mm;border-bottom:1px solid black;border-right:1px solid black;" rowspan="3" valign="top">b
                       </td>
-											<td style="float:left;clear:none;height:12mm;width:93mm;padding-left:3px;;border-bottom:1px solid black;border-right:1px solid black;">Name
+											<td style="float:left;clear:none;height:12mm;width:78mm;padding-left:3px;;border-bottom:1px solid black;border-right:1px solid black;">Name
                         <br/>
 												<span class="styTableCellPad"/>
 											</td>
@@ -857,7 +829,7 @@
 												<span valign="center"/>
 												<span class="styTableCellPad"/>
 											</td>
-											<td style="float:left;clear:none;height:12mm;width:40mm;padding-left:3px;text-align:left;border-bottom:1px solid black;">Fees paid
+											<td style="float:left;clear:none;height:12mm;width:55mm;padding-left:3px;text-align:left;border-bottom:1px solid black;">Fees paid
                         <br/>
                           $ <span style="width:4mm;"/>
 												<span style="text-align:right;width:32mm;"/>
@@ -1752,7 +1724,7 @@
 											<td style="height:10mm;width:8.5mm;font-weight:bold;padding-left:2mm;padding-top:1.5mm;border-bottom:1px solid black;" valign="top">
 												<xsl:number value="position()" format="a"/>
 											</td>
-											<td style="width:89mm;padding-left:3px;text-align:left;border-bottom:1px solid black;border-right:1px solid black;">Name
+											<td style="width:78mm;padding-left:3px;text-align:left;border-bottom:1px solid black;border-right:1px solid black;">Name
                         <br/>
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="PersonNm"/>
@@ -1780,7 +1752,7 @@
 												</xsl:choose>
 												<span class="styTableCellPad"/>
 											</td>
-											<td style="width:40mm;padding-left:3px;text-align:left;border-bottom:1px solid black;" colspan="2">Fees paid
+											<td style="width:55mm;padding-left:3px;text-align:left;border-bottom:1px solid black;" colspan="2">Fees paid
                             <br/>
                               $ <span style="width:4mm;"/>
 												<span style="text-align:right;width:32mm;">
@@ -1793,7 +1765,7 @@
 										<!-- Line 6 Row 2 street address -->
 										<tr style="width;183mm;">
 											<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-										<td style="width:95mm;padding-left:9mm;text-align:left;border-bottom:1px solid black;border-right:1px solid black;" colspan="2">Number, street, and room or suite no.
+										<td style="width:78mm;padding-left:9mm;text-align:left;border-bottom:1px solid black;border-right:1px solid black;" colspan="2">Number, street, and room or suite no.
                         <br/>
 												<!-- A Choice of US or Foreign Street Address-->
 												<xsl:choose>
@@ -1825,17 +1797,17 @@
 											<xsl:choose>
 												<!-- US -->
 												<xsl:when test="USAddress">
-													<td style="width:48mm;padding-left:3px;border-bottom:1px solid black;border-right:1px solid black;padding-bottom:3.5mm;">City or town<br/>
+													<td style="width:48mm;padding-left:3px;border-bottom:1px solid black;border-right:1px solid black;padding-bottom:3.5mm;text-align:left;">City or town<br/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="USAddress//CityNm"/>
 														</xsl:call-template>,
 													</td>
-													<td style="width:20mm;padding-left:3px;border-bottom:1px solid black;border-right:1px solid black;padding-bottom:3.5mm;">State<br/>
+													<td style="width:37mm;padding-left:3px;border-bottom:1px solid black;border-right:1px solid black;padding-bottom:3.5mm;text-align:left;">State<br/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="USAddress//StateAbbreviationCd"/>
 														</xsl:call-template><span style="width:1px;"/>
 													</td>
-													<td style="width:20mm;padding-left:3px;border-bottom:1px solid black;padding-bottom:3.5mm;">Zip code<br/>
+													<td style="width:18mm;padding-left:3px;border-bottom:1px solid black;padding-bottom:3.5mm;text-align:left;">Zip code<br/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="USAddress//ZIPCd"/>
 														</xsl:call-template>
@@ -1843,23 +1815,23 @@
 												</xsl:when>
 												<xsl:otherwise>
 													<!-- Foreign Street Address -->
-													<td style="width:48mm;padding-left:3px;float:right;border-bottom:1px solid black;border-right:1px solid black;padding-bottom:3.5mm;">City or town<br/>
+													<td style="width:48mm;padding-left:3px;border-bottom:1px solid black;border-right:1px solid black;padding-bottom:3.5mm;text-align:left;">City or town<br/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/CityNm"/>
 														</xsl:call-template>,
 													</td>
-													<td style="width:20mm;padding-left:3px;float:right;border-bottom:1px solid black;border-right:1px solid black;padding-bottom:3.5mm;">State<br/>
+													<td style="width:37mm;padding-left:3px;border-bottom:1px solid black;border-right:1px solid black;padding-bottom:3.5mm;text-align:left;">State<br/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/ProvinceOrStateNm"/>
 														</xsl:call-template>
-													</td>
-													<td style="width:20mm;padding-left:3px;float:right;border-bottom:1px solid black;padding-bottom:3.5mm;">Zip code<br/>
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
-														</xsl:call-template>
-														<span style="width:1mm;"/>
+														<br/>
 														<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
+														</xsl:call-template>
+													</td>
+													<td style="width:18mm;padding-left:3px;border-bottom:1px solid black;padding-bottom:3.5mm;text-align:left;">Zip code<br/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
 														</xsl:call-template>
 													</td>
 												</xsl:otherwise>
@@ -1931,17 +1903,25 @@
             <span style="width: 5mm;"/>
 												</label>
 											</div>
-											<div class="styGenericDiv" style="width:187mm;font-weight:normal;"/>
-											<div class="styBB" style="width:187mm;padding-left:2mm;text-align:left;vertical-align:bottom;">
-											   <div style="width:152mm;padding-left:0px;font-weight:normal;text-align:left;vertical-align:bottom;display:inline;">
+											<div class="styBB" style="width:187mm;padding-left:2mm;padding-bottom:0mm;text-align:left;vertical-align:bottom;">
+											   <div style="width:152mm;padding-left:0px;padding-bottom:0mm;font-weight:normal;text-align:left;vertical-align:bottom;display:inline;">
 												   Name<br />
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1Txt"/>
-													</xsl:call-template>,
-													<br />
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine2Txt"/>
-													</xsl:call-template>
+													<xsl:if test="PersonNm!=''">
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="PersonNm"/>
+														</xsl:call-template>
+													</xsl:if>
+													<xsl:if test="BusinessName/BusinessNameLine1Txt!=''">
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1Txt"/>
+														</xsl:call-template>
+													</xsl:if>
+													<xsl:if test="BusinessName/BusinessNameLine2Txt!=''">
+														<br/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine2Txt"/>
+														</xsl:call-template>
+													</xsl:if>
 												</div>
 													<div style="width:35mm;vertical-align:top;border-color:black;border-left-width:1px;border-style:solid;border-right-width:0px;border-top-width:0px;border-bottom-width:0px;padding-left:2px;display:inline;float:right;">
 														Identifying number<br/>
@@ -1950,19 +1930,16 @@
 																<xsl:call-template name="PopulateSSN">
 																	<xsl:with-param name="TargetNode" select="SSN"/>
 																</xsl:call-template>
-																<span style="width: 2px"/>
 															</xsl:when>
 															<xsl:when test="normalize-space(EIN)">
 																<xsl:call-template name="PopulateEIN">
 																	<xsl:with-param name="TargetNode" select="EIN"/>
 																</xsl:call-template>
-																<span style="width: 2px"/>
 															</xsl:when>
 															<xsl:otherwise>
 																<xsl:call-template name="PopulateText">
 																	<xsl:with-param name="TargetNode" select="MissingEINReasonCd"/>
 																</xsl:call-template>
-																<span style="width: 2px"/>
 															</xsl:otherwise>
 														</xsl:choose>
 													</div>
@@ -2666,6 +2643,9 @@
 				<span style="width:3px"/>
 				<img src="{$ImagePath}/8886_Bullet.gif" alt="Right Arrow Bullet"/>
 				<td style="border-bottom:1px solid black; text-align:left;border-right-width:1px;border-color:black;border-style:solid;border-left-width:0px;border-top-width:0px;height:7mm;width:54mm; ">
+					<xsl:call-template name="PopulateAdditionalDataTableMessage">
+						<xsl:with-param name="TargetNode" select="$Form8886Data/TypeOfEntityInformation/EntityName/BusinessNameLine1Txt"/>
+					</xsl:call-template>
 					<span class="styTableCellPad"/>
 				</td>
 				<td style="border-bottom:1px solid black;  text-align:left;border-right-width:0px;border-color:black;border-style:solid;border-left-width:0px;border-top-width:0px;padding-left:2px;height:7mm;width:54mm;">

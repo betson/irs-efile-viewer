@@ -279,6 +279,7 @@
         <span class="styIRS2439leftBoxWithBottom" style="height:8mm;width:87mm;padding-left:1mm;">
           <span style="font-size: 6pt;">Shareholder's identifying number</span>
       <xsl:choose>
+		  <!-- Changes to this process made 170510 by gdy per UWR 194393 -->
           <xsl:when test="$Form2439Data/ShareholderEIN">
             <div style="width:85mm;text-align:center;padding-top:2mm;">
             <xsl:call-template name="PopulateEIN">
@@ -293,12 +294,42 @@
             </xsl:call-template>
             </div>
           </xsl:when>
-          <xsl:otherwise>
+          <xsl:when test="$Form2439Data/ShareholderMissingEINReasonCd">
             <div style="width:85mm;text-align:center;padding-top:2mm;">
-            <xsl:call-template name="PopulateText">
-                 <xsl:with-param name="TargetNode" select="$Form2439Data/ShareholderMissingEINReasonCd"/>
+            <xsl:call-template name="PopulateEIN">
+              <xsl:with-param name="TargetNode" select="$Form2439Data/ShareholderMissingEINReasonCd"/>
             </xsl:call-template>
             </div>
+          </xsl:when>
+		  <xsl:when test="$RtnHdrData/Filer/PrimarySSN">
+            <div style="width:85mm;text-align:center;padding-top:2mm;">
+				 <xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+				 </xsl:call-template>
+			</div>
+		  </xsl:when>
+		  <xsl:when test="$RtnHdrData/Filer/SSN">
+            <div style="width:85mm;text-align:center;padding-top:2mm;">
+				 <xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+				 </xsl:call-template>
+			</div>
+		  </xsl:when>
+		  <xsl:when test="$RtnHdrData/Filer/EIN">
+            <div style="width:85mm;text-align:center;padding-top:2mm;">
+				 <xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+				 </xsl:call-template>
+			</div>
+		  </xsl:when>
+		  <xsl:when test="$RtnHdrData/Filer/MissingEINReasonCd">
+            <div style="width:85mm;text-align:center;padding-top:2mm;">
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">MissingEINReasonCd</xsl:with-param>
+				</xsl:call-template>
+            </div>
+		  </xsl:when>
+          <xsl:otherwise>
           </xsl:otherwise>
       </xsl:choose>
         </span>
@@ -307,25 +338,57 @@
           <span style="font-size: 6pt;">Shareholder's name, address, and ZIP code</span>
           <br/>
        <xsl:choose>
-             <xsl:when test="$Form2439Data/ShareholderBusinessName">
-          	<xsl:call-template name="PopulateText">
-          	  <xsl:with-param name="TargetNode" select="$Form2439Data/ShareholderBusinessName/BusinessNameLine1Txt"/>
-          	</xsl:call-template>
-          	<xsl:if test="$Form2439Data/ShareholderBusinessName/BusinessNameLine2Txt != ''">
+		  <!-- Changes to this process made 170510 by gdy per UWR 194393 -->
+            <xsl:when test="$Form2439Data/ShareholderBusinessName">
+				<xsl:call-template name="PopulateText">
+				  <xsl:with-param name="TargetNode" select="$Form2439Data/ShareholderBusinessName/BusinessNameLine1Txt"/>
+				</xsl:call-template>
             	   <br/>
-            	   <xsl:call-template name="PopulateText">
-            	     <xsl:with-param name="TargetNode" select="$Form2439Data/ShareholderBusinessName/BusinessNameLine2Txt"/>
-            	   </xsl:call-template>
-          	</xsl:if>
-              </xsl:when>
-           <xsl:otherwise>
+           	    <xsl:call-template name="PopulateText">
+            	    <xsl:with-param name="TargetNode" select="$Form2439Data/ShareholderBusinessName/BusinessNameLine2Txt"/>
+            	</xsl:call-template>
+            </xsl:when>
            <!-- Shareholder's Person Name -->
-           <xsl:if test="$Form2439Data/ShareholderPersonNm != ''">
+           <xsl:when test="$Form2439Data/ShareholderPersonNm">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form2439Data/ShareholderPersonNm"/>
                 </xsl:call-template>            
-           </xsl:if>
-           </xsl:otherwise>           
+           </xsl:when>
+            <!--Business Name from F1120 Return Header-->
+		    <xsl:when test="$RtnHdrData/Filer/BusinessName">
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
+		            <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+              </xsl:call-template>
+		      <br/>
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
+		            <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+              </xsl:call-template>
+            </xsl:when>
+            <!--Individual Name from F1040/NR Return Header-->
+		    <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
+		            <xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+		              </xsl:call-template>
+            </xsl:when>
+            <!--Business Name from F1041 Return Header-->
+		    <xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
+		            <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+              </xsl:call-template>
+		      <br/>
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
+		            <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+              </xsl:call-template>            
+            </xsl:when>
+            <!--National Morgage Association Code from F1041 Return Header-->
+		    <xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
+		    <br/>
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
+		            <xsl:with-param name="TargetNode">NationalMortgageAssocCd</xsl:with-param>
+              </xsl:call-template>
+            </xsl:when>
+           <xsl:otherwise>
+           </xsl:otherwise>
        </xsl:choose>
        <xsl:choose>
         <!-- US Address -->

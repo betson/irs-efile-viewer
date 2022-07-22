@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- 09/13/10 - Modified by Jeremy Nichols for ITAMS 7494829 -->
-<!-- 03/30/12 - Modified by Robert L Jones for IBM Defects-29720, 29721 -->
-<!-- 03/30/12 - ON 29721 Tester complained about Part IV 2-4b right two columns being off -->
-<!--That was caused by the scroll feature, when scroll bars show columns were off, but when
-      scroll bar is hidden they were aligned - I switched them around so that when scroll bars show 
-      columns are aligned and vice versa - RLJONES-->
- <!-- 10/08/13 - Modified by Robert L Jones for IBM Defects-38145. Form not Populating. Schemas were late and no changes made it to Form when Delivered. Elements Changed -->
- <!-- Last modified on 10/23/2013 by Robert Jones for IBM Defect Accverify 508 Comp-->
- <!-- Last modified on 12/10/2013 by Robert Jones for IBM Defect 39361-->
- <!-- Last modified on 12/13/2013 by Robert Jones for IBM Defect 39363-->
- <!-- Last modified on 06/23/2014 by Robert Jones for IBM Defect 40595-->
+
  <!-- Last modified on 07/30/2015 by Robert Jones for IBM Defect 43870 IE11 issues-->
  <!-- Last modified on 07/31/2015 by Robert Jones for IBM Defect 43870 IE11 issues-->
  <!-- Last modified on 08/14/2015 by Robert Jones for IBM Defect 43872 IE11 issues-->
@@ -17,7 +7,9 @@
   <!-- Last modified on 12/08/2015 by Robert Jones PDF Review -->
   <!-- Last modified on 12/29/2015 overlapping. IBM data worked. Sat data had overlapping at 9f and Part II Line 1 - by Robert Jones PDF Review -->
   <!-- Last modified on 1/26/2016 Browser Part I 9d and 9f data alignment by Robert Jones PDF Review -->
- 
+ <!-- Last modified on 5/18/2017 by Robert Jones UWR 194393 and 195664 Return Headers for 1120, 1041, 1040 and 1040NR  -->
+ <!-- Last modified on 5/23/2017 by Robert Jones UWR 194393 and 195664 Return Headers for 1120, 1041, 1040 and 1040NR  -->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -121,7 +113,7 @@
             <div class="styNameBox" style="width:140mm;height:auto;font-size:7pt;">
               Name(s) as shown on return<br/>
                <!-- Added per UWR 31342 to allow 1040/ssn filer to use this form -->
-              <xsl:choose>
+            <!--  <xsl:choose>
 								    <xsl:when test="$RtnHdrData/ReturnType='1040'">
 						<br/>
 								      <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -133,14 +125,18 @@
               <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$FormTData/ShownOnReturnName/BusinessNameLine2Txt" />
               </xsl:call-template>  
               </xsl:otherwise>
-			 </xsl:choose>
+			 </xsl:choose>-->
+			  <!-- Choice between 1120, 1041, 1040 and 1040NR Return Header Filer info -->
+                                                         <xsl:call-template name="PopulateFilerName">
+                                                            <xsl:with-param name="TargetNode" select="$FormTData"/>
+                                                         </xsl:call-template> 
             </div>
             <div class="styEINBox" style="width:45mm;height:auto;font-size:7pt;padding-left:2mm;font-weight:bold;">
               <span style="width:4px;"></span>
               Identifying number<br/><br />
               <span style="font-weight:normal;">
                 <span style="width:4px;"> </span>   
-                <xsl:choose >
+               <!-- <xsl:choose >
                 <xsl:when test="$FormTData/EIN">
                   <xsl:call-template name="PopulateEIN">
                   <xsl:with-param name="TargetNode" select="$FormTData/EIN"/>
@@ -157,7 +153,11 @@
                   <xsl:with-param name="TargetNode" select="$FormTData/MissingEINReasonCd"/>
                   </xsl:call-template>
                 </xsl:otherwise>
-              </xsl:choose>   
+              </xsl:choose>   -->
+              <!-- Choice between 1120, 1041, 1040 and 1040NR Return Header Filer info -->
+                                                     <xsl:call-template name="PopulateFilerTIN">
+                                                       <xsl:with-param name="TargetNode" select="$FormTData"/>
+                                                     </xsl:call-template> 
                 
               </span>  
             </div>

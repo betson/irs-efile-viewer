@@ -23,7 +23,7 @@ updated 10/14/2005 by Charlie Moore to add "styTopSectionLineLandscape" for land
     div {display:inline-block;vertical-align:bottom;}
     
     .styBodyClass {   /* body style for all stylesheets */
-      width: 188mm; height: auto;
+      width: 187mm; height: auto;
       margin-top: 6px; margin-right: 0px; margin-bottom: 0px; margin-left: 6px;
       color: black; background-color: white;
       background-image: url( "<xsl:value-of select="$PageWatermark"/>" );  /*  url({url}) || none  */

@@ -632,13 +632,14 @@
 							<div class="styIRS9465LNLeftNumBox">6</div>
 							<div class="styIRS9465LNDesc" style="width:80mm;height:28mm;padding-right:3px;padding-bottom:0mm;">
 								<!-- Line 1 -->
-								<div class="styIRS9465LNDesc" style="width:84mm;height:11.5mm;border-bottom-width:1px;border-color:black;padding-left:0px;font-size:6.5pt;">
+								<div class="styIRS9465LNDesc" style="width:84mm;height:13.5mm;border-bottom-width:1px;border-color:black;padding-left:0px;font-size:6.5pt;">
 									Your employer’s name:<br/>
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$Form9465Data/EmployerName/BusinessNameLine1Txt"/>
 									</xsl:call-template>
 									<xsl:if test="$Form9465Data/EmployerName/BusinessNameLine2Txt">
-									<span style="width:5px;"/> 
+									<br/>
+								<!--	<span style="width:2px;"/> -->
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form9465Data/EmployerName/BusinessNameLine2Txt"/>
 										</xsl:call-template>
@@ -1007,10 +1008,10 @@
 							<span style="width:75px;"/>  
 							Form <span class="styBoldText" style="font-size:8pt;">9465</span> (Rev. 12-2013)
 					</div>
-				
+				    <p style="page-break-before: always"/>
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- page 2 -->					
-				    <br/><br/>
+				    <!--<br/><br/>-->
 					<!-- BEGIN Part II Title -->
 					<div class="styTBB" style="width:187mm;padding-top:.5mm;">
 						<span class="" style="float:left;clear:none;">Form 9465 (12-2013)</span>

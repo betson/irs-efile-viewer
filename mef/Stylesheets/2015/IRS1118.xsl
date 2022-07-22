@@ -5,6 +5,8 @@
 <!-- 12/09/2015 - Changes made per 2015 pdf review - Jeremy Nichols -->
 <!-- 01/26/2016 - Additional changes made per 2015 pdf review - Jeremy Nichols -->
 <!-- 01/29/2016 - Changes made for defect 45284 - Jeremy Nichols -->
+<!-- 05/27/2016 - Changes made for defect 45320 - Jeremy Nichols -->
+<!-- 05/15/2017 - Changes made for defect ##### - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="PopulateTemplate.xsl"/>
@@ -854,7 +856,9 @@
 							<!-- end button display logic -->
 						</div>
 					</div>
-					<div class="styTableContainerLandscape" id="FTPctn">
+					<div style="border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+			width: 256mm; height:auto;float:none;clear:both;overflow-y: auto;" id="FTPctn">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
@@ -1068,91 +1072,91 @@
 								<!-- End filler rows -->
 								<xsl:choose>
 									<xsl:when test="(count($Form1118ScheduleA/IncmLossBfrAdjFrgnTxsPdAccrGrp) &gt; 6) and ($Print = $Separated)">
-										<tr style="height:6mm;">
-											<td class="styIRS1118TableCellTotal" scope="row" colspan="3" style="text-align:left;">
+										<tr >
+											<td class="styIRS1118TableCellTotal" scope="row" colspan="3" style="text-align:left;border-bottom-width:0px;">
 												<span style="font-weight:bold;">Totals </span>(add lines A through F)</td>
-											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:24mm;border-color:black;border-bottom-width:0px;">
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:24mm;border-color:black;border-bottom-width:0px;">
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:24mm;border-color:black;border-bottom-width:0px;">
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:24mm;border-color:black;border-bottom-width:0px;">
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:24mm;border-color:black;border-bottom-width:0px;">
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:24mm;border-color:black;border-bottom-width:0px;">
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:24mm;border-color:black;border-bottom-width:0px;">
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:24mm;border-color:black;border-bottom-width:0px;">
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCellSmall" style="width:25mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:25mm;border-color:black;border-bottom-width:0px;">
 												<span class="styTableCellPad"/>
 											</td>
 										</tr>
 									</xsl:when>
 									<xsl:otherwise>
 										<tr style="height:6mm;">
-											<td class="styIRS1118TableCellTotal" scope="row" colspan="3" style="text-align:left;">
+											<td class="styIRS1118TableCellTotal" scope="row" colspan="3" style="text-align:left;border-bottom-width:0px;">
 												<span style="font-weight:bold;">Totals </span>(add lines A through F)</td>
-											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:24mm;border-color:black;border-bottom-width:0px;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$Form1118ScheduleB/TotalTaxWithheldDividendsAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
-											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:24mm;border-color:black;border-bottom-width:0px;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$Form1118ScheduleB/TotalTaxWithheldInterestAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
-											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:24mm;border-color:black;border-bottom-width:0px;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$Form1118ScheduleB/TotTxWithheldRentsRyltsLcnsAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
-											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:24mm;border-color:black;border-bottom-width:0px;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$Form1118ScheduleB/TotalTxPdOrAccrSect863bIncmAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
-											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:24mm;border-color:black;border-bottom-width:0px;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$Form1118ScheduleB/TotTxPdOrAccrFrgnBranchIncmAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
-											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:24mm;border-color:black;border-bottom-width:0px;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$Form1118ScheduleB/TotalTxPdOrAccrServicesIncmAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
-											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:24mm;border-color:black;border-bottom-width:0px;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$Form1118ScheduleB/TotalTxPdOrAccrOtherIncmAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
-											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:24mm;border-color:black;border-bottom-width:0px;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$Form1118ScheduleB/AggrtTotFrgnTaxesPaidOrAccrAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
-											<td class="styTableCellSmall" style="width:25mm;border-color:black;">
+											<td class="styTableCellSmall" style="width:25mm;border-color:black;border-bottom-width:0px;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$Form1118ScheduleB/TotalTaxesDeemedPaidAmt"/>
 												</xsl:call-template>
@@ -1174,8 +1178,11 @@
 					<!-- End Set Initial Height of Above Table -->
 					<!-- END SCHEDULE B PART I TABLE -->
 					<!-- END SCHEDULE B PART I-->
+					<xsl:if test="($Print = $Separated)">
+						<br/><br/><br/><br/>
+					</xsl:if>
 					<!-- BEGIN SCHEDULE B PART II TITLE -->
-					<div class="styBB" style="width:256mm;">
+					<div class="styBB" style="width:256mm;border-top:1px solid black;">
 						<div class="styIRS1118TitleDesc" style="padding-left:0;">Part II—Separate Foreign Tax Credit
 							<span class="styItalicText" style="font-weight:normal">(Complete a </span> <span style="width:1mm;" />
 							<span class="styItalicText" style="font-weight:bold">separate </span> <span style="width:1mm;" />
@@ -7751,7 +7758,7 @@ and 1d from line 1a)</td>
 						<table class="styDepTblLandscape" cellspacing="0" style="font-size:6pt;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
-									<th class="styDepTblCell" rowspan="4">
+									<th class="styDepTblCell" rowspan="4" style="width:15mm;">
 										<span style="width:4px"/>
 									</th>
 									<th class="styDepTblCell" style="width:222mm;font-size:7pt;padding-top:1mm;padding-bottom:1mm;" colspan="8" scope="col">Deductions (<span class="styItalicText">INCLUDE</span> Foreign Branch Deductions here <span class="styItalicText">and</span> on Schedule F)</th>
@@ -7793,8 +7800,8 @@ and 1d from line 1a)</td>
 									<tr style="height:6mm;">
 										<!-- Set the background color for the row -->
 										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-										<td class="styIRS1118TableCellLtr">
-											<span class="styTableCellPad" style="font-weight:bold">
+										<td class="styIRS1118TableCellLtr" style="text-align:left;">
+											<span class="styTableCellPad" style="font-weight:bold;text-align:left;padding-left:0mm;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="RowId"/>
 												</xsl:call-template>
@@ -7860,8 +7867,8 @@ and 1d from line 1a)</td>
 								</xsl:for-each>
 								<!-- Totals Row -->
 								<tr class="styDepTblHdr" style="height:6mm;">
-									<td class="styDepTblCell">
-										<span class="styTableCellPad" style="font-weight:bold">Totals</span>
+									<td class="styDepTblCell" style="text-align:left;">
+										<span class="styTableCellPad" style="font-weight:bold;text-align:left;padding-left:0mm;">Totals</span>
 									</td>
 									<td class="styDepTblCell" style="width:32mm;text-align:right;">
 										<xsl:call-template name="PopulateAmount">
@@ -7942,7 +7949,7 @@ and 1d from line 1a)</td>
 						<table class="styDepTblLandscape" cellspacing="0" style="height: 66mm;font-size:6pt;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
-									<th class="styDepTblCell" style="height:22.5mm;" rowspan="3">
+									<th class="styDepTblCell" style="width:9mm;height:22.5mm;" rowspan="3">
 										<span class="styTableCellPad" style="font-weight:bold"/>
 									</th>
 									<th class="styDepTblCell" scope="col" rowspan="2" colspan="2" style="width:30mm;height:15mm;">
@@ -8030,8 +8037,8 @@ and 1d from line 1a)</td>
 									<tr style="height:6mm;">
 										<!-- Set the background color for the row -->
 										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-										<td class="styIRS1118TableCellLtr" scope="row">
-											<span class="styTableCellPad" style="font-weight:bold">
+										<td class="styIRS1118TableCellLtr" scope="row" style="text-align:left;">
+											<span class="styTableCellPad" style="font-weight:bold;text-align:left;padding-left:0mm;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="RowId"/>
 												</xsl:call-template>
@@ -8208,7 +8215,7 @@ and 1d from line 1a)</td>
 								<tr class="styDepTblHdr">
 									<th class="styDepTblCell" style="width:20mm" scope="col">(a) <span class="styNormalText">Taxes Paid</span>
 									</th>
-									<th class="styDepTblCell" style="width:20mm" scope="col">(b) <span class="styNormalText">Taxes Deemed Paid (from Schedule D, Part I—see instructions)</span>
+									<th class="styDepTblCell" style="width:20mm" scope="col">(b) <span class="styNormalText">Taxes Deemed Paid (see instructions)</span>
 									</th>
 									<th class="styDepTblCell" style="width:20mm" scope="col">(a) <span class="styNormalText">Functional Currency</span>
 									</th>
@@ -8344,7 +8351,7 @@ and 1d from line 1a)</td>
 								<tr class="styDepTblHdr">
 									<th class="styDepTblCell" style="width:20mm" rowspan="2" scope="col">9. <span class="styNormalText">Divide Column 8(a) by Column 4</span>
 									</th>
-									<th class="styDepTblCell" style="width:20mm" rowspan="2" scope="col">10. <span class="styNormalText">Tax Deemed Paid (multiply column 7 by column 9)</span>
+									<th class="styDepTblCell" style="width:20mm" rowspan="2" scope="col">10. <span class="styNormalText">Multiply column 7 by column 9</span>
 									</th>
 									<th class="styDepTblCell" style="width:20mm" rowspan="2" scope="col">11. <span class="styNormalText">Section 960(c) Limitation</span>
 									</th>
@@ -11719,45 +11726,45 @@ and 1d from line 1a)</td>
 		<xsl:param name="TargetNode"/>
 		<xsl:param name="ShowMessage"/>
 		<tr style="height:6mm;">
-			<td class="styIRS1118TableCellLtr">
+			<td class="styIRS1118TableCellLtr" style="width:8mm;">
 				<span class="styBoldText">
 					<xsl:value-of select="$TargetNode"/>
 				</span>
-				<span class="styTableCellPad"/>
+				<span class="styTableCellPad" style="width:8mm;"/>
 			</td>
 			<td class="styTableCellSmall" style="width:15mm;border-color:black;">
-				<span class="styTableCellPad"/>
+				<span class="styTableCellPad" style="width:15mm;"/>
 			</td>
 			<td class="styTableCellSmall" style="width:15mm;border-color:black;">
-				<span class="styTableCellPad"/>
+				<span class="styTableCellPad" style="width:15mm;"/>
 			</td>
 			<td class="styTableCellSmall" style="width:24mm;text-align:left;border-color:black;">
 				<xsl:if test="$ShowMessage = 'true'">See Add'l Data</xsl:if>
-				<span class="styTableCellPad"/>
+				<span class="styTableCellPad" style="width:24mm;"/>
 			</td>
 			<td class="styTableCellSmall" style="width:24mm;border-color:black;">
-				<span class="styTableCellPad"/>
+				<span class="styTableCellPad" style="width:24mm;"/>
 			</td>
 			<td class="styTableCellSmall" style="width:24mm;border-color:black;">
-				<span class="styTableCellPad"/>
+				<span class="styTableCellPad" style="width:24mm;"/>
 			</td>
 			<td class="styTableCellSmall" style="width:24mm;border-color:black;">
-				<span class="styTableCellPad"/>
+				<span class="styTableCellPad" style="width:24mm;"/>
 			</td>
 			<td class="styTableCellSmall" style="width:24mm;border-color:black;">
-				<span class="styTableCellPad"/>
+				<span class="styTableCellPad" style="width:24mm;"/>
 			</td>
 			<td class="styTableCellSmall" style="width:24mm;border-color:black;">
-				<span class="styTableCellPad"/>
+				<span class="styTableCellPad" style="width:23mm;"/>
 			</td>
 			<td class="styTableCellSmall" style="width:24mm;border-color:black;">
-				<span class="styTableCellPad"/>
+				<span class="styTableCellPad" style="width:23mm;"/>
 			</td>
 			<td class="styTableCellSmall" style="width:24mm;border-color:black;">
-				<span class="styTableCellPad"/>
+				<span class="styTableCellPad" style="width:23mm;"/>
 			</td>
-			<td class="styTableCellSmall" style="width:25mm;border-color:black;">
-				<span class="styTableCellPad"/>
+			<td class="styTableCellSmall" style="width:21mm;border-color:black;">
+				<span class="styTableCellPad" style="width:20mm;"/>
 			</td>
 		</tr>
 	</xsl:template>

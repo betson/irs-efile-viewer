@@ -1326,7 +1326,7 @@
                   </td>
                   <td class="sty1120FSchIStep3ContSepCurAmount" style="font-size:5pt;">
                     <xsl:call-template name="PopulatePercent">
-                      <xsl:with-param name="TargetNode" select="$FormData/ApplicableRt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/FromOthLnApplicableRt"/>
                     </xsl:call-template>
                   </td>
                   <td class="sty1120FSchIStep3ContSepCurAmount" style="font-size:5pt;">

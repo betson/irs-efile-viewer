@@ -75,20 +75,26 @@
 						<div class="styBB" style="width:187mm;height:8mm;">
 							<div class="styNameBox" style="width:137mm;height:auto;padding-bottom:.5mm;">
 								Name(s) shown on your tax return <br/>
-								<span style="font-size:7pt;padding-top:2mm;">
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">Name</xsl:with-param>
-									</xsl:call-template>
-								</span>
-							</div>
-							<div class="styEINBox" style="width:48mm;padding-left:1mm;">
-								Your social security number <br/>
-								<span style="font-weight:normal;width:100%;text-align:center;font-size:7pt;padding-top:2mm;">
+		 <xsl:choose>
+					    <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+							</xsl:call-template>
+					   </xsl:when>
+								</xsl:choose>			
+						</div>
+						<div class="styEINBox" style="width:46mm;height:100%;padding-left:4px;">
+							Your social security number<br/>
+							<span style="width:100%;font-weight:normal;">
+							<xsl:choose>
+								<xsl:when test="$RtnHdrData/Filer/PrimarySSN">
 									<xsl:call-template name="PopulateReturnHeaderFiler">
 										<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-									</xsl:call-template>
-								</span>
-							</div>
+								   </xsl:call-template>
+				   		       </xsl:when>
+						    </xsl:choose>
+      				        </span>
+						</div>
 						</div>
 						<!-- Mortgage Address -->
 						<div class="styNameAddr" style="width:187mm;padding-left:0px;clear:all; height:auto;">

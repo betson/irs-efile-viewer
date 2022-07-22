@@ -11,7 +11,6 @@
 	<xsl:template match="/">
 		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
-		
 			<head>
 				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
@@ -72,7 +71,7 @@
                 <span style="text-align:center;margin-left:0mm;font-size:6.5pt;">
 									<img src="{$ImagePath}/8275-R_Bullet.gif" alt="Bullet Image"/> 
 									Information about Form 8275-R and its separate instructions is at 
-									<a href="http://www.irs.gov/form8275" title="Link to IRS.gov"><i>www.irs.gov/form8275.</i></a>
+									<a style="text-decoration:none;color:black;" href="http://www.irs.gov/form8275" title="Link to IRS.gov"><i>www.irs.gov/form8275.</i></a>
 								</span>
 							</div>							
 							<div  class="styFST">
@@ -92,63 +91,37 @@
 					</div>
 					<!-- Title of the form -->
 					<!-- Name and EIN/SSN (return header)  -->
-					<div style="width:187mm;height:10mm;" class="styBB">
-						<div style="width:130mm;height:10mm;font-weight:normal;font-size:7pt;" class="styNameBox">
+					<div style="width:187mm;height:9mm;" class="styBB">
+						<div style="width:130mm;height:9mm;font-weight:normal;font-size:7pt;" class="styNameBox">
 							  Name(s) shown on return<br/>
-							  <!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
-							  <xsl:choose>
-							  <!-- Name from 1120/990/1065 Return Header -->
-								<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
-								  <xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-								  </xsl:call-template>
-								  <br/>
-								  <xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
-								  </xsl:call-template>
-								</xsl:when>
-								<!-- Name from 1040 Return Header -->
-								<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
-								  <br/>
-								  <xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
-								  </xsl:call-template>
-								</xsl:when>
-								<!-- Name from 1041 Return Header -->
-								<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
-								  <xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
-								  </xsl:call-template>
-								  <br/>
-								  <xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
-								  </xsl:call-template>
-								</xsl:when>
-								<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
-								  <xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
-								  </xsl:call-template>
-								  <br/>
-								</xsl:when> 
-							  </xsl:choose>
+							<!-- Choice between 1041, 1040 and 1040NR Return Header Filer info -->
+							<xsl:call-template name="PopulateFilerName">
+								<xsl:with-param name="TargetNode" select="$Form8275RData"/>
+							</xsl:call-template> 
 						</div>
 						<div style="width:56mm;height:4mm;padding-left:2mm;font-size:7pt;" class="styEINBox">
               Identifying number shown on return
 							<br/>
 							<br/>
 							<span style="font-weight:normal;">
-								<!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
+							<!-- Choice between 1041, 1040 and 1040NR Return Header Filer info -->
+							<!--cannot use PopulateFilerTIN because 8275R data contain MissingEINReasonCd for foreign entity, not for filer-->
 								<xsl:choose>
-								  <xsl:when test="$RtnHdrData/Filer/EIN">
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-									</xsl:call-template>
-								  </xsl:when>
-								  <xsl:otherwise>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-									</xsl:call-template>
-								  </xsl:otherwise>
+									<xsl:when test="$RtnHdrData/Filer/PrimarySSN">
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+										</xsl:call-template>
+									</xsl:when>
+									<xsl:when test="$RtnHdrData/Filer/SSN">
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+										</xsl:call-template>
+									</xsl:when>
+									<xsl:when test="$RtnHdrData/Filer/EIN">
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+										</xsl:call-template>
+									</xsl:when>
 								</xsl:choose>
 							</span>
 						</div>
@@ -181,7 +154,7 @@
 						<div class="styUnderlineAmount" style="width:132mm;text-align:left">
 						<xsl:choose>
 						<xsl:when test="$Form8275RData/ForeignEntityEIN">
-							<xsl:call-template name="PopulateText">
+							<xsl:call-template name="PopulateEIN">
 								<xsl:with-param name="TargetNode" select="$Form8275RData/ForeignEntityEIN"/>
 							</xsl:call-template>
 							</xsl:when>

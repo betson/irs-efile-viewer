@@ -138,12 +138,12 @@
 			  <!--End Name/EIN-->
 			  <div class="styGenericDiv" style="width:187mm;clear:all;height:auto;">
 				<!-- Begin Part I -->
-				<div class="sty1120FSchPSectionTitle" style="border-top-width:1px;border-bottom-width:1px;width:187mm;">
+				<div class="sty1120FSchPSectionTitle" style="border-top-width:0px;border-bottom-width:1px;width:187mm;">
 				  <div class="styPartName" style="height:4mm;">Part I</div>
 				  <div class="styPartDesc" style="width:167mm;">
 					List of Foreign Partner Interests in Partnerships
 				  </div>
-				  <div style="height:4mm;float-right;">
+				  <div style="height:4mm;float:right;">
 					<xsl:call-template name="SetDynamicTableToggleButton">
 					  <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp"/>
 					  <xsl:with-param name="containerHeight" select="4"/>
@@ -175,11 +175,11 @@
 					  <thead class="styTableThead">
 						<tr>
 						  <th class="styTableCellHeader" scope="col" style="width:5mm;border-right:0;"></th>
-						  <th class="styTableCellHeader" scope="col" style="width:45mm;">(a) Name of partnership</th>
-						  <th class="styTableCellHeader" scope="col" style="width:62mm;">(b) Address</th>
-						  <th class="styTableCellHeader" scope="col" style="width:31mm;">(c) EIN</th>
-						  <th class="styTableCellHeader" scope="col" style="width:44mm;height:28mm;border-right:0;text-align:left;padding-left:2mm">
-							(d) For each partnership interest, is the foreign corporations distributive share ECI, or treated as ECI, 
+						  <th class="styTableCellHeader" scope="col" style="width:45mm;font-weight:normal;text-align:left;"><b>(a) </b>Name of partnership</th>
+						  <th class="styTableCellHeader" scope="col" style="width:62mm;font-weight:normal;"><b>(b) </b>Address</th>
+						  <th class="styTableCellHeader" scope="col" style="width:31mm;font-weight:normal;"><b>(c) </b>EIN</th>
+						  <th class="styTableCellHeader" scope="col" style="width:44mm;height:28mm;border-right:0;text-align:left;padding-left:2mm;font-weight:normal;">
+							<b>(d) </b>For each partnership interest, is the foreign corporations distributive share ECI, or treated as ECI, 
 							in whole or in part, with a U.S. trade or business determined under section 875 (see instructions)?
 						  </th>
 						</tr>
@@ -279,39 +279,39 @@
 								  </xsl:choose>
 								</xsl:attribute>								
 								<xsl:call-template name="PopulateSpan">
-								  <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/DistributiveShareTreatedECIInd"/>
+								  <xsl:with-param name="TargetNode" select="DistributiveShareTreatedECIInd"/>
 								</xsl:call-template>
 								<!-- per IBM to add PopulateSpan to boolean (yes/no) checkbox -->								
 								<input type="checkbox" class="styCkbox" name="InitialReturn">
 								  <xsl:call-template name="PopulateYesCheckbox">
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/DistributiveShareTreatedECIInd"/>
+									<xsl:with-param name="TargetNode" select="DistributiveShareTreatedECIInd"/>
 									<xsl:with-param name="BackupName">IRS1120FSchPDistributiveShareTreatedAsECI</xsl:with-param>
 								  </xsl:call-template>
 								  <!--  <xsl:attribute name="id"><xsl:value-of select="concat($DistributiveShareTreatedAsECIID, 'Yes[1]')"/></xsl:attribute>-->
 								</input>
 								<label>
 								  <xsl:call-template name="PopulateLabelYes">
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/DistributiveShareTreatedECIInd"/>
+									<xsl:with-param name="TargetNode" select="DistributiveShareTreatedECIInd"/>
 									<xsl:with-param name="BackupName">IRS1120FSchPDistributiveShareTreatedAsECI</xsl:with-param>
 								  </xsl:call-template>								
 								  <!--xsl:attribute name="for"><xsl:value-of select="concat($DistributiveShareTreatedAsECIID, 'Yes[1]')"/></xsl:attribute>-->
 								</label>
-								<span style="width:2mm;"/>Yes 
+								<span style="width:2mm;"/><b>Yes</b>
 								<span style="width:5mm"/>
 								<input type="checkbox" class="styCkbox" name="InitialReturn">
 								  <xsl:call-template name="PopulateNoCheckbox">
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/DistributiveShareTreatedECIInd"/>
+									<xsl:with-param name="TargetNode" select="DistributiveShareTreatedECIInd"/>
 									<xsl:with-param name="BackupName">IRS1120FSchPDistributiveShareTreatedAsECI</xsl:with-param>
 								  </xsl:call-template>
 								  <!--<xsl:attribute name="id"><xsl:value-of select="concat($DistributiveShareTreatedAsECIID, 'No[1]')"/></xsl:attribute>-->
 								</input>
 								<label>
 								  <xsl:call-template name="PopulateLabelNo">
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/DistributiveShareTreatedECIInd"/>
+									<xsl:with-param name="TargetNode" select="DistributiveShareTreatedECIInd"/>
 									<xsl:with-param name="BackupName">IRS1120FSchPDistributiveShareTreatedAsECI</xsl:with-param>
 								  </xsl:call-template>
 								  <!--<xsl:attribute name="for"><xsl:value-of select="concat($DistributiveShareTreatedAsECIID, 'No[1]')"/></xsl:attribute>-->
-								  <span style="width:2mm"/>No
+								  <span style="width:2mm"/><b>No</b>
 								</label>
 								<!--  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ for inline table  -->
 					          </td>
@@ -344,10 +344,10 @@
 							<td class="styTableCell"/>
 							<td class="styTableCell" style="border-right:0;text-align:center;vertical-align:bottom;">
 							  <span type="checkbox" class="styCkbox" name="InitialReturn" style="border: 1px solid black;"/>
-							  <span style="width:2mm"/>Yes   
+							  <span style="width:2mm"/><b>Yes</b>  
 							  <span style="width:7mm"/>
 							  <span type="checkbox" class="styCkbox" name="InitialReturn" style="border: 1px solid black;"/>
-							  <span style="width:1mm"/>No
+							  <span style="width:1mm"/><b>No</b>
 							</td>
 						  </tr>
 						</xsl:if>
@@ -361,10 +361,10 @@
 							<td class="styTableCell"/>
 							<td class="styTableCell" style="border-right:0;text-align:center;vertical-align:bottom;">
 							  <span type="checkbox" class="styCkbox" name="InitialReturn" style="border: 1px solid black;"/>
-							  <span style="width:2mm"/>Yes   
+							  <span style="width:2mm"/><b>Yes</b>   
                               <span style="width:7mm"/>
 							  <span type="checkbox" class="styCkbox" name="InitialReturn" style="border: 1px solid black;"/>
-							  <span style="width:1mm"/>No
+							  <span style="width:1mm"/><b>No</b>
                             </td>
 						  </tr>
 						</xsl:if>
@@ -378,10 +378,10 @@
 							<td class="styTableCell"/>
 							<td class="styTableCell" style="border-right:0;text-align:center;vertical-align:bottom;">
 							  <span type="checkbox" class="styCkbox" name="InitialReturn" style="border: 1px solid black;"/>
-							  <span style="width:2mm"/>Yes   
+							  <span style="width:2mm"/><b>Yes</b>   
 							  <span style="width:7mm"/>
 							  <span type="checkbox" class="styCkbox" name="InitialReturn" style="border: 1px solid black;"/>
-							  <span style="width:1mm"/>No
+							  <span style="width:1mm"/><b>No</b>
                             </td>
 						  </tr>
 						</xsl:if>
@@ -395,10 +395,10 @@
 							<td class="styTableCell"/>
 							<td class="styTableCell" style="border-right:0;text-align:center;vertical-align:bottom;">
 							  <span type="checkbox" class="styCkbox" name="InitialReturn" style="border: 1px solid black;"/>
-							  <span style="width:2mm"/>Yes   
+							  <span style="width:2mm"/><b>Yes</b>   
                               <span style="width:7mm"/>
 							  <span type="checkbox" class="styCkbox" name="InitialReturn" style="border: 1px solid black;"/>
-							  <span style="width:1mm"/>No
+							  <span style="width:1mm"/><b>No</b>
                             </td>
 						  </tr>
 						</xsl:if>
@@ -633,7 +633,7 @@
 							  <td class="sty1120FSchPTableK1CellNumSD" style="padding-left:2.5mm;padding-top:2.5mm;">8</td>
 							  <td class="sty1120FSchPTableK1Desc" scope="row">
 						        Other gross ECI reported on Schedule K-1.
-.							  </td>
+						      </td>
 							  <xsl:call-template name="CreateTable">
 								<xsl:with-param name="Start" select="position()"/>
 								<xsl:with-param name="Stop" select="position()+4"/>
@@ -1216,31 +1216,21 @@
 					<span style="font-size:6pt">Cat. No. 49677Z</span>
 					<span style="font-weight:bold;float:right;">Schedule P (Form 1120-F) 2015</span>
 				  </div>
-				  <!-- <div class="pageEnd"/>-->
 				  <!-- end page break and footer  -->
-				  <!-- begin page 2 -->
-				  <!-- page break and footer-->
-				  <!-- <div>
-					<span class="styBoldText">Schedule P (Form 1120-F) 2015</span>
-					<span style="width:133mm"/>Page <b>2</b>
-					</div>-->
-					<!--<div class="pageEnd"/>-->
-					<!-- end page break and footer  -->
-					<!-- Begin Part III Title -->
-					<p class="pageEnd"/>
-					<div style="width:187mm">
-					  <div>
-						<span class="styBoldText">Schedule P (Form 1120-F) 2015</span>
-						<span style="width:133mm"/>Page <b>2</b>
-					  </div>
-					  <div class="styBB" style="width:187mm;border-top-width:1px;">
-						<div class="styPartName" style="height:3.5mm;">Part III</div>
-						<div class="styPartDesc" style="width:172mm;padding-left:1mm;height:3.5mm;">
-                          Foreign Partners Average Outside Basis Under Regulations sections 1.882-5(b) and 1.884-1(d)(3)
-                        </div>
-					  </div>
-					  <!-- END Part III Title -->
-					  <!-- Begin Part III Table -->
+				  <p class="pageEnd"/>
+				  <!-- Begin Page 2 -->
+				  <div style="width:187mm">
+					<span style="font-weigh:normal;float:left;">Schedule P (Form 1120-F) 2015</span>
+					<span style="width:138mm;"/>Page <b>2</b>
+					<!-- Begin Part III Title -->					
+					<div class="styBB" style="width:187mm;border-top-width:1px;">
+					  <div class="styPartName" style="height:3.5mm;">Part III</div>
+					  <div class="styPartDesc" style="width:172mm;padding-left:1mm;height:3.5mm;">
+                        Foreign Partners Average Outside Basis Under Regulations sections 1.882-5(b) and 1.884-1(d)(3)
+                      </div>
+					</div>
+					<!-- END Part III Title -->
+					<!-- Begin Part III Table -->
 					  <table cellpadding="0" cellspacing="0" style="width:187mm;font-size:7pt">
 						<tbody>
 						  <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/ForeignPartnerInformationGrp) &lt; 5)">
@@ -1727,11 +1717,11 @@
 							<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  -->
 							<tr class="styDepTblHdr">
 							  <th class="styTableCellHeader" scope="col" style="width:5mm;border-right:0;"/>
-							  <th class="styTableCellHeader" scope="col" style="width:45mm;">(a) Name of partnership </th>
-							  <th class="styTableCellHeader" scope="col" style="width:62mm;">(b) Address </th>
-							  <th class="styTableCellHeader" scope="col" style="width:31mm; border-right-width:1px;">(c) EIN </th>
-							  <th class="styTableCellHeader" scope="col" style="width:44mm;text-align:left;padding-left:3mm;">
-					            (d) For each partnership interest, is the foreign corporation's distributive share ECI, or treated as ECI,
+							  <th class="styTableCellHeader" scope="col" style="width:45mm;font-weight:normal;"><b>(a) </b>Name of partnership </th>
+							  <th class="styTableCellHeader" scope="col" style="width:62mm;font-weight:normal;"><b>(b) </b>Address </th>
+							  <th class="styTableCellHeader" scope="col" style="width:31mm; border-right-width:1px;font-weight:normal;"><b>(c) </b>EIN </th>
+							  <th class="styTableCellHeader" scope="col" style="width:44mm;text-align:left;padding-left:3mm;font-weight:normal;">
+					            <b>(d) </b>For each partnership interest, is the foreign corporation's distributive share ECI, or treated as ECI,
 					            in whole or in part, with a U.S. trade or business derermined under section 875 (see instructions)? 
 					          </th>
 							</tr>
@@ -1815,44 +1805,44 @@
 								<td class="styTableCell" style="width:44mm;text-align:center;height:12mm;vertical-align:bottom;">
 								  <!-- per IBM to add PopulateSpan to boolean (yes/no) checkbox -->
 								  <xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/DistributiveShareTreatedECIInd"/>
+									<xsl:with-param name="TargetNode" select="DistributiveShareTreatedECIInd"/>
 								  </xsl:call-template>
 								  <input type="checkbox" class="styCkbox" name="InitialReturn">
 								    <xsl:call-template name="PopulateYesCheckbox">
-									  <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/DistributiveShareTreatedECIInd"/>
+									  <xsl:with-param name="TargetNode" select="DistributiveShareTreatedECIInd"/>
 									  <xsl:with-param name="BackupName">IRS1120FSchPDistributiveShareTreatedAsECI</xsl:with-param>
 									</xsl:call-template>
 								  </input>
 								  <xsl:call-template name="PopulateSpan">
-								  <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/DistributiveShareTreatedECIInd"/>
+								  <xsl:with-param name="TargetNode" select="DistributiveShareTreatedECIInd"/>
 								</xsl:call-template>								
 								  <label>
 									<xsl:call-template name="PopulateLabelYes">
-									  <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/DistributiveShareTreatedECIInd"/>
+									  <xsl:with-param name="TargetNode" select="DistributiveShareTreatedECIInd"/>
 									  <xsl:with-param name="BackupName">IRS1120FSchPDistributiveShareTreatedAsECI</xsl:with-param>
 									</xsl:call-template>
-									<span style="width:2mm;"/>Yes   
+									<span style="width:2mm;"/><b>Yes</b>   
 	                              </label>
 								  <span style="width:4mm"/>
 								  <!-- per IBM to add PopulateSpan to boolean (yes/no) checkbox -->
 								  <xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/DistributiveShareTreatedECIInd"/>
+									<xsl:with-param name="TargetNode" select="DistributiveShareTreatedECIInd"/>
 								  </xsl:call-template>
 								  <input type="checkbox" class="styCkbox" name="InitialReturn">
 									<xsl:call-template name="PopulateNoCheckbox">
-									  <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/DistributiveShareTreatedECIInd"/>
+									  <xsl:with-param name="TargetNode" select="DistributiveShareTreatedECIInd"/>
 									  <xsl:with-param name="BackupName">IRS1120FSchPDistributiveShareTreatedAsECI</xsl:with-param>
 									</xsl:call-template>
 								  </input>
 								  <xsl:call-template name="PopulateSpan">
-								  <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/DistributiveShareTreatedECIInd"/>
+								  <xsl:with-param name="TargetNode" select="DistributiveShareTreatedECIInd"/>
 								</xsl:call-template>								
 								  <label>
 									<xsl:call-template name="PopulateLabelNo">
-									  <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/DistributiveShareTreatedECIInd"/>
+									  <xsl:with-param name="TargetNode" select="DistributiveShareTreatedECIInd"/>
 									  <xsl:with-param name="BackupName">IRS1120FSchPDistributiveShareTreatedAsECI</xsl:with-param>
 									</xsl:call-template>
-									<span style="width:1mm"/>No
+									<span style="width:1mm"/><b>No</b>
 	                              </label>
 								  <!--  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  -->
 								</td>

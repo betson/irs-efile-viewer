@@ -77,21 +77,14 @@
                     Name(s) shown on tax return<br/>
                     <!-- 1040x Return Header Attached -->
                     <xsl:if test="$RtnHdrData/Filer/NameLine1Txt">
+                    <span style="padding-left:2mm;padding-top:3mm;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/NameLine1Txt"/> 
 							</xsl:call-template>
+					 </span>
 					</xsl:if>
-					<xsl:if test="$RtnHdrData/Filer/NameLine2Txt">
-						    <br/>
-							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/NameLine2Txt"/>
-							</xsl:call-template>
-					</xsl:if>
-<!--               This code was added per KISAM #IM02790903 however the KISAM was due to missing requirements and the code should not have been updated and  
-                    delivered. The following code is commented out until WR requirements are received for R10.1 to add this functionality when 2210 is attached to a 1041  
-                    return		-->
 					<!-- If 1041 Return Header Attached -->		
-<!--					<xsl:if test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+					<xsl:if test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
 							</xsl:call-template>
@@ -101,34 +94,27 @@
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
 							</xsl:call-template>
-					</xsl:if>-->
+					</xsl:if>
 				</div>
 					<!-- Identifying Number -->
 				<div style="padding-left:1mm;"/>
 					<b> Identifying number</b><br/>
-						<span style="padding-left:2mm;">
 						<!-- 1040 Return Header Attached -->
 						<xsl:if test="$RtnHdrData/Filer/PrimarySSN">
+						<span style="padding-left:2mm;padding-top:3mm;">
 								<xsl:call-template name="PopulateSSN">
 									<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/PrimarySSN"/>
 								</xsl:call-template>
+						 </span >
 						</xsl:if>
-						<xsl:if test="$RtnHdrData/Filer/SpouseSSN">
+						<xsl:if test="$RtnHdrData/Filer/EIN">
 							    <br/>
-								<xsl:call-template name="PopulateSSN">
-										<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/SpouseSSN"/>
-								</xsl:call-template>
-						</xsl:if>
-<!--               This code was added per KISAM #IM02790903 however the KISAM was due to missing requirements and the code should not have been updated and  
-                    delivered. The following code is commented out until WR requirements are received for R10.1 to add this functionality when 2210 is attached to a 1041  
-                    return		-->
-<!--						<xsl:if test="$RtnHdrData/Filer/EIN">
-							    <br/>
-								<xsl:call-template name="PopulateSSN">
+							    <span style="padding-left:2mm;">
+								<xsl:call-template name="PopulateEIN">
 										<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/EIN"/>
 								</xsl:call-template>
-						</xsl:if>-->
-						</span >
+								</span >
+						</xsl:if>
 				</div>
 						<!--  start instructions -->
 	<div style="width:187mm;height:92mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
@@ -139,8 +125,8 @@
 						</div>
 			<div style="width:187mm;height:8mm;">
 			<span class="styIRS2210Box" style="width:90mm;height:8mm;text-align:center;padding-top:2mm;">Complete lines 1 through 7 below.  Is line 7 less than $1,000?</span>
-						    <img src="{$ImagePath}/2210_Yes_right_Bullet.gif" alt="MediumBullet" align="middle"/>
-							<span class="styIRS2210Box" style="width:70mm;height:8mm;text-align:center;padding-top:1mm;"><b>Do not file Form 2210.</b>  You do not owe a penalty.</span>
+						    <img src="{$ImagePath}/2210_Yes_right_Bullet.gif" alt="Yes Right Bullet" align="middle"/>
+							<span class="styIRS2210Box" style="width:70mm;height:8mm;text-align:center;padding-top:1mm;"><b>Don't file Form 2210.</b>  You don't owe a penalty.</span>
 						</div>
 	<div style="width:187mm;">
 							<span style="width:30mm;height:4mm;"/>
@@ -150,15 +136,15 @@
 						</div>
 						<div>
 							<span style="width:28.8mm;height:1mm;padding-top:0mm;"/>
-							<img src="{$ImagePath}/2210_Bullet_Dn.gif" alt="MediumBulletDown" align="abstop"/>
+							<img src="{$ImagePath}/2210_Bullet_Dn.gif" alt="Medium Bullet Down" align="abstop"/>
 						</div>
 		<div style="width:187mm;height:13mm;">
 		<span class="styIRS2210Box" style="width:90mm;height:13mm;text-align:left;padding-top:4mm;">
 		<span style= "width:4mm;"></span>Complete lines 8 and 9 below. Is line 6 equal to or more<br/>
 		<span style= "width:4mm;"></span>than line 9?</span>
-							<img src="{$ImagePath}/2210_Yes_right_Bullet.gif" alt="MediumBullet" align="middle"/>
+							<img src="{$ImagePath}/2210_Yes_right_Bullet.gif" alt="Yes Right Bullet" align="middle"/>
 							<span class="styIRS2210Box" style="width:75mm;height:14mm;text-align:left;padding-top:0mm;">
-							<span style= "width:2mm;"></span>You do not owe a penalty. <b>Do not file Form 2210</b><br/>
+							<span style= "width:2mm;"></span>You don't owe a penalty. <b>Don't file Form 2210</b><br/>
 							<span style= "width:2mm;"></span>(but if box <b>E</b> in Part II applies, you must file page 1 <br/>
 							<span style= "width:2mm;"></span>of Form 2210).</span>
 						</div>
@@ -170,11 +156,11 @@
 						</div>
 						<div style="width:187mm;">
 							<span style="width:28.8mm;height:1mm;padding-top:0mm;"/>
-							<img src="{$ImagePath}/2210_Bullet_Dn.gif" alt="MediumBulletDown" align="abstop"/>
+							<img src="{$ImagePath}/2210_Bullet_Dn.gif" alt="Medium Bullet Down" align="abstop"/>
 						</div>
 						<div style="width:187mm;height:12mm;">
 							<span class="styIRS2210Box" style="width:90mm;height:12mm;text-align:center;padding-top:5mm;">You may owe a penalty. Does any box in Part II below apply?</span>
-							<img src="{$ImagePath}/2210_Yes_right_Bullet.gif" alt="MediumBullet" align="middle"/>
+							<img src="{$ImagePath}/2210_Yes_right_Bullet.gif" alt="Yes Right Bullet" align="middle"/>
 							<span class="styIRS2210Box" style="width:70mm;min-height:11.5mm;text-align:left;padding-top:1mm;">	
 							<span style= "width:2mm;"></span>You <b>must </b>file Form 2210. Does box <b>B, C,</b> or <b>D</b> in<br/>
 						   <span style= "width:2mm;"></span>Part II apply?</span>
@@ -190,12 +176,12 @@
 						</div>
 						<div style="width:187mm;padding-bottom:0mm;">
 							<span class="styIRS2210Box" style="width:80mm;text-align:left;padding-top:1mm;">
-								<span style= "width:1mm;"></span><b>Do not file Form 2210.</b> You are not required to figure<br/>
+								<span style= "width:1mm;"></span><b>Don't file Form 2210.</b> You are not required to figure<br/>
 								<span style= "width:2mm;"></span>your penalty because the IRS will figure it and send<br/>
 								<span style= "width:2mm;"></span>you a bill for any unpaid amount.  If you want to figure<br/>
 								<span style= "width:2mm;"></span>it, you may use Part lll or Part lV as a worksheet and <br/>
-								<span style= "width:2mm;"></span>enter your penalty amount on your tax return, but <b>do <br/>
-								<span style= "width:2mm;"></span>not file Form 2210.</b>
+								<span style= "width:2mm;"></span>enter your penalty amount on your tax return, but <b>don't <br/>
+								<span style= "width:2mm;"></span>file Form 2210.</b>
 							</span>
 							<span style=" width:20mm;height:15mm;padding-top:1mm;"/>
 							<span class="styIRS2210Box" style="width:75mm;text-align:left;padding-top:1mm;">
@@ -210,7 +196,7 @@
 					</div>
 					<!-- Part l -->
 					<!-- Part I - Header -->
-					<div style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;float:left;padding-top:0mm;">
 						<span class="styPartName" style="height:4mm;width:12mm;font-size:13;">Part l</span>
 						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
@@ -283,7 +269,7 @@
 							<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-bottom:0mm;padding-left: 2.25mm">4
                             </div>
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:4mm;padding-bottom:0mm;">
-       Current year tax. Combine lines 1, 2, and 3. If less than $1,000, <b>stop;</b> you do not owe a penalty.
+       Current year tax. Combine lines 1, 2, and 3. If less than $1,000, <b>stop;</b> you don't owe a penalty.
                             </div>
 							<div class="styLNRightNumBox" style="height:4mm; padding-bottom:0mm; border-bottom-width:0px;"/>
 							<div class="styLNAmountBox" style="width:36mm;height:4mm;padding-bottom:0mm;border-bottom-width:0px;"/>
@@ -292,7 +278,7 @@
 							<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-bottom:0mm;padding-left: 2.25mm"/>
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:4mm;padding-bottom:0mm;">
 								<span style="float:left">
-									<b>Do not </b>file Form 2210
+									<b>Don't </b>file Form 2210
 								</span>
 								<span class="styIRS2210DotLn">..........................</span>
 							</div>
@@ -308,7 +294,7 @@
 							<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-bottom:0mm;padding-left: 2.25mm">5
                             </div>
 							<div class="styLNDesc" style="font-size:7pt;width:91.8mm;height:4mm;padding-bottom:0mm;">
-								<span style="float:left">Multiply line 4 by 90% (.90)</span>
+								<span style="float:left">Multiply line 4 by 90% (0.90)</span>
 								<!--Dotted Line-->
 								<span class="styIRS2210DotLn">.............</span>
 							</div>
@@ -327,7 +313,7 @@
 							<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-bottom:0mm;padding-left: 2.25mm">6
 			</div>
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:4mm;padding-bottom:0mm;">
-								<span style="float:left">Withholding taxes. <b>Do not </b>include estimated tax payments  (see instructions)</span>
+								<span style="float:left">Withholding taxes. <b>Don't </b>include estimated tax payments  (see instructions)</span>
 								<span class="styIRS2210DotLn">.........</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4mm;padding-bottom:0mm;bottom-border-width:1px;">6</div>
@@ -342,7 +328,7 @@
 							<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-bottom:0mm;padding-left: 2.25mm">7
                             </div>
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:4mm;padding-bottom:0mm;">
-								<span style="float:left">Subtract line 6 from line 4. If less than $1,000, <b>stop;</b> you do not owe a penalty. <b>  Do not </b>file Form 2210
+								<span style="float:left">Subtract line 6 from line 4. If less than $1,000, <b>stop;</b> you don't owe a penalty. <b>  Don't </b>file Form 2210
 								</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4mm;padding-bottom:0mm;bottom-border-width:1px;">7</div>
@@ -395,7 +381,7 @@
 							</xsl:call-template>
 							<div style="width:187mm;">
 								<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-bottom:0mm;padding-left: 2.25mm;"/>
-								<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
+								<input type="checkbox" alt="Owe Penalty No" class="styCkbox" name="Checkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2210Data/OwePenaltyInd"/>
 										<xsl:with-param name="BackupName">IRS2210OwePenaltyInd</xsl:with-param>
@@ -407,11 +393,11 @@
 										<xsl:with-param name="BackupName">IRS2210OwePenaltyInd</xsl:with-param>
 									</xsl:call-template>
 									<b>No.  </b>
-								</label>You <b>do not</b> owe a penalty.  <b>Do not</b> file Form 2210 unless box <b>E </b>below applies.
+								</label>You <b>don't</b> owe a penalty.  <b>Don't</b> file Form 2210 unless box <b>E </b>below applies.
                         </div>
 							<div style="width:187mm;">
 								<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-bottom:0mm;padding-left: 2.25mm"/>
-								<input type="checkbox" alt="alt" class="styCkbox">
+								<input type="checkbox" alt="Owe Penalty Yes" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2210Data/OwePenaltyInd"/>
 										<xsl:with-param name="BackupName">IRS2210OwePenaltyInd</xsl:with-param>
@@ -423,7 +409,7 @@
 										<xsl:with-param name="BackupName">IRS2210OwePenaltyInd</xsl:with-param>
 									</xsl:call-template>
 									<b>Yes.  </b>
-								</label>You may owe a penalty, but <b>do not</b> file Form 2210 unless one or more boxes in Part ll below applies.
+								</label>You may owe a penalty, but <b>don't</b> file Form 2210 unless one or more boxes in Part ll below applies.
                         </div>
 						</span>
 						<div>
@@ -449,12 +435,12 @@
 					</div>
 					<!-- Part ll -->
 					<!-- Part Il - Header -->
-					<div style="width:187mm;height:4mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div style="width:187mm;height:4.5mm;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;">
 						<span class="styPartName" style="height:4mm;width:12mm;font-size:13;">Part ll</span>
 						<div class="styPartDesc" style="width:170mm;font-weight:normal;">
 							<span style="font-size:10pt;vertical-align:top;"/>
-							<b>Reasons for Filing.</b>  Check applicable boxes.  If none apply, <b>do not </b>file Form 2210.
+							<b>Reasons for Filing.</b>  Check applicable boxes.  If none apply, <b>don't </b>file Form 2210.
 						</div>
 					</div>
 					<!-- End Part 2 Header -->
@@ -469,7 +455,7 @@
 										<xsl:with-param name="TargetNode" select="$Form2210Data/WaiverOfEntirePenaltyInd"/>
 									</xsl:call-template>
 								</xsl:variable>
-							<input type="checkbox" alt="alt" class="styCkbox" style="margin: 0mm 0mm 3mm 1mm">
+							<input type="checkbox" alt="Waiver Of Entire Penalty" class="styCkbox" style="margin: 0mm 0mm 3mm 1mm">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form2210Data/WaiverOfEntirePenaltyInd"/>
 									<xsl:with-param name="BackupName">IRS2210WaiverOfEntirePenaltyInd</xsl:with-param>
@@ -514,7 +500,7 @@
 										<xsl:with-param name="TargetNode" select="$Form2210Data/WaiverOfPartOfPenaltyInd"/>
 									</xsl:call-template>
 								</xsl:variable>
-								<input type="checkbox" alt="alt" class="styCkbox" style="margin: 0mm 0mm 3mm 1mm">
+								<input type="checkbox" alt="Waiver Of Part Of Penalty" class="styCkbox" style="margin: 0mm 0mm 3mm 1mm">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2210Data/WaiverOfPartOfPenaltyInd"/>
 										<xsl:with-param name="BackupName">IRS2210WaiverOfPartOfPenaltyInd</xsl:with-param>
@@ -557,7 +543,7 @@
 										<xsl:with-param name="TargetNode" select="$Form2210Data/AnnualizedIncomeMethodInd"/>
 									</xsl:call-template>
 								</xsl:variable>
-								<input type="checkbox" alt="alt" class="styCkbox" style="margin: 0mm 0mm 3mm 1mm">
+								<input type="checkbox" alt="Annualized Income Method" class="styCkbox" style="margin: 0mm 0mm 3mm 1mm">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2210Data/AnnualizedIncomeMethodInd"/>
 										<xsl:with-param name="BackupName">IRS2210AnnualizedIncomeMethodInd</xsl:with-param>
@@ -601,7 +587,7 @@
 										<xsl:with-param name="TargetNode" select="$Form2210Data/ActuallyWithheldInd"/>
 									</xsl:call-template>
 								</xsl:variable>
-								<input type="checkbox" alt="alt" class="styCkbox" style="margin: 0mm 0mm 3mm 1mm">
+								<input type="checkbox" alt="Actually Withheld" class="styCkbox" style="margin: 0mm 0mm 3mm 1mm">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2210Data/ActuallyWithheldInd"/>
 										<xsl:with-param name="BackupName">IRS2210ActuallyWithheldInd</xsl:with-param>
@@ -645,7 +631,7 @@
 										<xsl:with-param name="TargetNode" select="$Form2210Data/JointReturnInd"/>
 									</xsl:call-template>
 								</xsl:variable>
-								<input type="checkbox" alt="alt" class="styCkbox" style="margin: 0mm 0mm 3mm 1mm">
+								<input type="checkbox" alt="Joint Return" class="styCkbox" style="margin: 0mm 0mm 3mm 1mm">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2210Data/JointReturnInd"/>
 										<xsl:with-param name="BackupName">IRS2210JointReturnInd</xsl:with-param>
@@ -677,7 +663,7 @@
 								</label>
 							<div style="padding:0mm 0mm .5mm 1mm;">
 									You filed or are filing a joint return for either 2015 or 2016, but not for both years, and line 8 above is smaller than line 5<br/>
-									above. You must file page 1 of Form 2210, but you are <b>not</b> required to figure your penalty (unless box <b>B, C,</b>  or <b>D</b> applies).
+									above. You must file page 1 of Form 2210, but you <b>aren't</b> required to figure your penalty (unless box <b>B, C,</b>  or <b>D</b> applies).
 							</div>                            
 						</div>
 					</div>
@@ -707,7 +693,7 @@
 					<!-- END Page Header -->
 					<!-- Part lll -->
 					<!-- Part Ill - Header -->
-					<div style="width:187mm;height:4mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div style="width:187mm;height:4.5mm;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;float:left;">
 						<span class="styPartName" style="height:4mm;width:15mm;font-size:13;">Part lll</span>
 						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
@@ -766,13 +752,13 @@
 									You checked box <b>C</b> or <b>D</b> in Part ll, <b>or</b><br/>
 								<img src="{$ImagePath}/2210_Bullet_Round.gif" alt="RoundBullet"/>
 								<span style="width:.75mm;"/>										
-									You are filing Form 1040NR or 1040NR-EZ and you did not receive<br/>													
+									You are filing Form 1040NR or 1040NR-EZ and you didn't receive<br/>													
 								wages as an employee subject to U.S. income tax withholding.									
 						<div class="styBB" style="width:187mm;height:10mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;float:right;clear:none;">
 							<div style="width:187mm;height:2mm;">
 								<span style="width:2.25mm;"/>
-								<b>Note.</b>
+								<b>Note:</b>
 								<i> If any payment was made earlier than the due date, you can use the short method, but using it may cause you </i><br/>
 									<span style="width:2.25mm;"/><i>to pay a larger penalty than the regular method. If the payment was only a few days early, the difference is likely to be small.</i>
 							</div>
@@ -849,8 +835,8 @@
 							<div class="styLNLeftNumBox" style="font-size:7pt;height:8mm;padding-bottom:0mm;padding-left: 2.25mm">14
                             </div>
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:8mm;padding-bottom:0mm;">
-								<b>Total underpayment for year. </b>Subtract line 13 from line 10.  If zero or less, <b>stop;</b> you do<br/>
-								<span style="float:left">not owe a penalty.  <b>Do not file Form 2210 unless you checked box E in Part II</b>
+								<b>Total underpayment for year. </b>Subtract line 13 from line 10.  If zero or less, <b>stop;</b> you don't<br/>
+								<span style="float:left">owe a penalty.  <b>Don't file Form 2210 unless you checked box E in Part II</b>
 								</span>
 								<span class="styBoldText">
 									<span style="width:8px"/>.
@@ -940,7 +926,7 @@
                             </div>
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;margin-top:1mm;height:8mm;padding-bottom:0mm;">
 								<b>Penalty.</b>  Subtract line 16 from line 15.  Enter the result here and on Form 1040, line 79;<br/> Form 1040A, line 51; Form 1040NR, line 76; Form 1040NR-EZ, line 26; or Form 1041, line 26. <br/>
-								<b>Do not file Form 2210 unless you checked a box in Part II.</b>
+								<b>Don't file Form 2210 unless you checked a box in Part II.</b>
 								<span style="width:.25mm;"/>								
 								<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="Desc">Wavied Short Method Amount</xsl:with-param>
@@ -995,7 +981,7 @@
 					<!-- END Page Header -->
 					<!-- Part lV -->
 					<!-- Part lV - Header -->
-					<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;float:left;">
 						<span class="styPartName" style="height:4mm;width:15mm;font-size:13;">Part lV</span>
 						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
@@ -1037,7 +1023,7 @@
 						<div class="styLNDesc" style="width:73mm;font-size:7pt;border-right-width:1px;height:9mm;">
 							<b>Required installments.</b>  If box C in Part II applies, enter
  the amounts from Schedule AI, line 25. Otherwise, enter
-							25% (.25) of line 9, Form 2210, in each column
+							25% (0.25) of line 9, Form 2210, in each column
 							<span class="styBoldText">
                                 </span>
 						</div>
@@ -1072,7 +1058,7 @@
  the instructions). For column (a) only, also enter the<br/>
  amount from line 19 on line 23. If line 19 is equal to<br/>
  or more than line 18 for all payment periods, stop<br/>
- here; you do not owe a penalty. <b>Do not file Form</b>
+ here; you don't owe a penalty. <b>Don't file Form</b>
 							<span style="float:left;">
 								<b>2210 unless you checked a box in Part II</b>
 							</span>
@@ -1309,7 +1295,7 @@
 							<b>Penalty.
         </b>  Enter the total penalty from line 14 of the Worksheet for Form 2210, Part IV, Section B—Figure the Penalty. Also include this amount on Form 1040,
  line 79; Form 1040A, line 51; Form 1040NR,<br/> line 76; Form 1040NR-EZ, line 26; or Form 1041, 
-					line 26. <b>Do not file Form 2210 unless you checked a box in Part II</b>
+					line 26. <b>Don't file Form 2210 unless you checked a box in Part II</b>
 							<span style="width:2mm;"/>
 							<xsl:call-template name="LinkToLeftoverDataTableInline">
 								<xsl:with-param name="Desc">Waived Literal Regular Method Code</xsl:with-param>
@@ -1374,13 +1360,13 @@
 						</div>
 					</div>
 					<!-- END Page Header -->
-					<div class="styBB" style="width:187mm;float:left;clear:none;">
+					<div class="styBB" style="width:187mm;border-top-width:1px;float:left;clear:none;">
 						<div class="styLNDesc" style="width:187mm;font-size:8pt;border-right-width:1px;height:4mm;">
 							<b>Schedule AI—Annualized Income Installment Method</b> (See the instructions.)
                         </div>
 					</div>
 					<div class="styBB" style="width:187mm;float:left;clear:none;">
-						<div class="styLNDesc" style="font-size:7pt; width:77mm; border-right-width:1px;height:11mm;">Estates and trusts, <b>do not</b> use the period ending dates shown to the right.
+						<div class="styLNDesc" style="font-size:7pt; width:77mm; border-right-width:1px;height:11mm;">Estates and trusts, <b>don't</b> use the period ending dates shown to the right.
         Instead, use the following: 2/29/16, 4/30/16, 7/31/16, and 11/30/16.
                         </div>
 						<div class="styLNRightNumBox" style="font-size:7pt;height:11mm; width:6mm;  border-bottom-width:0px; border-right-width:1px;background-color:lightgrey; "/>
@@ -1400,7 +1386,7 @@
 					</div>
 					<!-- Part l -->
 					<!-- Part I - Header -->
-					<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;float:left;clear:none;">
 						<span class="styPartName" style="height:4mm;width:12mm;font-size:13;">Part l</span>
 						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
@@ -2059,7 +2045,7 @@
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="padding-left: 2.25mm;height:8mm;">22
                             </div>
-							<div class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:8mm;">Enter 25% (.25) of line 9 on page 1 of Form 2210 in<span style="float:left;"> each column</span>
+							<div class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:8mm;">Enter 25% (0.25) of line 9 on page 1 of Form 2210 in<span style="float:left;"> each column</span>
 								<span class="styIRS2210DotLn">.............</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:8mm; width:6mm;  border-bottom-width:1px; border-right-width:1px; padding-top:4mm; ">22
@@ -2469,33 +2455,33 @@
 			</tr>
 			<!--Line 34-->
 			<tr style="width:187mm;float:left;clear:none;">
-				<td class="styLNLeftNumBox" style="width:5mm;padding-left: 2mm;height:9mm; border-bottom-width:1px; border-color:black; border-style:solid; border-left-width:0px; border-right-width:0px; border-top-width:0px;padding-bottom:3mm;">34
+				<td class="styLNLeftNumBox" style="width:5mm;padding-left: 2mm;height:9mm;  border-bottom-width:2px;  border-color:black; border-style:solid; border-left-width:0px; border-right-width:0px; border-top-width:0px;padding-bottom:3mm;">34
                                     </td>
-				<td class="styLNDesc" style="font-size:7pt; width:72mm; border-bottom-width:1px; border-color:black; border-style:solid; border-left-width:0px; border-right-width:0px; border-top-width:0px; height:9mm;padding-left:2mm;">
+				<td class="styLNDesc" style="font-size:7pt; width:72mm; border-bottom-width:2px; border-color:black; border-style:solid; border-left-width:0px; border-right-width:0px; border-top-width:0px; height:9mm;padding-left:2mm;">
 					<span  style="float:left;padding-right:10mm;">Add lines 31 and 33. Enter here and on line</span> 
 					<span style="float:left;"> 13 above</span>
 					<span class="styIRS2210DotLn">...........
                     <img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"/>
 					</span>
 				</td>
-				<td class="styLNRightNumBox" style="font-size:7pt;height:9mm; width:6mm;  border-bottom-width:0px; border-right-width:1px; border-bottom-width:1px;padding-top:5.3mm;">34
+				<td class="styLNRightNumBox" style="font-size:7pt;height:9mm; width:6mm;   border-bottom-width:2px;  border-right-width:1px;padding-top:5.3mm;">34
                 </td>
-				<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; vertical-align:bottom;float:left;height:9mm;padding-top:5.5mm;">
+				<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; border-bottom-width:2px;  vertical-align:bottom;float:left;height:9mm;padding-top:5.5mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="AnnualizedSelfEmploymentTxAAmt"/>
 					</xsl:call-template>
 				</td>
-				<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; vertical-align:bottom;float:left;height:9mm;padding-top:5.5mm;">
+				<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; border-bottom-width:2px;  vertical-align:bottom;float:left;height:9mm;padding-top:5.5mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="AnnualizedSelfEmploymentTxBAmt"/>
 					</xsl:call-template>
 				</td>
-				<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; vertical-align:bottom;float:left;height:9mm;padding-top:5.5mm;">
+				<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px;  border-bottom-width:2px;  vertical-align:bottom;float:left;height:9mm;padding-top:5.5mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="AnnualizedSelfEmploymentTxCAmt"/>
 					</xsl:call-template>
 				</td>
-				<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; border-right-width:0px; vertical-align:bottom;float:left;height:9mm;padding-top:5.5mm;">
+				<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; border-right-width:0px;  border-bottom-width:2px; vertical-align:bottom;float:left;height:9mm;padding-top:5.5mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="AnnualizedSelfEmploymentTxDAmt"/>
 					</xsl:call-template>

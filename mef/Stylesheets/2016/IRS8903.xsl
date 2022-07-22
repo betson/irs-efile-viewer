@@ -2,6 +2,9 @@
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
 <!-- 04/28/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <!-- 12/08/2015 - Changes made per 2015 pdf review - Jeremy Nichols -->
+<!-- 05/11/2017 - Changes made for UWR 194393 - Jeremy Nichols -->
+<!-- 10/23/2017 - Changes made for defect 125028 - Jeremy Nichols -->
+<!-- 12/04/2017 - Changes made for defect 48237 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -90,41 +93,18 @@
 					<!--  Name and Employer identification number  -->
 					<div class="styBB" style="width:187mm">
 						<div class="styNameBox" style="width:141mm;font-weight:normal;font-size:7pt;">
-      Name(s) as shown on return<br/>
- 							<xsl:choose>
-								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">Name</xsl:with-param>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-									</xsl:call-template>
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-									</xsl:call-template>
-								</xsl:otherwise>
-							</xsl:choose>
+							Name(s) as shown on return<br/>
+							<xsl:call-template name="PopulateFilerName">
+							  <xsl:with-param name="TargetNode" select="$FormData"/>
+							</xsl:call-template>
 						</div>
 						<div class="styEINBox" style=" padding-left:2mm;font-size:7pt;font-weight: normal;">Identifying number
-      <br/>
+							<br/>
 							<br/>
 							<span style="font-weight:normal;">
-								<xsl:choose>
-									<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
-								</xsl:choose>
+								<xsl:call-template name="PopulateFilerTIN">
+								   <xsl:with-param name="TargetNode" select="$FormData"/>
+								</xsl:call-template>
 							</span>
 						</div>
 					</div>
@@ -151,20 +131,8 @@
 						<div class="styLNLeftNumBoxSD" style=" padding-left:4mm;">1</div>
 						<div class="styLNDesc" style="width:107mm;  ">
 						  Domestic production gross receipts (DPGR)
-						  <span class="styBoldText">
-											<span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-						   </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">............</div>
 						</div>
 						<div class="styLNRightNumBox" style="height:4mm;">1</div>
 						<div class="styLNAmountBox" style="pheight:4mm;">
@@ -187,25 +155,8 @@
 						<div class="styLNDesc" style="width:107mm; height:7mm;">
 							Allocable cost of goods sold. If you are using the small business simplified
 							overall method, skip lines 2 and 3
-							<span class="styBoldText">
-												<span style="width:12px"/>.
-								  <span style="width:8px"/>.
-								  <span style="width:8px"/>.
-								  <span style="width:8px"/>.
-								   <span style="width:8px"/>.
-								  <span style="width:8px"/>.
-								  <span style="width:8px"/>.
-								  <span style="width:8px"/>.
-								  <span style="width:8px"/>.
-								  <span style="width:8px"/>.
-								  <span style="width:8px"/>.
-								  <span style="width:8px"/>.
-								  <span style="width:8px"/>.
-								  <span style="width:8px"/>.
-								  <span style="width:8px"/>.
-								  <span style="width:8px"/>.
-								  <span style="width:8px"/>.
-							</span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">.................</div>
 						</div>
 						<div class="styLNRightNumBox" style="padding-top:4mm;height:7mm;">2</div>
 						<div class="styLNAmountBox" style="padding-top:4mm;height:7mm;">
@@ -227,13 +178,8 @@
 						<div class="styLNLeftNumBoxSD" style="padding-left:4mm;">3</div>
 						<div class="styLNDesc" style="width:107mm">
      	Enter deductions and losses allocable to DPGR (see instructions)
-     	             <span class="styBoldText">
-								<span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-        </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">......</div>
 						</div>
 						<div class="styLNRightNumBox" style="height:4mm;">3</div>
 						<div class="styLNAmountBox" style="height:4mm;">
@@ -257,28 +203,8 @@
 							If you are using the small business simplified overall method, enter
 							 the amount of cost of goods sold and other deductions or losses
 							 you ratably apportion to DPGR. All others, skip line 4    
-							<span class="styBoldText">
-													<span style="width:11px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-									  <span style="width:8px"/>.
-							</span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">....................</div>
 						</div>
 						<div class="styLNRightNumBox" style="padding-top:6.5mm;height:9.5mm;">4</div>
 						<div class="styLNAmountBox" style="padding-top:6.5mm;height:9.5mm">
@@ -300,28 +226,8 @@
 						<div class="styLNLeftNumBoxSD" style="padding-top:1mm; padding-left:4mm;">5</div>
 						<div class="styLNDesc" style="width:107mm;padding-top:1mm;">
               Add lines 2 through 4
-              <span class="styBoldText">
-								<span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                   
-              </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">...................</div>
 						</div>
 						<div class="styLNRightNumBox" style="height:5mm;padding-top:1mm;">5</div>
 						<div class="styLNAmountBox" style="height:5mm;padding-top:1mm;">
@@ -343,25 +249,8 @@
 						<div class="styLNLeftNumBoxSD" style="padding-top:1mm; padding-left:4mm;">6</div>
 						<div class="styLNDesc" style="width:107mm;padding-top:1mm;">
               Subtract line 5 from line 1
-              <span class="styBoldText">.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-              </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">..................</div>
 						</div>
 						<div class="styLNRightNumBox" style="height:5mm;">6</div>
 						<div class="styLNAmountBox" style="height:5mm">
@@ -384,22 +273,8 @@
 						<div class="styLNDesc" style="height:7mm;width:107mm;padding-top:1mm;">
 						   Qualified production activities income from estates, trusts, and certain partnerships and
 							S corporations (see instructions).
-										  <span class="styBoldText">
-															<span style="width:4px"/>.
-											 <span style="width:8px"/>.
-											  <span style="width:8px"/>.
-											  <span style="width:8px"/>.
-											  <span style="width:8px"/>.
-											  <span style="width:8px"/>.
-											  <span style="width:8px"/>.
-											  <span style="width:8px"/>.
-											  <span style="width:8px"/>.
-											  <span style="width:8px"/>.
-											  <span style="width:8px"/>.
-											  <span style="width:8px"/>.
-											  <span style="width:8px"/>.
-											  <span style="width:8px"/>.        
-										  </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">..............</div>
 						</div>
 						<div class="styLNRightNumBox" style="height:7mm;padding-top:4mm;">7</div>
 						<div class="styLNAmountBox" style="height:7mm;padding-top:4mm;">
@@ -424,32 +299,8 @@
 						<div class="styLNLeftNumBoxSD" style="height:7mm;padding-top:1mm; padding-left:4mm;">8</div>
 						<div class="styLNDesc" style="height:7mm;width:107mm;padding-top:1mm;">
 						   Add lines 6 and 7. Estates and trusts, go to line 9, all others, skip line 9 and go to line 10.
-						  <span class="styBoldText">
-											<span style="width:2px"/>.
-							 <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.      
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.
-							  <span style="width:8px"/>.      
-							  <span style="width:8px"/>.
-							 <span style="width:8px"/>.      
-							  <span style="width:8px"/>.                              
-							  <span style="width:8px"/>.                              
-						  </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">.......................</div>
 						</div>
 						<div class="styLNRightNumBox" style="height:7mm;padding-top:4mm;">8</div>
 						<div class="styLNAmountBox" style="height:7mm;padding-top:4mm;">
@@ -473,11 +324,8 @@
 						<div class="styLNLeftNumBoxSD" style="padding-top:1mm; padding-left:4mm;">9</div>
 						<div class="styLNDesc" style="width:107mm;padding-top:1mm;">
                Amount allocated to beneficiaries of the estate or  trust (see instructions)
-              <span class="styBoldText">
-								<span style="width:14px"/>.
-                 <span style="width:8px"/>.
-                                                                                                 
-              </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
 						</div>
 						<div class="styLNRightNumBox" style="height:4mm;padding-top:1mm;">9</div>
 						<div class="styLNAmountBox" style="height:4mm;padding-top:1mm;">
@@ -502,21 +350,8 @@
 						<div class="styLNDesc" style="height:9.5mm;width:107mm;padding-top:1mm;">
 							<b>Oil-related qualified production activities income.</b> Estates and trusts, subtract line 9, column (a), from line 8, column (a),
 							 all others, enter amount from line 8, column (a).  If zero or less, enter -0- here
-							  <span class="styBoldText">
-								 <span style="width:1px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-							  </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">.............</div>
 						</div>
 						<div style="float:right">
 							<div class="styLNRightNumBox" style="height:9.5mm;padding-top:6.5mm;">
@@ -537,32 +372,8 @@
 						<div class="styLNDesc" style="height:13mm;width:107mm;padding-top:1mm;">
 							<b>Qualified production activities income.</b> Estates and trusts, subtract line 9, column (b), from line 8, column (b),
 							 all others, enter amount from line 8, column <br/>(b).  If zero or less, enter -0- here, skip lines 11 through 21, and enter -0- on <br/>line 22
-							  <span class="styBoldText">
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								  <span style="width:8px"/>.
-							  </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">.......................</div>
 						</div>
 						<div style="float:right">
 							<div class="styLNRightNumBox" style="height:13mm;padding-top:10mm;">
@@ -588,18 +399,15 @@
 								<br/>
 								production activities deduction
 								<span style="width:0.5mm;"/>
-								<span style="letter-spacing:4mm; font-weight:bold;">  
-								  ..................
-								</span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">...................</div>
 							</li>
 							<li style="padding-top:1mm;">
 								All others. Enter your taxable income figured without the domestic production activities 
 								<br/>
 								deduction (tax-exempt organizations, see instructions)
-       
-								<span style="letter-spacing:4mm; font-weight:bold;">  
-								  ............
-								</span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">............</div>
 							</li>
 							</span>
 						</div>
@@ -633,38 +441,9 @@
 					<div style="width: 187mm;">
 						<div class="styLNLeftNumBox" style="padding-top:0mm;"/>
 						<div class="styLNDesc" style="padding-top:0mm;">
-						   enter -0- on line 22  
-						   <span class="styBoldText">
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.     
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>. 
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>. 
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>. 
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-						  </span>
+						   enter -0- on line 22 
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">............................</div>
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBox">12</div>
@@ -681,38 +460,8 @@
 						<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm; padding-left:2mm;">13</div>
 						<div class="styLNDesc" style="height:4mm;padding-top:1mm;">
        Enter 9% of line 12   
-           <span class="styBoldText">
-								<span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.     
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>. 
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>. 
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>. 
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
- 
-          </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">............................</div>
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBox" style="height:4mm;padding-top:1mm;">13</div>
@@ -729,21 +478,8 @@
 						<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm; padding-left:2mm;">14a</div>
 						<div class="styLNDesc" style="height:4mm;width:99mm;padding-top:1mm;">
        Enter the smaller of line 10a or line 12   
-           <span class="styBoldText">
-								<span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.     
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.     
-                <span style="width:8px"/>.
-  
-          </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">............</div>
 						</div>
 						<div class="styLNRightNumBox" style="height:4mm;padding-top:1mm;">14a</div>
 						<div class="styLNAmountBox" style="height:4mm;padding-top:1mm;">
@@ -761,17 +497,9 @@
 					<div style="width: 187mm;">
 						<div class="styLNLeftNumBox" style="padding-top:1mm; padding-left:5.7mm;">b</div>
 						<div class="styLNDesc" style="padding-top:1mm;">
-       Reduction for oil-related qualified production activities income.  Multipy line 14a by 3%   
-           <span class="styBoldText">
-								<span style="width:13px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-   
-          </span>
+       Reduction for oil-related qualified production activities income.  Multipy line 14a by 3% 
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">.......</div>
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBox" style="padding-top:1mm;">14b</div>
@@ -788,33 +516,8 @@
 						<div class="styLNLeftNumBox" style="padding-top:1mm; padding-left:2mm;">15</div>
 						<div class="styLNDesc" style="padding-top:1mm;">
        Subtract line 14b from line 13.
-             <span class="styBoldText">
-								<span style="width:13px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.     
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>. 
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>. 
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-          </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">.......................</div>
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBox" style="padding-top:1mm;">15</div>
@@ -831,32 +534,8 @@
 						<div class="styLNLeftNumBox" style="padding-top:1mm; padding-left:2mm;">16</div>
 						<div class="styLNDesc" style="padding-top:1mm;">
        Form W-2 wages (see instructions)  
-             <span class="styBoldText">
-								<span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.     
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>. 
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>. 
-                <span style="width:8px"/>. 
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-          </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">.......................</div>
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBox" style="padding-top:1mm;">16</div>
@@ -874,11 +553,8 @@
 						<div class="styLNDesc" style="width:139mm;padding-top:1mm;">
 						   Form W-2 wages from estates, trusts, and certain partnerships and S corporations
 							(see instructions)
-						  <span class="styBoldText">
-								<span style="width:4px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-							</span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:2mm;">..</div>
 						</div>
 						<div style="float:right">
 							<div class="styLNRightNumBox" style="height:4mm;padding-top:1mm;">
@@ -897,14 +573,9 @@
 					<div style="width: 187mm;">
 						<div class="styLNLeftNumBox" style="padding-top:1mm; padding-left:2mm;">18</div>
 						<div class="styLNDesc" style="padding-top:1mm;">
-       	Add lines 16 and 17. Estates and trusts, go to line 19, all others, skip line 19 and go to line 20  
-              <span class="styBoldText">
-								<span style="width:4px"/>.           
-                     <span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-             </span>
+       	Add lines 16 and 17. Estates and trusts, go to line 19, all others, skip line 19 and go to line 20 
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">....</div>
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBox" style="padding-top:1mm;">
@@ -924,19 +595,8 @@
 						<div class="styLNLeftNumBox" style="padding-top:1mm; padding-left:2mm;">19</div>
 						<div class="styLNDesc" style="padding-top:1mm;">
        Amount allocated to beneficiaries of the estate or trust (see instructions).  
-           <span class="styBoldText">
-								<span style="width:15px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.     
-				<span style="width:8px"/>.
-                <span style="width:8px"/>.
-          </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">...........</div>
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBox" style="padding-top:1mm;">19</div>
@@ -953,15 +613,8 @@
 						<div class="styLNLeftNumBox" style="padding-top:1mm;  padding-left:2mm;">20</div>
 						<div class="styLNDesc" style="padding-top:1mm;">
        Estates and trusts, subtract line 19 from line 18, all others, enter amount from line 18.
-           <span class="styBoldText">
-								<span style="width:9px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-				<span style="width:8px"/>.
-				<span style="width:8px"/>.
-          </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">.......</div>
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBox" style="padding-top:1mm;">20</div>
@@ -978,29 +631,8 @@
 						<div class="styLNLeftNumBox" style="padding-top:1mm; padding-left:2mm;">21</div>
 						<div class="styLNDesc" style="padding-top:1mm;">
      	 Form W-2 wage limitation. Enter 50% of line 20 
-           <span class="styBoldText">
-								<span style="width:4px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
- 
-          </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">...................</div>
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBox" style="padding-top:1mm;">21</div>
@@ -1017,31 +649,8 @@
 						<div class="styLNLeftNumBox" style="padding-top:1mm; padding-left:2mm;">22</div>
 						<div class="styLNDesc" style="padding-top:1mm;">
        Enter the smaller of line 15 or line 21   
-           <span class="styBoldText">
-								<span style="width:9px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-				<span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                <span style="width:8px"/>.
-          </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">......................</div>
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBox" style="padding-top:1mm;">22</div>
@@ -1068,42 +677,9 @@
 					<div style="width: 187mm;">
 						<div class="styLNLeftNumBox" style="padding-top:0mm;"/>
 						<div class="styLNDesc" style="padding-top:0mm;">
-       box 6   
-                  <span class="styBoldText">.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-          </span>
+       box 6 
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">................................</div>
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBox">23</div>
@@ -1124,26 +700,8 @@
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$FormData/ExpandedGroupAllocationAmt"/>
 							</xsl:call-template>
-							<span class="styBoldText">
-								<span style="width:6px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-				<span style="width:8px"/>.
-                
-          </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">................</div>
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBox" style="padding-top:1mm;">24</div>
@@ -1162,19 +720,8 @@
 							<b>Domestic production activities deduction.</b> Combine lines 22 through 24 and enter the result
               here and on Form 1040, line 35; Form 1120, line 25; or the applicable
               line of your return  
-              <span class="styBoldText">
-								<span style="width:2px"/>.
-                   <span style="width:8px"/>.
-                   <span style="width:8px"/>.
-                   <span style="width:8px"/>.
-                   <span style="width:8px"/>.
-                   <span style="width:8px"/>.
-                   <span style="width:8px"/>.
-                   <span style="width:8px"/>.
-					<span style="width:8px"/>.
-					<span style="width:8px"/>.
-					<span style="width:8px"/>.                 
-              </span>
+						  <!-- Dotted Line -->
+						  <div class="styDotLn" style="float:right;padding-right:1mm;">..........</div>
 						</div>
 						<!-- 	<div  style="width=8.25mm;background-color:lightgrey;height:4.7mm;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-right-width: 1px; solid;border-style: solid; border-color: black;"></div>    -->
 						<div style="float:right;">
@@ -1191,12 +738,13 @@
 					<div style="width:187mm;">
 						<span class="styBoldText">For Paperwork Reduction Act Notice, see separate instructions. </span>
 						<span style="width:100px;"/>                      
-          Cat. No. 37712F 
-          <span style="width:54px;"/>  
-          Form <span class="styBoldText">8903</span> (Rev. 12-2010)
-        </div>
-					<br class="pageEnd"/>
+					  Cat. No. 37712F 
+					  <span style="width:54px;"/>  
+					  Form <span class="styBoldText">8903</span> (Rev. 12-2010)
+					</div>
+					<div class="pageEnd"/>
 					<!-- BEGIN Left Over Table -->
+					
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">

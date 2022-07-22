@@ -84,41 +84,16 @@
 Name (as shown on your income tax return)
     <br/>
 							<span style="font-family: verdana, arial, sans-serif;font-size: 7pt; font-weight: normal;">
-							  <xsl:choose>
-							  <!-- Name from 1120/990/1065 Return Header -->
-								<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
-								  <xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-								  </xsl:call-template>
-								  <br/>
-								  <xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
-								  </xsl:call-template>
-								</xsl:when>
-								<!-- Name from 1040 Return Header -->
-								<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
-								  <br/>
-								  <xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
-								  </xsl:call-template>
-								</xsl:when>
-							  </xsl:choose>
+								<xsl:call-template name="PopulateFilerName">
+									<xsl:with-param name="TargetNode" select="$IRS4136Data"/>
+								</xsl:call-template>
 							</span>
 						</div>
 						<div class="styEINBox" style="width:47mm;padding-left: 2mm;font-size:7pt;font-weight:bold;">Taxpayer identification number
 							<div style="padding-top:3mm;font-weight:normal;">
-								<xsl:choose>
-								  <xsl:when test="$RtnHdrData/Filer/EIN">
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-									</xsl:call-template>
-								  </xsl:when>
-								  <xsl:otherwise>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-									</xsl:call-template>
-								  </xsl:otherwise>
-								</xsl:choose>
+								<xsl:call-template name="PopulateFilerTIN">
+									<xsl:with-param name="TargetNode" select="$IRS4136Data"/>
+								</xsl:call-template>
 							</div>
 						</div>
 					</div>
@@ -772,9 +747,9 @@ Name (as shown on your income tax return)
 									</td>
 											</xsl:if>
 								<xsl:if test="$AGRowCount &lt;= 2">
-											<td class="styIRS4136Braces">
+<!--											<td class="styIRS4136Braces">
 												<span class="styIRS4136TableCellPad"/>
-											</td>
+											</td>-->
 											</xsl:if>
 											<xsl:if test="position()=1">
 												<td class="styIRS4136TableCellD" style="border-bottom:0;vertical-align:bottom;">
@@ -1097,9 +1072,9 @@ Name (as shown on your income tax return)
 									</td>
 											</xsl:if>
 								<xsl:if test="$AGRowCount &lt;= 2">
-											<td class="styIRS4136Braces">
+<!--											<td class="styIRS4136Braces">
 												<span class="styIRS4136TableCellPad"/>
-											</td>
+											</td>-->
 											</xsl:if>
 											<xsl:if test="position()=1">
 												<td class="styIRS4136TableCellD" style="border-bottom:0;">
@@ -5043,6 +5018,8 @@ instructions for line 10 for information about renewable diesel used in aviation
 					<!-- Begin Separated Repeating data -->
 					<!-- Begin SRD for line 1 -->
 					<xsl:variable name="AFRowCount" select="count($IRS4136Data/OtherNontaxableUseOfGasoline)"/>
+<div style="page-break-inside:avoid;">
+
 					<xsl:if test="($Print = $Separated) and  ($AFRowCount &gt; 1) ">
 						<span class="styRepeatingDataTitle">Form 4136, Line 1 - Nontaxable Use of Gasoline</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -5124,8 +5101,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
+
+</div>
 					<!--  Start here 222 -->
 					<!-- Begin SRD for Line 2-->
+<div style="page-break-inside:avoid;">
 					<xsl:if test="($Print = $Separated) and (count($IRS4136Data/AviationNontxUseGasGalsQty) &gt; 1)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 2 - Nontaxable Use of Aviation Gasoline</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -5209,8 +5189,12 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
+
+</div>
 					<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  start line 3 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 					<!-- Begin line 3 SRD table -->
+<div style="page-break-inside:avoid;">
+
 					<xsl:if test="($Print = $Separated) and (count($IRS4136Data/NontaxableUseOfUndyedDiesel) &gt; 1)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 3 - Nontaxable Use of Undyed Diesel Fuel</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -5291,8 +5275,12 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
+
+</div>
 					<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  end line 3  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 					<!-- Begin line 4 SRD table -->
+<div style="page-break-inside:avoid;">
+
 					<xsl:if test="($Print = $Separated) and (count($IRS4136Data/NontaxableUseOfUndyedKerosene) &gt; 2)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 4 - Nontaxable Use of Undyed Kerosene (Other Than Kerosene Used in Aviation)</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -5372,8 +5360,12 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
+
+</div>
 					<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 						<!-- Begin line 4e SRD table -->
+<div style="page-break-inside:avoid;">
+
 					<xsl:if test="($Print = $Separated) and (count($IRS4136Data/NontxUseUndyedKrsnTxdAt044) &gt; 2)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 4 - Nontaxable Use of Undyed Kerosene (Other Than Kerosene Used in Aviation)</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -5454,10 +5446,13 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
+
+</div>
 					<!-- End Line 4e SRD table -->
 					<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 					<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 						<!-- Begin line 4f SRD table -->
+<div style="page-break-inside:avoid;">
 					<xsl:if test="($Print = $Separated) and (count($IRS4136Data/NontxUseUndyedKrsnTxd219) &gt; 2)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 4 - Nontaxable Use of Undyed Kerosene (Other Than Kerosene Used in Aviation)</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -5538,12 +5533,14 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
+</div>
 					<!-- End Line 4f SRD table -->
 					<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 					<!-- Begin Line 5 SRD table -->
 					<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$start line 5c  $$$$$$$$$$$$$$$$$$$$$$$$$$$  -->
 					<!-- Begin line 5c SRD table -->
+<div style="page-break-inside:avoid;">
 					<xsl:if test="(count($IRS4136Data/OtherNontaxableUseTaxedAt244) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 5 - Kerosene Used in Aviation
   <span style="font-weight:normal">(see </span>
@@ -5629,9 +5626,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
+</div>
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ end line 5c $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ start line 5d  $$$$$$$$$$$$$$$$$$$$$$$$$$$  -->
 					<!-- Begin line 5d SRD table -->
+<div style="page-break-inside:avoid;">
 					<xsl:if test="(count($IRS4136Data/NonTxKrsnUsedInAvnTxd219) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 5 - Kerosene Used in Aviation
   <span style="font-weight:normal">(see </span>
@@ -5717,9 +5716,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
+</div>
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ end line 5d $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  -->
 					<!--  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   bstart line 5e  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  -->
 					<!-- Begin line 5e SRD table -->
+<div style="page-break-inside:avoid;">
 					<xsl:if test="(count($IRS4136Data/LUSTTxKrsnAvnFrgnTrdGalsQty) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 5 - LUST tax on aviation fuels used in foreign trade
                   </span>
@@ -5803,9 +5804,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
+</div>
 					<!--  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   end line 5e      $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$start line 8d   $$$$$$$$$$$$$$$$$$$$$$$$$$$  -->
 					<!-- Begin line 8D SRD table -->
+<div style="page-break-inside:avoid;">
 					<xsl:if test="(count($IRS4136Data/OtherNontaxableUseTaxedAt244) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 8 - Sales by Registered Ultimate Vendors of Kerosene For Use in Aviation</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -5889,9 +5892,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
+</div>
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ end line 8d $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$start line 8e $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  -->
 					<!-- Begin line 8E SRD table -->
+<div style="page-break-inside:avoid;">
 					<xsl:if test="(count($IRS4136Data/OtherNontaxableUseTaxedAt219) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 8 - Sales by Registered Ultimate Vendors of Kerosene For Use in Aviation</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -5974,9 +5979,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
+</div>
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ end line 8e $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  11a $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 11a SRD table -->
+<div style="page-break-inside:avoid;">
 					<xsl:if test="(count($IRS4136Data/NontxLiquifiedPetroleumGas) + count($IRS4136Data/BusNontxLiquifiedPetroleumGas) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 11 - Nontaxable Use of Alternative Fuel</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -6087,11 +6094,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
-
+</div>
 <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  11a $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  11b $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 11b SRD table -->
-
+<div style="page-break-inside:avoid;">
 					<xsl:if test="(count($IRS4136Data/NontxPSeriesFuels) + count($IRS4136Data/BusNontxPSeriesFuels) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 11 - Nontaxable Use of Alternative Fuel</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -6200,11 +6207,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
+</div>
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  11b $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ start 11c $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 11c SRD table -->
-					
-
+<div style="page-break-inside:avoid;">
 					<xsl:if test="(count($IRS4136Data/NontxCompressedNaturalGas) + count($IRS4136Data/BusNontxCompressedNaturalGas) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 11 - Nontaxable Use of Alternative Fuel</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -6316,9 +6323,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
+</div>
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  end 11c $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ start 11d $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 11d SRD table -->
+<div style="page-break-inside:avoid;">
 					<xsl:if test="(count($IRS4136Data/NontxLiquifiedHydrogen) + count($IRS4136Data/BusNontxLiquifiedHydrogen) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 11 - Nontaxable Use of Alternative Fuel</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -6431,12 +6440,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
+</div>
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  end 11d $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ start 11e $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 11e SRD table -->
-
-
-
+<div style="page-break-inside:avoid;">
 					<xsl:if test="(count($IRS4136Data/NontxLiqfdFuelDerivedFromCoal) + count($IRS4136Data/BusNontxLqfdFuelDerivedFromCoal) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 11 - Nontaxable Use of Alternative Fuel</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -6546,13 +6554,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
-
-
+</div>
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  end 11e $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ start 11f $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 11f SRD table -->
-
-
+<div style="page-break-inside:avoid;">
 					<xsl:if test="(count($IRS4136Data/NontaxLiqFuelDerFromBiomass) + count($IRS4136Data/BusNontxLiqFuelDerFromBiomass) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 11 - Nontaxable Use of Alternative Fuel</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -6667,12 +6673,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
+</div>
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  end 11f $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ start 11g $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 11g SRD table -->
-					
-
-
+<div style="page-break-inside:avoid;">
 					<xsl:if test="(count($IRS4136Data/NontaxLiqFuelDerFromBiomass) + count($IRS4136Data/BusNontxLiqFuelDerFromBiomass) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 11 - Nontaxable Use of Alternative Fuel</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -6783,13 +6788,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
-
-
+</div>
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  end 11g $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ start 11h $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 11h SRD table -->
-
-
+<div style="page-break-inside:avoid;">
 					<xsl:if test="(count($IRS4136Data/NontaxLiqFuelDerFromBiomass) + count($IRS4136Data/BusNontxLiqFuelDerFromBiomass) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">
             Form 4136, Line 11 - Nontaxable Use of Alternative Fuel</span>
@@ -6902,10 +6905,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
-					
+</div>
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  end 11h $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ start 14a $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 14a SRD table -->
+<div style="page-break-inside:avoid;">
 					<xsl:if test="(count($IRS4136Data/NontxUseDieselWaterEmulsion) + count($IRS4136Data/BusNontxUseDieselWtrEmulsion) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 14 - Nontaxable Use of Diesel-Water Fuel Emuision</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -7018,6 +7022,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 						</table>
 						<br/>
 					</xsl:if>
+</div>
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  end 14a $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&  -->
 				</form>

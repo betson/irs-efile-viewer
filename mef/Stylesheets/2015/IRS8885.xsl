@@ -405,13 +405,14 @@
 								For Paperwork Reduction Act Notice, see your tax return instructions.
 							</span>
 						</div>
+						<div style="text-align:left;font-size:7pt;">
+							<span style="width:64px"/>
+							Cat. No. 34641D
+						</div>
 						<div style="float:right;">
 							<span style="width:50px;"/>  
 								Form 
 							<span class="styBoldText" style="font-size:8pt;">8885</span> (2015)
-						</div>
-						<div style="float:right;text-align:center;width:26mm;font-size:7pt;">
-							Cat. No. 34641D
 						</div>
 					</div>
 		           	<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->

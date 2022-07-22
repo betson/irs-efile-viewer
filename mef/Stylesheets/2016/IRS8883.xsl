@@ -8,6 +8,9 @@
 <!--Changed per UWR 123023 IE11 upgrade changes by Robert Jones-->
 <!--Changed per IBM Defect 43220 additional data to its own page. Page numbers not starting on its own pages. changes by Robert Jones-->
 <!--Changed per IBM Defect 43219 additional data to its own page. Page numbers not starting on its own pages. changes by Robert Jones-->
+<!-- Last modified on 5/18/2017 by Robert Jones UWR 194393 and 195664 Return Headers for 1120, 1041, 1040 and 1040NR  -->
+<!-- Last modified on 5/23/2017 by Robert Jones UWR 194393 and 195664 Return Headers for 1120, 1041, 1040 and 1040NR  -->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -94,7 +97,7 @@
             <div class="styNameBox" style="width:112mm;height:auto;font-size:7pt;">Name as shown on return
               <br/>
               <div style="font-family:verdana;font-size:6pt;">
-                 <xsl:call-template name="PopulateReturnHeaderFiler">
+              <!--   <xsl:call-template name="PopulateReturnHeaderFiler">
                    <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
                  </xsl:call-template>
                  <br/>
@@ -104,16 +107,20 @@
                  <br/>
                  <xsl:call-template name="PopulateReturnHeaderFiler">
                    <xsl:with-param name="TargetNode">InCareOfName</xsl:with-param>
-                 </xsl:call-template>
+                 </xsl:call-template>-->
+                 <!-- Choice between 1120, 1041, 1040 and 1040NR Return Header Filer info -->
+                                                         <xsl:call-template name="PopulateFilerName">
+                                                            <xsl:with-param name="TargetNode" select="$Form8883Data"/>
+                                                         </xsl:call-template>
               </div>        
             </div><!--Close div below L1a-->
             <!-- L1b -->
             <div style="width:65mm;height:8mm;float:left;">
               <div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0mm;">1b</div>          
                  Identifying number as shown on return
-                 <br/><br/>
+                 <br/>
                  <span style="width:32px;"/>          
-                 <xsl:choose>
+              <!--   <xsl:choose>
                    <xsl:when test="$Form8883Data/EIN">          
                       <xsl:call-template name="PopulateEIN">
                         <xsl:with-param name="TargetNode" select="$Form8883Data/EIN"/>
@@ -129,7 +136,11 @@
                         <xsl:with-param name="TargetNode" select="$Form8883Data/EINMissingReasonCd"/>
                       </xsl:call-template>                  
                    </xsl:otherwise>
-                 </xsl:choose>            
+                 </xsl:choose>    -->    
+                 <!-- Choice between 1120, 1041, 1040 and 1040NR Return Header Filer info -->
+                                                     <xsl:call-template name="PopulateFilerTIN">
+                                                       <xsl:with-param name="TargetNode" select="$Form8883Data"/>
+                                                     </xsl:call-template>      
                </div>
             </div>
             <!--L1c-->

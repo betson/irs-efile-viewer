@@ -32,6 +32,7 @@
 <!-- Last modified on 11/19/2015 by Robert Jones for Defect 45413 Rejected, numbering in Part X. Been that way per prior year discussions. See code - by Robert L Jones-->
 <!-- Last modified on 12/15/2015 by Robert Jones for Defect 45592 Part IX spacing in header between d. and See  -->
 <!-- Last modified on 1/5/2015 by Robert Jones for Kisams 2357928 Numbering and bolding Part VII and Part VIII  -->
+<!-- Last modified on 2/23/2017 by Robert Jones for Kisams IM02877627 Part VIII Header 2nd line touching top of Table causing overlap -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <xsl:include href="PopulateTemplate.xsl"/>
@@ -2125,9 +2126,10 @@ Describe in Part XIII the intended uses of the organization's endowment funds.
        <div class="styPartDesc" style="width:172mm;height:7.5mm;">Investments&#151;Program Related.  
        <span style="font-size: 8pt;font-weight:normal;height:4.5mm;">
           Complete if the organization answered 'Yes' on Form 990, Part IV, line 11c.
-        </span>
+        
         <span style="font-size: 8pt;font-weight:normal">
           See Form 990, Part X, line 13.
+          </span>
         </span>
       </div>
      
@@ -2434,7 +2436,7 @@ Describe in Part XIII the intended uses of the organization's endowment funds.
 
  <xsl:if test="position()=1">
             </xsl:if>
- <xsl:if test="count($FormData/OtherLiabilitiesOrgGrp) &lt; 1 or             (($Print = $Separated) and (count($FormData/OtherLiabilitiesOrgGrp) &gt;9)) ">
+ <xsl:if test="($Print = $Separated) and (count($FormData/OtherLiabilitiesOrgGrp) &gt;9) ">
  <tr>
      	 <td class="styIRS990ScheduleDTableCellLB" style="width:100mm;height:auto;vertical-align:bottom;padding-right:0.75mm;border-left:0px;text-align:left;border-color:black">
 		<xsl:call-template name="PopulateAdditionalDataTableMessage">

@@ -1175,10 +1175,10 @@
 					<!--Line 65--> 
 					<div style="width:187mm;font-size:7pt">
 						<div class="styLNLeftNumBox" style="height:17mm;">65</div>      
-						<div class="styLNDesc" style="width:100mm; height:17mm;"> Enter the amount from line 27 of Schedule D (Form 1041), line 14 of the<br/>Schedule D Tax Worksheet, or line 5 of the Qualified Dividends Tax<br/>Worksheet in the instructions for Form 1041, whichever applies (as figured<br/>for the regular tax). If you did not complete Schedule D or either worksheet<br/>for the regular tax, enter the amount from Form 1041, line 22; but do not<br/>
-							<span style="float:left;">enter less than -0- </span>
+						<div class="styLNDesc" style="width:100mm; height:17mm;"> Enter the amount from line 27 of Schedule D (Form 1041), line 14 of the<br/>Schedule D Tax Worksheet, or line 5 of the Qualified Dividends Tax<br/>Worksheet in the instructions for Form 1041, whichever applies (as figured<br/>for the regular tax). If you did not complete Schedule D or either worksheet<br/>for the regular tax, enter the amount from Form 1041, line 22; <br/>
+							<span style="float:left;">if zero or less, enter -0- </span>
 							<!--Dotted Line-->
-							<span class="styDotLn" style="float:right;padding-right:1mm;">..................</span>
+							<span class="styDotLn" style="float:right;padding-right:1mm;">................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:20mm;width:8mm;padding-top:16mm;">65</div>
 						<div class="styLNAmountBox" style="height:20mm;width:31.5mm;padding-top:16mm;">        

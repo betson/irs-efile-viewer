@@ -2,17 +2,7 @@
 <!DOCTYPE xsl:stylesheet [
   <!ENTITY nbsp "&#160;">
 ]>
-<!--Updated per UWR 36537 on 06/16/2011 Changed revision date By Robert Jones -->
-<!--Updated per UWR 46722 on 08/10/2011 Changed revision date and other verbiage - By Robert Jones -->
-<!--Updated per Defect 430084 on 10/18/2011 No Problems Found at 1b, 1c, Line 13 Pushpin - By Robert Jones -->
-<!--Updated per UWR  82576 line 4b and Revision Date to 12/2013- By Robert Jones -->
-<!--Did the above changes per Defect 37897. Although there were no changes to Schema in Part III it doesn't populate with the new Schema-->
-<!--Did the above changes per PDF Review Package 1 Robert Jones-->
-<!--Did changes per PDF Review Package 2 11/22/2013 -  Robert Jones-->
-<!--Did changes per IBM Defect #39267 11/27/2013 - Aligned 4a with 4b Robert Jones-->
-<!--Did changes per IBM Defect #39229 12/03/2013 Robert Jones-->
-<!--Did changes per IBM Defect #39237 12/05/2013 Robert Jones-->
-<!--Did changes per FIT Defect #39461 12/05/2013 Robert Jones-->
+
 <!--Updated per UWR  107348 and Revision Date to July/2014- By Robert Jones -->
 <!--Did changes per IBM Defect #40742 6/24/2014 Robert Jones-->
 <!--Did changes per IBM Defect #41290 8/8/2014 Robert Jones-->
@@ -21,6 +11,7 @@
 <!--Updated per Kisams IM01817803 and Revision Date back to December/2013- By Robert Jones -->
 <!--Updated per Kisams IM01467430 11/18/2014 Transferor not populating. Schema element mis-spelled (Tranferor)- By Robert Jones -->
 <!--Did changes per IBM Defect #43153 6/30/2015 by Robert Jones IE11 Related-->
+<!-- Last modified on 5/18/2017 by Robert Jones UWR 194393 and 195664 Return Headers for 1120, 1041, 1040 and 1040NR  -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -104,7 +95,7 @@
             <div class="styFNBox" style="width:127mm; height:auto;display:table">          
           Name of transferor<br></br>
           
-            <xsl:call-template name="PopulateText">
+           <!-- <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form926Data/BusinessTranferorName/BusinessNameLine1Txt"/>
                 </xsl:call-template>
                 <xsl:if test="normalize-space($Form926Data/BusinessTranferorName/BusinessNameLine2Txt)!=''">
@@ -112,26 +103,37 @@
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="$Form926Data/BusinessTranferorName/BusinessNameLine2Txt"/>
                   </xsl:call-template>
-                </xsl:if>
+                </xsl:if>-->
                <!-- <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form926Data/PersonTranferorNm"/>
                 </xsl:call-template>    -->      
+                 <!-- Choice between 1120, 1041, 1040 and 1040NR Return Header Filer info -->
+                                                         <xsl:call-template name="PopulateFilerName">
+                                                            <xsl:with-param name="TargetNode" select="$Form926Data"/>
+                                                         </xsl:call-template> 
               </div>
             
             <div style="float:right; padding-left:1mm;height:auto;display:table">
               <b>Identifying number</b> (see instructions)<br></br>
           <div style="text-align:left; padding-top:2mm">
-                <xsl:call-template name="PopulateEIN">
+               <!-- <xsl:call-template name="PopulateEIN">
                   <xsl:with-param name="TargetNode" select="$Form926Data/TransferorEIN"/>
                 </xsl:call-template>
               </div>
               <xsl:if test="$Form926Data/TransferorMissingEINReasonCd !=' '">
-                <span style="font-weight:normal;">
+                
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="$Form926Data/TransferorMissingEINReasonCd"/>
                   </xsl:call-template>
-                </span>
-              </xsl:if>
+               
+             </xsl:if>-->
+             <span style="font-weight:normal;">
+                <!-- Choice between 1120, 1041, 1040 and 1040NR Return Header Filer info -->
+                                                     <xsl:call-template name="PopulateFilerTIN">
+                                                       <xsl:with-param name="TargetNode" select="$Form926Data"/>
+                                                     </xsl:call-template>
+                                                      </span>
+             </div>
             </div>
           </div>
           <!--L1-->

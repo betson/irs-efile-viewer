@@ -94,13 +94,13 @@
 						Name
 						<br/>
 						<span>
-								<xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-								</xsl:call-template>
-								<br/>
-								<xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-								</xsl:call-template>
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+							</xsl:call-template>
+							<br/>
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+							</xsl:call-template>
 						</span>
 					</div>
 					<!-- EIN -->
@@ -155,6 +155,7 @@
 								Totals for all short-term transactions reported on Form 1099-B for which basis was reported 
 								to the IRS and for which you have no adjustments (see instructions). However, if  you choose 
 								to report all these transactions on Form 8949, leave this line blank and go to line 1b
+								<span class="IRS1120ScheduleD_styDotLn">.....</span>
 							</td>
 							<td class="IRS1120ScheduleD_MoneyCol" scope="row">
 								<xsl:call-template name="PopulateAmount">
@@ -178,10 +179,12 @@
 							</td>
 						</tr>
 						<!--line 1b-->
-						<tr style="height:8.5mm;vertical-align:top;">
-							<td class="IRS1120ScheduleD_styLNCtrNumNBox" style="height:8.5mm">1b</td>
-							<td class="IRS1120ScheduleD_DescCol" scope="row" style="width:48mm;">Totals for all transactions 
-								 reported on Form(s) 8949 with <b>Box A </b>checked</td>
+						<tr style="vertical-align:top;">
+							<td class="IRS1120ScheduleD_styLNCtrNumNBox" style="height:8.5mm;padding-top:2mm;">1b</td>
+							<td class="IRS1120ScheduleD_DescCol" scope="row" style="width:48mm;padding-top:2mm;">
+								Totals for all transactions  reported on <br/>Form(s) 8949 with <b>Box A </b>checked
+								<span class="IRS1120ScheduleD_styDotLn">..</span>
+							</td>
 							<td class="IRS1120ScheduleD_MoneyCol" scope="row">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" 
@@ -207,10 +210,12 @@
 							</td>
 						</tr>
 						<!--line 2-->
-						<tr style="height:8.5mm;vertical-align:top;">
-							<td class="IRS1120ScheduleD_styLNCtrNumNBox" style="height:8.5mm">2</td>
-							<td class="IRS1120ScheduleD_DescCol" scope="row" style="width:48mm;">Totals for all transactions 
-								 reported on Form(s) 8949 with <b>Box B </b>checked  </td>
+						<tr style="vertical-align:top;">
+							<td class="IRS1120ScheduleD_styLNCtrNumNBox" style="height:8.5mm;padding-top:2mm;">2</td>
+							<td class="IRS1120ScheduleD_DescCol" scope="row" style="width:48mm;padding-top:2mm;">
+								Totals for all transactions reported on <br/>Form(s) 8949 with <b>Box B </b>checked
+								<span class="IRS1120ScheduleD_styDotLn">..</span>
+							</td>
 							<td class="IRS1120ScheduleD_MoneyCol" scope="row">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" 
@@ -237,10 +242,12 @@
 							</td>
 						</tr>
 						<!--line 3-->
-						<tr style="height:8.5mm;vertical-align:top;">	
-							<td class="IRS1120ScheduleD_styLNCtrNumNBox" style="height:8.5mm;">3</td>
-							<td class="IRS1120ScheduleD_DescCol" scope="row" style="width:48mm;">Totals for all transactions 
-								 reported on Form(s) 8949 with <b>Box C </b>checked  </td>
+						<tr style="vertical-align:top;">	
+							<td class="IRS1120ScheduleD_styLNCtrNumNBox" style="height:8.5mm;padding-top:2mm;">3</td>
+							<td class="IRS1120ScheduleD_DescCol" scope="row" style="width:48mm;padding-top:2mm;">
+								Totals for all transactions reported on <br/>Form(s) 8949 with <b>Box C </b>checked
+								<span class="IRS1120ScheduleD_styDotLn">..</span>
+							</td>
 							<td class="IRS1120ScheduleD_MoneyCol" scope="row">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" 
@@ -309,10 +316,8 @@
 					</div>
 					</div>
 					<!-- END LINE 5 -->
-					<!-- BEGIN LINE 6 :EXCEPTION Per  Gwen Chambliss' email response to IBM Defect 20437 dated 9/19/08 to allow the descrepancy between Schema and Style sheet.  
-
+					<!-- BEGIN LINE 6 :EXCEPTION Per  Gwen Chambliss' email response to IBM Defect 20437 dated 9/19/08 to allow the descrepancy between Schema and Style sheet.
                   Where Schema efile data type as USAMOUNT which allow neg and pos amount present in a hardcode bracket line 
-
                   and Style sheet guideline indicate only pos amount allow in a hard coded bracket line.-->
 					<div style="width:187mm;">
 						<div style="float:left;clear:none;">
@@ -360,7 +365,7 @@
 					<!-- BEGIN PART II HEADER -->
 					<div class="IRS1120ScheduleD_styPartHdr">
 						<span class="styPartName" style="margin-right:1mm;">Part II</span>
-							  Long&#8211;Term Capital Gains and Losses&#8211;Assets Held More Than One Year
+						  Long&#8211;Term Capital Gains and Losses&#8211;Assets Held More Than One Year
 					</div>					
 					<!-- END PART II HEADER -->
 					<div style="width:187mm; float:left;">
@@ -389,9 +394,11 @@
 						<tr style="height:20mm;vertical-align:top;">
 							<td class="IRS1120ScheduleD_styLNCtrNumNBox" style="height:20mm;">8a</td>
 							<td class="IRS1120ScheduleD_DescCol" scope="row" style="width:48mm;">
-							Totals for all long-term transactions reported on Form 1099-B for which basis was 
-							reported to the IRS and for which you have no adjustments (see instructions). However, 
-							if you choose to report all these transactions on Form 8949, leave this line blank and go to line 8b</td>
+								Totals for all long-term transactions reported on Form 1099-B for which basis was 
+								reported to the IRS and for which you have no adjustments (see instructions). However, 
+								if you choose to report all these transactions on Form 8949, leave this line blank and go to line 8b
+							<span class="IRS1120ScheduleD_styDotLn">.....</span>
+							</td>
 							<td class="IRS1120ScheduleD_MoneyCol" scope="row">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" 
@@ -399,7 +406,7 @@
 								</xsl:call-template>
 							</td>
 							<td class="IRS1120ScheduleD_MoneyCol" scope="row">				    
-									(<xsl:call-template name="PopulateAmount">
+								 (<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" 
 									select="$FormData/TotalLTCGL1099BBssRptNoAdjGrp/TotalCostOrOtherBasisAmt"/>
 								</xsl:call-template>)
@@ -414,10 +421,12 @@
 							</td>
 						</tr>
 						<!--Line 8b-->
-						<tr style="height:8.5mm;vertical-align:top;">
-							<td class="IRS1120ScheduleD_styLNCtrNumNBox" style="height:8.5mm">8b</td>		
-							<td class="IRS1120ScheduleD_DescCol" scope="row" style="width:48mm;">Totals for all transactions 
-								 reported on Form(s) 8949 with <b>Box D </b>checked  </td>
+						<tr style="vertical-align:top;">
+							<td class="IRS1120ScheduleD_styLNCtrNumNBox" style="height:8.5mm;padding-top:2mm;">8b</td>		
+							<td class="IRS1120ScheduleD_DescCol" scope="row" style="width:48mm;padding-top:2mm;">
+								Totals for all transactions reported on <br/>Form(s) 8949 with <b>Box D </b>checked
+								<span class="IRS1120ScheduleD_styDotLn">..</span>
+							 </td>
 							<td class="IRS1120ScheduleD_MoneyCol" scope="row" style="padding-left:16px;vertical-align:bottom;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" 
@@ -444,11 +453,12 @@
 							</td>
 						</tr>
 						<!--Line 9-->
-						<tr style="height:8.5mm;vertical-align:top;">		
-							<td class="IRS1120ScheduleD_styLNCtrNumNBox" style="height:8.5mm">9</td>					
-							<td class="IRS1120ScheduleD_DescCol" scope="row" style="width:48mm;">
-							    Totals for all transactions 
-								reported on Form(s) 8949 with <b>Box E </b>checked    </td>
+						<tr style="vertical-align:top;">		
+							<td class="IRS1120ScheduleD_styLNCtrNumNBox" style="height:8.5mm;padding-top:2mm;">9</td>					
+							<td class="IRS1120ScheduleD_DescCol" scope="row" style="width:48mm;padding-top:2mm;">
+							    Totals for all transactions reported on <br/>Form(s) 8949 with <b>Box E </b>checked
+							    <span class="IRS1120ScheduleD_styDotLn">..</span>
+							</td>
 							<td class="IRS1120ScheduleD_MoneyCol" scope="row">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" 
@@ -475,10 +485,12 @@
 							</td>
 						</tr>
 						<!--Line 10-->
-						<tr style="height:8.5mm;vertical-align:top;">		
-						<td class="IRS1120ScheduleD_styLNCtrNumNBox" style="height:8.5mm;padding-left:2.75mm">10</td>						
-							<td class="IRS1120ScheduleD_DescCol" scope="row" style="width:48mm;">
-							Totals for all transactions reported on Form(s) 8949 with <b>Box F </b>checked</td>	
+						<tr style="vertical-align:top;">		
+						<td class="IRS1120ScheduleD_styLNCtrNumNBox" style="padding-left:2.75mm;height:8.5mm;padding-top:2mm;">10</td>						
+							<td class="IRS1120ScheduleD_DescCol" scope="row" style="width:48mm;padding-top:2mm;">
+								Totals for all transactions reported on <br/>Form(s) 8949 with <b>Box F </b>checked
+								<span class="IRS1120ScheduleD_styDotLn">..</span>
+							</td>	
 							<td class="IRS1120ScheduleD_MoneyCol" scope="row">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" 

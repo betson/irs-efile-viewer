@@ -48,6 +48,10 @@ Boxes still appear to populate-RLJ-->
       <!-- Updated 1/8/2016 per IBM Defect 45628 by Robert L Jones Extra page numbers corrected-->
       <!-- Updated 1/8/2016 per IBM Defect 45255 by Robert L Jones see above reduced top padding by 1-->
       <!-- Updated 1/28/2016 per Kisam 02446984 by Robert L Jones Part VIII 6a-6c and 7a-7c data interchanged. Code correct but IE11 reading out of order so I had to switch the two elements as a quick fix. See note in area below -->
+      <!-- Updated 3/10/2016 per Kisam 02422360 by Robert L Jones Part VIII 2a-2g and 11a-12 misalignment -->
+       <!-- Updated 6/30/2016 per Kisam 02422360 by Robert L Jones Part VIII Spacing issue between to side headers. Sent back with note "as good as it gets" -->
+     <!-- Updated 11/29/2016 per Kisam 02422360 by Robert L Jones Part VIII Spacing issue between to side headers. Checked in adjusted image file for vertical CGGOSAmt -->
+     <!-- Updated 1/24/2017 per IBM Defect 47639 by Robert L Jones Part VIII Line 2 overlapping data. Also when Printing the verticle image appears to be top aligned but it is middle aligned. It just prints to top - RLJ-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -1179,7 +1183,7 @@ Net unrelated business taxable income from Form 990-T, line 34
                 </td>
               </tr>
               <tr>
-            <td class="styIRS990VTImageBox" rowspan="5" valign="middle" style="width:5mm;border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width: 1px">
+            <td class="styIRS990VTImageBox" rowspan="4" valign="middle" style="width:5mm;border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width: 0px">
                   <img src="{$ImagePath}/990R_NAFB.gif" alt="Net Assets or Fund Balances;"/>
                 </td>
                 <td class="styLNLeftNumBox" style="width:5mm;height:7.5mm;"/>
@@ -1222,7 +1226,7 @@ Net unrelated business taxable income from Form 990-T, line 34
                 </td>
               </tr>
               <tr>
-                <td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;">22</td>
+                <td class="styLNLeftNumBox" style="width:5mm;height:auto;">22</td>
                 <td class="styLNDesc" style="padding-left:1.5mm;width:110.5mm;height:auto;" colspan="2">
                 <span style="float:left;">Net assets or fund balances. Subtract line 21 from line 20</span>
                 <span style="clear:none;letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm">.....</span>
@@ -1240,17 +1244,18 @@ Net unrelated business taxable income from Form 990-T, line 34
               </tr>
             </tbody>
           </table>
+          
           <!-- END Part I -->
           <!-- BEGIN Part II Signature Title -->
           <div class="styBB" style="width:187mm;clear:both;border-top-width:1px;">
-            <div class="styPartName" style="width:15mm; height:auto;">Part II</div>
-            <div class="styPartDesc" style="width:171mm;height:auto;">
+            <div class="styPartName" style="width:15mm; height:4.5mm;">Part II</div>
+            <div class="styPartDesc" style="width:171mm;height:4.5mm;">
       Signature Block
       </div>
           </div>
           <!-- END Part II Title -->
           <!-- Implementing the signature section in table -->
-          <table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:6pt;clear:both;">
+          <table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:6pt;clear:both;display:table;display:inline;">
             <tr>
               <td rowspan="5" style="width:15mm;font-size: 8pt;font-weight:bold;border-bottom:1px solid black;border-right:1px solid black;">Sign Here</td>
               <div style="width:187mm;">
@@ -6255,7 +6260,7 @@ contains a response or note to any line in this Part VIII
                <table class="styTable" style="font-size:7pt;width:187mm;border-color:black;display:table;" cellspacing="0">
             <tbody valign="top">
                          <tr>
-                <td class="styIRS990VTImageBox" rowspan="10" valign="middle" style="width:10mm;">
+                <td class="styIRS990VTImageBox" rowspan="10" valign="middle">
                   <img src="{$ImagePath}/990_CGGOSAmt.gif" alt="Contributions, Gifts, GrantAmt and OtherAmt Similar Amounts"/>
                 </td>
             <td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-top:.3mm;padding-left:0mm;">1a</td>
@@ -6447,7 +6452,7 @@ contains a response or note to any line in this Part VIII
                   <img src="{$ImagePath}/990_Bullet_Md.gif" alt="MediumBullet"/>
                
                  </td>
-                <td class="styTableCell" style="width:25mm;height:4.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;padding-top:1mm;">
+                <td class="styTableCell" style="width:25mm;height:4.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;padding-top:1mm;">
                    <span style="font-size:6pt;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form990Data/TotalContributionsAmt"/>
@@ -6474,7 +6479,7 @@ contains a response or note to any line in this Part VIII
               <!-- Space between top of table and 2a -->
              
               <tr>
-               <td class="styIRS990VTImageBox" style="width:10mm;" valign="middle">
+               <td class="styIRS990VTImageBox" style="width:5mm;padding-left:1mm;" valign="middle">
                   <xsl:attribute name="rowspan">
                   <xsl:choose>
                   <xsl:when test="count($Form990Data/ProgramServiceRevenueGrp) &lt; 5">8
@@ -6486,8 +6491,8 @@ contains a response or note to any line in this Part VIII
           </xsl:attribute>
               <img src="{$ImagePath}/990R_ProgSerRev.gif" alt=" Program Service RevenueAmt"/>
                 </td>
-                <td class="styLNLeftNumBox" style="width:5mm;height:auto;"/>
-                <td class="styGenericDiv" style="width:47mm;height:auto;display:inline;padding-left:0mm;border-style: solid; border-color:black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;"/>
+                <td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;"/>
+                <td class="styLNDesc" colspan="2" style="width:47mm;height:4.5mm;"/>
                <td class="styTableCell" style="width:25mm;height:4.5mm;border-left-width:1px;text-align:center;border-top-width:1px;">Business Code</td>
                 <td class="styTableCell" style="width:25mm;height:4.5mm;border-top-width:1px;background-color:lightgrey;">
                   <span class="styTableCellPad"/>
@@ -6507,47 +6512,47 @@ contains a response or note to any line in this Part VIII
               <xsl:for-each select="$Form990Data/ProgramServiceRevenueGrp">
                 <tr>
                   <xsl:if test="position()=1">
-             <td class="styLNLeftNumBox" style="width:5mm;height:auto;padding-top:.3mm;padding-left:1mm;">2a</td>
+             <td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-top:1mm;padding-left:1mm;">2a</td>
                   </xsl:if>
                   <xsl:if test="position()!=1">
-                    <td class="styLNLeftNumBox" style="width:5mm;height:auto;">
-                      <span style="width:1.5mm;"/>
+                    <td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;vertical-align:top;padding-left:2.5mm;padding-top:1mm;">
+                    
                       <xsl:number value="position()" format="a"/>
                     </td>
                   </xsl:if>
-                  <td class="styGenericDiv" style="width:22mm;height:auto;">
-                    <span style="padding-left:0mm;width:47mm;height:auto;font-size:6pt;padding-top:0mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
+                   <td class="styLNDesc" colspan="2" style="width:57mm;">
+                     <span style="width:61mm;height:6.5mm;font-size:6pt;padding-top:1mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;padding-left:0mm;text-align:bottom;">
                       <xsl:call-template name="PopulateText">
                         <xsl:with-param name="TargetNode" select="Desc"/>
                       </xsl:call-template>
                     </span>
                   </td>
                   
-                   <td class="styTableCell" style="width:25mm;height:4.5mm;border-left-width:1px;text-align:center;">
+                   <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;border-left-width:1px;padding-top:1mm;">
                     <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateText">
+                      <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="BusinessCd"/>
                     </xsl:call-template>
                   </td>
-                  <td class="styTableCell" style="width:25mm;height:auto;font-size:6pt;padding-top:1mm;">
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;padding-top:1mm;">
                     <span class="styTableCellPad"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="TotalRevenueColumnAmt"/>
                     </xsl:call-template>
                   </td>
-                  <td class="styTableCell" style="width:25mm;height:auto;font-size:6pt;padding-top:1mm;">
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;padding-top:1mm;">
                     <span class="styTableCellPad"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="RelatedOrExemptFuncIncomeAmt"/>
                     </xsl:call-template>
                   </td>
-                  <td class="styTableCell" style="width:25mm;height:auto;font-size:6pt;padding-top:1mm;">
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;padding-top:1mm;">
                     <span class="styTableCellPad"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="UnrelatedBusinessRevenueAmt"/>
                     </xsl:call-template>
                   </td>
-                  <td class="styTableCell" style="width:25mm;height:auto;font-size:6pt;padding-top:1mm;border-style: solid;border-right-width: 0px;">
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;padding-top:1mm;border-style: solid;border-right-width: 0px;">
                     <span class="styTableCellPad"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="ExclusionAmt"/>
@@ -6557,63 +6562,63 @@ contains a response or note to any line in this Part VIII
               </xsl:for-each>
             <xsl:if test="count($Form990Data/ProgramServiceRevenueGrp) &lt; 1">
                 <tr>
-                  <td class="styLNLeftNumBox" style="width:4mm;height:auto;padding-top:.3mm;padding-left:0mm;">2a</td>
-                  <td class="styGenericDiv" colspan="2" style="width:47mm;height:4.5mm;">
-                    <span style="width:45mm;height:auto;padding-top:.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
+                   <td class="styLNLeftNumBox" style="width:3mm;height:4.5mm;padding-top:0mm;padding-left:0mm;">2a</td>
+                   <td class="styLNDesc" colspan="2" style="width:47mm;height:4.5mm;">
+                    <span style="width:45mm;height:4.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
                       <span class="styTableCellPad"/>
                     </span>
                   </td>
-                  <td class="styTableCell" style="width:25mm;height:auto;font-size:6pt;border-left-width:1px;">
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;border-left-width:1px;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:25mm;height:auto;font-size:6pt;">
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:25mm;height:auto;font-size:6pt;">
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:25mm;height:auto;font-size:6pt;">
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:25mm;height:auto;font-size:6pt;">
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;border-style: solid;border-right-width: 0px;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <xsl:if test="count($Form990Data/ProgramServiceRevenueGrp) &lt; 2">
                 <tr>
-                  <td class="styLNLeftNumBox" style="width:4mm;height:auto;padding-top:.3mm;padding-left:2.5mm;">
-                    b 
+               <td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-top:0mm;padding-left:2.5mm;">
+                    <span style="width:1.5mm;"/>b 
         </td>
-                  <td class="styGenericDiv" colspan="2" style="width:47mm;height:auto;">
-                    <span style="width:45mm;height:auto;padding-top:.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
+                  <td class="styGenericDiv" colspan="2" style="width:47mm;height:4.5mm;">
+                    <span style="width:45mm;height:4.5mm;padding-top:.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
                       <span class="styTableCellPad"/>
                     </span>
                   </td>
-                  <td class="styTableCell" style="width:25mm;height:auto;font-size:6pt;border-left-width:1px;">
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;border-left-width:1px;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:25mm;height:auto;font-size:6pt;">
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:25mm;height:auto;font-size:6pt;">
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:25mm;height:auto;font-size:6pt;">
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:25mm;height:auto;font-size:6pt;">
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;border-style: solid;border-right-width: 0px;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <xsl:if test="count($Form990Data/ProgramServiceRevenueGrp) &lt; 3">
                 <tr>
-                  <td class="styLNLeftNumBox" style="width:4mm;height:4.5mm;padding-top:.3mm;padding-left:2.5mm;">
-                   c 
+                   <td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-top:0mm;padding-left:2.5mm;">
+                    <span style="width:1.5mm;"/>c 
         </td>
                   <td class="styGenericDiv" colspan="2" style="width:47mm;height:4.5mm;">
-                    <span style="width:45mm;height:auto;padding-top:.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
+                    <span style="width:45mm;height:4.5mm;padding-top:.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
                       <span class="styTableCellPad"/>
                     </span>
                   </td>
@@ -6629,42 +6634,15 @@ contains a response or note to any line in this Part VIII
                   <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;">
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;border-style: solid;border-right-width: 0px;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <xsl:if test="count($Form990Data/ProgramServiceRevenueGrp) &lt; 4">
                 <tr>
-                  <td class="styLNLeftNumBox" style="width:4mm;height:4.5mm;padding-top:.3mm;padding-left:2.5mm;">
-                    d 
-                  </td>
-                  <td class="styGenericDiv" colspan="2" style="width:47mm;height:4.5mm;">
-                    <span style="width:45mm;height:auto;padding-top:.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
-                      <span class="styTableCellPad"/>
-                    </span>
-                  </td>
-                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;border-left-width:1px;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                </tr>
-              </xsl:if>
-              <xsl:if test="count($Form990Data/ProgramServiceRevenueGrp) &lt; 5">
-                <tr>
-                  <td class="styLNLeftNumBox" style="width:4mm;height:4.5mm;padding-top:.3mm;padding-left:2.5mm;">
-                    e 
+                  <td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-top:0mm;padding-left:2.5mm;">
+                    <span style="width:1.5mm;"/>d 
                   </td>
                   <td class="styGenericDiv" colspan="2" style="width:47mm;height:4.5mm;">
                     <span style="width:45mm;height:4.5mm;padding-top:.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
@@ -6683,21 +6661,50 @@ contains a response or note to any line in this Part VIII
                   <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;">
                     <span class="styTableCellPad"/>
                   </td>
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;border-style: solid;border-right-width: 0px;">
+                    <span class="styTableCellPad"/>
+                  </td>
+                </tr>
+              </xsl:if>
+              <xsl:if test="count($Form990Data/ProgramServiceRevenueGrp) &lt; 5">
+                <tr>
+                  <td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-top:0mm;padding-left:2.5mm;">
+                    <span style="width:1.5mm;"/>e 
+                  </td>
+                  <td class="styGenericDiv" colspan="2" style="width:47mm;height:4.5mm;">
+                    <span style="width:45mm;height:4.5mm;padding-top:0mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
+                      <span class="styTableCellPad"/>
+                    </span>
+                  </td>
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;border-left-width:1px;">
+                    <span class="styTableCellPad"/>
+                  </td>
                   <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;">
+                    <span class="styTableCellPad"/>
+                  </td>
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;">
+                    <span class="styTableCellPad"/>
+                  </td>
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;">
+                    <span class="styTableCellPad"/>
+                  </td>
+                  <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;border-style: solid;border-right-width: 0px;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <!-- 2f -->
               <tr>
-                <td class="styLNLeftNumBox" style="width:4mm;height:4.5mm;padding-top:.3mm;padding-left:2.5mm;">f</td>
-                <td class="styGenericDiv" colspan="2" style="width:47mm;height:auto;float:left;">All other program service revenue.
-   
+                 <td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-top:.3mm;padding-left:3.5mm;">
+                  <span style="width:1.5mm;"/>f 
+    </td>
+                <td class="styGenericDiv" colspan="2" style="width:47mm;height:4.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;padding-top:3mm;">All other program service revenue  .
+   <span class="styTableCellPad"/>
                 </td>
-               <td class="styTableCell" style="width:25mm;height:4.5mm;border-left-width:1px;text-align:center;">
+                <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;border-left-width:1px;">
                   <span class="styTableCellPad"/>
                 </td>
-                <td class="styTableCell" style="width:25mm;height:4.5mm;;font-size:6pt;padding-top:1mm;">
+                <td class="styTableCell" style="width:25mm;height:4.5mm;font-size:6pt;padding-top:1mm;">
                   <span class="styTableCellPad"/>
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$Form990Data/TotalOthProgramServiceRevGrp/TotalRevenueColumnAmt"/>
@@ -6724,16 +6731,15 @@ contains a response or note to any line in this Part VIII
               </tr>
               <!-- 2g -->
                <tr>
-              
-                <td class="styGenericDiv" colspan="3" style="height:4.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;padding-top:2mm;">
-                 <span style="width:1mm;"/><b>g  Total.</b> 
+             <td class="styGenericDiv" colspan="3" style="width:66mm;height:4.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;padding-top:2mm;">
+                 <span style="width:2mm;"/><b>g  Total.</b> 
                   <span class="styNormalText">Add lines 2a–2f</span>
-                  <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm">.....</span>
+                  <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm">....</span>
                   <span style="width:3mm;"/>
                   <img src="{$ImagePath}/990_Bullet_Md.gif" alt="MediumBullet"/>
                   <span style="width:3mm;"/>
                 </td>
-                <td class="styTableCell" style="width:25mm;height:4.5mm;vertical-align:top;">
+                <td class="styTableCell" style="width:25mm;height:4.5mm;border-style: solid;border-right-width: 0px;">
                   <span class="styTableCellPad"/>
                   <span style="width:1mm;"/>
                   <span style="font-size:7pt;">
@@ -6742,13 +6748,16 @@ contains a response or note to any line in this Part VIII
                     </xsl:call-template>
                   </span>
                 </td>
-                <td class="styTableCell" style="width:25mm;height:4.5mm; background-color:lightgrey">
-                  <span class="styTableCellPad"/>
-                </td>
-                <td class="styTableCell" style="width:25mm;height:4.5mm; background-color:lightgrey">
+                <td class="styTableCell" style="width:25mm;height:4.5mm; border-style: solid;border-right-width: 0px;">
                   <span class="styTableCellPad"/>
                 </td>
                 <td class="styTableCell" style="width:25mm;height:4.5mm; background-color:lightgrey;border-style: solid;border-right-width: 0px;">
+                  <span class="styTableCellPad"/>
+                </td>
+                <td class="styTableCell" style="width:25mm;height:4.5mm; background-color:lightgrey;border-style: solid;border-right-width: 0px;">
+                  <span class="styTableCellPad"/>
+                </td>
+                  <td class="styTableCell" style="width:25mm;height:4.5mm; background-color:lightgrey;border-style: solid;border-right-width: 0px;">
                   <span class="styTableCellPad"/>
                 </td>
               </tr>
@@ -6758,12 +6767,12 @@ contains a response or note to any line in this Part VIII
 														
               <!-- Line 3 -->
               <table class="styTable" style="font-size:7pt;width:187mm;border-color:black;display:table;" cellspacing="0">
-            <tbody valign="top">							
+           						
 															
               <tr>
-            <td class="styIRS990VTImageBox" style="width:10.5mm;" rowspan="33" valign="middle">
+            <td class="styIRS990VTImageBox" style="width:5mm;padding-left:2mm;" rowspan="33" valign="middle">
                   <img src="{$ImagePath}/990_Other_Revenue.gif" alt=" OtherAmt RevenueAmt"/>
-                </td>
+              
                <td class="styLNDesc" colspan="3" style="width:81mm;height:4.5mm;border-style: solid; border-color: black;border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;float:left;">
                 <span style="padding-left:1mm;"><b>3</b> Investment income (including dividends, interest, and other</span>
                <span style="padding-left:3mm">similar amounts)  </span>
@@ -6798,6 +6807,7 @@ contains a response or note to any line in this Part VIII
                     <xsl:with-param name="TargetNode" select="$Form990Data/InvestmentIncomeGrp/ExclusionAmt"/>
                   </xsl:call-template>
                 </td>
+                  </td>
               </tr>
               <!-- Line 4 -->
               <tr>
@@ -7536,10 +7546,10 @@ contains a response or note to any line in this Part VIII
                 </td>
               </tr>
               <!-- 11a -->
-              <tr>
+             <tr>
                 <td class="styLNLeftNumBox" style="width:5mm;height:auto;padding-top:.1mm;">11a</td>
-                <td class="styGenericDiv" colspan="2" style="width:51mm;height:auto;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
-                  <span style="width:51mm;height:10.5mm;padding-top:0mm;padding-left:1.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
+                <td class="styGenericDiv" colspan="2" style="width:51mm;height:10.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
+                  <span style="width:51mm;height:10.5mm;padding-top:.5mm;padding-left:1mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$Form990Data/OtherRevenueMiscGrp[1]/Desc"/>
                     </xsl:call-template>
@@ -7580,15 +7590,15 @@ contains a response or note to any line in this Part VIII
               <!-- 11b -->
               <tr>
                 <td class="styLNLeftNumBox" style="width:5mm;height:auto;padding-top:.3mm;padding-left:3mm;">b</td>
-                <td class="styGenericDiv" colspan="2" style="width:51mm;height:auto;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
-                  <span style="width:51mm;height:auto;padding-top:.5mm;padding-left:.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
+                <td class="styGenericDiv" colspan="2" style="width:51mm;height:10.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
+                  <span style="width:51mm;height:10.5mm;padding-top:.5mm;padding-left:.5mm;border-style: solid; border-color: black;border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$Form990Data/OtherRevenueMiscGrp[2]/Desc"/>
                     </xsl:call-template>
                     <span class="styTableCellPad"/>
                   </span>
                 </td>
-                <td class="styTableCell" style="width:25mm;height:10.5mm;font-size:6pt;float:right;border-style: solid; border-color: black;border-right-width: 1px;">
+                 <td class="styTableCell" style="width:25mm;height:10.5mm;font-size:6pt;float:right;border-style: solid; border-color: black;border-right-width: 1px;">
                   <span class="styTableCellPad"/>
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="$Form990Data/OtherRevenueMiscGrp[2]/BusinessCd"/>
@@ -7622,8 +7632,8 @@ contains a response or note to any line in this Part VIII
               <!-- 11c -->
               <tr>
                 <td class="styLNLeftNumBox" style="width:5mm;height:auto;padding-top:.3mm;padding-left:3mm;">c</td>
-                <td class="styGenericDiv" colspan="2" style="width:51mm;height:auto;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
-                  <span style="width:51mm;height:auto;padding-top:.5mm;padding-left:.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
+                <td class="styGenericDiv" colspan="2" style="width:51mm;height:10.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
+                  <span style="width:51mm;height:10.5mm;padding-top:.5mm;padding-left:.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$Form990Data/OtherRevenueMiscGrp[3]/Desc"/>
                     </xsl:call-template>
@@ -7663,7 +7673,7 @@ contains a response or note to any line in this Part VIII
               </tr>
               <!-- 11d -->
               <tr>
-                <td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-top:.3mm;padding-left:3mm;">d</td>
+                <td class="styLNLeftNumBox" style="width:5mm;height:auto;padding-top:.3mm;padding-left:3mm;">d</td>
                 <td class="styGenericDiv" colspan="2" style="width:51mm;height:4.5mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">All other revenue
 <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm">....</span>
                   <span class="styTableCellPad"/>
@@ -7757,7 +7767,7 @@ contains a response or note to any line in this Part VIII
                 </td>
               </tr>
             
-				</tbody>
+			
 																			
           </table>
 					<!--  End Part VIII Table  -->
@@ -8699,184 +8709,189 @@ trustees, and key employees
                   </xsl:call-template>
                 </td>
               </tr>
-              <tr>
-                <td class="styLNLeftNumBox" style="width:6mm;height:auto;">24</td>
-                <td class="styLNDesc" style="width:77mm;height:auto;">
+             <tr>
+								<td class="styLNLeftNumBox" style="width:6mm;height:auto;">24</td>
+								<td class="styLNDesc" style="width:77mm;height:auto;">
         Other expenses. Itemize expenses not covered above (List miscellaneous expenses in line 24e. If line 24e amount exceeds 10% of line 25, column (A) amount, list line 24e expenses on Schedule O.)       
  <xsl:call-template name="SetFormLinkInline">
-                    <xsl:with-param name="TargetNode" select="$Form990Data/OtherExpensesGrp"/>
-                  </xsl:call-template>
-                </td>
-                <td class="styShadingCell" style="width:26mm;height:13mm; border-bottom:1px solid black">
-                  <span style="width:1px"/>
-                </td>
-                <td class="styShadingCell" style="width:26mm;height:13mm; border-bottom:1px solid black">
-                  <span style="width:1px"/>
-                </td>
-                <td class="styShadingCell" style="width:26mm;height:13mm; border-bottom:1px solid black">
-                  <span style="width:1px"/>
-                </td>
-                <td class="styShadingCell" style="width:26mm;height:13mm; border-bottom:1px solid black">
-                  <span style="width:1px"/>
-                </td>
-              </tr>
-              
-              
-            
-              <xsl:for-each select="$Form990Data/OtherExpensesGrp">
-                <xsl:if test="($Print != $Separated) or (count($Form990Data/OtherExpensesGrp) &lt;= 6) ">
-                  <tr>
-                    <td class="styLNLeftLtrBoxDD" style="width:3mm;height:4.5mm;">
-                      <xsl:choose>
-                        <xsl:when test="position() = 1">
-                          <span class="styBoldText">a</span>
-                        </xsl:when>
-                        <xsl:when test="position() = 2">
-                          <span class="styBoldText">b</span>
-                        </xsl:when>
-                        <xsl:when test="position() = 3">
-                          <span class="styBoldText">c</span>
-                        </xsl:when>
-                        <xsl:when test="position() = 4">
-                          <span class="styBoldText">d</span>
-                        </xsl:when>
-                        
-                      </xsl:choose>
-                    </td>
-                  <td class="styIRS990LNAmountBoxNLB" style="width:77.7mm;height:7.5mm;text-align:left;padding-left:3mm;">
-                      <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="Desc"/>
-                      </xsl:call-template>
-                    </td>
-                    <td class="styLNAmountBoxSmall" style="width:26mm;height:7.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                      <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="TotalAmt"/>
-                      </xsl:call-template>
-                    </td>
-                    <td class="styLNAmountBoxSmall" style="width:26mm;height:7.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                      <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="ProgramServicesAmt"/>
-                      </xsl:call-template>
-                    </td>
-                    <td class="styLNAmountBoxSmall" style="width:26mm;height:7.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                      <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="ManagementAndGeneralAmt"/>
-                      </xsl:call-template>
-                    </td>
-                    <td class="styLNAmountBoxSmall" style="width:26mm;height:7.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                      <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="FundraisingAmt"/>
-                      </xsl:call-template>
-                    </td>
-                  </tr>
-                </xsl:if>
-              </xsl:for-each>
-              <xsl:if test="(count($Form990Data/OtherExpensesGrp) &lt; 1) or (($Print = $Separated) and (count($Form990Data/OtherExpensesGrp) &gt; 6))">
-                <tr>
-                  <td class="styLNLeftLtrBoxDD" style="width:3mm;height:4.5mm;">a</td>
-                  <td class="styIRS990LNAmountBoxNLB" style="width:77.7mm;height:4.5mm;text-align:left;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styLNAmountBoxSmall" style="width26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                </tr>
-              </xsl:if>
-              <xsl:if test="(count($Form990Data/OtherExpensesGrp) &lt; 2) or (($Print = $Separated) and (count($Form990Data/OtherExpensesGrp) &gt; 6))">
-                <tr>
-                  <td class="styLNLeftLtrBoxDD" style="width:3mm;height:4.5mm">b</td>
-                  <td class="styIRS990LNAmountBoxNLB" style="width:77.7mm;height:4.5mm;text-align:left;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                </tr>
-              </xsl:if>
-              <xsl:if test="(count($Form990Data/OtherExpensesGrp) &lt; 3) or (($Print = $Separated) and (count($Form990Data/OtherExpensesGrp) &gt; 6))">
-                <tr>
-                  <td class="styLNLeftLtrBoxDD" style="width:3mm;height:4.5mm">c</td>
-                  <td class="styIRS990LNAmountBoxNLB" style="width:77.7mm;height:4.5mm;text-align:left;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                </tr>
-              </xsl:if>
-              <xsl:if test="(count($Form990Data/OtherExpensesGrp) &lt; 4) or (($Print = $Separated) and (count($Form990Data/OtherExpensesGrp) &gt; 6))">
-                <tr>
-                  <td class="styLNLeftLtrBoxDD" style="width:3mm;height:4.5mm;">d</td>
-                  <td class="styIRS990LNAmountBoxNLB" style="width:77.7mm;height:4.5mm;text-align:left;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                  <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                    <span class="styTableCellPad"/>
-                  </td>
-                </tr>
-              </xsl:if>
-          
-              <tr>
-                <td class="styLNLeftLtrBoxDD" style="width:2mm;height:auto;">e</td>
-                <td class="styIRS990LNAmountBoxNLB" style="width:77.7mm;height:auto;text-align:left;padding-left:3mm;">All other expenses
+										<xsl:with-param name="TargetNode" select="$Form990Data/OtherExpensesGrp"/>
+									</xsl:call-template>
+								</td>
+								<td class="styShadingCell" style="width:26mm;height:13mm; border-bottom:1px solid black">
+									<span style="width:1px"/>
+								</td>
+								<td class="styShadingCell" style="width:26mm;height:13mm; border-bottom:1px solid black">
+									<span style="width:1px"/>
+								</td>
+								<td class="styShadingCell" style="width:26mm;height:13mm; border-bottom:1px solid black">
+									<span style="width:1px"/>
+								</td>
+								<td class="styShadingCell" style="width:26mm;height:13mm; border-bottom:1px solid black">
+									<span style="width:1px"/>
+								</td>
+							</tr>
+							<xsl:for-each select="$Form990Data/OtherExpensesGrp">
+								<xsl:if test="($Print != $Separated) or (count($Form990Data/OtherExpensesGrp) &lt;= 6) ">
+									<tr>
+										<td class="styLNLeftLtrBoxDD" style="width:3mm;height:4.5mm;">
+											<xsl:choose>
+												<xsl:when test="position() = 1">
+													<span class="styBoldText">a</span>
+												</xsl:when>
+												<xsl:when test="position() = 2">
+													<span class="styBoldText">b</span>
+												</xsl:when>
+												<xsl:when test="position() = 3">
+													<span class="styBoldText">c</span>
+												</xsl:when>
+												<xsl:when test="position() = 4">
+													<span class="styBoldText">d</span>
+												</xsl:when>
+											</xsl:choose>
+										</td>
+										<td class="styIRS990LNAmountBoxNLB" style="width:77.7mm;height:7.5mm;text-align:left;padding-left:3mm;">
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="Desc"/>
+											</xsl:call-template>
+										</td>
+										<td class="styLNAmountBoxSmall" style="width:26mm;height:7.5mm;vertical-align:bottom;padding-right:0.75mm;">
+											<xsl:call-template name="PopulateAmount">
+												<xsl:with-param name="TargetNode" select="TotalAmt"/>
+											</xsl:call-template>
+										</td>
+										<td class="styLNAmountBoxSmall" style="width:26mm;height:7.5mm;vertical-align:bottom;padding-right:0.75mm;">
+											<xsl:call-template name="PopulateAmount">
+												<xsl:with-param name="TargetNode" select="ProgramServicesAmt"/>
+											</xsl:call-template>
+										</td>
+										<td class="styLNAmountBoxSmall" style="width:26mm;height:7.5mm;vertical-align:bottom;padding-right:0.75mm;">
+											<xsl:call-template name="PopulateAmount">
+												<xsl:with-param name="TargetNode" select="ManagementAndGeneralAmt"/>
+											</xsl:call-template>
+										</td>
+										<td class="styLNAmountBoxSmall" style="width:26mm;height:7.5mm;vertical-align:bottom;padding-right:0.75mm;">
+											<xsl:call-template name="PopulateAmount">
+												<xsl:with-param name="TargetNode" select="FundraisingAmt"/>
+											</xsl:call-template>
+										</td>
+									</tr>
+								</xsl:if>
+							</xsl:for-each>
+							<xsl:if test="(count($Form990Data/OtherExpensesGrp) &lt; 1) or (($Print = $Separated) and (count($Form990Data/OtherExpensesGrp) &gt; 6))">
+								<tr>
+									<td class="styLNLeftLtrBoxDD" style="width:3mm;height:4.5mm;">
+										<span class="styBoldText">a</span>
+									</td>
+									<td class="styIRS990LNAmountBoxNLB" style="width:77.7mm;height:4.5mm;text-align:left;">
+										<span class="styTableCellPad"/>
+									</td>
+									<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+										<span class="styTableCellPad"/>
+									</td>
+									<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+										<span class="styTableCellPad"/>
+									</td>
+									<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+										<span class="styTableCellPad"/>
+									</td>
+									<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+										<span class="styTableCellPad"/>
+									</td>
+								</tr>
+							</xsl:if>
+							<xsl:if test="(count($Form990Data/OtherExpensesGrp) &lt; 2) or (($Print = $Separated) and (count($Form990Data/OtherExpensesGrp) &gt; 6))">
+								<tr>
+									<td class="styLNLeftLtrBoxDD" style="width:3mm;height:4.5mm;">
+										<span class="styBoldText">b</span>
+									</td>
+									<td class="styIRS990LNAmountBoxNLB" style="width:77.7mm;height:4.5mm;text-align:left;">
+										<span class="styTableCellPad"/>
+									</td>
+									<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+										<span class="styTableCellPad"/>
+									</td>
+									<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+										<span class="styTableCellPad"/>
+									</td>
+									<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+										<span class="styTableCellPad"/>
+									</td>
+									<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+										<span class="styTableCellPad"/>
+									</td>
+								</tr>
+							</xsl:if>
+							<xsl:if test="(count($Form990Data/OtherExpensesGrp) &lt; 3) or (($Print = $Separated) and (count($Form990Data/OtherExpensesGrp) &gt; 6))">
+								<tr>
+									<td class="styLNLeftLtrBoxDD" style="width:3mm;height:4.5mm;">
+										<span class="styBoldText">c</span>
+									</td>
+									<td class="styIRS990LNAmountBoxNLB" style="width:77.7mm;height:4.5mm;text-align:left;">
+										<span class="styTableCellPad"/>
+									</td>
+									<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+										<span class="styTableCellPad"/>
+									</td>
+									<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+										<span class="styTableCellPad"/>
+									</td>
+									<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+										<span class="styTableCellPad"/>
+									</td>
+									<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+										<span class="styTableCellPad"/>
+									</td>
+								</tr>
+							</xsl:if>
+							<xsl:if test="(count($Form990Data/OtherExpensesGrp) &lt; 4) or (($Print = $Separated) and (count($Form990Data/OtherExpensesGrp) &gt; 6))">
+								<tr>
+									<td class="styLNLeftLtrBoxDD" style="width:3mm;height:4.5mm;">
+										<span class="styBoldText">d</span>
+									</td>
+									<td class="styIRS990LNAmountBoxNLB" style="width:77.7mm;height:4.5mm;text-align:left;">
+										<span class="styTableCellPad"/>
+									</td>
+									<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+										<span class="styTableCellPad"/>
+									</td>
+									<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+										<span class="styTableCellPad"/>
+									</td>
+									<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+										<span class="styTableCellPad"/>
+									</td>
+									<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+										<span class="styTableCellPad"/>
+									</td>
+								</tr>
+							</xsl:if>
+							<tr>
+								<td class="styLNLeftLtrBoxDD" style="width:2mm;height:auto;">
+									<span class="styBoldText">e</span>
+								</td>
+								<td class="styIRS990LNAmountBoxNLB" style="width:77.7mm;height:auto;text-align:left;padding-left:3mm;">All other expenses
 </td>
-                <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                  <xsl:call-template name="PopulateAmount">
-                    <xsl:with-param name="TargetNode" select="$Form990Data/AllOtherExpensesGrp/TotalAmt"/>
-                  </xsl:call-template>
-                </td>
-                <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                  <xsl:call-template name="PopulateAmount">
-                    <xsl:with-param name="TargetNode" select="$Form990Data/AllOtherExpensesGrp/ProgramServicesAmt"/>
-                  </xsl:call-template>
-                </td>
-                <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                  <xsl:call-template name="PopulateAmount">
-                    <xsl:with-param name="TargetNode" select="$Form990Data/AllOtherExpensesGrp/ManagementAndGeneralAmt"/>
-                  </xsl:call-template>
-                </td>
-                <td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
-                  <xsl:call-template name="PopulateAmount">
-                    <xsl:with-param name="TargetNode" select="$Form990Data/AllOtherExpensesGrp/FundraisingAmt"/>
-                  </xsl:call-template>
-                </td>
-              </tr>
+								<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+									<xsl:call-template name="PopulateAmount">
+										<xsl:with-param name="TargetNode" select="$Form990Data/AllOtherExpensesGrp/TotalAmt"/>
+									</xsl:call-template>
+								</td>
+								<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+									<xsl:call-template name="PopulateAmount">
+										<xsl:with-param name="TargetNode" select="$Form990Data/AllOtherExpensesGrp/ProgramServicesAmt"/>
+									</xsl:call-template>
+								</td>
+								<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+									<xsl:call-template name="PopulateAmount">
+										<xsl:with-param name="TargetNode" select="$Form990Data/AllOtherExpensesGrp/ManagementAndGeneralAmt"/>
+									</xsl:call-template>
+								</td>
+								<td class="styLNAmountBoxSmall" style="width:26mm;height:4.5mm;vertical-align:bottom;padding-right:0.75mm;">
+									<xsl:call-template name="PopulateAmount">
+										<xsl:with-param name="TargetNode" select="$Form990Data/AllOtherExpensesGrp/FundraisingAmt"/>
+									</xsl:call-template>
+								</td>
+							</tr>
             
               <tr>
                 <td class="styLNLeftNumBox" style="width:6mm;height:auto;">25</td>
@@ -8996,8 +9011,8 @@ trustees, and key employees
             <table class="styTable" style="font-size:7pt;width:187mm;" cellspacing="0">
             <thead>
                <tr>
-                <td class="styLNLeftNumBox" style="height:7.5mm;padding-left:3mm;"></td>
-                <td class="styLNDesc" style="width:105.2mm;height:7.5mm;" colspan="3"></td>
+                <td class="styLNLeftNumBox" style="height:7.5mm;padding-left:4mm;border-bottom:1px"></td>
+                <td class="styLNDesc" style="width:106mm;height:7.5mm;" colspan="3"></td>
                 <td class="styLNAmountBox" style="text-align:center;height:7.5mm;font-family:'Arial';">
                  <span style="width:1px;"/> <b>(A)</b>
                   <br/>Beginning of year
@@ -9016,11 +9031,11 @@ trustees, and key employees
             <tbody valign="top">
               <!-- Begin Part X Assets Section -->
              <tr>
-                 <td class="styIRS990VTImageBox" rowspan="19" valign="middle">
+                 <td class="styIRS990VTImageBox" rowspan="19" valign="middle" style="padding-left:.9mm;">
                   <img src="{$ImagePath}/990R_Assets.gif" alt="Assets"/>
               </td>
              <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;border-style: solid; border-color: black;border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;">1</td>
-                <td class="styLNDesc" style="width:100mm;height:4.5mm;border-style: solid; border-color: black;border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;" colspan="3">Cash&#8211;non-interest-bearing
+                <td class="styLNDesc" style="width:100.2mm;height:4.5mm;border-style: solid; border-color: black;border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;" colspan="3">Cash&#8211;non-interest-bearing
             
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm">........</span>
                 </td>
@@ -9437,11 +9452,11 @@ trustees, and key employees
             <tbody valign="top">
 																
               <tr>
-                 <td class="styIRS990VTImageBox" rowspan="11" valign="middle">
+                 <td class="styIRS990VTImageBox" rowspan="11" valign="middle" style="padding-right:0mm;">
                   <img src="{$ImagePath}/990R_Liabilities.gif" alt="Liabilities"/>
                 </td>
               <td class="styLNLeftNumBox" style="height:4.5mm;">17</td>
-                <td class="styLNDesc" style="width:99.2mm;height:4.5mm;" colspan="3">
+                <td class="styLNDesc" style="width:100.2mm;height:4.5mm;" colspan="3">
             Accounts payable and accrued expenses
             <span style="width:2px;"/>
                  
@@ -9468,7 +9483,7 @@ trustees, and key employees
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;">18</td>
-                <td class="styLNDesc" style="width:99.2mm;height:4.5mm;" colspan="3">
+                <td class="styLNDesc" style="width:100.2mm;height:4.5mm;" colspan="3">
             Grants payable
             <span style="width:2px;"/>
                  
@@ -9495,7 +9510,7 @@ trustees, and key employees
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;">19</td>
-                <td class="styLNDesc" style="width:99.2mm;height:4.5mm;" colspan="3">
+                <td class="styLNDesc" style="width:100.2mm;height:4.5mm;" colspan="3">
             Deferred revenue
             <span style="width:2px;"/>
                   
@@ -9522,7 +9537,7 @@ trustees, and key employees
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;">20</td>
-                <td class="styLNDesc" style="width:99.2mm;height:4.5mm;" colspan="3">
+                <td class="styLNDesc" style="width:100.2mm;height:4.5mm;" colspan="3">
             Tax-exempt bond liabilities
                         <span style="width:2px;"/>
                  
@@ -9549,7 +9564,7 @@ trustees, and key employees
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;">21</td>
-                <td class="styLNDesc" style="width:99.2mm;height:4.5mm;" colspan="3">
+                <td class="styLNDesc" style="width:100.2mm;height:4.5mm;" colspan="3">
             Escrow or custodial account liability. <span class="styNormalText">Complete Part IV of Schedule D</span>
                   <span style="width:2px;"/>
                  
@@ -9576,7 +9591,7 @@ trustees, and key employees
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:7.5mm;">22</td>
-                <td class="styLNDesc" style="width:99.2mm;height:7.5mm;" colspan="3">
+                <td class="styLNDesc" style="width:100.2mm;height:7.5mm;" colspan="3">
             Loans and other payables to current and former officers, directors, trustees, key employees, highest compensated employees, and disqualified <span style="width:2px;"/>
                 </td>
                 <td class="styLNAmountBoxNBB" style="height:7.5mm;background-color:lightgrey;">
@@ -9591,7 +9606,7 @@ trustees, and key employees
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;"/>
-                <td class="styLNDesc" style="width:99.2mm;height:4.5mm;" colspan="3">
+                <td class="styLNDesc" style="width:100.2mm;height:4.5mm;" colspan="3">
             persons. <span class="styNormalText">Complete Part II of Schedule L</span>
                   <span style="width:2px;"/>
                
@@ -9618,7 +9633,7 @@ trustees, and key employees
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;">23</td>
-                <td class="styLNDesc" style="width:99.2mm;height:4.5mm;" colspan="3">
+                <td class="styLNDesc" style="width:100.2mm;height:4.5mm;" colspan="3">
             Secured mortgages and notes payable to unrelated third parties
             <span style="width:2px;"/>
                   
@@ -9645,7 +9660,7 @@ trustees, and key employees
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;">24</td>
-                <td class="styLNDesc" style="width:99.2mm;height:4.5mm;" colspan="3">Unsecured notes and loans payable to unrelated third parties
+                <td class="styLNDesc" style="width:100.2mm;height:4.5mm;" colspan="3">Unsecured notes and loans payable to unrelated third parties
             <span style="width:2px;"/>
                  
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm">..</span>
@@ -9671,7 +9686,7 @@ trustees, and key employees
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:auto;">25</td>
-                <td class="styLNDesc" style="width:99.2mm;height:auto;" colspan="3">
+                <td class="styLNDesc" style="width:100.2mm;height:auto;" colspan="3">
             Other liabilities (including federal income tax, payables to related third parties, and other liabilities not included on lines 17-24). <span class="NormalText">Complete Part X of Schedule D</span>
                   <span style="width:2px;"/>
                 
@@ -9698,7 +9713,7 @@ trustees, and key employees
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:auto;border-bottom: solid black 1px;">26</td>
-                <td class="styLNDesc" style="width:99.2mm;height:auto;border-bottom: solid black 1px;" colspan="3">
+                <td class="styLNDesc" style="width:100.2mm;height:auto;border-bottom: solid black 1px;" colspan="3">
                   <span class="styBoldText">Total liabilities. </span>
                   <span class="NormalText"> Add lines 17 through 25</span>
                   <span style="width:2px;"/>
@@ -9731,7 +9746,7 @@ trustees, and key employees
            
             <tbody valign="top">
 			<tr>													
-             <td class="styIRS990VTImageBox" rowspan="13" valign="middle" style="border-bottom-width:0">
+             <td class="styIRS990VTImageBox" rowspan="13" valign="middle" style="border-bottom-width:0;padding-left:1.2mm;">
                   <img src="{$ImagePath}/990PF_NAFB.gif" alt="Net Assets or Fund Balance"/>
                 </td>
               <td class="styLNLeftNumBox" style="height:7.5;"/>
@@ -10944,7 +10959,7 @@ Special Condition Description</th>
                 </tr>
               </thead>
               <tfoot/>
-              <tbody valign="top">
+             
                 <xsl:for-each select="$Form990Data/OtherRevenueMiscGrp">
                   <tr>
                     <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
@@ -10983,7 +10998,7 @@ Special Condition Description</th>
                     </td>
                   </tr>
                 </xsl:for-each>
-              </tbody>
+              
             </table>
             <br/>
           </xsl:if>
@@ -11131,7 +11146,7 @@ Special Condition Description</th>
       <td class="styTableCellText" style="width:8mm;">
         <span class="styTableCellPad"/>
       </td>
-      <td class="styTableCellText" style="width:178mm;border-right-width:0px">
+      <td class="styTableCellText" style="width:8mm;border-right-width:0px">
         <span class="styTableCellPad"/>
       </td>
     </tr>

@@ -306,22 +306,16 @@
             <div style="height:8mm;width:187mm;">
               <div class="styLNLeftNumBox" style="height:3mm;width:8mm;"/>
               <div class="styLNDesc" style="width:179mm;height:3mm;">
-                <label>
-                  <xsl:call-template name="PopulateLabel">
-                    <xsl:with-param name="TargetNode" select="$FormData/VendorSalesUndyedDieselFuel/UndyedDieselUseExceptionInd"/>
-                    <xsl:with-param name="BackupName"/>
-                  </xsl:call-template>
-					<span class="styText" style="font-weight:bold;display:inline;">Exception. </span>
-					<span style="width:3px;clear:none"/>
-					<span class="styText" style="display:inline;">
-					  If any of the diesel fuel included in this claim</span>
-					<span class="styText" style="font-weight:bold;display:inline;">
-					  did</span>
-					<span class="styText" style="display:inline;">
-					  contain visible evidence of dye, attach an explanation and</span>
-					<span style="width:22mm;clear:none"/>
-					<span class="styText" style="text-align:bottom;display:inline;">check here</span>
-                </label>
+                <span class="styText" style="font-weight:bold;display:inline;">Exception. </span>
+                <span style="width:3px;clear:none"/>
+                <span class="styText" style="display:inline;">
+      If any of the diesel fuel included in this claim</span>
+                <span class="styText" style="font-weight:bold;display:inline;">
+      did</span>
+                <span class="styText" style="display:inline;">
+      contain visible evidence of dye, attach an explanation and</span>
+                <span style="width:22mm;clear:none"/>
+                <span class="styText" style="text-align:bottom;display:inline;">check here</span>
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$FormData/VendorSalesUndyedDieselFuel/UndyedDieselUseExceptionInd"/>
                 </xsl:call-template>
@@ -363,6 +357,12 @@
                     <xsl:with-param name="BackupName"/>
                   </xsl:call-template>
                 </input>
+                <label>
+                  <xsl:call-template name="PopulateLabel">
+                    <xsl:with-param name="TargetNode" select="$FormData/VendorSalesUndyedDieselFuel/UndyedDieselUseExceptionInd"/>
+                    <xsl:with-param name="BackupName"/>
+                  </xsl:call-template>
+                </label>
               </div>
             </div>
           </div>
@@ -504,19 +504,13 @@
             <div style="width:187mm;">
               <div class="styLNLeftNumBox" style="height:8mm;width:8mm;"/>
               <div class="styLNDesc" style="width:179mm;height:8mm;">
-                <label>
-                  <xsl:call-template name="PopulateLabel">
-                    <xsl:with-param name="TargetNode" select="$FormData/VendorSalesUndyedKeroseneFuel/SlsUndyedKeroseneExceptionInd"/>
-                    <xsl:with-param name="BackupName"/>
-                  </xsl:call-template>
-					<span class="styText" style="font-weight:bold;display:inline;">Exception. </span>
-					<span style="width:3px;clear:none"/>
-					<span class="styText" style="display:inline;">If any of the kerosene included in this claim </span>
-					<span class="styText" style="font-weight:bold;display:inline;">did </span>
-					<span class="styText" style="display:inline;">contain visible evidence of dye, attach an explanation and </span>
-					<span style="width:23mm;clear:none"/>
-					<span class="styText" style="text-align:bottom;display:inline;">check here</span>
-                </label>
+                <span class="styText" style="font-weight:bold;display:inline;">Exception. </span>
+                <span style="width:3px;clear:none"/>
+                <span class="styText" style="display:inline;">If any of the kerosene included in this claim </span>
+                <span class="styText" style="font-weight:bold;display:inline;">did </span>
+                <span class="styText" style="display:inline;">contain visible evidence of dye, attach an explanation and </span>
+                <span style="width:23mm;clear:none"/>
+                <span class="styText" style="text-align:bottom;display:inline;">check here</span>
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$FormData/VendorSalesUndyedKeroseneFuel/SlsUndyedKeroseneExceptionInd"/>
                 </xsl:call-template>
@@ -558,6 +552,12 @@
                     <xsl:with-param name="BackupName"/>
                   </xsl:call-template>
                 </input>
+                <label>
+                  <xsl:call-template name="PopulateLabel">
+                    <xsl:with-param name="TargetNode" select="$FormData/VendorSalesUndyedKeroseneFuel/SlsUndyedKeroseneExceptionInd"/>
+                    <xsl:with-param name="BackupName"/>
+                  </xsl:call-template>
+                </label>
               </div>
             </div>
           </div>

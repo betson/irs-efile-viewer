@@ -169,7 +169,7 @@
               <div class="styIRS8853LNDesc" style="width:35%;padding-left:0px;">
                 <span style="font-weight:normal;width:100%;padding-top:6mm;">
                   <xsl:choose>
-                    <xsl:when test="$Form8853Data/ArcherMSAAndMedcrAdvntgMSAGrp/MSAHolderSSN">
+                    <xsl:when test="normalize-space($Form8853Data/ArcherMSAAndMedcrAdvntgMSAGrp/MSAHolderSSN) !=''">
                       <xsl:call-template name="PopulateSSN">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/ArcherMSAAndMedcrAdvntgMSAGrp/MSAHolderSSN"/>
                         <xsl:with-param name="BackupName">Form8853DataMSAHolderSSN</xsl:with-param>

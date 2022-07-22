@@ -2401,39 +2401,45 @@ Describe in Part XIII the intended uses of the organization's endowment funds.
 		 </tr>
   
   <xsl:if test="($Print != $Separated) or count($FormData/OtherLiabilitiesOrgGrp) &lt;= 9">
-     <xsl:for-each select="$FormData/OtherLiabilitiesOrgGrp">
-	  <tr>
-	 <td class="styIRS990ScheduleDTableCellLB" style="width:100mm;height:auto;vertical-align:bottom;padding-right:0.75mm;border-left:0px;text-align:left;border-color:black"><!--(<xsl:number value="position()" format="1"/>)TEGE wants Federal Income Taxes hardcoded with a (1) in front and then increment the remaining liabilities starting with (2). IBM nor I could make it work. TEGE changed it to be a (1) in front of the Federal Income Taxes and no number in front of the other liabilities - RLJ 2010-->
-	<!-- (<xsl:number value="position()" format="1"/>)-->
-		<xsl:call-template name="PopulateText">
-			<xsl:with-param name="TargetNode" select="Desc"/>
-	</xsl:call-template></td>
-      <td class="styIRS990ScheduleDTableCellLB" style="width:35mm;height:auto;vertical-align:bottom;padding-right:0.75mm;border-left:0px;border-color:black">
-		<xsl:call-template name="PopulateAmount">
-			<xsl:with-param name="TargetNode" select="Amt"/>
-		</xsl:call-template></td>
-      <td class="styIRS990ScheduleDShadingCell" style="width:52mm;height:4.5mm;vertical-align:bottom;">
-</td>
- </tr>
- </xsl:for-each>
-    </xsl:if> 
+    <xsl:for-each select="$FormData/OtherLiabilitiesOrgGrp">
+		<tr>
+			<td class="styIRS990ScheduleDTableCellLB" style="width:100mm;height:auto;vertical-align:bottom;padding-right:0.75mm;
+				border-left:0px;text-align:left;border-color:black">
+				<!--(<xsl:number value="position()" format="1"/>)TEGE wants Federal Income Taxes hardcoded with a (1) in front and then increment the remaining liabilities 
+					starting with (2). IBM nor I could make it work. TEGE changed it to be a (1) in front of the Federal Income Taxes and no number in front of the other liabilities 
+					- RLJ 2010-->
+				<!-- (<xsl:number value="position()" format="1"/>)-->
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="Desc"/>
+				</xsl:call-template></td>
+				  <td class="styIRS990ScheduleDTableCellLB" style="width:35mm;height:auto;vertical-align:bottom;padding-right:0.75mm;border-left:0px;border-color:black">
+					<xsl:call-template name="PopulateAmount">
+						<xsl:with-param name="TargetNode" select="Amt"/>
+					</xsl:call-template>
+				  </td>
+				  <td class="styIRS990ScheduleDShadingCell" style="width:52mm;height:4.5mm;vertical-align:bottom;">
+				  </td>
+		</tr>
+	</xsl:for-each>
+ </xsl:if> 
 
  <xsl:if test="position()=1">
             </xsl:if>
- <xsl:if test="count($FormData/OtherLiabilitiesOrgGrp) &lt; 1 or             (($Print = $Separated) and (count($FormData/OtherLiabilitiesOrgGrp) &gt;9)) ">
- <tr>
-     	 <td class="styIRS990ScheduleDTableCellLB" style="width:100mm;height:auto;vertical-align:bottom;padding-right:0.75mm;border-left:0px;text-align:left;border-color:black">
-		<xsl:call-template name="PopulateAdditionalDataTableMessage">
-                <xsl:with-param name="TargetNode" select="$FormData/OtherAssetsOrgGrp"/>
-              </xsl:call-template>
- 		<span style="width:3px"/>
-</td>
-     <td class="styIRS990ScheduleDTableCellLB" style="width:35mm;height:auto;vertical-align:bottom;padding-right:0.75mm;border-left:0px;border-color:black">
-     </td>
-     <td class="styIRS990ScheduleDShadingCell" style="width:52mm;height:7.5mm;vertical-align:bottom;">
-</td>
- </tr>
-     </xsl:if> 
+ <xsl:if test="($Print = $Separated) and (count($FormData/OtherLiabilitiesOrgGrp) &gt;9) ">
+	 <tr>
+     	 <td class="styIRS990ScheduleDTableCellLB" style="width:100mm;height:auto;vertical-align:bottom;padding-right:0.75mm;
+			 border-left:0px;text-align:left;border-color:black">
+			<xsl:call-template name="PopulateAdditionalDataTableMessage">
+					<xsl:with-param name="TargetNode" select="$FormData/OtherAssetsOrgGrp"/>
+            </xsl:call-template>
+			<span style="width:3px"/>
+		 </td>
+		 <td class="styIRS990ScheduleDTableCellLB" style="width:35mm;height:auto;vertical-align:bottom;padding-right:0.75mm;border-left:0px;border-color:black">
+		 </td>
+		 <td class="styIRS990ScheduleDShadingCell" style="width:52mm;height:7.5mm;vertical-align:bottom;">
+		 </td>
+	 </tr>
+ </xsl:if> 
       <xsl:if test="count($FormData/OtherLiabilitiesOrgGrp) &lt; 2 or ((count($FormData/OtherLiabilitiesOrgGrp) &gt; 9) and ($Print = $Separated))">
 									<xsl:call-template name="IRS990SchDPartXTableFillerRow"><xsl:with-param name="index">(2)</xsl:with-param></xsl:call-template>
 								</xsl:if>

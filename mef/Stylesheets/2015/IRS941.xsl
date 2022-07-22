@@ -203,9 +203,9 @@
 									</xsl:call-template>
 								</xsl:variable>
 								<div style="width:49mm;float:none;clear:both;">
-									<div style="width:49mm;float:none;clear:both;">
-										<div style="width:49mm;padding-top:1.6mm;float:none;clear:both;">
-											<input type="checkbox" class="styCkbox" alt="First Quarter: January, February, March">
+									<div style="width:49mm;float:none;clear:both;padding-left:2mm;">
+										<div style="width:49mm;padding-top:1mm;float:none;clear:both;">
+											<input type="checkbox" alt="FirstQuarter" class="styCkbox">
 												<xsl:call-template name="PopulateEnumeratedCheckbox">
 													<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
 													<xsl:with-param name="DisplayedCheckboxValue" select="concat(substring($Date, 1, 5), '03')"/>
@@ -222,8 +222,8 @@
 											</label>
 										</div>
 										<div style="width:49mm;">
-											<div style="float:left;clear:none;padding-top:2.6mm;">
-												<input type="checkbox" class="styCkbox" alt="Second Quarter: April, May, June">
+											<div style="float:left;clear:none;padding-top:1mm;">
+												<input type="checkbox" alt="SecondQuarter" class="styCkbox">
 													<xsl:call-template name="PopulateEnumeratedCheckbox">
 														<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
 														<xsl:with-param name="DisplayedCheckboxValue" select="concat(substring($Date, 1, 5), '06')"/>
@@ -241,8 +241,8 @@
 											</div>
 										</div>
 										<div style="width:49mm;">
-											<div style="float:left;clear:none;padding-top:2.6mm;">
-												<input type="checkbox" class="styCkbox" alt="Third Quarter: July, August, September">
+											<div style="float:left;clear:none;padding-top:1mm;">
+												<input type="checkbox" alt="ThirdQuarter" class="styCkbox">
 													<xsl:call-template name="PopulateEnumeratedCheckbox">
 														<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
 														<xsl:with-param name="DisplayedCheckboxValue" select="concat(substring($Date, 1, 5), '09')"/>
@@ -260,8 +260,8 @@
 											</div>
 										</div>
 										<div style="width:49mm;">
-											<div style="float:left;clear:none;padding-top:2.6mm;padding-bottom:1.6mm;">
-												<input type="checkbox" class="styCkbox" alt="Fourth Quarter: October, November, December">
+											<div style="float:left;clear:none;padding-top:1mm;padding-bottom:1mm;">
+												<input type="checkbox" alt="FourthQuarter" class="styCkbox">
 													<xsl:call-template name="PopulateEnumeratedCheckbox">
 														<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
 														<xsl:with-param name="DisplayedCheckboxValue" select="concat(substring($Date, 1, 5), '12')"/>
@@ -963,7 +963,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/DiscussWithThirdPartyYesGrp/DiscussWithThirdPartyYesInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" alt="Yes, you may discuss the return with a third party">
+								<input type="checkbox" alt="Yes" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$RtnHdrData/DiscussWithThirdPartyYesGrp/DiscussWithThirdPartyYesInd"/>
 										<xsl:with-param name="BackupName">941DiscussWithThirdPartyYesInd</xsl:with-param>
@@ -985,7 +985,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/DiscussWithThirdPartyNoInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" alt="No, do not discuss the return with a third party">
+								<input type="checkbox" class="styCkbox" alt="No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$RtnHdrData/DiscussWithThirdPartyNoInd"/>
 										<xsl:with-param name="BackupName">941DiscussWithThirdPartyNoInd</xsl:with-param>

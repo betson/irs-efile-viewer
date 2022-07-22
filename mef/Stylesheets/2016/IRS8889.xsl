@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 08/09/2016 -->
+<!-- Last Modified by Eugenia McDonald on 04/20/2017 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -89,14 +89,14 @@
 						<div class="styNameBox" style="width:105mm;height:9mm;font-size:7pt;">
 							Name(s) shown on Form 1040 or Form 1040NR<br/>
 							<xsl:choose>
-								<xsl:when test="$Form8889Data/PersonNm">
+								<xsl:when test="normalize-space($Form8889Data/PersonNm) !=''">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$Form8889Data/PersonNm"/>
 									</xsl:call-template>
 								</xsl:when>
 								<xsl:otherwise>
 									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">Name</xsl:with-param>
+										<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
 									</xsl:call-template>
 								</xsl:otherwise>
 							</xsl:choose>
@@ -109,7 +109,7 @@
 						<div class="styEINBox" style="width:30mm;height:9mm;font-size:7pt;padding-left:2mm;padding-top:3mm;">
 							<span class="styEINFld" style="width:30mm; text-align:center;font-weight:normal;">
 								<xsl:choose>
-									<xsl:when test="$Form8889Data/RecipientSSN">
+									<xsl:when test="normalize-space($Form8889Data/RecipientSSN) !=''">
 										<xsl:call-template name="PopulateSSN">
 											<xsl:with-param name="TargetNode" select="$Form8889Data/RecipientSSN"/>
 										</xsl:call-template>

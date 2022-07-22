@@ -402,14 +402,9 @@
 					<!-- BEGIN LINE 8 -->
 					<div class="styBB" style="width:187mm;border-bottom-width:1px;">
 						<div class="styLNLeftNumBoxSD">8a</div>
-						<div class="styLNDesc" style="width:46.5mm;">
-							Annual contribution amount.<br />
-							<span style="float:left;font-size:7pt;">Multiply line 3 by line 7</span>
-							<span style="float:right;font-weight:bold;padding-right:3mm;">
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.														
-							</span>
+						<div class="styLNDesc" style="width:46.5mm;;font-size:6.5pt;font-family:Arial;padding-top:1mm;">
+							Annual contribution amount.
+							Multiply line 3 by line 7.  Round to nearest whole dollar amount
 						</div>
 						<div class="styLNRightNumBox" style="height:7mm;padding-top:3.8mm;border-bottom:0px solid black;">8a</div>
 						<div class="styLNAmountBox" style="font-size:6pt;height:7mm;width:29mm;padding-top:3.8mm;border-right:1px solid black;border-bottom:0px solid black;">
@@ -509,9 +504,9 @@
 					<div class="styBB" style="width:187mm;">
 						<div class="styAnnMonTblTitlesA1" style="padding-top:3.5mm;">Annual<br />Calculation</div>
 						<div class="styAnnMonTblTitlesB1"><b>(a)</b> Annual enrollment<br />premiums
-							 <span style="font-size:6pt;">(Form(s)<br />1095-A, line 33a)</span></div>
+							 <span style="font-size:6pt;">(Form(s)<br />1095-A, line 33A)</span></div>
 						<div class="styAnnMonTblTitlesC1"><b>(b)</b> Annual applicable<br />SLCSP premium<br />
-							<span style="font-size:6pt;">(Form(s) 1095-A,<br />line 33b)</span></div>
+							<span style="font-size:6pt;">(Form(s) 1095-A,<br />line 33B)</span></div>
 						<div class="styAnnMonTblTitlesC1" style="padding-top:1mm;"><b>(c)</b> Annual contribution amount
 							 <span style="font-size:6pt;">(Line 8a)</span></div>
 						<div class="styAnnMonTblTitlesC1"><b>(d)</b> Annual maximum premium assistance 
@@ -519,7 +514,7 @@
 						<div class="styAnnMonTblTitlesC1" style="padding-top:1mm;"><b>(e)</b> Annual premium tax credit allowed
 							 <span style="font-size:6pt;">(smaller of (a) or (d))</span></div>
 						<div class="styAnnMonTblTitlesC1"><b>(f)</b> Annual advance payment of PTC
-							 <span style="font-size:6pt;">(Form(s) 1095-A, line 33c)</span></div>
+							 <span style="font-size:6pt;">(Form(s) 1095-A, line 33C)</span></div>
 					</div>
 					<!-- BEGIN LINE 11 -->					
 					<div class="styBB" style="width:187mm;">
@@ -564,9 +559,9 @@
 					<div class="styBB" style="width:187mm;">
 						<div class="styAnnMonTblTitlesA2" style="padding-top:7mm;">Monthly<br />Calculation</div>
 						<div class="styAnnMonTblTitlesB2" style="padding-top:3mm;"><b>(a)</b> Monthly enrollment premiums 
-						<span style="font-size:6pt;">(Form(s) 1095-A, lines 21–32, column a)</span></div>
+						<span style="font-size:6pt;">(Form(s) 1095-A, lines 21–32, column A)</span></div>
 						<div class="styAnnMonTblTitlesC2" style="padding-top:3mm;"><b>(b)</b> Monthly applicable SLCSP premium
-							 <span style="font-size:6pt;">(Form(s) 1095-A, lines 21–32, column b)</span></div>
+							 <span style="font-size:6pt;">(Form(s) 1095-A, lines 21–32, column B)</span></div>
 						<div class="styAnnMonTblTitlesC2"><b>(c)</b> Monthly contribution amount
 							 <span style="font-size:6pt;">(amount from line 8b or alternative marriage monthly calculation)</span></div>
 						<div class="styAnnMonTblTitlesC2" style="padding-top:5mm;"><b>(d)</b> Monthly maximum premium assistance
@@ -574,7 +569,7 @@
 						<div class="styAnnMonTblTitlesC2" style="padding-top:5mm;"><b>(e)</b> Monthly premium tax credit allowed
 							 <span style="font-size:6pt;">(smaller of (a) or (d))</span></div>
 						<div class="styAnnMonTblTitlesC2" style="padding-top:3mm;"><b>(f)</b> Monthly advance payment of PTC
-							 <span style="font-size:6pt;">(Form(s) 1095-A, lines 21–32, column c)</span></div>
+							 <span style="font-size:6pt;">(Form(s) 1095-A, lines 21–32, column C)</span></div>
 					</div>
 					<!-- BEGIN LINE 12 -->
 					<div class="styBB" style="width:187mm;">
@@ -1333,7 +1328,14 @@
 						<div class="styPartDesc" style="width:187mm;padding-left:0mm;">Allocation <xsl:value-of select="position()" /></div>
 					</div>
 					<div class="styBB" style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:22.4mm"><xsl:value-of select="position()+29"/></div>
+						<xsl:choose>
+							<xsl:when test="position() &lt; 5">
+								<div class="styLNLeftNumBox" style="height:22.4mm"><xsl:value-of select="position()+29"/></div>
+							</xsl:when>
+							<xsl:otherwise>
+								<div class="styLNLeftNumBox" style="height:22.4mm"></div>
+							</xsl:otherwise>
+						</xsl:choose>
 						<div style="height:100%;float:left;">
 						<div class="styPart4A"><b>(a)</b> Policy Number (Form 1095-A, line 2)<br />						
 							<xsl:call-template name="PopulateText">
@@ -1425,7 +1427,7 @@
 								<xsl:with-param name="TargetNode" select="$FormData/SharedPolicyAllocationInfoInd"/>
 								<xsl:with-param name="BackupName">IRS8962SharedPolicyAllocationInfoInd</xsl:with-param>
 							</xsl:call-template>							
-						<span style="width:5px;" /><b>No. </b></label> See the instructions to report additional amount policy allocations.</div>					
+						<span style="width:5px;" /><b>No. </b></label> See the instructions to report additional policy amount allocations.</div>					
 					</div>
 					<!-- END LINE 34 -->
 					<div class="styBB" style="width:187mm;">		

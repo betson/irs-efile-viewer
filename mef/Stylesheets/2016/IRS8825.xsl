@@ -29,14 +29,16 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-					<xsl:if test="not($Print) or $Print=''"> 
-					<!-- Form 8825 CSS Styles are located in the template called below -->
-					<xsl:call-template name="IRS8825Style"/>
-					<xsl:call-template name="AddOnStyle"/>
-				 </xsl:if>
+				<!-- Form 8825 CSS Styles are located in the template called below -->
+					<!--<xsl:if test="not($Print) or $Print=''"> -->					
+						<xsl:call-template name="IRS8825Style"/>
+						<xsl:call-template name="AddOnStyle"/>
+				    <!--</xsl:if>-->
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
+			<!-- Form Design: Line 1 to Line 17 repeat this is the reason why page 2 do not exist for electronic filing -->
+			<!-- Form Design: Since Line 2 to Line 17 repeat as a GROUP it is redundant for Line 15 to display "See additional Data table" --> 
 			<body class="styBodyClass" style="width:187mm">
 				<form name="Form8825">
 					<xsl:call-template name="DocumentHeader"/>
@@ -79,68 +81,27 @@
 					<!-- End Form Number and Name section -->
 					<!-- Begin Names and Identifying number section -->
 					<div class="styBB" style="width:187mm; height:9mm;border-bottom-width:1px;">
-						<div class="styNameBox" style="width:131mm; height:9mm;font-size:7pt;">
-							Name
-							<br/>
-							  <!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
-							  <xsl:choose>
-							  <!-- Name from 1120/990/1065 Return Header -->
-								<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
-								  <xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-								  </xsl:call-template>
-								  <br/>
-								  <xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
-								  </xsl:call-template>
-								</xsl:when>
-								<!-- Name from 1040 Return Header -->
-								<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
-								  <br/>
-								  <xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
-								  </xsl:call-template>
-								</xsl:when>
-								<!-- Name from 1041 Return Header 
-								<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
-								  <xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
-								  </xsl:call-template>
-								  <br/>
-								  <xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
-								  </xsl:call-template>
-								</xsl:when>
-								<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
-								  <xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
-								  </xsl:call-template>
-								  <br/>
-								</xsl:when> -->
-							  </xsl:choose>
+					  <div class="styNameBox" style="width:131mm; height:9mm;font-size:7pt;">
+						Name
+						  <br/>
+						  <!-- Choice between 1120, 1065, 1041 and 1040 Return Header Filer info -->
+						  <xsl:call-template name="PopulateFilerName">
+							<xsl:with-param name="TargetNode" select="$Form8825Data"/>
+						  </xsl:call-template>	
 						</div>
 						<div class="styEINBox" style="width:46mm;font-size:7pt;padding-left:1mm;">
-							<div style="height:4mm">
-								Employer identification number
-							</div>
-							<div style="text-align:left;padding-top:1.5mm;height:5mm;font-weight:normal;">
-							<!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
-							<xsl:choose>
-							  <xsl:when test="$RtnHdrData/Filer/EIN">
-								<xsl:call-template name="PopulateReturnHeaderFiler">
-								  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-								</xsl:call-template>
-							  </xsl:when>
-							  <xsl:otherwise>
-								<xsl:call-template name="PopulateReturnHeaderFiler">
-								  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-								</xsl:call-template>
-							  </xsl:otherwise>
-							</xsl:choose>
-							</div>
+						  <div style="height:4mm">
+							Employer identification number
+						  </div>
+						  <div style="text-align:left;padding-top:1.5mm;height:5mm;font-weight:normal;">
+							<!-- Choice between 1120, 1065, 1041, and 1040 Return Header Filer info -->
+							<xsl:call-template name="PopulateFilerTIN">
+							  <xsl:with-param name="TargetNode" select="$Form8825Data"/>
+							</xsl:call-template>
+						  </div>
 						</div>
-					</div>
-					<!-- ******************************************************************************** -->
+					  </div>
+					  <!-- ******************************************************************************** -->
 			<!-- Lines 1 - 16 -->
 			<xsl:if test="$Form8825Data/RentalIncomeExpensesGrp">
 				<!-- If the Print parameter is not Separated, or there are fewer elements than the container height -->
@@ -154,7 +115,7 @@
 								<xsl:variable name="btnID" select="concat('RentBtnID', $pos)"/>
 								<xsl:variable name="OtherRowCount" select="(count($Form8825Data/RentalIncomeExpensesGrp[$pos]/OtherRentalRealEstExpenseGrp)            + count($Form8825Data/RentalIncomeExpensesGrp[$pos+1]/OtherRentalRealEstExpenseGrp)           + count($Form8825Data/RentalIncomeExpensesGrp[$pos+2]/OtherRentalRealEstExpenseGrp)            + count($Form8825Data/RentalIncomeExpensesGrp[$pos+3]/OtherRentalRealEstExpenseGrp))"/>
 			<!--the top border of the repating table will not show in the second table if border-top-width = 0-->
-			<div class="styBB" style="width:187mm;clear:both;float:none;border-bottom:0;border-top-width:1px;">
+			<div class="styBB" style="width:187mm;clear:both;float:none;border-bottom-width:1px;border-top-width:1px;">
 				<table class="styTable" cellspacing="0" cellname="TYTable" id="TYTable" 
 				summary="Table for displaying the kind and location of each property" >
 					<thead>
@@ -197,7 +158,7 @@
 										<td class="styForm8825TableCellNoBorder " scope="row" 
 										style="width:5mm;border-bottom:0;border-right:1 solid black;text-align:left;padding-left:3.5mm;">
 											<xsl:if test="(position() mod 4 = 0)">
-												<xsl:attribute name="style">width:5mm;border-right:1 solid black;text-align:left;padding-left:3.5mm;</xsl:attribute>
+												<xsl:attribute name="style">width:5mm;border-right:1 solid black;text-align:left;padding-left:3.5mm;border-bottom:0;</xsl:attribute>
 											</xsl:if>
 											<xsl:call-template name="AddPositionNumber"/>
 											<span class="styTableCellPad"/>
@@ -205,7 +166,7 @@
 										<td class="styForm8825TableCellNoBorder" 
 										style="width:82mm;border-bottom:0;border-right:1 solid black; text-align:left;" valign="bottom">
 											<xsl:if test="(position() mod 4 = 0)">
-												<xsl:attribute name="style">width:82mm;border-right:1 solid black;text-align:left;</xsl:attribute>
+												<xsl:attribute name="style">width:82mm;border-right:1 solid black;text-align:left;border-bottom:0;</xsl:attribute>
 											</xsl:if>
 											<xsl:choose>
 												<xsl:when test="USAddress">
@@ -224,7 +185,7 @@
 										<td class="styForm8825TableCellNoBorder" 
 										style="width:32mm;border-bottom:0;border-right:1 solid black;text-align:center;" valign="bottom">
 											<xsl:if test="(position() mod 4 = 0)">
-												<xsl:attribute name="style">width:32mm;border-right:1 solid black;text-align:center;</xsl:attribute>
+												<xsl:attribute name="style">width:32mm;border-right:1 solid black;text-align:center;border-bottom:0;</xsl:attribute>
 											</xsl:if>
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$Form8825Data/RentalAddressGrp[$index]/RentalTypeDesc"/>
@@ -234,7 +195,7 @@
 										<td class="styForm8825TableCellNoBorder" 
 										style="width:32mm;border-bottom:0;border-right:1 solid black;text-align:center;" valign="bottom">
 											<xsl:if test="(position() mod 4 = 0)">
-												<xsl:attribute name="style">width:32mm;border-right:1 solid black;text-align:center;</xsl:attribute>
+												<xsl:attribute name="style">width:32mm;border-right:1 solid black;text-align:center;border-bottom:0;</xsl:attribute>
 											</xsl:if>
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$Form8825Data/RentalAddressGrp[$index]/FairRentalDaysCnt"/>
@@ -244,7 +205,7 @@
 										<td class="styForm8825TableCellNoBorder" 
 										style="width:32mm;text-align:center;border-right-width:0px;border-bottom:0" valign="bottom">
 											<xsl:if test="(position() mod 4 = 0)">
-												<xsl:attribute name="style">text-align:center;border-right-width:0px;</xsl:attribute>
+												<xsl:attribute name="style">text-align:center;border-right-width:0px;border-bottom:0;</xsl:attribute>
 											</xsl:if>
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$Form8825Data/RentalAddressGrp[$index]/PersonalUseDaysCnt"/>
@@ -412,100 +373,113 @@
 							</xsl:if>
 						</xsl:for-each>
 					</xsl:if>
-					<xsl:if test="count($Form8825Data/RentalAddressGrp) &lt; 1 or (($Print = $Separated) and (count($Form8825Data/RentalAddressGrp) &gt; 4)) ">
-						<tr style="height:8mm;font-size:7pt">
-							<td style="width:5mm;border-right:1 solid black;border-bottom:1 solid black;text-align:left;padding-left:3.5mm;">
-								<span class="styBoldText"> A </span>
+					      <!-- BEGIN BLANK Row A  for separate  -->
+					      <xsl:if test="count($Form8825Data/RentalAddressGrp) &lt; 1 or (($Print = $Separated) and (count($Form8825Data/RentalAddressGrp) &gt; 4)) ">
+
+						    <tr style="height:10mm; font-size:7pt">
+							  <td style="width:5mm; border-right:1px solid black;border-top:1px solid black;text-align:left;padding-left:3.5mm;">
+							    <span class="styBoldText"> A </span>
 								<span class="styTableCellPad"/>
-							</td>
-							<xsl:choose>
+							  </td>
+							  <xsl:choose>
 								<xsl:when test="($Print = $Separated)">
-									<td style="width:82mm;text-align:left;border-right:1 solid black;border-bottom:0 solid black;">
-										<xsl:call-template name="PopulateAdditionalDataTableMessage">
-											<xsl:with-param name="TargetNode" select="$Form8825Data/RentalAddressGrp"/>
-										</xsl:call-template>
-										<span class="styTableCellPad"/>
-									</td>
+								  <td style="width:82mm;text-align:left;border-right:1px solid black;border-top:1px solid black;">
+									<xsl:call-template name="PopulateAdditionalDataTableMessage">
+									  <xsl:with-param name="TargetNode" select="$Form8825Data/RentalAddressGrp"/>
+									</xsl:call-template>
+									<span class="styTableCellPad"/>
+								  </td>
 								</xsl:when>
 								<xsl:otherwise>
-									<td style="width:82mm;text-align:left;border-right:1 solid black;border-bottom:1 solid black;">
-										<span class="styTableCellPad"/>
-									</td>
+								  <td style="width:82mm;text-align:left;border-right:1px solid black;border-top:1px solid black;">
+									<span class="styTableCellPad"/>
+								  </td>
 								</xsl:otherwise>
-							</xsl:choose>
-							<td style="width:32mm;text-align:left;border-right:1 solid black;border-bottom:1 solid black;">
+							  </xsl:choose>
+							  <td style="width:32mm;text-align:left;border-right:1px solid black;border-top:1px solid black;">
 								<span class="styTableCellPad"/>
-							</td>
-							<td style="width:32mm;text-align:left;border-right:1 solid black;border-bottom:1 solid black;">
+							  </td>
+							  <td style="width:32mm;text-align:left;border-right:1px solid black;border-top:1px solid black;">
 								<span class="styTableCellPad"/>
-							</td>
-							<td style="width:32mm;text-align:left;border-bottom:1 solid black;">
+							  </td>
+							  <td style="width:32mm;text-align:left;border-top:1px solid black;">
 								<span class="styTableCellPad"/>
-							</td>
-						</tr>
-					</xsl:if>
-					<xsl:if test="count($Form8825Data/RentalAddressGrp) &lt; 2 or (($Print = $Separated) and (count($Form8825Data/RentalAddressGrp) &gt; 4)) ">
-						<tr style="height:6mm;font-size:7pt;">
-							<td style="width:5mm;text-align:left;padding-left:3.5mm;border-right:1 solid black;border-bottom:1 solid black;">
+							  </td>
+						    </tr>
+
+					      </xsl:if>
+					      <!-- BEGIN BLANK Row B -->
+					      <xsl:if test="count($Form8825Data/RentalAddressGrp) &lt; 2 or (($Print = $Separated) and (count($Form8825Data/RentalAddressGrp) &gt; 4)) ">
+
+					      		<tr style="height:10mm; font-size:7pt;">
+									<td class="styForm8825TableCellNoBorder " scope="row" style="width:5mm; border-bottom:0; border-right:1 solid black; text-align:left; padding-left:3.5mm;">
 								<span class="styBoldText"> B </span>
 								<span class="styTableCellPad"/>
-							</td>
-							<td style="width:82mm;text-align:left;border-right:1 solid black;border-bottom:1 solid black;">
-								<span class="styTableCellPad"/>
-							</td>
-							<td style="width:32mm;text-align:left;border-right:1 solid black;border-bottom:1 solid black;">
-								<span class="styTableCellPad"/>
-							</td>
-							<td style="width:32mm;text-align:left;border-right:1 solid black;border-bottom:1 solid black;">
-								<span class="styTableCellPad"/>
-							</td>
-							<td style="width:32mm;text-align:left;border-bottom:1 solid black;">
-								<span class="styTableCellPad"/>
-							</td>
-						</tr>
-					</xsl:if>
-					<xsl:if test="count($Form8825Data/RentalAddressGrp) &lt; 3 or (($Print = $Separated) and (count($Form8825Data/RentalAddressGrp) &gt; 4)) ">
-						<tr style="height:6mm;font-size:7pt;">
-							<td style="width:5mm;text-align:left;padding-left:3.5mm;border-right:1 solid black;border-bottom:1 solid black;">
+									</td>
+									<td class="styForm8825TableCellNoBorder" style="width:82mm; border-bottom:0; border-right:1 solid black; text-align:left;" valign="bottom">
+									  <span class="styTableCellPad"/>
+									</td>
+									<td class="styForm8825TableCellNoBorder" style="width:32mm; border-bottom:0; border-right:1 solid black; text-align:center;" valign="bottom">
+									  <span class="styTableCellPad"/>
+									</td>
+									<td class="styForm8825TableCellNoBorder" style="width:32mm; border-bottom:0; border-right:1 solid black; text-align:center;" valign="bottom">
+									  <span class="styTableCellPad"/>
+									</td>
+									<td class="styForm8825TableCellNoBorder" style="width:32mm; text-align:center; border-right-width:0px; border-bottom:0;" valign="bottom">
+									  <span class="styTableCellPad"/>
+									</td>
+								  </tr>
+
+					      </xsl:if>
+					      <!-- BEGIN BLANK Row C -->
+					      <xsl:if test="count($Form8825Data/RentalAddressGrp) &lt; 3 or (($Print = $Separated) and (count($Form8825Data/RentalAddressGrp) &gt; 4)) ">
+
+					      		<tr style="height:10mm; font-size:7pt;">
+									<td class="styForm8825TableCellNoBorder " scope="row" style="width:5mm; border-bottom:0; border-right:1 solid black; text-align:left; padding-left:3.5mm;">
 								<span class="styBoldText"> C </span>
 								<span class="styTableCellPad"/>
-							</td>
-							<td style="width:82mm;text-align:left;border-right:1 solid black;border-bottom:1 solid black;">
-								<span class="styTableCellPad"/>
-							</td>
-							<td style="width:32mm;text-align:left;border-right:1 solid black;border-bottom:1 solid black;">
-								<span class="styTableCellPad"/>
-							</td>
-							<td style="width:32mm;text-align:left;border-right:1 solid black;border-bottom:1 solid black;">
-								<span class="styTableCellPad"/>
-							</td>
-							<td style="width:32mm;text-align:left;border-bottom:1 solid black;">
-								<span class="styTableCellPad"/>
-							</td>
-						</tr>
-					</xsl:if>
-					<xsl:if test="count($Form8825Data/RentalAddressGrp) &lt; 4 or (($Print = $Separated) and (count($Form8825Data/RentalAddressGrp) &gt; 4)) ">
-						<tr style="height:6mm;font-size:7pt;">
-							<td style="width:5mm;text-align:left;padding-left:3.5mm;border-right:1 solid black;">
+									</td>
+									<td class="styForm8825TableCellNoBorder" style="width:82mm; border-bottom:0; border-right:1 solid black; text-align:left;" valign="bottom">
+									  <span class="styTableCellPad"/>
+									</td>
+									<td class="styForm8825TableCellNoBorder" style="width:32mm; border-bottom:0; border-right:1 solid black; text-align:center;" valign="bottom">
+									  <span class="styTableCellPad"/>
+									</td>
+									<td class="styForm8825TableCellNoBorder" style="width:32mm; border-bottom:0; border-right:1 solid black; text-align:center;" valign="bottom">
+									  <span class="styTableCellPad"/>
+									</td>
+									<td class="styForm8825TableCellNoBorder" style="width:32mm; text-align:center; border-right-width:0px; border-bottom:0;" valign="bottom">
+									  <span class="styTableCellPad"/>
+									</td>
+								  </tr>
+
+					      </xsl:if>
+					      <!-- BEGIN BLANK Row D -->
+					      <xsl:if test="count($Form8825Data/RentalAddressGrp) &lt; 4 or (($Print = $Separated) and (count($Form8825Data/RentalAddressGrp) &gt; 4)) ">
+					      
+					      		<tr style="height:10mm; font-size:7pt;">
+									<td class="styForm8825TableCellNoBorder " scope="row" style="width:5mm; border-bottom:0; border-right:1 solid black; text-align:left; padding-left:3.5mm;">
 								<span class="styBoldText"> D </span>
 								<span class="styTableCellPad"/>
-							</td>
-							<td style="width:82mm;text-align:left;border-right:1 solid black;">
-								<span class="styTableCellPad"/>
-							</td>
-							<td style="width:32mm;text-align:left;border-right:1 solid black;">
-								<span class="styTableCellPad"/>
-							</td>
-							<td style="width:32mm;text-align:left;border-right:1 solid black;">
-								<span class="styTableCellPad"/>
-							</td>
-							<td style="width:32mm;text-align:left;">
-								<span class="styTableCellPad"/>
-							</td>
-						</tr>
-					</xsl:if>
-				</table>
-			</div>
+									</td>
+									<td class="styForm8825TableCellNoBorder" style="width:82mm; border-bottom:0; border-right:1 solid black; text-align:left;" valign="bottom">
+									  <span class="styTableCellPad"/>
+									</td>
+									<td class="styForm8825TableCellNoBorder" style="width:32mm; border-bottom:0; border-right:1 solid black; text-align:center;" valign="bottom">
+									  <span class="styTableCellPad"/>
+									</td>
+									<td class="styForm8825TableCellNoBorder" style="width:32mm; border-bottom:0; border-right:1 solid black; text-align:center;" valign="bottom">
+									  <span class="styTableCellPad"/>
+									</td>
+									<td class="styForm8825TableCellNoBorder" style="width:32mm; text-align:center; border-right-width:0px; border-bottom:0;" valign="bottom">
+									  <span class="styTableCellPad"/>
+									</td>
+								  </tr>
+
+					      </xsl:if>
+				        </table>
+			          </div>
+			          <!-- BEGIN Line 2 -17 -->
 					<table cellspacing="0" class="styTable" style="border-color:black;border-top: solid black 2px;" 
 					summary="Table for displaying the rental real estate properties there income and expenses">
 						<thead class="styTableThead">
@@ -1125,7 +1099,7 @@
 									</xsl:call-template>
 								</td>
 							</tr>
-							<!--Row 15 Begins -->
+							<!--Row 15 or line 15 Begins -->
 							<!--  RowCount gives the total count of all the 'Other' s-->
 							<!--  Removed sum -->
 							<xsl:variable name="RowCount" select="(count($Form8825Data/RentalIncomeExpensesGrp[$pos]/OtherRentalRealEstExpenseGrp)                   + count($Form8825Data/RentalIncomeExpensesGrp[$pos+1]/OtherRentalRealEstExpenseGrp)                   + count($Form8825Data/RentalIncomeExpensesGrp[$pos+2]/OtherRentalRealEstExpenseGrp)                    +count($Form8825Data/RentalIncomeExpensesGrp[$pos+3]/OtherRentalRealEstExpenseGrp))"/>
@@ -1142,8 +1116,9 @@
 										<span class="" style="width:45mm;border-bottom:1 solid black;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
-											</xsl:call-template>
+											</xsl:call-template>											
 										</span>
+										<span class="styTableCellPad"/>
 									</div>
 								</td>
 								<td class="styForm8825TableCellSmallRB" style="width:5mm;font-size:7pt;font-weight:bold;border-right-width: 0px;">
@@ -1222,7 +1197,7 @@
 													</xsl:choose>
 												</div>
 											</td>
-											<td class="styForm8825TableCellSmallRB" style="width:5mm;font-size:7pt;                 font-weight:bold;vertical-align:center;border-right-width: 0px;">
+											<td class="styForm8825TableCellSmallRB" style="width:5mm;font-size:7pt;font-weight:bold;vertical-align:center;border-right-width: 0px;">
 												<xsl:attribute name="rowspan"><xsl:value-of select="$RowCount">
 												</xsl:value-of></xsl:attribute>
 												<span style="padding-left:.8mm">15</span>
@@ -1237,16 +1212,16 @@
 														border:1 solid black;font-size:7pt;border-right-width:0px;
 														border-top-width:0px;border-left-width:0px;border-bottom-width:1px
 														</xsl:attribute>
-														<div class="styGenericDiv" style="width:8mm;font-weight:bold;"/>
-														<span class="styFixedUnderline" style="width:62mm;float:left;border-bottom-width: 0px;">
+														<span class="styTableCellPad" style="float:left;width:8mm;">&#160;</span>
+														<span class="styFixedUnderline" style="width:62mm;border-bottom-width: 0px;">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 															</xsl:call-template>
 														</span>
 													</xsl:when>
 													<xsl:otherwise>
-														<div class="styGenericDiv" style="width:8mm;font-weight:bold;"/>
-														<span class="styFixedUnderline" style="width:62mm;float:left;">
+														<span class="styTableCellPad" style="float:left;width:8mm;">&#160;</span>
+														<span class="styFixedUnderline" style="width:62mm;">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 															</xsl:call-template>
@@ -1319,16 +1294,16 @@
 													<xsl:when test="position()=last() and ($ThirdCol+$FourthCol) = 0">
 														<xsl:attribute name="style">border:1 solid black;font-size:7pt;border-right-width:0px;
 														border-top-width:0px;border-left-width:0px;border-bottom-width:1px</xsl:attribute>
-														<div class="styGenericDiv" style="width:8mm;font-weight:bold;"/>
-														<span class="styFixedUnderline" style="width:62mm;float:left;border-bottom:0 solid black;">
+														<span class="styTableCellPad" style="float:left;width:8mm;">&#160;</span>
+														<span class="styFixedUnderline" style="width:62mm;border-bottom:0px solid black;">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 															</xsl:call-template>
 														</span>
 													</xsl:when>
 													<xsl:otherwise>
-														<div class="styGenericDiv" style="width:8mm;font-weight:bold;"/>
-														<span class="styFixedUnderline" style="width:62mm;float:left;">
+														<span class="styTableCellPad" style="float:left;width:8mm;">&#160;</span>
+														<span class="styFixedUnderline" style="width:62mm;">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 															</xsl:call-template>
@@ -1401,16 +1376,16 @@
 													<xsl:when test="position()=last() and (($FourthCol) = 0)">
 														<xsl:attribute name="style">border:1 solid black;font-size:7pt;border-right-width:0px;
 														border-top-width:0px;border-left-width:0px;border-bottom-width:1px</xsl:attribute>
-														<div class="styGenericDiv" style="width:8mm;font-weight:bold;"/>
-														<span class="styFixedUnderline" style="width:62mm;float:left;border-bottom:0 solid black;">
+														<span class="styTableCellPad" style="float:left;width:8mm;">&#160;</span>
+														<span class="styFixedUnderline" style="width:62mm;border-bottom:0px solid black;">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 															</xsl:call-template>
 														</span>
 													</xsl:when>
 													<xsl:otherwise>
-														<div class="styGenericDiv" style="width:8mm;font-weight:bold;"/>
-														<span class="styFixedUnderline" style="width:62mm;float:left;">
+														<span class="styTableCellPad" style="float:left;width:8mm;">&#160;</span>
+														<span class="styFixedUnderline" style="width:62mm;">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 															</xsl:call-template>
@@ -1482,16 +1457,16 @@
 													<xsl:when test="position()=last()">
 														<xsl:attribute name="style">border:1 solid black;font-size:7pt;border-right-width:0px;
 														border-top-width:0px;border-left-width:0px;border-bottom-width:1px</xsl:attribute>
-														<div class="styGenericDiv" style="width:8mm;font-weight:bold;"/>
-														<span class="styFixedUnderline" style="width:62mm;float:left;border-bottom:0 solid black;">
+														<span class="styTableCellPad" style="float:left;width:8mm;">&#160;</span>
+														<span class="styFixedUnderline" style="width:62mm;border-bottom:0px solid black;">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 															</xsl:call-template>
 														</span>
 													</xsl:when>
 													<xsl:otherwise>
-														<div class="styGenericDiv" style="width:8mm;font-weight:bold;"/>
-														<span class="styFixedUnderline" style="width:62mm;float:left;">
+														<span class="styTableCellPad" style="float:left;width:8mm;">&#160;</span>
+														<span class="styFixedUnderline" style="width:62mm;">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 															</xsl:call-template>
@@ -2231,7 +2206,8 @@
                       </span>
 										</td>
 									</tr>
-									<!--Row 15 -->
+									<!--Row 15 Empty -->
+									<!-- Form Design: Since Line 2 to Line 17 repeat as a GROUP it is redundant for Line 15 to display "See additional Data table" --> 
 									<tr>
 										<td style="border:none;font-size:7pt;" scope="row">
 											<div class="styGenericDiv" style="width:4mm;font-weight:bold; width:7.75mm; text-align:left; padding-left:.5mm;">15</div>
@@ -2240,10 +2216,14 @@
 												<span style="width:4px;"/>
 											</div>
 											<div style="width:48.5mm;border-bottom:1 solid black;">
-												<xsl:if test="($Print = $Separated)">
+												<br/>
+												<!--<xsl:if test="($Print = $Separated)">
 													<span style="float:left;">
+														<xsl:call-template name="PopulateAdditionalDataTableMessage">
+															<xsl:with-param name="TargetNode" select="$Form8825Data"/>
+														</xsl:call-template>
 													</span>
-												</xsl:if>
+												</xsl:if>-->
 												<span style="width:4px;"/>
 											</div>
 										</td>
@@ -2420,7 +2400,7 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox">20a</div>
 						<div class="styLNDesc" style="width:139mm;">
-            Net income (loss) from rental real estate activities from partnerships, estates, and trusts in which this<br/>
+							Net income (loss) from rental real estate activities from partnerships, estates, and trusts in which this<br/>
 							<span style="float:left">partnership or S corporation is a partner or beneficiary (from Schedule K-1)</span>
 							<!--Dotted Line-->
 							<div class="styDotLn" style="float:right;padding-right:1mm;">..........</div>
@@ -2432,47 +2412,49 @@
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- Line 20b -->
 					<div style="width:187mm;">
-						<div class="styLNLeftLtrBox" style="text-align: right; padding-right: 2mm;">b</div>
+						<div class="styLNLeftLtrBox" style="text-align:right; padding-right:2mm;">b</div>
 						<div class="styLNDesc" style="width:139mm;">
-                Identify below the partnerships, estates, or trusts from which net income (loss) is shown on line 20a.<br/>
-                Attach a schedule if more space is needed:  
-                <span style="width:290px;"/>
+							Identify below the partnerships, estates, or trusts from which net income (loss) is shown on line 20a.<br/>
+							Attach a schedule if more space is needed:  
+							<span style="width:290px;"/>
 						</div>
-						<div class="styLNRightNumBoxNBB" 
-						style="width:8.25mm;background-color:lightgrey;height:8mm; border-color:black;border-right-width:1px;"/>
+						<div class="styLNRightNumBoxNBB" style="width:8.25mm; background-color:lightgrey; height:8mm; border-color:black; border-right-width:1px;"/>
 					</div>
 					<!-- Line 20b Table -->
-					<div class="styForm8825TableContainer" style="padding-left:8mm;border-bottom-width:0px" id="PSTPctn">
+					<!-- HINTs: Due to IE11automatic height adjustment is not working properly therefore, each row height is manually set at 13mm for maximum amount of data display to resolve defect 48225 -->
+					<div class="styForm8825TableContainer" style="padding-left:8mm; border-bottom-width:0px" id="PSTPctn">
 						<table class="styTable" style="float:none; font-size: 7pt;" cellspacing="0" 
 						summary="Table for partnerships, estates or trusts from which net income or loss is shown on line 20a">
 							<thead class="styTableThead">
 								<tr>
-									<th class="styTablesCells" scope="col" style="width: 69mm;text-align:left;">
+									<th class="styTablesCells" scope="col" style="width:69mm; text-align:left;">
 										<span class="styBoldText">(1)</span>
 										<span style="font-weight:normal;"> Name </span>
 									</th>
-									<th class="styTablesCells" scope="col" style="width: 6mm;">
+									<th class="styTablesCells" scope="col" style="width:6mm;">
 										<span style="width:4px;">  </span>
 									</th>
-									<th class="styTablesCells" scope="col" style="width: 46.5mm;">
+									<th class="styTablesCells" scope="col" style="width:46.5mm;">
 										<span class="styBoldText">(2)</span>
-										<span style="font-weight:normal; font-size: 7pt;"> Employer identification number</span>
+										<span style="font-weight:normal; font-size:7pt;"> Employer identification number</span>
 									</th>
-								   <xsl:choose>
+									<td class="styTablesCells" scope="row" style="width:35mm; padding-left:17.5mm; padding-top:0px; padding-bottom:0px; height:4mm;">
+										<div class="styLNRightNumBoxNBB" style="width:8.25mm; background-color:lightgrey; border-right-width:1px; height:100%;"/>
+									</td>
+								   <!--<xsl:choose>
 									 <xsl:when test="count($Form8825Data/IdentifyPartnershipEstateTrGrp) &lt; 1 or ($Print = $Separated) ">
-										<th class="styTablesCells" scope="col" style="width:35mm;padding-left:17.5mm;padding-top:0px;padding-bottom:0px;">
-											<div class="styLNRightNumBoxNBB" 
-											style="width:8.25mm;background-color:lightgrey;height:8mm; border-color:black;border-right-width:1px;"/>
+										<th class="styTablesCells" scope="col" style="width:35mm; padding-left:17.5mm; padding-top:0px; padding-bottom:0px;">
+											<div class="styLNRightNumBoxNBB" style="width:8.25mm; background-color:lightgrey; height:8mm; border-color:black; border-right-width:1px;"/>
 										</th>
 									 </xsl:when>
 									 <xsl:otherwise>
-										<th class="styTablesCells" scope="col" style="width:35mm;padding-left:16.5mm;padding-top:0px;padding-bottom:0px;">
-											<div class="styLNRightNumBoxNBB" 
-											style="width:8.25mm;background-color:lightgrey;height:8mm; border-color:black;border-right-width:1px;"/>
+										<th class="styTablesCells" scope="col" style="width:35mm; padding-left:17.5mm; padding-top:0px; padding-bottom:0px;">
+											<div class="styLNRightNumBoxNBB" style="width:8.25mm; background-color:lightgrey; height:8mm; border-color:black; border-right-width:1px;"/>
 										</th>
 									 </xsl:otherwise>
-								   </xsl:choose>
+								   </xsl:choose>-->
 								</tr>
 							</thead>
 							<tfoot/>
@@ -2481,8 +2463,7 @@
 								<xsl:if test="($Print != $Separated) or (count($Form8825Data/IdentifyPartnershipEstateTrGrp) &lt;= 3) ">
 									<xsl:for-each select="$Form8825Data/IdentifyPartnershipEstateTrGrp">
 										<tr>
-											<td class="styTablesCells" scope="row"
-											style="font-size:6pt;width: 69mm;border-bottom:1 solid black; font-size: 7pt;height:7mm;">
+											<td class="styTablesCells" scope="row" style="width:69mm; height:13mm; border-bottom:1px solid black;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1Txt"/>
 												</xsl:call-template>
@@ -2494,9 +2475,8 @@
 												</xsl:if>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTablesCells" scope="row" style="width: 7mm;"></td>
-											<td class="styTablesCells" 
-											style="font-size:6pt;width:42mm;border-bottom:1 solid black;font-size:7pt;text-align:left;padding-left:6mm;">
+											<td class="styTablesCells" scope="row" style="width:6mm;"></td>
+											<td class="styTablesCells" scope="row" style="width:42mm; border-bottom:1px solid black; text-align:left; padding-left:6mm;">
 												<xsl:choose>
 													<xsl:when test="normalize-space(EIN)">
 														<xsl:call-template name="PopulateEIN">
@@ -2512,9 +2492,8 @@
 												</xsl:choose>
 												<span class="styTableCellPad"/>
 											</td>
-											<td style="width:35mm;padding-left:16.5mm;padding-top:0px;padding-bottom:0px;height:7mm;">
-												<div class="styLNRightNumBoxNBB" 
-												style="width:8.25mm;background-color:lightgrey;border-right-width:1px;padding-top:0px;padding-bottom:0px;height:7mm;">
+											<td class="styTablesCells" scope="row" style="width:35mm; padding-left:17.5mm; padding-top:0px; padding-bottom:0px; height:13mm;">
+												<div class="styLNRightNumBoxNBB" style="width:8.25mm; height:13mm; background-color:lightgrey; border-right-width:1px; padding-top:0px; padding-bottom:0px;">
 												</div>
 											</td>
 										</tr>
@@ -2526,63 +2505,55 @@
 								<!-- height, then display a message in the first row directing the user to the additional data table -->
 								<xsl:if test="count($Form8825Data/IdentifyPartnershipEstateTrGrp) &lt; 1 or (($Print = $Separated) and (count($Form8825Data/IdentifyPartnershipEstateTrGrp) &gt; 3)) ">
 									<tr style="">
-										<td class="styTablesCells" scope="row" style="font-size:6pt;width: 69mm;border-bottom:1 solid black; font-size: 7pt;">
+										<td class="styTablesCells" scope="row" style="width: 69mm; border-bottom:1px solid black;">
 											<xsl:call-template name="PopulateAdditionalDataTableMessage">
 												<xsl:with-param name="TargetNode" select="$Form8825Data/IdentifyPartnershipEstateTrGrp"/>
 											</xsl:call-template>
 											<span style="width:4px;"/>
 										</td>
-										<td class="styTablesCells" scope="row" style="width: 6mm;">
+										<td class="styTablesCells" scope="row" style="width:6mm;">
 											<span style="width:4px;">  </span>
 										</td>
-										<td class="styTablesCells" 
-										style="font-size:6pt;width:42mm;border-bottom:1 solid black;font-size:7pt;text-align:center;">
+										<td class="styTablesCells" scope="row" style="width:46.5mm; border-bottom:1px solid black; text-align:center;">
 											<span style="width:4px;"/>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTablesCells" 
-										style="width: 35mm;padding-left:17.5mm;padding-top:0px;padding-bottom:0px;height:4mm;">
-											<div class="styLNRightNumBoxNBB" 
-											style="width:8.25mm;background-color:lightgrey;border-right-width:1px;height:100%;"/>
+										<td class="styTablesCells" scope="row" style="width:35mm; padding-left:17.5mm; padding-top:0px; padding-bottom:0px; height:4mm;">
+											<div class="styLNRightNumBoxNBB" style="width:8.25mm; background-color:lightgrey; border-right-width:1px; height:100%;"/>
 										</td>
 									</tr>
 								</xsl:if>
 								<xsl:if test="count($Form8825Data/IdentifyPartnershipEstateTrGrp) &lt; 2 or (($Print = $Separated) and (count($Form8825Data/IdentifyPartnershipEstateTrGrp) &gt; 3)) ">
 									<tr>
-										<td class="styTablesCells" scope="row" style="font-size:6pt;width: 69mm;border-bottom:1 solid black; font-size: 7pt;">
+										<td class="styTablesCells" scope="row" style="width:69mm; border-bottom:1px solid black;">
 											<span style="width:4px;"/>
 										</td>
-										<td class="styTablesCells" scope="row" style="width: 6mm;">
+										<td class="styTablesCells" scope="row" style="width:6mm;">
 											<span style="width:4px;">  </span>
 										</td>
-										<td class="styTablesCells" 
-										style="font-size:6pt;width:42mm;border-bottom:1 solid black;font-size:7pt;text-align:center;">
+										<td class="styTablesCells" scope="row" style="width:42mm; border-bottom:1px solid black; text-align:center;">
 											<span style="width:4px;"/>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTablesCells" 
-										style="width: 35mm;padding-left:17.5mm;padding-top:0px;padding-bottom:0px;height:4mm;">
-											<div class="styLNRightNumBoxNBB" 
-											style="width:8.25mm;background-color:lightgrey;height:7mm;border-right-width:1px;height:100%;"/>
+										<td class="styTablesCells" scope="row" style="width:35mm; padding-left:17.5mm; padding-top:0px; padding-bottom:0px; height:4mm;">
+											<div class="styLNRightNumBoxNBB" style="width:8.25mm; background-color:lightgrey; border-right-width:1px; height:100%;"/>
 										</td>
 									</tr>
 								</xsl:if>
 								<xsl:if test="count($Form8825Data/IdentifyPartnershipEstateTrGrp) &lt; 3 or (($Print = $Separated) and (count($Form8825Data/IdentifyPartnershipEstateTrGrp) &gt; 3)) ">
 									<tr style="height:4mm;">
-										<td class="styTablesCells" scope="row" style="font-size:6pt;width: 69mm;border-bottom:1 solid black; font-size: 7pt;">
+										<td class="styTablesCells" scope="row" style="width:69mm; border-bottom:1px solid black;">
 											<span style="width:4px;"/>
 										</td>
-										<td class="styTablesCells" scope="row" style="width: 6mm;">
+										<td class="styTablesCells" scope="row" style="width:6mm;">
 											<span style="width:4px;">  </span>
 										</td>
-										<td class="styTablesCells" style="font-size:6pt;width:42mm;border-bottom:1 solid black;font-size:7pt;text-align:center;">
+										<td class="styTablesCells" style="width:46.5mm; border-bottom:1px solid black; text-align:center;">
 											<span style="width:4px;"/>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTablesCells" 
-										style="width: 35mm;padding-left:17.5mm;padding-top:0px;padding-bottom:0px;height:4mm">
-											<div class="styLNRightNumBoxNBB" 
-											style="width:8.25mm;background-color:lightgrey;border-right-width:1px;height:100%;"/>
+										<td class="styTablesCells" scope="row" style="width:35mm; padding-left:17.5mm; padding-top:0px; padding-bottom:0px; height:4mm">
+											<div class="styLNRightNumBoxNBB" style="width:8.25mm; background-color:lightgrey; border-right-width:1px; height:100%;"/>
 										</td>
 									</tr>
 								</xsl:if>
@@ -2651,7 +2622,7 @@
 					<!--SEPARATED DATA -->
 					<!-- ================================================== -->
 					<xsl:if test="($Print = $Separated) and (count($Form8825Data/RentalAddressGrp) &gt;4) ">
-						<div class="styGenericDiv" style="clear:both;float:none;width:187mm;">
+						<div class="styGenericDiv" style="width:187mm;">
 							<xsl:for-each select="$Form8825Data/RentalIncomeExpensesGrp">
 								<xsl:variable name="pos" select="position()"/>
 								<xsl:if test="position() mod 4 = 1">
@@ -2677,7 +2648,7 @@
 													<span style="font-weight:normal;">Physical address of each property — street, city, state, ZIP code </span>
 												</th>
 												<th class="styTableCellHeader" style="width:32mm;font-size:7pt;border-bottom:1 solid black;border-right:1 solid black;" scope="col">(ii)<br/>
-													<span style="font-weight:normal;">Type — see instructions </span>
+													<span style="font-weight:normal;">Type — Enter code 1-8; see page 2 for list </span>
 												</th>
 												<th class="styTableCellHeader" style="width:32mm;font-size:7pt;border-bottom:1 solid black;border-right:1 solid black;" scope="col">(iii)<br/>
 													<span style="font-weight:normal;">Fair Rental Days </span>
@@ -2997,7 +2968,7 @@
 											<tr class="styDepTblRow1">
 												<td style="border:none;" scope="row">
 													<div>
-														<div class="styGenericDiv" style="width:4mm;font-weight:bold; font-size: 7pt;                 width:7.75mm; text-align:left; padding-left:2mm;">
+														<div class="styGenericDiv" style="width:4mm;font-weight:bold;font-size:7pt;width:7.75mm;text-align:left;padding-left:2mm;">
 															2</div>
 														<div class="styGenericDiv" style="width:65mm;font-size:7pt;">
 															<span style="float:left">Gross rents</span>
@@ -3498,7 +3469,7 @@
 											<xsl:if test="$RowCount=0">
 												<xsl:choose>
 													<xsl:when test="position() mod 4=1">
-													<td style="border:1 solid black;font-size:7pt;border-right-width:0px;border-top-width:0px;          border-left-width:0px;border-bottom-width:1px" scope="row">
+													<td style="border:1 solid black;font-size:7pt;border-right-width:0px;border-top-width:0px;border-left-width:0px;border-bottom-width:1px" scope="row">
 														<div class="styGenericDiv" style="width:4mm;font-weight:bold; width:7.75mm; text-align:left; padding-left:.5mm;">15</div>
 														<div class="styGenericDiv">
 					   Other (list)
@@ -3571,14 +3542,14 @@
 																	<span style="width:4px;"/>
 																	<xsl:choose>
 																		<xsl:when test="position()=last() and (($SecondCol+$ThirdCol+$FourthCol) = 0)">
-																			<span style="width:45mm;">
+																			<span style="width:45mm;text-align:left;">
 																				<xsl:call-template name="PopulateText">
 																					<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 																				</xsl:call-template>
 																			</span>
 																		</xsl:when>
 																		<xsl:otherwise>
-																			<span style="width:45mm;border-bottom:1 solid black;">
+																			<span style="width:45mm;border-bottom:1 solid black;text-align:left;">
 																				<xsl:call-template name="PopulateText">
 																					<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 																				</xsl:call-template>
@@ -3601,16 +3572,16 @@
 																			border:1 solid black;font-size:7pt;border-right-width:0px;
 																			border-top-width:0px;border-left-width:0px;border-bottom-width:1px
 																			</xsl:attribute>
-																		<div class="styGenericDiv" style="width:8mm;font-weight:bold;"/>
-																		<span class="styFixedUnderline" style="width:62mm;float:left;border-bottom-width: 0px;">
+																		<span class="styTableCellPad" style="float:left;width:8mm;">&#160;</span>
+																		<span class="styFixedUnderline" style="width:62mm;border-bottom-width:0px;text-align:left;">
 																			<xsl:call-template name="PopulateText">
 																				<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 																			</xsl:call-template>
 																		</span>
 																	</xsl:when>
 																	<xsl:otherwise>
-																		<div class="styGenericDiv" style="width:8mm;font-weight:bold;"/>
-																		<span class="styFixedUnderline" style="width:62mm;float:left;">
+																		<span class="styTableCellPad" style="float:left;width:8mm;">&#160;</span>
+																		<span class="styFixedUnderline" style="width:62mm;text-align:left;">
 																			<xsl:call-template name="PopulateText">
 																				<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 																			</xsl:call-template>
@@ -3654,14 +3625,14 @@
 																	<span style="width:4px;"/>
 																	<xsl:choose>
 																		<xsl:when test="position()=last() and (($ThirdCol+$FourthCol) = 0)">
-																			<span style="width:45mm;">
+																			<span style="width:45mm;text-align:left;">
 																				<xsl:call-template name="PopulateText">
 																					<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 																				</xsl:call-template>
 																			</span>
 																		</xsl:when>
 																		<xsl:otherwise>
-																			<span style="width:45mm;border-bottom:1 solid black;">
+																			<span style="width:45mm;border-bottom:1 solid black;text-align:left;">
 																				<xsl:call-template name="PopulateText">
 																					<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 																				</xsl:call-template>
@@ -3682,16 +3653,16 @@
 																	<xsl:when test="position()=last() and ($ThirdCol+$FourthCol) = 0">
 																		<xsl:attribute name="style">border:1 solid black;font-size:7pt;border-right-width:0px;
 																		border-top-width:0px;border-left-width:0px;border-bottom-width:1px</xsl:attribute>
-																		<div class="styGenericDiv" style="width:8mm;font-weight:bold;"/>
-																		<span class="styFixedUnderline" style="width:62mm;float:left;border-bottom:0 solid black;">
+																		<span class="styTableCellPad" style="float:left;width:8mm;">&#160;</span>
+																		<span class="styFixedUnderline" style="width:62mm;border-bottom-width: 0px;text-align:left;">
 																			<xsl:call-template name="PopulateText">
 																				<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 																			</xsl:call-template>
 																		</span>
 																	</xsl:when>
 																	<xsl:otherwise>
-																		<div class="styGenericDiv" style="width:8mm;font-weight:bold;"/>
-																		<span class="styFixedUnderline" style="width:62mm;float:left;">
+																		<span class="styTableCellPad" style="float:left;width:8mm;">&#160;</span>
+																		<span class="styFixedUnderline" style="width:62mm;text-align:left;">
 																			<xsl:call-template name="PopulateText">
 																				<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 																			</xsl:call-template>
@@ -3736,14 +3707,14 @@
 																	<span style="width:4px;"/>
 																	<xsl:choose>
 																		<xsl:when test="position()=last() and (($FourthCol) = 0)">
-																			<span style="width:45mm;">
+																			<span style="width:45mm;text-align:left;">
 																				<xsl:call-template name="PopulateText">
 																					<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 																				</xsl:call-template>
 																			</span>
 																		</xsl:when>
 																		<xsl:otherwise>
-																			<span style="width:45mm;border-bottom:1 solid black;">
+																			<span style="width:45mm;border-bottom:1 solid black;text-align:left;">
 																				<xsl:call-template name="PopulateText">
 																					<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 																				</xsl:call-template>
@@ -3764,16 +3735,16 @@
 																	<xsl:when test="position()=last() and (($FourthCol) = 0)">
 																		<xsl:attribute name="style">border:1 solid black;font-size:7pt;border-right-width:0px;
 																		border-top-width:0px;border-left-width:0px;border-bottom-width:1px</xsl:attribute>
-																		<div class="styGenericDiv" style="width:8mm;font-weight:bold;"/>
-																		<span class="styFixedUnderline" style="width:62mm;float:left;border-bottom:0 solid black;">
+																		<span class="styTableCellPad" style="float:left;width:8mm;">&#160;</span>
+																		<span class="styFixedUnderline" style="width:62mm;border-bottom-width: 0px;text-align:left;">
 																			<xsl:call-template name="PopulateText">
 																				<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 																			</xsl:call-template>
 																		</span>
 																	</xsl:when>
 																	<xsl:otherwise>
-																		<div class="styGenericDiv" style="width:8mm;font-weight:bold;"/>
-																		<span class="styFixedUnderline" style="width:62mm;float:left;">
+																		<span class="styTableCellPad" style="float:left;width:8mm;">&#160;</span>
+																		<span class="styFixedUnderline" style="width:62mm;text-align:left;">
 																			<xsl:call-template name="PopulateText">
 																				<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 																			</xsl:call-template>
@@ -3817,14 +3788,14 @@
 																	<span style="width:4px;"/>
 																	<xsl:choose>
 																		<xsl:when test="position()=last()">
-																			<span style="width:45mm;">
+																			<span style="width:45mm;text-align:left;">
 																				<xsl:call-template name="PopulateText">
 																					<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 																				</xsl:call-template>
 																			</span>
 																		</xsl:when>
 																		<xsl:otherwise>
-																			<span style="width:45mm;border-bottom:1 solid black;">
+																			<span style="width:45mm;border-bottom:1 solid black;text-align:left;">
 																				<xsl:call-template name="PopulateText">
 																					<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 																				</xsl:call-template>
@@ -3845,16 +3816,16 @@
 																	<xsl:when test="position()=last()">
 																		<xsl:attribute name="style">border:1 solid black;font-size:7pt;border-right-width:0px;
 																			border-top-width:0px;border-left-width:0px;border-bottom-width:1px</xsl:attribute>
-																		<div class="styGenericDiv" style="width:8mm;font-weight:bold;"/>
-																		<span class="styFixedUnderline" style="width:62mm;float:left;border-bottom:0 solid black;">
+																		<span class="styTableCellPad" style="float:left;width:8mm;">&#160;</span>
+																		<span class="styFixedUnderline" style="width:62mm;border-bottom-width: 0px;text-align:left;">
 																			<xsl:call-template name="PopulateText">
 																				<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 																			</xsl:call-template>
 																		</span>
 																	</xsl:when>
 																	<xsl:otherwise>
-																		<div class="styGenericDiv" style="width:8mm;font-weight:bold;"/>
-																		<span class="styFixedUnderline" style="width:62mm;float:left;">
+																		<span class="styTableCellPad" style="float:left;width:8mm;">&#160;</span>
+																		<span class="styFixedUnderline" style="width:62mm;text-align:left;">
 																			<xsl:call-template name="PopulateText">
 																				<xsl:with-param name="TargetNode" select="OtherExpenseTxt"/>
 																			</xsl:call-template>

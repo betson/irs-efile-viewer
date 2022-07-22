@@ -524,7 +524,7 @@
 								<xsl:with-param name="TargetNode" select="$Form1065BSchK1Data/CorrectedInd"/>
 							</xsl:call-template>
 						</xsl:variable>
-						<input type="checkbox" alt="alt" class="styCkbox" style="height:4mm;width:4mm;">
+						<input type="checkbox"  class="styCkbox" style="height:4mm;width:4mm;">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form1065BSchK1Data/CorrectedInd"/>
 								<xsl:with-param name="BackupName">IRS1065BSchK1Corrected</xsl:with-param>

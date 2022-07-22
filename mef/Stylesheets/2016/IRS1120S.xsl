@@ -123,7 +123,7 @@
 							<xsl:call-template name="PopulateReturnHeaderTaxPeriodEndDate"/>
 						</span>
 					</div>
-					<!-- left header boxes Start Here -->
+					<!-- Left header boxes Start Here -->
 					<div class="styBB" style="width:187mm;float:left;clear:left;">
 						<div style="width:31mm;height:26mm;float:left;clear:left;">
 							<div class="styComType" style="width:31mm;height:auto;">
@@ -266,29 +266,29 @@
 					<div style="width:187mm;">
 						<div class="styBoldText" style="width:3mm;float:left;clear:none;padding-top:1mm;">G</div>
 						Is the corporation electing to be an S corporation beginning with this tax year?
-						<input class="styCkbox" type="checkbox" alt="IRS1120SFirstYearSCorporation" name="Checkbox" id="dummyidyes" style="width:3mm;">
+						<input class="styCkbox" type="checkbox" alt="First Year S Corporation Indicator Yes" name="Checkbox" id="dummyidyes" style="width:3mm;">
 							<xsl:call-template name="PopulateYesCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form1120SData/FirstYearSCorporationInd"/>
-								<xsl:with-param name="BackupName">IRS1120SFirstYearSCorporation</xsl:with-param>
+								<xsl:with-param name="BackupName">1120SFirstYearSCorporationIndicatorYes</xsl:with-param>
 							</xsl:call-template>
 						</input>
 						<label for="dummyidyes">
 							<xsl:call-template name="PopulateLabelYes">
 								<xsl:with-param name="TargetNode" select="$Form1120SData/FirstYearSCorporationInd"/>
-								<xsl:with-param name="BackupName">IRS1120SFirstYearSCorporation</xsl:with-param>
+								<xsl:with-param name="BackupName">1120SFirstYearSCorporationIndicatorYesLabel</xsl:with-param>
 							</xsl:call-template>
 							Yes
 						</label>
-						<input class="styCkbox" type="checkbox" alt="IRS1120SFirstYearSCorporation" name="Checkbox" id="dummyidno" style="width:3mm;">
+						<input class="styCkbox" type="checkbox" alt="First Year S Corporation Indicator No" name="Checkbox" id="dummyidno" style="width:3mm;">
 							<xsl:call-template name="PopulateNoCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form1120SData/FirstYearSCorporationInd"/>
-								<xsl:with-param name="BackupName">IRS1120SFirstYearSCorporation</xsl:with-param>
+								<xsl:with-param name="BackupName">1120SFirstYearSCorporationIndicatorNo</xsl:with-param>
 							</xsl:call-template>
 						</input>
 						<label for="dummyidno">
 							<xsl:call-template name="PopulateLabelNo">
 								<xsl:with-param name="TargetNode" select="$Form1120SData/FirstYearSCorporationInd"/>
-								<xsl:with-param name="BackupName">IRS1120SFirstYearSCorporation</xsl:with-param>
+								<xsl:with-param name="BackupName">1120SFirstYearSCorporationIndicatorNoLabel</xsl:with-param>
 							</xsl:call-template>
 							No
 						</label>
@@ -303,60 +303,62 @@
 						<div class="styGenericDiv" style="width:182mm; ">
 							Check if: 
 						    <span class="styBoldText" style="padding-right:1mm; font-size:6pt;">(1)</span>
-							<input type="checkbox" alt="IRS1120SFinalReturn" class="styCkbox">
+							<input type="checkbox" alt="Final Return Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120SData/FinalReturnInd"/>
-									<xsl:with-param name="BackupName">IRS1120SFinalReturn</xsl:with-param>
+									<xsl:with-param name="BackupName">1120SFinalReturnIndicator</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label style="font-size:6pt; padding-right:2mm;">
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1120SData/FinalReturnInd"/>
-									<xsl:with-param name="BackupName">IRS1120SFinalReturn</xsl:with-param>
+									<xsl:with-param name="BackupName">1120SFinalReturnLabel</xsl:with-param>
 								</xsl:call-template>
 								Final return          
 							</label>
 							<span class="styBoldText" style="padding-right:1mm; font-size:6pt;">(2)</span>
-							<input type="checkbox" alt="IRS1120SNameChange" class="styCkbox">
+							<input type="checkbox" alt="Name Change Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120SData/NameChangeInd"/>
-									<xsl:with-param name="BackupName">IRS1120SNameChange</xsl:with-param>
+									<xsl:with-param name="BackupName">1120SNameChangeInd</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label style="font-size:6pt; padding-right:2mm;">
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1120SData/NameChangeInd"/>
-									<xsl:with-param name="BackupName">IRS1120SNameChange</xsl:with-param>
+									<xsl:with-param name="BackupName">1120SNameChangeLabel</xsl:with-param>
 								</xsl:call-template>
 								Name change          
 							</label>
 							<span class="styBoldText" style="padding-right:1mm; font-size:6pt;">(3)</span>
-							<input type="checkbox" alt="IRS1120SAddressChange" class="styCkbox">
+							<input type="checkbox" alt="Address Change Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120SData/AddressChangeInd"/>
-									<xsl:with-param name="BackupName">IRS1120SAddressChange</xsl:with-param>
+									<xsl:with-param name="BackupName">1120SAddressChangeIndicator</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label style="font-size:6pt; padding-right:2mm;">
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1120SData/AddressChangeInd"/>
-									<xsl:with-param name="BackupName">IRS1120SAddressChange</xsl:with-param>
+									<xsl:with-param name="BackupName">1120SAddressChangeLabel</xsl:with-param>
 								</xsl:call-template>
 								Address change            
 							</label>
+							<!-- Per Schema a choice of Amended or superseded Return Indicator 4 and 5 or 4, 5, and 6-->
+							<!-- NOTE: Check box 6 is an electronic check box only, this box does not display on Paper format-->
 							<xsl:choose>
 								<xsl:when test="$Form1120SData/AmendedReturnInd">
 									<span class="styBoldText" style="padding-right:1mm; font-size:7pt;">(4)</span>
-									<input type="checkbox" alt="IRS1120SAmendedReturn" class="styCkbox">
+									<input type="checkbox" alt="Amended Return Indicator" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form1120SData/AmendedReturnInd"/>
-											<xsl:with-param name="BackupName">IRS1120SAmendedReturn</xsl:with-param>
+											<xsl:with-param name="BackupName">1120SAmendedReturnInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<label style="font-size:6pt;">
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$Form1120SData/AmendedReturnInd"/>
-											<xsl:with-param name="BackupName">IRS1120SAmendedReturn</xsl:with-param>
+											<xsl:with-param name="BackupName">1120SAmendedReturnLabel</xsl:with-param>
 										</xsl:call-template>
 										Amended return           
 									</label>
@@ -365,50 +367,64 @@
 										<xsl:with-param name="TargetNode" select="$Form1120SData/AmendedReturnInd"/>
 									</xsl:call-template>
 									<span class="styBoldText" style="padding-left:2mm;padding-right:1mm; font-size:6pt;">(5)</span>
-									<input type="checkbox" alt="IRS1120ElectionTerminationRevocation" class="styCkbox">
+									<input type="checkbox" alt="Election Termination Revocation Indicator" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form1120SData/ElectionTerminationRvkInd"/>
-											<xsl:with-param name="BackupName">IRS1120ElectionTerminationRevocation</xsl:with-param>
+											<xsl:with-param name="BackupName">1120SElectionTerminationRevocationInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<label style="font-size:6pt; padding-right:2mm;">
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$Form1120SData/ElectionTerminationRvkInd"/>
-											<xsl:with-param name="BackupName">IRS1120ElectionTerminationRevocation</xsl:with-param>
+											<xsl:with-param name="BackupName">1120SElectionTerminationRevocationLabel</xsl:with-param>
 										</xsl:call-template>
 										S election termination or revocation          
 									</label>
 								</xsl:when>
 								<xsl:otherwise>
 									<span class="styBoldText" style="padding-right:1mm; font-size:6pt;">(4)</span>
-									<input type="checkbox" alt="IRS1120SAmendedReturn" class="styCkbox">
+									<input type="checkbox" alt="Amended Return Indicator" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form1120SData/AmendedReturnInd"/>
-											<xsl:with-param name="BackupName">IRS1120SAmendedReturn</xsl:with-param>
+											<xsl:with-param name="BackupName">1120SAmendedReturnInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<label style="font-size:6pt; padding-right:2mm;">
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$Form1120SData/AmendedReturnInd"/>
-											<xsl:with-param name="BackupName">IRS1120SAmendedReturn</xsl:with-param>
+											<xsl:with-param name="BackupName">1120SAmendedReturnLabel</xsl:with-param>
 										</xsl:call-template>
 										Amended return            
 									</label>
 									<span class="styBoldText" style="padding-left:3mm;padding-right:1mm; font-size:6pt;">(5)</span>
-									<input type="checkbox" alt="IRS1120ElectionTerminationRevocation" class="styCkbox">
+									<input type="checkbox" alt="Election Termination Revocation Indicator" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form1120SData/ElectionTerminationRvkInd"/>
-											<xsl:with-param name="BackupName">IRS1120ElectionTerminationRevocation</xsl:with-param>
+											<xsl:with-param name="BackupName">1120SElectionTerminationRevocationInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<label style="font-size:6pt; padding-right:2mm;">
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$Form1120SData/ElectionTerminationRvkInd"/>
-											<xsl:with-param name="BackupName">IRS1120ElectionTerminationRevocation</xsl:with-param>
+											<xsl:with-param name="BackupName">1120SElectionTerminationRevocationLabel</xsl:with-param>
 										</xsl:call-template>
 										S election termination or revocation          
 									</label>
 									<br/>
+									<span class="styBoldText" style="padding-right:1mm; font-size:6pt;">(6)</span>
+									<input type="checkbox" alt="Superseded Return Indicator" class="styCkbox">
+										<xsl:call-template name="PopulateCheckbox">
+											<xsl:with-param name="TargetNode" select="$Form1120SData/SupersededReturnInd"/>
+											<xsl:with-param name="BackupName">1120SSupersededReturnInd</xsl:with-param>
+										</xsl:call-template>
+									</input>
+									<label style="font-size:6pt; padding-right:2mm;">
+										<xsl:call-template name="PopulateLabel">
+											<xsl:with-param name="TargetNode" select="$Form1120SData/SupersededReturnInd"/>
+											<xsl:with-param name="BackupName">1120SSupersededReturnLabel</xsl:with-param>
+										</xsl:call-template>
+										Superseded Return            
+									</label>
 								</xsl:otherwise>
 							</xsl:choose>
 						</div>
@@ -615,7 +631,7 @@
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;height:auto">
-						<div class="styIRS1120SVTImageBox" style="height:68mm;padding-top:11mm;">
+						<div class="styIRS1120SVTImageBox" style="height:68mm;padding-top:6mm;">
 							<img src="{$ImagePath}/1120S_DeductionsLong.gif" alt="Deductions (see instructions for limitations) section"/>
 						</div>
 						<div style="width:181mm;float:right;clear:none;">
@@ -1186,7 +1202,7 @@
 							Under penalties of perjury, I declare that I have examined this return, including accompanying schedules and statements, and to the best of my knowledge and belief, it is true, correct, and complete. Declaration of preparer (other than taxpayer) is based on all information of which preparer has any knowledge.
 							</td>
 						</tr>
-						<tr>
+						<tr><!-- This information is located in the return header in Business Officer Group -->
 							<td rowspan="2" style="border-bottom:1px solid black;padding-left:1mm;">
 								<img src="{$ImagePath}/1120S_Bullet_Lg.gif" alt="LargeBullet"/>
 							</td>
@@ -1209,33 +1225,34 @@
 									<xsl:with-param name="TargetNode">Title</xsl:with-param>
 								</xsl:call-template>
 							</td>
+							<!-- Authorize Third Party Indicator box -->
 							<td rowspan="2" style="width:41mm;border-bottom:1px solid black;padding-bottom:1mm;">
 								<div class="styGenericDiv" style="width:2px;"/>
 								<div style="border-right:3px solid black;border-left:3px solid black;border-bottom:3px solid black;border-top:3px solid black;float:right;width:41mm;" class="styGenericDiv">		
 									May the IRS discuss this return<br/> with the preparer shown below <br/>(see instructions)?
-									<input class="styCkbox" type="checkbox" alt="ReturnHeaderMayIRSDiscussReturnWithPrep" name="Checkbox" id="dummyidyes" style="width:3mm;">
+									<input class="styCkbox" type="checkbox" alt="DiscussWithPaidPreparerIndicatorYes" name="Checkbox" id="dummyidyes" style="width:3mm;">
 										<xsl:call-template name="PopulateReturnHeaderOfficer">
 											<xsl:with-param name="TargetNode">AuthorizeThirdPartyYesCheckbox</xsl:with-param>
-											<xsl:with-param name="BackupName">ReturnHeaderMayIRSDiscussReturnWithPrep</xsl:with-param>
+											<xsl:with-param name="BackupName">DiscussWithPaidPreparerIndicatorYes</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<label for="dummyidyes">
 										<xsl:call-template name="PopulateReturnHeaderOfficer">
 											<xsl:with-param name="TargetNode">AuthorizeThirdPartyYesLabel</xsl:with-param>
-											<xsl:with-param name="BackupName">ReturnHeaderMayIRSDiscussReturnWithPrep</xsl:with-param>
+											<xsl:with-param name="BackupName">DiscussWithPaidPreparerIndicatorYesLabel</xsl:with-param>
 										</xsl:call-template>
 										Yes
 									</label>
-									<input class="styCkbox" type="checkbox" alt="ReturnHeaderMayIRSDiscussReturnWithPrep" name="Checkbox" id="dummyidno" style="width:2.5mm;">
+									<input class="styCkbox" type="checkbox" alt="DiscussWithPaidPreparerIndicatorNo" name="Checkbox" id="dummyidno" style="width:2.5mm;">
 										<xsl:call-template name="PopulateReturnHeaderOfficer">
 											<xsl:with-param name="TargetNode">AuthorizeThirdPartyNoCheckbox</xsl:with-param>
-											<xsl:with-param name="BackupName">ReturnHeaderMayIRSDiscussReturnWithPrep</xsl:with-param>
+											<xsl:with-param name="BackupName">DiscussWithPaidPreparerIndicatorNo</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<label for="dummyidno">
 										<xsl:call-template name="PopulateReturnHeaderOfficer">
 											<xsl:with-param name="TargetNode">AuthorizeThirdPartyNoLabel</xsl:with-param>
-											<xsl:with-param name="BackupName">ReturnHeaderMayIRSDiscussReturnWithPrep</xsl:with-param>
+											<xsl:with-param name="BackupName">DiscussWithPaidPreparerIndicatorNoLabel</xsl:with-param>
 										</xsl:call-template>
 										No
 									</label>
@@ -1459,7 +1476,7 @@
 					<!-- END Schedule B Title -->
 					<!-- BEGIN Schedule B Line Items -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:5mm;padding-top:1.5mm;">1</div>
+						<div class="styLNLeftNumBoxSD" style="height:5mm;padding-top:2mm;">1</div>
 						<div class="styLNDesc" style="width:119mm;height:5mm;">Check accounting method:
 							<span style="width:8px"/>
 							<span class="styBoldText">a </span>
@@ -1515,7 +1532,7 @@
 						</label>
 						<img src="{$ImagePath}/1120S_Bullet_Md.gif" alt="MidSizeBullet"/>
 						<div style="width:90mm;padding-left:2mm;">
-							<span class="styIRS1120SBBText" style="height:auto;">
+							<span class="styIRS1120SBBText" style="height:auto;width:86mm">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form1120SScheduleB/MethodOfAccountingOtherInd/@methodOfAccountingOtherDesc"/>
 								</xsl:call-template>
@@ -1536,7 +1553,7 @@
 					</div>
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:33mm;height:4.5mm;">
+						<div class="styLNDesc" style="width:29mm;height:4.5mm;">
 							<span class="styBoldText">a</span> Business activity <img src="{$ImagePath}/1120S_Bullet_Md.gif" alt="MidSizeBullet"/>
 						</div>
 						<div class="styIRS1120SBBText" style="width:46mm;min-height:4.5mm;height:auto;font-size:6pt;">
@@ -1544,10 +1561,10 @@
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleB/PrincipalBusinessActivityDesc"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNDesc" style="width:35mm;height:4.5mm;">
+						<div class="styLNDesc" style="width:35mm;height:4.5mm;padding-left:4mm;">
 							<span class="styBoldText">b</span> Product or service <img src="{$ImagePath}/1120S_Bullet_Md.gif" alt="MidSizeBullet"/>
 						</div>
-						<div class="styIRS1120SBBText" style="width:40mm;min-height:4.5mm;height:auto;font-size:6pt;">
+						<div class="styIRS1120SBBText" style="width:43mm;min-height:4.5mm;height:auto;font-size:6pt;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleB/PrincipalProductDesc"/>
 							</xsl:call-template>
@@ -3929,706 +3946,737 @@
 					</div>				
 					<!-- END Schedule K Line Items -->
 					<!-- BEGIN Schedule L Title -->
-					<div class="styBB" style="width:187mm;float:none;">
-						<div class="styPartName" style="width: 21mm;height:4.25mm;">Schedule L</div>
-						<div class="styPartDesc" style="width: 37mm;height:4.25mm;font-size:6pt;padding-top:1mm;">Balance Sheets per Books</div>
-						<div class="styLNAmountBox" style="text-align:center;border-bottom-width:0px;width:64mm;height:4.25mm;">Beginning of tax year</div>
-						<div class="styLNAmountBox" style="text-align:center;border-bottom-width:0px;width:64mm;height:4.25mm;">End of tax year</div>
+					<div class="styBB" style="width:187mm; float:none;">
+						<div class="styPartName" style="width:21mm; height:4.25mm;">Schedule L</div>
+						<div class="styPartDesc" style="width:37mm; height:4.25mm; font-size:6pt; padding-top:1mm;">Balance Sheets per Books</div>
+						<div class="styLNAmountBox" style="text-align:center; border-bottom-width:0px; width:64mm; height:4.25mm;">Beginning of tax year</div>
+						<div class="styLNAmountBox" style="text-align:center; border-bottom-width:0px; width:64mm; height:4.25mm;">End of tax year</div>
 					</div>
 					<!-- END Schedule L Title -->
 					<!-- BEGIN Schedule L Line Items -->
-					<div style="width:187mm;float:none;">
+					<div style="width:187mm; float:none;">
 						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;text-align:center;font-weight:bold;">Assets</div>
-						<div class="styLNAmountBox" style="height:4.5mm;text-align:center;font-weight:bold;">(a)</div>
-						<div class="styLNAmountBox" style="height:4.5mm;text-align:center;font-weight:bold;">(b)</div>
-						<div class="styLNAmountBox" style="height:4.5mm;text-align:center;font-weight:bold;">(c)</div>
-						<div class="styLNAmountBox" style="height:4.5mm;text-align:center;font-weight:bold;">(d)</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; text-align:center; font-weight:bold;">Assets</div>
+						<div class="styLNAmountBox" style="height:4.5mm; text-align:center; font-weight:bold;">(a)</div>
+						<div class="styLNAmountBox" style="height:4.5mm; text-align:center; font-weight:bold;">(b)</div>
+						<div class="styLNAmountBox" style="height:4.5mm; text-align:center; font-weight:bold;">(c)</div>
+						<div class="styLNAmountBox" style="height:4.5mm; text-align:center; font-weight:bold;">(d)</div>
 					</div>
+					<!-- BEGIN Schedule L Line 1 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD" style="height:4.5mm;">1</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;;padding-top:0.3mm">
-							<span style="float:left">Cash</span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:0.3mm">
+							<span style="float:left;">Cash</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">..........</span>
 						</div>
 						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:5mm; padding-top:1.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/CashBOYAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:5mm; padding-top:1.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/CashEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 2a -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:5mm;">2a</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.5mm">Trade notes and accounts receivable</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNLeftNumBoxSD" style="height:4.5mm;">2a</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:0.5mm">Trade notes and accounts receivable</div>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/TradeNotesAccountsRcvblBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/TradeNotesAccountsRcvblEOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
+						<div class="styShadingCell" style="height:4.5mm;"/>
 					</div>
+					<!-- BEGIN Schedule L Line 2b -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:5mm;padding-left:4mm;">b</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.3mm">
+						<div class="styLNLeftNumBoxSD" style="height:4.5mm; padding-left:4mm;">b</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:0.3mm">
 							<span style="float:left">Less allowance for bad debts </span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">...</span>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateNegativeNumber">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/BadDebtAllowanceBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/NetTradeNotesAcctRcvblBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateNegativeNumber">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/BadDebtAllowanceEOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/NetTradeNotesAcctRcvblEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 3 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:5mm;">3</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.3mm">
-							<span style="float:left">Inventories </span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
+						<div class="styLNLeftNumBoxSD" style="height:4.5mm;">3</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm;">
+							<span style="float:left;">Inventories </span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">........</span>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/InventoriesBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/InventoriesEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 4 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:5mm;">4</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.3mm">
-							<span style="float:left">U.S. government obligations </span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
+						<div class="styLNLeftNumBoxSD" style="height:4.5mm;">4</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:0.3mm">
+							<span style="float:left;">U.S. government obligations </span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">...</span>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/USGovernmentObligationsBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/USGovernmentObligationsEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 5 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD" style="height:7mm;">5</div>
-						<div class="styGenericDiv" style="width:50mm;height:7mm;padding-top:0.3mm;">
+						<div class="styGenericDiv" style="width:50mm; height:7mm; padding-top:0.3mm;">
 							Tax-exempt securities (see instructions) 
-							<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">........</span>
 						</div>
 						<div class="styShadingCell" style="height:7mm;"/>
-						<div class="styLNAmountBox" style="height:7mm;padding-top:2mm;">
+						<div class="styLNAmountBox" style="height:7mm; padding-top:3.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/TaxExemptSecuritiesBOYAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styShadingCell" style="height:7mm;"/>
-						<div class="styLNAmountBox" style="height:7mm;padding-top:2mm;">
+						<div class="styLNAmountBox" style="height:7mm; padding-top:3.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/TaxExemptSecuritiesEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 6 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:5mm;">6</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.4mm">
+						<div class="styLNLeftNumBoxSD" style="height:4.5mm; padding-top:1mm;">6</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:1mm;">
 							Other current assets (attach statement) 
-							<span class="styDotLn" style="float:right;padding-right:1mm;"></span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;"></span>
 						</div>
-						<div class="styShadingCell" style="height:7mm;"/>
-						<div class="styLNAmountBox" style="width:4mm;height:7mm;padding-top:2mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="width:4mm; height:4.5mm;">
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherCurrentAssetsBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120SLNAmountBoxNLB" style="padding-top:2mm;width:28mm;height:7mm;       left-border:1px solid black;;">
+						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm; height:4.5mm; padding-top:1mm; left-border:1px solid black;;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherCurrentAssetsBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:7mm;"/>
-						<div class="styLNAmountBox" style="width:4mm;height:7mm;padding-top:2mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="width:4mm; height:4.5mm;">
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherCurrentAssetsEOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120SLNAmountBoxNLB" style="padding-top:2mm;width:28mm;height:7mm;       ">
+						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm; height:4.5mm; padding-top:1mm; ">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherCurrentAssetsEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 7 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:5mm;">7</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.3mm">
+						<div class="styLNLeftNumBoxSD" style="height:4.5mm;">7</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; ">
 							<span style="float:left">Loans to shareholders </span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">.....</span>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/LoansToShareholdersBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/LoansToShareholdersEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 8 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:5mm;">8</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.3mm">
+						<div class="styLNLeftNumBoxSD" style="height:4.5mm;">8</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm;">
 							<span style="float:left">Mortgage and real estate loans </span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">..</span>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/MortgageRealEstateLoansBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/MortgageRealEstateLoansEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 9 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD">9</div>
-						<div class="styGenericDiv" style="width:50mm;">Other investments (attach statement) </div>
-						<div class="styShadingCell" style="height:6.5mm;"/>
-						<div class="styLNAmountBox" style="width:4mm;height:6.5mm;padding-top:2.5mm;">
+						<div class="styLNLeftNumBoxSD" style="height:4.5mm; padding-top:1mm;">9</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:1mm;">Other investments (attach statement) </div>
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="width:4mm; height:4.5mm; ">
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherInvestmentsBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm;height:6.5mm;padding-top:2.5mm;">
+						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm; height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherInvestmentsBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:6.5mm;"/>
-						<div class="styLNAmountBox" style="width:4mm;height:6.5mm;padding-top:2.5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="width:4mm; height:4.5mm; ">
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherInvestmentsEOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm;height:6.5mm;padding-top:2.5mm;">
+						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm; height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherInvestmentsEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 10a -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:5mm;">10a</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.7mm">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">10a</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:0.5mm">
 							Buildings and other depreciable assets
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/BuildingOtherDeprecAstBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/BuildingOtherDeprecAstEOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
+						<div class="styShadingCell" style="height:4.5mm;"/>
 					</div>
+					<!-- BEGIN Schedule L Line 10b -->
 					<div style="width:187mm;">
-						<div class="styIRS1120SLNLeftLtrBoxTD" style="height:5mm;">b</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.3mm">
+						<div class="styIRS1120SLNLeftLtrBoxTD" style="height:4.5mm; padding-top:1mm;">b</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:1mm">
 							<span style="float:left">Less accumulated depreciation </span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">..</span>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateNegativeNumber">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/AccumulatedDepreciationBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/NetDepreciableAssetsBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateNegativeNumber">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/AccumulatedDepreciationEOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/NetDepreciableAssetsEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 11a -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:5mm;">11a</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.4mm">
+						<div class="styLNLeftNumBox" style="height:4.5mm; padding-top:1mm;">11a</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:1mm">
 							<span style="float:left">Depletable assets </span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">......</span>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/DepletableAssetsBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/DepletableAssetsEOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
+						<div class="styShadingCell" style="height:4.5mm;"/>
 					</div>
+					<!-- BEGIN Schedule L Line 11b -->
 					<div style="width:187mm;">
-						<div class="styIRS1120SLNLeftLtrBoxTD" style="height:5mm;">b</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.4mm">
+						<div class="styIRS1120SLNLeftLtrBoxTD" style="height:4.5mm; padding-top:1mm;">b</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:1mm">
 							<span style="float:left">Less accumulated depletion </span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">..</span>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateNegativeNumber">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/AccumulatedDepletionBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/NetDepletableAssetsBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateNegativeNumber">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/AccumulatedDepletionEOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/NetDepletableAssetsEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 12 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:5mm;">12</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.4mm">
+						<div class="styLNLeftNumBox" style="height:4.5mm; padding-top:1mm;">12</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top1mm">
 							<span style="float:left">Land (net of any amortization) </span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">..</span>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/LandBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/LandEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 13a -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:5mm;">13a</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.4mm">Intangible assets (amortizable only)</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm; padding-top:1mm;">13a</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:1mm">Intangible assets (amortizable only)</div>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/IntangibleAssetsBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/IntangibleAssetsEOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
+						<div class="styShadingCell" style="height:4.5mm;"/>
 					</div>
+					<!-- BEGIN Schedule L Line 13b -->
 					<div style="width:187mm;">
-						<div class="styIRS1120SLNLeftLtrBoxTD" style="height:5mm;">b</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.4mm">
+						<div class="styIRS1120SLNLeftLtrBoxTD" style="height:4.5mm; padding-top:1mm;">b</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:1mm;">
 							<span style="float:left">Less accumulated amortization </span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">..</span>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateNegativeNumber">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/AccumulatedAmortizationBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/NetIntangibleAssetsBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateNegativeNumber">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/AccumulatedAmortizationEOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/NetIntangibleAssetsEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 14 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:5mm;">14</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.4mm">
+						<div class="styLNLeftNumBox" style="height:4.5mm; padding-top:1mm;">14</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:1mm;">
 							<span style="float:left">Other assets (attach statement) </span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">..</span>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="width:4mm;height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="width:4mm;height:4.5mm;">
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherAssetsBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm;height:5mm;">
+						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm; height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherAssetsBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="width:4mm;height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="width:4mm; height:4.5mm;">
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherAssetsEOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm;height:5mm;">
+						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm; height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherAssetsEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 15 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:5mm;">15</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.4mm">
+						<div class="styLNLeftNumBox" style="height:4.5mm; padding-top:1mm;">15</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:1mm;">
 							<span style="float:left">Total assets </span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">........</span>
 						</div>
-						<div class="styShadingCell" style="border-bottom-width:1px;height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="border-bottom-width:1px; height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/TotalAssetsBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="border-bottom-width:1px;height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="border-bottom-width:1px;height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/TotalAssetsEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:5mm;"/>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;text-align:center;">
+						<div class="styLNLeftNumBox" style="height:4.5mm; padding-top:1mm;"/>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; text-align:center; padding-top:1mm;">
 							<span class="styBoldText">Liabilities and Shareholders' Equity</span>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styShadingCell" style="height:5mm;"/>
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styShadingCell" style="height:4.5mm;"/>
 					</div>
+					<!-- BEGIN Schedule L Line 16 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:5mm;">16</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.4mm">
+						<div class="styLNLeftNumBox" style="height:4.5mm; padding-top:1mm;">16</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:1mm;">
 							<span style="float:left">Accounts payable </span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">......</span>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/AccountsPayableBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/AccountsPayableEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 17 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:7mm;">17</div>
-						<div class="styGenericDiv" style="width:50mm;height:7mm;padding-top:0.4mm">
+						<div class="styGenericDiv" style="width:50mm; height:7mm; padding-top:.5mm">
 							Mortgages, notes, bonds payable in
 							<span style="float:left"> less than 1 year
 							</span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">.......</span>
 						</div>
 						<div class="styShadingCell" style="height:7mm;"/>
-						<div class="styLNAmountBox" style="height:7mm;padding-top:2.5mm;">
+						<div class="styLNAmountBox" style="height:7mm; padding-top:3mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/ShortTermPayableBOYAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styShadingCell" style="height:7mm;"/>
-						<div class="styLNAmountBox" style="height:7mm;padding-top:2.5mm;">
+						<div class="styLNAmountBox" style="height:7mm; padding-top:3mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/ShortTermPayableEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 18 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:8mm;">18</div>
-						<div class="styGenericDiv" style="width:50mm;height:8mm;padding-top:0.7mm">
+						<div class="styLNLeftNumBox" style="height:7mm;">18</div>
+						<div class="styGenericDiv" style="width:50mm; height:7mm; padding-top:0.5mm">
 							Other current liabilities (attach
 							<span style="float:left">statement) </span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">........</span>
 						</div>
-						<div class="styShadingCell" style="height:8mm;"/>
-						<div class="styLNAmountBox" style="width:4mm;height:8mm;padding-top:3mm;">
+						<div class="styShadingCell" style="height:7mm;"/>
+						<div class="styLNAmountBox" style="width:4mm; height:7mm; ">
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherCurrentLiabilitiesBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm;height:8mm;padding-top:3mm;">
+						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm; height:7mm; padding-top:3.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherCurrentLiabilitiesBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:8mm;"/>
-						<div class="styLNAmountBox" style="width:4mm;height:8mm;padding-top:3mm;">
+						<div class="styShadingCell" style="height:7mm;"/>
+						<div class="styLNAmountBox" style="width:4mm; height:7mm; ">
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherCurrentLiabilitiesEOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120SLNAmountBoxNLB" style="padding-top:3mm;width:28mm;height:8mm;">
+						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm; height:7mm; padding-top:3.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherCurrentLiabilitiesEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 19 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:5mm;">19</div>
-						<div class="styGenericDiv" style="width:50mm;height:5mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm; padding-top:1mm;">19</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:1mm;">
 							<span style="float:left">Loans from shareholders </span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">....</span>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/LoansFromShareholdersBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/LoansFromShareholdersEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 20 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:7mm;">20</div>
-						<div class="styGenericDiv" style="width:50mm;height:7mm;padding-top:0.6mm">						
+						<div class="styGenericDiv" style="width:50mm; height:7mm; padding-top:0.5mm">						
 							Mortgages, notes, bonds payable in 1 
 							<span style="float:left">year or more </span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">........</span>
 						</div>
 						<div class="styShadingCell" style="height:7mm;"/>
-						<div class="styLNAmountBox" style="height:7mm;padding-top:2mm;">
+						<div class="styLNAmountBox" style="height:7mm; padding-top:3mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/LongTermPayableBOYAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styShadingCell" style="height:7mm;"/>
-						<div class="styLNAmountBox" style="height:7mm;padding-top:2mm;">
+						<div class="styLNAmountBox" style="height:7mm; padding-top:3mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/LongTermPayableEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 21 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:5mm;">21</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.4mm">
+						<div class="styLNLeftNumBox" style="height:4.5mm; padding-top:1mm;">21</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:1mm;">
 							<span style="float:left">
 						Other liabilities (attach statement)
 							</span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">.</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">.</span>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="width:4mm;height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="width:4mm; height:4.5mm;">
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherLiabilitiesBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm;height:5mm;">
+						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm; height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherLiabilitiesBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="width:4mm;height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="width:4mm; height:4.5mm;">
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherLiabilitiesEOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm;height:5mm;">
+						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm; height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/OtherLiabilitiesEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 22 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:5mm;">22</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.4mm">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">22</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:0.5mm">
 							<span style="float:left">Capital stock</span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">........</span>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/CapitalStockBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/CapitalStockEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 23 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:5mm;">23</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.4mm">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">23</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm;padding-top:0.5mm">
 							<span style="float:left">Additional paid-in capital</span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">....</span>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/AdditionalPaidInCapitalBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/AdditionalPaidInCapitalEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 24 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:5mm;">24</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.4mm">
+						<div class="styLNLeftNumBox" style="height:4.5mm; padding-top:1mm;">24</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm; padding-top:1mm;">
 							<span style="float:left">Retained earnings</span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">......</span>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/RetainedEarningBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/RetainedEarningEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 25 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:7.5mm;">25</div>
-						<div class="styGenericDiv" style="width:50mm;height:7.5mm;padding-top:0.6mm">
+						<div class="styLNLeftNumBox" style="height:7mm;">25</div>
+						<div class="styGenericDiv" style="width:50mm; height:7mm; padding-top:0.5mm">
 							Adjustments to shareholders' equity
 							<span style="float:left">
 								(attach statement)
 							</span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">......</span>
 						</div>
-						<div class="styShadingCell" style="height:7.5mm;"/>
-						<div class="styLNAmountBox" style="width:4mm;height:7.5mm;padding-top:3mm;">
+						<div class="styShadingCell" style="height:7mm;"/>
+						<div class="styLNAmountBox" style="width:4mm; height:7mm; ">
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/AdjustmentToShrEqtyBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm;height:7.5mm;padding-top:3mm;">
+						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm; height:7mm; padding-top:3.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/AdjustmentToShrEqtyBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:7.5mm;"/>
-						<div class="styLNAmountBox" style="width:4mm;height:7.5mm;padding-top:3mm;">
+						<div class="styShadingCell" style="height:7mm;"/>
+						<div class="styLNAmountBox" style="width:4mm; height:7mm; ">
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/AdjustmentToShrEqtyEOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm;height:7.5mm;padding-top:3mm;">
+						<div class="styIRS1120SLNAmountBoxNLB" style="width:28mm; height:7mm; padding-top:3.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/AdjustmentToShrEqtyEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 26 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:5mm;">26</div>
-						<div class="styGenericDiv" style="width:50mm;height:4.5mm;padding-top:0.4mm">
+						<div class="styLNLeftNumBox" style="height:4.5mm; padding-top:1mm;">26</div>
+						<div class="styGenericDiv" style="width:50mm;height:4.5mm; padding-top:1mm;">
 							<span style="float:left">Less cost of treasury stock</span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
+							<span class="styDotLn" style="float:right; padding-right:1mm;">...</span>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateNegativeNumber">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/CostOfTreasuryStockBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:5mm;"/>
-						<div class="styLNAmountBox" style="height:5mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateNegativeNumber">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/CostOfTreasuryStockEOYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- BEGIN Schedule L Line 27 -->
 					<div class="styBB" style="width:187mm; float:none; clear:both;">
-						<div class="styLNLeftNumBox" style="height:7.5mm;">27</div>
-						<div class="styGenericDiv" style="width:50mm;height:7.5mm;padding-top:0.7mm">
-			Total liabilities and shareholders'  equity 							
+						<div class="styLNLeftNumBox" style="height:4.5mm;">27</div>
+						<div class="styGenericDiv" style="width:50mm; height:4.5mm ;padding-top:1mm">
+							Total liabilities and shareholders'  equity 							
 						</div>
-						<div class="styShadingCell" style="height:7.5mm;"/>
-						<div class="styLNAmountBoxNBB" style="height:7.5mm;padding-top:3mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBoxNBB" style="height:4.5mm; padding-top:1.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/TotalLiabilitiesShrEqtyBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styShadingCell" style="height:7.5mm;"/>
-						<div class="styLNAmountBoxNBB" style="height:7.5mm;padding-top:3mm;">
+						<div class="styShadingCell" style="height:4.5mm;"/>
+						<div class="styLNAmountBoxNBB" style="height:4.5mm; padding-top:1.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleL/TotalLiabilitiesShrEqtyEOYAmt"/>
 							</xsl:call-template>

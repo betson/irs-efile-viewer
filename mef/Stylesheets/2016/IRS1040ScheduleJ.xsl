@@ -68,17 +68,25 @@
 					<div class="styBB" style="width:187mm;height:6mm;">
 						<div class="styNameBox" style="width:140mm;height:100%;">
 							Name(s) shown on return <br/>
+				<xsl:choose>
+					    <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
 							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">Name</xsl:with-param>
+								<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
 							</xsl:call-template>
+					   </xsl:when>
+				</xsl:choose>			
 						</div>
 						<div class="styEINBox" style="width:46mm;height:100%;padding-left:4px;">
 							Social Security Number (SSN)<br/>
 							<span style="text-align:center;width:100%;font-weight:normal;">
+							<xsl:choose>
+							<xsl:when test="$RtnHdrData/Filer/PrimarySSN">
 								<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-								</xsl:call-template>
-							</span>
+							   </xsl:call-template>
+				   		  </xsl:when>
+					    </xsl:choose>
+      				   </span>
 						</div>
 					</div>
 					<div class="styTBB">
@@ -196,7 +204,7 @@
 							<div class="styLNLeftNumBoxSD">3</div>
 							<div class="styLNDesc">
 								<span style="float:left;">Subtract line 2a from line 1</span>
-								<span class="styIRS1040SJDots">.....................</span>
+								<span class="styIRS1040SJDots">....................</span>
 							</div>
 							<div class="styLNRightNumBox">3</div>
 							<div class="styLNAmountBox">

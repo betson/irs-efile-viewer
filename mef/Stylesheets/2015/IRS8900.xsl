@@ -95,61 +95,18 @@
 					<div class="styBB" style="width:187mm;clear:both;">
 						<div class="styFNBox" style="width:147.5mm;">
 						  Name(s) shown on return<br/>
-						  <!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
-						  <xsl:choose>
-						  <!-- Name from 1120/990/1065 Return Header -->
-						  <xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
-							<xsl:call-template name="PopulateText">
-							  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+							<xsl:call-template name="PopulateFilerName">
+								<xsl:with-param name="TargetNode" select="$FormData"/>
 							</xsl:call-template>
-							<br/>
-							<xsl:call-template name="PopulateText">
-							  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
-							</xsl:call-template>
-						  </xsl:when>
-						  <!-- Name from 1040 Return Header -->
-						  <xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
-						    <br/>
-						    <xsl:call-template name="PopulateText">
-						      <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
-						    </xsl:call-template>
-						  </xsl:when>
-						  <!-- Name from 1041 Return Header 
-						  <xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
-							<xsl:call-template name="PopulateText">
-							  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
-						    </xsl:call-template>
-							<br/>
-							<xsl:call-template name="PopulateText">
-							  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
-							</xsl:call-template>
-							</xsl:when>
-							<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
-							  <xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
-						    </xsl:call-template>
-							<br/>
-						  </xsl:when> -->
-						</xsl:choose>
 						</div>
 						<div class="styGenericDiv" style="width:38.5mm;padding-left:1mm;">
 							<span class="styBoldText">Identifying number</span>
 							<br/>
 							<br/>
 							<span style="font-weight:normal;">
-							<!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
-							  <xsl:choose>
-		                        <xsl:when test="$RtnHdrData/Filer/EIN">
-								  <xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-								  </xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise>
-								  <xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-								  </xsl:call-template>
-								</xsl:otherwise>
-							  </xsl:choose>
+								<xsl:call-template name="PopulateFilerTIN">
+									<xsl:with-param name="TargetNode" select="$FormData"/>
+								</xsl:call-template>
 							</span>
 						</div>
 					</div>

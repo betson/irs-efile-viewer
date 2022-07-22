@@ -99,7 +99,7 @@ Name(s) shown on return<br/>
 <!--Instructions-->
 <div class="styBB" style="width:187mm;padding-top:0mm;padding-bottom:0mm;border-bottom-width:0px;font-size:8pt;font-family:Arial;">
 <div class="styBB" style="width:15mm;height: 17mm;padding-top:4.3mm;padding-bottom:0mm;border-bottom-width:0px;">
-<img src="{$ImagePath}/8880_Caution.gif" alt="Bullet" style="height:55px;width:55px"/>
+<img src="{$ImagePath}/8880_Caution.gif" alt="Caution" style="height:55px;width:55px"/>
 </div>
 <div class="styLNDesc" style="padding-left:3mm;padding-bottom:0mm;width:150mm;">
 <div style="font-size:9pt;font-family:Arial;">You<b> cannot </b> take this credit if

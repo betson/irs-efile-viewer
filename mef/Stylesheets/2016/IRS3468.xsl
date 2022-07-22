@@ -68,7 +68,7 @@
 							</div>
 							<div class="styFBT" style="padding-top:0mm;">
 								<img src="{$ImagePath}/3468_Bullet.gif" alt="bullet image"/> Information on Form 3468 and its separate instructions is available 
-								at	<a href="http://www.irs.gov/form3468" title="Link to IRS.gov"><i>www.IRS.gov/form3468</i></a>.
+								at	<a href="http://www.irs.gov/Form3468" title="Link to IRS.gov"><i>www.IRS.gov/Form3468</i></a>.
 							</div>							
 						</div>
 						<div class="styTYBox" style="width:38mm;height:24mm;">
@@ -90,39 +90,72 @@
           Name(s) shown on return<br/>
 							<span>
 								<xsl:choose>
-									<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-										<br/>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">Name</xsl:with-param>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-										</xsl:call-template>
-										<br/>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
-								</xsl:choose>
+							  <!-- This process changed 170509 by gdy per UWR 164393 -->
+								<!--Business Name from F1120 Return Header-->
+								<xsl:when test="$RtnHdrData/Filer/BusinessName">
+								  <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+								  </xsl:call-template>
+								  <br/>
+								  <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+								  </xsl:call-template>
+								</xsl:when>
+								<!--Individual Name from F1040/NR Return Header-->
+								<xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+								<br/>
+								  <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+								  </xsl:call-template>
+								</xsl:when>
+								<!--Business Name from F1041 Return Header-->
+								<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+								  <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+								  </xsl:call-template>
+								  <br/>
+								  <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+								  </xsl:call-template>            
+								</xsl:when>
+								<!--National Morgage Association Code from F1041 Return Header-->
+								<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
+								  <br/>
+								  <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">NationalMortgageAssocCd</xsl:with-param>
+								  </xsl:call-template>
+								</xsl:when>
+							  </xsl:choose>
 							</span>
 						</div>
 						<div class="styEINBox" style="width:30mm;height:9mm;font-size:7pt;font-weight:bold;padding-left:2mm;">
-          Identifying number<br/>
+							  Identifying number<br/>
 							<br/>
 							<span style="width:25mm;text-align:left;font-size:7pt;font-weight:normal;">
 								<xsl:choose>
-									<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
+							  <!-- This process changed 170509 by gdy per UWR 164393 -->
+								  <xsl:when test="$RtnHdrData/Filer/PrimarySSN">
+									 <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+									 </xsl:call-template>
+								  </xsl:when>
+								  <xsl:when test="$RtnHdrData/Filer/SSN">
+									 <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+									 </xsl:call-template>
+								  </xsl:when>
+								  <xsl:when test="$RtnHdrData/Filer/EIN">
+									 <xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+									 </xsl:call-template>
+								  </xsl:when>
+   								  <xsl:when test="$RtnHdrData/Filer/MissingEINReasonCd">
 										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+											<xsl:with-param name="TargetNode">MissingEINReasonCd</xsl:with-param>
 										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
+								  </xsl:when>
+								  <xsl:otherwise>
+								  </xsl:otherwise>
 								</xsl:choose>
 							</span>
 						</div>
@@ -630,7 +663,7 @@
 								<span class="styDotLn"	style="float:none">..................</span>
 								<img src="{$ImagePath}/3468_Bullet.gif" style="float" alt="right arrow"/>
 								<span style="width:2mm;"/>
-								<input type="checkbox" alt="alt" class="styCkbox">
+								<input type="checkbox" alt="RehabilitationExpendituresUsed" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form3468Data/RehabilitationExpendElectInd"/>
 										<xsl:with-param name="BackupName">

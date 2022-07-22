@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Last Modified by James Ganzy on 7/19/2010 -->
+<!-- Last Modified by Eugenia McDonald on 10/18/2017 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -65,7 +66,7 @@
 							<div class="styMainTitle" style="width: 115mm; height: 11mm; text-align: left; padding-left: 27mm; font-size: 17pt;">
 								Child Tax Credit
 								<div style="width: 35mm; height: 12mm; padding-top: 0.5mm; padding-left: 16mm;">
-									<img src="{$ImagePath}/8812_1040_Top_Forms.gif" alt="TopFormImage" height="82" width="68"/>
+									<img src="{$ImagePath}/8812_1040_Top_Forms.gif" alt="TopFormImage" height="69" width="93"/>
 								</div>
 							</div>
 							<div class="styFBT" style="width: 120mm; height: 10mm; padding-right: 15mm; padding-bottom: 2px; font-family: Arial; font-size: 8pt;">
@@ -93,19 +94,17 @@
 					</div>
 					<!-- End Form Number and Name section -->
 					<!-- Begin Names and Identifying number section -->
-					<div class="styBB" style="width: 187mm; height: 8mm; clear:left; float: left;">
-						<div class="styNameBox" style="width:140mm;height:8mm;font-size:7pt;font-weight:normal;">
+					<div class="styBB" style="width: 187mm; height: 7mm; clear:left; float: left;">
+						<div class="styNameBox" style="width:140mm;height:7mm;font-size:7pt;font-weight:normal;">
 							Name(s) shown on return<br/>
 								<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
 								</xsl:call-template>
 						</div>
-						<div class="styEINBox" style="width:45mm;height:4mm;padding-left:2mm;font-size:7pt;font-weight:bold;">
+						<div class="styEINBox" style="width:45mm;height:7mm;padding-left:2mm;font-size:7pt;font-weight:bold;">
 							Your social security number <br/>
 								<span style="width:40mm;text-align:center;font-weight:normal;">
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-									</xsl:call-template>
+									<xsl:call-template name="PopulateReturnHeaderFilerTIN"></xsl:call-template>
 								</span>
 						</div>
 					</div>
@@ -4135,42 +4134,41 @@
 								<!-- BEGIN -->
 								<!-- Line 1-->
 								<div style="width: 187mm; height: 38mm; clear: left; font-size: 7.5pt; float: left;">
-									 <div class="styLNLeftNumBox" style="width: 8mm; height: 9mm; padding-top: 1mm; padding-left: 3mm;">1</div>
-									 <div style="width: 141mm; clear: none; float: left;">
-									     <div class="styLNDesc" style="width: 2.8mm; height: 36mm; float: right;">
-											<img style="height: 36mm;" src="{$ImagePath}/8812_Bracket_X_Lg.gif" alt="Curly Bracket Image"/>
-										</div>
-								        <div class="styLNDesc" style="width: 138mm; height: 14mm;">						
-									         <div class="styLNDesc" style="width: 138mm; height: 5mm;">							
-									              If you file Form 2555 or 2555-EZ, <b>stop</b> here; you cannot claim the additional child tax credit.						
-									         </div>																								
-									         <div class="styLNDesc" style="width: 138mm; height: 8mm;">
-									             If you are required to use the worksheet in <b>Pub. 972</b>, enter the amount from line 8 of the Child Tax Credit Worksheet in the publication. Otherwise:
-									         </div>																													
-								       </div>
-										<div class="styLNDesc" style="width:138mm;height:9mm;">
-											<div class="styLNDesc" style="width: 24mm; height: 8mm;">
+									<div class="styLNLeftNumBox" style="width: 8mm; height: 46mm; padding-top: 1mm; padding-left: 3mm;">1</div>
+									<div style="width: 141mm; clear: none; float: left; height:46mm">
+									    <div class="styLNDesc" style="width: 138mm; height: 46mm;">						
+									        <div class="styLNDesc" style="width: 138mm; height: 5mm;">							
+									            If you file Form 2555 or 2555-EZ <b>stop</b> here; you cannot claim the additional child tax credit.						
+									        </div>																								
+									        <div class="styLNDesc" style="width: 138mm; height: 8mm;">
+									            If you are required to use the worksheet in <b>Pub. 972</b>, enter the amount from line 8 of the Child Tax Credit
+									            Worksheet in the publication. Otherwise:
+									        </div>																													
+								      		<div class="styLNDesc" style="width: 24mm; height: 8mm;">
 												<b>1040 filers:</b>
 											</div>
 											<div class="styLNDesc" style="width: 105mm; height: 8mm;">
-						Enter the amount from line 6 of your Child Tax Credit Worksheet (see the<br/>
-						Instructions for Form 1040, line 52).
-				</div>
+											    Enter the amount from line 6 of your Child Tax Credit Worksheet (see the<br/>
+												Instructions for Form 1040, line 52).
+											</div>
 											<div class="styLNDesc" style="width: 24mm; height: 8mm;">
 												<b>1040A filers:</b>
 											</div>
 											<div class="styLNDesc" style="width: 105mm; height: 8mm;"> 
-						Enter the amount from line 6 of your Child Tax Credit Worksheet (see the<br/>
-						Instructions for Form 1040A, line 35).
-				 </div>
+												Enter the amount from line 6 of your Child Tax Credit Worksheet (see the<br/>
+												Instructions for Form 1040A, line 35).
+											</div>
 											<br/>
 											<div class="styLNDesc" style="width: 24mm; height: 8mm;">
 												<b>1040NR filers:</b>
 											</div>
 											<div class="styLNDesc" style="width: 105mm; height: 8mm;">
-						Enter the amount from line 6 of your Child Tax Credit Worksheet (see the
-						Instructions for Form 1040NR, line 49).
-                </div>
+												Enter the amount from line 6 of your Child Tax Credit Worksheet (see the
+												Instructions for Form 1040NR, line 49).
+											</div>
+										</div>
+										<div class="styLNDesc" style="width: 2.8mm; height: 36mm; float: right;">
+											<img style="height: 36mm;" src="{$ImagePath}/8812_Bracket_X_Lg.gif" alt="Curly Bracket Image"/>
 										</div>
 									</div>
 									<div class="styLNRightNumBox" style="width: 6mm; height: 16mm; padding-top: 12mm;">1</div>

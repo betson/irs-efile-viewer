@@ -31,10 +31,10 @@
     <xsl:call-template name="InitJS">
     </xsl:call-template>
  <style type="text/css"> 
-  <xsl:if test="not($Print) or $Print=''">-->
+ <xsl:if test="not($Print) or $Print=''">
         <xsl:call-template name="IRS1040ScheduleCStyle"/>
         <xsl:call-template name="AddOnStyle"/>
-   </xsl:if>
+ </xsl:if>
   </style>  
   <xsl:call-template name="GlobalStylesForm"/>
 </head>
@@ -89,22 +89,51 @@
 <div class="styBB" style="width:187mm;float:none;clear:both;height:auto;">
 	<div class="styNameBox" style="width:139mm;height:auto;font-size:7pt;">
 		Name of proprietor<br/>  <br/>
-		<!--  <span class="stySmallText">-->         
-		<xsl:call-template name="PopulateText">
-			<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/ProprietorNm"/>
-		</xsl:call-template>            
-		<!--  </span>-->    
+		 <xsl:choose>
+					<!-- Name from 1041 Return Header-->
+						<xsl:when test="$RtnHdrData/ReturnTypeCd='1041'">
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt" />
+									</xsl:call-template><br/>
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt" />
+									</xsl:call-template>
+								</xsl:when>
+								<xsl:when test="normalize-space($Form1040ScheduleCData/ProprietorNm) != ''">
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/ProprietorNm"/>
+							</xsl:call-template>
+							</xsl:when>
+					    <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+							</xsl:call-template>
+					   </xsl:when>		
+								</xsl:choose>			
 	</div>        
 	<div class="styEINBox" style="width:46mm;height:auto;font-size:7pt;padding-left:2mm;">
 		Social security number (SSN)<br/><br/>
 		<span class="styEINFld" style="width:30mm; text-align:left;font-weight:normal;">
-			<xsl:call-template name="PopulateSSN">
-				<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/SSN"/>
-			</xsl:call-template>            
+			<xsl:choose>
+				<xsl:when test="$RtnHdrData/Filer/EIN">
+					<xsl:call-template name="PopulateReturnHeaderFiler"> 
+						  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+				   </xsl:call-template>
+				 </xsl:when>
+				 <xsl:when test="normalize-space($Form1040ScheduleCData/SSN) != ''">
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/SSN"/>
+							</xsl:call-template>
+							</xsl:when>
+				<xsl:when test="$RtnHdrData/Filer/PrimarySSN">
+					<xsl:call-template name="PopulateReturnHeaderFiler">
+						<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+					  </xsl:call-template>
+			   </xsl:when>
+      </xsl:choose>
 		</span>  
 	</div>
 </div>
-
 <!-- Item A-->
 <div class="styBB" style="width:187mm;float:none;clear:both;">
 	<div class="styLNLeftNumBox" style="width:3mm; height:8.5mm;padding-left: 0mm;padding-top:1mm;">A</div>
@@ -1562,13 +1591,14 @@ Enter expenses for business use of your home
 		<xsl:if test="($Print != $Separated) or (count($Form1040ScheduleCData/AdditionalVehicleInfoGrp) &lt;= 1) ">
 	  <!-- BEGIN Part IV Title -->
 	  <tr>
-		<td class="styBB" style="width:186mm;height:auto;">
-		  <div class="styPartName" style="width:13mm;height:auto;margin-top:-0.2mm;">Part IV</div> 
-		  <div class="styPartDesc" style="width:169mm;height:auto;margin-top:0px;">
-			   Information on Your Vehicle. <span class="styNormalText">Complete this part
-			   <b>only</b> if you are claiming car or truck expenses on line 9, and are not required to file Form 4562
-				for this business. See the instructions for line 13 to find out if you must file Form 4562.</span> 
-		  </div>   
+		<td class="styBB" style="width:182mm;height:11mm;">
+		<div style="width:182mm;height:11mm;">
+			<span class="styPartName" style="height:4mm;width:13mm;margin-top:-0.2mm;">Part IV</span>
+			<span style="width:169mm;font-weight:normal;padding-left:5mm;" class="styPartDesc">
+				<b> Information on Your Vehicle.</b> Complete this part <b>only</b> if you are claiming car or truck expenses on line 9,<br/>
+				 and are not required to file Form 4562	for this business. See the instructions for line 13 to find out if you must file Form 4562.
+		  </span>                
+		</div>		
 		</td>
 		</tr>
 		<tr>				
@@ -1591,13 +1621,13 @@ Enter expenses for business use of your home
 		 <td style="width:182mm;">    
 			<div style="width:182mm;">      
 		  <div class="styLNLeftNumBox" style="height:8mm;padding-top:5mm;">44</div>      
-		  <div class="styLNDesc" style="width: 165mm; height:8mm;padding-top:5mm;">        
+		  <div class="styLNDesc" style="width: 165mm; height:8mm;padding-top:5mm;padding-bottom:2mm;">        
 		   Of the total number of miles you drove your vehicle during 2016, enter the number of miles you used your vehicle for:
 		  </div>
 		   </div>         
 		  <div class="styLNLeftNumBox" style="height:8mm;padding-top:5mm;">
 		  <span style="width: 3mm;"/>a</div>      
-		   <div class="styLNDesc" style="width: 15mm; height:8mm;padding-top:5mm;">        
+		   <div class="styLNDesc" style="width: 15mm; height:8.5mm;padding-top:6mm;">        
 			Business 
 		  </div>
 		  <div class="styLNAmountBox" style="height:8mm;padding-top:5mm;width:30mm; border-bottom-width: 1px; border-left-width: 0px;">  
@@ -1607,7 +1637,7 @@ Enter expenses for business use of your home
 		  </div>
 		  <div class="styLNLeftNumBox" style="height:8mm;padding-top:5mm;">
 		  <span style="width: 3mm;"/>b</div>   
-		   <div class="styLNDesc" style="width: 43mm;height:8mm;padding-top:5mm;">  Commuting (see instructions)         
+		   <div class="styLNDesc" style="width: 43mm;height:8.5mm;padding-top:6mm;">  Commuting (see instructions)         
 		  </div>
 		  <div class="styLNAmountBox" style="height:8mm;padding-top:5mm;width:30mm; border-bottom-width: 1px; border-left-width: 0px;">   
 			<xsl:call-template name="PopulateAmount">
@@ -1615,7 +1645,7 @@ Enter expenses for business use of your home
 			</xsl:call-template>        
 		  </div>
 	  <div class="styLNLeftNumBox" style="height:8mm;padding-top:5mm;"><span style="width: 3mm;"/>c</div>   
-		   <div class="styLNDesc" style="width: 10mm; height:8mm;padding-top:5mm;">Other        
+		   <div class="styLNDesc" style="width: 10mm; height:8.5mm;padding-top:6mm;">Other        
 		  </div>
 		  <div class="styLNAmountBox" style="height:8mm;padding-top:5mm;width:30mm; border-bottom-width: 1px; border-left-width: 0px;">        
 			<xsl:call-template name="PopulateAmount">
@@ -1772,13 +1802,11 @@ Enter expenses for business use of your home
 			<div class="styBB" style="width:182mm;height:10mm;">  
 		   <div class="styLNLeftNumBox" style="height:8mm;padding-top:5mm;">
 			<span style="width:3.4mm;"/>b</div>
-		  <div class="styLNDesc" style="width:140mm;height:8mm;padding-top:5mm;">
+		  <div class="styLNDesc" style="width:170mm;height:8mm;padding-top:5mm;">
 				<span style="float:left;">If "Yes," is the evidence written?</span>
 				<!--Dotted Line-->
-				<span  class="styDotLn" style="float:right;padding-right:1mm;">.....................</span>   
-			</div>
-			<div class=".styGenericDiv " style="width:28mm;height:8mm;padding-top:5mm;">
-			    <span style="width:0mm;"> </span> 
+				<span  class="styDotLn" style="padding-left:3mm;padding-right:9mm;">......................</span>   
+			    <span style="width:0mm;float:right;"> </span>
 				<span>   
 						<xsl:call-template name="PopulateSpan">
 							  <xsl:with-param name="TargetNode" select="EvidenceWrittenInd"/>
@@ -1858,7 +1886,7 @@ Enter expenses for business use of your home
 			   </span>         
 			  <div class="styLNLeftNumBox" style="height:4mm;">
 			  <span style="width: 3mm;"/>a</div>      
-			   <div class="styLNDesc" style="width: 15mm; height:4mm;">        
+			   <div class="styLNDesc" style="width: 15mm; height:5mm;">        
 				Business 
 			  </div>
 			  <div class="styLNAmountBox" style="height:4mm;width:30mm; border-bottom-width: 1px; border-left-width: 0px;">        
@@ -1868,7 +1896,7 @@ Enter expenses for business use of your home
 			  </div>
 			  <div class="styLNLeftNumBox" style="height:4mm;">
 			  <span style="width: 3mm;"/>b</div>   
-			   <div class="styLNDesc" style="width: 43mm; height:4mm;">  Commuting (see instructions)         
+			   <div class="styLNDesc" style="width: 43mm; height:5mm;">  Commuting (see instructions)         
 			  </div>
 			  <div class="styLNAmountBox" style="height:4mm;width:30mm; border-bottom-width: 1px; border-left-width: 0px;">        
 				<xsl:call-template name="PopulateAmount">
@@ -1876,7 +1904,7 @@ Enter expenses for business use of your home
 				</xsl:call-template>        
 			  </div>
 		  <div class="styLNLeftNumBox" style="height:4mm;"><span style="width: 3mm;"/>c</div>   
-			   <div class="styLNDesc" style="width: 10mm; height:4mm;">Other        
+			   <div class="styLNDesc" style="width: 10mm; height:5mm;">Other        
 			  </div>
 			  <div class="styLNAmountBox" style="height:4mm;width:30mm; border-bottom-width: 1px; border-left-width: 0px;">        
 				<xsl:call-template name="PopulateAmount">
@@ -2038,7 +2066,7 @@ Enter expenses for business use of your home
 						<!--Dotted Line-->
 						<span  class="styDotLn" style="float:right;padding-right:1mm;">.......................</span>    
 					</div>
-					<div class=".styGenericDiv " style="width:28mm;">
+					<div class=".styGenericDiv " style="width:25mm;">
 				   <span style="width:0mm;"> </span>
 					<span>
 						<xsl:call-template name="PopulateSpan">
@@ -2404,7 +2432,7 @@ Enter expenses for business use of your home
         <td class="styDepTblCell">   
               <div style="width:187mm;float:left;clear:none">
       <div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;text-align:left">44</div>      
-      <div class="styLNDesc" style="width: 155mm; height:4mm;padding-top:1mm;text-align:left">        
+      <div class="styLNDesc" style="width: 155mm; height:4.5mm;padding-top:1mm;text-align:left">        
         Of the total number of miles you drove your vehicle during 2016, enter the number of miles you used your vehicle for:
       </div>      
         </div>
@@ -2614,7 +2642,7 @@ Enter expenses for business use of your home
 			<!--Dotted Line-->
 			<span  class="styDotLn" style="float:right;padding-right:1mm;">.......................</span>   
               </div>
-                <div class="styLNDesc" style="width:28mm;text-align:left">
+                <div class="styLNDesc" style="width:25mm;text-align:left">
            <span style="width:0mm;"> </span> 
            <span>
 			   <xsl:call-template name="PopulateSpan">

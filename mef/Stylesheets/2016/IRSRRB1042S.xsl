@@ -76,7 +76,7 @@
 						<div style="width:156mm;float:left;">
 							<div style="font-family:Arial;width:90mm;float:left;padding-left:0.5mm;padding-top:0.2mm;">
 								PAYER'S NAME, STREET ADDRESS, CITY, STATE AND ZIP CODE <br />
-								<span style="font-family:Verdana;font-weight:bold;">UNITED STATES RAILROAD RETIREMENT BOARD</span>
+								<span style="font-family:Arial;font-weight:bold;">UNITED STATES RAILROAD RETIREMENT BOARD</span>
 							</div>
 							<div style="width:20mm;float:left;font-weight:bold;">
 								TAX YEAR<br />
@@ -92,7 +92,7 @@
 								<div class="styRRB1042SLineDiv" style="font-size:6pt;border-width:1px 0px 0px 0px;padding-left:0.5mm;">PAYER'S FEDERAL IDENTIFYING NO. 36-3314600</div>
 								<div class="styRRB1042SLineDiv styRRB1042SDesc" style="width:100%;height:14.4mm;float:none;border-width:1px 0px 0px 0px;">
 									1. Claim No. and Payee Code <br />
-									<span style="font-family:Arial">
+									<span style="font-family:Arial Narrow">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/ClaimNum"/>
 										</xsl:call-template><br />
@@ -103,13 +103,13 @@
 								</div>
 								<div class="styRRB1042SLineDiv styRRB1042SDesc" style="width:100%;height:7.4mm;float:none;border-width:1px 0px 0px 0px;">
 									2. Recipient's Identification Number <br />
-									<span style="font-family:Verdana">
+									<span style="font-family:Arial">
 										<xsl:call-template name="PopulateReturnHeaderFilerTIN"/>
 									</span>
 								</div>
 								<div class="styRRB1042SLineDiv styRRB1042SDesc" style="width:100%;height:21mm;float:none;border-width:1px 0px 0px 0px;">
 									Recipient's Name, Street Address, City, State, and Zip Code <br />
-									<span style="font-family:Verdana">
+									<span style="font-family:Arial">
 										<xsl:call-template name="PopulateReturnHeaderFiler">
 											<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
 										</xsl:call-template><br />
@@ -233,25 +233,25 @@
 						<div style="width:187mm;">
 							<div style="width:64mm;float:left;">&#8194;</div>
 							<div class="styRRB1042SAmountBox" style="width:31mm;border-top-width:1px;text-align:center;">
-								<span style="font-family:Times New Roman;float:left;padding-left:0.8mm;">10. Country</span> <br />
+								<span style="font-family:Arial;float:left;padding-left:0.8mm;">10. Country</span> <br />
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/CountryCd"/>
 								</xsl:call-template>
 							</div>
 							<div class="styRRB1042SAmountBox" style="width:31.5mm;border-top-width:1px;">
-								<span style="font-family:Times New Roman;float:left;padding-left:0.8mm;">11. Rate of Tax</span> <br />
+								<span style="font-family:Arial;float:left;padding-left:0.8mm;">11. Rate of Tax</span> <br />
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/TaxRt"/>
 								</xsl:call-template>
 							</div>
 							<div class="styRRB1042SAmountBox" style="width:29.3mm;border-top-width:1px;">
-								<span style="font-family:Times New Roman;float:left;padding-left:0.8mm;">12. Federal Tax Withheld</span> <br />
+								<span style="font-family:Arial;float:left;padding-left:0.8mm;">12. Federal Tax Withheld</span> <br />
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/FederalIncomeTaxWithheldAmt"/>
 								</xsl:call-template>
 							</div>
 							<div class="styRRB1042SAmountBox" style="width:30.5mm;border-top-width:1px;">
-								<span style="font-family:Times New Roman;float:left;padding-left:0.8mm;">13. Medicare Premium Total</span> <br />
+								<span style="font-family:Arial Narrow;float:left;padding-left:0.8mm;">13. Medicare Premium Total</span> <br />
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/TotalMedicarePremiumAmt"/>
 								</xsl:call-template>

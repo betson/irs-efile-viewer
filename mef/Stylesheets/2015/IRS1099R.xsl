@@ -81,26 +81,33 @@
 								<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="Desc">Payer Name Control</xsl:with-param>
 									<xsl:with-param name="TargetNode" select="$Form1099RData/PayerNameControlTxt"/>
-								</xsl:call-template>
-								<!--<span style="width:.5mm;"/>
-								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$FormW2Data/EmployerNameControl"/>
-								</xsl:call-template>-->
-								<br/>
-								<span style="width:1mm;"/>
-								<span style="font-size:6pt;">
+								</xsl:call-template>	<br/>
+						<xsl:choose>
+		                   	 <xsl:when test="normalize-space($Form1099RData/PayerName/BusinessNameLine1Txt) != ''">
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$Form1099RData/PayerName//BusinessNameLine1Txt"/>
+							</xsl:call-template>
+							<br/>
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$Form1099RData/PayerName//BusinessNameLine2Txt"/>
+							</xsl:call-template>
+							</xsl:when>
+					<!-- Name from 1041 Return Header-->
+						<xsl:when test="$RtnHdrData/ReturnTypeCd='1041'">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form1099RData/PayerName/BusinessNameLine1Txt"/>
-									</xsl:call-template>
-								</span>
-								<br/>
-								<span style="width:1mm;"/>
-								<span style="font-size:6pt">
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt" />
+									</xsl:call-template><br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form1099RData/PayerName/BusinessNameLine2Txt"/>
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt" />
 									</xsl:call-template>
-								</span>
-								<br/>
+								</xsl:when>
+					    <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+							</xsl:call-template>
+					   </xsl:when>		
+								</xsl:choose>
+						<br/>
 								<xsl:if test="$Form1099RData/PayerUSAddress">
 									<span style="width:1mm;"/>
 									<span style="font-size:6pt;">
@@ -168,16 +175,28 @@
 								<span style="width:6px;"/>
 								<br/><br/><br/>
 								<span style="width:100%;text-align:center;">
-                                <xsl:if test="$Form1099RData/RecipientSSN">
-                                <xsl:call-template name="PopulateSSN">
-                                <xsl:with-param name="TargetNode" select="$Form1099RData/RecipientSSN"/>
-                                </xsl:call-template>
-                                </xsl:if>
-                                <xsl:if test="$Form1099RData/RecipientEIN">
-                                <xsl:call-template name="PopulateEIN">
-                                <xsl:with-param name="TargetNode" select="$Form1099RData/RecipientEIN"/>
-                                </xsl:call-template>
-                                </xsl:if>
+														<xsl:choose>
+							   <xsl:when test="normalize-space($Form1099RData/RecipientSSN) != ''">
+								  <xsl:call-template name="PopulateSSN">
+									<xsl:with-param name="TargetNode" select="$Form1099RData/RecipientSSN"/>
+								  </xsl:call-template>
+							   </xsl:when>
+							   <xsl:when test="normalize-space($Form1099RData/RecipientEIN) != ''">
+								  <xsl:call-template name="PopulateSSN">
+									<xsl:with-param name="TargetNode" select="$Form1099RData/RecipientEIN"/>
+								  </xsl:call-template>
+							   </xsl:when>
+							<xsl:when test="$RtnHdrData/Filer/PrimarySSN">
+								<xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+							   </xsl:call-template>
+				   		    </xsl:when>
+				   		    <xsl:when test="$RtnHdrData/Filer/EIN">
+				   		          <xsl:call-template name="PopulateReturnHeaderFiler"> 
+				   		              <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+                                  </xsl:call-template>
+                             </xsl:when>
+				   		  </xsl:choose>
 								</span>
 							</div>
 							<!--RECIPIENT'S Name -->

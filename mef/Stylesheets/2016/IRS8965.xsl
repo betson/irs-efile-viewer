@@ -60,7 +60,8 @@
 								<img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet"/>
 								<span style="font-weight:normal">Attach to Form 1040, Form 1040A, or Form 1040EZ.</span><br/>
 								<img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet"/>
-								Information about Form 8965 and its separate instructions is at <i>www.irs.gov/form8965</i>.
+								Information about Form 8965 and its separate instructions is at 
+								<a href="http://www.irs.gov/form8965" title="Link to IRS.gov"><i>www.irs.gov/form8965</i></a>.
 							</div>
 						</div>
 						<div class="styTYBox" style="width:32mm;border-left:none;">
@@ -251,86 +252,34 @@
 							
 					<div class="styBB" style="width:187mm;float:none;clear:both;border-top:1px solid black;">
 						<div class="styPartName" style="width:13mm;text-align:center;height:4mm;padding-top:0mm;">Part II</div>
-						<div class="styPartDesc" style="width:173.9mm;padding-left:2mm;">Coverage Exemptions for Your Household Claimed on Your Return</div>
+						<div class="styPartDesc" style="width:173.9mm;padding-left:2mm;">Coverage Exemptions Claimed on Your Return for Your Household</div>
 					</div>
 						
 					<!--  Line 7-->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:8mm;width:10mm;text-align:center;padding-top:3mm;">7</div>
-						<div class="styLNDesc" style="width:177mm;height:8mm;float:left;padding-top:2mm;">
-								<label >
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$Form8965Data/IncmBelowFlngThresholdInd"/>
-										<xsl:with-param name="BackupName">IRS8965IncmBelowFlngThresholdInd</xsl:with-param>
-									</xsl:call-template>
-									If you are claiming a coverage exemption because your household income or gross income is below the filing threshold, check here
-								</label>
-								<span style="width:2mm;"/>			
-								<input type="checkbox" class="styCkbox" name="Income Below Filing Threshold Indicator">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$Form8965Data/IncmBelowFlngThresholdInd"/>								
-										<xsl:with-param name="BackupName">IRS8965IncmBelowFlngThresholdInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-							</div>
-					</div>
-						
-					<!--  Line 7b-->
-					<!--<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:8mm;padding-top:3mm;width:10mm;text-align:center;">b</div>
-						<div class="styLNDesc" style="height:8mm;width:177mm;float:left;padding-top:3mm;padding-left:1mm;">
-							<span style="float:left;">Are you claiming a hardship exemption because your gross income is below the filing threshold?</span>
-							--><!--Dotted Line--><!--
-							<span style="padding-left:1mm;letter-spacing:3.5mm;font-weight:bold;">....</span>
-						<div style="font-size:7pt;float:right;">
-							<span>
-								<xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$Form8965Data/GrossIncmBelowFlngThresholdInd"/>
-									<xsl:with-param name="BackupName">GrossIncmBelowFlngThresholdInd</xsl:with-param>
-								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateYesCheckbox">
-										<xsl:with-param name="TargetNode" select="$Form8965Data/GrossIncmBelowFlngThresholdInd"/>
-										<xsl:with-param name="BackupName">GrossIncmBelowFlngThresholdInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-							</span>
-							<span style="width:1mm;"/>
+						<div class="styLNDesc" style="width:177mm;height:8mm;float:left;padding-top:2mm;padding-left:1mm;">
 							<label>
-								<xsl:call-template name="PopulateLabelYes">
-									<xsl:with-param name="TargetNode" select="$Form8965Data/GrossIncmBelowFlngThresholdInd"/>
-									<xsl:with-param name="BackupName">GrossIncmBelowFlngThresholdInd</xsl:with-param>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$Form8965Data/IncmBelowFlngThresholdInd"/>
+									<xsl:with-param name="BackupName">IRS8965IncmBelowFlngThresholdInd</xsl:with-param>
+								</xsl:call-template>If you are claiming a coverage exemption because your household income or gross income is below the filing threshold, 
+										check here							
+							</label>
+							<span style="width:4mm;"/>					
+							<input type="checkbox" class="styCkbox">
+								<xsl:call-template name="PopulateCheckbox">
+									<xsl:with-param name="TargetNode" select="$Form8965Data/IncmBelowFlngThresholdInd"/>								
+									<xsl:with-param name="BackupName">IRS8965IncmBelowFlngThresholdInd</xsl:with-param>
 								</xsl:call-template>
-							</label><b>Yes</b>
-							<span style="width:4mm;"/>
-							<span>
-								<xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$Form8965Data/GrossIncmBelowFlngThresholdInd"/>
-									<xsl:with-param name="BackupName">GrossIncmBelowFlngThresholdInd</xsl:with-param>
-								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateNoCheckbox">
-										<xsl:with-param name="TargetNode" select="$Form8965Data/GrossIncmBelowFlngThresholdInd"/>
-										<xsl:with-param name="BackupName">GrossIncmBelowFlngThresholdInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-							</span>
-							<span style="width:1mm;"/>
-							<label>
-								<xsl:call-template name="PopulateLabelNo">
-									<xsl:with-param name="TargetNode" select="$Form8965Data/GrossIncmBelowFlngThresholdInd"/>
-									<xsl:with-param name="BackupName">GrossIncmBelowFlngThresholdInd</xsl:with-param>
-								</xsl:call-template>
-							</label><b>No</b>
-							<span style="width:4mm;"/>
+							</input>
 						</div>
 					</div>
-						</div>-->
 					<div class="styBB" style="width:187mm;border-top:1px solid black;height:8mm;">
 						<div style="padding-top:1.6mm;float:left;">
 							<div class="styPartName" style="width:13mm;text-align:center;height:4mm;padding-top:0mm;">Part III</div>
 						</div>
-						<div class="styPartDesc" style="width:173.9mm;padding-left:2mm;">Coverage Exemptions for Individuals Claimed on Your Return. <span style="font-weight:normal;">If you and/or a member of your tax</span><br/>
+						<div class="styPartDesc" style="width:173.9mm;padding-left:2mm;">Coverage Exemptions Claimed on Your Return for Individuals. <span style="font-weight:normal;">If you and/or a member of your tax</span><br/>
 							<div style="float:left;font-weight:normal;">household are claiming an exemption on your return, complete Part III.</div>
 							<div style="float:right;text-align:right;">
 								<!-- button display logic -->
@@ -678,7 +627,7 @@
 							Cat. No. 37787G
 						</div>
 						<div style="float:right;">
-							<span style="width:30px;"/>  
+							<span style="width:40px;"/>  
 							Form <span class="styBoldText" style="font-size:8pt;">8965</span> (2016)
 						</div>						
 					</div>

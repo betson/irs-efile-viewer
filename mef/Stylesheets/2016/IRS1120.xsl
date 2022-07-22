@@ -580,7 +580,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 										</xsl:call-template>
 									</span>
 									<!--Dotted Line-->
-									<div class="styDotLn" style="float:right;padding-right:1mm;">.........</div>
+									<div class="styDotLn" style="float:right;padding-right:1mm;">..................</div>
 								</div>
 							</div>
 							<div style="float:right;clear:none;">
@@ -801,8 +801,8 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 					<!--BEGIN Main Form Deduction Section-->
 					<!-- Vertical Deductions label -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styIRS1120VTImageBox" style="width:6mm;height:90mm;text-align:center;padding-top:13mm;">
-							<img src="{$ImagePath}/1120_Deductions.gif" alt="Vertical Image - Deductions (see instructions for limitations on deductions)" valign="center"/>
+						<div class="styIRS1120VTImageBox" style="width:6mm;height:90mm;text-align:center;padding-top:8mm;">
+						<img src="{$ImagePath}/1120_Deductions.gif" alt="Deductions (see instructions for limitations on deductions.)" style="width:4.8mm;border-right:.5px solid black;"/>
 						</div>
 						<!-- line 12 -->
 						<div class="styGenericDiv" style="width:181mm;">
@@ -1270,9 +1270,9 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 					<!--BEGIN Main Form Tax and Payment Section-->
 					<!-- Vertical Tax and Payment line -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styIRS1120VTImageBox" style="width:6mm;height:35mm;padding-top:1mm;">
-							<img src="{$ImagePath}/1120_TaxRefundableCreditAndPayment.gif" alt="Vertical Image - Tax Refoundable Credits and Payments" valign="center"/>
-						</div>
+						<div class="styIRS1120VTImageBox" style="width:6mm;height:35.4mm;padding-top:6mm">
+						<img src="{$ImagePath}/1120_TaxRefundableCreditAndPayment.gif" alt="Tax Refundable Credits and Payments" style="width:4.8mm;border-right:.5px solid black;"/>
+							</div>
 						<!-- line 30 -->
 						<div class="styGenericDiv" style="width:181mm;">
 							<div style="float:left;clear:none;">
@@ -1458,8 +1458,8 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 								</div>
 							</div>
 							<div style="float:right;clear:none;">
-								<div class="styLNRightNumBoxNBB" style="height:5mm;">36</div>
-								<div class="styLNAmountBoxNBB" style="height:5mm;">
+								<div class="styLNRightNumBoxNBB" style="height:5.5mm;padding-top:1.5mm">36</div>
+								<div class="styLNAmountBoxNBB" style="height:5.5mm;padding-top:2mm">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120Data/OverpaymentSection/RefundAmt"/>
 									</xsl:call-template>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Iskilu Lawal 7/6/2016 -->
+<!-- Last Modified by Iskilu Lawal 11/13/2017 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -65,7 +65,7 @@
 								<span style="font-size:8pt;text-align:center;">
 									<span style=""/>
 									<img src="{$ImagePath}/8938_Bullet.gif" alt="MediumBullet"/>  
-			  Information about Form 8938 and its separate instructions is at  <a href="http://www.irs.gov/form8933" title="Link to IRS.gov"><i>www.irs.gov/form8933.</i></a>
+			   Information about Form 8938 and its separate instructions is at  <a href="http://www.irs.gov/form8938" title="Link to IRS.gov"><i>www.irs.gov/form8938.</i></a>
 									<br/>
 									<span style="text-align:center;"/>
 									<img src="{$ImagePath}/8938_Bullet.gif" alt="MediumBullet"/>  
@@ -146,6 +146,7 @@
 					</div>
 					<!--  Name and Employer identification number  -->
 					<div class="styBB" style="width:187mm">
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;font-size:9pt;padding-top:.0mm;">1</div>
 						<div class="styNameBox" style="width:110mm;font-weight:normal;font-size:8pt;height:10mm">
       Name(s) shown on return<br/>
 			
@@ -157,189 +158,246 @@
 								<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
 							</xsl:call-template>
 						</div>
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;font-size:9pt;padding-top:.0mm;">2</div>
 						<div class="styEINBox" style="padding-left:1mm;font-size:8pt;font-weight:normal">
-      TIN</div>
+      TIN
 						<br/>
 						<br/>
-						<span style="font-weight:normal;font-size:8pt;">
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">EIN</xsl:with-param>
 							</xsl:call-template>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
 							</xsl:call-template>
-						</span>
+						</div>
 						
 					</div>
 					
 					<!--  End Name and Employer indentification number  -->
 					<div class="styBB" style="width:187mm;">
-					<!--PART VI  Line 3  Start of Type of filer-->
+					<!--  Line 3  Start of Type of filer-->
 								<div style="width:187mm;font-size:9pt;">
 									<div class="styLNLeftLtrBox" style="padding-left:4mm;">3</div>
 									<div class="styLNDesc" style="width:170mm;padding-left:2mm;">Type of filer</div>
 								</div>
-								<!--PART VI  Line 3 (a)  Start of Specified individual-->
-								<div class="styLNDesc" style="width:187mm;padding-left:10mm;font-size:9pt;height:5mm;">
-									<div class="styLNDesc" style="width:43.3mm;">
+								<!--PART   Line 3 (a)  Start of Specified individual-->
+								<div class="styLNDesc" style="width:187mm;padding-left:10mm;font-size:9pt;height:5.1mm;">
+									<div class="styLNDesc" style="width:45.3mm;">
 										<b>a</b>
 										<span style="width:5px;"/>
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$FormData/SpcfdIndividualInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-ANSSpcfdIndividualInd</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-ANSP0L3SpcfdIndividualInd</xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="$FormData/SpcfdIndividualInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-ANSSpcfdIndividualInd</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-ANSP0L3SpcfdIndividualInd</xsl:with-param>
 											</xsl:call-template>
 							Specified individual
 						</label>
 									</div>
-									<!--PART VI  Line 3 (a)  End of Specified individual-->
-									<!--PART VI  Line 3 (b)  Start of Partnership-->
-									<div class="styLNDesc" style="width:31.5mm;">
-										<b>(b)</b>
+									<!--PART   Line 3 (a)  End of Specified individual-->
+									<!--PART   Line 3 (b)  Start of Partnership-->
+									<div class="styLNDesc" style="width:45.5mm;">
+										<b>b</b>
 										<span style="width:5px;"/>
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$FormData/PartnershipInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-ANSPartnershipInd</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-ANSP0L3PartnershipInd</xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="$FormData/PartnershipInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-ANSPartnershipInd</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-ANSP0L3PartnershipInd</xsl:with-param>
 											</xsl:call-template>
 							Partnership
 						</label>
 									</div>
-									<!--PART VI  Line 3 (b)  End of Partnership-->
-									<!--PART VI  Line 3 (c)  Start of Corporation-->
-									<div class="styLNDesc" style="width:35mm;">
+									<!--PART  Line 3 (b)  End of Partnership-->
+									<!--PART  Line 3 (c)  Start of Corporation-->
+									<div class="styLNDesc" style="width:45mm;">
 										<b>c</b>
 										<span style="width:5px;"/>
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$FormData/CorporationInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-ANSCorporationInd</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-ANSP0L3CorporationInd</xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="$FormData/CorporationInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-ANSCorporationInd</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-ANSP0L3CorporationInd</xsl:with-param>
 											</xsl:call-template>
 							Corporation 
 						</label>
 									</div>
-									<!--PART VI  Line 3 (c)  End of Corporation-->
-									<!--PART VI  Line 3 (d)  Start of Trust-->
-									<div class="styLNDesc" style="width:30mm;">
+									<!--PART  Line 3 (c)  End of Corporation-->
+									<!--PART   Line 3 (d)  Start of Trust-->
+									<div class="styLNDesc" style="width:40mm;">
 										<b>d</b>
 										<span style="width:5px;"/>
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$FormData/TrustInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-ANSTrustInd</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-ANSP0L3TrustInd</xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="$FormData/TrustInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-ANSTrustInd</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-ANSP0L3TrustInd</xsl:with-param>
 											</xsl:call-template>
 							Trust 
 						</label>
 									</div>
-									<!--PART VI  Line 3 (d)  End of Trust-->
-									<!--PART VI  Line 3  End of Type of filer-->
+									<!--PART  Line 3 (d)  End of Trust-->
+									<!--PART  Line 3  End of Type of filer-->
 																</div></div>
-																<!--PART VI  Line 4 Start-->
+																<!--PART   Line 4 Start-->
 					<!--PART VI  Line 4 Start-->
 																
 	
 	<div class="styBB" style="width:187mm;">
-<div  style="width:187mm;">
+		<div  style="width:187mm;padding-bottom:1mm;">
+			<div class="styLNLeftLtrBox" style="padding-left:4mm;font-size:8pt;font-weight:normal;">4</div>
+			<div class="styLNDesc" style="width:178mm;font-weight:normal;font-size:8pt;height:auto;float:right">
+			If you are a partnership, corporation, or trust filing Form 8938, enter the name and TIN of the specified individual who
+					closely holds the partnership or corporation, or the specified person who is a current beneficiary of the trust, as
+					applicable. (See Instructions for definitions and what to do if you have more than one specified individual or specified person to list.)
+					
+			</div>
+		</div>
+		
+<xsl:if test=" (count($FormData/SpecifiedIndivOrPersonInfo ) &lt;1)">
+	
+         <div class="styLNDesc" style="width:120mm;">
+            <div class="styLNLeftLtrBox" style="width:12mm;text-align:right;padding-left:4mm;font-size:8pt;">a</div>
+				<div class="styLNDesc" style="padding-left:6mm;width:15mm;">Name</div> 
+					
+						<div class="styLNLeftLtrBox" style="width:12mm;text-align:right;padding-left:4mm;font-size:8pt;font-weight:normal;"/>
+						<div class="styLNDesc" style="padding-left:6mm;width:15mm;"/>
+	     </div>
+	     <div class="styLNDesc" style="width:66mm;">
+						<div class="styLNLeftLtrBox" style="font-size:8pt;width:5mm;text-align:right;">b</div>
+						<div class="styLNDesc" style="width:10mm;text-align:right">TIN</div>
+					
+						<div class="styLNLeftLtrBox" style="font-size:8pt;font-weight:normal;width:5mm;text-align:right;"/> 
+						<div class="styLNDesc" style="width:10mm;text-align:right"/>	
+         </div>
+			
+</xsl:if>
 
-<div class="styLNLeftLtrBox" style="padding-left:4mm;font-size:8pt;font-weight:normal;">4</div>
-<div class="styLNDesc" style="width:178mm;font-weight:normal;font-size:8pt;height:auto;float:right">
-If you are a partnership, corporation, or trust filing Form 8938, enter the name and TIN of the specified individual who
-        closely holds the partnership or corporation, or the specified person who is a current beneficiary of the trust, as
-        applicable. (See Instructions for definitions and what to do if you have more than one specified individual or specified person to list.)
-</div>
-</div>
-
-<div  style="width:187mm;">
-<div  style="width:120mm;">
-  <div class="styLNLeftLtrBox" style="width:12mm;text-align:right;padding-left:4mm;font-size:8pt;font-weight:normal;">a</div>
-  <div class="styLNDesc" style="padding-left:6mm;width:15mm">Name</div>
-    
-   
     <!--Choice of Person Name vs Business Name -->
-     <div class="styUnderlinedText" style="width:25mm;">
-      <xsl:for-each select="$FormData/SpecifiedIndivOrPersonInfo "> 
-      <xsl:variable name="curPos">
-		 <xsl:value-of select="position()-1"/>
-		 </xsl:variable>
- <xsl:choose>
-     <xsl:when test="$FormData/SpecifiedIndivOrPersonInfo/PersonNm">
-      <xsl:call-template name="PopulateText">
-	      <xsl:with-param name="TargetNode" select="$FormData/SpecifiedIndivOrPersonInfo[$curPos +1]/PersonNm"/>
-      </xsl:call-template>
-    </xsl:when>
-  <xsl:otherwise>
-         <xsl:call-template name="PopulateText">
+       <xsl:for-each select="$FormData/SpecifiedIndivOrPersonInfo "> 
+        <xsl:variable name="curPos">
+			<xsl:value-of select="position()-1"/>
+		</xsl:variable>
+		<div  style="width:187mm;padding-bottom:1mm;">
+			<div style="width:140mm;">
+				<xsl:choose>
+					<xsl:when test="position() = 1">
+						<div class="styLNLeftLtrBox" style="width:12mm;text-align:right;padding-left:4mm;font-size:8pt;">a</div>
+						<div class="styLNDesc" style="padding-left:6mm;width:15mm;">Name</div> 
+					</xsl:when>
+					<xsl:otherwise>
+						<div class="styLNLeftLtrBox" style="width:12mm;text-align:right;padding-left:4mm;font-size:8pt;font-weight:normal;"/>
+						<div class="styLNDesc" style="padding-left:6mm;width:15mm;"/>
+					</xsl:otherwise>
+				</xsl:choose> 
+	
+				<div style="width:113mm;">
+					<xsl:choose>
+						<xsl:when test="PersonNm">
+						  <xsl:call-template name="PopulateText">
+							  <xsl:with-param name="TargetNode"  select="$FormData/SpecifiedIndivOrPersonInfo[$curPos +1]/PersonNm"/>
+						  </xsl:call-template>
+						</xsl:when>
+						<xsl:when test="
+						BusinessNm">
+						   <xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$FormData/SpecifiedIndivOrPersonInfo[$curPos +1]/BusinessNm/BusinessNameLine1Txt"/>
+							</xsl:call-template>
+							<xsl:if test="$FormData/SpecifiedIndivOrPersonInfo[$curPos +1]/BusinessNm/BusinessNameLine2Txt">
+							<br/>
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$FormData/SpecifiedIndivOrPersonInfo[$curPos +1]/BusinessNm/BusinessNameLine2Txt"/>
+								</xsl:call-template>
+							</xsl:if>
+						</xsl:when>
+					</xsl:choose>	    
+				</div>
+			</div>	
+			<div  style="width:46mm;">
+				<xsl:choose>
+					<xsl:when test="position() = 1">
+						<div class="styLNLeftLtrBox" style="font-size:8pt;width:5mm;text-align:right;">b</div>
+						<div class="styLNDesc" style="width:10mm;text-align:right">TIN</div>
+					</xsl:when>
+					<xsl:otherwise>
+						<div class="styLNLeftLtrBox" style="font-size:8pt;font-weight:normal;width:5mm;text-align:right;"/> 
+						<div class="styLNDesc" style="width:10mm;text-align:right"/>				
+					</xsl:otherwise>
+				</xsl:choose> 				
+							<!--Choice of Person SSN, EIN, vs MissingEIN -->
+				<xsl:choose>			
+					<xsl:when test="BusinessNm">
+						<div style="height:6mm;width:20mm;text-align:right;padding-top:.5mm;">
+							<xsl:choose>
+							  <xsl:when test="EIN">
+								<xsl:call-template name="PopulateEIN">
+								<xsl:with-param name="TargetNode" select="$FormData/SpecifiedIndivOrPersonInfo[$curPos +1]/EIN"/>
+								</xsl:call-template>
+							  </xsl:when>
+							<xsl:when test="MissingEINReasonCd">
+								<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$FormData/SpecifiedIndivOrPersonInfo[$curPos +1]/MissingEINReasonCd"/>
+								</xsl:call-template>
+							  </xsl:when>
+							  <xsl:otherwise>
+								<xsl:call-template name="PopulateEIN">
+								<xsl:with-param name="TargetNode" select="$FormData/SpecifiedIndivOrPersonInfo[$curPos +1]/EIN"/>
+								</xsl:call-template>   
+							  </xsl:otherwise>
+							</xsl:choose>
+						</div> 
+					</xsl:when>
+					<xsl:otherwise>
+						<div style="width:20mm;text-align:right;padding-top:.5mm;">
+							<xsl:choose>
+							  <xsl:when test="MissingEINReasonCd">
+								<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$FormData/SpecifiedIndivOrPersonInfo[$curPos +1]/MissingEINReasonCd"/>
+								</xsl:call-template>
+							  </xsl:when>
+							<!--<xsl:when test="$FormData/SpecifiedIndivOrPersonInfo/EIN">
+								<xsl:call-template name="PopulateEIN">
+								<xsl:with-param name="TargetNode" select="$FormData/SpecifiedIndivOrPersonInfo[$curPos +1]/EIN"/>
+								</xsl:call-template>
+							  </xsl:when>-->
+							  <xsl:otherwise>
+								<xsl:call-template name="PopulateSSN">
+								<xsl:with-param name="TargetNode" select="$FormData/SpecifiedIndivOrPersonInfo[$curPos +1]/SSN"/>
+								</xsl:call-template>   
+							  </xsl:otherwise>
+							</xsl:choose>
+						</div> 
+					</xsl:otherwise>	
+				</xsl:choose>		
+			</div>  
+		</div>  
+    </xsl:for-each>
+</div>
 
-	        <xsl:with-param name="TargetNode" select="$FormData/SpecifiedIndivOrPersonInfo[$curPos +1]/BusinessNm/BusinessNameLine1Txt"/>
-		</xsl:call-template>
-				<xsl:if test="$FormData/SpecifiedIndivOrPersonInfo[$curPos +1]/BusinessNm/BusinessNameLine2Txt">
-				<br/>
-			<xsl:call-template name="PopulateText">
-		      <xsl:with-param name="TargetNode" select="$FormData/SpecifiedIndivOrPersonInfo[$curPos +1]/BusinessNm/BusinessNameLine2Txt"/>
-		    </xsl:call-template>
-		       </xsl:if>
-    </xsl:otherwise>
-</xsl:choose></xsl:for-each>
-</div>
-</div>
-  <div  style="width:66mm;">
-  <div class="styLNLeftLtrBox" style="font-size:8pt;font-weight:normal;width:5mm;text-align:right;"> b </div>
-  <div class="styLNDesc" style="width:10mm;text-align:right">TIN</div>
-    <!--Choice of Person SSN, EIN, vs MissingEIN -->
-						<div class="styUnderlinedText" style="width:20mm;text-align:right;">
-	 <xsl:for-each select="($FormData/SpecifiedIndivOrPersonInfo) ">
-		<xsl:variable name="curPos">
-		 <xsl:value-of select="position()-1"/>
-		 </xsl:variable>
-<xsl:choose>
-  <xsl:when test="$FormData/SpecifiedIndivOrPersonInfo/SSN">
-    <xsl:call-template name="PopulateSSN">
-	<xsl:with-param name="TargetNode" select="$FormData/SpecifiedIndivOrPersonInfo[$curPos +1]/SSN"/>
-    </xsl:call-template>
-  </xsl:when>
-<xsl:when test="$FormData/SpecifiedIndivOrPersonInfo/EIN">
-    <xsl:call-template name="PopulateEIN">
-	<xsl:with-param name="TargetNode" select="$FormData/SpecifiedIndivOrPersonInfo[$curPos +1]/EIN"/>
-    </xsl:call-template>
-  </xsl:when>
-  <xsl:otherwise>
-    <xsl:call-template name="PopulateText">
-	<xsl:with-param name="TargetNode" select="$FormData/SpecifiedIndivOrPersonInfo/MissingEINReasonCd"/>
-    </xsl:call-template>   
-  </xsl:otherwise>
-</xsl:choose></xsl:for-each>
-</div>	
-</div>
-</div>
-</div>
 					<!-- BEGIN PART I TITLE -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartName" style="font-size:10pt;padding-bottom:5mm;font-family:arial;
@@ -352,9 +410,9 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 					<!-- PART 1 START-->
 					<!-- PART 1 LINE 1 -->
 					<div class="styBB" style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm">1.</div>
-						<div class="styLNDesc" style="width:150.5mm;padding-left:2mm;height:auto;">
-		  Number of Deposit Accounts (reported on Form 8938)
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;width:3mm">1.</div>
+						<div class="styLNDesc" style="width:150.5mm;padding-left:4mm;height:auto;">
+		  Number of Deposit Accounts (reported in Part V)
 			<span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">..............</span>
 							<span style="width:2.5mm"/>
 							<img src="{$ImagePath}/8938_Bullet.gif" alt="MediumBullet"/>
@@ -369,10 +427,10 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 					</div>
 					<!-- PART 1 LINE 2 -->
 					<div class="styBB" style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm">2.</div>
-						<div class="styLNDesc" style="width:152mm;padding-left:2mm;">
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;width:3mm">2.</div>
+						<div class="styLNDesc" style="width:151mm;padding-left:4mm;">
 		  Maximum Value of All Deposit Accounts
-			<span class="styDotLn" style="float:none;clear:none;padding-left:.2mm;">....................</span>
+			<span class="styDotLn" style="float:none;clear:none;padding-left:.2mm;">.....................</span>
 							<span style="width:2mm"/>$
 		</div>
 						<div class="styLNAmountBoxNB" style="height:2mm;padding-top:.7mm;
@@ -385,9 +443,9 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 					</div>
 					<!-- PART 1 LINE 3 -->
 					<div class="styBB" style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm">3.</div>
-						<div class="styLNDesc" style="width:150.5mm;padding-left:2mm;height:auto;">
-		  Number of Custodial Accounts (reported on Form 8938)
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;width:3mm">3.</div>
+						<div class="styLNDesc" style="width:150.5mm;padding-left:4mm;height:auto;">
+		  Number of Custodial Accounts (reported in Part V)
 			<span class="styDotLn" style="float:none;clear:none;padding-left:.3mm;">..............</span>
 							<span style="width:2mm"/>
 							<img src="{$ImagePath}/8938_Bullet.gif" alt="MediumBullet"/>
@@ -402,8 +460,8 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 					</div>
 					<!-- PART 1 LINE 4 -->
 					<div class="styBB" style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm">4.</div>
-						<div class="styLNDesc" style="width:152mm;padding-left:2mm;height:auto;">
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;width:3mm">4.</div>
+						<div class="styLNDesc" style="width:151mm;padding-left:4mm;height:auto;">
 		  Maximum Value of All Custodial Accounts
 			<span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">...................</span>
 							<span style="width:2mm"/>$
@@ -418,8 +476,8 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 					</div>
 					<!-- PART 1 LINE 5 -->
 					<div class="styBB" style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm;padding-top:1mm">5.</div>
-						<div class="styLNDesc" style="width:184mm;padding-left:2mm;padding-bottom:5mm;">
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;width:3mm;padding-top:2mm">5.</div>
+						<div class="styLNDesc" style="width:180mm;padding-left:4mm;padding-bottom:5mm;">
 		  Were any foreign deposit or custodial accounts closed during the tax year?
 			<span class="styDotLn" style="float:none;clear:none;padding-left:2.5mm;">........<span style="width:1mm"/>
 							</span>
@@ -470,9 +528,9 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 					<!-- END PART II TITLE -->
 					<!-- PART II LINE 1 -->
 					<div class="styBB" style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm">1.</div>
-						<div class="styLNDesc" style="width:150.5mm;padding-left:2mm;height:auto;">
-		  Number of Foreign Assets (reported on Form 8938)
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;width:3mm">1.</div>
+						<div class="styLNDesc" style="width:150.5mm;padding-left:4mm;height:auto;">
+		  Number of Foreign Assets (reported in Part Vl)
 			<span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">...............</span>
 							<span style="width:2.5mm"/>
 							<img src="{$ImagePath}/8938_Bullet.gif" alt="MediumBullet"/>
@@ -487,10 +545,10 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 					</div>
 					<!-- PART II LINE 2 -->
 					<div class="styBB" style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm">2.</div>
-						<div class="styLNDesc" style="width:152mm;padding-left:2mm;height:auto;">
-		  Maximum Value of All Assets
-			<span class="styDotLn" style="float:none;clear:none;padding-left:2.9mm;">.......................</span>
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;width:3mm">2.</div>
+						<div class="styLNDesc" style="width:151mm;padding-left:4mm;height:auto;">
+		  Maximum Value of All Assets (reported in Part Vl)
+			<span class="styDotLn" style="float:none;clear:none;padding-left:2.9mm;">....................</span>
 							<span style="width:1.6mm"/>$
 		</div>
 						<div class="styLNAmountBoxNB" style="height:2mm;padding-top:.8mm;
@@ -503,8 +561,8 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 					</div>
 					<!-- PART II LINE 3 -->
 					<div class="styBB" style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm;padding-top:1mm;">3.</div>
-						<div class="styLNDesc" style="width:184mm;padding-left:2mm;height:auto;">
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;width:3mm;padding-top:2mm;">3.</div>
+						<div class="styLNDesc" style="width:183mm;padding-left:4mm;height:auto;">
 		  Were any foreign assets acquired or sold during the tax year?
 			<span class="styDotLn" style="float:none;clear:none;padding-left:0mm;">.............<span style="width:.6mm"/>
 							</span>
@@ -512,13 +570,13 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 							<input type="Checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/AnyFrgnAssetAcqOrSoldDurTYInd"/>
-									<xsl:with-param name="BackupName">IRS8938AnyFrgAssetAcqOrSoldDurTYInd</xsl:with-param>
+									<xsl:with-param name="BackupName">IRS8938AnyFrgnAssetAcqOrSoldDurTYInd</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$FormData/AnyFrgnAssetAcqOrSoldDurTYInd"/>
-									<xsl:with-param name="BackupName">IRS8938AnyFrgAssetAcqOrSoldDurTYInd</xsl:with-param>
+									<xsl:with-param name="BackupName">IRS8938AnyFrgnAssetAcqOrSoldDurTYInd</xsl:with-param>
 								</xsl:call-template>
 				Yes
 			</label>
@@ -528,13 +586,13 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 							<input type="Checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/AnyFrgnAssetAcqOrSoldDurTYInd"/>
-									<xsl:with-param name="BackupName">IRS8938AnyFrgAssetAcqOrSoldDurTYInd</xsl:with-param>
+									<xsl:with-param name="BackupName">IRS8938AnyFrgnAssetAcqOrSoldDurTYInd</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$FormData/AnyFrgnAssetAcqOrSoldDurTYInd"/>
-									<xsl:with-param name="BackupName">IRS8938AnyFrgAssetAcqOrSoldDurTYInd</xsl:with-param>
+									<xsl:with-param name="BackupName">IRS8938AnyFrgnAssetAcqOrSoldDurTYInd</xsl:with-param>
 								</xsl:call-template>
 				No
 			</label>
@@ -547,7 +605,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartName" style="font-size:10pt;padding-bottom:5mm;font-family:arial;
 		  text-align:center;padding-top:.5mm;">Part III</div>
-						<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;clear:none;width:156mm">
+						<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;clear:none;width:156mm;padding-top:1mm">
 			Summary of Tax Items Attributable to Specified Foreign Financial Assets
 			<span style="font-weight:normal;"> (see instructions)</span>
 						</div>
@@ -555,16 +613,16 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 					<!-- END PART IIl TITLE -->
 					<div style="width:187mm;border-style:solid;border-color:black;
 	  border-width: 0px 0px 1px 0px;font-size:8pt;">
-						<div class="styLNDesc" style="height:9mm;width:40mm;text-align:center;
+						<div class="styLNDesc" style="height:7mm;width:40mm;text-align:center;
 		  padding-top:4mm;border-style:solid;border-color:black;border-width: 0px 0px 0px 0px;">
 							<b>(a)</b> Asset Category</div>
-						<div class="styLNDesc" style="height:9mm;width:30mm;text-align:center;
+						<div class="styLNDesc" style="height:7mm;width:30mm;text-align:center;
 		  padding-top:4mm;border-style:solid;border-color:black;border-width: 0px 1px 0px 1px;">
 							<b>(b)</b> Tax item</div>
-						<div class="styLNDesc" style="height:9mm;width:34.28mm;text-align:center;
+						<div class="styLNDesc" style="height:7mm;width:34.28mm;text-align:center;
 		  border-style:solid;border-color:black;border-width: 0px 1px 0px 0px;font:8.5pt">
 							<b>(c)</b> Amount reported<br/>on form or schedule</div>
-						<div style="height:7.5mm;width:82mm;float:left;clear:none;">
+						<div style="height:7mm;width:82mm;float:left;clear:none;">
 							<div class="styLNDesc" style="width:82mm;text-align:center;padding-top:0mm;
 			  padding-bottom:0mm;border-style:solid;border-color:black;
 			  border-width: 0px 0px 1px 0px;">Where reported</div>
@@ -583,7 +641,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 					<!--PART III  Start of Foreign Deposit and Custodial Accounts -->
 					<!--INTEREST-->
 					<div style="width:187mm;font-size:8pt;height:auto;">
-						<div class="styLNDesc" style="height:4mm;width:40mm;padding-bottom:0mm;
+						<div class="styLNDesc" style="height:4mm;width:40mm;padding-left:4mm;
 		padding-top:1mm;">
 		  1<span style="width:2mm"/>Foreign Deposit and <br/>Custodial Accounts</div>		  
 						<div class="styLNDesc" style="width:30mm;text-align:left;padding-left:1mm;
@@ -740,7 +798,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 		   </div>
 						<div class="styLNDesc" style="width:30mm;text-align:left;padding-left:1mm;
 		  border-style:solid;border-width: 0px 1px 1px 1px;">
-							<b>1b </b> Dividend</div>
+							<b>1b </b> Dividends</div>
 						<div class="styLNDesc" style="width:2mm;border-style:solid;
 		  border-width: 0px 0px 1px 0px;">$</div>
 						<div class="styLNAmountBox" style="border-left-width:0px;">
@@ -1653,7 +1711,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 					<!--PART III  Start of Other Foreign Assets -->
 					<!--OTHER INTEREST-->
 					<div style="width:187mm;font-size:8pt;height:auto">
-						<div class="styLNDesc" style="height:2mm;width:40mm;padding-bottom:0mm;
+						<div class="styLNDesc" style="height:2mm;width:40mm;padding-left:4mm;
 		  border-style:solid;border-color:black;border-width: 1px 0px 0px 0px;">
 		 		  2<span style="width:2mm"/>Other Foreign Assets</div>
 						<div class="styLNDesc" style="width:30mm;text-align:left;padding-left:1mm;
@@ -2717,7 +2775,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 				    <div class="styBB" style="width:187mm;"/>
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartName" style="font-size:10pt;padding-bottom:5mm;
-		  font-family:arial;text-align:center;padding-top:.5mm">Part IV</div>
+		  font-family:arial;text-align:center;padding-top:.5mm;">Part IV</div>
 						<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;
 		  clear:none;padding-top:.5mm;padding-bottom:5mm;">
 		  Excepted Specified Foreign Financial Assets
@@ -2725,14 +2783,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 						</div>
 					</div>
 					<!-- END PART lV TITLE -->
-					<div style="width:187mm;font-size:8pt">
+					<div style="width:187mm;font-size:8pt;">
 						<div class="styLNDesc" style="width:187mm;padding-bottom:3mm;padding-bottom:11mm;">
 	      If you reported specified foreign financial assets on one or more of the following
 	      forms, enter the number of such forms filed. You do not
 	      need to include these assets on Form 8938 for the tax year.
 		</div>
 					</div>
-					<div style="width:187mm;font-size:8pt">
+					<div style="width:187mm;font-size:8pt;">
 						<!-- NUMBER OF FORMS 3520 -->
 						<div class="styLNDesc" style="width:60mm;">
 							<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm">1.</div>
@@ -2764,7 +2822,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 							</div>
 						</div>
 					</div>
-					<div style="width:187mm;font-size:8pt">
+					<div style="width:187mm;font-size:8pt;height:8mm">
 						<!-- NUMBER OF FORMS 8621 -->
 						<div class="styLNDesc" style="width:60mm;">
 							<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm">4.</div>
@@ -2796,15 +2854,15 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 							</div>
 						</div>-->
 					</div>
-					<br/><br/>
+					
 					<span style="height:.3mm;"/> 
 					<!--<div class="pageEnd" style="width:187mm;border-top:1px solid black;"/>-->
 					<!--PART V  START OF FOREIGN DEPOSIT AND CUSTODIAL ACCOUNTS-->
-					<xsl:if test="(count($FormData/ForeignFinclAccountGrp) &lt;=1)">
+					<xsl:if test="(count($FormData/ForeignFinclAccountGrp) &lt;1)">
 						<!-- BEGIN PART V TITLE -->					
-						<span style="height:3mm;"/>
+						<span style="height:.3mm;"/>
 						<div class="styBB" style="width:187mm;"/>
-						<div class="styBB" style="width:187mm">
+						<div class="styBB" style="width:187mm;">
 							<div class="styPartName" style="font-size:10pt;padding-top:.5mm;
 				  font-family:arial;text-align:center;padding-bottom:5mm;heght:auto;">Part V</div>
 							<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;
@@ -2817,7 +2875,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 						<!-- END PART V TITLE -->						
 						<div class="styBB" style="width:187mm;">
 							<div class="styLNDesc" style="width:187mm;font-size:8pt;">
-				  If you have more than one account to report, attach a continuation statement
+				If you have more than one account to report in Part V, attach a continuation statement
 				  for each additional account (see instructions).
 				  				  </div>
 				  <span style="height:5mm;"/>
@@ -2868,7 +2926,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 							<!--PART V  Line 1  End of Type Of Account-->
 							<!--PART V  Line 2  Start of Identifying Designation Number-->
 							<div style="width:70mm;float:left;clear:none;border-style:solid;border-color:black;
-				  border-width: 0px 0px 0px 1px;">
+				  border-width: 0px 0px 0px 1px;height:15mm">
 								<div class="styLNLeftNumBox" style="width:5mm;text-align:center;float:left;
 					  padding-bottom:0mm;">2</div>
 								<div class="styLNDesc" style="width:64mm;padding-left:2mm;
@@ -2895,8 +2953,8 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 						<div class="styBB" style="width:187mm;font-size:8pt;padding-bottom:6mm;">
 							<div style="width:187mm;">
 								<div style="width:38mm;float:left;clear: none;">
-									<div class="styLNLeftNumBox" style="padding-left:2mm;">3</div>
-									<div class="styLNDesc" style="width:30mm;padding-left:2mm;float:left;">
+									<div class="styLNLeftNumBox" style="padding-left:2mm;padding-top:2mm">3</div>
+									<div class="styLNDesc" style="width:30mm;padding-left:2mm;float:left;padding-top:2mm">
 							              Check all that apply
 						          </div>
 							   </div>
@@ -2908,16 +2966,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/AccountOpenedDuringTaxYearInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFAAccountOpenedDuringTaxYearInd
-											</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFAAccountOpenedDuringTaxYearInd</xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:.5mm;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/AccountOpenedDuringTaxYearInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFAAccountOpenedDuringTaxYearInd
-											</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFAAccountOpenedDuringTaxYearInd</xsl:with-param>
 											</xsl:call-template>
 												Account opened during tax year
 										</label>
@@ -2938,8 +2994,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/AccountClosedDuringTaxYearInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFAAccountClosedDuringTaxYearInd
-											</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFAAccountClosedDuringTaxYearInd</xsl:with-param>
 											</xsl:call-template>
 													Account closed during tax year
 										</label>
@@ -2960,8 +3015,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/JointlyOwnedWithSpouseInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFAJointlyOwnedWithSpouseInd
-											</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFAJointlyOwnedWithSpouseInd</xsl:with-param>
 											</xsl:call-template>
 													Account jointly owned with spouse
 										</label>								
@@ -3101,7 +3155,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<span style="font-weight:normal">
 										<span class="styBoldText">(c) </span>
 						  Source of exchange rate used if not from<br/>
-						  U.S. Treasury Financial Management Service<br/>
+						  U.S. Treasury Department's Bureau of the Fiscal Service<br/>
 										
 										<span style="font-size:8pt">
 											<xsl:call-template name="PopulateText">
@@ -3143,7 +3197,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 						<!-- END PART V TITLE -->
 						<!--PART V  Line 7a  Start of Foreign Deposit and Custodial Accounts Business Name-->
 						<!--PART V  Line 7b  Start of Foreign Deposit and Custodial Accounts Business Name-->
-						<div class="styBB" style="width:187mm;font-size:8pt;height:12.5mm;">
+						<div class="styBB" style="width:187mm;font-size:8pt;height:18mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox">7a</div>
 								<div class="styLNDesc" style="width:75mm;">Name of financial institution in which account is maintained
@@ -3271,7 +3325,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 						<!--PART V  Line 9  End of City, state and country-->
 					</xsl:if>
 					<!--PART V REPEATING INFORMATION  Start of Foreign Deposit and Custodial Accounts-->
-					<xsl:if test="(count($FormData/ForeignFinclAccountGrp) &gt;= 2) and ($Print != $Separated)">
+					<xsl:if test="(count($FormData/ForeignFinclAccountGrp) &gt;= 1) and ($Print != $Separated)">
 						<xsl:for-each select="$FormData/ForeignFinclAccountGrp">
 							<xsl:choose>
 								<xsl:when test="position()>=2">
@@ -3317,23 +3371,41 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 							<!-- PART V REPEATING INFORMATION  BEGIN TITLE -->
 							<xsl:choose>
 								<xsl:when test="position()=1">
-									<div class="styBB" style="width:187mm;padding-top:2.5mm;"/>
-								</xsl:when>
-							</xsl:choose>
-							<div class="styBB" style="width:187mm;height:8mm;">
+							<div class="styBB" style="width:187mm;height:9mm;border-top-width: 1px;">
 								<div class="styPartName" style="font-size:10pt;font-family:arial;padding-top:.5mm;height:5mm;
 				  text-align:center;padding-bottom:.5mm;">Part V</div>
-								<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;clear:none;">
-				  Detailed Information for Each Foreign Deposit and Custodial Account Included in the Part I
-				  Summary<span style="font-weight:normal;"> (see instructions)</span>
+								<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;
+						  clear:none;">Detailed Information for Each Foreign Deposit and Custodial
+						  Account Included in the Part I Summary
+							<span style="font-weight:normal;">  (see instructions) </span>
 								</div>
 							</div>
 							<!-- PART V REPEATING INFORMATION  END TITLE -->
-							<!--<div class="styBB" style="width:187mm;">
+							<div class="styBB" style="width:187mm;">
+								<div class="styLNDesc" style="width:187mm;font-size:9pt">
+				  If you have more than one account to report in Part V, attach a continuation statement
+				  for each additional account (see instructions).</div>
+							</div>
+						</xsl:when>
+						<xsl:otherwise>
+	<!--						</xsl:choose>-->
+							<div class="styBB" style="width:187mm;height:8mm;">
+										<div class="styPartName" style="font-size:10pt;padding-top:.5mm;height:5mm;
+						  font-family:arial;text-align:center;padding-bottom:.5mm">Part V</div>
+										<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;
+						  clear:none;">Detailed Information for Each Foreign Deposit and Custodial
+						  Account Included in the Part I Summary
+							<span style="font-weight:normal;">  (see instructions) </span>
+								</div>
+							</div>
+							<!-- PART V REPEATING INFORMATION  END TITLE -->
+<!--							<div class="styBB" style="width:187mm;">
 								<div class="styLNDesc" style="width:187mm;font-size:9pt">
 				  If you have more than one account to report, attach a continuation statement for
 				  each additional account (see instructions).</div>
 							</div>-->
+						</xsl:otherwise>
+						</xsl:choose>	
 							<div class="styBB" style="width:187mm;font-size:8pt;">
 								<!--PART V REPEATING INFORMATION  Start of Type Of Account-->
 								<div style="width:45mm;float:left;clear:none;">
@@ -3347,18 +3419,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="DepositAccountTypeInd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RDepositAccountTypeInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938FFA-RDepositAccountTypeInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="DepositAccountTypeInd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RDepositAccountTypeInd
-								<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938FFA-RDepositAccountTypeInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 							Deposit 
 						</label>
@@ -3368,18 +3436,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="CustodialAccountTypeInd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RCustodialAccountTypeInd
-								<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938FFA-RCustodialAccountTypeInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="CustodialAccountTypeInd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RCustodialAccountTypeInd
-								<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938FFA-RCustodialAccountTypeInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 							Custodial
 						</label>
@@ -3422,24 +3486,20 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									</div>
 									<!--PART V REPEATING INFORMATION  Start of Line 3(a) 
                         Account Opened During Tax Year Ind-->
-									<div class="styLNDesc" style="width:61mm">
+									<div class="styLNDesc" style="width:61mm;">
 										<b>a</b>
 								<!--		<span style="width:.5mm;"/>  -->
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AccountOpenedDuringTaxYearInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-RAccountOpenedDuringTaxYearInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFA-RAccountOpenedDuringTaxYearInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:.5mm;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AccountOpenedDuringTaxYearInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-RAccountOpenedDuringTaxYearInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFA-RAccountOpenedDuringTaxYearInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Account opened during tax year
 						</label>
@@ -3454,18 +3514,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AccountClosedDuringTaxYearInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-RAccountClosedDuringTaxYearInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFA-RAccountClosedDuringTaxYearInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:1mm;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AccountClosedDuringTaxYearInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-RAccountClosedDuringTaxYearInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFA-RAccountClosedDuringTaxYearInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Account closed during tax year
 						</label>
@@ -3478,24 +3534,20 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<!--PART V REPEATING INFORMATION  Start of Line 3(c) 
                         Jointly Owned With Spouse Ind-->
 									<div class="styLNDesc" style="width:95mm;">
-									<span style="padding-right:37mm;"/>
+									<span style="padding-right:38mm;"/>
 										<b>c</b>
 										<span style="width:0mm;"/>
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="JointlyOwnedWithSpouseInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-RJointlyOwnedWithSpouseInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFA-RJointlyOwnedWithSpouseInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:0mm;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="JointlyOwnedWithSpouseInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-RJointlyOwnedWithSpouseInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFA-RJointlyOwnedWithSpouseInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Account jointly owned with spouse
 						</label>
@@ -3505,24 +3557,20 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<!--PART V REPEATING INFORMATION  Start of Line 3(d)
                          No Tax Item Reported Ind-->
 									<div class="styLNDesc" style="width:90mm;">
-									<span style="padding-right:3mm;"/>
+									<span style="padding-right:4mm;"/>
 										<b>d</b>
 										<span style="width:.5mm;"/>
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-RNoTaxItemReportedInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFA-RNoTaxItemReportedInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:.5mm;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-RNoTaxItemReportedInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFA-RNoTaxItemReportedInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							No tax item reported in Part III with respect to this asset
 						</label>
@@ -3566,18 +3614,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 							Yes
 						</label>
@@ -3587,18 +3631,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 							No
 						</label>
@@ -3657,7 +3697,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<span style="font-weight:normal">
 											<span class="styBoldText">(c) </span>
 						  Source of exchange rate used if not from<br/>
-						  U.S. Treasury Financial Management Service<br/>
+						  U.S. Treasury Department's Bureau of the Fiscal Service<br/>
 											
 											<span style="font-size:8pt">
 												<xsl:call-template name="PopulateText">
@@ -3713,7 +3753,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 							<!-- END PART V TITLE -->
 							<!--PART V REPEATING INFORMATION  Line 7  Start of Foreign Deposit and Custodial Accounts 
 				 Business Name-->
-				<div class="styBB" style="width:187mm;font-size:8pt">
+				<div class="styBB" style="width:187mm;font-size:8pt;">
 							<div class="styLNLeftNumBox" style="height:12mm;padding-left:2mm;padding-top:0mm;
 				  padding-bottom:0mm;">7a</div>
 							<div class="styLNDesc" style="width:90mm;height:18mm;padding-left:2mm;padding-top:0mm;
@@ -3733,7 +3773,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 							<div class="styLNDesc" style="width:74mm;float:right;">Global Intermediary Identification Number (GIIN) (Optional) 
 							<div class="styBB" style="width:187mm;font-size:8pt;border-top-width: 0px;         border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;">
 							 <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/GIIN"/>
+                    <xsl:with-param name="TargetNode" select="GIIN"/>
                   </xsl:call-template>
                   </div>
 							</div>
@@ -3959,7 +3999,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 							</div>							
 							<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE
                 Start of Line 3 Check all that apply-->
-							<div class="styBB" style="width:187mm;padding-bottom:2mm;font-size:8pt;height:10mm">
+							<div class="styBB" style="width:187mm;padding-bottom:2mm;font-size:8pt;height:10mm;">
 								<div style="width:187mm;">
 									<div style="width:38mm;float:left;clear: none;padding-top:1mm;">
 										<div class="styLNLeftNumBox" style="padding-left:2mm;font-weight:bold;">3</div>
@@ -3995,9 +4035,9 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
                          End of Line 3(a) Account Opened During Tax Year Ind-->
 									<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE
                          Start of Line 3(b) Account Closed During Tax Year Ind-->
-									<div class="styLNDesc" style="width:85mm;">
+									<div class="styLNDesc" style="width:87mm;">
 										<b>b</b>
-										<span style="width:5px;"/>
+										<span style="width:.5mm;"/>
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AccountClosedDuringTaxYearInd"/>
@@ -4025,7 +4065,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE
                          Start of Line 3(c) Jointly Owned With Spouse Ind-->
 									<div class="styLNDesc" style="width:95mm;">
-									<span style="padding-right:37mm;"/>
+									<span style="padding-right:38mm;"/>
 										<b>c</b>
 										<span style="width:1mm;"/>
 										<input type="Checkbox" class="styCkbox">
@@ -4051,10 +4091,10 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
                          End of Line 3(c) Jointly Owned With Spouse Ind-->
 									<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE
                          Start of Line 3(d) No Tax Item Reported Ind-->
-									<div class="styLNDesc" style="width:90mm;">
-									<span style="padding-right:2mm;"/>
+									<div class="styLNDesc" style="width:87mm;">
+									<span style="padding-right:3mm;"/>
 										<b>d</b>
-											<span style="width:1.5mm;"/>
+											<span style="width:.5mm;"/>
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
@@ -4181,7 +4221,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 								<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE
                      Start of Exchange Rate Used-->
 								<div style="width:63mm;float:left;clear:none;border-style:solid;
-				  border-color:black;border-width: 0px 1px 0px 1px;">
+				  border-color:black;border-width: 0px 1px 0px 1px;height:10mm">
 									<div class="styLNDesc" style="width:61mm;padding-left:2mm;
 					  padding-bottom:.5mm;">
 										<b>(b) </b> Foreign currency exchange rate used to convert to U.S. dollars
@@ -4198,7 +4238,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<div class="styLNDesc" style="width:62mm;padding-left:2mm;
 					  padding-bottom:1.5mm;">
 										<b>(c) </b> Source of exchange rate used if not from <br/>
-						U.S. Treasury Financial Management Service
+						U.S. Treasury Department's Bureau of the Fiscal Service
 					</div>
 									<div class="styLNDesc" style="width:62mm;padding-top:1mm;" valign="bottom"/>
 								</div>
@@ -4237,7 +4277,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
                  
 							<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE blank line
                  Line 7a Start of Foreign Deposit and Custodial Accounts Business Name -->
-							<div class="styBB" style="width:187mm;font-size:8pt">
+							<div class="styBB" style="width:187mm;font-size:8pt;">
 							<div class="styLNLeftNumBox" style="height:12.5mm;padding-top:0mm;
 				  padding-bottom:0mm;">7a</div>
 							<div class="styLNDesc" style="width:76mm;height:18mm;padding-left:2mm;padding-top:0mm;
@@ -4286,33 +4326,33 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
          End of Foreign Deposit and Custodial Accounts-->
 					<!--PART VI  Start of Other Foreign Assets Lines 1 thru 5-->
 				
-					<xsl:if test="(count($FormData/OtherForeignAssetGrp) &lt;=1)">
+					<xsl:if test="(count($FormData/OtherForeignAssetGrp) &lt;1)">
 						<!-- PART VI  BEGIN TITLE -->
 				<div class="styBB" style="width:187mm;">
 							<div class="styPartName" style="font-size:10pt;padding-bottom:5mm;
 			  font-family:arial;text-align:center;height:4mm;padding-top:.5mm;">Part VI</div>
 			 							<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;
-			  float:left;clear:none;padding-top:.5mm;padding-bottom:.5mm;">
+			  float:left;clear:none;padding-top:.5mm;padding-bottom:.5mm;width:173mm;">
 			  Detailed Information for Each "Other Foreign Asset" Included in the
-			  Part II Summary<span style="font-weight:normal;"> (see instructions)</span>
+			  Part II Summary<span style="font-weight:normal;width:28mm;padding-left:1mm;"> (see instructions)</span>
 							</div>
 						</div>
 												<!-- PART VI  END TITLE -->
-				<div class="styBB" style="width:187mm;font-size:8pt;">
+				<!--<div class="styBB" style="width:187mm;font-size:8pt;background-color:red">
 												 <span style="height:7mm"/>
-							<div class="styLNDesc" style="width:187mm;padding-left:2mm;padding-top:0mm;
+							--><!--<div class="styLNDesc" style="width:187mm;padding-left:2mm;padding-top:0mm;
 			  padding-bottom:0mm;">
 								<b>Note.</b>
 								<i>If you reported specified foreign financial assets on 
 				Forms 3520, 3520-A, 5471, 8621 or 8865, you do not have to <br/>
 				include the assets on Form 8938. You must complete Part IV. See instructions.
 						</i>
-							</div>
-						</div>
+							</div>--><!--
+						</div>-->
 														
 											<div class="styBB" style="width:187mm;font-size:8pt;">
 							<div class="styLNDesc" style="width:187mm;padding-left:2mm;padding-top:0mm;
-			  padding-bottom:0mm;">If you have more than one asset to report, attach a continuation
+			  padding-bottom:0mm;">If you have more than one asset to report in Part VI, attach a continuation
 				  statement for each additional asset (see instructions).
 				  
 				  </div>
@@ -4322,17 +4362,17 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 							<tr>
 							
 								<!--PART VI  Line 1  Start of Asset Description-->
-								<th class="styLimitationHeading" style="width:110mm;padding-left:2mm;
-					  border-right:solid black 1px;font-size:8pt;text-align:left;" scope="col">
-									<div class="styLNLeftNumBox" style="padding-left:0mm;width:4mm;
-					    padding-top:0mm;">1</div>
-									<span style="font-weight:normal;padding-left:3mm">
+								<th class="styLimitationHeading" style="width:70mm;font-size:8pt;
+					  border-right:solid black 1px;vertical-align:top;padding-left:2mm;text-align:left" scope="col">
+									<div class="styLNLeftNumBox" style="width:6mm;padding-top:0mm;
+						  padding-left:0mm;">1</div>
+									<span style="font-weight:normal;text-align:left;width:60mm">
 						  Description of asset<br/>
-										<br/>
-										<div style="padding-left:8mm;">
+										
+										<div style="padding-left:1mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/AssetDesc"/>
-												<xsl:with-param name="BackupName">IRS8938OFAAssetDescription</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFAAssetDesc</xsl:with-param>
 											</xsl:call-template>
 										</div>
 									</span>
@@ -4340,24 +4380,24 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 								<!--PART VI  Line 2  Start of Identifying Designation Number-->
 								<th class="styLimitationHeading" style="width:70mm;font-size:8pt;
 					  border-left:solid black 0px;vertical-align:top;padding-left:2mm;text-align:left" scope="col">
-									<div class="styLNLeftNumBox" style="width:4mm;padding-top:0mm;
+									<div class="styLNLeftNumBox" style="width:6mm;padding-top:0mm;
 						  padding-left:0mm;">2</div>
-									<span style="font-weight:normal;">
+									<span style="font-weight:normal;text-align:left;width:60mm">
 						  Identifying number or other designation<br/>
-										<br/>
-										<div style="padding-left:5mm;">
+									
+										<div style="padding-left:1mm;">
 											<xsl:choose>
 												<xsl:when test="$FormData/OtherForeignAssetGrp/IdentifyingDesignationNum">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/IdentifyingDesignationNum"/>
-														<xsl:with-param name="BackupName">IRS8938OFAIdentifyingDesignationNumber
+														<xsl:with-param name="BackupName">IRS8938OFAIdentifyingDesignationNum
 											</xsl:with-param>
 													</xsl:call-template>
 												</xsl:when>
 												<xsl:otherwise>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/BankAccountNum"/>
-														<xsl:with-param name="BackupName">IRS8938OFABankAccountNumber
+														<xsl:with-param name="BackupName">IRS8938OFABankAccountNum
 											</xsl:with-param>
 													</xsl:call-template>
 												</xsl:otherwise>
@@ -4396,7 +4436,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<xsl:if test="$FormData/OtherForeignAssetGrp/AcquiredDateVariousCd">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/AcquiredDateVariousCd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RAcquiredDateVariousCd</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAAcquiredDateVariousCd</xsl:with-param>
 										</xsl:call-template>
 									</xsl:if>
 								</div>
@@ -4420,7 +4460,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<xsl:if test="$FormData/OtherForeignAssetGrp/DisposedOfDateVariousCd">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/DisposedOfDateVariousCd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RDisposedOfDateVariousCd</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFADisposedOfDateVariousCd</xsl:with-param>
 										</xsl:call-template>
 									</xsl:if>
 								</div>
@@ -4434,16 +4474,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/JointlyOwnedWithSpouseInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFAJointlyOwnedWithSpouseInd
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAJointlyOwnedWithSpouseInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/JointlyOwnedWithSpouseInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFAJointlyOwnedWithSpouseInd
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAJointlyOwnedWithSpouseInd</xsl:with-param>
 										</xsl:call-template>
 							Check if asset jointly owned with spouse
 						</label>
@@ -4489,16 +4527,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDuringTY0To50000Ind"/>
-											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDuringTY0To50000Ind
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDuringTY0To50000Ind</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDuringTY0To50000Ind"/>
-											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDuringTY0To50000Ind
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDuringTY0To50000Ind</xsl:with-param>
 										</xsl:call-template>
 							$0 - $50,000
 						</label>
@@ -4511,16 +4547,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY50001To100000Ind"/>
-											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY50001To100000Ind
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY50001To100000Ind</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY50001To100000Ind"/>
-											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY50001To100000Ind
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY50001To100000Ind</xsl:with-param>
 										</xsl:call-template>
 							$50,001 - $100,000
 						</label>
@@ -4533,16 +4567,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY100001To150000Ind"/>
-											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY100001To150000Ind
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY100001To150000Ind</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY100001To150000Ind"/>
-											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY100001To150000Ind
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY100001To150000Ind</xsl:with-param>
 										</xsl:call-template>
 							$100,001 - $150,000
 						</label>
@@ -4555,16 +4587,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY150001To200000Ind"/>
-											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY150001To200000Ind
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY150001To200000Ind</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY150001To200000Ind"/>
-											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY150001To200000Ind
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY150001To200000Ind</xsl:with-param>
 										</xsl:call-template>
 							$150,001 - $200,000
 						</label>
@@ -4641,10 +4671,10 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 							</div>
 						</div>
 						<!--PART VI  Start of Other Foreign Assets (Continued)-->
-						<xsl:if test="(count($FormData/OtherForeignAssetGrp) &lt;=1)">
+						<xsl:if test="(count($FormData/OtherForeignAssetGrp) &lt;1)">
 							<!--PART VI  Line 6  Start of If you answered "Yes" to line 5, complete all that apply-->
 							<div style="width:187mm;float:left;clear:none;border-style:solid;border-color:black;
-			  border-width: 0px 0px 1px 0px;font-size:8pt">
+			  border-width: 0px 0px 1px 0px;font-size:8pt;">
 								<div class="styLNLeftNumBox" style="padding-left:2mm;padding-top:.7mm;
 				  height:5mm">6</div>
 								<div class="styLNDesc" style="width:146.5mm;padding-left:2mm;
@@ -4689,7 +4719,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<span style="font-weight:normal">
 											<span class="styBoldText">(c) </span>
 						  Source of exchange rate used if not from<br/>
-						  U.S. Treasury Financial Management Service<br/>
+						  U.S. Treasury Department's Bureau of the Fiscal Service<br/>
 											
 											<span style="font-size:8pt">
 												<xsl:call-template name="PopulateText">
@@ -4705,7 +4735,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 							</table>
 							<!--PART VI  Line 6(3)  End of Source Of Exchange Rate Used Text-->
 							<!--PART VI  Line 7 Report information-->
-							<div style="width:187mm;font-size:8pt;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
+							<div style="width:187mm;font-size:8pt;border-style:solid;border-color:black;border-width:0px 0px 0px 0px;">
 								<div class="styLNLeftNumBox" style="height:8mm;padding-left:2mm;
 										  padding-top:0mm;padding-bottom:0mm;">7</div>
 								<div class="styLNDesc" style="height:8mm;width:178mm;padding-left:2mm;
@@ -4716,7 +4746,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 							</div>
 							<!--<span style="height:4mm;"/>-->
 							<!--PART VI  Line 7a Start of Name of Foreign Entity-->
-							<div style="height:10mm;width:187mm;font-size:8pt;">
+							<div style="height:15mm;width:187mm;font-size:8pt;">
 								<div class="styLNLeftLtrBox" style="padding-left:4mm;">a</div>
 								<div  class="styLNDesc" style="width:178mm;height:20mm;">
 									<div class="styLNDesc" style="width:30mm;padding-left:2mm;">
@@ -4732,7 +4762,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									</div>
 									<div class="styLNLeftNumBox" style="width:0mm;padding-right:4mm;">b</div>
 										<div class="styLNDesc" style="width:20mm;">GIIN (Optional) </div>
-										<div class="styFixedUnderline" style="width:42mm;text-align:right;padding-top:28px;"/>
+										<div class="styFixedUnderline" style="width:42mm;text-align:center;padding-top:28px;"/>
 																</div>
 
 							</div>	
@@ -4838,8 +4868,8 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 					Mailing address of foreign entity. Number, street, and room or suite no.
 				</div>
 				<!--<span style="height:4mm;"/>-->
-								<div class="styFixedUnderline" style="height:6mm;width:178mm;padding-left:2mm;
-				  padding-top:1mm;padding-bottom:0mm;">
+								<div class="styFixedUnderline" style="height:8mm;width:178mm;
+				  padding-top:1mm;padding-left:10mm;">
 									<xsl:if test="$FormData/OtherForeignAssetGrp/USAddress">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/USAddress/AddressLine1Txt"/>
@@ -4869,10 +4899,10 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 							<div style="width:187mm;border-style:solid;border-color:black;font-size:8pt;
 				  border-width: 0px 0px 1px 0px;height:12mm;">
 								<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:1mm">e</div>
-								<div class="styLNDesc" style="width:179mm;padding-left:4mm;
+								<div class="styLNDesc" style="width:179mm;padding-left:2mm;
 				  padding-bottom:0mm;padding-top:1mm;">
 				  City or town, state or province , and country (including postal code)</div>
-								<div class="styLNDesc" style="width:186mm;padding-left:4mm;">
+								<div class="styLNDesc" style="width:186mm;padding-left:10mm;">
 									<xsl:if test="$FormData/OtherForeignAssetGrp/USAddress">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/USAddress/CityNm"/>
@@ -5461,12 +5491,12 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<div style="width:187mm;font-size:8pt;">
 										<div class="styLNLeftLtrBox" style="padding-left:4mm;">d</div>
 										<span style="height:4mm;"/>
-										<div class="styLNDesc" style="height:12mm;width:178mm;padding-left:2mm;
+										<div class="styLNDesc" style="height:4mm;width:178mm;padding-left:2mm;
 						  padding-top:0mm;padding-bottom:0mm;">
 						  Mailing address of issuer or counterparty. Number, street, and room or suite no.
 						</div>
 										<div class="styFixedUnderline" style="height:8mm;width:178mm;
-						  padding-left:2mm;padding-top:1mm;padding-bottom:0mm;">
+						  padding-left:10mm;padding-top:1mm;padding-bottom:0mm;">
 											<xsl:if test="USAddress">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="USAddress/AddressLine1Txt"/>
@@ -5494,7 +5524,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<!--PART VI  Line 8d  End of Mailing Address-->
 									<!--PART VI  Line 8e  Start of City, State or Country-->
 									<div style="width:187mm;border-style:solid;border-color:black;font-size:8pt;
-					  border-width: 0px 0px 1px 0px;height:23mm;">
+					  border-width: 0px 0px 1px 0px;height:12mm;">
 										<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
 										<div class="styLNDesc" style="width:178mm;padding-left:2mm;padding-bottom:0mm;">
 						  City or town, state or province , and country (including postal code)
@@ -5547,11 +5577,46 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 					<!--PART VI  End of Other Foreign Assets Continued-->
 					<!--PART VI REPEATING INFORMATION  Start of Other Foreign Assets 
         (see instructions) Lines 1-5-->
-					<xsl:if test="(count($FormData/OtherForeignAssetGrp) &gt;= 2) and ($Print != $Separated)">
+					<xsl:if test="(count($FormData/OtherForeignAssetGrp) &gt;= 1) and ($Print != $Separated)">
 						<xsl:for-each select="$FormData/OtherForeignAssetGrp">
 							<xsl:choose>
 								<xsl:when test="position()=1">
-									<div style="width:187mm;font-size:8pt;border-bottom:1px solid black">
+<!--									<div style="width:187mm;font-size:8pt;border-bottom:1px solid black">
+										<span style="width:150mm;">Form 8938 (2016)</span>
+										<span style="width:15mm;"/>Page 
+						<span class="styFixedUnderline" style="width:10mm;float:none;
+						  padding-top:0mm;padding-bottom:0mm;"/>
+									</div>-->
+							<div class="styBB" style="width:187mm;height:5mm;">
+								<div class="styPartName" style="font-size:10pt;padding-bottom:.5mm;font-family:arial;
+				  text-align:center;height:4mm;padding-top:.5mm">Part VI</div>
+								<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;clear:none;
+				  padding-top:.5mm;padding-bottom:.5mm;">
+			      Detailed Information for Each "Other Foreign Asset" Included in the Part II Summary
+			      <span style="font-weight:normal;"> (see instructions)</span>
+								</div>
+							</div>
+							
+							<!-- PART VI REPEATING INFORMATION  END TITLE -->
+							
+							<!--<div class="styBB" style="width:187mm;font-size:8pt;height:auto;">
+								<div class="styLNDesc" style="height:auto;width:187mm;padding-left:2mm;padding-top:0mm;
+				  padding-bottom:0mm;">
+									<b>Note.</b>
+									<i>If you reported specified foreign financial assets on 
+				Forms 3520, 3520-A, 5471, 8621 or 8865, you do not have to <br/>
+				include the assets on Form 8938. You must complete Part IV. See instructions.</i>
+								</div>
+							</div>-->
+							<div class="styBB" style="width:187mm;height:auto;">
+								<div class="styLNDesc" style="width:187mm;padding-left:2mm;padding-top:0mm;
+				  padding-bottom:0mm;">If you have more than one asset to report in Part VI, attach a continuation
+				  statement for each additional asset (see instructions).</div>
+							</div>
+							
+								</xsl:when>
+								<xsl:otherwise>
+<!--								<div style="width:187mm;font-size:8pt;border-bottom:1px solid black">
 										<span style="width:150mm;">Form 8938 (2016)</span>
 										<span style="width:15mm;"/>Page 
 						<span class="styFixedUnderline" style="width:10mm;float:none;
@@ -5566,37 +5631,25 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 			      <span style="font-weight:normal;"> (see instructions)</span>
 								</div>
 							</div>
-							
-							<!-- PART VI REPEATING INFORMATION  END TITLE -->
-							
-							<div class="styBB" style="width:187mm;font-size:8pt;height:auto;">
-								<div class="styLNDesc" style="height:auto;width:187mm;padding-left:2mm;padding-top:0mm;
-				  padding-bottom:0mm;">
-									<b>Note.</b>
-									<i>If you reported specified foreign financial assets on 
-				Forms 3520, 3520-A, 5471, 8621 or 8865, you do not have to <br/>
-				include the assets on Form 8938. You must complete Part IV. See instructions.</i>
-								</div>
-							</div>
-							<div class="styBB" style="width:187mm;height:auto;">
-								<div class="styLNDesc" style="width:187mm;padding-left:2mm;padding-top:0mm;
-				  padding-bottom:0mm;">If you have more than one asset to report, attach a continuation
-				  statement for each additional asset (see instructions).</div>
-							</div>
-							
-								</xsl:when>
+							</xsl:otherwise>
 							</xsl:choose>
 							<xsl:choose>
-								<xsl:when test="position()>=2">
+								<xsl:when test="position()>=2">-->
+								
+				<p style="page-break-before: always" /> 			 
+
 																	<div style="width:187mm;font-size:8pt;border-bottom:1px solid black">
 										<span style="width:150mm;">Form 8938 (2016)</span>
 										<span style="width:15mm;"/>Page 
 						<span class="styFixedUnderline" style="width:10mm;float:none;
 						  padding-top:0mm;padding-bottom:0mm;"/>
 									</div>
+								
 									<div class="styBB" style="width:187mm;height:8mm;">
+									
 										<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;
 						  text-align:center;padding-top:2mm;padding-bottom:2mm">
+						  
 						  (Continuation Statement)
 						</div>
 									</div>
@@ -5630,26 +5683,27 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 								<div class="styPartName" style="font-size:10pt;padding-bottom:.5mm;font-family:arial;
 				  text-align:center;height:4mm;padding-top:.5mm">Part VI</div>
 								<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;clear:none;
-				  padding-top:.5mm;padding-bottom:.5mm">
+				  padding-top:.5mm;padding-bottom:.5mm;">
 			      Detailed Information for Each "Other Foreign Asset" Included in the Part II Summary
 			      <span style="font-weight:normal;"> (see instructions)</span>
 								</div>
 							</div> 
- 								</xsl:when>
+ 								<!--</xsl:when>-->
+ 								</xsl:otherwise>
 							</xsl:choose>
 
 							<!-- PART VI REPEATING INFORMATION  BEGIN TITLE -->
 							<table class="styBB" id="IRS8938Table3" summary="Asset [header]" cellspacing="0" cellpadding="0" style="width:187mm;">
 				<tr>
 									<!--PART VI  REPEATING INFORMATION  Line 1  Start of Asset Description-->
-									<th style="width:110mm;font-size:8pt; border-right:solid black 1px;vertical-align:top;padding-left:2mm;text-align:left" scope="col">
+									<th style="width:110mm;font-size:8pt; border-right:solid black 1px;vertical-align:top;padding-left:2mm;text-align:left;" scope="col">
 									<div class="styLNLeftNumBox" style="padding-left:0mm;width:4mm;padding-top:0mm;">1</div>
 									<div style="font-weight:normal;padding-left:3mm;">Description of asset</div>
 									<br></br>
 									<div style="padding-left:8mm;font-weight:normal;font-size:8pt;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="AssetDesc"/>
-											<xsl:with-param name="BackupName">IRS8938OFAAssetDescription</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAAssetDesc</xsl:with-param>
 										</xsl:call-template>
 									</div>
 								</th>
@@ -5664,14 +5718,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 												<xsl:when test="$FormData/OtherForeignAssetGrp/IdentifyingDesignationNum">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="IdentifyingDesignationNum"/>
-														<xsl:with-param name="BackupName">IRS8938OFAIdentifyingDesignationNumber
+														<xsl:with-param name="BackupName">IRS8938OFAIdentifyingDesignationNum
 											</xsl:with-param>
 													</xsl:call-template>
 												</xsl:when>
 												<xsl:otherwise>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="BankAccountNum"/>
-														<xsl:with-param name="BackupName">IRS8938OFABankAccountNumber</xsl:with-param>
+														<xsl:with-param name="BackupName">IRS8938OFABankAccountNum</xsl:with-param>
 													</xsl:call-template>
 												</xsl:otherwise>
 											</xsl:choose>
@@ -5708,7 +5762,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<xsl:if test="AcquiredDateVariousCd">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="AcquiredDateVariousCd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RAcquiredDateVariousCd</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFAAcquiredDateVariousCd</xsl:with-param>
 											</xsl:call-template>
 										</xsl:if>
 									</div>
@@ -5732,7 +5786,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<xsl:if test="DisposedOfDateVariousCd">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="DisposedOfDateVariousCd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RDisposedOfDateVariousCd</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFADisposedOfDateVariousCd</xsl:with-param>
 											</xsl:call-template>
 										</xsl:if>
 									</div>
@@ -5745,18 +5799,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="JointlyOwnedWithSpouseInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RJointlyOwnedWithSpouseInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RJointlyOwnedWithSpouseInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="JointlyOwnedWithSpouseInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RJointlyOwnedWithSpouseInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RJointlyOwnedWithSpouseInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Check if asset jointly owned with spouse
 						</label>
@@ -5769,18 +5819,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RNoTaxItemReportedInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RNoTaxItemReportedInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RNoTaxItemReportedInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RNoTaxItemReportedInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Check if no tax item reported in Part III with respect to this asset
 						</label>
@@ -5805,18 +5851,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MaxValueDuringTY0To50000Ind"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDuringTY0To50000Ind
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDuringTY0To50000Ind<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="MaxValueDuringTY0To50000Ind"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDuringTY0To50000Ind
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDuringTY0To50000Ind<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							$0 - $50,000
 						</label>
@@ -5831,18 +5873,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY50001To100000Ind"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY50001To100000Ind
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY50001To100000Ind<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY50001To100000Ind"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY50001To100000Ind
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY50001To100000Ind<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							$50,001 - $100,000
 						</label>
@@ -5857,18 +5895,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY100001To150000Ind"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY100001To150000Ind
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY100001To150000Ind<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY100001To150000Ind"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY100001To150000Ind
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY100001To150000Ind<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							$100,001 - $150,000
 						</label>
@@ -5883,18 +5917,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY150001To200000Ind"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY150001To200000Ind
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY150001To200000Ind<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY150001To200000Ind"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY150001To200000Ind
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY150001To200000Ind<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							$150,001 - $200,000
 						</label>
@@ -5937,18 +5967,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 							Yes
 						</label>
@@ -5958,18 +5984,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 							No
 						</label>
@@ -5988,7 +6010,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 								<div class="styLNLeftNumBox" style="padding-left:2mm;padding-top:.7mm;
 				  height:4mm">6</div>
 								<div class="styLNDesc" style="width:146.5mm;padding-left:2mm;padding-top:.7mm;
-				  height:4mm">If you answered "Yes" to line 5, complete all that apply.
+				  height:4mm;">If you answered "Yes" to line 5, complete all that apply.
 				</div>
 							</div>
 							<table class="styBB" id="IRS8938Table" summary="Foreign currency [header]" cellspacing="0" cellpadding="0" style="width:187mm;">
@@ -6032,7 +6054,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<span style="font-weight:normal">
 											<span class="styBoldText">(c) </span>
 						  Source of exchange rate used if not from<br/>
-						  U.S. Treasury Financial Management Service<br/>
+						  U.S. Treasury Department's Bureau of the Fiscal Service<br/>
 											
 											<span style="font-size:8pt">
 												<xsl:call-template name="PopulateText">
@@ -6075,10 +6097,11 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									</div>
 									<div class="styLNLeftNumBox" style="width:6mm;padding-right:4mm;">b</div>
 										<div class="styLNDesc" style="width:22mm;text-align:right;">GIIN (Optional) </div>
-										<div class="styBB" style="width:40mm;font-size:8pt;border-top-width: 0px;         border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;float:right;position:absolute;text-align:right">
-							 <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/GIIN"/>
-                  </xsl:call-template>
+										<div class="styBB" style="width:40mm;font-size:8pt;border-top-width: 0px;         border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;float:right;position:absolute;text-align:center;">
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="GIIN"/>
+								<xsl:with-param name="BackupName">IRS8938OFA-RGIIN<xsl:number value="position()"/></xsl:with-param>
+							</xsl:call-template>
                   </div>
 							</div>
 						
@@ -6095,18 +6118,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="PartnershipInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RPartnershipInd
-							<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RPartnershipInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="PartnershipInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RPartnershipInd
-							<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RPartnershipInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 						Partnership
 					</label>
@@ -6120,18 +6139,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="CorporationInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RCorporationInd
-							<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RCorporationInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="CorporationInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RCorporationInd
-							<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RCorporationInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 						Corporation 
 					</label>
@@ -6145,16 +6160,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="TrustInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RTrustInd<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RTrustInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="TrustInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RTrustInd<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RTrustInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 						Trust 
 					</label>
@@ -6168,16 +6181,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="EstateInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-REstateInd<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-REstateInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="EstateInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-REstateInd<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-REstateInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 						Estate 
 					</label>
@@ -6307,18 +6318,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="IssuerInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  IssuerInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IssuerInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="IssuerInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  IssuerInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IssuerInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Issuer
 						</label>
@@ -6327,18 +6334,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="CounterpartyInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  CounterpartyInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CounterpartyInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="CounterpartyInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  CounterpartyInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CounterpartyInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Counterparty
 						</label>
@@ -6359,18 +6362,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/IndividualInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  IndividualInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IndividualInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/IndividualInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  IndividualInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IndividualInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Individual
 						</label>
@@ -6383,18 +6382,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/PartnershipInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  PartnershipInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>PartnershipInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/PartnershipInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  PartnershipInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>PartnershipInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Partnership
 						</label>
@@ -6407,18 +6402,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/CorporationInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  CorporationInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CorporationInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/CorporationInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  CorporationInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CorporationInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Corporation 
 						</label>
@@ -6431,18 +6422,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/TrustInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  TrustInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>TrustInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/TrustInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  TrustInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>TrustInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Trust 
 						</label>
@@ -6454,18 +6441,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/EstateInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  EstateInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>EstateInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:4px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/EstateInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  EstateInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>EstateInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Estate 
 						</label>
@@ -6485,18 +6468,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/USPersonInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  USPersonInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>USPersonInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/USPersonInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  USPersonInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>USPersonInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							U.S. person
 						</label>
@@ -6505,18 +6484,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/ForeignPersonInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  ForeignPersonInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>ForeignPersonInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/ForeignPersonInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  ForeignPersonInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>ForeignPersonInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Foreign person
 						</label>
@@ -6665,18 +6640,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="IssuerInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  IssuerInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IssuerInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<span style="width:5px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="IssuerInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  IssuerInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IssuerInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 								Issuer
 							</label>
@@ -6685,18 +6656,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="CounterpartyInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  CounterpartyInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CounterpartyInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<span style="width:5px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="CounterpartyInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  CounterpartyInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CounterpartyInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 								Counterparty
 							</label>
@@ -6718,18 +6685,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="IndividualInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  IndividualInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IndividualInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<span style="width:5px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="IndividualInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  IndividualInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IndividualInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 								Individual
 							</label>
@@ -6742,18 +6705,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="PartnershipInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  PartnershipInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>PartnershipInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<span style="width:5px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="PartnershipInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  PartnershipInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>PartnershipInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 								Partnership
 							</label>
@@ -6766,18 +6725,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="CorporationInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  CorporationInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CorporationInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<span style="width:5px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="CorporationInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  CorporationInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CorporationInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 								Corporation 
 							</label>
@@ -6790,18 +6745,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="TrustInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  TrustInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>TrustInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<span style="width:5px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="TrustInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  TrustInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>TrustInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 								Trust 
 							</label>
@@ -6813,18 +6764,13 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="EstateInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  EstateInd<xsl:number value="position()"/>
-													</xsl:with-param>
-												</xsl:call-template>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>EstateInd<xsl:number value="position()"/></xsl:with-param></xsl:call-template>
 											</input>
 											<span style="width:4px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="EstateInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  EstateInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>EstateInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 							     Estate 
 							</label>
@@ -6844,18 +6790,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="USPersonInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  USPersonInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>USPersonInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<span style="width:5px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="USPersonInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  USPersonInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>USPersonInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 								   U.S. person
 							</label>
@@ -6864,18 +6806,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="ForeignPersonInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  ForeignPersonInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>ForeignPersonInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<span style="width:5px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="ForeignPersonInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  ForeignPersonInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>ForeignPersonInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 								   Foreign person
 							</label>
@@ -6982,19 +6920,19 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
         (see instructions) Lines 1-5-->
 					<xsl:if test="(count($FormData/OtherForeignAssetGrp) &gt;= 2) and ($Print = $Separated)">
 						<div style="font-size:8pt">
-							<!-- PART VI REPEATING ADDITIONAL TABLE MESSAGE  BEGIN TITLE -->
-							<div class="styBB" style="width:187mm;height:6mm;">
-								<div class="styPartName" style="font-size:10pt;padding-bottom:.5mm;height:6mm;
-				  font-family:arial;text-align:center;padding-top:.5mm">Part VI</div>
-								<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;
-				  float:left;clear:none;padding-top:.5mm;padding-bottom:.5mm">
-			      Detailed Information for Each "Other Foreign Asset" Included in the
-			      Part II Summary<span style="font-weight:normal;"> (see instructions)
-			      </span>
-								</div>
+							<!-- PART VI REPEATING-SEPARATED ADDITIONAL TABLE MESSAGE  BEGIN TITLE -->
+							<div class="styBB" style="width:187mm"/>
+								<div class="styBB" style="width:187mm;">
+									<div class="styPartName" style="font-size:10pt;padding-bottom:.5mm;
+				  font-family:arial;text-align:left">Part VI</div>
+									<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;
+				  float:left;clear:none;width:173mm;">
+			      Detailed Information for Each "Other Foreign Asset" Included in the 
+			      Part II Summary<span style="font-weight:normal;width:28.8mm;padding-left:1mm;">(see instructions)</span>
+									</div>
 							</div>
 							<!-- PART VI REPEATING ADDITIONAL TABLE MESSAGE  END TITLE -->
-							<div class="styBB" style="width:187mm;height:10mm;">
+							<!--<div class="styBB" style="width:187mm;height:10mm;background-color:red">
 								<div class="styLNDesc" style="width:187mm;padding-left:2mm;padding-top:0mm;
 				  padding-bottom:0mm;">
 									<b>Note.</b>
@@ -7002,7 +6940,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 				Forms 3520, 3520-A, 5471, 8621 or 8865, you do not have to <br/>
 				include the assets on Form 8938. You must complete Part IV. See instructions.</i>
 								</div>
-							</div>
+							</div>-->
 							<div class="styBB" style="width:187mm;">
 								<div class="styLNDesc" style="width:187mm;padding-left:2mm;padding-top:0mm;
 				  padding-bottom:0mm;">If you have more than one asset to report, attach a continuation
@@ -7267,7 +7205,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
                  Line 4e End of Max. Value During TY More Max. Amount-->
 							<!--PART VI REPEATING ADDITIONAL TABLE MESSAGE
                  Line 5 Start of Exchange Rate used-->
-							<div class="styBB" style="width:187mm;">
+							<div  style="width:187mm;">
 								<div class="styLNLeftNumBox" style="height:5mm;padding-left:2mm;
 				  padding-top:.7mm;padding-bottom:0mm;">5</div>
 								<div class="styLNDesc" style="height:5mm;width:178mm;padding-left:2mm;
@@ -7354,7 +7292,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 								<!--PART VI REPEATING ADDITIONAL TABLE MESSAGE
                      Line 6(2) Start of Exchange Rate Used-->
 								<div style="width:63mm;float:left;clear:none;border-style:solid;border-color:black;
-				   border-width: 0px 1px 0px 1px;">
+				   border-width: 0px 1px 0px 1px;height:10mm">
 									<div class="styLNDesc" style="width:61mm;padding-left:2mm;
 					  padding-bottom:.5mm;">
 										<b>(b) </b> Foreign currency exchange rate used to convert to U.S. dollars
@@ -7371,7 +7309,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<div class="styLNDesc" style="width:62mm;padding-left:2mm;
 					  padding-bottom:1.5mm;">
 										<b>(c) </b> Source of exchange rate used if not from <br/>
-						 U.S. Treasury Financial Management Service
+						 U.S. Treasury Department's Bureau of the Fiscal Service
 					</div>
 									<div class="styLNDesc" style="width:62mm;padding-top:1mm;
 					  padding-left:1mm" valign="bottom"/>
@@ -7404,17 +7342,17 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<!--<span style="height:4mm;"/>-->
 										<div class="styFixedUnderline" style="width:80mm;padding-left:2mm;">
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/EntityName/BusinessNameLine1Txt"/>
+												<xsl:with-param name="TargetNode" select="EntityName/BusinessNameLine1Txt"/>
 											</xsl:call-template><br/>
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/EntityName/BusinessNameLine2Txt"/>
+													<xsl:with-param name="TargetNode" select="EntityName/BusinessNameLine2Txt"/>
 												</xsl:call-template>
 										</div>
 									<div class="styLNLeftNumBox" style="width:6mm;padding-right:4mm;">b</div>
 										<div class="styLNDesc" style="width:22mm;text-align:right;">GIIN (Optional) </div>
-										<div class="styBB" style="width:40mm;font-size:8pt;border-top-width: 0px;         border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;float:right;position:absolute;text-align:right">
+										<div class="styBB" style="width:40mm;font-size:8pt;border-top-width: 0px;         border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;float:right;position:absolute;text-align:center">
 							 <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/GIIN"/>
+                    <xsl:with-param name="TargetNode" select="GIIN"/>
                   </xsl:call-template>
                   </div>
 							</div>
@@ -7900,12 +7838,16 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 							<xsl:for-each select="$FormData/ForeignFinclAccountGrp">
 								<xsl:choose>
 									<xsl:when test="position()>=2">
+									<p style="page-break-before: always" /> 
+
 										<div style="width:187mm;font-size:8pt;border-bottom:1px solid black">
+										
 											<span style="width:120mm;">Form 8938 (2016)</span>
 											<span style="width:15mm;"/>Page 
 						<span class="styFixedUnderline" style="width:10mm;float:none;
 						  padding-top:0mm;padding-bottom:0mm;"/>
 										</div>
+										
 										<div class="styBB" style="width:187mm;height:8mm;">
 											<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;height:8mm;
 						  text-align:center;padding-top:2mm;padding-bottom:2mm">
@@ -7943,9 +7885,9 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 								<!-- PART V SEPARATED PRINT  BEGIN TITLE -->
 								<div class="styBB" style="width:187mm;"/>
 								<div class="styBB" style="width:187mm;height:8mm;">
-									<div class="styPartName" style="font-size:10pt;padding-bottom:.5mm;height:5mm;
+									<div class="styPartName" style="font-size:10pt;padding-bottom:5mm;height:5mm;
 				  font-family:arial;text-align:center;padding-top:.5mm;">Part V</div>
-									<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;clear:none;">
+									<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;clear:none;width:173mm;">
 				  Detailed Information for Each Foreign Deposit and Custodial Account Included in the
 				  Part I Summary<span style="font-weight:normal;"> (see instructions)</span>
 									</div>
@@ -7953,8 +7895,8 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 								<!-- PART V SEPARATED PRINT  END TITLE -->
 								<div class="styBB" style="width:187mm;">
 									<div class="styLNDesc" style="width:187mm;height:8mm;">
-				  If you have more than one account to report, attach a continuation statement with
-				  the same information for each additional account (see instructions).</div>
+				 If you have more than one account to report in Part V,  attach a continuation statement with
+				  the same information for each additional account<span style="font-weight:normal;"> (see instructions)</span></div>
 								</div>
 								<div class="styBB" style="width:187mm;">
 									<!--PART V SEPARATED PRINT  Start of Type Of Account-->
@@ -8026,7 +7968,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 												</xsl:when>
 												<xsl:otherwise>
 													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="BankAccountNum"/>
+														<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/BankAccountNum"/>
 													</xsl:call-template>
 												</xsl:otherwise>
 											</xsl:choose>
@@ -8067,7 +8009,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										</div>
 										<!--PART V SEPARATED PRINT  End of Account Opened During Tax Year Ind-->
 										<!--PART V SEPARATED PRINT  Start of Account Closed During Tax Year Ind-->
-										<div class="styLNDesc" style="width:87mm;padding-left:2.5mm;">
+										<div class="styLNDesc" style="width:87mm;padding-left:6mm;">
 											<b>b</b>
 											<span style="width:1mm;"/>
 											<input type="Checkbox" class="styCkbox">
@@ -8095,9 +8037,9 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<div style="width:41mm;float:left;clear: none;"/>
 										<!--PART V SEPARATED PRINT  Start of Jointly Owned With Spouse Ind-->
 										<div class="styLNDesc" style="width:100mm;">
-										<span style="padding-right:39mm;"/>
+										<span style="padding-right:40mm;"/>
 											<b>c</b>
-											<span style="width:1.5mm;"/>
+											<span style="width:.5mm;"/>
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="JointlyOwnedWithSpouseInd"/>
@@ -8119,8 +8061,9 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										</div>
 										<!--PART V SEPARATED PRINT  End of Jointly Owned With Spouse Ind-->
 										<!--PART V SEPARATED PRINT  Start of No Tax Item Reported Ind-->
-										<div class="styLNDesc" style="width:85mm;">										
-											<b>d</b>										
+										<div class="styLNDesc" style="width:87mm;padding-left:2.5mm;">
+											<b>d</b>
+											<span style="width:1mm;"/>								
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
@@ -8265,7 +8208,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 											<span style="font-weight:normal">
 												<span class="styBoldText">(c) </span>
 						  Source of exchange rate used if not from<br/>
-						  U.S. Treasury Financial Management Service<br/>
+						  U.S. Treasury Department's Bureau of the Fiscal Service<br/>
 												
 												<span style="font-size:8pt">
 													<xsl:call-template name="PopulateText">
@@ -8287,7 +8230,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 								<div class="styBB" style="width:187mm;font-size:8pt;">
 							<div class="styLNLeftNumBox" style="height:12mm;padding-left:2mm;padding-top:0mm;
 				  padding-bottom:0mm;">7a</div>
-							<div class="styLNDesc" style="width:98mm;height:8mm;padding-left:2mm;padding-top:0mm;
+							<div class="styLNDesc" style="width:98mm;height:16mm;padding-left:2mm;padding-top:0mm;
 				  padding-bottom:0mm;">Name of financial institution in which account is maintained
 							    <br/>
 								<xsl:call-template name="PopulateText">
@@ -8300,14 +8243,17 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									</xsl:call-template>
 								</xsl:if>
 						    </div>
-							 <div class="styLNLeftNumBox" style="width:6mm;padding-right:4mm;">b</div>
-							<div class="styLNDesc" style="width:22mm;text-align:right;">GIIN (Optional) </div>
-										<div class="styBB" style="width:40mm;font-size:8pt;border-top-width: 0px;         border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;float:right;position:absolute;text-align:right;">
+							 <div class="styLNRightNumBoxNBB" style="border-left-width:0px;width:6mm;padding-left:0mm;float:left">b</div>
+							<div class="styLNDesc" style="width:74mm;float:right;">Global Intermediary Identification Number (GIIN) (Optional) 
+							<div class="styBB" style="width:187mm;font-size:8pt;border-top-width: 0px;         border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;">
 							 <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/GIIN"/>
+                    <xsl:with-param name="TargetNode" select="GIIN"/>
                   </xsl:call-template>
                   </div>
 							</div>
+							<div class="styFixedUnderline" style="width:53mm;text-align:right;background-color:back;border-bottom-width: 0px;"/>
+								</div>			
+							
 						
 									
 								<!--PART V SEPARATED PRINT  Line 7  
@@ -8442,6 +8388,8 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 							<xsl:for-each select="$FormData/OtherForeignAssetGrp">
 								<xsl:choose>
 									<xsl:when test="position()>=2">
+									<p style="page-break-before: always" /> 
+
 										<div style="width:187mm;font-size:8pt;border-bottom:1px solid black">
 											<span style="width:150mm;">Form 8938 (2016)</span>
 											<span style="width:15mm;"/>Page 
@@ -8488,9 +8436,9 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<div class="styPartName" style="font-size:10pt;padding-bottom:.5mm;
 				  font-family:arial;text-align:left">Part VI</div>
 									<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;
-				  float:left;clear:none;">
+				  float:left;clear:none;width:173mm;">
 			      Detailed Information for Each "Other Foreign Asset" Included in the 
-			      Part II Summary<span style="font-weight:normal;"> (see instructions)</span>
+			      Part II Summary<span style="font-weight:normal;width:28.8mm;padding-left:1mm;">(see instructions)</span>
 									</div>
 								</div>
 								<!-- PART VI SEPARATED PRINT  END TITLE -->
@@ -8503,7 +8451,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 								</div>
 								<div class="styBB" style="width:187mm;height:10mm">
 									<div class="styLNDesc" style="width:187mm;padding-left:2mm;padding-top:0mm;
-				  padding-bottom:0mm;">If you have more than one asset to report, attach a 
+				  padding-bottom:0mm;">If you have more than one asset to report in Part VI,  attach a 
 				  continuation statement for each additional asset (see instructions).</div>
 								</div>
 								<table class="styBB" id="IRS8938Table3" summary="Asset [header]" cellspacing="0" cellpadding="0" style="width:187mm;">
@@ -8517,7 +8465,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									<div style="padding-left:8mm;font-weight:normal;font-size:8pt;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="AssetDesc"/>
-											<xsl:with-param name="BackupName">IRS8938OFAAssetDescription</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAAssetDesc</xsl:with-param>
 										</xsl:call-template>
 									</div>
 								</th>
@@ -8532,14 +8480,14 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 												<xsl:when test="$FormData/OtherForeignAssetGrp/IdentifyingDesignationNum">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="IdentifyingDesignationNum"/>
-														<xsl:with-param name="BackupName">IRS8938OFAIdentifyingDesignationNumber
+														<xsl:with-param name="BackupName">IRS8938OFAIdentifyingDesignationNum
 											</xsl:with-param>
 													</xsl:call-template>
 												</xsl:when>
 												<xsl:otherwise>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="BankAccountNum"/>
-														<xsl:with-param name="BackupName">IRS8938OFABankAccountNumber</xsl:with-param>
+														<xsl:with-param name="BackupName">IRS8938OFABankAccountNum</xsl:with-param>
 													</xsl:call-template>
 												</xsl:otherwise>
 											</xsl:choose>
@@ -8576,7 +8524,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 											<xsl:if test="AcquiredDateVariousCd">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="AcquiredDateVariousCd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-RAcquiredDateVariousCd</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFAAcquiredDateVariousCd</xsl:with-param>
 												</xsl:call-template>
 											</xsl:if>
 										</div>
@@ -8658,7 +8606,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 								<!--PART VI SEPARATED PRINT  Line 3d  End of No Tax Item Reported Ind-->
 								<!--PART VI SEPARATED PRINT  Line 4  Start of Maximum value of asset
                  during tax year-->
-								<div class="styBB" style="width:187mm;height:14mm;">
+								<div class="styBB" style="width:187mm;height:16mm;">
 									<div style="width:187mm;float:left;clear:none;">
 										<div class="styLNLeftNumBox" style="padding-left:2mm;">4</div>
 										<div class="styLNDesc" style="width:146.5mm;padding-left:2mm;">
@@ -8667,7 +8615,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 									</div>
 									<!--PART VI SEPARATED PRINT  Line 4a  Start of Max. Value 
                     During TY 0 To 50000 Ind-->
-									<div style="width:187mm;">
+									<div style="width:187mm;height:5mm;">
 										<div class="styLNLeftLtrBox" style="padding-left:4mm;">a</div>
 										<div class="styLNDesc" style="width:35mm;padding-left:2mm;">
 											<input type="Checkbox" class="styCkbox">
@@ -8793,10 +8741,10 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 								<!--PART VI SEPARATED PRINT  Line 4e  End of Max. Value 
                  During TY More Max. Amount-->
 								<!--PART VI SEPARATED PRINT  Line 5  Start of Exchange Rate used-->
-								<div class="styBB" style="width:187mm;">
-									<div class="styLNLeftNumBox" style="height:5mm;padding-left:2mm;
-				  padding-top:.7mm;padding-bottom:0mm;">5</div>
-									<div class="styLNDesc" style="height:5mm;width:178mm;padding-left:2mm;
+								<div style="width:187mm;">
+									<div class="styLNLeftNumBox" style="height:4mm;padding-left:2mm;
+				  padding-top:.9mm;padding-bottom:0mm;">5</div>
+									<div class="styLNDesc" style="height:7mm;width:178mm;padding-left:2mm;
 				  padding-top:.7mm;padding-bottom:0mm;">Did you use a foreign currency 
 				  exchange rate to convert the value of the asset into U.S. dollars?
 					<!--Dotted Line-->
@@ -8852,11 +8800,11 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 								<!--PART VI SEPARATED PRINT  Line 6  Start of If you answered "Yes" to line 5,
                  complete all that apply-->
 								<div style="width:187mm;float:left;clear:none;border-style:solid;border-color:black;
-			   border-width: 0px 0px 1px 0px;">
+			   border-width: 0px 0px 1px 0px;height:8mm;">
 									<div class="styLNLeftNumBox" style="padding-left:2mm;padding-top:.7mm;
 				  height:4mm">6</div>
 									<div class="styLNDesc" style="width:146.5mm;padding-left:2mm;padding-top:.7mm;
-				  height:4mm">If you answered "Yes" to line 5, complete all that apply.
+				  height:4mm;">If you answered "Yes" to line 5, complete all that apply.
 				</div>
 								</div>
 								<table class="styBB" id="IRS8938Table" summary="Foreign currency [header]" cellspacing="0" cellpadding="0" style="width:187mm;">
@@ -8901,7 +8849,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 											<span style="font-weight:normal">
 												<span class="styBoldText">(c) </span>
 						  Source of exchange rate used if not from<br/>
-						  U.S. Treasury Financial Management Service<br/>
+						  U.S. Treasury Department's Bureau of the Fiscal Service<br/>
 												
 												<span style="font-size:8pt">
 													<xsl:call-template name="PopulateText">
@@ -8926,10 +8874,10 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 				  foreign entity, enter the following information for the asset.
 				</div>
 				</div>
-							<div style="width:187mm;font-size:9pt;height:6mm;">
+							<div style="width:187mm;font-size:9pt;height:16mm;">
 								<div class="styLNLeftLtrBox" style="padding-left:4mm;">a</div>
 								<div  class="styLNDesc" style="width:178mm;height:20mm;">
-									<div class="styLNDesc" style="width:30mm;padding-left:2mm;">
+									<div class="styLNDesc" style="width:35mm;padding-left:2mm;">
 									Name of foreign entity</div>
 										<!--<span style="height:4mm;"/>-->
 										<div class="styFixedUnderline" style="width:80mm;padding-left:2mm;">
@@ -8942,9 +8890,9 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										</div>
 									<div class="styLNLeftNumBox" style="width:6mm;padding-right:4mm;">b</div>
 										<div class="styLNDesc" style="width:22mm;text-align:right;">GIIN (Optional) </div>
-										<div class="styBB" style="width:40mm;font-size:8pt;border-top-width: 0px;         border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;float:right;position:absolute;text-align:right">
+										<div class="styBB" style="width:40mm;font-size:8pt;border-top-width: 0px;         border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;float:right;position:absolute;text-align:center;">
 							 <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/GIIN"/>
+                    <xsl:with-param name="TargetNode" select="GIIN"/>
                   </xsl:call-template>
                   </div>
 							</div>
@@ -9830,6 +9778,7 @@ If you are a partnership, corporation, or trust filing Form 8938, enter the name
 										<!--PART VI SEPARATED PRINT  Line 8e  End of City, State or Country-->
 									</xsl:for-each>
 									<!--PART VI SEPARATED PRINT  FOOTER-->
+									
 									<div style="width:187mm;font-size:8pt;">
 										<span style="font-size:8pt;width:135mm;"/>
 										<span style="width:22mm;"/>Form 

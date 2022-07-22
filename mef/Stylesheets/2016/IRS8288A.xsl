@@ -30,10 +30,10 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-					<!--<xsl:if test="not($Print) or $Print=''">-->
+					<xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS8288AStyle"/>
 						<xsl:call-template name="AddOnStyle"/>
-					<!--</xsl:if>-->
+					</xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
@@ -101,14 +101,19 @@
 									<span style="font-family:Arial;display:inline;">Identification number of foreign person <br />subject to withholding (see instructions)</span> <br /><br />
 									<span style="width:100%;text-align:center;">
 										<xsl:choose>
-											<xsl:when test="$FormData/ForeignPersonSubjectToWthldGrp/SSN">
+											<xsl:when test="normalize-space($FormData/ForeignPersonSubjectToWthldGrp/SSN)!= ''">
 												<xsl:call-template name="PopulateSSN">
 													<xsl:with-param name="TargetNode" select="$FormData/ForeignPersonSubjectToWthldGrp/SSN"/>
 												</xsl:call-template>
 											</xsl:when>
-											<xsl:otherwise>
-												<xsl:call-template name="PopulateEIN">
+											<xsl:when test="normalize-space($FormData/ForeignPersonSubjectToWthldGrp/EIN)!= ''">
+												<xsl:call-template name="PopulateSSN">
 													<xsl:with-param name="TargetNode" select="$FormData/ForeignPersonSubjectToWthldGrp/EIN"/>
+												</xsl:call-template>
+											</xsl:when>
+											<xsl:otherwise>
+												<xsl:call-template name="PopulateReturnHeaderFiler">
+													<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
 												</xsl:call-template>
 											</xsl:otherwise>
 										</xsl:choose>
@@ -124,7 +129,7 @@
 								</xsl:call-template>
 								<br />
 								<xsl:choose>
-									<xsl:when test="$FormData/ForeignPersonSubjectToWthldGrp/PersonFullName">
+									<xsl:when test="normalize-space($FormData/ForeignPersonSubjectToWthldGrp/PersonFullName)!=''">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/ForeignPersonSubjectToWthldGrp/PersonFullName/PersonFirstNm"/>
 										</xsl:call-template>
@@ -133,7 +138,7 @@
 											<xsl:with-param name="TargetNode" select="$FormData/ForeignPersonSubjectToWthldGrp/PersonFullName/PersonLastNm"/>
 										</xsl:call-template>
 									</xsl:when>
-									<xsl:otherwise>
+									<xsl:when test="normalize-space($FormData/ForeignPersonSubjectToWthldGrp/BusinessName/BusinessNameLine1Txt)!=''">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/ForeignPersonSubjectToWthldGrp/BusinessName/BusinessNameLine1Txt"/>
 										</xsl:call-template>
@@ -141,9 +146,14 @@
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/ForeignPersonSubjectToWthldGrp/BusinessName/BusinessNameLine2Txt"/>
 										</xsl:call-template>
+									</xsl:when>
+									<xsl:otherwise>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										 <xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+									</xsl:call-template>		
+											<br/>
 									</xsl:otherwise>
-								</xsl:choose>
-								
+								</xsl:choose>								
 							</div>
 							<!-- Withholdee street address -->
 							<div style="width:100%;height:10mm;border-bottom:1px solid black;padding-left:2px;">
@@ -167,13 +177,17 @@
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$FormData/ForeignPersonSubjectToWthldGrp/SellerForeignAddressGrp/ForeignAddress/CountryCd"/>
 									</xsl:call-template>
-								</div>
+						
+		</div>
 								<div style="width:17%;height:18mm;">
 									<span style="font-weight:bold;padding-left:2px;padding-right:2px;height:4mm;float:left;">7</span>
 									<span style="font-family:Arial;display:inline;">Country code</span><br />
 									<span style="width:100%;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/ForeignPersonSubjectToWthldGrp/SellerForeignAddressGrp/CountryCd"/>
+										</xsl:call-template>
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$FormData/ForeignPersonSubjectToWthldGrp/SellerSeparateMailingAddrGrp/CountryCd"/>
 										</xsl:call-template>
 									</span>
 								</div>

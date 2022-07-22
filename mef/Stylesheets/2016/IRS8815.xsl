@@ -82,22 +82,25 @@
 							<div>
 								Name(s) shown on return
 							</div><br/>
-							<span  style="padding-top:5mm;">
+					 <xsl:choose>
+					    <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+							</xsl:call-template>
+					   </xsl:when>	
+					 </xsl:choose>	
+					</div>
+						<div class="styEINBox" style="width:46mm;height:100%;padding-left:4px;">
+							Your social security number<br/>
+							<span style="width:100%;font-weight:normal;">
+							<xsl:choose>
+							<xsl:when test="$RtnHdrData/Filer/PrimarySSN">
 								<xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">Name</xsl:with-param>
-									<xsl:with-param name="BackupName">$RtnHdrDataFilerName</xsl:with-param>
-								</xsl:call-template>
-							</span>
-						</div>
-						<div class="styEINBox" style="width:50mm;height:8mm;padding-left:2mm;font-size:7pt;font-weight:bold;">
-							<div>
-								Your social security number
-							</div>
-							<span style="width:27mm;text-align:center;font-weight:normal;padding-top:5mm;">
-								<xsl:call-template name="PopulateSSN">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimarySSN"/>
-								</xsl:call-template>
-							</span>
+									<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+							   </xsl:call-template>
+				   		  </xsl:when>
+					    </xsl:choose>
+					    </span>
 						</div>
 						
 							<span class="styGenericDiv" style="width:4.3mm;float:right;height:3mm;">
@@ -719,7 +722,7 @@ after 1989</span> that you <span style="font-weight:bold">cashed during 2016</sp
 									</div>
 										<div style="height:auto;">		
 										<xsl:choose>
-										<xsl:when test="$FormData/EligibleEducationInstnGrp/EligibleInstitutionUSAddress">
+										<xsl:when test="normalize-space(EligibleInstitutionUSAddress) != ''">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="EligibleInstitutionUSAddress/AddressLine1Txt"/>
 										</xsl:call-template>

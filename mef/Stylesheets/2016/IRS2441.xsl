@@ -56,7 +56,7 @@
 						<div class="styFTBox" style="width:120mm;height:20mm;">
 							<div class="styMainTitle" style="font-size: 13pt;width:90mm;float:left;padding-top:1mm;padding-left:4mm;">Child and Dependent Care Expenses </div>
 							<div class="styFTBox" style="width:20mm;float:right;clear:none;vertical-align:bottom;padding-top:2mm;padding-right:6mm;">
-							 <img src="{$ImagePath}/2441_Form.gif" alt="Bullet"/> </div>
+							 <img src="{$ImagePath}/2441_Form.gif" alt="1040 Return Attachment"/> </div>
 							<div class="styFBT" style="height:5mm;margin-top:3mm;width:90mm;">
 								<img src="{$ImagePath}/2441_Bullet.gif" alt="Bullet"/> Attach to Form 1040, Form 1040A, or Form 1040NR.
 								<span style="width:90mm;padding-top:1mm;">
@@ -78,17 +78,16 @@ www.irs.gov/form2441.</span>
 					<div class="styBB" style="width:187mm;font-size:7pt;border-bottom-width:2px;">
 						<div class="styFNBox" style="width:140mm; height:7mm;">
                         Name(s) shown on return<br/>
-							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
-							</xsl:call-template>
-							<div style="font-family:verdana;font-size:7pt"/>
-						</div>
-						<span style="padding-left:2mm;">
+								<xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+								</xsl:call-template>					
+						</div>					
+						<div class="styEINBox" style="width:45mm;height:7mm;padding-left:2mm;font-size:7pt;font-weight:bold;">
                         <b>Your social security number</b><br/>
-						<xsl:call-template name="PopulateSSN">
-							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimarySSN"/>
-						</xsl:call-template>
-						</span>
+								<span style="width:30mm;text-align:center;font-weight:normal;">
+									<xsl:call-template name="PopulateReturnHeaderFilerTIN"></xsl:call-template>
+								</span>
+						</div>
 					</div>
 					<!-- MAIN SECTION -->
 					<!-- BEGIN PART I TITLE -->
@@ -96,10 +95,10 @@ www.irs.gov/form2441.</span>
 						<div class="styBB" style="width:187mm;height:8mm;">
 							<span class="styPartName" style="height:4mm;width:12mm;font-size:13;">Part l</span>
 							<div class="styPartDesc" style="padding-left:1mm;width:168mm;font-size:8pt;">
-          Persons or Organizations Who Provided the Care <img src="{$ImagePath}/1040SchA_JobExp_Longdash.gif" alt="LongDash"/>
+                              Persons or Organizations Who Provided the Care <img src="{$ImagePath}/1040SchA_JobExp_Longdash.gif" alt="LongDash"/>
 								<span class="styNormalText" style="padding-left:1mm;font-size:8pt;"> You  
-    <span class="styBoldText">must </span>
-									<span style="width:1mm;"/>complete this part. </span>
+                                <span class="styBoldText">must </span>
+								<span style="width:1mm;"/>complete this part. </span>
 								<br/>
 								<span class="styNormalText" style="padding-left:0mm;font-size:8pt;"> (If you have more than two care providers, see the instructions.)</span>
 							</div>
@@ -268,8 +267,7 @@ www.irs.gov/form2441.</span>
 																<xsl:with-param name="TargetNode" select="SeeW2Cd"/>
 															</xsl:call-template>
 														</div>
-													</xsl:if>
-													
+													</xsl:if>													
 												</td>
 												<td class="styTableCellCtr" style="width:23mm;  border-color:black;text-align:center;vertical-align:top">
 													<!--SSN number-->
@@ -333,6 +331,7 @@ www.irs.gov/form2441.</span>
 												<span class="styTableCellPad"/>
 											</td>
 											<td class="styTableCellText" style="width:70mm;  border-color:black">
+												<span class="styTableCellPad" style="width:69mm;height:3mm;border-bottom:1px dashed black;"/>
 												<span class="styTableCellPad"/>
 											</td>
 											<td class="styTableCellCtr" style="width:27mm;  border-color:black">
@@ -349,6 +348,7 @@ www.irs.gov/form2441.</span>
 												<span class="styTableCellPad"/>
 											</td>
 											<td class="styTableCellText" style="width:70mm;  border-color:black">
+											    <span class="styTableCellPad" style="width:69mm;height:3mm;border-bottom:1px dashed black;"/>
 												<span class="styTableCellPad"/>
 											</td>
 											<td class="styTableCellCtr" style="width:27mm;  border-color:black">
@@ -383,7 +383,7 @@ Did you receive<br/>
 							No <span style="width:.1.5mm;"/>
 							</span>
 							<span style="vertical-align:top; "> __________</span>
-							<img src="{$ImagePath}/2441_Bullet_Md.gif" alt="MediumBullet" align="middle"/> Complete only Part II below.
+							<img src="{$ImagePath}/2441_Bullet_Md.gif" alt="MediumBullet" align="bottom" style="padding-top:1.6mm;"/> Complete only Part II below.
 							<br/>
 							<span style="vertical-align:top;"> _________</span>
 							<span class="styBoldText" style="vertical-align:bottom; font-size:8pt">
@@ -392,7 +392,7 @@ Did you receive<br/>
 							</span>
 							<span style="vertical-align:top; "> __________</span>
 							<span style="width:.25mm;"/>
-							<img src="{$ImagePath}/2441_Bullet_Md.gif" alt="MediumBullet" align="middle"/> Complete Part III on the back next.  
+							<img src="{$ImagePath}/2441_Bullet_Md.gif" alt="MediumBullet" align="bottom" style="padding-top:1.6mm;"/> Complete Part III on the back next.  
 						</div>
 						<div class="styPartDesc" style="font-weight:Normal;width:187mm;padding-top:2mm;font-size:8pt;height:12mm;">
 							<b>Caution.</b> If the care was provided in your home, you may owe employment taxes. If you do, you cannot file Form 1040A. For details,see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a. </div>
@@ -434,7 +434,7 @@ Did you receive<br/>
 												<span style="font-weight:bold;">(a)</span> Qualifying person's name
       <br/> First<span style="width:35mm"/>Last	</span>
 										</th>
-										<th class="styTableCellHeader" scope="col" colspan="1" style="height:6mm;width:49mm;font-weight:normal;  border-color:black;">
+										<th class="styTableCellHeader" scope="col" colspan="1" style="height:6mm;width:57mm;font-weight:normal;  border-color:black;">
 											<span style=";">
 												<span style="font-weight:bold;">(b)</span>Qualifying person's social<br/> security number</span>
 										</th>
@@ -474,7 +474,7 @@ Did you receive<br/>
 													</div>
 												</td>
 												<!--Person SSN-->
-												<td class="styTableCellCtr" style="width:49mm;  border-color:black">
+												<td class="styTableCellCtr" style="width:60mm;  border-color:black">
 													<xsl:choose>
 														<xsl:when test="DiedLiteralCd">
 															<xsl:call-template name="PopulateText">
@@ -669,7 +669,7 @@ Did you receive<br/>
 							</div>
 						</div>
 						<!--Line 7-->
-						<div style="width:187mm;">
+						<div style="width:187mm;padding-top:.1mm;">
 							<div class="styLNLeftNumBox" style="height:4mm;"><span style="width:1.5mm"/>7
                         </div>
 							<div class="styLNDesc" style="width:123mm;height:4mm;">Enter the amount from Form 1040, line 38; Form 1040A, line 22; or Form   
@@ -796,7 +796,7 @@ Did you receive<br/>
 		  </div>
 									<div class="styLNAmountBox" style="height:100%;border-left-width:1px;width:47.5mm;padding-top:5.5mm;">
 										<span style="font-weight:bold;width:1mm;font-size:8pt;"></span>
-										<span style="">
+										<span style="">X.
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$Form2441Data/CareExpensesDecimalAmt"/>
 											</xsl:call-template>
@@ -1250,60 +1250,55 @@ Did you receive<br/>
 						<div class="styLNLeftNumBox" style="height:5mm;padding-top:1mm;">
 							22
 					    </div>
-					    
 						<div class="styLNDesc" style="width:123mm;height:5mm;padding-top:1mm;font-size:7pt;">
 							Is any amount  on line 12 from your sole proprietorship or <br/>partnership? (Form 1040A filers go to line 25.)
 							<span class="styBoldText"></span>
 						</div>
-						
 						<div class="styLNRightNumBoxNBB" style="height:4mm;border-right-width:0px;background-color:lightgrey;border-top-width:1px;border-top-width:0px;"/>
 						<div class="styIRS2441RightSpaceBox" style="height:4mm;border-left-width:1px;"/>
 						<div class="styLNRightNumBoxNBB" style="height:4mm;border-right-width:0px;background-color:lightgrey;border-top-width:1px;border-top-width:0px;"/>
 						<div class="styIRS2441RightSpaceBox" style="height:4mm;border-left-width:1px;"/>
-						
 						<div class="styLNDesc" style="width:131mm;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-bottom:0mm;padding-left: 2.25mm"/>
 							<span>
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
 								</xsl:call-template>
-								 <input type="checkbox" class="styCkbox">
+								 <input type="checkbox" alt="No" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
-										<xsl:with-param name="BackupName">Form2441DataFiled1040AYesInd</xsl:with-param>
+										<xsl:with-param name="BackupName">Form2441DataFiled1040ANoInd</xsl:with-param>
 									</xsl:call-template>
 								</input>
 								<label>
 									<xsl:call-template name="PopulateLabelNo">
 										<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
-										<xsl:with-param name="BackupName">Form2441DataFiled1040AYesInd</xsl:with-param>
+										<xsl:with-param name="BackupName">Form2441DataFiled1040ANoInd</xsl:with-param>
 									</xsl:call-template>
 									<span style="width:1px;"/>
 									<b>No.</b>
 								</label> Enter -0-.
 							</span>
                         </div>
-                        
 						<div class="styLNRightNumBoxNBB" style="height:6mm;border-right-width:0px;background-color:lightgrey;border-top-width:1px;border-top-width:0px;"/>
 						<div class="styIRS2441RightSpaceBox" style="height:6mm;border-left-width:1px;"/>
-						
 						<div class="styLNDesc" style="width:131mm;">
 							<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-bottom:0mm;padding-left: 2.25mm"/>
 							<span>
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Yes" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
-										<xsl:with-param name="BackupName">Form2441DataFiled1040ANoInd</xsl:with-param>
+										<xsl:with-param name="BackupName">Form2441DataFiled1040AYesInd</xsl:with-param>
 									</xsl:call-template>
 								</input>
 								<span style="width:1px;"/>
 								<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
-									<xsl:with-param name="BackupName">Form2441DataFiled1040ANoInd</xsl:with-param>
+									<xsl:with-param name="BackupName">Form2441DataFiled1040AYesInd</xsl:with-param>
 								</xsl:call-template>
 								<b>Yes.</b>
 							</label>   Enter the amount here
@@ -1612,7 +1607,7 @@ Did you receive<br/>
 					</table>
 					<!-- END Additional Data Left Over Table -->
 					<!--Separated Data  Part I Care Provider Table -->
-					<div class="styTableContainer" id="CareProviderGrp">
+					<div class="styTableContainer" id="CareProviderGrp" style="border-bottom:0px;">
 					<xsl:if test="($Print = $Separated) and (count($Form2441Data/CareProviderGrp) &gt; 2)">
 						<br/>
 						<span class="styRepeatingDataTitle">Form 2441 - Part I - Care Provider Table, Line 1:</span>

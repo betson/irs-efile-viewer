@@ -7,7 +7,7 @@
 	<xsl:include href="IRS1120FScheduleSStyle.xsl"/>
 	<xsl:output method="html" indent="yes"/>
 	<xsl:strip-space elements="*"/>
-	<!-- Defines the stage of the data, e.g. original or latest   -->
+	<!--  Defines the stage of the data, e.g. original or latest  -->
 	<xsl:param name="Form1120FScheduleSData" select="$RtnDoc/IRS1120FScheduleS"/>
 	<xsl:template match="/">
 		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
@@ -688,47 +688,49 @@
 							</span></xsl:if>
 						</div>
 					</div>
-					<!--   Line 9   -->
+						<!--   Line 9   -->
 					<div style="width:187mm;">
 					   <div class="styLNLeftNumBoxSD">9</div>
 						  <div class="styLNDesc" style="width:179mm;height:8mm;">
 							  Do one or more 5% shareholders (see instructions for definition) own in the aggregate 50% or more of the vote and value of the 
-							  <span style="width:131mm;float:left;">
+							  <span style="width:151mm;float:left;">
 							  outstanding shares of any class of stock for more than half the number of days during the tax year?
+							   <span class="styDotLn" style="float:right;clear:none;padding-right:1mm;">......</span>
 							   </span>
-							<!--Dotted Line-->
-							<span class="styBoldText" style="width:47mm;float:right;padding-right:1mm;">
-								<span class="styDotLn">..</span>
-								<label>
-									<xsl:call-template name="PopulateLabelYes">
-										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ShareholdersVoteInd"/>
-										 <xsl:with-param name="BackupName">IRS1120FSchSShareholdersVote</xsl:with-param>
-									</xsl:call-template>          
-										Yes           
-									</label>
-								<span style="width:8px;"/>
-								<input type="checkbox" alt="ShareholdersVote" class="styCkbox" name="Checkbox">
-									<xsl:call-template name="PopulateYesCheckbox">
-										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ShareholdersVoteInd"/>
-										<xsl:with-param name="BackupName">IRS1120FSchSShareholdersVote</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:8mm;"/>
-								<label>
+								<div class="styGenericDiv" style="width:27mm;;font-size:9pt;">
+									<span>
+										<xsl:call-template name="PopulateSpan">
+											<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ShareholdersVoteInd"/>
+										</xsl:call-template>
+										<label>
+						           			<xsl:call-template name="PopulateLabelYes">
+								    		<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ShareholdersVoteInd"/>
+							    			 <xsl:with-param name="BackupName">IRS1120FSchSShareholdersVoteIndYes</xsl:with-param>
+							        		</xsl:call-template>          
+							    			Yes           
+								    	</label>
+								     	<input type="checkbox" alt="ShareholdersVoteIndYes" class="styCkbox" name="Checkbox">
+							         		<xsl:call-template name="PopulateYesCheckbox">
+								      		<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ShareholdersVoteInd"/>
+								     		<xsl:with-param name="BackupName">IRS1120FShareholdersVoteIndYes</xsl:with-param>
+							        		</xsl:call-template>
+							        	</input>
+											<span style="width:12px;"/>
+											<label>
 									<xsl:call-template name="PopulateLabelNo">
 										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ShareholdersVoteInd"/>
 										<xsl:with-param name="BackupName">IRS1120FSchSShareholdersVote</xsl:with-param>
 									</xsl:call-template>            
 										No            
 									</label>
-								<span style="width:8px;"/>
-								<input type="checkbox" alt="ShareholdersVote" class="styCkbox" name="Checkbox">
-									<xsl:call-template name="PopulateNoCheckbox">
-										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ShareholdersVoteInd"/>
-										<xsl:with-param name="BackupName">IRS1120FSchSShareholdersVote</xsl:with-param>
-									</xsl:call-template>
-								</input>
-							</span>
+									<input type="checkbox" alt="ShareholdersVoteIndNo" class="styCkbox" name="Checkbox">
+											<xsl:call-template name="PopulateNoCheckbox">
+												<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ShareholdersVoteInd"/>
+												<xsl:with-param name="BackupName">IRS1120FShareholdersVoteIndNo</xsl:with-param>
+											</xsl:call-template>
+									</input>
+									</span>
+								</div>
 						</div>
 					</div>
 					<div style="width:187mm;">
@@ -1210,43 +1212,43 @@
 							<!--Dotted Line-->
 							<span class="styDotLn" style="float:right;padding-right:1mm;">....................</span>
 						</div>
-						<div class="styLNDesc" style="width:15mm;text-align:left;font-size:9pt;">
-							<span>
-								<label>
-									<xsl:call-template name="PopulateLabelYes">
+							<div class="styGenericDiv" style="width:27mm;;font-size:9pt;">
+									<span>
+										<xsl:call-template name="PopulateSpan">
+											<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/CFCDirectlyHeldUSPersonsInd"/>
+										</xsl:call-template>
+										<label>
+						           			<xsl:call-template name="PopulateLabelYes">
+								    	<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/CFCDirectlyHeldUSPersonsInd"/>
+							    			 <xsl:with-param name="BackupName">IRS1120FSchSCFCDirectlyHeldUSPersonsIndYes</xsl:with-param>
+							        		</xsl:call-template>          
+							    			Yes           
+								    	</label>
+								     	<input type="checkbox" alt="CFCDirectlyHeldUSPersonsIndYes" class="styCkbox" name="Checkbox">
+							         		<xsl:call-template name="PopulateYesCheckbox">
+								      		<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/CFCDirectlyHeldUSPersonsInd"/>
+								     		<xsl:with-param name="BackupName">IRS1120FSchSCFCDirectlyHeldUSPersonsIndYes</xsl:with-param>
+							        		</xsl:call-template>
+							        	</input>
+											<span style="width:12px;"/>
+											<label>
+									<xsl:call-template name="PopulateLabelNo">
 										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/CFCDirectlyHeldUSPersonsInd"/>
-										<xsl:with-param name="BackupName">IRS1120FSchSCFCDirectlyHeldUSPersons</xsl:with-param>
-									</xsl:call-template>          
-									Yes           
-								</label>
-								<span style="width:8px:"/>
-								<input type="checkbox" alt="CFCDirectlyHeldUSPersons" class="styCkbox" name="Checkbox">
-									<xsl:call-template name="PopulateYesCheckbox">
-										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/CFCDirectlyHeldUSPersonsInd"/>
-										<xsl:with-param name="BackupName">IRS1120FSchSCFCDirectlyHeldUSPersons</xsl:with-param>
-									</xsl:call-template>
-								</input>
-							</span>
-						</div>
-						<div class="styLNDesc" style="width:15mm;text-align:left;font-size:9pt;">
-							<label>
-								<xsl:call-template name="PopulateLabelNo">
-									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/CFCDirectlyHeldUSPersonsInd"/>
-									<xsl:with-param name="BackupName">IRS1120FSchSCFCDirectlyHeldUSPersons</xsl:with-param>
-								</xsl:call-template>            
-								  No            
-							  </label>
-							<span style="width:8px"/>
-							<input type="checkbox" alt="CFCDirectlyHeldUSPersons" class="styCkbox" name="Checkbox">
-								<xsl:call-template name="PopulateNoCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/CFCDirectlyHeldUSPersonsInd"/>
-									<xsl:with-param name="BackupName">IRS1120FSchSCFCDirectlyHeldUSPersons</xsl:with-param>
-								</xsl:call-template>
-							</input>
-						</div>
+										<xsl:with-param name="BackupName">IRS1120FSchSCFCDirectlyHeldUSPersonsIndNo</xsl:with-param>
+									</xsl:call-template>            
+										No            
+									</label>
+									<input type="checkbox" alt="CFCDirectlyHeldUSPersonsIndNo" class="styCkbox" name="Checkbox">
+											<xsl:call-template name="PopulateNoCheckbox">
+												<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/CFCDirectlyHeldUSPersonsInd"/>
+												<xsl:with-param name="BackupName">IRS1120FSchSCFCDirectlyHeldUSPersonsIndNo</xsl:with-param>
+											</xsl:call-template>
+									</input>
+									</span>
+								</div>
 					</div>
 					<div class="styBB" style="width:187mm;height:2mm;"/>
-					<!-- BEGIN PART IV -->
+					<!-- BEGIN PART IV   -->
 					<div class="styBB" style="width:187mm;">
 					  <div class="styPartName" style="width:23mm;">Part IV</div>
 						<div class="styPartDesc" style="width:164mm;">Qualified Shareholder Stock Ownership Test</div>

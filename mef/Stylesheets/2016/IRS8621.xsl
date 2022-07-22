@@ -8,6 +8,9 @@
 <!-- 09/12/2016 - Changes made for KISAM IM02701945 - Jeremy Nichols -->
 <!-- 10/20/2016 - Changes made for defect 47084 - Jeremy Nichols -->
 <!-- 10/31/2016 - Changes made for pdf review under defect 60595 - Jeremy Nichols -->
+<!-- 05/09/2017 - Changes made for UWR 194393 - Jeremy Nichols -->
+<!-- 10/24/2017 - Changes made for defect 125066 - Jeremy Nichols -->
+<!-- 12/20/2017 - Changes made for defect 125062 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <xsl:include href="PopulateTemplate.xsl"/>
@@ -38,11 +41,11 @@
     <xsl:call-template name="InitJS"/>
       
     <style type="text/css">      
-<!--      <xsl:if test="not($Print) or $Print=''">
--->        <xsl:call-template name="IRS8621Style"/>  
+      <xsl:if test="not($Print) or $Print=''">
+        <xsl:call-template name="IRS8621Style"/>  
 			<xsl:call-template name="AddOnStyle"/>    
-<!--      </xsl:if>
--->    </style>            
+      </xsl:if>
+    </style>            
     <xsl:call-template name="GlobalStylesForm"/>
   </head>
   
@@ -83,42 +86,18 @@
       <div class="styIRS8621BB" style="height:9mm;font-size:7pt">
         <div class="styIRS8621FNBox" style="height:9mm;">
           Name of shareholder<br/>
-          <div style=" font-family:'verdana';font-size:6pt;">
-            <xsl:choose>
-              <xsl:when test="normalize-space($Form8621Data/ShareholderPersonNm)!=''">             
-                  <br/>
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$Form8621Data/ShareholderPersonNm"/>
-                </xsl:call-template>
-              </xsl:when>
-              <xsl:otherwise>   
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$Form8621Data/ShareholderName/BusinessNameLine1Txt"/>
-                </xsl:call-template>
-                <xsl:if test="normalize-space($Form8621Data/ShareholderName/BusinessNameLine2Txt)!=''">              
-                  <br/>
-                  <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$Form8621Data/ShareholderName/BusinessNameLine2Txt"/>
-                  </xsl:call-template>
-                </xsl:if>
-              </xsl:otherwise>
-            </xsl:choose> 
+          <div style=" font-family:'verdana';font-size:7pt;padding-top:2mm;">
+			  <xsl:call-template name="PopulateText">
+				<xsl:with-param name="TargetNode" select="$Form8621Data/ShareholderPersonNm"/>
+			  </xsl:call-template>
           </div>
         </div>
         <div style="height:9mm;float:left; padding-left:1mm">
           <b>Identifying number</b> (see instructions)<br/>        
           <div style="text-align:left; padding-top:2mm; font-family:'verdana';font-size:7pt;vertical-align:bottom;">
-            <xsl:choose>
-                <xsl:when test="normalize-space($Form8621Data/EIN)!=''">
-                  <xsl:call-template name="PopulateEIN"><xsl:with-param name="TargetNode" select="$Form8621Data/EIN"/></xsl:call-template>
-                </xsl:when>
-                <xsl:when test="normalize-space($Form8621Data/MissingEINReasonCd)!=''">
-                  <xsl:call-template name="PopulateEIN"><xsl:with-param name="TargetNode" select="$Form8621Data/MissingEINReasonCd"/></xsl:call-template>
-                </xsl:when>
-                 <xsl:otherwise>    
-                <xsl:call-template name="PopulateSSN"><xsl:with-param name="TargetNode" select="$Form8621Data/SSN"/></xsl:call-template>
-              </xsl:otherwise>
-            </xsl:choose>      
+            <xsl:call-template name="PopulateFilerTIN">
+			   <xsl:with-param name="TargetNode" select="$Form8621Data"/>
+			</xsl:call-template>    
           </div>          
         </div>
       </div>  
@@ -2186,9 +2165,7 @@
                 <tr class="styDepTblRow1">
                   <td class="styDepTblCell" style="width:2mm;text-align:right;font-weight:bold;border-right:0">23</td>
                   <td class="styDepTblCell" style="width:47mm;text-align:left;;border-left:0">
-                    Deferred tax due with
-                    <div style="float:left">this return</div>
-                    <div style="float:right"><span class="styIRS8621DotLn">.....</span></div>
+                    Deferred tax due with this return
                   </td>
                   <td class="styDepTblCell" style="width:23mm;text-align:right;vertical-align:bottom;font-size:6pt">
                     <xsl:call-template name="PopulateAmount">
@@ -2227,7 +2204,6 @@
                   <td class="styDepTblCell" style="width:47mm;text-align:left;border-left:0">
                     Accrued interest due
                     <div style="float:left">with this return</div>
-                    <div style="float:right"><span class="styIRS8621DotLn">...</span></div>
                   </td>
                   <td class="styDepTblCell" style="width:23mm;text-align:right;vertical-align:bottom;font-size:6pt">
                     <xsl:call-template name="PopulateAmount">
@@ -2264,7 +2240,7 @@
                 <tr class="styDepTblRow1">
                   <td class="styDepTblCell" style="width:2mm;text-align:right;font-weight:bold;border-right:0">25</td>
                   <td class="styDepTblCell" style="width:47mm;text-align:left;border-left:0">
-                    Deferred tax outstanding after partial termination of election
+                    Deferred tax outstanding after<br/>partial termination of election Subtract line 23 from line 19
                   </td>
                   <td class="styDepTblCell" style="width:23mm;text-align:right;vertical-align:bottom;font-size:6pt">
                     <xsl:call-template name="PopulateAmount">
@@ -2426,7 +2402,7 @@
       <td class="styIRS8621Part2" style="height:4.5mm;" valign="top">d</td>
       <td valign="top" style="height:4mm;" >
        	<div style="height:4.5mm;float:left;">Multiply line 15c by 125% (1.25)</div>
-             <div style="float:right;"><span class="styIRS8621DotLn">......................</span></div>
+             <div style="float:right;"><span class="styIRS8621DotLn">....................</span></div>
       </td>                      
       <td class="styIRS8621LNRightNumBox" style="height:4.5mm;vertical-align:bottom;padding-top:0.5mm;" >
         15d
@@ -2612,7 +2588,7 @@
   <xsl:if test="$index &lt;= $max">    
     <table style="clear:both; width:187mm; font-size:7pt; border-top:1px solid black; border-bottom:2 solid black" cellpadding="0" cellspacing="0">
         <tr style="font-size:8pt">
-          <th colspan="2" style="height:18mm;text-align:left; padding-top:1mm; vertical-align:top;font-size:9pt;">Complete lines 17 through 20 to report the status of outstanding prior year section 1294 elections.</th>
+          <th colspan="2" style="width:37mm;height:18mm;text-align:left; padding-top:1mm; vertical-align:top;font-size:9pt;">Complete lines 17 through 20 to report the status of outstanding prior year section 1294 elections.</th>
           <th class="styIRS8621P5Th" scope="col" style="height:13mm;">
             <xsl:choose>
               <xsl:when test="($Form8621Data/ElectionStatus[$index*6-5]) or ($index*6-5 = 1)">
@@ -2626,7 +2602,7 @@
               <xsl:number value="1" format="i"/>
             </xsl:if>
           </th>
-          <th class="styIRS8621P5Th" scope="col" style="height:13mm;">
+          <th class="styIRS8621P5Th" scope="col" style="width:25mm;height:13mm;">
             <xsl:choose>
               <xsl:when test="($Form8621Data/ElectionStatus[$index*6-4]) or ($index*6-4 = 2)">
                 (<xsl:number value="$index*6-4" format="i"/>)
@@ -2639,7 +2615,7 @@
               <xsl:number value="2" format="i"/>
             </xsl:if>
           </th>
-          <th class="styIRS8621P5Th" scope="col" style="height:13mm;">
+          <th class="styIRS8621P5Th" scope="col" style="width:25mm;height:13mm;">
             <xsl:choose>  
               <xsl:when test="($Form8621Data/ElectionStatus[$index*6-3]) or ($index*6-3 = 3)">
                 (<xsl:number value="$index*6-3" format="i"/>)
@@ -2652,7 +2628,7 @@
               <xsl:number value="3" format="i"/>
             </xsl:if>
           </th>
-          <th class="styIRS8621P5Th" scope="col" style="height:13mm;">
+          <th class="styIRS8621P5Th" scope="col" style="width:25mm;height:13mm;">
             <xsl:choose>
               <xsl:when test="($Form8621Data/ElectionStatus[$index*6-2]) or ($index*6-2 = 4)">
                 (<xsl:number value="$index*6-2" format="i"/>)
@@ -2665,7 +2641,7 @@
               <xsl:number value="4" format="i"/>
             </xsl:if>   
           </th>
-          <th class="styIRS8621P5Th" scope="col" style="height:13mm;">
+          <th class="styIRS8621P5Th" scope="col" style="width:25mm;height:13mm;">
             <xsl:choose>
               <xsl:when test="($Form8621Data/ElectionStatus[$index*6-1]) or ($index*6-1 = 5)">
                 (<xsl:number value="$index*6-1" format="i"/>)
@@ -2678,7 +2654,7 @@
               <xsl:number value="5" format="i"/>
             </xsl:if>   
           </th>
-          <th class="styIRS8621P5Th" scope="col" style="height:13mm;">
+          <th class="styIRS8621P5Th" scope="col" style="width:25mm;height:13mm;">
             <xsl:choose>
               <xsl:when test="($Form8621Data/ElectionStatus[$index*6]) or ($index*6 = 6)">
                 (<xsl:number value="$index*6" format="i"/>)
@@ -2693,11 +2669,11 @@
           </th>
         </tr>
         <tr style="font-size:8pt">
-          <th class="styIRS8621P5ItemNo" scope="row" style="font-size:9pt">17</th>
-          <th style="text-align:left; vertical-align:top; font-weight:normal; font-size:9pt" scope="row" nowrap="nowrap">
-            Tax year of outstanding<br/>election
+          <th class="styIRS8621P5ItemNo" scope="row" style="width:7mm;font-size:9pt">17</th>
+          <th style="width:30mm;text-align:left; vertical-align:top; font-weight:normal; font-size:9pt" scope="row">
+            Tax year of outstanding election
           </th>
-          <td class="styIRS8621P5Td" style="text-align:center">
+          <td class="styIRS8621P5Td" style="width:25mm;text-align:center">
               <xsl:choose>
                 <xsl:when test="$index=0 and $max=0">
                   <xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -2712,313 +2688,332 @@
                 </xsl:otherwise>
               </xsl:choose>
           </td>
-          <td class="styIRS8621P5Td" style="text-align:center">
+          <td class="styIRS8621P5Td" style="width:25mm;text-align:center">
               <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-4]/OutstandingElectionTaxYr"/></xsl:call-template>
           </td>
-          <td class="styIRS8621P5Td" style="text-align:center">
+          <td class="styIRS8621P5Td" style="width:25mm;text-align:center">
               <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-3]/OutstandingElectionTaxYr"/></xsl:call-template>
           </td>
-          <td class="styIRS8621P5Td" style="text-align:center">
+          <td class="styIRS8621P5Td" style="width:25mm;text-align:center">
               <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-2]/OutstandingElectionTaxYr"/></xsl:call-template>
           </td>
-          <td class="styIRS8621P5Td" style="text-align:center">
+          <td class="styIRS8621P5Td" style="width:25mm;text-align:center">
               <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-1]/OutstandingElectionTaxYr"/></xsl:call-template>
           </td>
-          <td class="styIRS8621P5Td" style="text-align:center">
+          <td class="styIRS8621P5Td" style="width:25mm;text-align:center">
               <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6]/OutstandingElectionTaxYr"/></xsl:call-template>
           </td>
         </tr>
         <tr>
-          <th class="styIRS8621P5ItemNo" scope="row" style="font-size:9pt">18</th>
-          <th style="text-align:left; vertical-align:top; font-weight:normal; font-size:9pt" scope="row" nowrap="nowrap">
-            Undistributed earnings to<br/>which the election relates
+          <th class="styIRS8621P5ItemNo" scope="row" style="width:7mm;font-size:9pt">18</th>
+          <th style="width:30mm;text-align:left; vertical-align:top; font-weight:normal; font-size:9pt" scope="row">
+            Undistributed earnings to which the election relates
+            <div style="float:right">
+              <span class="styIRS8621DotLn">      
+                .                             
+              </span>    
+            </div>    
           </th>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
-            <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-5]/UndistributedEarningsAmt"/></xsl:call-template><span style="width:1mm;"/>
+          <td class="styIRS8621P5Td" style="width:25mm;">
+            <xsl:call-template name="PopulateAmount">
+				<xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-5]/UndistributedEarningsAmt"/>
+			</xsl:call-template>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
-            <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-4]/UndistributedEarningsAmt"/></xsl:call-template><span style="width:1mm;"/>
+          <td class="styIRS8621P5Td" style="width:25mm;">
+            <xsl:call-template name="PopulateAmount">
+				<xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-4]/UndistributedEarningsAmt"/>
+			</xsl:call-template>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
-            <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-3]/UndistributedEarningsAmt"/></xsl:call-template><span style="width:1mm;"/>
+          <td class="styIRS8621P5Td" style="width:25mm;">
+            <xsl:call-template name="PopulateAmount">
+				<xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-3]/UndistributedEarningsAmt"/>
+			</xsl:call-template>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
-            <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-2]/UndistributedEarningsAmt"/></xsl:call-template><span style="width:1mm;"/>
+          <td class="styIRS8621P5Td" style="width:25mm;">
+            <xsl:call-template name="PopulateAmount">
+				<xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-2]/UndistributedEarningsAmt"/>
+			</xsl:call-template>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
-            <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-1]/UndistributedEarningsAmt"/></xsl:call-template><span style="width:1mm;"/>
+          <td class="styIRS8621P5Td" style="width:25mm;">
+            <xsl:call-template name="PopulateAmount">
+				<xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-1]/UndistributedEarningsAmt"/>
+			</xsl:call-template>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
-            <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6]/UndistributedEarningsAmt"/></xsl:call-template><span style="width:1mm;"/>
+          <td class="styIRS8621P5Td" style="width:25mm;" >
+            <xsl:call-template name="PopulateAmount">
+				<xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6]/UndistributedEarningsAmt"/>
+			</xsl:call-template>
           </td>
-        </tr>
+        </tr>    
         <tr>
-          <th class="styIRS8621P5ItemNo" scope="row" style="height:4mm;font-size:9pt">19</th>
-          <th style="height:4mm;text-align:left; vertical-align:top; font-weight:normal; font-size:9pt" scope="row" nowrap="nowrap">
+          <th class="styIRS8621P5ItemNo" scope="row" style="width:7mm;height:4mm;font-size:9pt">19</th>
+          <th style="width:30mm;height:4mm;text-align:left; vertical-align:top; font-weight:normal; font-size:9pt" scope="row">
             <div style="float:left">
               Deferred tax
             </div>
             <div style="float:right">
               <span class="styIRS8621DotLn">      
-                .....                                      
+                ..                                     
               </span>    
             </div>    
           </th>
-          <td class="styIRS8621P5Td" nowrap="nowrap" style="height:4mm;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-5]/DeferredTaxAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap" style="height:4mm;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-4]/DeferredTaxAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap" style="height:4mm;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-3]/DeferredTaxAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap" style="height:4mm;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-2]/DeferredTaxAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap" style="height:4mm;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-1]/DeferredTaxAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap" style="height:4mm;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6]/DeferredTaxAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
         </tr>
         <tr>
-          <th class="styIRS8621P5ItemNo" scope="row" style="font-size:9pt; padding-top:0.5mm;border-bottom:1px solid black;">20</th>
-          <th style="text-align:left; vertical-align:top; font-weight:normal; font-size:9pt;border-bottom:1px solid black;" scope="row" nowrap="nowrap">
-            Interest accrued on deferred<br/>tax (line 19) as of the filing date
+          <th class="styIRS8621P5ItemNo" scope="row" style="width:7mm;font-size:9pt; padding-top:0.5mm;border-bottom:1px solid black;">20</th>
+          <th style="width:30mm;text-align:left; vertical-align:top; font-weight:normal; font-size:9pt;border-bottom:1px solid black;" scope="row">
+            Interest accrued on deferred tax (line 19) as of the filing date
           </th>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-5]/InterestAccruedOnDefrdTaxAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-4]/InterestAccruedOnDefrdTaxAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-3]/InterestAccruedOnDefrdTaxAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-2]/InterestAccruedOnDefrdTaxAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-1]/InterestAccruedOnDefrdTaxAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6]/InterestAccruedOnDefrdTaxAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
         </tr>     
         <tr>
-          <th style="height:18mm;text-align:left; padding-top:1mm; vertical-align:top; font-weight:bold; font-size:9pt" scope="row" colspan="2">
+          <th style="width:37mm;height:18mm;text-align:left; padding-top:1mm; vertical-align:top; font-weight:bold; font-size:9pt" scope="row" colspan="2">
             Complete lines 21 through 24 only if a section 1294 election is terminated in the current year.
           </th>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
             <span style="width:1mm;" />
           </td>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
             <span style="width:1mm;" />
           </td>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
             <span style="width:1mm;" />
           </td>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
             <span style="width:1mm;" />
           </td>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
             <span style="width:1mm;" />
           </td>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
             <span style="width:1mm;" />
           </td>
         </tr>
         <tr>
-          <th class="styIRS8621P5ItemNo" scope="row" style="height:4mm;font-size:9pt">21</th>
-          <th style="height:4mm;text-align:left; vertical-align:top; font-weight:normal; font-size:9pt" scope="row" nowrap="nowrap">
+          <th class="styIRS8621P5ItemNo" scope="row" style="width:7mm;height:4mm;font-size:9pt">21</th>
+          <th style="width:30mm;height:4mm;text-align:left; vertical-align:top; font-weight:normal; font-size:9pt" scope="row">
             Event terminating election
           </th>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left">
             <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-5]/EventTerminatingElectionTxt"/></xsl:call-template>
           </td>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left">
             <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-4]/EventTerminatingElectionTxt"/></xsl:call-template>
           </td>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left">
             <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-3]/EventTerminatingElectionTxt"/></xsl:call-template>
           </td>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left">
             <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-2]/EventTerminatingElectionTxt"/></xsl:call-template>
           </td>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left">
             <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-1]/EventTerminatingElectionTxt"/></xsl:call-template>
           </td>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left">
             <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6]/EventTerminatingElectionTxt"/></xsl:call-template>
           </td>
         </tr>
         <tr>
-          <th class="styIRS8621P5ItemNo" scope="row" style="font-size:9pt">22</th>
-          <th style="text-align:left; vertical-align:top; font-weight:normal;font-size:9pt" scope="row" nowrap="nowrap">
-            Earnings distributed or deemed<br/>distributed during the tax year
+          <th class="styIRS8621P5ItemNo" scope="row" style="width:7mm;font-size:9pt">22</th>
+          <th style="width:30mm;text-align:left; vertical-align:top; font-weight:normal;font-size:9pt" scope="row">
+            Earnings distributed or deemed distributed during the tax year
+            <div style="float:right">
+              <span class="styIRS8621DotLn">      
+                ....                                
+              </span>        
+            </div>
           </th>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-5]/EarningsDistributedDurTheTYAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-4]/EarningsDistributedDurTheTYAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-3]/EarningsDistributedDurTheTYAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-2]/EarningsDistributedDurTheTYAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-1]/EarningsDistributedDurTheTYAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6]/EarningsDistributedDurTheTYAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
         </tr>
         <tr>
-          <th class="styIRS8621P5ItemNo" scope="row" style="font-size:9pt">23</th>
-          <th style="text-align:left; vertical-align:top; font-weight:normal; font-size:9pt" scope="row" nowrap="nowrap">
-            Deferred tax due with this
-            <div style="float:left">
-              return
-            </div>
+          <th class="styIRS8621P5ItemNo" scope="row" style="width:7mm;font-size:9pt">23</th>
+          <th style="width:30mm;text-align:left; vertical-align:top; font-weight:normal; font-size:9pt" scope="row">
+            Deferred tax due with this return
             <div style="float:right">
               <span class="styIRS8621DotLn">      
-                .......                                    
+                ..                                
               </span>        
             </div>
           </th>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-5]/DeferredTaxDueWithThisRetAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-4]/DeferredTaxDueWithThisRetAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-3]/DeferredTaxDueWithThisRetAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-2]/DeferredTaxDueWithThisRetAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-1]/DeferredTaxDueWithThisRetAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6]/DeferredTaxDueWithThisRetAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
         </tr>
         <tr style="font-size:7pt">
-          <th class="styIRS8621P5ItemNo" scope="row" style="font-size:9pt;border-bottom:1px solid black;">24</th>
-          <th style="text-align:left; vertical-align:top; font-weight:normal; font-size:9pt;border-bottom:1px solid black;" scope="row" nowrap="nowrap">
+          <th class="styIRS8621P5ItemNo" scope="row" style="width:7mm;font-size:9pt;border-bottom:1px solid black;">24</th>
+          <th style="width:30mm;text-align:left; vertical-align:top; font-weight:normal; font-size:9pt;border-bottom:1px solid black;" scope="row">
             Accrued interest due with
             <div style="float:left">
               this return
             </div>
             <div style="float:right">
               <span class="styIRS8621DotLn">      
-                ......                                      
+                ..                                   
               </span>    
             </div>    
           </th>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-5]/AccruedInterestDueThisRetAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-4]/AccruedInterestDueThisRetAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-3]/AccruedInterestDueThisRetAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-2]/AccruedInterestDueThisRetAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-1]/AccruedInterestDueThisRetAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6]/AccruedInterestDueThisRetAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-        </tr>        
+        </tr>
         <tr>
-          <th style="height:18mm;text-align:left;  padding-top:1mm; vertical-align:top;font-weight:bold; font-size:9pt" scope="row" colspan="2">
+          <th style="width:37mm;height:18mm;text-align:left;  padding-top:1mm; vertical-align:top;font-weight:bold; font-size:9pt" scope="row" colspan="2">
             Complete lines 25 and 26 only if there is a partial termination of a section 1294 election in the current tax year.
           </th>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
             <span style="width:1mm;" />
           </td>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
             <span style="width:1mm;" />
           </td>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
             <span style="width:1mm;" />
           </td>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
             <span style="width:1mm;" />
           </td>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
             <span style="width:1mm;" />
           </td>
-          <td class="styIRS8621P5Td" style="height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
+          <td class="styIRS8621P5Td" style="width:25mm;height:4mm;padding-left:0.5mm; text-align:left;border-bottom-width:0px;">
             <span style="width:1mm;" />
           </td>
         </tr>     
         <tr>
-          <th class="styIRS8621P5ItemNo" style="background-color:white; font-size:9pt" scope="row">25</th>
-          <th style="text-align:left; vertical-align:top; font-weight:normal; font-size:9pt" scope="row">
-            Deferred tax outstanding after<br/>partial termination of election Subtract line 23 from line 19
+          <th class="styIRS8621P5ItemNo" style="width:7mm;background-color:white; font-size:9pt" scope="row">25</th>
+          <th style="width:30mm;text-align:left; vertical-align:top; font-weight:normal; font-size:9pt" scope="row">
+            Deferred tax outstanding after partial termination of election Subtract line 23 from line 19
+            <div style="float:right">
+              <span class="styIRS8621DotLn">      
+                .                            
+              </span>    
+            </div>   
           </th>
-          <td class="styIRS8621P5Td" style="border-top:7 solid Lightgrey" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;border-top:7 solid Lightgrey">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-5]/DeferredTaxAfterPartialTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" style="border-top:7 solid Lightgrey" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;border-top:7 solid Lightgrey">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-4]/DeferredTaxAfterPartialTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" style="border-top:7 solid Lightgrey" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;border-top:7 solid Lightgrey">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-3]/DeferredTaxAfterPartialTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" style="border-top:7 solid Lightgrey" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;border-top:7 solid Lightgrey">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-2]/DeferredTaxAfterPartialTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" style="border-top:7 solid Lightgrey" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;border-top:7 solid Lightgrey">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-1]/DeferredTaxAfterPartialTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" style="border-top:7 solid Lightgrey" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;border-top:7 solid Lightgrey" >
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6]/DeferredTaxAfterPartialTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
         </tr> 
         <tr style="font-size:7pt">
-          <th class="styIRS8621P5ItemNo" scope="row" style="font-size:9pt">26</th>
-          <th style="text-align:left; vertical-align:top; font-weight:normal; font-size:9pt" scope="row" >
-            <div style="font-size:9pt">Interest accrued after partial</div>
-            <div style="ffont-size:9pt">
-              termination of election 
-            </div>
-            <div style="font-family:'Arial Narrow'; font-size:9pt">
-              Subtract line 24 from line 20
+          <th class="styIRS8621P5ItemNo" scope="row" style="width:7mm;font-size:9pt">26</th>
+          <th style="width:30mm;text-align:left; vertical-align:top; font-weight:normal; font-size:9pt" scope="row" >
+            <div style="font-size:9pt">Interest accrued after partial termination of election/  Subtract line 24 from line 20
             </div>
           </th>
-          <td class="styIRS8621P5Td" style="border-bottom:0" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;border-bottom:0">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-5]/InterestAccrAftrPartlTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" style="border-bottom:0" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;border-bottom:0">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-4]/InterestAccrAftrPartlTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" style="border-bottom:0" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;border-bottom:0">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-3]/InterestAccrAftrPartlTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" style="border-bottom:0" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;border-bottom:0">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-2]/InterestAccrAftrPartlTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" style="border-bottom:0" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;border-bottom:0">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-1]/InterestAccrAftrPartlTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" style="border-bottom:0" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="width:25mm;border-bottom:0">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6]/InterestAccrAftrPartlTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-        </tr>    
+        </tr>
     </table>      
     <xsl:call-template name="part5Loop">
       <xsl:with-param name="index" select="$index+1"/>
