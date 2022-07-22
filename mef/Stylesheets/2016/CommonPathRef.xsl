@@ -75,6 +75,7 @@ Description: This file contains parameters that define XPaths or string values t
   <!--<xsl:param name="TaxYear" select="/AppData/Parameters/TaxYear"></xsl:param>-->
   <!-- not sure why this gets changed every few years - ReadMeF is not coded for the change -->
 <xsl:param name="TaxYear" select="substring(/AppData/Parameters/SubmissionVersion,1,4)"></xsl:param>
+  <xsl:param name="Version" select="/AppData/Parameters/SubmissionVersion"></xsl:param>
   <xsl:param name="Type" select="/AppData/Parameters/SubmissionType"></xsl:param>
   <xsl:param name="TaxYear" select="/AppData/Parameters/TaxYear"></xsl:param>
   <!-- The DisplayName parameter is for displaying the form name (this is different from the stylesheet file name). -->
