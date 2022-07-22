@@ -87,22 +87,9 @@
             <div class="styNameBox" style="width:140.75mm;height:10mm;font-size:7pt;">
               Name<br/>
            <span style="font-size: 7pt; font-weight: normal">
-			 <xsl:choose>
-			     <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-				     <xsl:call-template name="PopulateReturnHeaderFiler">
-					 <xsl:with-param name="TargetNode">Name</xsl:with-param>
-					 </xsl:call-template>
-				</xsl:when>
-				 <xsl:otherwise>
-				     <xsl:call-template name="PopulateReturnHeaderFiler">
-					 <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-					 </xsl:call-template>
-					 <br/> 
-					 <xsl:call-template name="PopulateReturnHeaderFiler">
-					 <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-					 </xsl:call-template>						
-				</xsl:otherwise>
-			</xsl:choose>
+			 <xsl:call-template name="PopulateFilerName">
+				<xsl:with-param name="TargetNode" select="$Form8827Data"/>
+			 </xsl:call-template> 			
 			</span>
             </div>
             <!--EIN-->
@@ -111,19 +98,10 @@
               <br/>
               <br/>
               <span style="font-weight:normal">
-     <xsl:choose>
-		     <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-		    	 <xsl:call-template name="PopulateReturnHeaderFiler">
-			     <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-			     </xsl:call-template>
-			 </xsl:when>
-			 <xsl:otherwise>
-					 <xsl:call-template name="PopulateReturnHeaderFiler">
-				     <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-					 </xsl:call-template>
-			 </xsl:otherwise>
-		 </xsl:choose>
-		 </span>
+				 <xsl:call-template name="PopulateFilerTIN">
+				   <xsl:with-param name="TargetNode" select="$Form8827Data"/>
+				 </xsl:call-template>
+			  </span>
             </div>
           </div>
           <!-- End Names and Identifying number section -->

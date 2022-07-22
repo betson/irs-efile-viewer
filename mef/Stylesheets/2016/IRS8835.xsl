@@ -4,6 +4,7 @@
 	
 	
 <!-- Last modified on -->
+<!-- Last modified on 09/28/2017 by Harold Nadel for KISAM # IM03058974 corrected the error in the Return Header-->
 <!-- Last modified on 01/12/2017 by Harold Nadel for KISAM # IM02756170 defect # 60683 -->	
 <!-- Last modified on 11/04/2016 by Harold Nadel for KISAM # IM02756170 updated "(.20)" to "(0.20)" on line 17b -->	
 <!-- Last modified on 10/03/2016 by Harold Nadel for UWR # 186620 per pdf dated 06/09/2016 -->
@@ -26,7 +27,7 @@
 	<xsl:include href="AddOnTable.xsl"/>
 	<xsl:output method="html" indent="yes" encoding="iso-8859-1"/>
 	<xsl:strip-space elements="*"/>
-	<xsl:param name="FormData" select="$RtnDoc/IRS8835"/>
+	<xsl:param name="Form8835Data" select="$RtnDoc/IRS8835"/>
 	<xsl:template match="/">
 		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
@@ -34,7 +35,7 @@
 				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
-						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
+						<xsl:with-param name="RootElement" select="local-name($Form8835Data)"/>
 					</xsl:call-template>
 				</title>
 				<!-- No Browser Caching -->
@@ -68,7 +69,7 @@
 							<br/>
 							<xsl:call-template name="LinkToLeftoverDataTableInline">
 								<xsl:with-param name="Desc">Fiscal Year Taxpayer Code</xsl:with-param>
-								<xsl:with-param name="TargetNode" select="$FormData/@fiscalYearTaxpayerCd"/>
+								<xsl:with-param name="TargetNode" select="$Form8835Data/@fiscalYearTaxpayerCd"/>
 								<xsl:with-param name="Style">padding-left:3mm;</xsl:with-param>
 							</xsl:call-template>
 							<br/>
@@ -91,7 +92,7 @@
           		   				 </div>	
             		   			 <div class="styFST" style="font-size:6.5pt;font-weight:bold; padding-top: 1mm">
 								 <img src="{$ImagePath}/8835_Bullet.gif" alt="MediumBullet"/>
-				Information about Form 8835 and its separate instructions is at <a href="http://www.irs.gov/form8835" title="Link to IRS.gov"><i>www.irs.gov/form8835</i></a>.
+				Information about Form 8835 and its separate instructions is at <i>www.irs.gov/form8835</i>
           		   				 </div>	       		   				 			   
 						</div>
 						<div class="styTYBox" style="width:30mm;height:auto; border-left-width: 1px">
@@ -104,59 +105,34 @@
 					</div>
 					<!--  End title of Form  -->
 					<!--  Name and Employer identification number  -->
-					<div class="styBB" style="width:187mm">
+					<div class="styBB" style="width:187mm;">
 						<div class="styNameBox" style="width:141mm;font-size:7pt;">
-              Name(s) shown on return<br/>
-<!--							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-							</xsl:call-template>
-							<br/>
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-							</xsl:call-template>   -->
+							  Name(s) shown on return
  							<xsl:choose>
 								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">Name</xsl:with-param>
-									</xsl:call-template>
+									<xsl:call-template name="PopulateFilerName">
+										 <xsl:with-param name="TargetNode" select="$Form8835Data"/>
+								   </xsl:call-template> 
 								</xsl:when>
 								<xsl:otherwise>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-									</xsl:call-template>
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-									</xsl:call-template>
+									<xsl:call-template name="PopulateFilerName">
+										 <xsl:with-param name="TargetNode" select="$Form8835Data"/>
+								   </xsl:call-template> 
 								</xsl:otherwise>
 							</xsl:choose>
 						</div>
 						<div class="styEINBox" style=" padding-left:2mm;font-size:7pt;">
 							<span class="BoldText">Identifying number</span><br/>
 							<div style="text-align:left;font-weight:normal;">
-								<br/>
-<!--								<xsl:choose>
-									<xsl:when test="normalize-space($FormData/IdentifyingNumber) != ''">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/IdentifyingNumber"/>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
-								</xsl:choose>  -->
 								<xsl:choose>
 									<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+									<xsl:call-template name="PopulateFilerTIN">
+										 <xsl:with-param name="TargetNode" select="$Form8835Data"/>
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+									<xsl:call-template name="PopulateFilerTIN">
+										 <xsl:with-param name="TargetNode" select="$Form8835Data"/>
 										</xsl:call-template>
 									</xsl:otherwise>
 								</xsl:choose>
@@ -167,9 +143,10 @@
 
 					<!--  Part II Title-->
 					<div class="styBB" style="width: 187mm; border-top-width: 0px">
-						<div class="styPartDesc" style="width: 172mm;height:auto;">Electricity and Refined Coal Produced at Qualified Facilities Placed in Service After <br/>October 22, 2004 (After October 2, 2008, for Electricity Produced From Marine and Hydrokinetic Renewables),
- <!--            <span style="font-weight:normal;">(after October 2, 2008 for electricity produced from marine and hydrokinetic renewables)</span>  -->
-             and Indian Coal Produced at Facilities Placed in Service After August 8, 2005</div>
+						<div class="styPartDesc" style="width: 180mm;height:auto;font-size:7pt;font-weight:normal">
+							Electricity and Refined Coal Produced at Qualified Facilities Placed in Service After 
+							October 22, 2004 (After October 2, 2008, for Electricity Produced From Marine and Hydrokinetic Renewables),
+							and Indian Coal Produced at Facilities Placed in Service After August 8, 2005</div>
 					</div>
 					<!--  End Part II Title-->
 					<div class="styTableContainer" style="border-top-width: 0px; border-bottom-width:0px; width: 187mm; height: 100%">
@@ -212,7 +189,7 @@
 									<td class="styTableCellSmall" style="width: 36mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldWindQty"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldWindQty"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 15mm;text-align:center;">0.023
@@ -221,7 +198,7 @@
 									<td class="styTableCellSmall" style="width: 35mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldWindCrAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldWindCrAmt"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 7.25mm; background-color:lightgrey; border-bottom-width:0px;">
@@ -242,7 +219,7 @@
 									<td class="styTableCellSmall" style="width: 36mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdSoldClsLoopBmssQty"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdSoldClsLoopBmssQty"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 15mm;border-bottom-width:1px;text-align:center;">0.023
@@ -251,7 +228,7 @@
 									<td class="styTableCellSmall" style="width: 35mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdSoldClsLoopBmssCrAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdSoldClsLoopBmssCrAmt"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 7.25mm; border-bottom-width:0px; background-color:lightgrey;">
@@ -272,7 +249,7 @@
 									<td class="styTableCellSmall" style="width: 36mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldGthrmlQty"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldGthrmlQty"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 15mm; border-bottom-width:1px;text-align:center;">0.023
@@ -281,7 +258,7 @@
 									<td class="styTableCellSmall" style="width: 35mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldGthrmlAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldGthrmlAmt"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 7.25mm; border-bottom-width:0px; background-color:lightgrey;">
@@ -302,7 +279,7 @@
 									<td class="styTableCellSmall" style="width: 36mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldSolarQty"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldSolarQty"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 15mm;text-align:center;">0.023
@@ -311,7 +288,7 @@
 									<td class="styTableCellSmall" style="width: 35mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldSolarCrAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldSolarCrAmt"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 7.25mm; background-color:lightgrey;border-bottom-width:0px;">
@@ -335,7 +312,7 @@
 						<span class="styLNAmountBox" style="width: 34mm; height: 5mm">
 							<span style="float: left; clear:none"/>
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/TotalForCreditRateUnder45a1Amt"/>
+								<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/TotalForCreditRateUnder45a1Amt"/>
 							</xsl:call-template>
 						</span>
 					</div>
@@ -378,7 +355,7 @@
 									<td class="styTableCellSmall" style="width: 36mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdSoldOpenLoopBmssQty"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdSoldOpenLoopBmssQty"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 15mm;text-align:center;">0.012
@@ -387,7 +364,7 @@
 									<td class="styTableCellSmall" style="width: 35.25mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdSoldOpenLopBmssCrAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdSoldOpenLopBmssCrAmt"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 7.25mm; background-color:lightgrey; border-bottom-width:0px;">
@@ -408,7 +385,7 @@
 									<td class="styTableCellSmall" style="width: 36mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdSoldSmllIrgtnPwrQty"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdSoldSmllIrgtnPwrQty"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 15mm;border-bottom-width:1px;text-align:center;">0.012
@@ -417,7 +394,7 @@
 									<td class="styTableCellSmall" style="width: 35.25mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdSldSmllIrgtnPwrCrAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdSldSmllIrgtnPwrCrAmt"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 7.25mm; border-bottom-width:0px; background-color:lightgrey;">
@@ -438,7 +415,7 @@
 									<td class="styTableCellSmall" style="width: 36mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldLndfllGasQty"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldLndfllGasQty"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 15mm; border-bottom-width:1px;text-align:center;">0.012
@@ -447,7 +424,7 @@
 									<td class="styTableCellSmall" style="width: 35.25mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldLndfllGsCrAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldLndfllGsCrAmt"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 7.25mm; border-bottom-width:0px; background-color:lightgrey;">
@@ -468,7 +445,7 @@
 									<td class="styTableCellSmall" style="width: 36mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldTrashQty"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldTrashQty"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 15mm;text-align:center;">0.012
@@ -477,7 +454,7 @@
 									<td class="styTableCellSmall" style="width: 35.25mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldTrashCrAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldTrashCrAmt"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 7.25mm; border-bottom-width:0px; background-color:lightgrey;">
@@ -498,7 +475,7 @@
 									<td class="styTableCellSmall" style="width: 36mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldHydropowerQty"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldHydropowerQty"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 15mm;text-align:center;">0.012
@@ -507,7 +484,7 @@
 									<td class="styTableCellSmall" style="width: 35.25mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldHydropwrCrAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdAndSoldHydropwrCrAmt"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 7.25mm; border-bottom-width:0px; background-color:lightgrey;">
@@ -528,7 +505,7 @@
 									<td class="styTableCellSmall" style="width: 36mm;padding-top:3mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdSoldMarineRnwblQty"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdSoldMarineRnwblQty"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 15mm; text-align:center;padding-top:3mm;">0.012
@@ -537,7 +514,7 @@
 									<td class="styTableCellSmall" style="width: 35.25mm;padding-top:3mm;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/KwHrsPrdcdSoldMarineRnwblCrAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/KwHrsPrdcdSoldMarineRnwblCrAmt"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall" style="width: 7.25mm; background-color:lightgrey;border-bottom-width:0px;">
@@ -561,7 +538,7 @@
 						<span class="styLNAmountBox" style="width: 34mm; height: 5mm">
 							<span style="float: left; clear:none"/>
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/TotalForCreditRtUnder45b4AAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/TotalForCreditRtUnder45b4AAmt"/>
 							</xsl:call-template>
 						</span>
 					</div>
@@ -578,7 +555,7 @@
 							<div class="styLNRightNumBox">3</div>
 							<div class="styLNAmountBox" style="width: 34mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/TotClsOpenKwHrsPrdcdSoldCrAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/TotClsOpenKwHrsPrdcdSoldCrAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -596,14 +573,14 @@
 							</span>
 							<span style="border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; border-bottom-width: 1px; width: 34mm">$
                 <xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/CreditBfrPhaseoutAdjustmentAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/CreditBfrPhaseoutAdjustmentAmt"/>
 								</xsl:call-template>
 							</span>
 							<span style="width: 22mm">
 								<span style="width: 2mm"/> X<span style="width: 2mm"/>
 								<span style="border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; border-bottom-width: 1px; width: 10mm">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/PhaseoutAdjustmentRt"/>
+										<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/PhaseoutAdjustmentRt"/>
 									</xsl:call-template>
 								</span>
 							</span>
@@ -612,7 +589,7 @@
 						<span class="styLNAmountBox" style="width: 34mm; height: 5mm">
 							<span style="float: left; clear:none"/>
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/TotalPhaseoutAdjustmentAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/TotalPhaseoutAdjustmentAmt"/>
 							</xsl:call-template>
 						</span>
 					</div>
@@ -630,7 +607,7 @@
 							<div class="styLNRightNumBox">5</div>
 							<div class="styLNAmountBox" style="width: 34mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/NetPhaseoutAdjustmentAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/NetPhaseoutAdjustmentAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -655,7 +632,7 @@
 							<span style="border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; border-bottom-width: 1px; width: 35mm">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="MaxSize" select="18"/>
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/RefineCoalTonPrdcdSoldQty"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/RefineCoalTonPrdcdSoldQty"/>
 								</xsl:call-template>
 							</span>
 							<span style="width: 21mm">
@@ -665,7 +642,7 @@
 						<span class="styLNAmountBox" style="width: 34mm; height: 5mm">
 							<span style="float: left; clear:none"/>
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/TotRefineCoalTonPrdcdSoldCrAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/TotRefineCoalTonPrdcdSoldCrAmt"/>
 							</xsl:call-template>
 						</span>
 					</div>
@@ -682,14 +659,14 @@
 							</span>
 							<span style="border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; border-bottom-width: 1px; width: 34mm">$
                 <xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/RefinedCoalCrBfrPhaseoutAdjAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/RefinedCoalCrBfrPhaseoutAdjAmt"/>
 								</xsl:call-template>
 							</span>
 							<span style="width: 22mm">
 								<span style="width: 3mm"/> X<span style="width: 2mm"/>
 								<span style="border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; border-bottom-width: 1px; width: 10mm">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/RefinedCoalPhaseoutAdjRt"/>
+										<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/RefinedCoalPhaseoutAdjRt"/>
 									</xsl:call-template>
 								</span>
 							</span>
@@ -698,7 +675,7 @@
 						<span class="styLNAmountBox" style="width: 34mm; height: 5mm">
 							<span style="float: left; clear:none"/>
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/RefinedCoalTotalPhaseoutAdjAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/RefinedCoalTotalPhaseoutAdjAmt"/>
 							</xsl:call-template>
 						</span>
 					</div>
@@ -716,53 +693,28 @@
 							<div class="styLNRightNumBox">8</div>
 							<div class="styLNAmountBox" style="width: 34mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/NetRefinedCoalPhaseoutAdjAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/NetRefinedCoalPhaseoutAdjAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
 					</div>
 					<!--  Line 8  -->
-					<!--  Line 9 -->
-					<!--<div style="width187mm;">
-						<div class="styLNDesc">
-							<span style="font-weight:bold; width:145mm; padding-left:9mm;">Steel industry fuel produced at a qualified refined coal production facility</span>
-						</div>
-						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;"/>
-						<div class="styLNAmountBoxNBB"/>
-					</div>  -->
-					
 					<!--Line 9 -->
 					<div style="width: 187mm">
-						<div class="styLNLeftNumBox" style="height: 8mm; padding-top: 4mm">9</div>
-						<span class="styLNDesc" style="width: 137mm; padding-top: 4mm">
+						<div class="styLNLeftNumBox" style="height: 5mm;">9</div>
+						<span class="styLNDesc" style="width: 137mm;">
 							<span style="width:14mm; float:left">
 							  Reserved <!--for future use (see instructions)-->
 							</span>
-						<!--<span style="width: 7mm">-->
 							<span class="styDotLn" style="float: right">  
 							  .............................
 							</span>
-						<!--</span>-->
-						<!--<span style="border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; border-bottom-width: 
-									1px; width: 34mm;font-size:7pt;">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="MaxSize" select="21"/>
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/SteelFuelPrdcdQlfdRefinedCoal"/>
-								</xsl:call-template>
 						</span>
-						<span style="width: 22mm;font-size:7pt;">
-							<span style="width: 2mm"/> X<span style="width: 2mm;font-size:7pt;"/>$2.89</span>  -->
-						</span>
-						<span class="styLNRightNumBox" style="border-bottom-width: 0px"/>
-						<span class="styLNAmountBox" style="width: 34mm; border-bottom-width: 0px"/>
 						<span class="styLNRightNumBox" style="height: 5mm">9</span>
 						<span class="styLNAmountBox" style="width: 34mm; height: 5mm;background-color:lightgrey;">
 							<span style="float: left; clear:none"/>
-							<!--<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/TotSteelFuelPrdcdQlfdRfndCoal"/>
-							</xsl:call-template>  -->
 						</span>
-					</div>
+					</div>					
 					<!--  Line 9 -->			
 
 					<div style="width187mm;">
@@ -784,7 +736,7 @@
 							<span style="border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; border-bottom-width: 1px; width: 35mm">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="MaxSize" select="18"/>
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/IndianCoalTonPrdcdSoldQty"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/IndianCoalTonPrdcdSoldQty"/>
 								</xsl:call-template>
 								
 							</span>
@@ -801,7 +753,7 @@
 						<span class="styLNAmountBox" style="width: 34mm; height: 5mm;border-bottom-width:1px;">
 							<span style="float: left; clear:none"/>
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/TotIndianCoalTonPrdcdSoldCrAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/TotIndianCoalTonPrdcdSoldCrAmt"/>
 							</xsl:call-template>
 						</span>
 						
@@ -826,44 +778,16 @@
 							<div class="styLNRightNumBox">11</div>
 							<div class="styLNAmountBox" style="width: 34mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/RefinedCoalCreditBeforeRedAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/RefinedCoalCreditBeforeRedAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
-					</div>					
-					
-					<!--  FOOTER-->
-					<div class="styBB" style="width:187mm;border-top-width:1px;border-bottom-width:0px;">
-						<span class="styBoldText">For Paperwork Reduction Act Notice, see separate instructions.</span>
-						<span style="width:20mm;"/>Cat. No. 14954R 
-						<span style="width:124px;"/>Form <span class="styBoldText">8835</span> (2016) 
-	                          </div>
-					<div class="pageEnd"/>
-					<!--END FOOTER-->
-					<p style="page-break-before:always" />
-					<!--BEGIN HEADER-->
-					<div class="styBB" style="width:187mm">
-						<div style="float: left; clear: none">Form 8835 (2016)</div>
-						<div style="float:right">
-              Page <span class="styBoldText" style="font-size: 8pt">2</span>
-						</div>
 					</div>
-					<!--  End Part II Title-->
-					<!--  Part II Title--><br/>
-
-					<div class="styBB" style="width: 187mm; border-top-width: 0px">
-						<div class="styPartDesc" style="width: 172mm;height:auto;">Electricity and Refined Coal Produced at Qualified Facilities Placed in Service After<br/> October 22, 2004 (After October 2, 2008, for Electricity Produced From Marine and Hydrokinetic Renewables),
- <!--            <span style="font-weight:normal;">(after October 2, 2008 for electricity produced from marine and hydrokinetic renewables)</span>  -->
-             and Indian Coal Produced at Facilities Placed in Service After August 8, 2005 <i>(continued)</i></div>
-					</div>
-					<!--  End Part II Title-->
-					
-
 					<div style="width: 187mm">
 						<div style="float:left; padding-left: 8.5mm; padding-top: .5mm">
 							<span class="styBoldText">
-        Reduction for government grants, subsidized financing, and other credits:
-      </span>
+							    Reduction for government grants, subsidized financing, and other credits:
+							</span>
 						</div>
 						<div style="float:right">
 							<div class="styLNRightNumBox" style="background-color: lightgrey; height: 4mm; border-bottom-width: 0px"/>
@@ -874,8 +798,8 @@
 					<div style="width: 187mm">
 						<div class="styLNLeftNumBox" style="padding-left: 1mm">12</div>
 						<div style="float: left; padding-top: .5mm;  ">
-      Total of government grants, proceeds of tax-exempt government obligations, subsidized energy financing,
-    </div>
+						   Total of government grants, proceeds of tax-exempt government obligations, subsidized energy financing,
+						</div>
 						<div style="float: right">
 							<span class="styLNRightNumBox" style="background-color: lightgrey; border-bottom-width: 0px"/>
 							<span class="styLNAmountBox" style="width: 34mm; background-color: lilghtgrey; border-bottom-width: 0px"/>
@@ -893,7 +817,7 @@
 							<span class="styLNRightNumBox" style="height: 5mm">12</span>
 							<span class="styLNAmountBox" style="width: 34mm; height: 5mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/TotalGovernmentGrantsAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/TotalGovernmentGrantsAmt"/>
 								</xsl:call-template>
 							</span>
 						</div>
@@ -912,7 +836,7 @@
 							<div class="styLNRightNumBox">13</div>
 							<div class="styLNAmountBox" style="width: 34mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/TotCapitalAccountAdditionsAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/TotCapitalAccountAdditionsAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -931,7 +855,7 @@
 							<div class="styLNRightNumBox">14</div>
 							<div class="styLNAmountBox" style="width: 34mm">
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/CreditReductionRt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/CreditReductionRt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -950,7 +874,7 @@
 							<div class="styLNRightNumBox">15</div>
 							<div class="styLNAmountBox" style="width: 34mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/CreditReductionAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/CreditReductionAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -969,7 +893,7 @@
 							<div class="styLNRightNumBox">16</div>
 							<div class="styLNAmountBox" style="width: 34mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/AdjustedCreditReductionAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/AdjustedCreditReductionAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -989,7 +913,7 @@
 							<div class="styLNRightNumBox">17a</div>
 							<div class="styLNAmountBox" style="width: 34mm">
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/WindFacilityAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/WindFacilityAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -1008,7 +932,7 @@
 							<div class="styLNRightNumBox">17b</div>
 							<div class="styLNAmountBox" style="width: 34mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/WindFacilityPercentageAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/WindFacilityPercentageAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -1027,7 +951,7 @@
 							<div class="styLNRightNumBox">18</div>
 							<div class="styLNAmountBox" style="width: 34mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/NetWindFacilityPercentageAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/NetWindFacilityPercentageAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -1058,7 +982,7 @@
 							<div class="styLNRightNumBox" style="height:4.5mm;">19</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width: 34mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/RnwblElecRefinedCoalProdCrAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/RnwblElecRefinedCoalProdCrAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -1123,11 +1047,11 @@
 							<!-- Form to Form Link -->
 <!--							<xsl:call-template name="LinkToLeftoverDataTableInline">
 								<xsl:with-param name="Desc">Line 36 - Form 6478 Indicator</xsl:with-param>
-								<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/TotalAllowedTaxCredit/@form6478Indicator"/>
+								<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/TotalAllowedTaxCredit/@form6478Indicator"/>
 							</xsl:call-template>
 							<xsl:call-template name="LinkToLeftoverDataTableInline">
 								<xsl:with-param name="Desc">Line 36 - Form 6478 Indicator</xsl:with-param>
-								<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/TotalAllowedTaxCredit/@form6478Amount"/>
+								<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/TotalAllowedTaxCredit/@form6478Amount"/>
 							</xsl:call-template>  -->
 						</div>
 						<div style="float: right">
@@ -1136,7 +1060,7 @@
 							<div class="styLNRightNumBox" style="height:4.5mm;">20</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width: 34mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/TotalAllowedTaxCreditAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/TotalAllowedTaxCreditAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -1154,7 +1078,7 @@
 							<div class="styLNRightNumBox">21</div>
 							<div class="styLNAmountBox" style="width: 34mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/AllocatedToBeneficiariesAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/AllocatedToBeneficiariesAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -1191,39 +1115,26 @@
 							<div class="styLNAmountBox" style="height:4.5mm;border-bottom-width: 0px;width: 34mm"/>
 						</div>
 					</div>
-					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;"/>
-						<div style="float:left">
-     		    	 	of electricity or refined coal, report the applicable part of this amount on Form 3800, 
-						</div>
-						<div style="float: right">
-							<div class="styLNRightNumBox" style="height:4.5mm;background-color:lightgrey;border-bottom-width: 0px;"/>
-							<div class="styLNAmountBox" style="height:4.5mm;border-bottom-width: 0px;width: 34mm"/>
-						</div>
-					</div>
-
 					<div class="styBB" style="width:187mm">
 						<div class="styLNLeftNumBox" style="height:4mm;"/>
 						<div style="float:left">
-          		   	 Part III, line 1f
+     		    	 	of electricity or refined coal, report the applicable part of this amount on Form 3800, Part III, line 1f.
 						</div>
 						<div style="float: right">
-							<!--Dotted Line-->
-								<span class="styDotLn">............................ </span>
-							<div class="styLNRightNumBoxNBB" style="height:4.5mm;">22</div>
-							<div class="styLNAmountBoxNBB" style="height:4.5mm;width: 34mm">
+							<div class="styLNRightNumBoxNBB" style="height:4.5mm;padding-top:1mm">22</div>
+							<div class="styLNAmountBoxNBB" style="height:4.5mm;width: 34mm;padding-top:1mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/EstatesTrustsAndCoopsCreditAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/EstatesTrustsAndCoopsCreditAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
-					</div>
-					<!-- End Line 32  -->
+					</div>					
+					<!-- End Line 22  -->
 					<!--  FOOTER-->
 					<div style="width:187mm">
 						<span style="float: right">
-          Form <span class="styBoldText">8835</span> (2016)
-        </span>
+						    Form <span class="styBoldText">8835</span> (2016)
+						</span>
 					</div>
 					<br class="pageEnd"/>
 					<br/>
@@ -1242,32 +1153,32 @@
 					<!-- Additional Data Table -->
 					<table class="styLeftOverTbl">
 						<xsl:call-template name="PopulateCommonLeftover">
-							<xsl:with-param name="TargetNode" select="$FormData"/>
+							<xsl:with-param name="TargetNode" select="$Form8835Data"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Fiscal Year Taxpayer Code</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="$FormData/@fiscalYearTaxpayerCd"/>
+							<xsl:with-param name="TargetNode" select="$Form8835Data/@fiscalYearTaxpayerCd"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 <!--						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line 34 - Form 8884 Indicator</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/CfwdRnwblElecRefinedCoalCr/@form8884Indicator"/>
+							<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/CfwdRnwblElecRefinedCoalCr/@form8884Indicator"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line 34 - Form 8884 Amount</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/CfwdRnwblElecRefinedCoalCr/@form8884Amount"/>
+							<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/CfwdRnwblElecRefinedCoalCr/@form8884Amount"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line 36 - Form 6478 Indicator</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/TotalAllowedTaxCredit/@form6478Indicator"/>
+							<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/TotalAllowedTaxCredit/@form6478Indicator"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line 36 - Form 6478 Amount</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/TotalAllowedTaxCredit/@form6478Amount"/>
+							<xsl:with-param name="TargetNode" select="$Form8835Data/QualifiedFacilitiesAfter1022/TotalAllowedTaxCredit/@form6478Amount"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>  -->
 					</table>

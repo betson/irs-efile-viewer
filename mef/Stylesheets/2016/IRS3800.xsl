@@ -94,41 +94,18 @@
 						<div class="styNameBox" style="width:150mm;font-size:7pt;font-weight:normal;">
               Name(s) shown on return<br/>
 							<span>
-								<xsl:choose>
-									<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-<br/>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">Name</xsl:with-param>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-										</xsl:call-template>
-										<br/>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
-								</xsl:choose>
+								<xsl:call-template name="PopulateFilerName">
+									<xsl:with-param name="TargetNode" select="$Form3800Data"/>
+								</xsl:call-template>
 							</span>
 						</div>
 						<div class="styEINBox" style="width:30mm;padding-left:2mm;font-size:7pt;font-weight:bold;">
               Identifying number<br/>
 							<br/>
 							<span style="font-size: 7pt; font-weight: normal;text-align:left; vertical-align: bottom;">
-								<xsl:choose>
-								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
-								</xsl:choose>
+								<xsl:call-template name="PopulateFilerTIN">
+									<xsl:with-param name="TargetNode" select="$Form3800Data"/>
+								</xsl:call-template>
 							</span>
 						</div>
 					</div>
@@ -1250,38 +1227,16 @@
 			<div class="styBB" style="width:187mm;border-top-width:0px;">
 				<div class="styNameBox" style="font-size:7pt;width:100mm;font-weight: normal">Name(s) shown on return
 			  <br/>
-					<xsl:choose>
-						<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">Name</xsl:with-param>
-							</xsl:call-template>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-							</xsl:call-template>
-							<br/>
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-							</xsl:call-template>
-						</xsl:otherwise>
-					</xsl:choose>
+								<xsl:call-template name="PopulateFilerName">
+									<xsl:with-param name="TargetNode" select="$Form3800Data"/>
+								</xsl:call-template>
 				</div>
 				<div class="styEINBox" style="width:52mm;padding-left:0mm;font-size:7pt;border-left-width:1px;">Identifying number
                   <br/>
 					<div style="font-size: 7pt; font-weight: normal;text-align:left; vertical-align: bottom;padding-top:3mm;">
-						<xsl:choose>
-							<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-								<xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+								<xsl:call-template name="PopulateFilerTIN">
+									<xsl:with-param name="TargetNode" select="$Form3800Data"/>
 								</xsl:call-template>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-								</xsl:call-template>
-							</xsl:otherwise>
-						</xsl:choose>
 					</div>
 				</div>
 			</div>
@@ -1415,13 +1370,9 @@
 					</span>
 					<span style="width:90mm;">
 						<span class="styLNLeftNumBox" style="width:5mm;">H</span>
-						<span class="styCkbox" style="background-color:lightgrey; border:1px solid black;" alt="IRS3800 Part III, checkbox H">
-							<xsl:attribute name="id"><xsl:value-of select="concat('IRS3800EligSmllBusCrCarrybacksInd', $counter)"/></xsl:attribute>
+						<span type="checkbox" class="styCkbox" style="background-color:lightgrey;border:1px solid black;" alt="IRS3800 Part III, checkbox H">
 						</span>
-						<label>
-							<xsl:attribute name="for"><xsl:value-of select="concat('IRS3800EligSmllBusCrCarrybacksInd', $counter)"/></xsl:attribute>
-							<span style="width:2mm;"/>Reserved
-                      </label>
+						<span style="width:2mm;"/>Reserved
 					</span>
 					<div style="width:187mm;">
 						<div class="styLNDesc" style="width:180mm;padding-left:1mm;height:auto;">
@@ -2849,7 +2800,7 @@ Enter the appropriate amount
 					<div style="float:right;clear:none;">
 						<div class="styLNRightNumBoxNBB" style="border-top-width:1px;height:4.5mm;">4i</div>
 						<div class="styLNAmountBoxNBB" style="border-top-width:1px;text-align:center;height:4.5mm;">
-							<xsl:if test="BusinessCreditsGrp/SmallEmployerHIPCreditAmtGrp/PassThroughEntityEIN !=''">
+							<xsl:if test="BusinessCreditsGrp/IncreasingResearchCrGrp/PassThroughEntityEIN !=''">
 								<xsl:call-template name="PopulateEIN">
 									<xsl:with-param name="TargetNode" select="BusinessCreditsGrp/IncreasingResearchCrGrp/PassThroughEntityEIN"/>
 								</xsl:call-template>
@@ -2987,38 +2938,16 @@ Enter the appropriate amount
 			<div class="styBB" style="width:187mm;border-top-width:0px;">
 				<div class="styNameBox" style="font-size:7pt;width:100mm;font-weight: normal">Name(s) shown on return
 			  <br/>
-					<xsl:choose>
-						<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">Name</xsl:with-param>
-							</xsl:call-template>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-							</xsl:call-template>
-							<br/>
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-							</xsl:call-template>
-						</xsl:otherwise>
-					</xsl:choose>
+								<xsl:call-template name="PopulateFilerName">
+									<xsl:with-param name="TargetNode" select="$Form3800Data"/>
+								</xsl:call-template>
 				</div>
 				<div class="styEINBox" style="width:52mm;padding-left:0mm;font-size:7pt;border-left-width:1px;">Identifying number
                   <br/>
 					<div style="font-size: 7pt; font-weight: normal;text-align:left; vertical-align: bottom;padding-top:3mm;">
-						<xsl:choose>
-							<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-								<xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+								<xsl:call-template name="PopulateFilerTIN">
+									<xsl:with-param name="TargetNode" select="$Form3800Data"/>
 								</xsl:call-template>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-								</xsl:call-template>
-							</xsl:otherwise>
-						</xsl:choose>
 					</div>
 				</div>
 			</div>
@@ -3886,7 +3815,7 @@ Enter the appropriate amount
 					<div style="float:right;clear:none;">
 						<div class="styLNRightNumBoxNBB" style="border-top-width:1px;height:4.5mm;">4i</div>
 						<div class="styLNAmountBoxNBB" style="border-top-width:1px;text-align:center;height:4.5mm;">
-							<xsl:if test="BusinessCreditsGrp/SmallEmployerHIPCreditAmtGrp/PassThroughEntityEIN !=''">
+							<xsl:if test="BusinessCreditsGrp/IncreasingResearchCrGrp/PassThroughEntityEIN !=''">
 								<xsl:call-template name="PopulateEIN">
 									<xsl:with-param name="TargetNode" select="BusinessCreditsGrp/IncreasingResearchCrGrp/PassThroughEntityEIN"/>
 								</xsl:call-template>

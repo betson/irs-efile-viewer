@@ -2050,7 +2050,8 @@ abandonment losses, and worthless stock losses
 						<tr>
 							<td class="styIRS1065ScheduleM3NumberCell">23</td>
 							<td>
-								<span class="styBoldText" style="font-weight:bold">Total income (loss) items. </span>
+								<span class="styBoldText" style="font-weight:bold">Total income (loss) items.</span>
+								<span style="width:2px;"/>
 								<span style="font-weight:normal">Combine lines 1 through
              22</span>
 							</td>
@@ -2080,7 +2081,8 @@ abandonment losses, and worthless stock losses
 							<td class="styIRS1065ScheduleM3NumberCell">24</td>
 							<td>
 								<span class="styBoldText" style="font-weight:bold;padding-top:0.5mm;">Total expense/deduction items.  </span>
-								<span style="font-weight:normal"> (from Part III,</span>
+								<span style="width:2px;"/>
+								<span style="font-weight:normal">(from Part III,</span>
 								<br/>
 								<span style="font-weight:normal"> line 31) (see instructions)</span>
 								<span class="styDotLn" style="float:none;padding-left:3.8mm;">.........</span>
@@ -2137,7 +2139,8 @@ abandonment losses, and worthless stock losses
 						<tr>
 							<td class="styIRS1065ScheduleM3NumberCell">26</td>
 							<td>
-								<span class="styBoldText" style="font-weight:bold">Reconciliation totals. </span>
+								<span class="styBoldText" style="font-weight:bold">Reconciliation totals.</span>
+								<span style="width:2px;"/>
 								<span style="font-weight:normal">Combine lines 23 through 25</span>
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/IRS1065SSchM3IncomeLossItems/ReconciliationTotals"/>

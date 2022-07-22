@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Last Modified by Steven Fook on 9/23/2014 -->
 <!-- Last Modified by James Ganzy on 11/20/2014 -->
-<!-- Last Modified by Eugenia McDonald on 03/03/2016 -->
+<!-- Last Modified by Eugenia McDonald on 11/16/2017 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -696,8 +696,20 @@
 													<td class="styTableCell" style="width:18.6mm;height:4mm;border-right-width:1px;">
 														<span class="styTableCellPad"/>
 													</td>
-													<td class="styTableCell" style="width:24.6mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"/>
+													<td class="styTableCell" style="text-align:center;width:24.6mm;height:4mm;border-right-width:0px;">
+														<!-- Checkbox -->
+														<input type="Checkbox" class="styCkbox">
+															<xsl:call-template name="PopulateCheckbox">
+																<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
+																<xsl:with-param name="BackupName">IRS1040DependentInformations<xsl:number value="position()"/>EligibleForChildTaxCreditInd</xsl:with-param>
+															</xsl:call-template>
+														</input>
+														<label>
+															<xsl:call-template name="PopulateLabel">
+																<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
+																<xsl:with-param name="BackupName">IRS1040DependentInformations<xsl:number value="position()"/>EligibleForChildTaxCreditInd</xsl:with-param>
+															</xsl:call-template>
+														</label>
 													</td>
 												</tr>
 											</xsl:if>
@@ -712,8 +724,20 @@
 													<td class="styTableCell" style="width:18.6mm;height:4mm;border-right-width:1px;">
 														<span class="styTableCellPad"/>
 													</td>
-													<td class="styTableCell" style="width:24.6mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"/>
+													<td class="styTableCell" style="text-align:center;width:24.6mm;height:4mm;border-right-width:0px;">
+														<!-- Checkbox -->
+														<input type="Checkbox" class="styCkbox">
+															<xsl:call-template name="PopulateCheckbox">
+																<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
+																<xsl:with-param name="BackupName">IRS1040DependentInformations<xsl:number value="position()"/>EligibleForChildTaxCreditInd</xsl:with-param>
+															</xsl:call-template>
+														</input>
+														<label>
+															<xsl:call-template name="PopulateLabel">
+																<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
+																<xsl:with-param name="BackupName">IRS1040DependentInformations<xsl:number value="position()"/>EligibleForChildTaxCreditInd</xsl:with-param>
+															</xsl:call-template>
+														</label>
 													</td>
 												</tr>
 											</xsl:if>
@@ -728,8 +752,20 @@
 													<td class="styTableCell" style="width:18.6mm;height:4mm;border-right-width:1px;">
 														<span class="styTableCellPad"/>
 													</td>
-													<td class="styTableCell" style="width:24.6mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"/>
+													<td class="styTableCell" style="text-align:center;width:24.6mm;height:4mm;border-right-width:0px;">
+														<!-- Checkbox -->
+															<input type="Checkbox" class="styCkbox">
+																<xsl:call-template name="PopulateCheckbox">
+																	<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
+																	<xsl:with-param name="BackupName">IRS1040DependentInformations<xsl:number value="position()"/>EligibleForChildTaxCreditInd</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label>
+																<xsl:call-template name="PopulateLabel">
+																	<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
+																	<xsl:with-param name="BackupName">IRS1040DependentInformations<xsl:number value="position()"/>EligibleForChildTaxCreditInd</xsl:with-param>
+																</xsl:call-template>
+															</label>
 													</td>
 												</tr>
 											</xsl:if>
@@ -744,8 +780,20 @@
 													<td class="styTableCell" style="width:18.6mm;height:4mm;border-right-width:1px;">
 														<span class="styTableCellPad"/>
 													</td>
-													<td class="styTableCell" style="width:24.6mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"/>
+													<td class="styTableCell" style="text-align:center;width:24.6mm;height:4mm;border-right-width:0px;">
+														<!-- Checkbox -->
+														<input type="Checkbox" class="styCkbox">
+															<xsl:call-template name="PopulateCheckbox">
+																<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
+																<xsl:with-param name="BackupName">IRS1040DependentInformations<xsl:number value="position()"/>EligibleForChildTaxCreditInd</xsl:with-param>
+															</xsl:call-template>
+														</input>
+														<label>
+															<xsl:call-template name="PopulateLabel">
+																<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
+																<xsl:with-param name="BackupName">IRS1040DependentInformations<xsl:number value="position()"/>EligibleForChildTaxCreditInd</xsl:with-param>
+															</xsl:call-template>
+														</label>
 													</td>
 												</tr>
 											</xsl:if>
@@ -4516,7 +4564,7 @@
 						<xsl:with-param name="DescWidth" select="100"/>
 					</xsl:call-template>
 					<xsl:call-template name="PopulateLeftoverRowAmount">
-						<xsl:with-param name="Desc">Line 74 - Form 8689 Code</xsl:with-param>
+						<xsl:with-param name="Desc">Line 74 - Form 8689 Amount</xsl:with-param>
 						<xsl:with-param name="TargetNode" select="$FormData/TotalPaymentsAmt/@form8689Amt"/>
 						<xsl:with-param name="DescWidth" select="100"/>
 					</xsl:call-template>

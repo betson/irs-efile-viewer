@@ -8,8 +8,8 @@
 	<xsl:output method="html" indent="yes"/>
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form8949Data" select="$RtnDoc/IRS8949"/>
-	<xsl:variable name="p1Lines" select="19"/>
-	<xsl:variable name="p2Lines" select="19"/>
+	<xsl:variable name="p1Lines" select="14"/>
+	<xsl:variable name="p2Lines" select="14"/>
 	<xsl:template name="ShrtTrmGrpHeaders">
 		<xsl:param name="lineNumber">1</xsl:param>
 		<tr style="border-color:black;font-size:6pt;" valign="top">
@@ -222,6 +222,7 @@
 		<xsl:variable name="containerPos">ShortTermCapitalGainAndLossGrpDiv<xsl:number value="position()"/>
 		</xsl:variable>
 		<!-- BEGIN: Part I (Header)-->
+	<div style="width:187mm;">
 		<div class="styIRS8949LineItem" style="padding-top:0mm;padding-bottom:1.5mm;border-bottom:1px solid;border-top:1px solid;clear:all;height:18mm;">
 			<div class="styPartName" style="width:13mm;">Part I</div>
 			<div class="styIRS8949LineItem" style="width:174mm;font-size:8pt;padding-left:2px;">
@@ -231,7 +232,7 @@
 		</div>
 		<div class="styIRS8949LineItem" style="padding-bottom:2mm;height:10mm;">
 			<b>You <i>must</i> check Box A, B, <i>or</i> C below. Check only one box.</b> If more than one box applies for your short-term transactions, complete a separate Form 8949, page 1, for each applicable box. If you have more short-term transactions than will fit on this page for one or more of the boxes, complete as many forms with the same box checked as you need.
-	</div>
+		</div>
 		<!-- END: Part I (Header)-->
 		<!-- BEGIN: Part I (Body) -->
 		<!-- ################################################################################# -->
@@ -303,6 +304,7 @@
 				</label>
 				</div>
 			</div>
+		</div>
 			<!--+++++++++++++++++++ Table Toggle Button +++++++++++++++++++-->
 			<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 			<div class="styGenericDiv" style="width:3.2mm;float:right;">
@@ -329,45 +331,6 @@
 						<xsl:call-template name="ShrtTrmGrpHeaders"/>
 					</thead>
 					<!-- ++++++++++++++++++++++++ End: Table Headers +++++++++++++++++++++++ -->
-					<!-- ++++++++++++++++++++++++ Start: Table Footers ++++++++++++++++++++++ -->
-					<tfoot>
-						<tr style="border-top:1px solid;border-color:black;height:18.5mm;">
-							<td colspan="3" style="border-bottom:1px solid black;border-right:1px solid black;">
-								<div class="styIRS8949LNDesc" style="width:80mm;padding-left:0mm;height:auto;padding-top:3mm;">
-									<span style=""><b>2 Totals</b>. Add the amounts in columns (d), (e), (g), and (h)</span>
-									<span style="padding-left:3mm;">
-									(subtract negative amounts). Enter each total here and include on your Schedule D, <b>line 1b</b> (if <b>Box A</b> above is checked), <b>line 2</b> (if <b>Box B</b> above is checked), or <b>line 3</b> (if <b>Box C</b> above is checked).
-									<!--Dotted Line-->
-									<span style="font-weight:bold;letter-spacing:3mm;text-align:right;padding-left:3mm;padding-right:2px;">.......</span>
-									<img alt="Small arrow" src="{$ImagePath}/8949_Bullet_Sm.gif" width="8" height="8"/></span>
-								</div>
-							</td>
-							<td class="styIRS8949TableCell" valign="bottom" style="width:30mm;padding-bottom:1mm;font-size: 6pt; text-align:right; border-bottom:1px solid black;border-right:1px solid black;">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$NodeData/TotalProceedsSalesPriceAmt"/>
-								</xsl:call-template>
-							</td>
-							<td class="styIRS8949TableCell" valign="bottom" style="width:30.8mm;padding-bottom:1mm;font-size: 6pt; text-align:right; border-bottom:1px solid black;border-right:1px solid black;">
-								<xsl:call-template name="PopulateNegativeNumber">
-									<xsl:with-param name="TargetNode" select="$NodeData/TotalCostOrOtherBasisAmt"/>
-								</xsl:call-template>
-							</td>
-							<td class="styIRS8949TableCell" valign="bottom" style="width:15mm;padding-bottom:1mm;font-size: 7pt; text-align:right; background-color:lightgrey;border-bottom:1px solid black;border-right:1px solid black;">
-								<span class="styIRS8949TableCellPad"/>
-							</td>
-							<td class="styIRS8949TableCell" valign="bottom" style="width:30mm;padding-bottom:1mm;font-size: 6pt; text-align:right; border-bottom:1px solid black;border-right:1px solid black;">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$NodeData/TotAdjustmentsToGainOrLossAmt"/>
-								</xsl:call-template>
-							</td>
-							<td class="styIRS8949TableCell" valign="bottom" style="width:30mm;padding-bottom:1mm;font-size: 6pt; text-align:right; border-bottom:1px solid black;border-right:0px;">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$NodeData/TotalGainOrLossAmt"/>
-								</xsl:call-template>
-							</td>
-						</tr>
-					</tfoot>
-					<!-- ++++++++++++++++++++++++ End: Table Footers +++++++++++++++++++++++ -->
 					<tbody>
 						<!-- ++++++++++++++++++++++++++ Start  Populating +++++++++++++++++++++++ -->
 						<xsl:if test="($Print != $Separated) or (count($NodeData/CapitalGainAndLossAssetGrp) &lt;= $p1Lines)">
@@ -427,8 +390,50 @@
 							</xsl:call-template>
 						</xsl:if>
 						<!-- +++++++++++++++++++++++++++ End  Populating +++++++++++++++++++++++ -->
+						<!-- ++++++++++++++++++++++++ Start: Table Footers ++++++++++++++++++++++ -->
+					<tr>
+						<tr style="border-top:1px solid;border-color:black;height:18.5mm;">
+							<td colspan="3" style="border-bottom:1px solid black;border-right:1px solid black;">
+								<div class="styIRS8949LNDesc" style="width:80mm;padding-left:0mm;height:auto;padding-top:3mm;">
+									<span style=""><b>2 Totals</b>. Add the amounts in columns (d), (e), (g), and (h)</span>
+									<span style="padding-left:3mm;">
+									(subtract negative amounts). Enter each total here and include on your Schedule D, <b>line 1b</b> (if <b>Box A</b> above is checked), <b>line 2</b> (if <b>Box B</b> above is checked), or <b>line 3</b> (if <b>Box C</b> above is checked).
+									<!--Dotted Line-->
+									<span style="font-weight:bold;letter-spacing:3mm;text-align:right;padding-left:3mm;padding-right:2px;">.......</span>
+									<img alt="Small arrow" src="{$ImagePath}/8949_Bullet_Sm.gif" width="8" height="8"/></span>
+								</div>
+							</td>
+							<td class="styIRS8949TableCell" valign="bottom" style="width:30mm;padding-bottom:1mm;font-size: 6pt; text-align:right; border-bottom:1px solid black;border-right:1px solid black;">
+								<xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="TargetNode" select="$NodeData/TotalProceedsSalesPriceAmt"/>
+								</xsl:call-template>
+							</td>
+							<td class="styIRS8949TableCell" valign="bottom" style="width:30.8mm;padding-bottom:1mm;font-size: 6pt; text-align:right; border-bottom:1px solid black;border-right:1px solid black;">
+								<xsl:call-template name="PopulateNegativeNumber">
+									<xsl:with-param name="TargetNode" select="$NodeData/TotalCostOrOtherBasisAmt"/>
+								</xsl:call-template>
+							</td>
+							<td class="styIRS8949TableCell" valign="bottom" style="width:15mm;padding-bottom:1mm;font-size: 7pt; text-align:right; background-color:lightgrey;border-bottom:1px solid black;border-right:1px solid black;">
+								<span class="styIRS8949TableCellPad"/>
+							</td>
+							<td class="styIRS8949TableCell" valign="bottom" style="width:30mm;padding-bottom:1mm;font-size: 6pt; text-align:right; border-bottom:1px solid black;border-right:1px solid black;">
+								<xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="TargetNode" select="$NodeData/TotAdjustmentsToGainOrLossAmt"/>
+								</xsl:call-template>
+							</td>
+							<td class="styIRS8949TableCell" valign="bottom" style="width:30mm;padding-bottom:1mm;font-size: 6pt; text-align:right; border-bottom:1px solid black;border-right:0px;">
+								<xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="TargetNode" select="$NodeData/TotalGainOrLossAmt"/>
+								</xsl:call-template>
+							</td>
+						</tr>
+					</tr>
+					<!-- ++++++++++++++++++++++++ End: Table Footers +++++++++++++++++++++++ -->
 					</tbody>
 				</table>
+				<div class="styGenericDiv" style="width:187mm;padding-top:0.5mm;padding-bottom:0.5mm;">
+			<b>Note:</b> If you checked Box A above but the basis reported to the IRS was incorrect, enter in column (e) the basis as reported to the IRS, and enter an adjustment in column (g) to correct the basis. See <i>Column</i> (g) in the separate instructions for how to figure the amount of the adjustment.
+				</div>
 			</div>
 			<!-- Set Initial Height of Above Table -->
 			<xsl:call-template name="SetInitialDynamicTableHeight">
@@ -440,10 +445,7 @@
 			<!-- End Set Initial Height of Above Table -->
 			<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 		</div>
-		<div class="styGenericDiv" style="width:187mm;padding-top:0.5mm;padding-bottom:0.5mm;">
-			<b>Note:</b> If you checked Box A above but the basis reported to the IRS was incorrect, enter in column (e) the basis as reported to the IRS, and enter an adjustment in column (g) to correct the basis. See <i>Column</i> (g) in the separate instructions for how to figure the amount of the adjustment.
-					</div>
-		<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+				<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 		<!-- End (Line) 1 & 2 -->
 		<!-- ################################################################################# -->
 		<!-- END: Part I (Body) -->
@@ -455,6 +457,7 @@
 		<xsl:variable name="containerPos">LongTermCapitalGainAndLossGrpDiv<xsl:number value="position()"/>
 		</xsl:variable>
 		<!-- BEGIN: Part II (Header)-->
+	<div style="width:187mm;">
 		<div class="styIRS8949LineItem" style="padding-top:0mm;padding-bottom:1.5mm;border-bottom:1px solid;border-top:1px solid;clear:all;height:18mm;">
 			<div class="styPartName" style="width:13mm;">Part II</div>
 			<div class="styIRS8949LineItem" style="width:174mm;font-size:8pt;padding-left:2px;">
@@ -464,7 +467,7 @@
 		</div>
 		<div class="styIRS8949LineItem" style="padding-bottom:2mm;height:10mm;">
 			<b>You <i>must</i> check Box D, E, <i>or</i> F below. Check only one box.</b> If more than one box applies for your long-term transactions, complete a separate Form 8949, page 2, for each applicable box. If you have more long-term transactions than will fit on this page for one or more of the boxes, complete as many forms with the same box checked as you need.
-	</div>
+		</div>
 		<!-- END: Part I (Header)-->
 		<!-- BEGIN: Part I (Body) -->
 		<!-- ################################################################################# -->
@@ -536,6 +539,7 @@
 				</label>
 				</div>
 			</div>
+		</div>
 			<!--+++++++++++++++++++ Table Toggle Button +++++++++++++++++++-->
 			<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 			<div class="styGenericDiv" style="width:3.2mm;float:right;">
@@ -564,44 +568,6 @@
 						</xsl:call-template>
 					</thead>
 					<!-- ++++++++++++++++++++++++ End: Table Headers +++++++++++++++++++++++ -->
-					<!-- ++++++++++++++++++++++++ Start: Table Footers ++++++++++++++++++++++ -->
-					<tfoot>
-						<tr style="border-top:1px solid;border-color:black;height:18.5mm;">
-							<td colspan="3" style="border-bottom:1px solid black;border-right:1px solid black;">
-								<div class="styIRS8949LNDesc" style="width:80mm;padding-left:0mm;height:auto;padding-top:3mm;">
-									<span class=""><b>2 Totals</b>. Add the amounts in columns (d), (e), (g), and (h)</span>
-									<span style="padding-left:3mm;">(subtract negative amounts). Enter each total here and include on your Schedule D, <b>line 8b</b> (if <b>Box D</b> above is checked), <b>line 9</b> (if <b>Box E</b> above is checked), or <b>line 10</b> (if <b>Box F</b> above is checked)
-								<!--Dotted Line-->
-									<span style="font-weight:bold;letter-spacing:3mm;text-align:right;padding-left:3mm;padding-right:2px;">..........</span>
-									<img alt="Small arrow" src="{$ImagePath}/8949_Bullet_Sm.gif" width="8" height="8"/></span>
-								</div>
-							</td>
-							<td class="styIRS8949TableCell" valign="bottom" style="width:30mm;padding-bottom:1mm;font-size: 6pt; text-align:right; border-bottom:1px solid black;border-right:1px solid black;">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$NodeData/TotalProceedsSalesPriceAmt"/>
-								</xsl:call-template>
-							</td>
-							<td class="styIRS8949TableCell" valign="bottom" style="width:30.8mm;padding-bottom:1mm;font-size: 6pt; text-align:right; border-bottom:1px solid black;border-right:1px solid black;">
-								<xsl:call-template name="PopulateNegativeNumber">
-									<xsl:with-param name="TargetNode" select="$NodeData/TotalCostOrOtherBasisAmt"/>
-								</xsl:call-template>
-							</td>
-							<td class="styIRS8949TableCell" valign="bottom" style="width:15mm;padding-bottom:1mm;font-size: 6pt; text-align:right; background-color:lightgrey;border-bottom:1px solid black;border-right:1px solid black;">
-								<span class="styIRS8949TableCellPad"/>
-							</td>
-							<td class="styIRS8949TableCell" valign="bottom" style="width:30mm;padding-bottom:1mm;font-size: 6pt; text-align:right; border-bottom:1px solid black;border-right:1px solid black;">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$NodeData/TotAdjustmentsToGainOrLossAmt"/>
-								</xsl:call-template>
-							</td>
-							<td class="styIRS8949TableCell" valign="bottom" style="width:30mm;padding-bottom:1mm;font-size: 6pt; text-align:right; border-bottom:1px solid black;border-right:0px;">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$NodeData/TotalGainOrLossAmt"/>
-								</xsl:call-template>
-							</td>
-						</tr>
-					</tfoot>
-					<!-- ++++++++++++++++++++++++ End: Table Footers +++++++++++++++++++++++ -->
 					<tbody>
 						<!-- ++++++++++++++++++++++++++ Start  Populating +++++++++++++++++++++++ -->
 						<xsl:if test="($Print != $Separated) or (count($NodeData/CapitalGainAndLossAssetGrp) &lt;= $p2Lines)">
@@ -661,8 +627,49 @@
 							</xsl:call-template>
 						</xsl:if>
 						<!-- +++++++++++++++++++++++++++ End  Populating +++++++++++++++++++++++ -->
+						<!-- ++++++++++++++++++++++++ Start: Table Footers ++++++++++++++++++++++ -->
+					<tr>
+						<tr style="border-top:1px solid;border-color:black;height:18.5mm;">
+							<td colspan="3" style="border-bottom:1px solid black;border-right:1px solid black;">
+								<div class="styIRS8949LNDesc" style="width:80mm;padding-left:0mm;height:auto;padding-top:3mm;">
+									<span class=""><b>2 Totals</b>. Add the amounts in columns (d), (e), (g), and (h)</span>
+									<span style="padding-left:3mm;">(subtract negative amounts). Enter each total here and include on your Schedule D, <b>line 8b</b> (if <b>Box D</b> above is checked), <b>line 9</b> (if <b>Box E</b> above is checked), or <b>line 10</b> (if <b>Box F</b> above is checked)
+								<!--Dotted Line-->
+									<span style="font-weight:bold;letter-spacing:3mm;text-align:right;padding-left:3mm;padding-right:2px;">..........</span>
+									<img alt="Small arrow" src="{$ImagePath}/8949_Bullet_Sm.gif" width="8" height="8"/></span>
+								</div>
+							</td>
+							<td class="styIRS8949TableCell" valign="bottom" style="width:30mm;padding-bottom:1mm;font-size: 6pt; text-align:right; border-bottom:1px solid black;border-right:1px solid black;">
+								<xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="TargetNode" select="$NodeData/TotalProceedsSalesPriceAmt"/>
+								</xsl:call-template>
+							</td>
+							<td class="styIRS8949TableCell" valign="bottom" style="width:30.8mm;padding-bottom:1mm;font-size: 6pt; text-align:right; border-bottom:1px solid black;border-right:1px solid black;">
+								<xsl:call-template name="PopulateNegativeNumber">
+									<xsl:with-param name="TargetNode" select="$NodeData/TotalCostOrOtherBasisAmt"/>
+								</xsl:call-template>
+							</td>
+							<td class="styIRS8949TableCell" valign="bottom" style="width:15mm;padding-bottom:1mm;font-size: 6pt; text-align:right; background-color:lightgrey;border-bottom:1px solid black;border-right:1px solid black;">
+								<span class="styIRS8949TableCellPad"/>
+							</td>
+							<td class="styIRS8949TableCell" valign="bottom" style="width:30mm;padding-bottom:1mm;font-size: 6pt; text-align:right; border-bottom:1px solid black;border-right:1px solid black;">
+								<xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="TargetNode" select="$NodeData/TotAdjustmentsToGainOrLossAmt"/>
+								</xsl:call-template>
+							</td>
+							<td class="styIRS8949TableCell" valign="bottom" style="width:30mm;padding-bottom:1mm;font-size: 6pt; text-align:right; border-bottom:1px solid black;border-right:0px;">
+								<xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="TargetNode" select="$NodeData/TotalGainOrLossAmt"/>
+								</xsl:call-template>
+							</td>
+						</tr>
+					</tr>
+					<!-- ++++++++++++++++++++++++ End: Table Footers +++++++++++++++++++++++ -->
 					</tbody>
 				</table>
+				<div class="styGenericDiv" style="width:187mm;padding-top:0.5mm;padding-bottom:0.5mm;">
+			<b>Note:</b> If you checked Box D above but the basis reported to the IRS was incorrect, enter in column (e) the basis as reported to the IRS, and enter an adjustment in column (g) to correct the basis. See <i>Column</i> (g) in the separate instructions for how to figure the amount of the adjustment.
+				</div>
 			</div>
 			<!-- Set Initial Height of Above Table -->
 			<xsl:call-template name="SetInitialDynamicTableHeight">
@@ -674,9 +681,7 @@
 			<!-- End Set Initial Height of Above Table -->
 			<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 		</div>
-		<div class="styGenericDiv" style="width:187mm;padding-top:0.5mm;padding-bottom:0.5mm;">
-			<b>Note:</b> If you checked Box D above but the basis reported to the IRS was incorrect, enter in column (e) the basis as reported to the IRS, and enter an adjustment in column (g) to correct the basis. See <i>Column</i> (g) in the separate instructions for how to figure the amount of the adjustment.
-					</div>
+		
 		<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 		<!-- End (Line) 1 & 2 -->
 		<!-- ################################################################################# -->
@@ -711,7 +716,7 @@
 				</div>
 			</xsl:if>
 		</div>
-		<p style="page-break-before: always"/>
+		<!--<p style="page-break-before: always"/>-->
 		<!-- END Page Break and Footer-->
 		<!-- BEGIN Page Header -->
 		<div class="styTBB" style="width:187mm;padding-top:.5mm;float:none;clear:both;">
@@ -1068,7 +1073,7 @@
 							<table class="styDepTbl" cellspacing="0" style="width:187mm;">
 								<thead class="styTableThead">
 									<xsl:call-template name="ShrtTrmGrpHeaders">
-										<xsl:with-param name="lineNumber" select="3"/>
+										<!--<xsl:with-param name="lineNumber" select="3"/>-->
 									</xsl:call-template>
 								</thead>
 								<tbody>

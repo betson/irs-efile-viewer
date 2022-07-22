@@ -40,7 +40,7 @@
     <!-- Begin Void and Corrected Check Boxes -->
     <div class="styBB" style="width:187mm;">
       <span style="width:45mm;font-size: 10pt;"/>
-      <input type="checkbox" class="styCkbox" style="height:4mm;width:4mm;">
+      <input type="checkbox" class="styCkbox" alt="IRS2439VoidBoxIndicator" style="height:4mm;width:4mm;">
         <xsl:call-template name="PopulateCheckbox">
           <xsl:with-param name="TargetNode" select="$Form2439Data/VoidInd"/>
           <xsl:with-param name="BackupName">IRS2439VoidBoxIndicator</xsl:with-param>
@@ -55,7 +55,7 @@
           </xsl:call-template> VOID
         </label>
      </span>
-      <input type="checkbox" class="styCkbox" style="height:4mm;width:4mm;">
+      <input type="checkbox" class="styCkbox" alt="IRS2439CorrectedBoxIndicator" style="height:4mm;width:4mm;">
         <xsl:call-template name="PopulateCheckbox">
           <xsl:with-param name="TargetNode" select="$Form2439Data/CorrectedInd"/>
           <xsl:with-param name="BackupName">IRS2439CorrectedBoxIndicator</xsl:with-param>
@@ -279,6 +279,7 @@
         <span class="styIRS2439leftBoxWithBottom" style="height:8mm;width:87mm;padding-left:1mm;">
           <span style="font-size: 6pt;">Shareholder's identifying number</span>
       <xsl:choose>
+		  <!-- Changes to this process made 170511 by gdy per UWR 194393 -->
           <xsl:when test="$Form2439Data/ShareholderEIN">
             <div style="width:85mm;text-align:center;padding-top:2mm;">
             <xsl:call-template name="PopulateEIN">
@@ -293,12 +294,35 @@
             </xsl:call-template>
             </div>
           </xsl:when>
-          <xsl:otherwise>
+          <xsl:when test="$Form2439Data/ShareholderMissingEINReasonCd">
             <div style="width:85mm;text-align:center;padding-top:2mm;">
             <xsl:call-template name="PopulateText">
                  <xsl:with-param name="TargetNode" select="$Form2439Data/ShareholderMissingEINReasonCd"/>
             </xsl:call-template>
             </div>
+          </xsl:when>
+		  <xsl:when test="$RtnHdrData/Filer/PrimarySSN">
+            <div style="width:85mm;text-align:center;padding-top:2mm;">
+				 <xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+				 </xsl:call-template>
+			</div>
+		  </xsl:when>
+		  <xsl:when test="$RtnHdrData/Filer/SSN">
+            <div style="width:85mm;text-align:center;padding-top:2mm;">
+				 <xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+				 </xsl:call-template>
+			</div>
+		  </xsl:when>
+		  <xsl:when test="$RtnHdrData/Filer/EIN">
+            <div style="width:85mm;text-align:center;padding-top:2mm;">
+				 <xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+				 </xsl:call-template>
+			</div>
+		  </xsl:when>
+          <xsl:otherwise>
           </xsl:otherwise>
       </xsl:choose>
         </span>
@@ -307,25 +331,57 @@
           <span style="font-size: 6pt;">Shareholder's name, address, and ZIP code</span>
           <br/>
        <xsl:choose>
-             <xsl:when test="$Form2439Data/ShareholderBusinessName">
-          	<xsl:call-template name="PopulateText">
-          	  <xsl:with-param name="TargetNode" select="$Form2439Data/ShareholderBusinessName/BusinessNameLine1Txt"/>
-          	</xsl:call-template>
-          	<xsl:if test="$Form2439Data/ShareholderBusinessName/BusinessNameLine2Txt != ''">
+		  <!-- Changes to this process made 170510 by gdy per UWR 194393 -->
+            <xsl:when test="$Form2439Data/ShareholderBusinessName">
+				<xsl:call-template name="PopulateText">
+				  <xsl:with-param name="TargetNode" select="$Form2439Data/ShareholderBusinessName/BusinessNameLine1Txt"/>
+				</xsl:call-template>
             	   <br/>
-            	   <xsl:call-template name="PopulateText">
-            	     <xsl:with-param name="TargetNode" select="$Form2439Data/ShareholderBusinessName/BusinessNameLine2Txt"/>
-            	   </xsl:call-template>
-          	</xsl:if>
-              </xsl:when>
-           <xsl:otherwise>
+           	    <xsl:call-template name="PopulateText">
+            	    <xsl:with-param name="TargetNode" select="$Form2439Data/ShareholderBusinessName/BusinessNameLine2Txt"/>
+            	</xsl:call-template>
+            </xsl:when>
            <!-- Shareholder's Person Name -->
-           <xsl:if test="$Form2439Data/ShareholderPersonNm != ''">
+           <xsl:when test="$Form2439Data/ShareholderPersonNm">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form2439Data/ShareholderPersonNm"/>
                 </xsl:call-template>            
-           </xsl:if>
-           </xsl:otherwise>           
+           </xsl:when>
+            <!--Business Name from F1120 Return Header-->
+		    <xsl:when test="$RtnHdrData/Filer/BusinessName">
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
+		            <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+              </xsl:call-template>
+		      <br/>
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
+		            <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+              </xsl:call-template>
+            </xsl:when>
+            <!--Individual Name from F1040/NR Return Header-->
+		    <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
+		            <xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+		              </xsl:call-template>
+            </xsl:when>
+            <!--Business Name from F1041 Return Header-->
+		    <xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
+		            <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+              </xsl:call-template>
+		      <br/>
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
+		            <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+              </xsl:call-template>            
+            </xsl:when>
+            <!--National Morgage Association Code from F1041 Return Header-->
+		    <xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
+		    <br/>
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
+		            <xsl:with-param name="TargetNode">NationalMortgageAssocCd</xsl:with-param>
+              </xsl:call-template>
+            </xsl:when>
+           <xsl:otherwise>
+           </xsl:otherwise>
        </xsl:choose>
        <xsl:choose>
         <!-- US Address -->
@@ -417,7 +473,7 @@
         <div style="width:72mm;;">
           <span class="styIRS2439leftBoxWithBottom" style="height:8mm;width:72mm;border-right-width:0px;">
             <span style="font-size: 6pt;font-weight:bold;padding-left:1mm">1a</span>
-            <span style="font-size: 6pt;">Total undistributed long-term capital gains
+            <span style="font-size: 6pt;padding-left:1mm;">Total undistributed long-term capital gains
               <!-- Push pin image -->
               <xsl:call-template name="SetFormLinkInline">
                 <xsl:with-param name="TargetNode" select="$Form2439Data/TotalUndistributedLTCapGainAmt"/>
@@ -435,7 +491,7 @@
         <div style="width:72mm;float:left;">
           <span class="styIRS2439leftBoxWithBottom" style="height:8mm;width:72mm;float:left;">
             <span style="font-size: 6pt;font-weight:bold;padding-left:1mm">1b</span>
-            <span style="font-size: 6pt;">Unrecaptured section 1250 gain</span>
+            <span style="font-size: 6pt;padding-left:1mm;">Unrecaptured section 1250 gain</span>
             <br/>
             <!--<span style="width:145px;"/>-->
             <span style="width:71mm;text-align:right;padding-top:2mm;vertical-align:bottom;" valign="bottom">
@@ -449,7 +505,7 @@
         <div style="width:72mm;float:left;">
           <span class="styIRS2439leftBoxWithBottom" style="height:10mm;width:35.5mm;float:left;">
             <span style="font-size: 6pt;font-weight:bold;padding-left:1mm">1c</span>
-            <span style="font-size: 6pt;">Section 1202 gain</span>
+            <span style="font-size: 6pt;padding-left:1mm;">Section 1202 gain</span>
             <span style="width:34.5mm;text-align:right;padding-top:3mm;vertical-align:bottom" valign="bottom">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$Form2439Data/CapitalGainSect1202Amt"/>
@@ -459,7 +515,7 @@
           <!-- L1d -->
           <span class="styIRS2439leftBoxWithBottom" style="height:10mm;width:36.5mm;float:left;">
             <span style="font-size: 6pt;font-weight:bold;padding-left:1mm">1d</span>
-            <span style="font-size: 6pt;">Collectibles (28%) gain</span>
+            <span style="font-size: 6pt;padding-left:1mm;">Collectibles (28%) gain</span>
             <span style="width:35mm;text-align:right;padding-top:3mm;vertical-align:bottom" valign="bottom">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$Form2439Data/Collectibles28PercentGainAmt"/>
@@ -470,7 +526,7 @@
         <!--L2 -->
         <span class="styIRS2439leftBoxWithBottom" style="height:20mm;width:72mm;float:left;">
           <span style="font-size: 6pt;font-weight:bold;padding-left:1mm">2</span>
-          <span style="font-size: 6pt;">Tax paid by the RIC or REIT on the box 1a gains</span>
+          <span style="font-size: 6pt;padding-left:1mm;">Tax paid by the RIC or REIT on the box 1a gains</span>
             <br/>
             <span style="height:13.5mm;width:70mm;text-align:right;padding-top:13mm;vertical-align:bottom" valign="bottom">
             <xsl:call-template name="PopulateAmount">

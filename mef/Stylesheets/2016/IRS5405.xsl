@@ -141,18 +141,66 @@
 					<!-- Begin Names and Identifying number section -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styNameBox" style="width:137mm;height:8mm;font-weight:normal;font-size:7pt;">
-							Name shown on return<br/><br></br>
-							<xsl:call-template name="PopulateText">
+							Name shown on return<br/>
+							  <xsl:choose>
+                            <!-- Name from Form level -->
+                                          <xsl:when test="$Form5405Data/PersonNm">
+                                                     <xsl:call-template name="PopulateText">
+                                                     <xsl:with-param name="TargetNode" select="$Form5405Data/PersonNm"/>
+                                                     </xsl:call-template>
+                                          </xsl:when>
+                                          <!-- Name from 1040 Return Header-->
+                                          <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+                                                 <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                 <xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+                                                 </xsl:call-template>
+                                          </xsl:when>
+                                           <!-- Name from 1041 Return Header-->
+                                          <xsl:when test="$RtnHdrData/Filer/BusinessNameLine1Txt">
+                                                      <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                      <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+                                                      </xsl:call-template>
+                                               <br/>
+                                                      <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                      <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+                                                      </xsl:call-template>                                                                                                       
+                                          </xsl:when>
+                                          <xsl:otherwise> 
+                                                  <xsl:call-template name="PopulateReturnHeaderFiler"> 
+                                                  <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param> 
+                                                  </xsl:call-template>
+                                             <br/>
+                                                   <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                   <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+                                                   </xsl:call-template>
+                                            </xsl:otherwise>                                                                                                
+                                       </xsl:choose>
+							<!--<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form5405Data/PersonNm"/>
-							</xsl:call-template>
+							</xsl:call-template>-->
 						</div>
 						<div style="height:8mm;width:50mm;height:4mm;padding:0px 0px 0px 2mm;font-size:7pt;" class="styEINBox">
 							Your social security number
-							<br/><br></br>
+							<br/>
 							<span style="font-weight:normal;text-align:center;width:100%">
-								<xsl:call-template name="PopulateSSN">
+							 <xsl:choose>
+						                                              <!-- Name from Form level -->
+                                          <xsl:when test="$Form5405Data/SSN != ''">
+                                                     <xsl:call-template name="PopulateSSN">
+                                                     <xsl:with-param name="TargetNode" select="$Form5405Data/SSN"/>
+                                                     </xsl:call-template>
+                                          </xsl:when>
+                                                                                     <!-- Name from 1040 Return Header-->
+                                          <xsl:when test="$RtnHdrData/Filer/PrimarySSN">
+                                          
+                                                 <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                 <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+                                                 </xsl:call-template>
+                                          </xsl:when>
+							     </xsl:choose>
+								<!--<xsl:call-template name="PopulateSSN">
 									<xsl:with-param name="TargetNode" select="$Form5405Data/SSN"/>
-								</xsl:call-template>
+								</xsl:call-template>-->
 							</span>
 						</div>
 					</div>
@@ -181,30 +229,8 @@
 										Enter the date you disposed of, or ceased using as your main home, the home for which you claimed the<br/>
 										credit (MM/DD/YYYY) (see instructions)
 										<!--Dotted Line-->
-										<span class="styBoldText">
-											<span style="width:6px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:5px"/>
-											<img src="{$ImagePath}/5405_Bullet_Sm.gif" alt="SmallBullet"/>
-										</span>
+										<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">.......................</span>
+										<img src="{$ImagePath}/5405_Bullet_Sm.gif" alt="SmallBullet"/>
 									</div>
 								</div>
 							</div>
@@ -225,39 +251,15 @@
 									<div class="styIRS5405LNDesc" style="width:auto;height:8mm;;">
 										If you meet the following conditions, check here
 									</div>
-									<div class="styIRS5405LNDesc" style="width:auto;height:8mm;;text-align:right;float:right;padding:0px 10px 0px 0px;">
+									<div class="styIRS5405LNDesc" style="width:auto;height:8mm;text-align:right;float:right;padding:0px 10px 0px 0px;">
 										<!--Dotted Line-->
-										<span class="styBoldText">.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>
+										<span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">..........................</span>
 											<img src="{$ImagePath}/5405_Bullet_Sm.gif" alt="SmallBullet"/>
-										</span>
 									</div>
 								</div>
 							</div>
 							<div class="styIRS5405LNDesc" style="width:4mm;height:100%;padding-left:0px;padding-top:1px;float:right;">
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Conditions" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form5405Data/DispositionChangeMainHome/HomeSoldMilitaryExtDutyInd"/>
 										<xsl:with-param name="BackupName">Form5405DataDispositionChangeMainHomeHomeSoldMilitaryExtDutyInd</xsl:with-param>
@@ -343,7 +345,6 @@
 							</div>
 						</div>
 						<!-- (3c) ////////////////////////////////////////////////////-->
-						
 						<div class="styIRS5405LineItem" style="height:8mm;padding-top:2mm;">
 							<div class="styIRS5405LNLeftNumBox" style="padding-right:0px;height:8mm;">c</div>
 							<div class="styIRS5405CleanDiv" style="width:181mm;height:auto;padding:0px 0px 0px 0px;height:6mm;">
@@ -506,8 +507,6 @@
 					<!-- Body -->
 					<div class="styBB" style="width:187mm;">
 						<!-- (4) ////////////////////////////////////////////////////-->
-					
-					
 					<div class="styIRS5695LineItem" style="height:1mm;font-size:4pt;float:right;">
 						<div class="styLNLeftNumBox" style="height:1mm;font-size:4pt;"/>
 						<div class="styLNDesc" style="height:1mm;font-size:4pt;"/>
@@ -522,34 +521,15 @@
 										Enter the amount of the credit you claimed on Form 5405 for a prior year. See instructions 
 										if you filed a joint return for the year you claimed the credit or you checked the box on line 3f or 3g
 										<!--Dotted Line-->
-										<span class="styBoldText">
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-										</span>
+										<span class="styDotLn" style="float:right;clear:none;">.......</span>
 									</div>
 								</div>
 							</div>
-						
-						
-						
-							
 						</div> 
-						
 						<div style="float:right;">
-					
 						<div class="styIRS5695LineItem" style="font-size:4pt;float:right;">
-						
 					</div>
 					<div class="styIRS5695LineItem" style="float:right;">
-					
-					
-					
-					
-						
 						<div class="styLNRightNumBox" style="">4</div>
 						<div class="styLNAmountBox" style="width:29mm;">
 							<xsl:call-template name="PopulateAmount">
@@ -557,7 +537,6 @@
 							</xsl:call-template>
 						</div>
 					</div>	</div>
-						
 							<div class="styIRS5695LineItem" style="height:1mm;font-size:4pt;float:right;">
 						<div class="styLNLeftNumBox" style="height:1mm;font-size:4pt;"/>
 						<div class="styLNDesc" style="height:1mm;font-size:4pt;"/>
@@ -572,51 +551,25 @@
 									<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
 										If you purchased the home in 2008, enter the amount of the credit you repaid with your tax returns for the years 2010-2015.
 										Otherwise, enter -0-
-										<span class="styBoldText">
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-								    		<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-										</span>
+										<!--Dotted Line-->
+										<span class="styDotLn" style="float:right;clear:none;">......................</span>
 									</div>
 								</div>
 							</div>
-							
 						</div>
-						
 						<div style="float:right;">
-						<div class="styLNRightNumBox" style="padding-top:1mm;">
-						5</div>
+						<div class="styLNRightNumBox" style="padding-top:1mm;">5</div>
 						<div class="styLNAmountBox" style="width:29mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form5405Data/FirstTimeHmByrCrRepaidPYRetAmt"/>
 							</xsl:call-template>
 						</div>	</div>
-						
 						<div class="styIRS5695LineItem" style="height:1mm;font-size:4pt;float:right;">
 						<div class="styLNLeftNumBox" style="height:1mm;font-size:4pt;"/>
 						<div class="styLNDesc" style="height:1mm;font-size:4pt;"/>
 						<div class="styLNRightNumBoxNBB" style="width:8mm;height:5mm;font-size:4pt;"/>
 						<div class="styLNAmountBoxNBB" style="width:29mm;height:5mm;font-size:4pt;"/>
 					</div>
-					
 						<!-- (6) ////////////////////////////////////////////////////-->
 						<div class="styIRS5405LineItem" style="height:2mm;">
 							<div class="styIRS5405LNLeftNumBox">6</div>
@@ -625,27 +578,12 @@
 									<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
 										Subtract line 5 from line 4. If you checked the box on line 3f or 3g, see instructions. 
 										If you checked the box on line 3a, go to line 7. Otherwise, skip line 7 and go to line 8
-										<span class="styBoldText">
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-										</span>
+										<!--Dotted Line-->
+										<span class="styDotLn" style="float:right;clear:none;">...............</span>
 									</div>
 								</div>
 							</div>
-							
 						</div>
-				
 				<div style="float:right;">
 						<div class="styLNRightNumBox" style="height:4mm;">6</div>
 						<div class="styLNAmountBox" style="width:29mm;">
@@ -653,14 +591,12 @@
 								<xsl:with-param name="TargetNode" select="$Form5405Data/FirstTimeHmByrNetCrClaimedAmt"/>
 							</xsl:call-template>
 						</div></div>
-						
 						<div class="styIRS5695LineItem" style="height:1mm;font-size:4pt;float:right;">
 						<div class="styLNLeftNumBox" style="height:1mm;font-size:4pt;"/>
 						<div class="styLNDesc" style="height:1mm;font-size:4pt;"/>
 						<div class="styLNRightNumBoxNBB" style="width:8mm;height:5mm;font-size:4pt;"/>
 						<div class="styLNAmountBoxNBB" style="width:29mm;height:5mm;font-size:4pt;"/>
 					</div>
-				
 						<!-- Line 7 -->
 						<div class="styIRS5405LineItem" style="padding-top:1mm;height:1mm;">
 							<div class="styIRS5405LNLeftNumBox">7</div>
@@ -668,28 +604,12 @@
 								<div class="styIRS5405LNDesc" style="width:auto;padding:0px 0px 0px 0px;">
 									<div class="styIRS5405LNDesc" style="width:auto;">
 										Enter the gain on disposition of your main home (from line 15 below)
-									</div>
-									<div class="styIRS5405LNDesc" style="width:auto;text-align:right;">
 										<!--Dotted Line-->
-										<span class="styBoldText">.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-										</span>
+										<span class="styDotLn" style="float:right;clear:none;padding-left:3mm">............</span>
 									</div>
 								</div>
 							</div>
-							
 						</div>
-						
-						
 						<div style="float:right;">
 						<div class="styLNRightNumBox" style="height:4mm;">7</div>
 						<div class="styLNAmountBox" style="width:29mm;">
@@ -697,9 +617,6 @@
 								<xsl:with-param name="TargetNode" select="$Form5405Data/GainOnSaleOfMainHomeAmt"/>
 							</xsl:call-template>
 						</div></div>
-						
-						
-						
 						<div class="styIRS5695LineItem" style="height:1mm;font-size:4pt;float:right;">
 						<div class="styLNLeftNumBox" style="height:1mm;font-size:4pt;"/>
 						<div class="styLNDesc" style="height:1mm;font-size:4pt;"/>
@@ -713,30 +630,12 @@
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
 									<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
 										<b>Amount of the credit to be repaid.</b> See Instructions
-										<span class="styBoldText">
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-											<span style="width:11px"/>.
-										</span>
+										<!--Dotted Line-->
+										<span class="styDotLn" style="float:right;clear:none;padding-left:3.5mm;">.................</span>										
 									</div>
 								</div>
 							</div>
-							
 						</div>
-						
-						
 							<div style="float:right;">
 						<div class="styLNRightNumBox" style="height:4mm;">8</div>
 						<div class="styLNAmountBox" style="width:29mm;">
@@ -780,39 +679,20 @@
 							</div>
 						</div>
 						<!-- Line 9 -->
-						
 						<div class="styIRS5695LineItem" style="height:1mm;font-size:4pt;float:right;">
 						<div class="styLNLeftNumBox" style="height:1mm;font-size:4pt;"/>
 						<div class="styLNDesc" style="height:1mm;font-size:4pt;"/>
 						<div class="styLNRightNumBoxNBB" style="width:8mm;height:5mm;font-size:4pt;"/>
 						<div class="styLNAmountBoxNBB" style="width:29mm;height:5mm;font-size:4pt;"/>
 					</div>
-						
-						
 						<div class="styIRS5405LineItem" style="height:1mm;" >
 							<div class="styIRS5405LNLeftNumBox">9</div>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
-								<span class="styGenericDiv">Selling price of home, insurance proceeds, or gross condemnation award</span>
-								<span class="styBoldText" style="float:right;padding-right:10px;">.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-								</span>
+								Selling price of home, insurance proceeds, or gross condemnation award
+								<!--Dotted Line-->
+								<span class="styDotLn" style="float:right;clear:none;">...........</span>
 							</div>
-							
-							
-							
-							
-							
-							
-							
 						</div>
-						
 						<div style="float:right;">
 						<div class="styLNRightNumBox" style="height:3.5mm;">9</div>
 						<div class="styLNAmountBox" style="width:29mm;height:3.5mm;">
@@ -827,35 +707,15 @@
 						<div class="styLNRightNumBoxNBB" style="width:8mm;height:5mm;font-size:4pt;"/>
 						<div class="styLNAmountBoxNBB" style="width:29mm;height:5mm;font-size:4pt;"/>
 					</div>
-						
-						
 						<div class="styIRS5405LineItem" style="height:4mm;">
 							<div class="styIRS5405LNLeftNumBox">10</div>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
 								Selling expenses (including commissions, advertising and legal fees, and seller-paid loan charges) or <br/>
-								<span class="styGenericDiv">expenses in getting the condemnation award</span>
-								<span class="styBoldText" style="float:right;padding-right:10px;">.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-								</span>
+								expenses in getting the condemnation award
+								<!--Dotted Line-->
+								<span class="styDotLn" style="float:right;clear:none;">....................</span>
 							</div>
-							
 						</div>
-						
 						<div style="float:right;">
 						<div class="styLNRightNumBox" style="height:3.5mm;">10</div>
 						<div class="styLNAmountBox" style="width:29mm;height:3.5mm;">
@@ -870,27 +730,14 @@
 						<div class="styLNRightNumBoxNBB" style="width:8mm;height:5mm;font-size:4pt;"/>
 						<div class="styLNAmountBoxNBB" style="width:29mm;height:5mm;font-size:4pt;"/>
 					</div>
-						
 						<div class="styIRS5405LineItem" style="height:1mm;" >
 							<div class="styIRS5405LNLeftNumBox">11</div>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
-								<span class="styGenericDiv">Subtract line 10 from line 9. This is the amount realized on the sale of the home</span>
-								<span class="styBoldText" style="float:right;padding-right:10px;">.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-								</span>
+								Subtract line 10 from line 9. This is the amount realized on the sale of the home
+								<!--Dotted Line-->
+								<span class="styDotLn" style="float:right;clear:none;">.........</span>
 							</div>
-						
 						</div>
-						
-						
-						
-						
-						
 						<div style="float:right;">
 						<div class="styLNRightNumBox" style="height:3.5mm;">11</div>
 						<div class="styLNAmountBox" style="width:29mm;height:3.5mm;">
@@ -905,33 +752,14 @@
 						<div class="styLNRightNumBoxNBB" style="width:8mm;height:5mm;font-size:4pt;"/>
 						<div class="styLNAmountBoxNBB" style="width:29mm;height:5mm;font-size:4pt;"/>
 					</div>
-						
 						<div class="styIRS5405LineItem" style="height:2mm;">
 							<div class="styIRS5405LNLeftNumBox">12</div>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
-								<span class="styGenericDiv">Adjusted basis of home sold (see instructions)</span>
-								<span class="styBoldText" style="float:right;padding-right:10px;">.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-								</span>
+								Adjusted basis of home sold (see instructions)
+								<!--Dotted Line-->
+								<span class="styDotLn" style="float:right;clear:none;">....................</span>
 							</div>
-							
 						</div>
-						
 						<div style="float:right;">
 						<div class="styLNRightNumBox" style="height:3.3mm;">12</div>
 						<div class="styLNAmountBox" style="width:29mm;height:3.3mm;">
@@ -946,36 +774,15 @@
 						<div class="styLNRightNumBoxNBB" style="width:8mm;height:5mm;font-size:4pt;"/>
 						<div class="styLNAmountBoxNBB" style="width:29mm;height:5mm;font-size:4pt;"/>
 					</div>
-						
 						<div class="styIRS5405LineItem" style="height:4mm;">
 							<div class="styIRS5405LNLeftNumBox">13</div>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
 							Enter the first-time homebuyer credit claimed on Form 5405 <b>minus</b> the amount of the credit you
-								repaid<br/>
-								<span class="styGenericDiv">with your tax returns for the years 2010-2015</span>
-								<span class="styBoldText" style="float:right;padding-right:10px;">.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									
-								</span>
+							repaid<br/> with your tax returns for the years 2010-2015
+							<!--Dotted Line-->
+							<span class="styDotLn" style="float:right;clear:none;">....................</span>							
 							</div>
 						</div>
-
 <div style="float:right;">
 						<div class="styLNRightNumBox" style="height:3.3mm;">13</div>
 						<div class="styLNAmountBox" style="width:29mm;height:3.3mm;">
@@ -990,21 +797,14 @@
 						<div class="styLNRightNumBoxNBB" style="width:8mm;height:5mm;font-size:4pt;"/>
 						<div class="styLNAmountBoxNBB" style="width:29mm;height:5mm;font-size:4pt;"/>
 					</div>
-						
 						<div class="styIRS5405LineItem" style="height:1mm;">
 							<div class="styIRS5405LNLeftNumBox">14</div>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
-								<span class="styGenericDiv">Subtract line 13 from line 12. This is the adjusted basis for purposes of repaying the credit</span>
-								<span class="styBoldText" style="float:right;padding-right:10px;">
-									.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-								</span>
+								Subtract line 13 from line 12. This is the adjusted basis for purposes of repaying the credit
+								<!--Dotted Line-->
+								<span class="styDotLn" style="float:right;clear:none;">.....</span>
 							</div>
-							
 						</div>
-						
 						<div style="float:right">
 						<div class="styLNRightNumBox" style="height:3.3mm;">14</div>
 						<div class="styLNAmountBox" style="width:29mm;height:3.3mm;">
@@ -1025,38 +825,14 @@
 						<div class="styLNRightNumBoxNBB" style="width:8mm;height:5mm;font-size:4pt;"/>
 						<div class="styLNAmountBoxNBB" style="width:29mm;height:5mm;font-size:4pt;"/>
 					</div>
-						
 						<div class="styIRS5405LineItem" style="height:1mm;">
 							<div class="styIRS5405LNLeftNumBox">15</div>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
-								<span class="styGenericDiv">Subtract line 14 from line 11</span>
-								<span class="styBoldText" style="float:right;padding-right:10px;">
-									.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-																		<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-								</span>
+								Subtract line 14 from line 11
+								<!--Dotted Line-->
+								<span class="styDotLn" style="float:right;clear:none;">..........................</span>
 							</div>
-							
 						</div>
-						
 						<div style="float:right">
 						<div class="styLNRightNumBox" style="height:3.3mm;">15</div>
 						<div class="styLNAmountBox" style="width:29mm;height:3.3mm;">
@@ -1065,52 +841,6 @@
 							</xsl:call-template>
 						</div></div>
 						<!-- Line 15 -->
-						<!--<div class="styIRS5695LineItem" style="height:1mm;font-size:4pt;float:right;">
-						<div class="styLNLeftNumBox" style="height:1mm;font-size:4pt;"/>
-						<div class="styLNDesc" style="height:1mm;font-size:4pt;"/>
-						<div class="styLNRightNumBoxNBB" style="width:8mm;height:5mm;font-size:4pt;"/>
-						<div class="styLNAmountBoxNBB" style="width:29mm;height:5mm;font-size:4pt;"/>
-					</div>	-->
-						<!--<div class="styIRS5405LineItem" >
-							<div class="styIRS5405LNLeftNumBox">15</div>
-							<div class="styIRS5405LNDesc" style="width:144mm;">
-								<span class="styGenericDiv">Subtract line 14 from line 11</span>
-								<span class="styBoldText" style="float:right;padding-right:10px;">
-									.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-								</span>
-							</div>
-							
-						</div>
-						
-						<div style="float:right">
-						<div class="styLNRightNumBox" style="padding-bottom:3.4mm">15</div>
-						<div class="styLNAmountBox" style="width:29mm;">
-							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form5405Data/GainOrLossFromWorksheetAmt"/>
-							</xsl:call-template>
-						</div></div>-->
-						
 						<div class="styIRS5405LineItem" style="height:28mm;">
 							<div class="styIRS5405LNLeftNumBox"/>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
@@ -1125,9 +855,6 @@
 							</div>
 						</div>
 					</div>
-					
-					
-					
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Page Break and Footer-->
 					<div class="pageEnd" style="width:187mm;padding-top:1mm;clear:all;">
@@ -1136,13 +863,13 @@
 								For Paperwork Reduction Act Notice, see your tax return instructions.
 							</span>
 						</div>
+						<div style="font-size:7pt;">
+							<span style="width:39mm;"/>  
+							Cat. No. 11880I
+						</div>						
 						<div style="float:right;">
-							<span style="width:50px;"/>  
 								Form 
 							<span class="styBoldText" style="font-size:8pt;">5405</span> (Rev. 12-2016)
-						</div>
-						<div style="float:right;text-align:center;width:26mm;font-size:7pt;">
-							Cat. No. 11880I
 						</div>
 					</div>
 					<!-- END Page Break and Footer-->

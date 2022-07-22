@@ -72,27 +72,50 @@
 						</div>
 					</div>
 					<!-- Name(s) shown on return -->
-					<div class="styBB" style="width:187mm;">
-						<div class="styFNBox" style="width:140mm;height:9mm;">
+				<div class="styBB" style="width:187mm;">
+					<div class="styFNBox" style="width:140mm;height:9mm;">
                     Name(s) shown on tax return<br/>
+                    <!-- 1040x Return Header Attached -->
+                    <xsl:if test="$RtnHdrData/Filer/NameLine1Txt">
+                    <span style="padding-left:2mm;padding-top:3mm;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/NameLine1Txt"/> 
 							</xsl:call-template>
-							<xsl:if test="$RtnHdrData/Filer/NameLine2Txt">
-								<br/>
-								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/NameLine2Txt"/>
+					 </span>
+					</xsl:if>
+					<!-- If 1041 Return Header Attached -->		
+					<xsl:if test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+							</xsl:call-template>
+					</xsl:if>
+					<xsl:if test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt">
+							<br/>
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
+							</xsl:call-template>
+					</xsl:if>
+				</div>
+					<!-- Identifying Number -->
+				<div style="padding-left:1mm;"/>
+					<b> Identifying number</b><br/>
+						<!-- 1040 Return Header Attached -->
+						<xsl:if test="$RtnHdrData/Filer/PrimarySSN">
+						<span style="padding-left:2mm;padding-top:3mm;">
+								<xsl:call-template name="PopulateSSN">
+									<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/PrimarySSN"/>
 								</xsl:call-template>
-							</xsl:if>
-						</div>
-							<div style="padding-left:1mm;"/>
-								<b> Identifying number</b><br/>
-								<span style="padding-left:2mm;">
-									<xsl:call-template name="PopulateSSN">
-										<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/PrimarySSN"/>
-									</xsl:call-template>
+						 </span >
+						</xsl:if>
+						<xsl:if test="$RtnHdrData/Filer/EIN">
+							    <br/>
+							    <span style="padding-left:2mm;">
+								<xsl:call-template name="PopulateEIN">
+										<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/EIN"/>
+								</xsl:call-template>
 								</span >
-							</div>
+						</xsl:if>
+				</div>
 					<!--  start instructions -->
 	<div style="width:187mm;height:92mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px; padding bottom:1mm;float:left;">
@@ -173,7 +196,7 @@
 					</div>
 					<!-- Part l -->
 					<!-- Part I - Header -->
-					<div style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;float:left;padding-top:0mm;">
 						<span class="styPartName" style="height:4mm;width:12mm;font-size:13;">Part l</span>
 						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
@@ -412,7 +435,7 @@
 					</div>
 					<!-- Part ll -->
 					<!-- Part Il - Header -->
-					<div style="width:187mm;height:4mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div style="width:187mm;height:4.5mm;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;">
 						<span class="styPartName" style="height:4mm;width:12mm;font-size:13;">Part ll</span>
 						<div class="styPartDesc" style="width:170mm;font-weight:normal;">
@@ -588,7 +611,7 @@
 					<!-- END Page Header -->
 					<!-- Part lll -->
 					<!-- Part Ill - Header -->
-					<div style="width:187mm;height:4mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div style="width:187mm;height:4.5mm;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;float:left;">
 						<span class="styPartName" style="height:4mm;width:15mm;font-size:13;">Part lll</span>
 						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
@@ -876,7 +899,7 @@
 					<!-- END Page Header -->
 					<!-- Part lV -->
 					<!-- Part lV - Header -->
-					<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;float:left;">
 						<span class="styPartName" style="height:4mm;width:15mm;font-size:13;">Part lV</span>
 						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
@@ -1253,7 +1276,7 @@
 						</div>
 					</div>
 					<!-- END Page Header -->
-					<div class="styBB" style="width:187mm;float:left;clear:none;">
+					<div class="styBB" style="width:187mm;border-top-width:1px;float:left;clear:none;">
 						<div class="styLNDesc" style="width:187mm;font-size:8pt;border-right-width:1px;height:4mm;">
 							<b>Schedule AI—Annualized Income Installment Method</b> (See the instructions.)
                         </div>
@@ -1279,7 +1302,7 @@
 					</div>
 					<!-- Part l -->
 					<!-- Part I - Header -->
-					<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;float:left;clear:none;">
 						<span class="styPartName" style="height:4mm;width:12mm;font-size:13;">Part l</span>
 						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
@@ -2348,33 +2371,33 @@
 			</tr>
 			<!--Line 34-->
 			<tr style="width:187mm;float:left;clear:none;">
-				<td class="styLNLeftNumBox" style="width:5mm;padding-left: 2mm;height:9mm; border-bottom-width:1px; border-color:black; border-style:solid; border-left-width:0px; border-right-width:0px; border-top-width:0px;padding-bottom:3mm;">34
+				<td class="styLNLeftNumBox" style="width:5mm;padding-left: 2mm;height:9mm; border-bottom-width:2px; border-color:black; border-style:solid; border-left-width:0px; border-right-width:0px; border-top-width:0px;padding-bottom:3mm;">34
                                     </td>
-				<td class="styLNDesc" style="font-size:7pt; width:72mm; border-bottom-width:1px; border-color:black; border-style:solid; border-left-width:0px; border-right-width:0px; border-top-width:0px; height:9mm;padding-left:2mm;">
+				<td class="styLNDesc" style="font-size:7pt; width:72mm; border-bottom-width:2px; border-color:black; border-style:solid; border-left-width:0px; border-right-width:0px; border-top-width:0px; height:9mm;padding-left:2mm;">
 					<span  style="float:left;padding-right:10mm;">Add lines 31 and 33. Enter here and on line</span> 
 					<span style="float:left;"> 13 above</span>
 					<span class="styIRS2210DotLn">...........
                     <img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"/>
 					</span>
 				</td>
-				<td class="styLNRightNumBox" style="font-size:7pt;height:9mm; width:6mm;  border-bottom-width:0px; border-right-width:1px; border-bottom-width:1px;padding-top:5.3mm;">34
+				<td class="styLNRightNumBox" style="font-size:7pt;height:9mm; width:6mm; border-bottom-width:2px; border-right-width:1px; padding-top:5.3mm;">34
                 </td>
-				<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; vertical-align:bottom;float:left;height:9mm;padding-top:5.5mm;">
+				<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; border-bottom-width:2px; vertical-align:bottom;float:left;height:9mm;padding-top:5.5mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="AnnualizedSelfEmploymentTxAAmt"/>
 					</xsl:call-template>
 				</td>
-				<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; vertical-align:bottom;float:left;height:9mm;padding-top:5.5mm;">
+				<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px;border-bottom-width:2px; vertical-align:bottom;float:left;height:9mm;padding-top:5.5mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="AnnualizedSelfEmploymentTxBAmt"/>
 					</xsl:call-template>
 				</td>
-				<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; vertical-align:bottom;float:left;height:9mm;padding-top:5.5mm;">
+				<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; border-bottom-width:2px; vertical-align:bottom;float:left;height:9mm;padding-top:5.5mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="AnnualizedSelfEmploymentTxCAmt"/>
 					</xsl:call-template>
 				</td>
-				<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; border-right-width:0px; vertical-align:bottom;float:left;height:9mm;padding-top:5.5mm;">
+				<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; border-right-width:0px; border-bottom-width:2px; vertical-align:bottom;float:left;height:9mm;padding-top:5.5mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="AnnualizedSelfEmploymentTxDAmt"/>
 					</xsl:call-template>

@@ -96,36 +96,73 @@ printing problem only to the extent that it does not distort the browser display
         <div style="width:187mm;" class="styBB">
           <div style="width:131mm;height:9mm;font-size:7pt;font-weight:normal;" class="styNameBox">
 							<!-- changed height from 8mm -->
-            Name(s) shown on return<br/>
-		<xsl:choose>
- 		    <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-		      <br/>
-		      <xsl:call-template name="PopulateReturnHeaderFiler">
-		            <xsl:with-param name="TargetNode">Name</xsl:with-param>
-		              </xsl:call-template>
-		            </xsl:when>
-                    <xsl:otherwise>
-			<xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param></xsl:call-template>
-			<br/>
-			<xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param></xsl:call-template>
-		    </xsl:otherwise>
-                  </xsl:choose>
-          </div>
-          <div style="width:55mm;height:4mm;padding-left:2mm;font-size:7pt;font-weight:bold;" class="styEINBox">
-            Identifying number shown on return
-            <span style="font-weight:normal;">
-		<xsl:choose>
-		  <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
- 		     <xsl:call-template name="PopulateReturnHeaderFiler">
-		        <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-		     </xsl:call-template>
-		  </xsl:when>
-		  <xsl:otherwise>
-		  	<br/>
-            		<xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">EIN</xsl:with-param></xsl:call-template>
-		  </xsl:otherwise>
-		</xsl:choose>
-            </span>      
+            Name(s) shown on return
+				 <br/>
+				<xsl:choose>
+			  <!-- This process changed 170510 by gdy per UWR 194393 -->
+				<!--Business Name from F1120 Return Header-->
+				<xsl:when test="$RtnHdrData/Filer/BusinessName">
+				  <xsl:call-template name="PopulateReturnHeaderFiler">
+						<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+				  </xsl:call-template>
+				  <br/>
+				  <xsl:call-template name="PopulateReturnHeaderFiler">
+						<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+				  </xsl:call-template>
+				</xsl:when>
+				<!--Individual Name from F1040/NR Return Header-->
+				<xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+					<br/>
+				  <xsl:call-template name="PopulateReturnHeaderFiler">
+						<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+				  </xsl:call-template>
+				</xsl:when>
+				<!--Business Name from F1041 Return Header-->
+				<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+				  <xsl:call-template name="PopulateReturnHeaderFiler">
+						<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+				  </xsl:call-template>
+				  <br/>
+				  <xsl:call-template name="PopulateReturnHeaderFiler">
+						<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+				  </xsl:call-template>            
+				</xsl:when>
+				<!--National Morgage Association Code from F1041 Return Header-->
+				<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
+				<br/>
+				  <xsl:call-template name="PopulateReturnHeaderFiler">
+						<xsl:with-param name="TargetNode">NationalMortgageAssocCd</xsl:with-param>
+				  </xsl:call-template>
+				</xsl:when>
+			  </xsl:choose>
+			  </div>
+			  <div style="width:55mm;height:4mm;padding-left:2mm;font-size:7pt;font-weight:bold;" class="styEINBox">
+				Identifying number shown on return
+				<span style="font-weight:normal;">
+					<xsl:choose>
+					  <!-- This process changed 170510 by gdy per UWR 194393 -->
+					  <xsl:when test="$RtnHdrData/Filer/PrimarySSN">
+					  <br/>
+						 <xsl:call-template name="PopulateReturnHeaderFiler">
+							<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+						 </xsl:call-template>
+					  </xsl:when>
+					  <xsl:when test="$RtnHdrData/Filer/SSN">
+					  <br/>
+						 <xsl:call-template name="PopulateReturnHeaderFiler">
+							<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+						 </xsl:call-template>
+					  </xsl:when>
+					  <xsl:when test="$RtnHdrData/Filer/EIN">
+					  <br/>
+						 <xsl:call-template name="PopulateReturnHeaderFiler">
+							<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+						 </xsl:call-template>
+					  </xsl:when>
+					  <xsl:otherwise>
+					  </xsl:otherwise>
+					</xsl:choose>
+				</span>
           </div>
         </div>
         <!-- ****************************************************************************** -->
@@ -1009,7 +1046,8 @@ printing problem only to the extent that it does not distort the browser display
         <span class="styTableCellPad"/>
       </td>
       <td class="styTableCell" style="width:60mm;border-style:solid;border-right-width:0px;text-align:left;vertical-align:top;border-color:black;">
-        <span class="styBB" style="border-style:solid;width:59mm;padding-top:3mm;"/>
+        <span class="styTableCellPad"/><!--
+        <span class="styBB" style="border-style:solid;width:59mm;padding-top:3mm;"/>-->
       </td>
       <td class="styTableCell" style="width:23mm;border-left-width:1px;text-align:left;border-color:black;">
         <span class="styTableCellPad"/>

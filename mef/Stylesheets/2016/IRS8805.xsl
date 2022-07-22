@@ -70,20 +70,28 @@
 							<div class="styGenericDiv" style="width:59mm;border-right:1px solid black;">
 								<span class="styLNLeftNumBoxSD" style="padding-top:0px;">1a</span>
 								<span style="width:50mm;">
-									Foreign partner's name<br />
+									Foreign partner's name<br/>
 									<xsl:choose>
-										<xsl:when test="$FormData/Sect1446WTForeignPartnerGrp/PartnerNm">
+										<xsl:when test="normalize-space($FormData/Sect1446WTForeignPartnerGrp/PartnerNm) != '' ">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$FormData/Sect1446WTForeignPartnerGrp/PartnerNm/BusinessNameLine1Txt"/>
-											</xsl:call-template><br />
+											</xsl:call-template>
+											<br/>
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$FormData/Sect1446WTForeignPartnerGrp/PartnerNm/BusinessNameLine2Txt"/>
 											</xsl:call-template>
 										</xsl:when>
-										<xsl:otherwise>
+										<xsl:when test="normalize-space($FormData/Sect1446WTForeignPartnerGrp/PartnerPersonNm) != '' ">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$FormData/Sect1446WTForeignPartnerGrp/PartnerPersonNm"/>
-											</xsl:call-template><br />&#8194;
+											</xsl:call-template>
+											<br/>&#8194;
+										 </xsl:when>
+										<xsl:otherwise>
+											<xsl:call-template name="PopulateReturnHeaderFiler">
+												<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+											</xsl:call-template>
+											<br/>&#8194;
 										</xsl:otherwise>
 									</xsl:choose>
 								</span>
@@ -91,21 +99,26 @@
 							<!-- 1b -->
 							<div class="styGenericDiv" style="width:34mm;">
 								<span class="styLNLeftLtrBox" style="width:4mm;padding-left:1mm;padding-top:0px;">b</span>
-								U.S. identifying number<br />
+								U.S. identifying number<br/>
 								<xsl:choose>
-									<xsl:when test="$FormData/Sect1446WTForeignPartnerGrp/MissingSSNEINReasonCd">
+									<xsl:when test="normalize-space($FormData/Sect1446WTForeignPartnerGrp/MissingSSNEINReasonCd) != '' ">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/Sect1446WTForeignPartnerGrp/MissingSSNEINReasonCd"/>
 										</xsl:call-template>
 									</xsl:when>
-									<xsl:when test="$FormData/Sect1446WTForeignPartnerGrp/PartnerSSN">
+									<xsl:when test="normalize-space($FormData/Sect1446WTForeignPartnerGrp/PartnerSSN) != '' ">
 										<xsl:call-template name="PopulateSSN">
 											<xsl:with-param name="TargetNode" select="$FormData/Sect1446WTForeignPartnerGrp/PartnerSSN"/>
 										</xsl:call-template>
 									</xsl:when>
-									<xsl:otherwise>
+									<xsl:when test="normalize-space($FormData/Sect1446WTForeignPartnerGrp/PartnerEIN) != '' ">
 										<xsl:call-template name="PopulateEIN">
 											<xsl:with-param name="TargetNode" select="$FormData/Sect1446WTForeignPartnerGrp/PartnerEIN"/>
+										</xsl:call-template>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
 										</xsl:call-template>
 									</xsl:otherwise>
 								</xsl:choose>

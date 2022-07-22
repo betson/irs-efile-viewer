@@ -1934,12 +1934,13 @@
 								For Paperwork Reduction Act Notice, see Form 1040 instructions.
 							</span>
 						</div>
-						<div style="float:right;">
-							<span style="width:20px;"/>
-							Form <span class="styBoldText" style="width:7.5mm; font-size:7pt;"> 8689 </span>(2016)
-						</div>
-						<div style="float:right;text-align:center;width:60mm;font-size:7pt;">
+						<div style="text-align:left;font-size:7pt;">
+							<span style="width:100px"/>
 							Cat. No. 64603D
+						</div>
+						<div style="float:right;">
+							<span style="width:50px;"/>
+							Form <span class="styBoldText" style="width:7.5mm; font-size:7pt;"> 8689 </span>(2016)
 						</div>
 					</div>
 					<!-- END Page Break and Footer-->

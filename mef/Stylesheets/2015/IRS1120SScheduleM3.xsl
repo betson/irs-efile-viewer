@@ -1880,8 +1880,7 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">23</td>
               <td>
-                <span class="styBoldText" style="padding-top:.5mm;padding-left:2mm;font-weight:bold">Total income (loss) items. </span>
-                <span style="font-weight:normal">Combine lines 1 through 22</span>
+                <span style="padding-top:.5mm;padding-left:2mm;"><b>Total income (loss) items. </b>Combine lines 1 through 22</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -1908,8 +1907,7 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">24</td>
               <td>
-                <span class="styBoldText" style="padding-top:.5mm;padding-left:2mm;font-weight:bold">Total expense/deduction items </span>
-                <span style="font-weight:normal">(from Part III, line 32)</span>
+                <span style="padding-top:.5mm;padding-left:2mm;"><b>Total expense/deduction items </b>(from Part III, line 32)</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateNegativeNumber">
@@ -1937,7 +1935,7 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">25</td>
               <td>
                 <span style="font-weight:normal;float:left;padding-left:2mm;">Other items with no differences</span>
-                <span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -1960,8 +1958,7 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">26</td>
               <td>
-                <span class="styBoldText" style="padding-top:.5mm;padding-left:2mm;font-weight:bold">Reconciliation totals. </span>
-                <span style="font-weight:normal">Combine lines 23 through 25</span>
+                <span style="padding-top:.5mm;padding-left:2mm;"><b>Reconciliation totals. </b>Combine lines 23 through 25</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">

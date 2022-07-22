@@ -150,6 +150,10 @@
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/ExmptIndivOrMedicalGenInfoGrp/NonimmigrantStatusGrp/VisaChangeDesc"/>
 								</xsl:call-template>
+								<span style="width:12px;"/>
+								<xsl:call-template name="PopulateMonthDayYear">
+									<xsl:with-param name="TargetNode" select="$FormData/ExmptIndivOrMedicalGenInfoGrp/NonimmigrantStatusGrp/VisaChangeDt"/>
+								</xsl:call-template>
 							</span>
 							<br />
 							<span style="width:100%;height:3mm;border-bottom:1px dashed black;"/>
@@ -462,6 +466,7 @@
 									you participated in during 2016 &#9658; 
 								</span>
 								<span style="width:130mm;border-bottom:1px dashed black;">&#8194;</span><br />
+								<span style="width:100%;border-bottom:1px dashed black;">&#8194;</span><br />
 								<span style="width:100%;border-bottom:1px dashed black;">&#8194;</span>
 							</div>
 						</div>
@@ -742,6 +747,7 @@
 									you participated in during 2016 &#9658; 
 								</span>
 								<span style="width:130mm;border-bottom:1px dashed black;">&#8194;</span><br />
+								<span style="width:100%;border-bottom:1px dashed black;">&#8194;</span><br />
 								<span style="width:100%;border-bottom:1px dashed black;">&#8194;</span>
 							</div>
 						</div>
@@ -904,6 +910,7 @@
 								competition &#9658; 
 							</span>
 							<span style="width:158mm;height:3mm;border-bottom:1px dashed black;"></span><br />
+                         <xsl:if test="$FormData/USChrtblSportEvtCompetitionGrp">
 							<xsl:for-each select="$FormData/USChrtblSportEvtCompetitionGrp">
 								<span style="width:100%;border-bottom:1px dashed black;">
 									<xsl:call-template name="PopulateText">
@@ -916,9 +923,14 @@
 									</span>
 								</span>
 							</xsl:for-each>
+						 </xsl:if>
+							<xsl:if test="(count($FormData/USChrtblSportEvtCompetitionGrp)) &lt; 1">
+							<span style="width:100%;border-bottom:1px dashed black;">&#8194;</span><br />
+								<span style="width:100%;border-bottom:1px dashed black;">&#8194;</span>
+							 </xsl:if>
 						</div>
 					</div>
-					<!-- Line 16 -->
+						<!-- Line 16 -->
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBox">16</div>
 						<div class="sty8843DescA" style="width:179mm;">
@@ -927,6 +939,7 @@
 								event(s) &#9658; 
 							</span>
 							<span style="width:160mm;border-bottom:1px dashed black;"></span>
+						<xsl:if test="$FormData/SportEvtBnftCharitableOrgGrp">
 							<xsl:for-each select="$FormData/SportEvtBnftCharitableOrgGrp">
 								<span style="width:100%;border-bottom:1px dashed black;">
 									<xsl:call-template name="PopulateText">
@@ -948,6 +961,11 @@
 									</span>
 								</span>
 							</xsl:for-each>
+						 </xsl:if>
+						 <xsl:if test="(count($FormData/SportEvtBnftCharitableOrgGrp)) &lt; 1">
+							 <span style="width:100%;border-bottom:1px dashed black;">&#8194;</span><br />
+							 <span style="width:100%;border-bottom:1px dashed black;">&#8194;</span>
+						 </xsl:if>
 							<br /><br />
 							<strong>Note. </strong> You must attach a statement to verify that all of the net proceeds of the sports event(s) were contributed to the charitable <br />organization(s) listed on line 16.
 						</div>

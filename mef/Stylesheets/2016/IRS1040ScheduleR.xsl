@@ -75,7 +75,7 @@
 					</div>
 						<div class="styTYBox" style="width:30mm;height:21.5mm;">
 							<div class="styOMB" style="height:4mm;">OMB No. 1545-0074</div>
-							<div class="styTaxYear">20<span class="styTYColor">16</span>
+							<div class="styTaxYear">20<span class="styTYColor">15</span>
 							</div>
 							<div style="margin-left:3mm; text-align:left;padding-top:1.5mm;">
           Attachment<br/>Sequence No. <span class="styBoldText">16</span>
@@ -101,7 +101,7 @@
 					</div>
 					<div class="styNBB" style="width:187mm;height:14mm;font-size:8.5pt;padding-top:1.5mm;">
 						<div class="styLNDesc" style="width:187mm;height:5mm;padding-top:1.5mm;">
-            You may be able to take this credit and reduce your tax if by the end of 2016:</div>
+            You may be able to take this credit and reduce your tax if by the end of 2015:</div>
 						<div class="styLNDesc" style="width:53mm;height:5mm;">
 							<img src="{$ImagePath}/1040SchR_Bullet_Round.gif" alt="Bullet Image"/>
                You were age 65 or older <span class="styBoldText">
@@ -128,17 +128,17 @@
 						<div class="styPartName" style="width:12mm;font-size: 9pt;">Part l</div>
 						<div class="styPartDesc" style="font-size: 9pt;padding-left:6mm;width:160mm;">Check the Box for Your Filing Status and Age</div>
 					</div>
-					<!-- END Part I Title -->
+						<!-- END Part I Title -->
 					<div class="styBB" style="width:187mm;font-size: 9pt;">
 						<span class="styBoldText">
 							<span style="width:55mm;">If your filing status is:  </span>
-							<span style="width:85mm;font-size: 9pt;">And by the end of 2016:</span>
+							<span style="width:85mm;font-size: 9pt;">And by the end of 2017:</span>
 							<span style="width:44.5mm;font-size: 9pt;text-align:right;">Check only one box:</span>
 						</span>
 					</div>
+					<div class="styBB" style="width:45mm;;padding-top:2mm;height:16mm;font-size: 8.5pt;">Single,<br/>Head of household,<br/>or Qualifying widow(er)</div>
 					<!-- Primary 65 or Older Ind. -->
-					<div class="styNBB" style="width:187mm;height:10mm;font-size: 8.5pt;padding-top:2mm;float:left;clear:none;">
-						<div class="styLNDesc" style="width:45mm;padding-bottom:0mm;">Single,<br/>Head of household, or</div>
+					<div class="styNBB" style="width:142mm;height:10mm;font-size: 8.5pt;padding-top:2mm;float:left;clear:none;">
 						<div class="styForm1040SchRLNRightNumBox" style="height:10mm;width:6mm;padding-left:0mm;">1</div>
 						<div class="styLNDesc" style="width:118mm;padding-bottom:0mm;">
 							<span style="float:left;clear:none;">
@@ -169,8 +169,7 @@
 						</div>
 					</div>
 					<!-- Under 65 Retired on Permanent Disability -->
-					<div class="styBB" style="width:187mm;height:6mm;font-size: 8pt;padding-top:0mm;padding-bottom:2mm;float:left;clear:none;">
-						<div class="styLNDesc" style="width:45mm;">Qualifying widow(er)</div>
+					<div class="styBB" style="width:142mm;height:6mm;font-size: 8pt;padding-top:0mm;padding-bottom:2mm;float:left;clear:none;">
 						<div class="styForm1040SchRLNRightNumBox" style="height:6mm;width:6mm;padding-left:0mm;">2</div>
 						<div class="styLNDesc" style="width:118mm;">
 							<span style="float:left;clear:none;">
@@ -200,9 +199,9 @@
 							</input>
 						</div>
 					</div>
+					<div class="styBB" style="width:45mm;;padding-top:19mm;height:20mm;font-size: 8.5pt;border-bottom:0px;">Married filing<br/>jointly</div>
 					<!-- Both Spouses 65 or Older -->
-					<div class="styNBB" style="width:187mm;height:6mm;font-size: 8.5pt;padding-top:2mm;float:left;clear:none;">
-						<div class="styLNDesc" style="width:45mm;padding-bottom:0mm;"/>
+					<div class="styNBB" style="width:142mm;height:6mm;font-size: 8.5pt;padding-top:2mm;float:left;clear:none;">
 						<div class="styForm1040SchRLNRightNumBox" style="height:2mm;width:6mm;padding-left:0mm;">3</div>
 						<div class="styLNDesc" style="width:118mm;padding-bottom:0mm;">
 							<span style="float:left;clear:none;">	
@@ -233,8 +232,7 @@
 						</div>
 					</div>
 					<!-- Both Under 65, One Retired on Permanent Disability -->
-					<div class="styNBB" style="width:187mm;height:10mm;font-size: 8.5pt;padding-top:2mm;float:left;clear:none;">
-						<div class="styLNDesc" style="width:45mm;padding-bottom:0mm;"/>
+					<div class="styNBB" style="width:142mm;height:10mm;font-size: 8.5pt;padding-top:2mm;float:left;clear:none;">
 						<div class="styForm1040SchRLNRightNumBox" style="height:10mm;width:6mm;padding-left:0mm;">4</div>
 						<div class="styLNDesc" style="width:118mm;padding-bottom:0mm;">
 							Both spouses were under 65, but only one spouse retired on permanent and<br/>
@@ -264,8 +262,7 @@
 						</div>
 					</div>
 					<!-- Both Under 65, Both Retired on Permanent Disability -->
-					<div class="styNBB" style="width:187mm;height:10mm;font-size: 8.5pt;padding-top:2mm;float:left;clear:none;">
-						<div class="styLNDesc" style="width:45mm;padding-bottom:0mm;">Married filing<br/>jointly</div>
+					<div class="styNBB" style="width:142mm;height:10mm;font-size: 8.5pt;padding-top:2mm;float:left;clear:none;">
 						<div class="styForm1040SchRLNRightNumBox" style="height:10mm;width:6mm;padding-left:0mm;">5</div>
 						<div class="styLNDesc" style="width:118mm;padding-bottom:0mm;">
 							Both spouses were under 65, and both retired on permanent and total<br/>
@@ -361,7 +358,7 @@
 						<div class="styForm1040SchRLNRightNumBox" style="height:10mm;width:6mm;padding-left:0mm;">8</div>
 						<div class="styLNDesc" style="width:118mm;padding-bottom:0mm;">
 							<span style="float:left;clear:none;">		
-								You were 65 or older and you lived apart from your spouse for all of 2016</span>	 
+								You were 65 or older and you lived apart from your spouse for all of 2017</span>	 
           <!--Dotted Line-->
 							<span class="styDotLn" style="float:right;clear:none;padding-right:1mm;">.</span>
 						</div>
@@ -392,7 +389,7 @@
 						<div class="styForm1040SchRLNRightNumBox" style="height:10mm;width:6mm;padding-left:0mm;">9</div>
 						<div class="styLNDesc" style="width:118mm;padding-bottom:0mm;">
 								You were under 65, you retired on permanent and total disability, and you<br/>
-								lived apart from your spouse for all of 2016
+								lived apart from your spouse for all of 2017
           <!--Dotted Line-->
 							<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">...........</span>
 						</div>
@@ -417,12 +414,13 @@
 							</input>
 						</div>
 					</div>
-					<div class="styBB" style="width:187mm;font-size: 8.5pt;padding-top:.5mm;padding-bottom:.5mm;float:left;clear:none;">
-						<div class="styPartDesc" style="width:32mm;height:10mm;padding-left:.5mm;       padding-top:1.5mm;padding-bottom:1.5mm;border-style: solid; border-color: black;       border-top-width: 2px;border-bottom-width: 2px; border-left-width: 2px;border-right-width: 2px;">
-						Did you check<br/>box 1, 3, 7, or 8?
+					<div class="styBB" style="width:187mm;height:21mm;font-size: 8.5pt;padding-top:.5mm;padding-bottom:.5mm;float:left;clear:none;">
+					<span class="styPartDesc" style="height:4mm;"/>
+						<div class="styPartDesc" style="width:32mm;height:13mm;padding-left:.5mm;       padding-top:1.5mm;padding-bottom:1.5mm;border-style: solid; border-color: black;       border-top-width: 2px;border-bottom-width: 2px; border-left-width: 2px;border-right-width: 2px;">
+						Did you check<br/>box 1, 3, 7, or <br/>8?
 						</div>
 						<div class="styPartDesc" style="width:120mm;height:2mm;padding-left:0mm;padding-top:0mm;padding-bottom:0mm;float:left;clear:none;">
-							<div class="styLNDesc" style="padding-bottom:1mm;">
+							<div class="styLNDesc" style="padding-bottom:5mm;">
 								<img src="{$ImagePath}/1040SchR_Line.gif" alt="Line Image"/> Yes 
 						<img src="{$ImagePath}/1040SchR_Line.gif" alt="Line Image"/>
 								<img src="{$ImagePath}/1040SchR_Bullet_Sm.gif" alt="Bullet Image"/>
@@ -435,6 +433,7 @@
 							<span style="width:2mm;"/>
 							<span style="font-weight:normal;">Complete Parts ll and lll.</span>
 						</div>
+						<span class="styPartDesc" style="height:4mm;"/>
 					</div>
 					<!-- BEGIN Part II Title Statement of Permanent and Total Disability-->
 					<div class="styBB" style="width:187mm;">
@@ -455,7 +454,7 @@
 					<div class="styNBB" style="width:187mm;height:9mm;font-size: 8.5pt;padding-left:0mm;padding-top:1mm;padding-bottom:.5mm;float:left;clear:none;">
 						<div class="styForm1040SchRLNRightNumBox" style="width:6mm;padding-top:1mm;padding-left:8mm;padding-right:3mm;float:left;clear:none;">2</div>
 						<div class="styLNDesc" style="width:162mm;padding-left:2mm;padding-right:0mm;padding-top:.5mm;padding-bottom:0mm;float:left;clear:none;">
- 						Due to your continued disabled condition, you were unable to engage in any substantial gainful activity<br/>in 2016, check this box
+ 						Due to your continued disabled condition, you were unable to engage in any substantial gainful activity<br/>in 2015, check this box
           <!--Dotted Line-->
 							 <span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">..........................</span> 
                             <xsl:call-template name="LinkToLeftoverDataTableInline">
@@ -495,8 +494,8 @@
 							<img src="{$ImagePath}/1040SchR_Bullet_Round.gif" alt="Bullet Image"/>
 						</div>
 						<div class="styLNDesc" style="width:163mm;padding-left:.5mm;padding-right:2mm;padding-top:.5mm;padding-bottom:0mm;float:left;clear:none;">
- 						     If you checked this box, you don't have to get another statement for
- 						     2016. 							   
+ 						     If you checked this box, you do not have to get another statement for
+ 						     2015. 							   
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;height:9mm;font-size: 8.5pt;padding-left:10mm;padding-top:1mm;padding-bottom:.5mm;float:left;clear:none;">
@@ -504,7 +503,7 @@
 							<img src="{$ImagePath}/1040SchR_Bullet_Round.gif" alt="Bullet Image"/>
 						</div>
 						<div class="styLNDesc" style="width:163mm;padding-left:.5mm;padding-right:2mm;padding-top:.5mm;padding-bottom:0mm;float:left;clear:none;">
- 						    If you <b>didn't </b>check this box, have your physician complete the 
+ 						    If you <b>did not </b>check this box, have your physician complete the 
  						    statement in the instructions. You<b> must</b> keep the statement for your records.						   
 						</div>
 					</div>
@@ -513,12 +512,12 @@
 					<div class="pageEnd"  style="width:187mm;padding-top:1mm;padding-bottom:4mm;font-size:6.5pt;">
 						<div style="width:105mm;font-weight:bold;float:left;clear:none;">For Paperwork Reduction Act Notice, see your tax return instructions.</div>
 						<div style="width:25mm;float:left;clear:none;">Cat. No. 11359K</div>
-						<div class="styPartDesc" style="width:55mm;text-align:right;font-size:6.5pt;float:right;clear:none;">Schedule R (Form 1040A or 1040) 2016</div>
+						<div class="styPartDesc" style="width:55mm;text-align:right;font-size:6.5pt;float:right;clear:none;">Schedule R (Form 1040A or 1040) 2015</div>
 					</div>
 					<br/>
 					<!-- Start of Page 2 -->
 					<div class="styBB" style="width:187mm;font-size:7pt;">
-						<div class="styLNDesc" style="width:90mm;padding-top:0mm;">Schedule R (Form 1040A or 1040) 2016</div>
+						<div class="styLNDesc" style="width:90mm;padding-top:0mm;">Schedule R (Form 1040A or 1040) 2015</div>
 						<div class="styLNDesc" style="width:90mm;text-align:right;float:right;clear:none;">Page  
 						<span class="styBoldText" style="font-size:8pt;">2 </span>
 						</div>
@@ -532,65 +531,47 @@
 					<!-- END Part III Title -->
 					<!-- Filing Status Amount -->
 					<div class="styNBB" style="width:187mm;font-size:8.5pt;">
-						<span style="float:left;">
-							<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:0mm;padding-top:2mm;">10</div>
-							<div class="styLNDesc" style="width:80.5mm;height:2mm;padding-top:2mm;">
-								<b> If you checked (in Part l):</b>
-							</div>
-							<div class="styLNDesc" style="width:60mm;height:2mm;padding-right:0mm;padding-top:2mm;">
-								<b>Enter:</b>
-							</div>
-						</span>
-						<span style="float:right;">
-							<div class="styForm1040SchRColBoxGrey" style="height:10mm;width:5.7mm;padding-top:0mm;text-align:center;border-style:solid; border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:0px;border-color:black;"/>
-							<div class="styLNAmountBox" style="height:10mm;padding-top:0mm;border-left:1px solid black;border-bottom-width:0px;border-right-width:0px;"/>
-						</span>
+						<span style="float:left;"><div class="styLNLeftNumBox" style="height:4.5mm;padding-left:0mm;padding-top:2mm;">10</div>
+						<div class="styLNDesc" style="width:80.5mm;height:2mm;padding-top:2mm;">
+							<b> If you checked (in Part l):</b>
+						</div>
+						<div class="styLNDesc" style="width:60mm;height:2mm;padding-right:0mm;padding-top:2mm;">
+							<b>Enter:</b>
+						</div></span>
+						<span style="float:right;"><div class="styForm1040SchRColBoxGrey" style="height:10mm;width:5.7mm;padding-top:0mm;text-align:center;border-style:solid;   border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:0px;border-color:black;"/>
+						<div class="styLNAmountBox" style="height:10mm;padding-top:0mm;border-left:1px solid black;border-bottom-width:0px;border-right-width:0px;"/></span>
 					</div>
-					<div class="styNBB" style="width: 187mm; height: 12mm; font-size: 8.5pt;">
-						<span style="float:left;">
-							<div class="styLNDesc" style="width:100.1mm;height:8mm;padding-left:8mm;padding-top:0mm;padding-right:5px;">
-								<span style="float:left;">Box 1, 2, 4, or 7
-									<!--Dotted Line-->
-									<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">............</span>
-								</span>
-								<span style="float:right;">$5,000</span>
-								<span style="float:left;">Box 3, 5, or 6
-									<!--Dotted Line-->
-									<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">.............</span>
-								</span>
-								<span style="float:right;">$7,500</span>
-								<span style="float:left;">Box 8 or 9
-									<!--Dotted Line-->
-									<span class="styDotLn" style="float:none;clear:none;padding-left:1.5mm;">..............</span>
-								</span>
-								<span style="float:right;">$3,750</span>
-							</div>
-							<div class="styLNDesc" style="height:8mm;width:1mm;padding-top:0mm;">
-								<img src="{$ImagePath}/1040SchR_Bracket_Sm.gif" alt="Bullet Image"/>
-							</div>
-							<div class="styLNDesc" style="height:8mm;width:47.1mm;padding-top:3.5mm; ">
-								<span class="styDotLn" style="float:none;clear:none;padding-left:1.5mm;">...........</span>
-							</div>
-						</span>
-						<span style="border-width: 0px 0px 1px; border-style: solid; border-color: black; height: 8mm; float: right;">
-							<div class="styForm1040SchRColBoxGrey" style="border-width: 0px 0px 1px 1px; border-style: solid; border-color: black; width: 5.7mm; height: 8mm; text-align: center; padding-top: 2.5mm; padding-bottom: 0mm;">
-								<span style="width: 5mm; height: 5mm; padding-top: 1mm; padding-bottom: 0mm; font-size: 8.5pt; background-color: white;">10</span>
-							</div>
-							<div class="styLNAmountBox" style="height: 8mm; padding-top: 4mm; padding-bottom: 0mm; border-left-color: black; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-left-style: solid;">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1040ScheduleRData/FilingStatusAmt"/>
-								</xsl:call-template>
-							</div>
-						</span>
-						<span style="width: 187mm; height: 4mm; padding-left: 149.2mm;">
-							<div class="styForm1040SchRColBoxGrey" style="border-width: 0px 1px; border-style: solid; border-color: black; width: 6mm; height: 4mm; text-align: center; padding-top: 0mm;"></div>
-						</span>
+					<div class="styNBB" style="width:187mm;font-size:8.5pt;">
+						<span style="float:left;"><div class="styLNDesc" style="width:100.1mm;height:12mm;padding-left:8mm;padding-top:0mm;padding-right:5px;"><span style="float:left;">Box 1, 2, 4, or 7
+							          <!--Dotted Line-->
+										<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">............</span></span><span style="float:right;">$5,000</span>
+									 <span style="float:left;">Box 3, 5, or 6
+									 <!--Dotted Line-->
+										<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">.............</span></span><span style="float:right;">$7,500</span>
+									 <span style="float:left;">Box 8 or 9
+									 <!--Dotted Line-->
+										<span class="styDotLn" style="float:none;clear:none;padding-left:1.5mm;">..............</span></span><span style="float:right;">$3,750</span>
+						</div>
+						<div class="styLNDesc" style="height:12mm;width:1mm;padding-top:0mm;">
+							<img src="{$ImagePath}/1040SchR_Bracket_Sm.gif" alt="Bullet Image"/>
+						</div>
+						<div class="styLNDesc" style="height:12mm;width:47.1mm;padding-top:3.5mm; ">
+							<span class="styDotLn" style="float:none;clear:none;padding-left:1.5mm;">.........</span>
+						</div></span>
+						<span style="float:right;"><div class="styForm1040SchRColBoxGrey" style="height:12mm;width:5.7mm;padding-top:5.5mm;         padding-bottom:0mm;text-align:center;border-style:solid;border-right-width:0px;         border-left-width:1px;border-top-width:0px;border-bottom-width:1px;         border-color:black;">
+					<span style="height:6mm;font-size: 8.5pt;width:5mm;padding-bottom:0mm; padding-top:1mm;        background-color: white;">10</span>
+						</div>
+						<div class="styLNAmountBox" style="height:12mm;padding-top:6mm;padding-bottom:0mm;         border-left:1px solid black;border-bottom-width:1px;border-right-width:0px;">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$Form1040ScheduleRData/FilingStatusAmt"/>
+							</xsl:call-template>
+						</div></span>
 					</div>
 					<div class="styNBB" style="width:187mm;font-size: 8.5pt;padding-top:0mm;padding-left:8mm;float:left;clear:none;">
-						<div class="styPartDesc" style="width:27mm;height:11mm;padding-left:.5mm;border-style: solid; border-color: black;border-top-width: 2px;border-bottom-width: 2px; border-left-width: 2px;border-right-width: 2px;float:left;clear:none;">
+						<div class="styPartDesc" style="width:27mm;height:11mm;padding-left:.5mm;border-style: solid;         border-color: black;border-top-width: 2px;          border-bottom-width: 2px; border-left-width: 2px;border-right-width: 2px;float:left;clear:none;">
 						 		Did you check<br/>box 2, 4, 5, 6,<br/>or 9 in Part l?
 						</div>
-						<div class="styPartDesc" style="width:53mm;height:1mm;padding-left:0mm;padding-top:0mm;float:left;clear:none;">
+						<div class="styPartDesc" style="width:53mm;height:1mm;padding-left:0mm;padding-top:0mm;         float:left;clear:none;">
 							<img src="{$ImagePath}/1040SchR_Long_Line.gif" alt="Line Image"/> Yes 
 									<img src="{$ImagePath}/1040SchR_Long_Line.gif" alt="Line Image"/>
 							<img src="{$ImagePath}/1040SchR_Bullet_Sm.gif" alt="Bullet Image"/>
@@ -599,24 +580,24 @@
 							<span style="width:2mm;"/>
 							<span style="font-weight:normal;">You<b> must </b>complete line 11.</span>
 						</div>
-						<div class="styForm1040SchRColBoxGrey" style="height:6.5mm;width:5.7mm;padding-top:0mm;text-align:center;border-style:solid;border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:0px;border-color:black;"/>
-							<div class="styLNAmountBox" style="height:6.5mm;padding-top:0mm;border-left:1px solid black;border-bottom-width:0px;border-right-width:0px;"/>
-							<div class="styPartDesc" style="width:53mm;height:1mm;padding-top:0mm;padding-left:0mm;float:left;clear:none;">
-								<img src="{$ImagePath}/1040SchR_Long_Line.gif" alt="Line Image"/> No 
-										<span style="width:1mm;"/>
-								<img src="{$ImagePath}/1040SchR_Long_Line.gif" alt="Line Image"/>
-								<img src="{$ImagePath}/1040SchR_Bullet_Sm.gif" alt="Bullet Image"/>
-							</div>
-							<div class="styPartDesc" style="width:61.3mm;height:2mm;float:left;clear:none;">
-								<span style="width:2mm;"/>
-								<span style="font-weight:normal;">
-										Enter the amount from line 10</span><br/>
-								<span style="width:2mm;"/>
-								<span style="font-weight:normal;">
-										on line 12 and go to line 13.</span>
-							</div>
-						<div class="styForm1040SchRColBoxGrey" style="height:6.8mm;width:5.7mm;padding-top:0mm;text-align:center;border-style:solid;border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:0px;border-color:black;"/>
-						<div class="styLNAmountBox" style="height:6.8mm;padding-top:0mm;border-left:1px solid black;border-bottom-width:0px;border-right-width:0px;width:10mm;"/>
+						<div class="styForm1040SchRColBoxGrey" style="height:6.5mm;width:5.7mm;padding-top:0mm;         text-align:center;border-style:solid;border-right-width:0px;border-left-width:1px;         border-top-width:0px;border-bottom-width:0px;border-color:black;"/>
+						<div class="styLNAmountBox" style="height:6.5mm;padding-top:0mm;border-left:1px solid black;         border-bottom-width:0px;border-right-width:0px;"/>
+						<div class="styPartDesc" style="width:53mm;height:1mm;padding-top:0mm;padding-left:0mm;         float:left;clear:none;">
+							<img src="{$ImagePath}/1040SchR_Long_Line.gif" alt="Line Image"/> No 
+									<span style="width:1mm;"/>
+							<img src="{$ImagePath}/1040SchR_Long_Line.gif" alt="Line Image"/>
+							<img src="{$ImagePath}/1040SchR_Bullet_Sm.gif" alt="Bullet Image"/>
+						</div>
+						<div class="styPartDesc" style="width:61.3mm;height:2mm;float:left;clear:none;">
+							<span style="width:2mm;"/>
+							<span style="font-weight:normal;">
+									Enter the amount from line 10</span><br/>
+							<span style="width:2mm;"/>
+							<span style="font-weight:normal;">
+									on line 12 and go to line 13.</span>
+						</div>
+						<div class="styForm1040SchRColBoxGrey" style="height:6.8mm;width:5.7mm;padding-top:0mm;         text-align:center;border-style:solid;border-right-width:0px;border-left-width:1px;border-top-width:0px;         border-bottom-width:0px;border-color:black;"/>
+						<div class="styLNAmountBox" style="height:6.8mm;padding-top:0mm;border-left:1px solid black;         border-bottom-width:0px;border-right-width:0px;width:10mm;"/>
 					</div>
 					<!-- Taxable Disability -->
 					<div class="styNBB" style="width:187mm;font-size:8.5pt;">
@@ -682,14 +663,14 @@
 					<div class="styNBB" style="width:187mm;font-size: 8.5pt;padding-top:0mm;       padding-bottom:0mm;float:left;clear:none;">
 						<span style="float:left;"><div class="styLNLeftNumBox" style="height:4mm;padding-left:0mm;padding-top:0mm;       padding-bottom:0mm;">13</div>
 						<div class="styLNDesc" style="height:4mm;width:102.4mm;padding-top:0mm;       padding-bottom:0mm;">
-								 Enter the following pensions, annuities, or disability income that<br/>you (and your spouse if filing jointly) received in 2016.							
+								 Enter the following pensions, annuities, or disability income that<br/>you (and your spouse if filing jointly) received in 2015.							
 						</div></span>
 						<span style="float:right;"><div class="styForm1040SchRColBoxGrey" style="height:7.3mm;width:5.9mm;border-style:solid;border-right-width:0px;border-left-width:1px;         border-top-width:0px;border-bottom-width:0px;border-color:black;"/>
 						<div class="styLNAmountBox" style="height:7.3mm;         border-left-width:1px solid black;border-bottom-width:0px;border-right-width:0px;"/>
 						<div class="styForm1040SchRColBoxGrey" style="height:7.3mm;width:5.7mm;         border-style:solid;border-right-width:0px;border-left-width:1px;         border-top-width:0px;border-bottom-width:0px;border-color:black;"/>
 						<div class="styLNAmountBox" style="height:7.3mm;padding-top:0mm;padding-bottom:0mm;         border-left:1px solid black;border-bottom-width:0px;border-right-width:0px;"/></span>
 					</div>
-					<div class="styNBB" style="width:187mm;font-size: 8pt;float:left;clear:none;">
+					<div class="styNBB" style="width:187mm;font-size: 7.5pt;float:left;clear:none;">
 						<span style="float:left;"><div class="styLNLeftLtrBox" style="height:2mm;">a</div>
 						<div class="styLNDesc" style="width:102.4mm;height:4mm;">
 								 Nontaxable part of social security benefits and nontaxable part of <br/>railroad retirement benefits
@@ -710,7 +691,7 @@
 						<div class="styLNAmountBox" style="height:11.2mm;padding-top:0mm;padding-bottom:0mm;         border-left:1px solid black;border-bottom-width:0px;border-right-width:0px;"/></span>
 					</div>
 					<!-- Nontaxable Other Amount -->
-					<div class="styNBB" style="width:187mm;font-size: 8pt;float:left;clear:none;">
+					<div class="styNBB" style="width:187mm;font-size: 7.5pt;float:left;clear:none;">
 						<span style="float:left;"><div class="styLNLeftLtrBox" style="height:7mm;">b</div>
 						<div class="styLNDesc" style="width:102.4mm;height:11.3mm;">
 								 Nontaxable veterans&#39; pensions and any other pension, annuity, or <br/>disability benefit 
@@ -731,12 +712,12 @@
 						<div class="styLNAmountBox" style="height:11.3mm;         border-left:1px solid black;border-bottom-width:0px;border-right-width:0px;"/></span>
 					</div>
 					<!-- Total Nontaxable Amount -->
-					<div class="styNBB" style="width:187mm;font-size: 8pt;float:left;clear:none;">
+					<div class="styNBB" style="width:187mm;font-size: 7.5pt;float:left;clear:none;">
 						<span style="float:left;"><div class="styLNLeftLtrBox" style="height:2mm;">c</div>
 						<div class="styLNDesc" style="width:102.4mm;height:12mm;padding-bottom:0mm;">
-								 Add lines 13a and 13b. (Even though these income items aren't<br/>taxable, they
+								 Add lines 13a and 13b. (Even though these income items are not<br/>taxable, they
 								 <span class="styBoldText"> must</span> be included here to figure your credit.)
-								 If you<br/>didn't receive any of the types of nontaxable income
+								 If you<br/>did not receive any of the types of nontaxable income
 								 listed on<br/>line 13a or 13b, enter -0- on line 13c
 						<!--Dotted Line-->		 
 							<span class="styDotLn" style="float:none;padding-left:2mm;">...........</span>		 
@@ -882,7 +863,7 @@
 					<div class="styNBB" style="width:187mm;font-size: 8.5pt;float:left;clear:none;">
 						<span style="float:left;"><div class="styLNLeftNumBox" style="height:7mm;padding-left:0mm;padding-top:.5mm;">19</div>
 						<div class="styLNDesc" style="width:140.5mm;height:7mm;padding-top:.5mm;">Subtract line 18 from line
-					  12. If zero or less, <b> stop;</b> you <b>can't</b> take the credit. Otherwise,<br/>go to line 20
+					  12. If zero or less, <b> stop;</b> you <b>cannot</b> take the credit. Otherwise,<br/>go to line 20
 					<!--Dotted Line-->
 							<span class="styDotLn" style="float:none;padding-left:2mm;">...........................</span>		   
 						</div></span>
@@ -899,7 +880,7 @@
 						<span style="float:left;"><div class="styLNLeftNumBox" style="height:4mm;padding-left:0mm;padding-top:.5mm;">20</div>
 						<div class="styLNDesc" style="width:140.5mm;height:4mm;padding-top:.5mm;">
 							<span style="float:left;clear:none;">
-								Multiply line 19 by 15% (0.15)
+								Multiply line 19 by 15% (.15)
 							</span>	
 						<!--Dotted Line-->
 							<span class="styDotLn" style="float:right;padding-right:2mm;">......................</span>		   
@@ -946,7 +927,7 @@
 					<!-- BEGIN Left Over Table -->
 					<!-- Additonal Data Title Bar and Button -->
 					<div style="width:187mm;padding-top:1mm">
-						<span style="width:187mm;font-weight:bold;font-size: 7pt;text-align:right;">Schedule R (Form 1040A or 1040) 2016</span>
+						<span style="width:187mm;font-weight:bold;font-size: 7pt;text-align:right;">Schedule R (Form 1040A or 1040) 2015</span>
 					</div>
 					<br/>
 					<!-- BEGIN Left Over Table -->

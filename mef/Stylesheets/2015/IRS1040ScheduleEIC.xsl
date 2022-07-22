@@ -113,17 +113,17 @@
      <i><b>Before you begin:</b></i>
 </div>
 <div class="styLNDesc" style="width:149mm;height:16mm;">
-         <li>See the instructions for Form 1040A, line 38a and 38b, or Form 1040, lines 64a and 64b, to make sure that <b>(a) </b>you can take the EIC, and <b>(b) </b>you have a qualifying child.</li>         
+         <li>See the instructions for Form 1040A, line 42a and 42b, or Form 1040, lines 66a and 66b, to make sure that <b>(a) </b>you can take the EIC, and <b>(b) </b>you have a qualifying child.</li>         
           <li>Be sure the child&#8221;s name on line 1 and social security number (SSN) on line 2 agree with the child&#8221;s social security card. 
           Otherwise, at the time we process your return, we may reduce or disallow your EIC. If the name or SSN on the child's social security card is not correct, call the Social Security Administration at 1-800-772-1213.</li> 
 </div>
      </div>
      <!--Caution-->
      <div class="styBB" style="width:187mm;border-bottom-width:1px">
-		 <div class="styBB" style="width:15mm; border-bottom-width: 0px;height: 12mm;padding-top:3mm;font-size:7pt;">
+		 <div class="styBB" style="width:15mm; border-bottom-width: 0px;height: 15mm;padding-top:3mm;font-size:7pt;">
 		<img src="{$ImagePath}/1040SchEIC2_Caution.gif" alt="Bullet"/>
 		</div>   
-		<div class="styLNDesc" style="width:172mm;height:12mm;padding-top:3mm;">       
+		<div class="styLNDesc" style="width:172mm;height:15mm;padding-top:3mm;">       
 			<li>If you take the EIC even though you are not eligible, you may not be allowed to take the credit for up to 10 years. See the instructions for details. </li>         
 			<li style="padding-top:2mm;">It will take us longer to process your return and issue your refund if you do not fill in all lines that apply for each qualifying child.</li> 
 		</div>
@@ -193,8 +193,8 @@
             <td scope="row" style="width:75mm;border-bottom:1px solid black;padding-top:1mm:padding-left:0mm;">
 				<span style="font-size:9pt;"><b>Child's SSN</b></span><br/>
 				<span style="font-weight:normal;"> The child must have an SSN as defined in the 
-					instructions for Form 1040A, lines 38a and 38b, or 
-					Form 1040, lines 64a and 64b, unless the child was 
+					instructions for Form 1040A, lines 42a and 42b, or 
+					Form 1040, lines 66a and 66b, unless the child was 
 					born and died in 2015. If your child was born and died 
 					in 2015 and did not have an SSN, enter "Died" on this 
 					line and attach a copy of the child's birth certificate, 
@@ -798,7 +798,7 @@
 				<xsl:with-param name="TargetNode" select="$TargetNode[position()=$Start]"/>
 			</xsl:call-template>		
 			<div style="font-size:6pt;padding-top:1.0mm;padding-bottom:1mm;text-align:left;color:black;padding-left:2mm;">           
-		<i>If born after 1995 <b>and</b> the child is younger than you (or your spouse, if filing jointly), skip lines 4a and 4b; go to line 5.</i>
+		<i>If born after 1996 <b>and</b> the child is younger than you (or your spouse, if filing jointly), skip lines 4a and 4b; go to line 5.</i>
               </div>	                             
 			</td>			
 			<xsl:call-template name="CreateTableChildYearOfBirth">

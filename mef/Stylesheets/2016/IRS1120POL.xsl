@@ -12,6 +12,10 @@
 <!-- Updated per 44921 IBM Defect 12/11/15 by Robert L Jones -->
 <!-- Updated per 46028 IBM Defect 6/21/16 Foreign address overlap at header, Special Condition Pen missing and Spec Cond Pen not in Add Data Section by Robert L Jones -->
 <!-- Updated 9/29/2016 per PDF Review by Robert L Jones -->
+<!-- Updated 5/25/2017 per UWR195015 by Robert L Jones -->
+<!-- Updated 7/6/2017 per IBM Defect 48250 BusNameLine1 and BusNameLine2 on same line -  by Robert L Jones -->
+<!-- Updated 7/6/2017 per IBM Defect 48252 various-  by Robert L Jones -->
+<!-- Updated 7/6/2017 per IBM Defect 48253 blank page at end of file -  by Robert L Jones -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -296,7 +300,7 @@
                     <xsl:with-param name="TargetNode" select="$FormData/USCongressNotOnlyCommitteeInd"/>
                     <xsl:with-param name="BackupName">IRS1120POLUSCongressNotOnlyCommitteeInd</xsl:with-param>
                   </xsl:call-template>
-                  If this is a principal campaign committee, but is NOT the only political committee, check here and attach a copy of designation (See instructions.)
+                  If this is a principal campaign committee, but is NOT the only political committee, check here and attach a copy of designation. See instructions.
                    <xsl:call-template name="SetFormLinkInline">
                     <xsl:with-param name="TargetNode" select="$FormData/USCongressNotOnlyCommitteeInd"/>
                   </xsl:call-template>
@@ -582,7 +586,7 @@
         <div class="IRS1120POL_LineContainer">
           <div class="IRS1120POL_LabelSpace"/>
           <div class="IRS1120POL_LineIndex">15</div>
-          <div class="IRS1120POL_LineDescLong">Other deductions (attach schedule)
+          <div class="IRS1120POL_LineDescLong">Other deductions (attach statement)
              <xsl:call-template name="SetFormLinkInline">
               <xsl:with-param name="TargetNode" select="$FormData/OtherDeductionsAmt"/>
             </xsl:call-template>
@@ -620,7 +624,7 @@
           <div class="IRS1120POL_LabelSpace"/>
           <div class="IRS1120POL_LineIndex">17</div>
           <div class="IRS1120POL_LineDescLong">
-            Taxable income before specific deduction of $100 (see instructions). Section 501(c) organizations show:
+            Taxable income before specific deduction of $100. See instructions. Section 501(c) organizations show:
             </div>
           <div class="IRS1120POL_LineIndexMidFiller"/>
           <div class="IRS1120POL_MoneyFieldFiller"/>
@@ -652,7 +656,7 @@
           <div class="IRS1120POL_LabelSpace"/>
           <div class="IRS1120POL_SubLineIndex">b</div>
           <div class="IRS1120POL_LineDescLong" style="width:106mm;border-right-width:0px;">
-            Aggregate amount expended for an exempt function (attach schedule)
+            Aggregate amount expended for an exempt function (attach statement)
              <xsl:call-template name="SetFormLinkInline">
               <xsl:with-param name="TargetNode" select="$FormData/ExpendedForExemptFunctionAmt"/>
             </xsl:call-template>
@@ -705,7 +709,7 @@
           <div class="IRS1120POL_LineIndex">19</div>
           <div class="IRS1120POL_LineDescLong">
             <span style="font-weight:bold;">Taxable income. </span>
-            Subtract line 18 from line 17c. (If line 19 is zero or less, see the instructions.)
+            Subtract line 18 from line 17c. If line 19 is zero or less, see the instructions.
             <!--Dotted Line-->
             <span style="letter-spacing:4mm; font-weight:bold; ">..</span>
                      <!--span class="IRS1120POL_DotSpacing">....</span-->
@@ -724,7 +728,7 @@
           <div class="IRS1120POL_LineIndex">20</div>
           <div class="IRS1120POL_LineDescLong">
             <span style="font-weight:bold;">Income tax.</span>
-            (see instructions)
+           See instructions
                  <!--Dotted Line-->
             <span style="letter-spacing:4mm; font-weight:bold; ">..................</span>
              <!--span class="IRS1120POL_DotSpacing">..................................</span-->
@@ -742,7 +746,7 @@
           <div class="IRS1120POL_LineIndex">21</div>
           <div class="IRS1120POL_LineDescLong">
             <span style="font-weight:bold;">Tax credits. </span>
-            (Attach the applicable credit  forms.) (see instructions) 
+           Attach the applicable credit  forms. See instructions 
                  <!--Dotted Line-->
            <span style="letter-spacing:4mm; font-weight:bold; ">...........</span>
                        <!--span class="IRS1120POL_DotSpacing">.................</span-->
@@ -920,7 +924,7 @@
         <!-- superimposed image title - Additional info -->
 			<div class="IRS1120POL_LineContainer"  style="display:inline;">
 			<span style="padding-right: 10mm; padding-bottom: 23mm; font-size: 10pt; font-weight: bold; position: absolute; transform: rotate(270deg); text-align: center;">
-			Addition<br/>
+			Additional<br/>
 			Information
 			</span>
         </div>
@@ -949,7 +953,7 @@
 					<div class="IRS1120POL_LabelSpaceWide" style="border-right-width:0px;width:0;"/>
 					<div class="IRS1120POL_LineIndex" />
 					<div class="IRS1120POL_LineDescLong" style="width:142mm;border-right-width:0px;font-size:7pt;">
-              in a foreign country? (see instructions)
+              in a foreign country? See instructions
                 <span class="styDotLn" style="float:right;">.......................</span>
 </div>
 					<div class="IRS1120POL_MoneyFieldFiller" style="border-right-width:0px;">
@@ -1019,6 +1023,7 @@
           </div>
           <div class="IRS1120POL_MoneyFieldFiller" style="border-right-width:0px;"/>
         </div>
+        <br></br>
         <!-- additional info line 2 -->
         <div class="IRS1120POL_LineContainer">
           <div class="IRS1120POL_LabelSpaceWide" style="border-right-width:0px;width:0;"/>
@@ -1026,7 +1031,7 @@
           <div class="IRS1120POL_LineDescLong" style="width:142mm;border-right-width:0px;">
               to, a foreign trust? If "Yes," the organization may have to file Form 3520
              <!--Dotted Line-->
-				<span class="styDotLn" style="float:right;">.........</span>
+				<span class="styDotLn" style="float:right;">..........</span>
 					</div>
 					<div class="IRS1120POL_MoneyFieldFiller" style="border-right-width:0px;">
 						<span>
@@ -1071,7 +1076,8 @@
             </span>
           </div>
         </div>
-        
+        <br></br>
+        <br></br>
         <!-- additional info line 3 -->
         <div class="IRS1120POL_LineContainer">
           <div class="IRS1120POL_LabelSpaceWide" style="border-right-width:0px;width:0;"/>
@@ -1313,7 +1319,7 @@ with the preparer shown below<br/>
                     <xsl:call-template name="PopulateReturnHeaderPreparerFirm">
 											<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
 										</xsl:call-template>
-										
+										<br></br>
 										<xsl:call-template name="PopulateReturnHeaderPreparerFirm">
 											<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
 										</xsl:call-template>
@@ -1445,7 +1451,7 @@ Special Condition Description</th>
 </tbody>
 
 </table>
-<p style="page-break-before:always"/>
+
 
 </body>
     </html>

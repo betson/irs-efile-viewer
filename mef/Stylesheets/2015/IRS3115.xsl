@@ -5383,12 +5383,12 @@ line 11
       </div>    
     
       <div class="styIRS3115LNLeftNumBox" style="text-align:center; padding-top:1mm">5</div>  
-    <div style="width:182mm;float:left; padding-top:1mm;">
+    <div style="width:181mm;float:left; padding-top:1mm;">
      To the extent not already provided in the applicant's description of its present method, attach a statement explaining how the property is treated under the applicant’s present method (for example, depreciable property, inventory property, supplies under Regulations section 1.162-3, nondepreciable section 263(a) property, property deductible as a current expense, etc.).
     </div> 
     <br/>   
     <div class="styIRS3115LNLeftNumBox" style="text-align:center; padding-top:1mm">6</div>  
-    <div style="width:182mm;float:left; padding-top:1mm">
+    <div style="width:181mm;float:left; padding-top:1mm;">
       If the property is not currently treated as depreciable or amortizable property, attach a statement of the facts supporting the<br/>proposed change to depreciate or amortize the property.
     </div>        
     <br/>   

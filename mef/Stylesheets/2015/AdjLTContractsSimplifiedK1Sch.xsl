@@ -9,7 +9,7 @@
    <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddOnTable.xsl"/>  
 
-  <xsl:param name="AdjLongTermData" select="$RtnDoc/AdjLongTermContractsFromK1Sch"/>
+  <xsl:param name="AdjLongTermData" select="$RtnDoc/AdjLTContractsSimplifiedK1Sch"/>
 
   <xsl:param name="depDocTitle">
     <xsl:call-template name="PopulateDisplayName"><xsl:with-param name="TargetNode" select="$AdjLongTermData"/></xsl:call-template>  

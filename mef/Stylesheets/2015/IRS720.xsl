@@ -5,9 +5,9 @@
 <!-- 06/24/2015 - Changes made per UWR #157563 - Jeremy Nichols -->
 <!-- 07/13/2015 - Modified per defect 43176 - Jeremy Nichols-->
 <!-- 07/28/2015 - Modified per defect 43180 - Jeremy Nichols-->
-<!-- 12/15/2015 - Modified per defect 45019 - Jeremy Nichols-->
 <!-- 12/15/2015 - Modified per defect 45020 - Jeremy Nichols-->
 <!-- 01/06/2016 - Changes made for KISAM IM02405711 - Jeremy Nichols -->
+<!-- 06/30/2016 - Modified per defect 45019 - Jeremy Nichols-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -13964,7 +13964,6 @@ taxed at $.219</td>
 		<!-- End Line 14 -->
 		<!-- Begin Line 15 -->
 		<!-- Begin Line 15 Title -->
-		<div class="styBB" style="width:187mm">
 			<table cellspacing="0" style="font-size:7pt">
 				<tbody>
 					<tr style="padding-top:1mm;padding-bottom:1mm">
@@ -14141,17 +14140,21 @@ taxed at $.219</td>
 							</td>
 						</tr>
 					</xsl:for-each>
+				</tbody>
+			</table>
+			<table cellspacing="0" style="font-size:7pt">
+				<tbody>
 					<!-- begin new Line 15f -->
 					<tr>
 						<td class="styIRS720TableCellLineNumber" style="width:8mm;border-top-width:0px;border-bottom-width:0px;border-right-width:0px;font-size:8pt;padding-right:1mm;vertical-align:bottom" rowspan="2">
 							<br/>f</td>
-						<td class="styIRS720NameTableCell" style="width:134mm;border-top-width:0px;border-left-width:0px;font-weight:normal;text-align:left;vertical-align:bottom" rowspan="2" >
+						<td class="styIRS720NameTableCell" style="width:109mm;border-top-width:0px;border-left-width:0px;font-weight:normal;text-align:left;vertical-align:bottom" rowspan="2" >
 							<br/>Taxable tires other than bias ply or super single tires
  <xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$FormData/IRS720ScheduleC/OtherExciseLiabilityClaims/TxblTiresOther"/>
 							</xsl:call-template>
 						</td>
-						<td style="width:24mm;text-align: center; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;padding-right:1mm;font-weight:bold" >Number of tires
+						<td style="width:25mm;text-align: center; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;padding-right:1mm;font-weight:bold" >Number of tires
         </td>
 						<th scope="col" class="styIRS7204BoldTableHeaderCell" style="width:36mm;border-top-width:0px" >Amount of claim</th>
 						<th scope="col" class="styIRS7204BoldTableHeaderCell" style="width:9mm;border-right-width:0px;border-top-width:0px" >CRN</th>
@@ -14203,7 +14206,7 @@ taxed at $.219</td>
 					<!-- begin new Line 15h -->
 					<tr>
 						<td class="styIRS720TableCellLineNumber" style="width:7mm;border-bottom-width:0px;border-right-width:0px;font-size:8pt;padding-right:1mm;vertical-align:top">h</td>
-						<td class="styIRS720NameTableCell" style="width:115.5mm;" >Taxable tires, super single tires designed for steering 
+						<td class="styIRS720NameTableCell" style="width:109mm;" >Taxable tires, super single tires designed for steering 
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$FormData/IRS720ScheduleC/OtherExciseLiabilityClaims/TxblTiresSuperSingleSteering"/>
 							</xsl:call-template>
@@ -14225,22 +14228,26 @@ taxed at $.219</td>
 						</td>
 					</tr>
 					<!-- End new line 15h -->
+				</tbody>
+			</table>
+			<table cellspacing="0" style="font-size:7pt">
+				<tbody>
 					<!-- Line 15 (i) -->
 					<xsl:if test="not($FormData/IRS720ScheduleC/OtherExciseLiabilityClaims/OtherClaimsPub510)">
 						<tr>
-							<td class="styIRS720TableCellLineNumber" style="border-bottom-width:0px;border-right-width:0px;font-size:8pt;padding-right:1mm;vertical-align:top">i</td>
-							<td class="styIRS720NameTableCell" colspan="2">
+							<td class="styIRS720TableCellLineNumber" style="width:7mm;border-bottom-width:0px;border-right-width:0px;font-size:8pt;padding-right:1mm;vertical-align:top">i</td>
+							<td class="styIRS720NameTableCell" colspan="2" style="width:135mm;">
 								<span style="width:1px"/>
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$FormData/IRS720ScheduleC/OtherExciseLiabilityClaims/OtherClaimsPub510"/>
 								</xsl:call-template>
 							</td>
-							<td class="styIRS720TableCellAmount" style="font-size:7pt">
+							<td class="styIRS720TableCellAmount" style="width:36mm;font-size:7pt">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="ClaimAmt"/>
 								</xsl:call-template>
 							</td>
-							<td class="styIRS720TableCellText" style="border-right-width:0px">
+							<td class="styIRS720TableCellText" style="width:8.5mm;border-right-width:0px">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
 								</xsl:call-template>
@@ -14249,19 +14256,19 @@ taxed at $.219</td>
 					</xsl:if>
 					<xsl:for-each select="$FormData/IRS720ScheduleC/OtherExciseLiabilityClaims/OtherClaimsPub510">
 						<tr>
-							<td class="styIRS720TableCellLineNumber" style="border-bottom-width:0px;border-right-width:0px;font-size:8pt;padding-right:1mm;vertical-align:top">i</td>
-							<td class="styIRS720NameTableCell" colspan="2">
+							<td class="styIRS720TableCellLineNumber" style="width:7mm;border-bottom-width:0px;border-right-width:0px;font-size:8pt;padding-right:1mm;vertical-align:top">i</td>
+							<td class="styIRS720NameTableCell" colspan="2" style="width:135mm;">
 								<span style="width:1px"/>
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$FormData/IRS720ScheduleC/OtherExciseLiabilityClaims/OtherClaimsPub510"/>
 								</xsl:call-template>
 							</td>
-							<td class="styIRS720TableCellAmount" style="font-size:7pt">
+							<td class="styIRS720TableCellAmount" style="width:36mm;font-size:7pt">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="ClaimAmt"/>
 								</xsl:call-template>
 							</td>
-							<td class="styIRS720TableCellText" style="border-right-width:0px">
+							<td class="styIRS720TableCellText" style="width:8.5mm;border-right-width:0px">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
 								</xsl:call-template>
@@ -14309,24 +14316,22 @@ taxed at $.219</td>
 			<table cellspacing="0" style="font-size:7pt">
 				<tbody>
 					<tr>
-						<td class="styIRS720LineNumber" style="width:8mm">16</td>
-						<td class="styIRS720RightBorder" style="width:135.5mm;font-size:6pt;font-weight:normal;text-align:left;padding-left:1mm;border-right-width:1px;">
+						<td class="styIRS720LineNumber" style="width:8mm;border-bottom:1px solid black;">16</td>
+						<td class="styIRS720RightBorder" style="width:129mm;font-size:6pt;font-weight:normal;text-align:left;padding-left:1mm;border-bottom:1px solid black;border-right-width:1px;">
 							<b>Total claims. </b>Add amounts on lines 1 through 15. Enter the result here and on Form 720, Part III, line 4.
 						</td>
-						<td class="styIRS720LineNumber" style="width:5mm;text-align:center;border-right:1px solid black;">16</td>
-						<td class="styIRS720RightBorder" style="width:33mm;border-bottom-width:0px;text-align:right;font-weight:normal">
+						<td class="styIRS720LineNumber" style="width:5mm;text-align:center;border-bottom:1px solid black;border-right:1px solid black;">16</td>
+						<td class="styIRS720RightBorder" style="width:36mm;border-bottom:1px solid black;text-align:right;font-weight:normal">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/IRS720ScheduleC/TotalClaimsAmt"/>
 							</xsl:call-template>
 						</td>
-						<td scope="col" style="width:8.75mm;background-color:lightgrey">
+						<td scope="col" style="width:8.75mm;border-bottom:1px solid black;background-color:lightgrey">
 							<span style="width:1px"/>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-		</div>
-		</div>
 		<!-- End Line 16 -->
 		<!-- Begin Footer -->
 		<div style="width:187mm;text-align:right;right;padding-top:0.5mm">
@@ -14407,6 +14412,7 @@ Special Condition Description</th>
 </tbody>
 
 </table>
+</div>
 				<!-- end for versions for 2015Q2, 2015Q3, 2015Q4 -->
 			  </xsl:otherwise>
 		  </xsl:choose>

@@ -8,16 +8,16 @@
 	<xsl:include href="IRS4562Style.xsl"/>
 	<xsl:output method="html" indent="yes"/>
 	<xsl:strip-space elements="*"/>
-	<!-- Defines the stage of the data, e.g. original or latest  version   -->
+	<!-- Defines the stage of the data, e.g. original or latest  version -->
 	<xsl:param name="IRS4562Data" select="$RtnDoc/IRS4562"/>
+	 <!-- TEMPLATE 1 - ADD ROWS to PART I -->
 	<xsl:template name="AddRowsPartI">
 		<xsl:param name="NumOfRows"/>
 		<xsl:param name="EPCount"/>
 		<xsl:if test="$EPCount &lt; $NumOfRows">
 			<tr>
 				<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width: 91mm;padding-left: 3mm;">
-					<xsl:if test="$EPCount=0">
-				</xsl:if>
+					<xsl:if test="$EPCount=0"></xsl:if>
 					<span style="width: 1px"/>
 				</td>
 				<td class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width: 32mm; text-align: right">
@@ -36,6 +36,7 @@
 			</xsl:call-template>
 		</xsl:if>
 	</xsl:template>
+	 <!-- TEMPLATE 2 - ADD ROWS to PART III -->
 	<xsl:template name="AddRowsPartIII">
 		<xsl:param name="Classification"/>
 		<tr>
@@ -107,6 +108,7 @@
 			</td>
 		</tr>
 	</xsl:template>
+	 <!--TEMPLATE 3 -->
 	<xsl:template name="AddRowsLine26and27">
 		<xsl:param name="Line"/>
 		<xsl:param name="NumOfRows"/>
@@ -229,6 +231,7 @@
 					</xsl:otherwise>
 				</xsl:choose>
 			</tr>
+			<!--TEMPLATE 4 -->
 			<xsl:call-template name="AddRowsLine26and27">
 				<xsl:with-param name="Line" select="$Line"/>
 				<xsl:with-param name="BPCount" select="$BPCount + 1"/>
@@ -237,6 +240,7 @@
 			</xsl:call-template>
 		</xsl:if>
 	</xsl:template>
+	<!--TEMPLATE 5 -->
 	<xsl:template name="AddRowsPartVI">
 		<xsl:param name="NumOfRows"/>
 		<xsl:param name="ACount"/>
@@ -294,10 +298,10 @@
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
 					<!--  remember print   -->
-		 <xsl:if test="not($Print) or $Print=''">
+					<xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS4562Style"/>
 						<xsl:call-template name="AddOnStyle"/>
-	</xsl:if>
+					</xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
@@ -308,11 +312,9 @@
 					<!--   END WARNING LINE   -->
 					<!--   BEGIN FORM HEADER   -->
 					<div class="styTBB" style="width:187mm;">
-						<div class="styFNBox" style="width:31mm;border-right-width:1px;height:22mm;
-						border-right-width:2px">
+						<div class="styFNBox" style="width:31mm;border-right-width:1px;height:22mm;border-right-width:2px">
 							<div style="padding-top:1mm;padding-left:2mm">
-    Form<span class="styFormNumber"> 4562
-	</span>
+								Form<span class="styFormNumber"> 4562 </span>
 							</div>
 							<div>
 								<xsl:call-template name="SetFormLinkInline">
@@ -320,14 +322,12 @@
 								</xsl:call-template>
 								<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="Desc">Form 4562, Top Left Margin - Note </xsl:with-param>
-									<xsl:with-param name="TargetNode"
-									 select="$IRS4562Data/@section179ExpnsDedSummaryCd"/>
+									<xsl:with-param name="TargetNode" select="$IRS4562Data/@section179ExpnsDedSummaryCd"/>
 									<xsl:with-param name="Style">padding-left:3mm;</xsl:with-param>
 								</xsl:call-template>
 								<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="Desc">Form 4562, Top Left Margin - Note 2</xsl:with-param>
-									<xsl:with-param name="TargetNode"
-									 select="$IRS4562Data/@extnsUnderAnnouncementCd"/>
+									<xsl:with-param name="TargetNode" select="$IRS4562Data/@extnsUnderAnnouncementCd"/>
 									<xsl:with-param name="Style">padding-left:3mm;</xsl:with-param>
 								</xsl:call-template>
 							</div>
@@ -339,15 +339,15 @@
 							<div class="styFMT" style="font-size:9pt;padding-top:1mm">(Including Information on Listed Property)</div>
                             <br/>							
 							<div class="styFBT" style=" font-size: 7pt;">
-						<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="bullet"/> Attach to your tax return.
-	                    </div><div class="styFBT" style=" font-size: 7pt;">
+								<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="bullet"/> Attach to your tax return.
+							</div>
+							<div class="styFBT" style=" font-size: 7pt;">
 								<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="bullet"/>
-								<span  style="font-size:6pt;padding-top:0mm">&#160;
-								Information about Form 4562 and its separate instructions is at 
-								<span style="width:.5mm"/> </span> 
-							<a href="http://www.irs.gov/form4562">
-             <i>www.irs.gov/form4562.</i></a>
-	</div>
+								<span  style="font-size:6pt;padding-top:0mm">&#160;Information about Form 4562 and its separate instructions is at 
+									<span style="width:.5mm"/> 
+								</span> 
+								<a style="text-decoration:none;color:black;" href="http://www.irs.gov/form4562"><i>www.irs.gov/form4562.</i></a>
+							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:22mm; border-left-width: 2px">
 							<div class="styOMB" style="height:4mm;width:30mm;">OMB No. 1545-0172</div>
@@ -360,78 +360,34 @@
 					<!--   END FORM HEADER   -->
 					<!--   BEGIN TAXPAYER INFO   -->
 					<!--   BEGIN NAME   -->
+					<!-- HINTS: Due to the original choice of coding as a table therefore, the width is not equal to 187mm-->
 					<table style="width:187mm;clear:all;" cellspacing="0">
-						<tr style="border: solid black 1;hight:11mm">
-							<td class="styNameBox" style="width:76mm;font-size:7pt;height:15mm;">
-	Name(s) shown on return<br/>
-								<span style="font-size: 7pt; font-weight: normal;padding-bottom:1mm">
-										 <xsl:choose>
-							<!-- Name from 1120/990/1065 Return Header -->
-							<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/
-								  BusinessName/BusinessNameLine1Txt"/>
-								</xsl:call-template>
-								<br/>
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/
-								  BusinessName/BusinessNameLine2Txt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<!-- Name from 1040 Return Header -->
-							<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt"><br/>
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<!-- Name from 1041 Return Header -->
-							<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/
-								  EstateOrTrustName/BusinessNameLine1Txt"/>
-								</xsl:call-template>
-								<br/>
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/
-								  EstateOrTrustName/BusinessNameLine2Txt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/
-								  NationalMortgageAssocCd"/>
-								</xsl:call-template>
-								<br/>
-							</xsl:when>
-							</xsl:choose>
-					</span>
+						<tr style="border:solid black 1;">
+							<td class="styNameBox" style="width:99mm;font-size:7pt;">
+								Name(s) shown on return<br/>
+								<span style="font-size:6.5pt;">				
+									<!--Choice for 1120 (Parent/Subsidiary), 1040, 1040NR and 1041 Return Header Filer info-->
+									<xsl:call-template name="PopulateFilerName">
+										<xsl:with-param name="TargetNode" select="$IRS4562Data"/>
+									</xsl:call-template>
+								</span> 									
 							</td>
-							<td class="styNameBox" style="height:15mm;width:79mmf;ont-size:7pt;
-							padding-left:2mm;padding-bottom:0mm;">
-                            Business or activity to which this form relates
-                        	<br/><br/>
+							<td class="styNameBox" style="width:58mm;font-size:7pt;">
+								Business or activity to which this form relates
+								<br/><br/>
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$IRS4562Data/
-									BusinessOrActivityTxt"/>
+									<xsl:with-param name="TargetNode" select="$IRS4562Data/BusinessOrActivityTxt"/>
 								</xsl:call-template>
 							</td>
-							<td class="styEINBox" style="width:30mmf;ont-size:7pt;padding-left:2mm;padding-top:0mm">
-						      Identifying number						                
-							  <br/>
-								<span style="font-size: 7pt; font-weight: normal;text-align:left">
+							<td class="styEINBox" style="width:29mm;font-size:7pt;">
+								Identifying number						                
+								<br/>
+								<span style="font-weight:normal;text-align:left;font-size:7pt;">
 									<br/>
-								<xsl:choose>
-		                  <xsl:when test="$RtnHdrData/Filer/EIN">
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-											</xsl:call-template>
-										</xsl:when>
-										<xsl:otherwise>
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-											</xsl:call-template>
-										</xsl:otherwise>
-									</xsl:choose>
+									<!-- Choice for 1120 (Parent/Subsidiary), 1041, 1040 and 1040NR Return Header Filer info  -->
+									<xsl:call-template name="PopulateFilerTIN">
+										<xsl:with-param name="TargetNode" select="$IRS4562Data"/>
+									</xsl:call-template> 
 								</span>
 							</td>
 						</tr>
@@ -591,13 +547,13 @@
 					<!--   END LINE 5   -->
 					<!--   START LINE 6    -->
 					<!--  BEGIN A, B, and C   -->
-					<div class="styIRS4562TableContainer" id="Line6Header">
+					<div class="styIRS4562TableContainer" id="DPctn">
 						<!--print logic-->
 						<xsl:call-template name="SetInitialState"/>
 						<!--end-->
 						<table class="styIRS4562Table" cellspacing="0">
 							<thead class="styTableThead">
-								<tr scope="col">
+								<tr >
 									<th scope="col" class="styIRS4562TableCellA" 
 									style="border-color: black; border-left-width: 0px; 
 									border-right-width: 1px; border-top-width: 1px; border-bottom-width:1px; 
@@ -613,38 +569,24 @@
 									style="border-color: black; border-left-width: 0px; border-right-width: 0px; 
 									border-top-width: 1px; border-bottom-width:1px; width: 32mm; text-align: center">
 										<b>(c)</b> Elected cost</th>
-									<th scope="col" class="styIRS4562TableCellD"
-									 style="border-color: black; border-left-width: 1px; border-right-width: 0px; 
-									 border-top-width: 1px; border-bottom-width:0px; width: 32mm;
-									  background-color: lightgrey;">
+					  <th scope="col" class="styIRS4562TableCellD" style="vertical-align:top;border-color:black;border-left-width:1px;border-right-width:0px;border-top-width:1px;border-bottom-width:0px;width:32mm;background-color:lightgrey;">
 					<xsl:if test="not((count($IRS4562Data/ElectedProperty) &gt; 2) and
 					 ($Print = $Separated))">
-							<span style="width:7mm;text-align:right;float:right; padding-top:2mm;
-							background-color: lightgrey;">
-								<xsl:call-template name="SetDynamicTableToggleButton">
-									<xsl:with-param name="TargetNode" select="$IRS4562Data/ElectedProperty"/>
-									<xsl:with-param name="containerHeight" select="2"/>
-									<xsl:with-param name="headerHeight" select="0"/>
-									<xsl:with-param name="containerID" select=" 'DPctn' "/>
-								</xsl:call-template>
-							</span>
-					</xsl:if>
-										<span style="width: 1px"/>
-									</th>
-								</tr>
-							</thead>
-							<tfoot/>
-							<tbody/>
-						</table>
-					</div>
-					<div class="styIRS4562TableContainer" id="DPctn">
-						<!--print logic-->
-						<xsl:call-template name="SetInitialState"/>
-						<!--end-->
-						<table class="styIRS4562Table" cellspacing="0">
-							<thead/>
-							<tfoot/>
-							<tbody>
+						  <span style="width:7mm;text-align:right;float:right;">
+							<xsl:call-template name="SetDynamicTableToggleButton">
+							  <xsl:with-param name="TargetNode" select="$IRS4562Data/ElectedProperty"/>
+							  <xsl:with-param name="containerHeight" select="2"/>
+							  <xsl:with-param name="headerHeight" select="1"/>
+							  <xsl:with-param name="containerID" select=" 'DPctn' "/>
+							</xsl:call-template>
+						  </span>
+					    </xsl:if>
+						<span style="width: 1px"/>
+					  </th>
+					</tr>
+				  </thead>
+				  <tfoot/>
+				  <tbody>
 								<xsl:if test="not((count($IRS4562Data/ElectedProperty) &gt; 2) and
 								 ($Print = $Separated))">
 									<xsl:for-each select="$IRS4562Data/ElectedProperty">
@@ -742,8 +684,8 @@ border-top-width: 0px; border-bottom-width:0px; width: 32mm; background-color: l
 					<!--  </div>-->
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$IRS4562Data/ElectedProperty"/>
-						<xsl:with-param name="containerHeight" select="2"/>
-						<xsl:with-param name="headerHeight" select="0"/>
+							  <xsl:with-param name="containerHeight" select="2"/>
+							  <xsl:with-param name="headerHeight" select="1"/>
 						<xsl:with-param name="containerID" select=" 'DPctn' "/>
 					</xsl:call-template>
 					<!--   END A, B, and C   -->
@@ -1092,7 +1034,7 @@ more general <br/>asset accounts, check here
 style="letter-spacing:4mm;font-weight:bold;text-align:right">...................</span>
               <img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="bullet"/>
 								<span style="width:1mm"/>
-									<input type="checkbox" class="styIRS4562Ckbox">
+									<input type="checkbox" alt="General Asset Account Election" class="styIRS4562Ckbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode"
 										 select="$IRS4562Data/GeneralAssetAccountElectionInd"/>
@@ -1123,12 +1065,12 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 					</div>
 					<!-- end18A -->
 	<div class="styIRS4562Section"
-	 style="float: none; clear:both; border-top-width: 1px; border-bottom-width: 0px;font-weight: bold;padding-left:10mm;font-size:7pt">
+	 style="float: none; clear:both; border-top-width: 1px; border-bottom-width:0px;font-weight:bold;padding-left:10mm;font-size:7pt">
 	Section B&#151;Assets Placed in Service During 2015 Tax Year Using the General Depreciation System
   <xsl:call-template name="SetFormLinkInline">
 						<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralDepreciationSystem"/>
 						</xsl:call-template>
-						<span style="width:18mm"/>
+						<span style="width:33mm;"/>
 							<xsl:choose>
 								<xsl:when test="count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty)&gt;1">
 									<xsl:call-template name="SetDynamicTableToggleButton">
@@ -1231,11 +1173,8 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 								</xsl:when>
 							</xsl:choose>
 						</div>
-
-
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 19 START &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 19 START &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
-
 					<!--  BEGIN SECTION B, Line 19 TABLE  -->
 					<div class="styIRS4562TableContainer" style="height: auto" id="GDctn">
 						<!--print logic-->
@@ -2044,27 +1983,24 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 										</td>
 									</tr>
 								</xsl:if>
-
-
 							</tbody>
 						</table>
-						<xsl:call-template name="SetInitialDynamicTableHeightRowCount">
-						<!--<xsl:with-param name="DataRowCount" select="$tableRowCount"/>-->
-						<xsl:with-param name="containerHeight" select="9"/>
-						<xsl:with-param name="containerID" select=" 'GDbtn' "/>
-					</xsl:call-template>
-					</div><br/>
+						<xsl:if test="$Print != $Separated">
+							<xsl:call-template name="SetInitialDynamicTableHeight">
+								<xsl:with-param name="TargetNode" select="$IRS4562Data/AlternativeDepreciationSystem/ADSClassLifeProperty"/>
+								<xsl:with-param name="containerHeight" select="1"/>
+								<xsl:with-param name="containerID" select=" 'GDctn' "/>			
+							</xsl:call-template>
+						</xsl:if>					
+					</div>
 					<!--   END SECTION B, Line19 TABLE   -->
-
-
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 19 END &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 19 END &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 20 START &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 20 START &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
-
 					<!--  BEGIN SECTION B TABLE  -->
-					<div class="styIRS4562TableContainer" style="height:12mm;" id="SecBLine20">
+					<div class="styIRS4562TableContainer" id="SecBLine20">
 						<!--print logic-->
 						<xsl:call-template name="SetInitialState"/>
 						<!--end-->
@@ -2252,7 +2188,7 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 									<xsl:otherwise>
 										<tr>
 											<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-												<span class="styLN" style="font-weight: bold">
+												<span class="styLN" style="font-weight:bold">
         20a
         <span style="width: 3px"/>
 												</span>
@@ -2367,16 +2303,15 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 										<xsl:with-param name="buttonID" select=" 'GDbtn' "/>
 										</xsl:call-template>
 																				</xsl:if>
-					<br/>
 					<!--   END SECTION B TABLE   -->
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 20 END &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 20 END &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
-<p style="page-break-before:always"/>
+<!--<p style="page-break-before:always"/>-->
 					<!--   BEGIN PART IV HEADER   -->
 					<div class="styBB" style="width:187mm; border-top: 1px black solid;height:4.5mm;">
 						<div class="styPartName">Part IV</div>
 						<div class="styPartDesc">
-							<span style="width:16px;"/>Summary <span class="styNormalText">  (see instructions.)</span>
+							<span style="width:16px;"/>Summary <span class="styNormalText">  (See instructions.)</span>
 						</div>
 					</div>
 					<!--   END PART IV HEADER   -->
@@ -2497,26 +2432,26 @@ here and on the appropriate lines of your return.  Partnerships and S corporatio
 							</span>
 						</div>
 					</div>
-					<!--   END PART V HEADER   -->
+			<!--   END PART V HEADER   -->
 					<div class="styIRS4562Section" style="text-align:left; font-weight: normal;
 					border-top-width:0px;clear:all;">
 						<b>Section A&#151;Depreciation and Other Information (Caution:</b>
-						<i> See the instructions for limits for passenger automobiles.</i>
+						 See the instructions for limits for passenger automobiles.
 						<b>)</b>
 					</div>
 		<!--   BEGIN LINE 24a   -->
-							<span class="styIRS4562LNDesc" style="width: 111mm">
-							<b>24a</b>
+							<span class="styIRS4562LNDesc" style="width: 106mm">
+							<b>24a&#160;</b>
 							<span style="font-family:arial"> Do you have evidence to support the business/investment use claimed?</span>
 							<span style="width: 2px"/>
 							<span>
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceToSupportDeductionInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styIRS4562Ckbox">
+								<input type="checkbox" alt="Have Evidence To Support Claims Yes" class="styIRS4562Ckbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceToSupportDeductionInd"/>
-										<xsl:with-param name="BackupName">IRS4562HaveEvidenceToSupportClaims</xsl:with-param>
+										<xsl:with-param name="BackupName">IRS4562HaveEvidenceToSupportClaimsYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -2533,10 +2468,10 @@ here and on the appropriate lines of your return.  Partnerships and S corporatio
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceToSupportDeductionInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styIRS4562Ckbox">
+								<input type="checkbox"  alt="Have Evidence To Support Claims No" class="styIRS4562Ckbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceToSupportDeductionInd"/>
-										<xsl:with-param name="BackupName">IRS4562HaveEvidenceToSupportClaims</xsl:with-param>
+										<xsl:with-param name="BackupName">IRS4562HaveEvidenceToSupportClaimsNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -2550,17 +2485,17 @@ here and on the appropriate lines of your return.  Partnerships and S corporatio
 								</b>
 							</span>
 						</span>
-						<span class="styIRS4562LNDesc" style="width: 74mm;border-style: solid; 
+						<span class="styIRS4562LNDesc" style="width: 79mm;border-style: solid; 
 						border-color: black; border-left-width: 1px; border-right-width: 0px;
 						 border-top-width: 0px; border-bottom-width: 0px; padding-left:1mm">
 							<b>24b</b> If "Yes," is the evidence written?
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styIRS4562Ckbox">
+									<input type="checkbox" alt="Is Evidence Written Yes" class="styIRS4562Ckbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
-											<xsl:with-param name="BackupName">IRS4562IsEvidenceWritten</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS4562IsEvidenceWrittenYes</xsl:with-param>
 										</xsl:call-template>
 									</input>
 								<span style="font-size: 6pt">
@@ -2577,10 +2512,10 @@ here and on the appropriate lines of your return.  Partnerships and S corporatio
 										<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
 									</xsl:call-template>
 									<span style="width:2mm"/>
-									<input type="checkbox" class="styIRS4562Ckbox">
+									<input type="checkbox" alt="Is Evidence Written No" class="styIRS4562Ckbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
-											<xsl:with-param name="BackupName">IRS4562IsEvidenceWritten</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS4562IsEvidenceWrittenNo</xsl:with-param>
 										</xsl:call-template>
 									</input>
 								</span>
@@ -2591,7 +2526,7 @@ here and on the appropriate lines of your return.  Partnerships and S corporatio
 												<xsl:with-param name="BackupName">IRS4562IsEvidenceWritten</xsl:with-param>
 											</xsl:call-template>No</label>
 									</b>
-								<span style="width:66.9mm"/>
+								<span style="width:6mm"/>
 						<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode"
 								 select="$IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty"/>
@@ -2625,10 +2560,10 @@ here and on the appropriate lines of your return.  Partnerships and S corporatio
 									<th scope="col" class="styTableCellHeader" style="border-color: black; border-top-width: 1px; width:16mm; text-align: center; font-size: 6pt;font-weight:normal;">
 										<b>(c)</b>
 										<br/>Business/<br/>investment<br/>use<br/>percentage</th>
-									<th scope="col" class="styTableCellHeader" style="border-color: black; border-top-width: 1px; width:24mm; font-size: 6pt;font-weight:normal;">
+									<th scope="col" class="styTableCellHeader" style="border-color: black; border-top-width: 1px; width:20mm; font-size: 6pt;font-weight:normal;">
 										<b>(d)</b>
 										<br/>Cost or other<br/>basis</th>
-									<th scope="col" class="styTableCellHeader" style="border-color: black; border-top-width: 1px; width:26mm; font-size: 6pt;font-weight:normal;">
+									<th scope="col" class="styTableCellHeader" style="border-color: black; border-top-width: 1px; width:20mm; font-size: 6pt;font-weight:normal;">
 										<b>(e)</b>
 										<br/>Basis for depreciation<br/>(business/investment<br/>use only)</th>
 									<th scope="col" class="styTableCellHeader" style="border-color: black; border-top-width: 1px; width:9mm; font-size: 6pt;font-weight:normal;">
@@ -2651,27 +2586,35 @@ here and on the appropriate lines of your return.  Partnerships and S corporatio
 								<tr>
 									<td class="styIRS4562OtherCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px" colspan="7">
 										<div>
-											<span style="width: 152mm;border-right-width:3px">
-												<b>25</b>
+											<span style="width: 139mm;border-right-width:3px">
+												
 												<span style="font-size:6pt">
 												Special depreciation allowance for qualified listed property placed in service during the
-tax year and used more than  50% in</span>
-
+tax year and<b>
+<span style="width:25.5mm"/>
+ <span class="styTableCell" style="border-color: black; border-left-width: 1px; border-right-width: 0px; border-bottom-width:0px; width:6mm;font-size:8pt;padding-bottom:0mm">
+										<span>
+										
+										</span>
+										<!--<span class="styIRS4562TableCellPad"/>-->
+									</span>
+</b></span>
 											</span>
-											<span style="width:5mm; border-style:solid; border-left-width: 1px; border-top-width: 0px;
-				 border-bottom-width: 0px; border-right: 0px;padding-left:1mm; font-weight: bold">&#160;&#160; </span>
-<!--											<span style="width:10mm; border-style:solid; border-left-width: 1px; border-top-width: 0px; border-bottom-width: 0px; border-right: 0px"/>-->
 										</div>
 										<div/>
-										<span style="width: 152mm;">
-											<span style="width: 16px"/>
-											<span style="font-size:6pt;">  a qualified business use (see instructions)</span>
-		<span class="styDotLn" style="float:right;padding-right:2mm;">........................</span>
+										<span style="width: 132mm;height:3mm">
+											<!--<span style="width: 10px"/>-->
+											<span style="font-size:6pt;">used more than  50% in  a qualified business use (see instructions)</span>
+		<span class="styDotLn" style="float:right;padding-right:2mm;">.............</span>									
           </span>
-				<span style="width:5mm; border-style:solid; border-left-width: 1px; border-top-width: 0px;
-				 border-bottom-width: 0px; border-right: 0px;padding-left:3mm; font-weight: bold;">25</span>
+				 <span class="styTableCell" style="border-color: black; border-left-width: 1px; border-right-width: 0px;padding-right:1mm; border-bottom-width:0px; width:7mm;font-size:7pt;padding-bottom:2mm">
+										<span>
+											<b>25</b>
+										</span>
+								</span>
 			</td>
-		<td class="styTableCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-bottom-width:0px; width:24mm;font-size:6pt;vertical-align:bottom;">
+			
+		<td class="styTableCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-bottom-width:0px; width:24mm;font-size:6pt;padding-top:4mm">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS4562Data/TotalSpecialDeprecAllwncAmt"/>
 										</xsl:call-template>
@@ -2695,7 +2638,7 @@ tax year and used more than  50% in</span>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: center;">
+											<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: center;">
 													<xsl:call-template name="PopulateMonthDayYear">
 														<xsl:with-param name="TargetNode" select="PlacedInServiceDt"/>
 													</xsl:call-template>
@@ -2707,13 +2650,13 @@ tax year and used more than  50% in</span>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; text-align: right">
+												<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="CostOrOtherBasisAmt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:26mm; font-size: 6pt; text-align: right">
+												<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="BasisForDepreciationAmt"/>
 													</xsl:call-template>
@@ -2731,13 +2674,13 @@ tax year and used more than  50% in</span>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt">
+												<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt;;padding-top:3mm">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="DepreciationDeductionAmt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; border-right-width: 0px;">
+												<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; border-right-width: 0px;padding-top:3mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="ElectedSection179CostAmt"/>
 													</xsl:call-template>
@@ -2759,38 +2702,10 @@ tax year and used more than  50% in</span>
 											</td>
 											<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: right">
 												<span class="styIRS4562TableCellPad"/>%</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:26mm; font-size: 6pt; text-align: right">
-												<span class="styIRS4562TableCellPad"/>
-											</td>
-											<td class="styTableCell" style="border-color: black; width:9mm; font-size: 6pt; text-align: right;">
-												<span class="styIRS4562TableCellPad"/>
-											</td>
-											<td class="styTableCell" style="border-color: black; width:17mm; font-size: 6pt; text-align: left;">
-												<span class="styIRS4562TableCellPad"/>
-											</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt">
-												<span class="styIRS4562TableCellPad"/>
-											</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; border-right-width: 0px;">
-												<span class="styIRS4562TableCellPad"/>
-											</td>
-										</tr>
-										<tr>
-											<td class="styTableCell" style="border-color: black; width:29mm; font-size: 6pt">
-												<span class="styIRS4562TableCellPad"/>
-											</td>
-											<td class="styTableCell" style="border-color: black; text-align: center; width:16mm; font-size: 6pt;">
-												<span class="styIRS4562TableCellPad"/>
-											</td>
-											<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: right">
-												<span class="styIRS4562TableCellPad"/>%</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; text-align: right">
-												<span class="styIRS4562TableCellPad"/>
-											</td>
-											<td class="styTableCell" style="border-color: black; width:26mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styTableCell" style="border-color: black; width:9mm; font-size: 6pt; text-align: right;">
@@ -2815,10 +2730,38 @@ tax year and used more than  50% in</span>
 											</td>
 											<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: right">
 												<span class="styIRS4562TableCellPad"/>%</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:26mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
+												<span class="styIRS4562TableCellPad"/>
+											</td>
+											<td class="styTableCell" style="border-color: black; width:9mm; font-size: 6pt; text-align: right;">
+												<span class="styIRS4562TableCellPad"/>
+											</td>
+											<td class="styTableCell" style="border-color: black; width:17mm; font-size: 6pt; text-align: left;">
+												<span class="styIRS4562TableCellPad"/>
+											</td>
+											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt">
+												<span class="styIRS4562TableCellPad"/>
+											</td>
+											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; border-right-width: 0px;">
+												<span class="styIRS4562TableCellPad"/>
+											</td>
+										</tr>
+										<tr>
+											<td class="styTableCell" style="border-color: black; width:29mm; font-size: 6pt">
+												<span class="styIRS4562TableCellPad"/>
+											</td>
+											<td class="styTableCell" style="border-color: black; text-align: center; width:16mm; font-size: 6pt;">
+												<span class="styIRS4562TableCellPad"/>
+											</td>
+											<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: right">
+												<span class="styIRS4562TableCellPad"/>%</td>
+											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
+												<span class="styIRS4562TableCellPad"/>
+											</td>
+											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styTableCell" style="border-color: black; width:9mm; font-size: 6pt; text-align: right;">
@@ -2869,13 +2812,13 @@ tax year and used more than  50% in</span>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; text-align: right">
+												<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="CostOrOtherBasisAmt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:26mm; font-size: 6pt; text-align: right">
+												<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="BasisForDepreciationAmt"/>
 													</xsl:call-template>
@@ -2893,7 +2836,7 @@ tax year and used more than  50% in</span>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt;">
+												<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt;padding-top:2mm">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="DepreciationDeductionAmt"/>
 													</xsl:call-template>
@@ -2903,7 +2846,7 @@ tax year and used more than  50% in</span>
 													<!-- If this row is the last row of the table, put bottom border to the cell. Otherwise, don't the bottom border on the cell.-->
 													<xsl:choose>
 														<xsl:when test="( position() = last() ) and ( position() &gt;= 3 )">
-															<xsl:attribute name="style">border-color: black; border-bottom-width: 1px; border-right-width: 0px; width:24mm; font-size: 6pt;background-color: lightgrey;</xsl:attribute>
+															<xsl:attribute name="style">border-color: black; border-bottom-width: 0px; border-right-width: 0px; width:24mm; font-size: 6pt;background-color: lightgrey</xsl:attribute>
 														</xsl:when>
 														<xsl:otherwise>
 															<xsl:attribute name="style">border-color: black; border-bottom-width: 0px; border-right-width: 0px; width:24mm; font-size: 6pt;background-color: lightgrey</xsl:attribute>
@@ -2944,10 +2887,10 @@ tax year and used more than  50% in</span>
 											</td>
 											<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: right">
 												<span class="styIRS4562TableCellPad"/>%</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:26mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styTableCell" style="border-color: black; width:9mm; font-size: 6pt; text-align: right;">
@@ -2955,7 +2898,7 @@ tax year and used more than  50% in</span>
 											</td>
 											<td class="styTableCell" style="border-color: black; width:17mm; font-size: 6pt; text-align: left;">
 												<span class="styIRS4562TableCellPad"/>S/L –</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt">
+											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styTableCell">
@@ -2983,7 +2926,7 @@ tax year and used more than  50% in</span>
 											</td>
 											<td class="styTableCell" style="border-color: black; width:17mm; font-size: 6pt; text-align: left;">
 												<span class="styIRS4562TableCellPad"/>S/L –</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt">
+											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styTableCell">
@@ -3000,10 +2943,10 @@ tax year and used more than  50% in</span>
 											</td>
 											<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: right">
 												<span class="styIRS4562TableCellPad"/>%</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:26mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styTableCell" style="border-color: black; width:9mm; font-size: 6pt; text-align: right;">
@@ -3011,11 +2954,11 @@ tax year and used more than  50% in</span>
 											</td>
 											<td class="styTableCell" style="border-color: black; width:17mm; font-size: 6pt; text-align: left;">
 												<span class="styIRS4562TableCellPad"/>S/L –</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt">
+											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styTableCell">
-												<xsl:attribute name="style">border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px; width:24mm; font-size: 6pt;background-color: lightgrey</xsl:attribute>
+												<xsl:attribute name="style">border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; width:24mm; font-size: 6pt;background-color: lightgrey</xsl:attribute>
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 										</tr>
@@ -3033,18 +2976,20 @@ tax year and used more than  50% in</span>
 					<!--   BEGIN LINE 28 -->
 					<div class="styIRS4562LineItem" style="float: none; width: 187mm; border: 0px solid black">
 						<div class="styLNLeftNumBox" style="height:4mm;width:6mm">28</div>
-						<span class="styIRS4562LNDesc" style="width: 111mm; padding-left: 0; margin-left: 0;">
+						<span class="styIRS4562LNDesc" style="width: 115mm; padding-left: 0; margin-left: 0;">
 						Add amounts in column (h), lines 25 through 27. Enter here and on line 21, page 1
-    						</span>
+			    						</span>
+    						
 						<span style="float: right; clear: none">
+						
 							<span class="styLNRightNumBox" style="height:4mm">28</span>
-							<div class="styIRS4562LNAmountBox" style="width: 30mm;padding-right: 1mm;font-size:6.3pt;height:4mm">
+							<div class="styIRS4562LNAmountBox" style="width: 28.5mm;padding-right: 1mm;font-size:6.3pt;height:4mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$IRS4562Data/TotalListedDepreciationAmt"/>
+								<xsl:with-param name="TargetNode" select="$IRS4562Data/TotalListedDepreciationAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS4562LNAmountBox" style="width:29.5mm; background-color: lightgrey; border-left: 1px solid black;
-							 border-top-width: 0px; border-bottom-width: 1px;height:4mm"/>
+							<div class="styIRS4562LNAmountBox" style="border-top-width: 1px;width:26mm;border-left: 1px solid black;
+							  border-bottom-width: 1px; border-top-width: 1px;height:4mm;background-color:lightgray"/>
 						</span>
 					</div>
 					<!--   END LINE 28   -->
@@ -3053,7 +2998,7 @@ tax year and used more than  50% in</span>
 				<div class="styLNLeftNumBox" style="height:4mm;width:5mm">29</div>
 						<span class="styIRS4562LNDesc" style="width: 143.5mm">
 						Add amounts in column (i), line 26. Enter here and on line 7, page 1
-						<span class="styDotLn" style="float:right;padding-right:2mm;">............</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">.............</span>
  						</span>
 						<span class="styLNRightNumBox" style="border-bottom-width: 0px">29</span>
 						<div class="styIRS4562LNAmountBox" style="width:28mm; border-bottom-width: 0px; border-top-width: 0px;padding-left:2.5mm;font-size:6.3pt;">
@@ -4264,7 +4209,7 @@ tax year and used more than  50% in</span>
 								</td>
 								<td valign="top" width="177mm">
 									<span class="styIRS4562LNDesc" style="width:158mm;font-size:6.9pt">
-										<span style="font-weight: bold;">Note: </span>
+										<span style="font-weight: bold;">Note: &#160;</span>
 										<span style="text-decoration: italic;"><i>If your answer to 37, 38, 39,
 										 40, or 41 is "Yes," do not complete Section B for the covered vehicles.</i></span>
 									</span>
@@ -4529,7 +4474,7 @@ tax year and used more than  50% in</span>
 						<span class="styRepeatingDataTitle">Form 4562, Part I, Line 6:</span>
 								<table class="styDepTbl" cellspacing="0">
 							<thead class="styTableThead">
-								<tr scope="col" class="styDepTblHdr" style="font-size:7pt;">
+								<tr class="styDepTblHdr" style="font-size:7pt;">
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width: 91mm; text-align: center">
 										<span style="float:left;padding-left:3mm;font-weight:bold;">6</span>
 										<b>(a)</b> Description of property</th>

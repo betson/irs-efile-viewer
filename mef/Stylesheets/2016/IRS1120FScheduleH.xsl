@@ -220,66 +220,65 @@
 				   <xsl:choose>
 						<xsl:when test="$FormData/USDollarsInd">
 							<div style="width:30mm;">
-							 <input type="checkbox" alt="GAAP" class="styCkbox">
+							 <input type="checkbox" alt="Line 1b U.S. GAAP Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/GAAPInd"/>
-									<xsl:with-param name="BackupName">IRSschedulehUSGAAP</xsl:with-param>
+									<xsl:with-param name="BackupName">Line1bUSGAAPIndicator</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$FormData/GAAPInd"/>
-									<xsl:with-param name="BackupName">IRSschedulehUSGAAP</xsl:with-param>
+									<xsl:with-param name="BackupName">Line1bUSGAAPIndicatorLabel</xsl:with-param>
 								</xsl:call-template>
 								<span style="1mm;"> U.S. GAAP</span>
 							</label>
 						</div>
-						<input type="checkbox" alt="HomeCountryGAAP" class="styCkbox">
+						<input type="checkbox" alt="Line 1b Home Country GAAP Indicator" class="styCkbox">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/HomeCountryGAAPInd"/>
-									  <xsl:with-param name="BackupName">IRSschedulehHomeCountryGAAP</xsl:with-param>
+									  <xsl:with-param name="BackupName">Line1bHomeCountryGAAPIndicator</xsl:with-param>
 							</xsl:call-template>
 						</input>
 						<label>
 							<xsl:call-template name="PopulateLabel">
 								<xsl:with-param name="TargetNode" select="$FormData/HomeCountryGAAPInd"/>
-								<xsl:with-param name="BackupName">IRSschedulehHomeCountryGAAP</xsl:with-param>
+								<xsl:with-param name="BackupName">Line1bHomeCountryGAAPIndicatorLabel</xsl:with-param>
 							</xsl:call-template>
 							<span style="1mm;"> Home Country GAAP</span>
 						</label>
 							<br/>
 					    <div style="width:30mm;">
-							<input type="checkbox" alt="IFRS" class="styCkbox">
+							<input type="checkbox" alt="Line 1b IFRS Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/IFRSInd"/>
-									<xsl:with-param name="BackupName">IRSschedulehIFRS</xsl:with-param>
+									<xsl:with-param name="BackupName">Line1bIFRSIndicator</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$FormData/IFRSInd"/>
-									<xsl:with-param name="BackupName">IRSschedulehIFRS</xsl:with-param>
+									<xsl:with-param name="BackupName">Line1bIFRSIndicatorLabel</xsl:with-param>
 								</xsl:call-template>
 								<span style="1mm;"> IFRS</span>
 							</label>
 						</div>
-						<input type="checkbox" alt="OtherAccountingconvention" class="styCkbox">
+						<input type="checkbox" alt="Line 1b Other Accounting Convention Indicator" class="styCkbox">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/OtherInd"/>
-								<xsl:with-param name="BackupName">IRSschedulehOtherAccountingconvention</xsl:with-param>
+								<xsl:with-param name="BackupName">Line1bOtherAccountingConventionIndicator</xsl:with-param>
 							</xsl:call-template>
 						</input>
 						<label>
 							<xsl:call-template name="PopulateLabel">
 								<xsl:with-param name="TargetNode" select="$FormData/OtherInd"/>
-								<xsl:with-param name="BackupName">IRSschedulehOtherAccountingconvention</xsl:with-param>
+								<xsl:with-param name="BackupName">Line1bOtherAccountingConventionIndicatorLabel</xsl:with-param>
 							</xsl:call-template>
 							<span style="1mm;"> Other (specify)  <!--Start here -->
 								<img src="{$ImagePath}/1120FScheduleH_Bullet.gif" alt="bulletpoint"/>
-								<span style="border-color:black; border-style:solid; border-right-width: 0px; 
-								border-left-width: 0px; border-top-width:0px; border-bottom-width: 1px; width: 25mm">
-								<xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" 
-									select="$FormData/OtherInd/@specifyAccountingMethodTxt"/>
+								<span style="border-color:black;border-style:solid;border-right-width:0px;border-left-width:0px;border-top-width:0px;border-bottom-width:1px;width:25mm">
+								<xsl:call-template name="PopulateText">
+								  <xsl:with-param name="TargetNode" select="$FormData/OtherInd/@specifyAccountingMethodTxt"/>
 								</xsl:call-template>
 								</span>
 							</span>
@@ -288,66 +287,65 @@
 						<xsl:otherwise>
 							<!--Line 1b: Check if it is Functional Currency-->  
 							<div style="width:30mm;">
-								<input type="checkbox" alt="GAAPFuncInd" class="styCkbox">
+								<input type="checkbox" alt="Line 1b GAAP Functional Currency Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/GAAPFuncInd"/>
-										<xsl:with-param name="BackupName">IRSschedulehGAAPFuncInd</xsl:with-param>
+										<xsl:with-param name="BackupName">Line1bGAAPFunctionalCurrrencyIndicator</xsl:with-param>
 									</xsl:call-template>
 								</input>
 								<label>
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$FormData/GAAPFuncInd"/>
-										<xsl:with-param name="BackupName">IRSschedulehGAAPFuncInd</xsl:with-param>
+										<xsl:with-param name="BackupName">Line1bGAAPFunctionalCurrrencyIndicatorLabel</xsl:with-param>
 									</xsl:call-template>
 									<span style="1mm;"> U.S. GAAP</span>
 								</label>
 							</div>
-								<input type="checkbox" alt="HomeCountryGAAPFuncInd" class="styCkbox">
+								<input type="checkbox" alt="Line 1b Home Country GAAP Functional Currency Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/HomeCountryGAAPFuncInd"/>
-											  <xsl:with-param name="BackupName">IRSschedulehHomeCountryGAAPFuncInd</xsl:with-param>
+											  <xsl:with-param name="BackupName">Line1bHomeCountryGAAPFunctionalCurrencyIndicator</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$FormData/HomeCountryGAAPFuncInd"/>
-									<xsl:with-param name="BackupName">IRSschedulehHomeCountryGAAPFuncInd</xsl:with-param>
+									<xsl:with-param name="BackupName">Line1bHomeCountryGAAPFunctionalCurrencyIndicatorLabel</xsl:with-param>
 								</xsl:call-template>
 								<span style="1mm;"> Home Country GAAP</span>
 							</label>
 							<br/>
 					    <div style="width:30mm;">
-							<input type="checkbox" alt="IFRSFuncInd" class="styCkbox">
+							<input type="checkbox" alt="Line 1b IFRS Functional Currency Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/IFRSFuncInd"/>
-									<xsl:with-param name="BackupName">IRSschedulehIFRSFuncInd</xsl:with-param>
+									<xsl:with-param name="BackupName">Line1bFRSFunctionalCurrencyIndicator</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$FormData/IFRSFuncInd"/>
-									<xsl:with-param name="BackupName">IRSschedulehIFRSFuncInd</xsl:with-param>
+									<xsl:with-param name="BackupName">Line1bFRSFunctionalCurrencyIndicatorLabel</xsl:with-param>
 								</xsl:call-template>
 								<span style="1mm;"> IFRS</span>
 							</label>
 						</div>
-                            <input type="checkbox" alt="OtherAccountingFuncInd" class="styCkbox">
+                            <input type="checkbox" alt="Line 1b Other Accounting Functional Currency Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/OtherAccountingFuncInd"/>
-									<xsl:with-param name="BackupName">IRSschedulehOtherAccountingFuncInd</xsl:with-param>
+									<xsl:with-param name="BackupName">Line1bOtherAccountingFunctionalCurrencyIndicator</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$FormData/OtherAccountingFuncInd"/>
-									<xsl:with-param name="BackupName">IRSschedulehOtherAccountingFuncInd</xsl:with-param>
+									<xsl:with-param name="BackupName">Line1bOtherAccountingFunctionalCurrencyIndicatorLabel</xsl:with-param>
 								</xsl:call-template>
 								<span style="1mm;"> Other (specify)    <!--Start here -->
                                     <img src="{$ImagePath}/1120FScheduleH_Bullet.gif" alt="bulletpoint"/>
-									<span style="border-color:black; border-style:solid; border-right-width: 0px; 
-									border-left-width: 0px; border-top-width:0px; border-bottom-width: 1px; width: 25mm">
-									<xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode"
-									 select="$FormData/OtherAccountingFuncInd/@specifyAccountingMethodTxt"/>
+									<span style="border-color:black;border-style:solid;border-right-width:0px;border-left-width:0px;border-top-width:0px;border-bottom-width:1px;width:25mm">
+									<xsl:call-template name="PopulateText">
+									  <xsl:with-param name="TargetNode" select="$FormData/OtherAccountingFuncInd/@specifyAccountingMethodTxt"/>
 									</xsl:call-template>
 							</span>
 						</span>

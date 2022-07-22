@@ -71,28 +71,57 @@
 						</div>
 					</div>
 					<!-- Name(s) shown on return -->
-					<div class="styBB" style="width:187mm;height:auto;">
-						<div class="styFNBox" style="width:140mm; height:9mm;">
+				<div class="styBB" style="width:187mm;">
+					<div class="styFNBox" style="width:140mm;height:9mm;">
                     Name(s) shown on tax return<br/>
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-							</xsl:call-template><br/>
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+                    <!-- 1040x Return Header Attached -->
+                    <xsl:if test="$RtnHdrData/Filer/NameLine1Txt">
+                    <span style="padding-left:2mm;padding-top:3mm;">
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/NameLine1Txt"/> 
 							</xsl:call-template>
-						</div>
-						<div style="width:auto;padding-left:1mm;">
+					 </span >
+					</xsl:if>
+					<!-- If 1041 Return Header Attached -->		
+					<xsl:if test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+							</xsl:call-template>
+					</xsl:if>
+					<xsl:if test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt">
+							<br/>
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
+							</xsl:call-template>
+					</xsl:if>
+				</div>
+					<!-- Identifying Number -->
+				<div style="padding-left:1mm;"/>
 					<b> Identifying number</b><br/>
-							<xsl:call-template name="PopulateReturnHeaderFilerTIN"/>
-						</div>
-					</div>
+						<!-- 1040 Return Header Attached -->
+						<xsl:if test="$RtnHdrData/Filer/PrimarySSN">
+						<span style="padding-left:2mm;padding-top:3mm;">
+								<xsl:call-template name="PopulateSSN">
+									<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/PrimarySSN"/>
+								</xsl:call-template>
+						 </span >
+						</xsl:if>
+						<xsl:if test="$RtnHdrData/Filer/EIN">
+							    <br/>
+						 <span style="padding-left:2mm;">
+								<xsl:call-template name="PopulateEIN">
+										<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/EIN"/>
+								</xsl:call-template>
+						 </span >
+						</xsl:if>
+				</div>
 					<!--  start instructions -->
 					<div style="width:187mm;height:10mm;border-bottom:1px solid black;padding bottom:1mm;">
 						<b>Generally, you do not need to file Form 2210-F.</b> The IRS will figure any penalty you owe and send you a bill. File Form 2210-F <b>only</b> if one or both of the boxes in Part I apply to you. If you do not need to file Form 2210-F, you still can use it to figure your penalty. Enter the amount from line 16 on the penalty line of your return, but do not attach Form 2210-F.
 					</div>
 					<!-- Part I -->
 					<!-- Part I - Header -->
-					<div style="width:187mm;height:4mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div style="width:187mm;height:4.5mm;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;">
 						<span class="styPartName" style="height:4mm;width:15mm;font-size:13;">Part l</span>
 						<div class="styPartDesc" style="width:167mm;font-weight:normal;" >
@@ -143,7 +172,7 @@
 					</div>
 					<!-- Part lI -->
 					<!-- Part II - Header -->
-					<div style="width:187mm;height:4mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div style="width:187mm;height:4.5mm;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;float:left;padding-top:0mm;">
 						<span class="styPartName" style="height:4mm;width:15mm;font-size:13;">Part II</span>
 						<span class="styPartDesc" style="width:167mm;font-weight:normal;">
@@ -556,7 +585,7 @@
 					</div>
 					<!-- Part lll -->
 					<!-- Part Ill - Header -->
-<div style="width:187mm;height:4mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+<div style="width:187mm;height:4.5mm;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;float:left;">
 						<span class="styPartName" style="height:4mm;width:18mm;font-size:13;">Part lll</span>
 						<span class="styPartDesc" style="width:167mm;font-weight:normal;">
@@ -565,7 +594,7 @@
 						</span>
 					</div>
 					<!-- END Part lll Header-->
-					<div class="styBB" style="width:187mm;border-bottom:1px solid black;">	
+					<div class="styBB" style="width:187mm;border-bottom:2px solid black;">	
 						<!-- Spacer Row -->
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="font-size:7pt;height:5mm;padding-left: 2.25mm"/>

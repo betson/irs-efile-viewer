@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <!-- 05/04/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <!-- 06/23/2015 - Changes made for UWR 151655 - Jeremy Nichols -->
+<!-- 06/09/2016 - Changes made for defect 59600 - Jeremy Nichols -->
+<!-- 05/09/2017 - Changes made for UWR 194393 - Jeremy Nichols -->
+<!-- 06/27/2017 - Changes made for defect 48180 - Jeremy Nichols -->
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -83,43 +86,18 @@
             <div class="styNameBox" style="width:141mm;font-size:7pt;">
       Name(s) shown on return<br/>
               <div style="font-family:verdana;font-size:6pt;height:6mm">
-                <xsl:call-template name="PopulateReturnHeaderFiler">
-                  <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-                </xsl:call-template>
-                <br/>
-                <xsl:call-template name="PopulateReturnHeaderFiler">
-                  <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-                </xsl:call-template>
+                <xsl:call-template name="PopulateFilerName">
+				  <xsl:with-param name="TargetNode" select="$FormData"/>
+				</xsl:call-template>
               </div>
             </div>
             <div class="styEINBox" style=" padding-left:2mm; font-size:7pt;">
               <span class="BoldText">Identifying number</span>
                 <br/> <br/>
               <div style="text-align:left;font-weight:normal; ">
-                <xsl:choose>
-						  <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-								    <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-									</xsl:call-template>
-						  </xsl:when>
-						  <xsl:otherwise>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-								    <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-									</xsl:call-template>
-						  </xsl:otherwise>
-				</xsl:choose>                                              
-<!--                <xsl:choose>
-                  <xsl:when test="normalize-space($FormData/IdentifyingNumber) != ''">
-                    <xsl:call-template name="PopulateEIN">
-                      <xsl:with-param name="TargetNode" select="$FormData/IdentifyingNumber"/>
-                    </xsl:call-template>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <xsl:call-template name="PopulateReturnHeaderFiler">
-                      <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-                    </xsl:call-template>
-                  </xsl:otherwise>
-                </xsl:choose>-->
+                <xsl:call-template name="PopulateFilerTIN">
+				   <xsl:with-param name="TargetNode" select="$FormData"/>
+				</xsl:call-template>
               </div>
             </div>
           </div>
@@ -147,11 +125,12 @@
         <div class="styLNLeftNumBox" style="padding-top:4mm;">2</div>
         <div class="styLNDesc" style="width:100mm;padding-top:4mm;">
           Regular tax before credits:     <br/>    
-       <img src="{$ImagePath}/8844_Bullet_Round.gif" alt="dot"/>    Individuals. Enter the amount from Form 1040, line 44, or Form 1040NR, line 42.<br/>
+       <img src="{$ImagePath}/8844_Bullet_Round.gif" alt="dot"/>    Individuals. Enter the sum of the amounts from Form 1040, lines 44 and 46; 
+       <br/><span style="width:3mm;" />or the sum of the amounts from Form 1040NR, lines 42 and 44.<br/>
         <img src="{$ImagePath}/8844_Bullet_Round.gif" alt="dot"/>    Corporations. Enter the amount from Form 1120, Schedule J, line 2; or the
-applicable line of your return<br/>
-        <img src="{$ImagePath}/8844_Bullet_Round.gif" alt="dot"/>    Estates and trusts. Enter the sum of the amounts from Form 1041, Schedule G,
-lines 1a and 1b, or the amount from the applicable line of your return.                   
+		<br/><span style="width:3mm;" />applicable line of your return<br/>
+        <img src="{$ImagePath}/8844_Bullet_Round.gif" alt="dot"/>    Estates and trusts. Enter the sum of the amounts from Form 1041, Schedule 
+        <br/><span style="width:3mm;" />G, lines 1a and 1b, or the amount from the applicable line of your return.                   
         </div>
         <div class="styLNDesc" style="width:5mm; height:4mm;padding-top:4.5mm;">
           <img src="{$ImagePath}/8844_Bracket_Lger.gif" alt="bracket" border="0"/>        
@@ -335,14 +314,14 @@ lines 1a and 1b, or the amount from the applicable line of your return.
         <div class="styLNLeftNumBox" style="height:4.5mm;">7</div>
         <div class="styLNDesc" style="width:138mm;height:10mm;">
           <span class="styBoldText">Qualified electric vehicle credit.</span> Enter the <span class="styBoldText">smaller</span> of line 1 or line 6. Report this
-				amount on Form 1040, line 53; Form 1040NR, line 50; Form
+				amount on Form 1040, line 54; Form 1040NR, line 51; Form
 				1120, Schedule J, line 5b; or the appropriate line of your return.<br/>
 				If line 6 is smaller than line 1, see instructions    
           <!--Dotted Line-->
 
           <span style="letter-spacing:4mm; font-weight:bold">  
             .............
-            <img src="{$ImagePath}/8834_Bullet.gif" alt="Curly Bracket Image"/>
+            <img src="{$ImagePath}/8834_Bullet.gif" alt="MediumBullet"/>
           </span>
             
         </div>

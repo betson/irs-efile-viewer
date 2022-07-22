@@ -81,11 +81,9 @@
 					<!--   END FORM HEADER   -->
 					<div style="width:187mm; line-height:1.2; padding-top:1mm; padding-bottom:1mm">
 						<b>Electronic filing (e-file).</b> You can electronically file Form 8868 if you need a 6-month automatic extension of time to file any 
-						of the
-						 forms listed below with the exception of Form 8870, Information Return for Transfers Associated With Certain Personal Benefit 
-						 Contracts,
-						 which must be sent to the IRS in paper form (see instructions).  For more details on the electronic filing of this form, visit 
-						  <i>www.irs.gov/efile</i> and click on <i>e-file for Charities &#38; Nonprofits.</i>
+						of the forms listed below with the exception of Form 8870, Information Return for Transfers Associated With Certain Personal Benefit 
+						Contracts, which must be sent to the IRS in paper form (see instructions).  For more details on the electronic filing of this form, visit 
+						  <i>www.irs.gov/efile</i>, click on Charities and Nonprofits, and click on <i>e-file for Charities &#38; Nonprofits.</i>
 					</div>
 					<!--   BEGIN PART I   -->
 					<!--   BEGIN PART I HEADER   -->
@@ -345,17 +343,19 @@
 										select="$IRS8868Data/Automatic6MonthExtensionOfTime/BooksInCareOfDetail/ForeignAddress/CityNm"/>
 									</xsl:call-template>
 									<span style="width:1px">,</span>
-									<span style="width:1mm"/>
+									<span style="width:2mm"/>
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" 
 										select="$IRS8868Data/Automatic6MonthExtensionOfTime/BooksInCareOfDetail/ForeignAddress/ProvinceOrStateNm"/>
 									</xsl:call-template>
 									<span style="width:1px">,</span>
-									<span style="width:1mm"/>
+									<span style="width:2mm"/>
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" 
 										select="$IRS8868Data/Automatic6MonthExtensionOfTime/BooksInCareOfDetail/ForeignAddress/ForeignPostalCd"/>
 									</xsl:call-template>
+									<span style="width:1px"></span>
+									<span style="width:2mm"/>
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" 
 											select="$IRS8868Data/Automatic6MonthExtensionOfTime/BooksInCareOfDetail/ForeignAddress/CountryCd"/>
@@ -468,7 +468,7 @@
 								<div class="styIRS8868LineItem" style="margin-left: 8mm; float:left">
 									<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
 									<span style="width: 2mm"/>
-									<input type="checkbox" class="styCkbox" id="CalendarYearInd" checked="checked" onclick="return false;"/>
+									<input type="checkbox" alt="CalendarYear" class="styCkbox" name="CalendarYearInd" id="CalendarYearInd" checked="checked"/>
 									<span  style="; clear:none">
 										<label for="CalendarYearInd" style="padding-left:1.5mm"> calendar year 
 											<span class="styGenericDiv" style="width:50mm;border-bottom:1px solid black;padding-left: .5mm; float:none; clear:none;">
@@ -480,12 +480,14 @@
 								<div class="styIRS8868LineItem" style="float:left; width:187mm; padding-left:8mm">
 									<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
 									<span style="width: 2mm"/>
-											<input type="checkbox" class="styIRS8868Ckbox" id="TaxYearCheckBox" onclick="return false;"/>
+											<input type="checkbox" alt="CalendarYear"  class="styIRS8868Ckbox" name="CalendarYearInd" id="CalendarYearInd" 
+											onclick="return false;"/>
 									<span class="styIRS8868CkboxText" style="width: 160mm; float: none; clear: none">
 										<label for="TaxYearCheckBox" style="width:130mm"> tax year beginning   
 											<span style="padding-left: 1mm;width:20mm;border-style:solid;float:none;clear:none;border-bottom-width:0px;"
 											 class="styBB">__________</span>
-											 and ending
+										</label>
+										<label for="TaxYearCheckBox"> and ending
 											<span class="styBB" 
 											style="padding-left: 1mm;width:20mm;float:none;clear:none;border-bottom-width:0px">__________</span>
 										</label>
@@ -496,10 +498,11 @@
 								<div class="styIRS8868LineItem" style="margin-left: 3mm; float:left">
 									<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
 									<span style="width: 2mm"/>
-									<input type="checkbox" class="styIRS8868Ckbox" id="CalendarYearInd" onclick="return false"/>
+									<input type="checkbox" alt="CalendarYear" class="styIRS8868Ckbox" name="CalendarYearInd" id="CalendarYearInd" 
+									onclick="return false"/>
 									<span class="styIRS8868CkboxText" style="float: none; clear:none;">
 									<label for="CalendarYearInd"> calendar year 
-										<span style="width:8mm;border-style:solid;float:none;clear:none;" class="styBB"></span>  or 
+										<span style="width:8mm;border-style:solid;float:none;clear:none;" class="styBB">  or </span>
 									</label>
 									</span>
 								</div>
@@ -508,10 +511,12 @@
 								<span style="width: 2mm"/>
 								<xsl:choose>
 									<xsl:when test="substring($RtnHdrData/TaxPeriodEndDt,6,5) != ''">
-										<input type="checkbox" class="styIRS8868Ckbox" id="TaxYearCheckBox" onclick="return false" checked="checked"/>
+										<input type="checkbox" alt="TaxYearCheckBox" class="styIRS8868Ckbox" name="TaxYearCheckBox" id="TaxYearCheckBox" 
+										onclick="return false" checked="checked"/>
 									</xsl:when>
 									<xsl:otherwise>
-										<input type="checkbox" class="styIRS8868Ckbox" id="TaxYearCheckBox" onclick="return false;"/>
+										<input type="checkbox"  alt="TaxYearCheckBox" class="styIRS8868Ckbox" name="TaxYearCheckBox" id="TaxYearCheckBox" 
+										onclick="return false;"/>
 									</xsl:otherwise>
 								</xsl:choose>
 								<span class="styIRS8868CkboxText" style="width: 160mm; float: none; clear: none">
@@ -519,7 +524,8 @@
 								<span style="padding-left: 1mm;width:20mm;border-style:solid;float:none;clear:none;" class="styBB">
 									<xsl:call-template name="PopulateReturnHeaderTaxPeriodBeginDate"/>
 								</span>
-								 and ending
+							</label>
+							<label for="TaxYearCheckBox"> and ending
 								<span style="padding-left: 1mm;width:20mm;border-style:solid;float:none;clear:none;" class="styBB">
 									<xsl:call-template name="PopulateReturnHeaderTaxPeriodEndDate"/>
 								</span>

@@ -68,7 +68,7 @@
               </div>
               <div class="styFST" style="height:5.5mm;font-size:5.9pt;">
                 <img src="{$ImagePath}/1120SchN_Bullet_Title.gif" alt="bullet image"/>
-                 Information about Schedule O (Form 1120) and its separate instructions is at  
+                 Information about Schedule O (Form 1120) and its instructions is available at  
                  <a href="http://www.irs.gov/form1120" title="Link to irs.gov">
                     <i>www.irs.gov/form1120.</i>
             </a>

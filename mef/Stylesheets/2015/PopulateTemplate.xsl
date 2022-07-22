@@ -1367,6 +1367,11 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
                     <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/MissingEINReason" />
                     </xsl:call-template>
                 </xsl:if>
+							<xsl:if test="$SubRtnHdrData/SubsidiaryCorpGrp/MissingEINReasonCd">
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/MissingEINReasonCd"/>
+								</xsl:call-template>
+							</xsl:if>
        </xsl:when>
         <xsl:when test="$TargetNode = 'SSN' ">                
           <xsl:call-template name="PopulateSSN">
@@ -1536,8 +1541,168 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
          </xsl:otherwise>
    </xsl:choose>
   </xsl:template>
-  
-<!--   
+
+	<!--
+***************************************************************************************************************************************************************
+Name:        	PopulateFilerName
+Description: 	Populates filer name from form or the return header.
+Req Param:   None
+Opt Param:   None
+Called By:   	Stylesheets
+Calls:       		
+Log:
+***************************************************************************************************************************************************************
+-->
+	<xsl:template name="PopulateFilerName">
+		<xsl:param name="TargetNode"/>
+		<xsl:choose>
+			<!-- Business Name from Form-->
+			<xsl:when test="$TargetNode/BusinessName/BusinessNameLine1Txt">
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$TargetNode/BusinessName/BusinessNameLine1Txt"/>
+				</xsl:call-template>
+				<xsl:if test="$TargetNode/BusinessName/BusinessNameLine2Txt">
+					<br/>
+					<xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="$TargetNode/BusinessName/BusinessNameLine2Txt"/>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:when>
+			<!-- Individual Name from Form-->
+			<xsl:when test="$TargetNode/NameLine1Txt">
+				<br/>
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$TargetNode/NameLine1Txt"/>
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:when test="$TargetNode/PersonNm">
+				<br/>
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$TargetNode/PersonNm"/>
+				</xsl:call-template>
+			</xsl:when>
+			<!-- Estate/Trust Name from Form-->
+			<xsl:when test="$TargetNode/EstateOrTrustName/BusinessNameLine1Txt">
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$TargetNode/EstateOrTrustName/BusinessNameLine1Txt"/>
+				</xsl:call-template>
+				<xsl:if test="$TargetNode/EstateOrTrustName/BusinessNameLine2Txt">
+					<br/>
+					<xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="$TargetNode/EstateOrTrustName/BusinessNameLine2Txt"/>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:when>
+			<!-- Business Name from Parent return header -->
+			<xsl:when test="$Location='PAR'">
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine1Txt"/>
+				</xsl:call-template>
+				<xsl:if test="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2Txt">
+					<br/>
+					<xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2Txt"/>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:when>
+			<!-- Business Name from Subsidiary Return Header -->
+			<xsl:when test="$Location='SUB'">
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine1Txt"/>
+				</xsl:call-template>
+				<xsl:if test="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2Txt">
+					<br/>
+					<xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2Txt"/>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:when>
+			<!-- Name from 1120/990/1065 Return Header -->
+			<xsl:when test="$RtnHdrData/Filer/BusinessName">
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+				</xsl:call-template>
+				<xsl:if test="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt">
+					<br/>
+					<xsl:call-template name="PopulateReturnHeaderFiler">
+						<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:when>
+			<!-- Name from 1040 Return Header -->
+			<xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+				<br/>
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+				</xsl:call-template>
+			</xsl:when>
+			<!-- Name from 1041 Return Header -->
+			<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
+				<br/>
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">NationalMortgageAssocCd</xsl:with-param>
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+				</xsl:call-template>
+				<xsl:if test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt">
+					<br/>
+					<xsl:call-template name="PopulateReturnHeaderFiler">
+						<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:when>
+		</xsl:choose>
+	</xsl:template>
+	<!--
+***************************************************************************************************************************************************************
+Name:        	PopulateFilerTIN
+Description: 	Populates filer TIN from form or the return header.
+Req Param:   None
+Opt Param:   None
+Called By:   	Stylesheets
+Calls:       		
+Log:
+***************************************************************************************************************************************************************
+-->
+	<xsl:template name="PopulateFilerTIN">
+		<xsl:param name="TargetNode"/>
+		<xsl:choose>
+			<!-- EIN-->
+			<xsl:when test="$TargetNode/EIN">
+				<xsl:call-template name="PopulateEIN">
+					<xsl:with-param name="TargetNode" select="$TargetNode/EIN"/>
+				</xsl:call-template>
+			</xsl:when>
+			<!-- SSN -->
+			<xsl:when test="$TargetNode/SSN">
+				<xsl:call-template name="PopulateSSN">
+					<xsl:with-param name="TargetNode" select="$TargetNode/SSN"/>
+				</xsl:call-template>
+			</xsl:when>
+			<!-- Missing EIN Reason-->
+			<xsl:when test="$TargetNode/MissingEINReasonCd">
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$TargetNode/MissingEINReasonCd"/>
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<!-- Pull Data from Return Header-->
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+				</xsl:call-template>
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+				</xsl:call-template>
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+				</xsl:call-template>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+	<!--     
 ****************************************************
 Name:        PopulateReturnHeaderFilerTIN
 Description: Populates an EIN or SSN based on which is available.
@@ -2339,13 +2504,13 @@ Log:
 <xsl:template name="GlobalStylesForm">  
   <!-- If the Print parameter is empty -->
 
-  <!--<xsl:if test="not(string($Print))">-->
+ <!-- <xsl:if test="not(string($Print))">-->
 
     <link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
     <link rel="stylesheet" type="text/css" name="BodyStyleSheet" href="{$CSSPath}/body.css"/>
     <link rel="stylesheet" type="text/css" name="General" href="{$CSSPath}/general.css"/>
 
-  <!--</xsl:if>-->
+<!--  </xsl:if>-->
 
 </xsl:template>
 
@@ -2366,7 +2531,7 @@ Log:
   <!-- If the Print parameter is empty -->
   <!--<xsl:if test="not(string($Print))">-->
     <link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
-  <!--</xsl:if>  -->
+  <!--</xsl:if>-->  
 </xsl:template>
 
 
@@ -2604,9 +2769,9 @@ Log:
       </img>
     </xsl:if>
     <!--/xsl:if-->
-  </xsl:template>  
-  
-  <!--
+  </xsl:template> 
+   
+   <!--
 ***************************************************************************************************************************************************************
 Name: SetFormLinkInline
 Description: Template to display the form link image (usually pushpin image); image is displayed inline (normally) using img tags
@@ -2636,8 +2801,6 @@ Log: - Mike Farrell - This is a Modification of the original by Charles Moore
 </xsl:if>
 <!--/xsl:if-->
 </xsl:template>
-
-
 
   
 <!--
@@ -2697,11 +2860,11 @@ Log:
       <xsl:if test="($TargetNode or $TargetNode!='')">                  
           <xsl:choose>
             <xsl:when test="count($TargetNode) &gt; 1">
-              <img src="{$NonVersionedImagePath}/pen.gif" alt="See additional data table" TabIndex="{$TabOrder}" style="cursor:pointer;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+              <img src="{$NonVersionedImagePath}/pen.gif" alt="See additional data table" title="See additional data table" TabIndex="{$TabOrder}" style="cursor:pointer;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
             </xsl:when>
             <xsl:otherwise>
                <xsl:if test="($TargetNode='X')">
-                <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: Yes" TabIndex="{$TabOrder}" style="cursor:pointer;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+                <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: Yes" title="{$Desc}: Yes" TabIndex="{$TabOrder}" style="cursor:pointer;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
               </xsl:if>
            </xsl:otherwise>
           </xsl:choose>        

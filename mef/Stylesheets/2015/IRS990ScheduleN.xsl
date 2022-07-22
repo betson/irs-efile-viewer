@@ -13,6 +13,7 @@
 <!-- Updated 10/08/2015 per IBM Defect 44819 by Robert L Jones -->
 <!-- Updated 10/22/2015 per PDF REVIEW by Robert L Jones -->
 <!-- Updated 12/15/2015 per IBM Defect 45593 overlapping at 6b by Robert L Jones -->
+<!-- Updated 5/17/2016 per IBM Defect 45886 Part I table lines not connecting by Robert L Jones -->
 
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">

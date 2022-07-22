@@ -70,7 +70,7 @@
   </div>
   <!--  End title of Form  -->    
   <div class="styBB" style="width:187mm">
-     <div class="styNameBox" style="font-size:7pt; width:120mm; height:10mm">Name of shareholder
+     <div class="styNameBox" style="font-size:7pt; width:118mm; height:10mm">Name of shareholder
        <div style="padding-left:5mm; line-height:110%;font-family:verdana;font-size:7pt;">
          <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="$FormData/ShareholderName/BusinessNameLine1Txt"/> 
@@ -83,7 +83,7 @@
           </xsl:if>
         </div>
       </div>     
-     <div class="styEINBox" style="font-size:7pt; padding-left:2mm;"> Identifying number <span style="font-weight:normal">(see instructions)</span>
+     <div class="styEINBox" style="font-size:7pt; padding-left:2mm;height:10mm;"> Identifying number <span style="font-weight:normal">(see instructions)</span>
        <div style="text-align:left; width:100%; padding-top:3mm; font-weight:normal;">
          <xsl:choose> 
           <xsl:when test="$FormData/EIN">

@@ -2,6 +2,8 @@
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
 <!-- 04/28/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <!-- 12/08/2015 - Changes made per 2015 pdf review - Jeremy Nichols -->
+<!-- 06/07/2016 - Changes made for defect 45890 - Jeremy Nichols -->
+<!-- 05/11/2017 - Changes made for UWR 194393 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -90,41 +92,18 @@
 					<!--  Name and Employer identification number  -->
 					<div class="styBB" style="width:187mm">
 						<div class="styNameBox" style="width:141mm;font-weight:normal;font-size:7pt;">
-      Name(s) as shown on return<br/>
- 							<xsl:choose>
-								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">Name</xsl:with-param>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-									</xsl:call-template>
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-									</xsl:call-template>
-								</xsl:otherwise>
-							</xsl:choose>
+							Name(s) as shown on return<br/>
+							<xsl:call-template name="PopulateFilerName">
+							  <xsl:with-param name="TargetNode" select="$FormData"/>
+							</xsl:call-template>
 						</div>
 						<div class="styEINBox" style=" padding-left:2mm;font-size:7pt;font-weight: normal;">Identifying number
-      <br/>
+							<br/>
 							<br/>
 							<span style="font-weight:normal;">
-								<xsl:choose>
-									<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
-								</xsl:choose>
+								<xsl:call-template name="PopulateFilerTIN">
+								   <xsl:with-param name="TargetNode" select="$FormData"/>
+								</xsl:call-template>
 							</span>
 						</div>
 					</div>
@@ -1187,15 +1166,17 @@
 						</div>
 					</div>
 					<!-- End Line 25 -->
+					
 					<!--  FOOTER-->
 					<div style="width:187mm;">
 						<span class="styBoldText">For Paperwork Reduction Act Notice, see separate instructions. </span>
 						<span style="width:100px;"/>                      
-          Cat. No. 37712F 
-          <span style="width:54px;"/>  
-          Form <span class="styBoldText">8903</span> (Rev. 12-2010)
-        </div>
-					<br class="pageEnd"/>
+					  Cat. No. 37712F 
+					  <span style="width:54px;"/>  
+					  Form <span class="styBoldText">8903</span> (Rev. 12-2010)
+					</div>
+					<div class="pageEnd"/>
+					
 					<!-- BEGIN Left Over Table -->
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">

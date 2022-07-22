@@ -6,7 +6,7 @@
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
-  <xsl:param name="DependencyData" select="$RtnDoc//ExplnOfAddnlInterestDedStmt"/>
+  <xsl:param name="DependencyData" select="$RtnDoc/ExplnOfAddnlInterestDedStmt"/>
   <!--  -  Form 1040SchF displays as - Explanation of Additional Interest Deduction Statement - -->
   <xsl:param name="depDocTitle">		 
   <xsl:call-template name="PopulateDisplayName"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>  

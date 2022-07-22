@@ -90,18 +90,42 @@
           <div class="styBB" style="width:187mm;">
             <div class="styNameBox" style="width:137mm;height:8mm;font-weight:normal;font-size:7pt;">
               Name(s) shown on return<br/><span style="padding-top:2mm;">
-              <xsl:call-template name="PopulateReturnHeaderFiler">
-                <xsl:with-param name="TargetNode">Name</xsl:with-param>
-              </xsl:call-template></span>
+              <xsl:choose>   <!--This is for 1040NR-->
+								    <xsl:when test="RtnHdrData/NameLine1Txt">
+							                 <xsl:call-template name="PopulateReturnHeaderFiler">
+                                            <xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+                                            </xsl:call-template>
+									</xsl:when>
+									
+									<xsl:otherwise>
+									    <xsl:call-template name="PopulateReturnHeaderFiler">
+									    <xsl:with-param name="TargetNode">Name</xsl:with-param>
+								       </xsl:call-template>
+									</xsl:otherwise>
+                              </xsl:choose>       	
+              </span>
             </div>
             <div style="height:8mm;width:50mm;height:4mm;padding:0px 0px 0px 2mm;font-size:7pt;" class="styEINBox">
               Your social security number
               <br/>
               <span style="font-weight:normal;text-align:center;width:100%;padding-top:2mm;">
-                <xsl:call-template name="PopulateSSN">
+              <xsl:choose>
+                                                               
+                                                                        <xsl:when test="$RtnHdrData/Filer/PrimarySSN"> 
+                                                                            <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                                            <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+                                                                            </xsl:call-template>
+                                                                        </xsl:when>
+                                                                        <xsl:when test="$RtnHdrData/Filer/EIN"> 
+                                                                               <xsl:call-template name="PopulateReturnHeaderFiler"> 
+                                                                               <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+                                                                               </xsl:call-template>
+                                                                         </xsl:when>
+                                                                </xsl:choose>
+               <!-- <xsl:call-template name="PopulateSSN">
                   <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimarySSN"/>
                   <xsl:with-param name="BackupName">RtnHdrDataFilerPrimarySSN</xsl:with-param>
-                </xsl:call-template>
+                </xsl:call-template>-->
               </span>
             </div>
           </div>
@@ -1347,7 +1371,7 @@
               <xsl:with-param name="TargetNode" select="$Form8839Data"/>
               <xsl:with-param name="DescWidth" select="$TableWidth"/>
             </xsl:call-template>
-            <xsl:call-template name="PopulateLeftoverRow">
+            <!--<xsl:call-template name="PopulateLeftoverRow">
               <xsl:with-param name="Desc">Return Software ID</xsl:with-param>
               <xsl:with-param name="TargetNode" select="$RtnHdrData/SoftwareId"/>
               <xsl:with-param name="DescWidth" select="$TableWidth"/>
@@ -1356,7 +1380,7 @@
               <xsl:with-param name="Desc">Return Software Version</xsl:with-param>
               <xsl:with-param name="TargetNode" select="$RtnHdrData/SoftwareVersionNum"/>
               <xsl:with-param name="DescWidth" select="$TableWidth"/>
-            </xsl:call-template>
+            </xsl:call-template>-->
             <xsl:for-each select="$Form8839Data/AdoptedChild">
               <xsl:call-template name="PopulateLeftoverRow">
                 <xsl:with-param name="Desc">Part I, Line 1(a) - Person Name Control Text - Child <xsl:number value="position()" format="1"/>
@@ -1484,15 +1508,15 @@
       </td>
       <!--(c) Disabled Child Over 18-->
       <td class="styIRS8839TableCell" style="width:8%;font-size: 7pt; text-align:center;">
-        <input class="styCkbox" type="checkbox" style="width:4mm;"><xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>Over18Blank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>Over18Blank</xsl:attribute></label>
+        <input class="styCkbox" type="checkbox" alt="Disabled Child Over 18" style="width:4mm;"><xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>Over18Blank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>Over18Blank</xsl:attribute></label>
       </td>
       <!--(d) Child With Special Needs-->
       <td class="styIRS8839TableCell" style="width:8%;font-size: 7pt; text-align:center;">
-        <input class="styCkbox" type="checkbox" style="width:4mm;"><xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>SpecialNeedsBlank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>SpecialNeedsBlank</xsl:attribute></label>
+        <input class="styCkbox" type="checkbox" alt="Child With Special Needs" style="width:4mm;"><xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>SpecialNeedsBlank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>SpecialNeedsBlank</xsl:attribute></label>
       </td>
       <!--(e) Foreign Child Indicator-->
       <td class="styIRS8839TableCell" style="width:8%;font-size: 7pt; text-align:center;">
-        <input class="styCkbox" type="checkbox" style="width:4mm;"><xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>ForeignBlank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>ForeignBlank</xsl:attribute></label>
+        <input class="styCkbox" type="checkbox" alt="Foreign Child" style="width:4mm;"><xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>ForeignBlank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>ForeignBlank</xsl:attribute></label>
       </td>
       <!--(f) Child's SSN-->
       <td class="styIRS8839TableCell" style="width:14%;font-size: 7pt; text-align:center;">
@@ -1500,7 +1524,7 @@
       </td>
       <!--(g) adoption became final in 2014 or earlier Indicator-->
       <td class="styIRS8839TableCell" style="width:44%;font-size: 7pt; text-align:center;border-right-width:0px;">
-        <input class="styCkbox" type="checkbox" style="width:4mm;"><xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>FinalBlank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>FinalBlank</xsl:attribute></label>
+        <input class="styCkbox" type="checkbox" alt="Adoption Final" style="width:4mm;"><xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>FinalBlank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>FinalBlank</xsl:attribute></label>
       </td>
     </tr>
   </xsl:template>
@@ -1705,7 +1729,7 @@
                 <xsl:with-param name="BackupName">Form8839DataAdoptedChildDisabledChildOver18Ind</xsl:with-param>
               </xsl:call-template>
             </label>
-            <input class="styCkbox" type="checkbox" style="width:4mm;">
+            <input class="styCkbox" type="checkbox" alt="Disabled Child Over 18" style="width:4mm;">
               <xsl:call-template name="PopulateCheckbox">
                 <xsl:with-param name="TargetNode" select="DisabledChildOver18Ind"/>
                 <xsl:with-param name="BackupName">Form8839DataAdoptedChildDisabledChildOver18Ind</xsl:with-param>
@@ -1725,7 +1749,7 @@
                 <xsl:with-param name="BackupName">Form8839DataAdoptedChildChildWithSpecialNeedsInd</xsl:with-param>
               </xsl:call-template>
             </label>
-            <input class="styCkbox" type="checkbox" style="width:4mm;">
+            <input class="styCkbox" type="checkbox" alt="Child With Special Needs" style="width:4mm;">
               <xsl:call-template name="PopulateCheckbox">
                 <xsl:with-param name="TargetNode" select="ChildWithSpecialNeedsInd"/>
                 <xsl:with-param name="BackupName">Form8839DataAdoptedChildChildWithSpecialNeedsInd</xsl:with-param>
@@ -1745,7 +1769,7 @@
                 <xsl:with-param name="BackupName">Form8839DataAdoptedChildForeignChildInd</xsl:with-param>
               </xsl:call-template>
             </label>
-            <input class="styCkbox" type="checkbox" style="width:4mm;">
+            <input class="styCkbox" type="checkbox" alt="Foreign Child" style="width:4mm;">
               <xsl:call-template name="PopulateCheckbox">
                 <xsl:with-param name="TargetNode" select="ForeignChildInd"/>
                 <xsl:with-param name="BackupName">Form8839DataAdoptedChildForeignChildInd</xsl:with-param>
@@ -1779,7 +1803,7 @@
                 <xsl:with-param name="BackupName">Form8839DataAdoptedChildAdoptionFinalInd</xsl:with-param>
               </xsl:call-template>
             </label>
-            <input class="styCkbox" type="checkbox" style="width:4mm;">
+            <input class="styCkbox" type="checkbox" alt="Adoption Final" style="width:4mm;">
               <xsl:call-template name="PopulateCheckbox">
                 <xsl:with-param name="TargetNode" select="AdoptionFinalInd"/>
                 <xsl:with-param name="BackupName">Form8839DataAdoptedChildAdoptionFinalInd</xsl:with-param>

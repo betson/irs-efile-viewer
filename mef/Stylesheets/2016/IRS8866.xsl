@@ -133,7 +133,7 @@
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
 				  </xsl:call-template>
 				</xsl:when>
-				<!-- Name from 1041 Return Header 
+				<!-- Name from 1041 Return Header  -->
 				<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
 				  <xsl:call-template name="PopulateText">
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
@@ -148,7 +148,7 @@
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
 				  </xsl:call-template>
 				  <br/>
-				</xsl:when> -->
+				</xsl:when>
 			  </xsl:choose>
 			</span>
       </div>
@@ -865,8 +865,7 @@ has any knowledge. </td>
         </th>
         <th class="styTableCell" rowspan="1" scope="col" style="width:81mm;text-align:left;border-color:black;border-bottom:none;">
           <span style="font-weight:bold;">Pass-through entities:</span>
-          <span style="width:1mm;"/>
-          <span style="font-weight:normal;font-style:italic">Skip lines 1, 3, 4, and 5.</span>
+          <span style="font-weight:normal;font-style:italic;">Skip lines 1, 3, 4, and 5.</span>
         </th>
            <th class="styTableCell" colspan="1" scope="col" style="width:29mm;text-align:center;font-weight:normal;border-color:black;">
           <span style="width:12mm;"/><b>Recomputation<br/>Year </b>
@@ -881,8 +880,13 @@ has any knowledge. </td>
       </tr> 
 <!-- Line 1 -->
       <tr>
-        <td class="styTableCell" style="width:6mm;text-align:center;vertical-align:top;font-weight:bold;border-color:black;border-right:none;border-bottom:none;padding-left:1mm;"><span style="float:left;width:1px;"/></td>
-        <td class="styTableCell" style="width:81mm;text-align:justify;font-weight:normal;border-color:black;border-bottom:none;padding-right:1mm;padding-left:2mm;vertical-align:top;"><span style="float:left;width:1px;"/>
+        <td class="styTableCell" style="width:6mm;text-align:center;vertical-align:top;font-weight:bold;border-color:black;border-right:none;border-bottom:none;padding-left:1mm;">1</td>
+        <td class="styTableCell" style="width:81mm;text-align:justify;font-weight:normal;border-color:black;border-bottom:none;padding-right:1mm;padding-left:2mm;vertical-align:top;">
+			Taxable income (or loss) for the prior years shown on tax 
+          return (or as previously adjusted) before net operating loss 
+          or capital loss carrybacks (other than carrybacks that must 
+          be taken into account to properly compute interest under 
+          section 167(g)) (see instructions). If you 
         </td>
           <td class="styTableCell" rowspan="1" style="width:29mm;text-align:center;font-weight:bold;border-color:black;">
            
@@ -981,14 +985,9 @@ has any knowledge. </td>
           </td>
       </tr>
       <tr>
-        <td class="styTableCell" style="width:6mm;text-align:center;vertical-align:top;font-weight:bold;border-color:black;border-right:none;border-bottom:none;padding-left:1mm;">1</td>
+        <td class="styTableCell" style="width:6mm;text-align:center;vertical-align:top;font-weight:bold;border-color:black;border-right:none;border-bottom:none;padding-left:1mm;"><span style="float:left;width:1px;"/></td>
         <td class="styTableCell" style="width:81mm;text-align:justify;font-weight:normal;border-color:black;border-bottom:none;padding-right:1mm;padding-left:2mm;vertical-align:top;">
-          Taxable income (or loss) for the prior years shown on tax 
-          return (or as previously adjusted) before net operating loss 
-          or capital loss carrybacks (other than carrybacks that must 
-          be taken into account to properly compute interest under 
-          section 167(g)) (see instructions). If you were required to 
-          file Form 8866 for an earlier year, enter adjusted taxable 
+          were required to file Form 8866 for an earlier year, enter adjusted taxable 
           income for the prior years from Form 8866, line 3, for the 
           most recent recomputation year that affects the prior years
           <span class="styDotLn" style="float:none;">.............</span>

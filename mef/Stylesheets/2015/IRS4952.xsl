@@ -83,10 +83,10 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-					<!--<xsl:if test="not($Print) or $Print=''">-->
+					<xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS4952Style"/>
 						<xsl:call-template name="AddOnStyle"/>
-					<!--</xsl:if>-->
+					</xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
@@ -145,19 +145,41 @@
 						<div class="styBB" style="width:187mm;">
 							<div class="styNameBox" style="width:137mm;height:8mm;font-weight:normal;font-size:7pt;">
 								Name(s) shown on return<br/>
-								<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-							</xsl:call-template><br/>
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-							</xsl:call-template>
+								<xsl:choose>
+                                    <xsl:when test="$RtnHdrData/ReturnTypeCd='1041'">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt" />
+									    </xsl:call-template>
+								    <br/>
+									   <xsl:call-template name="PopulateText">
+										   <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt" />
+								       </xsl:call-template>
+								   </xsl:when>
+								   <xsl:otherwise>
+                                        <xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+                                        </xsl:call-template>
+   									</xsl:otherwise>
+                                </xsl:choose>                                                                           
 							</div>
 							<div style="height:8mm;width:50mm;padding:0px 0px 0px 2mm;font-size:7pt;" class="styEINBox">
 								Identifying number
 								<br/>
-								<span style="font-weight:normal;text-align:left;padding-top:2mm;width:100%">
-									<xsl:call-template name="PopulateReturnHeaderFilerTIN"/>
-								</span>
+								<xsl:choose>
+                                    <xsl:when test="$RtnHdrData/ReturnTypeCd='1041'">
+                                     <span style="font-weight:normal;">                                          
+                                        <xsl:call-template name="PopulateEIN">
+                                            <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
+											<xsl:with-param name="BackupName">$RtnHdrDataFilerEIN</xsl:with-param>
+                                        </xsl:call-template>
+									</span>                                        
+                                    </xsl:when>
+                                    <xsl:otherwise>
+										<span style="font-weight:normal;text-align:left;width:100%">
+											<xsl:call-template name="PopulateReturnHeaderFilerTIN"/>
+										</span>
+								    </xsl:otherwise>
+                                </xsl:choose>
 							</div>
 						</div>
 						<!-- End Names and Identifying number section -->

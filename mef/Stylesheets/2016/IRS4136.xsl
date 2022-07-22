@@ -81,56 +81,16 @@
 						<div class="styNameBox" style="width:140mm;height:10mm;font-size:7pt;">
 						Name (as shown on your income tax return)<br/>
 							<span style="font-family: verdana, arial, sans-serif;font-size: 7pt; font-weight: normal;">
-								<xsl:choose>
-									<!-- Name from 1120/990/1065 Return Header -->
-									<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-										</xsl:call-template>
-										<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
-										</xsl:call-template>
-									</xsl:when>
-									<!-- Name from 1040 Return Header -->
-									<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
-										<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
-										</xsl:call-template>
-									</xsl:when>
-									<!-- Name from 1041 Return Header -->
-									<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
-										</xsl:call-template>
-										<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
-										</xsl:call-template>
-									</xsl:when>
-								</xsl:choose>
+								<xsl:call-template name="PopulateFilerName">
+									<xsl:with-param name="TargetNode" select="$IRS4136Data"/>
+								</xsl:call-template>
 							</span>
 						</div>
 						<div class="styEINBox" style="width:47mm;padding-left: 2mm;font-size:7pt;font-weight:bold;">Taxpayer identification number
 							<div style="padding-top:3mm;font-weight:normal;">
-								<xsl:choose>
-									<xsl:when test="$RtnHdrData/Filer/EIN">
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
-								</xsl:choose>
+								<xsl:call-template name="PopulateFilerTIN">
+									<xsl:with-param name="TargetNode" select="$IRS4136Data"/>
+								</xsl:call-template>
 							</div>
 						</div>
 					</div>
@@ -2980,7 +2940,7 @@
 							</xsl:call-template>
 						</td>
 						<td class="styIRS4136TableCellB">
-							<xsl:if test="(position()=1) and ($RowLetter = 1)">$</xsl:if>
+							<xsl:if test="(position()=1) and ($RowLetter = 'a')">$</xsl:if>
 								<xsl:value-of select="$ColBRate"/>
 						</td>
 						<td class="styIRS4136TableCellC">
@@ -3041,7 +3001,7 @@
 							</xsl:call-template>
 						</td>
 						<td class="styIRS4136TableCellD" style="bottom-border-width:1px;">
-							<xsl:if test="($RowLetter = 1)">
+							<xsl:if test="($RowLetter = 'a')">
 								<span style="float:left;">$</span>
 							</xsl:if>
 							<xsl:call-template name="PopulateAmount">

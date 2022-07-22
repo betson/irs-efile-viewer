@@ -13,7 +13,10 @@
       text-align:right;      
     }  
     .styIRS5452Num {
-      width:28mm;border-bottom:1px solid black;text-align:right;
+      width:28mm;
+      border-bottom:1px solid black;
+      text-align:right;
+      font-size:6.5pt;
     }    
     .styIRS5452TabCell {
       height:8mm;
@@ -21,13 +24,11 @@
       border-bottom:1px solid black;
       border-right:1px solid black;
     }
-
     .styIRS5452TabCellThick {
       height:8mm;
       padding-right:1px;
       border-bottom:1px solid black;
       border-right:2px solid black;
     }
-
   </xsl:template>
 </xsl:stylesheet>

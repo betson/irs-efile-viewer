@@ -131,7 +131,7 @@
 							</div>
 							<div class="styLNDesc" style="padding-top:1mm;width:190mm;padding-bottom:4mm;">
 								Read the instructions before you complete Schedule R. Type or print within the boxes. Complete a separate line for the amounts allocated to each of
-								your clients. The term “client” as used on this form includes the term “customer”. See the instructions.
+								your clients. The term "client" as used on this form includes the term "customer". See the instructions.
 							</div>
 						</div>
 						<div style="float:right;padding-bottom:0mm;">
@@ -253,7 +253,7 @@
 								<tr>
 									<th class="IRS941ScheduleR_GenericCellHeader" scope="col">
 										<div style="width:26mm;">
-											(a)<br/>Client’s<br/>Employer<br/>identification<br/>number (EIN)
+											(a)<br/>Client's<br/>Employer<br/>identification<br/>number (EIN)
 										</div>
 									</th>
 									<!-- Column b -->
@@ -962,7 +962,7 @@
 									<!-- Column a -->
 									<th class="IRS941ScheduleR_GenericCellHeader" scope="col">
 										<div style="width:26mm;">
-											(a)<br/>Client’s<br/>Employer<br/>identification<br/>number (EIN)
+											(a)<br/>Clientâ€™s<br/>Employer<br/>identification<br/>number (EIN)
 										</div>
 									</th>
 									<!-- Column b -->

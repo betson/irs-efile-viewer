@@ -32,10 +32,10 @@
 <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 <xsl:call-template name="InitJS"/>
 <style type="text/css">
-<!--<xsl:if test="not($Print) or $Print=''">-->
+<xsl:if test="not($Print) or $Print=''">
 <xsl:call-template name="IRS8912Style"/>
 <xsl:call-template name="AddOnStyle"/>
-<!--</xsl:if>-->
+</xsl:if>
 </style>
 <xsl:call-template name="GlobalStylesForm"/>
 </head>
@@ -520,7 +520,7 @@ Identifying number<br/>
 <!-- BEGIN Part III Title -->
 <div class="styBB" style="width:187mm;border-top:0px solid black;">
 <div class="styPartName">Part III</div>
-<div class="styPartDesc">Bond credit(s) reported to you on Form(s) 1097-BTC (see instructions).</div>
+<div class="styPartDesc">Bond credit(s) reported to you on Form(s) 1097-BTC <span class="styNormalText">(see instructions)</span></div>
 <span style="width:17mm;"/>If you are claiming a bond credit for which you did not receive a Form 1097-BTC, complete Part IV.
 </div>
 <!-- END Part III Title -->
@@ -1012,10 +1012,10 @@ Identifying number<br/>
 <div class="styBB" style="width:187mm;">
 <div class="styLNLeftNumBox" style="height:7mm;width:6mm;padding-top:3.5mm;">
 14</div>
-<div class="styLNDesc" style="width:141.5mm;height:7mm;padding-top:3.5mm;">
+<div class="styLNDesc" style="width:135mm;height:7mm;padding-top:3.5mm;">
 <b>Total.</b> Combine the amounts in column (c). Enter here and on line 1
 <!--Dotted Line-->
-<span style="letter-spacing:3.8mm;font-weight:bold;"> ...........</span>
+<span style="letter-spacing:3.8mm;font-weight:bold;"> ..........</span>
 </div>
 <div class="styLNRightNumBox" style="width:6mm;height:7mm;padding-top:3.5mm;border-bottom-width:0px;">
 14	</div>
@@ -1072,10 +1072,10 @@ Identifying number<br/>
 
 
 <!-- BEGIN Part IV Title -->
-<xsl:if test="($Print = $Separated) and (count($Form8912Data/BondNotOnForm1097BTCGrp) &gt;= 1)">
+<!--<xsl:if test="($Print = $Separated) and (count($Form8912Data/BondNotOnForm1097BTCGrp) &gt;= 1)">-->
 <div class="styBB" style="width:187mm;height:8mm;border-top:1px solid black;">
 <div class="styPartName">Part IV</div>
-<div class="styPartDesc">Bond credit(s) from bonds held by you and/or your nominee(s) not reported to you on Form(s) 1097-BTC (see instructions)</div>
+<div class="styPartDesc">Bond credit(s) from bonds held by you and/or your nominee(s) not reported to you on Form(s) 1097-BTC <span class="styNormalText">(see instructions)</span></div>
 </div>
 <!-- END Part IV Title -->
 
@@ -1234,7 +1234,7 @@ height:5mm;">
 </td>													
 </tr>
 </table>
-</xsl:if>
+<!--</xsl:if>-->
 
 <!-- Start table -->
 <!--Not Separate print-->
@@ -1618,13 +1618,13 @@ b</div>
 <span style="width:1px;"/>
 <div class="styBB" style="width:187mm;border-top:1px solid black;height:7mm">
 <div class="styPartName">Part IV</div>
-<div class="styPartDesc">Bond credit(s) from bonds held by you and/or your nominee(s) not reported to you on Form(s) 1097-BTC (see instructions)</div>
+<div class="styPartDesc">Bond credit(s) from bonds held by you and/or your nominee(s) not reported to you on Form(s) 1097-BTC <span class="styNormalText">(see instructions)</span></div>
 </div>
 </tr>
 
 <!--Line 15a-->
 <tr>
-<div style="width:187mm;border-bottom-width:1px;  ">
+<div style="width:187mm;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;  ">
 <div class="styLNLeftNumBoxSD" style="height:12mm;border-bottom-width:1px;">
 15</div>
 <div class="styLNLeftNumBoxSD" style="height:12mm;width:6mm;border-style:solid;border-color:black;border-width:0px 1px 0px 1px;">

@@ -31,10 +31,10 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-	  <xsl:if test="not($Print) or $Print=''">
+				<xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS6781Style"/>
 						<xsl:call-template name="AddOnStyle"/>
-		</xsl:if>
+				</xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
@@ -85,78 +85,20 @@
 					<div class="styBB" style="width:187mm;">
 						<div class="styNameBox" style="width:150mm;height:auto;font-weight:normal;font-size:7pt;">
                              Name(s) shown on tax return<br/>
-                              <xsl:choose>
-							<!-- Name from Form level -->
-							<xsl:when test="normalize-space($Form6781Data/BusinessName/BusinessNameLine1Txt) != ''">
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$Form6781Data/BusinessName/BusinessNameLine1Txt"/>
+							<span>
+								<xsl:call-template name="PopulateFilerName">
+									<xsl:with-param name="TargetNode" select="$Form6781Data"/>
 								</xsl:call-template>
-								<br/>
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$Form6781Data/BusinessName/BusinessNameLine2Txt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<!-- Name from 1120/990/1065 Return Header -->
-							<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-								</xsl:call-template>
-								<br/>
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<!-- Name from 1040 Return Header -->
-							<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
-								</xsl:call-template>
-								<br/>
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimaryNameControlTxt"/>
-								</xsl:call-template>
-								<br/>
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/SpouseNameControlTxt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<!-- Name from 1041 Return Header -->
-							<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
-								</xsl:call-template>
-								<br/>
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
-								</xsl:call-template>
-								<br/>
-							</xsl:when>
-							</xsl:choose>
+							</span>
 						</div>
 						<div class="styIRS6781INBox" style="width:35mm;height:9mm;padding-left:2mm;font-size:7pt;">
                         Identifying number
 							<br/><br/>							
-							<xsl:choose>
-								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-									<span style="font-weight:normal;">
-										 <xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-										 </xsl:call-template>
-									</span>
-								</xsl:when>
-								<xsl:otherwise>
-									<span style="font-weight:normal;">
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-										</xsl:call-template>
-									</span>
-								</xsl:otherwise>
-							</xsl:choose>
+							<span style="font-size: 7pt; font-weight: normal;text-align:left; vertical-align: bottom;">
+								<xsl:call-template name="PopulateFilerTIN">
+									<xsl:with-param name="TargetNode" select="$Form6781Data"/>
+								</xsl:call-template>
+							</span>
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;font-size:6pt;height:10mm">
@@ -165,7 +107,7 @@
 						<div class="styGenericDiv" style="width:65mm;">
 							<span class="styBoldText">A</span>
 							<span style="width:12px;"/>
-							<input type="checkbox" Alt="IRS6781MixedStraddleElection" class="styCkbox">
+							<input type="checkbox" alt="IRS6781MixedStraddleElection" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form6781Data/MixedStraddleElectionInd"/>
 									<xsl:with-param name="BackupName">IRS6781MixedStraddleElection</xsl:with-param>
@@ -203,10 +145,10 @@
 						<div class="styGenericDiv" style="width:65mm;">
 							<span class="styBoldText">B</span>
 							<span style="width:12px;"/>
-							<input type="checkbox"  alt="IRS6781StraddleByStraddleIdElection" class="styCkbox">
+							<input type="checkbox"  alt="IRS6781StraddleByStraddleIdentificationElection" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form6781Data/StraddleByStraddleInd"/>
-									<xsl:with-param name="BackupName">IRS6781StraddleByStraddleIdElection</xsl:with-param>
+									<xsl:with-param name="BackupName">IRS6781StraddleByStraddleIdentificationElection</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<span style="width:12px;"/>
@@ -220,10 +162,10 @@
 						<div class="styGenericDiv" style="width:65mm;">
 							<span class="styBoldText">D</span>
 							<span style="width:12px;"/>
-							<input type="checkbox" alt="IRS6781NetSection1256ElectionInd" class="styCkbox">
+							<input type="checkbox" alt="IRS6781NetSection1256ContractsLossElectionInd" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form6781Data/NetSection1256ElectionInd"/>
-									<xsl:with-param name="BackupName">IRS6781NetSection1256ElectionInd</xsl:with-param>
+									<xsl:with-param name="BackupName">IRS6781NetSection1256ContractsLossElectionInd</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<span style="width:12px;"/>
@@ -331,7 +273,7 @@
 											<span class="styBoldText">1</span>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:105.7mm;text-align:left;">
+										<td class="styTableCell" style="width:100mm;text-align:left;">
 											<xsl:call-template name="PopulateAdditionalDataTableMessage">
 												<xsl:with-param name="TargetNode" select="$Form6781Data/Section1256CntrctsAcctInfoGrp"/>
 											</xsl:call-template>
@@ -340,11 +282,10 @@
 										<td class="styTableCell" style="width:35.4mm;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:36.7mm;border-right-width:1px;">
+										<td class="styTableCell" style="width:36.7mm;border-right-width:0px;">
 											<span class="styTableCellPad"/>
-										<td class="styTableCell" style="width:36.7mm;background-color:lightgrey;
-											border-right-width:0px;border-bottom-width:0px;">
 										</td>
+										<td class="styLNRightNumBoxNBB" style="width:37mm;height:4.5mm;background-color:lightgrey;">
 										</td>
 									</tr>
 								</xsl:if>
@@ -360,10 +301,10 @@
 										<td class="styTableCell" style="width:35.4mm;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:36.7mm;border-right-width:1px;">
+										<td class="styTableCell" style="width:36.7mm;border-right-width:0px;">
 											<span class="styTableCellPad"/>
 										</td>
-									<td class="styTableCell" style="width:36.7mm;background-color:lightgrey;border-right-width:0px;;border-bottom-width:0px;">
+									<td class="styLNRightNumBoxNBB" style="width:37mm;height:4.5mm;background-color:lightgrey;">
 										</td>	
 									</tr>
 								</xsl:if>
@@ -378,10 +319,10 @@
 										<td class="styTableCell" style="width:35.4mm;border-bottom-width:0px;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:36.7mm;border-right-width:1px;border-bottom-width:0px;">
+										<td class="styTableCell" style="width:36.7mm;border-right-width:0px;border-bottom-width:0px;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:36.7mm;background-color:lightgrey;border-right-width:0px;border-bottom-width:0px;">
+										<td class="styLNRightNumBoxNBB" style="width:37mm;height:4.5mm;background-color:lightgrey;">
 										</td>
 									</tr>
 								</xsl:if>
@@ -762,7 +703,7 @@
           -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:8mm;">11a</div>
-						<div class="styLNDesc" style="width:141mm;height:8mm;">
+						<div class="styLNDesc" style="width:141.7mm;height:8mm;">
 						  Enter the short-term portion of losses from line 10, column (h), here and include on line 4 of Schedule D
 						  <span style="float:left;"> or on Form 8949 (see instructions)</span>
 							<!--Dotted Line-->
@@ -770,7 +711,7 @@
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBox" style="height:8mm;padding-top:3mm;">11a</div>
-							<div class="styLNAmountBox" style="height:8mm;width:30mm;font-size:6pt;padding-top:3mm;">
+							<div class="styLNAmountBox" style="height:8mm;width:29.3mm;font-size:6pt;padding-top:3mm;">
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$Form6781Data/ShortTermPortionRcgnzLossAmt"/>
 								</xsl:call-template>
@@ -788,7 +729,7 @@
       -->
 					<div style="width:187mm;" class="styBB">
 						<div class="styLNLeftLtrBox" style="padding-left: 4mm; height:8mm;">b</div>
-						<div class="styLNDesc" style="width:141mm;height:8mm;">
+						<div class="styLNDesc" style="width:141.7mm;height:8mm;">
 						 Enter the long-term portion of losses from line 10, column (h), here and include on line 11 of Schedule D
 						  <span style="float:left;"> or on Form 8949 (see instructions)</span>
 							<!--Dotted Line-->
@@ -796,7 +737,7 @@
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBoxNBB" style="height:8mm;padding-top:3mm;">11b</div>
-							<div class="styLNAmountBoxSmallNBB" style="height:8mm;width:30mm;font-size:6pt;padding-top:3mm;">
+							<div class="styLNAmountBoxSmallNBB" style="height:8mm;width:29.3mm;font-size:6pt;padding-top:3mm;">
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$Form6781Data/LongTermPortionRcgnzLossAmt"/>
 								</xsl:call-template>
@@ -834,7 +775,7 @@
 									</th>
 									<th class="styTableCellHeader" scope="col" style="width:18mm;"> (c)<span class="styNormalText"> Date closed out or sold</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:30mm;"> (d)<span class="styNormalText"> Gross sales price</span>
+									<th class="styTableCellHeader" scope="col" style="width:30mm;"> (d) <span class="styNormalText"> Gross sales price</span>
 									</th>
 									<th class="styTableCellHeader" scope="col" style="width:36mm;"> (e)<span class="styNormalText"> Cost or other basis plus expense of sale</span>
 									</th>
@@ -984,15 +925,15 @@
   <!-- Line 13a  -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:8.2mm;">13a</div>
-						<div class="styLNDesc" style="width:141mm;height:8.2mm;">
+						<div class="styLNDesc" style="width:138.5mm;height:8.2mm;">
 						   Enter the short-term portion of gains from line 12, column (f), here and include on line 4 of Schedule D 
 						  <span style="float:left;"> or on Form 8949 (see instructions)</span>
 							<!--Dotted Line-->
-							<span class="styDotLn" style="float:right;padding-right:1mm;">.......................</span>
+							<span class="styDotLn" style="float:right;padding-right:1mm;">.....................</span>
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBox" style="height:8.4mm;padding-top:4.2mm;">13a</div>
-							<div class="styLNAmountBoxSmall" style="width:30mm;height:8.4mm;padding-top:4.2mm;">
+							<div class="styLNAmountBoxSmall" style="width:32.5mm;height:8.4mm;padding-top:4.2mm;">
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$Form6781Data/ShortTermPortionOfGainAmt"/>
 								</xsl:call-template>
@@ -1005,15 +946,15 @@
 					<!-- Line 13b  -->
 					<div style="width:187mm;" class="styBB">
 						<div class="styLNLeftLtrBox" style="height:8.2mm;padding-left:4mm">b</div>
-						<div class="styLNDesc" style="width:141mm;height:8.2mm;">
+						<div class="styLNDesc" style="width:138.5mm;height:8.2mm;">
 						   Enter the long-term portion of gains from line 12, column (f), here and include on line 11 of Schedule D
 						  <span style="float:left;"> or on Form 8949 (see instructions)</span>
 							<!--Dotted Line-->
-							<span class="styDotLn" style="float:right;padding-right:1mm;">.......................</span>
+							<span class="styDotLn" style="float:right;padding-right:1mm;">.....................</span>
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBoxNBB" style="height:8.2mm;padding-top:4.2mm;">13b</div>
-							<div class="styLNAmountBoxSmallNBB" style="width:30mm;height:8.2mm;padding-top:4.2mm;">
+							<div class="styLNAmountBoxSmallNBB" style="width:32.5mm;height:8.2mm;padding-top:4.2mm;">
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$Form6781Data/LongTermPortionOfGainAmt"/>
 								</xsl:call-template>
@@ -1050,13 +991,13 @@
 						<table class="styTable" cellspacing="0" style="border-color:black;">
 							<thead class="styTableThead" id="UGSctn" >
 								<tr>
-									<th class="styTableCellHeader" scope="col" style="width:74mm;"> (a)<span class="styNormalText"> Description of property</span>
+									<th class="styTableCellHeader" scope="col" style="width:74mm;"> (a) <span class="styNormalText"> Description of property</span>
 									</th>
 									<th class="styTableCellHeader" scope="col" style="width:16mm;"> (b)<span class="styNormalText"> Date acquired</span>
 									</th>
 									<th class="styTableCellHeader" scope="col" style="width:32mm;"> (c)<span class="styNormalText"> Fair market value on last business day of tax year</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:32mm;"> (d)<span class="styNormalText"> Cost or other basis<br/>as adjusted</span>
+									<th class="styTableCellHeader" scope="col" style="width:32mm;"> (d)<span class="styNormalText"> Cost or other basis as adjusted</span>
 									</th>
 									<th class="styTableCellHeader" scope="col" style="width:32mm;border-right-width:0px;"> (e) Unrecognized gain.<br/>
 										<span class="styNormalText"> If column (c) is more than (d), enter difference. Otherwise, enter -0-</span>
@@ -1186,7 +1127,7 @@
 					</div>
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 							<xsl:with-param name="TargetNode" select="$Form6781Data/UnrcgnzdGainsLastDayPosOfTYGrp"/>
-						<xsl:with-param name="containerHeight" select="2"/>
+						<xsl:with-param name="containerHeight" select="3"/>
 						<xsl:with-param name="containerID" select=" 'UGSctn' "/>
 					</xsl:call-template>
 					<!-- END Part III Table -->

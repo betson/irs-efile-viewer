@@ -799,7 +799,7 @@ and list the specific years or periods
 </span>
 <br/>
 </xsl:if> 
-<xsl:if test="($Print != $Separated) and (count($Form56Data/FidcryAuthDoesNotCoverAllYrGrp/TaxYearOrTaxPeriodGrp) &lt;= 2) ">
+<xsl:if test="($Print != $Separated) and (count($Form56Data/FidcryAuthDoesNotCoverAllYrGrp/TaxYearOrTaxPeriodGrp) &lt; 2) ">
 <xsl:for-each select="$Form56Data/FidcryAuthDoesNotCoverAllYrGrp/TaxYearOrTaxPeriodGrp">
 <xsl:if test="position()!=1">
 <!--<span style="width:56.5mm"/>-->
@@ -1037,7 +1037,7 @@ Page <span style="font-weight:bold;font-size:8pt;">2</span>
 </div>
 
 <!-- Section A Line 7 -->
-<div class="styIRS56LineItem" style="height:8mm;width:187mm;">
+<div class="styIRS56LineItem" style="height:14mm;width:187mm;">
 <div class="styIRS56PartNum" style="padding-top:0.5mm;padding-left:1.5mm;float:left;clear:none">7</div>
 <div class="styGenericDiv" style="float:left;padding-top:0.5mm;width:180mm;">
 Check this box if you are revoking or terminating all prior notices concerning fiduciary relationships on file with the Internal <br/>Revenue Service for the same tax matters and years or periods covered by this notice concerning fiduciary relationship
@@ -1055,11 +1055,11 @@ Check this box if you are revoking or terminating all prior notices concerning f
 </xsl:call-template>
 </input>    
 </div>
-</div>
+
 <div class="styGenericDiv" style="padding-top:1mm;float:left;clear:none;padding-left:7mm;">
 Reason for termination of fiduciary relationship. Check applicable box:
 </div>
-
+</div>
 <!-- Section A Line 7a -->
 <div class="styIRS56LineItem" >
 <div class="styIRS56Part1">a</div>
@@ -1146,7 +1146,7 @@ Other. Describe
 </div>
 
 <!-- Section B Line 8a -->
-<div class="styIRS56LineItem" style="height:4mm;">
+<div class="styIRS56LineItem" style="height:10mm;">
 <div class="styIRS56PartNum" style="padding-top:0.5mm;padding-left:1.5mm;float:left;clear:none;">8a</div>
 <div class="styGenericDiv" style="float:left; padding-top:0.5mm;width:180mm;">
 Check this box if you are revoking earlier notices concerning fiduciary relationships on file with the Internal Revenue Service for<br/> the same tax matters and years or periods covered by this notice concerning fiduciary relationship
@@ -1167,81 +1167,104 @@ Check this box if you are revoking earlier notices concerning fiduciary relation
 </div>
 
 <!-- Section B Line 8b --> 
-<div class="styIRS56LineItem" style="height:5mm;width:187mm;">
-<div class="styIRS56PartNum" style="padding-top:4.7mm;padding-left:3.2mm;float:left;clear:none;">b</div>
-<div class="styGenericDiv" style="width:179mm;float:left; padding-top:5mm;">
+<div class="styIRS56LineItem" style="height:auto;width:187mm;">
+<div class="styIRS56PartNum" style="padding-left:3.2mm;float:left;clear:none;">b</div>
+<div class="styGenericDiv" style="height:4mm;width:179mm;float:left;">
 Specify to whom granted, date, and address, including ZIP code<br/>
-<span style="width:5px"/><img src="{$ImagePath}/56_Bullet.gif" alt="MediumBullet"/><span style="width:5px"/>
-<div style="border-bottom:1px dashed black;width:174mm;">
-	<xsl:call-template name="PopulateText"> 
-	<xsl:with-param name="TargetNode" select="$Form56Data/GranteeNm"/>
-	</xsl:call-template>
-	<xsl:call-template name="PopulateText"> 
-	<xsl:with-param name="TargetNode" select="$Form56Data/GranteeDt"/>
-	</xsl:call-template>
+</div>
 	<xsl:choose>
-		<xsl:when test="$Form56Data/GranteeUSAddress">
-		<!-- US Address -->
-				<xsl:call-template name="PopulateText">
-				<xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/AddressLine1Txt"/>
-				</xsl:call-template>
-			<xsl:if test="$Form56Data/GranteeUSAddress/AddressLine2Txt != '' ">,
-	
-				<xsl:call-template name="PopulateText">
-				<xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/AddressLine2Txt"/>
-				</xsl:call-template>,
-				<xsl:call-template name="PopulateText">
-				<xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/CityNm"/>
-			</xsl:call-template>,
-<xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/StateAbbreviationCd"/>
-            </xsl:call-template>,
-<xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/ZIPCd"/>
-            </xsl:call-template>
-			</xsl:if>
+		<xsl:when test="($Form56Data/GranteeNm and $Form56Data/GranteeDt) &lt; 1">
+			<div style="height:auto;width:187mm;">
+				<span style="width:7mm"/><img src="{$ImagePath}/56_Bullet.gif" alt="MediumBullet"/>
+				<span style="border-bottom:1px dashed black;width:176mm;">
+				</span>
+			</div>
 		</xsl:when>
-		<xsl:otherwise>
-	
-<!-- Foreign Address -->
-		
-			<xsl:call-template name="PopulateText">
-				<xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/AddressLine1Txt"/>
-			</xsl:call-template>
-			<xsl:if test="$Form56Data/GranteeForeignAddress/AddressLine2Txt != '' ">
-				
-				<xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/AddressLine2Txt"/>
+	<xsl:otherwise>
+	<span style="width:7mm"/><img src="{$ImagePath}/56_Bullet.gif" alt="MediumBullet"/>
+	<div style="height:auto;border-bottom:1px dashed black;width:176mm;">
+		<xsl:call-template name="PopulateText"> 
+		<xsl:with-param name="TargetNode" select="$Form56Data/GranteeNm"/>
+		</xsl:call-template>
+		<span style="width:5px"/>
+		<xsl:call-template name="PopulateText"> 
+		<xsl:with-param name="TargetNode" select="$Form56Data/GranteeDt"/>
+		</xsl:call-template><br/>
+		<!--<span style="width:5px"/>-->
+		<xsl:choose>
+			<xsl:when test="$Form56Data/GranteeUSAddress">
+			<!-- US Address -->
+					<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/AddressLine1Txt"/>
+					</xsl:call-template>
+					<br/>
+					<!--<span style="width:5px"/>-->
+				<xsl:if test="$Form56Data/GranteeUSAddress/AddressLine2Txt != '' ">
+					<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/AddressLine2Txt"/>
+					</xsl:call-template><br/>
+				</xsl:if>	
+					<!--<span style="width:5px"/>-->
+					<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/CityNm"/>
+				</xsl:call-template>,
+				<span style="width:5px"/>
+	<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/StateAbbreviationCd"/>
+				</xsl:call-template>,
+				<span style="width:5px"/>
+	<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/ZIPCd"/>
 				</xsl:call-template>
-			</xsl:if>
-		</xsl:otherwise>
+				<!--</xsl:if>-->
+			</xsl:when>
+			<xsl:otherwise>
+		
+	<!-- Foreign Address -->
+			
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/AddressLine1Txt"/>
+				</xsl:call-template>
+				<br/>
+				<xsl:if test="$Form56Data/GranteeForeignAddress/AddressLine2Txt != '' ">
+					<xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/AddressLine2Txt"/>
+					</xsl:call-template>
+					<br/>
+				</xsl:if>
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/CityNm"/>
+				</xsl:call-template>,
+				<span style="width:5px"/>
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/ProvinceOrStateNm"/>
+				</xsl:call-template>
+				<span style="width:5px"/>
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/ForeignPostalCd"/>
+				</xsl:call-template>
+				<span style="width:5px"/>
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/CountryCd"/>
+				</xsl:call-template>
+			</xsl:otherwise>
+		</xsl:choose>
+	</div>
+	</xsl:otherwise>
 	</xsl:choose>
-<xsl:call-template name="PopulateText">
-				<xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/CityNm"/>
-			</xsl:call-template>
-<xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/ProvinceOrStateNm"/>
-            </xsl:call-template>
-<xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/CountryCd"/>
-            </xsl:call-template>
-<xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/ForeignPostalCd"/>
-            </xsl:call-template>
-</div>
-</div>
-</div>
+	
+	</div>
 
-<div class="styBB" style="width:187mm;height:13mm;border-bottom-width:2px;"></div>
+<div class="styBB" style="width:187mm;height:5mm;border-bottom-width:2px;"></div>
 
 <!-- Section C - Substitute Fiduciary  -->
-<div class="styIRS56PartHeader">
+
 <div class="styBB" style="font-size:10pt; float:left;clear:none;width:187mm;text-align:center;font-weight: none;bottom-border-width:1px;">Section C-Substitute Fiduciary </div>
 
 <!-- Section C Line 9 -->
-<div class="styIRS56LineItem" style="height:20mm;">
+<div class="styIRS56LineItem" style="height:auto;">
 <div class="styIRS56PartNum" style="padding-top:0.5mm;">9</div>
-<div class="styIRS56LNDesc" style="width:179mm;height:6mm; ">
+<div class="styIRS56LNDesc" style="width:179mm;height:8mm; ">
 Check this box if a new fiduciary or fiduciaries have been or will be substituted for the revoking or terminating fiduciary and<br/>specify the name(s) and address(es), including ZIP code(s), of the new fiduciary(ies)
 <span class="styBoldText">
 <span class="styDotLn" style="padding-right:0mm;">............</span>
@@ -1276,94 +1299,129 @@ Check this box if a new fiduciary or fiduciaries have been or will be substitute
 <xsl:if test="($Print != $Separated) and (count($Form56Data/NewOrSubstituteFiduciaryGrp) &lt; 2)">
 <xsl:for-each select="$Form56Data/NewOrSubstituteFiduciaryGrp">
 <xsl:if test="position()=1">
-<span style="width:20px;"/><span style="width:5px;padding-top:10mm;"><img src="{$ImagePath}/56_Bullet.gif" alt="MediumBullet"/></span>
+<span style="width:20px;"/><span style="width:5px;padding-top:2mm;"><img src="{$ImagePath}/56_Bullet.gif" alt="MediumBullet"/></span>
 </xsl:if> 
 
 <xsl:if test="position()!=1">
 <!--<span style="width:56.5mm"/>-->
 </xsl:if> 
-<span style="width:178mm;height:14mm;padding-top:2.5mm;border-bottom:1px dashed black;float:right;clear:none;">
-<xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryPersonName/PersonFirstNm"/>
-            </xsl:call-template><span style="width:4px"/>
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryPersonName/PersonLastNm"/>
-            </xsl:call-template>,
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryUSAddress/AddressLine1Txt"/>
-            </xsl:call-template>,
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryUSAddress/AddressLine2Txt"/>
-            </xsl:call-template>,
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryUSAddress/CityNm"/>
-            </xsl:call-template>,
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryUSAddress/StateAbbreviationCd"/>
-            </xsl:call-template>,
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryUSAddress/ZIPCd"/>
-            </xsl:call-template>,
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/AddressLine1Txt"/>
-            </xsl:call-template>,
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/AddressLine2Txt"/>
-            </xsl:call-template>,
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/CityNm"/>
-            </xsl:call-template>,
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/StateAbbreviationCd"/>
-                </xsl:call-template>,
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/ZIPCd"/>
-            </xsl:call-template>
-             <xsl:call-template name="PopulateText">
+<span style="width:178mm;padding-top:2.5mm;border-bottom:1px dashed black;float:right;clear:none;">
+			<xsl:if test="FiduciaryPersonName">
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryPersonName/PersonFirstNm"/>
+			</xsl:call-template>
+			<span style="width:3px"/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryPersonName/PersonLastNm"/>
+			</xsl:call-template><br/>
+		</xsl:if>
+		<xsl:if test="FiduciaryBusinessNm">
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryBusinessNm"/>
+			</xsl:call-template><br/>
+		</xsl:if>
+
+		<xsl:if test="FiduciaryUSAddress">
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/AddressLine1Txt"/>
+			</xsl:call-template>
+			<br/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/AddressLine2Txt"/>
+			</xsl:call-template>
+			<br/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/CityNm"/>
+			</xsl:call-template>,
+			<span style="width:5px"/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/StateAbbreviationCd"/>
+			</xsl:call-template>
+			<span style="width:5px"/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/ZIPCd"/>
+			</xsl:call-template><br/>
+		</xsl:if>
+		<xsl:if test="FiduciaryForeignAddress">
+			<xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/AddressLine1Txt"/>
             </xsl:call-template>
+            <br/>
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/AddressLine2Txt"/>
             </xsl:call-template>
+            <br/>
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/CityNm"/>
-            </xsl:call-template>
+            </xsl:call-template>,
+			<span style="width:5px"/>            
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/ProvinceOrStateNm"/>
             </xsl:call-template>
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/CountryCd"/>
-            </xsl:call-template>
+			<span style="width:5px"/>            
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/ForeignPostalCd"/>
             </xsl:call-template>
+            <span style="width:5px"/>  
+            <xsl:call-template name="PopulateText">
+                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/CountryCd"/>
+            </xsl:call-template><br/>
+		</xsl:if>
+
+		<xsl:if test="FiduciaryBusinessUSAddress">
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/AddressLine1Txt"/>
+			</xsl:call-template>
+			<br/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/AddressLine2Txt"/>
+			</xsl:call-template>
+			<br/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/CityNm"/>
+			</xsl:call-template>,
+			<span style="width:5px"/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/StateAbbreviationCd"/>
+			</xsl:call-template>
+			<span style="width:5px"/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/ZIPCd"/>
+			</xsl:call-template>
+		</xsl:if>
+		<xsl:if test="FiduciaryBusinessFrgnAddress">
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/AddressLine1Txt"/>
             </xsl:call-template>
+            <br/>
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/AddressLine2Txt"/>
             </xsl:call-template>
+            <br/>
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/CityNm"/>
-            </xsl:call-template>
+            </xsl:call-template>,
+			<span style="width:5px"/>
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/ProvinceOrStateNm"/>
                 </xsl:call-template>
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/CountryCd"/>
-            </xsl:call-template>
+			<span style="width:5px"/>
              <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/ForeignPostalCd"/>
             </xsl:call-template>
+            <span style="width:5px"/>
+            <xsl:call-template name="PopulateText">
+                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/CountryCd"/>
+            </xsl:call-template>
+		</xsl:if>
 </span>
-<br/>
 </xsl:for-each>
 </xsl:if>
 </div>
- </div>
+ 
  
 <!-- Part III - Court and Administrative Proceedings  -->
-<div class="styTBB" style="width:187mm;height:19mm;vertical-align:bottom;"></div>
+<div class="styTBB" style="width:187mm;height:4mm;vertical-align:bottom;"></div>
 <div class="styIRS56PartHeader">
 <div class="styTitleName" style="width:17mm; font-size:10pt">Part III</div>
 <div class="styTitleDesc" style="font-size:10pt; width:169mm">Court and Administrative Proceedings </div>
@@ -1410,18 +1468,18 @@ Check this box if a new fiduciary or fiduciaries have been or will be substitute
 </div>
 </div>
 <div class="styBB" style="width:187mm;float:none;clear:none;">
-<div class="styNameBox" style="width:131mm;height:8mm;font-size:7pt;">
+<div class="styNameBox" style="width:131mm;height:auto;font-size:7pt;">
 <div>
 Address of court</div>
-<span style="width:100%;height:auto;font-size:7pt;padding-left:4px;">
+<span style="width:100%;height:auto;font-size:7pt;">
 <xsl:choose>
 
 <!-- US Biz Address -->
 <xsl:when test="$Form56Data/CourtAddress">
 <xsl:call-template name="PopulateText">
 <xsl:with-param name="TargetNode" select="$Form56Data/CourtAddress/AddressLine1Txt"/>
-</xsl:call-template>,
-<span style="width:2px;"/>
+</xsl:call-template>
+<br/>
 <xsl:call-template name="PopulateText">
 <xsl:with-param name="TargetNode" select="$Form56Data/CourtAddress/AddressLine2Txt"/>
 </xsl:call-template>
@@ -1707,7 +1765,7 @@ Enter year(s) or period(s)
 
 
 
-<xsl:if test="($Print != $Separated) and (count($Form56Data/NewOrSubstituteFiduciaryGrp) &gt; 1)">
+<xsl:if test="(count($Form56Data/NewOrSubstituteFiduciaryGrp) &gt; 1)">
 <span class="styRepeatingDataTitle">Form 56 Line 9 - Section C - Substitute Fiduciary</span>
 <table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
 <thead class="styTableThead">
@@ -1721,227 +1779,121 @@ Fiduciary Name(s), Address, and Business Address
 <xsl:for-each select="$Form56Data/NewOrSubstituteFiduciaryGrp">
 <tr style="border-color:black;height:6mm;width:187mm;text-align:left;">
 <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-<td style="font-size:8pt;border-right:1px solid black;border-top:1px solid black">
-<xsl:if test="FiduciaryPersonName">
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryPersonName/PersonFirstNm"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryPersonName/PersonLastNm"/>
-</xsl:call-template>
-</xsl:if>
-<xsl:if test="FiduciaryBusinessNm">
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryBusinessNm"/>
-</xsl:call-template>
-</xsl:if>
-<br/>
-<xsl:if test="FiduciaryUSAddress">
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/AddressLine1Txt"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/AddressLine2Txt"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/CityNm"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/StateAbbreviationCd"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/ZIPCd"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/AddressLine1Txt"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/AddressLine2Txt"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/CityNm"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/StateAbbreviationCd"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/ZIPCd"/>
-</xsl:call-template>
-</xsl:if>
-<xsl:if test="FiduciaryForeignAddress">
- <xsl:call-template name="PopulateText">
+<td style="font-size:8pt;border-right:1px solid black;border-top:1px solid black;">
+			<xsl:if test="FiduciaryPersonName">
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryPersonName/PersonFirstNm"/>
+			</xsl:call-template>
+			<span style="width:3px"/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryPersonName/PersonLastNm"/>
+			</xsl:call-template><br/>
+		</xsl:if>
+		<xsl:if test="FiduciaryBusinessNm">
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryBusinessNm"/>
+			</xsl:call-template><br/>
+		</xsl:if>
+
+		<xsl:if test="FiduciaryUSAddress">
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/AddressLine1Txt"/>
+			</xsl:call-template>
+			<br/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/AddressLine2Txt"/>
+			</xsl:call-template>
+			<br/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/CityNm"/>
+			</xsl:call-template>,
+			<span style="width:5px"/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/StateAbbreviationCd"/>
+			</xsl:call-template>
+			<span style="width:5px"/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/ZIPCd"/>
+			</xsl:call-template><br/>
+		</xsl:if>
+		<xsl:if test="FiduciaryForeignAddress">
+			<xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/AddressLine1Txt"/>
             </xsl:call-template>
+            <br/>
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/AddressLine2Txt"/>
             </xsl:call-template>
+            <br/>
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/CityNm"/>
-            </xsl:call-template>
+            </xsl:call-template>,
+			<span style="width:5px"/>            
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/ProvinceOrStateNm"/>
             </xsl:call-template>
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/CountryCd"/>
-            </xsl:call-template>
+			<span style="width:5px"/>            
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/ForeignPostalCd"/>
             </xsl:call-template>
+            <span style="width:5px"/>  
+            <xsl:call-template name="PopulateText">
+                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/CountryCd"/>
+            </xsl:call-template><br/>
+		</xsl:if>
+
+		<xsl:if test="FiduciaryBusinessUSAddress">
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/AddressLine1Txt"/>
+			</xsl:call-template>
+			<br/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/AddressLine2Txt"/>
+			</xsl:call-template>
+			<br/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/CityNm"/>
+			</xsl:call-template>,
+			<span style="width:5px"/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/StateAbbreviationCd"/>
+			</xsl:call-template>
+			<span style="width:5px"/>
+			<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/ZIPCd"/>
+			</xsl:call-template>
+		</xsl:if>
+		<xsl:if test="FiduciaryBusinessFrgnAddress">
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/AddressLine1Txt"/>
             </xsl:call-template>
+            <br/>
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/AddressLine2Txt"/>
             </xsl:call-template>
+            <br/>
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/CityNm"/>
-            </xsl:call-template>
+            </xsl:call-template>,
+			<span style="width:5px"/>
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/ProvinceOrStateNm"/>
                 </xsl:call-template>
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/CountryCd"/>
-            </xsl:call-template>
+			<span style="width:5px"/>
              <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/ForeignPostalCd"/>
             </xsl:call-template>
-            </xsl:if>
+            <span style="width:5px"/>
+            <xsl:call-template name="PopulateText">
+                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/CountryCd"/>
+            </xsl:call-template>
+		</xsl:if>
 </td>
 </tr>
 </xsl:for-each>
 </tbody>
 </table>
 </xsl:if>
-
-
-
-<xsl:if test="($Print = $Separated) and (count($Form56Data/NewOrSubstituteFiduciaryGrp) &gt; 1)">
-<span class="styRepeatingDataTitle">Form 56 Line 9 - Section C - Substitute Fiduciary</span>
-<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
-<thead class="styTableThead">
-<tr class="styDepTblHdr">
-<th class="styDepTblCell" scope="col" rowspan="2" style="width:85mm;">
-Fiduciary Name(s), Address, and Business Address
-</th>
-</tr>
-</thead>
-<tbody>                                   
-<xsl:for-each select="$Form56Data/NewOrSubstituteFiduciaryGrp">
-<tr style="border-color:black;height:6mm;width:187mm;">
-<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-<td style="font-size:8pt;border-right:1px solid black;border-top:1px solid black">
-<xsl:if test="FiduciaryPersonName">
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryPersonName/PersonFirstNm"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryPersonName/PersonLastNm"/>
-</xsl:call-template>
-</xsl:if>
-<xsl:if test="FiduciaryBusinessNm">
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryBusinessNm"/>
-</xsl:call-template>
-</xsl:if>
-<br/>
-<xsl:if test="FiduciaryUSAddress">
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/AddressLine1Txt"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/AddressLine2Txt"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/CityNm"/>
-</xsl:call-template>,
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/StateAbbreviationCd"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryUSAddress/ZIPCd"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/AddressLine1Txt"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/AddressLine2Txt"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/CityNm"/>
-</xsl:call-template>,
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/StateAbbreviationCd"/>
-</xsl:call-template>
-<span style="width:3px"/>
-<xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/ZIPCd"/>
-</xsl:call-template>
-</xsl:if>
-<xsl:if test="FiduciaryForeignAddress">
- <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/AddressLine1Txt"/>
-            </xsl:call-template>
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/AddressLine2Txt"/>
-            </xsl:call-template>
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/CityNm"/>
-            </xsl:call-template>,
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/ProvinceOrStateNm"/>
-            </xsl:call-template>,
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/CountryCd"/>
-            </xsl:call-template>
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/ForeignPostalCd"/>
-            </xsl:call-template>
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/AddressLine1Txt"/>
-            </xsl:call-template>
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/AddressLine2Txt"/>
-            </xsl:call-template>
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/CityNm"/>
-            </xsl:call-template>,
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/ProvinceOrStateNm"/>
-                </xsl:call-template>,
-            <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/CountryCd"/>
-            </xsl:call-template>
-             <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/ForeignPostalCd"/>
-            </xsl:call-template>
-            </xsl:if>
-</td>
-</tr>
-</xsl:for-each>
-</tbody>
-</table>
-</xsl:if>
-
-
 </form>
 </body>
 </html>

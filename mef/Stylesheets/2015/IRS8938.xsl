@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Iskilu Lawal 3/10/2016 -->
+<!-- Last Modified by Iskilu Lawal 1/11/2017 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -47,8 +47,7 @@
 						<div class="styFNBox" style="height:20.5mm;width:29mm;font-size: 8pt;">
 							<div class="" style="height:13.8mm;">
       Form <span class="styFormNumber">8938</span>
-								<!--<br/>(December 2015)<br/>  -->
-       <span>
+								       <span>
 									<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$FormData"/>
 									</xsl:call-template>
@@ -65,7 +64,7 @@
 								<span style="font-size:8pt;text-align:center;">
 									<span style=""/>
 									<img src="{$ImagePath}/8938_Bullet.gif" alt="MediumBullet"/>  
-			  Information about Form 8938 and its separate instructions is at  <a href="http://www.irs.gov/form8933" title="Link to IRS.gov"><i>www.irs.gov/form8933.</i></a>
+			  Information about Form 8938 and its separate instructions is at  <a href="http://www.irs.gov/form8938" title="Link to IRS.gov"><i>www.irs.gov/form8938.</i></a>
 									<br/>
 									<span style="text-align:center;"/>
 									<img src="{$ImagePath}/8938_Bullet.gif" alt="MediumBullet"/>  
@@ -76,45 +75,31 @@
 									<xsl:with-param name="TargetNode" select="$FormData/CalendarYr"/>
 									<xsl:with-param name="BackupName">CalendarYear</xsl:with-param>
 								</xsl:call-template>
-								<!--<span style="width:6mm;">
-									<xsl:call-template name="PopulateReturnHeaderTaxYear"/>
-								</span> -->  
-								 or tax year beginning
+																 or tax year beginning
 								<span style="width:18mm;border-bottom:1 solid black;">
 									<!-- No need to send the parameters -->
 									<xsl:call-template name="PopulateMonthDayYear">
 										<xsl:with-param name="TargetNode" select="$FormData/TaxYearBeginDt"/>
 									</xsl:call-template>
 								</span>
-								<!--,
-									<span style="width: 10mm;">
-										<xsl:call-template name="PopulateReturnHeaderTaxYear"></xsl:call-template>
-									</span>			
-								-->
-								 and ending 
+																 and ending 
 								<span style="width:18mm;border-bottom:1 solid black;">
 									<!-- No need to send the parameters -->
 									<xsl:call-template name="PopulateMonthDayYear">
 										<xsl:with-param name="TargetNode" select="$FormData/TaxYearEndDt"/>
 									</xsl:call-template>
 								</span>
-								<!--
-									, 										<span style="width: 10mm;">
-											<xsl:call-template name="PopulateReturnHeaderTaxYear"></xsl:call-template>
-									</span>        
-								-->
+								
 		</span>
 							</div>
 						</div>
 						<div class="styTYBox" style="height:20.5mm;width:30mm;border-left-width: 1px;">
 							<div class="styOMB" style="height:5.5mm;padding-top:1mm;font-size:8pt;">
         OMB No. 1545-2195</div>
-        <div class="styOMB" style="height:9mm;padding-top:3mm;font-size:8pt;">
-           <div class="styTaxYear">
-              20<span class="styTYColor">15</span>
-           </div>
+        <div class="styTaxYear">
+          20<span class="styTYColor">15</span>
 		</div>
-									<div class="stySequence">Attachment<br/>Sequence No. <b>175</b>
+							<div class="stySequence">Attachment<br/>Sequence No. <b>175</b>
 							</div>
 						</div>
 					</div>
@@ -148,10 +133,9 @@
 					</div>
 					<!--  Name and Employer identification number  -->
 					<div class="styBB" style="width:187mm">
-						<div class="styNameBox" style="width:110mm;font-weight:normal;font-size:8pt;height:10mm">
+											<div class="styNameBox" style="width:110mm;font-weight:normal;font-size:8pt;height:10mm">
       Name(s) shown on return<br/>
-			
-							<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
 							</xsl:call-template>
 							<br/>
@@ -159,7 +143,7 @@
 								<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
 							</xsl:call-template>
 						</div>
-						<div class="styEINBox" style="padding-left:1mm;font-size:8pt;font-weight:normal">
+												<div class="styEINBox" style="padding-left:1mm;font-size:8pt;font-weight:normal">
       TIN</div>
 						<br/>
 						<br/>
@@ -171,9 +155,8 @@
 								<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
 							</xsl:call-template>
 						</span>
-					</div>
-					<!--  End Name and Employer indentification number  -->
-					<!-- BEGIN PART I TITLE -->
+											</div>
+															<!-- BEGIN PART I TITLE -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartName" style="font-size:10pt;padding-bottom:5mm;font-family:arial;
 		  text-align:center;padding-top:.5mm">Part I</div>
@@ -185,8 +168,8 @@
 					<!-- PART 1 START-->
 					<!-- PART 1 LINE 1 -->
 					<div class="styBB" style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm">1.</div>
-						<div class="styLNDesc" style="width:150.5mm;padding-left:2mm;height:auto;">
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;width:3mm">1.</div>
+						<div class="styLNDesc" style="width:150.5mm;padding-left:4mm;height:auto;">
 		  Number of Deposit Accounts (reported on Form 8938)
 			<span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">..............</span>
 							<span style="width:2.5mm"/>
@@ -202,10 +185,10 @@
 					</div>
 					<!-- PART 1 LINE 2 -->
 					<div class="styBB" style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm">2.</div>
-						<div class="styLNDesc" style="width:152mm;padding-left:2mm;">
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;width:3mm">2.</div>
+						<div class="styLNDesc" style="width:151mm;padding-left:4mm;">
 		  Maximum Value of All Deposit Accounts
-			<span class="styDotLn" style="float:none;clear:none;padding-left:.2mm;">....................</span>
+			<span class="styDotLn" style="float:none;clear:none;padding-left:.2mm;">.....................</span>
 							<span style="width:2mm"/>$
 		</div>
 						<div class="styLNAmountBoxNB" style="height:2mm;padding-top:.7mm;
@@ -218,8 +201,8 @@
 					</div>
 					<!-- PART 1 LINE 3 -->
 					<div class="styBB" style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm">3.</div>
-						<div class="styLNDesc" style="width:150.5mm;padding-left:2mm;height:auto;">
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;width:3mm">3.</div>
+						<div class="styLNDesc" style="width:150.5mm;padding-left:4mm;height:auto;">
 		  Number of Custodial Accounts (reported on Form 8938)
 			<span class="styDotLn" style="float:none;clear:none;padding-left:.3mm;">..............</span>
 							<span style="width:2mm"/>
@@ -235,8 +218,8 @@
 					</div>
 					<!-- PART 1 LINE 4 -->
 					<div class="styBB" style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm">4.</div>
-						<div class="styLNDesc" style="width:152mm;padding-left:2mm;height:auto;">
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;width:3mm">4.</div>
+						<div class="styLNDesc" style="width:151mm;padding-left:4mm;height:auto;">
 		  Maximum Value of All Custodial Accounts
 			<span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">...................</span>
 							<span style="width:2mm"/>$
@@ -251,8 +234,8 @@
 					</div>
 					<!-- PART 1 LINE 5 -->
 					<div class="styBB" style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm;padding-top:1mm">5.</div>
-						<div class="styLNDesc" style="width:184mm;padding-left:2mm;padding-bottom:5mm;">
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;width:3mm;padding-top:2mm">5.</div>
+						<div class="styLNDesc" style="width:180mm;padding-left:4mm;padding-bottom:5mm;">
 		  Were any foreign deposit or custodial accounts closed during the tax year?
 			<span class="styDotLn" style="float:none;clear:none;padding-left:2.5mm;">........<span style="width:1mm"/>
 							</span>
@@ -303,8 +286,8 @@
 					<!-- END PART II TITLE -->
 					<!-- PART II LINE 1 -->
 					<div class="styBB" style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm">1.</div>
-						<div class="styLNDesc" style="width:150.5mm;padding-left:2mm;height:auto;">
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;width:3mm">1.</div>
+						<div class="styLNDesc" style="width:150.5mm;padding-left:4mm;height:auto;">
 		  Number of Foreign Assets (reported on Form 8938)
 			<span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">...............</span>
 							<span style="width:2.5mm"/>
@@ -320,10 +303,10 @@
 					</div>
 					<!-- PART II LINE 2 -->
 					<div class="styBB" style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm">2.</div>
-						<div class="styLNDesc" style="width:152mm;padding-left:2mm;height:auto;">
-		  Maximum Value of All Assets
-			<span class="styDotLn" style="float:none;clear:none;padding-left:2.9mm;">.......................</span>
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;width:3mm">2.</div>
+						<div class="styLNDesc" style="width:151mm;padding-left:4mm;height:auto;">
+		  Maximum Value of All Assets 
+			<span class="styDotLn" style="float:none;clear:none;padding-left:2.9mm;">....................</span>
 							<span style="width:1.6mm"/>$
 		</div>
 						<div class="styLNAmountBoxNB" style="height:2mm;padding-top:.8mm;
@@ -336,8 +319,8 @@
 					</div>
 					<!-- PART II LINE 3 -->
 					<div class="styBB" style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm;padding-top:1mm;">3.</div>
-						<div class="styLNDesc" style="width:184mm;padding-left:2mm;height:auto;">
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;width:3mm;padding-top:2mm;">3.</div>
+						<div class="styLNDesc" style="width:183mm;padding-left:4mm;height:auto;">
 		  Were any foreign assets acquired or sold during the tax year?
 			<span class="styDotLn" style="float:none;clear:none;padding-left:0mm;">.............<span style="width:.6mm"/>
 							</span>
@@ -345,13 +328,13 @@
 							<input type="Checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/AnyFrgnAssetAcqOrSoldDurTYInd"/>
-									<xsl:with-param name="BackupName">IRS8938AnyFrgAssetAcqOrSoldDurTYInd</xsl:with-param>
+									<xsl:with-param name="BackupName">IRS8938AnyFrgnAssetAcqOrSoldDurTYInd</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$FormData/AnyFrgnAssetAcqOrSoldDurTYInd"/>
-									<xsl:with-param name="BackupName">IRS8938AnyFrgAssetAcqOrSoldDurTYInd</xsl:with-param>
+									<xsl:with-param name="BackupName">IRS8938AnyFrgnAssetAcqOrSoldDurTYInd</xsl:with-param>
 								</xsl:call-template>
 				Yes
 			</label>
@@ -361,13 +344,13 @@
 							<input type="Checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/AnyFrgnAssetAcqOrSoldDurTYInd"/>
-									<xsl:with-param name="BackupName">IRS8938AnyFrgAssetAcqOrSoldDurTYInd</xsl:with-param>
+									<xsl:with-param name="BackupName">IRS8938AnyFrgnAssetAcqOrSoldDurTYInd</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$FormData/AnyFrgnAssetAcqOrSoldDurTYInd"/>
-									<xsl:with-param name="BackupName">IRS8938AnyFrgAssetAcqOrSoldDurTYInd</xsl:with-param>
+									<xsl:with-param name="BackupName">IRS8938AnyFrgnAssetAcqOrSoldDurTYInd</xsl:with-param>
 								</xsl:call-template>
 				No
 			</label>
@@ -380,7 +363,7 @@
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartName" style="font-size:10pt;padding-bottom:5mm;font-family:arial;
 		  text-align:center;padding-top:.5mm;">Part III</div>
-						<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;clear:none;width:156mm">
+						<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;clear:none;width:156mm;padding-top:1mm">
 			Summary of Tax Items Attributable to Specified Foreign Financial Assets
 			<span style="font-weight:normal;"> (see instructions)</span>
 						</div>
@@ -388,16 +371,16 @@
 					<!-- END PART IIl TITLE -->
 					<div style="width:187mm;border-style:solid;border-color:black;
 	  border-width: 0px 0px 1px 0px;font-size:8pt;">
-						<div class="styLNDesc" style="height:9mm;width:40mm;text-align:center;
+						<div class="styLNDesc" style="height:7mm;width:40mm;text-align:center;
 		  padding-top:4mm;border-style:solid;border-color:black;border-width: 0px 0px 0px 0px;">
 							<b>(a)</b> Asset Category</div>
-						<div class="styLNDesc" style="height:9mm;width:30mm;text-align:center;
+						<div class="styLNDesc" style="height:7mm;width:30mm;text-align:center;
 		  padding-top:4mm;border-style:solid;border-color:black;border-width: 0px 1px 0px 1px;">
 							<b>(b)</b> Tax item</div>
-						<div class="styLNDesc" style="height:9mm;width:34.28mm;text-align:center;
+						<div class="styLNDesc" style="height:7mm;width:34.28mm;text-align:center;
 		  border-style:solid;border-color:black;border-width: 0px 1px 0px 0px;font:8.5pt">
 							<b>(c)</b> Amount reported<br/>on form or schedule</div>
-						<div style="height:7.5mm;width:82mm;float:left;clear:none;">
+						<div style="height:7mm;width:82mm;float:left;clear:none;">
 							<div class="styLNDesc" style="width:82mm;text-align:center;padding-top:0mm;
 			  padding-bottom:0mm;border-style:solid;border-color:black;
 			  border-width: 0px 0px 1px 0px;">Where reported</div>
@@ -416,9 +399,9 @@
 					<!--PART III  Start of Foreign Deposit and Custodial Accounts -->
 					<!--INTEREST-->
 					<div style="width:187mm;font-size:8pt;height:auto;">
-						<div class="styLNDesc" style="height:4mm;width:40mm;padding-bottom:0mm;
+						<div class="styLNDesc" style="height:4mm;width:40mm;padding-left:4mm;
 		padding-top:1mm;">
-		  1. Foreign Deposit and</div>
+		  1<span style="width:2mm"/>Foreign Deposit and <br/>Custodial Accounts</div>		  
 						<div class="styLNDesc" style="width:30mm;text-align:left;padding-left:1mm;
 		  border-style:solid;border-width: 0px 1px 1px 1px;">
 							<b>1a </b> Interest</div>
@@ -442,8 +425,7 @@
 							</xsl:call-template>
 						</div>
 						<div class="styLNDesc" style="height:0.1mm;width:40mm;padding-bottom:0mm;
-		  padding-top:0mm;">
-							<span style="width:2mm"/> Custodial Accounts</div>
+		  padding-top:0mm;"/>
 						<div class="styLNDesc" style="height:0mm;width:64mm;padding-left:3mm;
 		  padding-top:0mm;"/>
 						<!-- Interest Test Form <=1 and Schedule >1)-->
@@ -574,7 +556,7 @@
 		   </div>
 						<div class="styLNDesc" style="width:30mm;text-align:left;padding-left:1mm;
 		  border-style:solid;border-width: 0px 1px 1px 1px;">
-							<b>1b </b> Dividend</div>
+							<b>1b </b> Dividends</div>
 						<div class="styLNDesc" style="width:2mm;border-style:solid;
 		  border-width: 0px 0px 1px 0px;">$</div>
 						<div class="styLNAmountBox" style="border-left-width:0px;">
@@ -1487,11 +1469,9 @@
 					<!--PART III  Start of Other Foreign Assets -->
 					<!--OTHER INTEREST-->
 					<div style="width:187mm;font-size:8pt;height:auto">
-						<div class="styLNDesc" style="height:2mm;width:40mm;padding-bottom:0mm;
+						<div class="styLNDesc" style="height:2mm;width:40mm;padding-left:4mm;
 		  border-style:solid;border-color:black;border-width: 1px 0px 0px 0px;">
-		  2. Other Foreign Assets<br/>
-							<span style="width:18mm"/>
-						</div>
+		 		  2<span style="width:2mm"/>Other Foreign Assets</div>
 						<div class="styLNDesc" style="width:30mm;text-align:left;padding-left:1mm;
 		  border-style:solid;border-color:black;border-width: 1px 1px 1px 1px;">
 							<b>2a </b> Interest</div>
@@ -1515,8 +1495,7 @@
 							</xsl:call-template>
 						</div>
 						<div class="styLNDesc" style="height:0.1mm;width:40mm;padding-bottom:0mm;
-		  padding-top:0mm;">
-							<span style="width:2mm"/> Custodial Accounts</div>
+		  padding-top:0mm;"/>
 						<div class="styLNDesc" style="height:0mm;width:64mm;padding-left:3mm;
 		  padding-top:0mm;"/>
 						<!-- Other Interest Test Form <=1 and Schedule >1)-->
@@ -2554,7 +2533,7 @@
 				    <div class="styBB" style="width:187mm;"/>
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartName" style="font-size:10pt;padding-bottom:5mm;
-		  font-family:arial;text-align:center;padding-top:.5mm">Part IV</div>
+		  font-family:arial;text-align:center;padding-top:.5mm;">Part IV</div>
 						<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;
 		  clear:none;padding-top:.5mm;padding-bottom:5mm;">
 		  Excepted Specified Foreign Financial Assets
@@ -2562,14 +2541,14 @@
 						</div>
 					</div>
 					<!-- END PART lV TITLE -->
-					<div style="width:187mm;font-size:8pt">
+					<div style="width:187mm;font-size:8pt;">
 						<div class="styLNDesc" style="width:187mm;padding-bottom:3mm;padding-bottom:11mm;">
 	      If you reported specified foreign financial assets on one or more of the following
 	      forms, enter the number of such forms filed. You do not
 	      need to include these assets on Form 8938 for the tax year.
 		</div>
 					</div>
-					<div style="width:187mm;font-size:8pt">
+					<div style="width:187mm;font-size:8pt;">
 						<!-- NUMBER OF FORMS 3520 -->
 						<div class="styLNDesc" style="width:60mm;">
 							<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm">1.</div>
@@ -2601,7 +2580,7 @@
 							</div>
 						</div>
 					</div>
-					<div style="width:187mm;font-size:8pt">
+					<div style="width:187mm;font-size:8pt;height:8mm">
 						<!-- NUMBER OF FORMS 8621 -->
 						<div class="styLNDesc" style="width:60mm;">
 							<div class="styLNLeftLtrBox" style="padding-left:0mm;width:3mm">4.</div>
@@ -2633,15 +2612,15 @@
 							</div>
 						</div>-->
 					</div>
-					<br/><br/>
+					
 					<span style="height:.3mm;"/> 
 					<!--<div class="pageEnd" style="width:187mm;border-top:1px solid black;"/>-->
 					<!--PART V  START OF FOREIGN DEPOSIT AND CUSTODIAL ACCOUNTS-->
-					<xsl:if test="(count($FormData/ForeignFinclAccountGrp) &lt;=1)">
+					<xsl:if test="(count($FormData/ForeignFinclAccountGrp) &lt;1)">
 						<!-- BEGIN PART V TITLE -->					
-						<span style="height:3mm;"/>
+						<span style="height:.3mm;"/>
 						<div class="styBB" style="width:187mm;"/>
-						<div class="styBB" style="width:187mm">
+						<div class="styBB" style="width:187mm;">
 							<div class="styPartName" style="font-size:10pt;padding-top:.5mm;
 				  font-family:arial;text-align:center;padding-bottom:5mm;heght:auto;">Part V</div>
 							<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;
@@ -2654,7 +2633,7 @@
 						<!-- END PART V TITLE -->						
 						<div class="styBB" style="width:187mm;">
 							<div class="styLNDesc" style="width:187mm;font-size:8pt;">
-				  If you have more than one account to report, attach a continuation statement
+				If you have more than one account to report , attach a continuation statement
 				  for each additional account (see instructions).
 				  				  </div>
 				  <span style="height:5mm;"/>
@@ -2705,7 +2684,7 @@
 							<!--PART V  Line 1  End of Type Of Account-->
 							<!--PART V  Line 2  Start of Identifying Designation Number-->
 							<div style="width:70mm;float:left;clear:none;border-style:solid;border-color:black;
-				  border-width: 0px 0px 0px 1px;">
+				  border-width: 0px 0px 0px 1px;height:15mm">
 								<div class="styLNLeftNumBox" style="width:5mm;text-align:center;float:left;
 					  padding-bottom:0mm;">2</div>
 								<div class="styLNDesc" style="width:64mm;padding-left:2mm;
@@ -2732,8 +2711,8 @@
 						<div class="styBB" style="width:187mm;font-size:8pt;padding-bottom:6mm;">
 							<div style="width:187mm;">
 								<div style="width:38mm;float:left;clear: none;">
-									<div class="styLNLeftNumBox" style="padding-left:2mm;">3</div>
-									<div class="styLNDesc" style="width:30mm;padding-left:2mm;float:left;">
+									<div class="styLNLeftNumBox" style="padding-left:2mm;padding-top:2mm">3</div>
+									<div class="styLNDesc" style="width:30mm;padding-left:2mm;float:left;padding-top:2mm">
 							              Check all that apply
 						          </div>
 							   </div>
@@ -2745,16 +2724,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/AccountOpenedDuringTaxYearInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFAAccountOpenedDuringTaxYearInd
-											</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFAAccountOpenedDuringTaxYearInd</xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:.5mm;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/AccountOpenedDuringTaxYearInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFAAccountOpenedDuringTaxYearInd
-											</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFAAccountOpenedDuringTaxYearInd</xsl:with-param>
 											</xsl:call-template>
 												Account opened during tax year
 										</label>
@@ -2775,8 +2752,7 @@
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/AccountClosedDuringTaxYearInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFAAccountClosedDuringTaxYearInd
-											</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFAAccountClosedDuringTaxYearInd</xsl:with-param>
 											</xsl:call-template>
 													Account closed during tax year
 										</label>
@@ -2797,8 +2773,7 @@
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/JointlyOwnedWithSpouseInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFAJointlyOwnedWithSpouseInd
-											</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFAJointlyOwnedWithSpouseInd</xsl:with-param>
 											</xsl:call-template>
 													Account jointly owned with spouse
 										</label>								
@@ -2938,7 +2913,7 @@
 									<span style="font-weight:normal">
 										<span class="styBoldText">(c) </span>
 						  Source of exchange rate used if not from<br/>
-						  U.S. Treasury Financial Management Service<br/>
+						  U.S. Treasury Department's Bureau of the Fiscal Service<br/>
 										
 										<span style="font-size:8pt">
 											<xsl:call-template name="PopulateText">
@@ -2980,10 +2955,10 @@
 						<!-- END PART V TITLE -->
 						<!--PART V  Line 7a  Start of Foreign Deposit and Custodial Accounts Business Name-->
 						<!--PART V  Line 7b  Start of Foreign Deposit and Custodial Accounts Business Name-->
-						<div class="styBB" style="width:187mm;font-size:8pt;height:12.5mm;">
+						<div class="styBB" style="width:187mm;font-size:8pt;height:18mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox">7a</div>
-								<div class="styLNDesc" style="width:90mm;">Name of financial institution in which account is maintained
+								<div class="styLNDesc" style="width:75mm;">Name of financial institution in which account is maintained
 									<br/>
 									<span style="height:4mm;"/>
 									<xsl:call-template name="PopulateText">
@@ -2997,13 +2972,12 @@
 									</xsl:if>
 								</div>
 							</div>
-							<div style="float:right;clear:none;">
-							<div class="styLNRightNumBoxNBB" style="border-left-width:0px;">b</div>
-							<div class="styLNDesc" style="width:20mm;">Reserved <!--<div class="styFixedUnderline" style="width:30mm;text-align:right;float:right;position:absolute;top;right;border-bottom-width: 0px;"/>-->
+							<div class="styLNRightNumBoxNBB" style="border-left-width:0px;width:12mm;padding-left:7mm;">b</div>
+							<div class="styLNDesc" style="width:90mm;float:right;">Reserved
+
 							</div>
 							<div class="styFixedUnderline" style="width:53mm;text-align:right;background-color:back;border-bottom-width: 0px;"/>
 								</div>					
-						</div>
 						<!--PART V  Line 7a  End of Foreign Deposit and Custodial Accounts Business Name-->
 						<!--PART V  Line 7b  Start of Foreign Deposit and Custodial Accounts Business Name-->
 						<!--PART V  Line 8  Start of Mailing Address-->
@@ -3109,7 +3083,7 @@
 						<!--PART V  Line 9  End of City, state and country-->
 					</xsl:if>
 					<!--PART V REPEATING INFORMATION  Start of Foreign Deposit and Custodial Accounts-->
-					<xsl:if test="(count($FormData/ForeignFinclAccountGrp) &gt;= 2) and ($Print != $Separated)">
+					<xsl:if test="(count($FormData/ForeignFinclAccountGrp) &gt;= 1) and ($Print != $Separated)">
 						<xsl:for-each select="$FormData/ForeignFinclAccountGrp">
 							<xsl:choose>
 								<xsl:when test="position()>=2">
@@ -3155,10 +3129,7 @@
 							<!-- PART V REPEATING INFORMATION  BEGIN TITLE -->
 							<xsl:choose>
 								<xsl:when test="position()=1">
-									<div class="styBB" style="width:187mm;padding-top:2.5mm;"/>
-								</xsl:when>
-							</xsl:choose>
-							<div class="styBB" style="width:187mm;height:8mm;">
+							<div class="styBB" style="width:187mm;height:9mm;border-top-width: 1px;">
 								<div class="styPartName" style="font-size:10pt;font-family:arial;padding-top:.5mm;height:5mm;
 				  text-align:center;padding-bottom:.5mm;">Part V</div>
 								<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;clear:none;">
@@ -3167,11 +3138,30 @@
 								</div>
 							</div>
 							<!-- PART V REPEATING INFORMATION  END TITLE -->
-							<!--<div class="styBB" style="width:187mm;">
+							<div class="styBB" style="width:187mm;">
+								<div class="styLNDesc" style="width:187mm;font-size:9pt">
+				  If you have more than one account to report, attach a continuation statement for
+				  each additional account (see instructions).</div>
+							</div>
+						</xsl:when>
+						<xsl:otherwise>
+	<!--						</xsl:choose>-->
+							<div class="styBB" style="width:187mm;height:9mm;">
+								<div class="styPartName" style="font-size:10pt;font-family:arial;padding-top:.5mm;height:5mm;
+				  text-align:center;padding-bottom:.5mm;">Part V</div>
+								<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;clear:none;">
+				  Detailed Information for Each Foreign Deposit and Custodial Account Included in the Part I
+				  Summary<span style="font-weight:normal;"> (see instructions)</span>
+								</div>
+							</div>
+							<!-- PART V REPEATING INFORMATION  END TITLE -->
+<!--							<div class="styBB" style="width:187mm;">
 								<div class="styLNDesc" style="width:187mm;font-size:9pt">
 				  If you have more than one account to report, attach a continuation statement for
 				  each additional account (see instructions).</div>
 							</div>-->
+						</xsl:otherwise>
+						</xsl:choose>	
 							<div class="styBB" style="width:187mm;font-size:8pt;">
 								<!--PART V REPEATING INFORMATION  Start of Type Of Account-->
 								<div style="width:45mm;float:left;clear:none;">
@@ -3185,18 +3175,14 @@
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="DepositAccountTypeInd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RDepositAccountTypeInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938FFA-RDepositAccountTypeInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="DepositAccountTypeInd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RDepositAccountTypeInd
-								<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938FFA-RDepositAccountTypeInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 							Deposit 
 						</label>
@@ -3206,18 +3192,14 @@
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="CustodialAccountTypeInd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RCustodialAccountTypeInd
-								<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938FFA-RCustodialAccountTypeInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="CustodialAccountTypeInd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RCustodialAccountTypeInd
-								<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938FFA-RCustodialAccountTypeInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 							Custodial
 						</label>
@@ -3260,24 +3242,20 @@
 									</div>
 									<!--PART V REPEATING INFORMATION  Start of Line 3(a) 
                         Account Opened During Tax Year Ind-->
-									<div class="styLNDesc" style="width:61mm">
+									<div class="styLNDesc" style="width:61mm;">
 										<b>a</b>
 								<!--		<span style="width:.5mm;"/>  -->
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AccountOpenedDuringTaxYearInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-RAccountOpenedDuringTaxYearInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFA-RAccountOpenedDuringTaxYearInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:.5mm;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AccountOpenedDuringTaxYearInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-RAccountOpenedDuringTaxYearInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFA-RAccountOpenedDuringTaxYearInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Account opened during tax year
 						</label>
@@ -3292,18 +3270,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AccountClosedDuringTaxYearInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-RAccountClosedDuringTaxYearInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFA-RAccountClosedDuringTaxYearInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:1mm;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AccountClosedDuringTaxYearInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-RAccountClosedDuringTaxYearInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFA-RAccountClosedDuringTaxYearInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Account closed during tax year
 						</label>
@@ -3316,24 +3290,20 @@
 									<!--PART V REPEATING INFORMATION  Start of Line 3(c) 
                         Jointly Owned With Spouse Ind-->
 									<div class="styLNDesc" style="width:95mm;">
-									<span style="padding-right:37mm;"/>
+									<span style="padding-right:38mm;"/>
 										<b>c</b>
 										<span style="width:0mm;"/>
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="JointlyOwnedWithSpouseInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-RJointlyOwnedWithSpouseInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFA-RJointlyOwnedWithSpouseInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:0mm;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="JointlyOwnedWithSpouseInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-RJointlyOwnedWithSpouseInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFA-RJointlyOwnedWithSpouseInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Account jointly owned with spouse
 						</label>
@@ -3343,24 +3313,20 @@
 									<!--PART V REPEATING INFORMATION  Start of Line 3(d)
                          No Tax Item Reported Ind-->
 									<div class="styLNDesc" style="width:90mm;">
-									<span style="padding-right:3mm;"/>
+									<span style="padding-right:4mm;"/>
 										<b>d</b>
 										<span style="width:.5mm;"/>
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-RNoTaxItemReportedInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFA-RNoTaxItemReportedInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:.5mm;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-RNoTaxItemReportedInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938FFA-RNoTaxItemReportedInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							No tax item reported in Part III with respect to this asset
 						</label>
@@ -3404,18 +3370,14 @@
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 							Yes
 						</label>
@@ -3425,18 +3387,14 @@
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 							No
 						</label>
@@ -3495,7 +3453,7 @@
 										<span style="font-weight:normal">
 											<span class="styBoldText">(c) </span>
 						  Source of exchange rate used if not from<br/>
-						  U.S. Treasury Financial Management Service<br/>
+						  U.S. Treasury Department's Bureau of the Fiscal Service<br/>
 											
 											<span style="font-size:8pt">
 												<xsl:call-template name="PopulateText">
@@ -3551,10 +3509,10 @@
 							<!-- END PART V TITLE -->
 							<!--PART V REPEATING INFORMATION  Line 7  Start of Foreign Deposit and Custodial Accounts 
 				 Business Name-->
-				<div class="styBB" style="width:187mm;font-size:8pt">
+				<div class="styBB" style="width:187mm;font-size:8pt;">
 							<div class="styLNLeftNumBox" style="height:12mm;padding-left:2mm;padding-top:0mm;
 				  padding-bottom:0mm;">7a</div>
-							<div class="styLNDesc" style="width:98mm;height:18mm;padding-left:2mm;padding-top:0mm;
+							<div class="styLNDesc" style="width:90mm;height:18mm;padding-left:2mm;padding-top:0mm;
 				  padding-bottom:0mm;">Name of financial institution in which account is maintained
 							    <br/>
 								<xsl:call-template name="PopulateText">
@@ -3567,17 +3525,21 @@
 										</xsl:call-template>
 									</xsl:if>
 						    </div>
-							<div style="float:right;clear:none;">
-							<div class="styLNRightNumBoxNBB" style="border-left-width:0px;">b</div>
-							<div class="styLNDesc" style="width:20mm;">Reserved <!--<div class="styFixedUnderline" style="width:30mm;text-align:right;background-color:gray;float:right;position:absolute;top;right;border-bottom-width: 0px;"/>-->
-							</div><div class="styFixedUnderline" style="width:53mm;height:7mm;text-align:right;background-color:gray;border-bottom-width: 0px;"/>
-							
-							</div>							
-								</div>
+							<div class="styLNRightNumBoxNBB" style="border-left-width:0px;width:12mm;padding-left:7mm;">b</div>
+							<div class="styLNDesc" style="width:74mm;float:right;">Reserved
+							<div class="styBB" style="width:187mm;font-size:8pt;border-top-width: 0px;         border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;">
+							 <xsl:call-template name="PopulateText">
+                    <xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/GIIN"/>
+                  </xsl:call-template>
+                  </div>
+							</div>
+							<div class="styFixedUnderline" style="width:53mm;text-align:right;background-color:back;border-bottom-width: 0px;"/>
+								</div>				
+
 							<!--PART V REPEATING INFORMATION  Line 7  End of Foreign Deposit and Custodial Accounts 
 				 Business Name-->
 							<!--PART V REPEATING INFORMATION  Line 8  Mailing Address-->
-							<div class="styBB" style="width:187mm;font-size:8pt;height:12mm;">
+							<div class="styBB" style="width:187mm;font-size:8pt;height:16mm;">
 								<div class="styLNLeftNumBox" style="padding-left:2mm;padding-top:0mm;
 				  padding-bottom:0mm;">8</div>
 								<div class="styLNDesc" style="width:179mm;padding-left:2mm;padding-top:0mm;
@@ -3625,7 +3587,7 @@
 							</div>
 							<!--PART V REPEATING INFORMATION  Line 8  End of Mailing Address-->
 							<!--PART V REPEATING INFORMATION  Line 9  Start of City, State and Country-->
-							<div class="styBB" style="width:187mm;font-size:8pt;height:12mm;">
+							<div class="styBB" style="width:187mm;font-size:8pt;height:16mm;">
 								<div class="styLNLeftNumBox" style="padding-left:2mm;padding-top:0mm;
 				  padding-bottom:0mm;">9</div>
 								<div class="styLNDesc" style="width:178mm;padding-left:2mm;padding-top:0mm;
@@ -3793,7 +3755,7 @@
 							</div>							
 							<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE
                 Start of Line 3 Check all that apply-->
-							<div class="styBB" style="width:187mm;padding-bottom:2mm;font-size:8pt;height:10mm">
+							<div class="styBB" style="width:187mm;padding-bottom:2mm;font-size:8pt;height:10mm;">
 								<div style="width:187mm;">
 									<div style="width:38mm;float:left;clear: none;padding-top:1mm;">
 										<div class="styLNLeftNumBox" style="padding-left:2mm;font-weight:bold;">3</div>
@@ -3829,9 +3791,9 @@
                          End of Line 3(a) Account Opened During Tax Year Ind-->
 									<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE
                          Start of Line 3(b) Account Closed During Tax Year Ind-->
-									<div class="styLNDesc" style="width:85mm;">
+									<div class="styLNDesc" style="width:87mm;">
 										<b>b</b>
-										<span style="width:5px;"/>
+										<span style="width:.5mm;"/>
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AccountClosedDuringTaxYearInd"/>
@@ -3859,7 +3821,7 @@
 									<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE
                          Start of Line 3(c) Jointly Owned With Spouse Ind-->
 									<div class="styLNDesc" style="width:95mm;">
-									<span style="padding-right:37mm;"/>
+									<span style="padding-right:38mm;"/>
 										<b>c</b>
 										<span style="width:1mm;"/>
 										<input type="Checkbox" class="styCkbox">
@@ -3885,10 +3847,10 @@
                          End of Line 3(c) Jointly Owned With Spouse Ind-->
 									<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE
                          Start of Line 3(d) No Tax Item Reported Ind-->
-									<div class="styLNDesc" style="width:90mm;">
-									<span style="padding-right:2mm;"/>
+									<div class="styLNDesc" style="width:87mm;">
+									<span style="padding-right:3mm;"/>
 										<b>d</b>
-											<span style="width:1.5mm;"/>
+											<span style="width:.5mm;"/>
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
@@ -4015,7 +3977,7 @@
 								<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE
                      Start of Exchange Rate Used-->
 								<div style="width:63mm;float:left;clear:none;border-style:solid;
-				  border-color:black;border-width: 0px 1px 0px 1px;">
+				  border-color:black;border-width: 0px 1px 0px 1px;height:10mm">
 									<div class="styLNDesc" style="width:61mm;padding-left:2mm;
 					  padding-bottom:.5mm;">
 										<b>(b) </b> Foreign currency exchange rate used to convert to U.S. dollars
@@ -4032,7 +3994,7 @@
 									<div class="styLNDesc" style="width:62mm;padding-left:2mm;
 					  padding-bottom:1.5mm;">
 										<b>(c) </b> Source of exchange rate used if not from <br/>
-						U.S. Treasury Financial Management Service
+						U.S. Treasury Department's Bureau of the Fiscal Service
 					</div>
 									<div class="styLNDesc" style="width:62mm;padding-top:1mm;" valign="bottom"/>
 								</div>
@@ -4071,18 +4033,18 @@
                  
 							<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE blank line
                  Line 7a Start of Foreign Deposit and Custodial Accounts Business Name -->
-							<div class="styBB" style="width:187mm;font-size:8pt">
-							<div class="styLNLeftNumBox" style="height:12mm;padding-left:2mm;padding-top:0mm;
+							<div class="styBB" style="width:187mm;font-size:8pt;">
+							<div class="styLNLeftNumBox" style="height:12.5mm;padding-top:0mm;
 				  padding-bottom:0mm;">7a</div>
-							<div class="styLNDesc" style="width:98mm;height:18mm;padding-left:2mm;padding-top:0mm;
+							<div class="styLNDesc" style="width:76mm;height:18mm;padding-left:2mm;padding-top:0mm;
 				  padding-bottom:0mm;">Name of financial institution in which account is maintained</div>
-							 <div style="float:right;clear:none;">
-							<div class="styLNRightNumBoxNBB" style="border-left-width:0px;">b</div>
-							<div class="styLNDesc" style="width:20mm;">Reserved <!--<div class="styFixedUnderline" style="width:30mm;text-align:right;background-color:gray;float:right;position:absolute;top;right;border-bottom-width: 0px;"/> -->
-							</div><div class="styFixedUnderline" style="width:53mm;height:7mm;text-align:right;background-color:gray;border-bottom-width: 0px;"/>
+							 <div class="styLNRightNumBoxNBB" style="border-left-width:0px;width:12mm;padding-left:7mm;">b</div>
+							<div class="styLNDesc" style="width:90mm;float:right;">Reserved
+
+							</div>
 							
-							</div>							
-								</div>
+								</div>		
+		
 							<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE
                  Line 7  End of Foreign Deposit and Custodial Accounts Business Name-->
 							<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE
@@ -4120,7 +4082,7 @@
          End of Foreign Deposit and Custodial Accounts-->
 					<!--PART VI  Start of Other Foreign Assets Lines 1 thru 5-->
 				
-					<xsl:if test="(count($FormData/OtherForeignAssetGrp) &lt;=1)">
+					<xsl:if test="(count($FormData/OtherForeignAssetGrp) &lt;1)">
 						<!-- PART VI  BEGIN TITLE -->
 				<div class="styBB" style="width:187mm;">
 							<div class="styPartName" style="font-size:10pt;padding-bottom:5mm;
@@ -4146,7 +4108,7 @@
 														
 											<div class="styBB" style="width:187mm;font-size:8pt;">
 							<div class="styLNDesc" style="width:187mm;padding-left:2mm;padding-top:0mm;
-			  padding-bottom:0mm;">If you have more than one asset to report, attach a continuation
+			  padding-bottom:0mm;">If you have more than one asset to report , attach a continuation
 				  statement for each additional asset (see instructions).
 				  
 				  </div>
@@ -4156,17 +4118,17 @@
 							<tr>
 							
 								<!--PART VI  Line 1  Start of Asset Description-->
-								<th class="styLimitationHeading" style="width:110mm;padding-left:2mm;
-					  border-right:solid black 1px;font-size:8pt;text-align:left;" scope="col">
-									<div class="styLNLeftNumBox" style="padding-left:0mm;width:4mm;
-					    padding-top:0mm;">1</div>
-									<span style="font-weight:normal;padding-left:3mm">
+								<th class="styLimitationHeading" style="width:70mm;font-size:8pt;
+					  border-right:solid black 1px;vertical-align:top;padding-left:2mm;text-align:left" scope="col">
+									<div class="styLNLeftNumBox" style="width:6mm;padding-top:0mm;
+						  padding-left:0mm;">1</div>
+									<span style="font-weight:normal;text-align:left;width:60mm">
 						  Description of asset<br/>
-										<br/>
-										<div style="padding-left:8mm;">
+										
+										<div style="padding-left:1mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/AssetDesc"/>
-												<xsl:with-param name="BackupName">IRS8938OFAAssetDescription</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFAAssetDesc</xsl:with-param>
 											</xsl:call-template>
 										</div>
 									</span>
@@ -4174,24 +4136,24 @@
 								<!--PART VI  Line 2  Start of Identifying Designation Number-->
 								<th class="styLimitationHeading" style="width:70mm;font-size:8pt;
 					  border-left:solid black 0px;vertical-align:top;padding-left:2mm;text-align:left" scope="col">
-									<div class="styLNLeftNumBox" style="width:4mm;padding-top:0mm;
+									<div class="styLNLeftNumBox" style="width:6mm;padding-top:0mm;
 						  padding-left:0mm;">2</div>
-									<span style="font-weight:normal;">
+									<span style="font-weight:normal;text-align:left;width:60mm">
 						  Identifying number or other designation<br/>
-										<br/>
-										<div style="padding-left:5mm;">
+									
+										<div style="padding-left:1mm;">
 											<xsl:choose>
 												<xsl:when test="$FormData/OtherForeignAssetGrp/IdentifyingDesignationNum">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/IdentifyingDesignationNum"/>
-														<xsl:with-param name="BackupName">IRS8938OFAIdentifyingDesignationNumber
+														<xsl:with-param name="BackupName">IRS8938OFAIdentifyingDesignationNum
 											</xsl:with-param>
 													</xsl:call-template>
 												</xsl:when>
 												<xsl:otherwise>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/BankAccountNum"/>
-														<xsl:with-param name="BackupName">IRS8938OFABankAccountNumber
+														<xsl:with-param name="BackupName">IRS8938OFABankAccountNum
 											</xsl:with-param>
 													</xsl:call-template>
 												</xsl:otherwise>
@@ -4230,7 +4192,7 @@
 									<xsl:if test="$FormData/OtherForeignAssetGrp/AcquiredDateVariousCd">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/AcquiredDateVariousCd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RAcquiredDateVariousCd</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAAcquiredDateVariousCd</xsl:with-param>
 										</xsl:call-template>
 									</xsl:if>
 								</div>
@@ -4254,7 +4216,7 @@
 									<xsl:if test="$FormData/OtherForeignAssetGrp/DisposedOfDateVariousCd">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/DisposedOfDateVariousCd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RDisposedOfDateVariousCd</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFADisposedOfDateVariousCd</xsl:with-param>
 										</xsl:call-template>
 									</xsl:if>
 								</div>
@@ -4268,16 +4230,14 @@
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/JointlyOwnedWithSpouseInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFAJointlyOwnedWithSpouseInd
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAJointlyOwnedWithSpouseInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/JointlyOwnedWithSpouseInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFAJointlyOwnedWithSpouseInd
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAJointlyOwnedWithSpouseInd</xsl:with-param>
 										</xsl:call-template>
 							Check if asset jointly owned with spouse
 						</label>
@@ -4323,16 +4283,14 @@
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDuringTY0To50000Ind"/>
-											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDuringTY0To50000Ind
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDuringTY0To50000Ind</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDuringTY0To50000Ind"/>
-											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDuringTY0To50000Ind
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDuringTY0To50000Ind</xsl:with-param>
 										</xsl:call-template>
 							$0 - $50,000
 						</label>
@@ -4345,16 +4303,14 @@
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY50001To100000Ind"/>
-											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY50001To100000Ind
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY50001To100000Ind</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY50001To100000Ind"/>
-											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY50001To100000Ind
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY50001To100000Ind</xsl:with-param>
 										</xsl:call-template>
 							$50,001 - $100,000
 						</label>
@@ -4367,16 +4323,14 @@
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY100001To150000Ind"/>
-											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY100001To150000Ind
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY100001To150000Ind</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY100001To150000Ind"/>
-											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY100001To150000Ind
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY100001To150000Ind</xsl:with-param>
 										</xsl:call-template>
 							$100,001 - $150,000
 						</label>
@@ -4389,16 +4343,14 @@
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY150001To200000Ind"/>
-											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY150001To200000Ind
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY150001To200000Ind</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY150001To200000Ind"/>
-											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY150001To200000Ind
-								</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY150001To200000Ind</xsl:with-param>
 										</xsl:call-template>
 							$150,001 - $200,000
 						</label>
@@ -4475,10 +4427,10 @@
 							</div>
 						</div>
 						<!--PART VI  Start of Other Foreign Assets (Continued)-->
-						<xsl:if test="(count($FormData/OtherForeignAssetGrp) &lt;=1)">
+						<xsl:if test="(count($FormData/OtherForeignAssetGrp) &lt;1)">
 							<!--PART VI  Line 6  Start of If you answered "Yes" to line 5, complete all that apply-->
 							<div style="width:187mm;float:left;clear:none;border-style:solid;border-color:black;
-			  border-width: 0px 0px 1px 0px;font-size:8pt">
+			  border-width: 0px 0px 1px 0px;font-size:8pt;">
 								<div class="styLNLeftNumBox" style="padding-left:2mm;padding-top:.7mm;
 				  height:5mm">6</div>
 								<div class="styLNDesc" style="width:146.5mm;padding-left:2mm;
@@ -4523,7 +4475,7 @@
 										<span style="font-weight:normal">
 											<span class="styBoldText">(c) </span>
 						  Source of exchange rate used if not from<br/>
-						  U.S. Treasury Financial Management Service<br/>
+						  U.S. Treasury Department's Bureau of the Fiscal Service<br/>
 											
 											<span style="font-size:8pt">
 												<xsl:call-template name="PopulateText">
@@ -4539,7 +4491,7 @@
 							</table>
 							<!--PART VI  Line 6(3)  End of Source Of Exchange Rate Used Text-->
 							<!--PART VI  Line 7 Report information-->
-							<div style="width:187mm;font-size:8pt;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
+							<div style="width:187mm;font-size:8pt;border-style:solid;border-color:black;border-width:0px 0px 0px 0px;">
 								<div class="styLNLeftNumBox" style="height:8mm;padding-left:2mm;
 										  padding-top:0mm;padding-bottom:0mm;">7</div>
 								<div class="styLNDesc" style="height:8mm;width:178mm;padding-left:2mm;
@@ -4550,10 +4502,10 @@
 							</div>
 							<!--<span style="height:4mm;"/>-->
 							<!--PART VI  Line 7a Start of Name of Foreign Entity-->
-							<div style="height:10mm;width:187mm;font-size:8pt;">
+							<div style="height:15mm;width:187mm;font-size:8pt;">
 								<div class="styLNLeftLtrBox" style="padding-left:4mm;">a</div>
 								<div  class="styLNDesc" style="width:178mm;height:20mm;">
-									<div class="styLNDesc" style="width:35mm;padding-left:2mm;">
+									<div class="styLNDesc" style="width:30mm;padding-left:2mm;">
 										Name of foreign entity</div>
 										<!--<span style="height:4mm;"/>-->
 									<div class="styFixedUnderline" style="width:80mm;padding-left:2mm;">
@@ -4564,12 +4516,11 @@
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/EntityName/BusinessNameLine2Txt"/>
 										</xsl:call-template>
 									</div>
-									<div style="float:right;clear:none;">
-										<div class="styLNLeftNumBox" style="width:6mm;padding-left:2mm;">b</div>
-										<div class="styLNDesc" style="width:15mm;">Reserved </div>
-										<div class="styFixedUnderline" style="width:30mm;text-align:right;background-color:gray;padding-top:28px;"/>
-									</div>
-								</div>
+									<div class="styLNLeftNumBox" style="width:0mm;padding-right:4mm;">b</div>
+										<div class="styLNDesc" style="width:20mm;">Reserved </div>
+										<div class="styFixedUnderline" style="width:42mm;text-align:center;padding-top:28px;"/>
+																</div>
+
 							</div>	
 							<span style="height:4mm;"/>
 							<!--PART VI  Line 7c  Start of Type of Foreign Entity-->
@@ -4669,12 +4620,12 @@
 								<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:2mm;">d</div>
 								<span style="height:4mm;"/>
 								<div class="styLNDesc" style="width:178mm;padding-left:2mm;
-				  padding-top:0mm;padding-bottom:0mm;height:12mm;padding-top:2mm">
+				  padding-top:0mm;padding-bottom:0mm;height:6mm;padding-top:2mm;">
 					Mailing address of foreign entity. Number, street, and room or suite no.
 				</div>
 				<!--<span style="height:4mm;"/>-->
-								<div class="styFixedUnderline" style="height:8mm;width:178mm;padding-left:2mm;
-				  padding-top:1mm;padding-bottom:0mm;">
+								<div class="styFixedUnderline" style="height:8mm;width:178mm;
+				  padding-top:1mm;padding-left:10mm;">
 									<xsl:if test="$FormData/OtherForeignAssetGrp/USAddress">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/USAddress/AddressLine1Txt"/>
@@ -4704,10 +4655,10 @@
 							<div style="width:187mm;border-style:solid;border-color:black;font-size:8pt;
 				  border-width: 0px 0px 1px 0px;height:12mm;">
 								<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:1mm">e</div>
-								<div class="styLNDesc" style="width:179mm;padding-left:4mm;
+								<div class="styLNDesc" style="width:179mm;padding-left:2mm;
 				  padding-bottom:0mm;padding-top:1mm;">
 				  City or town, state or province , and country (including postal code)</div>
-								<div class="styLNDesc" style="width:186mm;padding-left:4mm;">
+								<div class="styLNDesc" style="width:186mm;padding-left:10mm;">
 									<xsl:if test="$FormData/OtherForeignAssetGrp/USAddress">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/USAddress/CityNm"/>
@@ -4760,7 +4711,7 @@
 									<div class="styLNLeftNumBox" style="height:2mm;padding-left:2mm;
 					  padding-top:0mm;padding-bottom:0mm;">8</div>
 									<div class="styLNDesc" style="width:178mm;padding-left:2mm;
-					  padding-top:0mm;padding-bottom:1mm;height:9mm;">
+					  padding-top:0mm;padding-bottom:1mm;height:4mm;">
 					  If asset reported on line 1 is not stock of a foreign entity or
 					  an interest in a foreign entity, enter the following information for the asset.
 					</div>
@@ -4980,7 +4931,7 @@
 								<div style="width:187mm;font-size:8pt;">
 									<div class="styLNLeftLtrBox" style="padding-left:4mm;">d</div>
 									<span style="height:4mm;"/>
-									<div class="styLNDesc" style="height:12mm;width:178mm;padding-left:2mm;
+									<div class="styLNDesc" style="height:3mm;width:178mm;padding-left:2mm;
 					  padding-top:0mm;padding-bottom:0mm;">
 					  Mailing address of issuer or counterparty. Number, street, and room or suite no.
 					</div>
@@ -5013,7 +4964,7 @@
 								<!--PART VI  Line 8d  End of Mailing Address-->
 								<!--PART VI  Line 8e  Start of City, State or Country-->
 								<div style="width:187mm;border-style:solid;border-color:black;font-size:8pt;
-				  border-width: 0px 0px 1px 0px;height:12mm;">
+				  border-width: 0px 0px 1px 0px;height:10mm;">
 									<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
 									<div class="styLNDesc" style="width:178mm;padding-left:2mm;padding-bottom:0mm;">
 					  City or town, state or province , and country (including postal code)
@@ -5060,19 +5011,22 @@
                  of Foreign Ent Grp >=1 (Lines 8a - 8e)-->
 							<xsl:if test="(count($FormData/OtherForeignAssetGrp/AssetNotStockOfForeignEntGrp) &gt;=1)">
 								<xsl:for-each select="$FormData/OtherForeignAssetGrp/AssetNotStockOfForeignEntGrp">
-									<div style="width:187mm;font-size:8pt;height:16mm;">
+									<div style="width:187mm;font-size:8pt;height:auto;">
 										<div class="styLNLeftNumBox" style="height:2mm;padding-left:2mm;padding-top:0mm;
 						  padding-bottom:0mm;">8</div>
 										<div class="styLNDesc" style="width:178mm;padding-left:2mm;padding-top:0mm;
 						  padding-bottom:1mm;">If asset reported on line 1 is not stock of a foreign entity
 						  or an interest in a foreign entity, enter the following information for the asset.
 						</div>
-										<div class="styLNDesc" style="width:179mm;padding-left:10mm;padding-top:0mm;
-						  padding-bottom:0mm;font-style:italic">
-											<b>Note.</b> If this asset has more than one issuer or counterparty, attach a
-							 continuation statement with the same information for each additional issuer or
-							 counterparty (see instructions).
-						</div>
+										<xsl:choose>
+											<xsl:when test="position()=1">
+												<div class="styLNDesc" style="height:auto;width:179mm;padding-left:10mm;padding-top:0mm;padding-bottom:0mm;font-style:italic;">
+													<b>Note.</b>If this asset has more than one issuer or counterparty, attach a
+														 continuation statement with the same information for each additional issuer or
+														 counterparty (see instructions).
+												</div>
+											</xsl:when>
+										</xsl:choose>
 									</div>
 									<br/>
 									<!--PART VI  Line 8a  Start of Name of Issuer-->
@@ -5293,12 +5247,12 @@
 									<div style="width:187mm;font-size:8pt;">
 										<div class="styLNLeftLtrBox" style="padding-left:4mm;">d</div>
 										<span style="height:4mm;"/>
-										<div class="styLNDesc" style="height:12mm;width:178mm;padding-left:2mm;
+										<div class="styLNDesc" style="height:4mm;width:178mm;padding-left:2mm;
 						  padding-top:0mm;padding-bottom:0mm;">
 						  Mailing address of issuer or counterparty. Number, street, and room or suite no.
 						</div>
 										<div class="styFixedUnderline" style="height:8mm;width:178mm;
-						  padding-left:2mm;padding-top:1mm;padding-bottom:0mm;">
+						  padding-left:10mm;padding-top:1mm;padding-bottom:0mm;">
 											<xsl:if test="USAddress">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="USAddress/AddressLine1Txt"/>
@@ -5326,7 +5280,7 @@
 									<!--PART VI  Line 8d  End of Mailing Address-->
 									<!--PART VI  Line 8e  Start of City, State or Country-->
 									<div style="width:187mm;border-style:solid;border-color:black;font-size:8pt;
-					  border-width: 0px 0px 1px 0px;height:23mm;">
+					  border-width: 0px 0px 1px 0px;height:12mm;">
 										<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
 										<div class="styLNDesc" style="width:178mm;padding-left:2mm;padding-bottom:0mm;">
 						  City or town, state or province , and country (including postal code)
@@ -5379,11 +5333,46 @@
 					<!--PART VI  End of Other Foreign Assets Continued-->
 					<!--PART VI REPEATING INFORMATION  Start of Other Foreign Assets 
         (see instructions) Lines 1-5-->
-					<xsl:if test="(count($FormData/OtherForeignAssetGrp) &gt;= 2) and ($Print != $Separated)">
+					<xsl:if test="(count($FormData/OtherForeignAssetGrp) &gt;= 1) and ($Print != $Separated)">
 						<xsl:for-each select="$FormData/OtherForeignAssetGrp">
 							<xsl:choose>
 								<xsl:when test="position()=1">
-									<div style="width:187mm;font-size:8pt;border-bottom:1px solid black">
+<!--									<div style="width:187mm;font-size:8pt;border-bottom:1px solid black">
+										<span style="width:150mm;">Form 8938 (2015)</span>
+										<span style="width:15mm;"/>Page 
+						<span class="styFixedUnderline" style="width:10mm;float:none;
+						  padding-top:0mm;padding-bottom:0mm;"/>
+									</div>-->
+							<div class="styBB" style="width:187mm;height:5mm;">
+								<div class="styPartName" style="font-size:10pt;padding-bottom:.5mm;font-family:arial;
+				  text-align:center;height:4mm;padding-top:.5mm">Part VI</div>
+								<div class="styPartDesc" style="font-size:10pt;padding-left:3mm;float:left;clear:none;
+				  padding-top:.5mm;padding-bottom:.5mm">
+			      Detailed Information for Each "Other Foreign Asset" Included in the Part II Summary
+			      <span style="font-weight:normal;"> (see instructions)</span>
+								</div>
+							</div>
+							
+							<!-- PART VI REPEATING INFORMATION  END TITLE -->
+							
+							<div class="styBB" style="width:187mm;font-size:8pt;height:auto;">
+								<div class="styLNDesc" style="height:auto;width:187mm;padding-left:2mm;padding-top:0mm;
+				  padding-bottom:0mm;">
+									<b>Note.</b>
+									<i>If you reported specified foreign financial assets on 
+				Forms 3520, 3520-A, 5471, 8621 or 8865, you do not have to <br/>
+				include the assets on Form 8938. You must complete Part IV. See instructions.</i>
+								</div>
+							</div>
+							<div class="styBB" style="width:187mm;height:auto;">
+								<div class="styLNDesc" style="width:187mm;padding-left:2mm;padding-top:0mm;
+				  padding-bottom:0mm;">If you have more than one asset to report, attach a continuation
+				  statement for each additional asset (see instructions).</div>
+							</div>
+							
+								</xsl:when>
+								<xsl:otherwise>
+<!--								<div style="width:187mm;font-size:8pt;border-bottom:1px solid black">
 										<span style="width:150mm;">Form 8938 (2015)</span>
 										<span style="width:15mm;"/>Page 
 						<span class="styFixedUnderline" style="width:10mm;float:none;
@@ -5398,22 +5387,10 @@
 			      <span style="font-weight:normal;"> (see instructions)</span>
 								</div>
 							</div>
-							
-							<!-- PART VI REPEATING INFORMATION  END TITLE -->
-							
-							<div class="styBB" style="width:187mm;font-size:8pt;height:10mm;">
-								<div class="styLNDesc" style="width:187mm;padding-left:2mm;padding-top:0mm;
-				  padding-bottom:0mm;">
-									<b>Note.</b>
-									<i>If you reported specified foreign financial assets on 
-				Forms 3520, 3520-A, 5471, 8621 or 8865, you do not have to <br/>
-				include the assets on Form 8938. You must complete Part IV. See instructions.</i>
-								</div>
-							</div>
-								</xsl:when>
+							</xsl:otherwise>
 							</xsl:choose>
 							<xsl:choose>
-								<xsl:when test="position()>=2">
+								<xsl:when test="position()>=2">-->
 																	<div style="width:187mm;font-size:8pt;border-bottom:1px solid black">
 										<span style="width:150mm;">Form 8938 (2015)</span>
 										<span style="width:15mm;"/>Page 
@@ -5461,21 +5438,22 @@
 			      <span style="font-weight:normal;"> (see instructions)</span>
 								</div>
 							</div> 
- 								</xsl:when>
+ 								<!--</xsl:when>-->
+ 								</xsl:otherwise>
 							</xsl:choose>
 
 							<!-- PART VI REPEATING INFORMATION  BEGIN TITLE -->
 							<table class="styBB" id="IRS8938Table3" summary="Asset [header]" cellspacing="0" cellpadding="0" style="width:187mm;">
 				<tr>
 									<!--PART VI  REPEATING INFORMATION  Line 1  Start of Asset Description-->
-									<th style="width:110mm;font-size:8pt; border-right:solid black 1px;vertical-align:top;padding-left:2mm;text-align:left" scope="col">
+									<th style="width:110mm;font-size:8pt; border-right:solid black 1px;vertical-align:top;padding-left:2mm;text-align:left;" scope="col">
 									<div class="styLNLeftNumBox" style="padding-left:0mm;width:4mm;padding-top:0mm;">1</div>
 									<div style="font-weight:normal;padding-left:3mm;">Description of asset</div>
 									<br></br>
 									<div style="padding-left:8mm;font-weight:normal;font-size:8pt;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="AssetDesc"/>
-											<xsl:with-param name="BackupName">IRS8938OFAAssetDescription</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAAssetDesc</xsl:with-param>
 										</xsl:call-template>
 									</div>
 								</th>
@@ -5490,14 +5468,14 @@
 												<xsl:when test="$FormData/OtherForeignAssetGrp/IdentifyingDesignationNum">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="IdentifyingDesignationNum"/>
-														<xsl:with-param name="BackupName">IRS8938OFAIdentifyingDesignationNumber
+														<xsl:with-param name="BackupName">IRS8938OFAIdentifyingDesignationNum
 											</xsl:with-param>
 													</xsl:call-template>
 												</xsl:when>
 												<xsl:otherwise>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="BankAccountNum"/>
-														<xsl:with-param name="BackupName">IRS8938OFABankAccountNumber</xsl:with-param>
+														<xsl:with-param name="BackupName">IRS8938OFABankAccountNum</xsl:with-param>
 													</xsl:call-template>
 												</xsl:otherwise>
 											</xsl:choose>
@@ -5534,7 +5512,7 @@
 										<xsl:if test="AcquiredDateVariousCd">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="AcquiredDateVariousCd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RAcquiredDateVariousCd</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFAAcquiredDateVariousCd</xsl:with-param>
 											</xsl:call-template>
 										</xsl:if>
 									</div>
@@ -5558,7 +5536,7 @@
 										<xsl:if test="DisposedOfDateVariousCd">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="DisposedOfDateVariousCd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RDisposedOfDateVariousCd</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFADisposedOfDateVariousCd</xsl:with-param>
 											</xsl:call-template>
 										</xsl:if>
 									</div>
@@ -5571,18 +5549,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="JointlyOwnedWithSpouseInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RJointlyOwnedWithSpouseInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RJointlyOwnedWithSpouseInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="JointlyOwnedWithSpouseInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RJointlyOwnedWithSpouseInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RJointlyOwnedWithSpouseInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Check if asset jointly owned with spouse
 						</label>
@@ -5595,18 +5569,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RNoTaxItemReportedInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RNoTaxItemReportedInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RNoTaxItemReportedInd
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RNoTaxItemReportedInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Check if no tax item reported in Part III with respect to this asset
 						</label>
@@ -5631,18 +5601,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MaxValueDuringTY0To50000Ind"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDuringTY0To50000Ind
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDuringTY0To50000Ind<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="MaxValueDuringTY0To50000Ind"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDuringTY0To50000Ind
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDuringTY0To50000Ind<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							$0 - $50,000
 						</label>
@@ -5657,18 +5623,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY50001To100000Ind"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY50001To100000Ind
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY50001To100000Ind<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY50001To100000Ind"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY50001To100000Ind
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY50001To100000Ind<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							$50,001 - $100,000
 						</label>
@@ -5683,18 +5645,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY100001To150000Ind"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY100001To150000Ind
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY100001To150000Ind<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY100001To150000Ind"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY100001To150000Ind
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY100001To150000Ind<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							$100,001 - $150,000
 						</label>
@@ -5709,18 +5667,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY150001To200000Ind"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY150001To200000Ind
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY150001To200000Ind<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY150001To200000Ind"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY150001To200000Ind
-								<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY150001To200000Ind<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							$150,001 - $200,000
 						</label>
@@ -5763,18 +5717,14 @@
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 							Yes
 						</label>
@@ -5784,18 +5734,14 @@
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd
-									<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 							No
 						</label>
@@ -5814,7 +5760,7 @@
 								<div class="styLNLeftNumBox" style="padding-left:2mm;padding-top:.7mm;
 				  height:4mm">6</div>
 								<div class="styLNDesc" style="width:146.5mm;padding-left:2mm;padding-top:.7mm;
-				  height:4mm">If you answered "Yes" to line 5, complete all that apply.
+				  height:4mm;">If you answered "Yes" to line 5, complete all that apply.
 				</div>
 							</div>
 							<table class="styBB" id="IRS8938Table" summary="Foreign currency [header]" cellspacing="0" cellpadding="0" style="width:187mm;">
@@ -5858,7 +5804,7 @@
 										<span style="font-weight:normal">
 											<span class="styBoldText">(c) </span>
 						  Source of exchange rate used if not from<br/>
-						  U.S. Treasury Financial Management Service<br/>
+						  U.S. Treasury Department's Bureau of the Fiscal Service<br/>
 											
 											<span style="font-size:8pt">
 												<xsl:call-template name="PopulateText">
@@ -5888,7 +5834,7 @@
 							<div style="height:16mm;width:187mm;font-size:8pt;">
 								<div class="styLNLeftLtrBox" style="padding-left:4mm;">a</div>
 								<div  class="styLNDesc" style="width:178mm;height:20mm;">
-									<div class="styLNDesc" style="width:35mm;padding-left:2mm;">
+									<div class="styLNDesc" style="width:30mm;padding-left:2mm;">
 										Name of foreign entity</div>
 										<!--<span style="height:4mm;"/>-->
 									<div class="styFixedUnderline" style="width:80mm;padding-left:2mm;">
@@ -5899,13 +5845,16 @@
 											<xsl:with-param name="TargetNode" select="EntityName/BusinessNameLine2Txt"/>
 										</xsl:call-template>
 									</div>
-									<div style="float:right;clear:none;">
-										<div class="styLNLeftNumBox" style="width:6mm;padding-left:2mm;">b</div>
-										<div class="styLNDesc" style="width:15mm;">Reserved </div>
-										<div class="styFixedUnderline" style="width:30mm;text-align:right;background-color:gray;padding-top:28px"/>
-									</div>
-								</div>
-							</div>	
+									<div class="styLNLeftNumBox" style="width:6mm;padding-right:4mm;">b</div>
+										<div class="styLNDesc" style="width:22mm;text-align:right;">Reserved </div>
+										<div class="styBB" style="width:40mm;font-size:8pt;border-top-width: 0px;         border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;float:right;position:absolute;text-align:center;">
+							 <xsl:call-template name="PopulateText">
+                    <xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/GIIN"/>
+                  </xsl:call-template>
+                  </div>
+							</div>
+						
+								</div>				
 							<!--PART VI REPEATING INFORMATION  Line 7a  End of Name of Foreign Entity-->
 							<!--PART VI REPEATING INFORMATION  Line 7b  Start of Type of Foreign Entity-->
 							<div style="width:187mm;font-size:8pt;height:5mm;">
@@ -5918,18 +5867,14 @@
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="PartnershipInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RPartnershipInd
-							<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RPartnershipInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="PartnershipInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RPartnershipInd
-							<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RPartnershipInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 						Partnership
 					</label>
@@ -5943,18 +5888,14 @@
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="CorporationInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RCorporationInd
-							<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RCorporationInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="CorporationInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RCorporationInd
-							<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RCorporationInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 						Corporation 
 					</label>
@@ -5968,16 +5909,14 @@
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="TrustInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RTrustInd<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RTrustInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="TrustInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-RTrustInd<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-RTrustInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 						Trust 
 					</label>
@@ -5991,16 +5930,14 @@
 									<input type="Checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="EstateInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-REstateInd<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-REstateInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="EstateInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-REstateInd<xsl:number value="position()"/>
-											</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFA-REstateInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 						Estate 
 					</label>
@@ -6012,8 +5949,8 @@
 							<div  style="width:187mm;font-size:8pt">
 								<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:2mm">d</div>
 						
-								<div class="styBB" style="height:12mm;width:179mm;padding-left:2mm;padding-top:0mm;border-bottom-width: 1px;	float: nonet; clear: none;
-				  padding-bottom:0mm;padding-top:2mm">Mailing address of foreign entity. Number, street, and room or suite no.
+								<div class="styBB" style="height:16mm;width:179mm;padding-left:2mm;padding-top:0mm;border-bottom-width: 1px;	float: nonet; clear: none;
+				  padding-bottom:0mm;padding-top:2mm;">Mailing address of foreign entity. Number, street, and room or suite no.
 				            <br/>
 								
 									<xsl:if test="USAddress">
@@ -6044,7 +5981,7 @@
 											
 							<!--PART VI REPEATING INFORMATION  Line 7c  End of Mailing Address-->
 							<!--PART VI REPEATING INFORMATION  Line e  Start of City, State and country-->					
-							<div style="width:187mm;height:12mm; border-left-width: 0px;border-top-width: 0px; border-right-width: 0px;border-style:solid;border-color:black;font-size:8pt;">
+							<div style="width:187mm;height:16mm; border-left-width: 0px;border-top-width: 0px; border-right-width: 0px;border-style:solid;border-color:black;font-size:8pt;">
 								<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
 								<div class="styLNDesc" style="width:179mm;padding-left:1mm;padding-bottom:0mm;">
 					City or town, state or province , and country (including postal code)
@@ -6095,12 +6032,12 @@
 					  padding-bottom:1mm;">If asset reported on line 1 is not stock of a foreign
 					  entity or an interest in a foreign entity, enter the following information for the asset.
 					</div>
-									<!--<div class="styLNDesc" style="width:179mm;padding-left:10mm;padding-top:0mm;
+									<div class="styLNDesc" style="width:179mm;padding-left:10mm;padding-top:0mm;
 					  padding-bottom:0mm;">
 										<b>Note.</b> If this asset has more than one issuer or counterparty, attach a
 						 continuation statement with the same information for each additional issuer or
 						 counterparty (see instructions).
-					</div>-->
+					</div>
 								</div>
 								<br/>
 								<!--PART VI REPEATING INFORMATION  Line 8a  Start of Name of Issuer-->
@@ -6130,18 +6067,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="IssuerInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  IssuerInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IssuerInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="IssuerInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  IssuerInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IssuerInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Issuer
 						</label>
@@ -6150,18 +6083,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="CounterpartyInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  CounterpartyInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CounterpartyInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="CounterpartyInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  CounterpartyInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CounterpartyInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Counterparty
 						</label>
@@ -6182,18 +6111,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/IndividualInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  IndividualInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IndividualInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/IndividualInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  IndividualInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IndividualInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Individual
 						</label>
@@ -6206,18 +6131,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/PartnershipInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  PartnershipInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>PartnershipInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/PartnershipInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  PartnershipInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>PartnershipInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Partnership
 						</label>
@@ -6230,18 +6151,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/CorporationInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  CorporationInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CorporationInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/CorporationInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  CorporationInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CorporationInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Corporation 
 						</label>
@@ -6254,18 +6171,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/TrustInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  TrustInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>TrustInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/TrustInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  TrustInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>TrustInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Trust 
 						</label>
@@ -6277,18 +6190,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/EstateInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  EstateInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>EstateInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:4px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/EstateInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  EstateInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>EstateInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Estate 
 						</label>
@@ -6308,18 +6217,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/USPersonInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  USPersonInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>USPersonInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/USPersonInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  USPersonInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>USPersonInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							U.S. person
 						</label>
@@ -6328,18 +6233,14 @@
 										<input type="Checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/ForeignPersonInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  ForeignPersonInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>ForeignPersonInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/ForeignPersonInd"/>
-												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  ForeignPersonInd<xsl:number value="position()"/>
-												</xsl:with-param>
+												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>ForeignPersonInd<xsl:number value="position()"/></xsl:with-param>
 											</xsl:call-template>
 							Foreign person
 						</label>
@@ -6349,7 +6250,7 @@
 								<!--PART VI REPEATING INFORMATION  Line 8c  End of Check if Issuer or Counterparty is
                      US or Foreign-->
 								<!--PART VI REPEATING INFORMATION  Line 8d  Start of Mailing Address-->
-								<div style="width:187mm;font-size:8pt">
+								<div style="width:187mm;font-size:8pt;">
 									<div class="styLNLeftLtrBox" style="padding-left:4mm;">d</div>
 									<span style="height:4mm;"/>
 									<div class="styLNDesc" style="height:12mm;width:179mm;padding-left:2mm;
@@ -6385,7 +6286,7 @@
 								<!--PART VI REPEATING INFORMATION  Line 8d  End of Mailing Address-->
 								<!--PART VI REPEATING INFORMATION  Line 8e  Start of City, State or Country-->
 								<div style="width:187mm;height:12mm;border-style:solid;border-color:black;
-				  border-width: 0px 0px 1px 0px;font-size:8pt">
+				  border-width: 0px 0px 1px 0px;font-size:8pt;">
 									<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
 									<div class="styLNDesc" style="width:178mm;padding-left:2mm;padding-bottom:0mm;">
 					  City or town, state or province , and country (including postal code)
@@ -6433,7 +6334,7 @@
 								<!--<xsl:for-each select="$FormData/OtherForeignAssetGrp/AssetNotStockOfForeignEntGrp">-->
 								<xsl:variable name="pos" select="position()"/>
 								<xsl:for-each select="AssetNotStockOfForeignEntGrp">
-									<div style="width:187mm;font-size:8pt;height:8mm;">
+									<div style="width:187mm;font-size:8pt;height:auto;">
 										<div class="styLNLeftNumBox" style="height:2mm;padding-left:2mm;
 						  padding-top:0mm;padding-bottom:0mm;">8</div>
 										<div class="styLNDesc" style="width:178mm;padding-left:2mm;
@@ -6441,12 +6342,15 @@
 						  If asset reported on line 1 is not stock of a foreign entity or
 						  an interest in a foreign entity, enter the following information for
 						  the asset.</div>
-										<!--<div class="styLNDesc" style="width:179mm;padding-left:10mm;
-						  padding-top:0mm;padding-bottom:0mm;"><br/>
-											<b>Note.</b> If this asset has more than one issuer or counterparty,
-							  attach a continuation statement with the same information for each
-							  additional issuer or counterparty (see instructions).
-						</div>-->
+										<xsl:choose>
+											<xsl:when test="position()=1">
+												<div class="styLNDesc" style="height:auto;width:179mm;padding-left:10mm;padding-top:0mm;padding-bottom:0mm;font-style:italic;">
+													<b>Note.</b>If this asset has more than one issuer or counterparty, attach a
+														 continuation statement with the same information for each additional issuer or
+														 counterparty (see instructions).
+												</div>
+											</xsl:when>
+										</xsl:choose>
 									</div>
 									<br/>
 									<!--PART VI REPEATING INFORMATION  Line 8a  Start of Name of Issuer-->
@@ -6485,18 +6389,14 @@
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="IssuerInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  IssuerInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IssuerInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<span style="width:5px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="IssuerInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  IssuerInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IssuerInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 								Issuer
 							</label>
@@ -6505,18 +6405,14 @@
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="CounterpartyInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  CounterpartyInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CounterpartyInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<span style="width:5px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="CounterpartyInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  CounterpartyInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CounterpartyInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 								Counterparty
 							</label>
@@ -6538,18 +6434,14 @@
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="IndividualInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  IndividualInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IndividualInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<span style="width:5px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="IndividualInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  IndividualInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IndividualInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 								Individual
 							</label>
@@ -6562,18 +6454,14 @@
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="PartnershipInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  PartnershipInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>PartnershipInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<span style="width:5px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="PartnershipInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  PartnershipInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>PartnershipInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 								Partnership
 							</label>
@@ -6586,18 +6474,14 @@
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="CorporationInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  CorporationInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CorporationInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<span style="width:5px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="CorporationInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  CorporationInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CorporationInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 								Corporation 
 							</label>
@@ -6610,18 +6494,14 @@
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="TrustInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  TrustInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>TrustInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<span style="width:5px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="TrustInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  TrustInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>TrustInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 								Trust 
 							</label>
@@ -6633,18 +6513,13 @@
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="EstateInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  EstateInd<xsl:number value="position()"/>
-													</xsl:with-param>
-												</xsl:call-template>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>EstateInd<xsl:number value="position()"/></xsl:with-param></xsl:call-template>
 											</input>
 											<span style="width:4px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="EstateInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-								  EstateInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>EstateInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 							     Estate 
 							</label>
@@ -6664,18 +6539,14 @@
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="USPersonInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  USPersonInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>USPersonInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<span style="width:5px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="USPersonInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  USPersonInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>USPersonInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 								   U.S. person
 							</label>
@@ -6684,18 +6555,14 @@
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="ForeignPersonInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  ForeignPersonInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>ForeignPersonInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<span style="width:5px;"/>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="ForeignPersonInd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>
-									  ForeignPersonInd<xsl:number value="position()"/>
-													</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>ForeignPersonInd<xsl:number value="position()"/></xsl:with-param>
 												</xsl:call-template>
 								   Foreign person
 							</label>
@@ -6740,8 +6607,8 @@
 									</div>
 									<!--PART VI REPEATING INFORMATION  Line 8d  End of Mailing Address-->
 									<!--PART VI REPEATING INFORMATION  Line 8e  Start of City, State or Country-->
-									<div style="width:187mm;height:12mm;border-style:solid;
-					  border-width: 0px 0px 1px 0px;font-size:8pt;">
+									<div style="width:187mm;height:17mm;border-style:solid;
+					  border-width: 0px 0px 1px 0px;font-size:8pt;padding-top:2mm">
 										<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
 										<div class="styLNDesc" style="width:178mm;padding-left:2mm;
 						  padding-bottom:0mm;">
@@ -7087,7 +6954,7 @@
                  Line 4e End of Max. Value During TY More Max. Amount-->
 							<!--PART VI REPEATING ADDITIONAL TABLE MESSAGE
                  Line 5 Start of Exchange Rate used-->
-							<div class="styBB" style="width:187mm;">
+							<div  style="width:187mm;">
 								<div class="styLNLeftNumBox" style="height:5mm;padding-left:2mm;
 				  padding-top:.7mm;padding-bottom:0mm;">5</div>
 								<div class="styLNDesc" style="height:5mm;width:178mm;padding-left:2mm;
@@ -7174,7 +7041,7 @@
 								<!--PART VI REPEATING ADDITIONAL TABLE MESSAGE
                      Line 6(2) Start of Exchange Rate Used-->
 								<div style="width:63mm;float:left;clear:none;border-style:solid;border-color:black;
-				   border-width: 0px 1px 0px 1px;">
+				   border-width: 0px 1px 0px 1px;height:10mm">
 									<div class="styLNDesc" style="width:61mm;padding-left:2mm;
 					  padding-bottom:.5mm;">
 										<b>(b) </b> Foreign currency exchange rate used to convert to U.S. dollars
@@ -7191,7 +7058,7 @@
 									<div class="styLNDesc" style="width:62mm;padding-left:2mm;
 					  padding-bottom:1.5mm;">
 										<b>(c) </b> Source of exchange rate used if not from <br/>
-						 U.S. Treasury Financial Management Service
+						 U.S. Treasury Department's Bureau of the Fiscal Service
 					</div>
 									<div class="styLNDesc" style="width:62mm;padding-top:1mm;
 					  padding-left:1mm" valign="bottom"/>
@@ -7218,25 +7085,28 @@
 							<div style="width:187mm;font-size:8pt,height:16mm;">
 								<div class="styLNLeftLtrBox" style="padding-left:4mm;">a</div>
 									<div  class="styLNDesc" style="width:178mm;height:20mm;">
-									<div class="styLNDesc" style="width:35mm;padding-left:2mm;">
+									<div class="styLNDesc" style="width:30mm;padding-left:2mm;">
 									Name of foreign entity</div>
 									
 										<!--<span style="height:4mm;"/>-->
-										<div class="styFixedUnderline" style="width:90mm;padding-left:2mm;">
+										<div class="styFixedUnderline" style="width:80mm;padding-left:2mm;">
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/EntityName/BusinessNameLine1Txt"/>
+												<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/EntityName/BusinessNameLine1T"/>
 											</xsl:call-template><br/>
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/EntityName/BusinessNameLine2Txt"/>
+													<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/EntityName/BusinessNameLine2T"/>
 												</xsl:call-template>
 										</div>
-									<div style="float:right;clear:none;">
-										<div class="styLNLeftNumBox" style="width:5mm;">b</div>
-										<div class="styLNDesc" style="width:14mm;">Reserved </div>
-										<div class="styFixedUnderline" style="width:30mm;height:5mm;text-align:right;background-color:gray;border-bottom-width:0px;padding-top:28px"/>
-									</div>
-								</div>
-							</div>	
+									<div class="styLNLeftNumBox" style="width:6mm;padding-right:4mm;">b</div>
+										<div class="styLNDesc" style="width:22mm;text-align:right;">Reserved</div>
+										<div class="styBB" style="width:40mm;font-size:8pt;border-top-width: 0px;         border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;float:right;position:absolute;text-align:center">
+							 <xsl:call-template name="PopulateText">
+                    <xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/G"/>
+                  </xsl:call-template>
+                  </div>
+							</div>
+						
+								</div>	
 							<!--PART VI REPEATING ADDITIONAL TABLE MESSAGE
                  Line 7a End of Name of Foreign Entity-->
 							<!--PART VI REPEATING ADDITIONAL TABLE MESSAGE
@@ -7378,7 +7248,7 @@
                  Line 7d Start of City, State and country-->
 							<!--PART VI REPEATING ADDITIONAL TABLE MESSAGE
                  Line 8 Start of Report information-->
-							<div style="width:187mm;">
+							<div style="height:auto;width:187mm;">
 								<div class="styLNLeftNumBox" style="height:2mm;padding-left:2mm;
 			      padding-top:0mm;padding-bottom:0mm;">8</div>
 								<div class="styLNDesc" style="width:178mm;padding-left:2mm;height:8mm;
@@ -7386,11 +7256,15 @@
 				  If asset reported on line 1 is not stock of a foreign entity or an 
 				  interest in a foreign entity, enter the following information for the asset.
 				</div>
-								<div class="styLNDesc" style="width:179mm;padding-left:10mm;height:8mm;
-				  padding-top:0mm;padding-bottom:0mm;font-style:italic">
-									<b>Note.</b> If this asset has more than one issuer or counterparty,
-					 attach a continuation statement with the same information for each
-					 additional issuer or counterparty (see instructions).</div>
+										<xsl:choose>
+											<xsl:when test="position()=1">
+												<div class="styLNDesc" style="height:auto;width:179mm;padding-left:10mm;padding-top:0mm;padding-bottom:0mm;font-style:italic;">
+													<b>Note.</b>If this asset has more than one issuer or counterparty, attach a
+														 continuation statement with the same information for each additional issuer or
+														 counterparty (see instructions).
+												</div>
+											</xsl:when>
+										</xsl:choose>
 							</div>
 							<br/>
 							<!--PART VI REPEATING ADDITIONAL TABLE MESSAGE
@@ -7839,7 +7713,7 @@
 												</xsl:when>
 												<xsl:otherwise>
 													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="BankAccountNum"/>
+														<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/BankAccountNum"/>
 													</xsl:call-template>
 												</xsl:otherwise>
 											</xsl:choose>
@@ -7880,7 +7754,7 @@
 										</div>
 										<!--PART V SEPARATED PRINT  End of Account Opened During Tax Year Ind-->
 										<!--PART V SEPARATED PRINT  Start of Account Closed During Tax Year Ind-->
-										<div class="styLNDesc" style="width:87mm;padding-left:2.5mm;">
+										<div class="styLNDesc" style="width:87mm;padding-left:6mm;">
 											<b>b</b>
 											<span style="width:1mm;"/>
 											<input type="Checkbox" class="styCkbox">
@@ -7908,9 +7782,9 @@
 										<div style="width:41mm;float:left;clear: none;"/>
 										<!--PART V SEPARATED PRINT  Start of Jointly Owned With Spouse Ind-->
 										<div class="styLNDesc" style="width:100mm;">
-										<span style="padding-right:39mm;"/>
+										<span style="padding-right:40mm;"/>
 											<b>c</b>
-											<span style="width:1.5mm;"/>
+											<span style="width:.5mm;"/>
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="JointlyOwnedWithSpouseInd"/>
@@ -7932,8 +7806,9 @@
 										</div>
 										<!--PART V SEPARATED PRINT  End of Jointly Owned With Spouse Ind-->
 										<!--PART V SEPARATED PRINT  Start of No Tax Item Reported Ind-->
-										<div class="styLNDesc" style="width:85mm;">										
-											<b>d</b>										
+										<div class="styLNDesc" style="width:87mm;padding-left:2.5mm;">
+											<b>d</b>
+											<span style="width:1mm;"/>								
 											<input type="Checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
@@ -8078,7 +7953,7 @@
 											<span style="font-weight:normal">
 												<span class="styBoldText">(c) </span>
 						  Source of exchange rate used if not from<br/>
-						  U.S. Treasury Financial Management Service<br/>
+						  U.S. Treasury Department's Bureau of the Fiscal Service<br/>
 												
 												<span style="font-size:8pt">
 													<xsl:call-template name="PopulateText">
@@ -8097,10 +7972,10 @@
                  complete all that apply-->
 								<!--PART V SEPARATED PRINT  Line 7a blue table  
                  Start of Foreign Deposit and Custodial Accounts Business Name-->
-								<div class="styBB" style="width:187mm;font-size:8pt">
+								<div class="styBB" style="width:187mm;font-size:8pt;">
 							<div class="styLNLeftNumBox" style="height:12mm;padding-left:2mm;padding-top:0mm;
 				  padding-bottom:0mm;">7a</div>
-							<div class="styLNDesc" style="width:98mm;height:18mm;padding-left:2mm;padding-top:0mm;
+							<div class="styLNDesc" style="width:98mm;height:16mm;padding-left:2mm;padding-top:0mm;
 				  padding-bottom:0mm;">Name of financial institution in which account is maintained
 							    <br/>
 								<xsl:call-template name="PopulateText">
@@ -8113,17 +7988,23 @@
 									</xsl:call-template>
 								</xsl:if>
 						    </div>
-							 <div style="float:right;clear:none;">
-							<div class="styLNRightNumBoxNBB" style="border-left-width:0px;">b</div>
-							<div class="styLNDesc" style="width:20mm;">Reserved <!--<div class="styFixedUnderline" style="width:30mm;text-align:right;background-color:gray;float:right;position:absolute;top;right;border-bottom-width: 0px;"/> -->
-							</div><div class="styFixedUnderline" style="width:53mm;height:7mm;text-align:right;background-color:gray;border-bottom-width: 0px;"/>
+							 <div class="styLNRightNumBoxNBB" style="border-left-width:0px;width:6mm;padding-left:0mm;float:left">b</div>
+							<div class="styLNDesc" style="width:74mm;float:right;">Reserved
+							<div class="styBB" style="width:187mm;font-size:8pt;border-top-width: 0px;         border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;">
+							 <xsl:call-template name="PopulateText">
+                    <xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/GIIN"/>
+                  </xsl:call-template>
+                  </div>
+							</div>
+							<div class="styFixedUnderline" style="width:53mm;text-align:right;background-color:back;border-bottom-width: 0px;"/>
+								</div>			
 							
-							</div>							
-								</div>
+						
+									
 								<!--PART V SEPARATED PRINT  Line 7  
                 End of Foreign Deposit and Custodial Accounts Business Name-->
 								<!--PART V SEPARATED PRINT  Line 8  Mailing Address-->
-								<div class="styBB" style="width:187mm;height:12mm;">
+								<div class="styBB" style="width:187mm;height:15mm;">
 									<div class="styLNLeftNumBox" style="padding-left:2mm;padding-top:0mm;
 				  padding-bottom:0mm;">8</div>
 									<div class="styLNDesc" style="width:178mm;padding-left:2mm;
@@ -8173,7 +8054,7 @@
 								</div>
 								<!--PART V SEPARATED PRINT  Line 8  End of Mailing Address-->
 								<!--PART V SEPARATED PRINT  Line 9  Start of City, State and Country-->
-								<div class="styBB" style="width:187mm;height:12mm;">
+								<div class="styBB" style="width:187mm;height:15mm;">
 									<div class="styLNLeftNumBox" style="padding-left:2mm;padding-top:0mm;
 				  padding-bottom:0mm;">9</div>
 									<div class="styLNDesc" style="width:178mm;padding-left:2mm;
@@ -8327,7 +8208,7 @@
 									<div style="padding-left:8mm;font-weight:normal;font-size:8pt;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="AssetDesc"/>
-											<xsl:with-param name="BackupName">IRS8938OFAAssetDescription</xsl:with-param>
+											<xsl:with-param name="BackupName">IRS8938OFAAssetDesc</xsl:with-param>
 										</xsl:call-template>
 									</div>
 								</th>
@@ -8342,14 +8223,14 @@
 												<xsl:when test="$FormData/OtherForeignAssetGrp/IdentifyingDesignationNum">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="IdentifyingDesignationNum"/>
-														<xsl:with-param name="BackupName">IRS8938OFAIdentifyingDesignationNumber
+														<xsl:with-param name="BackupName">IRS8938OFAIdentifyingDesignationNum
 											</xsl:with-param>
 													</xsl:call-template>
 												</xsl:when>
 												<xsl:otherwise>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="BankAccountNum"/>
-														<xsl:with-param name="BackupName">IRS8938OFABankAccountNumber</xsl:with-param>
+														<xsl:with-param name="BackupName">IRS8938OFABankAccountNum</xsl:with-param>
 													</xsl:call-template>
 												</xsl:otherwise>
 											</xsl:choose>
@@ -8386,7 +8267,7 @@
 											<xsl:if test="AcquiredDateVariousCd">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="AcquiredDateVariousCd"/>
-													<xsl:with-param name="BackupName">IRS8938OFA-RAcquiredDateVariousCd</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS8938OFAAcquiredDateVariousCd</xsl:with-param>
 												</xsl:call-template>
 											</xsl:if>
 										</div>
@@ -8468,7 +8349,7 @@
 								<!--PART VI SEPARATED PRINT  Line 3d  End of No Tax Item Reported Ind-->
 								<!--PART VI SEPARATED PRINT  Line 4  Start of Maximum value of asset
                  during tax year-->
-								<div class="styBB" style="width:187mm;height:14mm;">
+								<div class="styBB" style="width:187mm;height:16mm;">
 									<div style="width:187mm;float:left;clear:none;">
 										<div class="styLNLeftNumBox" style="padding-left:2mm;">4</div>
 										<div class="styLNDesc" style="width:146.5mm;padding-left:2mm;">
@@ -8477,7 +8358,7 @@
 									</div>
 									<!--PART VI SEPARATED PRINT  Line 4a  Start of Max. Value 
                     During TY 0 To 50000 Ind-->
-									<div style="width:187mm;">
+									<div style="width:187mm;height:5mm;">
 										<div class="styLNLeftLtrBox" style="padding-left:4mm;">a</div>
 										<div class="styLNDesc" style="width:35mm;padding-left:2mm;">
 											<input type="Checkbox" class="styCkbox">
@@ -8603,9 +8484,9 @@
 								<!--PART VI SEPARATED PRINT  Line 4e  End of Max. Value 
                  During TY More Max. Amount-->
 								<!--PART VI SEPARATED PRINT  Line 5  Start of Exchange Rate used-->
-								<div class="styBB" style="width:187mm;">
-									<div class="styLNLeftNumBox" style="height:5mm;padding-left:2mm;
-				  padding-top:.7mm;padding-bottom:0mm;">5</div>
+								<div style="width:187mm;">
+									<div class="styLNLeftNumBox" style="height:4mm;padding-left:2mm;
+				  padding-top:.9mm;padding-bottom:0mm;">5</div>
 									<div class="styLNDesc" style="height:5mm;width:178mm;padding-left:2mm;
 				  padding-top:.7mm;padding-bottom:0mm;">Did you use a foreign currency 
 				  exchange rate to convert the value of the asset into U.S. dollars?
@@ -8662,11 +8543,11 @@
 								<!--PART VI SEPARATED PRINT  Line 6  Start of If you answered "Yes" to line 5,
                  complete all that apply-->
 								<div style="width:187mm;float:left;clear:none;border-style:solid;border-color:black;
-			   border-width: 0px 0px 1px 0px;">
+			   border-width: 0px 0px 1px 0px;height:8mm;">
 									<div class="styLNLeftNumBox" style="padding-left:2mm;padding-top:.7mm;
 				  height:4mm">6</div>
 									<div class="styLNDesc" style="width:146.5mm;padding-left:2mm;padding-top:.7mm;
-				  height:4mm">If you answered "Yes" to line 5, complete all that apply.
+				  height:4mm;">If you answered "Yes" to line 5, complete all that apply.
 				</div>
 								</div>
 								<table class="styBB" id="IRS8938Table" summary="Foreign currency [header]" cellspacing="0" cellpadding="0" style="width:187mm;">
@@ -8711,7 +8592,7 @@
 											<span style="font-weight:normal">
 												<span class="styBoldText">(c) </span>
 						  Source of exchange rate used if not from<br/>
-						  U.S. Treasury Financial Management Service<br/>
+						  U.S. Treasury Department's Bureau of the Fiscal Service<br/>
 												
 												<span style="font-size:8pt">
 													<xsl:call-template name="PopulateText">
@@ -8736,13 +8617,13 @@
 				  foreign entity, enter the following information for the asset.
 				</div>
 				</div>
-							<div style="width:187mm;font-size:9pt;height:16mm">
+							<div style="width:187mm;font-size:9pt;height:16mm;">
 								<div class="styLNLeftLtrBox" style="padding-left:4mm;">a</div>
 								<div  class="styLNDesc" style="width:178mm;height:20mm;">
 									<div class="styLNDesc" style="width:35mm;padding-left:2mm;">
 									Name of foreign entity</div>
 										<!--<span style="height:4mm;"/>-->
-										<div class="styFixedUnderline" style="width:90mm;padding-left:2mm;">
+										<div class="styFixedUnderline" style="width:80mm;padding-left:2mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="EntityName/BusinessNameLine1Txt"/>
 											</xsl:call-template><br/>
@@ -8750,13 +8631,16 @@
 													<xsl:with-param name="TargetNode" select="EntityName/BusinessNameLine2Txt"/>
 												</xsl:call-template>
 										</div>
-									<div style="clear:none;">
-										<div class="styLNLeftNumBox" style="width:5mm;">b</div>
-										<div class="styLNDesc" style="width:14mm;">Reserved </div>
-										<div class="styFixedUnderline" style="width:30mm;height:5mm;text-align:right;background-color:gray;border-bottom-width:0px;padding-top:28px"/>
-									</div>
-								</div>
-							</div>	
+									<div class="styLNLeftNumBox" style="width:6mm;padding-right:4mm;">b</div>
+										<div class="styLNDesc" style="width:22mm;text-align:right;">Reserved </div>
+										<div class="styBB" style="width:40mm;font-size:8pt;border-top-width: 0px;         border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;float:right;position:absolute;text-align:center;">
+							 <xsl:call-template name="PopulateText">
+                    <xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/GIIN"/>
+                  </xsl:call-template>
+                  </div>
+							</div>
+						
+								</div>	
 								<!--PART VI SEPARATED PRINT  Line 7a  End of Name of Foreign Entity-->
 								<!--PART VI SEPARATED PRINT  Line 7b  Start of Type of Foreign Entity-->
 								<div style="width:187mm;padding-top:2.5mm;">
@@ -8897,11 +8781,11 @@
 								</div>
 								<!--PART VI SEPARATED PRINT  Line 7c  End of Mailing Address-->
 								<!--PART VI SEPARATED PRINT  Line 7e  Start of City, State and country-->
-								<div style="width:187mm;border-style:solid;border-color:black;padding-top:0mm;height:12mm;
+								<div style="width:187mm;border-style:solid;border-color:black;padding-top:0mm;height:15mm;
 			  border-width: 0px 0px 1px 0px;">
 									<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:0mm">e</div>
 									<div class="styLNDesc" style="width:178mm;padding-left:2mm;
-				  padding-bottom:0mm;padding-top:1mm">
+				  padding-bottom:0mm;padding-top:1mm;">
 					City or town, state or province , and country (including postal code)</div>
 									<div class="styLNDesc" style="width:186mm;padding-left:10mm;">
 										<xsl:if test="USAddress">
@@ -9287,18 +9171,22 @@
                  Start of Asset Not Stock of Foreign Ent Grp >=1 (Lines 8a - 8e)-->
 								<xsl:if test="(count(AssetNotStockOfForeignEntGrp) &gt;=1)">
 									<xsl:for-each select="AssetNotStockOfForeignEntGrp">
-										<div style="width:187mm;height:17mm;">
-											<div class="styLNLeftNumBox" style="height:14mm;padding-left:2mm;
+										<div style="width:187mm;height:auto;">
+											<div class="styLNLeftNumBox" style="height:6mm;padding-left:2mm;
 						  padding-top:0mm;padding-bottom:0mm;">8</div>
 											<div class="styLNDesc" style="width:178mm;padding-left:2mm;
 						  padding-top:0mm;padding-bottom:1mm;">If asset reported on
 						  line 1 is not stock of a foreign entity or an interest in a foreign entity,
 						  enter the following information for the asset.</div>
-											<div class="styLNDesc" style="width:179mm;padding-left:10mm;padding-top:0mm;
-						  padding-bottom:0mm;font-style:italic"><br/>
-												<b>Note.</b> If this asset has more than one issuer or counterparty,
-							 attach a continuation statement for each additional issuer or 
-							 counterparty (see instructions).</div>
+										<xsl:choose>
+											<xsl:when test="position()=1">
+												<div class="styLNDesc" style="height:auto;width:179mm;padding-left:10mm;padding-top:0mm;padding-bottom:0mm;font-style:italic;">
+													<b>Note.</b>If this asset has more than one issuer or counterparty, attach a
+														 continuation statement with the same information for each additional issuer or
+														 counterparty (see instructions).
+												</div>
+											</xsl:when>
+										</xsl:choose>
 										</div>
 										<br/>
 										<!--PART VI SEPARATED PRINT  Line 8a  Start of Name of Issuer-->
@@ -9559,7 +9447,7 @@
 											<div class="styLNLeftLtrBox" style="padding-left:4mm;">d</div>
 											<span style="height:4mm;"/>
 											<div class="styLNDesc" style="width:178mm;padding-left:2mm;
-						  padding-top:0mm;padding-bottom:0mm;height:12mm">
+						  padding-top:0mm;padding-bottom:0mm;height:15mm;">
 						  Mailing address of issuer or counterparty. Number, street, and room or suite no.
 						  <br/>
 										
@@ -9591,7 +9479,7 @@
 										</div>
 										<!--PART VI SEPARATED PRINT  Line 8d  End of Mailing Address-->
 										<!--PART VI SEPARATED PRINT  Line 8e  Start of City, State or Country-->
-										<div style="width:187mm;border-style:solid;border-color:black;height:13mm;
+										<div style="width:187mm;border-style:solid;border-color:black;height:15mm;
 					  border-width: 0px 0px 1px 0px;padding-top:0mm;">
 											<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
 											<div class="styLNDesc" style="width:178mm;padding-left:2mm;

@@ -4,6 +4,8 @@
 <!-- 06/23/2015 - Changes made for UWR 151655 - Jeremy Nichols -->
 <!-- 06/14/2016 - Changes made for UWR 182766 - Jeremy Nichols -->
 <!-- 08/23/2016 - Changes made for defect 46557 - Jeremy Nichols -->
+<!-- 05/11/2017 - Changes made for UWR 194393 - Jeremy Nichols -->
+<!-- 08/011/2017 - Changes made for KISAM IM03067889 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -80,39 +82,22 @@
 						<tr>
 						  <td style="width:90mm;font-size:6pt;vertical-align:top;border-right:1px solid black;border-bottom:1px solid black;">
 							<b>Name of person filing Form 8865</b><br/>
-							<xsl:choose>
-								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">Name</xsl:with-param>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-									</xsl:call-template>
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-									</xsl:call-template>
-								</xsl:otherwise>
-							</xsl:choose>
+							<xsl:call-template name="PopulateFilerName">
+							  <xsl:with-param name="TargetNode" select="$Form8865SchedulePData"/>
+							</xsl:call-template>
 						</td>
 						  <td colspan="2" style="font-size:6pt;vertical-align:top;padding-left:0.5mm;border-right:0 solid black;border-bottom:1px solid black;">
 							<b>Filer's identifying number</b><br/>
 							<br/>
-							<xsl:choose>
-								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-									</xsl:call-template>
-								</xsl:otherwise>
-							</xsl:choose>
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+							</xsl:call-template>
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+							</xsl:call-template>
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+							</xsl:call-template>
 						</td>
 					</tr>
 					<tr>

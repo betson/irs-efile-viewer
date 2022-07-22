@@ -192,7 +192,7 @@
                 <div class="styIRS5329LineItem" style="width:100%;border-bottom-width:1px;border-color:black;height:10mm;">
                   <div class="styIRS5329LineItem" style="width:118mm;height:8mm;float:left;padding-left:4px;">
                     Home address (number and street), or P.O. box if mail is not delivered to your home
-                    <br/>
+<!--                    <br/>
                     <xsl:if test="$RtnHdrData/Filer/USAddress">
                       <xsl:call-template name="PopulateReturnHeaderFiler">
                         <xsl:with-param name="TargetNode">AddressLine1Txt</xsl:with-param>
@@ -218,7 +218,7 @@
                           <xsl:with-param name="BackupName">$RtnHdrDataFilerForeignAddressLine2</xsl:with-param>
                       </xsl:call-template>
                       </xsl:if>
-                    </xsl:if>
+                    </xsl:if>-->
                   </div>
                   <div class="styIRS5329LineItem" style="width:15mm;height:10mm;float:right;border-left-width:1px;border-color:black;padding-left:5px;">
                     Apt. no. <br/>
@@ -228,7 +228,7 @@
                   <div class="styIRS5329LineItem" style="width:94mm;float:left;padding-left:4px;">
                     City, town or post office, state, and ZIP code. If you have a foreign address, also complete the spaces 
                     below (see instructions)
-                    <br/>
+                    <!--<br/>
                     <xsl:if test="$RtnHdrData/Filer/USAddress">
                       <xsl:call-template name="PopulateReturnHeaderFiler">
                         <xsl:with-param name="TargetNode">CityNm</xsl:with-param>
@@ -259,7 +259,7 @@
 							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/ForeignAddress/ForeignPostalCd"/>
 						</xsl:call-template>
                     </xsl:if>
-                    
+                    -->
                   </div>
                   <div class="styIRS5329LineItem" style="width:42mm;height:100%;float:right;border-left-width:1px;border-color:black;padding-left:4px;padding-top:18px;">
                     If this is an amended<br/>return, check here
@@ -290,26 +290,26 @@
                 <div class="styIRS5329LineItem" style="height:10mm;width:135mm;">
 					<div class="styGenericDiv" style="height:10mm;width:47.2mm;padding-left:4px;border-right:1px solid black;">
 						Foreign country name<br/>
-						<xsl:call-template name="PopulateReturnHeaderFiler">
+<!--						<xsl:call-template name="PopulateReturnHeaderFiler">
 							<xsl:with-param name="TargetNode">CountryCd</xsl:with-param>
 							<xsl:with-param name="MainForm">true</xsl:with-param>
 							<xsl:with-param name="BackupName">$RtnHdrDataFilerForeignAddressCountry</xsl:with-param>
 						  </xsl:call-template>
-						
+						-->
 					</div>
 					<div class="styGenericDiv" style="height:10mm;width:47mm;padding-left:4px;border-right:1px solid black;">
-						Foreign province/state/county<br/>
+						Foreign province/state/county<!--<br/>
 						<xsl:call-template name="PopulateReturnHeaderFiler">
 							<xsl:with-param name="TargetNode">ProvinceOrStateNm</xsl:with-param>
 							<xsl:with-param name="BackupName">$RtnHdrDataFilerForeignAddressProvinceOrStateNm</xsl:with-param>
-						  </xsl:call-template>
+						  </xsl:call-template>-->
 					</div>
 					<div class="styGenericDiv" style="height:10mm;width:40.5mm;padding-left:4px;">
-						Foreign postal code<br/>
+						Foreign postal code<!--<br/>
 						<xsl:call-template name="PopulateReturnHeaderFiler">
 							<xsl:with-param name="TargetNode">ForeignPostalCd</xsl:with-param>
 							<xsl:with-param name="BackupName">$RtnHdrDataFilerForeignAddressZip</xsl:with-param>
-						</xsl:call-template>
+						</xsl:call-template>-->
 					</div>
 				</div>	
               </div>

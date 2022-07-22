@@ -49,7 +49,7 @@
   <div class="styBB" style="width:187mm;height: 22mm">
     <div class="styFNBox" style="padding-top: 1mm;width:31mm;font-size: 7pt;height: 22mm">Form <span class="styFormNumber">8923</span>      
       <br/>
-      <div class="styAgency" style="padding-top: 1mm">(Rev. December 2015)</div>     
+      <div class="styAgency" style="padding-top: 1mm">(Rev. January 2016)</div>     
       <div class="styAgency" style="padding-top: 1mm">Department of the Treasury<br/>Internal Revenue Service</div>
     </div>
     
@@ -219,7 +219,7 @@
           <span style="width:26mm;"/>                      
           Cat. No. 37735E 
           <span style="width:26mm;"/>  
-          Form <span class="styBoldText">8923</span> (Rev. 12-2015)
+          Form <span class="styBoldText">8923</span> (Rev. 1-2016)
         </div>
         <br/>
 

@@ -5,7 +5,9 @@
 <!-- 12/09/2015 - Changes made per 2015 pdf review - Jeremy Nichols -->
 <!-- 01/26/2016 - Additional changes made per 2015 pdf review - Jeremy Nichols -->
 <!-- 01/28/2016 - Changes made for defect 45262 - Jeremy Nichols -->
-
+<!-- 05/27/2016 - Changes made for defect 45403 - Jeremy Nichols -->
+<!-- 06/09/2016 - Changes made for defect 59609 - Jeremy Nichols -->
+<!-- 07/28/2016 - Changes made for defect 46100 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="PopulateTemplate.xsl"/>
@@ -427,7 +429,7 @@
 									<xsl:when test="(count($Form1118ScheduleA/IncmLossBfrAdjFrgnTxsPdAccrGrp) &gt; 6) and ($Print = $Separated)">
 										<tr style="height:6mm;">
 											<td class="styTableCellSmall" style="text-align:left;border-color:black;" colspan="2">
-												<span style="font-weight:bold;">Totals </span>(add lines A through F)</td>
+												<span style="font-weight:bold;">Totals </span><span style="width:0.5mm;" />(add lines A through F)</td>
 											<td class="styTableCellSmall" style="border-color:black;">
 												<span class="styTableCellPad"/>
 											</td>
@@ -460,7 +462,7 @@
 									<xsl:otherwise>
 										<tr style="height:6mm;">
 											<td class="styTableCellSmall" style="text-align:left;border-color:black;" colspan="2">
-												<span style="font-weight:bold;">Totals </span>(add lines A through F)</td>
+												<span style="font-weight:bold;">Totals </span><span style="width:0.5mm;" />(add lines A through F)</td>
 											<td class="styTableCellSmall" style="border-color:black;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$Form1118ScheduleA/TotDmdDividendsExcldGrossUpAmt"/>
@@ -831,7 +833,7 @@
 						</div>
 						<div class="styGenericDiv" style="width:3mm">
 							<!-- button display logic -->
-							<xsl:call-template name="SetDynamicTableToggleButton">
+							<xsl:call-template name="SetTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form1118ScheduleA/IncmLossBfrAdjFrgnTxsPdAccrGrp"/>
 								<xsl:with-param name="containerHeight" select="6"/>
 								<xsl:with-param name="headerHeight" select="4"/>
@@ -840,14 +842,13 @@
 							<!-- end button display logic -->
 						</div>
 					</div>
-					<div class="styTableContainerLandscape" id="FTPctn">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
-						<table class="styTable" cellspacing="0" style="height: 66mm">
+						<table class="styLandscapeTable" id="FTPctn" cellspacing="0" style="width:256mm;height: 66mm">
 							<thead class="styTableThead">
 								<tr>
-									<th class="styIRS1118TableCellLtr" style="width:8mm;height:22.5mm;" rowspan="3">
+									<th class="styIRS1118TableCellLtr" style="width:18mm;height:22.5mm;" rowspan="3">
 										<span class="styTableCellPad" style="font-weight:bold"/>
 									</th>
 									<th class="styIRS1118TableCellHeaderSmall" scope="col" rowspan="2" colspan="2" style="width:30mm;height:15mm;">
@@ -1056,7 +1057,7 @@
 									<xsl:when test="(count($Form1118ScheduleA/IncmLossBfrAdjFrgnTxsPdAccrGrp) &gt; 6) and ($Print = $Separated)">
 										<tr style="height:6mm;">
 											<td class="styIRS1118TableCellTotal" scope="row" colspan="3" style="text-align:left;">
-												<span style="font-weight:bold;">Totals </span>(add lines A through F)</td>
+												<span style="font-weight:bold;">Totals </span><span style="width:0.5mm;" />(add lines A through F)</td>
 											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
 												<span class="styTableCellPad"/>
 											</td>
@@ -1089,7 +1090,7 @@
 									<xsl:otherwise>
 										<tr style="height:6mm;">
 											<td class="styIRS1118TableCellTotal" scope="row" colspan="3" style="text-align:left;">
-												<span style="font-weight:bold;">Totals </span>(add lines A through F)</td>
+												<span style="font-weight:bold;">Totals </span><span style="width:0.5mm;" />(add lines A through F)</td>
 											<td class="styTableCellSmall" style="width:24mm;border-color:black;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$Form1118ScheduleB/TotalTaxWithheldDividendsAmt"/>
@@ -1149,7 +1150,6 @@
 								</xsl:choose>
 							</tbody>
 						</table>
-					</div>
 					<!-- Set Initial Height of Above Table -->
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form1118ScheduleA/IncmLossBfrAdjFrgnTxsPdAccrGrp"/>
@@ -1911,7 +1911,7 @@
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
-						<table class="styTable" summary="Part I—Dividends and Deemed Inclusions From Post-1986 Undistributed Earnings" cellspacing="0" style="">
+						<table class="styTable" summary="Part I—Dividends and Deemed Inclusions From Post-1986 Undistributed Earnings" cellspacing="0" style="width:256mm;">
 							<thead class="styTableThead">
 								<tr>
 									<th class="styIRS1118TableCellHeaderSmall" style="width:74mm;font-size:5pt;" rowspan="2" scope="col">1a. <span class="styNormalText">Name of Foreign Corporation (identify DISCs and former DISCs)</span>
@@ -2493,10 +2493,14 @@
 						<xsl:with-param name="headerHeight" select="2"/>
 						<xsl:with-param name="containerID" select=" 'DIVPRE1987ctn' "/>
 					</xsl:call-template>
+					<xsl:if test="($Print = $Separated)">
+						<br/><br/>
+					</xsl:if>
+									
 					<!-- End Set Initial Height of Above Table -->
 					<!-- END SCHEDULE C PART II-->
 					<!-- BEGIN SCHEDULE C PART III-->
-					<div class="styBB" style="width:256mm;float:none;clear:none;display:block;">
+					<div class="styBB" style="width:256mm;height:6mm;float:none;clear:none;display:block;">
 						<div class="styIRS1118TitleDesc" style="width:251.8mm;padding-left:0;">Part III—Deemed Inclusions From Pre-1987 Earnings and Profits</div>
 						<div class="styGenericDiv" style="width:3.2mm;text-align:right">
 							<!-- button display logic -->
@@ -2684,7 +2688,7 @@
 												</span>
 												<img src="{$ImagePath}/1118_Bullet_Line.gif" alt="bulletpoint"/>
 											</td>
-											<td class="styIRS1118TableLastCol" id="DIPRE1987spcr"/>
+											<td id="DIPRE1987spcr" style="border-bottom:1px solid black;"/>
 										</tr>
 									</xsl:when>
 									<xsl:otherwise>
@@ -2725,7 +2729,7 @@
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styIRS1118TableLastCol" id="DIPRE1987spcr"/>
+											<td class="styIRS1118TableLastCol" id="DIPRE1987spcr" style="border-bottom:1px solid black;"/>
 										</tr>
 									</xsl:otherwise>
 								</xsl:choose>
@@ -2740,6 +2744,9 @@
 						<xsl:with-param name="containerID" select=" 'DIPRE1987ctn' "/>
 					</xsl:call-template>
 					</div>
+					<xsl:if test="($Print = $Separated)">
+						<br/><br/>
+					</xsl:if>
 					<!-- Set Initial Height of Above Table -->
 					<!-- END SCHEDULE C PART III-->
 					<!-- END SCHEDULE C -->
@@ -3048,8 +3055,8 @@
 					<!-- End Set Initial Height of Above Table -->
 					<!-- END SCHEDULE D PART I SECTION A -->
 					<!-- BEGIN SCHEDULE D PART I SECTION B -->
-					<div class="styBB" style="width:256mm;float:none;clear:none;display:block;">
-						<div class="stySectionDesc" style="width:251.8mm;text-align:left;padding-left:0;">Section B—Dividends Paid Out of Pre-1987 Accumulated Profits
+					<div class="styBB" style="width:256mm;height:6mm;float:none;clear:none;display:block;">
+						<div class="stySectionDesc" style="width:251.8mm;height:6mm;text-align:left;padding-left:0;">Section B—Dividends Paid Out of Pre-1987 Accumulated Profits
 						  <span style="font-weight:normal">(Include the column 8(b) results in Schedule C, Part I,
 							column 6(b).)
 						  </span>
@@ -3532,8 +3539,8 @@
 					<!-- End Set Initial Height of Above Table -->
 					<!-- END SCHEDULE D PART II SECTION A -->
 					<!-- BEGIN SCHEDULE D PART II SECTION B TABLE -->
-					<div class="styBB" style="width:256mm;float:none;clear:none;display:block;">
-						<div class="stySectionDesc" style="width:251.8mm;text-align:left;padding-left:0;">Section B—Dividends Paid Out of Pre-1987 Accumulated Profits
+					<div class="styBB" style="width:256mm;height:8.5mm;float:none;clear:none;display:block;">
+						<div class="stySectionDesc" style="width:251.8mm;height:8.5mm;text-align:left;padding-left:0;">Section B—Dividends Paid Out of Pre-1987 Accumulated Profits
 						  <span style="font-weight:normal;display:inline;">(In general, include the column 8(b) results in Section A, column 6(b), of Part I. However, see instructions for
 							Schedule C, Part I, column 6(b) for an exception.)
 						  </span>
@@ -4191,12 +4198,6 @@
 								<xsl:if test="(count($Form1118ScheduleE/TaxDeemedPaidBy4thTier) &lt; 4) or ((count($Form1118ScheduleE/TaxDeemedPaidBy4thTier) &gt; 6) and ($Print = $Separated))">
 									<xsl:call-template name="AddRowsForSchEPartII"/>
 								</xsl:if>
-								<xsl:if test="(count($Form1118ScheduleE/TaxDeemedPaidBy4thTier) &lt; 5) or ((count($Form1118ScheduleE/TaxDeemedPaidBy4thTier) &gt; 6) and ($Print = $Separated))">
-									<xsl:call-template name="AddRowsForSchEPartII"/>
-								</xsl:if>
-								<xsl:if test="(count($Form1118ScheduleE/TaxDeemedPaidBy4thTier) &lt; 6) or ((count($Form1118ScheduleE/TaxDeemedPaidBy4thTier) &gt; 6) and ($Print = $Separated))">
-									<xsl:call-template name="AddRowsForSchEPartII"/>
-								</xsl:if>
 								<!-- End of filler rows -->
 							</tbody>
 						</table>
@@ -4309,9 +4310,6 @@
 									<xsl:call-template name="AddRowsForSchEPartII2"/>
 								</xsl:if>
 								<xsl:if test="(count($Form1118ScheduleE/TaxDeemedPaidBy4thTier) &lt; 5) or ((count($Form1118ScheduleE/TaxDeemedPaidBy4thTier) &gt; 6) and ($Print = $Separated))">
-									<xsl:call-template name="AddRowsForSchEPartII2"/>
-								</xsl:if>
-								<xsl:if test="(count($Form1118ScheduleE/TaxDeemedPaidBy4thTier) &lt; 6) or ((count($Form1118ScheduleE/TaxDeemedPaidBy4thTier) &gt; 6) and ($Print = $Separated))">
 									<xsl:call-template name="AddRowsForSchEPartII2"/>
 								</xsl:if>
 								<!-- End of filler rows -->
@@ -4463,9 +4461,6 @@
 								<xsl:if test="(count($Form1118ScheduleE/TaxDeemedPaidBy5thTier) &lt; 5) or ((count($Form1118ScheduleE/TaxDeemedPaidBy5thTier) &gt; 6) and ($Print = $Separated))">
 									<xsl:call-template name="AddRowsForSchEPartIII"/>
 								</xsl:if>
-								<xsl:if test="(count($Form1118ScheduleE/TaxDeemedPaidBy5thTier) &lt; 6) or ((count($Form1118ScheduleE/TaxDeemedPaidBy5thTier) &gt; 6) and ($Print = $Separated))">
-									<xsl:call-template name="AddRowsForSchEPartIII"/>
-								</xsl:if>
 								<!-- End of filler rows -->
 							</tbody>
 						</table>
@@ -4569,9 +4564,6 @@
 									<xsl:call-template name="AddRowsForSchEPartIII2"/>
 								</xsl:if>
 								<xsl:if test="(count($Form1118ScheduleE/TaxDeemedPaidBy5thTier) &lt; 5) or ((count($Form1118ScheduleE/TaxDeemedPaidBy5thTier) &gt; 6) and ($Print = $Separated))">
-									<xsl:call-template name="AddRowsForSchEPartIII2"/>
-								</xsl:if>
-								<xsl:if test="(count($Form1118ScheduleE/TaxDeemedPaidBy5thTier) &lt; 6) or ((count($Form1118ScheduleE/TaxDeemedPaidBy5thTier) &gt; 6) and ($Print = $Separated))">
 									<xsl:call-template name="AddRowsForSchEPartIII2"/>
 								</xsl:if>
 								<!-- End of filler rows -->
@@ -4723,7 +4715,7 @@
 											<xsl:when test="(count($Form1118ScheduleF/ForeignGrossIncmAndAllcblDed) &gt; 6) and ($Print = $Separated)">
 												<tr style="border-right-width:0;">
 													<td class="styTableCellSmall" colspan="2" style="height:8mm;width:47mm;text-align:left;vertical-align:bottom;border-bottom-width:1px;border-color:black;">
-														<span style="font-weight:bold;">Totals </span>(add lines A through F)* <span style="width:10mm;text-align:right;">
+														<span style="font-weight:bold;">Totals </span><span style="width:0.5mm;" />(add lines A through F)* <span style="width:10mm;text-align:right;">
 															<img src="{$ImagePath}/1118_Bullet_Line.gif" alt="bulletpoint"/>
 														</span>
 													</td>
@@ -4738,7 +4730,7 @@
 											<xsl:otherwise>
 												<tr style="border-right-width:0;">
 													<td class="styTableCellSmall" colspan="2" style="height:8mm;width:47mm;text-align:left;vertical-align:bottom;border-bottom-width:1px;border-color:black;">
-														<span style="font-weight:bold;">Totals </span>(add lines A through F)* <span style="width:10mm;text-align:right;">
+														<span style="font-weight:bold;">Totals </span><span style="width:0.5mm;" />(add lines A through F)* <span style="width:10mm;text-align:right;">
 															<img src="{$ImagePath}/1118_Bullet_Line.gif" alt="bulletpoint"/>
 														</span>
 													</td>
@@ -7484,10 +7476,10 @@ and 1d from line 1a)</td>
 						<table class="styDepTblLandscape" cellspacing="0" style="font-size:6pt;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
-									<th class="styDepTblCell" rowspan="3">
+									<th class="styDepTblCell" rowspan="3" style="width:9mm;">
 										<span style="width:4px;height:27mm;"/>
 									</th>
-									<th class="styDepTblCell" style="width:21mm;height:27mm;" rowspan="3" scope="col">1. <span class="styNormalText">Foreign Country or U.S. Possession (Enter two-letter code from list beginning on page 11 of instructions. Use a separate line for each.)*</span>
+									<th class="styDepTblCell" style="width:21mm;height:27mm;" rowspan="3" scope="col">1. <span class="styNormalText">Foreign Country or U.S. Possession (Enter two-letter code; see instructions. Use a separate line for each.)*</span>
 									</th>
 									<th class="styDepTblCell" style="width:229mm;height:5mm;" colspan="9" scope="col">Gross Income or (Loss) From Sources Outside the United States (<span class="styItalicText">INCLUDE</span> Foreign Branch Gross Income here <span class="styItalicText">and</span> on Schedule F)</th>
 								</tr>
@@ -7526,8 +7518,8 @@ and 1d from line 1a)</td>
 									<tr style="height:6mm;">
 										<!-- Set the background color for the row -->
 										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-										<td class="styIRS1118TableCellLtr">
-											<span class="styTableCellPad" style="font-weight:bold">
+										<td class="styIRS1118TableCellLtr" style="text-align:left;padding-left:0mm;">
+											<span class="styTableCellPad" style="font-weight:bold;text-align:left;padding-left:0mm;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="RowId"/>
 												</xsl:call-template>
@@ -7716,7 +7708,7 @@ and 1d from line 1a)</td>
 						<table class="styDepTblLandscape" cellspacing="0" style="font-size:6pt;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
-									<th class="styDepTblCell" rowspan="4">
+									<th class="styDepTblCell" rowspan="4" style="width:12mm;">
 										<span style="width:4px"/>
 									</th>
 									<th class="styDepTblCell" style="width:222mm;font-size:7pt;padding-top:1mm;padding-bottom:1mm;" colspan="8" scope="col">Deductions (<span class="styItalicText">INCLUDE</span> Foreign Branch Deductions here <span class="styItalicText">and</span> on Schedule F)</th>
@@ -7758,8 +7750,8 @@ and 1d from line 1a)</td>
 									<tr style="height:6mm;">
 										<!-- Set the background color for the row -->
 										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-										<td class="styIRS1118TableCellLtr">
-											<span class="styTableCellPad" style="font-weight:bold">
+										<td class="styIRS1118TableCellLtr" style="text-align:left;padding-left:0mm;">
+											<span class="styTableCellPad" style="font-weight:bold;text-align:left;padding-left:0mm;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="RowId"/>
 												</xsl:call-template>
@@ -7825,8 +7817,8 @@ and 1d from line 1a)</td>
 								</xsl:for-each>
 								<!-- Totals Row -->
 								<tr class="styDepTblHdr" style="height:6mm;">
-									<td class="styDepTblCell">
-										<span class="styTableCellPad" style="font-weight:bold">Totals</span>
+									<td class="styDepTblCell" style="text-align:left;padding-left:0mm;">
+										<span class="styTableCellPad" style="font-weight:bold;text-align:left;padding-left:0mm;">Totals</span>
 									</td>
 									<td class="styDepTblCell" style="width:32mm;text-align:right;">
 										<xsl:call-template name="PopulateAmount">
@@ -7907,7 +7899,7 @@ and 1d from line 1a)</td>
 						<table class="styDepTblLandscape" cellspacing="0" style="height: 66mm;font-size:6pt;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
-									<th class="styDepTblCell" style="height:22.5mm;" rowspan="3">
+									<th class="styDepTblCell" style="height:22.5mm;width:9mm;" rowspan="3">
 										<span class="styTableCellPad" style="font-weight:bold"/>
 									</th>
 									<th class="styDepTblCell" scope="col" rowspan="2" colspan="2" style="width:30mm;height:15mm;">
@@ -7995,8 +7987,8 @@ and 1d from line 1a)</td>
 									<tr style="height:6mm;">
 										<!-- Set the background color for the row -->
 										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-										<td class="styIRS1118TableCellLtr" scope="row">
-											<span class="styTableCellPad" style="font-weight:bold">
+										<td class="styIRS1118TableCellLtr" scope="row" style="text-align:left;padding-left:0mm;">
+											<span class="styTableCellPad" style="font-weight:bold;text-align:left;padding-left:0mm;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="RowId"/>
 												</xsl:call-template>
@@ -8173,7 +8165,7 @@ and 1d from line 1a)</td>
 								<tr class="styDepTblHdr">
 									<th class="styDepTblCell" style="width:20mm" scope="col">(a) <span class="styNormalText">Taxes Paid</span>
 									</th>
-									<th class="styDepTblCell" style="width:20mm" scope="col">(b) <span class="styNormalText">Taxes Deemed Paid (from Schedule D, Part I—see instructions)</span>
+									<th class="styDepTblCell" style="width:20mm" scope="col">(b) <span class="styNormalText">Taxes Deemed Paid (see instructions)</span>
 									</th>
 									<th class="styDepTblCell" style="width:20mm" scope="col">(a) <span class="styNormalText">Functional Currency</span>
 									</th>
@@ -8304,12 +8296,13 @@ and 1d from line 1a)</td>
 								</tr>
 							</tbody>
 						</table><br/>
+						<span class="styRepeatingDataTitle">Form 1118, Schedule C, Part I - Dividends and Deemed Inclusions From Post-1986 Undistributed Earnings:</span>
 						<table class="styDepTblLandscape" summary="Part I—Dividends and Deemed Inclusions From Post-1986 Undistributed Earnings" cellspacing="0" style="font-size:5pt;width:80mm;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
-									<th class="styDepTblCell" style="width:20mm" rowspan="2" scope="col">9. <span class="styNormalText">Divide Column 8(a) by Column 4</span>
+									<th class="styDepTblCell" style="width:20mm" rowspan="2" scope="col">9. <span class="styNormalText">Divide column 8(a) by column 4</span>
 									</th>
-									<th class="styDepTblCell" style="width:20mm" rowspan="2" scope="col">10. <span class="styNormalText">Tax Deemed Paid (multiply column 7 by column 9)</span>
+									<th class="styDepTblCell" style="width:20mm" rowspan="2" scope="col">10. <span class="styNormalText">Multiply column 7 by column 9</span>
 									</th>
 									<th class="styDepTblCell" style="width:20mm" rowspan="2" scope="col">11. <span class="styNormalText">Section 960(c) Limitation</span>
 									</th>
@@ -9740,7 +9733,7 @@ and 1d from line 1a)</td>
 					<!-- Separated Repeating Data Table for Schedule F -->
 					<xsl:if test="((count($Form1118ScheduleF/ForeignGrossIncmAndAllcblDed) &gt; 6) and ($Print = $Separated))">
 						<br/>
-						<span class="styRepeatingDataTitle">Form 1118, Schedule F - Gross Income and Definitely Allocable Deductions for Foreign Branches:</span>
+						<span class="styRepeatingDataTitle" style="width:256mm;">Form 1118, Schedule F - Foreign Country or U.S. Possession (Enter two-letter code from Schedule A, column 1. Use a separate line for each.):</span>
 						<table class="styDepTblLandscape" cellspacing="0" style="font-size:6pt;height: 66mm;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
@@ -11729,9 +11722,9 @@ and 1d from line 1a)</td>
 	<xsl:template name="AddRowsForSchCPartI">
 		<xsl:param name="ShowMessage"/>
 		<tr style="height:6mm;">
-			<td class="styIRS1118TableCellSmallArial" style="text-align:left;">
+			<td class="styIRS1118TableCellSmallArial" style="width:74mm;text-align:left;">
 				<xsl:if test="$ShowMessage = 'true'">See Add'l Data</xsl:if>
-				<span class="styTableCellPad"/>
+				<span style="width:80mm;"/>
 			</td>
 			<td class="styIRS1118TableCellSmallArial">
 				<span class="styTableCellPad"/>
@@ -11763,7 +11756,7 @@ and 1d from line 1a)</td>
 		<xsl:param name="ShowMessage"/>
 		<tr >
 			<td class="styIRS1118TableCellSmallArial" style="border-right-width:1px;">
-				<span class="styTableCellPad"/>
+				<span style="width:40mm;"/>
 			</td>
 			<td class="styIRS1118TableCellSmallArial">
 				<span class="styTableCellPad"/>
@@ -11832,7 +11825,7 @@ and 1d from line 1a)</td>
 		<tr style="height:6mm;">
 			<td class="styIRS1118TableCellSmallArial" style="text-align:left;">
 				<xsl:if test="$ShowMessage = 'true'">See Additional Data Table</xsl:if>
-				<span class="styTableCellPad"/>
+				<span style="width:40mm;"/>
 			</td>
 			<td class="styIRS1118TableCellSmallArial" style="">
 				<span class="styTableCellPad"/>
@@ -11896,7 +11889,7 @@ and 1d from line 1a)</td>
 	<xsl:template name="AddRowsForSchDPartISecA2">
 		<tr style="height:6mm;">
 			<td class="styIRS1118TableCellSmallArial">
-				<span class="styTableCellPad"/>
+				<span style="width:40mm;"/>
 			</td>
 			<td class="styIRS1118TableCellSmallArial">
 				<span class="styTableCellPad"/>
@@ -11977,7 +11970,7 @@ and 1d from line 1a)</td>
 		<tr style="height:6mm;">
 			<td class="styIRS1118TableCellSmallArial" style="text-align:left;">
 				<xsl:if test="$ShowMessage = 'true'">See Add'l Data</xsl:if>
-				<span class="styTableCellPad"/>
+				<span style="width:40mm;"/>
 			</td>
 			<td class="styIRS1118TableCellSmallArial" style="">
 				<span class="styTableCellPad"/>
@@ -12053,7 +12046,7 @@ and 1d from line 1a)</td>
 		<tr style="height:6mm;">
 			<td class="styTableCellSmallArial" style="border-color:black;">
 				<xsl:if test="$ShowMessage = 'true'">See Add'l Data</xsl:if>
-				<span class="styTableCellPad"/>
+				<span style="width:40mm;"/>
 			</td>
 			<td class="styIRS1118TableCellSmallArial" style="border-color:black;">
 				<span class="styTableCellPad"/>
@@ -12079,7 +12072,7 @@ and 1d from line 1a)</td>
 		<xsl:param name="ShowMessage"/>
 		<tr style="height:6mm;">
 			<td class="styIRS1118TableCellSmallArial" style="border-color:black;">
-				<span class="styTableCellPad"/>
+				<span style="width:40mm;"/>
 			</td>
 			<td class="styIRS1118TableCellSmallArial" style="border-color:black;">
 				<span class="styTableCellPad"/>

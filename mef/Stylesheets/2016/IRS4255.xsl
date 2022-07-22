@@ -33,12 +33,12 @@
     <xsl:call-template name="InitJS"/>
     <style type="text/css">
 
-      <!--<xsl:if test="not($Print) or $Print=''">-->
+      <xsl:if test="not($Print) or $Print=''">
 
         <xsl:call-template name="IRS4255Style"/>
         <xsl:call-template name="AddOnStyle"/>
 
-      <!--</xsl:if>-->
+      </xsl:if>
 
     </style>        
     <xsl:call-template name="GlobalStylesForm"/>
@@ -67,7 +67,7 @@
 	       <b>Attach to your income tax return.</b>
               <div class="styFST" style="height:5mm;font-size:7pt;padding-top:.5mm;">
                 <img src="{$ImagePath}/4255_Bullet.gif" width="4" height="7" alt="Bullet Image"/>
-          Information about Form 4255 and its instructions is at <a href="http://www.irs.gov/form4255" title="Link to IRS.gov">
+          Information about Form 4255 and its separate instructions is at <a href="http://www.irs.gov/form4255" title="Link to IRS.gov">
           <i>www.irs.gov/form4255</i></a>.
         </div>
         </div>
@@ -90,38 +90,64 @@
         <div class="styNameBox" style="width:155.3mm;height:9mm;font-size:7pt;">
           Name(s) as shown on return<br/>
  		  <xsl:choose>
-		    <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-		      <br/>
-		      <xsl:call-template name="PopulateReturnHeaderFiler">
-		            <xsl:with-param name="TargetNode">Name</xsl:with-param>
-		              </xsl:call-template>
-		            </xsl:when>
-                    <xsl:otherwise>
+			  <!-- This process changed 170509 by gdy per UWR 194393 -->
+            <!--Business Name from F1120 Return Header-->
+		    <xsl:when test="$RtnHdrData/Filer/BusinessName">
 		      <xsl:call-template name="PopulateReturnHeaderFiler">
 		            <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-		              </xsl:call-template>
-		              <br/> 
-		              <xsl:call-template name="PopulateReturnHeaderFiler">
+              </xsl:call-template>
+		      <br/>
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
 		            <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-		              </xsl:call-template>		
-		  </xsl:otherwise>
-                  </xsl:choose>
+              </xsl:call-template>
+            </xsl:when>
+            <!--Individual Name from F1040/NR Return Header-->
+		    <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+				<br/>
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
+		            <xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+		              </xsl:call-template>
+            </xsl:when>
+            <!--Business Name from F1041 Return Header-->
+		    <xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
+		            <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+              </xsl:call-template>
+		      <br/>
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
+		            <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+              </xsl:call-template>            
+            </xsl:when>
+            <!--National Morgage Association Code from F1041 Return Header-->
+		    <xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
+		    <br/>
+		      <xsl:call-template name="PopulateReturnHeaderFiler">
+		            <xsl:with-param name="TargetNode">NationalMortgageAssocCd</xsl:with-param>
+              </xsl:call-template>
+            </xsl:when>
+          </xsl:choose>
          </div>
         <div class="styEINBox" style="width:30mm;height:4mm;padding-left:2mm;font-size:7pt;font-weight:bold;">
           Identifying number<br/><br/>
           <span style="width:27mm;text-align:center;font-weight:normal;">
-		<xsl:choose>
-		  <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
- 		     <xsl:call-template name="PopulateReturnHeaderFiler">
-		        <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-		     </xsl:call-template>
-		  </xsl:when>
-		  <xsl:otherwise>
-		     <xsl:call-template name="PopulateReturnHeaderFiler">
-		       <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-		     </xsl:call-template>
-		  </xsl:otherwise>
-		</xsl:choose>
+			<xsl:choose>
+			  <!-- This process changed 170509 by gdy per UWR 194393 -->
+			  <xsl:when test="$RtnHdrData/Filer/PrimarySSN">
+				 <xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+				 </xsl:call-template>
+			  </xsl:when>
+			  <xsl:when test="$RtnHdrData/Filer/SSN">
+				 <xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+				 </xsl:call-template>
+			  </xsl:when>
+			  <xsl:when test="$RtnHdrData/Filer/EIN">
+				 <xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+				 </xsl:call-template>
+			  </xsl:when>
+			</xsl:choose>
            </span>
         </div>
       </div>
@@ -852,7 +878,7 @@
                   </xsl:call-template>
                   <span class="styTableCellPad"/>
                 </td>
-                <td class="styTableCellSmall" style="font-size:6pt;padding-top:3mm;border-style: solid; border-color: black;">
+                <td class="styTableCellSmall" style="font-size:6pt;padding-top:6mm;border-style: solid; border-color: black;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" 
                     select="$Form4255Data/RecaptureOfInvstCrProperties[$pos + 3]/UnusedGeneralBusCrNoCrAmt"/>
@@ -1126,7 +1152,7 @@
                     </div>
                   </div>
                 </td>
-                <td class="styIRS4255TableCellSmallRB" style="width:5mm;font-size:7pt;font-weight:bold;">6<span class="styTableCellPad"/></td>
+                <td class="styIRS4255TableCellSmallRB" style="width:5mm;font-size:7pt;font-weight:bold;vertical-align:bottom;">6<span class="styTableCellPad"/></td>
                 <td class="styTableCellSmall" style="font-size:7pt;"><span class="styTableCellPad"/></td>
                 <td class="styTableCellSmall" style="font-size:7pt;"><span class="styTableCellPad"/></td>
                 <td class="styTableCellSmall" style="font-size:7pt;"><span class="styTableCellPad"/></td>
@@ -1152,8 +1178,12 @@
                   </div>
                 </td>
                 <td class="styIRS4255TableCellSmallRB" style="width:5mm;border-top-width: 1px;
-                font-size:7pt;font-weight:bold;">7<span class="styTableCellPad"/></td>
-                <td class="styTableCellSmall" style="border-top-width: 1px;font-size:7pt;">  <span class="styTableCellPad"/></td>
+                font-size:7pt;font-weight:bold;vertical-align:bottom;">7<span class="styTableCellPad"/></td>
+                <td class="styTableCellSmall" style="border-top-width: 1px;font-size:7pt;text-align:left;vertical-align:bottom">  <span class="styTableCellPad"/>                
+                  <xsl:call-template name="PopulateAdditionalDataTableMessage">
+                    <xsl:with-param name="TargetNode" select="$Form4255Data/RecaptureOfInvstCrProperties"/>    
+                    <xsl:with-param name="ShortMessage" select="'true'"/>                  
+                  </xsl:call-template></td>
                 <td class="styTableCellSmall" style="border-top-width: 1px;font-size:7pt;">  <span class="styTableCellPad"/></td>
                 <td class="styTableCellSmall" style="border-top-width: 1px;font-size:7pt;">  <span class="styTableCellPad"/></td>
                 <td class="styTableCellSmall" style="border-top-width: 1px;font-size:7pt;">  <span class="styTableCellPad"/></td>              
@@ -1170,7 +1200,7 @@
                     </div>
                   </div>
                 </td>
-                <td class="styIRS4255TableCellSmallRB" style="width:5mm;font-size:7pt;font-weight:bold;">8<span class="styTableCellPad"/></td>
+                <td class="styIRS4255TableCellSmallRB" style="width:5mm;font-size:7pt;font-weight:bold;vertical-align:bottom;">8<span class="styTableCellPad"/></td>
                 <td class="styTableCellSmall" style="font-size:7pt;"><span class="styTableCellPad"/></td>
                 <td class="styTableCellSmall" style="font-size:7pt;"><span class="styTableCellPad"/></td>
                 <td class="styTableCellSmall" style="font-size:7pt;"><span class="styTableCellPad"/></td>
@@ -1187,7 +1217,7 @@
                     </div>
                   </div>
                 </td>
-                <td class="styIRS4255TableCellSmallRB" style="width:5mm;font-size:7pt;font-weight:bold;">9<span class="styTableCellPad"/></td>
+                <td class="styIRS4255TableCellSmallRB" style="width:5mm;font-size:7pt;font-weight:bold;vertical-align:bottom">9<span class="styTableCellPad"/></td>
                 <td class="styTableCellSmall" style="font-size:7pt;"><span class="styTableCellPad"/></td>
                 <td class="styTableCellSmall" style="font-size:7pt;"><span class="styTableCellPad"/></td>
                 <td class="styTableCellSmall" style="font-size:7pt;"><span class="styTableCellPad"/></td>
@@ -1216,7 +1246,11 @@
                 </td>
                 <td class="styIRS4255TableCellSmallRB" style="width:5mm;font-size:7pt;padding-left:1mm;font-weight:bold;border-top-width:1px;">10
                 <span class="styTableCellPad"/></td>
-                <td class="styTableCellSmall" style="font-size:7pt;border-top-width:1px;"><span class="styTableCellPad"/></td>
+                <td class="styTableCellSmall" style="font-size:7pt;border-top-width:1px;text-align:left"><span class="styTableCellPad"/>                
+                  <xsl:call-template name="PopulateAdditionalDataTableMessage">
+                    <xsl:with-param name="TargetNode" select="$Form4255Data/RecaptureOfInvstCrProperties"/>    
+                    <xsl:with-param name="ShortMessage" select="'true'"/>                  
+                  </xsl:call-template></td>
                 <td class="styTableCellSmall" style="font-size:7pt;border-top-width:1px;"><span class="styTableCellPad"/></td>
                 <td class="styTableCellSmall" style="font-size:7pt;border-top-width:1px;"><span class="styTableCellPad"/></td>
                 <td class="styTableCellSmall" style="font-size:7pt;border-top-width:1px;"><span class="styTableCellPad"/></td>
@@ -1475,10 +1509,10 @@
               <tr class="styDepTblHdr">
                 <th class="styDepTblCell" style="width:25mm;font-size:7pt;" scope="col"><span class="styBoldText">Properties</span></th>
                 <th class="styDepTblCell" style="width:162mm;text-align:left;" scope="col">
-                  Type of property-State whether rehabilitation, energy, reforestation, or transition property. (See the Instructions for Form 3468 for the 
-                  year the 
-                  investment credit property was placed in service for definitions.) If rehabilitation property, also show type of building. If energy property, 
-                  show type.
+                  Type of property-State whether rehabilitation, energy, qualifying advanced coal project, qualifying gasification project, qualifying 
+                  advanced energy 
+                  project, or qualifying therapeutic discovery project property. (See the Instructions for Form 3468 for the year the investment
+				  credit property was placed in service for definitions.) If rehabilitation property, also show type of building. If energy property, show type.
                 </th>
               </tr>
             </thead>

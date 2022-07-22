@@ -21,6 +21,7 @@
 <!--Updated per Kisams IM01817803 and Revision Date back to December/2013- By Robert Jones -->
 <!--Updated per Kisams IM01467430 11/18/2014 Transferor not populating. Schema element mis-spelled (Tranferor)- By Robert Jones -->
 <!--Did changes per IBM Defect #43153 6/30/2015 by Robert Jones IE11 Related-->
+<!-- Last modified on 5/18/2017 by Robert Jones UWR 194393 and 195664 Return Headers for 1120, 1041, 1040 and 1040NR  -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -104,7 +105,7 @@
             <div class="styFNBox" style="width:127mm; height:auto;display:table">          
           Name of transferor<br></br>
           
-            <xsl:call-template name="PopulateText">
+         <!--   <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form926Data/BusinessTranferorName/BusinessNameLine1Txt"/>
                 </xsl:call-template>
                 <xsl:if test="normalize-space($Form926Data/BusinessTranferorName/BusinessNameLine2Txt)!=''">
@@ -112,28 +113,33 @@
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="$Form926Data/BusinessTranferorName/BusinessNameLine2Txt"/>
                   </xsl:call-template>
-                </xsl:if>
-               <!-- <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$Form926Data/PersonTranferorNm"/>
-                </xsl:call-template>    -->      
+                </xsl:if>-->
+                 <!-- Choice between 1120, 1041, 1040 and 1040NR Return Header Filer info -->
+                                                         <xsl:call-template name="PopulateFilerName">
+                                                            <xsl:with-param name="TargetNode" select="$Form926Data"/>
+                                                         </xsl:call-template> 
               </div>
             
             <div style="float:right; padding-left:1mm;height:auto;display:table">
               <b>Identifying number</b> (see instructions)<br></br>
           <div style="text-align:left; padding-top:2mm">
-                <xsl:call-template name="PopulateEIN">
+             <!--   <xsl:call-template name="PopulateEIN">
                   <xsl:with-param name="TargetNode" select="$Form926Data/TransferorEIN"/>
                 </xsl:call-template>
               </div>
-              <xsl:if test="$Form926Data/TransferorMissingEINReasonCd !=' '">
+              <xsl:if test="$Form926Data/TransferorMissingEINReasonCd !=' '">-->
                 <span style="font-weight:normal;">
-                  <xsl:call-template name="PopulateText">
+              <!--    <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="$Form926Data/TransferorMissingEINReasonCd"/>
-                  </xsl:call-template>
+                  </xsl:call-template>-->
+                   <!-- Choice between 1120, 1041, 1040 and 1040NR Return Header Filer info -->
+                                                     <xsl:call-template name="PopulateFilerTIN">
+                                                       <xsl:with-param name="TargetNode" select="$Form926Data"/>
+                                                     </xsl:call-template> 
                 </span>
-              </xsl:if>
-            </div>
+              </div>
           </div>
+           </div>
           <!--L1-->
           <div style="padding-top:1mm; width:187mm;height:auto;">
             <div class="styIRS926OL">&nbsp;1</div>
@@ -724,19 +730,15 @@
           <div style="padding-top:1mm; width:187mm">
             <div class="styIRS926OL" style="text-align:right">d</div>
             <div class="styLNDesc">
-         Is the partner disposing of an interest in a limited partnership that is regularly traded on an established                     
-        </div>
+				 Is the partner disposing of an interest in a limited partnership that is regularly traded on an established securities market?
+			</div>
           </div>
           <!-- 2d R2 -->
           <div style="width:187mm">
-            <div class="styIRS926OL" style="text-align:right"/>
-            <div style="float:left">
-         securities market?                    
-        </div>
             <div style="float:right; padding-right:0.5mm">
               <span class="styIRS926DotLn">
-            ..............................                                    
-          </span>
+				............................
+			  </span>
               <div class="styLNDesc" style="width:15mm;text-align:right;padding-top:0mm;padding-bottom:0mm;">
                 <span>
                   <xsl:call-template name="PopulateSpan">
@@ -748,7 +750,7 @@
                     </xsl:call-template>
                   </input>
                 </span> &nbsp;
-            <label>
+				<label>
                   <xsl:call-template name="PopulateLabelYes">
                     <xsl:with-param name="TargetNode" select="$Form926Data/PrtnrDisposingIntLtdPrtshpInd"/>
                   </xsl:call-template>
@@ -767,7 +769,7 @@
                     </xsl:call-template>
                   </input>
                 </span> &nbsp;
-          <label>
+				<label>
                   <xsl:call-template name="PopulateLabelNo">
                     <xsl:with-param name="TargetNode" select="$Form926Data/PrtnrDisposingIntLtdPrtshpInd"/>
                   </xsl:call-template>

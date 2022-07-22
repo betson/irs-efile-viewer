@@ -168,6 +168,7 @@
 				  <xsl:call-template name="PopulateText">
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/StateAbbreviationCd"/>
 				  </xsl:call-template>
+				  <span style="width:1mm;"/>
 				  <xsl:call-template name="PopulateText">
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/ZIPCd"/>
 				  </xsl:call-template>
@@ -180,6 +181,7 @@
 				  <xsl:call-template name="PopulateText">
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/ForeignAddress/ProvinceOrStateNm"/>
 				  </xsl:call-template>
+				  <span style="width:1mm;"/>
 				  <xsl:call-template name="PopulateText">
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/ForeignAddress/ForeignPostalCd"/>
 				  </xsl:call-template>
@@ -790,10 +792,10 @@
 			<table class="styTable" cellspacing="0" summary="Table Changes in Stock Holdings During the Tax Year" style="font-size:7pt;">
 			  <thead class="styTableThead">
 				<tr>
-				  <th class="styTableCell" rowspan="2" scope="col" style="width:10mm;text-align:center;font-weight:normal;">Corp. No.</th>
-				  <th class="styTableCell" rowspan="2" scope="col" style="width:48mm;text-align:center;font-weight:normal;">Name of corporation  </th>
+				  <th class="styTableCell" rowspan="2" scope="col" style="width:8mm;text-align:center;font-weight:normal;">Corp. No.</th>
+				  <th class="styTableCell" rowspan="2" scope="col" style="width:50mm;text-align:center;font-weight:normal;">Name of corporation  </th>
 				  <th class="styTableCell" rowspan="2" scope="col" style="width:10mm;text-align:center;font-weight:normal;">Share-holder of Corporation No.</th>
-				  <th class="styTableCell" rowspan="2" scope="col" style="width:15mm;text-align:center;font-weight:normal;">Date of transaction</th>
+				  <th class="styTableCell" rowspan="2" scope="col" style="width:17mm;text-align:center;font-weight:normal;">Date of transaction</th>
 				  <th class="styTableCell" colspan="2" scope="col" style="text-align:center;font-weight:normal;"><b>(a)</b> Changes</th>
 				  <th class="styTableCell" colspan="2" scope="col" style="text-align:center;font-weight:normal;border-right:none;">
 				    <b>(b) </b> Shares held after changes described in column (a)
@@ -802,16 +804,17 @@
 				<tr>
 				  <th class="styTableCell" scope="col" style="width:31mm;text-align:center;font-weight:normal;">Number of shares acquired</th>
 				  <th class="styTableCell" scope="col" style="width:31mm;text-align:center;font-weight:normal;">Number of shares disposed of</th>
-				  <th class="styTableCell" scope="col" style="width:21mm;text-align:center;font-weight:normal;">Percentage of voting power</th>
-				  <th class="styTableCell" scope="col" style="width:21mm;text-align:center;font-weight:normal;border-right:none;">Percentage of value</th>
+				  <th class="styTableCell" scope="col" style="width:20mm;text-align:center;font-weight:normal;">Percentage of voting power</th>
+				  <th class="styTableCell" scope="col" style="width:20mm;text-align:center;font-weight:normal;border-right:none;">Percentage of value</th>
 				</tr>
 			  </thead>
 			  <tfoot/>
 			  <tbody>
 				<!-- Row 1 ***Parent Corp *** for ***inline and/or empty row format***-->
+				<!-- EXCEPTION: Parent Corp row 1 border line is not display-->
 				<tr>
 				  <!--Column 1 ***inline and empty row format***-->
-				  <td valign="top" class="styTableCell" style="width:10mm;text-align:left;">
+				  <td valign="top" class="styTableCell" style="width:8mm;text-align:left;">
 					<!-- Choice option of input Corporation Number is blank or separated format is selected then the default number 1 would display -->
 					<xsl:choose>
 					  <!-- When there is no data or the separated data tag is switched, fill the box with just a 1 -->
@@ -828,7 +831,7 @@
 					<span style="width:1px;"/>
 				  </td>
 				  <!--Column 2 ***inline and empty row format***-->
-				  <td valign="top" class="styTableCell" style="width:48mm;text-align:left;">
+				  <td valign="top" class="styTableCell" style="width:50mm;text-align:left;">
 				    <!-- If the separated data tag is not switched, populate with data -->
 					<xsl:if test="($Print = $Separated) and (count($Form851Data/SubsidiaryCorporationInfo) &gt; 7)">
 					  <xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -859,7 +862,7 @@
 					<span style="width:1px;"/>
 				  </td>
 				  <!--Column 4 ***inline format***-->
-				  <td valign="top" class="styTableCell" style="width:15mm;text-align:center;">
+				  <td valign="top" class="styTableCell" style="width:17mm;text-align:center;">
 					<!-- If the separated data tag is not switched, populate with data -->
 					<xsl:if test="not(($Print = $Separated) and (count($Form851Data/SubsidiaryCorporationInfo) &gt; 7))">
 					  <xsl:call-template name="PopulateMonthDayYear">
@@ -889,7 +892,7 @@
 					<span style="width:1px;"/>
 				  </td>
 				  <!--Column 7 ***inline and empty row format***-->
-				  <td valign="top" class="styTableCell" style="width:21mm;height:5mm;text-align:right;">
+				  <td valign="top" class="styTableCell" style="width:20mm;text-align:right;">
 					<xsl:if test="(($Print = $Separated) and (count($Form851Data/SubsidiaryCorporationInfo) &gt; 7))">%</xsl:if>
 					<!-- If the separated data tag is not switched, populate with data -->
 					<xsl:if test="not(($Print = $Separated) and (count($Form851Data/SubsidiaryCorporationInfo) &gt; 7))">
@@ -906,7 +909,7 @@
 					</xsl:if>
 				  </td>
 				  <!--Column 8 ***inline and empty row format***-->
-				  <td valign="top" class="styTableCell" style="text-align:right;width:21mm;border-right:none;">
+				  <td valign="top" class="styTableCell" style="width:20mm;text-align:right;border-right:none;">
 					<xsl:if test="(($Print = $Separated) and (count($Form851Data/SubsidiaryCorporationInfo) &gt; 7))">%</xsl:if>
 					<xsl:if test="not(($Print = $Separated) and (count($Form851Data/SubsidiaryCorporationInfo) &gt; 7))">
 					  <xsl:choose>
@@ -937,7 +940,7 @@
 						  <span style="width:1px;"/>
 						</td>
 						<!--Column 4 ***repeating within row*** -->
-						<td valign="top" class="styTableCell" style="width:15mm;text-align:center;">
+						<td valign="top" class="styTableCell" style="width:17mm;text-align:center;">
 						  <xsl:call-template name="PopulateMonthDayYear">
 							<xsl:with-param name="TargetNode" select="TransactionDt"/>
 						  </xsl:call-template>
@@ -958,7 +961,7 @@
 						  <span style="width:1px;"/>
 						</td>
 						<!--Column 7 ***repeating within row*** ***inline and/or empty row format***-->
-						<td valign="top" class="styTableCell" style="width:21mm;text-align:right;">
+						<td valign="top" class="styTableCell" style="width:20mm;text-align:right;">
 						  <xsl:choose>
 							<xsl:when test="not(VotingPowerPct) or VotingPowerPct='' ">%</xsl:when>
 							<xsl:otherwise>
@@ -969,7 +972,7 @@
 						  </xsl:choose>
 						</td>
 						<!--Column 8 ***repeating within row*** ***inline and/or empty row format***-->
-						<td valign="top" class="styTableCell" style="width:21mm;text-align:right;border-right:none;">
+						<td valign="top" class="styTableCell" style="width:20mm;text-align:right;border-right:none;">
 						  <xsl:choose>
 							<xsl:when test="not(StockValuePct) or StockValuePct='' ">%</xsl:when>
 							<xsl:otherwise>
@@ -984,11 +987,12 @@
 				  </xsl:for-each>
 				</xsl:if>
 				<!-- Row 2 and >***Subsidiary corp *** for ***inline and/or empty row format***-->
+				<!-- EXCEPTION: Subsidiary Corp row 1 and 2 border line are not display-->
 				<xsl:if test="not(($Print = $Separated) and (count($Form851Data/SubsidiaryCorporationInfo) &gt; 6))">
 				  <xsl:for-each select="$Form851Data/SubsidiaryCorporationInfo">
 					<tr>
 					  <!-- Column 1 -->
-					  <td valign="top" class="styTableCell" style="height:10mm;text-align:left;width:10mm;">
+					  <td valign="top" class="styTableCell" style="height:8mm;text-align:left;width:10mm;">
 						<!-- Row to span for column 1-->
 						<xsl:attribute name="rowspan"><xsl:value-of select="count(StockHoldingChangesForTaxYear)"/></xsl:attribute>
 						<xsl:call-template name="PopulateText">
@@ -996,7 +1000,7 @@
 						</xsl:call-template>
 					  </td>
 					  <!-- Column 2 -->
-					  <td valign="top" class="styTableCell" style="width:48mm;text-align:left;">
+					  <td valign="top" class="styTableCell" style="width:50mm;text-align:left;">
 						<!-- Row to span for column 2-->
 						<xsl:attribute name="rowspan"><xsl:value-of select="count(StockHoldingChangesForTaxYear)"/></xsl:attribute>
 						<xsl:call-template name="PopulateText">
@@ -1019,7 +1023,7 @@
 						<span style="width:1px;"/>
 					  </td>
 					  <!-- Column 4 -->
-					  <td valign="top" class="styTableCell" style="width:15mm;text-align:center;">
+					  <td valign="top" class="styTableCell" style="width:17mm;text-align:center;">
 						<xsl:call-template name="PopulateMonthDayYear">
 						  <xsl:with-param name="TargetNode" select="StockHoldingChangesForTaxYear[1]/TransactionDt"/>
 						</xsl:call-template>
@@ -1040,7 +1044,7 @@
 						<span style="width:1px;"/>
 					  </td>
 					  <!-- Column 7 ***inline and empty format***-->
-					  <td valign="top" class="styTableCell" style="width:21mm;text-align:right;">
+					  <td valign="top" class="styTableCell" style="width:20mm;text-align:right;">
 						<xsl:choose>
 						  <xsl:when test="not(StockHoldingChangesForTaxYear[1]/VotingPowerPct) or StockHoldingChangesForTaxYear[1]/VotingPowerPct='' ">%</xsl:when>
 						  <xsl:otherwise>
@@ -1051,7 +1055,7 @@
 						</xsl:choose>
 					  </td>
 					  <!-- Column 8 ***inline and empty format***-->
-					  <td valign="top" class="styTableCell" style="width:21mm;text-align:right;border-right:none;">
+					  <td valign="top" class="styTableCell" style="width:20mm;text-align:right;border-right:none;">
 						<xsl:choose>
 						  <xsl:when test="not(StockHoldingChangesForTaxYear[1]/StockValuePct) or StockHoldingChangesForTaxYear[1]/StockValuePct='' ">%</xsl:when>
 						  <xsl:otherwise>
@@ -1074,7 +1078,7 @@
 							<span style="width:1px;"/>
 						  </td>
 						  <!-- Column 4 -->
-						  <td valign="top" class="styTableCell" style="width:15mm;text-align:center;">
+						  <td valign="top" class="styTableCell" style="width:17mm;text-align:center;">
 							<xsl:call-template name="PopulateMonthDayYear">
 							  <xsl:with-param name="TargetNode" select="TransactionDt"/>
 							</xsl:call-template>
@@ -1095,7 +1099,7 @@
 							<span style="width:1px;"/>
 						  </td>
 						  <!-- Column 7 ***inline and/or empty row format***-->
-						  <td valign="top" class="styTableCell" style="width:21mm;text-align:right;">
+						  <td valign="top" class="styTableCell" style="width:20mm;text-align:right;">
 							<xsl:choose>
 							  <xsl:when test="not(VotingPowerPct) or VotingPowerPct='' ">%</xsl:when>
 							  <xsl:otherwise>
@@ -1106,7 +1110,7 @@
 							</xsl:choose>
 						  </td>
 						  <!-- Column 8 ***inline and/or empty row format***-->
-						  <td valign="top" class="styTableCell" style="width:21mm;text-align:right;border-right:none;">
+						  <td valign="top" class="styTableCell" style="width:20mm;text-align:right;border-right:none;">
 							<xsl:choose>
 							  <xsl:when test="not(StockValuePct) or StockValuePct='' ">%</xsl:when>
 							  <xsl:otherwise>
@@ -1340,7 +1344,7 @@
 		  <!--Line 1 of Part IV***Parent Corp*** check box-->
 		  <div class="styBB" style="width:187mm;border-top-width:0px">
 			<span class="styPartName" style="width:16mm;">Part IV</span>
-			<span style="width:151mm;" class="styPartDesc"> Additional Stock Information<span style="font-weight:normal;"> (see instructions)</span></span>
+			<span style="width:151mm;" class="styPartDesc"> Additional Stock Information <span style="font-weight:normal;"> (see instructions)</span></span>
 		  </div>
 		  <!--Line 1 of Part IV****Subsidiary Corp*** repeated checkboxes-->
 		  <div class="styNBB" style="width:187mm;">

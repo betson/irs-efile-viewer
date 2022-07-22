@@ -117,29 +117,37 @@
 				<div class="styTBB" style="width:187mm;">
 				<div class="styNameBox" style="width:137mm;height:8mm;font-weight:normal;font-size:7pt;">
 							Name of recipient (if both spouses are recipients, complete a separate form for each spouse)<br/>
-							<xsl:choose>
-								<xsl:when test="$Form8885Data/PersonNm">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form8885Data/PersonNm"/>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
-									</xsl:call-template>
-								</xsl:otherwise>
-							</xsl:choose>
-						</div>	
-                          <div style="height:8mm;width:50mm;height:4mm;padding:0px 0px 0px 2mm;font-size:7pt;" class="styEINBox">
-							Recipient's social security number
+		 <xsl:choose>
+                   	 <xsl:when test="normalize-space($Form8885Data/PersonNm) != ''">
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$Form8885Data/PersonNm"/>
+							</xsl:call-template>
 							<br/>
-							<span style="font-weight:normal;text-align:center;width:100%">
-								<xsl:call-template name="PopulateSSN">
+						</xsl:when>
+					    <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+							</xsl:call-template>
+					   </xsl:when>
+								</xsl:choose>			
+						</div>
+						<div class="styEINBox" style="width:46mm;height:100%;padding-left:4px;">
+							Recipient's social security number<br/>
+							<span style="width:100%;font-weight:normal;">
+							<xsl:choose>
+							   <xsl:when test="normalize-space($Form8885Data/RecipientSSN) != ''">
+								  <xsl:call-template name="PopulateSSN">
 									<xsl:with-param name="TargetNode" select="$Form8885Data/RecipientSSN"/>
-								</xsl:call-template>
-							</span>
-						</div>						
-				
+								  </xsl:call-template>
+							   </xsl:when>
+							<xsl:when test="$RtnHdrData/Filer/PrimarySSN">
+								<xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+							   </xsl:call-template>
+				   		    </xsl:when>
+				   		  </xsl:choose>
+      				   </span>
+						</div>				
 				</div>
 				<div class="styTBB" style="width:187mm">
 				<div class="styIRS8885LNDesc" style="width:100%;padding-left:0px;font-size:9pt;">
@@ -397,13 +405,14 @@
 								For Paperwork Reduction Act Notice, see your tax return instructions.
 							</span>
 						</div>
+						<div style="text-align:left;font-size:7pt;">
+							<span style="width:64px"/>
+							Cat. No. 34641D
+						</div>
 						<div style="float:right;">
 							<span style="width:50px;"/>  
 								Form 
 							<span class="styBoldText" style="font-size:8pt;">8885</span> (2016)
-						</div>
-						<div style="float:right;text-align:center;width:26mm;font-size:7pt;">
-							Cat. No. 34641D
 						</div>
 					</div>
 		           	<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->

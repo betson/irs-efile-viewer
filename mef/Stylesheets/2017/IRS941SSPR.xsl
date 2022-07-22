@@ -2010,7 +2010,7 @@
 							</div>
 						</span>
 					</div>
-					
+					<!-- 12/16/2016 AM: Per Defect 47409, corrected verbiage for line 13 -->
 					<!--Line 13-->
 					<div style="width:187mm;height:14mm;float:none;clear:both;">
 						<span style="float:left;">
@@ -2019,7 +2019,7 @@
 								Total de depósitos para este trimestre, incluyendo toda cantidad pagada en exceso
 								aplicada de un trimestre anterior, y toda cantidad pagada en exceso aplicada del
 								Formulario 941-X (PR), 941-X, 944-X 
-								<span style="float:left;"> (SP), 944-X (PR) o 944-X radicado en el trimestre en curso </span>
+								<span style="float:left;"> (SP), o 944-X radicado en el trimestre en curso </span>
 								<!--Dotted Line-->
 								<span class="styDotLn" style="float:right;padding-right:1mm;">..............</span>
 							</div>

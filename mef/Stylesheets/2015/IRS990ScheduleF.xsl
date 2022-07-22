@@ -3,9 +3,9 @@
 <!-- 03/26/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <!-- 06/24/2015 - Changes made for UWR 154415 - Jeremy Nichols -->
 <!-- 07/31/2015 - Modified per UWR 161465 - Jeremy Nichols-->
-<!-- 09/28/2015 - Modified per defect 44822 - Jeremy Nichols-->
 <!-- 12/11/2015 - Modified per defect 44826 - Jeremy Nichols-->
 <!-- 01/20/2016 - Modified per KISAM IM02431664 - Jeremy Nichols-->
+<!-- 05/17/2016 - Modified per defect 44822 - Jeremy Nichols-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -76,36 +76,35 @@
           <xsl:call-template name="DocumentHeader"/>
           <!--     <xsl:call-template name="DocumentHeaderLandscape" />-->
           <!-- BEGIN FORM HEADER -->
-          <div class="styTBB" style="width:187mm;height:25mm;">
+          <div class="styTBB" style="width:187mm;height:20mm;">
             <div class="styFNBox" style="width:31mm;padding-top:1mm;">
-              <div style="height:14mm;">
+              <div style="height:10mm;">
                 <span class="styFormNumber" style="font-size:10pt;">SCHEDULE F<span style="width:5mm;"/>(Form 990)<br/>
                 </span>
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$FormData"/>
                 </xsl:call-template>
               </div>
-              <div style="padding-top:3.2mm;padding-bottom:.25mm;">
+              <div style="padding-top:2mm;padding-bottom:0.5mm;">
                 <span class="styAgency">Department of the Treasury</span>
                 <br/>
                 <span class="styAgency">Internal Revenue Service</span>
               </div>
             </div>
-            <div class="styFTBox" style="width:124mm;height:25mm;">
+            <div class="styFTBox" style="width:124mm;height:20mm;">
               <div class="styMainTitle" style="height:8mm;padding-top:1.5mm;">Statement of Activities Outside the United States</div>
               <div class="styFBT" style="height:6mm;margin-top:0mm;font-weight:bold;">
-                <span style="width:124mm;font-size:6pt;font-weight:bold;padding-bottom:0mm;padding-top:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> Complete if the organization answered "Yes" to Form 990,</span>
-                <span style="width:124mm;font-size:6pt;font-weight:bold;padding-bottom:0mm;padding-top:1mm;">Part IV, line 14b, 15, or 16.</span>
-                <span style="width:124mm;font-size:6pt;font-weight:bold;padding-bottom:0mm;padding-top:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/>  Attach to Form 990.   <img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> See separate instructions.</span>
+                <span style="width:124mm;font-size:6pt;font-weight:bold;padding-bottom:0mm;padding-top:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> Complete if the organization answered "Yes" to Form 990, Part IV, line 14b, 15, or 16.</span>
+                <span style="width:124mm;font-size:6pt;font-weight:bold;padding-bottom:0mm;padding-top:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/>  Attach to Form 990.</span>
                 <span style="width:124mm;font-size:6pt;font-weight:bold;padding-bottom:0mm;padding-top:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> Information about Schedule F (Form 990) and its instructions is at <i>www.irs.gov/form990</i>.</span>
               </div>
             </div>
-            <div class="styTYBox" style="width:31.5mm;height:25mm;">
+            <div class="styTYBox" style="width:31.5mm;height:20mm;">
               <div class="styOMB" style="width:31.5mm;">OMB No. 1545-0047</div>
-              <div class="styTaxYear" style="height:11mm;padding-top:2mm;padding-bottom:2mm;">
+              <div class="styTaxYear" style="height:8mm;">
                 20<span class="styTYColor">15</span>
               </div>
-              <div class="styPartName" style="font-size:7pt;height:10mm;width:31.5mm;padding-top:1mm;padding-bottom:.5mm;text-align:left;padding-left:6mm;">
+              <div class="styPartName" style="font-size:7pt;height:8mm;width:31.5mm;text-align:left;padding-left:6mm;padding-top:0.5mm;">
                 Open to Public Inspection
              </div>
             </div>
@@ -148,7 +147,7 @@
           <div class="IRS990ScheduleF_LineContainer" style="padding-top:1mm;width:160mm;">
             <div class="IRS990ScheduleF_LineIndex" style="padding-right:5mm;">1</div>
             <div class="IRS990ScheduleF_LineDesc" style="width:152mm;border-right-width:0px;font-size:7.5pt;">
-              <b>For grantmakers.</b>Does the organization maintain records to substantiate the amount of its grants and
+              <b>For grantmakers.</b> Does the organization maintain records to substantiate the amount of its grants and
 
 		  </div>
           </div>
@@ -658,7 +657,7 @@
                   <td style="font-size:7pt;padding-top:3mm;text-align:center;vertical-align:top;width:7mm;"> 1</td>
                   <td style="font-size:7pt;padding-top:3mm;text-align:left;vertical-align:top;width:150mm;">
                     Was the organization a U.S. transferor of property to a foreign corporation during the tax year? 
-                    <i>If "Yes,"the organization may be required to file Form 926, Return by a U.S. Transferor of Property 
+                    <i>If "Yes," the organization may be required to file Form 926, Return by a U.S. Transferor of Property 
                     to a Foreign Corporation (see Instructions for Form 926)</i>
                     <span style="width:2mm;"/>.
                     <span style="width:2mm;"/>.
@@ -739,17 +738,8 @@
                     <i>If "Yes," the organization may be required to separately file Form 3520, Annual Return to 
                     Report Transactions with Foreign Trusts and Receipt of Certain Foreign Gifts, and/or 
                     Form 3520-A, Annual Information Return of Foreign Trust With a U.S. Owner (see 
-                    Instructions for Forms 3520 and 3520-A)</i>
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
+                    Instructions for Forms 3520 and 3520-A do not file with Form 990)</i>
+                    <span style="width:2.5mm;"/>.
                     <span style="width:2mm;"/>.
                     <span style="width:2mm;"/>.
                     <span style="width:2mm;"/>.
@@ -897,9 +887,10 @@
                     Was the organization a direct or indirect shareholder of a passive foreign investment company or a
 					qualified electing fund during the tax year? <i>If “Yes,” the organization may be required to file Form 8621,
 					Information Return by a Shareholder of a Passive Foreign Investment Company or Qualified Electing
-					Fund. (see Instructions for Form 8621)</i> .
+					Fund (see Instructions for Form 8621)</i>
+					<span style="width:2mm;"/>.
                   </td>
-                  <td style="font-size:7pt;padding-left:1mm;padding-top:3mm;text-align:left;vertical-align:bottom;width:15mm;">  
+                  <td style="font-size:7pt;padding-left:1mm;padding-bottom:1mm;text-align:left;vertical-align:bottom;width:15mm;">  
                     <div class="IRS990ScheduleF_LineDesc" style="width:10mm;border-right-width:0px;text-align:right;">
                       <span>
                         <xsl:call-template name="PopulateSpan">
@@ -919,7 +910,7 @@
                       </label>
                     </div>                  
                   </td>
-                  <td style="font-size:7pt;padding-left:1mm;padding-top:3mm;text-align:left;vertical-align:bottom;width:15mm;">
+                  <td style="font-size:7pt;padding-left:1mm;padding-bottom:1mm;text-align:left;vertical-align:bottom;width:15mm;">
                     <div class="IRS990ScheduleF_LineDesc" style="width:10mm;border-right-width:0px;text-align:right;">
                       <span>
                         <xsl:call-template name="PopulateSpan">
@@ -944,7 +935,7 @@
                   <td style="font-size:7pt;padding-top:3mm;text-align:center;vertical-align:top;width:7mm;"> 5</td>
                   <td style="font-size:7pt;padding-top:3mm;text-align:left;vertical-align:top;width:150mm;">
                     Did the organization have an ownership interest in a foreign partnership during the tax year?  <i>If "Yes," the organization
-                    may be required to file Form 8865, Return of U.S. Persons with Respect to Certain Foreign Partnerships. (see Instructions for Form 8865)</i>
+                    may be required to file Form 8865, Return of U.S. Persons with Respect to Certain Foreign Partnerships (see Instructions for Form 8865)</i>
                     <span style="width:2mm;"/>.
                     <span style="width:2mm;"/>.
                     <span style="width:2mm;"/>.
@@ -1021,16 +1012,7 @@
                   <td style="font-size:7pt;padding-top:3mm;text-align:center;vertical-align:top;width:7mm;"> 6</td>
                   <td style="font-size:7pt;padding-top:3mm;text-align:left;vertical-align:top;width:150mm;">
                     Did the organization have any operations in or related to any boycotting countries during the tax year?  <i>If "Yes," the 
-                    organization may be required to separately file Form 5713, International Boycott Report (see Instructions for Form 5713).</i>
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
-                    <span style="width:2mm;"/>.
+                    organization may be required to separately file Form 5713, International Boycott Report (see Instructions for Form 5713; do not file with Form 990).</i>
                     <span style="width:2mm;"/>.
                     <span style="width:2mm;"/>.
                     <span style="width:2mm;"/>.

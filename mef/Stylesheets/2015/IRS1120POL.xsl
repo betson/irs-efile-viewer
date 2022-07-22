@@ -25,6 +25,8 @@
 <!-- Updated per PDF REVIEW 11/5/15 by Robert L Jones -->
 <!-- Updated per 44921 IBM Defect 11/20/15 by Robert L Jones -->
 <!-- Updated per 44921 IBM Defect 12/11/15 by Robert L Jones -->
+<!-- Updated per 44921 IBM Defect 5/20/16 Removed <br> by Robert L Jones -->
+<!-- Updated per 44921 IBM Defect 6/21/16 Foreign address overlap at header, Special Condition Pen missing and Spec Cond Pen not in Add Data Section by Robert L Jones -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -80,7 +82,9 @@
      <!--<xsl:call-template name="SetFormLinkInline">
        <xsl:with-param name="TargetNode" select="$FormData"/>
      </xsl:call-template>-->
-
+<xsl:call-template name="LinkToLeftoverDataTableInline">
+                  <xsl:with-param name="TargetNode" select="$FormData/SpecialConditionDesc"/>
+                </xsl:call-template>
                 <br/>
 						<span style=" font-family:Arial Narrow; ">Department of the Treasury</span>
             <br/>
@@ -220,7 +224,7 @@
             
           <div class="styIRS1120POLRightLine" style="width:98mm;height:31mm;">
             <div class="styNameBox" style="width:98mm;height:auto;border-bottom-width:1px;border-right-width:0px;padding-left:4px;font-size:7pt;border-left-width:1px;">
-              <span style="font-size:7pt;">Name of organization</span>
+              <span style="font-size:6pt;">Name of organization</span>
               <br/>
               <span style="font-size:6pt;">
 								<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -237,10 +241,10 @@
               </span>
             </div>
             <div class="styNameBox" style="width:98mm;height:10mm;border-right-width:0px;border-bottom-width:1px;padding-left:4px;border-left-width:1px;">
-							<span style="font-size:7pt;">Number, street, and room or suite no.</span>
+							<span style="font-size:6pt;">Number, street, and room or suite no.</span>
 							<span style="font-size:6pt;"> (If a P.O. box, see instructions.)</span>
 							<br/>
-							<span style="font-size:7pt;">
+							<span style="font-size:6pt;">
 								<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">AddressLine1Txt</xsl:with-param>
 								</xsl:call-template>
@@ -250,10 +254,10 @@
 								</xsl:call-template>
               </span>
             </div>
-            <div class="styNameBox" style="width:98mm;height:10mm;border-right-width:0px;padding-left:4px;font-size:7pt;border-left-width:1px;">
+            <div class="styNameBox" style="width:98mm;height:10mm;border-right-width:0px;padding-left:4px;font-size:6pt;border-left-width:1px;">
               City or state or province, country, ZIP or foreign postal code
-              <br/>
-              <span style="font-size:7pt;">
+       
+              <span style="font-size:6pt;">
 								<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">CityStateInfo</xsl:with-param>
 								</xsl:call-template>
@@ -1386,8 +1390,29 @@ with the preparer shown below<br/>
         </div>
         <!-- leftover data table -->
 				
-				<p style="page-break-before:always"/>
-				<!--Special Condition Description -->
+			<p style="page-break-before:always"/>
+  <!-- Additonal Data Title Bar and Button -->
+<div class="styLeftOverTitleLine" id="LeftoverData">
+  <div class="styLeftOverTitle">
+    Additional Data        
+  </div>
+  <div class="styLeftOverButtonContainer">
+    <input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
+  </div>      
+</div>  
+<table class="styLeftOverTbl">
+  <xsl:call-template name="PopulateCommonLeftover">
+						<xsl:with-param name="TargetNode" select="$FormData"/>
+    <xsl:with-param name="DescWidth" select="100"/>
+  </xsl:call-template>
+  <xsl:call-template name="PopulateLeftoverRowAmount">
+    <xsl:with-param name="Desc">Line 22 - Qualified Electric Vehicle Recapture</xsl:with-param>
+    <xsl:with-param name="TargetNode" select="$FormData/TotalTax/@qEVRecapture"/>
+    <xsl:with-param name="DescWidth" select="100"/>
+  </xsl:call-template>
+</table>
+	
+<!--Special Condition Description -->
 <br />
  <span class="styRepeatingDataTitle">Form 1120-POL, Special Condition Description: </span>
 
@@ -1435,29 +1460,6 @@ Special Condition Description</th>
 </tbody>
 
 </table>
-<p style="page-break-before:always"/>
-  <!-- Additonal Data Title Bar and Button -->
-<div class="styLeftOverTitleLine" id="LeftoverData">
-  <div class="styLeftOverTitle">
-    Additional Data        
-  </div>
-  <div class="styLeftOverButtonContainer">
-    <input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
-  </div>      
-</div>  
-<table class="styLeftOverTbl">
-  <xsl:call-template name="PopulateCommonLeftover">
-						<xsl:with-param name="TargetNode" select="$FormData"/>
-    <xsl:with-param name="DescWidth" select="100"/>
-  </xsl:call-template>
-  <xsl:call-template name="PopulateLeftoverRowAmount">
-    <xsl:with-param name="Desc">Line 22 - Qualified Electric Vehicle Recapture</xsl:with-param>
-    <xsl:with-param name="TargetNode" select="$FormData/TotalTax/@qEVRecapture"/>
-    <xsl:with-param name="DescWidth" select="100"/>
-  </xsl:call-template>
-</table>
-	
-
 
 </body>
     </html>

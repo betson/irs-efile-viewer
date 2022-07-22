@@ -45,10 +45,8 @@
       <body class="styBodyClass">
         <xsl:call-template name="DocumentHeaderDependency"/>
         <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:83mm;">
-            <span>
+          <span class="styDepTitle" style="padding-right:2mm;">
               <xsl:value-of select="$depDocTitle"/>
-            </span>
           </span>
         </div>
         <xsl:call-template name="PopulateDepCommonLeftover">

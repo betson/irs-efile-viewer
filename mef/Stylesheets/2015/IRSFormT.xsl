@@ -17,7 +17,9 @@
   <!-- Last modified on 12/08/2015 by Robert Jones PDF Review -->
   <!-- Last modified on 12/29/2015 overlapping. IBM data worked. Sat data had overlapping at 9f and Part II Line 1 - by Robert Jones PDF Review -->
   <!-- Last modified on 1/26/2016 Browser Part I 9d and 9f data alignment by Robert Jones PDF Review -->
- 
+  <!-- Last modified on 5/18/2017 by Robert Jones UWR 194393 and 195664 Return Headers for 1120, 1041, 1040 and 1040NR  -->
+ <!-- Last modified on 5/23/2017 by Robert Jones UWR 194393 and 195664 Return Headers for 1120, 1041, 1040 and 1040NR  -->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -121,7 +123,7 @@
             <div class="styNameBox" style="width:140mm;height:auto;font-size:7pt;">
               Name(s) as shown on return<br/>
                <!-- Added per UWR 31342 to allow 1040/ssn filer to use this form -->
-              <xsl:choose>
+            <!--  <xsl:choose>
 								    <xsl:when test="$RtnHdrData/ReturnType='1040'">
 						<br/>
 								      <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -133,14 +135,18 @@
               <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$FormTData/ShownOnReturnName/BusinessNameLine2Txt" />
               </xsl:call-template>  
               </xsl:otherwise>
-			 </xsl:choose>
+			 </xsl:choose>-->
+			 <!-- Choice between 1120, 1041, 1040 and 1040NR Return Header Filer info -->
+                                                         <xsl:call-template name="PopulateFilerName">
+                                                            <xsl:with-param name="TargetNode" select="$FormTData"/>
+                                                         </xsl:call-template> 
             </div>
             <div class="styEINBox" style="width:45mm;height:auto;font-size:7pt;padding-left:2mm;font-weight:bold;">
               <span style="width:4px;"></span>
               Identifying number<br/><br />
               <span style="font-weight:normal;">
                 <span style="width:4px;"> </span>   
-                <xsl:choose >
+              <!--  <xsl:choose >
                 <xsl:when test="$FormTData/EIN">
                   <xsl:call-template name="PopulateEIN">
                   <xsl:with-param name="TargetNode" select="$FormTData/EIN"/>
@@ -159,8 +165,16 @@
                 </xsl:otherwise>
               </xsl:choose>   
                 
-              </span>  
-            </div>
+              </span>  -->
+              
+
+                <!-- Choice between 1120, 1041, 1040 and 1040NR Return Header Filer info -->
+                                                     <xsl:call-template name="PopulateFilerTIN">
+                                                       <xsl:with-param name="TargetNode" select="$FormTData"/>
+                                                     </xsl:call-template> 
+
+            </span>
+          </div>
           </div>
           <!--  END NAME   -->
   

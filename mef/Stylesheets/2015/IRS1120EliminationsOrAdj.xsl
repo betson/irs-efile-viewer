@@ -523,7 +523,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 				    </xsl:call-template>		
 				  </span>
 				  <!--Dotted Line-->
-				  <div class="styDotLn" style="float:right;padding-right:1mm;">.........</div>
+				  <div class="styDotLn" style="float:right;padding-right:1mm;">..................</div>
 			    </div>
 			  </div>
 			  <div style="float:right;clear:none;">
@@ -690,7 +690,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 			  <div style="float:left;clear:none;">
 			    <div class="styLNLeftNumBox">10</div>
 			    <div class="styLNDesc" style="width:132mm;">
-				  <span style="float:left;">Other income (see instructions&#8208;attach statement)
+				  <span style="float:left;">Other income (see instructions&#8212;attach statement)
 				    <span style="width:2px;"/>
 				    <!-- Form to Form Link -->
 				    <xsl:call-template name="SetFormLinkInline">
@@ -744,17 +744,20 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
           <!--END Main Form Income Section-->
           <!--BEGIN Main Form Deduction Section-->
           <!-- Vertical Deductions label -->
-          <div class="styBB" style="width:187mm;">
-			<div class="styIRS1120VTImageBox" style="width:6mm;height:91.5mm;text-align:center;padding-top:13mm;">
-			  <img src="{$ImagePath}/1120_Deductions.gif" alt="Vertical Image - Deductions (see instructions for limitations on deductions)" valign="center"/>
-			</div>            
+			<div class="styBB" style="width:187mm;">
+				<div class="styIRS1120VTImageBox"
+				 style="width:6mm;height:90mm;text-align:center;padding-top:2mm;padding-right:0.5mm;">
+					<img src="{$ImagePath}/1120_Deductions.gif" 
+					alt="Vertical Image - Deductions (see instructions for limitations on deductions)" 
+					valign="center" width="20mm;"/>
+				</div>              
       <!-- line 12 -->
       <!--Difference: No push pin for 1120E&A only on 1120 -->
       <div class="styGenericDiv" style="width:181mm;">
 			  <div style="float:left;clear:none;">
 			    <div class="styLNLeftNumBox">12</div>
 			    <div class="styLNDesc" style="width:132mm;">
-				  <span style="float:left;">Compensation of officers (see instructions&#8208;attach Form 1125&#8208;E) 
+				  <span style="float:left;">Compensation of officers (see instructions&#8212;attach Form 1125&#8208;E) 
             <span style="width:2px;"/>
 				    <!-- Form to Form Link -->	
 				    <xsl:call-template name="SetFormLinkInline">
@@ -762,7 +765,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 				    </xsl:call-template>			  
 				  </span>
 				  <!--Dotted Line-->
-				  <div class="styDotLn">............</div>
+				  <div class="styDotLn">...........</div>
 					<img src="{$ImagePath}/1120_Bullet_Md.gif" alt="MediumBullet"/>
 					<span style="width:1mm;"/>
 			 </div>
@@ -1214,10 +1217,11 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
           <!--END Main Form Deductions Section-->
           <!--BEGIN Main Form Tax and Payment Section-->
           <!-- Vertical Tax and Payment line -->
-		  <div class="styBB" style="width:187mm;">
-			<div class="styIRS1120VTImageBox" style="width:6mm;height:35mm;padding-top:1mm;">
-			  <img src="{$ImagePath}/1120_TaxRefundableCreditAndPayment.gif" alt="Vertical Image - Tax Refoundable Credits and Payments" valign="center"/>
-			</div>
+			<div class="styBB" style="width:187mm;">
+				<div class="styIRS1120VTImageBox" style="width:6mm;height:35mm;padding-top:1mm;">
+					<img src="{$ImagePath}/1120_TaxRefundableCreditAndPayment.gif" 
+					alt="Vertical Image - Tax Refoundable Credits and Payments" valign="center" width="22mm;"/>
+				</div>
             <!-- line 30 -->
 			<div class="styGenericDiv" style="width:181mm;">
 			  <div style="float:left;clear:none;">

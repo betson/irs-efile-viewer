@@ -91,24 +91,22 @@
 				<!-- Name and Address -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styNameBox" style="width:130mm;font-size:7pt;">
-              Name
-              <br/>
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-							</xsl:call-template>
-							<br/>
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-							</xsl:call-template>
+							  Name
+							  <br/>
+							<!-- Choice between 1120, 1041, 1040 and 1040NR Return Header Filer info -->
+							 <xsl:call-template name="PopulateFilerName">
+								<xsl:with-param name="TargetNode" select="$FormData"/>
+							 </xsl:call-template> 
 						</div>
 					<div class="styEINBox" style="width:50mm;padding-left:2mm;text-align:left;font-size:7pt;">
 						<span style="font-weight:bold;">Employer identification number
 							<br/>
 						</span>
 						<span style="float:left;font-weight:normal;padding-top:3mm;">
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-							</xsl:call-template>
+							<!-- Choice between 1120, 1041, 1040 and 1040NR Return Header Filer info -->
+							 <xsl:call-template name="PopulateFilerTIN">
+							   <xsl:with-param name="TargetNode" select="$FormData"/>
+							 </xsl:call-template>
 						</span>
 					</div>
 				</div>

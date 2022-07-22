@@ -89,19 +89,42 @@
 					<div style="width:187mm;border-bottom:1px solid black;border-bottom-width:1px;">
 						<div class="styFNBox" style="width:149.5mm;height:8mm;padding-top:.5mm;">
               <span style="font-family:Arial;">Name of person who received tips. If married, complete a separate Form 4137 for each spouse with unreported tips.</span><br/>
-							<div style="text-align:center;padding-top:1mm;">							
-							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$Form4137Data/PersonNm"/>
-							</xsl:call-template>
+							<div style="text-align:center;padding-top:1mm;">	
+							 <xsl:choose>					
+								<!--4137 schema data present and data populated-->
+									<xsl:when test="normalize-space($Form4137Data/PersonNm) !=''">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$Form4137Data/PersonNm"/>
+										</xsl:call-template>									
+									</xsl:when>
+									<xsl:otherwise>
+								<!--1040NR or 1040 Return Header data populated-->
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+									  </xsl:call-template>
+									</xsl:otherwise>
+								  </xsl:choose>								
 							</div>
-						  </div>
+						</div>
 						<div class="styGenericDiv" style="line-height:100%;padding-top:.5mm;padding-left:1.5mm;">
 							<b>Social security number</b>
 							<br/>
 							<div style="text-align:center;padding-top:2mm;">
-								<xsl:call-template name="PopulateSSN">
-									<xsl:with-param name="TargetNode" select="$Form4137Data/SSN"/>
-								</xsl:call-template>
+							 <xsl:choose>					
+									<!--4137 schema data present and data populated-->
+										<xsl:when test="normalize-space($Form4137Data/SSN) !=''">
+											<xsl:call-template name="PopulateSSN">
+												<xsl:with-param name="TargetNode" select="$Form4137Data/SSN"/>
+											</xsl:call-template>									
+										</xsl:when>
+										<xsl:otherwise>
+									<!--1040NR or 1040 Return Header data populated-->
+										<xsl:call-template name="PopulateSSN">
+											<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimarySSN"/>
+											<xsl:with-param name="BackupName">RtnHdrDataFilerPrimarySSN</xsl:with-param>
+										 </xsl:call-template>
+										</xsl:otherwise>
+							 </xsl:choose>											
 							</div>
 						  </div>
 						  <!--+++++++++++++++++++ Table Toggle Button +++++++++++++++++++-->

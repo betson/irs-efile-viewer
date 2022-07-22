@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-  <xsl:include href="PopulateTemplate.xsl"/>
-  <xsl:include href="CommonPathRef.xsl"/>
-  <xsl:include href="AddHeader.xsl"/>
-  <xsl:include href="AddOnTable.xsl"/>
-  <xsl:include href="IRS6198Style.xsl"/>
-  <xsl:output method="html" indent="yes"/>
-  <xsl:strip-space elements="*"/>
-  <!-- Defines the stage of the data, e.g. original or latest -->
-  <xsl:param name="Form6198Data" select="$RtnDoc/IRS6198"/>
-  <xsl:template match="/">
+  <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+    <xsl:include href="PopulateTemplate.xsl"/>
+    <xsl:include href="CommonPathRef.xsl"/>
+    <xsl:include href="AddHeader.xsl"/>
+    <xsl:include href="AddOnTable.xsl"/>
+    <xsl:include href="IRS6198Style.xsl"/>
+    <xsl:output method="html" indent="yes"/>
+    <xsl:strip-space elements="*"/>
+    <!-- Defines the stage of the data, e.g. original or latest -->
+    <xsl:param name="Form6198Data" select="$RtnDoc/IRS6198"/>
+    <xsl:template match="/">
     <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
-		<html>
+	<html>
       <head>
-				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form6198Data)"/>
@@ -38,18 +38,17 @@
         </style>
         <xsl:call-template name="GlobalStylesForm"/>
       </head>
-      <body class="styBodyClass">
+      <body class="styBodyClass" style="width:187mm;">
         <form name="Form6198">
           <!-- BEGIN WARNING LINE -->
           <xsl:call-template name="DocumentHeader"/>
           <!-- END WARNING LINE -->
           <div class="styTBB" style="width:187mm;">
             <div class="styFNBox" style="width:30mm;height:19mm;">
-              <div style="height:9.5mm;">Form<span class="styFormNumber">  6198</span>
-              </div>
+              <div style="height:9.5mm;">Form<span class="styFormNumber">  6198</span></div>
               <div style="height:6mm;">
                 <div style=" font-size:6pt;">(Rev. November 2009)
-           <span style="padding-right:3mm"/>
+                  <span style="padding-right:3mm"/>
                 </div>
                 <span class="styAgency">Department of the Treasury</span>
                 <br/>
@@ -58,74 +57,49 @@
             </div>
             <div class="styFTBox" style="width:125mm;height:19mm;">
               <div class="styMainTitle" style="height:10mm;font-size:13pt;padding-top:1mm;display:block;">
-      At-Risk Limitations
-    </div>
+                At-Risk Limitations
+              </div>
               <div class="styFST" style="height:4mm;font-size:7pt;display:block;">
                 <img src="{$ImagePath}/6198_Bullet.gif" alt="Bullet Image"/>
-      Attach to your tax return.
-    </div>
+                Attach to your tax return.
+              </div>
               <div class="styFST" style="height:4mm;font-size:7pt;">
                 <img src="{$ImagePath}/6198_Bullet.gif" alt="Bullet Image"/>
-      See separate instructions.
-   
-    </div>
+                See separate instructions.   
+              </div>
             </div>
             <div class="styTYBox" style="width:32mm;height:19mm;">
-            <div class="styBB" style="height:7mm;text-align:left;padding-left:               5mm;font-size:6pt;padding-top:4mm;"><b>OMB NO. 1545-0712</b>
-              </div>
-              <div style="height:6mm;text-align:left;padding-left:               5mm;border-bottom-width:0px;padding-top:5mm">
-      Attachment <br/>Sequence No. <span class="styBoldText">31</span>
+              <div class="styBB" style="height:7mm;text-align:left;padding-left:5mm;font-size:6pt;padding-top:4mm;"><b>OMB NO. 1545-0712</b></div>
+              <div style="height:6mm;text-align:left;padding-left:5mm;border-bottom-width:0px;padding-top:5mm">
+                Attachment <br/>Sequence No. <span class="styBoldText">31</span>
               </div>
             </div>
           </div>
           <!-- Name and EIN/SSN  -->
           <div style="width:187mm;" class="styBB">
             <div style="width:138mm;height:auto;font-weight:normal;font-size:7pt;" class="styNameBox">
-    Name(s) shown on return<br/>
-   <span style="font-size: 7pt; font-weight: normal">
-              <!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
-			  <xsl:choose>
-			  <!-- Name from 1120/990/1065 Return Header -->
-				<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
-				  <xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-				  </xsl:call-template>
-				  <br/>
-				  <xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
-				  </xsl:call-template>
-				</xsl:when>
-				<!-- Name from 1040 Return Header -->
-				<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
-				  <br/>
-				  <xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
-				  </xsl:call-template>
-				</xsl:when>
-			  </xsl:choose>
-								</span>
-            </div>
-            <div style="width:49mm;padding-left:2mm;font-size:7pt;font-weight:bold;" class="styEINBox">
-    Identifying number<br/>
-              <br/><span style="font-weight:normal">
-				<xsl:choose>
-		          <xsl:when test="$RtnHdrData/Filer/EIN">
-					<xsl:call-template name="PopulateReturnHeaderFiler">
-					  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-					</xsl:call-template>
-				  </xsl:when>
-				  <xsl:otherwise>
-					<xsl:call-template name="PopulateReturnHeaderFiler">
-					  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-					</xsl:call-template>
-				  </xsl:otherwise>
-				</xsl:choose>
+				Name(s) shown on return<br/>
+			    <span style="font-size: 7pt; font-weight: normal">
+			    <!--Choice for 1120, 1040, 1040NR and 1041 Return Header Filer info-->
+				<xsl:call-template name="PopulateFilerName">
+					<xsl:with-param name="TargetNode" select="$Form6198Data"/>
+				</xsl:call-template> 
+           	    </span>
+              </div>
+              <div style="width:49mm;padding-left:2mm;font-size:7pt;font-weight:bold;" class="styEINBox">
+                Identifying number<br/>
+                <br/>
+                <span style="font-weight:normal">
+                  <!-- Choice for 1120, 1041, 1040 and 1040NR Return Header Filer info  -->
+				<xsl:call-template name="PopulateFilerTIN">
+					<xsl:with-param name="TargetNode" select="$Form6198Data"/>
+				</xsl:call-template>
 				</span>
+              </div>
             </div>
-          </div>
-          <div style="width:187mm;height:9mm;" class="styBB">
-  Description of activity (see page 2 of the instructions)<br/>
-            <xsl:call-template name="PopulateText">
+            <div style="width:187mm;height:9mm;" class="styBB">
+              Description of activity (see page 2 of the instructions)<br/>
+              <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$Form6198Data/ActivityDescriptionTxt"/>
             </xsl:call-template>
           </div>

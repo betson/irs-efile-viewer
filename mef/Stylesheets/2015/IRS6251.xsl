@@ -702,11 +702,15 @@
 							<div class="styLNLeftNumBox" style="font-size:7pt;height:22mm;padding-left: 2.25mm">31</div>
 						</div>
 						<div style="float:left;font-size:7pt;width:125mm;height:26mm;padding-top:.5mm;">
- 							<li style="margin-left:3.5mm;">If you are filing Form 2555 or 2555-EZ, see instructions for the amount to enter.</li>
-							<li style="margin-left:3.5mm;">If you reported capital gain distributions directly on Form 1040, line 13; you reported qualified dividends on Form 1040, line 9b; <b>or</b> you had a gain on both      
-							 lines 15 and 16 of Schedule D (Form 1040) (as refigured for the AMT, if necessary), complete Part III on the back and enter the amount from line 64 here.<br/></li>
-							<li style="margin-left:3.5mm;"><b>All others:</b> If line 30 is $185,400 or less ($92,700 or less if married filing separately), multiply line 30 by 26% (.26). Otherwise, multiply line 30 by 28% (.28) 
-							  and subtract $3,708 ($1,854 if married filing separately) from the result.</li>
+							&#8226;<span style="margin-left:.5mm;"/>If you are filing Form 2555 or 2555-EZ, see instructions for the amount to enter.<br/>
+							&#8226;<span style="margin-left:.5mm;"/>If you reported capital gain distributions directly on Form 1040, line 13; you reported qualified<br/>
+										<span style="margin-left:1.5mm;"/>dividends on Form 1040, line 9b; <b>or</b> you had a gain on both      
+							 lines 15 and 16 of Schedule D (Form 
+										<span style="margin-left:1.5mm;"/>1040) (as refigured for the AMT, if necessary), complete Part III on the back and enter the<br/> 
+										<span style="margin-left:1.5mm;"/>amount from line 64 here.<br/>
+							&#8226;<span style="margin-left:.5mm;"/><b>All others:</b> If line 30 is $185,400 or less ($92,700 or less if married filing separately), multiply<br/>
+										<span style="margin-left:1.5mm;"/>line 30 by 26% (.26). Otherwise, multiply line 30 by 28% (.28) and subtract $3,708 ($1,854<br/>
+										<span style="margin-left:1.5mm;"/>if married filing separately) from the result.
 						</div>
 						<div style="float:left;width:5mm;height:26mm;padding-top:4mm;">
 							<img alt="right bracket" src="{$ImagePath}/6251_rt_bracket_lg.gif"/>
@@ -728,7 +732,7 @@
 							<div class="styLNRightNumBox" style="clear:left;height:12mm;background-color:lightgrey;border-bottom-width:0px"/>
 							<div class="styLNAmountBoxNBB" style="width:36mm;height:12mm;"/>
 						</div>						
-					</div>
+					</div>					
 					<!-- Line 32 -->
 					<div class="styGenericDiv" style="width:187mm;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-bottom:0mm;padding-left: 2.25mm">32</div>
@@ -948,33 +952,30 @@
 					</div>
 					<!-- Line 43 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:17mm;font-size:7pt;padding-left: 2.25mm;padding-top:1mm;">43</div>
-						<div style="float:left;">
-							<div class="styLNDesc" style="font-size:7pt;width:135mm;padding-top:1mm;">
-								<span style="float:right;text-align:right;letter-spacing:3.3mm;font-weight:bold;margin-top:8mm;margin-left:1mm;margin-right:2mm;padding-left:1mm;">.......</span>
-								<img alt="right bracket" src="{$ImagePath}/6251_rt_bracket_sm.gif" style="float:right;clear:none;margin-top:2mm;"/>
-								  Enter:<br/>
-								<li style="margin-left:3.5mm;">$74,900 if married filing jointly or qualifying widow(er),</li>
- 								<li style="margin-left:3.5mm;">$37,450 if single or married filing separately, or</li>
-								<li style="margin-left:3.5mm;">$50,200 if head of household.</li>
+					<div class="styLNLeftNumBox" style="height:17mm;font-size:7pt;padding-left: 2.25mm;padding-top:1mm;">43</div>
+		 			  <div style="float:left;">	
+							<div class="styLNDesc" style="font-size:7pt;width:100mm;padding-top:1mm;">
+							  Enter:<br/>
+								&#8226;<span style="margin:3mm 0mm 0mm .5mm;"/>$74,900 if married filing jointly or qualifying widow(er),<br/>
+ 								&#8226;<span style="margin:3mm 0mm 0mm .5mm;"/>$37,450 if single or married filing separately, or<br/>
+								&#8226;<span style="margin:3mm 0mm 0mm .5mm;"/>$50,200 if head of household.
 							</div>
-						</div>
-						<div style="float:left;">
+					  </div>								
+						    <div style="float:left;margin-top:3mm;">							
+								<img alt="right bracket" src="{$ImagePath}/6251_rt_bracket_sm.gif"/>	
+								<span style="float:right;text-align:right;letter-spacing:3.3mm;font-weight:bold;margin:6mm 2mm 0mm 1mm;">.......</span>
+							</div>					
+						<div style="float:right">
 							<div class="styLNRightNumBox" style="height:8mm;padding-bottom:0mm;border-bottom:0;"/>
-							<div class="styLNRightNumBox" style="height:4mm;clear:left;padding-top:1mm;padding-bottom:0mm;">43</div>
-							<div class="styLNRightNumBox" style="height:5mm;padding:0mm;border-bottom:0;clear:left;"/>							
-						</div>
-						<div style="float:left;">
-							<div class="styLNAmountBox" style="height:8mm;width:36mm;padding-bottom:0mm;border-bottom-width:0px;"/>
-							<div class="styLNAmountBox" style="height:4mm;width:36mm;padding-top:1mm;padding-bottom:0mm;border-bottom:1px solid black;clear:left;">
+							<div class="styLNAmountBox" style="height:8mm;width:36mm;padding-bottom:0mm;border-bottom-width:0px;"/>							
+							<div class="styLNRightNumBox" style="height:4mm;clear:left;padding-top:.75mm;padding-bottom:0mm;">43</div>
+							<div class="styLNAmountBox" style="height:4mm;width:36mm;padding-top:.75mm;padding-bottom:0mm;border-bottom:1px solid black;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/FilingStatusLimitAmt"/>
 								</xsl:call-template>
-							</div>
+							</div>						
+							<div class="styLNRightNumBox" style="width:8.25mm;height:5mm;border-right-width:1px;border-bottom:0;clear:left;"/>
 						</div>
-						<div style="float:left;">						
-							<div class="styLNAmountBox" style="height:5mm;padding:0mm;border-bottom:0;clear:left;"/>	
-						</div>							
 					</div>
 					<!-- Line 44 -->
 					<div style="width:187mm;">
@@ -1058,35 +1059,32 @@
 					</div>
 					<!-- Line 49 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:17mm;font-size:7pt;padding-left: 2.25mm">49</div>
-						<div style="float:left;">
-							<div class="styLNDesc" style="font-size:7pt;width:135mm;">
-								<span style="float:right;text-align:right;letter-spacing:3.3mm;font-weight:bold;margin-top:8mm;margin-left:1mm;margin-right:2mm;padding-left:1mm;">.......</span>
-								<img alt="right bracket" src="{$ImagePath}/6251_rt_bracket_sm.gif" style="float:right;clear:none;margin-top:2mm;"/>
-									 Enter:<br/>
-								<li style="margin-left:3.5mm;">$413,200 if single</li>
-								<li style="margin-left:3.5mm;">$232,425 if married filing separately</li>
-								<li style="margin-left:3.5mm;">$464,850 if married filing jointly or qualifying widow(er)</li>
-								<li style="margin-left:3.5mm;">$439,000 if head of household</li>
+					<div class="styLNLeftNumBox" style="height:17mm;font-size:7pt;padding-left: 2.25mm;padding-top:1mm;">49</div>
+		 			  <div style="float:left;">	
+							<div class="styLNDesc" style="font-size:7pt;width:100mm;padding-top:1mm;">
+							  Enter:<br/>
+								&#8226;<span style="margin:3mm 0mm 0mm .5mm;"/>$413,200 if single<br/>
+ 								&#8226;<span style="margin:3mm 0mm 0mm .5mm;"/>$232,425 if married filing separately<br/>
+								&#8226;<span style="margin:3mm 0mm 0mm .5mm;"/>$464,850 if married filing jointly or qualifying widow(er)<br/>
+								&#8226;<span style="margin:3mm 0mm 0mm .5mm;"/>$439,000 if head of household								
 							</div>
-						</div>
-						<div style="float:left;">
-							<div class="styLNRightNumBox" style="height:7mm;padding-bottom:0mm;border-bottom:0;"/>
-							<div class="styLNRightNumBox" style="height:5mm;clear:left;padding-top:1.5mm;padding-bottom:0mm;">49</div>
-							<div class="styLNRightNumBox" style="height:5mm;padding:0mm;border-bottom:0;clear:left;"/>
-						</div>
-						<div style="float:left;">
-							<div class="styLNAmountBox" style="height:7mm;width:36mm;padding-bottom:0mm;border-bottom-width:0px;"/>
-							<div class="styLNAmountBox" style="height:5mm;width:36mm;padding-top:1.5mm;padding-bottom:0mm;border-bottom:1px solid black;clear:left;">
+					  </div>								
+						    <div style="float:left;margin-top:5mm;">							
+								<img alt="right bracket" src="{$ImagePath}/6251_rt_bracket_sm.gif"/>	
+								<span style="float:right;text-align:right;letter-spacing:3.3mm;font-weight:bold;margin:4mm 2mm 0mm 1mm;">.......</span>
+							</div>					
+						<div style="float:right">
+							<div class="styLNRightNumBox" style="height:8mm;padding-bottom:0mm;border-bottom:0;"/>
+							<div class="styLNAmountBox" style="height:8mm;width:36mm;padding-bottom:0mm;border-bottom-width:0px;"/>							
+							<div class="styLNRightNumBox" style="height:4mm;clear:left;padding-top:.75mm;padding-bottom:0mm;">49</div>
+							<div class="styLNAmountBox" style="height:4mm;width:36mm;padding-top:.75mm;padding-bottom:0mm;border-bottom:1px solid black;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/FilingThresholdAmt"/>
 								</xsl:call-template>
-							</div>
+							</div>						
+							<div class="styLNRightNumBox" style="width:8.25mm;height:7mm;border-right-width:1px;border-bottom:0;clear:left;"/>
 						</div>
-						<div style="float:left;">	
-							<div class="styLNAmountBox" style="height:5mm;float:left;padding:0mm;border-bottom:0;border-left:1px solid black;clear:left;"/>
-						</div>
-					</div>
+					</div>					
 					<!-- Line 50 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-bottom:0mm;padding-left:2.25mm;">50</div>

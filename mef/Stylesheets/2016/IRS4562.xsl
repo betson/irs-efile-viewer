@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Check out draft copy  -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-	<xsl:include href="PopulateTemplate.xsl"/>
-	<xsl:include href="CommonPathRef.xsl"/>
-	<xsl:include href="AddHeader.xsl"/>
-	<xsl:include href="AddOnTable.xsl"/>
-	<xsl:include href="IRS4562Style.xsl"/>
-	<xsl:output method="html" indent="yes"/>
-	<xsl:strip-space elements="*"/>
-	<!-- Defines the stage of the data, e.g. original or latest  version  -->
-	<xsl:param name="IRS4562Data" select="$RtnDoc/IRS4562"/>
-	<xsl:template name="AddRowsPartI">
-		<xsl:param name="NumOfRows"/>
-		<xsl:param name="EPCount"/>
-		<xsl:if test="$EPCount &lt; $NumOfRows">
-			<tr>
-				<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width: 91mm;padding-left: 3mm;">
-					<xsl:if test="$EPCount=0">
-				</xsl:if>
-					<span style="width: 1px"/>
-				</td>
-				<td class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width: 32mm; text-align: right">
-					<span style="width: 1px"/>
-				</td>
-				<td class="styIRS4562TableCellC" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px; width: 32mm; text-align: right">
-					<span style="width: 1px"/>
-				</td>
-				<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:0px; width: 32mm; background-color: lightgrey">
-					<span style="width: 1px"/>
-				</td>
-			</tr>
-			<xsl:call-template name="AddRowsPartI">
-				<xsl:with-param name="EPCount" select="$EPCount + 1"/>
-				<xsl:with-param name="NumOfRows" select="$NumOfRows"/>
-			</xsl:call-template>
-		</xsl:if>
-	</xsl:template>
-	<xsl:template name="AddRowsPartIII">
+  <xsl:include href="PopulateTemplate.xsl"/>
+  <xsl:include href="CommonPathRef.xsl"/>
+  <xsl:include href="AddHeader.xsl"/>
+  <xsl:include href="AddOnTable.xsl"/>
+  <xsl:include href="IRS4562Style.xsl"/>
+  <xsl:output method="html" indent="yes"/>
+  <xsl:strip-space elements="*"/>
+  <!-- Defines the stage of the data, e.g. original or latest  version  -->
+  <xsl:param name="IRS4562Data" select="$RtnDoc/IRS4562"/>
+  <!-- TEMPLATE 1 - ADD ROWS to PART I -->
+  <xsl:template name="AddRowsPartI">
+	<xsl:param name="NumOfRows"/>
+	<xsl:param name="EPCount"/>
+	<xsl:if test="$EPCount &lt; $NumOfRows">
+	  <tr>
+		<td class="styIRS4562TableCellA" style="border-color:black;border-left-width:0px;border-right-width:1px;border-top-width:0px;border-bottom-width:1px;width:91mm;padding-left:3mm;">
+		  <xsl:if test="$EPCount=0"></xsl:if>
+		  <span style="width: 1px"/>
+		</td>
+		<td class="styIRS4562TableCellB" style="border-color:black;border-left-width:0px;border-right-width:1px;border-top-width:0px;border-bottom-width:1px;width:32mm;text-align:right;">
+		  <span style="width: 1px"/>
+		</td>
+		<td class="styIRS4562TableCellC" style="border-color:black;border-left-width:0px;border-right-width:0px;border-top-width:0px;border-bottom-width:1px;width:32mm;text-align:right;">
+		  <span style="width: 1px"/>
+		</td>
+		<td class="styIRS4562TableCellD" style="border-color:black;border-left-width:1px;border-right-width:0px;border-top-width:0px;border-bottom-width:0px;width:32mm;background-color:lightgrey;">
+		  <span style="width: 1px"/>
+		</td>
+	  </tr>
+	  <xsl:call-template name="AddRowsPartI">
+		<xsl:with-param name="EPCount" select="$EPCount + 1"/>
+		<xsl:with-param name="NumOfRows" select="$NumOfRows"/>
+	  </xsl:call-template>
+	</xsl:if>
+  </xsl:template>
+  <!-- TEMPLATE 2 - ADD ROWS to PART III -->
+  <xsl:template name="AddRowsPartIII">
 		<xsl:param name="Classification"/>
 		<tr>
 			<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
@@ -67,46 +68,39 @@
 			</td>
 			<td class="styIRS4562TableCellB">
 				<xsl:if test="$Classification != 3 or $Classification != 1">
-					<xsl:attribute name="style">border-color: black; border-left-width: 0px; border-right-width: 
-					1px; border-top-width: 0px; border-bottom-width:0px; background-color: lightgrey</xsl:attribute>
+					<xsl:attribute name="style">border-color:black;border-left-width:0px;border-right-width:1px;border-top-width:0px;border-bottom-width:0px;background-color:lightgrey</xsl:attribute>
 				</xsl:if>
 				<xsl:if test="$Classification = 3 or $Classification = 1">
-					<xsl:attribute name="style">border-color: black; border-left-width: 0px; border-right-width:
-					 1px; border-top-width: 1px; border-bottom-width:0px; background-color: lightgrey</xsl:attribute>
+					<xsl:attribute name="style">border-color:black;border-left-width:0px;border-right-width:1px;border-top-width:1px;border-bottom-width:0px;background-color:lightgrey</xsl:attribute>
 				</xsl:if>
 				<xsl:if test="$Classification = 40">
-					<xsl:attribute name="style">border-color: black; border-left-width: 0px; border-right-width: 
-					1px; border-top-width: 1px; border-bottom-width:0px</xsl:attribute>
+					<xsl:attribute name="style">border-color:black;border-left-width:0px;border-right-width:1px;border-top-width:1px;border-bottom-width:0px</xsl:attribute>
 				</xsl:if>
 				<span class="styIRS4562TableCellPad"/>
 			</td>
-			<td class="styIRS4562TableCellC" style="border-color: black; border-left-width: 0px;
-			 border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align: right">
+			<td class="styIRS4562TableCellC" style="border-color:black;border-left-width:0px;border-right-width:1px;border-top-width:1px;border-bottom-width:0px;text-align: right">
 				<span class="styIRS4562TableCellPad"/>
 			</td>
-			<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; 
-			border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
+			<td class="styIRS4562TableCellD" style="border-color:black;border-left-width:0px;border-right-width:1px;border-top-width:1px;border-bottom-width:0px">
 				<xsl:if test="$Classification = 25">25 yrs.</xsl:if>
 				<xsl:if test="$Classification = 12">12 yrs.</xsl:if>
 				<xsl:if test="$Classification = 40">40 yrs.</xsl:if>
 				<span class="styIRS4562TableCellPad"/>
 			</td>
-			<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; 
-			border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
+			<td class="styIRS4562TableCellE" style="border-color:black;border-left-width:0px;border-right-width:1px;border-top-width:1px;border-bottom-width:0px">
 				<xsl:if test="$Classification = 40">MM</xsl:if>
 				<span class="styIRS4562TableCellPad"/>
 			</td>
-			<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px;
-			 border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
+			<td class="styIRS4562TableCellF" style="border-color:black;border-left-width:0px;border-right-width:1px;border-top-width:1px;border-bottom-width:0px">
 				<xsl:if test="$Classification = 25 or $Classification = 1 or $Classification = 12 or $Classification = 40">S/L</xsl:if>
 				<span class="styIRS4562TableCellPad"/>
 			</td>
-			<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px;
-			 border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
+			<td class="styIRS4562TableCellG" style="border-color:black;border-left-width 0px;border-right-width:0px;border-top-width:1px;border-bottom-width:0px">
 				<span class="styIRS4562TableCellPad"/>
 			</td>
 		</tr>
 	</xsl:template>
+	<!-- TEMPLATE 3 -->
 	<xsl:template name="AddRowsLine26and27">
 		<xsl:param name="Line"/>
 		<xsl:param name="NumOfRows"/>
@@ -116,33 +110,27 @@
 			<tr>
 				<xsl:choose>
 					<xsl:when test="$FirstCall = 'true'">
-						<td class="styTableCell" style="border-color: black; width:29mm; font-size: 6pt">
+						<td class="styTableCell" style="border-color:black;width:29mm;font-size:6pt">
 							<span class="styIRS4562TableCellPad"/>
 						</td>
-						<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt">
+						<td class="styTableCell" style="border-color:black;width:16mm;font-size:6pt">
 							<span class="styIRS4562TableCellPad"/>
 						</td>
-						<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; 
-						text-align: right">%<span class="styIRS4562TableCellPad"/>
-						</td>
-						<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; 
-						text-align: right">
+						<td class="styTableCell" style="border-color:black;width:16mm;font-size:6pt;text-align:right">%<span class="styIRS4562TableCellPad"/></td>
+						<td class="styTableCell" style="border-color:black;width:24mm;font-size:6pt;text-align:right">
 							<span class="styIRS4562TableCellPad"/>
 						</td>
-						<td class="styTableCell" style="border-color: black; width:26mm; font-size: 6pt; 
-						text-align: right">
+						<td class="styTableCell" style="border-color:black;width:26mm;font-size:6pt;text-align:right">
 							<span class="styIRS4562TableCellPad"/>
 						</td>
-						<td class="styTableCell" style="border-color: black; width:9mm; font-size: 6pt;
-						 text-align: right">
+						<td class="styTableCell" style="border-color:black;width:9mm;font-size:6pt;text-align:right">
 							<span class="styIRS4562TableCellPad"/>
 						</td>
-						<td class="styTableCell" style="border-color: black; width:17mm; font-size: 6pt;
-						 text-align: left;">
+						<td class="styTableCell" style="border-color:black;width:17mm;font-size:6pt;text-align:left;">
 							<xsl:if test="$Line = 27">S/L -</xsl:if>
 							<span class="styIRS4562TableCellPad"/>
 						</td>
-						<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt">
+						<td class="styTableCell" style="border-color:black;width:24mm;font-size:6pt">
 							<span class="styIRS4562TableCellPad"/>
 						</td>
 						<xsl:choose>
@@ -151,7 +139,7 @@
 									<!-- If this row is the last row of the table, put bottom border to the cell. Otherwise, don't put the bottom border on the cell.-->
 									<xsl:choose>
 										<xsl:when test="($BPCount + 1) = $NumOfRows">
-											<xsl:attribute name="style">border-color: black; border-left-width: 0px; 
+											<xsl:attribute name="style">border-color:black; border-left-width: 0px; 
 											border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px; width:24mm; font-size: 6pt;background-color: lightgrey;</xsl:attribute>
 										</xsl:when>
 										<xsl:otherwise>
@@ -237,6 +225,7 @@
 			</xsl:call-template>
 		</xsl:if>
 	</xsl:template>
+	<!-- TEMPLATE 4 -->
 	<xsl:template name="AddRowsPartVI">
 		<xsl:param name="NumOfRows"/>
 		<xsl:param name="ACount"/>
@@ -294,10 +283,10 @@
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
 					<!--  remember print   -->
-	<xsl:if test="not($Print) or $Print=''">
+					<xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS4562Style"/>
 						<xsl:call-template name="AddOnStyle"/>
-</xsl:if>
+					</xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
@@ -308,11 +297,9 @@
 					<!--   END WARNING LINE   -->
 					<!--   BEGIN FORM HEADER   -->
 					<div class="styTBB" style="width:187mm;">
-						<div class="styFNBox" style="width:31mm;border-right-width:1px;height:22mm;
-						border-right-width:2px">
+						<div class="styFNBox" style="width:31mm;border-right-width:1px;height:22mm;border-right-width:2px">
 							<div style="padding-top:1mm;padding-left:2mm">
-    Form<span class="styFormNumber"> 4562
-	</span>
+								Form<span class="styFormNumber"> 4562 </span>
 							</div>
 							<div>
 								<xsl:call-template name="SetFormLinkInline">
@@ -320,14 +307,12 @@
 								</xsl:call-template>
 								<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="Desc">Form 4562, Top Left Margin - Note </xsl:with-param>
-									<xsl:with-param name="TargetNode"
-									 select="$IRS4562Data/@section179ExpnsDedSummaryCd"/>
+									<xsl:with-param name="TargetNode" select="$IRS4562Data/@section179ExpnsDedSummaryCd"/>
 									<xsl:with-param name="Style">padding-left:3mm;</xsl:with-param>
 								</xsl:call-template>
 								<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="Desc">Form 4562, Top Left Margin - Note 2</xsl:with-param>
-									<xsl:with-param name="TargetNode"
-									 select="$IRS4562Data/@extnsUnderAnnouncementCd"/>
+									<xsl:with-param name="TargetNode" select="$IRS4562Data/@extnsUnderAnnouncementCd"/>
 									<xsl:with-param name="Style">padding-left:3mm;</xsl:with-param>
 								</xsl:call-template>
 							</div>
@@ -335,20 +320,22 @@
 							<div class="styAgency">Internal Revenue Service   (99)</div>
 						</div>
 						<div class="styFTBox" style="width:125mm;">
-							<div class="styMainTitle" style=";padding-top:1mm">Depreciation and Amortization</div>
+							<div class="styMainTitle" style="padding-top:1mm;">Depreciation and Amortization</div>
 							<div class="styFMT" style="font-size:9pt;padding-top:1mm">(Including Information on Listed Property)</div>
                             <br/>							
-							<div class="styFBT" style=" font-size: 7pt;">
-						<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="bullet"/> Attach to your tax return.
-	                    </div><div class="styFBT" style=" font-size: 7pt;">
+							<div class="styFBT" style=" font-size:7pt;">
+								<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="bullet"/> Attach to your tax return.
+							</div>
+							<div class="styFBT" style=" font-size:7pt;">
 								<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="bullet"/>
 								<span  style="font-size:6pt;padding-top:0mm">&#160;
-								Information about Form 4562 and its separate instructions is at 
-								<span style="width:.5mm"/> </span> 
-						<a style="text-decoration:none;color:black;" href="http://www.irs.gov/form1120s" title="Link to IRS.gov">
-										<i>www.irs.gov/form4562.</i>
-									</a>
-	</div>
+									Information about Form 4562 and its separate instructions is at 
+									<span style="width:.5mm"/> 
+								</span> 
+								<a style="text-decoration:none;color:black;" href="http://www.irs.gov/form4562" title="Link to IRS.gov">
+									<i>www.irs.gov/form4562.</i>
+								</a>
+							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:22mm; border-left-width: 2px">
 							<div class="styOMB" style="height:4mm;width:30mm;">OMB No. 1545-0172</div>
@@ -361,78 +348,34 @@
 					<!--   END FORM HEADER   -->
 					<!--   BEGIN TAXPAYER INFO   -->
 					<!--   BEGIN NAME   -->
+					<!-- HINTS: Due to the original choice of coding as a table therefore, the width is not equal to 187mm-->
 					<table style="width:187mm;clear:all;" cellspacing="0">
-						<tr style="border: solid black 1;hight:12mm">
-							<td class="styNameBox" style="width:90mm;font-size:7pt;height:15mm">
-	Name(s) shown on return<br/>
-								<span style="font-size: 7pt; font-weight: normal;padding-bottom:1mm">
-										 <xsl:choose>
-							<!-- Name from 1120/990/1065 Return Header -->
-							<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/
-								  BusinessName/BusinessNameLine1Txt"/>
-								</xsl:call-template>
-								<br/>
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/
-								  BusinessName/BusinessNameLine2Txt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<!-- Name from 1040 Return Header -->
-							<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt"><br/>
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<!-- Name from 1041 Return Header -->
-							<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/
-								  EstateOrTrustName/BusinessNameLine1Txt"/>
-								</xsl:call-template>
-								<br/>
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/
-								  EstateOrTrustName/BusinessNameLine2Txt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
-								<xsl:call-template name="PopulateText">
-								  <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/
-								  NationalMortgageAssocCd"/>
-								</xsl:call-template>
-								<br/>
-							</xsl:when>
-							</xsl:choose>
-					</span>
+						<tr style="border:solid black 1;">
+							<td class="styNameBox" style="width:99mm;font-size:7pt;">
+								Name(s) shown on return<br/>
+								<span style="font-size:6.5pt;">				
+									<!--Choice for 1120 (Parent/Subsidiary), 1040, 1040NR and 1041 Return Header Filer info-->
+									<xsl:call-template name="PopulateFilerName">
+										<xsl:with-param name="TargetNode" select="$IRS4562Data"/>
+									</xsl:call-template>
+								</span> 		
 							</td>
-							<td class="styNameBox" style="height:15mm;width:70mm;ont-size:7pt;
-							padding-left:2mm;padding-bottom:0mm;">
-                            Business or activity to which this form relates
-                        	<br/><br/>
+							<td class="styNameBox" style="width:58mm;font-size:7pt;">
+								Business or activity to which this form relates
+								<br/><br/>
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$IRS4562Data/
-									BusinessOrActivityTxt"/>
+									<xsl:with-param name="TargetNode" select="$IRS4562Data/BusinessOrActivityTxt"/>
 								</xsl:call-template>
 							</td>
-							<td class="styEINBox" style="width:30mmf;ont-size:7pt;padding-left:2mm;padding-top:0mm;">
-						      Identifying number						                
-							  <br/>
-								<span style="font-size: 7pt; font-weight: normal;text-align:left">
+							<td class="styEINBox" style="width:28mm;font-size:7pt;">
+								Identifying number						                
+								<br/>
+								<span style="font-size:7pt;font-weight:normal;text-align:left">
 									<br/>
-								<xsl:choose>
-		                  <xsl:when test="$RtnHdrData/Filer/EIN">
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-											</xsl:call-template>
-										</xsl:when>
-										<xsl:otherwise>
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-											</xsl:call-template>
-										</xsl:otherwise>
-									</xsl:choose>
+									<!-- Choice for 1120 (Parent/Subsidiary), 1041, 1040 and 1040NR Return Header Filer info  -->
+									<xsl:call-template name="PopulateFilerTIN">
+										<xsl:with-param name="TargetNode" select="$IRS4562Data"/>
+									</xsl:call-template> 
 								</span>
 							</td>
 						</tr>
@@ -592,13 +535,13 @@
 					<!--   END LINE 5   -->
 					<!--   START LINE 6    -->
 					<!--  BEGIN A, B, and C   -->
-					<div class="styIRS4562TableContainer" id="Line6Header">
+					<div class="styIRS4562TableContainer" id="DPctn">
 						<!--print logic-->
 						<xsl:call-template name="SetInitialState"/>
 						<!--end-->
 						<table class="styIRS4562Table" cellspacing="0">
 							<thead class="styTableThead">
-								<tr scope="col">
+								<tr>
 									<th scope="col" class="styIRS4562TableCellA" 
 									style="border-color: black; border-left-width: 0px; 
 									border-right-width: 1px; border-top-width: 1px; border-bottom-width:1px; 
@@ -614,38 +557,24 @@
 									style="border-color: black; border-left-width: 0px; border-right-width: 0px; 
 									border-top-width: 1px; border-bottom-width:1px; width: 32mm; text-align: center">
 										<b>(c)</b> Elected cost</th>
-									<th scope="col" class="styIRS4562TableCellD"
-									 style="border-color: black; border-left-width: 1px; border-right-width: 0px; 
-									 border-top-width: 1px; border-bottom-width:0px; width: 32mm;
-									  background-color: lightgrey;">
+					  <th scope="col" class="styIRS4562TableCellD" style="vertical-align:top;border-color:black;border-left-width:1px;border-right-width:0px;border-top-width:1px;border-bottom-width:0px;width:32mm;background-color:lightgrey;">
 					<xsl:if test="not((count($IRS4562Data/ElectedProperty) &gt; 2) and
 					 ($Print = $Separated))">
-							<span style="width:7mm;text-align:right;float:right; padding-top:2mm;
-							background-color: lightgrey;">
-								<xsl:call-template name="SetDynamicTableToggleButton">
-									<xsl:with-param name="TargetNode" select="$IRS4562Data/ElectedProperty"/>
-									<xsl:with-param name="containerHeight" select="2"/>
-									<xsl:with-param name="headerHeight" select="0"/>
-									<xsl:with-param name="containerID" select=" 'DPctn' "/>
-								</xsl:call-template>
-							</span>
-					</xsl:if>
-										<span style="width: 1px"/>
-									</th>
-								</tr>
-							</thead>
-							<tfoot/>
-							<tbody/>
-						</table>
-					</div>
-					<div class="styIRS4562TableContainer" id="DPctn">
-						<!--print logic-->
-						<xsl:call-template name="SetInitialState"/>
-						<!--end-->
-						<table class="styIRS4562Table" cellspacing="0">
-							<thead/>
-							<tfoot/>
-							<tbody>
+						  <span style="width:7mm;text-align:right;float:right;">
+							<xsl:call-template name="SetDynamicTableToggleButton">
+							  <xsl:with-param name="TargetNode" select="$IRS4562Data/ElectedProperty"/>
+							  <xsl:with-param name="containerHeight" select="2"/>
+							  <xsl:with-param name="headerHeight" select="1"/>
+							  <xsl:with-param name="containerID" select=" 'DPctn' "/>
+							</xsl:call-template>
+						  </span>
+					    </xsl:if>
+						<span style="width: 1px"/>
+					  </th>
+					</tr>
+				  </thead>
+				  <tfoot/>
+				  <tbody>
 								<xsl:if test="not((count($IRS4562Data/ElectedProperty) &gt; 2) and
 								 ($Print = $Separated))">
 									<xsl:for-each select="$IRS4562Data/ElectedProperty">
@@ -744,7 +673,7 @@ border-top-width: 0px; border-bottom-width:0px; width: 32mm; background-color: l
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$IRS4562Data/ElectedProperty"/>
 						<xsl:with-param name="containerHeight" select="2"/>
-						<xsl:with-param name="headerHeight" select="0"/>
+						<xsl:with-param name="headerHeight" select="1"/>
 						<xsl:with-param name="containerID" select=" 'DPctn' "/>
 					</xsl:call-template>
 					<!--   END A, B, and C   -->
@@ -913,17 +842,14 @@ Business income limitation. Enter the smaller of business income (not less than 
 					<!--   END LINE 12   -->
 					<!--   BEGIN LINE 13   -->
 					<div class="styIRS4562LineItem">
-						<div class="styLNLeftNumBox" style="height:4mm;width:7mm">13</div>
-						<span class="styIRS4562LNDesc" style="width: 107mm">
-						Carryover of disallowed deduction to 2017 Add lines 9 and 10, less line 12
-<div style="float:right;">
-<!--<div class="styDotLn">
- ..
- </div>
--->										
-<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="bullet"/>	
- <span style="width:1mm"/>
-                </div>
+						<div class="styLNLeftNumBox" style="height:4mm; width:7mm">13</div>
+						<span class="styIRS4562LNDesc" style="width:107mm">
+							Carryover of disallowed deduction to 2017 Add lines 9 and 10, less line 12
+							<div style="float:right;">
+								<!--<div class="styDotLn"> ..</div>-->										
+								<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="bullet"/>	
+								<span style="width:1mm"/>
+							</div>
 						</span>
 						<span class="styLNRightNumBox" 
 						style="border-top-width:1px;border-bottom-width:0px;">13</span>
@@ -1134,20 +1060,20 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 					</div>
 					<!-- end18A -->
 	<div class="styIRS4562Section"
-	 style="float: none; clear:both; border-top-width: 1px; border-bottom-width: 0px;font-weight: bold;padding-left:10mm;font-size:7pt">
+	 style="float: none; clear:both; border-top-width: 1px; border-bottom-width:0px;font-weight:bold;padding-left:10mm;font-size:7pt">
 	Section B&#151;Assets Placed in Service During 2016 Tax Year Using the General Depreciation System
   <xsl:call-template name="SetFormLinkInline">
 						<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralDepreciationSystem"/>
 						</xsl:call-template>
-						<span style="width:30mm"/>
+						<span style="width:33mm"/>
 							<xsl:choose>
 								<xsl:when test="count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty)&gt;1">
 									<xsl:call-template name="SetDynamicTableToggleButton">
 										<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty"/>
 										<xsl:with-param name="containerHeight" select="1"/>
 										<xsl:with-param name="containerID" select=" 'GDctn' "/>
-								<!--<xsl:with-param name="imageID" select=" 'GDimg' "/>-->
-									<!--	<xsl:with-param name="buttonID" select=" 'GDbtn' "/>-->
+										<xsl:with-param name="imageID" select=" 'GDimg' "/>
+										<xsl:with-param name="buttonID" select=" 'GDbtn' "/>
 									</xsl:call-template>
 								</xsl:when>
 								<xsl:when test="count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty)&gt;1">
@@ -1155,8 +1081,8 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 										<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty"/>
 										<xsl:with-param name="containerHeight" select="1"/>
 										<xsl:with-param name="containerID" select=" 'GDctn' "/>
-								<!--	<xsl:with-param name="imageID" select=" 'GDimg' "/>-->
-									<!--	<xsl:with-param name="buttonID" select=" 'GDbtn' "/>-->
+										<xsl:with-param name="imageID" select=" 'GDimg' "/>
+										<xsl:with-param name="buttonID" select=" 'GDbtn' "/>
 									</xsl:call-template>
 								</xsl:when>
 								<xsl:when test="count($IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty)&gt;1">
@@ -1164,8 +1090,8 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 										<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty"/>
 										<xsl:with-param name="containerHeight" select="1"/>
 										<xsl:with-param name="containerID" select=" 'GDctn' "/>
-								<!--	<xsl:with-param name="imageID" select=" 'GDimg' "/>-->
-									<!--	<xsl:with-param name="buttonID" select=" 'GDbtn' "/>-->
+										<xsl:with-param name="imageID" select=" 'GDimg' "/>
+										<xsl:with-param name="buttonID" select=" 'GDbtn' "/>
 									</xsl:call-template>
 								</xsl:when>
 								<xsl:when test="count($IRS4562Data/GeneralDepreciationSystem/GDS10YearProperty)&gt;1">
@@ -1173,8 +1099,8 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 										<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralDepreciationSystem/GDS10YearProperty"/>
 										<xsl:with-param name="containerHeight" select="1"/>
 										<xsl:with-param name="containerID" select=" 'GDctn' "/>
-							<!--	<xsl:with-param name="imageID" select=" 'GDimg' "/>-->
-									<!--	<xsl:with-param name="buttonID" select=" 'GDbtn' "/>-->
+										<xsl:with-param name="imageID" select=" 'GDimg' "/>
+									<xsl:with-param name="buttonID" select=" 'GDbtn' "/>
 									</xsl:call-template>
 								</xsl:when>
 								<xsl:when test="count($IRS4562Data/GeneralDepreciationSystem/GDS15YearProperty)&gt;1">
@@ -1182,8 +1108,8 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 										<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralDepreciationSystem/GDS15YearProperty"/>
 										<xsl:with-param name="containerHeight" select="1"/>
 										<xsl:with-param name="containerID" select=" 'GDctn' "/>
-								<!--<xsl:with-param name="imageID" select=" 'GDimg' "/>-->
-									<!--	<xsl:with-param name="buttonID" select=" 'GDbtn' "/>-->
+								<xsl:with-param name="imageID" select=" 'GDimg' "/>
+									<xsl:with-param name="buttonID" select=" 'GDbtn' "/>
 									</xsl:call-template>
 								</xsl:when>
 								<xsl:when test="count($IRS4562Data/GeneralDepreciationSystem/GDS20YearProperty)&gt;1">
@@ -1191,8 +1117,8 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 										<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralDepreciationSystem/GDS20YearProperty"/>
 										<xsl:with-param name="containerHeight" select="1"/>
 										<xsl:with-param name="containerID" select=" 'GDctn' "/>
-								<!--<xsl:with-param name="imageID" select=" 'GDimg' "/>-->
-									<!--	<xsl:with-param name="buttonID" select=" 'GDbtn' "/>-->
+								<xsl:with-param name="imageID" select=" 'GDimg' "/>
+									<xsl:with-param name="buttonID" select=" 'GDbtn' "/>
 									</xsl:call-template>
 								</xsl:when>
 								<xsl:when test="count($IRS4562Data/GeneralDepreciationSystem/GDS25YearProperty)&gt;1">
@@ -1200,8 +1126,8 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 										<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralDepreciationSystem/GDS25YearProperty"/>
 										<xsl:with-param name="containerHeight" select="1"/>
 										<xsl:with-param name="containerID" select=" 'GDctn' "/>
-								<!--<xsl:with-param name="imageID" select=" 'GDimg' "/>-->
-									<!--	<xsl:with-param name="buttonID" select=" 'GDbtn' "/>-->
+								<xsl:with-param name="imageID" select=" 'GDimg' "/>
+									<xsl:with-param name="buttonID" select=" 'GDbtn' "/>
 									</xsl:call-template>
 								</xsl:when>
 								<xsl:when test="count($IRS4562Data/GeneralDepreciationSystem/GDSResidentialRentalProperty)&gt;2">
@@ -1209,8 +1135,8 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 										<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralDepreciationSystem/GDSResidentialRentalProperty"/>
 										<xsl:with-param name="containerHeight" select="2"/>
 										<xsl:with-param name="containerID" select=" 'GDctn' "/>
-									<!--<xsl:with-param name="imageID" select=" 'GDimg' "/>-->
-									<!--	<xsl:with-param name="buttonID" select=" 'GDbtn' "/>-->
+									<xsl:with-param name="imageID" select=" 'GDimg' "/>
+									<xsl:with-param name="buttonID" select=" 'GDbtn' "/>
 									</xsl:call-template>
 								</xsl:when>
 								<xsl:when test="count($IRS4562Data/GeneralDepreciationSystem/GDSNonRsdntlRealProp)&gt;2">
@@ -1218,8 +1144,8 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 										<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralDepreciationSystem/GDSNonRsdntlRealProp"/>
 										<xsl:with-param name="containerHeight" select="2"/>
 										<xsl:with-param name="containerID" select=" 'GDctn' "/>
-									<!--<xsl:with-param name="imageID" select=" 'GDimg' "/>-->
-									<!--	<xsl:with-param name="buttonID" select=" 'GDbtn' "/>-->
+									<xsl:with-param name="imageID" select=" 'GDimg' "/>
+									<xsl:with-param name="buttonID" select=" 'GDbtn' "/>
 									</xsl:call-template>
 								</xsl:when>
 								<xsl:when test="count($IRS4562Data/GeneralDepreciationSystem/GDSNonRsdntlRealPropSpecify)&gt;2">
@@ -1227,8 +1153,8 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 										<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralDepreciationSystem/GDSNonRsdntlRealPropSpecify"/>
 										<xsl:with-param name="containerHeight" select="2"/>
 										<xsl:with-param name="containerID" select=" 'GDctn' "/>
-							<!--	<xsl:with-param name="imageID" select=" 'GDimg' "/>-->
-									<!--	<xsl:with-param name="buttonID" select=" 'GDbtn' "/>-->
+							<xsl:with-param name="imageID" select=" 'GDimg' "/>
+									<xsl:with-param name="buttonID" select=" 'GDbtn' "/>
 									</xsl:call-template>
 								</xsl:when>
 								<xsl:when test="count($IRS4562Data/AlternativeDepreciationSystem/ADSClassLifeProperty)&gt;1">
@@ -1236,17 +1162,14 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 										<xsl:with-param name="TargetNode" select="$IRS4562Data/AlternativeDepreciationSystem/ADSClassLifeProperty"/>
 										<xsl:with-param name="containerHeight" select="1"/>
 										<xsl:with-param name="containerID" select=" 'GDctn' "/>
-									<!--<xsl:with-param name="imageID" select=" 'GDimg' "/>-->
-									<!--	<xsl:with-param name="buttonID" select=" 'GDbtn' "/>-->
+									<xsl:with-param name="imageID" select=" 'GDimg' "/>
+									<xsl:with-param name="buttonID" select=" 'GDbtn' "/>
 									</xsl:call-template>
 								</xsl:when>
 							</xsl:choose>
 						</div>
-
-
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 19 START &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 19 START &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
-
 					<!--  BEGIN SECTION B, Line 19 TABLE  -->
 					<div class="styIRS4562TableContainer" style="height: auto" id="GDctn">
 						<!--print logic-->
@@ -2057,27 +1980,22 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 								</xsl:if>
 							</tbody>
 						</table>
-						<xsl:call-template name="SetInitialDynamicTableHeight">
-							<xsl:with-param name="TargetNode" select="$IRS4562Data/AlternativeDepreciationSystem/ADSClassLifeProperty"/>
-										<xsl:with-param name="containerHeight" select="1"/>
-										<xsl:with-param name="containerID" select=" 'GDctn' "/>
-									<!--<xsl:with-param name="imageID" select=" 'GDimg' "/>-->
-						<!--<xsl:with-param name="DataRowCount" select="$tableRowCount"/>
-						<xsl:with-param name="containerHeight" select="9"/>
-						<xsl:with-param name="containerID" select=" 'GDbtn' "/>-->
-					</xsl:call-template>
-					</div><br/>
+						<xsl:if test="$Print != $Separated">
+							<xsl:call-template name="SetInitialDynamicTableHeight">
+								<xsl:with-param name="TargetNode" select="$IRS4562Data/AlternativeDepreciationSystem/ADSClassLifeProperty"/>
+								<xsl:with-param name="containerHeight" select="1"/>
+								<xsl:with-param name="containerID" select=" 'GDctn' "/>							
+							</xsl:call-template>
+						</xsl:if>
+					</div>
 					<!--   END SECTION B, Line19 TABLE   -->
-
-
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 19 END &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 19 END &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 20 START &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 20 START &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
-
 					<!--  BEGIN SECTION B TABLE  -->
-					<div class="styIRS4562TableContainer" style="height:12mm;" id="SecBLine20">
+					<div class="styIRS4562TableContainer" id="SecBLine20">
 						<!--print logic-->
 						<xsl:call-template name="SetInitialState"/>
 						<!--end-->
@@ -2265,7 +2183,7 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 									<xsl:otherwise>
 										<tr>
 											<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-												<span class="styLN" style="font-weight: bold">
+												<span class="styLN" style="font-weight:bold">20a  
         
         <span style="width: 3px"/>
 												</span>
@@ -2380,16 +2298,15 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 										<xsl:with-param name="buttonID" select=" 'GDbtn' "/>
 										</xsl:call-template>
 																				</xsl:if>
-				<!--	<br/>-->
 					<!--   END SECTION B TABLE   -->
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 20 END &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 20 END &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
-<p style="page-break-before:always"/>
+<!--<p style="page-break-before:always"/>-->
 					<!--   BEGIN PART IV HEADER   -->
 					<div class="styBB" style="width:187mm; border-top: 1px black solid;height:4.5mm;">
 						<div class="styPartName">Part IV</div>
 						<div class="styPartDesc">
-							<span style="width:16px;"/>Summary <span class="styNormalText">  (see instructions.)</span>
+							<span style="width:16px;"/>Summary <span class="styNormalText">  (See instructions.)</span>
 						</div>
 					</div>
 					<!--   END PART IV HEADER   -->
@@ -2398,15 +2315,12 @@ style="letter-spacing:4mm;font-weight:bold;text-align:right">...................
 						<div style="float:left;">
 							<div class="styLNLeftNumBox" style="height:4mm;width:6mm">21</div>
 							<div class="styGenericDiv" style="height:4mm;padding-top:.5mm;padding-bottom:.5mm;">
-Listed property. Enter amount from line 28
-                </div>
+								Listed property. Enter amount from line 28
+							</div>
 						</div>
 						<div style="float:right;">
-							<div class="styDotLn">.....................
-                </div>
-							<div class="styLNRightNumBox">
-                  21
-                </div>
+							<div class="styDotLn">.....................</div>
+							<div class="styLNRightNumBox">21 </div>
 							<div class="styLNAmountBox">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$IRS4562Data/TotalListedDepreciationAmt"/>
@@ -2421,15 +2335,12 @@ Listed property. Enter amount from line 28
 							<div class="styIRS4562LNDesc" style="height:4mm;padding-top:.5mm;padding-bottom:.5mm;width:140mm;">
 								<b>Total.</b> Add amounts from line 12, lines 14 through 17, lines 19 and 20 in column (g), and line 21. 
 								Enter here
-                </div>
+							</div>
 						</div>
 						<div style="float:right;">
-							<div class="styDotLn">
-                </div>
-							<div class="styLNRightNumBox" style="border-bottom-width:0px">
-                </div>
-							<div class="styLNAmountBox" style="border-bottom-width:0px">
-							</div>
+							<div class="styDotLn"></div>
+							<div class="styLNRightNumBox" style="border-bottom-width:0px"></div>
+							<div class="styLNAmountBox" style="border-bottom-width:0px"></div>
 						</div>
 					</div>
 					<!-- end 22A -->
@@ -2438,15 +2349,12 @@ Listed property. Enter amount from line 28
 						<div style="float:left;">
 							<div class="styLNLeftNumBox" style="height:4mm;width:6mm"/>
 							<div class="styGenericDiv" style="height:4mm;padding-top:.5mm;padding-bottom:.5mm;">
- and on the appropriate lines of your return.  Partnerships and S corporations&#151;see instructions
-                </div>
+								and on the appropriate lines of your return.  Partnerships and S corporations&#151;see instructions
+							</div>
 						</div>
 						<div style="float:right;">
-							<div class="styDotLn">.....
-                </div>
-							<div class="styLNRightNumBox" style="border-bottom-width:0px">
-                  22
-                </div>
+							<div class="styDotLn">.....</div>
+							<div class="styLNRightNumBox" style="border-bottom-width:0px">22</div>
 							<div class="styLNAmountBox" style="border-bottom-width:0px">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$IRS4562Data/TotalDepreciationAmt"/>
@@ -2456,19 +2364,19 @@ Listed property. Enter amount from line 28
 					</div>
 					<!--   END LINE 22   -->
 					<!--   BEGIN LINE 23   -->
-					<div class="styIRS4562LineItem" style="float:none;clear:all;">
-					<div class="styLNLeftNumBox" style="height:4mm;width:7mm;width:5mm">23</div>
-						<span class="styIRS4562LNDesc" style="width: 109mm">For assets shown above and placed in service during the current year,
-    enter the portion of the basis attributable to section 263A costs
-    <span class="styDotLn" style="float:right;padding-right:2mm;">.........</span>
+					<div class="styIRS4562LineItem" style="float:none; clear:all;">
+					<div class="styLNLeftNumBox" style="height:4mm; width:5mm;">23</div>
+						<span class="styIRS4562LNDesc" style="width:109mm">For assets shown above and placed in service during the current year,
+							enter the portion of the basis attributable to section 263A costs
+							<span class="styDotLn" style="float:right; padding-right:2mm;">.........</span>
   						</span>
-						<span class="styLNRightNumBox" style="padding-top: 3mm; border-top-width: 1px; border-bottom-width: 0px;height: 7.5mm">23</span>
-						<div class="styIRS4562LNAmountBox" style="border-top-width: 1px; border-bottom-width: 0px;height: 7.5mm;padding-top:3mm;width:32mm;font-size:7pt">
+						<span class="styLNRightNumBox" style="padding-top:4mm; border-top-width:1px; border-bottom-width:0px; height:7.5mm;">23</span>
+						<div class="styIRS4562LNAmountBox" style="border-top-width:1px; border-bottom-width:0px; height:7.5mm; padding-top:4mm; width:32mm; font-size:7pt;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS4562Data/Section263ACurrentYearCostAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="background-color: lightgrey; border-bottom-width: 0px; border-top: 1px solid black;height: 7.5mm;width:32mm"/>
+						<div class="styLNAmountBox" style="background-color:lightgrey; border-bottom-width:0px; border-top: 1px solid black; height:7.5mm; width:32mm;"/>
 					</div>
 					<!--   END LINE 23   -->
 					<!--BEGIN FOOTER-->
@@ -2476,8 +2384,8 @@ Listed property. Enter amount from line 28
 						<div style="float: left; clear: none;">
 							<span class="styBoldText">For Paperwork Reduction Act Notice, see separate instructions.</span>
 							<span style="padding-left:8mm;width:71mm;"> Cat. No. 12906N </span>
-         Form <span class="styBoldText" style="font-size: 8pt">4562</span> (2016)
-       </div>
+							Form <span class="styBoldText" style="font-size: 8pt">4562</span> (2016)
+						</div>
 					</div>
 					<!--END FOOTER-->
 					<p style="page-break-before:always"/>
@@ -2485,7 +2393,7 @@ Listed property. Enter amount from line 28
 					<div class="styBB" style="width:187mm">
 						<div style="float: left; clear: none">Form 4562 (2016)</div>
 						<div style="float:right">
-    Page <span class="styBoldText" style="font-size: 8pt">2</span>
+							Page <span class="styBoldText" style="font-size: 8pt">2</span>
 						</div>
 					</div>
 					<!--END HEADER-->
@@ -2512,13 +2420,12 @@ Listed property. Enter amount from line 28
 						</div>
 					</div>
 					<!--   END PART V HEADER   -->
-					<div class="styIRS4562Section" style="text-align:left; font-weight: normal;
-					border-top-width:0px;clear:all;">
+					<div class="styIRS4562Section" style="text-align:left; font-weight: normal;border-top-width:0px;clear:all;">
 						<b>Section A&#151;Depreciation and Other Information (Caution:</b>
-						 See the instructions for limits for passenger automobiles.
+						See the instructions for limits for passenger automobiles.
 						<b>)</b>
 					</div>
-		<!--   BEGIN LINE 24a   -->
+					<!--   BEGIN LINE 24a   -->
 							<span class="styIRS4562LNDesc" style="width: 106mm">
 							<b>24a&#160;</b>
 							<span style="font-family:arial"> Do you have evidence to support the business/investment use claimed?</span>
@@ -2564,9 +2471,7 @@ Listed property. Enter amount from line 28
 								</b>
 							</span>
 						</span>
-						<span class="styIRS4562LNDesc" style="width: 79mm;border-style: solid; 
-						border-color: black; border-left-width: 1px; border-right-width: 0px;
-						 border-top-width: 0px; border-bottom-width: 0px; padding-left:1mm">
+						<span class="styIRS4562LNDesc" style="width: 79mm;border-style: solid;border-color: black; border-left-width: 1px; border-right-width: 0px;border-top-width: 0px; border-bottom-width: 0px; padding-left:1mm">
 							<b>24b</b> If "Yes," is the evidence written?
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
@@ -2606,16 +2511,15 @@ Listed property. Enter amount from line 28
 											</xsl:call-template>No</label>
 									</b>
 								<span style="width:6mm"/>
-						<xsl:call-template name="SetDynamicTableToggleButton">
-								<xsl:with-param name="TargetNode"
-								 select="$IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty"/>
-										<xsl:with-param name="containerHeight" select="1"/>
-										<xsl:with-param name="containerID" select=" 'BUctn' "/>
-										<xsl:with-param name="imageID" select=" 'GDimg' "/>
-										<xsl:with-param name="buttonID" select=" 'GDbtn' "/>
-									</xsl:call-template>
+								<xsl:call-template name="SetDynamicTableToggleButton">
+									<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty"/>
+									<xsl:with-param name="containerHeight" select="1"/>
+									<xsl:with-param name="containerID" select=" 'BUctn' "/>
+									<xsl:with-param name="imageID" select=" 'GDimg' "/>
+									<xsl:with-param name="buttonID" select=" 'GDbtn' "/>
+								</xsl:call-template>
 							</span>			
-				<!--	</div>-->
+					<!--	</div>-->
 					<!--   END LINE 24a   -->
 					<!-- This tracks the number of data elements for line 26 and 27 plus the number of constant rows. -->
 					<!-- 3 is the number of constant rows. -->
@@ -2630,10 +2534,10 @@ Listed property. Enter amount from line 28
 						<table class="styTable" cellspacing="0" cellpadding="0" border="0" style="font-size:7pt;">
 							<thead class="styTableThead">
 								<tr scope="col">
-									<th scope="col" class="styTableCellHeader" style="border-color: black; border-top-width: 1px; width:29mm; text-align: center; font-size: 6pt;font-weight:normal;">
+									<th scope="col" class="styTableCellHeader" style="border-color: black; border-top-width: 1px; width:28mm; text-align: center; font-size: 6pt;font-weight:normal;">
 										<b>(a)</b>
 										<br/>Type of property (list<br/>vehicles first)</th>
-									<th scope="col" class="styTableCellHeader" style="border-color: black; border-top-width: 1px; width:16mm; text-align: center; font-size: 6pt;font-weight:normal;">
+									<th scope="col" class="styTableCellHeader" style="border-color: black; border-top-width: 1px; width:17mm; text-align: center; font-size: 6pt;font-weight:normal;">
 										<b>(b)</b>
 										<br/>Date placed in<br/>service</th>
 									<th scope="col" class="styTableCellHeader" style="border-color: black; border-top-width: 1px; width:16mm; text-align: center; font-size: 6pt;font-weight:normal;">
@@ -2663,103 +2567,101 @@ Listed property. Enter amount from line 28
 							<!-- Line 25  -->
 							<tbody>
 								<tr>
-									<td class="styIRS4562OtherCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px" colspan="7">
+									<td class="styIRS4562OtherCell" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px;" colspan="7">
 										<div>
-											<span style="width: 139mm;border-right-width:3px">
-												
-												<span style="font-size:6pt">
-												Special depreciation allowance for qualified listed property placed in service during the
-tax year and<b>
-<span style="width:25.5mm"/>
- <span class="styTableCell" style="border-color: black; border-left-width: 1px; border-right-width: 0px; border-bottom-width:0px; width:6mm;font-size:8pt;padding-bottom:0mm">
-										<span>
-										
-										</span>
-										<!--<span class="styIRS4562TableCellPad"/>-->
-									</span>
-</b></span>
+											<span style="width:139mm; border-right-width:3px">												
+												<span style="font-size:6pt;">
+													Special depreciation allowance for qualified listed property placed in service during the tax year and<b>
+													<span style="width:25.5mm"/>
+													<span class="styTableCell" style="border-color:black; border-left-width:1px; border-right-width:0px; border-bottom-width:0px; width:6mm; font-size:8pt; padding-bottom:0mm;">
+														<span>										
+														</span>
+														<!--<span class="styIRS4562TableCellPad"/>-->
+													</span>
+													</b>
+												</span>
 											</span>
 										</div>
 										<div/>
-										<span style="width: 132mm;height:3mm">
+										<span style="width: 132mm; height:3mm">
 											<!--<span style="width: 10px"/>-->
-											<span style="font-size:6pt;">used more than  50% in  a qualified business use (see instructions)</span>
-		<span class="styDotLn" style="float:right;padding-right:2mm;">.............</span>									
-          </span>
-				 <span class="styTableCell" style="border-color: black; border-left-width: 1px; border-right-width: 0px;padding-right:1mm; border-bottom-width:0px; width:7mm;font-size:7pt;padding-bottom:2mm">
-										<span>
-											<b>25</b>
+											<span style="font-size:6pt;">used more than 50% in a qualified business use (see instructions)</span>
+											<span class="styDotLn" style="float:right; padding-right:2mm;">.............</span>									
 										</span>
-								</span>
-			</td>
-			
-		<td class="styTableCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-bottom-width:0px; width:24mm;font-size:6pt;padding-top:4mm">
+										<span class="styTableCell" style="border-color:black; border-left-width:1px; border-right-width:0px;padding-right:1mm; border-bottom-width:0px; width:7mm; font-size:7pt; padding-bottom:2mm;">
+											<span>
+												<b>25</b>
+											</span>
+										</span>
+									</td>			
+									<td class="styTableCell" style="border-color:black; border-left-width:0px; border-right-width:1px; border-bottom-width:0px; width:24mm; font-size:6pt; padding-top:5mm">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS4562Data/TotalSpecialDeprecAllwncAmt"/>
 										</xsl:call-template>
 										<span class="styIRS4562TableCellPad"/>
 									</td>
-									<td class="styTableCell" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-bottom-width:0px; width:24mm;background-color: lightgrey">
+									<td class="styTableCell" style="border-color:black; border-left-width:0px; border-right-width:0px; border-bottom-width:0px; width:24mm; background-color:lightgrey;">
 										<span style="width: 1px"/>
 									</td>
 								</tr>
 								<tr>
-									<td class="styIRS4562OtherCell" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:1px" colspan="9">
-										<b>26</b> Property used more than 50% in a qualified business use: </td>
+									<td class="styIRS4562OtherCell" style="border-color:black; border-left-width:0px; border-right-width:0px; border-top-width:1px; border-bottom-width:1px" colspan="9">
+										<b>26</b> Property used more than 50% in a qualified business use: 
+									</td>
 								</tr>
 								<xsl:choose>
 									<xsl:when test="not((count($IRS4562Data/MoreThanHalfBusinessUseProp) &gt; 3) and ($Print=$Separated))">
 										<xsl:for-each select="$IRS4562Data/MoreThanHalfBusinessUseProp">
 											<tr>
-												<td class="styTableCell" style="width:29mm; font-size: 6pt; border-color:black; text-align:left;">
+												<td class="styTableCell" style="width:28mm; font-size 6pt; border-color:black; text-align:left;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="PropertyDesc"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-											<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: center;">
+												<td nowrap="true" class="styTableCell" style="border-color:black; width:17mm; font-size:6pt; text-align:center;">
 													<xsl:call-template name="PopulateMonthDayYear">
 														<xsl:with-param name="TargetNode" select="PlacedInServiceDt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: right">
-												<xsl:call-template name="PopulatePercent">
+												<td class="styTableCell" style="border-color:black; width:16mm; font-size:6pt; text-align:right">
+													<xsl:call-template name="PopulatePercent">
 														<xsl:with-param name="TargetNode" select="BusinessInvestmentUsePct"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
+												<td class="styTableCell" style="border-color:black; width:20mm; font-size:6pt; text-align:right">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="CostOrOtherBasisAmt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
+												<td class="styTableCell" style="border-color:black; width:20mm; font-size:6pt; text-align:right;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="BasisForDepreciationAmt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:9mm; font-size: 6pt; text-align:center">
+												<td class="styTableCell" style="border-color:black; width:9mm; font-size:6pt; text-align:center;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="RecoveryPrd"/>
 													</xsl:call-template>
 													<span style="width:.5px;"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:17mm; font-size: 6pt; text-align:center">
+												<td class="styTableCell" style="border-color:black; width:17mm; font-size:6pt; text-align:center">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="DeprecMthdAndConventionTypeCd"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt;padding-top:3mm">
+												<td class="styTableCell" style="border-color:black; width:24mm; font-size:6pt; padding-top:3mm">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="DepreciationDeductionAmt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; border-right-width: 0px;padding-top:3mm;">
+												<td class="styTableCell" style="border-color:black; width:24mm; font-size:6pt; border-right-width:0px;padding-top:3mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="ElectedSection179CostAmt"/>
 													</xsl:call-template>
@@ -2770,89 +2672,89 @@ tax year and<b>
 									</xsl:when>
 									<xsl:otherwise>
 										<tr>
-											<td class="styTableCell" style="border-color: black; width:29mm; font-size: 6pt">
+											<td class="styTableCell" style="border-color:black; width:29mm; font-size:6pt">
 												<xsl:call-template name="PopulateAdditionalDataTableMessage">
 													<xsl:with-param name="TargetNode" select="$IRS4562Data/MoreThanHalfBusinessUseProp"/>
 												</xsl:call-template>
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; text-align: center; width:16mm; font-size: 6pt;">
+											<td class="styTableCell" style="border-color:black; text-align:center; width:16mm; font-size:6pt;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:16mm; font-size:6pt; text-align:right">
 												<span class="styIRS4562TableCellPad"/>%</td>
-											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:20mm; font-size:6pt; text-align:right">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:20mm; font-size:6pt; text-align:right">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:9mm; font-size: 6pt; text-align: right;">
+											<td class="styTableCell" style="border-color:black; width:9mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:17mm; font-size: 6pt; text-align: left;">
+											<td class="styTableCell" style="border-color:black; width:17mm; font-size:6pt; text-align:left;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt">
+											<td class="styTableCell" style="border-color:black; width:24mm; font-size:6pt;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; border-right-width: 0px;">
+											<td class="styTableCell" style="border-color:black; width:24mm; font-size:6pt; border-right-width:0px;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 										</tr>
 										<tr>
-											<td class="styTableCell" style="border-color: black; width:29mm; font-size: 6pt">
+											<td class="styTableCell" style="border-color:black; width:29mm; font-size:6pt">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; text-align: center; width:16mm; font-size: 6pt;">
+											<td class="styTableCell" style="border-color:black; text-align:center; width:16mm; font-size:6pt;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:16mm; font-size:6pt; text-align:right">
 												<span class="styIRS4562TableCellPad"/>%</td>
-											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:20mm; font-size:6pt; text-align:right">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:20mm; font-size:6pt; text-align:right">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:9mm; font-size: 6pt; text-align: right;">
+											<td class="styTableCell" style="border-color:black; width:9mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:17mm; font-size: 6pt; text-align: left;">
+											<td class="styTableCell" style="border-color:black; width:17mm; font-size:6pt; text-align:left;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt">
+											<td class="styTableCell" style="border-color:black; width:24mm; font-size:6pt;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; border-right-width: 0px;">
+											<td class="styTableCell" style="border-color:black; width:24mm; font-size:6pt; border-right-width:0px;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 										</tr>
 										<tr>
-											<td class="styTableCell" style="border-color: black; width:29mm; font-size: 6pt">
+											<td class="styTableCell" style="border-color:black; width:29mm; font-size:6pt">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; text-align: center; width:16mm; font-size: 6pt;">
+											<td class="styTableCell" style="border-color:black; text-align:center; width:16mm; font-size:6pt;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:16mm; font-size 6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>%</td>
-											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:20mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:20mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:9mm; font-size: 6pt; text-align: right;">
+											<td class="styTableCell" style="border-color:black; width:9mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:17mm; font-size: 6pt; text-align: left;">
+											<td class="styTableCell" style="border-color:black; width:17mm; font-size:6pt; text-align:left;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt">
+											<td class="styTableCell" style="border-color:black; width:24mm; font-size:6pt">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; border-right-width: 0px;">
+											<td class="styTableCell" style="border-color:black; width:24mm; font-size:6pt; border-right-width:0px;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 										</tr>
@@ -2866,56 +2768,56 @@ tax year and<b>
 									</xsl:call-template>
 								</xsl:if>
 								<tr>
-									<td class="styIRS4562OtherCell" style="border-color: black; border-right-width: 0px; border-bottom-width: 1px;" colspan="9">
+									<td class="styIRS4562OtherCell" style="border-color:black; border-right-width:0px; border-bottom-width:1px;" colspan="9">
 										<b>27</b> Property used 50% or less in a qualified business use: </td>
 								</tr>
 								<xsl:choose>
 									<xsl:when test="(not((count($IRS4562Data/LessThanHalfBusinessUseProp) &gt; 3) and ($Print=$Separated))) and ($IRS4562Data/LessThanHalfBusinessUseProp!='')">
 										<xsl:for-each select="$IRS4562Data/LessThanHalfBusinessUseProp">
 											<tr>
-												<td class="styTableCell" style="border-color: black; text-align:left; width:29mm; font-size: 6pt;">
+												<td class="styTableCell" style="border-color:black; text-align:left; width:29mm; font-size:6pt;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="PropertyDesc"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; text-align: center; width:16mm; font-size: 6pt">
+												<td nowrap="true" class="styTableCell" style="border-color:black; text-align:center; width:16mm; font-size:6pt">
 														<xsl:call-template name="PopulateMonthDayYear">
 														<xsl:with-param name="TargetNode" select="PlacedInServiceDt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: right">
+												<td class="styTableCell" style="border-color:black; width:16mm; font-size:6pt; text-align:right">
 												 <xsl:call-template name="PopulatePercent">
 														<xsl:with-param name="TargetNode" select="BusinessInvestmentUsePct"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
+												<td class="styTableCell" style="border-color:black; width:20mm; font-size:6pt; text-align:right">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="CostOrOtherBasisAmt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
+												<td class="styTableCell" style="border-color:black; width:20mm; font-size:6pt; text-align:right">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="BasisForDepreciationAmt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:9mm; font-size: 6pt; text-align:center">
+												<td class="styTableCell" style="border-color:black; width:9mm; font-size:6pt; text-align:center">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="RecoveryPrd"/>
 													</xsl:call-template>
 													<span style="width:.5px;"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:17mm; font-size: 6pt; text-align:center">S/L-
-         <xsl:call-template name="PopulateText">
+												<td class="styTableCell" style="border-color:black; width:17mm; font-size:6pt; text-align:center;">S/L-
+													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="DepreciationConventionCd"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt;;padding-top:2mm">
+												<td class="styTableCell" style="border-color:black; width:24mm; font-size:6pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="DepreciationDeductionAmt"/>
 													</xsl:call-template>
@@ -2925,10 +2827,10 @@ tax year and<b>
 													<!-- If this row is the last row of the table, put bottom border to the cell. Otherwise, don't the bottom border on the cell.-->
 													<xsl:choose>
 														<xsl:when test="( position() = last() ) and ( position() &gt;= 3 )">
-															<xsl:attribute name="style">border-color: black; border-bottom-width: 0px; border-right-width: 0px; width:24mm; font-size: 6pt;background-color: lightgrey</xsl:attribute>
+															<xsl:attribute name="style">border-color:black; border-bottom-width:0px; border-right-width:0px; width:24mm; font-size:6pt; background-color: lightgrey</xsl:attribute>
 														</xsl:when>
 														<xsl:otherwise>
-															<xsl:attribute name="style">border-color: black; border-bottom-width: 0px; border-right-width: 0px; width:24mm; font-size: 6pt;background-color: lightgrey</xsl:attribute>
+															<xsl:attribute name="style">border-color:black; border-bottom-width:0px; border-right-width 0px; width:24mm; font-size:6pt; background-color: lightgrey</xsl:attribute>
 														</xsl:otherwise>
 													</xsl:choose>
 													<span class="styIRS4562TableCellPad"/>
@@ -2954,90 +2856,90 @@ tax year and<b>
 									</xsl:when>
 									<xsl:otherwise>
 										<tr>
-											<td class="styTableCell" style="border-color: black; width:29mm; font-size: 6pt">
+											<td class="styTableCell" style="border-color:black; width:29mm; font-size:6pt;">
 												<xsl:call-template name="PopulateAdditionalDataTableMessage">
 													<xsl:with-param name="TargetNode" 
 													select="$IRS4562Data/LessThanHalfBusinessUseProp"/>
 												</xsl:call-template>
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="text-align: center; border-color: black; width:16mm; font-size: 6pt">
+											<td class="styTableCell" style="text-align:center; border-color:black; width:16mm; font-size: 6pt;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:16mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>%</td>
-											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:20mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:20mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:9mm; font-size: 6pt; text-align: right;">
+											<td class="styTableCell" style="border-color:black; width:9mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:17mm; font-size: 6pt; text-align: left;">
+											<td class="styTableCell" style="border-color:black; width:17mm; font-size:6pt; text-align:left;">
 												<span class="styIRS4562TableCellPad"/>S/L –</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt;">
+											<td class="styTableCell" style="border-color:black; width:24mm; font-size:6pt;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styTableCell">
-												<xsl:attribute name="style">border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; width:24mm; font-size: 6pt;background-color: lightgrey</xsl:attribute>
+												<xsl:attribute name="style">border-color:black; border-left-width:0px; border-right-width:0px; border-top-width:0px; border-bottom-width:0px; width:24mm; font-size:6pt; background-color:lightgrey</xsl:attribute>
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 										</tr>
 										<tr>
-											<td class="styTableCell" style="border-color: black; width:29mm; font-size: 6pt">
+											<td class="styTableCell" style="border-color:black; width:29mm; font-size:6pt;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="text-align: center; border-color: black; width:16mm; font-size: 6pt">
+											<td class="styTableCell" style="text-align:center; border-color:black; width:16mm; font-size:6pt;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:16mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>%</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:24mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:26mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:26mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:9mm; font-size: 6pt; text-align: right;">
+											<td class="styTableCell" style="border-color:black; width:9mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:17mm; font-size: 6pt; text-align: left;">
+											<td class="styTableCell" style="border-color:black; width:17mm; font-size:6pt; text-align:left;">
 												<span class="styIRS4562TableCellPad"/>S/L –</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt">
+											<td class="styTableCell" style="border-color:black; width:24mm; font-size:6pt;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styTableCell">
-												<xsl:attribute name="style">border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; width:24mm; font-size: 6pt;background-color: lightgrey</xsl:attribute>
+												<xsl:attribute name="style">border-color:black; border-left-width:0px; border-right-width:0px; border-top-width:0px; border-bottom-width:0px; width:24mm; font-size:6pt; background-color:lightgrey</xsl:attribute>
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 										</tr>
 										<tr>
-											<td class="styTableCell" style="border-color: black; width:29mm; font-size: 6pt">
+											<td class="styTableCell" style="border-color:black; width:29mm; font-size:6pt;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="text-align: center; border-color: black; width:16mm; font-size: 6pt">
+											<td class="styTableCell" style="text-align:center; border-color:black; width:16mm; font-size:6pt;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:16mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:16mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>%</td>
-											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:20mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:20mm; font-size: 6pt; text-align: right">
+											<td class="styTableCell" style="border-color:black; width:20mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:9mm; font-size: 6pt; text-align: right;">
+											<td class="styTableCell" style="border-color:black; width:9mm; font-size:6pt; text-align:right;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-color: black; width:17mm; font-size: 6pt; text-align: left;">
+											<td class="styTableCell" style="border-color:black; width:17mm; font-size:6pt; text-align:left;">
 												<span class="styIRS4562TableCellPad"/>S/L –</td>
-											<td class="styTableCell" style="border-color: black; width:24mm; font-size: 6pt;">
+											<td class="styTableCell" style="border-color:black; width:24mm; font-size:6pt;">
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styTableCell">
-												<xsl:attribute name="style">border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; width:24mm; font-size: 6pt;background-color: lightgrey</xsl:attribute>
+												<xsl:attribute name="style">border-color:black; border-left-width:0px; border-right-width:0px; border-top-width:0px; border-bottom-width:0px; width:24mm; font-size: 6pt; background-color: lightgrey</xsl:attribute>
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 										</tr>
@@ -3053,48 +2955,48 @@ tax year and<b>
 					</xsl:call-template>
 					<!--   END SECTION A TABLE   -->
 					<!--   BEGIN LINE 28 -->
-					<div class="styIRS4562LineItem" style="float: none; width: 187mm; border: 0px solid black">
-						<div class="styLNLeftNumBox" style="height:4mm;width:6mm">28</div>
-						<span class="styIRS4562LNDesc" style="width: 115mm; padding-left: 0; margin-left: 0;">
-						Add amounts in column (h), lines 25 through 27. Enter here and on line 21, page 1
-			    						</span>
-    						
-						<span style="float: right; clear: none">
-						
-							<span class="styLNRightNumBox" style="height:4mm">28</span>
-							<div class="styIRS4562LNAmountBox" style="width: 28.5mm;padding-right: 1mm;font-size:6.3pt;height:4mm">
+					<div class="styIRS4562LineItem" style="float:none; width:187mm; border:0px solid black;">
+						<div class="styLNLeftNumBox" style="height:4mm; width:6mm;">28</div>
+						<span class="styIRS4562LNDesc" style="width:115mm; padding-left:0; margin-left:0;">
+							Add amounts in column (h), lines 25 through 27. Enter here and on line 21, page 1
+			    		</span>    						
+						<span style="float:right; clear:none">						
+							<span class="styLNRightNumBox" style="height:4mm;">28</span>
+							<div class="styIRS4562LNAmountBox" style="width:28.5mm; padding-right:1mm; font-size:6.3pt; height:4mm;">
 								<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS4562Data/TotalListedDepreciationAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS4562LNAmountBox" style="border-top-width: 1px;width:26mm;border-left: 1px solid black;
-							  border-bottom-width: 1px; border-top-width: 1px;height:4mm;background-color:lightgray"/>
+							<div class="styIRS4562LNAmountBox" style="border-top-width:1px; width:26mm; border-left:1px solid black; border-bottom-width:1px; border-top-width: 1px; height:4mm; background-color:lightgray"/>
 						</span>
 					</div>
 					<!--   END LINE 28   -->
 					<!--   BEGIN LINE 29   -->
 					<div class="styIRS4562LineItem">
-				<div class="styLNLeftNumBox" style="height:4mm;width:5mm">29</div>
-						<span class="styIRS4562LNDesc" style="width: 143.5mm">
+						<div class="styLNLeftNumBox" style="height:4mm; width:5mm">29</div>
+						<span class="styIRS4562LNDesc" style="width:143.5mm;">
 						Add amounts in column (i), line 26. Enter here and on line 7, page 1
-						<span class="styDotLn" style="float:right;padding-right:2mm;">.............</span>
+						<span class="styDotLn" style="float:right; padding-right:2mm;">.............</span>
  						</span>
-						<span class="styLNRightNumBox" style="border-bottom-width: 0px">29</span>
-						<div class="styIRS4562LNAmountBox" style="width:28mm; border-bottom-width: 0px; border-top-width: 0px;padding-left:2.5mm;font-size:6.3pt;">
+						<span class="styLNRightNumBox" style="border-bottom-width:0px;">29</span>
+						<div class="styIRS4562LNAmountBox" style="width:28mm; border-bottom-width:0px; border-top-width:0px; padding-left:2.5mm; font-size:6.3pt;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS4562Data/TotalSection179ExpenseAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
 					<!--   END LINE 29   -->
-					<div class="styIRS4562Section" style="border-top-width: 1px; border-bottom-width: 0px;clear:all;">Section B&#151;Information on Use of Vehicles</div>
-					<div class="styIRS4562LineItem">Complete this section for vehicles used by a sole proprietor, partner, or other "more than 5% owner," or related person. If you provided vehicles <!--</div>-->
-				<!--	<div class="styIRS4562LineItem" style="clear: both;font-size: 7pt">--> to your employees, first answer the questions in Section C to see if you meet an exception to completing this section for those vehicles.</div>
+					<div class="styIRS4562Section" style="border-top-width:1px; border-bottom-width:0px; clear:all;">Section B&#151;Information on Use of Vehicles</div>
+					<div class="styIRS4562LineItem">
+						Complete this section for vehicles used by a sole proprietor, partner, or other "more than 5% owner," or related person. If you provided vehicles to 
+						your employees, first answer the questions in Section C to see if you meet an exception to completing this section for those vehicles.
+					</div>
 					<xsl:if test="not((count($IRS4562Data/VehicleUsage) &gt; 6) and $Print=$Separated)">
 						<xsl:for-each select="$IRS4562Data/VehicleUsage">
 							<xsl:variable name="pos" select="position()"/>
 							<xsl:if test="(position() mod 6)=1">
-								<div class="styIRS4562TableContainer" style="overflow:hidden; height: 60.5Fline 37  mm; border-bottom-width: 0px;clear:all;" id="GDctn">
+							<!--@@@@@Removed this attribute " height: 60.5Fline 37  mm; from Style @@@@@@@-->
+								<div class="styIRS4562TableContainer" style="overflow:hidden; border-bottom-width:0px; clear:all;" id="GDctn">
 									<!--print logic-->
 									<xsl:call-template name="SetInitialState"/>
 									<!--end-->
@@ -3104,77 +3006,70 @@ tax year and<b>
 										<tbody>
 											<!-- get here -->
 											<tr scope="col">
-												<th scope="col" class="styIRS4562TableCellA" rowspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width: 122mm">
-													<div class="styLNLeftNumBox" style="height:4mm;width:6mm">30</div>
-          Total business/investment miles driven during the year (<b>don't</b>
-          include commuting miles)
-                                              <!--Dotted Line-->
-	                                         <span class="styDotLn" style="float:right;padding-right:2mm;">...........</span>
+												<th scope="col" class="styIRS4562TableCellA" rowspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; width:122mm">
+													<div class="styLNLeftNumBox" style="height:4mm; width:6mm;">30</div>
+													Total business/investment miles driven during the year (<b>don't</b>include commuting miles)
+													<!--Dotted Line-->
+													<span class="styDotLn" style="float:right; padding-right:1mm;">...........</span>
 												</th>
-												<th scope="col" class="styIRS4562TableCellA" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align: center; font-size: 7pt">
+												<th scope="col" class="styIRS4562TableCellA" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:center;">
 													<b>(a)</b>
 													<br/>Vehicle <xsl:value-of select="position()"/>
 												</th>
-												<th scope="col" class="styIRS4562TableCellB" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align: center; font-size: 7pt">
+												<th scope="col" class="styIRS4562TableCellB" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:center;">
 													<b>(b)</b>
 													<br/>Vehicle <xsl:value-of select="position()+1"/>
 												</th>
-												<th scope="col" class="styIRS4562TableCellC" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align: center; font-size: 7pt">
+												<th scope="col" class="styIRS4562TableCellC" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:center;">
 													<b>(c)</b>
 													<br/>Vehicle <xsl:value-of select="position()+2"/>
 												</th>
-												<th scope="col" class="styIRS4562TableCellD" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; font-size: 7pt">
+												<th scope="col" class="styIRS4562TableCellD" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:center;">
 													<b>(d)</b>
 													<br/>Vehicle <xsl:value-of select="position()+3"/>
 												</th>
-												<th scope="col" class="styIRS4562TableCellE" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; font-size: 7pt">
+												<th scope="col" class="styIRS4562TableCellE" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:center;">
 													<b>(e)</b>
 													<br/>Vehicle <xsl:value-of select="position()+4"/>
 												</th>
-												<th scope="col" class="styIRS4562TableCellF" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px; text-align: center; font-size: 7pt">
+												<th scope="col" class="styIRS4562TableCellF" colspan="2" style="border-color:black; border-left-width 0px; border-right-width:0px; border-top-width:1px; border-bottom-width:0px; text-align:center;">
 													<b>(f)</b>
 													<br/>Vehicle <xsl:value-of select="position()+5"/>
 												</th>
 											</tr>
 											<!--  Line 30   -->
 											<tr>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; 
-												border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; 
-												border-bottom-width:1px;padding-top:1mm">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="BusinessMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2"
-												 style="border-color: black; border-left-width: 0px;
-												  border-right-width: 1px; border-top-width: 0px; 
-												  border-bottom-width:1px;padding-top:1mm">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 1]/BusinessMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2"
-												 style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 2]/BusinessMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 3]/BusinessMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 4]/BusinessMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px; text-align:center; font-size:6.5pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 5]/BusinessMilesCnt"/>
 													</xsl:call-template>
@@ -3182,44 +3077,45 @@ tax year and<b>
 												</td>
 											</tr>
 											<!-- Line 31  -->
+											<!-- Commuting Miles Count is a 12 digits integer is numeric not an amount -->
 											<tr>
-												<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; width:122mm;">
+												<td class="styIRS4562TableCellA" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; width:122mm;">
 		<!--												<div class="styLNLeftNumBox" style="height:4mm;width:6mm;padding-bottom:2px">31</div>-->
-                                                 <b>&#160;31&#160;</b>  Total commuting miles driven during the year
-                                                <!--Dotted Line-->
-												<span class="styDotLn" style="float:right;padding-right:2mm;">.....</span>
+													<b>&#160;31&#160;</b>  Total commuting miles driven during the year
+													<!--Dotted Line-->
+													<span class="styDotLn" style="float:right;padding-right:2mm;">.....</span>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="CommutingMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 1]/CommutingMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 2]/CommutingMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 3]/CommutingMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 4]/CommutingMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:0px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 5]/CommutingMilesCnt"/>
 													</xsl:call-template>
@@ -3228,43 +3124,43 @@ tax year and<b>
 											</tr>
 											<!-- Line 32  -->
 											<tr>
-												<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; width:122mm;">
-													<div class="styLNLeftNumBox" style="height:4mm;width:6mm;padding-top:1px">32</div>
+												<td class="styIRS4562TableCellA" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; width:122mm;">
+													<div class="styLNLeftNumBox" style="height:4mm; width:6mm; padding-top:1px;">32</div>
                                                          Total other personal (noncommuting) miles driven
                                                         <!--Dotted Line-->
-													<span class="styDotLn" style="float:right;padding-right:2mm;">...</span>
+													<span class="styDotLn" style="float:right; padding-right:2mm;">...</span>
                                                 </td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="OtherPersonalMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 1]/OtherPersonalMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 2]/OtherPersonalMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 3]/OtherPersonalMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 4]/OtherPersonalMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:0px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 5]/OtherPersonalMilesCnt"/>
 													</xsl:call-template>
@@ -3273,43 +3169,43 @@ tax year and<b>
 											</tr>
 											<!-- Line 33  -->
 											<tr>
-												<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; width: 122mm;">
+												<td class="styIRS4562TableCellA" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; width:122mm;">
 													<div class="styLNLeftNumBox" style="height:4mm;width:6mm;padding-top:1px">33</div>
                                                       Total miles driven during the year. Add lines 30 through 32
                                                     <!--Dotted Line-->
 											<!--<span class="styDotLn" style="float:right;padding-right:2mm;">.............</span>-->
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="TotalMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 1]/TotalMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 2]/TotalMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 3]/TotalMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 4]/TotalMilesCnt"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;">
+												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color:black; border-left-width:0px; border-right-width:0px; border-top-width:0px; border-bottom-width:1px; text-align:center; font-size:6.5pt; padding-top:2mm;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4562Data/VehicleUsage[$pos + 5]/TotalMilesCnt"/>
 													</xsl:call-template>
@@ -3318,19 +3214,14 @@ tax year and<b>
 											</tr>
 											<!--  Yes and No Boxes -->
 											<tr>
-												<td class="styIRS4562TableCellA" valign="bottom"
-												 style="border-color: black; border-left-width: 0px; border-right-width:
-												  1px; border-top-width: 0px; border-bottom-width:0px; width: 122mm;">
+												<td class="styIRS4562TableCellA" valign="bottom" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; width:122mm;">
 												<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall" 
-												style="border-color: black; border-left-width: 0px; 
-												border-right-width: 1px; border-top-width: 0px;
-												 border-bottom-width:1px; font-size: 7pt;font-family: verdana">
+												<td class="styIRS4562TableCellSmall" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; font-size:7pt; font-family:verdana">
 													<b>Yes</b>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
-												<td class="styIRS4562TableCellSmall" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; font-size: 7pt;font-family: verdana">
+												<td class="styIRS4562TableCellSmall" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; font-size:7pt; font-family:verdana">
 													<b>No</b>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
@@ -3713,10 +3604,9 @@ tax year and<b>
 										 border-bottom-width:0px; width: 122mm">
 										<span style="padding-left:2mm"/>
 											<span class="styIRS4562LNLeftNumBox" style="padding-top:0;height:7mm">30</span>
-          Total business/investment miles driven during the year (<b>do<span style="padding-left:3mm"/> n't </b>
-          include commuting miles)
-          <span class="styDotLn" style="float:right;padding-right:2mm;">.........</span>
-          							</th>
+											Total business/investment miles driven during the year (<b>do<span style="padding-left:3mm"/> n't </b>include commuting miles)
+											<span class="styDotLn" style="float:right;padding-right:2mm;">.........</span>
+										</th>
 										<th scope="col" class="styIRS4562TableCellA" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:1px; text-align: center; font-size: 7pt">
 											<b>(a)</b>
 											<br/>Vehicle 1</th>
@@ -3734,7 +3624,8 @@ tax year and<b>
 											<br/>Vehicle 5</th>
 										<th scope="col" class="styIRS4562TableCellF" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:1px; text-align: center; font-size: 7pt">
 											<b>(f)</b>
-											<br/>Vehicle 6</th>
+											<br/>Vehicle 6
+										</th>
 									</tr>
 									<!--  Line 30   -->
 									<tr>
@@ -3768,8 +3659,8 @@ tax year and<b>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; width:122mm">
 											<span class="styIRS4562LNLeftNumBox" style="padding-top:0">31</span>
 											<span style="padding-left:2mm"/>
-            Total commuting miles driven during the year
-												<span class="styDotLn" style="float:right;padding-right:2mm;">....</span>
+											Total commuting miles driven during the year
+											<span class="styDotLn" style="float:right;padding-right:2mm;">....</span>
 										</td>
 										<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
 											<span class="styIRS4562TableCellPad"/>
@@ -3795,8 +3686,8 @@ tax year and<b>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; width:122mm">
 											<span class="styIRS4562LNLeftNumBox" style="padding-top:0">32</span>
                                             <span style="padding-left:2mm"/>
-                                                   Total other personal(noncommuting) miles driven
-                                                  <span class="styDotLn" style="float:right;padding-right:2mm;">...</span> 
+                                            Total other personal(noncommuting) miles driven
+                                            <span class="styDotLn" style="float:right;padding-right:2mm;">...</span> 
                                         </td>
 										<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
 											<span class="styIRS4562TableCellPad"/>
@@ -3822,8 +3713,7 @@ tax year and<b>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; width: 122mm;">
 											<span class="styIRS4562LNLeftNumBox" style="padding-top:0">33</span>
                                              <span style="padding-left:2mm"/>
-                                             Total miles driven during the year. Add lines 30 <br/><span style="padding-left:2mm"/> through 32
-                                               
+                                             Total miles driven during the year. Add lines 30 <br/><span style="padding-left:2mm"/> through 32                                               
                                             <span class="styDotLn" style="float:right;padding-right:2mm;">................</span>
                                             </td>
 										<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
@@ -3847,64 +3737,64 @@ tax year and<b>
 									</tr>
 									<!-- Line 34, Yes and No Boxes -->
 									<tr>
-										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; width: 122mm">
+										<td class="styIRS4562TableCellA" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; width:122mm">
 											<span class="styIRS4562LNLeftNumBox" style="padding-top:0">34</span>
                                             <span style="padding-left:2mm"/>
                                                Was the vehicle available for personal use
                                             </td>
-										<td class="styIRS4562TableCellSmall" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; font-size: 7pt;font-family: verdana">
+										<td class="styIRS4562TableCellSmall" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; font-size:7pt; font-family:verdana">
 											<b>Yes</b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellSmall" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; font-size: 7pt;font-family: verdana">
+										<td class="styIRS4562TableCellSmall" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; font-size:7pt;font-family:verdana">
 											<b>No</b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellSmall" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; font-size: 7pt;font-family: verdana">
+										<td class="styIRS4562TableCellSmall" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; font-size:7pt; font-family:verdana">
 											<b>Yes</b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellSmall" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; font-size: 7pt;font-family: verdana">
+										<td class="styIRS4562TableCellSmall" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; font-size:7pt; font-family:verdana">
 											<b>No</b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellSmall" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; font-size: 7pt;font-family: verdana">
+										<td class="styIRS4562TableCellSmall" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; font-size:7pt; font-family:verdana">
 											<b>Yes</b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellSmall" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; font-size: 7pt;font-family: verdana">
+										<td class="styIRS4562TableCellSmall" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; font-size:7pt; font-family:verdana">
 											<b>No</b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellSmall" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; font-size: 7pt;font-family: verdana">
+										<td class="styIRS4562TableCellSmall" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; font-size:7pt; font-family:verdana">
 											<b>Yes</b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellSmall" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; font-size: 7pt;font-family: verdana">
+										<td class="styIRS4562TableCellSmall" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; font-size:7pt; font-family:verdana">
 											<b>No</b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellSmall" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; font-size: 7pt;font-family: verdana">
+										<td class="styIRS4562TableCellSmall" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; font-size:7pt; font-family:verdana">
 											<b>Yes</b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellSmall" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; font-size: 7pt;font-family: verdana">
+										<td class="styIRS4562TableCellSmall" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; font-size:7pt; font-family:verdana">
 											<b>No</b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellSmall" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; font-size: 7pt;font-family: verdana">
+										<td class="styIRS4562TableCellSmall" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; font-size:7pt; font-family:verdana">
 											<b>Yes</b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellSmall" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px; font-size: 7pt;font-family: verdana">
+										<td class="styIRS4562TableCellSmall" style="border-color:black; border-left-width:0px; border-right-width:0px; border-top-width:0px; border-bottom-width:1px; font-size:7pt; font-family:verdana">
 											<b>No</b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 									</tr>
 									<!-- Line 34  -->
 									<tr>
-										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; width: 122mm">
-		        							<span style="width:19px"/> during off-duty hours?
+										<td class="styIRS4562TableCellA" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; width:122mm">
+		        							<span style="width:19px;"/> during off-duty hours?
 		        							<!--<span class="styDotLn" style="float:right;padding-right:2mm;">............</span>-->
                                      		<span class="styIRS4562TableCellPad"/>
 										</td>
@@ -3941,17 +3831,17 @@ tax year and<b>
 										<td class="styIRS4562TableCellYesNo">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellYesNo" style="border-right-width: 0px">
+										<td class="styIRS4562TableCellYesNo" style="border-right-width:0px;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 									</tr>
 									<!-- Line 35  -->
 									<tr>
-										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; width: 122mm">
-											<span class="styIRS4562LNLeftNumBox" style="padding-top:0">35</span>
+										<td class="styIRS4562TableCellA" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; width:122mm;">
+											<span class="styIRS4562LNLeftNumBox" style="padding-top:0;">35</span>
                                             <span style="padding-left:2mm"/>
-                                                    Was the vehicle used primarily by a more than 5% <br/><span style="padding-left:3mm"/>owner or related person?
-                                               <span class="styDotLn" style="float:right;padding-right:2mm;">...........</span>
+                                                    Was the vehicle used primarily by a more than 5% <br/><span style="padding-left:3mm;"/>owner or related person?
+                                               <span class="styDotLn" style="float:right; padding-right:2mm;">...........</span>
 										</td>
 										<td class="styIRS4562TableCellYesNo">
 											<span class="styIRS4562TableCellPad"/>
@@ -3986,52 +3876,52 @@ tax year and<b>
 										<td class="styIRS4562TableCellYesNo">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellYesNo" style="border-right-width: 0px">
+										<td class="styIRS4562TableCellYesNo" style="border-right-width:0px;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 									</tr>
 									<!-- Line 36  -->
 									<tr>
-										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; width: 122mm">
-											<span class="styIRS4562LNLeftNumBox" style="padding-top:0">36</span>
-                                                 <span style="padding-left:2mm"/>
+										<td class="styIRS4562TableCellA" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; width:122mm;">
+											<span class="styIRS4562LNLeftNumBox" style="padding-top:0;">36</span>
+                                                 <span style="padding-left:2mm;"/>
                                                  Is another vehicle available for personal use?
-                                                <span class="styDotLn" style="float:right;padding-right:2mm;">....</span> 
+                                                <span class="styDotLn" style="float:right; padding-right:2mm;">....</span> 
                                       		</td>
-										<td class="styIRS4562TableCellYesNo" style="border-bottom-width: 0px">
+										<td class="styIRS4562TableCellYesNo" style="border-bottom-width:0px;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellYesNo" style="border-bottom-width: 0px">
+										<td class="styIRS4562TableCellYesNo" style="border-bottom-width:0px;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellYesNo" style="border-bottom-width: 0px">
+										<td class="styIRS4562TableCellYesNo" style="border-bottom-width:0px;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellYesNo" style="border-bottom-width: 0px">
+										<td class="styIRS4562TableCellYesNo" style="border-bottom-width 0px;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellYesNo" style="border-bottom-width: 0px">
+										<td class="styIRS4562TableCellYesNo" style="border-bottom-width:0px;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellYesNo" style="border-bottom-width: 0px">
+										<td class="styIRS4562TableCellYesNo" style="border-bottom-width:0px;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellYesNo" style="border-bottom-width: 0px">
+										<td class="styIRS4562TableCellYesNo" style="border-bottom-width:0px;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellYesNo" style="border-bottom-width: 0px">
+										<td class="styIRS4562TableCellYesNo" style="border-bottom-width:0px;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellYesNo" style="border-bottom-width: 0px">
+										<td class="styIRS4562TableCellYesNo" style="border-bottom-width:0px;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellYesNo" style="border-bottom-width: 0px">
+										<td class="styIRS4562TableCellYesNo" style="border-bottom-width:0px;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellYesNo" style="border-bottom-width: 0px">
+										<td class="styIRS4562TableCellYesNo" style="border-bottom-width:0px;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellYesNo" style="border-right-width: 0px; border-bottom-width: 0px">
+										<td class="styIRS4562TableCellYesNo" style="border-right-width:0px; border-bottom-width:0px;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 									</tr>
@@ -4039,25 +3929,28 @@ tax year and<b>
 							</table>
 						</div>
 					</xsl:if>
-					<div class="styIRS4562Section" style="float: none; clear:both; border-top-width: 1px; border-bottom-width: 0px">Section C&#151;Questions for Employers Who Provide Vehicles for Use by Their Employees</div>
-					<div class="styIRS4562LineItem" style="float: none; clear:both; border-bottom-width: 1px">Answer these questions to determine if you meet an exception to completing Section B for vehicles used by employees who <b>aren't</b> more than 5% owners or related persons (see instructions).</div>
+					<div class="styIRS4562Section" style="float:none; clear:both; border-top-width:1px; border-bottom-width:0px;">
+						Section C&#151;Questions for Employers Who Provide Vehicles for Use by Their Employees
+					</div>
+					<div class="styIRS4562LineItem" style="float:none; clear:both; border-bottom-width:1px;">
+						Answer these questions to determine if you meet an exception to completing Section B for vehicles used by employees who 
+						<b>aren't</b> more than 5% owners or related persons (see instructions).
+					</div>
 					<!-- START OF PART V SECTION C TABLE -->
-					<table cellpadding="0" cellspacing="0" border="0" style="width: 187mm; border: 0px; padding: 0px; margin: 0px; font-size: 7pt; font-family: Verdana,sans-serif;">
+					<table cellpadding="0" cellspacing="0" border="0" style="width:187mm; border:0px; padding:0px; margin:0px; font-size:7pt; font-family:Verdana, sans-serif;">
 						<!-- Section C table -->
 						<tbody>
-							<tr>
+							<tr style="width:187mm;">
 								<!-- Line 37 -->
-								<td valign="top">
-									<span class="styIRS4562LNLeftNumBox" style="width:5mm;;padding-top:2mm">37</span>
+								<td valign="top" width="6mm">
+									<span class="styIRS4562LNLeftNumBox" style="width:5mm; padding-top:2mm; padding-right:2mm;">37</span>
 								</td>
-								<td valign="top">
-									<div class="styLNDesc" style="width: 158mm; height: 4.5mm;;padding-top:2mm">
-										<span style="float: left; clear: none;padding-left:1mm">
-										Do you maintain a written policy statement that prohibits all personal use of 
-										vehicles, including commuting, by your </span>
-										<span style="float: left; clear: none;padding-left:1mm;padding-top:1mm">
-										employees?</span>
-										<span class="styDotLn" style="float:right;padding-right:2mm;;padding-top:1mm">..................................</span>
+								<td valign="top" width="176mm">
+									<div class="styLNDesc" style="width:157mm; height:4.5mm; padding-top:2mm; font-size:7pt;">
+										<span style="width:1mm;"/>
+											Do you maintain a written policy statement that prohibits all personal use of vehicles, including commuting, by your 
+										<span style="float:left; clear:none; padding-left:1mm;">employees?</span>
+										<span class="styDotLn" style="float:right; padding-right:1mm;">..................................</span>
 									</div>
 								</td>
 								<td width="14mm">
@@ -4066,35 +3959,35 @@ tax year and<b>
 										<tbody>
 											<tr>
 												<td width="7mm">
-													<span class="styIRS4562YesNoBox" style="font-weight: bold;height:5mm">Yes</span>
+													<span class="styIRS4562YesNoBox" style="font-weight:bold; height:5mm;">Yes</span>
 												</td>
 												<td width="7mm">
-													<span class="styIRS4562YesNoBox" style="font-weight: bold;height:5mm">No</span>
+													<span class="styIRS4562YesNoBox" style="font-weight:bold; height:5mm;">No</span>
 												</td>
 											</tr>
 											<tr>
 												<td width="7mm">
 													<!--  Yes box (37) -->
 													<span class="styIRS4562YesNoBox">
-														<span style="width: 1px"/>
-														<span style="font-weight: normal;height:8mm">
+														<span style="width:1px"/>
+														<span style="font-weight:normal; height:8mm;">
 															<xsl:call-template name="PopulateYesBoxText">
 																<xsl:with-param name="TargetNode" select="$IRS4562Data/PolicyNoPrsnlOrCmmtngUseInd"/>
 															</xsl:call-template>
 														</span>
-														<span style="width: 1px"/>
+														<span style="width:1px"/>
 													</span>
 												</td>
 												<td width="7mm">
 													<!--  No box (37)  -->
 													<span class="styIRS4562YesNoBox">
-														<span style="width: 1px"/>
-														<span style="font-weight: normal;height:8mm">
+														<span style="width:1px"/>
+														<span style="font-weight:normal; height:8mm;">
 															<xsl:call-template name="PopulateNoBoxText">
 																<xsl:with-param name="TargetNode" select="$IRS4562Data/PolicyNoPrsnlOrCmmtngUseInd"/>
 															</xsl:call-template>
 														</span>
-														<span style="width: 1px"/>
+														<span style="width:1px"/>
 													</span>
 												</td>
 											</tr>
@@ -4107,9 +4000,13 @@ tax year and<b>
 								<td valign="top">
 									<span class="styIRS4562LNLeftNumBox">38</span>
 								</td>
-								<td valign="top" width="177mm">
-									<span class="styIRS4562LNDesc" style="width: 158mm;">Do you maintain a written policy statement that prohibits personal use of vehicles, except commuting, by your employees?  See the instructions for vehicles used by corporate officers, directors, or 1% or more owners
-                                   <span class="styDotLn" style="float:right;padding-right:2mm;">.........</span>
+								<td valign="top" width="176mm">
+									<span class="styIRS4562LNDesc" style="width:157mm; height:4.5mm; font-size:7pt;">
+										Do you maintain a written policy statement that prohibits personal use of vehicles, except commuting, by your employees?
+										<span style="float:left; clear:none;">
+										See the instructions for vehicles used by corporate officers, directors, or 1% or more owners
+										</span>
+										<span class="styDotLn" style="float:right; padding-right:2mm;">.........</span>
 									</span>
 								</td>
 								<td width="14mm">
@@ -4119,26 +4016,26 @@ tax year and<b>
 											<tr>
 												<td width="7mm">
 													<!--  Yes box (38) -->
-													<span class="styIRS4562YesNoBox" style="height:7mm;padding-top:3mm">
-														<span style="width: 1mm"/>
-														<span style="font-weight: normal">
+													<span class="styIRS4562YesNoBox" style="height:7mm; padding-top:3mm;">
+														<span style="width:1mm"/>
+														<span style="font-weight:normal">
 															<xsl:call-template name="PopulateYesBoxText">
 																<xsl:with-param name="TargetNode" select="$IRS4562Data/PolicyNoPrsnlExcCmmtngUseInd"/>
 															</xsl:call-template>
 														</span>
-														<span style="width: 1px"/>
+														<span style="width:1px"/>
 													</span>
 												</td>
 												<td width="7mm">
 													<!--  No box (38)  -->
-													<span class="styIRS4562YesNoBox" style="height:7mm;padding-top:3mm">
-														<span style="width: 1mm"/>
-														<span style="font-weight: normal">
+													<span class="styIRS4562YesNoBox" style="height:7mm; padding-top:3mm;">
+														<span style="width:1mm"/>
+														<span style="font-weight:normal">
 															<xsl:call-template name="PopulateNoBoxText">
 																<xsl:with-param name="TargetNode" select="$IRS4562Data/PolicyNoPrsnlExcCmmtngUseInd"/>
 															</xsl:call-template>
 														</span>
-														<span style="width: 1px"/>
+														<span style="width:1px"/>
 													</span>
 												</td>
 											</tr>
@@ -4151,10 +4048,10 @@ tax year and<b>
 								<td valign="top">
 									<span class="styIRS4562LNLeftNumBox">39</span>
 								</td>
-								<td valign="top" width="177mm">
-									<div class="styLNDesc" style="width: 158mm; height: 4.5mm;">
-										<span style="float: left; clear: none;padding-left:1mm">Do you treat all use of vehicles by employees as personal use?</span>
-										<span class="styDotLn" style="float:right;padding-right:2mm;">...................</span>
+								<td valign="top" width="176mm">
+									<div class="styLNDesc" style="width:157mm; height:4.5mm; font-size:7pt;">
+										<span style="float:left; clear:none; padding-left:1mm;">Do you treat all use of vehicles by employees as personal use?</span>
+										<span class="styDotLn" style="float:right; padding-right:1mm;">...................</span>
 									</div>
 								</td>
 								<td width="14mm">
@@ -4165,25 +4062,25 @@ tax year and<b>
 												<td width="7mm">
 													<!--  Yes box (39) -->
 													<span class="styIRS4562YesNoBox" style="height:5mm">
-														<span style="width: 1mm;"/>
-														<span style="font-weight: normal">
+														<span style="width:1mm;"/>
+														<span style="font-weight:normal;">
 															<xsl:call-template name="PopulateYesBoxText">
 																<xsl:with-param name="TargetNode" select="$IRS4562Data/TreatAllVehUseAsPrsnlUseInd"/>
 															</xsl:call-template>
 														</span>
-														<span style="width: 1px"/>
+														<span style="width:1px;"/>
 													</span>
 												</td>
 												<td width="7mm">
 													<!--  No box (39)  -->
 													<span class="styIRS4562YesNoBox" style="height:5mm">
-														<span style="width: 1mm;"/>
-														<span style="font-weight: normal">
+														<span style="width:1mm;"/>
+														<span style="font-weight:normal;">
 															<xsl:call-template name="PopulateNoBoxText">
 																<xsl:with-param name="TargetNode" select="$IRS4562Data/TreatAllVehUseAsPrsnlUseInd"/>
 															</xsl:call-template>
 														</span>
-														<span style="width: 1px"/>
+														<span style="width:1px;"/>
 													</span>
 												</td>
 											</tr>
@@ -4196,11 +4093,12 @@ tax year and<b>
 								<td valign="top">
 									<span class="styIRS4562LNLeftNumBox">40</span>
 								</td>
-								<td valign="top" width="177mm">
-									<div class="styLNDesc" style="width: 158mm; height: 4.5mm;">
-										<span style="float: left; clear: none;padding-left:1mm">Do you provide more than five vehicles to your employees, obtain information from your employees about the use of</span>
-										<span style="float: left; clear: none;padding-left:1mm">vehicles, and retain the information received?</span>
-										<span class="styDotLn" style="float:right;padding-right:2mm;">........................</span>
+								<td valign="top" width="176mm">
+									<div class="styLNDesc" style="width:157mm; height:4.5mm; font-size:7pt;">
+										<span style="width:.1mm;"/>
+										Do you provide more than five vehicles to your employees, obtain information from your employees about the use of the
+										<span style="float:left; clear:none; padding-left:1mm;">vehicles, and retain the information received? </span>
+										<span class="styDotLn" style="float:right; padding-right:1mm;">........................</span>
 									</div>
 								</td>
 								<td width="14mm">
@@ -4210,26 +4108,26 @@ tax year and<b>
 											<tr>
 												<td width="7mm">
 													<!--  Yes box (40) -->
-													<span class="styIRS4562YesNoBox" style="height: 7mm;padding-top:3mm">
-														<span style="width: 1mm"/>
-														<span style="font-weight: normal">
+													<span class="styIRS4562YesNoBox" style="height:7mm; padding-top:3mm;">
+														<span style="width:1mm;"/>
+														<span style="font-weight:normal;">
 															<xsl:call-template name="PopulateYesBoxText">
 																<xsl:with-param name="TargetNode" select="$IRS4562Data/ProvideOverNumVehAndHaveRecInd"/>
 															</xsl:call-template>
 														</span>
-														<span style="width: 1px"/>
+														<span style="width:1px;"/>
 													</span>
 												</td>
 												<td width="7mm">
 													<!--  No box (40)  -->
-													<span class="styIRS4562YesNoBox" style="height:7mm;padding-top:3mm">
-														<span style="width: 1mm"/>
-														<span style="font-weight: normal">
+													<span class="styIRS4562YesNoBox" style="height:7mm; padding-top:3mm;">
+														<span style="width:1mm;"/>
+														<span style="font-weight:normal;">
 															<xsl:call-template name="PopulateNoBoxText">
 																<xsl:with-param name="TargetNode" select="$IRS4562Data/ProvideOverNumVehAndHaveRecInd"/>
 															</xsl:call-template>
 														</span>
-														<span style="width: 1px"/>
+														<span style="width:1px;"/>
 													</span>
 												</td>
 											</tr>
@@ -4242,10 +4140,12 @@ tax year and<b>
 								<td valign="top">
 									<span class="styIRS4562LNLeftNumBox">41</span>
 								</td>
-								<td valign="top" width="177mm">
-									<div class="styLNDesc" style="width: 158mm; height: 4.5mm;">
-										<span style="float: left; clear: none;padding-left:1mm">Do you meet the requirements concerning qualified automobile demonstration use?  (See instructions.)</span>
-										<span class="styDotLn" style="float:right;padding-right:2mm;">......</span>
+								<td valign="top" width="176mm">
+									<div class="styLNDesc" style="width:157mm; height:4.5mm; font-size:7pt;">
+										<span style="float:left; clear:none; padding-left:1mm;">
+											Do you meet the requirements concerning qualified automobile demonstration use?  (See instructions.)
+										</span>
+										<span class="styDotLn" style="float:right; padding-right:1mm;">......</span>
 									</div>
 								</td>
 								<td width="14mm">
@@ -4255,26 +4155,26 @@ tax year and<b>
 											<tr>
 												<td width="7mm">
 													<!--  Yes box  -->
-													<span class="styIRS4562YesNoBox" style="height: 4.5mm;;border-bottom-width:0px">
-														<span style="width: 1mm"/>
-														<span style="font-weight: normal">
+													<span class="styIRS4562YesNoBox" style="height:4.5mm; border-bottom-width:0px;">
+														<span style="width:1mm;"/>
+														<span style="font-weight:normal;">
 															<xsl:call-template name="PopulateYesBoxText">
 																<xsl:with-param name="TargetNode" select="$IRS4562Data/MeetRqrForAutoDemoUseInd"/>
 															</xsl:call-template>
 														</span>
-														<span style="width: 1px"/>
+														<span style="width:1px;"/>
 													</span>
 												</td>
 												<td width="7mm">
 													<!--  No box  -->
-													<span class="styIRS4562YesNoBox" style="height: 4.5mm;border-bottom-width:0px;">
-														<span style="width: 1mm"/>
-														<span style="font-weight: normal">
+													<span class="styIRS4562YesNoBox" style="height:4.5mm; border-bottom-width:0px;">
+														<span style="width:1mm;"/>
+														<span style="font-weight:normal;">
 															<xsl:call-template name="PopulateNoBoxText">
 																<xsl:with-param name="TargetNode" select="$IRS4562Data/MeetRqrForAutoDemoUseInd"/>
 															</xsl:call-template>
 														</span>
-														<span style="width: 1px"/>
+														<span style="width:1px;"/>
 													</span>
 												</td>
 											</tr>
@@ -4286,11 +4186,12 @@ tax year and<b>
 								<!-- Note line -->
 								<td valign="top" width="3mm">
 								</td>
-								<td valign="top" width="177mm">
-									<span class="styIRS4562LNDesc" style="width:158mm;font-size:6.9pt">
-										<span style="font-weight: bold;">Note: </span>
-										<span style="text-decoration: italic;">If your answer to 37, 38, 39,
-										 40, or 41 is "Yes," don't complete Section B for the covered vehicles.</span>
+								<td valign="top" width="176mm">
+									<span class="styIRS4562LNDesc" style="font-size:7pt;">
+										<span style="font-weight:bold;">Note: &#160; </span>
+										<span style="text-decoration:italic;">
+											If your answer to 37, 38, 39, 40, or 41 is "Yes," don't complete Section B for the covered vehicles.
+										</span>
 									</span>
 								</td>
 								<td width="14mm">
@@ -4299,9 +4200,7 @@ tax year and<b>
 										<tbody>
 											<tr>
 												<td>
-												<div class="styIRS4562LNAmountBox" style="width:22mm; background-color: lightgrey;
-												 border-left: 1px solid black;
-							                     border-top-width: 1px; border-bottom-width: 0px;height:4mm"/>
+												<div class="styIRS4562LNAmountBox" style="width:22mm; background-color:lightgrey; border-left:1px solid black; border-top-width:1px; border-bottom-width:0px; height:4mm;"/>
 												</td>
 												<!--  No box  -->
 											</tr>
@@ -4313,68 +4212,68 @@ tax year and<b>
 					</table>
 					<!-- END OF PART V SECTION C TABLE -->
 					<!--   BEGIN PART VI HEADER   -->
-					<div class="styBB" style="height:4mm;width:187mm;
-					 border-top: 1px black solid;border-bottom:0 solid black;height:4mm">
+					<div class="styBB" style="height:4mm; width:187mm; border-top:1px black solid; border-bottom:0 solid black;">
 						<div class="styPartName">Part VI</div>
-						<div class="styPartDesc">
+						<div class="styPartDesc" style="width:173mm;">
 							<span style="width:16px;"/>Amortization
-    <xsl:call-template name="SetFormLinkInline">
+							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$IRS4562Data/AmortizationInfo"/>
 							</xsl:call-template>
-						<div style="padding-left:3mm;width: 8mm; text-align:right; float:right;clear:none; vertical-align: top;">
-
-							<xsl:call-template name="SetDynamicTableToggleButton">
-			<xsl:with-param name="TargetNode" select="$IRS4562Data/
-			AmortizationInfo/AmortizationInfoTable"/>
-			<xsl:with-param name="containerHeight" select="3"/>
-								<xsl:with-param name="containerID" select=" 'ATctn' "/>
-								<xsl:with-param name="imageID" select=" 'ATimg' "/>
-								<xsl:with-param name="buttonID" select=" 'ATbtn' "/>
-			</xsl:call-template>
-				</div>	</div>
+							<div style="float:right; clear:none; vertical-align:top;">
+								<xsl:call-template name="SetDynamicTableToggleButton">
+									<xsl:with-param name="TargetNode" select="$IRS4562Data/AmortizationInfo/AmortizationInfoTable"/>
+									<xsl:with-param name="containerHeight" select="3"/>
+									<xsl:with-param name="containerID" select=" 'ATctn' "/>
+									<xsl:with-param name="imageID" select=" 'ATimg' "/>
+									<xsl:with-param name="buttonID" select=" 'ATbtn' "/>
+								</xsl:call-template>
+							</div>	
+						</div>
 					</div>
 					<!--   END PART VI HEADER   -->
 					<!--  BEGIN PART VI TABLE  -->
-					<div class="styIRS4562TableContainer" style="height: auto;clear:all;" id="ATctn">
+					<div class="styIRS4562TableContainer" style="height:auto; clear:all;" id="ATctn">
 						<!--print logic-->
 						<xsl:call-template name="SetInitialState"/>
 						<!--end-->
 						<table class="styIRS4562Table" cellspacing="0">
 							<thead class="styTableThead">
 								<tr scope="col">
-									<th scope="col" class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 1px; border-bottom-width:1px; width: 44mm; text-align: center">
+									<th scope="col" class="styIRS4562TableCellA" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:1px; width:40mm; text-align:center;">
 										<b>(a)</b>
 										<br/>Description of costs</th>
-									<th scope="col" class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 1px; border-bottom-width:1px; width: 23mm; text-align: center">
+									<th scope="col" class="styIRS4562TableCellB" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:1px; width:23mm; text-align:center;">
 										<b>(b)</b>
 										<br/>Date amortization<br/>begins</th>
-									<th scope="col" class="styIRS4562TableCellC" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 1px; border-bottom-width:1px; width: 36mm;text-align: center;">
+									<th scope="col" class="styIRS4562TableCellC" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 1px; border-bottom-width:1px; width:31mm; text-align: center;">
 										<b>(c)</b>
 										<br/>Amortizable<br/>amount</th>
-									<th scope="col" class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 1px; border-bottom-width:1px; width: 23mm">
+									<th scope="col" class="styIRS4562TableCellD" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:1px; width:43mm;">
 										<b>(d)</b>
 										<br/>Code<br/>section</th>
-									<th scope="col" class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 1px; border-bottom-width:1px; width: 17mm">
+									<th scope="col" class="styIRS4562TableCellE" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:1px; width:19mm;">
 										<b>(e)</b>
-										<br/>Amortization<br/>period or<br/>percentage</th>
-									<th scope="col" class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width:0px; border-top-width: 1px; border-bottom-width:1px; width: 44mm;">
+										<br/>Amortization<br/>period or<br/>percentage
+									</th>
+									<th scope="col" class="styIRS4562TableCellF" style="border-color:black; border-left-width:0px; border-right-width:0px; border-top-width:1px; border-bottom-width:1px; width:31mm;">
 										<b>(f)</b>
-										<br/>Amortization for<br/>this year</th>
+										<br/>Amortization for<br/>this year
+									</th>
 								</tr>
 							</thead>
 							<tfoot/>
 							<tbody>
 								<tr>
-									<td class="styIRS4562OtherCell" style="border-color: black; border-left-width: 0px; border-right-width:0px; border-top-width: 0px; border-bottom-width:1px; " colspan="6">
+									<td class="styIRS4562OtherCell" style="border-color:black; border-left-width:0px; border-right-width:0px; border-top-width:0px; border-bottom-width:1px; " colspan="6">
 										<span class="styIRS4562LNLeftNumBox">42</span>
-										<span class="styLNDesc" style="padding-left:2mm"> Amortization of costs that begins during your 2016 tax year (see instructions):</span>
+										<span class="styLNDesc" style="padding-left:2mm;"> Amortization of costs that begins during your 2016 tax year (see instructions):</span>
 										<span class="styIRS4562TableCellPad"/>
 									</td>
 								</tr>
 								<xsl:if test="not((count($IRS4562Data/AmortizationInfo/AmortizationInfoTable) &gt; 2) and ($Print = $Separated))">
 									<xsl:for-each select="$IRS4562Data/AmortizationInfo/AmortizationInfoTable">
 										<tr>
-											<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width: 44mm">
+											<td class="styIRS4562TableCellA" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; width:40mm;">
 												<span class="styLN">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="CostDesc"/>
@@ -4382,34 +4281,31 @@ tax year and<b>
 												</span>
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styIRS4562TableCellB" style="text-align:center;border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width: 23mm">
+											<td class="styIRS4562TableCellB" style="text-align:center; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:23mm;">
 												<xsl:call-template name="PopulateMonthDayYear">
 													<xsl:with-param name="TargetNode" select="AmortizationBeginDt"/>
 												</xsl:call-template>
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styIRS4562TableCellC" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width: 36mm;text-align:right;">
+											<td class="styIRS4562TableCellC" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; width:31mm; text-align:right;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="AmortizableAmt"/>
 												</xsl:call-template>
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width: 23mm;text-align:left">
+											<td class="styIRS4562TableCellD" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; width:43mm; text-align:left;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="CodeSectionTxt"/>
 												</xsl:call-template>
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width: 17mm;text-align:left">
+											<td class="styIRS4562TableCellE" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; width:19mm; text-align:left;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="AmortizationPeriodOrPctTxt"/>
 												</xsl:call-template>
 												<span class="styIRS4562TableCellPad"/>
 											</td>
-											<td class="styIRS4562TableCellF" 
-											style="border-color: black; border-left-width: 0px; border-right-width: 0px;
-											 border-top-width: 0px; border-bottom-width:1px; width: 44mm;
-											 text-align:right">
+											<td class="styIRS4562TableCellF" style="border-color:black; border-left-width:0px; border-right-width:0px;border-top-width:0px; border-bottom-width:1px; width:31mm; text-align:right;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="AmortizationThisYearAmt"/>
 												</xsl:call-template>
@@ -4426,45 +4322,45 @@ tax year and<b>
 								</xsl:if>
 								<xsl:if test="(count($IRS4562Data/AmortizationInfo/AmortizationInfoTable) &gt; 2) and ($Print = $Separated)">
 									<tr>
-										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 0px; border-bottom-width:0px; width: 44mm">
+										<td class="styIRS4562TableCellA" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; width:40mm;">
 											<xsl:call-template name="PopulateAdditionalDataTableMessage">
 												<xsl:with-param name="TargetNode" select="$IRS4562Data/AmortizationInfo/AmortizationInfoTable"/>
 											</xsl:call-template>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 0px; border-bottom-width:0px; width: 23mm">
+										<td class="styIRS4562TableCellB" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width: 0px; border-bottom-width:0px; width:23mm;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellC" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 0px; border-bottom-width:0px; width: 36mm">
+										<td class="styIRS4562TableCellC" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width 0px; border-bottom-width:0px; width:31mm;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 0px; border-bottom-width:0px; width: 23mm">
+										<td class="styIRS4562TableCellD" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; width:43mm;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 0px; border-bottom-width:0px; width: 17mm">
+										<td class="styIRS4562TableCellE" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; width:19mm;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width:0px; border-top-width: 0px; border-bottom-width:0px; width: 44mm">
+										<td class="styIRS4562TableCellF" style="border-color:black; border-left-width:0px; border-right-width:0px; border-top-width:0px; border-bottom-width:0px; width:31mm;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 									</tr>
 									<tr>
-										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 1px; border-bottom-width:1px; width: 44mm">
+										<td class="styIRS4562TableCellA" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:1px; width:40mm;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 1px; border-bottom-width:1px; width: 23mm">
+										<td class="styIRS4562TableCellB" style="border-color:black; border-left-width 0px; border-right-width:1px; border-top-width:1px; border-bottom-width:1px; width:23mm;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellC" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 1px; border-bottom-width:1px; width: 36mm">
+										<td class="styIRS4562TableCellC" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:1px; width:31mm;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 1px; border-bottom-width:1px; width: 23mm">
+										<td class="styIRS4562TableCellD" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:1px; width:43mm;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 1px; border-bottom-width:1px; width: 17mm">
+										<td class="styIRS4562TableCellE" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:1px; width:19mm;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
-										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width:0px; border-top-width: 1px; border-bottom-width:1px; width: 44mm">
+										<td class="styIRS4562TableCellF" style="border-color:black; border-left-width:0px; border-right-width:0px; border-top-width:1px; border-bottom-width:1px; width:31mm;">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 									</tr>
@@ -4479,14 +4375,14 @@ tax year and<b>
 					</div>
 					<!--   END PART VI TABLE   -->
 					<!--   BEGIN LINE 43   -->
-					<div class="styIRS4562LineItem" style="float: none; clear: both;">
-						<span class="styIRS4562LNLeftNumBox">43</span>
-						<div class="styLNDesc" style="width: 128.8mm; height: 5mm;">
-						<span style="float: left; clear: none;padding-left:3mm">Amortization of costs that began before your 2016 tax year</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">............</span>
+					<div class="styIRS4562LineItem" style="float:none; clear:both;">
+						<span class="styIRS4562LNLeftNumBox" style="height:4.5mm; padding-top:1mm;">43</span>
+						<div class="styLNDesc" style="width:128.8mm; height:4.5mm; padding-top:1mm;">
+						<span style="float:left; clear:none; padding-left:3mm;">Amortization of costs that began before your 2016 tax year</span>
+						<span class="styDotLn" style="float:right; padding-right:2mm;">............</span>
 					</div>
-						<span class="styLNRightNumBox"  style="height: 5mm;padding-top:1mm">43</span>
-						<div class="styIRS4562LNAmountBox" style="width: 47mm;height: 5mm;">
+						<span class="styLNRightNumBox"  style="height:4.5mm; padding-top:1mm;">43</span>
+						<div class="styIRS4562LNAmountBox" style="width:47mm; height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS4562Data/AmortizationCostsBeforeTYAmt"/>
 							</xsl:call-template>
@@ -4495,14 +4391,14 @@ tax year and<b>
 					<!--   END LINE 43   -->
 					<!--   BEGIN LINE 44   -->
 					<div class="styIRS4562LineItem" style="border-style:solid; border-color:black; border-bottom-width:2px; border-top-width:0px; border-left-width:0px; border-right-width:0px;">
-						<span class="styIRS4562LNLeftNumBox" style="height: 5mm;">44</span>
-						<div class="styLNDesc" style="width: 128.8mm; height: 5mm;">
-							<span style="float: left; clear: none;padding-left:3mm">
+						<span class="styIRS4562LNLeftNumBox" style="height:4.5mm;">44</span>
+						<div class="styLNDesc" style="width:128.8mm; height:4.5mm;">
+							<span style="float:left; clear:none; padding-left:3mm;">
 								<b>Total. </b>Add amounts in column (f). See the instructions for where to report</span>
-							<span class="styDotLn" style="float:right;padding-right:2mm;">.......</span>
+							<span class="styDotLn" style="float:right; padding-right:2mm;">.......</span>
 						</div>
-						<span class="styLNRightNumBox" style="border-bottom-width: 0px;height: 5mm;padding-top:1mm;">44</span>
-						<div class="styIRS4562LNAmountBox" style="width: 47mm; border-bottom-width: 0px;height: 5mm;padding-top:1mm">
+						<span class="styLNRightNumBox" style="border-bottom-width: 0px; height:4.5mm; padding-top:1mm;">44</span>
+						<div class="styIRS4562LNAmountBox" style="width:47mm; border-bottom-width:0px; height:4.5mm; padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS4562Data/TotalAmortizationAmt"/>
 							</xsl:call-template>
@@ -4510,9 +4406,9 @@ tax year and<b>
 					</div>
 					<!--   END LINE 44   -->
 					<!--   BEGIN FORM FOOTER  -->
-					<div style="width:187mm;clear:both;">
-						<div style="width:90mm;font-weight:bold;" class="styGenericDiv"/>
-						<div style="width:55mm;text-align:center;" class="styGenericDiv"/>
+					<div style="width:187mm; clear:both;">
+						<div style="width:90mm; font-weight:bold;" class="styGenericDiv"/>
+						<div style="width:55mm; text-align:center;" class="styGenericDiv"/>
 						<div style="float:right;" class="styGenericDiv">Form <span class="styBoldText">4562</span>(2016)</div>
 					</div>
 					<!--   END FORM FOOTER   -->
@@ -4520,8 +4416,8 @@ tax year and<b>
 					<p style="page-break-before:always"/>
 					<div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">
-          Additional Data        
-        </div>
+							Additional Data        
+						</div>
 						<div class="styLeftOverButtonContainer">
 							<input class="styLeftoverTableBtn" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
 						</div>
@@ -4553,13 +4449,13 @@ tax year and<b>
 						<span class="styRepeatingDataTitle">Form 4562, Part I, Line 6:</span>
 								<table class="styDepTbl" cellspacing="0">
 							<thead class="styTableThead">
-								<tr scope="col" class="styDepTblHdr" style="font-size:7pt;">
-									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width: 91mm; text-align: center">
-										<span style="float:left;padding-left:3mm;font-weight:bold;">6</span>
+								<tr class="styDepTblHdr" style="font-size:7pt;">
+									<th scope="col" class="styDepTblCell" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; width:91mm; text-align:center;">
+										<span style="float:left; padding-left:3mm; font-weight:bold;">6</span>
 										<b>(a)</b> Description of property</th>
-									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width: 35mm; text-align: center;padding-left:10mm">
+									<th scope="col" class="styDepTblCell" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; width:35mm; text-align:center; padding-left:10mm;">
 										<b>(b)</b> Cost (business use only)</th>
-									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width: 29mm; text-align: center;padding-left:10mm">
+									<th scope="col" class="styDepTblCell" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; width:29mm; text-align:center; padding-left:10mm;">
 										<b>(c)</b> Elected cost</th>
 								</tr>
 							</thead>
@@ -4568,18 +4464,23 @@ tax year and<b>
 								<xsl:for-each select="$IRS4562Data/ElectedProperty">
 									<tr>
 										<!-- Define background colors to the rows -->
-										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px;width: 91mm; padding-left: 3mm;">
+										<xsl:attribute name="class">
+											<xsl:choose>
+												<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+												<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+											</xsl:choose>
+										</xsl:attribute>
+										<td class="styIRS4562TableCellA" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; width:91mm; padding-left:3mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="PropertyDesc"/>
 											</xsl:call-template>
 										</td>
-										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width: 44mm;text-align:right;padding-left:10mm">
+										<td class="styIRS4562TableCellF" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; width:44mm; text-align:right; padding-left:10mm; padding-top:4mm;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="CostForBusinessUseOnlyAmt"/>
 											</xsl:call-template>
 										</td>
-										<td class="styIRS4562TableCellC" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width: 29mm; text-align: right;padding-left:10mm">
+										<td class="styIRS4562TableCellC" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; width:29mm; text-align:right; padding-left:10mm; padding-top:4mm;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="ElectedCostAmt"/>
 											</xsl:call-template>
@@ -4590,26 +4491,45 @@ tax year and<b>
 						</table>
 					</xsl:if>
 					<!-- Repeating vertical table for Part III, Line 19 -->
-					<xsl:if test="(((count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) &gt; 1) or                             (count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty) &gt; 1) or                             (count($IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty) &gt; 1) or                            (count($IRS4562Data/GeneralDepreciationSystem/GDS10YearProperty) &gt; 1) or                             (count($IRS4562Data/GeneralDepreciationSystem/GDS15YearProperty) &gt; 1) or                             (count($IRS4562Data/GeneralDepreciationSystem/GDS20YearProperty) &gt; 1) or                            (count($IRS4562Data/GeneralDepreciationSystem/GDS25YearProperty) &gt; 1) or                             (count($IRS4562Data/GeneralDepreciationSystem/GDSResidentialRentalProperty) &gt; 2) or                            (count($IRS4562Data/GeneralDepreciationSystem/GDSNonResidentialRealProperty) &gt; 1) or                            (count($IRS4562Data/GeneralDepreciationSystem/GDSNonRsdntlRealProp) &gt; 1) or                            (count($IRS4562Data/GeneralDepreciationSystem/GDSNonRsdntlRealPropSpecify) &gt; 1)) and $Print = $Separated)">
+					<xsl:if test="(((count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) &gt; 1) 
+						or (count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty) &gt; 1) 
+						or (count($IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty) &gt; 1) 			
+						or (count($IRS4562Data/GeneralDepreciationSystem/GDS10YearProperty) &gt; 1) 
+						or (count($IRS4562Data/GeneralDepreciationSystem/GDS15YearProperty) &gt; 1) 
+						or (count($IRS4562Data/GeneralDepreciationSystem/GDS20YearProperty) &gt; 1) 
+						or (count($IRS4562Data/GeneralDepreciationSystem/GDS25YearProperty) &gt; 1) 
+						or (count($IRS4562Data/GeneralDepreciationSystem/GDSResidentialRentalProperty) &gt; 2) 
+						or (count($IRS4562Data/GeneralDepreciationSystem/GDSNonResidentialRealProperty) &gt; 1) 
+						or (count($IRS4562Data/GeneralDepreciationSystem/GDSNonRsdntlRealProp) &gt; 1) 
+						or (count($IRS4562Data/GeneralDepreciationSystem/GDSNonRsdntlRealPropSpecify) &gt; 1)) and $Print = $Separated)">
 						<span style="height:2mm;"/>	
-						<span class="styRepeatingDataTitle">Form 4562, Part III, Line 19, Section B&#151;Assets Placed in Service During 2016 Tax Year Using the General Depreciation System:</span>
+						<span class="styRepeatingDataTitle">
+							Form 4562, Part III, Line 19, Section B&#151;Assets Placed in Service During 2016 Tax Year Using the General Depreciation System:
+						</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:8pt;">
 							<thead class="styTableThead">
 								<tr scope="col" class="styDepTblHdr">
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align: center">
-										<b>(a)</b> Classification of property</th>
+										<b>(a)</b> Classification of property
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align: center">
-										<b>(b)</b> Month and <br/>year placed in <br/>service</th>
+										<b>(b)</b> Month and <br/>year placed in <br/>service
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align: center">
-										<b>(c)</b> Basis for depreciation<br/>(business/investment use<br/>only&#151;see instructions)</th>
+										<b>(c)</b> Basis for depreciation<br/>(business/investment use<br/>only&#151;see instructions)
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px;">
-										<b>(d)</b> Recovery<br/>period</th>
+										<b>(d)</b> Recovery<br/>period
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px;">
-										<b>(e)</b> Convention</th>
+										<b>(e)</b> Convention
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px;">
-										<b>(f)</b> Method</th>
+										<b>(f)</b> Method
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px;text-align: center">
-										<b>(g)</b>Depreciation deduction</th>
+										<b>(g)</b>Depreciation deduction
+									</th>
 								</tr>
 							</thead>
 							<tfoot/>
@@ -4683,11 +4603,21 @@ tax year and<b>
 										<xsl:choose>
 											<xsl:when test="count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) mod 2 = 1">
 												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when><xsl:otherwise>styDepTblRow1</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when>
+														<xsl:otherwise>styDepTblRow1</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 											</xsl:when>
 											<xsl:otherwise>
 												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+														<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 											</xsl:otherwise>
 										</xsl:choose>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px;">
@@ -4739,18 +4669,29 @@ tax year and<b>
 								<xsl:for-each select="$IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty">
 									<tr>
 										<xsl:choose>
-											<xsl:when test="(count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) + count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty)) mod 2 = 1">
-												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when><xsl:otherwise>styDepTblRow1</xsl:otherwise></xsl:choose></xsl:attribute>
+											<xsl:when test="(count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) + 
+												count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty)) mod 2 = 1">
+													<!-- Define background colors to the rows -->
+													<xsl:attribute name="class">
+														<xsl:choose>
+															<xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when>
+															<xsl:otherwise>styDepTblRow1</xsl:otherwise>
+														</xsl:choose>
+													</xsl:attribute>
 											</xsl:when>
 											<xsl:otherwise>
 												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+														<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 											</xsl:otherwise>
 										</xsl:choose>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styLN" style="margin-left: 3.25mm; font-weight: bold">c</span>
-                                           7-year property
+											7-year property
                                            <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; background-color: lightgrey">
@@ -4797,19 +4738,30 @@ tax year and<b>
 								<xsl:for-each select="$IRS4562Data/GeneralDepreciationSystem/GDS10YearProperty">
 									<tr>
 										<xsl:choose>
-											<xsl:when test="(count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) + count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty) + count($IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty)) mod 2 = 1">
-												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when><xsl:otherwise>styDepTblRow1</xsl:otherwise></xsl:choose></xsl:attribute>
+											<xsl:when test="(count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) + 
+												count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty) + count($IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty)) mod 2 = 1">
+													<!-- Define background colors to the rows -->
+													<xsl:attribute name="class">
+														<xsl:choose>
+															<xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when>
+															<xsl:otherwise>styDepTblRow1</xsl:otherwise>
+														</xsl:choose>
+													</xsl:attribute>
 											</xsl:when>
 											<xsl:otherwise>
 												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+														<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 											</xsl:otherwise>
 										</xsl:choose>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px;">
 											<span class="styLN" style="margin-left: 3.25mm; font-weight: bold">d</span>
                                             10-year property
-                                         <span class="styIRS4562TableCellPad"/>
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px;background-color: lightgrey">
 											<span class="styIRS4562TableCellPad"/>
@@ -4855,19 +4807,32 @@ tax year and<b>
 								<xsl:for-each select="$IRS4562Data/GeneralDepreciationSystem/GDS15YearProperty">
 									<tr>
 										<xsl:choose>
-											<xsl:when test="(count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty) +                                       count($IRS4562Data/GeneralDepreciationSystem/GDS10YearProperty)) mod 2 = 1">
+											<xsl:when test="(count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) +                                        			
+												count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty) +                                        
+												count($IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty) +                                       
+												count($IRS4562Data/GeneralDepreciationSystem/GDS10YearProperty)) mod 2 = 1">
 												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when><xsl:otherwise>styDepTblRow1</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when>
+														<xsl:otherwise>styDepTblRow1</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 											</xsl:when>
 											<xsl:otherwise>
 												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+														<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 											</xsl:otherwise>
 										</xsl:choose>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styLN" style="margin-left: 3.25mm; font-weight: bold">e</span>
-                                         15-year property
-                                           <span class="styIRS4562TableCellPad"/>
+											15-year property
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; background-color: lightgrey">
 											<span class="styIRS4562TableCellPad"/>
@@ -4913,19 +4878,33 @@ tax year and<b>
 								<xsl:for-each select="$IRS4562Data/GeneralDepreciationSystem/GDS20YearProperty">
 									<tr>
 										<xsl:choose>
-											<xsl:when test="(count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty) +                                       count($IRS4562Data/GeneralDepreciationSystem/GDS10YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS15YearProperty)) mod 2 = 1">
+											<xsl:when test="(count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) +                                        
+												count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty) +                                        	
+												count($IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty) +                                       
+												count($IRS4562Data/GeneralDepreciationSystem/GDS10YearProperty) +                                        
+												count($IRS4562Data/GeneralDepreciationSystem/GDS15YearProperty)) mod 2 = 1">
 												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when><xsl:otherwise>styDepTblRow1</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when>
+														<xsl:otherwise>styDepTblRow1</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 											</xsl:when>
 											<xsl:otherwise>
 												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+														<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 											</xsl:otherwise>
 										</xsl:choose>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styLN" style="margin-left: 3.25mm; font-weight: bold">f</span>
-                                              20-year property
-                                          <span class="styIRS4562TableCellPad"/>
+                                            20-year property
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; background-color: lightgrey">
 											<span class="styIRS4562TableCellPad"/>
@@ -4971,18 +4950,33 @@ tax year and<b>
 								<xsl:for-each select="$IRS4562Data/GeneralDepreciationSystem/GDS25YearProperty">
 									<tr>
 										<xsl:choose>
-											<xsl:when test="(count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty) +                                       count($IRS4562Data/GeneralDepreciationSystem/GDS10YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS15YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS20YearProperty)) mod 2 = 1">
+											<xsl:when test="(count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) +                                        	
+												count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty) +                                        
+												count($IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty) +                                       
+												count($IRS4562Data/GeneralDepreciationSystem/GDS10YearProperty) +                                        
+												count($IRS4562Data/GeneralDepreciationSystem/GDS15YearProperty) +                                        
+												count($IRS4562Data/GeneralDepreciationSystem/GDS20YearProperty)) mod 2 = 1">
 												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when><xsl:otherwise>styDepTblRow1</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when>
+														<xsl:otherwise>styDepTblRow1</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 											</xsl:when>
 											<xsl:otherwise>
 												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+														<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 											</xsl:otherwise>
 										</xsl:choose>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styLN" style="margin-left: 3.25mm; font-weight: bold">g</span>
-                                           25-year property
+											25-year property
                                           <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; background-color: lightgrey">
@@ -4995,8 +4989,8 @@ tax year and<b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                       25 yrs.
-                                          <span class="styIRS4562TableCellPad"/>
+											25 yrs.
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px;">
 											<xsl:call-template name="PopulateText">
@@ -5005,8 +4999,8 @@ tax year and<b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                              S/L
-                                        <span class="styIRS4562TableCellPad"/>
+                                            S/L
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
 											<xsl:call-template name="PopulateAmount">
@@ -5020,8 +5014,8 @@ tax year and<b>
 									<tr>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styLN" style="margin-left: 3.25mm; font-weight: bold">g</span>
-                                        25-year property
-                                        <span class="styIRS4562TableCellPad"/>
+											25-year property
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; background-color: lightgrey">
 											<span class="styIRS4562TableCellPad"/>
@@ -5030,15 +5024,15 @@ tax year and<b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                             25 yrs.
+                                            25 yrs.
                                             <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                        S/L
-                                         <span class="styIRS4562TableCellPad"/>
+											S/L
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styIRS4562TableCellPad"/>
@@ -5050,11 +5044,28 @@ tax year and<b>
 								<xsl:for-each select="$IRS4562Data/GeneralDepreciationSystem/GDSResidentialRentalProperty">
 									<tr>
 										<!-- Define background colors to the rows -->
-										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+										<xsl:attribute name="class">
+											<xsl:choose>
+												<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+												<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+											</xsl:choose>
+										</xsl:attribute>
 										<xsl:if test="position()=1">
 											<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px;text-align:left;">
 												<!-- Define background colors to the rows, since the previous row had rows within rows, it is necessary to color the first column differently than the rest of the rows. -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="(count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty) +                                       count($IRS4562Data/GeneralDepreciationSystem/GDS10YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS15YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS20YearProperty) +                                       count($IRS4562Data/GeneralDepreciationSystem/GDS25YearProperty)) mod 2 = 1">styDepTblRow2Cell</xsl:when><xsl:otherwise>styDepTblRow1Cell</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="(count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) +                                        
+															count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty) +                                        
+															count($IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty) +                                       
+															count($IRS4562Data/GeneralDepreciationSystem/GDS10YearProperty) +                                        
+															count($IRS4562Data/GeneralDepreciationSystem/GDS15YearProperty) +                                        
+															count($IRS4562Data/GeneralDepreciationSystem/GDS20YearProperty) +                                       
+															count($IRS4562Data/GeneralDepreciationSystem/GDS25YearProperty)) mod 2 = 1">styDepTblRow2Cell
+														</xsl:when>
+														<xsl:otherwise>styDepTblRow1Cell</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 												<xsl:if test="$ResidentialRowCount &lt;2">
 													<xsl:attribute name="rowspan">2</xsl:attribute>
 												</xsl:if>
@@ -5062,7 +5073,7 @@ tax year and<b>
 													<xsl:attribute name="rowspan"><xsl:value-of select="$ResidentialRowCount"/></xsl:attribute>
 												</xsl:if>
 												<span class="styLN" style="margin-left: 2.5mm; font-weight: bold">h</span>
-                                               Residential rental<br/>
+												Residential rental<br/>
 												<span style="width: 10mm; margin-left: 5.5mm;">property</span>
 												<span class="styIRS4562TableCellPad"/>
 											</td>
@@ -5080,16 +5091,16 @@ tax year and<b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                          27.5 yrs.
-                                              <span class="styIRS4562TableCellPad"/>
+											27.5 yrs.
+                                            <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                          MM
-                                        <span class="styIRS4562TableCellPad"/>
+											MM
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                          S/L
-                                        <span class="styIRS4562TableCellPad"/>
+											S/L
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
 											<xsl:call-template name="PopulateAmount">
@@ -5115,16 +5126,16 @@ tax year and<b>
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                              27.5 yrs.
-                                               <span class="styIRS4562TableCellPad"/>
+												27.5 yrs.
+												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                             MM
-                                               <span class="styIRS4562TableCellPad"/>
+												MM
+                                                <span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                               S/L
-                                                 <span class="styIRS4562TableCellPad"/>
+												S/L
+                                                <span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
 												<span class="styIRS4562TableCellPad"/>
@@ -5138,16 +5149,16 @@ tax year and<b>
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                              27.5 yrs.
+												27.5 yrs.
                                                 <span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                               MM
-                                                 <span class="styIRS4562TableCellPad"/>
+                                                MM
+                                                <span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
                                                 S/L
-                                            <span class="styIRS4562TableCellPad"/>
+												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px;">
 												<span class="styIRS4562TableCellPad"/>
@@ -5163,16 +5174,16 @@ tax year and<b>
 												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                           27.5 yrs.
-                                             <span class="styIRS4562TableCellPad"/>
+												27.5 yrs.
+												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                         MM
-                                        <span class="styIRS4562TableCellPad"/>
+												MM
+												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                               S/L
-                                         <span class="styIRS4562TableCellPad"/>
+												S/L
+												<span class="styIRS4562TableCellPad"/>
 											</td>
 											<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
 												<span class="styIRS4562TableCellPad"/>
@@ -5187,11 +5198,28 @@ tax year and<b>
 								<xsl:for-each select="$IRS4562Data/GeneralDepreciationSystem/GDSNonRsdntlRealProp">
 									<tr>
 										<!-- Define background colors to the rows -->
-										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+										<xsl:attribute name="class">
+											<xsl:choose>
+												<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+												<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+											</xsl:choose>
+										</xsl:attribute>
 										<xsl:if test="position()=1">
 											<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px;text-align:left;">
 												<!-- Define background colors to the rows, since the previous row had rows within rows, it is necessary to color the first column differently than the rest of the rows. -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="(count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty) +                                       count($IRS4562Data/GeneralDepreciationSystem/GDS10YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS15YearProperty) +                                        count($IRS4562Data/GeneralDepreciationSystem/GDS20YearProperty) +                                       count($IRS4562Data/GeneralDepreciationSystem/GDS25YearProperty)) mod 2 = 1">styDepTblRow1Cell</xsl:when><xsl:otherwise>styDepTblRow2Cell</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="(count($IRS4562Data/GeneralDepreciationSystem/GDS3YearProperty) +                                        
+															count($IRS4562Data/GeneralDepreciationSystem/GDS5YearProperty) +                                        
+															count($IRS4562Data/GeneralDepreciationSystem/GDS7YearProperty) +                                       
+															count($IRS4562Data/GeneralDepreciationSystem/GDS10YearProperty) +                                        
+															count($IRS4562Data/GeneralDepreciationSystem/GDS15YearProperty) +                                        
+															count($IRS4562Data/GeneralDepreciationSystem/GDS20YearProperty) +                                       
+															count($IRS4562Data/GeneralDepreciationSystem/GDS25YearProperty)) mod 2 = 1">styDepTblRow1Cell
+														</xsl:when>
+														<xsl:otherwise>styDepTblRow2Cell</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 												<xsl:if test="($NonresidentialTotalRowCount)&lt;2">
 													<xsl:attribute name="rowspan">2</xsl:attribute>
 												</xsl:if>
@@ -5204,7 +5232,7 @@ tax year and<b>
 													</xsl:if>
 												</xsl:if>
 												<span class="styLN" style="margin-left: 2.5mm; font-weight: bold">i</span>
-                                                  Nonresidential real<br/>
+                                                Nonresidential real<br/>
 												<span style="width: 10mm; margin-left: 5.5mm;">property</span>
 												<span class="styIRS4562TableCellPad"/>
 											</td>
@@ -5222,12 +5250,12 @@ tax year and<b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                              39 yrs.
+                                            39 yrs.
                                             <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                          MM
-                                             <span class="styIRS4562TableCellPad"/>
+											MM
+                                            <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
                                               S/L
@@ -5246,11 +5274,21 @@ tax year and<b>
 										<xsl:choose>
 											<xsl:when test="(count($IRS4562Data/GeneralDepreciationSystem/GDSNonRsdntlRealProp)) mod 2 = 1">
 												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when><xsl:otherwise>styDepTblRow1</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when>
+														<xsl:otherwise>styDepTblRow1</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 											</xsl:when>
 											<xsl:otherwise>
 												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+														<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 											</xsl:otherwise>
 										</xsl:choose>
 										<xsl:if test="$Nonresidential1RowCount=0">
@@ -5263,25 +5301,25 @@ tax year and<b>
 														<span style="width: 10mm; margin-left: 5.5mm;">property</span>
 														<span class="styIRS4562TableCellPad"/>
 													</td>
-													<td class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
+													<td class="styIRS4562TableCellB" style="border-color:black;border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
 														<span class="styIRS4562TableCellPad"/>
 													</td>
-													<td class="styIRS4562TableCellC" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align: right">
+													<td class="styIRS4562TableCellC" style="border-color:black;border-left-width:0px;border-right-width:1px;border-top-width:1px;border-bottom-width:0px; text-align:right">
 														<span class="styIRS4562TableCellPad"/>
 													</td>
-													<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">39 yrs.<span class="styIRS4562TableCellPad"/>
+													<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width:1px;border-top-width:1px;border-bottom-width:0px">															39 yrs.<span class="styIRS4562TableCellPad"/>
 													</td>
-													<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">MM<span class="styIRS4562TableCellPad"/>
+													<td class="styIRS4562TableCellE" style="border-color:black;border-left-width:0px;border-right-width:1px;border-top-width:1px; border-bottom-width:0px">														MM<span class="styIRS4562TableCellPad"/>
 													</td>
-													<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">S/L<span class="styIRS4562TableCellPad"/>
+													<td class="styIRS4562TableCellF" style="border-color:black;border-left-width:0px;border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">														S/L<span class="styIRS4562TableCellPad"/>
 													</td>
-													<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
+													<td class="styIRS4562TableCellG" style="border-color:black;border-left-width:0px;border-right-width:0px;border-top-width: 1px; border-bottom-width:0px">
 														<span class="styIRS4562TableCellPad"/>
 													</td>
 												</tr>
 											</xsl:if>
 										</xsl:if>
-										<td class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px;text-align:center;">
+										<td class="styIRS4562TableCellB" style="border-color:black;border-left-width:0px;border-right-width:1px;border-top-width:1px; border-bottom-width:0px;text-align:center;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="MonthAndYearPlacedInServiceDt"/>
 											</xsl:call-template>
@@ -5300,12 +5338,12 @@ tax year and<b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px;">
-                                       MM
-                                       <span class="styIRS4562TableCellPad"/>
+										   MM
+										   <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
                                             S/L
-                                         <span class="styIRS4562TableCellPad"/>
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
 											<xsl:call-template name="PopulateAmount">
@@ -5315,11 +5353,12 @@ tax year and<b>
 										</td>
 									</tr>
 								</xsl:for-each>
-								<xsl:if test="((count($IRS4562Data/GeneralDepreciationSystem/GDSNonRsdntlRealProp) + (count($IRS4562Data/GeneralDepreciationSystem/GDSNonRsdntlRealPropSpecify))) = 0)">
+								<xsl:if test="((count($IRS4562Data/GeneralDepreciationSystem/GDSNonRsdntlRealProp) + 	
+									(count($IRS4562Data/GeneralDepreciationSystem/GDSNonRsdntlRealPropSpecify))) = 0)">
 									<tr>
 										<td class="styIRS4562TableCellA" rowspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styLN" style="margin-left: 3.25mm; font-weight: bold">i</span>
-                                                Nonresidential real<br/>
+                                            Nonresidential real<br/>
 											<span style="width: 10mm; margin-left: 5.5mm;">property</span>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
@@ -5330,16 +5369,16 @@ tax year and<b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                         39 yrs.
+											39 yrs.
                                             <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                         MM
-                                             <span class="styIRS4562TableCellPad"/>
+											MM
+                                            <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                          S/L
-                                         <span class="styIRS4562TableCellPad"/>
+											S/L
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styIRS4562TableCellPad"/>
@@ -5356,11 +5395,11 @@ tax year and<b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                        MM
-                                      <span class="styIRS4562TableCellPad"/>
+											MM
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                         S/L
+											S/L
                                             <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
@@ -5380,12 +5419,12 @@ tax year and<b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                        MM
-                                        <span class="styIRS4562TableCellPad"/>
+											MM
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                              S/L
-                                          <span class="styIRS4562TableCellPad"/>
+                                            S/L
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styIRS4562TableCellPad"/>
@@ -5397,27 +5436,36 @@ tax year and<b>
 						<!-- END SRD  -->
 					</xsl:if>
 					<!-- Repeating vertical table for Part III, Line 20a - c -->
-					<xsl:if test="((count($IRS4562Data/AlternativeDepreciationSystem/ADSClassLifeProperty) &gt; 1) or                            (count($IRS4562Data/AlternativeDepreciationSystem/ADS12YearProperty) &gt; 1) or                            (count($IRS4562Data/AlternativeDepreciationSystem/ADS40YearProperty) &gt; 1)) and ($Print = $Separated)">
+					<xsl:if test="((count($IRS4562Data/AlternativeDepreciationSystem/ADSClassLifeProperty) &gt; 1) 
+						or (count($IRS4562Data/AlternativeDepreciationSystem/ADS12YearProperty) &gt; 1) 
+						or (count($IRS4562Data/AlternativeDepreciationSystem/ADS40YearProperty) &gt; 1)) and ($Print = $Separated)">
 						<br/>
 						<span class="styRepeatingDataTitle">Form 4562, Part III, Line 20a - c, Section C&#151;Assets Placed in Service During 2016 Tax Year Using the Alternative Depreciation System:</span>
-					<!--	<span class="styBB" style="border-bottom-width:0px">	-->
+						<!--	<span class="styBB" style="border-bottom-width:0px">	-->
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
 							<thead class="styTableThead">
 								<tr scope="col" class="styDepTblHdr">
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align: center">
-										<b>(a)</b> Classification of property</th>
+										<b>(a)</b> Classification of property
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align: center">
-										<b>(b)</b> Month and <br/>year placed in <br/>service</th>
+										<b>(b)</b> Month and <br/>year placed in <br/>service
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align: center">
-										<b>(c)</b> Basis for depreciation<br/>(business/investment use<br/>only&#151;see instructions)</th>
+										<b>(c)</b> Basis for depreciation<br/>(business/investment use<br/>only&#151;see instructions)
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px;">
-										<b>(d)</b> Recovery<br/>period</th>
+										<b>(d)</b> Recovery<br/>period
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px;">
-										<b>(e)</b> Convention</th>
+										<b>(e)</b> Convention
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px;">
-										<b>(f)</b> Method</th>
+										<b>(f)</b> Method
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px;text-align: center">
-										<b>(g)</b>Depreciation deduction</th>
+										<b>(g)</b>Depreciation deduction
+									</th>
 								</tr>
 							</thead>
 							<tfoot/>
@@ -5426,23 +5474,32 @@ tax year and<b>
 								<xsl:for-each select="$IRS4562Data/AlternativeDepreciationSystem/ADSClassLifeProperty">
 									<tr>
 										<!-- Define background colors to the rows -->
-										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+										<xsl:attribute name="class">
+											<xsl:choose>
+												<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+												<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+											</xsl:choose>
+										</xsl:attribute>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
 											<xsl:if test="position()=1">
 												<span class="styLN" style="text-align: right; font-weight: bold;">20a</span>
-                                           Class life
-                                     </xsl:if>
+												Class life
+											</xsl:if>
 											<xsl:if test="position()!=1">
 												<span class="styLN" style="margin-left: 3.25mm; font-weight: bold">a</span>
-                                                  Class life
-                                                   </xsl:if>
+                                                Class life
+                                            </xsl:if>
 										</td>
 										<td class="styIRS4562TableCellB">
 											<xsl:if test="position()=1">
-												<xsl:attribute name="style">border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; background-color: lightgrey</xsl:attribute>
+												<xsl:attribute name="style">
+													border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; background-color: lightgrey
+												</xsl:attribute>
 											</xsl:if>
 											<xsl:if test="position() != 1">
-												<xsl:attribute name="style">border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; background-color: lightgrey</xsl:attribute>
+												<xsl:attribute name="style">
+													border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; background-color: lightgrey
+												</xsl:attribute>
 											</xsl:if>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
@@ -5465,7 +5522,7 @@ tax year and<b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                              S/L
+                                            S/L
                                            <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
@@ -5480,10 +5537,12 @@ tax year and<b>
 									<tr>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styLN" style="text-align: right; font-weight: bold">20a</span>
-                                             Class life
-                                             </td>
+                                            Class life
+                                        </td>
 										<td class="styIRS4562TableCellB">
-											<xsl:attribute name="style">border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; background-color: lightgrey</xsl:attribute>
+											<xsl:attribute name="style">
+												border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; background-color: lightgrey
+											</xsl:attribute>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellC" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align: right">
@@ -5496,7 +5555,7 @@ tax year and<b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                             S/L
+                                            S/L
                                             <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
@@ -5510,16 +5569,26 @@ tax year and<b>
 										<xsl:choose>
 											<xsl:when test="(count($IRS4562Data/AlternativeDepreciationSystem/ADSClassLifeProperty)) mod 2 = 1">
 												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when><xsl:otherwise>styDepTblRow1</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when>
+														<xsl:otherwise>styDepTblRow1</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 											</xsl:when>
 											<xsl:otherwise>
 												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+														<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 											</xsl:otherwise>
 										</xsl:choose>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styLN" style="margin-left: 3.25mm; font-weight: bold">b</span>
-                                         12-year
+											12-year
                                            <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; background-color: lightgrey">
@@ -5532,8 +5601,8 @@ tax year and<b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                       12 yrs.
-                                        <span class="styIRS4562TableCellPad"/>
+											12 yrs.
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
 											<xsl:call-template name="PopulateText">
@@ -5542,8 +5611,8 @@ tax year and<b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                           S/L
-                                             <span class="styIRS4562TableCellPad"/>
+											S/L
+                                            <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
 											<xsl:call-template name="PopulateAmount">
@@ -5557,8 +5626,8 @@ tax year and<b>
 									<tr>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styLN" style="margin-left: 3.25mm; font-weight: bold">b</span>
-                                             12-year
-                                           <span class="styIRS4562TableCellPad"/>
+                                            12-year
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; background-color: lightgrey">
 											<span class="styIRS4562TableCellPad"/>
@@ -5567,15 +5636,15 @@ tax year and<b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                        12 yrs.
-                                         <span class="styIRS4562TableCellPad"/>
+											12 yrs.
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                         S/L
-                                       <span class="styIRS4562TableCellPad"/>
+											S/L
+										   <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styIRS4562TableCellPad"/>
@@ -5586,19 +5655,30 @@ tax year and<b>
 								<xsl:for-each select="$IRS4562Data/AlternativeDepreciationSystem/ADS40YearProperty">
 									<tr>
 										<xsl:choose>
-											<xsl:when test="(count($IRS4562Data/AlternativeDepreciationSystem/ADSClassLifeProperty) +                                         count($IRS4562Data/AlternativeDepreciationSystem/ADS12YearProperty)) mod 2 = 1">
+											<xsl:when test="(count($IRS4562Data/AlternativeDepreciationSystem/ADSClassLifeProperty) +                                         
+												count($IRS4562Data/AlternativeDepreciationSystem/ADS12YearProperty)) mod 2 = 1">
 												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when><xsl:otherwise>styDepTblRow1</xsl:otherwise></xsl:choose></xsl:attribute>
+													<xsl:attribute name="class">
+														<xsl:choose>
+															<xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when>
+															<xsl:otherwise>styDepTblRow1</xsl:otherwise>
+														</xsl:choose>
+													</xsl:attribute>
 											</xsl:when>
 											<xsl:otherwise>
 												<!-- Define background colors to the rows -->
-												<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+												<xsl:attribute name="class">
+													<xsl:choose>
+														<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+														<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+													</xsl:choose>
+												</xsl:attribute>
 											</xsl:otherwise>
 										</xsl:choose>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styLN" style="margin-left: 3.25mm; font-weight: bold">c</span>
-                                          40-year
-                                         <span class="styIRS4562TableCellPad"/>
+											40-year
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align:center;">
 											<xsl:call-template name="PopulateText">
@@ -5613,16 +5693,16 @@ tax year and<b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                          40 yrs.
-                                         <span class="styIRS4562TableCellPad"/>
+											40 yrs.
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                        MM
-                                         <span class="styIRS4562TableCellPad"/>
+											MM
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                           S/L
-                                       <span class="styIRS4562TableCellPad"/>
+											S/L
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
 											<xsl:call-template name="PopulateAmount">
@@ -5636,7 +5716,7 @@ tax year and<b>
 									<tr>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px;">
 											<span class="styLN" style="margin-left: 3.25mm; font-weight: bold">c</span>
-                                          40-year
+											40-year
                                       <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellB" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align:center;">
@@ -5646,16 +5726,16 @@ tax year and<b>
 											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                         40 yrs.
-                                        <span class="styIRS4562TableCellPad"/>
+											40 yrs.
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
-                                        MM
-                                      <span class="styIRS4562TableCellPad"/>
+											MM
+											<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px">
                                             S/L
-                                              <span class="styIRS4562TableCellPad"/>
+                                            <span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px">
 											<span class="styIRS4562TableCellPad"/>
@@ -5667,39 +5747,47 @@ tax year and<b>
 					<!--</span>-->	
 					</xsl:if>
 					<!-- Repeating vertical table for Part V, Line 26 -->
-					<xsl:if test="(count($IRS4562Data/MoreThanHalfBusinessUseProp) &gt; 3) and ($Print = $Separated)">
-					
+					<xsl:if test="(count($IRS4562Data/MoreThanHalfBusinessUseProp) &gt; 3) and ($Print = $Separated)">					
 						<span class="styRepeatingDataTitle">Form 4562, Part V, Line 26, Property used more than 50% in a qualified business use: </span>
 						<table class="styDepTbl" cellspacing="0" cellpadding="0" border="0" style="overflow-y: hide; margin: 0px; padding: 0px;">
 							<thead class="styTableThead">
 								<tr scope="col" class="styDepTblHdr">
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:29mm; text-align: center; font-size: 6pt">
 										<b>(a)</b>
-										<br/>Type of property (list<br/>vehicles first)</th>
+										<br/>Type of property (list<br/>vehicles first)
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:16mm; text-align: center; font-size: 6pt">
 										<b>(b)</b>
-										<br/>Date placed in<br/>service</th>
+										<br/>Date placed in<br/>service
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:16mm; text-align: center; font-size: 6pt">
 										<b>(c)</b>
-										<br/>Business/<br/>investment<br/>use<br/>percentage</th>
+										<br/>Business/<br/>investment<br/>use<br/>percentage
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:24mm; font-size: 6pt">
 										<b>(d)</b>
-										<br/>Cost or other<br/>basis</th>
+										<br/>Cost or other<br/>basis
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:26mm; font-size: 6pt">
 										<b>(e)</b>
-										<br/>Basis for depreciation<br/>(business/investment<br/>use only)</th>
+										<br/>Basis for depreciation<br/>(business/investment<br/>use only)
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:9mm; font-size: 6pt">
 										<b>(f)</b>
-										<br/>Recovery<br/>period</th>
+										<br/>Recovery<br/>period
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:17mm; text-align: center; font-size: 6pt">
 										<b>(g)</b>
-										<br/>Method/<br/>Convention</th>
+										<br/>Method/<br/>Convention
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:24mm; text-align: center; font-size: 6pt">
 										<b>(h)</b>
-										<br/>Depreciation/<br/>deduction</th>
+										<br/>Depreciation/<br/>deduction
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px; width:24mm; text-align: center; font-size: 6pt">
 										<b>(i)</b>
-										<br/>Elected<br/>section 179<br/>cost</th>
+										<br/>Elected<br/>section 179<br/>cost
+									</th>
 								</tr>
 							</thead>
 							<tfoot/>
@@ -5707,7 +5795,12 @@ tax year and<b>
 								<xsl:for-each select="$IRS4562Data/MoreThanHalfBusinessUseProp">
 									<tr>
 										<!-- Define background colors to the rows -->
-										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+										<xsl:attribute name="class">
+											<xsl:choose>
+												<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+												<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+											</xsl:choose>
+										</xsl:attribute>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:29mm; font-size: 6pt">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="PropertyDesc"/>
@@ -5777,28 +5870,36 @@ tax year and<b>
 								<tr scope="col" class="styDepTblHdr">
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:29mm; text-align: center; font-size: 6pt">
 										<b>(a)</b>
-										<br/>Type of property (list<br/>vehicles first)</th>
+										<br/>Type of property (list<br/>vehicles first)
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:16mm; text-align: center; font-size: 6pt">
 										<b>(b)</b>
-										<br/>Date placed in<br/>service</th>
+										<br/>Date placed in<br/>service
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:16mm; text-align: center; font-size: 6pt">
 										<b>(c)</b>
-										<br/>Business/<br/>investment<br/>use<br/>percentage</th>
+										<br/>Business/<br/>investment<br/>use<br/>percentage
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:24mm; font-size: 6pt">
 										<b>(d)</b>
-										<br/>Cost or other<br/>basis</th>
+										<br/>Cost or other<br/>basis
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:26mm; font-size: 6pt">
 										<b>(e)</b>
-										<br/>Basis for depreciation<br/>(business/investment<br/>use only)</th>
+										<br/>Basis for depreciation<br/>(business/investment<br/>use only)
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:9mm; font-size: 6pt">
 										<b>(f)</b>
-										<br/>Recovery<br/>period</th>
+										<br/>Recovery<br/>period
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:17mm; text-align: center; font-size: 6pt">
 										<b>(g)</b>
-										<br/>Method/<br/>Convention</th>
+										<br/>Method/<br/>Convention
+									</th>
 									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:24mm; text-align: center; font-size: 6pt">
 										<b>(h)</b>
-										<br/>Depreciation/<br/>deduction</th>
+										<br/>Depreciation/<br/>deduction
+									</th>
 								</tr>
 							</thead>
 							<tfoot/>
@@ -5806,7 +5907,12 @@ tax year and<b>
 								<xsl:for-each select="$IRS4562Data/LessThanHalfBusinessUseProp">
 									<tr>
 										<!-- Define background colors to the rows -->
-										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+										<xsl:attribute name="class">
+											<xsl:choose>
+												<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+												<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+											</xsl:choose>
+										</xsl:attribute>
 										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:29mm; font-size: 6pt">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="PropertyDesc"/>
@@ -5913,11 +6019,11 @@ tax year and<b>
 											<tr class="styDepTblRow1">
 												<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width: 122mm">
 													<span class="styLN" style="text-align: center; font-weight: bold; width: 4.5mm;">30</span>
-                                                     Total business/investment miles driven<br/>
+                                                    Total business/investment miles driven<br/>
 													<span style="width: 5mm"/>during the year (<b>don't </b>
-                                                         include commuting<br/>
+													include commuting<br/>
 													<span style="width: 5mm"/>miles&#151;See page 2 of the instructions)
-                                                      </td>
+                                                </td>
 												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="BusinessMilesCnt"/>
@@ -5959,8 +6065,8 @@ tax year and<b>
 											<tr class="styDepTblRow2">
 												<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:122mm">
 														<span class="styLN" style="text-align: center; font-weight: bold; width: 4.5mm;">31</span>
-                                                            Total commuting miles driven during the year
-                                                              <span class="styIRS4562TableCellPad"/>
+                                                        Total commuting miles driven during the year
+                                                        <span class="styIRS4562TableCellPad"/>
 												</td>
 												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
 													<xsl:call-template name="PopulateAmount">
@@ -6003,8 +6109,8 @@ tax year and<b>
 											<tr class="styDepTblRow1">
 												<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:122mm">
 													<span class="styLN" style="text-align: center; font-weight: bold; width: 4.5mm;">32</span>
-                                                      Total other personal (noncommuting) miles driven
-                                                         <span class="styIRS4562TableCellPad"/>
+                                                    Total other personal (noncommuting) miles driven
+                                                    <span class="styIRS4562TableCellPad"/>
 												</td>
 												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
 													<xsl:call-template name="PopulateAmount">
@@ -6047,8 +6153,8 @@ tax year and<b>
 											<tr class="styDepTblRow2">
 												<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width: 122mm">
 													<span class="styLN" style="text-align: center; font-weight: bold; width: 4.5mm;">33</span>
-                                                       Total miles driven during the year.  Add lines 30 <span style="padding-left:9.5mm"/> through  32
-                                                         <span class="styIRS4562TableCellPad"/>
+                                                    Total miles driven during the year.  Add lines 30 <span style="padding-left:9.5mm"/> through  32
+                                                    <span class="styIRS4562TableCellPad"/>
 												</td>
 												<td class="styIRS4562TableCellSmall2" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;">
 													<xsl:call-template name="PopulateAmount">
@@ -6146,8 +6252,8 @@ tax year and<b>
 											<tr class="styDepTblRow1">
 												<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width: 122mm">
 													<span class="styLN" style="text-align: center; font-weight: bold; width: 4.5mm;">34</span>
-                                                       Was the vehicle available for personal use during off-<span style="padding-left:5mm"/>duty hours?
-                                                   <span style="width: 5mm"/>
+                                                    Was the vehicle available for personal use during off-<span style="padding-left:5mm"/>duty hours?
+                                                    <span style="width: 5mm"/>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
 												<td class="styIRS4562TableCellYesNo">
@@ -6250,9 +6356,9 @@ tax year and<b>
 											<!-- Line 35  -->
 											<tr class="styDepTblRow2">
 												<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width: 122mm">
-														<span class="styLN" style="text-align: center; font-weight: bold; width: 4.5mm;">35</span>
-                                                        Was the vehicle used primarily by a more than 5%  <span style="padding-left:7mm"/>owner or related person?
-                                                           <span class="styIRS4562TableCellPad"/>
+													<span class="styLN" style="text-align: center; font-weight: bold; width: 4.5mm;">35</span>
+                                                    Was the vehicle used primarily by a more than 5%  <span style="padding-left:7mm"/>owner or related person?
+                                                    <span class="styIRS4562TableCellPad"/>
 												</td>
 												<td class="styIRS4562TableCellYesNo">
 													<span style="font-weight: normal">
@@ -6355,8 +6461,8 @@ tax year and<b>
 											<tr class="styDepTblRow1">
 												<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px; width: 122mm;">
 													<span class="styLN" style="text-align: center; font-weight: bold; width: 4.5mm;">36</span>
-                                                      Is another vehicle available for personal use?
-                                                        <span class="styIRS4562TableCellPad"/>
+                                                    Is another vehicle available for personal use?
+                                                    <span class="styIRS4562TableCellPad"/>
 												</td>
 												<td class="styIRS4562TableCellYesNo" style="border-bottom-width: 0px">
 													<span style="font-weight: normal">
@@ -6468,24 +6574,30 @@ tax year and<b>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
 							<thead class="styTableThead">
 								<tr scope="col" class="styDepTblHdr">
-									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 1px; border-bottom-width:1px; width: 44mm; text-align: center">
+									<th scope="col" class="styDepTblCell" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:1px; width:40mm; text-align:center;">
 										<b>(a)</b>
-										<br/>Description of costs</th>
-									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 1px; border-bottom-width:1px; width: 23mm; text-align: center">
+										<br/>Description of costs
+									</th>
+									<th scope="col" class="styDepTblCell" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:1px; width:23mm; text-align:center;">
 										<b>(b)</b>
-										<br/>Date amortization<br/>begins</th>
-									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 1px; border-bottom-width:1px; width: 36mm;text-align: center;">
+										<br/>Date amortization<br/>begins
+									</th>
+									<th scope="col" class="styDepTblCell" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:1px; width:36mm; text-align:center;">
 										<b>(c)</b>
-										<br/>Amortizable<br/>amount</th>
-									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 1px; border-bottom-width:1px; width: 23mm">
+										<br/>Amortizable<br/>amount
+									</th>
+									<th scope="col" class="styDepTblCell" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:1px; width:23mm;">
 										<b>(d)</b>
-										<br/>Code<br/>section</th>
-									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width:1px; border-top-width: 1px; border-bottom-width:1px; width: 17mm">
+										<br/>Code<br/>section
+									</th>
+									<th scope="col" class="styDepTblCell" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:1px; width:17mm;">
 										<b>(e)</b>
-										<br/>Amortization<br/>period or<br/>percentage</th>
-									<th scope="col" class="styDepTblCell" style="border-color: black; border-left-width: 0px; border-right-width:0px; border-top-width: 1px; border-bottom-width:1px; width: 44mm;">
+										<br/>Amortization<br/>period or<br/>percentage
+									</th>
+									<th scope="col" class="styDepTblCell" style="border-color:black; border-left-width:0px; border-right-width:0px; border-top-width:1px; border-bottom-width:1px; width:44mm;">
 										<b>(f)</b>
-										<br/>Amortization for<br/>this year</th>
+										<br/>Amortization for<br/>this year
+									</th>
 								</tr>
 							</thead>
 							<tfoot/>
@@ -6493,44 +6605,49 @@ tax year and<b>
 								<xsl:for-each select="$IRS4562Data/AmortizationInfo/AmortizationInfoTable">
 									<tr>
 										<!-- Define background colors to the rows -->
-										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-										<td class="styIRS4562TableCellA" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width: 44mm">
+										<xsl:attribute name="class">
+											<xsl:choose>
+												<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+												<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+											</xsl:choose>
+										</xsl:attribute>
+										<td class="styIRS4562TableCellA" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; width:40mm; height:4mm;">
 											<span class="styLN">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="CostDesc"/>
 												</xsl:call-template>
 											</span>
-											<span class="styIRS4562TableCellPad"/>
+											<!--<span class="styIRS4562TableCellPad"/>-->
 										</td>
-										<td class="styIRS4562TableCellB" style="text-align:center;border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width: 23mm">
+										<td class="styIRS4562TableCellB" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; width:23mm; text-align:center;">
 											<xsl:call-template name="PopulateMonthDayYear">
 												<xsl:with-param name="TargetNode" select="AmortizationBeginDt"/>
 											</xsl:call-template>
-											<span class="styIRS4562TableCellPad"/>
+											<!--<span class="styIRS4562TableCellPad"/>-->
 										</td>
-										<td class="styIRS4562TableCellC" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width: 36mm;text-align:right;">
+										<td class="styIRS4562TableCellC" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; width:31mm; text-align:right; padding-top:1mm;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="AmortizableAmt"/>
 											</xsl:call-template>
-											<span class="styIRS4562TableCellPad"/>
+											<!--<span class="styIRS4562TableCellPad"/>-->
 										</td>
-										<td class="styIRS4562TableCellD" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width: 23mm;text-align:left">
+										<td class="styIRS4562TableCellD" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; width:43mm; text-align:left;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="CodeSectionTxt"/>
 											</xsl:call-template>
-											<span class="styIRS4562TableCellPad"/>
+										<!--	<span class="styIRS4562TableCellPad"/>-->
 										</td>
-										<td class="styIRS4562TableCellE" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width: 17mm;text-align:left">
+										<td class="styIRS4562TableCellE" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; width:19mm; text-align:left;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="AmortizationPeriodOrPctTxt"/>
 											</xsl:call-template>
-											<span class="styIRS4562TableCellPad"/>
+											<!--<span class="styIRS4562TableCellPad"/>-->
 										</td>
-										<td class="styIRS4562TableCellF" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px; width: 44mm;text-align:right;">
+										<td class="styIRS4562TableCellF" style="border-color:black; border-left-width:0px; border-right-width:0px; border-top-width:1px; border-bottom-width:0px; width:31mm; text-align:right; padding-top:1mm;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="AmortizationThisYearAmt"/>
 											</xsl:call-template>
-											<span class="styIRS4562TableCellPad"/>
+											<!--<span class="styIRS4562TableCellPad"/>-->
 										</td>
 									</tr>
 								</xsl:for-each>

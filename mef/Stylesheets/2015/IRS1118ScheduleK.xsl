@@ -125,50 +125,65 @@
 						</div>
 					</div>
 					<!--BEGIN CATEGORY OF INCOME SECTION -->
-					<div style="width:256mm;display:inline;">
-						<div style="width:180mm;height:3mm">
-							Use a separate Schedule K (Form 1118) for each category of income listed below. Check only one box on each  schedule.
+					<div>
+						<div style="float:left;padding-left:1.2mm;">
+							Use a separate Schedule K (Form 1118) for each category of income listed below. Check only one box on each schedule.
 						</div>
+					</div>					
+					<div style="width:256mm;display:inline;">						
 						<div style="height:auto;width:47mm;float:left;">
-							<input type="checkbox" class="styCkbox">
+					<input type="checkbox" 
+							 alt="Passive category income" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1118ScheduleKData/ForeignIncPassiveCategoryInd"/>
-									<xsl:with-param name="BackupName">IRS1118ScheduleKDataPassiveCategoryIncome</xsl:with-param>
+									<xsl:with-param name="TargetNode" 
+									select="$Form1118ScheduleKData/ForeignIncPassiveCategoryInd"/>
+									<xsl:with-param name="BackupName">
+									IRS1118ScheduleK/Passive category income</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1118ScheduleKData/ForeignIncPassiveCategoryInd"/>
-									<xsl:with-param name="BackupName">IRS1118ScheduleKDataPassiveCategoryIncome</xsl:with-param>
+									<xsl:with-param name="TargetNode" 
+									select="$Form1118ScheduleKData/ForeignIncPassiveCategoryInd"/>
+									<xsl:with-param name="BackupName">
+									IRS1118ScheduleK/Passive category income</xsl:with-param>
 								</xsl:call-template>
 								<span style="1mm;">Passive Category Income</span>
-							</label>
+							</label>							<br/>
 							<br/>
-							<br/>
-							<input type="checkbox" class="styCkbox">
+							<input type="checkbox" 
+							 alt="General Category Income" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1118ScheduleKData/ForeignIncGeneralCategoryInd"/>
-									<xsl:with-param name="BackupName">IRS1118ScheduleKDataGeneralLimitationIncome</xsl:with-param>
+									<xsl:with-param name="TargetNode" 
+									select="$Form1118ScheduleKData/ForeignIncGeneralCategoryInd"/>
+									<xsl:with-param name="BackupName">
+									IRS1118ScheduleK/General Category Income</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1118ScheduleKData/ForeignIncGeneralCategoryInd"/>
-									<xsl:with-param name="BackupName">IRS1118ScheduleKDataGeneralLimitationIncome</xsl:with-param>
+									<xsl:with-param name="TargetNode"
+									 select="$Form1118ScheduleKData/ForeignIncGeneralCategoryInd"/>
+									<xsl:with-param name="BackupName">
+									IRS1118ScheduleK/General Category Income</xsl:with-param>
 								</xsl:call-template>General Category Income
 						     </label>
 						</div>
 						<div style="height:auto;width:108mm;padding-bottom:3mm;float:left;">
-							<input type="checkbox" class="styCkbox">
+						<input type="checkbox" alt="Section 901(j) Income: Name of Sanctioned Country"  class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1118ScheduleKData/ForeignIncSection901jInd"/>
-									<xsl:with-param name="BackupName">IRS1118ScheduleKDataForeignIncSection901jInd</xsl:with-param>
+									<xsl:with-param name="TargetNode" 
+									select="$Form1118ScheduleKData/ForeignIncSection901jInd"/>
+									<xsl:with-param name="BackupName">
+									IRS1118ScheduleK/Section 901(j) Income</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1118ScheduleKData/ForeignIncSection901jInd"/>
-									<xsl:with-param name="BackupName">IRS1118ScheduleKDataForeignIncSection901jInd</xsl:with-param>
+									<xsl:with-param name="TargetNode" 
+									select="$Form1118ScheduleKData/ForeignIncSection901jInd"/>
+									<xsl:with-param name="BackupName">
+									IRS1118ScheduleK/Section 901(j) Income</xsl:with-param>
 								</xsl:call-template>Section 901(j) Income: Name of Sanctioned Country
 						    </label>
 							<img src="{$ImagePath}/1118_Bullet_Line.gif" alt="bulletpoint"/>
@@ -179,21 +194,29 @@
 							</span>							
 							<br/>
 							<br/>
-							<input type="checkbox" class="styCkbox">
+						<input type="checkbox"  
+							 alt="Income Re-sourced by Treaty: Name of Country"  class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1118ScheduleKData/ForeignIncResourcedTreatyInd"/>
-									<xsl:with-param name="BackupName">IRS1118ScheduleKDataForeignIncResourcedTreatyInd</xsl:with-param>
+									<xsl:with-param name="TargetNode"
+									 select="$Form1118ScheduleKData/ForeignIncResourcedTreatyInd"/>
+									<xsl:with-param name="BackupName">
+									IRS1118ScheduleK/Income Re-sourced by Treaty</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1118ScheduleKData/ForeignIncResourcedTreatyInd"/>
-									<xsl:with-param name="BackupName">IRS1118ScheduleKDataForeignIncResourcedTreatyInd</xsl:with-param>
-								</xsl:call-template>Income Re-sourced by Treaty
-						    </label>: Name of Country 
+									<xsl:with-param name="TargetNode"
+									 select="$Form1118ScheduleKData/ForeignIncResourcedTreatyInd"/>
+									<xsl:with-param name="BackupName">
+									IRS1118ScheduleK/Income Re-sourced by Treaty</xsl:with-param>
+								</xsl:call-template>Income Re-sourced by Treaty: Name of Country
+						    </label>  
 						    <img src="{$ImagePath}/1118_Bullet_Line.gif" alt="bulletpoint"/>
-							<span style="border-color:black; border-style:solid; border-right-width: 0px; border-left-width: 0px; border-top-width:0px; border-bottom-width: 1px; width: 30mm">							    <xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$Form1118ScheduleKData/ForeignIncResourcedTreatyInd/@countryCd"/>
+							<span style="border-color:black; border-style:solid; border-right-width: 0px;
+							 border-left-width: 0px; border-top-width:0px; border-bottom-width: 1px; width: 30mm">	
+													    <xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" 
+									select="$Form1118ScheduleKData/ForeignIncResourcedTreatyInd/@countryCd"/>
 								</xsl:call-template>
 							</span>
 							<br/>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Last Modified by Eugenia McDonald on 06/08/2017 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -1109,7 +1110,7 @@
 			</xsl:choose>
 		</xsl:variable>
 		<!-- CommonStyle -->
-		<xsl:variable name="CommonStyle">font-size: 8pt; text-align:center;font-family:arial narrow;word-wrap:break-word;</xsl:variable>
+		<xsl:variable name="CommonStyle">font-size: 8pt; text-align:right;font-family:arial narrow;word-wrap:break-word;</xsl:variable>
 		<tr style="font-size: 7pt;">
 			<xsl:if test="$AddColorCodeRow">
 				<xsl:attribute name="class"><xsl:value-of select="$ClassType"/></xsl:attribute>
@@ -1371,10 +1372,10 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-				<!--	 <xsl:if test="not($Print) or $Print=''"> -->
+					 <xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS1116Style"/>
 						<xsl:call-template name="AddOnStyle"/>
-				<!--	 </xsl:if> -->
+				    </xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
@@ -1453,19 +1454,25 @@
 					<!-- Begin Names and Identifying number section -->
 					<div class="styBB" style="width: 187mm; height: 10mm;">
 						<div class="styNameBox" style="width: 108mm; height: 10mm;">
-							<div class="styNameBox" style="width: 108mm; height: 3mm; font-size: 7pt; font-weight: normal;">
-                Name 
-              </div>
+							<div class="styNameBox" style="width: 108mm; height: 3mm; font-size: 7pt; font-weight: normal;">Name 
+							</div>
 							<div class="styNameBox" style="border-right-width:0px;">
-								<xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-								</xsl:call-template>
-								<xsl:if test="$RtnHdrData/Filer//BusinessNameLine2Txt">
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-									</xsl:call-template>
-								</xsl:if>
+								<xsl:choose>
+									<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>	
+										</xsl:call-template>			
+										<br/>
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+										</xsl:call-template>			
+									 </xsl:when>
+									<xsl:otherwise>
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+										</xsl:call-template>	
+									</xsl:otherwise>
+								</xsl:choose>    
 							</div>
 						</div>
 						<div class="styEINBox" style="width: 79mm; height: 10mm; font-size: 7pt; font-weight: normal;">
@@ -1843,7 +1850,7 @@
               </div>
               <xsl:call-template name="CreateBoxLine7">
                 <xsl:with-param name="Number">10</xsl:with-param>
-                <xsl:with-param name="AmountBoxStyle">padding: 4.5mm 0.5mm 0mm 0mm; width: 26mm; height: 8mm; text-align: right; font-size: 5.75pt; border-right-width: 0px;</xsl:with-param>
+                <xsl:with-param name="AmountBoxStyle">padding: 4.5mm 0.5mm 0mm 0mm; width: 26mm; height: 8mm; text-align: right; font-size: 6pt; border-right-width: 0px;</xsl:with-param>
                 <xsl:with-param name="NumberBoxStyle">padding: 4.5mm 0mm 0mm; height: 8mm; border-right-width: 0px;</xsl:with-param>
                 <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignTaxCrCarrybackOrOverAmt"/>
 				</xsl:call-template>
@@ -1906,7 +1913,7 @@
                 </div>
                 <xsl:call-template name="CreateBoxLine12">
                 <xsl:with-param name="Number">12</xsl:with-param>
-                <xsl:with-param name="AmountBoxStyle">padding: 2mm 0.5mm 0mm 0.75mm; width: 26mm; height: 8mm; text-align: left; font-size: 5.75pt; border-right-width: 0px;</xsl:with-param>
+                <xsl:with-param name="AmountBoxStyle">padding: 2mm 0.5mm 0mm 0.75mm; width: 26mm; height: 8mm; text-align: left; font-size: 6pt; border-right-width: 0px;</xsl:with-param>
                 <xsl:with-param name="NumberBoxStyle">padding: 4.5mm 0mm 0mm; height: 8mm; border-right-width: 0px;</xsl:with-param>
                 <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignTaxReductionAmt"/>
                 </xsl:call-template>
@@ -2033,7 +2040,7 @@
 					</div>
 					<xsl:call-template name="CreateBoxLine7">
                     <xsl:with-param name="Number">16</xsl:with-param>
-                    <xsl:with-param name="AmountBoxStyle">padding: 1.5mm 0.5mm 0mm 0mm; width: 26mm; height: 5mm; text-align: right; font-size: 5.75pt; border-right-width: 0px;</xsl:with-param>
+                    <xsl:with-param name="AmountBoxStyle">padding: 1.5mm 0.5mm 0mm 0mm; width: 26mm; height: 5mm; text-align: right; font-size: 6pt; border-right-width: 0px;</xsl:with-param>
                     <xsl:with-param name="NumberBoxStyle">padding: 1.5mm 0mm 0mm; height: 5mm; border-right-width: 0px;</xsl:with-param>
                     <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignIncomeNetAdjustmentAmt"/>
 				    </xsl:call-template>
@@ -2526,7 +2533,7 @@
 						</xsl:call-template>
 						<xsl:if test="$Form1116Data/AlternativeMinimumTaxCd">
 							<xsl:call-template name="PopulateLeftoverRow">
-								<xsl:with-param name="Desc">Alternative Minimum Tax Code</xsl:with-param>
+								<xsl:with-param name="Desc">Top Left Margin - Alternative Minimum Tax Code</xsl:with-param>
 								<xsl:with-param name="TargetNode" select="$Form1116Data/AlternativeMinimumTaxCd"/>
 								<xsl:with-param name="DescWidth" select="130"/>
 							</xsl:call-template>

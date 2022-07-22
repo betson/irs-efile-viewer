@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Steven Fook on 8/23/2016 --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<!-- Last Modified by Steven Fook on 10/6/2016 --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -603,7 +603,7 @@
 					<xsl:if test="($Print = $Separated) and        (count($Form1065SchB1Data/PartnersOwn50PctOrMoreGrp) &gt;7)">
 						<br/>
 						<span class="styRepeatingDataTitle">
-						Form 1065 Schedule B-1, Part I Entities owning 50% or more of the Partnership</span>
+						Form 1065 Schedule B-1, Part I Entities Owning 50% or More of the Partnership</span>
 						<table class="styDepTbl" style="font-size:6.5pt;">
 							<thead class="styTableThead">
 								<!-- Label the Column Headers -->
@@ -695,7 +695,7 @@
 					<xsl:if test="($Print = $Separated) and        (count($Form1065SchB1Data/IndivOrEstOwn50PctOrMoreGrp) &gt;7)">
 						<br/>
 						<span class="styRepeatingDataTitle">
-						  Form 1065 Schedule B-1, Part II, Individuals or Estates owning 50% or more of the Partnership</span>
+						  Form 1065 Schedule B-1, Part II, Individuals or Estates Owning 50% or More of the Partnership</span>
 						<table class="styDepTbl" style="font-size:6.5pt;">
 							<thead class="styTableThead">
 								<!-- Label the Column Headers -->

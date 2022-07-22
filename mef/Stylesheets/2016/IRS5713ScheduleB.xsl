@@ -66,84 +66,19 @@
 <!--Name and Identifying number Begin-->
         <div class="styBB" style="width:187mm;border-top-width:1px">
           <div class="styNameBox" style="font-family:Arial;font-size:7pt;width:137mm;height:9mm;">Name<br/>
-          
-          <xsl:if test="$Form5713BData/BusinessName/BusinessNameLine1Txt != ''">
-         
-            <xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="$Form5713BData/BusinessName/BusinessNameLine1Txt"/>
-				  </xsl:call-template>  
-          </xsl:if>
-          <xsl:if test="$Form5713BData/BusinessName/BusinessNameLine2Txt != ''">
-          <br/>
-            <xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="$Form5713BData/BusinessName/BusinessNameLine2Txt"/>
-				  </xsl:call-template>  
-          </xsl:if>
-           <xsl:if test="$Form5713BData/NameLine1Txt != ''">
-           <br/>
-            <xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="$Form5713BData/NameLine1Txt"/>
-				  </xsl:call-template>  
-          </xsl:if>
-    
+          <div style="padding-top:1mm">
+			<!-- Choice between Input, 1120, 1041, Return Header Filer info -->
+			<xsl:call-template name="PopulateFilerName">
+			  <xsl:with-param name="TargetNode" select="$Form5713BData"/>
+			</xsl:call-template> 
+        </div>
         </div>
         <div class="styEINBox" style="font-family:Verdana;font-size:7pt;width:50mm;height:9mm;padding-left:2mm;">Identifying number<br/><br/>
 		  <span style="text-align:left;font-weight:normal;">
-		  <xsl:choose>
-		   <xsl:when test="$Form5713BData/SSN">
-              <xsl:call-template name="PopulateSSN">
-                <xsl:with-param name="TargetNode" select="$Form5713BData/SSN"/>
-              </xsl:call-template>
-            </xsl:when>
-            <xsl:when test="$Form5713BData/EIN">
-              <xsl:call-template name="PopulateEIN">
-                <xsl:with-param name="TargetNode" select="$Form5713BData/EIN"/>
-              </xsl:call-template>
-            </xsl:when>
-            <xsl:when test="$Form5713BData/MissingEINReasonCd">
-              <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="$Form5713BData/MissingEINReasonCd"/>
-              </xsl:call-template>
-            </xsl:when>
-		  <xsl:when test="$RtnHdrData/Filer/EIN">
-			<xsl:call-template name="PopulateReturnHeaderFiler">
-			  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-			</xsl:call-template>
-		  </xsl:when>
-		  <xsl:otherwise>
-			<xsl:call-template name="PopulateReturnHeaderFiler">
-			  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-			</xsl:call-template>
-		  </xsl:otherwise>
-          </xsl:choose>
-            <!--<xsl:choose>
-			  <xsl:when test="/AppData/Parameters/SubmissionType='CIT'">
-			    <xsl:choose>
-			      <xsl:when test="$Form5713BData/EIN != ''">			      
-					  <xsl:if test="$Form5713BData/EIN">
-					    <xsl:call-template name="PopulateEIN">
-					      <xsl:with-param name="TargetNode" select="$Form5713BData/EIN" />
-				        </xsl:call-template>
-				      </xsl:if>
-				      <xsl:if test="$Form5713BData/MissingEINReason">
-					    <xsl:call-template name="PopulateText">
-					      <xsl:with-param name="TargetNode" select="$Form5713BData/MissingEINReason" />
-				        </xsl:call-template>
-				      </xsl:if>
-				      </xsl:when>
-				      <xsl:otherwise>				       
-				        <xsl:call-template name="PopulateReturnHeaderFiler">
-					      <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-				        </xsl:call-template>
-				    </xsl:otherwise>
-				  </xsl:choose>
-				</xsl:when>
-				<xsl:otherwise>				  
-			    <xsl:call-template name="PopulateReturnHeaderFiler">
-				  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-			    </xsl:call-template>			  
-			</xsl:otherwise>
-		  </xsl:choose>-->
+			<!-- Choice between Input, 1120, 1041, Return Header Filer info -->
+			 <xsl:call-template name="PopulateFilerTIN">
+				<xsl:with-param name="TargetNode" select="$Form5713BData"/>
+			 </xsl:call-template> 
 		  </span>  
         </div>
       </div>
@@ -153,7 +88,7 @@
   <div style="width:187mm;height:auto;">
     <div class="styLNDesc" style="width:187mm;height:auto;">Name of country being boycotted (check one)
     <span style="width:4mm;font-size: 7pt; font-weight: bold; letter-spacing:4mm;"/> 
-      <input type="checkbox" class="styCkbox">
+      <input type="checkbox" alt="IRS5713BIsraelBoycotted" class="styCkbox">
         <xsl:call-template name="PopulateCheckbox">
           <xsl:with-param name="TargetNode" select="$Form5713BData/IsraelBoycottedInd"/>
           <xsl:with-param name="BackupName">IRS5713BIsraelBoycotted</xsl:with-param>          
@@ -167,7 +102,7 @@
         </xsl:call-template>Israel
       </label>            
       <span style="width:5mm;"/>
-          <input type="checkbox" alt="alt" class="styCkbox">
+          <input type="checkbox" alt="IRS5713BOtherCountryBoycotted" class="styCkbox">
         <xsl:call-template name="PopulateCheckbox">
           <xsl:with-param name="TargetNode" select="$Form5713BData/OtherInd"/>
           <xsl:with-param name="BackupName">IRS5713BOtherCountryBoycotted</xsl:with-param> 

@@ -6,8 +6,8 @@
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
-  <xsl:param name="DependencyData" select="$RtnDoc//CCCLoanDetailAccrualMethodStmt"/>
-  <!-- 1040 Schedule F displays as - Commodity Credit Corporation Loan Detail Accrual Method Statement- -->
+  <xsl:param name="DependencyData" select="$RtnDoc/CCCLoanDetailAccrualMethodStmt"/>
+  <!-- 1040 Schedule F displays as - Commodity Credit Corporation Loan Detail Accrual Method Statement -->
   <xsl:param name="depDocTitle">	 
   <xsl:call-template name="PopulateDisplayName"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>  
   </xsl:param>

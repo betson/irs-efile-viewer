@@ -9,7 +9,6 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form5695Data" select="$RtnDoc/IRS5695"/>
 	<xsl:template match="/">
-	
 		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
@@ -31,7 +30,6 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-			
 					 <xsl:if test="not($Print) or $Print=''">  
 						<xsl:call-template name="IRS5695Style"/>
 						<xsl:call-template name="AddOnStyle"/>
@@ -91,7 +89,7 @@
 						<div class="styNameBox" style="width:137mm;height:6mm;font-weight:normal;font-size:7pt;">
 							Name(s) shown on return<br/>
 							<xsl:choose>
-								<xsl:when test="$Form5695Data/NameLine1Txt">
+								<xsl:when test="normalize-space($Form5695Data/NameLine1Txt) !=''">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$Form5695Data/NameLine1Txt"/>
 									</xsl:call-template>
@@ -108,8 +106,8 @@
 							<br/>
 							<span style="font-weight:normal;text-align:left;width:100%">
 								<xsl:choose>
-									<xsl:when test="$Form5695Data/SSN">
-										<xsl:call-template name="PopulateText">
+									<xsl:when test="normalize-space($Form5695Data/SSN) !=''">
+										<xsl:call-template name="PopulateSSN">
 											<xsl:with-param name="TargetNode" select="$Form5695Data/SSN"/>
 										</xsl:call-template>
 									</xsl:when>

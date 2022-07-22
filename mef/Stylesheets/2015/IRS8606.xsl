@@ -784,13 +784,14 @@
 								For Privacy Act and Paperwork Reduction Act Notice, see separate instructions.
 							</span>
 						</div>
+						<div style="text-align:left;font-size:7pt;">
+							<span style="width:120px"/>
+							Cat. No. 63966F
+						</div>
 						<div style="float:right;">
 							<span style="width:50px;"/>  
 								Form 
 							<span class="styBoldText" style="font-size:8pt;">8606</span> (2015)
-						</div>
-						<div style="float:right;text-align:center;width:26mm;font-size:7pt;">
-							Cat. No. 63966F
 						</div>
 					</div>
 					<!-- END Page Break and Footer-->

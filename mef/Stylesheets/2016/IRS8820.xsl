@@ -109,7 +109,7 @@
                 </xsl:call-template>
                 <br/>
                 <xsl:call-template name="PopulateReturnHeaderFiler">
-                  <xsl:with-param name="TargetNode">BusinessNameLine2TxT</xsl:with-param>
+                  <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
                 </xsl:call-template>
               </div>
               </xsl:otherwise>

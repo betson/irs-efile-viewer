@@ -44,8 +44,8 @@
 					<xsl:call-template name="DocumentHeader"/>
 					</div>
 					<!--Begin Form 2106 Header TITLE-->
-					<div class="styBB" style="width: 187mm; height: 22mm; padding-bottom: 0mm; clear: all; float: left;">
-						<div class="styFNBox" style="width: 31mm; height: 22mm; padding-top: 0.5mm;">
+					<div class="styBB" style="width: 187mm; height: 22mm; padding-bottom: 0mm; clear: all; float: left;border-bottom-width:2px;">
+						<div class="styFNBox" style="width: 31mm; height: 22mm; padding-top: 0.5mm;border-right-width:2px;">
 							<div style="width: 31mm; height: 8mm; padding-top: 1mm; font-size: 8pt;">
 								Form<span style="width:0.5mm;"></span><span class="styFormNumber">  2106</span>
 							</div>
@@ -54,8 +54,7 @@
 								<br/>
 								<span class="styAgency">Internal Revenue Service</span>
 								<span style="width:1px"/>
-								<span class="styAgency">(99)</span>
-							
+								<span class="styAgency">(99)</span>							
 							</div>
 						</div>
 						<div class="styFTBox" style="width: 125mm; height: 22mm;">
@@ -69,7 +68,7 @@
 								<img src="{$ImagePath}/2106_Bullet.gif" alt="Bullet"/> Information about Form 2106 and its separate instructions is available at <i> www.irs.gov/form2106.</i>
 						</div>
 						</div>
-						<div class="styTYBox" style="width: 30mm; height: 22mm;">
+						<div class="styTYBox" style="width: 30mm; height: 22mm;border-left-width:2px;">
 							<div class="styOMB" style="width: 30mm; height: 4mm; font-size: 7pt;">
 							OMB No. 1545-0074
 						</div>
@@ -84,35 +83,52 @@
 					</div>
 					<!-- END Form 2016 Header TITLE-->
 					<!-- BEGIN Occupation TITLE -->
-					<div class="styBB" style="width: 187mm; height: 9mm; clear: all; float: left;">
-						<div class="styNameBox" style="width: 90mm; height: 9mm; padding-top: 0mm; padding-bottom: 0mm; font-size: 9px; font-weight: normal;">
+					<div class="styBB" style="width: 187mm; height: 7mm; clear: all; float: left;">
+						<div class="styNameBox" style="width: 90mm; height: 7mm; padding-top: 0mm; padding-bottom: 0mm; font-size: 9px; font-weight: normal;">
 						Your name
-						<br/>
 							<br/>
-							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$Form2106Data/PersonNm"/>
-							</xsl:call-template>
+	                        <!-- Name from Form level -->
+                                <xsl:choose>
+									<xsl:when test="normalize-space($Form2106Data/PersonNm)!=''">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$Form2106Data/PersonNm"/>
+										</xsl:call-template>		
+							    	</xsl:when>
+									<xsl:otherwise>	
+								<!-- Name from 1040 Return Header--> 						
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										 <xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+									</xsl:call-template>		
+									</xsl:otherwise>
+								</xsl:choose>	                                
 						</div>
-						<div class="styIRS2106LnDescOcc" style="width: 60mm; height: 9mm; padding-top: 0mm; padding-bottom: 0mm;">
+						<div class="styIRS2106LnDescOcc" style="width: 60mm; height: 7mm; padding-top: 0mm; padding-bottom: 0mm;">
 					    Occupation in which you incurred expenses
-					    <br/>
 					    <br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form2106Data/OccupationTxt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS2106SSNBox" style="width: 37mm; height: 9mm; font-weight: bold;">
+						<div class="styIRS2106SSNBox" style="width: 37mm; height: 7mm; font-weight: bold;">
 					    Social security number
-					<br/>
-							<br/>
-							<xsl:call-template name="PopulateSSN">
-								<xsl:with-param name="TargetNode" select="$Form2106Data/SSN"/>
-							</xsl:call-template>
+								<br/>
+								<xsl:choose>
+									<xsl:when test="normalize-space($Form2106Data/SSN)!=''">
+										<xsl:call-template name="PopulateSSN">
+											<xsl:with-param name="TargetNode" select="$Form2106Data/SSN"/>
+										</xsl:call-template>	
+								    </xsl:when>
+						           <xsl:otherwise>
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+										</xsl:call-template>							   										
+									</xsl:otherwise>
+								</xsl:choose>
 						</div>
 					</div>
 					<!-- END Occupation TITLE -->
 					<!-- BEGIN PART I TITLE -->
-					<div class="styBB" style="padding: 1mm 0mm; width: 187mm; height: 7.5mm; clear: all; float: left;">
+					<div class="styBB" style="padding: 1mm 0mm; width: 187mm; height: 7.5mm; clear: all; float: left;border-top-width:.3mm;">
 						<div class="styPartName" style="height: 5mm; width: 14mm; font-size: 9pt;">
 					  Part I
 					</div>
@@ -151,35 +167,14 @@
 					<!-- BEGIN Step 1.1 -->
 					<div style="width:187mm; height: 14mm; font-size:8pt; clear: all; float: left;">
 						<div class="styLNLeftNumBox" style="height:4.5mm; padding-top:6mm;">
-					   1
-					</div>
+					         1
+					    </div>
 						<div class="styLNDesc" style="width:103mm;height:4.5mm;padding-top:6mm;">
-					   Vehicle expense from line 22 or line 29.  (Rural mail carriers:  See instructions.)
-                      <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:4px"/>.
-							    <span style="width:8px"/>.
-							    <span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-							</span>
+					         Vehicle expense from line 22 or line 29.  (Rural mail carriers:  See instructions.)
+							<!--Dotted Line -->
+							<span class="styDotLn" style="float:right;padding-right:1mm;">..................</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:14mm; width:6mm; padding-top:9.5mm; text-align:center; border-style:solid;   border-right-width:1px; border-left-width:1px; border-top-width:0px; border-bottom-width:1px; border-color:black;">
+						<div class="styLNRightNumBox" style="height:14mm; width:6mm; padding-top:9.4mm; text-align:center; border-style:solid;   border-right-width:1px; border-left-width:1px; border-top-width:0px; border-bottom-width:1px; border-color:black;">
 						    1
 						</div>
 						<div class="styIRS2106ColBox" style="height:14mm; border-left:0px; padding-top:10mm; padding-right: 0.5mm;">
@@ -194,19 +189,13 @@
 					<!-- BEGIN Step 1.2 -->
 					<div style="width:187mm; font-size:8pt; clear: all; float: left;">
 						<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:1mm;">
-					   2
-					</div>
+					         2
+					    </div>
 						<div class="styLNDesc" style="width:103mm;height:2mm;font-size:7.1pt;padding-top:1mm;">
-					    Parking fees, tolls, and transportation, including train, bus, etc., that <br/>
+					         Parking fees, tolls, and transportation, including train, bus, etc., that <br/>
 							<span style="font-weight:bold;">did not</span> involve overnight travel or commuting to and from work
-					    <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:4px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-							 </span>
+							<!--Dotted Line -->
+							<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:8.5mm;width:6mm;padding-top:4.3mm;text-align:center;border-style:solid;   border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">
 					    2
@@ -223,16 +212,13 @@
 					<!-- BEGIN Step 1.3 -->
 					<div style="width:187mm; font-size:8pt; clear: all; float: left;">
 						<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:1mm;">
-					   3
-					</div>
+					         3
+					    </div>
 						<div class="styLNDesc" style="width:103mm;height:2mm;padding-top:1mm;">
 						Travel expense while away from home overnight, including lodging, airplane, car rental, etc. 
-						<span style="font-weight:bold;"> Do not</span> include meals and entertainment
-						<!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:2px"/>.
-								<span style="width:8px"/>.
-							 </span>
+					    	<span style="font-weight:bold;"> Do not</span> include meals and entertainment
+							<!--Dotted Line -->
+							<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
 					</div>
 						<div class="styLNRightNumBox" style="height:8.5mm;width:6mm;padding-top:4.3mm;text-align:center;border-style:solid;   border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">
 						3
@@ -254,25 +240,8 @@
 						<div class="styLNDesc" style="width:103mm;height:2mm;padding-top:1mm;">
 						Business expenses not included on lines 1 through 3.
 						<span style="font-weight:bold;"> Do  not</span> include meals and entertainment
-		          <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:2px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-							 </span>
+							<!--Dotted Line -->
+							<span class="styDotLn" style="float:right;padding-right:1mm;">...............</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:8.5mm;width:6mm;padding-top:4.3mm;text-align:center;border-style:solid;   border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">
 						4
@@ -292,16 +261,9 @@
 						5
 					</div>
 						<div class="styLNDesc" style="width:103mm;height:2mm;padding-top:5mm;">
-						Meals and entertainment expenses (see instructions)
-		             <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:8px"/>.
-							<span style="width:8px"/>.
-							<span style="width:8px"/>.
-							<span style="width:8px"/>.
-							<span style="width:8px"/>.
-							<span style="width:8px"/>.
-						</span>
+						   Meals and entertainment expenses (see instructions)
+							<!--Dotted Line -->
+							<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:9mm;width:6mm;padding-top:4.3mm;text-align:center;border-style:solid; border-right-width:1px; border-left-width:1px; border-top-width:0px; border-bottom-width:1px; border-color:black;">
 						5
@@ -322,16 +284,8 @@
 						</div>
 						<div class="styLNDesc" style="width:103mm;height:2mm;padding-top:1mm;">
 							<span style="font-weight:bold;">Total expenses.</span> In Column A, add lines 1 through 4 and enter the result. In Column B, enter the amount from line 5 
-		                    <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-							</span>
+							<!--Dotted Line -->
+							<span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:8.5mm; width:6mm; padding-top:4.3mm; text-align:center; border-style:solid; border-right-width:1px; border-left-width:1px; border-top-width:0px; border-bottom-width:1px; border-color:black;">
 							6
@@ -358,7 +312,7 @@
 					</div>
 					<!-- END Step 1 Note -->
 					<!-- BEGIN STEP 2 TITLE -->
-					<div class="styBB" style="width:187mm; font-size:8pt; clear: all; float: left;">
+					<div class="styBB" style="width:187mm; font-size:8pt; clear: all; float: left;border-top-width:0.3mm;">
 						<div class="styPartDesc" style="font-size:9pt; padding-left:0mm; padding-bottom:5mm; padding-top:1mm; border-right-width:0px; border-left-width:0px; border-top-width:0px; border-bottom-width:0px; text-align:left; clear:none;">
 						Step 2  <span style="width:3mm"/>Enter Reimbursements Received From Your Employer for Expenses Listed in Step 1
 					</div>
@@ -371,29 +325,8 @@
 					</div>
 						<div class="styLNDesc" style="width:103mm;height:2mm;padding-top:1mm;">
 						Enter reimbursements received from your employer that were <span style="font-weight:bold;">not</span> reported to you in box 1 of Form W-2.  Include any reimbursements reported under<span style="width:2mm"/>code <span style="width:2mm"/> "L" <span style="width:2mm"/> in<span style="width:2mm"/>box<span style="width:2mm"/>12<span style="width:2mm"/> of<span style="width:2mm"/>your<span style="width:2mm"/>Form<span style="width:2mm"/> W-2 (see instructions)
-						<!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-							</span>
+							<!--Dotted Line -->
+							<span class="styDotLn" style="float:right;padding-right:1mm;">...................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:16mm;width:6mm;padding-top:12.5mm;text-align:center;border-style:solid;   border-right-width:1px; border-left-width:1px; border-top-width:0px; border-bottom-width:0px; border-color:black;">
 						7
@@ -412,7 +345,7 @@
 					</div>
 					<!-- END STEP 2.7 -->
 					<!-- BEGIN STEP 3 TITLE -->
-					<div class="styBB" style="width:187mm; font-size:8pt; clear: all; float: left;">
+					<div class="styBB" style="width:187mm; font-size:8pt; clear: all; float: left;border-top-width:0.3mm;">
 						<div class="styPartDesc" style="font-size:9pt;padding-left:0mm;padding-bottom:5mm;padding-top:1mm; border-right- width:0px; border-left-width:0px; border-top-width:0px; border-bottom-width:0px; text-align:left;clear:none;">
 						Step 3  <span style="width:3mm"/>Figure Expenses To Deduct on Schedule A (Form 1040 or Form 1040NR)
 					</div>
@@ -425,14 +358,8 @@
 					</div>
 						<div class="styLNDesc" style="width: 103mm; height: 2mm; padding-top: 6mm;">
 						Subtract<span style="width:1mm"/> line<span style="width:1mm"/> 7<span style="width:1mm"/> from<span style="width:1mm"/> line<span style="width:1mm"/> 6.  If zero or less, enter -0-.  However, <br/> if line 7 is greater than line 6 in Column A, report the excess as<br/>income on Form 1040, line 7 (or on Form 1040NR, line 8) 
-		          <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:4px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-							</span>
+							<!--Dotted Line -->
+							<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
 						</div>
 						<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 6mm; text-align: center; padding-top: 12.8mm; height: 17mm; width: 6mm;">
 						8
@@ -466,18 +393,8 @@
 					</div>
 						<div class="styLNDesc" style="width: 103mm; height: 20mm; padding-top: 2mm;">
 					In Column A, enter the amount from line 8.  In Column B, multiply<br/>line <span style="width:1mm"/>8 <span style="width:1mm"/>by<span style="width:1mm"/>50%<span style="width:1mm"/>(0.50). <span style="width:1mm"/> (Employees <span style="width:1mm"/>subject<span style="width:1mm"/>to <span style="width:1mm"/>Department <span style="width:1mm"/>of Transportation<span style="width:1mm"/>  (DOT)<span style="width:1mm"/>  hours <span style="width:1mm"/> of<span style="width:1mm"/>service<span style="width:1mm"/>  limits:<span style="width:1mm"/> Multiply meal expenses incurred while away from home on business by 80% (0.80) instead of 50%.  For details, see instructions.) 
-					<!--Dotted Line-->
-							<span class="styBoldText">
-							<span style="width:4px"/>.
-							<span style="width:8px"/>.
-							<span style="width:8px"/>.
-							<span style="width:8px"/>.
-							<span style="width:8px"/>.
-							<span style="width:8px"/>.
-							<span style="width:8px"/>.
-							<span style="width:8px"/>.
-							<span style="width:8px"/>.
-						</span>
+							<!--Dotted Line -->
+							<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
 						</div>
 						<div class="styIRS2106ColBoxGrey" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 6mm; text-align: center; padding-top: 16.1mm; height: 20mm;">
 							<span style="width: 5.5mm; height: 3.5mm; font-weight: bold; background-color: white;">
@@ -504,18 +421,8 @@
 					</div>
 						<div class="styLNDesc" style="width: 140.8mm; height: 15mm; padding-top: 1mm; font-size: 7.5pt;">
 						Add the amounts on line 9 of both columns and enter the total here. <b>Also, enter the total on<br/>Schedule A (Form 1040), line 21</b> (or on <b>Schedule A (Form 1040NR), line 7).</b> (Armed Forces<br/>reservists, qualified performing artists, fee-basis state or local government officials, and individuals with disabilities: See the instructions for special rules on where to enter the total.)
-						  <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:4px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>
-							</span>
+							<!--Dotted Line -->
+							<span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
 							<!--Arrow Image-->
 							<img src="{$ImagePath}/2106_Bullet.gif" alt="Bullet"/>
 						</div>
@@ -530,26 +437,26 @@
 					</div>
 					<!-- END Step 3.10 -->
 					<!-- BEGIN Page 1 Footer -->
-					<div style="width:187mm; padding-top:.5mm; padding-bottom:15mm; clear: all; float: left;">
+					<div class="styStdDiv pageEnd" style="border-top:0.3mm solid black;">
 						<div style="width:110mm;font-weight:bold;float:left;clear:none;">
-						For Paperwork Reduction Act Notice, see your tax return instructions.
-					</div>
+					    	For Paperwork Reduction Act Notice, see your tax return instructions.
+					    </div>
 						<div style="width:25mm;float:left;clear:none;">
-						Cat. No. 11700N
-					</div>
-						<div style="width:45mm;text-align:right;font-size:8px;float:right;clear:none;">
-						Form <span class="styBoldText" style="font-size:8pt;">2106  </span>	(2016)
-					</div>
+					       Cat. No. 11700N
+					    </div>
+					    <div style="width:45mm;text-align:right;font-size:8px;float:right;clear:none;">
+						   Form <span class="styBoldText" style="font-size:8pt;">2106  </span>	(2016)
+					    </div>
 					</div>
 					<!-- END Page 1 Footer -->
 					<div class="pageEnd" style="width:187mm; clear: all; float: left;"/>
 					<p style="page-break-before: always"/>
 					<!-- **START OF PAGE 2** -->
-					<div class="styBB" style="width: 187mm; height:6.5mm; font-size: 7pt; padding-top: 1.5mm;">
-						<div class="styLNDesc" style="width:90mm;padding-top:0mm;">
+					<div class="styBB" style="width: 187mm; height:4.5mm; font-size: 7pt; border-bottom:2px solid black;">
+						<div class="styLNDesc" style="width:90mm;padding-top:0.5mm;float:left;">
 						Form 2106 (2016)
-					</div>
-						<div class="styLNDesc" style="width:90mm;text-align:right;float:right;clear:none;">
+					    </div>
+						<div class="styLNDesc" style="width:90mm;text-align:right;float:right;clear:none;padding-top:0.1mm;">
 						Page <span style="font-size:8pt;font-weight:bold;">2 </span>
 						</div>
 					</div>
@@ -592,22 +499,12 @@
 							<!-- BEGIN PART II - SECTION A.11 Data -->
 							<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 								<div class="styLNLeftNumBox" style="height: 5mm; padding-top: 1.5mm;">
-						11
-					</div>
+						             11
+					            </div>
 								<div class="styLNDesc" style="width: 107.5mm; padding-top: 1.5mm; height: 5mm;">
-						Enter the date the vehicle was placed in service 
-						<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-							</span>
+					            	Enter the date the vehicle was placed in service 
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
 								</div>
 								<div class="styLNRightNumBox" style="border-width: 0px 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 5mm; text-align: center; padding-top: 1.5mm;">
 						11
@@ -627,23 +524,12 @@
 							<!-- BEGIN PART II - SECTION A.12 Data -->
 							<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 								<div class="styLNLeftNumBox" style="height: 5mm; padding-top: 1.5mm;">
-						12
-					</div>
+					            	12
+				            	</div>
 								<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">
-						Total miles the vehicle was driven during 2016 
-						<!--Dotted Line-->
-							<span class="styBoldText">
-							    
-								<span style="width:12px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:9px"/>.
-							</span>
+						             Total miles the vehicle was driven during 2016 
+									 <!--Dotted Line -->
+									 <span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
 								</div>
 								<div class="styLNRightNumBox" style="border-width: 0px 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 5mm; text-align: center; padding-top: 1.5mm;">
 						12
@@ -665,31 +551,16 @@
 							<!-- BEGIN PART II - SECTION A.13 Data -->
 							<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 								<div class="styLNLeftNumBox" style="height: 5mm; padding-top: 1.5mm;">
-						13
-					</div>
+						             13
+					            </div>
 								<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">
-						Business miles included on line 12 
-						  <!--Dotted Line-->
-									<span class="styBoldText">
-								<span style="width:4px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:7px"/>.
-							</span>
+						             Business miles included on line 12 
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">.............</span>
 								</div>
 								<div class="styLNRightNumBox" style="height: 5mm; border-width: 0px 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; text-align: center; padding-top: 1.5mm;">
-						13
-					</div>
+						             13
+					            </div>
 								<div class="styIRS2106ColBox" style="width: 32.5mm; height: 5mm; padding-top: 1.5mm; font-size: 6pt; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 1px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos]/BusinessMilesCnt"/>
@@ -707,22 +578,12 @@
 							<!-- BEGIN PART II - SECTION A.14 Data -->
 							<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 								<div class="styLNLeftNumBox" style="height: 5mm; padding-top: 1.5mm;">
-						14
-					</div>
+						             14
+					            </div>
 								<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">
-						Percent of business use. Divide line 13 by line 12 
-						<!--Dotted Line-->
-									<span class="styBoldText">
-								<span style="width:2px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:7px"/>.
-							</span>
+						            Percent of business use. Divide line 13 by line 12 
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
 								</div>
 								<div class="styLNRightNumBox" style="height: 5mm; border-width: 0px 0px 1px 1.3px; border-style: solid; border-color: black; width: 7mm; text-align: center; padding-top: 1.5mm;">
 						14
@@ -742,23 +603,12 @@
 							<!-- BEGIN PART II - SECTION A.15 Data -->
 							<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 								<div class="styLNLeftNumBox" style="height: 5mm; padding-top: 1.5mm;">
-						15
-					</div>
+						             15
+					             </div>
 								<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">
-						Average daily roundtrip commuting distance 
-						  <!--Dotted Line-->
-							<span class="styBoldText">
-							    <span style="width:11px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-							</span>
+						            Average daily roundtrip commuting distance 
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
 								</div>
 								<div class="styLNRightNumBox" style="border-width: 0px 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 5mm; text-align: center; padding-top: 1.5mm;">
 						15
@@ -780,26 +630,12 @@
 							<!-- BEGIN PART II - SECTION A.16 Data -->
 							<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 								<div class="styLNLeftNumBox" style="height: 5mm; padding-top: 1.5mm;">
-						16
-					</div>
+					                16
+					            </div>
 								<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">
-						Commuting miles included on line 12 
-							<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:8px"/>.
-								<span style="width:4px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-							</span>
+						            Commuting miles included on line 12 
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
 								</div>
 								<div class="styLNRightNumBox" style="border-width: 0px 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 5mm; text-align: center; padding-top: 1.5mm;">
 						16
@@ -821,21 +657,18 @@
 							<!-- BEGIN PART II - SECTION A.17 Data -->
 							<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 								<div class="styLNLeftNumBox" style="border: 0px solid black; height: 5mm; padding-top: 1.5mm;">
-						17
-					</div>
+						             17
+					            </div>
 								<div class="styLNDesc" style="border: 0px solid black; width: 107.5mm; height: 5mm; padding-top: 1.5mm;">
-						Other miles. Add lines 13 and 16 and subtract the total from line 12 
-						<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:8px"/>.
-										<span style="width:8px"/>.
-							</span>
+						            Other miles. Add lines 13 and 16 and subtract the total from line 12 
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
 								</div>
 								<xsl:choose>
 									<xsl:when test="$pos = count($Form2106Data/VehicleExpensesGrp) or $pos = count($Form2106Data/VehicleExpensesGrp)-1">
 										<div class="styLNRightNumBox" style="border-width: 0px 0px 1px 1px; border-style: solid solid solid; border-color: black; width: 7mm; height: 5mm; text-align: center; padding-top: 1.5mm;">
-								17
-							</div>
+								        17
+							            </div>
 										<div class="styIRS2106ColBox" style="width: 32.5mm; height: 5mm; padding-top: 1.5mm; font-size: 6pt; border-bottom-color: currentColor; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-bottom-style: solid;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos]/OtherPersonalMilesCnt"/>
@@ -850,16 +683,16 @@
 										</div>
 									</xsl:when>
 									<xsl:otherwise>
-										<div class="styLNRightNumBox" style="border-width: 0px 0px 1px 1px; border-style: solid solid solid; border-color: black; width: 7mm; height: 5mm; text-align: center; padding-top: 1.5mm;">
-								17
-							</div>
-										<div class="styIRS2106ColBox" style="width: 32.5mm; height: 5mm; padding-top: 1.5mm; font-size: 6pt; border-bottom-color: currentColor; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-bottom-style: solid;">
+										<div class="styLNRightNumBox" style="border-width: 0px 0px 0px 1px; border-style: solid solid solid; border-color: black; width: 7mm; height: 5mm; text-align: center; padding-top: 1.5mm;">
+								            17
+							            </div>
+										<div class="styIRS2106ColBox" style="width: 32.5mm; height: 5mm; padding-top: 1.5mm; font-size: 6pt; border-bottom-color: currentColor; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-bottom-style: solid;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos]/OtherPersonalMilesCnt"/>
 											</xsl:call-template>
 											<span style="font-weight:normal;font-size:8pt;padding-left:1mm;padding-right:1mm;">miles</span>
 										</div>
-										<div class="styIRS2106ColBox" style="width: 31.5mm; height: 5mm; padding-top: 1.5mm; font-size: 6pt; border-bottom-color: currentColor; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-bottom-style: solid;">
+										<div class="styIRS2106ColBox" style="width: 31.5mm; height: 5mm; padding-top: 1.5mm; font-size: 6pt; border-bottom-color: currentColor; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-bottom-style: solid;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos + 1]/OtherPersonalMilesCnt"/>
 											</xsl:call-template>
@@ -877,7 +710,7 @@
 						<xsl:variable name="pos" select="position()"/>
 						<div class="styNBB" style="width:187mm;">
 							<th scope="col" style="width:187mm;">
-								<div class="styIRS2106TB" style="height:7.8mm;width:122.5mm;font-size:8.5pt;padding-left:0mm;           border-bottom-width:1px;">
+								<div class="styIRS2106TB" style="height:7.8mm;width:122.5mm;font-size:8.5pt;padding-left:0mm;border-bottom-width:1px;">
 									<span class="styBoldText">Section A-General Information</span>
 										 (You must complete this section if you<br/>are claiming vehicle expenses.)
 											</div>
@@ -900,18 +733,10 @@
 						<!-- Beginning of Part II 11 -->
 						<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 							<div class="styLNLeftNumBox" style="height: 5mm; padding-top: 1.5mm;">11</div>
-							<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">Enter the date the vehicle was placed in service 
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												 <span style="width:8px"/>.
-												 <span style="width:8px"/>.
-											</span>
+							<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">
+							       Enter the date the vehicle was placed in service 
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 5mm; text-align: center; padding-top: 1.5mm;">11</div>
 							<div class="styIRS2106ColBox" style="width: 32.5mm; height: 5mm; padding-top: 1.5mm; font-size: 6pt; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 1px;">
@@ -929,19 +754,10 @@
 						<!-- Beginning of Part II 12 -->
 						<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 							<div class="styLNLeftNumBox" style="height: 5mm; padding-top: 1.5mm;">12</div>
-							<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">Total miles the vehicle was driven during 2016
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												 <span style="width:8px"/>.
-												<span style="width:8px"/>.
-												 <span style="width:8px"/>.
-											</span>
+							<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">
+							       Total miles the vehicle was driven during 2016
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 5mm; text-align: center; padding-top: 1.5mm;">12</div>
 							<div class="styIRS2106ColBox" style="width: 32.5mm; height: 5mm; padding-top: 1.5mm; font-size: 6pt; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 1px;">
@@ -961,24 +777,10 @@
 						<!-- Beginning of Part II 13 -->
 						<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 							<div class="styLNLeftNumBox" style="height: 5mm; padding-top: 1.5mm;">13</div>
-							<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">Business miles included on line 12 
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												 <span style="width:8px"/>.
-												<span style="width:8px"/>.
-												 <span style="width:8px"/>.
-												<span style="width:8px"/>.
-												 <span style="width:8px"/>.
-												  <span style="width:8px"/>.
-												<span style="width:8px"/>.
-												 <span style="width:8px"/>.
-										   </span>
+							<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">
+							       Business miles included on line 12 
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">.............</span>
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 5mm; text-align: center; padding-top: 1.5mm;">13</div>
 							<div class="styIRS2106ColBox" style="width: 32.5mm; height: 5mm; padding-top: 1.5mm; font-size: 6pt; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 1px;">
@@ -998,18 +800,10 @@
 						<!-- Beginning of Part II 14 -->
 						<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 							<div class="styLNLeftNumBox" style="height: 5mm; padding-top: 1.5mm;">14</div>
-							<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">Percent of business use. Divide line 13 by line 12 
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												 <span style="width:8px"/>.
-												<span style="width:8px"/>.
-										   </span>
+							<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">
+							    Percent of business use. Divide line 13 by line 12 
+								<!--Dotted Line -->
+								<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
 							</div>
 							<div class="styLNRightNumBox" style="height: 5mm; border-width: 0px 0px 1px 1.3px; border-style: solid; border-color: black; width: 7mm; text-align: center; padding-top: 1.5mm;">14</div>
 							<div class="styIRS2106ColBox" style="width: 32.5mm; height: 5mm; padding-top: 1.5mm; padding-right: 1mm; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 1.3px;">
@@ -1021,26 +815,16 @@
 								<xsl:call-template name="PopulatePercent">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos + 1]/VehBusInvestmentUsePct"/>
 								</xsl:call-template>%
-										</div>
+							</div>
 						</div>
 						<!-- End of Part ii 14 -->
 						<!-- Beginning of Part II 15 -->
 						<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 							<div class="styLNLeftNumBox" style="height: 5mm; padding-top: 1.5mm;">15</div>
-							<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">Average daily roundtrip commuting distance 
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												 <span style="width:8px"/>.
-												<span style="width:8px"/>.
-												 <span style="width:8px"/>.
-												<span style="width:8px"/>.
-										   </span>
+							<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">
+							    Average daily roundtrip commuting distance 
+								<!--Dotted Line -->
+								<span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
 							</div>
 							<div class="styLNRightNumBox" style="height: 5mm; border-width: 0px 0px 1px 1.3px; border-style: solid; border-color: black; width: 7mm; text-align: center; padding-top: 1.5mm;">15</div>
 							<div class="styIRS2106ColBox" style="width: 32.5mm; height: 5mm; padding-top: 1.5mm; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 1.3px;">
@@ -1060,23 +844,10 @@
 						<!-- Beginning of Part II 16 -->
 						<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 							<div class="styLNLeftNumBox" style="height: 5mm; padding-top: 1.5mm;">16</div>
-							<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">Commuting miles included on line 12 
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												 <span style="width:8px"/>.
-												<span style="width:8px"/>.
-												 <span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												 <span style="width:8px"/>.
-												<span style="width:8px"/>.
-										   </span>
+							<div class="styLNDesc" style="width: 107.5mm; height: 5mm; padding-top: 1.5mm;">
+							    Commuting miles included on line 12 				
+								<!--Dotted Line -->
+								<span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
 							</div>
 							<div class="styLNRightNumBox" style="height: 5mm; border-width: 0px 0px 1px 1.3px; border-style: solid; border-color: black; width: 7mm; text-align: center; padding-top: 1.5mm;">16</div>
 							<div class="styIRS2106ColBox" style="width: 32.5mm; height: 5mm; padding-top: 1.5mm; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 1.3px;">
@@ -1096,15 +867,12 @@
 						<!-- Beginning of Part II 17 -->
 						<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 								<div class="styLNLeftNumBox" style="border: 0px solid black; height: 5mm; padding-top: 1.5mm;">
-						17
-					</div>
+						             17
+					            </div>
 								<div class="styLNDesc" style="border: 0px solid black; width: 107.5mm; height: 5mm; padding-top: 1.5mm;">
-						Other miles. Add lines 13 and 16 and subtract the total from line 12 
-						<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:8px"/>.
-										<span style="width:8px"/>.
-							</span>
+					         	Other miles. Add lines 13 and 16 and subtract the total from line 12 
+								<!--Dotted Line -->
+								<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
 								</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 0px 1px 1px; border-style: solid solid solid; border-color: black; width: 7mm; height: 5mm; text-align: center; padding-top: 1.5mm;">
 								17
@@ -1130,25 +898,10 @@
 					<!-- Beginning of Part II 18 -->
 					<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 						<div class="styLNLeftNumBox" style="height:5mm; padding-top:1.5mm;">18</div>
-						<div class="styLNDesc" style="width:150.5mm; height:5mm; padding-top:1.5mm;">Was your vehicle available for personal use during off-duty hours? 
-					
-			          <!--Dotted Line-->
-							<span class="styBoldText">
-							    <span style="width:1px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:6px"/>.
-						 </span>
+						<div class="styLNDesc" style="width:150.5mm; height:5mm; padding-top:1.5mm;">
+						    Was your vehicle available for personal use during off-duty hours? 
+							<!--Dotted Line -->
+							<span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
 						</div>
 						<div class="styLNDesc" style="width:13mm; height:5mm; padding-top:1.5mm; text-align:right;">
 							<span>
@@ -1195,24 +948,10 @@
 					<!-- Beginning of Part II 19 -->
 					<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 						<div class="styLNLeftNumBox" style="height:5mm; padding-top:1.5mm;">19</div>
-						<div class="styLNDesc" style="width:150.5mm; height:5mm; padding-top:1.5mm;">Do you (or your spouse) have another vehicle available 
-					for personal use? 
-					
-			          <!--Dotted Line-->
-							<span class="styBoldText">
-						
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-							</span>
+						<div class="styLNDesc" style="width:150.5mm; height:5mm; padding-top:1.5mm;">
+					        Do you (or your spouse) have another vehicle available for personal use? 					
+							<!--Dotted Line -->
+							<span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
 						</div>
 						<div class="styLNDesc" style="width:13mm; height:5mm; padding-top:1.5mm; text-align:right;">
 							<span>
@@ -1259,30 +998,10 @@
 					<!-- Beginning of Part II 20 -->
 					<div style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 5mm;">
 						<div class="styLNLeftNumBox" style="height:5mm; padding-top:1.5mm;">20</div>
-						<div class="styLNDesc" style="width:150.5mm; height:5mm; padding-top:1.5mm;">Do you have evidence to support your deduction? 
-					
-			          <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:11px"/>.
-								 <span style="width:8px"/>.
-								<span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-							</span>
+						<div class="styLNDesc" style="width:150.5mm; height:5mm; padding-top:1.5mm;">
+						    Do you have evidence to support your deduction? 
+							<!--Dotted Line -->
+							<span class="styDotLn" style="float:right;padding-right:1mm;">..................</span>
 						</div>
 						<div class="styLNDesc" style="width:13mm; height:5mm; padding-top:1.5mm; text-align:right;">
 							<span>
@@ -1329,36 +1048,10 @@
 					<!-- Beginning of Part II 21 -->
 					<div class="styBB" style="width: 187mm; padding-bottom: 0mm; clear: all; font-size: 8pt; float: left; height: 6.5mm;">
 						<div class="styLNLeftNumBox" style="height:5mm; padding-top:1.5mm;">21</div>
-						<div class="styLNDesc" style="width:150.5mm; height:5mm; padding-top:1.5mm;">If "Yes,"  is the evidence written? 
-						
-				          <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:10px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-								 <span style="width:8px"/>.
-							</span>
+						<div class="styLNDesc" style="width:150.5mm; height:5mm; padding-top:1.5mm;">
+						    If "Yes,"  is the evidence written? 
+							<!--Dotted Line -->
+							<span class="styDotLn" style="float:right;padding-right:1mm;">........................</span>
 						</div>
 						<div class="styLNDesc" style="width:13mm; height:5mm; padding-top:1.5mm; text-align:right;">
 							<span>
@@ -1404,30 +1097,18 @@
 					<!-- End of Part II 21 -->
 					<!-- Ending of SECTION A Data -->
 					<!-- BEGIN SECTION B TITLE -->
-					<div class="styBB" style="width:187mm; clear: all; float: left;">
+					<div class="styBB" style="width:187mm; clear: all; float: left;border-top-width:0.3mm;">
 						<div class="styPartDesc" style="width:187mm;font-size:8pt;padding-left:0mm;font-weight:bold;">
-      Section B-Standard Mileage Rate <span style="font-weight:normal;">(See the instructions for Part II to find out whether to complete this section or Section C.)	</span>
+                            Section B-Standard Mileage Rate <span style="font-weight:normal;">(See the instructions for Part II to find out whether to complete this section or Section C.)	</span>
 						</div>
 					</div>
 					<!--END SECTION B TITLE -->
 					<!-- Beginning of Part II Section B. 22 -->
-					<div class="styBB" style="width: 187mm; height: 6mm; font-size: 8pt;">
+					<div class="styBB" style="width: 187mm; height: 6mm; font-size: 8pt;border-bottom-width:2px;">
 						<div class="styLNLeftNumBox" style="padding-top: 1.5mm;">22</div>
 						<div class="styLNDesc" style="width: 139mm; padding-top: 1.5mm;">Multiply line 13 by 54¢ (0.54). Enter the result here and on line 1 
-
-		          <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-								<span style="width:8px"/>.
-							</span>
+							<!--Dotted Line -->
+							<span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
 						</div>
 						<div class="styLNRightNumBox" style="border-width: 0px 1px; border-style: solid; border-color: black; width: 6.5mm; height: 6mm; text-align: center; padding-top: 1.5mm;">22</div>
 						<div class="styIRS2106ColBox" style="height: 6mm; padding-top: 2.5mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;">
@@ -1447,12 +1128,12 @@
 								<th scope="col" style="width:187mm;">
 									<div class="styPartDesc" style="width:58.8mm;font-size:8pt;padding-left:0mm;border-style:solid;border-right-width:0px;       border-left-width:0px;border-top-width:0px;border-bottom-width:1px;border-color:black">Section C-Actual Expenses</div>
 									<!-- BEGIN Vehicle 1 Title  -->
-									<div class="styPartDesc" style="width:64.3mm;font-size:8pt;padding-left:2mm;padding-right:2mm;text-align:center;         border-style:solid;border-left-width:1px;border-right-width:0mm;border-top-width:0mm;border-bottom-width:1px;border-color:black;float:left;         clear:none;">(<xsl:number value="($pos)" format="a"/>)  <span style="font-weight:normal;">Vehicle <xsl:number value="($pos)" format="1"/>
+									<div class="styPartDesc" style="width:64.3mm;font-size:8pt;padding-left:2mm;padding-right:2mm;text-align:center;         border-style:solid;border-left-width:1px;border-right-width:0mm;border-top-width:0mm;border-bottom-width:1px;border-color:black;float:left; clear:none;">(<xsl:number value="($pos)" format="a"/>)  <span style="font-weight:normal;">Vehicle <xsl:number value="($pos)" format="1"/>
 										</span>
 									</div>
 									<!-- END Vehicle 1Title -->
 									<!-- BEGIN Vehicle 2 Title -->
-									<div class="styPartDesc" style="width:63.8mm;padding-left:2mm;padding-right:2mm;text-align:center;       border-style:solid;border-left-width:1px;border-right-width:0mm;border-top-width:0mm;border-bottom-width:1px;border-color:black;float:left;       clear:none;">(<xsl:number value="($pos+1)" format="a"/>)  <span style="font-weight:normal;">Vehicle <xsl:number value="($pos+1)" format="1"/>
+									<div class="styPartDesc" style="width:63.8mm;padding-left:2mm;padding-right:2mm;text-align:center;       border-style:solid;border-left-width:1px;border-right-width:0mm;border-top-width:0mm;border-bottom-width:1px;border-color:black;float:left;clear:none;">(<xsl:number value="($pos+1)" format="a"/>)  <span style="font-weight:normal;">Vehicle <xsl:number value="($pos+1)" format="1"/>
 										</span>
 									</div>
 								</th>
@@ -1462,15 +1143,9 @@
 							<div style="width: 187mm; height: 8mm; clear: all; float: left;">
 								<div class="styLNLeftNumBox" style="height: 8mm; padding-top: 1mm; font-size: 8pt;">23</div>
 								<div class="styLNDesc" style="width: 44mm; height: 8mm; padding-top: 1mm; font-size: 7.5pt;">
-								Gasoline, oil, repairs, vehicle insurance, etc.
-		                    <!--Dotted Line-->
-									<span class="styBoldText">
-										    <span style="width:4px"/>.
-											<span style="width:8px"/>.
-											<span style="width:8px"/>.
-											<span style="width:8px"/>.
-											<span style="width:8px"/>.
-										</span>
+								   Gasoline, oil, repairs, vehicle insurance, etc.
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
 								</div>
 								<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 8mm; text-align: center; padding-top: 4.5mm; font-size: 8pt;">23</div>
 								<div class="styIRS2106ColBoxGrey" style="height: 8mm; padding-top: 5.3mm; border-right-width: 0px; border-left-width: 0px;"/>
@@ -1491,15 +1166,8 @@
 							<div style="width: 187mm; height: 4mm; clear: all; float: left;">
 								<div class="styLNLeftNumBox" style="height: 4mm; font-size: 7.5pt;">24a</div>
 								<div class="styLNDesc" style="width:44mm; height: 4mm; font-size:7.5pt;">Vehicle rentals
-				
-		          <!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:4px"/>.
-											<span style="width:8px"/>.
-											<span style="width:8px"/>.
-											<span style="width:8px"/>.
-											<span style="width:8px"/>.
-										</span>
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
 								</div>
 								<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 4mm; text-align: center; padding-top: 0.5mm; font-size: 7.5pt;">24a</div>
 								<div class="styIRS2106ColBox" style="height: 4mm; padding-top: 1mm; border-right-width: 0px; border-left-width: 0px;">
@@ -1517,7 +1185,7 @@
 							</div>
 							<!-- END Section C 24a -->
 							<!-- BEGIN Section C 24b -->
-							<div style="width: 187mm; height: 4mm; clear: all; float: left;">
+							<div style="width: 187mm; height: 4mm; clear: all; float: left;border-top-width:0.3mm;">
 								<div class="styLNLeftNumBox" style="height: 4mm; text-align: right; padding-top: 1mm; padding-right: 1.5mm; padding-bottom: 0mm; font-size: 7pt;">b</div>
 								<div class="styLNDesc" style="width: 44mm; height: 4mm; padding-top: 1mm; padding-bottom: 0mm; font-size: 7.5pt;">Inclusion amount <span style="font-size: 6pt;">(see instructions)</span></div>
 								<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 4mm; text-align: center; padding-top: 0.3mm; font-size: 8pt;">24b</div>
@@ -1578,12 +1246,8 @@
 							<div style="width:187mm; height:4.5mm; clear: all; float: left;">
 								<div class="styLNLeftNumBox" style="height:4.5mm; padding-top:.5mm;font-size:8pt;">26</div>
 								<div class="styLNDesc" style="width:44mm;height:4.5mm;font-size:7.5pt;padding-top:.5mm;">Add lines 23, 24c, and 25
-				          <!--Dotted Line-->
-										<span class="styBoldText">
-										<span style="width:.5px"/>.
-										<span style="width:2px"/>.
-										<span style="width:2px"/>.
-										</span>
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
 								</div>
 								<div class="styLNRightNumBox" style="height:4.5mm;width:7mm;padding-top:.5mm;font-size:8pt;text-align:center;border-style:solid;   border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">26</div>
 								<div class="styIRS2106ColBoxGrey" style="height:4.5mm;padding-top:1.5mm;border-left-width:0px;border-right-width:0px;    border-bottom-width:0px;"/>
@@ -1601,26 +1265,21 @@
 							</div>
 							<!-- END Section C 26 -->
 							<!-- BEGIN Section C 27 -->
-							<div style="width:187mm; height:9.5mm; clear: all; float: left;">
-								<div class="styLNLeftNumBox" style="height:9.5mm; padding-top:2mm;font-size:8pt;">27</div>
-								<div class="styLNDesc" style="width:44mm; height:9.5mm; font-size:7.5pt;padding-top:2mm;">Multiply<span style="width:2mm"/>line<span style="width:2mm"/>26<span style="width:2mm"/>by<span style="width:2mm"/> the percentage on line 14
-				          <!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:4px"/>.
-										<span style="width:4px"/>.
-										<span style="width:4px"/>.
-										<span style="width:4px"/>.
-										</span>
+							<div style="width:187mm; height:9.4mm; clear: all; float: left;">
+								<div class="styLNLeftNumBox" style="height:9.4mm; padding-top:2mm;font-size:8pt;">27</div>
+								<div class="styLNDesc" style="width:44mm; height:9.4mm; font-size:7.5pt;padding-top:2mm;">Multiply<span style="width:2mm"/>line<span style="width:2mm"/>26<span style="width:2mm"/>by<span style="width:2mm"/> the percentage on line 14
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
 								</div>
-								<div class="styLNRightNumBox" style="height:9.5mm; width:7mm;padding-top:5.5mm;font-size:8pt;text-align:center;border-style:solid;   border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">27</div>
-								<div class="styIRS2106ColBoxGrey" style="height:9.5mm; padding-top:5.5mm;border-left-width:0px;border-right-width:0px;    border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:9.5mm; padding-top:6mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styLNRightNumBox" style="height:9.4mm; width:7mm;padding-top:5.5mm;font-size:8pt;text-align:center;border-style:solid;   border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">27</div>
+								<div class="styIRS2106ColBoxGrey" style="height:9.4mm; padding-top:5.5mm;border-left-width:0px;border-right-width:0px;    border-bottom-width:0px;"/>
+								<div class="styIRS2106ColBox" style="height:9.4mm; padding-top:6mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/CalculatedBusinessExpenseAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:9.5mm; padding-top:5.5mm;border-left-width:1px;border-right-width:0px;    border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:9.5mm; padding-top:6mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBoxGrey" style="height:9.4mm; padding-top:5.5mm;border-left-width:1px;border-right-width:0px;    border-bottom-width:0px;"/>
+								<div class="styIRS2106ColBox" style="height:9.4mm; padding-top:6mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/CalculatedBusinessExpenseAmt"/>
 									</xsl:call-template>
@@ -1648,24 +1307,21 @@
 							</div>
 							<!-- END Section C 28 -->
 							<!-- BEGIN Section C 29 -->
-							<div style="border-width: 0px 0px 1px; border-style: solid; border-color: black; width: 187mm; height: 9.5mm; clear: all; float: left;">
-							<div class="styLNLeftNumBox" style="height:9.5mm; padding-top:0.5mm; padding-bottom:0mm; font-size:8pt;">29</div>
-							<div class="styLNDesc" style="width: 44mm; height: 9.5mm; padding-top: 0.5mm; padding-bottom: 0mm; font-size: 7.5pt;">Add lines 27 and 28. <span style="width:2mm"/>Enter total here and on line 1
-				          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:8px"/>.
-											<span style="width:8px"/>.
-										</span>
+							<div style="border-width: 0px 0px 1px; border-style: solid; border-color: black; width: 187mm; height: 9.4mm; clear: all; float: left;">
+							<div class="styLNLeftNumBox" style="height:9.4mm; padding-top:0.5mm; padding-bottom:0mm; font-size:8pt;">29</div>
+							<div class="styLNDesc" style="width: 44mm; height: 9.4mm; padding-top: 0.5mm; padding-bottom: 0mm; font-size: 7.5pt;">Add lines 27 and 28. <span style="width:2mm"/>Enter total here and on line 1
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
 							</div>
-							<div class="styLNRightNumBox" style="border-width: 0px 1px; border-style: solid; border-color: black; width: 7mm; height: 9.5mm; text-align: center; padding-top: 3.8mm; font-size: 8pt;">29</div>
-							<div class="styIRS2106ColBoxGrey" style="height: 9.5mm; padding-top: 4.5mm; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px;"/>
-							<div class="styIRS2106ColBox" style="height: 9.5mm; padding-top: 4.5mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 1px;">
+							<div class="styLNRightNumBox" style="border-width: 0px 1px; border-style: solid; border-color: black; width: 7mm; height: 9.4mm; text-align: center; padding-top: 4.6mm; font-size: 8pt;">29</div>
+							<div class="styIRS2106ColBoxGrey" style="height: 9.4mm; padding-top: 4.5mm; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px;"/>
+							<div class="styIRS2106ColBox" style="height: 9.4mm; padding-top: 4.8mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 1px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/TotalActualExpenseAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height: 9.5mm; padding-top: 4.5mm; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 1px;"/>
-							<div class="styIRS2106ColBox" style="height: 9.5mm; padding-top: 4.5mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 1px;">
+								<div class="styIRS2106ColBoxGrey" style="height: 9.4mm; padding-top: 4.5mm; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 1px;"/>
+							<div class="styIRS2106ColBox" style="height: 9.4mm; padding-top: 4.5mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 1px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/TotalActualExpenseAmt"/>
 									</xsl:call-template>
@@ -1697,15 +1353,9 @@
 						<div style="width: 187mm; height: 8mm; clear: all; float: left;">
 								<div class="styLNLeftNumBox" style="height: 8mm; padding-top: 1mm; font-size: 8pt;">23</div>
 								<div class="styLNDesc" style="width: 44mm; height: 8mm; padding-top: 1mm; font-size: 7.5pt;">
-								Gasoline, oil, repairs, vehicle insurance, etc.
-		                    <!--Dotted Line-->
-									<span class="styBoldText">
-										    <span style="width:4px"/>.
-											<span style="width:8px"/>.
-											<span style="width:8px"/>.
-											<span style="width:8px"/>.
-											<span style="width:8px"/>.
-										</span>
+								    Gasoline, oil, repairs, vehicle insurance, etc.
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
 								</div>
 								<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 8mm; text-align: center; padding-top: 4.5mm; font-size: 8pt;">23</div>
 								<div class="styIRS2106ColBoxGrey" style="height: 8mm; padding-top: 5.3mm; border-right-width: 0px; border-left-width: 0px;"/>
@@ -1726,15 +1376,8 @@
 						<div style="width: 187mm; height: 4mm; clear: all; float: left;">
 								<div class="styLNLeftNumBox" style="height: 4mm; font-size: 8pt;">24a</div>
 								<div class="styLNDesc" style="width:44mm; height: 4mm; font-size:7.5pt;">Vehicle rentals
-				
-		          <!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:4px"/>.
-											<span style="width:8px"/>.
-											<span style="width:8px"/>.
-											<span style="width:8px"/>.
-											<span style="width:8px"/>.
-										</span>
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
 								</div>
 								<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 4mm; text-align: center; padding-top: 0.5mm; font-size: 7.5pt;">24a</div>
 								<div class="styIRS2106ColBox" style="height: 4mm; padding-top: 1mm; border-right-width: 0px; border-left-width: 0px;">
@@ -1813,13 +1456,8 @@
 						<div style="width:187mm; height:4.5mm; clear: all; float: left;">
 								<div class="styLNLeftNumBox" style="height:4.5mm; padding-top:.5mm;font-size:8pt;">26</div>
 								<div class="styLNDesc" style="width:44mm;height:4.5mm;font-size:7.5pt;padding-top:.5mm;">Add lines 23, 24c, and 25
-				          <!--Dotted Line-->
-										<span class="styBoldText">
-										<span style="width:.5px"/>.
-										<span style="width:2px"/>.
-										<span style="width:2px"/>.
-										</span>
-							
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>								
 								</div>
 								<div class="styLNRightNumBox" style="height:4.5mm;width:7mm;padding-top:.5mm;font-size:8pt;text-align:center;border-style:solid;   border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">26</div>
 								<div class="styIRS2106ColBoxGrey" style="height:4.5mm;padding-top:1.5mm;border-left-width:0px;border-right-width:0px;    border-bottom-width:0px;"/>
@@ -1837,27 +1475,21 @@
 							</div>
 						<!-- END Section C 26 -->
 						<!-- BEGIN Section C 27 -->
-						<div style="width:187mm; height:9.5mm; clear: all; float: left;">
-								<div class="styLNLeftNumBox" style="height:9.5mm; padding-top:2mm;font-size:8pt;">27</div>
-								<div class="styLNDesc" style="width:44mm; height:9.5mm; font-size:7.5pt;padding-top:2mm;">Multiply<span style="width:2mm"/>line<span style="width:2mm"/>26<span style="width:2mm"/>by<span style="width:2mm"/> the percentage on line 14
-				          <!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:4px"/>.
-										<span style="width:4px"/>.
-										<span style="width:4px"/>.
-										<span style="width:4px"/>.
-								
-										</span>
+						<div style="width:187mm; height:9.4mm; clear: all; float: left;">
+								<div class="styLNLeftNumBox" style="height:9.4mm; padding-top:2mm;font-size:8pt;">27</div>
+								<div class="styLNDesc" style="width:44mm; height:9.4mm; font-size:7.5pt;padding-top:2mm;">Multiply<span style="width:2mm"/>line<span style="width:2mm"/>26<span style="width:2mm"/>by<span style="width:2mm"/> the percentage on line 14
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>		
 								</div>
-								<div class="styLNRightNumBox" style="height:9.5mm; width:7mm;padding-top:5.5mm;font-size:8pt;text-align:center;border-style:solid;   border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">27</div>
-								<div class="styIRS2106ColBoxGrey" style="height:9.5mm; padding-top:5.5mm;border-left-width:0px;border-right-width:0px;    border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:9.5mm; padding-top:6mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styLNRightNumBox" style="height:9.4mm; width:7mm;padding-top:5.5mm;font-size:8pt;text-align:center;border-style:solid;   border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">27</div>
+								<div class="styIRS2106ColBoxGrey" style="height:9.4mm; padding-top:5.5mm;border-left-width:0px;border-right-width:0px;    border-bottom-width:0px;"/>
+								<div class="styIRS2106ColBox" style="height:9.4mm; padding-top:6mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/CalculatedBusinessExpenseAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:9.5mm; padding-top:5.5mm;border-left-width:1px;border-right-width:0px;    border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:9.5mm; padding-top:6mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBoxGrey" style="height:9.4mm; padding-top:5.5mm;border-left-width:1px;border-right-width:0px;    border-bottom-width:0px;"/>
+								<div class="styIRS2106ColBox" style="height:9.4mm; padding-top:6mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/CalculatedBusinessExpenseAmt"/>
 									</xsl:call-template>
@@ -1885,24 +1517,21 @@
 						</div>
 						<!-- END Section C 28 -->
 						<!-- BEGIN Section C 29 -->
-						<div style="border-width: 0px; width: 187mm; height: 6.5mm; clear: all; float: left;">
-							<div class="styLNLeftNumBox" style="height: 9.5mm; padding-top: 0.5mm; padding-bottom: 0mm; font-size: 8pt;">29</div>
-							<div class="styLNDesc" style="width: 44mm; height: 9.5mm; padding-top: 0.5mm; padding-bottom: 0mm; font-size: 7.5pt;">Add lines 27 and 28. <span style="width:2mm"/>Enter total here and on line 1
-				          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:8px"/>.
-											<span style="width:8px"/>.
-										</span>
+						<div style="border-width: 0px; width: 187mm; height: 6.5mm; clear: all; float: left;border-bottom-width:.3mm;">
+							<div class="styLNLeftNumBox" style="height: 9.4mm; padding-top: 0.5mm; padding-bottom: 0mm; font-size: 8pt;">29</div>
+							<div class="styLNDesc" style="width: 44mm; height: 9.4mm; padding-top: 0.5mm; padding-bottom: 0mm; font-size: 7.5pt;">Add lines 27 and 28. <span style="width:2mm"/>Enter total here and on line 1
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>		
 							</div>
-							<div class="styLNRightNumBox" style="border-width: 0px 1px; border-style: solid; border-color: black; width: 7mm; height: 9.5mm; text-align: center; padding-top: 3.8mm; font-size: 8pt;">29</div>
-							<div class="styIRS2106ColBoxGrey" style="height: 9.5mm; padding-top: 4.5mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"/>
-							<div class="styIRS2106ColBox" style="height: 9.5mm; padding-top: 4.5mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 1px;">
+							<div class="styLNRightNumBox" style="border-width: 0px 1px; border-style: solid; border-color: black; width: 7mm; height: 9.4mm; text-align: center; padding-top: 3.8mm; font-size: 8pt;">29</div>
+							<div class="styIRS2106ColBoxGrey" style="height: 9.4mm; padding-top: 4.5mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"/>
+							<div class="styIRS2106ColBox" style="height: 9.4mm; padding-top: 4.5mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 1px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/TotalActualExpenseAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height: 9.5mm; padding-top: 4.5mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 1px;"/>
-							<div class="styIRS2106ColBox" style="height: 9.5mm; padding-top: 4.5mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 1px;">
+							<div class="styIRS2106ColBoxGrey" style="height: 9.4mm; padding-top: 4.5mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 1px;"/>
+							<div class="styIRS2106ColBox" style="height: 9.4mm; padding-top: 4.5mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 1px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/TotalActualExpenseAmt"/>
 								</xsl:call-template>
@@ -1911,7 +1540,7 @@
 					</xsl:if>
 					<!--End Blank Printing for Section for Actual Expenses Group-->
 					<!-- BEGIN SECTION D TITLE -->
-					<div style="width:187mm;">
+					<div style="width:187mm;border-top-width:.3mm;">
 					<xsl:if test="($Print != $Separated) or (count($Form2106Data/DepreciationOfVehiclesGrp) &gt;0)">
 					<xsl:for-each select="$Form2106Data/DepreciationOfVehiclesGrp">
 						<xsl:variable name="pos" select="position()"/>
@@ -1920,7 +1549,7 @@
 								<xsl:call-template name="SetInitialState"/>
 								<th scope="col" style="width:187mm;">
 									<!-- BEGIN SECTION D TITLE -->
-									<div style="width:187mm;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
+									<div style="width:187mm;border-style:solid;border-color:black;border-width:0.3mm 0px 1px 0px;">
 										<div class="styPartDesc" style="width:187mm;height:auto; padding-top:2mm;font-weight:normal;font-size:8pt;padding-left:0mm;font-weight:bold;">Section D-Depreciation of Vehicles <span style="font-weight:normal;font-size:7pt;">(Use this section only if you owned the vehicle and are completing Section C for the vehicle.)</span>
 										</div>
 									</div>
@@ -1943,17 +1572,8 @@
 							<div style="width: 187mm; height: 8mm; clear: all; float: left;">
 								<div class="styLNLeftNumBox" style="height: 8mm; padding-top: 1mm; font-size: 8pt;">30</div>
 								<div class="styLNDesc" style="width: 44mm; height: 8mm; padding-top: 1mm; font-size: 7.5pt;">Enter cost or other basis (see instructions)
-				
-		          <!--Dotted Line-->
-									<span class="styBoldText">
-										        <span style="width:1px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-											</span>
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>		
 								</div>
 								<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 8mm; text-align: center; padding-top: 4.3mm; font-size: 8pt;">30</div>
 								<div class="styIRS2106ColBox" style="height: 8mm; padding-top: 4.5mm; border-right-width: 0px; border-left-width: 0px;">
@@ -2001,20 +1621,10 @@
 							<!-- BEGIN Section D 32 -->
 							<div style="width: 187mm; height: 12mm; clear: all; float: left;">
 							<div class="styLNLeftNumBox" style="height: 12mm; padding-top: 0.25mm; font-size: 8pt;">32</div>
-							<div class="styLNDesc" style="width: 44mm; height: 12mm; padding-top: 0.25mm; font-size: 6.85pt;">Multiply line 30 by line 14 (see instructions if you 
-		claimed the section 179 deduction or special allowance)
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:7px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-											</span>
+							<div class="styLNDesc" style="width: 44mm; height: 12mm; padding-top: 0.25mm; font-size: 6.85pt;">
+							         Multiply line 30 by line 14 (see instructions if you claimed the section 179 deduction or special allowance)
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>	
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 12mm; text-align: center; padding-top: 8mm; font-size: 8pt;">32</div>
 							<div class="styIRS2106ColBox" style="height: 12mm; padding-top: 8.5mm; border-right-width: 0px; border-left-width: 0px;">
@@ -2034,13 +1644,12 @@
 							<!-- BEGIN Section D 33 -->
 							<div style="width: 187mm; height: 9mm; clear: all; float: left;">
 							<div class="styLNLeftNumBox" style="height: 9mm; padding-top: 1.5mm; font-size: 8pt;">33</div>
-							<div class="styLNDesc" style="width: 44mm; height: 9mm; padding-top: 1.5mm; font-size: 7.5pt;">Enter depreciation method and percentage
-		 (see instructions)
-				
-		          <!--Dotted Line-->
+							<div class="styLNDesc" style="width: 44mm; height: 9mm; padding-top: 1.5mm; font-size: 7.5pt;">
+							     Enter depreciation method and percentage (see instructions)
+		                        <!--Dotted Line-->
 								<span class="styBoldText">
 									<span style="width:6px"/>.
-											</span>
+								</span>
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 9mm; text-align: center; padding-top: 4.5mm; font-size: 8pt;">33</div>
 							<div class="styIRS2106ColBox" style="height: 9mm; text-align: left; color: darkblue; padding-top: 0mm; font-size: 6.5pt; border-right-width: 0px; border-left-width: 0px;">
@@ -2068,17 +1677,10 @@
 							<!-- BEGIN Section D 34 -->
 							<div style="width: 187mm; height: 12mm; clear: all; float: left;">
 							<div class="styLNLeftNumBox" style="height: 12mm; padding-top: 2mm; font-size: 8pt;">34</div>
-							<div class="styLNDesc" style="width: 44mm; height: 12mm; padding-top: 2mm; font-size: 7.5pt;">Multiply line 32 by the percentage on line 33 <br/>
-		 (see instructions)
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:5px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-											</span>
+							<div class="styLNDesc" style="width: 44mm; height: 12mm; padding-top: 2mm; font-size: 7.5pt;">
+							        Multiply line 32 by the percentage on line 33 <br/>(see instructions)
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>	
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 12mm; text-align: center; padding-top: 8.5mm; font-size: 8pt;">34</div>
 							<div class="styIRS2106ColBoxGrey" style="height: 12mm; padding-top: 3.3mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"/>
@@ -2098,15 +1700,10 @@
 							<!-- BEGIN Section D 35 -->
 							<div style="width: 187mm; height: 5mm; clear: all; float: left;">
 							<div class="styLNLeftNumBox" style="height: 5mm; padding-top: 1mm; font-size: 8pt;">35</div>
-							<div class="styLNDesc" style="width: 44mm; height: 5mm; padding-top: 1mm; font-size: 7.5pt;">Add lines 31 and 34
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-											</span>
+							<div class="styLNDesc" style="width: 44mm; height: 5mm; padding-top: 1mm; font-size: 7.5pt;">
+							    Add lines 31 and 34
+								<!--Dotted Line -->
+								<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>	
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 5mm; text-align: center; padding-top: 1.5mm; font-size: 8pt;">35</div>
 							<div class="styIRS2106ColBoxGrey" style="height: 5mm; padding-top: 1.6mm; border-right-width: 0px; border-left-width: 0px;"/>
@@ -2126,18 +1723,10 @@
 							<!-- BEGIN Section D 36 -->
 							<div style="width: 187mm; height: 12mm; clear: all; float: left;">
 							<div class="styLNLeftNumBox" style="height: 12mm; padding-top: 1.5mm; font-size: 8pt;">36</div>
-							<div class="styLNDesc" style="width: 44mm; height: 12mm; padding-top: 1.5mm; font-size: 7.5pt;">Enter the applicable limit explained in the line 36 instructions
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-											</span>
+							<div class="styLNDesc" style="width: 44mm; height: 12mm; padding-top: 1.5mm; font-size: 7.5pt;">
+							        Enter the applicable limit explained in the line 36 instructions
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>	
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 12mm; text-align: center; padding-top: 8.5mm; font-size: 8pt;">36</div>
 							<div class="styIRS2106ColBox" style="height: 12mm; padding-top: 8.5mm; border-right-width: 0px; border-left-width: 0px;">
@@ -2159,14 +1748,8 @@
 							<div class="styLNLeftNumBox" style="height: 8mm; padding-top: 1mm; font-size: 8pt;">37</div>
 							<div class="styLNDesc" style="width: 44mm; height: 8mm; padding-top: 1mm; font-size: 7.5pt;">Multiply<span style="width:1mm"/> line
 		<span style="width:1mm"/> 36<span style="width:1mm"/> by<span style="width:1mm"/> the percentage on line 14
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:1px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-											</span>
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">...</span>	
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 8mm; text-align: center; padding-top: 4.5mm; font-size: 8pt;">37</div>
 							<div class="styIRS2106ColBoxGrey" style="height: 8mm; padding-top: 5.5mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"/>
@@ -2188,13 +1771,8 @@
 							<div class="styLNLeftNumBox" style="height: 20mm; padding-top: 2.5mm; font-size: 8pt;">38</div>
 							<div class="styLNDesc" style="width: 44mm; height: 20mm; padding-top: 2.5mm; font-size: 7.5pt;">Enter the <span class="styBoldText">smaller</span> of line 35 <br/>or line 37. 
 		<span style="width:1mm"/> If you skipped lines<br/> 36 and 37,  enter the amount <br/>from line 35.<span style="width:1mm"/>Also enter this amount on line	28 above
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:1px"/>.
-									<span style="width:8px"/>.
-									<span style="width:8px"/>.
-											</span>
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>	
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 20mm; text-align: center; padding-top: 15.5mm; font-size: 8pt;">38</div>
 							<div class="styIRS2106ColBoxGrey" style="width: 32mm; height: 20mm; padding-top: 14.3mm; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px;"/>
@@ -2222,7 +1800,7 @@
 						<div class="styNBB" style="width: 187mm; border-top-color: currentColor; border-top-width: 1px; border-top-style: solid;">
 							<th scope="col" style="width:187mm;">
 								<!-- BEGIN SECTION D TITLE -->
-								<div style="width:187mm;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
+								<div style="width:187mm;border-style:solid;border-color:black;border-width:0.3mm 0px 1px 0px;">
 									<div class="styPartDesc" style="width:187mm; height:auto; font-weight:normal;font-size:8pt;padding-left:0mm;font-weight:bold;">Section D-Depreciation of Vehicles <span style="font-weight:normal;font-size:7pt;">(Use this section only if you owned the vehicle and are completing Section C for the vehicle.)</span>
 									</div>
 								</div>
@@ -2245,17 +1823,8 @@
 						<div style="width: 187mm; height: 8mm; clear: all; float: left;">
 								<div class="styLNLeftNumBox" style="height: 8mm; padding-top: 1mm; font-size: 8pt;">30</div>
 								<div class="styLNDesc" style="width: 44mm; height: 8mm; padding-top: 1mm; font-size: 7.5pt;">Enter cost or other basis (see instructions)
-				
-		          <!--Dotted Line-->
-									<span class="styBoldText">
-										        <span style="width:1px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-											</span>
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>	
 								</div>
 								<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 8mm; text-align: center; padding-top: 4.3mm; font-size: 8pt;">30</div>
 								<div class="styIRS2106ColBox" style="height: 8mm; padding-top: 4.5mm; border-right-width: 0px; border-left-width: 0px;">
@@ -2305,17 +1874,8 @@
 							<div class="styLNLeftNumBox" style="height: 12mm; padding-top: 0.25mm; font-size: 8pt;">32</div>
 							<div class="styLNDesc" style="width: 44mm; height: 12mm; padding-top: 0.25mm; font-size: 6.85pt;">Multiply line 30 by line 14 (see instructions if you 
 		claimed the section 179 deduction or special allowance)
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:7px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-											</span>
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>	
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 12mm; text-align: center; padding-top: 8mm; font-size: 8pt;">32</div>
 							<div class="styIRS2106ColBox" style="height: 12mm; padding-top: 8.5mm; border-right-width: 0px; border-left-width: 0px;">
@@ -2337,10 +1897,8 @@
 							<div class="styLNLeftNumBox" style="height: 9mm; padding-top: 1.5mm; font-size: 8pt;">33</div>
 							<div class="styLNDesc" style="width: 44mm; height: 9mm; padding-top: 1.5mm; font-size: 7.5pt;">Enter depreciation method and percentage
 		 (see instructions)
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:6px"/>.
-											</span>
+									<!--Dotted Line -->
+									<span class="styDotLn" style="float:right;padding-right:0.8mm;">.</span>
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 9mm; text-align: center; padding-top: 4.5mm; font-size: 8pt;">33</div>
 							<div class="styIRS2106ColBox" style="height: 9mm; text-align: left; color: darkblue; padding-top: 0mm; font-size: 6.5pt; border-right-width: 0px; border-left-width: 0px;">
@@ -2368,17 +1926,10 @@
 						<!-- BEGIN Section D 34 -->
 						<div style="width: 187mm; height: 10mm; clear: all; float: left;">
 							<div class="styLNLeftNumBox" style="height: 10mm; font-size: 8pt;">34</div>
-							<div class="styLNDesc" style="width: 44mm; height: 10mm; font-size: 7.5pt;">Multiply line 32 by the percentage on line 33 <br/>
-		 (see instructions)
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:5px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-											</span>
+							<div class="styLNDesc" style="width: 44mm; height: 10mm; font-size: 7.5pt;">
+							    Multiply line 32 by the percentage on line 33 <br/>(see instructions)
+								<!--Dotted Line -->
+								<span class="styDotLn" style="float:right;padding-right:1mm;">...</span>	
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 10mm; text-align: center; padding-top: 6.5mm; font-size: 8pt;">34</div>
 							<div class="styIRS2106ColBoxGrey" style="height: 10mm; padding-top: 1.3mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"/>
@@ -2398,15 +1949,9 @@
 						<!-- BEGIN Section D 35 -->
 						<div style="width: 187mm; height: 5mm; clear: all; float: left;">
 							<div class="styLNLeftNumBox" style="height: 5mm; padding-top: 1mm; font-size: 8pt;">35</div>
-							<div class="styLNDesc" style="width: 44mm; height: 5mm; padding-top: 1mm; font-size: 7.5pt;">Add lines 31 and 34
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-											</span>
+							<div class="styLNDesc" style="width: 44mm; height: 5mm; padding-top: 1mm; font-size: 7.5pt;">Add lines 31 and 34				
+								<!--Dotted Line -->
+								<span class="styDotLn" style="float:right;padding-right:1mm;">...</span>	
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 5mm; text-align: center; padding-top: 1.5mm; font-size: 8pt;">35</div>
 							<div class="styIRS2106ColBoxGrey" style="height: 5mm; padding-top: 1.6mm; border-right-width: 0px; border-left-width: 0px;"/>
@@ -2426,18 +1971,10 @@
 						<!-- BEGIN Section D 36 -->
 						<div style="width: 187mm; height: 12mm; clear: all; float: left;">
 							<div class="styLNLeftNumBox" style="height: 12mm; padding-top: 1.5mm; font-size: 8pt;">36</div>
-							<div class="styLNDesc" style="width: 44mm; height: 12mm; padding-top: 1.5mm; font-size: 7.5pt;">Enter the applicable limit explained in the line 36 instructions
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-											</span>
+							<div class="styLNDesc" style="width: 44mm; height: 12mm; padding-top: 1.5mm; font-size: 7.5pt;">
+							    Enter the applicable limit explained in the line 36 instructions
+								<!--Dotted Line -->
+								<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>	
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 12mm; text-align: center; padding-top: 8.5mm; font-size: 8pt;">36</div>
 							<div class="styIRS2106ColBox" style="height: 12mm; padding-top: 8.5mm; border-right-width: 0px; border-left-width: 0px;">
@@ -2458,15 +1995,9 @@
 						<div style="width: 187mm; height: 8mm; clear: all; float: left;">
 							<div class="styLNLeftNumBox" style="height: 8mm; padding-top: 1mm; font-size: 8pt;">37</div>
 							<div class="styLNDesc" style="width: 44mm; height: 8mm; padding-top: 1mm; font-size: 7.5pt;">Multiply<span style="width:1mm"/> line
-		<span style="width:1mm"/> 36<span style="width:1mm"/> by<span style="width:1mm"/> the percentage on line 14
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:1px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-												<span style="width:8px"/>.
-											</span>
+		<span style="width:1mm"/> 36<span style="width:1mm"/> by<span style="width:1mm"/> the percentage on line 14				
+								<!--Dotted Line -->
+								<span class="styDotLn" style="float:right;padding-right:1mm;">...</span>	
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 8mm; text-align: center; padding-top: 4.5mm; font-size: 8pt;">37</div>
 							<div class="styIRS2106ColBoxGrey" style="height: 8mm; padding-top: 5.5mm; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;"/>
@@ -2487,14 +2018,9 @@
 						<div style="border-width: 0px 0px 1px; border-style: solid; border-color: black; width: 187mm; height: 20mm; clear: all; float: left;">
 							<div class="styLNLeftNumBox" style="height: 20mm; padding-top: 2.5mm; font-size: 8pt;">38</div>
 							<div class="styLNDesc" style="width: 44mm; height: 20mm; padding-top: 2.5mm; font-size: 7.5pt;">Enter the <span class="styBoldText">smaller</span> of line 35 <br/>or line 37. 
-		<span style="width:1mm"/> If you skipped lines<br/> 36 and 37,  enter the amount <br/>from line 35.<span style="width:1mm"/>Also enter this amount on line	28 above
-				
-		          <!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:1px"/>.
-									<span style="width:8px"/>.
-									<span style="width:8px"/>.
-											</span>
+		                        <span style="width:1mm"/> If you skipped lines<br/> 36 and 37,  enter the amount <br/>from line 35.<span style="width:1mm"/>Also enter this amount on line	28 above
+								<!--Dotted Line -->
+								<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>	
 							</div>
 							<div class="styLNRightNumBox" style="border-width: 0px 1px 1px; border-style: solid; border-color: black; width: 7mm; height: 20mm; text-align: center; padding-top: 15.5mm; font-size: 8pt;">38</div>
 							<div class="styIRS2106ColBoxGrey" style="width: 32mm; height: 20mm; padding-top: 14.3mm; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px;"/>
@@ -2517,21 +2043,19 @@
 						</xsl:if>-->
 					<!--End Blank Printing of Section for Depreciation Of Vehicles Group-->
 					<!-- End signature part -->
-					<div style="width:187mm; height: auto; padding-top:.5mm; padding-bottom:.5mm; text-align:right; clear: all; float: left;">Form <span class="styBoldText" style="font-size:8pt;">
-						  2106  </span>(2016)
-						  <p style="width: 187mm; height: auto; page-break-before: always;"></p>
+					<div  class="styStdDiv pageEnd" style="border-top:2px solid black;text-align:right;">Form <span class="styBoldText" style="font-size:8pt;">
+						  2106</span> (2016)
 					 </div>
-					 <p style="width: 187mm; height: auto; page-break-before: always;"></p>
+					 <br></br>
 					<!-- END of Page 2 -->
 					<!-- Begininning of write-in data -->
-					<br/><br/>
-					<div class="styLeftOverTitleLine" style="clear: all; float: left;" id="LeftoverData">
+					<div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">Additional Data</div>
 						<div class="styLeftOverButtonContainer">
 							<input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
 						</div>
 					</div>
-					<table class="styLeftOverTbl" style="clear: all; float: left;">
+					<table class="styLeftOverTbl">
 						<xsl:call-template name="PopulateCommonLeftover">
 							<xsl:with-param name="TargetNode" select="$Form2106Data"/>
 							<xsl:with-param name="DescWidth" select="100"/>

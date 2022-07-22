@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 05/05/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
+<!-- 05/11/2017 - Changes made for UWR 194393 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -87,41 +88,18 @@
 					<!-- Begin Name and Identifying Number Section-->
 					<div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;">
 						<div class="styFNBox" style="width:144mm;height:9mm;">
-            Name(s) shown on return<br/>
-							<xsl:choose>
-								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">Name</xsl:with-param>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-									</xsl:call-template>
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-									</xsl:call-template>
-								</xsl:otherwise>
-							</xsl:choose>
+							Name(s) shown on return<br/>
+							<xsl:call-template name="PopulateFilerName">
+							  <xsl:with-param name="TargetNode" select="$FormData"/>
+							</xsl:call-template>
 						</div>
 						<div class="styGenericDiv" style="width:42mm;height:9mm;padding-left:1mm;">
 							<span class="styBoldText">Identifying number</span>
 							<br/>
 							<br/>
-							<xsl:choose>
-								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-									</xsl:call-template>
-								</xsl:otherwise>
-							</xsl:choose>
+							<xsl:call-template name="PopulateFilerTIN">
+							   <xsl:with-param name="TargetNode" select="$FormData"/>
+							</xsl:call-template>
 						</div>
 					</div>
 					<!-- End Name and Identifying Number Section-->

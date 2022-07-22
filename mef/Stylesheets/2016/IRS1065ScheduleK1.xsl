@@ -3677,11 +3677,12 @@
 				<!--<br/>-->
 				<div class="pageEnd"/>
 				<!-- From 1065 form -->
+				<div style="width:187mm">
 				<!-- BEGIN Left Over Table -->
 				<div class="styLeftOverTitleLine" id="LeftoverData">
 					<div class="styLeftOverTitle">
-             Additional Data        
-            </div>
+						 Additional Data        
+				</div>
 					<div class="styLeftOverButtonContainer">
 						<input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
 					</div>
@@ -3694,7 +3695,7 @@
 				</table>
 				<!-- End Left Over Table -->
 				<!-- Additional Data Table -->
-				<div style="width:187mm">
+
 				  <!-- Separated Data for Part III Line 11 -->
 				  <xsl:if test="($Print = $Separated) and  (count($FormData/IRS1065K1OtherIncomeLossGrp/SchK1OtherIncomeLossGrp) &gt;3)">
 				    <div style="float:left">

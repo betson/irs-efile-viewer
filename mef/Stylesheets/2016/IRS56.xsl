@@ -755,7 +755,7 @@ onclick="return false">
 <div style="height:auto;width:187mm;">
 
 <!-- Section B Line 5 -->
-<div class="styIRS56LineItem" style="height:10mm;">
+<div class="styIRS56LineItem" style="height:18mm;">
 <div class="styIRS56PartNum" style="padding-top:0.5mm;">5</div>
 <div class="styIRS56LNDesc" style="width:179mm;height:70mm; ">
 <div style="float:left">
@@ -921,8 +921,11 @@ Complete only if the line 6 box is checked.
 <xsl:for-each select="$Form56Data/FiduciaryRcvCopyOfCommunGrp/TaxYearOrTaxPeriodGrp">
 <xsl:variable name="position" select="position()"/>
 <xsl:if test="$position mod 2 = 1">
+<xsl:variable name="pos" select="position()"/>
+<xsl:choose>
+<xsl:when test="(position() &lt; 8)">
 <tr style="">
-<td style="font-size:8pt;font-weight:bold;border-left:1px solid black;border-right:1px solid black;border-top:1px solid black">4e</td>
+<td style="font-size:8pt;font-weight:bold;border-left:1px solid black;border-right:1px solid black;border-top:1px solid black">4<xsl:number format="a"/></td>
 <td style="font-size:8pt;border-right:1px solid black;border-top:1px solid black">
 <xsl:call-template name="PopulateText">
 <xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryRcvCopyOfCommunGrp/TaxYearOrTaxPeriodGrp[$position]/TaxYr"/>
@@ -936,7 +939,7 @@ Complete only if the line 6 box is checked.
 <xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryRcvCopyOfCommunGrp/TaxYearOrTaxPeriodGrp[$position]/TaxPeriodEndDt"/>
 </xsl:call-template>
 </td>
-<td style="font-size:8pt;font-weight:bold;border-right:1px solid black;border-top:1px solid black">4e</td>
+<td style="font-size:8pt;font-weight:bold;border-right:1px solid black;border-top:1px solid black">4<xsl:number format="b"/></td>
 <td style="font-size:8pt;border-top:1px solid black;border-right:1px solid black">
 <xsl:call-template name="PopulateText">
 <xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryRcvCopyOfCommunGrp/TaxYearOrTaxPeriodGrp[$position+1]/TaxYr"/>
@@ -951,33 +954,142 @@ Complete only if the line 6 box is checked.
 </xsl:call-template>
 </td>
 </tr>
+</xsl:when>
+<xsl:otherwise>
+<tr style="">
+<td style="font-size:8pt;font-weight:bold;border-left:1px solid black;border-right:1px solid black;border-top:1px solid black">4h</td>
+<td style="font-size:8pt;border-right:1px solid black;border-top:1px solid black">
+<xsl:call-template name="PopulateText">
+<xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryRcvCopyOfCommunGrp/TaxYearOrTaxPeriodGrp[$position]/TaxYr"/>
+</xsl:call-template>
+<span style="width:10px"/>
+<xsl:call-template name="PopulateMonthDayYear">
+<xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryRcvCopyOfCommunGrp/TaxYearOrTaxPeriodGrp[$position]/TaxPeriodBeginDt"/>
+</xsl:call-template>
+<span style="width:10px"/>
+<xsl:call-template name="PopulateMonthDayYear">
+<xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryRcvCopyOfCommunGrp/TaxYearOrTaxPeriodGrp[$position]/TaxPeriodEndDt"/>
+</xsl:call-template>
+</td>
+<td style="font-size:8pt;font-weight:bold;border-right:1px solid black;border-top:1px solid black">4h</td>
+<td style="font-size:8pt;border-top:1px solid black;border-right:1px solid black">
+<xsl:call-template name="PopulateText">
+<xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryRcvCopyOfCommunGrp/TaxYearOrTaxPeriodGrp[$position+1]/TaxYr"/>
+</xsl:call-template>
+<span style="width:10px"/>
+<xsl:call-template name="PopulateMonthDayYear">
+<xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryRcvCopyOfCommunGrp/TaxYearOrTaxPeriodGrp[$position+1]/TaxPeriodBeginDt"/>
+</xsl:call-template>
+<span style="width:10px"/>
+<xsl:call-template name="PopulateMonthDayYear">
+<xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryRcvCopyOfCommunGrp/TaxYearOrTaxPeriodGrp[$position+1]/TaxPeriodEndDt"/>
+</xsl:call-template>
+</td>
+</tr>
+</xsl:otherwise>
+</xsl:choose>
 </xsl:if>
 </xsl:for-each>
 <xsl:choose>
 <xsl:when test="count($Form56Data/FiduciaryRcvCopyOfCommunGrp/TaxYearOrTaxPeriodGrp) &lt; 1">
-<xsl:call-template name="blankRow"/>
-<xsl:call-template name="blankRow"/>
-<xsl:call-template name="blankRow"/>
-<xsl:call-template name="blankRow"/>
-<xsl:call-template name="blankRow"/>
+<tr>
+<td style="border-left:1px solid black;border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4a</td>
+<td style="border-right:1px solid black;border-top:1px solid black">&nbsp;</td>
+<td style="border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4b</td>
+<td style="border-top:1px solid black;border-right:1px solid black">&nbsp;</td>
+</tr>
+<tr>
+<td style="border-left:1px solid black;border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4c</td>
+<td style="border-right:1px solid black;border-top:1px solid black">&nbsp;</td>
+<td style="border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4d</td>
+<td style="border-top:1px solid black;border-right:1px solid black">&nbsp;</td>
+</tr>
+<tr>
+<td style="border-left:1px solid black;border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4e</td>
+<td style="border-right:1px solid black;border-top:1px solid black">&nbsp;</td>
+<td style="border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4f</td>
+<td style="border-top:1px solid black;border-right:1px solid black">&nbsp;</td>
+</tr>
+<tr>
+<td style="border-left:1px solid black;border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4g</td>
+<td style="border-right:1px solid black;border-top:1px solid black">&nbsp;</td>
+<td style="border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4h</td>
+<td style="border-top:1px solid black;border-right:1px solid black">&nbsp;</td>
+</tr>
+<tr>
+<td style="border-left:1px solid black;border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4h</td>
+<td style="border-right:1px solid black;border-top:1px solid black">&nbsp;</td>
+<td style="border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4h</td>
+<td style="border-top:1px solid black;border-right:1px solid black">&nbsp;</td>
+</tr>
 </xsl:when>
 <xsl:when test="count($Form56Data/FiduciaryRcvCopyOfCommunGrp/TaxYearOrTaxPeriodGrp) &lt; 3">
-<xsl:call-template name="blankRow"/>
-<xsl:call-template name="blankRow"/>
-<xsl:call-template name="blankRow"/>
-<xsl:call-template name="blankRow"/>
+<tr>
+<td style="border-left:1px solid black;border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4c</td>
+<td style="border-right:1px solid black;border-top:1px solid black">&nbsp;</td>
+<td style="border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4d</td>
+<td style="border-top:1px solid black;border-right:1px solid black">&nbsp;</td>
+</tr>
+<tr>
+<td style="border-left:1px solid black;border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4e</td>
+<td style="border-right:1px solid black;border-top:1px solid black">&nbsp;</td>
+<td style="border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4f</td>
+<td style="border-top:1px solid black;border-right:1px solid black">&nbsp;</td>
+</tr>
+<tr>
+<td style="border-left:1px solid black;border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4g</td>
+<td style="border-right:1px solid black;border-top:1px solid black">&nbsp;</td>
+<td style="border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4h</td>
+<td style="border-top:1px solid black;border-right:1px solid black">&nbsp;</td>
+</tr>
+<tr>
+<td style="border-left:1px solid black;border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4h</td>
+<td style="border-right:1px solid black;border-top:1px solid black">&nbsp;</td>
+<td style="border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4h</td>
+<td style="border-top:1px solid black;border-right:1px solid black">&nbsp;</td>
+</tr>
 </xsl:when>
 <xsl:when test="count($Form56Data/FiduciaryRcvCopyOfCommunGrp/TaxYearOrTaxPeriodGrp) &lt; 5">
-<xsl:call-template name="blankRow"/>
-<xsl:call-template name="blankRow"/>
-<xsl:call-template name="blankRow"/>
+<tr>
+<td style="border-left:1px solid black;border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4e</td>
+<td style="border-right:1px solid black;border-top:1px solid black">&nbsp;</td>
+<td style="border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4f</td>
+<td style="border-top:1px solid black;border-right:1px solid black">&nbsp;</td>
+</tr>
+<tr>
+<td style="border-left:1px solid black;border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4g</td>
+<td style="border-right:1px solid black;border-top:1px solid black">&nbsp;</td>
+<td style="border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4h</td>
+<td style="border-top:1px solid black;border-right:1px solid black">&nbsp;</td>
+</tr>
+<tr>
+<td style="border-left:1px solid black;border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4h</td>
+<td style="border-right:1px solid black;border-top:1px solid black">&nbsp;</td>
+<td style="border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4h</td>
+<td style="border-top:1px solid black;border-right:1px solid black">&nbsp;</td>
+</tr>
 </xsl:when>
 <xsl:when test="count($Form56Data/FiduciaryRcvCopyOfCommunGrp/TaxYearOrTaxPeriodGrp) &lt; 7">
-<xsl:call-template name="blankRow"/>
-<xsl:call-template name="blankRow"/>
+<tr>
+<td style="border-left:1px solid black;border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4g</td>
+<td style="border-right:1px solid black;border-top:1px solid black">&nbsp;</td>
+<td style="border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4h</td>
+<td style="border-top:1px solid black;border-right:1px solid black">&nbsp;</td>
+</tr>
+<tr>
+<td style="border-left:1px solid black;border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4h</td>
+<td style="border-right:1px solid black;border-top:1px solid black">&nbsp;</td>
+<td style="border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4h</td>
+<td style="border-top:1px solid black;border-right:1px solid black">&nbsp;</td>
+</tr>
 </xsl:when>
 <xsl:when test="count($Form56Data/FiduciaryRcvCopyOfCommunGrp/TaxYearOrTaxPeriodGrp) &lt; 9">
-<xsl:call-template name="blankRow"/>
+<tr>
+<td style="border-left:1px solid black;border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4h</td>
+<td style="border-right:1px solid black;border-top:1px solid black">&nbsp;</td>
+<td style="border-right:1px solid black;border-top:1px solid black;font-weight:bold;font-size:8pt">4h</td>
+<td style="border-top:1px solid black;border-right:1px solid black">&nbsp;</td>
+</tr>
 </xsl:when>
 </xsl:choose>
 </xsl:if>
@@ -1176,16 +1288,19 @@ Specify to whom granted, date, and address, including ZIP code<br/>
 	<xsl:call-template name="PopulateText"> 
 	<xsl:with-param name="TargetNode" select="$Form56Data/GranteeNm"/>
 	</xsl:call-template>
+	<span style="width:3px"/>
 	<xsl:call-template name="PopulateText"> 
 	<xsl:with-param name="TargetNode" select="$Form56Data/GranteeDt"/>
 	</xsl:call-template>
+	<span style="width:3px"/>
 	<xsl:choose>
 		<xsl:when test="$Form56Data/GranteeUSAddress">
 		<!-- US Address -->
 				<xsl:call-template name="PopulateText">
 				<xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/AddressLine1Txt"/>
 				</xsl:call-template>
-			<xsl:if test="$Form56Data/GranteeUSAddress/AddressLine2Txt != '' ">,
+				<span style="width:3px"/>
+			<xsl:if test="$Form56Data/GranteeUSAddress/AddressLine2Txt != '' ">
 	
 				<xsl:call-template name="PopulateText">
 				<xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/AddressLine2Txt"/>
@@ -1195,7 +1310,8 @@ Specify to whom granted, date, and address, including ZIP code<br/>
 			</xsl:call-template>,
 <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/StateAbbreviationCd"/>
-            </xsl:call-template>,
+            </xsl:call-template>
+            <span style="width:3px"/>
 <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/ZIPCd"/>
             </xsl:call-template>
@@ -1208,25 +1324,30 @@ Specify to whom granted, date, and address, including ZIP code<br/>
 			<xsl:call-template name="PopulateText">
 				<xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/AddressLine1Txt"/>
 			</xsl:call-template>
+			<span style="width:3px"/>
 			<xsl:if test="$Form56Data/GranteeForeignAddress/AddressLine2Txt != '' ">
 				
 				<xsl:call-template name="PopulateText">
 					<xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/AddressLine2Txt"/>
 				</xsl:call-template>
+				<span style="width:3px"/>
 			</xsl:if>
 		</xsl:otherwise>
 	</xsl:choose>
 <xsl:call-template name="PopulateText">
 				<xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/CityNm"/>
 			</xsl:call-template>
+			<span style="width:3px"/>
 <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/ProvinceOrStateNm"/>
             </xsl:call-template>
-<xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/CountryCd"/>
-            </xsl:call-template>
+            <span style="width:3px"/>
 <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/ForeignPostalCd"/>
+            </xsl:call-template>
+            <span style="width:3px"/>
+<xsl:call-template name="PopulateText">
+                <xsl:with-param name="TargetNode" select="$Form56Data/GranteeForeignAddress/CountryCd"/>
             </xsl:call-template>
 </div>
 </div>
@@ -1276,13 +1397,13 @@ Check this box if a new fiduciary or fiduciaries have been or will be substitute
 <xsl:if test="($Print != $Separated) and (count($Form56Data/NewOrSubstituteFiduciaryGrp) &lt; 2)">
 <xsl:for-each select="$Form56Data/NewOrSubstituteFiduciaryGrp">
 <xsl:if test="position()=1">
-<span style="width:20px;"/><span style="width:5px;padding-top:10mm;"><img src="{$ImagePath}/56_Bullet.gif" alt="MediumBullet"/></span>
+<span style="width:20px;"/><span style="width:5px;padding-top:4mm;"><img src="{$ImagePath}/56_Bullet.gif" alt="MediumBullet"/></span>
 </xsl:if> 
 
 <xsl:if test="position()!=1">
 <!--<span style="width:56.5mm"/>-->
 </xsl:if> 
-<span style="width:178mm;height:14mm;padding-top:2.5mm;border-bottom:1px dashed black;float:right;clear:none;">
+<span style="width:178mm;height:8mm;padding-top:3.5mm;border-bottom:1px dashed black;float:right;clear:none;">
 <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryPersonName/PersonFirstNm"/>
             </xsl:call-template><span style="width:4px"/>
@@ -1332,10 +1453,10 @@ Check this box if a new fiduciary or fiduciaries have been or will be substitute
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/ProvinceOrStateNm"/>
             </xsl:call-template>
             <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/CountryCd"/>
+                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/ForeignPostalCd"/>
             </xsl:call-template>
             <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/ForeignPostalCd"/>
+                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/CountryCd"/>
             </xsl:call-template>
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/AddressLine1Txt"/>
@@ -1350,10 +1471,10 @@ Check this box if a new fiduciary or fiduciaries have been or will be substitute
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/ProvinceOrStateNm"/>
                 </xsl:call-template>
             <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/CountryCd"/>
+                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/ForeignPostalCd"/>
             </xsl:call-template>
              <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/ForeignPostalCd"/>
+                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/CountryCd"/>
             </xsl:call-template>
 </span>
 <br/>
@@ -1363,7 +1484,7 @@ Check this box if a new fiduciary or fiduciaries have been or will be substitute
  </div>
  
 <!-- Part III - Court and Administrative Proceedings  -->
-<div class="styTBB" style="width:187mm;height:19mm;vertical-align:bottom;"></div>
+<div class="styTBB" style="width:187mm;height:17mm;vertical-align:bottom;"></div>
 <div class="styIRS56PartHeader">
 <div class="styTitleName" style="width:17mm; font-size:10pt">Part III</div>
 <div class="styTitleDesc" style="font-size:10pt; width:169mm">Court and Administrative Proceedings </div>
@@ -1792,10 +1913,10 @@ Fiduciary Name(s), Address, and Business Address
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/ProvinceOrStateNm"/>
             </xsl:call-template>
             <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/CountryCd"/>
+                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/ForeignPostalCd"/>
             </xsl:call-template>
             <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/ForeignPostalCd"/>
+                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/CountryCd"/>
             </xsl:call-template>
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/AddressLine1Txt"/>
@@ -1810,10 +1931,10 @@ Fiduciary Name(s), Address, and Business Address
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/ProvinceOrStateNm"/>
                 </xsl:call-template>
             <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/CountryCd"/>
+                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/ForeignPostalCd"/>
             </xsl:call-template>
              <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/ForeignPostalCd"/>
+                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/CountryCd"/>
             </xsl:call-template>
             </xsl:if>
 </td>
@@ -1860,10 +1981,12 @@ Fiduciary Name(s), Address, and Business Address
 <xsl:with-param name="TargetNode" select="FiduciaryUSAddress/AddressLine1Txt"/>
 </xsl:call-template>
 <span style="width:3px"/>
+<br/>
 <xsl:call-template name="PopulateText">
 <xsl:with-param name="TargetNode" select="FiduciaryUSAddress/AddressLine2Txt"/>
 </xsl:call-template>
 <span style="width:3px"/>
+<br/>
 <xsl:call-template name="PopulateText">
 <xsl:with-param name="TargetNode" select="FiduciaryUSAddress/CityNm"/>
 </xsl:call-template>,
@@ -1876,14 +1999,17 @@ Fiduciary Name(s), Address, and Business Address
 <xsl:with-param name="TargetNode" select="FiduciaryUSAddress/ZIPCd"/>
 </xsl:call-template>
 <span style="width:3px"/>
+<br/>
 <xsl:call-template name="PopulateText">
 <xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/AddressLine1Txt"/>
 </xsl:call-template>
 <span style="width:3px"/>
+<br/>
 <xsl:call-template name="PopulateText">
 <xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/AddressLine2Txt"/>
 </xsl:call-template>
 <span style="width:3px"/>
+<br/>
 <xsl:call-template name="PopulateText">
 <xsl:with-param name="TargetNode" select="FiduciaryBusinessUSAddress/CityNm"/>
 </xsl:call-template>,
@@ -1900,9 +2026,11 @@ Fiduciary Name(s), Address, and Business Address
  <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/AddressLine1Txt"/>
             </xsl:call-template>
+            <br/>
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/AddressLine2Txt"/>
             </xsl:call-template>
+            <br/>
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/CityNm"/>
             </xsl:call-template>,
@@ -1910,17 +2038,20 @@ Fiduciary Name(s), Address, and Business Address
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/ProvinceOrStateNm"/>
             </xsl:call-template>,
             <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/CountryCd"/>
-            </xsl:call-template>
-            <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/ForeignPostalCd"/>
             </xsl:call-template>
             <xsl:call-template name="PopulateText">
+                <xsl:with-param name="TargetNode" select="FiduciaryForeignAddress/CountryCd"/>
+            </xsl:call-template>
+            <br/>
+            <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/AddressLine1Txt"/>
             </xsl:call-template>
+            <br/>
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/AddressLine2Txt"/>
             </xsl:call-template>
+            <br/>
             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/CityNm"/>
             </xsl:call-template>,
@@ -1928,10 +2059,10 @@ Fiduciary Name(s), Address, and Business Address
                 <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/ProvinceOrStateNm"/>
                 </xsl:call-template>,
             <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/CountryCd"/>
+                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/ForeignPostalCd"/>
             </xsl:call-template>
              <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/ForeignPostalCd"/>
+                <xsl:with-param name="TargetNode" select="FiduciaryBusinessFrgnAddress/CountryCd"/>
             </xsl:call-template>
             </xsl:if>
 </td>

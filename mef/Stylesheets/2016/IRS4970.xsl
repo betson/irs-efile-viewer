@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Last Modified by Eugenia McDonald on 04/20/2017 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -78,61 +79,105 @@
 					<div class="styBB" style="width:187mm;float:none;clear:none;">
 						<div class="styNameBox" style="width:136mm;height:auto;padding-bottom:1mm;font-size:7pt;">
 							<div>
-								<span style="font-weight:bold;width:8mm;">A</span>Name(s) as shown on return</div><br/>
+								<span style="font-weight:bold;width:8mm;">A</span>Name(s) as shown on return
+							</div><br/>
 							<span style="padding-left:1.5mm;padding-top:2mm;">
-								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$FormData/PersonSubjectToTrustTaxNm"/>
-								</xsl:call-template>
+								<xsl:choose>
+								<!--1041 Return Header data populated-->
+									<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select= "$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>	
+										</xsl:call-template>			
+										<br/>
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+										</xsl:call-template>			
+									 </xsl:when>
+									<xsl:otherwise>
+									<!--4970 schema data present and data populated-->
+										<xsl:if test="normalize-space($FormData/PersonSubjectToTrustTaxNm) !=''">
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="$FormData/PersonSubjectToTrustTaxNm"/>
+											</xsl:call-template>
+										</xsl:if>
+										<!--1040NR or 1040 Return Header data populated-->
+										<xsl:if test="normalize-space($FormData/PersonSubjectToTrustTaxNm) =''">
+											<xsl:call-template name="PopulateReturnHeaderFiler">
+												<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+											</xsl:call-template>
+										</xsl:if>	
+									</xsl:otherwise>		
+								</xsl:choose>
 							</span>
 						</div>
 						<div class="styEINBox" style="width:50mm;height:auto,padding-bottom:1mm;padding-left:2mm;font-size:7pt;font-weight:bold;">
 							<div>
-								<span style="width:4mm;">B</span>Social security number</div>
+								<span style="width:4mm;">B</span>Social security number
+							</div>
 							<span style="width:43mm;text-align:left;font-weight:normal;padding-top:2mm;">
-								<xsl:call-template name="PopulateSSN">
-									<xsl:with-param name="TargetNode" select="$FormData/PersonSubjectToTrustTaxSSN"/>
-								</xsl:call-template>
+								<xsl:choose>
+								<!--1041 Return Header data populated-->
+									<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+										<xsl:call-template name="PopulateReturnHeaderFilerTIN"/>
+									</xsl:when>	
+									<xsl:otherwise>
+									<!--4970 schema data present and data populated-->
+									<xsl:if test="normalize-space($FormData/PersonSubjectToTrustTaxSSN) !=''">
+										<xsl:call-template name="PopulateSSN">
+											<xsl:with-param name="TargetNode" select="$FormData/PersonSubjectToTrustTaxSSN"/>
+										</xsl:call-template>
+									</xsl:if>
+									<!--1040NR or 1040 Return Header data populated-->
+									<xsl:if test="normalize-space($FormData/PersonSubjectToTrustTaxSSN) =''">
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+										</xsl:call-template>
+									</xsl:if>	
+									</xsl:otherwise>		
+								</xsl:choose>
 							</span>
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;float:none;clear:none;">
 						<div class="styNameBox" style="width:136mm;height:24mm;font-size:7pt;">
 							<div>
-								<span style="font-weight:bold;width:8mm;">C</span>Name and address of trust</div><br/>
-								<span style="padding-left:1.5mm;">
-									<xsl:if test="$FormData/TrustName/BusinessNameLine1Txt">	
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/TrustName/BusinessNameLine1Txt"/>
-										</xsl:call-template>
-									</xsl:if>
-									<xsl:if test="$FormData/TrustName/BusinessNameLine2Txt">
-									<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/TrustName/BusinessNameLine2Txt"/>
-										</xsl:call-template>
-									</xsl:if>
-								</span>
-							<span style="padding-left:1mm;">	
-							<xsl:choose>
-								<xsl:when test="$FormData/USAddress">
-									<!--<br/>-->
-									<xsl:call-template name="PopulateUSAddressTemplate">
-										<xsl:with-param name="TargetNode" select="$FormData/USAddress"/>
+								<span style="font-weight:bold;width:8mm;">C</span>Name and address of trust
+							</div><br/>
+							<span style="padding-left:1.5mm;">
+								<xsl:if test="$FormData/TrustName/BusinessNameLine1Txt">	
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$FormData/TrustName/BusinessNameLine1Txt"/>
 									</xsl:call-template>
-								</xsl:when>
-								<xsl:when test="$FormData/ForeignAddress">
-									<!--<br/>-->
-									<xsl:call-template name="PopulateForeignAddressTemplate">
-										<xsl:with-param name="TargetNode" select="$FormData/ForeignAddress"/>
+								</xsl:if>
+								<xsl:if test="$FormData/TrustName/BusinessNameLine2Txt">
+								<br/>
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$FormData/TrustName/BusinessNameLine2Txt"/>
 									</xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise/>
-							</xsl:choose>
+								</xsl:if>
+							</span>
+							<br/>
+							<span style="padding-left:1.5mm;">	
+								<xsl:choose>
+									<xsl:when test="$FormData/USAddress">
+										<!--<br/>-->
+										<xsl:call-template name="PopulateUSAddressTemplate">
+											<xsl:with-param name="TargetNode" select="$FormData/USAddress"/>
+										</xsl:call-template>
+									</xsl:when>
+									<xsl:when test="$FormData/ForeignAddress">
+										<!--<br/>-->
+										<xsl:call-template name="PopulateForeignAddressTemplate">
+											<xsl:with-param name="TargetNode" select="$FormData/ForeignAddress"/>
+										</xsl:call-template>
+									</xsl:when>
+									<xsl:otherwise/>
+								</xsl:choose>
 							</span>
 						</div>
 						<div class="styEINBox" style="width:50mm;padding-left:2mm;font-size:7pt;font-weight:bold;">
 							<div><span style="width:4mm;">D</span>Employer identification number</div><br/>
-							<span style="width:40mm;text-align:left;padding-top:17mm;vertical-align:bottom;font-weight:normal;">
+							<span style="width:40mm;text-align:left;padding-top:1mm;vertical-align:bottom;font-weight:normal;">
 								<xsl:if test="$FormData/TrustEIN">	
 									<xsl:call-template name="PopulateEIN">
 										<xsl:with-param name="TargetNode" select="$FormData/TrustEIN"/>
@@ -146,7 +191,7 @@
 							<div>
 								<span style="font-weight:bold;width:8mm;float:left;height:auto;">E</span>Type of trust (see instructions)</div>
 						<span style="width:6.5mm;text-align:center;"></span>
-							<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox" id="DomesticTrustInd">
+							<input type="checkbox" alt="Domestic" class="styCkbox" name="Checkbox" id="DomesticTrustInd">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/DomesticTrustInd"/>
 								</xsl:call-template>
@@ -157,7 +202,7 @@
 								</xsl:call-template>
 							Domestic
 	                        </label>
-							<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox" id="ForeignTrustInd">
+							<input type="checkbox" alt="Foreign" class="styCkbox" name="Checkbox" id="ForeignTrustInd">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/ForeignTrustInd"/>
 								</xsl:call-template>

@@ -31,7 +31,7 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-					<!-- PRINT PRINT STATEMENT -->
+					<!-- PRINT PRINT STATEMENT  -->
 					<xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS8824Style"/>
 						<xsl:call-template name="AddOnStyle"/>
@@ -53,6 +53,11 @@
 							<!-- Push Pin -->
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form8824Data"/>
+							</xsl:call-template>
+							<xsl:call-template name="LinkToLeftoverDataTableInline">
+								<xsl:with-param name="Desc">Form 8824, Top Left Margin - Gain in Multiple Asset Exchange Statement</xsl:with-param>
+								<xsl:with-param name="TargetNode" select="$Form8824Data/@gainInMultiAssetExchStmtInd"/>
+								<xsl:with-param name="Style">padding-left:3mm;</xsl:with-param>
 							</xsl:call-template>
 							<br/>
 							<span class="styAgency" style="padding-top:3mm;">Department of the Treasury</span>
@@ -92,62 +97,19 @@
 					</div>
 					<!-- Names and ID's -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:144mm;">
+						<div class="styNameBox" style="width:144mm;height:9mm;">
 						Name(s) shown on tax return<br/>
-						  <!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
-						  <xsl:choose>
-						  <!-- Name from 1120/990/1065 Return Header -->
-							<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
-							  <xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
-							  </xsl:call-template>
-							  <br/>
-							  <xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
-							  </xsl:call-template>
-							</xsl:when>
-							<!-- Name from 1040 Return Header -->
-							<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
-							  <br/>
-							  <xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
-							  </xsl:call-template>
-							</xsl:when>
-							<!-- Name from 1041 Return Header 
-							<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
-							  <xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
-							  </xsl:call-template>
-							  <br/>
-							  <xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
-							  </xsl:call-template>
-							</xsl:when>
-							<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
-							  <xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
-							  </xsl:call-template>
-							  <br/>
-							</xsl:when> -->
-						  </xsl:choose>
+							<xsl:call-template name="Populate8824FilerName">
+								<xsl:with-param name="TargetNode" select="$Form8824Data"/>
+							</xsl:call-template>
 						</div>
-						<div class="styEINBox" style="width:42mm;height:4mm;padding-left:4mm;">
+						<div class="styEINBox" style="width:42mm;height:5mm;padding-left:4mm;">
 							Identifying number<br/>
 							<br/>
 							<span style="font-weight:normal;">
-								<!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
-								<xsl:choose>
-								  <xsl:when test="$RtnHdrData/Filer/EIN">
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-									</xsl:call-template>
-								  </xsl:when>
-								  <xsl:otherwise>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-									</xsl:call-template>
-								  </xsl:otherwise>
-								</xsl:choose>
+								<xsl:call-template name="Populate8824FilerTIN">
+									<xsl:with-param name="TargetNode" select="$Form8824Data"/>
+								</xsl:call-template>
 							</span>
 						</div>
 					</div>
@@ -267,12 +229,17 @@
 							 </span>
 							</div>
 							<div class="styGenericDiv" style="width:25mm;float:right;clear:none;height:3.5mm;padding-top:4mm;">
-								<input type="checkbox" alt="Exchange Made With Related Party Yes Box" class="styCkbox" name="Checkbox">
-									<xsl:call-template name="PopulateYesCheckbox">
+								<span>
+									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8824Data/ExchangeMadeWithRelatedPrtyInd"/>
-										<xsl:with-param name="BackupName">Exchange Made With Related Party Yes Box</xsl:with-param>
 									</xsl:call-template>
-								</input>
+									<input type="checkbox" alt="Exchange Made With Related Party Yes Box" class="styCkbox" name="Checkbox">
+										<xsl:call-template name="PopulateYesCheckbox">
+											<xsl:with-param name="TargetNode" select="$Form8824Data/ExchangeMadeWithRelatedPrtyInd"/>
+											<xsl:with-param name="BackupName">Exchange Made With Related Party Yes Box</xsl:with-param>
+										</xsl:call-template>
+									</input>
+								</span>
 								<label>
 									<xsl:call-template name="PopulateLabelYes">
 										<xsl:with-param name="TargetNode" select="$Form8824Data/ExchangeMadeWithRelatedPrtyInd"/>
@@ -281,12 +248,17 @@
 									<b>Yes</b>
 								</label>
 								<span style="width:2mm;"/>
-								<input type="checkbox" alt="Exchange Made With Related Party No Box" class="styCkbox" name="Checkbox">
-									<xsl:call-template name="PopulateNoCheckbox">
+								<span>
+									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8824Data/ExchangeMadeWithRelatedPrtyInd"/>
-										<xsl:with-param name="BackupName">Exchange Made With Related Party No Box</xsl:with-param>
 									</xsl:call-template>
-								</input>
+									<input type="checkbox" alt="Exchange Made With Related Party No Box" class="styCkbox" name="Checkbox">
+										<xsl:call-template name="PopulateNoCheckbox">
+											<xsl:with-param name="TargetNode" select="$Form8824Data/ExchangeMadeWithRelatedPrtyInd"/>
+											<xsl:with-param name="BackupName">Exchange Made With Related Party No Box</xsl:with-param>
+										</xsl:call-template>
+									</input>
+								</span>
 								<label>
 									<xsl:call-template name="PopulateLabelNo">
 										<xsl:with-param name="TargetNode" select="$Form8824Data/ExchangeMadeWithRelatedPrtyInd"/>
@@ -313,7 +285,7 @@
 					<!-- Line 8 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="border-bottom-width:0px;padding-left: 2.5mm">8</div>
-						<div class="styIRS8824RelatedNameBox" style="width:105mm;height:9mm;">
+						<div class="styIRS8824RelatedNameBox" style="width:105mm;height:10mm;padding-top:0.5mm;">
 						  Name of related party<br/>
 							<xsl:choose>
 								<xsl:when test="$Form8824Data/BusinessName/BusinessNameLine1Txt">
@@ -337,14 +309,14 @@
 								</xsl:otherwise>
 							</xsl:choose>
 						</div>
-						<div class="styIRS8824RelatedNameBox" style="height:9mm;width:30mm;font-size:7pt;font-weight:normal;padding-left:1mm;">
+						<div class="styIRS8824RelatedNameBox" style="height:10mm;width:30mm;font-size:7pt;font-weight:normal;padding-left:1mm;">
 							  Relationship to you<br/>
 							<br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form8824Data/RelationshipDescriptionTxt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS8824RelatedEINBox" style="height:9mm;width:44mm;font-size:7pt;font-weight:normal;padding-left:1mm;">
+						<div class="styIRS8824RelatedEINBox" style="height:10mm;width:44mm;font-size:7pt;font-weight:normal;padding-left:1mm;">
 							  Related party's identifying number<br/><br/>
 								<xsl:if test="$Form8824Data/EIN != ' ' ">
 								<span style="padding-left:.1mm;">
@@ -393,18 +365,24 @@
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="padding-left: 2.5mm;">9</div>
 							<div class="styLNDesc" style="width:153mm;">
-								During this tax year (and before the date that is 2 years after the last transfer of property that was part of the
-								exchange), did the related party sell or dispose of any part of the like-kind property received from you (or an
-								intermediary) in the exchange or transfer property into the exchange, directly or indirectly (such as through an
-								  intermediary), that became your replacement property?  <span class="styDotLn" style="float:right;">...........................</span>
+								During this tax year (and before the date that is 2 years after the last transfer of property that was part of
+								the exchange), did the related party sell or dispose of any part of the like-kind property received from you
+								(or an intermediary) in the exchange or transfer property into the exchange, directly or indirectly (such as
+								through an intermediary), that became your replacement property?
+								<span class="styDotLn" style="float:right;">............................</span>
 						  </div>
 							<div class="styGenericDiv" style="padding-top:8mm;width:25mm;float:right;clear:none;height:3.5mm;">
-								<input type="checkbox" alt="Related Party Sold Prop Received Yes Box" class="styCkbox" name="Checkbox">
-									<xsl:call-template name="PopulateYesCheckbox">
+								<span>
+									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8824Data/RelatedPartySoldPropRcvdInd"/>
-										<xsl:with-param name="BackupName">Related Party Sold Prop Received Yes Box</xsl:with-param>
 									</xsl:call-template>
-								</input>
+									<input type="checkbox" alt="Related Party Sold Prop Received Yes Box" class="styCkbox" name="Checkbox">
+										<xsl:call-template name="PopulateYesCheckbox">
+											<xsl:with-param name="TargetNode" select="$Form8824Data/RelatedPartySoldPropRcvdInd"/>
+											<xsl:with-param name="BackupName">Related Party Sold Prop Received Yes Box</xsl:with-param>
+										</xsl:call-template>
+									</input>
+								</span>
 								<label>
 									<xsl:call-template name="PopulateLabelYes">
 										<xsl:with-param name="TargetNode" select="$Form8824Data/RelatedPartySoldPropRcvdInd"/>
@@ -413,12 +391,17 @@
 									<b>Yes</b>
 								</label>
 								<span style="width:1mm;"/>
-								<input type="checkbox" alt="Related Party Sold Prop Received No Box" class="styCkbox" name="Checkbox">
-									<xsl:call-template name="PopulateNoCheckbox">
+								<span>
+									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8824Data/RelatedPartySoldPropRcvdInd"/>
-										<xsl:with-param name="BackupName">Related Party Sold Prop Received No Box</xsl:with-param>
 									</xsl:call-template>
-								</input>
+									<input type="checkbox" alt="Related Party Sold Prop Received No Box" class="styCkbox" name="Checkbox">
+										<xsl:call-template name="PopulateNoCheckbox">
+											<xsl:with-param name="TargetNode" select="$Form8824Data/RelatedPartySoldPropRcvdInd"/>
+											<xsl:with-param name="BackupName">Related Party Sold Prop Received No Box</xsl:with-param>
+										</xsl:call-template>
+									</input>
+								</span>
 								<label>
 									<xsl:call-template name="PopulateLabelNo">
 										<xsl:with-param name="TargetNode" select="$Form8824Data/RelatedPartySoldPropRcvdInd"/>
@@ -441,12 +424,17 @@
 						    </div>
 
 							<div class="styGenericDiv" style="padding-top:3mm;width:25mm;float:right;clear:none;height:3.5mm;">
-								<input type="checkbox" alt="You Sold Property Received Yes Box" class="styCkbox" name="Checkbox">
-									<xsl:call-template name="PopulateYesCheckbox">
+								<span>
+									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8824Data/YouSoldPropertyReceivedInd"/>
-										<xsl:with-param name="BackupName">You Sold Property Received Yes Box</xsl:with-param>
 									</xsl:call-template>
-								</input>
+									<input type="checkbox" alt="You Sold Property Received Yes Box" class="styCkbox" name="Checkbox">
+										<xsl:call-template name="PopulateYesCheckbox">
+											<xsl:with-param name="TargetNode" select="$Form8824Data/YouSoldPropertyReceivedInd"/>
+											<xsl:with-param name="BackupName">You Sold Property Received Yes Box</xsl:with-param>
+										</xsl:call-template>
+									</input>
+								</span>
 								<label>
 									<xsl:call-template name="PopulateLabelYes">
 										<xsl:with-param name="TargetNode" select="$Form8824Data/YouSoldPropertyReceivedInd"/>
@@ -455,12 +443,17 @@
 									<b>Yes</b>
 								</label>
 								<span style="width:1mm;"/>
-								<input type="checkbox" alt="You Sold Property Received No Box" class="styCkbox" name="Checkbox">
-									<xsl:call-template name="PopulateNoCheckbox">
+								<span>
+									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8824Data/YouSoldPropertyReceivedInd"/>
-										<xsl:with-param name="BackupName">You Sold Property Received No Box</xsl:with-param>
 									</xsl:call-template>
-								</input>
+									<input type="checkbox" alt="You Sold Property Received No Box" class="styCkbox" name="Checkbox">
+										<xsl:call-template name="PopulateNoCheckbox">
+											<xsl:with-param name="TargetNode" select="$Form8824Data/YouSoldPropertyReceivedInd"/>
+											<xsl:with-param name="BackupName">You Sold Property Received No Box</xsl:with-param>
+										</xsl:call-template>
+									</input>
+								</span>
 								<label>
 									<xsl:call-template name="PopulateLabelNo">
 										<xsl:with-param name="TargetNode" select="$Form8824Data/YouSoldPropertyReceivedInd"/>
@@ -493,7 +486,7 @@
 						<!-- Line 11a-->
 						<div style="width:187mm;">
 							<div class="styLNLeftLtrBoxDD" style="padding-top:3mm;">a</div>
-							<div class="styLNDesc" style="width:165mm;padding-top:3mm">
+							<div class="styLNDesc" style="width:165mm;padding-top:3.4mm">
 								<input type="checkbox" alt="The disposition was after the death of either of the related parties" class="styCkbox" name="Checkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8824Data/DisposWasAftrDthRltdPartysInd"/>
@@ -512,7 +505,7 @@
 						</div>
 						<!-- Line 11b-->
 						<div style="width:187mm;">
-							<div class="styLNLeftLtrBoxDD" style="padding-top:3mm">b</div>
+							<div class="styLNLeftLtrBoxDD" style="padding-top:3.4mm">b</div>
 							<div class="styLNDesc" style="width:165mm;padding-top:3mm">
 								<input type="checkbox" alt="DispositionWasInvlntryCnvrtInd" class="styCkbox" name="Checkbox">
 									<xsl:call-template name="PopulateCheckbox">
@@ -534,7 +527,7 @@
 						</div>
 						<!-- Line 11c-->
 						<div class="styBB" style="width:187mm;height:14mm;">
-							<div class="styLNLeftLtrBoxDD" style="padding-top:3mm; ">c</div>
+							<div class="styLNLeftLtrBoxDD" style="padding-top:3.4mm; ">c</div>
 							<div class="styLNDesc" style="width:179mm;padding-top:3mm;">
 <span style="width:5mm;">
 
@@ -888,11 +881,19 @@
 							<div class="styDotLn" style="float:right;">.....<img src="{$ImagePath}/8824_Bullet_Line.gif" alt="bullet image"/></div>
 						</div>
 						<br/>
-						<span class="styFixedUnderline" style="float:right;clear:none;width:58mm;padding-top:3mm;">
-							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$Form8824Data/DeferralOfGainCertOfDvsttrNum"/>
-							</xsl:call-template>
-						</span>
+						<xsl:choose>
+							<xsl:when test="normalize-space($Form8824Data/DeferralOfGainCertOfDvsttrNum)!=''">
+								<span class="styFixedUnderline" style="float:right;clear:none;width:58mm;padding-top:3mm;">
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$Form8824Data/DeferralOfGainCertOfDvsttrNum"/>
+									</xsl:call-template>
+								</span>
+							</xsl:when>
+							<xsl:otherwise>
+								<span style="width: 20mm"/> - 
+								<span class="styFixedUnderline" style="float:right;clear:none;width:58mm;"/>
+							</xsl:otherwise>
+						</xsl:choose>
 					</div>
 					<!-- Line 27 -->
 					<div style="width:187mm;height:auto;padding-top:3mm;">
@@ -1125,10 +1126,96 @@
 							<xsl:with-param name="TargetNode" select="$Form8824Data"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
+						<xsl:call-template name="PopulateLeftoverRow">
+							<xsl:with-param name="Desc">Form 8824, Top Left Margin - Gain in Multiple Asset Exchange Statement</xsl:with-param>
+							<xsl:with-param name="TargetNode" select="$Form8824Data/@gainInMultiAssetExchStmtInd"/>
+							<xsl:with-param name="DescWidth" select="100"/>
+						</xsl:call-template>
 					</table>
 					</div>
 				</form>
 			</body>
 		</html>
 	</xsl:template>
+	<xsl:template name="Populate8824FilerName">
+		<xsl:param name="TargetNode"/>
+		<xsl:choose>
+			<!-- Business Name from Parent return header -->
+			<xsl:when test="$Location='PAR'">
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine1Txt"/>
+				</xsl:call-template>
+				<xsl:if test="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2Txt">
+					<br/>
+					<xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2Txt"/>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:when>
+			<!-- Business Name from Subsidiary Return Header -->
+			<xsl:when test="$Location='SUB'">
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine1Txt"/>
+				</xsl:call-template>
+				<xsl:if test="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2Txt">
+					<br/>
+					<xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2Txt"/>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:when>
+			<!-- Name from 1120/990/1065 Return Header -->
+			<xsl:when test="$RtnHdrData/Filer/BusinessName">
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+				</xsl:call-template>
+				<xsl:if test="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt">
+					<br/>
+					<xsl:call-template name="PopulateReturnHeaderFiler">
+						<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:when>
+			<!-- Name from 1040 Return Header -->
+			<xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+				<br/>
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+				</xsl:call-template>
+			</xsl:when>
+			<!-- Name from 1041 Return Header -->
+			<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
+				<br/>
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">NationalMortgageAssocCd</xsl:with-param>
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+				</xsl:call-template>
+				<xsl:if test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt">
+					<br/>
+					<xsl:call-template name="PopulateReturnHeaderFiler">
+						<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:when>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template name="Populate8824FilerTIN">
+		<xsl:param name="TargetNode"/>
+			<!-- Pull Data from Return Header-->
+			<xsl:call-template name="PopulateReturnHeaderFiler">
+				<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+			</xsl:call-template>
+			<xsl:call-template name="PopulateReturnHeaderFiler">
+				<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+			</xsl:call-template>
+			<xsl:call-template name="PopulateReturnHeaderFiler">
+				<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+			</xsl:call-template>
+	</xsl:template>
+
 </xsl:stylesheet>

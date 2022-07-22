@@ -96,7 +96,7 @@
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
 				  </xsl:call-template>
 				</xsl:when>
-				<!-- Name from 1041 Return Header 
+				<!-- Name from 1041 Return Header -->
 				<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
 				  <xsl:call-template name="PopulateText">
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
@@ -111,7 +111,7 @@
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
 				  </xsl:call-template>
 				  <br/>
-				</xsl:when> -->
+				</xsl:when> 
 			  </xsl:choose>
 							</span>
 						</div>

@@ -3,6 +3,7 @@
 <!-- 05/01/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <!-- 06/24/2015 - Changes made for UWR 157287 - Jeremy Nichols -->
 <!-- 12/08/2015 - Changes made per pdf review - Jeremy Nichols -->
+<!-- 05/09/2017 - Changes made for UWR 194393 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <xsl:include href="PopulateTemplate.xsl"/>
@@ -79,41 +80,17 @@
         <div class="styIRS8621FNBox" style="height:9mm;">
           Name of shareholder<br/>
           <div style=" font-family:'verdana';font-size:6pt;">
-            <xsl:choose>
-              <xsl:when test="normalize-space($Form8621Data/ShareholderPersonNm)!=''">             
-                  <br/>
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$Form8621Data/ShareholderPersonNm"/>
-                </xsl:call-template>
-              </xsl:when>
-              <xsl:otherwise>   
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$Form8621Data/ShareholderName/BusinessNameLine1Txt"/>
-                </xsl:call-template>
-                <xsl:if test="normalize-space($Form8621Data/ShareholderName/BusinessNameLine2Txt)!=''">              
-                  <br/>
-                  <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$Form8621Data/ShareholderName/BusinessNameLine2Txt"/>
-                  </xsl:call-template>
-                </xsl:if>
-              </xsl:otherwise>
-            </xsl:choose> 
+            <xsl:call-template name="PopulateFilerName">
+			  <xsl:with-param name="TargetNode" select="$Form8621Data"/>
+			</xsl:call-template>
           </div>
         </div>
         <div style="height:9mm;float:left; padding-left:1mm">
           <b>Identifying number</b> (see instructions)<br/>        
           <div style="text-align:left; padding-top:2mm; font-family:'verdana';font-size:7pt;vertical-align:bottom;">
-            <xsl:choose>
-                <xsl:when test="normalize-space($Form8621Data/EIN)!=''">
-                  <xsl:call-template name="PopulateEIN"><xsl:with-param name="TargetNode" select="$Form8621Data/EIN"/></xsl:call-template>
-                </xsl:when>
-                <xsl:when test="normalize-space($Form8621Data/MissingEINReasonCd)!=''">
-                  <xsl:call-template name="PopulateEIN"><xsl:with-param name="TargetNode" select="$Form8621Data/MissingEINReasonCd"/></xsl:call-template>
-                </xsl:when>
-                 <xsl:otherwise>    
-                <xsl:call-template name="PopulateSSN"><xsl:with-param name="TargetNode" select="$Form8621Data/SSN"/></xsl:call-template>
-              </xsl:otherwise>
-            </xsl:choose>      
+            <xsl:call-template name="PopulateFilerTIN">
+			   <xsl:with-param name="TargetNode" select="$Form8621Data"/>
+			</xsl:call-template>    
           </div>          
         </div>
       </div>  

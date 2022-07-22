@@ -1630,21 +1630,20 @@
 							</xsl:when>
 							</xsl:choose> 
 						</div>
-						<div class="styEINBox" style="width:31mm;height:4mm;">
-							<span style="width:1mm;"/>Identifying number<br/>
+						<div class="styEINBox" style="width:31mm;height:4mm;padding-left:2mm;">Identifying number<br/>
 							<br/>
 							<span style="width:38mm;text-align:left;font-weight:normal;">
 								<xsl:choose>
-									<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
+								  <xsl:when test="$RtnHdrData/Filer/EIN">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+									  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+									</xsl:call-template>
+								  </xsl:when>
+								  <xsl:otherwise>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+									  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+									</xsl:call-template>
+								  </xsl:otherwise>
 								</xsl:choose>
 							</span>
 						</div>
@@ -3864,21 +3863,20 @@ Schedule A, line 9. Estates and trusts, enter on the "Other deductions" line of 
 							</xsl:when>
 							</xsl:choose>
 						</div>
-						<div class="styEINBox" style="width:31mm;height:4mm;">
-							<span style="width:1mm;"/>Identifying number<br/>
+						<div class="styEINBox" style="width:31mm;height:4mm;padding-left:2mm;">Identifying number<br/>
 							<br/>
 							<span style="width:38mm;text-align:left;font-weight:normal;">
 								<xsl:choose>
-									<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
+								  <xsl:when test="$RtnHdrData/Filer/EIN">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+									  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+									</xsl:call-template>
+								  </xsl:when>
+								  <xsl:otherwise>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+									  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+									</xsl:call-template>
+								  </xsl:otherwise>
 								</xsl:choose>
 							</span>
 						</div>

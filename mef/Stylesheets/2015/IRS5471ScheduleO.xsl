@@ -18,7 +18,7 @@
 						<xsl:with-param name="RootElement" select="local-name($Form5471ScheduleO)"/>
 					</xsl:call-template>
 				</title>
-				<!-- No Browser Caching -->
+				<!-- No Browser Caching  -->
 				<meta http-equiv="Pragma" content="no-cache"/>
 				<meta http-equiv="Cache-Control" content="no-cache"/>
 				<meta http-equiv="Expires" content="0"/>
@@ -42,7 +42,7 @@
 					<xsl:call-template name="DocumentHeader"/>
 					<div class="styTBB" style="width:187mm;">
 						<div class="styFNBox" style="width:31mm;border-right-width:2px;">
-							<div style="height:20mm">
+							<div style="height:18mm">
 								<span class="styIRS5471ScheduleOScheduleFN">Schedule O<br/>(Form 5471)</span>
 								<span style="width:2px;"/>
 								<br/>
@@ -59,94 +59,43 @@
 							</div>
 						</div>
 						<div class="styFTBox" style="width:125mm;">
-							<div class="styMainTitle" style="height:18mm;">
-								Organization or Reorganization of Foreign <br/>Corporation, and Acquisitions
-								and <br/>Dispositions of its Stock
+							<div class="styMainTitle" style="height:16mm;">
+								Organization or Reorganization of Foreign <br/>Corporation, and Acquisitions	and <br/>Dispositions of its Stock
 							</div>
 							<div class="styFBT" style="height:5mm;font-size:6pt;padding-top:2mm;">
 								Information about Schedule O (Form 5471) and its instructions is at 
-								<a href="http://www.irs.gov/form5471" title="Link to irs.gov">	<i>www.irs.gov/form5471 </i>	</a>
+								<a style="text-decoration:none;color:black;" href="http://www.irs.gov/form5471" title="Link to irs.gov">	<i>www.irs.gov/form5471 </i>	</a>
 								<span style="width:80mm;">
 									<img src="{$ImagePath}/5471_Bullet_Title.gif" alt="bullet"/>
 									Attach to Form 5471.
 								</span>
 							</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;border-bottom-width:0px;border-left-width:2px;">
-							<div class="styOMB" style="height:28mm; border-bottom: 0px;padding-top:12mm;">OMB No. 1545-0704</div>
+						<div class="styTYBox" style="width:30mm;height:26mm;border-bottom-width:0px;border-left-width:2px;">
+							<div class="styOMB" style="border-bottom: 0px;padding-top:12mm;">OMB No. 1545-0704</div>
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:142mm;height:11mm;font-size:7pt;">
-							Name of person filing Form 5471<br/>
-							<span style="padding-top:1mm;">
-							<!-- Start choise of name from header or data elements for shared file/1040/1120  -->
-								<xsl:if test="$Form5471ScheduleO/PersonNm!=''">
-									<br/>
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/PersonNm"/>
-									</xsl:call-template>
-								</xsl:if>
-								<xsl:if test="$Form5471ScheduleO/BusinessName/BusinessNameLine1Txt!=''">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/BusinessName/BusinessNameLine1Txt"/>
-									</xsl:call-template>
-									<br/>
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/BusinessName/BusinessNameLine2Txt"/>
-									</xsl:call-template>
-								</xsl:if>
-								<xsl:if test="$Form5471ScheduleO/PersonNm=''">
-									<xsl:choose>
-											<!-- Name from 1040 Return Header -->
-											<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
-											<br/>
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">Name</xsl:with-param>
-											</xsl:call-template>
-										</xsl:when>
-										<xsl:otherwise>
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-											</xsl:call-template>
-											<br/>
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-											</xsl:call-template>
-										</xsl:otherwise>
-									</xsl:choose>
-								</xsl:if>
-								<xsl:if test="$Form5471ScheduleO/BusinessName=''">
-									<xsl:choose>
-										  <!-- Name from 1120/990/1065 Return Header -->
-											<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-											</xsl:call-template>
-											<br/>
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-											</xsl:call-template>
-										</xsl:when>
-										<xsl:otherwise>
-											<br/>
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">Name</xsl:with-param>
-											</xsl:call-template>
-										</xsl:otherwise>
-									</xsl:choose>
-								</xsl:if>
-							</span>
+						<div class="styNameBox" style="width:142mm;height:8mm;">
+							Name of person filing Form 5471
+							<br/>
+							<!-- Template below address a choice of input data and Return Header data for 1120, 1065, 99X, 1040 and 1041-->
+							<xsl:call-template name="PopulateFilerName">
+								<xsl:with-param name="TargetNode" select="$Form5471ScheduleO"/>
+							</xsl:call-template>
 						</div>
-						<!--  End choise of name from header or data elements for shared file 1040/1120  -->
 						<!-- EIN LIne choice from input and Return header 1120 or 1040   -->
-						<div class="styINBox" style="float:left;clear:none;padding-left:1mm;width:43mm;height:11mm;">
-							<span class="styBoldText">Identifying number<br/>
-							</span>
+						<div class="styEINBox" style="padding-left:1mm;width:43mm;height:8mm;">
+							<span class="styBoldText">Identifying number<br/></span>
 							<br/>
 							<br/>
-							<span style="font-weight: normal;padding-top:1mm;">
-								<xsl:choose>
+							<span style="font-weight:normal;">
+							<!-- Template below address a choice of input data and Return Header data for 1120, 1065, 99X, 1040 and 1041-->
+								<!--<xsl:call-template name="PopulateFilerTIN">
+								  <xsl:with-param name="TargetNode" select="$Form5471ScheduleO"/>
+								</xsl:call-template>-->
+								 <xsl:choose>
+								<!-- TIN from Form level -->
 									<xsl:when test="$Form5471ScheduleO/FilerSSN != '' ">
 										<xsl:call-template name="PopulateSSN">
 											<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/FilerSSN"/>
@@ -162,38 +111,30 @@
 											<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/MissingSSNEINReasonCd"/>
 										</xsl:call-template>
 									</xsl:when>
-									<xsl:otherwise>
-										<xsl:choose>
-											<xsl:when test="$RtnHdrData/Filer/PrimarySSN">
-												<xsl:call-template name="PopulateReturnHeaderFiler">
-													<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-												</xsl:call-template>
-											</xsl:when>
-											<xsl:when test="$RtnHdrData/Filer/SSN">
-												<xsl:call-template name="PopulateReturnHeaderFiler">
-													<xsl:with-param name="TargetNode">SSN</xsl:with-param>
-												</xsl:call-template>
-											</xsl:when>
-											<xsl:when test="$RtnHdrData/Filer/EIN">
-												<xsl:call-template name="PopulateReturnHeaderFiler">
-													<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-												</xsl:call-template>
-											</xsl:when>
-											<xsl:otherwise>
-												<xsl:call-template name="PopulateReturnHeaderFiler">
-													<xsl:with-param name="TargetNode">MissingEINReasonCd</xsl:with-param>
-												</xsl:call-template>
-											</xsl:otherwise>
-										</xsl:choose>
-									</xsl:otherwise>
+								  <xsl:otherwise>
+									<xsl:choose>
+									<!-- TIN from 1120, 990, 1065, ETEC, 1041 return headers-->
+										<xsl:when test="$RtnHdrData/Filer/EIN">
+											<xsl:call-template name="PopulateReturnHeaderFiler">
+												<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+											</xsl:call-template>
+										</xsl:when>
+										<xsl:otherwise>
+										<!-- TIN from 1040, 1040NR return headers-->
+											<xsl:call-template name="PopulateReturnHeaderFiler">
+												<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+											</xsl:call-template>
+										</xsl:otherwise>
+									</xsl:choose>
+								  </xsl:otherwise>
 								</xsl:choose>
 							</span>
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:115mm;height:11mm;font-size:7pt;">
+						<div class="styNameBox" style="width:115mm;height:11mm;">
 							Name of foreign corporation<br/>
-							<span style="padding-top:1mm;">
+							<span style="padding-top:3mm;">
 								<!-- Start choise of name from header or data elements for shared file/1040/1120  -->
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/ForeignCorporationName/BusinessNameLine1Txt"/>
@@ -204,7 +145,6 @@
 								</xsl:call-template>
 							</span>
 						</div>
-						<!--  End choise of name from header or data elements for shared file 1040/1120  -->
 						<!-- EIN LIne choice from input and Return header 1120 or 1040   -->
 						<div class="styNameBox" style="float:left;clear:none;padding-left:1mm;width:27mm;height:11mm;border-right-width:1px;border-color:black">
 							EIN (if any)<br/>
@@ -306,7 +246,7 @@
 									<th class="styTableCellHeader" style="width:20mm;" scope="col">(d)<br/>
 										<span class="styNormalText">Date of original<br/> 10% acquisition</span>
 									</th>
-									<th class="styIRS5471ScheduleOTableCellHeader" style="width:20mm;" scope="col">(e)<br/>
+									<th class="styTableCellHeader" style="width:20mm;border-right-width:0mm;" scope="col">(e)<br/>
 										<span class="styNormalText">Date of additional<br/> 10% acquisition</span>
 									</th>
 								</tr>
@@ -377,7 +317,7 @@
 												</xsl:call-template>
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellCtr" style="width:20mm;text-align:center;padding-left:1mm;">
+											<td class="styTableCellCtr" style="width:20mm;text-align:center;padding-left:1mm;border-right-width:0mm;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="Addnl10PercentAcquisitionDt"/>
 												</xsl:call-template>
@@ -413,7 +353,7 @@
 										<td class="styTableCellCtr" style="width:30mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellCtr" style="width:30mm;">
+										<td  class="styTableCellCtr" style="width:30mm;border-right-width:0px">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -439,7 +379,7 @@
 										<td class="styTableCellCtr" style="width:30mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellCtr" style="width:30mm;">
+									<td  class="styTableCellCtr" style="width:30mm;border-right-width:0px">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -465,7 +405,7 @@
 										<td class="styTableCellCtr" style="width:30mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellCtr" style="width:30mm;">
+										<td  class="styTableCellCtr" style="width:30mm;border-right-width:0px">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -491,7 +431,7 @@
 										<td class="styTableCellCtr" style="width:30mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellCtr" style="width:30mm;">
+	<td  class="styTableCellCtr" style="width:30mm;border-right-width:0px">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -547,7 +487,7 @@
 										<th class="styTableCellHeader" style="width:95mm;" colspan="3" scope="col">(b)<br/>
 											<span class="styNormalText">For shareholders latest U.S. income tax return filed, indicate:</span>
 										</th>
-										<th class="styIRS5471ScheduleOTableCellHeader" style="width:25mm;" rowspan="2" scope="col">(c)<br/>
+										<th class="styTableCellHeader" style="width:25mm;border-right-width:0mm" rowspan="2" scope="col">(c)<br/>
 											<span class="styNormalText">Date (if any) shareholder last filed information return under section 6046 for the foreign corporation</span>
 										</th>
 									</tr>
@@ -636,7 +576,7 @@
 														<xsl:with-param name="TargetNode" select="ServiceCenterWhereRetFiledCd"/>
 													</xsl:call-template>
 												</td>
-												<td class="styIRS5471ScheduleOTableCellCtr" style="width:20mm;">
+												<td class="styTableCellText" style="width:20mm;border-right-width:0mm">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="LastFiledReturnUnderSect6046Dt"/>
 													</xsl:call-template>
@@ -674,7 +614,7 @@
 											<td class="styTableCellCtr" style="width:20mm;">
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellCtr" style="width:20mm;">
+											<td class="styTableCellCtr" style="width:20mm;border-right-width:0px">
 												<span style="width:4px"/>
 											</td>
 										</tr>
@@ -704,7 +644,7 @@
 											<td class="styTableCellCtr" style="width:20mm;">
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellCtr" style="width:20mm;">
+										<td class="styTableCellCtr" style="width:20mm;border-right-width:0px">
 												<span style="width:4px"/>
 											</td>
 										</tr>
@@ -734,7 +674,7 @@
 											<td class="styTableCellCtr" style="width:20mm;">
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellCtr" style="width:20mm;">
+											<td class="styTableCellCtr" style="width:20mm;border-right-width:0mm;padding-bottom:2mm;">
 												<span style="width:4px"/>
 											</td>
 										</tr>
@@ -781,7 +721,7 @@
 										<th class="styTableCellHeader" style="width:31mm;" rowspan="2" scope="col">(c)<br/>
 											<span class="styNormalText">Social Security Number</span>
 										</th>
-										<th class="styIRS5471ScheduleOTableCellHeader" style="width:22mm;" colspan="2" scope="col">(d)<br/>
+										<th class="styTableCellHeader" style="width:22mm;border-right-width:0mm" colspan="2" scope="col">(d)<br/>
 											<span class="styNormalText">Check appropriate <br/>box(es)</span>
 										</th>
 									</tr>
@@ -789,7 +729,7 @@
 										<th class="styTableCellHeader" style="width:11mm;" scope="col">
 											<span class="styNormalText">Officer</span>
 										</th>
-										<th class="styIRS5471ScheduleOTableCellHeader" style="width:11mm;" scope="col">
+										<th class="styTableCellHeader" style="width:11mm;border-right-width:0mm" scope="col">
 											<span class="styNormalText">Director</span>
 										</th>
 									</tr>
@@ -835,7 +775,7 @@
 														<xsl:with-param name="TargetNode" select="OfficerInd"/>
 													</xsl:call-template>
 												</td>
-												<td class="styIRS5471ScheduleOTableCellCtr" style="width:11mm;">
+												<td class="styTableCellCtr" style="width:11mm;border-right-width:0mm">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="DirectorInd"/>
 													</xsl:call-template>
@@ -869,7 +809,7 @@
 											<td class="styTableCellCtr" style="width:10mm;">
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellCtr" style="width:10mm;">
+										<td class="styTableCellCtr" style="width:10mm;border-right-width:0px">
 												<span style="width:4px"/>
 											</td>
 										</tr>
@@ -895,7 +835,7 @@
 											<td class="styTableCellCtr" style="width:10mm;">
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellCtr" style="width:10mm;">
+											<td class="styTableCellCtr" style="width:10mm;border-right-width:0px">
 												<span style="width:4px"/>
 											</td>
 										</tr>
@@ -921,7 +861,7 @@
 											<td class="styTableCellCtr" style="width:10mm;">
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellCtr" style="width:10mm;">
+											<td class="styTableCellCtr" style="width:10mm;border-right-width:0mm;padding-bottom:2mm;">
 												<span style="width:4px"/>
 											</td>
 										</tr>
@@ -970,7 +910,7 @@
 									<th class="styTableCellHeader" scope="col" style="width:25mm;" rowspan="2">(d)<br/>
 										<span class="styNormalText">Method of acquisition</span>
 									</th>
-									<th class="styIRS5471ScheduleOTableCellHeader" scope="col" style="width:75mm;" colspan="3">(e)<br/>
+									<th class="styTableCellHeader" scope="col" style="border-bottom-width:0px;width:75mm;border-right-width:0mm" colspan="3">(e)<br/>
 										<span class="styNormalText">Number of shares acquired</span>
 									</th>
 								</tr>
@@ -981,7 +921,7 @@
 									<th class="styTableCellHeader" scope="col" style="width:25mm;border-top-width:1px">(2)<br/>
 										<span class="styNormalText">Indirectly</span>
 									</th>
-									<th class="styIRS5471ScheduleOTableCellHeader" scope="col" style="width:25mm;border-top-width:1px">(3)<br/>
+									<th class="styTableCellHeader" scope="col" style="width:25mm;border-top-width:1px;border-right-width:0mm">(3)<br/>
 										<span class="styNormalText">Constructively</span>
 									</th>
 								</tr>
@@ -1040,7 +980,7 @@
 												</xsl:call-template>
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellSmall">
+											<td class="styTableCellSmall" style="border-right-width:0mm">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="MaxSize" select="9"/>
 													<xsl:with-param name="TargetNode" select="SharesAcqConstructivelyCnt"/>
@@ -1076,7 +1016,7 @@
 										<td class="styTableCellSmall">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellSmall">
+									<td class="styTableCellSmall" style="border-right-width:0px">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1102,7 +1042,7 @@
 										<td class="styTableCellSmall">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellSmall">
+										<td class="styTableCellSmall" style="border-right-width:0px">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1128,7 +1068,7 @@
 										<td class="styTableCellSmall">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellSmall">
+										<td class="styTableCellSmall" style="border-right-width:0px">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1137,12 +1077,15 @@
 						</table>
 					</div>
 					<!-- Set Initial Height of Above Table -->
+					<!-- Mitchell Buyck suggested adding This code  to solve overlaping problem between schedule C and page 1 footers -->
+					<xsl:if test="$Print != $Separated">
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/ShareholderStockAcquisInfoGrp"/>
 						<xsl:with-param name="containerHeight" select="3"/>
 						<xsl:with-param name="headerHeight" select="2"/>
 						<xsl:with-param name="containerID" select=" 'USSP2C1ctn' "/>
 					</xsl:call-template>
+					</xsl:if>
 					<!-- End Set Initial Height of Above Table -->
 					<div class="pageEnd" style="width:187mm;float:none;clear:both;">
 						<div class="styGenericDiv" style="width:105mm;">
@@ -1180,7 +1123,7 @@
 									<th class="styTableCellHeader" scope="col" style="width:45mm;">(f)<br/>
 										<span class="styNormalText">Amount paid or value given</span>
 									</th>
-									<th class="styIRS5471ScheduleOTableCellHeader" scope="col" style="width:142mm;">(g)<br/>
+									<th class="styTableCellHeader" scope="col" style="width:141mm;border-right-width:0mm;border-bottom-width:mm">(g)<br/>
 										<span class="styNormalText">Name and address of person from whom shares were acquired</span>
 									</th>
 								</tr>
@@ -1197,7 +1140,7 @@
 												</xsl:call-template>
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellText" style="width:142mm;">
+											<td class="styTableCell" style="width:142mm;text-align:left;border-right-width:0mm">
 												<xsl:if test="SharesAcquiredPersonNm">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="SharesAcquiredPersonNm"/>
@@ -1242,7 +1185,7 @@
 												</xsl:call-template>
 											</xsl:if>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellText" style="width:142mm;">
+								<td class="styTableCellCtr" style="width:142mm;border-right-width:0px">
 											<span style="width:4px"/>
 											<br/>
 											<span style="width:4px"/>
@@ -1261,7 +1204,8 @@
 										<td class="styTableCell" style="width:45mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellText" style="width:142mm;">
+									
+<td class="styTableCellCtr" style="width:142mm;border-right-width:0px">
 											<span style="width:4px"/>
 											<br/>
 											<span style="width:4px"/>
@@ -1277,7 +1221,7 @@
 								<!-- Table Filler Rows :JMI-->
 								<xsl:if test="count($Form5471ScheduleO/ShareholderStockAcquisInfoGrp) &lt; 2 or ((count($Form5471ScheduleO/ShareholderStockAcquisInfoGrp) &gt;3) and ($Print = $Separated))">
 									<tr>
-										<td class="styTableCell" style="width:45mm;">
+										<td class="styTableCell" style="width:45mm;border-bottom-width:0px">
 											<span style="width:4px"/>
 										</td>
 										<td class="styIRS5471ScheduleOTableCellText" style="width:142mm;">
@@ -1346,7 +1290,7 @@
 									<th class="styTableCellHeader" scope="col" style="width:25mm;border-top-width:1px">(2)<br/>
 										<span class="styNormalText">Indirectly</span>
 									</th>
-									<th class="styIRS5471ScheduleOTableCellHeader" scope="col" style="width:25mm;border-top-width:1px">(3)<br/>
+									<th class="styTableCellHeader" scope="col" style="width:25mm;border-top-width:1px;border-right-width:0mm">(3)<br/>
 										<span class="styNormalText">Constructively</span>
 									</th>
 								</tr>
@@ -1405,7 +1349,7 @@
 												</xsl:call-template>
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellSmall">
+											<td class="styTableCellSmall" style=" border-right-width:0mm">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="MaxSize" select="9"/>
 													<xsl:with-param name="TargetNode" select="SharesDisposConstructivelyCnt"/>
@@ -1441,7 +1385,7 @@
 										<td class="styTableCellSmall">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellSmall">
+										<td class="styTableCellSmall" style="border-right-width:0px">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1467,7 +1411,7 @@
 										<td class="styTableCellSmall">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellSmall">
+										<td class="styTableCellSmall" style="border-right-width:0px">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1493,7 +1437,7 @@
 										<td class="styTableCellSmall">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellSmall">
+										<td class="styTableCellSmall" style="border-right-width:0mm;padding-bottom:2mm;">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1532,7 +1476,7 @@
 									<th class="styTableCellHeader" scope="col" style="width:45mm;">(f)<br/>
 										<span class="styNormalText">Amount received</span>
 									</th>
-									<th class="styIRS5471ScheduleOTableCellHeader" scope="col" style="width:141mm;">(g)<br/>
+									<th class="styTableCellHeader" scope="col" style="width:141mm;border-right-width:0mm;border-bottom-width:mm">(g)<br/>
 										<span class="styNormalText">Name and address of person to whom disposition of stock was made</span>
 									</th>
 								</tr>
@@ -1549,7 +1493,7 @@
 												</xsl:call-template>
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellText" style="width:142mm;">
+											<td class="styTableCell" style="width:142mm;text-align:left;border-right-width:0mm">
 												<xsl:if test="SharesDispositionPersonNm">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="SharesDispositionPersonNm"/>
@@ -1594,7 +1538,8 @@
 												</xsl:call-template>
 											</xsl:if>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellText" style="width:142mm;">
+										
+<td class="styTableCellCtr" style="width:142mm;border-right-width:0px">
 											<span style="width:4px;"/>
 											<br/>
 											<span style="width:4px"/>
@@ -1613,7 +1558,7 @@
 										<td class="styTableCell" style="width:45mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellText" style="width:142mm;">
+							<td class="styTableCellCtr" style="width:142mm;border-right-width:0px">
 											<span style="width:4px"/>
 											<br/>
 											<span style="width:4px"/>
@@ -1632,7 +1577,7 @@
 										<td class="styTableCell" style="width:45mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellText" style="width:142mm;">
+										<td class="styTableCellText" style="border-right-width:0mm;padding-bottom:2mm;">
 											<span style="width:4px"/>
 											<br/>
 											<span style="width:4px"/>
@@ -1680,7 +1625,7 @@
 									<th class="styTableCellHeader" scope="col" style="width:33mm;">(b)<br/>
 										<span class="styNormalText">Identifying number (if any)</span>
 									</th>
-									<th class="styIRS5471ScheduleOTableCellHeader" scope="col" style="width:20mm; padding-left: 4mm">(c)<br/>
+									<th class="styTableCellHeader" scope="col" style="width:20mm; padding-left: 4mm;border-right-width:0mm">(c)<br/>
 										<span class="styNormalText">Date of transfer</span>
 									</th>
 								</tr>
@@ -1741,7 +1686,7 @@
 													</xsl:otherwise>
 												</xsl:choose>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellCtr" style="width:20mm;">
+											<td class="styTableCellHeader" style="width:20mm;border-right-width:0mm">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="TransferDt"/>
 												</xsl:call-template>
@@ -1778,7 +1723,7 @@
 										<td class="styTableCellCtr" style="width:30mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellCtr" style="width:30mm;">
+										<td class="styTableCellCtr" style="width:30mm;border-right-width:0px ">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1800,7 +1745,7 @@
 										<td class="styTableCellCtr" style="width:30mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCellCtr" style="width:30mm;">
+									<td class="styTableCellCtr" style="width:30mm;border-right-width:0px ">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1808,7 +1753,7 @@
 								<!-- Table Filler Rows:JMI -->
 								<xsl:if test="count($Form5471ScheduleO/OrgReorganizationFrgnCorpGrp) &lt; 3 or ((count($Form5471ScheduleO/OrgReorganizationFrgnCorpGrp) &gt;3) and ($Print = $Separated))">
 									<tr>
-										<td class="styTableCellText" style="width:134mm;">
+										<td class="styTableCellText" style="width:134mm;border-bottom-width:0px">
 											<span style="width:4px"/>
 											<br/>
 											<span style="width:4px"/>
@@ -1819,7 +1764,7 @@
 											<br/>
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCellCtr" style="width:30mm;">
+										<td class="styTableCellCtr" style="width:30mm;;border-bottom-width:0px">
 											<span style="width:4px"/>
 										</td>
 										<td class="styIRS5471ScheduleOTableCellCtr" style="width:30mm;">
@@ -1860,7 +1805,7 @@
 									<th class="styTableCellHeader" scope="col" colspan="3" style="width:134mm;">(d)<br/>
 										<span class="styNormalText">Assets transferred to foreign corporation</span>
 									</th>
-									<th class="styIRS5471ScheduleOTableCellHeader" scope="col" rowspan="2" style="width:53mm;">(e)<br/>
+									<th class="styTableCellHeader" scope="col" rowspan="2" style="width:53mm;border-right-width:0mm">(e)<br/>
 										<span class="styNormalText">Description of assets transferred by, or notes or securities issued by, foreign corporation</span>
 									</th>
 								</tr>
@@ -1899,7 +1844,7 @@
 												</xsl:call-template>
 												<span style="width:4px"/>
 											</td>
-											<td class="styIRS5471ScheduleOTableCellText" style="width:53mm;">
+											<td class="styTableCellText" style="width:53mm;border-right-width:0mm;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="AssetsTransferredNotesSecDesc"/>
 												</xsl:call-template>
@@ -1924,7 +1869,7 @@
 										<td class="styTableCell" style="width:45mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCell" style="width:53mm;">
+											<td class="styTableCell" style="width:53mm;border-right-width:0px">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1941,7 +1886,7 @@
 										<td class="styTableCell" style="width:45mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCell" style="width:53mm;">
+										<td class="styTableCell" style="width:53mm;border-right-width:0px;border-bottom-width:1px">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -1958,7 +1903,7 @@
 										<td class="styTableCell" style="width:45mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styIRS5471ScheduleOTableCell" style="width:53mm;">
+										<td class="styTableCell" style="width:53mm;border-right-width:0px">
 											<span style="width:4px"/>
 										</td>
 									</tr>
@@ -2047,8 +1992,7 @@
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
 									<th class="styDepTblCell" scope="col" rowspan="2" style="width:179mm;font-size:8pt;">
-
-Special Condition Description</th>
+										Reference ID number</th>
 								</tr>
 							</thead>
 							<tfoot/>

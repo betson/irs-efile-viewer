@@ -126,7 +126,7 @@
 <div class="styBB" style="width:187mm;border-top-width:0px; ">
   <div class="styTitleName" style="height:4.7mm;border-bottom-width:1px;">Part I</div>
 	<div class="styTitleDesc" style="height:auto;font-size:8pt;padding-left:4px;border-right-width:0px;border-top-width:1px;border-bottom-width:1px;">
-        <b>Adjustments to Separate Limitation Income or (Losses) in Determining Numerators of Limitation Fractions </b> 
+        <b>Adjustments to Separate Limitation Income or (Losses) in Determining Numerators of Limitation Fractions</b> 
             <span class="styNormalText">(see instructions)</span>
 	</div>
 </div>
@@ -255,7 +255,7 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Subtotal-</span>Combine lines 1 through 2c.</td>
+                    <span style="font-weight:bold;">Subtotal-</span> Combine lines 1 through 2c.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;">
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
@@ -315,7 +315,8 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row">
-                    <span style="font-size:10px;font-weight:bold;">Subtotal-</span>Combine lines 3 through 5.
+                    <span style="font-size:10px;font-weight:bold;">Subtotal-</span>
+                    <span style="font-size:10px;">Combine lines 3 through 5.</span>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;">
                     <span class="styTableCellPad"/>
@@ -848,7 +849,7 @@
             </table>
 				<div style="width:187mm">
 				    <div style="float: left; clear: none;">
-						<span class="styBoldText">* Important: </span><span style="width:1mm;"/>
+						<span class="styBoldText">* Important: </span>
 						<span class="styItalicText">See <span class="styBoldText">Computer-Generated Schedule J </span>
 						</span> in instructions.
 				    </div>
@@ -1030,7 +1031,7 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Subtotal-</span>Combine lines 1 through 2c.</td>
+                    <span style="font-weight:bold;">Subtotal-</span> Combine lines 1 through 2c.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/IncomeOrLossAndAllocationForCY"/>
@@ -1106,7 +1107,8 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row">
-                    <span style="font-size:10px;font-weight:bold;">Subtotal-</span>Combine lines 3 through 5.
+                    <span style="font-size:10px;font-weight:bold;">Subtotal-</span>
+                    <span style="font-size:10px;">Combine lines 3 through 5.</span>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
@@ -1525,7 +1527,7 @@
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-bottom-width:0px; border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--part III, 3 inline format  -->
+                <!--part III, Line 3 inline format  -->
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Current year reductions (other than recapture)</td>
@@ -1737,7 +1739,7 @@
             </table>
 				<div style="width:187mm">
 					<div style="float: left; clear: none;">
-						<span class="styBoldText">* Important: </span><span style="width:1mm;"/>
+						<span class="styBoldText">* Important: </span>
 						<span class="styItalicText">See <span class="styBoldText">Computer-Generated Schedule J </span>
 						</span> in instructions.
 					</div>
@@ -1764,7 +1766,7 @@
               <div class="styBB" style="width:187mm;border-top-width:1px;">
                    <div class="styTitleName" style="height:4.7mm;border-bottom-width:1px;">Part I</div>
                    <div class="styTitleDesc" style="height:auto;font-size:8pt;padding-left:4px;border-right-width:0px;border-top-width:1px;border-bottom-width:1px;">
-                       <b>Adjustments to Separate Limitation Income or (Losses) in Determining Numerators of Limitation Fractions</b>
+                       <b>Adjustments to Separate Limitation Income or (Losses) in Determining Numerators of Limitation Fractions </b>
                   <span class="styNormalText">(see instructions.)</span>
                   </div>
               </div>
@@ -1915,7 +1917,7 @@
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
-                        <span style="font-weight:bold;">Subtotal-</span>Combine lines 1 through 2c.</td>
+                        <span style="font-weight:bold;">Subtotal-</span> Combine lines 1 through 2c.</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/IncomeOrLossAndAllocationForCY"/>
@@ -2640,7 +2642,7 @@
                 </table>
 					<div style="width:187mm">
 					  <div style="float: left; clear: none;">
-							<span class="styBoldText">* Important: </span><span style="width:1mm;"/>
+							<span class="styBoldText">* Important: </span>
 								<span class="styItalicText">See <span class="styBoldText">Computer-Generated Schedule J </span>
 							</span> in instructions.
 						</div>
@@ -2899,7 +2901,7 @@
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Subtotal-</span>Combine lines 1 through 2c.</td>
+                    <span style="font-weight:bold;">Subtotal-</span> Combine lines 1 through 2c.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/IncomeOrLossAndAllocationForCY"/>
@@ -2975,7 +2977,8 @@
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row">
-                    <span style="font-size:10px;font-weight:bold;">Subtotal-</span>Combine lines 3 through 5.
+                    <span style="font-size:10px;font-weight:bold;">Subtotal-</span>
+                    <span style="font-size:10px;">Combine lines 3 through 5.</span>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
@@ -3799,7 +3802,7 @@
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
-                        <span style="font-weight:bold;">Subtotal-</span>Combine lines 1 through 2c.</td>
+                        <span style="font-weight:bold;">Subtotal-</span> Combine lines 1 through 2c.</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/IncomeOrLossAndAllocationForCY"/>

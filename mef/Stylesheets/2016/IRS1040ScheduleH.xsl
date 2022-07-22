@@ -93,9 +93,43 @@
 					<div class="styBB" style="width:187mm;">
 						<div class="styNameBox" style="width:138mm;height:16mm;font-weight:normal;font-size:7pt;">
                             Name of employer<br/>
-							<xsl:call-template name="PopulateText">
+                                <xsl:choose>
+                                                                                        <!-- Name from Form level -->
+                                      <xsl:when test="$Form1040ScheduleHData/HouseholdEmployerNm">
+                                             <xsl:call-template name="PopulateText">
+								             <xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HouseholdEmployerNm"/>
+							                 </xsl:call-template>
+                                      </xsl:when>
+                                                                                     <!-- Name from 1040 Return Header-->
+                                          <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+                                                   <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                 <xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+                                                 </xsl:call-template>
+                                          </xsl:when>
+                                                                                     <!-- Name from 1041 Return Header-->
+                                          <xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+                                                      <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                      <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+                                                      </xsl:call-template>
+                                               <br/>
+                                                      <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                      <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+                                                      </xsl:call-template>                                                                                                       
+                                          </xsl:when>
+                                          <xsl:otherwise> 
+                                                  <xsl:call-template name="PopulateReturnHeaderFiler"> 
+                                                  <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param> 
+                                                  </xsl:call-template>
+                                             <br/>
+                                                   <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                   <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+                                                   </xsl:call-template>
+                                            </xsl:otherwise>                                                                                                
+                                       </xsl:choose>
+                            
+							<!--<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HouseholdEmployerNm"/>
-							</xsl:call-template>
+							</xsl:call-template>-->
 							<span style="width:3px;"/>
 							<xsl:call-template name="LinkToLeftoverDataTableInline">
 								<xsl:with-param name="Desc">Employer Name Control</xsl:with-param>
@@ -106,16 +140,41 @@
 							<span style="padding-left:5px">Social security number<br/>
 							</span>
 							<span style="font-weight:normal;width:100%;text-align:center;">
-								<xsl:call-template name="PopulateSSN">
+							
+							     <xsl:choose>
+							            <xsl:when test="$Form1040ScheduleHData/SSN !=' '"> 
+                                            <xsl:call-template name="PopulateSSN">
+                                            <xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/SSN"/>
+                                            </xsl:call-template>
+                                     </xsl:when>	
+                                     <xsl:when test="$RtnHdrData/Filer/PrimarySSN"> 
+                                            <xsl:call-template name="PopulateReturnHeaderFiler">
+                                             <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+                                                                                   </xsl:call-template>
+                                                                           </xsl:when>				
+							                                                <xsl:otherwise>
+																					<xsl:call-template name="PopulateSSN">
+									                                                 <xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/SSN"/>
+								                                                    </xsl:call-template>																																			
+																			</xsl:otherwise>
+								</xsl:choose>
+								<!--<xsl:call-template name="PopulateSSN">
 									<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/SSN"/>
-								</xsl:call-template>
+								</xsl:call-template>-->
 							</span>
 						</div>
 						<div class="styEINBox" style="width:49mm;height:8mm;font-size:7pt;padding-top:1px;">
 							<span style="padding-left:5px">Employer identification number<br/>
 							</span>
 							<span style="font-weight:normal;padding-left:5px;width:100%;text-align:center;">
-								<xsl:choose>
+							<xsl:choose>
+                                                                               <xsl:when test="$RtnHdrData/Filer/EIN">
+                                                                                  <xsl:call-template name="PopulateReturnHeaderFiler"> 
+                                                                                  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+                                                                                  </xsl:call-template>
+                                                                           </xsl:when>
+                                                                          <xsl:otherwise>
+																		<xsl:choose>
 									<xsl:when test="$Form1040ScheduleHData/EmployerEIN">
 										<xsl:call-template name="PopulateEIN">
 											<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/EmployerEIN"/>
@@ -127,6 +186,23 @@
 										</xsl:call-template>
 									</xsl:otherwise>
 								</xsl:choose>
+																		
+									                                   </xsl:otherwise>	
+                                                                    
+                                                              </xsl:choose>
+							
+								<!--<xsl:choose>
+									<xsl:when test="$Form1040ScheduleHData/EmployerEIN">
+										<xsl:call-template name="PopulateEIN">
+											<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/EmployerEIN"/>
+										</xsl:call-template>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/AppliedForEINReasonCd"/>
+										</xsl:call-template>
+									</xsl:otherwise>
+								</xsl:choose>-->
 							</span>
 						</div>
 					</div>

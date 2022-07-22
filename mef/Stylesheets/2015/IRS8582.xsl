@@ -1080,18 +1080,70 @@
 					<div class="styBB" style="width:187mm;">
 						<div class="styNameBox" style="width:137mm;height:8mm;font-weight:normal;font-size:7pt;">
 							Name(s) shown on return<br/>
-							<xsl:call-template name="PopulateReturnHeaderFiler">
+							
+							<xsl:choose>
+                                                                                        <!-- Name from Form level -->
+                                             <!--<xsl:when test="normalize-space($Form4797Data/BusinessName/BusinessNameLine1Txt) != ''">
+                                                     <xsl:call-template name="PopulateText">
+                                                     <xsl:with-param name="TargetNode" select="$Form4797Data/BusinessName/BusinessNameLine1Txt"/>
+                                                     </xsl:call-template>
+                                                 <br/>
+                                                   <xsl:call-template name="PopulateText">
+                                                   <xsl:with-param name="TargetNode" select="$Form4797Data/BusinessName/BusinessNameLine2Txt"/>
+                                                   </xsl:call-template>
+                                          </xsl:when>-->
+                                                                                     <!-- Name from 1040 Return Header-->
+                                          <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+                                              
+                                                 <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                 <xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+                                                 </xsl:call-template>
+                                          </xsl:when>
+                                                                                     <!-- Name from 1041 Return Header-->
+                                          <xsl:when test="$RtnHdrData/Filer/BusinessNameLine1Txt">
+                                                      <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                      <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+                                                      </xsl:call-template>
+                                               <br/>
+                                                      <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                      <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+                                                      </xsl:call-template>                                                                                                       
+                                          </xsl:when>
+                                          <xsl:otherwise> 
+                                                  <xsl:call-template name="PopulateReturnHeaderFiler"> 
+                                                  <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param> 
+                                                  </xsl:call-template>
+                                             <br/>
+                                                   <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                   <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+                                                   </xsl:call-template>
+                                            </xsl:otherwise>                                                                                                
+                                       </xsl:choose>
+							<!--<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
 							</xsl:call-template>
 							<br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-							</xsl:call-template>
+							</xsl:call-template>-->
 						</div>
 						<div style="height:8mm;width:50mm;height:4mm;padding:0px 0px 0px 2mm;font-size:7pt;" class="styEINBox">
 							Identifying number<br/>
 							<span style="font-weight:normal;text-align:center;width:100%"> 
-								<xsl:call-template name="PopulateReturnHeaderFilerTIN"/>
+							     <xsl:choose>
+                                                                        <xsl:when test="$RtnHdrData/Filer/PrimarySSN"> 
+                                                                            <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                                            <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+                                                                            </xsl:call-template>
+                                                                        </xsl:when>
+                                                                        <xsl:when test="$RtnHdrData/Filer/EIN"> 
+                                                                               <xsl:call-template name="PopulateReturnHeaderFiler"> 
+                                                                               <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+                                                                               </xsl:call-template>
+                                                                         </xsl:when>
+                                                                   </xsl:choose>
+							
+								<!--<xsl:call-template name="PopulateReturnHeaderFilerTIN"/>-->
 							</span>  
 						</div>
 					</div>
@@ -2280,19 +2332,20 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 					</div>
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Page Break and Footer-->
-					<div  style="width:187mm;padding-top:1mm;t">
+					<div  style="width:187mm;padding-top:1mm;">
 						<div style="float:left;">
 							<span class="styBoldText">
 								For Paperwork Reduction Act Notice, see instructions.
 							</span>
 						</div>
+						<div style="text-align:left;font-size:7pt;">
+							<span style="width:200px"/>
+							Cat. No. 63704F
+						</div>
 						<div style="float:right;">
 							<span style="width:50px;"/>  
-								Form -
+								Form
 							<span class="styBoldText" style="font-size:8pt;">8582</span> (2015)
-						</div>
-						<div style="float:right;text-align:center;width:26mm;font-size:7pt;">
-							Cat. No. 63704F
 						</div>
 					</div>
 					<p style="page-break-before:always"/>

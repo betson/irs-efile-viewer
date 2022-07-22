@@ -30,6 +30,8 @@
 <!-- Updated 11/19/2015 per IBM Defect 44991 Missing right border and numbering by Robert L Jones -->
 <!-- Updated 12/16/2015 per IBM Defect 44991 Blank form numbering by Robert L Jones -->
 <!-- Updated 12/16/2015 per IBM Defect 45349 Header not extending all the way to right -  by Robert L Jones -->
+<!-- Updated 12/16/2015 per IBM Defect 45349 Header not extending all the way to right. Parts II and III Removed display:inline at point where it happens -  by Robert L Jones -->
+<!-- Updated 9/28/2016 per IBM Defect 60255 Header not extending all the way to right. Parts II and III Removed display:inline at point where it happens -  by Robert L Jones -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 
@@ -252,12 +254,12 @@ Complete if the organization answered "Yes," on Form 990, Part IV, line 21 or 22
    </div>
 
   <!--Part II  table -->
-  <div class="styTableLandscape" id="p2TbCtnr" style="display:table;"> 
+  <div class="styTableLandscape" id="p2TbCtnr" style="display:inline;display:table;width: 256mm;"> 
      
 <!-- print logic -->
     <xsl:call-template name="SetInitialState"/> 
     <!-- end -->        
-    <table cellspacing="0" style="font-size:7pt;margin-left:0mm">
+    <table cellspacing="0" style="font-size:7pt;margin-left:0mm;width: 256mm;">
 
 <!--<div style="width: 256mm;">-->
   <tr>
@@ -279,12 +281,7 @@ Complete if the organization answered "Yes," on Form 990, Part IV, line 21 or 22
 	
 	<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: left; height: 17mm; width: 32m;padding-top: 1mm;   padding-right: 0px; padding-bottom: 0px; padding-left: 2mm; float: none; clear: none;font-size:7pt;font-weight:normal;vertical-align:top"><b>(h)</b> Purpose of grant<br/>or assistance</th>
 		</tr>
-	</table>
-
-	<div class="styTableLandscape" style="width: 256mm; border-bottom-width:1px;display:table">
-
-<table class="styTable" style="font-size: 7pt; border-color:black;width:256mm;display:table" cellspacing="0">
-		
+	
 <!--   END HEADER   -->
 
 <!--   BEGIN LINE 1   -->
@@ -414,7 +411,7 @@ Complete if the organization answered "Yes," on Form 990, Part IV, line 21 or 22
 								   </xsl:if>
 		 </table> 
  </div> 
-</div>  
+  
 <!--</div>-->
 <!--  <xsl:call-template name="SetInitialDynamicTableHeight">
     <xsl:with-param name="TargetNode" select="$FormData/RecipientTable"/>
@@ -510,12 +507,12 @@ Complete if the organization answered "Yes," on Form 990, Part IV, line 21 or 22
  </div>
 
   <!--Part I-C  line 5 table -->
-  <div class="styTableLandscape" id="p3TbCtnr" style="display:table;"> 
+  <div class="styTableLandscape" id="p3TbCtnr" style="display:table;display:inline;width:256mm;"> 
      
 <!-- print logic -->
     <xsl:call-template name="SetInitialState"/> 
     <!-- end -->        
-    <table cellspacing="0" style="font-size:7pt;margin-left:0mm">
+    <table cellspacing="0" style="font-size:7pt;margin-left:0mm;width:256mm;">
 <thead class="styTableThead">
 
 <!--<div style="width: 256mm;">-->
@@ -544,9 +541,9 @@ Complete if the organization answered "Yes," on Form 990, Part IV, line 21 or 22
 <!--   Part III Table  -->
 
 	
-<div class="styTableLandscape" style="width: 256mm; border-bottom-width:1px;display:table;">
+<div class="styTableLandscape" style="width: 256mm; border-bottom-width:1px;display:table;display:inline;">
 
-<table class="styTable" style="font-size: 7pt; border-color:black;width:256mm;display:table;" cellspacing="0"><!--need this to keep seeadditionaldata msg at top line of table-->
+<table class="styTableLandscape" style="font-size: 7pt; border-color:black;width:256mm;display:table;" cellspacing="0"><!--need this to keep seeadditionaldata msg at top line of table-->
 	
 	<xsl:if test="($Print != $Separated) or count($FormData/GrantsOtherAsstToIndivInUSGrp) &lt;= 7">
 	

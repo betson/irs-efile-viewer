@@ -412,20 +412,14 @@
 							<tfoot/>
 							<tbody>
 								<tr>
-									<td class="styTableCell" style="width:8mm;font-weight:bold;text-align:left;border:0;vertical-align:top;">
-                              10<span class="styTableCellPad"/>
-									</td>
+									<td class="styTableCell" style="width:8mm;font-weight:bold;text-align:left;border:0;vertical-align:top;">10<span class="styTableCellPad"/></td>
+									<!-- Exception: Part III Line 10 third lines of text end with a checkbox, it is display differently due to naturally wrapping of text and the functionaly of scroll bar button expand/contract.  Customer concur of the deviation where the checkbox display in the same position for expand/contract scroll bar -->  									
 									<td class="styTableCell" style="text-align:left;width:179mm;vertical-align:top;border:0;">
 										<span style="float:left;">
-											<label>
-												<xsl:call-template name="PopulateLabel">
-													<xsl:with-param name="TargetNode" select="$Form8810Data/DisposOfEntireIntInPssvActyInd"/>
-												</xsl:call-template>                  
-                                    If the corporation disposed of its entire interest in a passive activity or former passive activity in a fully taxable
-                                    transaction, and the corporation elects to increase the basis of credit property used in that activity by the unallowed
-                                    credit that reduced the property's basis, check this box (see instructions)                  
-                                 </label>
-											<span style="letter-spacing:3.2mm; font-weight:bold; ">.................................</span>
+											If the corporation disposed of its entire interest in a passive activity or former passive activity in a fully taxable
+											transaction, and the corporation elects to increase the basis of credit property used in that activity by the unallowed
+											credit that reduced the property's basis, check this box (see instructions)                  
+											<span style="letter-spacing:3.2mm; font-weight:bold; ">..............................</span>
 											<img src="{$ImagePath}/8810_Bullet_Md.gif" width="7" alt="bullet image"/>
 											<span style="width:3px;"/>
 											<input type="checkbox" class="styCkbox" onclick="return false;">

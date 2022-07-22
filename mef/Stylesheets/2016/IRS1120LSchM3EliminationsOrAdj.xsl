@@ -118,11 +118,11 @@
 							<span style="width:30mm;">Check applicable box(es):</span>
 							<span style="padding-left:10mm;">(1) </span>								
 							<input type="checkbox" alt="Non-Consolidated return" class="styCkbox">
-							<xsl:call-template name="PopulateCheckbox">
-							<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/NonConsolidatedReturnInd"/>
-							<xsl:with-param name="BackupName">IRS1120LScheduleM3/NonConsolidatedReturnInd</xsl:with-param>
-						</xsl:call-template>
-					</input>
+								<xsl:call-template name="PopulateCheckbox">
+									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/NonConsolidatedReturnInd"/>
+									<xsl:with-param name="BackupName">IRS1120LScheduleM3/NonConsolidatedReturnInd</xsl:with-param>
+								</xsl:call-template>
+							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/NonConsolidatedReturnInd"/>
@@ -142,8 +142,8 @@
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/ConsolidatedReturnInd"/>
 								</xsl:call-template>
-					Consolidated return (Form 1120-L only)
-					</label>
+								Consolidated return (Form 1120-L only)
+							</label>
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;font-size:6pt;">
@@ -151,30 +151,30 @@
 							<span style="width:41mm;"/>
 							<span style="padding-left:10mm">(3) </span>
 							<input type="checkbox" alt="Mixed 1120/L/PC group" class="styCkbox">
-						<xsl:call-template name="PopulateCheckbox">
-						<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/Mixed1120LPCGroupInd"/>
-						<xsl:with-param name="BackupName">IRS1120LScheduleM3/Mixed1120LPCGroupInd"</xsl:with-param>
-					</xsl:call-template>
-				</input>
+								<xsl:call-template name="PopulateCheckbox">
+									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/Mixed1120LPCGroupInd"/>
+									<xsl:with-param name="BackupName">IRS1120LScheduleM3/Mixed1120LPCGroupInd"</xsl:with-param>
+								</xsl:call-template>
+							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/Mixed1120LPCGroupInd"/>
 								</xsl:call-template> Mixed 1120/L/PC group
-		   </label>
+						   </label>
 						</div>
 						<div class="styGenericDiv" style="width:60mm;">
-           		 (4)
-          <input type="checkbox" alt="Dormant subsidiaries schedule" class="styCkbox">
-			<xsl:call-template name="PopulateCheckbox">
-				<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/DormantSubsidiariesSchAttInd"/>
-				<xsl:with-param name="BackupName">IRS1120LScheduleM3/DormantSubsidiariesSchAttInd</xsl:with-param>
-		</xsl:call-template>
-		</input>
+						 (4)
+							<input type="checkbox" alt="Dormant subsidiaries schedule" class="styCkbox">
+								<xsl:call-template name="PopulateCheckbox">
+									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/DormantSubsidiariesSchAttInd"/>
+									<xsl:with-param name="BackupName">IRS1120LScheduleM3/DormantSubsidiariesSchAttInd</xsl:with-param>
+								</xsl:call-template>
+							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/DormantSubsidiariesSchAttInd"/>
 								</xsl:call-template> Dormant subsidiaries schedule attached
-		</label>
+							</label>
 						</div>
 					</div>
 					<!-- end check box line  -->
@@ -203,17 +203,17 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationFiledSECForm10KInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="CorporationFiledSECForm10KIndYes" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationFiledSECForm10KInd"/>
-										<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpFiledSECForm10K</xsl:with-param>
+										<xsl:with-param name="BackupName">CorporationFiledSECForm10KIndYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationFiledSECForm10KInd"/>
-									<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpFiledSECForm10K</xsl:with-param>
+									<xsl:with-param name="BackupName">CorporationFiledSECForm10KIndYes</xsl:with-param>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">Yes.</span>
 							</label>          
@@ -229,17 +229,17 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationFiledSECForm10KInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="CorporationFiledSECForm10KIndNo" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationFiledSECForm10KInd"/>
-										<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpFiledSECForm10K</xsl:with-param>
+										<xsl:with-param name="BackupName">CorporationFiledSECForm10KIndNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationFiledSECForm10KInd"/>
-									<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpFiledSECForm10K</xsl:with-param>
+									<xsl:with-param name="BackupName">CorporationFiledSECForm10KIndNo</xsl:with-param>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">No.</span>
 							</label>
@@ -262,17 +262,17 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorpPrepCertAuditedIncmStmtInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="CorpPrepCertAuditedIncomeStmtYes" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorpPrepCertAuditedIncmStmtInd"/>
-										<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpPrepCertAuditedIncomeStmt</xsl:with-param>
+										<xsl:with-param name="BackupName">CorpPrepCertAuditedIncomeStmtYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorpPrepCertAuditedIncmStmtInd"/>
-									<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpPrepCertAuditedIncomeStmt</xsl:with-param>
+									<xsl:with-param name="BackupName">CorpPrepCertAuditedIncomeStmtYes</xsl:with-param>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">Yes.</span>
 							</label>          
@@ -288,17 +288,17 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorpPrepCertAuditedIncmStmtInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="CorpPrepCertAuditedIncomeStmtNo" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorpPrepCertAuditedIncmStmtInd"/>
-										<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpPrepCertAuditedIncomeStmt</xsl:with-param>
+										<xsl:with-param name="BackupName">CorpPrepCertAuditedIncomeStmtNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorpPrepCertAuditedIncmStmtInd"/>
-									<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpPrepCertAuditedIncomeStmt</xsl:with-param>
+									<xsl:with-param name="BackupName">CorpPrepCertAuditedIncomeStmtNo</xsl:with-param>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">No.</span>
 							</label>
@@ -321,17 +321,17 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationPreparedIncmStmtInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="CorporationPrepIncomeStatementYes" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationPreparedIncmStmtInd"/>
-										<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpPrepIncomeStatement</xsl:with-param>
+										<xsl:with-param name="BackupName">CorporationPrepIncomeStatementYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationPreparedIncmStmtInd"/>
-									<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpPrepIncomeStatement</xsl:with-param>
+									<xsl:with-param name="BackupName">CorporationPrepIncomeStatementYes</xsl:with-param>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">Yes.</span>
 							</label>          
@@ -347,17 +347,17 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationPreparedIncmStmtInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="CorporationPrepIncomeStatementNo" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationPreparedIncmStmtInd"/>
-										<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpPrepIncomeStatement</xsl:with-param>
+										<xsl:with-param name="BackupName">CorporationPrepIncomeStatementNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationPreparedIncmStmtInd"/>
-									<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpPrepIncomeStatement</xsl:with-param>
+									<xsl:with-param name="BackupName">CorporationPrepIncomeStatementNo</xsl:with-param>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">No.</span>
 							</label>
@@ -387,7 +387,7 @@
 						<div class="styLNLeftNumBoxSD">
 							<span style="width:1.5mm"/>b</div>
 						<div class="styLNDesc" style="width:179mm;">Has the corporation’s income statement been restated for the income statement period on line 2a?
-            <!-- Form Link -->
+						<!-- Form Link -->
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationIncmStmtRestatedInd"/>
 							</xsl:call-template>
@@ -402,17 +402,17 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationIncmStmtRestatedInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="CorporationIncomeStatementRestatedYes" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationIncmStmtRestatedInd"/>
-										<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpIncomeStatementRestated</xsl:with-param>
+										<xsl:with-param name="BackupName">CorporationIncomeStatementRestatedYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationIncmStmtRestatedInd"/>
-									<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpIncomeStatementRestated</xsl:with-param>
+									<xsl:with-param name="BackupName">CorporationIncomeStatementRestatedYes</xsl:with-param>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">Yes.</span>
 							</label>          
@@ -428,17 +428,17 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationIncmStmtRestatedInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="CorporationIncomeStatementRestatedNo" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationIncmStmtRestatedInd"/>
-										<xsl:with-param name="BackupName">IRS1120LScheduleM3Corp/IncomeStatementRestated</xsl:with-param>
+										<xsl:with-param name="BackupName">CorporationIncomeStatementRestatedNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationIncmStmtRestatedInd"/>
-									<xsl:with-param name="BackupName">IRS1120LScheduleM3/CorpIncomeStatementRestated</xsl:with-param>
+									<xsl:with-param name="BackupName">CorporationIncomeStatementRestatedNo</xsl:with-param>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">No.</span>
 							</label>
@@ -450,7 +450,7 @@
 							<span style="width:1.5mm"/>c</div>
 						<div class="styLNDesc" style="width:179mm;">Has the corporation’s income
 						 statement been restated for any of the five income statement periods preceding the period on line 2a?
-            <!-- Form Link -->
+						<!-- Form Link -->
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorpIncmStmtRestated5PrecInd"/>
 							</xsl:call-template>
@@ -465,17 +465,17 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorpIncmStmtRestated5PrecInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="CorpIncmStmtRestated5PrecIndYes" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorpIncmStmtRestated5PrecInd"/>
-										<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpIncmStmtRestated5Preceding</xsl:with-param>
+										<xsl:with-param name="BackupName">CorpIncmStmtRestated5PrecIndYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorpIncmStmtRestated5PrecInd"/>
-									<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpIncmStmtRestated5Preceding</xsl:with-param>
+									<xsl:with-param name="BackupName">CorpIncmStmtRestated5PrecIndYes</xsl:with-param>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">Yes.</span>
 							</label>          
@@ -491,17 +491,17 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorpIncmStmtRestated5PrecInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="CorpIncmStmtRestated5PrecIndNo" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorpIncmStmtRestated5PrecInd"/>
-										<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpIncmStmtRestated5Preceding</xsl:with-param>
+										<xsl:with-param name="BackupName">CorpIncmStmtRestated5PrecIndNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorpIncmStmtRestated5PrecInd"/>
-									<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpIncmStmtRestated5Preceding</xsl:with-param>
+									<xsl:with-param name="BackupName">CorpIncmStmtRestated5PrecIndNo</xsl:with-param>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">No.</span>
 							</label>
@@ -511,7 +511,7 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">3a</div>
 						<div class="styLNDesc" style="width:179mm;">Is any of the corporation’s voting common stock publicly traded?
-            <!-- Form Link -->
+						<!-- Form Link -->
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationVtngComStkPubTrdInd"/>
 							</xsl:call-template>
@@ -526,17 +526,17 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationVtngComStkPubTrdInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="CorporationVotingCommonStockPubTradedYes" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationVtngComStkPubTrdInd"/>
-										<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpVotingCommonStockPubTraded</xsl:with-param>
+										<xsl:with-param name="BackupName">CorporationVotingCommonStockPubTradedYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationVtngComStkPubTrdInd"/>
-									<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpVotingCommonStockPubTraded</xsl:with-param>
+									<xsl:with-param name="BackupName">CorporationVotingCommonStockPubTradedYes</xsl:with-param>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">Yes.</span>
 							</label>
@@ -551,17 +551,17 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationVtngComStkPubTrdInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="CorporationVotingCommonStockPubTradedNo" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationVtngComStkPubTrdInd"/>
-										<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpVotingCommonStockPubTraded</xsl:with-param>
+										<xsl:with-param name="BackupName">CorporationVotingCommonStockPubTradedNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/CorporationVtngComStkPubTrdInd"/>
-									<xsl:with-param name="BackupName">IRS1120LScheduleM3CorpVotingCommonStockPubTraded</xsl:with-param>
+									<xsl:with-param name="BackupName">CorporationVotingCommonStockPubTradedNo</xsl:with-param>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">No.</span>
 							</label>

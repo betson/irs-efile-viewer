@@ -15,7 +15,7 @@
       <head>
 				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <!-- Set Document Title -->
-        <title>
+        <title><!--keep this-->
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
           </xsl:call-template>
@@ -42,7 +42,7 @@
       </head>
       <body class="styBodyClass">
         <form name="Form1040ScheduleD">
-          <!-- BEGIN WARNING LINE -->
+          
           <xsl:call-template name="DocumentHeader"/>
           <!-- END WARNING LINE -->
           <!-- BEGIN FORM HEADER -->
@@ -911,6 +911,9 @@
         </div>
         <!-- LINE 17 2nd line, YES checkbox -->
         <div class="styGenericDiv " style="width:187mm;height:5mm;">
+             <xsl:call-template name="PopulateSpan">
+			 <xsl:with-param name="TargetNode" select="$FormData/STAndLTGainInd"/>
+			</xsl:call-template>
             <div class="styLNLeftNumBox" style="width:6mm;height:5mm;"/>
           <div class="styLNDesc" style="width:135mm;height:5mm;">
             <input type="checkbox" class="styCkBox">
@@ -1038,6 +1041,9 @@
         </div>
         <!-- LINE 20 2nd line, YES checkbox -->
         <div class="styGenericDiv " style="width:187mm;">
+             <xsl:call-template name="PopulateSpan">
+			<xsl:with-param name="TargetNode" select="$FormData/ZeroOrBlankInd"/>
+			</xsl:call-template>
          <div class="styLNLeftNumBox" style="width:6mm;"/>
           <div class="styLNDesc" style="width: 135mm;">
             <input type="checkbox" class="styCkBox">
@@ -1151,6 +1157,9 @@
         </div>
         <!-- LINE 22 2nd line, YES checkbox -->
         <div class="styGenericDiv " style="width:187mm;height:7.5mm">
+               <xsl:call-template name="PopulateSpan">
+		        <xsl:with-param name="TargetNode" select="$FormData/QualifiedDividendsInd"/>
+		       </xsl:call-template>
            <div class="styLNLeftNumBox" style="width:6mm;"/>
           <div class="styLNDesc" style="width:135mm;">
             <input type="checkbox" class="styCkBox">

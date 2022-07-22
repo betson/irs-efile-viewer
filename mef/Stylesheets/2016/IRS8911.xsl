@@ -437,8 +437,8 @@
 		    </div>
 						</div>
 						<div style="float:right;clear:none;">
-							<div class="styLNRightNumBox" style="height:4.5mm;background:gray;border-bottom-width:0;"/>
-							<div class="styLNAmountBox" style="height:4.5mm;border-bottom-width:0;"/>
+							<div class="styLNRightNumBox" style="background:gray;border-bottom-width:0;"/>
+							<div class="styLNAmountBox" style="border-bottom-width:0;"/>
 						</div>
 					</div>
 					<!-- Line 14 Row 2-->
@@ -448,22 +448,22 @@
 							<div class="styLNDesc" style="width:139mm; ">
 								<table border="0" cellspacing="0" cellpadding="0" style="padding:0mm">
 									<tr>
-										<td style=" width:111mm;font-size:7pt;font-family:verdana;font-style: normal;font-weight:normal;border:none;">
+										<td style=" width:109mm;font-size:7pt;font-family:verdana;font-style: normal;font-weight:normal;border:none;">
 											<img src="{$ImagePath}/8911_Bullet_Round.gif" alt="dot"/>
-						Individuals. Enter the sum of the amounts from Form 1040, lines 44 and 46; 
-						<br/>
-											<span style="padding-left:18.5mm">or the sum of the amounts from Form 1040NR, lines 42 and 44.</span>
+						Individuals. Enter the sum of the amounts from Form 1040, lines 44 and 46; or
+						
+											<span style="padding-left:17.5mm">the sum of the amounts from Form 1040NR, lines 42 and 44.</span>
 											<br/>
 											<img src="{$ImagePath}/8911_Bullet_Round.gif" alt="dot"/>
                         Other filers. Enter the regular tax before credits from your return.
-                        <span style="padding-left:1mm;font-weight:bold;letter-spacing:3.3mm;">.....</span>
+                       
 										</td>
 										<td style="width:27mm;">
-											<div class="styLNDesc" style="width:2mm;">
-												<img src="{$ImagePath}/8826_Bracket_Sm.gif" alt="Curly Bracket Image"/>
-											</div>
+											<div class="styLNDesc" style="width:2mm;padding-bottom:9.5mm;"> 
+												<img src="{$ImagePath}/8911_Bracket_Sm.gif" alt="Curly Bracket Image"/>
+										</div> 
 											<div class="styLNDesc" style="width:25mm;">
-												<span class="styBoldText" style="font-size: 7pt;float:right;padding-right:0mm;letter-spacing:3.3mm;">......</span>
+												<span class="styBoldText" style="font-size:7pt;float:right;letter-spacing:3mm;padding-top:3mm">......</span> 
 											</div>
 										</td>
 									</tr>
@@ -471,14 +471,14 @@
 							</div>
 						</div>
 						<div style="float:right;clear:none;width:40mm;">
-							<div class="styLNRightNumBox">14</div>
-							<div class="styLNAmountBox">
+							<div class="styLNRightNumBox" style="padding-top:4mm;height:8mm;">14</div>
+							<div class="styLNAmountBox" style="padding-top:4mm;height:8mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form8911/RegularTaxBeforeCreditsAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styLNRightNumBox" style="height:10mm;background-color:gray;border-bottom-width:0;"/>
-							<div class="styLNAmountBox" style="height:10mm;border-bottom-width:0;"/>
+							<div class="styLNRightNumBox" style="height:6mm;background-color:gray;border-bottom-width:0;"/>
+							<div class="styLNAmountBox" style="height:6mm;border-bottom-width:0;"/>
 						</div>
 					</div>
 					<!-- Line 15-->
@@ -618,11 +618,11 @@
 											<span style="padding-left:2.5mm;">form or schedule.</span>
 										</td>
 										<td style="width:27mm">
-											<div class="styLNDesc" style="width:2mm;">
+											<div class="styLNDesc" style="width:2mm;padding-bottom:7mm;">
 												<img src="{$ImagePath}/8911_Bracket_Sm.gif" alt="Curly Bracket Image"/>
 											</div>
 											<div class="styLNDesc" style="width:25mm;">
-												<span class="styBoldText" style="font-size: 7pt;float:right;letter-spacing:3mm;padding-right:0mm">......</span>
+												<span class="styBoldText" style="font-size:7pt;float:right;letter-spacing:3.5mm;padding-top:3.5mm">......</span>
 											</div>
 										</td>
 									</tr>
@@ -630,16 +630,16 @@
 							</div>
 						</div>
 						<div style="float:right;clear:none;width:40mm;">
-							<div class="styLNRightNumBoxNBB" style="height:1mm;background-color:gray;"/>
-							<div class="styLNAmountBoxNBB" style="height:1mm;"/>
+							<div class="styLNRightNumBoxNBB" style="padding-top:4mm;height:6mm;background-color:gray;"/>
+							<div class="styLNAmountBoxNBB" style="padding-top:4mm;height:6mm;"/>
 							<div class="styLNRightNumBox" style="">17</div>
 							<div class="styLNAmountBox">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form8911/TentativeMinimumTaxAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styLNRightNumBox" style="height:8mm;background-color:gray;border-bottom-width:0;"/>
-							<div class="styLNAmountBox" style="height:8mm;border-bottom-width:0;"/>
+							<div class="styLNRightNumBox" style="height:6m;background-color:gray;border-bottom-width:0;"/>
+							<div class="styLNAmountBox" style="height:6mm;border-bottom-width:0;"/>
 						</div>
 					</div>
 					<!-- L18-->

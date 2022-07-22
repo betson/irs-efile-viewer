@@ -1040,7 +1040,7 @@
 											Ch. 3 status code<br/><br/>
 														<span style="padding-left:6mm;">
 														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="$FormData/IntermediaryOrFlowThruEntGrp/Chapter3StatusCd"/>
+															<xsl:with-param name="TargetNode" select="$FormData/PayerGrp/Chapter3StatusCd"/>
 														</xsl:call-template>
 													</span>
 												</span>
@@ -1049,7 +1049,7 @@
 											Ch. 4 status code<br/><br/>
 														<span style="padding-left:6mm;">
 														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="$FormData/IntermediaryOrFlowThruEntGrp/Chapter4StatusCd"/>
+															<xsl:with-param name="TargetNode" select="$FormData/PayerGrp/Chapter4StatusCd"/>
 														</xsl:call-template>
 													</span>
 												</span>

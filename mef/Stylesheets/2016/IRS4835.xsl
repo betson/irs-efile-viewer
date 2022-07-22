@@ -18,6 +18,17 @@
 		<xsl:param name="NumberBoxStyle"/>
 		<xsl:param name="Width">29mm</xsl:param>
 		<xsl:param name="Height">4mm</xsl:param>
+		<div class="styLNRightNumBox">
+			<xsl:attribute name="style">
+        float:left;
+        padding:.75mm 0mm 0mm 0mm;
+        border-right-width:0px;font-size:8pt;
+        height:4mm;<xsl:value-of select="$Height"/>;
+        <xsl:if test="$NumberBoxStyle"><xsl:value-of select="$NumberBoxStyle"/></xsl:if></xsl:attribute>
+			<xsl:if test="$Number">
+				<xsl:value-of select="$Number"/>
+			</xsl:if>
+		</div>
 		<div class="styLNAmountBox">
 			<xsl:attribute name="style">width:
 		<xsl:value-of select="$Width"/>;height:<xsl:value-of select="$Height"/>;
@@ -50,17 +61,6 @@
 					<xsl:value-of select="$StaticText"/>
 				</xsl:when>
 			</xsl:choose>
-		</div>
-		<div class="styLNRightNumBox">
-			<xsl:attribute name="style">
-        float:right;
-        padding:.75mm 0mm 0mm 0mm;
-        border-right-width:0px;font-size:8pt;
-        height:4mm;<xsl:value-of select="$Height"/>;
-        <xsl:if test="$NumberBoxStyle"><xsl:value-of select="$NumberBoxStyle"/></xsl:if></xsl:attribute>
-			<xsl:if test="$Number">
-				<xsl:value-of select="$Number"/>
-			</xsl:if>
 		</div>
 	</xsl:template>
 	<!-- ////////////////////////////////////////////////////////////// (Template:  GenerateEmptyItems) -->
@@ -173,10 +173,10 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-				<!--	<xsl:if test="not($Print) or $Print=''">-->
+					<xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS4835Style"/>
 						<xsl:call-template name="AddOnStyle"/>
-				<!--	</xsl:if>-->
+					</xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
@@ -237,10 +237,36 @@
 					<div class="styBB" style="width:187mm;height:16mm;">
 						<div class="styNameBox" style="width:137mm;height:100%;font-weight:normal;font-size:7pt;">
 							Name(s) shown on tax return<br/>
-       							
-									<xsl:call-template name="PopulateReturnHeaderFiler">
+       							<xsl:choose>
+                                                                                        <!-- Name from Form level -->
+                                            <!-- <xsl:when test="normalize-space($Form1040ScheduleHData/HouseholdEmployerNm) != ''">
+                                                     <xsl:call-template name="PopulateText">
+                                                     <xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HouseholdEmployerNm"/>
+                                                     </xsl:call-template>
+                                                 <br/>
+                                                   <xsl:call-template name="PopulateText">
+                                                   <xsl:with-param name="TargetNode" select="$Form4797Data/BusinessName/BusinessNameLine2Txt"/>
+                                                   </xsl:call-template>
+                                          </xsl:when>-->
+                                                                                     <!-- Name from 1040 Return Header-->
+                                          <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+                                                   <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                 <xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+                                                 </xsl:call-template>
+                                          </xsl:when>
+                                          <xsl:otherwise> 
+                                                  <xsl:call-template name="PopulateReturnHeaderFiler"> 
+                                                  <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param> 
+                                                  </xsl:call-template>
+                                             <br/>
+                                                   <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                   <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+                                                   </xsl:call-template>
+                                            </xsl:otherwise>                                                                                                
+                                       </xsl:choose>
+									<!--<xsl:call-template name="PopulateReturnHeaderFiler">
 								    <xsl:with-param name="TargetNode">Name</xsl:with-param>
-							        </xsl:call-template>
+							        </xsl:call-template>-->
 							    
 							    
 							
@@ -251,10 +277,22 @@
 						<div style="width:50mm;height:50%;padding:0px 0px 0px 2mm;font-size:7pt;border-width:0px 0px 1px 0px;border-color:black;border-style:solid;" class="styEINBox">
 							  Your social security number<br/>
 							  									<span style="font-weight:normal;text-align:center;width:100%;padding-top:2px;">
-								<xsl:call-template name="PopulateSSN">
+							  									  <xsl:choose>
+                                                                        <xsl:when test="$RtnHdrData/Filer/PrimarySSN"> 
+                                                                            <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                                            <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+                                                                            </xsl:call-template>
+                                                                        </xsl:when>
+                                                                        <xsl:when test="$RtnHdrData/Filer/EIN"> 
+                                                                               <xsl:call-template name="PopulateReturnHeaderFiler"> 
+                                                                               <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+                                                                               </xsl:call-template>
+                                                                         </xsl:when>
+                                                                   </xsl:choose>
+								<!--<xsl:call-template name="PopulateSSN">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimarySSN"/>
 									<xsl:with-param name="BackupName">RtnHdrDataFilerPrimarySSN</xsl:with-param>
-								</xsl:call-template>
+								</xsl:call-template>-->
 							</span>
 								
 						</div>
@@ -304,11 +342,11 @@
 								<!-- ++++++++++++++ Yes Checkbox +++++++++++++ -->
 								<span>
 									<xsl:call-template name="PopulateSpan">
-										<xsl:with-param name="TargetNode" select="$Form4835Data/ActivelyParticipatedIndicator"/>
+										<xsl:with-param name="TargetNode" select="$Form4835Data/ActivelyParticipatedInd"/>
 									</xsl:call-template>
 									<input type="checkbox" alt="MateriallyParticipateYes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
-											<xsl:with-param name="TargetNode" select="$Form4835Data/MateriallyParticipatedInd"/>
+											<xsl:with-param name="TargetNode" select="$Form4835Data/ActivelyParticipatedInd"/>
 											<xsl:with-param name="BackupName">IRS4835MateriallyParticipateIndicator</xsl:with-param>
 										</xsl:call-template>
 									</input>
@@ -316,7 +354,7 @@
 								<span style="width:2px;"/>
 								<label>
 									<xsl:call-template name="PopulateLabelYes">
-										<xsl:with-param name="TargetNode" select="$Form4835Data/MateriallyParticipatedInd"/>
+										<xsl:with-param name="TargetNode" select="$Form4835Data/ActivelyParticipatedInd"/>
 										<xsl:with-param name="BackupName">IRS4835MateriallyParticipateIndicator</xsl:with-param>
 									</xsl:call-template>
 									  Yes
@@ -325,11 +363,11 @@
 								<!-- ++++++++++++++ No Checkbox +++++++++++++ -->
 								<span>
 									<xsl:call-template name="PopulateSpan">
-										<xsl:with-param name="TargetNode" select="$Form4835Data/MateriallyParticipateIndicator"/>
+										<xsl:with-param name="TargetNode" select="$Form4835Data/ActivelyParticipatedInd"/>
 									</xsl:call-template>
 									<input type="checkbox" alt="MateriallyParticipateNo" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
-											<xsl:with-param name="TargetNode" select="$Form4835Data/MateriallyParticipatedInd"/>
+											<xsl:with-param name="TargetNode" select="$Form4835Data/ActivelyParticipatedInd"/>
 											<xsl:with-param name="BackupName">IRS4835MateriallyParticipateIndicator</xsl:with-param>
 										</xsl:call-template>
 									</input>
@@ -337,7 +375,7 @@
 								<span style="width:2px;"/>
 								<label>
 									<xsl:call-template name="PopulateLabelNo">
-										<xsl:with-param name="TargetNode" select="$Form4835Data/MateriallyParticipateIndicator"/>
+										<xsl:with-param name="TargetNode" select="$Form4835Data/ActivelyParticipatedInd"/>
 										<xsl:with-param name="BackupName">IRS4835MateriallyParticipateIndicator</xsl:with-param>
 									</xsl:call-template>
 										  No
@@ -852,7 +890,11 @@
 								<div class="styIRS4835LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
 									<div class="styIRS4835LNDesc" style="width:auto;height:100%;">
 									  Other 
-									  <span class="styDotLn" style="float:right;padding-right:4mm;">.........</span>
+									  <span class="styDotLn" style="float:right;padding-right:4mm;">........</span>
+									   <xsl:call-template name="LinkToLeftoverDataTableInline">
+											<xsl:with-param name="Desc"> Line 19b - Form1098 Recipients Statement</xsl:with-param>
+											<xsl:with-param name="TargetNode" select="$Form4835Data/MortgageInterestPaidOtherAmt/@attachmentIndicatorCd"/>
+										</xsl:call-template>
 									</div>
 								</div>
 							</div>
@@ -1437,6 +1479,11 @@
 							<xsl:with-param name="DescWidth" select="$TableWidth"/>
 							<xsl:with-param name="TargetNode" select="$Form4835Data/OtherInterestExpenses/@attachmentIndicatorCd"/>
 						</xsl:call-template>
+						<xsl:call-template name="PopulateLeftoverRow">
+								<xsl:with-param name="Desc">Part II - Line 19b - Form1098 Recipients Statement</xsl:with-param>
+								<xsl:with-param name="DescWidth" select="$TableWidth"/>
+								<xsl:with-param name="TargetNode" select="$Form4835Data/MortgageInterestPaidOtherAmt/@attachmentIndicatorCd"/>
+							</xsl:call-template>
 						<xsl:if test="$Form4835Data/Section263AIndicatorCd">
 							<xsl:call-template name="PopulateLeftoverRow">
 								<xsl:with-param name="Desc">Part II - Line 30 (g) - Section 263A Indicator Code</xsl:with-param>

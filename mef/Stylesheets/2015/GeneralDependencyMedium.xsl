@@ -68,7 +68,7 @@
           <div style="float:left;clear:none;">
             <span class="styTopSectionLineLbl">Business Name or Person Name:</span>
           </div>
-          <div style="float:left;clear:none;">
+          <div style="float:left;clear:none;width:110mm">
             <xsl:choose>
               <xsl:when test="$DependencyData/BusinessName/BusinessNameLine1Txt !=''">
                 <xsl:call-template name="PopulateText">
@@ -108,7 +108,7 @@
               </xsl:when>
               <xsl:otherwise>
                 <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$DependencyData/MissingEINReason"/>
+                  <xsl:with-param name="TargetNode" select="$DependencyData/MissingEINReasonCd"/>
                 </xsl:call-template>
               </xsl:otherwise>
             </xsl:choose>
@@ -118,7 +118,7 @@
           <div style="float:left;clear:none;">
             <span class="styTopSectionLineLbl">Form, Line or Instruction Reference:</span>
           </div>
-          <div style="float:left;clear:none;padding-top:4mm;">
+          <div style="float:left;clear:none;padding-top:4mm;width:110mm">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$DependencyData/FormLineOrInstructionRefTxt"/>
             </xsl:call-template>
@@ -128,7 +128,7 @@
           <div style="float:left;clear:none;">
             <span class="styTopSectionLineLbl">Regulations Reference:</span>
           </div>
-          <div style="float:left;clear:none;">
+          <div style="float:left;clear:none;width:110mm">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$DependencyData/RegulationReferenceTxt"/>
             </xsl:call-template>
@@ -138,7 +138,7 @@
           <div style="float:left;clear:none;">
             <span class="styTopSectionLineLbl">Description:</span>
           </div>
-          <div style="float:left;clear:none;">
+          <div style="float:left;clear:none;width:110mm">
             <xsl:call-template name="PopulateMonthDayYear">
               <xsl:with-param name="TargetNode" select="$DependencyData/Desc"/>
             </xsl:call-template>

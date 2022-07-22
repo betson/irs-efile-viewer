@@ -81,17 +81,55 @@
 					  <div style="width:138mm;height:8mm;font-weight:normal;font-size:7pt;" class="styNameBox">
 					   Name(s) of proprietor(s)<br/>
 						<span>
-							<xsl:call-template name="PopulateText">
+						 <xsl:choose>
+                                          
+                                                                                     <!-- Name from 1040 Return Header-->
+                                          <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+                                                
+                                                 <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                 <xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+                                                 </xsl:call-template>
+                                          </xsl:when>
+                                           <xsl:otherwise> 
+                                                  <xsl:call-template name="PopulateReturnHeaderFiler"> 
+                                                  <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param> 
+                                                  </xsl:call-template>
+                                             <br/>
+                                                   <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                   <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+                                                   </xsl:call-template>
+                                            </xsl:otherwise>                                                                                                
+                                       </xsl:choose>			
+						
+							<!--<xsl:call-template name="PopulateText">
 							<xsl:with-param name="TargetNode" select="$FormData/ProprietorNm"/>
-							</xsl:call-template>
+							</xsl:call-template>-->
 						</span>            
 					  </div>
 					  <div style="width:49mm;height:4mm;padding-left:2mm;font-size:7pt;font-weight:bold;" class="styEINBox">
 						Your social security number<br/>
 						<span style="font-weight:normal;">
-							 <xsl:call-template name="PopulateSSN">
+						  <xsl:choose>
+                                                                        <xsl:when test="$RtnHdrData/Filer/PrimarySSN"> 
+                                                                            <xsl:call-template name="PopulateReturnHeaderFiler">
+                                                                            <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+                                                                            </xsl:call-template>
+                                                                        </xsl:when>
+                                                                        <xsl:when test="$RtnHdrData/Filer/EIN"> 
+                                                                               <xsl:call-template name="PopulateReturnHeaderFiler"> 
+                                                                               <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+                                                                               </xsl:call-template>
+                                                                         </xsl:when>
+                                                                         <xsl:otherwise>
+																				  <xsl:call-template name="PopulateSSN">
+                                                                                 <xsl:with-param name="TargetNode" select="$FormData/SSN"/>
+                                                                                  </xsl:call-template>
+																		</xsl:otherwise>
+                                                                 </xsl:choose>
+						
+						<!--	 <xsl:call-template name="PopulateSSN">
 							<xsl:with-param name="TargetNode" select="$FormData/SSN"/>
-							</xsl:call-template>         
+							</xsl:call-template>    -->     
 						</span>      
 					  </div>
 					</div>

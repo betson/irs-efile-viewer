@@ -4,7 +4,7 @@
 <!-- 07/31/2015 - Modified per UWR 161465 - Jeremy Nichols-->
 <!-- 09/24/2015 - Modified per defect 44808 - Jeremy Nichols-->
 <!-- 09/24/2015 - Modified per defect 44811 - Jeremy Nichols-->
-
+<!-- 02/11/2016 - Modified per KISAM IM02466390 - Jeremy Nichols-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -1280,27 +1280,27 @@
 								<br/>
 								<span class="styTableCellPad"/>
 								<xsl:call-template name="PopulateAmount">
-								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OtherDirectExpensesEvent1Amt"/>
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/OtherDirectExpensesBingoAmt"/>
 								</xsl:call-template>
 							  </td>
 							  <td class="styLNAmountBox" style="height:7mm;width:32mm;text-align:right;padding-top:0.5mm;display:inline;">
 								<br/>
 								<span class="styTableCellPad"/>
 								<xsl:call-template name="PopulateAmount">
-								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OtherDirectExpensesEvent2Amt"/>
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/OtherDirectExpensesPullTabsAmt"/>
 								</xsl:call-template>
 							  </td>
 							  <td class="styLNAmountBox" style="height:7mm;width:32mm;text-align:right;padding-top:0.5mm;display:inline;">
 								<br/>
 								<span class="styTableCellPad"/>
 								<xsl:call-template name="PopulateAmount">
-								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OthDirectExpnssOtherEventsAmt"/>
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/OthDirectExpnssOtherGamingAmt"/>
 								</xsl:call-template>
 							  </td>
 							  <td class="styLNAmountBox" style="height:7mm;width:31mm; border-right-width:0px; text-align:right;padding-top:0.5mm;display:inline;">
 								<br/>
 								<xsl:call-template name="PopulateAmount">
-								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OthDirectExpnssTotalEventsAmt"/>
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/OthDirectExpnssTotalGamingAmt"/>
 								</xsl:call-template>
 							  </td>
 							</tr>

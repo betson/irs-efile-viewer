@@ -83,13 +83,7 @@
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
 							</xsl:call-template>
-							<xsl:if test="$RtnHdrData/Filer/EstateOrTrustName">
-								<br/>
-								<xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">EstateOrTrustName</xsl:with-param>
-								</xsl:call-template>
-							</xsl:if>
-						</div>
+							</div>
 						<div style="line-height:100%;padding: .25mm 0mm 0mm 1.5mm;">
 							<b>Your social security number</b>
 							<br/>

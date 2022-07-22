@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-<!-- Updated by Iskilu Lawal 03/17/2016 -->
+<!-- Updated by Iskilu Lawal 2/22/2017 -->
 <xsl:include href="PopulateTemplate.xsl"/>
 <xsl:include href="CommonPathRef.xsl"/>
 <xsl:include href="AddHeader.xsl"/>
@@ -74,7 +74,7 @@ Information about Form 8933 and its instructions is at <a href="http://www.irs.g
 							</div>
 		</div>
 		<div class="styTYBox" style="width:32mm;border-left:none;">
-		<div class="styOMB" style="height:4mm;">OMB No. 1545-2132</div>
+		<div class="styOMB" style="height:4mm;">OMB No. 1545-0123</div>
 		<div class="styTaxYear">
           20<span class="styTYColor">16</span>
 		</div>
@@ -135,7 +135,7 @@ Information about Form 8933 and its instructions is at <a href="http://www.irs.g
 	</xsl:choose>
       </div>   
     </div>
-  </div>  
+  </div> 
   <!--  End Name and Employer indentification number  -->
   <!--Qualified carbon dixiode-->
   <div style="width: 187mm">
@@ -189,7 +189,7 @@ Information about Form 8933 and its instructions is at <a href="http://www.irs.g
       </span>
       </div>
             <div class="styUnderlineAmount" style="height:4mm;width:41mm;">
-     $XX.XX
+     $22.14
           </div>
     </div>
     <div class="styIRS8933Multiple" style="height:4mm; width:5mm; "/>
@@ -281,7 +281,7 @@ Information about Form 8933 and its instructions is at <a href="http://www.irs.g
       </span>
       </div>
             <div class="styUnderlineAmount" style="height:4mm;width:41mm;">
-     $XX.XX
+     $11.07
       
     </div>
     </div>

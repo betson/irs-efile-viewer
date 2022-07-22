@@ -947,28 +947,22 @@ instructions before completing this form.</span>
 					<div class="styBB" style="width:187mm;border-top-width:1px;">
 						<div class="styPartName" style="width:23mm;padding-top:.5mm">Part V</div>
 						<div class="styPartDesc" style="width:164mm;padding-top:.5mm">All Filers Must Complete This Part
-    </div>
 					</div>
-					<!-- END Part V Title -->	
-					
+					</div>
+					<!-- END Part V Title -->					
 					<!-- line 2 -->
 					<div style="width:187mm">
 						<span class="styLNLeftNumBox" style="height:4mm;">2</span>
 						<span class="styLNDesc" style="width:168mm;height:4mm;">
-							<span style="float:left;font-size:8pt;">
-        If the organization is a foreign corporation that does not have an office 
-        or place of business in the United
-        </span>
-	<span style="width:173mm;font-size:8pt;">
-	<span style="float:left;">
-States, check here  	
-</span>
-	<span style="float:right;">
-	<span class="styDotLn">.............................</span>
+							<span style="float:left;font-size:8pt;">If the organization is a foreign corporation that does not have an office or place of business in the United</span>
+							<span style="width:173mm;font-size:8pt;">
+								<span style="float:left;">States, check here</span>
+								<span style="float:right;">
+									<span class="styDotLn">.............................</span>
 									<span style="width: 3mm;"/>
 									<img src="{$ImagePath}/5471_Bullet_Title.gif" alt="bullet"/>
 									<span style="width: 4mm;"/>
-									<input type="checkbox" class="styCkbox" name="OrgHasNoOfficeInUSInd">
+									<input type="checkbox" alt="IRS7004FrgnCorpDoesNotHaveOfficeInUS" class="styCkbox" name="OrgHasNoOfficeInUSInd">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OrgHasNoOfficeInUSInd"/>
 											<xsl:with-param name="BackupName">FrgnCorpDoesNotHaveOfficeInUS</xsl:with-param>
@@ -990,19 +984,15 @@ States, check here
 					<div style="width:187mm;height:4mm">
 						<span class="styLNLeftNumBox" style="height:4mm;">3</span>
 						<span class="styLNDesc" style="width:168mm;height:4mm;">
-							<span style="float:left;font-size:8pt;">
-		If the organization is a corporation and is the common parent of a group
-		 that intends to file a consolidated</span>
+							<span style="float:left;font-size:8pt;">If the organization is a corporation and is the common parent of a group that intends to file a consolidated</span>
 							<span style="width:173mm;font-size:8pt;">
-								<span style="float:left;">
- return, check here
-</span>
+								<span style="float:left;">return, check here</span>
 								<span style="float:right;">
 									<span class="styDotLn">.............................</span>
 									<span style="width: 3mm;"/>
 									<img src="{$ImagePath}/5471_Bullet_Title.gif" alt="bullet"/>
 									<span style="width: 4mm;"/>
-									<input type="checkbox" class="styCkbox" name="OrgConsolidatedRetToBeFiledInd">
+									<input type="checkbox" alt="IRS7004CorpForConsolidatedGroup" class="styCkbox" name="OrgConsolidatedRetToBeFiledInd">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OrgConsolidatedRetToBeFiledInd"/>
 											<xsl:with-param name="BackupName">CorpForConsolidatedGroup</xsl:with-param>
@@ -1023,10 +1013,8 @@ States, check here
 					<div style="width:187mm;height:5mm">
 						<div class="styLNLeftNumBox" style="height:5mm;"/>
 						<div class="styLNDesc" style="width:168mm;height:5mm;">
-							<span style="float:left;font-size:8pt;">
-	If checked, attach a statement, listing the name, address, and Employer
-	Identification Number (EIN) for each member covered by this application.
-    <span style="padding-left:2mm"/>
+							<span style="float:left;font-size:8pt;">If checked, attach a statement, listing the name, address, and Employer	Identification Number (EIN) for each member covered by this application.
+								<span style="padding-left:2mm"/>
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$FormData/OrgConsolidatedRetToBeFiledInd"/>
 								</xsl:call-template>
@@ -1034,24 +1022,19 @@ States, check here
 						</div>
 					</div>
 					<!-- end notes line3 -->	<br/><br/>
-					
 					<!-- line 4 -->
 					<div style="width:187mm;height:5mm">
 						<span class="styLNLeftNumBox" style="height:5mm;">4</span>
 						<span class="styLNDesc" style="width:168mm;height:5mm;">
-							<span style="float:left;font-size:8pt;">
-		If the organization is a corporation or partnership
-		 that qualifies under Regulations section 1.6081-5, check </span>
+							<span style="float:left;font-size:8pt;">If the organization is a corporation or partnership that qualifies under Regulations section 1.6081-5, check </span>
 							<span style="width:173mm;font-size:8pt;">
-								<span style="float:left;">
-here
-</span>
+								<span style="float:left;">here</span>
 								<span style="float:right;">
 									<span class="styDotLn">..................................</span>
 									<span style="width: 3mm;"/>
 									<img src="{$ImagePath}/5471_Bullet_Title.gif" alt="bullet"/>
 									<span style="width: 4mm;"/>
-									<input type="checkbox" class="styCkbox" name="FilingUnderRegsSect160815Ind">
+									<input type="checkbox" alt="IRS7004FilingUnderRegSect16081-5" class="styCkbox" name="FilingUnderRegsSect160815Ind">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/FilingUnderRegsSect160815Ind"/>
 											<xsl:with-param name="BackupName">FilingUnderRegSect160815</xsl:with-param>
@@ -1070,33 +1053,31 @@ here
 					<!-- end line4 -->	<br/><br/>
 					<!-- line 5a -->
 					<div style="width:187mm;height:4mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">5a
-        </div>
-						<div class="styGenericDiv" style="font-size:8pt;">
-The application is for calendar year 
-<span style="width: 10mm;border-bottom:1 solid black;">
+						<div class="styLNLeftNumBox" style="height:4mm;">5a</div>
+						<div class="styGenericDiv" style="font-size:8pt;">The application is for calendar year 
+							<span style="width: 10mm;border-bottom:1 solid black;">
 								<xsl:call-template name="PopulateReturnHeaderTaxYear"/>
 							</span>, or other tax year beginning
-        <span style="width: 18mm;border-bottom:1 solid black;">
+							<span style="width: 18mm;border-bottom:1 solid black;">
 								<!-- No need to send the parameters -->
 								<xsl:call-template name="PopulateReturnHeaderTaxPeriodBeginDate"/>
 							</span>, and ending 
-        <span style="width: 18mm;border-bottom:1 solid black;">
+							<span style="width: 18mm;border-bottom:1 solid black;">
 								<!-- No need to send the parameters -->
 								<xsl:call-template name="PopulateReturnHeaderTaxPeriodEndDate"/>
 							</span>
 						</div>
 					</div>
 					<!-- end line 5a -->
-							<!-- line 5b -->
-					<div style="width:187mm;height:5mm;padding-left:3mm;font-weight:bold;">
-     b<span style="font-size:8pt;font-weight:bold;padding-left:3mm">Short tax year.</span>
+					<!-- line 5b -->
+					<div style="width:187mm;height:5mm;padding-left:3mm;font-weight:bold;">b
+					<span style="font-size:8pt;font-weight:bold;padding-left:3mm">Short tax year.</span>
 						<span style="font-weight:normal;font-size:8pt;padding-left:1mm">  If this tax year is less than 12 months, check the reason:</span>
 					</div>
 					<div class="styGenericDiv" style="width:187mm;font-size:8pt;">
 						<span class="styLNLeftNumBox" style="height:4mm;"/>
 						<span class="styLNDesc" style="width:175mm;height:4mm;">
-							<input type="checkbox" class="styCkbox" name="InitialReturnInd">
+							<input type="checkbox" alt="IRS7004InitialReturn" class="styCkbox" name="InitialReturnInd">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/InitialReturnInd"/>
 									<xsl:with-param name="BackupName">InitialReturn</xsl:with-param>
@@ -1107,11 +1088,10 @@ The application is for calendar year
 									<xsl:with-param name="TargetNode" select="$FormData/InitialReturnInd"/>
 									<xsl:with-param name="BackupName">InitialReturn</xsl:with-param>
 								</xsl:call-template>
-								<span style="width: 1mm;"/>
-							Initial return
-						</label>
+								<span style="width: 1mm;"/>Initial return
+							</label>
 							<span style="width: 4mm;"/>
-							<input type="checkbox" class="styCkbox" name="FinalReturnInd">
+							<input type="checkbox" alt="IRS7004FinalReturn" class="styCkbox" name="FinalReturnInd">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/FinalReturnInd"/>
 									<xsl:with-param name="BackupName">FinalReturn</xsl:with-param>
@@ -1122,11 +1102,10 @@ The application is for calendar year
 									<xsl:with-param name="TargetNode" select="$FormData/FinalReturnInd"/>
 									<xsl:with-param name="BackupName">FinalReturn</xsl:with-param>
 								</xsl:call-template>
-								<span style="width: 2mm;"/>
-						Final return
-						</label>
+								<span style="width: 2mm;"/>Final return
+							</label>
 							<span style="width: 6mm;"/>
-							<input type="checkbox" class="styCkbox" name="AccountingPeriodChangeInd">
+							<input type="checkbox" alt="IRS7004ChangeInAccountingPeriod" class="styCkbox" name="AccountingPeriodChangeInd">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/AccountingPeriodChangeInd"/>
 									<xsl:with-param name="BackupName">ChangeInAccountingPeriod</xsl:with-param>
@@ -1137,11 +1116,10 @@ The application is for calendar year
 									<xsl:with-param name="TargetNode" select="$FormData/AccountingPeriodChangeInd"/>
 									<xsl:with-param name="BackupName">ChangeInAccountingPeriod</xsl:with-param>
 								</xsl:call-template>
-								<span style="width: 1mm;"/>
-						Change in accounting period
-						</label>
+								<span style="width: 1mm;"/>Change in accounting period
+							</label>
 							<span style="width: 6mm;"/>
-							<input type="checkbox" class="styCkbox" name="ConsolidatedRetToBeFiledInd">
+							<input type="checkbox" alt="IRS7004ConsolidatedReturnToBeFiled" class="styCkbox" name="ConsolidatedRetToBeFiledInd">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/ConsolidatedRetToBeFiledInd"/>
 									<xsl:with-param name="BackupName">ConsolidatedReturnToBeFiled</xsl:with-param>
@@ -1152,15 +1130,14 @@ The application is for calendar year
 									<xsl:with-param name="TargetNode" select="$FormData/ConsolidatedRetToBeFiledInd"/>
 									<xsl:with-param name="BackupName">ConsolidatedReturnToBeFiled</xsl:with-param>
 								</xsl:call-template>
-								<span style="width: 1mm;"/>
-						Consolidated return to be filed
+								<span style="width: 1mm;"/>Consolidated return to be filed
 						</label>
 						</span>
 					</div>
-					<div class="styGenericDiv" style="width:187mm;font-size:8pt;">
+					<div class="styGenericDiv" style="width:187mm;font-size:8pt;height:6mm;">
 						<span class="styLNLeftNumBox" style="height:4mm;"/>
 						<span class="styLNDesc" style="width:175mm;height:4mm;">
-							<input type="checkbox" class="styCkbox" name="OtherInd">
+							<input type="checkbox" alt="IRS7004OtherInd" class="styCkbox" name="OtherInd">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/OtherInd"/>
 									<xsl:with-param name="BackupName">OtherInd</xsl:with-param>
@@ -1171,9 +1148,8 @@ The application is for calendar year
 									<xsl:with-param name="TargetNode" select="$FormData/OtherInd"/>
 									<xsl:with-param name="BackupName">OtherInd</xsl:with-param>
 								</xsl:call-template>
+								<span style="width: 2mm;"/>Other (see instructions &#8212; attach explanation) <!--&#8212; is a long dash -->
 								<span style="width: 2mm;"/>
-						Other (see instructions-attach explanation)
-							<span style="width: 2mm;"/>
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$FormData/OtherInd"/>
 								</xsl:call-template>
@@ -1181,13 +1157,11 @@ The application is for calendar year
 						</span>
 					</div>
 					<!-- end line 5b -->
-						<!-- Start line 6 -->
+					<!-- Start line 6 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">6
- </div>
+						<div class="styLNLeftNumBox" style="height:4mm;">6</div>
 						<div class="styLNDesc" style="width:138.75mm;height:4mm;">
-							<span style="float:left;font-weight:normal;font-size:8pt;">
- Tentative total tax</span>
+							<span style="float:left;font-weight:normal;font-size:8pt;">Tentative total tax</span>
 							<span class="styDotLn" style="float:right;padding-right:1mm;">..........................</span>
 						</div>
 						<div class="styLNRightNumBox">6</div>
@@ -1200,12 +1174,19 @@ The application is for calendar year
 					<!-- End line 6 -->
 					<!-- Start line 7-->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">7
- </div>
+						<div class="styLNLeftNumBox" style="height:4mm;">7</div>
 						<div class="styLNDesc" style="width:138.75mm;height:4mm;">
-							<span style="float:left;font-weight:normal;font-size:8pt;">
- 	<b>Total</b> payments and credits (see instructions)</span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">.................</span>
+							<span style="float:left;font-weight:normal;font-size:8pt;"> 	<b>Total</b> payments and credits (see instructions)</span>
+							<!-- Pen and ink -->
+							<xsl:call-template name="LinkToLeftoverDataTableInline">
+								<xsl:with-param name="Desc">Line 7 - Total payments and refundable credits</xsl:with-param>
+								<xsl:with-param name="TargetNode" select="$FormData/EstTaxPymtAndRfdblCreditAmt/@backupWithholdingTypeCd"/>
+							</xsl:call-template>
+							<xsl:call-template name="LinkToLeftoverDataTableInline">
+								<xsl:with-param name="Desc">Line 7 - Total payments and refundable credits</xsl:with-param>
+								<xsl:with-param name="TargetNode" select="$FormData/EstTaxPymtAndRfdblCreditAmt/@backupWithholdingAmt"/>
+							</xsl:call-template>
+							<span class="styDotLn" style="float:right;padding-right:1mm;">...............</span>
 						</div>
 						<div class="styLNRightNumBox"  style="height:5mm;">7</div>
 						<div class="styLNAmountBox" style="height:5mm;">
@@ -1215,17 +1196,30 @@ The application is for calendar year
 						</div>
 					</div>
 					<!-- End line 7 -->
-				<!-- Start line 8-->
+					<!-- Start line 8-->
 					<div class="styTBB" style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">8
- </div>
-						<div class="styLNDesc" style="width:138.75mm;height:4mm;">
-							<span style="float:left;font-weight:normal;font-size:8pt;">
- 					<b>Balance due. </b> Subtract line 7 from line 6 (see instructions)</span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
+						<div class="styLNLeftNumBox" style="padding-top:1.75mm;">8</div>
+						<div class="styLNDesc" style="width:138.75mm;">
+							<span style="float:left;font-weight:normal;font-size:8pt;">	<b>Balance due. </b> Subtract line 7 from line 6 (see instructions)
+								<span style="width:1mm"/>
+								<input type="checkbox" alt="ACH Debit Agreement Indicator" class="styCkbox" name="ACHDebitAgreementInd">
+								<xsl:call-template name="PopulateCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/ACHDebitAgreementInd"/>
+									<xsl:with-param name="BackupName">ACH Debit Agreement Indicator</xsl:with-param>
+								</xsl:call-template>
+							</input>
+							<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$FormData/ACHDebitAgreementInd"/>
+									<xsl:with-param name="BackupName">ACH Debit Agreement Indicator</xsl:with-param>
+								</xsl:call-template>
+								<span style="width: 1mm;"/>ACH Debit Agreement Indicator 
+							</label>
+							</span>
+							<!--<span class="styDotLn" style="float:right;padding-right:1mm;">............</span>-->
 						</div>
-	<div class="styLNRightNumBox"  style="height:4.5mm;border-bottom-width:0pt">8</div>
-						<div class="styLNAmountBox" style="height:4.5mm;border-bottom-width:0pt">
+						<div class="styLNRightNumBox"  style="height:5mm;border-bottom-width:0pt;padding-top:1.75mm;">8</div>
+						<div class="styLNAmountBox" style="height:5mm;border-bottom-width:0pt;padding-top:1.75mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/BalanceDueAmt"/>
 							</xsl:call-template>
@@ -1269,7 +1263,8 @@ The application is for calendar year
 					</table>
 					<!-- Begin separated repeating Data table -->
 					<xsl:if test="$Print = $Separated and count($FormData/AffiliatedGroupInfo) &gt; 6">
-						<span class="styRepeatingDataTitle">Form 7004, Line 2 - Members of an affiliated group of corporations filing a consolidated return (consolidated group):</span>
+						<span class="styRepeatingDataTitle">Form 7004, Line 2 - Members of an affiliated group of corporations filing a consolidated return (consolidated group):
+						</span>
 						<table class="styDepTbl" style="font-size:7pt;" cellspacing="0">
 							<thead class="styTableThead" style="border-color:black">
 								<tr class="styDepTblHdr">
@@ -1281,7 +1276,9 @@ The application is for calendar year
 							<tbody style="border-color:black; vertical-align:bottom;border-bottom-width:0px;">
 								<xsl:for-each select="$FormData/AffiliatedGroupInfo">
 									<tr>
-										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+										<xsl:attribute name="class">
+										<xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise>
+										</xsl:choose></xsl:attribute>
 										<td class="styDepTblCell" style="text-align: left; width:142mm;height:8mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="AffiliatedGroupName/BusinessNameLine1Txt"/>
