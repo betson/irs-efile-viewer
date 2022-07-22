@@ -1,6 +1,7 @@
 require 'fileutils'
 require 'set'
 require 'shellwords'
+require_relative 'prep_stylesheets.rb'
 require_relative 'stylesheet_fixes.rb'
 
 FILE_EXTENSIONS = {"stylesheets" => ".xsl", "scripts" => ".js", "styles" => ".css"}
@@ -164,6 +165,9 @@ end
 
 puts "\nImport Completed Successfully\n"
 
+# Execute prep_stylesheets() to clean up imported files
+prep_stylesheets()
+
 # Alert the user if we've replaced files that were previously modified to fix issues in the stylesheets
 puts %{
      ====================================
@@ -200,5 +204,3 @@ new_taxyears.each do |new_taxyear|
 end
 
 puts "\n\n"
-
-# TODO: Call prep_stylesheets
