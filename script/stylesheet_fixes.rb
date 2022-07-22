@@ -102,7 +102,7 @@ STYLESHEET_FIXES = {
             style: ["04a28d1"]
         },
         stylesheets: {
-            CommonPathRef: ["04a28d1"],
+            CommonPathRef: ["04a28d1", "5507a3c"],
             IRS940_940PRStyle: ["04a28d1"],
             IRS941ScheduleBStyle: ["04a28d1"],
             IRS990: ["b57ff68"],
@@ -120,6 +120,7 @@ STYLESHEET_FIXES = {
             style: ["04a28d1"]
         },
         stylesheets: {
+            CommonPathRef: ["5507a3c"],
             IRS940_940PRStyle: ["04a28d1"],
             IRS941ScheduleBStyle: ["04a28d1"],
             PrintDocList: ["04a28d1"],
