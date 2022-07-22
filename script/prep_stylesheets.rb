@@ -2,9 +2,6 @@ root_directory = File.expand_path("..", __dir__)
 mef_directory = File.expand_path("mef", root_directory)
 Dir.chdir(mef_directory) do
 
-    # update permissions of all files in a directory
-    # chmod -R 755 mef/Stylesheets/2016
-
     # update each file in directory to have CRLF
     # find . -type f -name "*.xsl" -print0 | xargs -0 sed -i '' "s/\r*$/\r/"
 
@@ -24,4 +21,20 @@ Dir.chdir(mef_directory) do
 
         File.open(filename, "w") { |file| file << contents }
     end
+
+    # Find and update all files that still reference /rrdprd
+    # Dependency: ack
+    files_with_relative_urls = `ack -l -i "mef/rrdprd/"`.split(/\n/)
+    for filename in files_with_relative_urls
+        contents = File.read(filename)
+        contents.gsub!(/mef\/rrdprd\//i, "mef/rrprd/")
+        File.open(filename, "w") { |file| file << contents }
+    end
 end
+
+puts %{
+All imported files have been prepped:
+  - All relative URLs have been replaced to work with Jekyll
+  - All legacy references to "/rrdprd" have been replaced
+
+}
