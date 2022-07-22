@@ -26,31 +26,49 @@ def generate_history_line(file_name, commit_hashes, indent="")
     output.join("\n")
 end
 
-# Print log output for the history of stylesheet fixes for a given year. Optionally
-# narrow result to an individual file within a year.
-def render_stylesheet_history(year, file=nil, file_type=nil)
-    year_info = STYLESHEET_FIXES[year.to_sym]
+# Print log output for the history of stylesheet fixes for a given year. Alternatively
+# narrow result to specific files across multiple years.
+def render_stylesheet_history(year: nil, files: nil)
     output = []
-    unless year_info
-        puts "No stylesheet fixes for #{year}" 
-        return
-    end
-
-    if file
-        unless ["stylesheets", "scripts", "styles"].include?(file_type)
-            puts "Need to provide either \"stylesheets\", \"scripts\", or \"styles\" as a file type for #{file}."
+    if year
+        year_info = STYLESHEET_FIXES[year.to_sym]
+        unless year_info
+            puts "No stylesheet fixes for #{year}" 
             return
         end
 
-        filename_without_extension = file.delete_suffix(".xsl").delete_suffix(".js").delete_suffix(".css")
-        filename_with_extension = filename_without_extension + FILE_EXTENSIONS[file_type]
-        output << generate_history_line(filename_with_extension, year_info[file_type.to_sym][filename_without_extension.to_sym])
-    else
         output << year
         year_info.each_key do |year_file_type|
             output << "  " + year_file_type.to_s.capitalize()
             year_info[year_file_type].each do |file_name, commit_hashes|
                 output << generate_history_line(file_name.to_s + "#{FILE_EXTENSIONS[year_file_type.to_s]}", commit_hashes, "    ")
+            end
+        end
+    elsif files
+        # input is an array of arrays:
+        # [ ["2011", [{:type => "stylesheets", :filename => "CommonPathRef.xsl"}, {hash}]],
+        #   ["2012", [{hash}, {hash}]]
+        # ]
+        files.each do |year_list|
+            year = year_list[0]
+            year_info = STYLESHEET_FIXES[year.to_sym]
+            unless year_info
+                puts "No stylesheet fixes for #{year}" 
+                next
+            end
+
+            output << year
+            last_file_type = nil
+            year_list[1].each do |file_entry|
+                file_type = file_entry[:type]
+                if file_type != last_file_type
+                    last_file_type = file_type
+                    output << "  " + file_type.capitalize()
+                end
+
+                filename_without_extension = file_entry[:filename].delete_suffix(".xsl").delete_suffix(".js").delete_suffix(".css")
+                filename_with_extension = filename_without_extension + FILE_EXTENSIONS[file_type]
+                output << generate_history_line(filename_with_extension, year_info[file_type.to_sym][filename_without_extension.to_sym], "    ")
             end
         end
     end
@@ -60,6 +78,7 @@ end
 
 #BEGIN main
 new_taxyears = Set.new
+modified_stylesheets = Hash.new { |hash, key| hash[key] = [] }
 
 unless SOURCE_DIRECTORY
     puts "Error: No source directory provided for IRS stylesheet archive"
@@ -99,7 +118,7 @@ Dir.chdir(SOURCE_DIRECTORY) do
 
     source_dir_prefix = "./mef/rrprd/sdi/versioned"
     target_dir_prefix = "rrprd/sdi/versioned"
-    types = ["images", "styles", "scripts"]
+    types = ["images", "scripts", "styles"]
     Dir.each_child(source_dir_prefix) do |year_directory|
         next if year_directory.start_with?(".")
             
@@ -113,6 +132,10 @@ Dir.chdir(SOURCE_DIRECTORY) do
         types.each do |type|
             Dir.each_child("#{source_dir_prefix}/#{year_directory}/#{type}") do |x|
                 next if x.start_with?(".")
+                unless type == "images"
+                    previously_fixed = STYLESHEET_FIXES.dig(year_directory.to_sym, type.to_sym, x.delete_suffix(".css").delete_suffix(".js").to_sym)
+                    modified_stylesheets[year_directory] << {:type => type, :filename => x} if previously_fixed
+                end
                 FileUtils.cp("#{source_dir_prefix}/#{year_directory}/#{type}/#{x}", File.expand_path("#{target_dir_prefix}/#{year_directory}/#{type}", TARGET_DIRECTORY), :preserve => true)
             end
             # TODO: This skips any additional files outside the standard three. Those haven't appeared since 2009.
@@ -132,17 +155,50 @@ Dir.chdir(SOURCE_DIRECTORY) do
 
         Dir.each_child("#{source_dir_prefix}/#{year_directory}") do |x|
             next if x.start_with?(".")
+            previously_fixed = STYLESHEET_FIXES.dig(year_directory.to_sym, :stylesheets, x.delete_suffix(".xsl").to_sym)
+            modified_stylesheets[year_directory] << {:type => "stylesheets", :filename => x} if previously_fixed
             FileUtils.cp("#{source_dir_prefix}/#{year_directory}/#{x}", File.expand_path("#{target_dir_prefix}/#{year_directory}", TARGET_DIRECTORY), :preserve => true)
         end
     end
 end
 
+puts "\nImport Completed Successfully\n"
+
+# Alert the user if we've replaced files that were previously modified to fix issues in the stylesheets
+puts %{
+     ====================================
+    |   WARNING   --  FIX EACH OF THESE  |
+     ====================================
+
+    These files were replaced during the import. Each file was
+    previously modified to fix an issue. Review each file and
+    reapply the changes as necessary. Each filename is followed
+    by a git commit hash and the description of the git commit
+    that contained the stylesheet fix. 
+
+
+}
+render_stylesheet_history(files: modified_stylesheets.sort_by { |year, entry| year.to_i })
 
 # Alert the user if a new year's information was added
 new_taxyears.each do |new_taxyear|
     prior_taxyear = new_taxyear.to_i - 1
-    puts "New tax year #{new_taxyear} was added. These files were previously updated for tax year #{prior_taxyear}. Matching files may need to be similarly updated as a new Stylesheet Fix for tax year #{new_taxyear}."
-    render_stylesheet_history(prior_taxyear.to_s)
+    puts %{
+     =====================================
+    |   ALERT   --  REVIEW EACH OF THESE  |
+     =====================================
+
+    This import added files for tax year #{new_taxyear}. Each
+    previous year has required changes to a few files. Listed
+    below are the files that were changed for tax year #{prior_taxyear}.
+    Review each of these and see if their corresponding #{new_taxyear}
+    files should be updated to match.
+
+
+    }
+    render_stylesheet_history(year: prior_taxyear.to_s)
 end
+
+puts "\n\n"
 
 # TODO: Call prep_stylesheets
