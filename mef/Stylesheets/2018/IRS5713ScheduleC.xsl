@@ -12,7 +12,7 @@
 <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 <html>
   <head>
-				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <META http-equiv="Content-Type" content="text/html"/>
     <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($Form5713CData)"/></xsl:call-template></title>
     <meta http-equiv="Pragma" content="no-cache"/>
@@ -33,7 +33,6 @@
   <xsl:call-template name="GlobalStylesForm"/>
 </head>
 <span style="width:187mm">
-
  <body class="styBodyClass">     
   <form name="Form5713C">
     <xsl:call-template name="DocumentHeader"/>
@@ -41,7 +40,7 @@
       <div class="styFNBox" style="width:32mm;height:17mm;">
         <div class="styFormNumber" style="font-size:9pt;">SCHEDULE C</div>
         <div class="styFormNumber" style="font-size:9pt;">(Form 5713)</div>
-        <div style="width:31mm;font-weight:normal;font-size:6.5pt;">(Rev. September 2018)</div>
+        <div style="width:31mm;font-weight:normal;font-size:7pt;">(Rev. September 2018)</div>
         <!--General Dependency Push Pin
               <xsl:call-template name="SetFormLinkInline">
                 <xsl:with-param name="TargetNode" select="$Form1120Data"/>
@@ -51,11 +50,17 @@
           <span class="styAgency">Internal Revenue Service</span>
         </div>
       </div>
-      <div class="styFTBox" style="width:125mm;height:17mm">
+      <div class="styFTBox" style="width:125mm;height:17mm;">
         <div class="styMainTitle">Tax Effect of the International Boycott Provisions</div>
-        <div class="styFBT" style="height:7mm;padding-top:2mm;">
+        <div class="styFBT" style="height:7mm;">
             <img src="{$ImagePath}/5713SchC_Bullet.gif" alt="bullet image pointing to right" width="4"/> Attach to Form 5713.<br/>
             <img src="{$ImagePath}/5713SchC_Bullet.gif" alt="bullet image pointing to right" width="4"/> See instructions on page 2.<br/>
+            <img src="{$ImagePath}/5713SchC_Bullet.gif" alt="bullet image pointing to right" width="4"/> Go to 
+				<a style="text-decoration:none;color:black;" 
+					href="http://www.irs.gov/forms-pubs/about-schedule-c-form-5713" title="Link to IRS.gov">
+						<i>www.irs.gov/forms-pubs/about-schedule-c-form-5713</i> for the latest information.
+				</a>
+				<br/>
             <!--<img src="{$ImagePath}/5713SchC_Bullet.gif" alt="bullet image pointing to right" width="4"/> Use with the December 2004 revision of Form 5713.-->
         </div>
       </div>

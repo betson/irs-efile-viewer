@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Last Modified by Eugenia McDonald on 12/12/2019 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -89,7 +90,7 @@
 								<tr style="height:6mm" valign="top">
 									<td class="styTableCell" style="font-size:7pt;width:55%;border-right-width:0px;border-color:black;text-align:left;">
 										<div class="styLNLeftNumBox" style="padding-top:0mm;">22</div>
-										Educational institution information (see instructions).
+										Educational institution information (see instructions)
 									</td>
 									<td class="styTableCell" style="font-size:7pt;width:50%;border-color:black;text-align:center;border-right-width:0px">&#160;</td>
 								</tr>
@@ -784,7 +785,7 @@
 									<td class="styTableCell" style="font-size:7pt;width:50%;border-color:black;text-align:left;border-right-width:0px">
 										<div class="styLNLeftNumBox" style="padding-top:0mm;">25</div>
 											Did the student complete the first 4 years of postsecondary
-											education before 2018?  See instructions
+											education before 2018?  See instructions.
 									</td>
 									<td class="styTableCell" style="font-size:7pt;width:50%;border-color:black;text-align:left;border-right-width:0px">
 										<xsl:call-template name="PopulateSpan">
@@ -1045,11 +1046,11 @@ enter
 							<span class="styAgency">Internal Revenue Service (99)</span>
 						</div>
 						<div class="styFTBox" style="width:125mm;height:100%;">
-							<div class="styMainTitle" style="height:auto;padding-top:1mm;">Education Credits
-								<span style="font-weight:normal">(American Opportunity and Lifetime Learning Credits)</span>
+							<div class="styMainTitle" style="height:auto;padding-top:2mm;">Education Credits
+								<span style="font-weight:bold">(American Opportunity and Lifetime Learning Credits)</span>
 							</div>
 							<div class="styFBT" stype="font-size:7pt;height:auto;padding-top:0mm;">
-							    <img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/> Attach to Form 1040 or Form 1040A.<br/>
+							    <img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/> Attach to Form 1040.<br/>
 								<img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/> Go to <i>www.irs.gov/Form8863</i> for instructions and the latest information.
 							</div>
 						</div>
@@ -1145,11 +1146,10 @@ enter
 					<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-top:1mm;padding-left: 4.25mm">3</div>
 						<div class="styLNDesc" style="font-size:7pt;width:104.98mm;height:4mm;padding-top:1mm;">
-                            Enter the amount from Form 1040, line 38, or Form 1040A, line 22. If you're
-		                    filing Form 2555, 2555-EZ, or 4563, or you're excluding income from
-		                    <span style="float:left;">Puerto Rico, see Pub. 970 for the amount to enter</span>
+                            Enter the amount from Form 1040, line 7. If you're filing Form 2555, 2555-EZ, or 4563, or you're excluding income from
+		                    Puerto Rico, see Pub. 970 for the amount<span style="float:left;"> to enter</span>
 	                        <!--Dotted Line -->
-						     <span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
+						     <span class="styDotLn" style="float:right;padding-right:1mm;">.......................</span>
 						</div>
 						</span>
 						<span style="float:right;">
@@ -1223,15 +1223,16 @@ enter
 							<div class="styLNLeftNumBox" style="width:6mm;"/>
 							<div class="styLNDesc" style="width:453px;height:8mm;padding-left: 2.25mm;">
 							<span style="float:left;"><img src="{$ImagePath}/8863_Bullet_Round.gif" alt="bullet image"/>
-                               Equal to or more than line 5, enter 1.000 on line 6</span>
-                               <!--Dotted Line -->
-						       <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
+                               Equal to or more than line 5, enter 1.000 on line 6
+                               </span>
+								<!--Dotted Line -->
+						       <span class="styDotLn" style="float:none;padding-left:.5mm;padding-right:.5mm;">......</span>
 							   <br/>
 								<img src="{$ImagePath}/8863_Bullet_Round.gif" alt="bullet image"/>
-                                Less than line 5, divide line 4 by line 5. Enter the result as a decimal (rounded to 
-                               <span style="float:left;"><span style="width:2mm;"/>at least three places)</span>
+                                Less than line 5, divide line 4 by line 5. Enter the result as a decimal  
+                               <span style="float:left;"><span style="width:2mm;"/>(rounded to at least three places)</span>
                                <!--Dotted Line -->
-						       <span class="styDotLn" style="float:right;padding-right:1mm;">.....................</span>
+						       <span class="styDotLn" style="float:none;padding-left:1.5mm;padding-right:.5mm;">...........</span>
 							</div>
 							<div class="styLNDesc" style="width:10px;height:8mm;">
 								<img src="{$ImagePath}/8863_Bracket.gif" height="37mm" alt="bracket image"/>
@@ -1310,9 +1311,9 @@ enter
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-top:0mm;padding-left: 4.25mm">8</div>
 						<div class="styLNDesc" style="font-size:7pt;width:142mm;height:4mm;padding-top:0mm;">
 							<b>Refundable American opportunity credit.</b> Multiply line 7 by 40% (0.40). Enter the amount here and on
-							<span style="float:left;"> Form 1040, line 68, or Form 1040A, line 44. Then go to line 9 below.</span>
+							<span style="float:left;"> Form 1040, line 17c. Then go to line 9 below.</span>
                             <!--Dotted Line -->
-						    <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>	
+						    <span class="styDotLn" style="float:right;padding-right:1mm;">....................</span>	
 						</div>
 						</span>
 						<span style="float:right;">
@@ -1437,11 +1438,10 @@ enter
 						<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:12mm;padding-left: 2.25mm">14</div>
 						<div class="styLNDesc" style="font-size:7pt;width:104.98mm;height:4mm;">
-			                Enter the amount from Form 1040, line 38, or Form 1040A, line 22. If you're
-			                filing Form 2555, 2555-EZ, or 4563, or you're excluding income from
-			                <span style="float:left;">Puerto Rico, see Pub. 970 for the amount to enter</span>
+			                Enter the amount from Form 1040, line 7. If you're filing Form 2555, 2555-EZ, or 4563, or you're
+							excluding income from Puerto Rico, see Pub. 970 for the amount <span style="float:left;">to enter</span>
                             <!--Dotted Line-->
-                            <span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
+                            <span class="styDotLn" style="float:right;padding-right:1mm;">.......................</span>
 						</div>
 						</span>
 						<span style="float:right;">
@@ -1563,9 +1563,9 @@ enter
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:5mm;padding-top:1mm;padding-left: 2.25mm">19</div>
 						<div class="styLNDesc" style="width:142mm;height:5mm;padding-top:1mm;">
 							<b>Nonrefundable education credits.</b> Enter the amount from line 7 of the Credit Limit Worksheet 
-							<span style="float:left;">(see instructions) here	 and on Form 1040, line 50, or Form 1040A, line 33</span>
+							<span style="float:left;">(see instructions) here and on Schedule 3 (Form 1040), line 50</span>
                             <!--Dotted Line-->
-                            <span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
+                            <span class="styDotLn" style="float:right;padding-right:1mm;">...............</span>
 						</div>
 						</span>
 						<span style="float:right;">

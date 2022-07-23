@@ -18,7 +18,7 @@
 						<xsl:with-param name="RootElement" select="local-name($Form1040SchFData)"/>
 					</xsl:call-template>
 				</title>
-				<!--  No Browser Caching  -->
+				 <!--  No Browser Caching  -->
 				<meta http-equiv="Pragma" content="no-cache"/>
 				<meta http-equiv="Cache-Control" content="no-cache"/>
 				<meta http-equiv="Expires" content="0"/>
@@ -31,7 +31,7 @@
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
 				<xsl:if test="not($Print) or $Print=''">
-					<!-- Form 1040ScheduleF CSS Styles are located in the template called below -->
+					<!--  Form 1040ScheduleF CSS Styles are located in the template called below -->
 					<xsl:call-template name="IRS1040ScheduleFStyle"/>
 					<xsl:call-template name="AddOnStyle"/>
 				</xsl:if>
@@ -44,10 +44,10 @@
 					<xsl:call-template name="DocumentHeader"/>
 					<!-- Begin Form Number and Name -->
 					<div class="styBB" style="width:187mm;height:21mm;">
-						<div class="styFNBox" style="width:31mm;height:21mm;">
+						<div class="styFNBox" style="width:35mm;height:21mm;">
 							<div style="padding-top:1mm;">
 								<span class="styFormNumber" style="font-size:10pt;">SCHEDULE F</span>
-								<span class="styFormNumber" style="font-size:9pt">(Form 1040)</span>
+								<span class="styFormNumber" style="font-size:9pt">(Form 1040 or 1040SR)</span>
 							</div>
 							<div style="padding-top:6mm;">
 								<span class="styAgency">Department of the Treasury</span>
@@ -59,11 +59,11 @@
 								<span class="styAgency">Internal Revenue Service <span style="width:1mm"/> (99)</span>
 							</div>
 						</div>
-						<div class="styFTBox" style="width:125mm;height:20mm; padding-top:2mm;">
+						<div class="styFTBox" style="width:121mm;height:20mm; padding-top:2mm;">
 							<div class="styMainTitle" style="height:6mm;">Profit or Loss From Farming</div>
 							<div class="styFBT" style="height:5mm;padding-top:3mm;">
 								<img src="{$ImagePath}/1120_Bullet_Md.gif" alt="Bullet Image"/>
-								Attach to Form 1040, Form 1040NR, Form 1041, Form 1065, or Form 1065-B.
+								Attach to Form 1040, Form 1040NR, Form 1040SR, Form 1041, or Form 1065.
 								<div class="styFST" style="height:5mm;padding-top:1mm;">
 									<img src="{$ImagePath}/1120_Bullet_Md.gif" alt="MediumBullet"/>
 									Go to  
@@ -178,7 +178,7 @@
 					<!-- Box A-->
 					<div class="styBB" style="width:187mm;">
 					<div class="styLNLeftNumBox" style="width:3mm; height:15mm;padding-left:0px;">A</div>
-						<div class="styNameBox" style="width:40mm;height:15mm;padding-top:0mm;font-size:7pt;border-right-width: 0px">
+						<div class="styNameBox" style="width:40mm;height:15mm;padding-top:0.5mm;font-size:7pt;border-right-width: 0px">
 							<span style="float:left;">
 								Principal crop or activity<br/>
 								<xsl:call-template name="PopulateText">
@@ -235,7 +235,7 @@
 						<div class="styEINBox" style="width:51mm;height:15mm;font-size:7pt;">
 							<div class="styLNLeftNumBox" style="width:3mm;font-weight:bold;padding-left:1.5mm;">D</div>
 							<span style="width:1.5mm;"/>
-							<span style="padding-top:0mm;font-weight:bold;font-size:6pt;">Employer ID number (EIN), (see instr)</span>
+							<span style="padding-top:0.5mm;font-weight:bold;font-size:6pt;">Employer ID number (EIN), (see instr)</span>
 							<br/>
 							<span class="styEINFld" style="width:46mm;text-align:left;padding-left:2mm;font-weight:normal;padding-top:2mm;">
 								<br/><br/>
@@ -274,7 +274,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1040SchFData/MateriallyParticipatedInd"/>
 								</xsl:call-template>
-								<input type="checkbox" alt="Materially Participate Indicator" class="styCkbox" name="Checkbox">
+								<input type="checkbox" alt="Materially Participate Yes" class="styCkbox" name="Checkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1040SchFData/MateriallyParticipatedInd"/>
 										<xsl:with-param name="BackupName">MateriallyParticipateIndicatorYesBox</xsl:with-param>
@@ -296,7 +296,7 @@
 							<xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$Form1040SchFData/MateriallyParticipatedInd"/>
 							</xsl:call-template>
-							<input type="checkbox" alt="Materially Participate Indicator" class="styCkbox" name="Checkbox">
+							<input type="checkbox" alt="Materially Participate No" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1040SchFData/MateriallyParticipatedInd"/>
 									<xsl:with-param name="BackupName">MateriallyParticipateIndicatorNoBox</xsl:with-param>
@@ -323,7 +323,7 @@
 						</div>
 						<div class="styLNDesc" style="width:15mm;height:4.5mm;text-align:right;">
 							<br/>
-							<input type="checkbox" alt="Required To File Forms 1099 Ind Yes Box" class="styCkbox" name="Checkbox">
+							<input type="checkbox" alt="Required To File Forms 1099 Yes" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1040SchFData/RequiredToFileForms1099Ind"/>
 									<xsl:with-param name="BackupName">Required To File Forms 1099 Ind Yes Box</xsl:with-param>
@@ -341,7 +341,7 @@
 						<div class="styLNDesc" style="width:15mm;height:4.5mm;text-align:right;">
 							<span style="width:5mm;"/>
 							<br/>
-							<input type="checkbox" alt="Required To File Forms 1099 Ind No Box" class="styCkbox" name="Checkbox">
+							<input type="checkbox" alt="Required To File Forms 1099 No" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1040SchFData/RequiredToFileForms1099Ind"/>
 									<xsl:with-param name="BackupName">Required To File Forms 1099 Ind No Box</xsl:with-param>
@@ -368,7 +368,7 @@
 						</div>
 						<div class="styLNDesc" style="width:15mm;height:4.5mm;text-align:right;">
 							<br/>
-								<input type="checkbox" alt="Required Forms 1099 Filed Ind Yes Box" class="styCkbox" name="Checkbox">
+								<input type="checkbox" alt="Required Forms 1099 Filed Yes" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1040SchFData/RequiredForms1099FiledInd"/>
 									<xsl:with-param name="BackupName">Required Forms 1099 Filed Ind Yes Box</xsl:with-param>
@@ -386,7 +386,7 @@
 						<div class="styLNDesc" style="width:15mm;height:4.5mm;text-align:right;">
 							<span style="width:5mm;"/>
 							<br/>
-							<input type="checkbox" alt="Required Forms 1099 Filed Ind No Box" class="styCkbox" name="Checkbox">
+							<input type="checkbox" alt="Required Forms 1099 Filed No" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateNoCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form1040SchFData/RequiredForms1099FiledInd"/>
 									<xsl:with-param name="BackupName">Required Forms 1099 Filed Ind No Box</xsl:with-param>
@@ -1245,7 +1245,7 @@
 										</td>
 										<!-- Code for line f right of line 32-->
 										<td class="styLNRightNumBox" style="height:5mm;width:7.25mm;border-bottom-width:0px;padding-top:1.5mm">32f</td>
-										<td class="styLNAmountBoxNBB" style="vertical-align:bottom;height:5mm;width:31mm;">
+										<td class="styLNAmountBoxNBB" style="vertical-align:bottom;height:5mm;width:31mm;padding-top:1.5mm;">
 											<xsl:if test="$Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt"/>
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt"/>
@@ -1387,19 +1387,19 @@
 					<div style="width:187mm;">
 						<div style="float:left;">
 							<span class="styBoldText"> For Paperwork Reduction Act Notice, see the separate instructions. </span>
-							<span style="width:80px;"/>                        
+							<span style="width:20px;"/>                        
 							Cat. No. 11346H 
 						</div>
 						<div style="float:right;">
-							<span style="width:20px;"/>
-							<span class="styBoldText">Schedule F (Form 1040) 2018 </span>
+							<span style="width:30px;"/>
+							<span class="styBoldText">Schedule F (Form 1040 or 1040SR) 2018 </span>
 						</div>
 					</div>
 					<p style="page-break-before:always"/>
 					<!--Begin Page 2 -->
 					<!-- Header -->
 					<div class="styBB" style="width:187mm;">
-						<div style="float:left;">Schedule F (Form 1040) 2018 <span style="width:130mm;"/>
+						<div style="float:left;">Schedule F (Form 1040 or 1040SR) 2018 <span style="width:120mm;"/>
 						</div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:7pt;">2</span>
 						</div>
@@ -1506,7 +1506,7 @@
 							<span class="styDotLn" style="float:right;padding-right:1mm;">.....................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:5.25mm;padding-top:1.5mm">40a</div>
-						<div class="styLNAmountBox" style="height:5.25mm;">
+						<div class="styLNAmountBox" style="height:5.25mm;padding-top:1.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/CCCLoanReportedElectionAmt"/>
 							</xsl:call-template>
@@ -1723,11 +1723,11 @@
 					</div>
 					<!--Footer -->
 					<div style="width:187mm;">
-						<div class="stySmallText" style="width:141mm;text-align:center;padding-top:1mm;">
-							<span style="width:156px"/>
+						<div class="stySmallText" style="width:130mm;text-align:center;padding-top:1mm;">
+							<span style="width:130px"/>
 						</div>
-						<div class="stySmallText" style="width:46mm;text-align:right;">
-							<span class="styBoldText" style="font-weight:bold;">Schedule F (Form 1040) 2018</span>
+						<div style="width:57mm;text-align:right;">
+							<span class="styBoldText" style="font-weight:bold;">Schedule F (Form 1040 or 1040SR) 2018</span>
 						</div>
 					</div>
 					<br/>

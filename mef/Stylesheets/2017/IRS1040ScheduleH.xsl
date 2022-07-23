@@ -1611,7 +1611,10 @@
 					</div>
 					<!-- Paid Preparer Section-->
 					<div>				
-						<div class="styTBB" style="width:187mm;font-size:6pt;height:auto;">
+					
+                            <xsl:choose>
+								    <xsl:when test="$Form1040ScheduleHData/HouseholdEmployerNm != '' ">
+                                             <div class="styTBB" style="width:187mm;font-size:6pt;height:auto;">
 							<div style="width:22.65mm;padding-top:4mm;float:left;">
 								<span class="styMainTitle" style="font-size:11pt;">
 								  Paid
@@ -1623,45 +1626,230 @@
 								<div style="width:164mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
 									<div class="styLNDesc" style="height:10mm;width:46.8mm;padding-top:0mm;border-right:1px solid black;padding-left:3px;">
 										Print/Type preparer's name<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/PreparerPersonNm"/>
+									<!--	******NOTE: UWR 228037 REQUESTED PAID PREPARERER SECTION TO BE BLANK TY2019*****-->
+<!--										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$RtnHdrData/parerInformationGrp/PreparerPersonNm"/>
 											<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerPersonName</xsl:with-param>
-										</xsl:call-template>
+										</xsl:call-template>-->
 									</div>
 									<div class="styLNDesc" style="height:10mm;;width:46.5mm;padding-top:0mm;border-right:1px solid black;padding-left:1mm;">
 										 Preparer's signature
 									</div>
-									<div class="styLNDesc" style="height:10mm;width:15mm;border-right:1px solid black;padding-top:0mm;padding-left:1mm;">Date <br/>
-										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+										<div class="styLNDesc" style="height:10mm;width:15mm;border-right:1px solid black;padding-top:0mm;padding-left:1mm;">Date <br/>
+<!--										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 											<xsl:with-param name="TargetNode">DateSigned</xsl:with-param>
 											<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationDateSigned</xsl:with-param>
-										</xsl:call-template>
+										</xsl:call-template>-->
 									</div>
 									<div class="styLNDesc" style="height:10mm;width:18mm;border-right:1px solid black;padding-top:.5mm;padding-bottom:0mm;padding-left:1mm;">
 										<label>
-											<xsl:call-template name="PopulateLabel">
+<!--											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/SelfEmployedInd"/>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationSelfEmployed</xsl:with-param>
-											</xsl:call-template>
+											</xsl:call-template>-->
 										   Check 
 										<input class="styCkbox" type="checkbox" style="height:3.5mm;width:4mm;">
-												<xsl:call-template name="PopulateCheckbox">
+<!--												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/SelfEmployedInd"/>
 													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationSelfEmployed</xsl:with-param>
-												</xsl:call-template>
+												</xsl:call-template>-->
 										</input>
 										<span style="width:4px;"/>if<br/>self-employed
 					                    </label>
 									</div>
-									<div class="styLNDesc" style="height:6mm;width:16mm;padding-top:0mm;padding-left:1mm;">PTIN
+			<div class="styLNDesc" style="height:6mm;width:16mm;padding-top:0mm;padding-left:1mm;">PTIN
 								 <br/>
 										<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerSSN">
-											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">PreparerSSN</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerSSN</xsl:with-param>
-											</xsl:call-template>
+											</xsl:call-template>-->
 										</xsl:if>
 										<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PTIN">
+<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+												<xsl:with-param name="TargetNode">PTIN</xsl:with-param>
+												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPTIN</xsl:with-param>
+											</xsl:call-template>-->
+										</xsl:if>
+										<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/STIN">
+<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+												<xsl:with-param name="TargetNode">STIN</xsl:with-param>
+												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationSTIN</xsl:with-param>
+											</xsl:call-template>-->
+										</xsl:if>
+									</div>
+								</div>								
+								<div style="width:164mm;float:left;clear:none;">
+									<div class="styLNDesc" style="width:108mm;border-right:0px solid black;height:11mm;">
+			<div style="width:164mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
+									<div class="styLNDesc" style="height:11mm;width:108.1mm;border-right:1 solid black;">
+										<span class="styGenericDiv" style="padding-left:3px;">Firm's name 
+										<span style="width:2.2mm;"/>
+											<img src="{$ImagePath}/1040ScheduleH_Bullet_Sm.gif" alt="Right pointing arrowhead image"/>
+											<span style="width:4px;"/>
+										</span>
+										<div class="styGenericDiv" style="padding-right:.5mm;width:60mm">
+<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+												<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerBusinessName1</xsl:with-param>
+											</xsl:call-template>-->
+											<br/>
+<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+												<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerBusinessName2</xsl:with-param>
+											</xsl:call-template>-->
+										</div>
+									</div>
+									</div>
+									</div>
+																		<div class="styLNDesc" style="height:11mm;width:32mm;padding-left:1mm;border-left:1px solid black;">Firm's EIN
+										<img src="{$ImagePath}/1040ScheduleH_Bullet_Sm.gif" alt="Right pointing arrowhead image"/>
+										<span style="width:4px;"/>
+										<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerFirmEIN">
+<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+												<xsl:with-param name="TargetNode">PreparerFirmIDNumber</xsl:with-param>
+												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerFirmIDNumber</xsl:with-param>
+											</xsl:call-template>-->
+										</xsl:if>
+										<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/MissingEINReason">
+<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+												<xsl:with-param name="TargetNode">MissingEINReason</xsl:with-param>
+												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationMissingEINReason</xsl:with-param>
+											</xsl:call-template>
+-->										</xsl:if>
+									</div>
+								</div>
+								<div style="width:164mm;float:left;clear:none;">
+									<div class="styLNDesc" style="width:108.2mm;border-right:1px solid black;height:auto;">
+										<div class="styGenericDiv" style="padding-right:.5mm;padding-left:3px;height:auto;">Firm's address 
+											 <img src="{$ImagePath}/1040ScheduleH_Bullet_Sm.gif" alt="Right pointing arrowhead image"/>
+										</div>
+										<div class="styGenericDiv" style="padding-right:.5mm;height:auto;">
+<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+												<xsl:with-param name="TargetNode">AddressLine1Txt</xsl:with-param>
+												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationAddressLine1</xsl:with-param>
+											</xsl:call-template>-->
+											<br/>
+<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+												<xsl:with-param name="TargetNode">AddressLine2Txt</xsl:with-param>
+												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationAddressLine2</xsl:with-param>
+											</xsl:call-template>-->
+											<br/>
+											<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerUSAddress">
+<!--												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+													<xsl:with-param name="TargetNode">CityNm</xsl:with-param>
+													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationUSAddressCity</xsl:with-param>
+												</xsl:call-template>,-->
+											 <span style="width:2px;"/>
+<!--												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+													<xsl:with-param name="TargetNode">StateAbbreviationCd</xsl:with-param>
+													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationUSAddressState</xsl:with-param>
+												</xsl:call-template>,-->
+											 <span style="width:2px;"/>
+<!--												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+													<xsl:with-param name="TargetNode">ZIPCd</xsl:with-param>
+													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationUSAddressZip</xsl:with-param>
+												</xsl:call-template>-->
+											</xsl:if>
+											<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerForeignAddress">
+<!--												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+													<xsl:with-param name="TargetNode">CityNm</xsl:with-param>
+													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationForeignAddressCity</xsl:with-param>
+												</xsl:call-template>,-->
+											 <span style="width:2px;"/>
+<!--												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+													<xsl:with-param name="TargetNode">ProvinceOrStateNm</xsl:with-param>
+													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationForeignProvinceOrState</xsl:with-param>
+												</xsl:call-template>,-->
+											<span style="width:2px;"/>
+<!--												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+													<xsl:with-param name="TargetNode">ForeignPostalCd</xsl:with-param>
+													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationForeignPostalCd</xsl:with-param>
+												</xsl:call-template>,-->
+											<span style="width:2px;"/>
+<!--												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+													<xsl:with-param name="TargetNode">CountryCd</xsl:with-param>
+													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationForeignCountryCd</xsl:with-param>
+												</xsl:call-template>-->
+											</xsl:if>
+										</div>
+									</div>
+									<div class="styLNDesc" style="width:32mm;padding-left:1mm;height:8mm;"> Phone no. 
+<!--										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+											<xsl:with-param name="TargetNode">Phone</xsl:with-param>
+											<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPhone</xsl:with-param>
+										</xsl:call-template>-->
+<!--										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+											<xsl:with-param name="TargetNode">ForeignPhone</xsl:with-param>
+											<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationForeignPhone</xsl:with-param>
+										</xsl:call-template>-->
+									</div>
+								</div>
+							</div>
+						</div>
+
+                    </xsl:when>
+                    <xsl:otherwise>
+
+
+		                  <!--    <xsl:when test="$Form1040ScheduleHData/HouseholdEmployerNm != '' ">
+                                          <span style="text-align:right">
+                                                     <xsl:call-template name="PopulateText">
+                                                     <xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HouseholdEmployerNm"/>
+                                                     </xsl:call-template>
+                                                     </span>
+                                          </xsl:when>            -->     
+                      <div class="styTBB" style="width:187mm;font-size:6pt;height:auto;">
+							<div style="width:22.65mm;padding-top:4mm;float:left;">
+								<span class="styMainTitle" style="font-size:11pt;">
+								  Paid
+								  Preparer
+								  Use Only
+								</span>
+							</div>
+							<div style="width:164mm;float:left;clear:none;border-width:0px 0px 0px 1px; border-color:black;border-style:solid;">
+								<div style="width:164mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
+									<div class="styLNDesc" style="height:10mm;width:46.8mm;padding-top:0mm;border-right:1px solid black;padding-left:3px;">
+										Print/Type preparer's name<br/>
+									<!--	<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/PreparerPersonNm"/>
+											<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerPersonName</xsl:with-param>
+										</xsl:call-template>-->
+									</div>
+									<div class="styLNDesc" style="height:10mm;;width:46.5mm;padding-top:0mm;border-right:1px solid black;padding-left:1mm;">
+										 Preparer's signature
+									</div>
+										<div class="styLNDesc" style="height:10mm;width:15mm;border-right:1px solid black;padding-top:0mm;padding-left:1mm;">Date <br/>
+										<!--<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+											<xsl:with-param name="TargetNode">DateSigned</xsl:with-param>
+											<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationDateSigned</xsl:with-param>
+										</xsl:call-template>-->
+									</div>
+									<div class="styLNDesc" style="height:10mm;width:18mm;border-right:1px solid black;padding-top:.5mm;padding-bottom:0mm;padding-left:1mm;">
+										<label>
+											<!--<xsl:call-template name="PopulateLabel">
+												<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/SelfEmployedInd"/>
+												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationSelfEmployed</xsl:with-param>
+											</xsl:call-template>-->
+										   Check 
+										<input class="styCkbox" type="checkbox" style="height:3.5mm;width:4mm;">
+												<!--<xsl:call-template name="PopulateCheckbox">
+													<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/SelfEmployedInd"/>
+													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationSelfEmployed</xsl:with-param>
+												</xsl:call-template>-->
+										</input>
+										<span style="width:4px;"/>if<br/>self-employed
+					                    </label>
+									</div>
+			<div class="styLNDesc" style="height:6mm;width:16mm;padding-top:0mm;padding-left:1mm;">PTIN
+								 <br/>
+										<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerSSN">
+										<!--	<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+												<xsl:with-param name="TargetNode">PreparerSSN</xsl:with-param>
+												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerSSN</xsl:with-param>
+											</xsl:call-template>-->
+										</xsl:if>
+										<!--<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PTIN">
 											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">PTIN</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPTIN</xsl:with-param>
@@ -1672,10 +1860,12 @@
 												<xsl:with-param name="TargetNode">STIN</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationSTIN</xsl:with-param>
 											</xsl:call-template>
-										</xsl:if>
+										</xsl:if>-->
 									</div>
-								</div>
-								<div style="width:164mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
+								</div>								
+								<div style="width:164mm;float:left;clear:none;">
+									<div class="styLNDesc" style="width:108mm;border-right:0px solid black;height:11mm;">
+			<div style="width:164mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
 									<div class="styLNDesc" style="height:11mm;width:108.1mm;border-right:1 solid black;">
 										<span class="styGenericDiv" style="padding-left:3px;">Firm's name 
 										<span style="width:2.2mm;"/>
@@ -1683,7 +1873,7 @@
 											<span style="width:4px;"/>
 										</span>
 										<div class="styGenericDiv" style="padding-right:.5mm;width:60mm">
-											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+										<!--	<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerBusinessName1</xsl:with-param>
 											</xsl:call-template>
@@ -1691,13 +1881,15 @@
 											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerBusinessName2</xsl:with-param>
-											</xsl:call-template>
+											</xsl:call-template>-->
 										</div>
 									</div>
-									<div class="styLNDesc" style="height:11mm;width:32mm;padding-left:1mm;border-left:1px solid black;">Firm's EIN
+									</div>
+									</div>
+																		<div class="styLNDesc" style="height:11mm;width:32mm;padding-left:1mm;border-left:1px solid black;">Firm's EIN
 										<img src="{$ImagePath}/1040ScheduleH_Bullet_Sm.gif" alt="Right pointing arrowhead image"/>
 										<span style="width:4px;"/>
-										<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerFirmEIN">
+										<!--<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerFirmEIN">
 											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">PreparerFirmIDNumber</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerFirmIDNumber</xsl:with-param>
@@ -1708,16 +1900,16 @@
 												<xsl:with-param name="TargetNode">MissingEINReason</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationMissingEINReason</xsl:with-param>
 											</xsl:call-template>
-										</xsl:if>
+										</xsl:if>-->
 									</div>
 								</div>
 								<div style="width:164mm;float:left;clear:none;">
 									<div class="styLNDesc" style="width:108.2mm;border-right:1px solid black;height:auto;">
-										<div class="styGenericDiv" style="padding-right:.5mm;padding-left:3px;height:auto;">Firm's address 
+										<div class="styGenericDiv" style="padding-right:.5mm;padding-left:3px;height:7mm;">Firm's address 
 											 <img src="{$ImagePath}/1040ScheduleH_Bullet_Sm.gif" alt="Right pointing arrowhead image"/>
 										</div>
 										<div class="styGenericDiv" style="padding-right:.5mm;height:auto;">
-											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+										<!--	<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">AddressLine1Txt</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationAddressLine1</xsl:with-param>
 											</xsl:call-template>
@@ -1763,22 +1955,24 @@
 													<xsl:with-param name="TargetNode">CountryCd</xsl:with-param>
 													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationForeignCountryCd</xsl:with-param>
 												</xsl:call-template>
-											</xsl:if>
+											</xsl:if>-->
 										</div>
 									</div>
 									<div class="styLNDesc" style="width:32mm;padding-left:1mm;height:8mm;"> Phone no. 
-										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+									<!--	<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 											<xsl:with-param name="TargetNode">Phone</xsl:with-param>
 											<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPhone</xsl:with-param>
 										</xsl:call-template>
 										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 											<xsl:with-param name="TargetNode">ForeignPhone</xsl:with-param>
 											<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationForeignPhone</xsl:with-param>
-										</xsl:call-template>
+										</xsl:call-template>-->
 									</div>
 								</div>
 							</div>
 						</div>
+           </xsl:otherwise>
+								</xsl:choose>		
 						<!-- Page Break and Footer-->
 						<div   style="width:187mm;">
 							<div class="stySmallText" style="width:141mm;text-align:center;padding-top:1mm;">

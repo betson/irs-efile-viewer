@@ -185,7 +185,7 @@
 					<!-- Box A-->
 					<div class="styBB" style="width:187mm;">
 					<div class="styLNLeftNumBox" style="width:3mm; height:15mm;padding-left:0px;">A</div>
-						<div class="styNameBox" style="width:40mm;height:15mm;padding-top:0mm;font-size:7pt;border-right-width: 0px">
+						<div class="styNameBox" style="width:40mm;height:15mm;padding-top:0.5mm;font-size:7pt;border-right-width: 0px">
 							<span style="float:left;">
 								Principal crop or activity<br/>
 								<xsl:call-template name="PopulateText">
@@ -242,7 +242,7 @@
 						<div class="styEINBox" style="width:51mm;height:15mm;font-size:7pt;">
 							<div class="styLNLeftNumBox" style="width:3mm;font-weight:bold;padding-left:1.5mm;">D</div>
 							<span style="width:1.5mm;"/>
-							<span style="padding-top:0mm;font-weight:bold;font-size:6pt;">Employer ID number (EIN), (see instr)</span>
+							<span style="padding-top:0.5mm;font-weight:bold;font-size:6pt;">Employer ID number (EIN), (see instr)</span>
 							<br/>
 							<span class="styEINFld" style="width:46mm;text-align:left;padding-left:2mm;font-weight:normal;padding-top:2mm;">
 								<br/><br/>
@@ -1247,7 +1247,7 @@
 										</td>
 										<!-- Code for line f right of line 32-->
 										<td class="styLNRightNumBox" style="height:5mm;width:7.2mm;border-bottom-width:0px;padding-top:1.5mm">32f</td>
-										<td class="styLNAmountBoxNBB" style="vertical-align:bottom;height:5mm;width:31mm;">
+										<td class="styLNAmountBoxNBB" style="vertical-align:bottom;height:5mm;width:31mm;padding-top:1.5mm;">
 											<xsl:if test="$Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt"/>
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt"/>
@@ -1506,8 +1506,8 @@
 							</span>
 							<span class="styDotLn" style="float:right;padding-right:1mm;">....................</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:5.25mm;padding-top:1.5mm">40a</div>
-						<div class="styLNAmountBox" style="height:5.25mm;">
+						<div class="styLNRightNumBox" style="height:5.25mm;padding-top:1.5mm;">40a</div>
+						<div class="styLNAmountBox" style="height:5.25mm;padding-top:1.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1040SchFData/FarmIncomeAccrualMethodGrp/CCCLoanReportedElectionAmt"/>
 							</xsl:call-template>

@@ -330,13 +330,14 @@
 						<div class="styLNDesc" style="padding-left:34mm;">
     					<xsl:choose>							
 							<xsl:when test="normalize-space($Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyHmAddress/AddressLine1Txt) !=''">
-								<span style="padding-top:5mm;"/>							
+								<span style="padding-top:5mm;"/>
+								<span style="width:80mm">							
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyHmAddress/AddressLine1Txt"/>
-								</xsl:call-template><br/>		
+								</xsl:call-template></span><span>		
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyHmAddress/AddressLine2Txt"/>
-								</xsl:call-template>															
+								</xsl:call-template></span>															
 							</xsl:when>
 							<xsl:otherwise>
 								<span style="width:85mm;"/>
@@ -519,7 +520,7 @@
 						<div class="styLNLeftNumBox" style="padding-top:mm;">15</div>
 						<div class="styLNDesc" style="padding-top:mm;">
 							<b>Residential energy efficient property credit. </b> Enter the smaller of line 13 or line 14. Also include <br/>
-							<span style="float:left;">this amount on Form 1040, line 53; or Form 1040NR, line 50</span>
+							<span style="float:left;">this amount on Schedule 3 (Form 1040), line 53; or Form 1040NR, line 50</span>
 							<!--Dotted Line-->
 							<span class="styIRS5695Dots" style="">.............</span>
 						</div>
@@ -655,10 +656,11 @@
 					<div class="styIRS5695LineItem" style="height:20mm;padding-top:5mm;">
 						<div class="styLNLeftNumBox"/>
 						<div class="styLNDesc" style="padding-left:26mm;">
+													<span style="width:80mm">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/EgyPropCrMainHomeUSAddress/AddressLine1Txt"/>
 							</xsl:call-template>
-							<br/>
+							</span>
 							<xsl:if test="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/EgyPropCrMainHomeUSAddress/AddressLine2Txt !=''">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/EgyPropCrMainHomeUSAddress/AddressLine2Txt"/>
@@ -1084,7 +1086,7 @@
 						<div class="styLNLeftNumBox" style="">30</div>
 						<div class="styLNDesc" style="height:7mm;">
 							<b>Nonbusiness energy property credit.	</b> Enter the smaller of line 28 or line 29.  Also include this<br/>
-							 amount on Form 1040, line 53; or Form 1040NR, line 50
+							 amount on Schedule 3 (Form 1040), line 53; or Form 1040NR, line 50
 							<span class="styIRS5695Dots">..............</span>
 						</div>
 						<div class="styLNRightNumBox" style="width:7.8mm;height:7.5mm;">

@@ -43,15 +43,14 @@
 					<!-- WARNING LINE -->
 					<xsl:call-template name="DocumentHeader"/>
 					<!-- Begin Form Number and Name -->
-					<div class="styBB" style="width:187mm;height:21.5mm;">
-						<div class="styFNBox" style="width:28mm;height:21.5mm;">
-							<div style="line-height:180%;">
-								<span class="styFormNumber" style="font-size:9pt;">Schedule R</span>
-								<span class="styFormNumber" style="font-size:8pt;">(Form 1040A<br/>or 1040)</span>
+					<div class="styBB" style="width:187mm;height:23.5mm;">
+						<div class="styFNBox" style="width:28mm;height:23.5mm;">
+							<div style="line-height:50%;">
+								<span class="styFormNumber" style="font-size:8pt;">Schedule R</span>
+								<span class="styFormNumber" style="font-size:8pt;"><br/> (Form 1040)</span>
 							</div>
-							<div style="padding-top:1.3mm;">
+							<div style="padding-top:7.3mm;">
 								<span class="styAgency">Department of the Treasury</span>
-								<br/>
 								<span class="styAgency">Internal Revenue Service (99)</span>
 							</div>
 						</div>
@@ -62,12 +61,12 @@
 				                <span style="font-weight: bold;  ;">
 								<img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/>
 								<span style="width:0.5mm;"/>
-								Complete and attach to Form 1040A or 1040.</span>
+								Complete and attach to Form 1040.</span>
        <br/>
                                 <span style="font-weight: bold;  ;">
 								<img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/>
 								<span style="width:0.5mm;"/>
-								Go to <i><a style="text-decoration:none;color:black;" href="http://IRS.gov/ScheduleR">www.irs.gov/ScheduleR.</a></i> for instructions and<br/> the latest information.</span>
+								Go to <i><a style="text-decoration:none;color:black;" href="http://IRS.gov/ScheduleR">www.irs.gov/ScheduleR</a></i> for instructions and<br/> the latest information.</span>
         </div>
   						</div>
 					<div class="styLNDesc" style="height:5mm;width:23mm;padding-top:6mm;">
@@ -85,7 +84,7 @@
 					<!-- End Form Number and Name section -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styNameBox" style="width:140mm;height:8mm;font-size:7pt;">
-        Name(s) shown on Form 1040A or 1040<br/>
+        Name(s) shown on Form 1040<br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">Name</xsl:with-param>
 							</xsl:call-template>
@@ -446,7 +445,7 @@
 					<div class="styNBB" style="width:187mm; height:9mm;font-size: 8.5pt;padding-left:0mm;padding-top:1mm;padding-bottom:.5mm;float:left;clear:none;">
 						<div class="styPartDesc" style="height:9mm;width:5mm;padding-right:1mm;padding-top:0.5mm;padding-bottom:0mm;">If:</div>
 						<div class="styLNLeftNumBox" style="height:9mm;width:5mm;padding-left:3mm;padding-right:3mm;">1</div>
-						<div class="styLNDesc" style="height:9mm;width:163mm;padding-left:0mm;padding-bottom:0mm;">You filed a physician&#39;s statement for this disability for 1983 or
+						<div class="styLNDesc" style="height:9mm;width:163mm;padding-left:2mm;padding-bottom:0mm;">You filed a physician&#39;s statement for this disability for 1983 or
 						 an earlier year, or you filed or got a<br/>statement for tax years after 1983 and your physician signed line B on the statement,<b> and</b>
   						</div>
 					</div>
@@ -514,13 +513,13 @@
 							For Paperwork Reduction Act Notice, see your tax return instructions.</div>
 						<div style="width:25mm;float:left;clear:none;">Cat. No. 11359K</div>
 						<div class="styPartDesc" style="width:55mm;text-align:right;font-size:6.5pt;float:right;clear:none;">
-							Schedule R (Form 1040A or 1040) 2018
+							Schedule R (Form 1040) 2018
 						</div>
 					</div>
 					<br/>
 					<!-- Start of Page 2 -->
 					<div class="styBB" style="width:187mm;font-size:7pt;">
-						<div class="styLNDesc" style="width:90mm;padding-top:0mm;">Schedule R (Form 1040A or 1040) 2018</div>
+						<div class="styLNDesc" style="width:90mm;padding-top:0mm;">Schedule R (Form 1040) 2018</div>
 						<div class="styLNDesc" style="width:90mm;text-align:right;float:right;clear:none;">Page  
 						<span class="styBoldText" style="font-size:8pt;">2 </span>
 						</div>
@@ -758,9 +757,9 @@
 					<div class="styNBB" style="width:187mm;font-size: 8.5pt;float:left;clear:none;">
 						<span style="float:left;"><div class="styLNLeftNumBox" style="height:4mm;padding-left:0mm;padding-top:0mm;">14</div>
 						<div class="styLNDesc" style="width:64.3mm;height:4mm;padding-top:0mm;padding-bottom:0mm;">
-								 Enter the amount from Form 1040A, <br/>line 22, or Form 1040, line 38
+								 Enter the amount from Form 1040, line 7
 						<!--Dotted Line-->		 
-							<span class="styDotLn" style="float:none;padding-left:2mm;">...</span>		 		 
+									 		 
 						</div></span>
 						<span style="float:right;"><div class="styLNRightNumBox" style="height:7.8mm;width:6mm;padding-top:3.7mm;         padding-bottom:0mm;text-align:center;border-style:solid;border-right-width:1px;         border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">14
 						</div>
@@ -934,8 +933,8 @@
 						<span style="float:left;"><div class="styLNLeftNumBox" style="height:4mm;padding-left:0mm;padding-top:0mm;padding-bottom:0mm;">22</div>
 						<div class="styLNDesc" style="width:140.5mm;height:12mm;padding-top:0mm;padding-bottom:0mm;">
 							<b>Credit for the elderly or the disabled.</b> Enter the<b> smaller </b>
-							of line 20 or line 21. Also enter this amount on Form 1040A, line 32, or include on Form 1040, line 54 (check box <b>c</b> and enter "Sch R" on the line next to that box)
-							<span class="styDotLn" style="float:none;padding-left:2mm;">.................</span>
+							of line 20 or line 21. Also enter this amount on Schedule 3 (Form 1040), line 54 (check box <b>c</b> and enter "Sch R" on the line next to that box)
+							<span class="styDotLn" style="float:none;padding-left:2mm;">..........................</span>
 						</div></span>
 						<span style="float:right;"><div class="styForm1040SchRColBoxGrey" style="height:12mm;width:5.7mm;   padding-top:7.5mm;    padding-bottom:0mm;text-align:center;border-style:solid;border-right-width:0px;         border-left-width:1px;border-top-width:0px;border-bottom-width:1px;         border-color:black;">
 							<span style="height:4mm;font-size: 8.5pt;width:5mm;background-color: white;padding-bottom:0mm; ">22</span>
@@ -949,7 +948,7 @@
 					<!-- BEGIN Left Over Table -->
 					<!-- Additonal Data Title Bar and Button -->
 					<div style="width:187mm;padding-top:1mm">
-						<span style="width:187mm;font-weight:bold;font-size: 7pt;text-align:right;">Schedule R (Form 1040A or 1040) 2018</span>
+						<span style="width:187mm;font-weight:bold;font-size: 7pt;text-align:right;">Schedule R (Form 1040) 2018</span>
 					</div>
 					<br/>
 					<!-- BEGIN Left Over Table -->

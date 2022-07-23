@@ -766,10 +766,10 @@
 						<div class="styLNLeftNumBox" style="font-size:7pt;padding-left: 2.25mm">25</div>
 						<div style="float:left;">
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;padding-left:2mm;">
-								<b>Minimum tax credit.</b> Enter the <b>smaller</b> of line 21 or line 24. Also enter this amount on your 2018 Form<br/>
-								1040, line 54 (check box <b>b</b>); Form 1040NR, line 51 (check box <b>b</b>); or Form 1041, Schedule G,<br/>
+								<b>Minimum tax credit.</b> Enter the <b>smaller</b> of line 21 or line 24. Also enter this amount on your 2018 Schedule 3 (Form 1040), 
+								 line 54 (check box <b>b</b>); Form 1040NR, line 51 (check box <b>b</b>); or Form 1041, Schedule G,
 								line 2c
-							  <span style="letter-spacing:3.2mm;font-weight:bold;padding-left:2mm;">.............................</span>
+							  <span style="letter-spacing:3.2mm;font-weight:bold;padding-left:2mm;">.......................</span>
 							</div>
 						</div>
 						<div style="float:left;">

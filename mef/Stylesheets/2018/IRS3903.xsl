@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 04/05/2018 -->
+<!-- Last Modified by Eugenia McDonald on 07/25/2019 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -67,7 +67,7 @@
 							<div class="styFST" style="height:5mm;font-size:7pt;padding-top:5mm;">
 							    <img src="{$ImagePath}/3903_Bullet.gif" width="9" height="9" alt="Bullet"/>
 							     Go to <a style="text-decoration:none;color:black;" href="http://www.irs.gov/Form3903" title="Link to IRS.gov">
-							     <i>www.irs.gov/Form3903</i></a> for the latest information.<br/>
+							     <i>www.irs.gov/Form3903</i></a> for instructions and the latest information.<br/>
 								<img src="{$ImagePath}/3903_Bullet.gif" width="9" height="9" alt="bullet image"/><span style= "width:1mm;"/>Attach to Form
 								 1040 or Form 1040NR.
 							</div>
@@ -222,7 +222,7 @@
 							
 							<span style= "width:3mm;"/>You <span style="font-weight:bold;">cannot</span>
 							 deduct your moving expenses. If line 3 is less than line 4, subtract line 3 from<br/><span style= "width:2.8mm;"/> line 4 and include
-							 the result on Form 1040, line 7, or Form 1040NR, line 8.</p>
+							 the result on Form 1040, line 1, or Form 1040NR, line 8.</p>
 							<p style="padding-left:3mm;padding-top:2mm;">
 							<span style="float:left;">
 								<xsl:call-template name="PopulateSpan">
@@ -243,9 +243,9 @@
 								</label>
 							</span> 
 							
-							<span style= "width:2mm;"/>Subtract line 4 from line 3. Enter the result here and on Form 1040, line 26, or Form <br/>
-								<span style= "width:2mm;"/>1040NR, line 26. This is your
-							   <b>moving expense deduction</b><span class="styDotLn" style="float:right;">..........</span></p>
+							<span style= "width:2mm;"/>Subtract line 4 from line 3. Enter the result here and on Schedule 1 (Form 1040), line 26, or <br/>
+								<span style= "width:2.4mm;"/>Form 1040NR, line 26. This is your
+							   <b>moving expense deduction</b><span class="styDotLn" style="float:right;">........</span></p>
 							</div>
 							<div class="styLNRightNumBox" style="height:20mm;border-bottom:none;background-color:lightgrey;text-align:left;"/>
 							<div class="styLNAmountBox" style="height:20mm;border-bottom:none;"/>

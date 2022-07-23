@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 11/21/2018 -->
+<!-- Last Modified by Eugenia McDonald on 01/06/2020 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -147,7 +147,7 @@
                 border-bottom-width:0px;padding-left:2mm;padding-top:.5mm;">
                 <span class="styBoldText">2</span>
                 <span style="width:2.3mm"/>
-                <span style="font-size:7pt">Enter amount from Form 1040, line 38</span>
+                <span style="font-size:7pt">Enter amount from Form 1040, line 7</span>
                 <span style="width:.5mm"/>
               </div>
               <div class="styIRS1040ScheduleAlnRightNumBox" style="width:5mm;height:4.2mm;border-left-width:0px;border-bottom-width:1px;">2</div>
@@ -291,11 +291,11 @@
 						<span style="width:1.5mm;"/>
 						<span class="styBoldText">e</span>
 						<span style="width:.2mm;"/>
-						Enter the smaller of line 5d and $10,000 ($5,000 if married filing
+						Enter the smaller of line 5d or $10,000 ($5,000 if married filing
 						<br/>
 						<span style="width:4.5mm"/>separately)
 						<span style="width:1.3mm"/>
-						<span style=" letter-spacing:3.2mm; font-weight:bold;float:right; ">................</span>
+						<span style=" letter-spacing:3.2mm; font-weight:bold;float:right; ">.................</span>
 						<span style="width:2mm"/>
 					</div>
 					<br/>
@@ -305,7 +305,7 @@
                 border-right-width:0px;border-bottom-width:0px;padding-left:2mm;padding-top:2mm;">
                 <span class="styBoldText">6</span>
                 <span style="width:2.1mm"/>
-                   Other Taxes. List type and amount 
+                   Other taxes. List type and amount 
 					<span style="width:1.3mm"/>
 					<img src="{$ImagePath}/1040SchA_Bullet.gif" alt="SmallBullet Image"/>
 					<span style="width:2mm"/>
@@ -740,7 +740,7 @@
 					<span style="width:2.2mm"/>Casualty and theft loss(es) from a federally declared disaster (other than net qualified disaster<br/>
 					<span style="width:5.4mm"/>	losses). Attach Form 4684 and enter the amount from line 18 of that form. See instructions 
 						<xsl:call-template name="SetFormLinkInline">
-							<xsl:with-param name="TargetNode" select="$FormData/CasualtyOrTheftLossesAmt"/>
+							<xsl:with-param name="TargetNode" select="$FormData/CalcAdjGroIncmMnsTotNetLossAmt"/>
 						</xsl:call-template>
 						<span style="width:.2m"/>
 						<span style="letter-spacing:3.2mm; font-weight:bold;float:right;">.</span>

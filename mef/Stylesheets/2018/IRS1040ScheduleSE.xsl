@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Last Modified by Andrew Werner on 8/18/2011 -->
-<!-- Last Modified by Eugenia McDonald on 09/11/2018 -->
+<!-- Last Modified by Eugenia McDonald on 10/24/2019 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -67,7 +67,7 @@
 							</div>
 							<div class="styFST" style="width: 126mm; height: 5mm; padding-top: 2mm; font-size: 6.5pt;">
 								<img src="{$ImagePath}/1040SchSE_Bullet_Md.gif" alt="MediumBullet"/>
-								    Go to <a style="text-decoration:none;color:black;" href="http://www.irs.gov/ScheduleSE" title="Link to IRS.gov"><i>www.irs.gov/ScheduleSE</i></a> for instructions and the latest information.<br/>
+								    Go to <i>www.irs.gov/ScheduleSE</i> for instructions and the latest information.<br/>
 							</div>
 							<div class="styFST" style="width: 126mm; height: 5mm; padding-top: 1.5mm; font-size: 6.5pt;">	
 								<img src="{$ImagePath}/1040SchSE_Bullet_Md.gif" alt="MediumBullet"/>
@@ -549,10 +549,10 @@
                <div class="styLNDesc" style="width:139mm;height:11mm;padding-top:1mm">
                   If you received social security retirement or disability benefits, enter the amount of 
                   Conservation <br/>Reserve Program payments included on Schedule F, line 4b, 
-                  or listed on Schedule K-1 (Form 1065),<br/> box 20, code Z
+                  or listed on Schedule K-1 (Form 1065),<br/> box 20, code AH
                   <!--Dotted Line-->
                   <span style="width:2mm"/>
-                  <span style=" letter-spacing:3mm; font-weight:bold; float: right; ">..............................</span>
+                  <span style=" letter-spacing:3mm; font-weight:bold; float: right; ">.............................</span>
                </div>
                <div class="styLNRightNumBox" style="height:11mm;padding-top:7mm;">
                  1b</div>
@@ -691,14 +691,14 @@
                   <img src="{$ImagePath}/1040SchSE_Bullet_Round.gif" alt="RoundBullet"/>
                   <span style="width:1mm;"/>
                     $128,400 or less, multiply line 4 by 15.3% (0.153). Enter the result here and on
-                  <b>Form 1040, line 57,</b><br/> or <b>Form 1040NR, line 55.</b><br/>
+                  <b>Schedule 4 (Form 1040), line 57,</b> or <b>Form 1040NR, line 55</b><br/>
                   <img src="{$ImagePath}/1040SchSE_Bullet_Round.gif" alt="RoundBullet"/>
                   <span style="width:1mm;"/>
                     More than $128,400, multiply line 4 by 2.9% (0.029). Then, add $15,921.60 to the 
-                    result. <br/>Enter the total here and on<b> Form 1040, line 57, </b>or <b>Form 1040NR, line 55</b>
+                    result. <br/>Enter the total here and on<b> Schedule 4 (Form 1040), line 57, </b>or <b>Form 1040NR, line 55</b>
                   <!--Dotted Line-->
                   <span style="width:1.8mm"/>
-                  <span style=" letter-spacing:3mm; font-weight:bold; float: right; ">..........</span>
+                  <span style=" letter-spacing:3mm; font-weight:bold; float: right; ">.....</span>
                </div>
                <div class="styLNRightNumBox" style="height:16.5mm;padding-top:13.5mm;">
                  5</div>
@@ -715,9 +715,9 @@
                   <b>Deduction for one-half of self-employment tax. </b>
                        <br/>  
 					   Multiply line 5 by 50% (0.50). Enter the result here and on
-                       <b> Form 1040, line 27,</b> or <b>Form 1040NR, line 27</b>
+                       <b> Schedule 1 (Form 1040), line 27,</b> or <b>Form 1040NR, line 27</b>
 				  <span style="width:1.8mm;"/>
-                  <span style=" letter-spacing:3.2mm; font-weight:bold; float: right; ">..............</span>
+                  <span style=" letter-spacing:3.2mm; font-weight:bold; float: right; ">..........</span>
                </div>
                <div class="styLNRightNumBox" style="height: 10.5mm; padding-top: 7.5mm; border-bottom-width: 0px;">
                  6</div>
@@ -863,7 +863,7 @@
 						<div class="styLNDesc" style="width:139mm; height:10mm;">
 							If you received social security retirement or disability benefits, enter the amount of Conservation<br/>Reserve
 							Program payments included on Schedule F, line 4b, or listed on Schedule K-1 (Form 1065),<br/>
-							<span style="float:left;">box 20, code Z</span>
+							<span style="float:left;">box 20, code AH</span>
 							<!--Dotted Line-->
 							<span class="styIRS1040ScheduleSEDotLn" style="letter-spacing: 3mm; float: right; padding-right: 0mm;">..............................</span>
 						</div>
@@ -1207,9 +1207,9 @@
 						<div class="styLNLeftNumBox">12</div>
 						<div class="styLNDesc" style="width:139mm;">
 							<span style="float:left;font-family:Arial;"><b>Self-employment tax.</b> Add lines 10 and 11. Enter here and on
-							<b>Form 1040, line 57,</b> or <b>Form 1040NR, line 55</b></span>
-							<span class="styIRS1040ScheduleSEDotLn" style="letter-spacing:3mm; font-weight:bold; float: right; 
-							    padding-right: 1mm;">....</span>
+							<b>Schedule 4 (Form 1040), line 57,</b> or <b>Form 1040NR, line 55</b></span>
+							<!--<span class="styIRS1040ScheduleSEDotLn" style="letter-spacing:3mm; font-weight:bold; float: right; 
+							    padding-right: 1mm;">........</span>-->
 						</div>
 						<div class="styLNRightNumBox">12</div>
 						<div class="styLNAmountBox" style="padding-right:1mm;">
@@ -1231,7 +1231,7 @@
 					<div style="width:187mm; border-bottom:solid black 1px; padding-top:0px; clear: left; float: left; ">
 						<div class="styLNLeftNumBox"/>
 						<div class="styLNDesc" style="width:99mm;padding-top:0px;height:4mm">
-							Multiply line 12 by 50% (0.50). Enter the result here and on <b>Form 1040,</b>
+							Multiply line 12 by 50% (0.50). Enter the result here and on <b>Schedule 1 </b>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:4mm;border:0px;"/>
 						<div class="styLNAmountBoxNBB" style="padding-right:1px;height:4mm;border:0px;"/>
@@ -1239,9 +1239,9 @@
 						<div class="styLNAmountBox" style="border-bottom-width:0px;background-color:lightgrey;border-left-width:0px;height:4mm;"/>
 						<div class="styLNLeftNumBox"/>
 						<div class="styLNDesc" style="width:99mm;padding-top:0px;height:4mm">
-							<span style="float:left;"><b>line 27,</b> or <b>Form 1040NR, line 27</b></span>
+							<span style="float:left;"><b>(Form 1040), line 27,</b> or <b>Form 1040NR, line 27</b></span>
 							<span class="styIRS1040ScheduleSEDotLn" style="letter-spacing:3mm; font-weight:bold; float: right;
-							    padding-right: 1mm;">.............</span>
+							    padding-right: 1mm;">.......</span>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:4mm;">13</div>
 						<div class="styLNAmountBoxNBB" style="padding-right:1px;height:4mm;">

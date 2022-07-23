@@ -96,9 +96,26 @@
 		<xsl:param name="Style"/>
 		<xsl:param name="Letter"/>
 		<div class="styIRS4835LineItem">
-			<div class="styIRS4835LNLeftNumBox" style="padding-right:0px;">
+			<!--<div class="styIRS4835LNLeftNumBox" style="padding-right:0px;">
 				<xsl:value-of select="$Letter"/>
-			</div>
+			</div>-->
+			<xsl:choose>
+				<xsl:when test="($Letter = 'f')">
+                        <div class="styIRS4835LNLeftNumBox" style="padding-right:2px;">
+				        <xsl:value-of select="$Letter"/>
+				         </div>
+                 </xsl:when>
+		    	<xsl:otherwise>
+                     <div class="styIRS4835LNLeftNumBox" style="padding-right:0px;">
+				     <xsl:value-of select="$Letter"/>
+			   </div>
+            </xsl:otherwise>
+         
+                
+		     	
+           
+  			</xsl:choose>
+			
 			<div class="styIRS4835LNDesc" style="width:47mm;height:3.8mm;">
 				<span style="width:43mm;height:3.8mm;border-style:dashed;border-color:black;border-width:0px 0px 1px 0px;">
 					<xsl:if test="($Letter = 'g') and $Form4835Data/Section263AIndicatorCd">
@@ -1134,10 +1151,10 @@
 							</div>
 						</div>
 						<!-- (30) ////////////////////////////////////////////////////-->
-						<div class="styIRS4835LineItem" style="height:7mm;">
+						<div class="styIRS4835LineItem" style="height10mm">
 							<div class="styIRS4835LNLeftNumBox">30</div>
-							<div class="styIRS4835CleanDiv" style="width:47mm;height:4mm;padding:0px 0px 0px 0px;">
-								<div class="styIRS4835LNDesc" style="width:auto;height:4mm;padding:0px 0px 0px 0px;">
+							<div class="styIRS4835CleanDiv" style="width:47mm;height:20mm;padding:0px 0px 0px 0px;">
+								<div class="styIRS4835LNDesc" style="width:auto;height:20mm;padding:0px 0px 0px 0px;;">
 									<div class="styIRS4835LNDesc" style="width:auto;height:6mm;">
 									  Other expenses<br/>
 									  (specify):
@@ -1148,15 +1165,17 @@
 								<div class="styIRS4835CleanDiv" style="width:100%;height:3.5mm;float:right;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">height:7.5mm;border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">height:7.5mm;border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">height:35mm;border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">height:35mm;border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey</xsl:with-param>
 									</xsl:call-template>
 								</div>
 							</div>
 						</div>
 						<!-- (30a-g) ////////////////////////////////////////////////////-->
-						<xsl:variable name="NumberOfOtherExpenseGrp" select="count($Form4835Data/OtherExpense)"/>
-						<xsl:choose>
+						<xsl:variable name="NumberOfOtherExpenseGrp" select="count($Form4835Data/OtherExpenseDetail)"/>
+						
+				<span style="width:10mm;height:3mm;"/>
+                		<xsl:choose>
 							<xsl:when test="($Print != $Separated) or ($NumberOfOtherExpenseGrp &lt;= 7)">
 						
 								<xsl:for-each select="$Form4835Data/OtherExpenseDetail">
@@ -1218,7 +1237,18 @@
 								</xsl:call-template>
 							</xsl:otherwise>
 						</xsl:choose>
+				<xsl:if test="($NumberOfOtherExpenseGrp &lt; 7) ">
+					
+									<xsl:call-template name="GenerateEmptyItems">
+										<xsl:with-param name="Number" select="$NumberOfOtherExpenseGrp + 1"/>
+										<xsl:with-param name="MaxCount" select="7"/>
+									</xsl:call-template>
+								</xsl:if>
 					</div>
+					
+					
+					
+					
 					<!-- (31) ////////////////////////////////////////////////////-->
 					<div style="width:187mm;height:4mm;border-top:1px solid black;font-size:8.5pt;">
 							<div class="styLNLeftNumBox" style="width:8mm;">31</div>
@@ -1242,7 +1272,7 @@
 							<div class="styIRS4835LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
 								<div class="styIRS4835LNDesc" style="width:auto;height:100%;">
 									<b>Net farm rental income or (loss).</b> Subtract line 31 from line 7. If the result is income, enter it<br/>
-										  here and on Schedule E (Form 1040), line 40. If the result is a loss, you <b>must</b> go to lines 33 and 34. See instructions
+										  here and on Schedule E (Form 1040), line 40. If the result is a loss, you <b>must</b> go to line 34. See instructions
 									<xsl:if test="$Form4835Data/NetFarmRentalIncomeOrLossAmt/@passiveActivityLossLiteralCd">
 										<span style="width:4px;"/>
 										<xsl:call-template name="LinkToLeftoverDataTableInline">

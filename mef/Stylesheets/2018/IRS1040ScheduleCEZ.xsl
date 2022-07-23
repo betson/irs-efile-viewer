@@ -443,7 +443,7 @@
 							<div class="styLNDesc" style="height:14mm;width:142mm;padding-right:1mm;">
 								<span style="font-weight:bold">Net profit.</span> Subtract line 2 from line 1. If less than zero, you 
 							<span style="font-weight:bold">must</span> use Schedule C. Enter on both 
-							<span style="font-weight:bold">Form 1040, line 12,</span> and 
+							<span style="font-weight:bold">Schedule 1 (Form 1040), line 12,</span> and 
 							<span style="font-weight:bold">Schedule SE, line 2,</span> or on 
 							<span style="font-weight:bold">Form 1040NR, line 13,</span> and 
 							<span style="font-weight:bold">Schedule SE, line 2</span> (see page 2).

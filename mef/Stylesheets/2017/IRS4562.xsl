@@ -2755,9 +2755,10 @@ Listed property. Enter amount from line 28
 													</xsl:call-template>
 													<span style="width:.5px;"/>
 												</td>
+												<!-- Line 27 column g -->
 												<td class="styTableCell" style="border-color:black; width:17mm; font-size:6pt; text-align:center;">S/L-
          <xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="DepreciationConventionCd"/>
+														<xsl:with-param name="TargetNode" select="DepreciationConventionAndPreCd"/>
 													</xsl:call-template>
 													<span class="styIRS4562TableCellPad"/>
 												</td>
@@ -5688,9 +5689,10 @@ border-bottom-width:1px; font-size:7pt; font-family:verdana">
 											<span style="width:.5px;"/>
 											<!--span class="styIRS4562TableCellPad"></span-->
 										</td>
+										<!-- Line 27 column g repeating -->
 										<td class="styIRS4562TableCellG" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:17mm; font-size: 6pt; text-align: center;">S/L-
                                             <xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="DepreciationConventionCd"/>
+												<xsl:with-param name="TargetNode" select="DepreciationConventionAndPreCd"/>
 											</xsl:call-template>
 											<span class="styIRS4562TableCellPad"/>
 										</td>

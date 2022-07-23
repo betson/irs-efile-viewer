@@ -95,8 +95,8 @@
 					<!--   END TAXPAYER INFO   -->
 					<!-- Name and Identifying number END-->
 					<div class="styIRS4136CautionHdr" style="padding-left:1.5mm;border-top-width:2px;">
-						<span class="styIRS4136CautionHdrTitle" style="padding-left:2mm;padding-right:1mm;">Caution.</span>
-						<span style="width:160mm;float:left;font-size:7.75pt;padding-right:1mm;padding-bottom:1mm;">
+						<span class="styIRS4136CautionHdrTitle" style="padding-left:2mm;padding-right:1mm;">Caution:  </span>
+						<span style="font-style:normal;width:160mm;float:left;font-size:7.75pt;padding-right:1mm;padding-bottom:1mm;">
         Claimant has the name and address of the person who sold the fuel to the claimant and the dates of purchase. 
          For claims on lines 1c and 2b (type of use 13 or 14), 3d, 4c, and 5, claimant has not waived the right to 
          make the claim. For claims on lines 1c and 2b (type of use 13 or 14), claimant certifies that a certificate has 
