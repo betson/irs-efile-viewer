@@ -136,9 +136,34 @@ STYLESHEET_FIXES = {
             style: ["04a28d1"]
         },
         stylesheets: {
+            CommonPathRef: ["f291eb2"],
             IRS941ScheduleBStyle: ["04a28d1"],
             PrintDocList: ["04a28d1"],
             PrintReturnSections: ["04a28d1"]
         }
+    }
+}
+
+FIX_STATUS = {
+    "04a28d1": {
+        status: "resolved",
+        notes: "rrdprd references are automatically cleaned on import"
+    },
+    "b57ff68": {
+        status: "resolved",
+        notes: "similar updates were made in the final IRS download for TY 2016"
+    },
+    "6cbd8cb": {
+        status: "resolved",
+        notes: "similar updates were made in the final IRS download for TY 2016"
+    },
+    "e71ed26": {
+        status: "open"
+    },
+    "5507a3c": {
+        status: "open"
+    },
+    "f291eb2": {
+        status: "open"
     }
 }

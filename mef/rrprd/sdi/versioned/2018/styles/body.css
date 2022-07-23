@@ -1,0 +1,378 @@
+/*-----------------------------------------------------------------------------------------------------
+Body CSS file 
+-----------------------------------------------------------------------------------------------------
+
+Description: Styles that are used in the body of the XSL document. These styles are used in almost every form
+	to display line item descriptions and amounts, and expandable tables.
+
+Important Notes:
+ - This note concerns styles that have names that contain the word 'Amount' and 'TableCell' 
+ 	(example: styLNAmount, styLNTableCell, etc). These styles have been formatted so that 16 digits can fit
+ 	within their specified width using the font and text sizes specified inside these styles. If you are using 
+ 	.styLNAmountBoxSmall and you need to fit 16 digits within this box, you need to keep the font size set to 
+ 	6 points, otherwise the .styLNAmountBoxSmall box will be too small to hold all of the digits.
+
+-----------------------------------------------------------------------------------------------------
+edited 2/16/2004 by Ravi Venigalla. Added styPartName
+edited 3/2/2004 by Charles Moore. Added styPartDesc
+edited 04/29/2004 by Tanuja Amarneni. Added styLNLeftNumBoxSD.
+edited 06/1/2004 by Tanuja Amarneni. Changed clear:none attribute to clear:both in the table container styles.
+Created new styles for the table container without the bottom border.styTableContainerNBB and .styTableContainerLandscapeNBB.
+-----------------------------------------------------------------------------------------------------*/
+		.styPartName{ /* Used to display Part Name - Black background with white text used to display names such as "Part I" */
+			height:4mm;width:14mm;
+			color:white;
+			background-color:black;
+			font-size: 8pt;
+			font-weight:bold;
+			text-align:center;
+			float:left; clear: none;
+		}
+		.styPartDesc{ /* Section Part Description  - Displayed to the right of the styPartName*/
+			height:4mm;width:172mm;
+			font-size: 8pt; 
+			font-weight: bold;
+			padding-left:3mm;
+			float:left; clear: none;
+		}
+		.styTitleName{ /* This style is obselete - use styPartName instead */
+			height:4mm;width:23mm;
+			color:white;
+			background-color:black;
+			font-size: 9pt;
+			font-weight:bold;
+			text-align:center;
+			float:left; clear: none;
+		}
+		.styTitleDesc{ /* This style is obselete - use styPartDesc instead */
+			height:4mm;width:163mm;
+			font-size: 9pt; font-weight: bold;
+			padding-left:4mm;
+			float:left; clear: none;
+		}
+		.styLNLeftNumBox{ /* Double digit item number to the left of the page */
+			width:8mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			font-weight:bold;
+			float:left; clear:none;
+			padding-left:1mm;
+		}
+		.styLNLeftNumBoxSD{ /* Single digit item number to the left of the page */
+			width:8mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			font-weight:bold;
+			float:left; clear:none;
+			padding-left:2.5mm;
+		}
+		.styLNLeftNumBoxBB{ /* Item number to the left of the page with a bottom border*/
+			width:8mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			font-weight:bold;
+			float:left; clear: none;
+			padding-left:1mm;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+		}
+		.styLNLeftLtrBox{ /* Item letter to the left of the page */
+			width:8mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			padding-left:3.3mm;
+			font-weight:bold;
+			float:left; clear: none;
+		}
+		.styLNLeftLtrBoxDD{ /* Item letter to the left of the page under a double digit number*/
+			width:8mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			padding-left:5mm;
+			font-weight:bold;
+			float:left; clear: none;
+		}
+		.styLNLeftLtrBoxBB{ /* Item letter to the left of the page with a bottom border*/
+			width:8mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			padding-left:3.3mm;
+			font-weight:bold;
+			float:left; clear: none;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+		}
+		.styLNCtrNumBox{ /* Item number in the center of the page */
+			width:8mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			font-weight:bold;
+			float:left; clear: none;
+			text-align:center;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 1px;
+		}
+		.styLNDesc{ /* Line item description */
+			width:138mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			float:left; clear: none;
+		}
+		.styLNDescLandscape{ /* Line item description for forms in Landscape format*/
+			width:216mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			float:left; clear: none;
+		}
+		.styLNRightNumBox{ /* Right number box */
+			width:8mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			font-weight:bold;
+			text-align:center;
+			vertical-align:bottom;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
+			float:left; clear: none;
+		}
+		.styLNRightNumBoxNBB{ /* Right number box with no bottom border*/
+			width:8mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			font-weight:bold;
+			text-align:center;
+			vertical-align:bottom;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-right-width: 0px;
+			float:left; clear: none;
+		}
+		.styLNRightNumBoxWide{ /* Wide right number box, used for storing numbers such as "18(2)(a)"*/
+			width:12mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			font-weight:bold;
+			text-align:center;
+			vertical-align:bottom;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
+			float:left; clear: none;
+		}		
+		.styLNFormLinkBox{ /* Box for storing form-to-form link image. */
+			width:5mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			text-align:left;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
+			float:left; clear: none;
+		}
+		.styLNAmountBox{ /* Box for storing line item amounts. */
+			width:32mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			text-align:right;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
+			float:left; clear: none;
+		}
+		.styLNAmountBoxNBB{ /* Amount Box with no bottom border */
+			width:32mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			text-align:right;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-right-width: 0px;
+			float:left; clear: none;
+		}
+		.styLNAmountBoxNB{ /* Amount Box with no border */
+			width:32mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			text-align:right;
+			float:left; clear: none;
+		}
+		.styLNAmountBoxSmall{ /* Small Amount Box with small text size*/ 
+			width:26mm;height:4mm;
+			font-size:6pt;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			text-align:right;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
+			float:left; clear: none;
+		}
+		.styLNAmountBoxFormLink{ /* Small Amount Box to be used with Form to Form links */ 
+			width:27mm;height:4mm;
+			font-size:6pt;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			text-align:right;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+			float:left; clear: none;
+		}
+		.styLNAmountBoxSmallNBB{ /* Small Amount Box with small text size and no bottom border*/ 
+			width:26mm;height:4mm;
+			font-size:6pt;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			text-align:right;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-right-width: 0px;
+			float:left; clear: none;
+		}
+		.styShading {   /* Shading with no border */
+			width:32mm;
+			background-color:lightgrey;
+			float: left; clear: none;
+		}
+		.styShadingCell {   /* Shading with a left border */
+			width:32mm;
+			background-color:lightgrey;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-right-width: 0px;
+			float: left; clear: none;
+		}
+		.styShadingCellRB {   /* Shading with a left border and a right border*/
+			width:32mm;
+			background-color:lightgrey;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-right-width: 1px;
+			float: left; clear: none;
+		}
+		.styShadingCellSmall {   /* Small Shading Cell has the same width as styLNAmountBoxSmall */
+			width:26mm;
+			background-color:lightgrey;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-right-width: 0px;
+			float: left; clear: none;
+		}
+		.styTableContainer {   /* Scrollable Table Container */
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+			width: 187mm; height:auto;
+			float:none;clear:both;
+			overflow-y: auto;
+		}
+		.styTableContainerNBB {   /* Scrollable Table Container with no bottom border*/
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+			width: 187mm; height:auto;
+			float:none;clear:both;
+			overflow-y: auto;
+		}
+		.styTableContainerLandscape {   /* Scrollable Table Container for forms in Landscape format*/
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+			width: 256mm; height:auto;
+			float:none;clear:both;
+			overflow-y: auto;
+		}
+		.styTableContainerLandscapeNBB {   /* Scrollable Table Container for forms in Landscape format with no bottom border*/
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+			width: 256mm; height:auto;
+			float:none;clear:both;
+			overflow-y: auto;
+		}		
+		.styTable {   /* Table */
+			display:table-header-group;
+			font-size: 6pt;
+			text-align: left;
+		}		
+		.styTableThead{ /* Style for HTML 'thead' element  */
+			display:table-header-group;
+		}		
+		.styTableCellHeader {   /* Table Cell Header */
+			width: 32mm;
+			color: black;
+			text-align: center;
+			border-style: solid;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
+		}
+		.styTableCell {   /* Table Cell */
+			width: 32mm;
+			color: black;
+			text-align: right;
+			border-style: solid;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
+		}
+		.styTableCellSmall {   /* Small Table Cell with 6 pt text */
+			width: 25mm;
+			color: black;
+			text-align: right;
+			border-style: solid;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
+		}
+		.styTableCellSmallArial {   /* Smallest Table Cell possible with 6pt arial text */
+			width: 22mm;
+			color: black;
+			text-align: right;
+			font-family:arial;
+			font-size:6pt;
+			border-style: solid;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
+		}
+		.styTableCellText {   /* Table Cell that aligns to the left for text */
+			width: 32mm;
+			color: black;
+			text-align: left;
+			border-style: solid;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
+		}
+		.styTableCellTextSmall {   /* Small Table Cell that aligns to the left for text with 6pt text*/
+			width: 25mm;
+			color: black;
+			text-align: left;
+			border-style: solid;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
+		}
+		.styTableCellCtr {   /* Table Cell that aligns to the center */
+			width: 32mm;
+			color: black;
+			text-align: center;
+			border-style: solid;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
+		}
+		.styTableCellCtrSmall {   /* Small Table Cell that aligns to the center with 6pt text*/
+			width: 32mm;
+			color: black;
+			text-align: center;
+			border-style: solid;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
+		}
+		.styTableCellPad {   /* Table Cell Padding */
+			width: 4px;
+		}
+		.styTableLastCol {   /* Last Table Column */
+			width: 15px;
+			color: white;
+			text-align: right;
+			border-style: solid;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+			display: none;
+		}
+		.styNoAudioRead{ /* Skips reading of this element by JAWS. Used so that dots are not read aloud. */
+			skiplink:display:none;
+		}
+		.styNBSP{
+		width: 16px;
+		font-weight: bold;
+		}
+		.styUnderlineAmount{ /* Box for storing underlined amounts. */
+			width:32mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			text-align:right;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+			float:left; clear: none;
+		}
+
+		.styDotLn { 
+			letter-spacing:3.1mm;
+			font-weight:bold; 	
+			float:left;
+			padding-right:1mm		
+			skiplink:display:none;
+		}												

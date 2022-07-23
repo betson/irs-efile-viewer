@@ -1,0 +1,53 @@
+﻿.stySumData {   /* Summary Data */
+	font-family: verdana, arial, sans-serif; font-size: 8pt;
+	font-weight: normal;
+	text-align: left;
+	border-style: none; border-color: black;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+	cursor: default;
+	display: none;
+}
+.stySumDataLbl1 {   /* Summary Fields Label 1 */
+	background-color: rgb(140, 218, 255);
+	text-align: right; vertical-align: top;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 2px; padding-right: 2px;
+}
+.stySumDataVal1 {   /* Summary Fields Value 2 */
+	background-color: rgb(140, 218, 255);
+	vertical-align: top;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 2px; padding-right: 2px;
+}
+.stySumDataLbl2 {   /* Summary Fields Label 1 */
+	background-color: rgb(217, 242, 255);
+	text-align: right;
+	vertical-align: top;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 2px; padding-right: 2px;
+}
+.stySumDataVal2 {   /* Summary Fields Value 2 */
+	background-color:  rgb(217, 242, 255);
+	vertical-align: top;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 2px; padding-right: 2px;
+}
+.styAddSumTitle {   /* Additional Return Summary Box Title */
+	background-color:  Khaki;
+	font-weight: bold;
+	vertical-align: middle;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 2px; padding-right: 2px;
+}
+.styAddSumDataLbl {   /* Additional Summary Fields Label */
+	background-color: Beige;
+	text-align: right;
+	vertical-align: top;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 2px; padding-right: 2px;
+}
+.styAddSumDataVal {   /* Additional Summary Fields Value */
+	background-color:  Beige;
+	vertical-align: top;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 2px; padding-right: 2px;
+}
+.styFldLabelDropDown {   /* Field Label */
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt;
+	height:19px;
+	vertical-align: top;
+}
