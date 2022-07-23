@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Iskilu Lawal 12/11/2018  UWR # 211020 drop 4-->
+<!-- Last Modified by Iskilu Lawal 3/14/2019  Defect #126854 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -3345,7 +3345,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 				  padding-bottom:0mm;">9</div>
 							<div class="styLNDesc" style="width:178mm;padding-left:2mm;padding-top:0mm;
 				  padding-bottom:0mm;">
-					City or town, state or province ,and country (including postal code)
+					City or town, state or province, and country (including postal code)
 				</div>
 							<div class="styLNDesc" style="width:186mm;padding-top:1mm;padding-left:10mm;">
 								<!--PART V  Start of Foreign Deposit and Custodial Accounts US Address City, State,
@@ -3927,7 +3927,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 				  padding-bottom:0mm;">9</div>
 								<div class="styLNDesc" style="width:178mm;padding-left:2mm;padding-top:0mm;
 				  padding-bottom:0mm;">
-				  City or town, state or province , and country (including postal code)
+				  City or town, state or province, and country (including postal code)
 				</div>
 								<div class="styLNDesc" style="width:186mm;padding-top:1mm;padding-left:10mm;">
 									<!--PART V REPEATING INFORMATION  Start of Foreign Deposit and Custodial
@@ -4419,7 +4419,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 				  padding-bottom:0mm;">9</div>
 								<div class="styLNDesc" style="width:178mm;padding-left:2mm;
 				  padding-top:0mm;padding-bottom:0mm;">
-				  City or town, state or province , and country (including postal code)
+				  City or town, state or province, and country (including postal code)
 				</div>
 								<div class="styLNDesc" style="width:186mm;padding-top:1mm;
 				  padding-left:10mm;"/>
@@ -5095,7 +5095,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:1mm">e</div>
 								<div class="styLNDesc" style="width:179mm;padding-left:2mm;
 				  padding-bottom:0mm;padding-top:1mm;">
-				  City or town, state or province , and country (including postal code)</div>
+				  City or town, state or province, and country (including postal code)</div>
 								<div class="styLNDesc" style="width:186mm;padding-left:10mm;">
 									<xsl:if test="$FormData/OtherForeignAssetGrp/USAddress">
 										<xsl:call-template name="PopulateText">
@@ -5405,7 +5405,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 				  border-width: 0px 0px 1px 0px;height:10mm;">
 									<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
 									<div class="styLNDesc" style="width:178mm;padding-left:2mm;padding-bottom:0mm;">
-					  City or town, state or province , and country (including postal code)
+					  City or town, state or province, and country (including postal code)
 					</div>
 									<div class="styLNDesc" style="width:186mm;padding-left:10mm;">
 										<xsl:if test="USAddress">
@@ -5721,7 +5721,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 					  border-width: 0px 0px 1px 0px;height:12mm;">
 										<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
 										<div class="styLNDesc" style="width:178mm;padding-left:2mm;padding-bottom:0mm;">
-						  City or town, state or province , and country (including postal code)
+						  City or town, state or province, and country (including postal code)
 						</div>
 										<div class="styLNDesc" style="width:186mm;padding-left:10mm;">
 											<xsl:if test="USAddress">
@@ -6158,29 +6158,42 @@ trust. (See instructions for definitions and what to do if you have more than on
 					<!--Dotted Line-->
 									<span class="styDotLn" style="float:none;clear:none;padding-right:1mm;">...</span>
 									<!--Start of Exchange Rate Used Ind "Yes"-->
-									<input type="Checkbox" class="styCkbox">
+									<span>
+									<xsl:call-template name="PopulateSpan">
+									<xsl:with-param name="TargetNode" select="$FormData/ExchangeRateUsedInd"/>
+								</xsl:call-template>
+									<input type="Checkbox" alt="Exchange Rate Used Indicator Yes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
+									</span>
+									<span>
 									<span style="width:5px;"/>
 									<label>
-										<xsl:call-template name="PopulateLabelYes">
+																			<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 							Yes
 						</label>
+						</span>
+						<span>
 									<!--PART VI REPEATING INFORMATION  End of Exchange Rate Used Ind "Yes"-->
 									<span style="width:5px;"/>
 									<!--PART VI REPEATING INFORMATION  Start of Exchange Rate Used Ind "No"-->
-									<input type="Checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateSpan">
+									<xsl:with-param name="TargetNode" select="$FormData/ExchangeRateUsedInd"/>
+								</xsl:call-template>
+									<input type="Checkbox" alt="Exchange Rate Used Indicator No" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
+									</span>
+									<span>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
@@ -6189,6 +6202,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										</xsl:call-template>
 							No
 						</label>
+						</span>
 									<!--PART VI REPEATING INFORMATION  End of Exchange Rate Used Ind "No"-->
 								</div>
 							</div>
@@ -6429,7 +6443,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 							<div style="width:187mm;height:16mm; border-left-width: 0px;border-top-width: 0px; border-right-width: 0px;border-style:solid;border-color:black;font-size:8pt;">
 								<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
 								<div class="styLNDesc" style="width:179mm;padding-left:1mm;padding-bottom:0mm;">
-					City or town, state or province , and country (including postal code)
+					City or town, state or province, and country (including postal code)
 				</div>
 								<div class="styLNDesc" style="width:187mm;padding-left:10mm;">
 									<xsl:if test="USAddress">
@@ -6734,7 +6748,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 				  border-width: 0px 0px 1px 0px;font-size:8pt;">
 									<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
 									<div class="styLNDesc" style="width:178mm;padding-left:2mm;padding-bottom:0mm;">
-					  City or town, state or province , and country (including postal code)
+					  City or town, state or province, and country (including postal code)
 					</div>
 									<div class="styLNDesc" style="width:186mm;padding-left:10mm;">
 										<xsl:if test="AssetNotStockOfForeignEntGrp/USAddress">
@@ -7057,7 +7071,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
 										<div class="styLNDesc" style="width:178mm;padding-left:2mm;
 						  padding-bottom:0mm;">
-						  City or town, state or province , and country (including postal code)
+						  City or town, state or province, and country (including postal code)
 						</div>
 										<div class="styLNDesc" style="width:186mm;padding-left:10mm;">
 											<xsl:if test="USAddress">
@@ -7684,7 +7698,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 							<div style="width:187mm;height:12mm; border-left-width: 0px;border-top-width: 0px; border-right-width: 0px;border-style:solid;border-color:black;font-size:8pt;">
 								<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:1mm">e</div>
 								<div class="styLNDesc" style="width:179mm;padding-left:2mm;padding-bottom:0mm;padding-top:1mm">
-					City or town, state or province , and country (including postal code)
+					City or town, state or province, and country (including postal code)
 				</div>
 								<div class="styLNDesc" style="width:186mm;padding-left:10mm;">	
 				</div>
@@ -7977,7 +7991,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 							<div style="width:187mm;height:12mm; border-left-width: 0px;border-top-width: 0px; border-right-width: 0px;border-style:solid;border-color:black;font-size:8pt;">
 								<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
 								<div class="styLNDesc" style="width:179mm;padding-left:2mm;padding-bottom:0mm;">
-					City or town, state or province , and country (including postal code)
+					City or town, state or province, and country (including postal code)
 				</div>
 								<div class="styLNDesc" style="width:186mm;padding-left:10mm;">	
 					</div>
@@ -8502,7 +8516,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 				  padding-bottom:0mm;">9</div>
 									<div class="styLNDesc" style="width:178mm;padding-left:2mm;
 				  padding-top:0mm;padding-bottom:0mm;">
-				  City or town, state or province , and country (including postal code)</div>
+				  City or town, state or province, and country (including postal code)</div>
 									<div class="styLNDesc" style="width:186mm;
 				  padding-left:10mm;">
 										<!--PART V SEPARATED PRINT  Start of Foreign Deposit and Custodial 
@@ -9231,7 +9245,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:0mm">e</div>
 									<div class="styLNDesc" style="width:178mm;padding-left:2mm;
 				  padding-bottom:0mm;padding-top:1mm;">
-					City or town, state or province , and country (including postal code)</div>
+					City or town, state or province, and country (including postal code)</div>
 									<div class="styLNDesc" style="width:186mm;padding-left:10mm;">
 										<xsl:if test="USAddress">
 											<xsl:call-template name="PopulateText">
@@ -9569,7 +9583,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
 										<div class="styLNDesc" style="width:178mm;padding-left:2mm;
 					  padding-top:0mm;">
-					  City or town, state or province , and country (including postal code)</div>
+					  City or town, state or province, and country (including postal code)</div>
 										<div class="styLNDesc" style="width:186mm;padding-left:10mm;">
 											<xsl:if test="AssetNotStockOfForeignEntGrp/USAddress">
 												<xsl:call-template name="PopulateText">
@@ -9929,7 +9943,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 											<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
 											<div class="styLNDesc" style="width:178mm;padding-left:2mm;
 						  padding-top:2mm;height:0mm;">
-						  City or town, state or province , and country (including postal code)</div>
+						  City or town, state or province, and country (including postal code)</div>
 											<div class="styLNDesc" style="width:186mm;padding-left:10mm;height:0mm">
 												<xsl:if test="USAddress">
 													<xsl:call-template name="PopulateText">

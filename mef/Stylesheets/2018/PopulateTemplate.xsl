@@ -1286,7 +1286,11 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
 							</xsl:when>
 							<xsl:when test="$RtnHdrData/Filer/PersonFullName">
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PersonFullName"/>
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PersonFullName/PersonFirstNm"/>
+								</xsl:call-template>
+								<xsl:text> </xsl:text>
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PersonFullName/PersonLastNm"/>
 								</xsl:call-template>
 							</xsl:when>
 							<xsl:when test="$RtnHdrData/Filer/PrimaryNm">
@@ -2392,12 +2396,12 @@ Log:
 -->
 	<xsl:template name="GlobalStylesForm">
 		<!-- If the Print parameter is empty -->
-		  <xsl:if test="not(string($Print))">
+		 <!-- <xsl:if test="not(string($Print))">-->
 
 		<link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
 		<link rel="stylesheet" type="text/css" name="BodyStyleSheet" href="{$CSSPath}/body.css"/>
 		<link rel="stylesheet" type="text/css" name="General" href="{$CSSPath}/general.css"/>
-		 </xsl:if>
+		 <!--</xsl:if>-->
 
 	</xsl:template>
 	<!--
@@ -2414,9 +2418,9 @@ Log:
 -->
 	<xsl:template name="GlobalStylesDep">
 		<!-- If the Print parameter is empty -->
-		<xsl:if test="not(string($Print))">
+		<!--<xsl:if test="not(string($Print))">-->
 			<link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
-		</xsl:if>
+		<!--</xsl:if>-->
 	</xsl:template>
 	<!--
 ***************************************************************************************************************************************************************
@@ -2616,7 +2620,7 @@ Log:
 	</xsl:template>
 	<!--
 ***************************************************************************************************************************************************************
-Name:           SetFormLinkInline
+Name:           SetFormLinkInlineRRD (RRD version)
 Description:    Template to display the form link image (usually pushpin image); image is displayed inline (normally) using img tags
 Req Param:  
 Opt Param:   
@@ -2625,7 +2629,7 @@ Calls:          none
 Log:
 ***************************************************************************************************************************************************************
 -->
-	<xsl:template name="SetFormLinkInline">
+	<xsl:template name="SetFormLinkInlineRRD">
 		<xsl:param name="TargetNode"/>
 		<xsl:param name="TabOrder">1</xsl:param>
 		<xsl:param name="IDstring">
@@ -2669,6 +2673,38 @@ Log:
 		</xsl:if>
 		<!--/xsl:if-->
 	</xsl:template>
+	
+	<!--
+***************************************************************************************************************************************************************
+Name: SetFormLinkInline
+Description: Template to display the form link image (usually pushpin image); image is displayed inline (normally) using img tags
+Req Param:
+Opt Param:
+Called By: Stylesheets
+Calls: SendRef() java script function (requires addition of this script to script file)
+Log: - Mike Farrell - This is a Modification of the original by Charles Moore
+***************************************************************************************************************************************************************
+-->
+<xsl:template name="SetFormLinkInline">
+<xsl:param name="TargetNode"/>
+<!-- do nothing if for printing -->
+<!--xsl:if test="not($Print) or $Print=''"-->
+<xsl:if test="($TargetNode/@referenceDocumentId) and not($TargetNode/@referenceDocumentId='')">
+<img src="{$NonVersionedImagePath}/attach.gif" style="cursor:auto;">
+<xsl:attribute name="alt">Click to see attachment</xsl:attribute>
+<xsl:if test="contains(normalize-space($TargetNode/@referenceDocumentId), ' ')">
+<!-- assume more then one attachments exist when the string contains space -->
+<xsl:attribute name="alt">Click to see list of attachments</xsl:attribute>
+</xsl:if>
+<xsl:if test="not($Print) or $Print=''">
+<xsl:attribute name="style">cursor:hand;</xsl:attribute>
+<xsl:attribute name="onclick">SendRef('<xsl:value-of select="$TargetNode/@referenceDocumentId"/>')</xsl:attribute>
+</xsl:if>
+</img>
+</xsl:if>
+<!--/xsl:if-->
+</xsl:template>
+	
 	<!--
 ***************************************************************************************************************************************************************
 Name:           LinkToLeftoverBooleanDataTableInline

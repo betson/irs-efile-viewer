@@ -335,7 +335,7 @@
 					<!--   BEGIN CITY, STATE, ZIP AND VOTING PERCENTAGE   -->
 					<!--  *******************************************************************************  -->
 					<div style="width:187mm;">
-						<div class="styComType" style="font-size: 7pt; width:109mm; height:15mm; border-top-width:1px; border-bottom-width:0px;border-right-width:1px">City or town, state, and ZIP code
+						<div class="styComType" style="font-size: 7pt;width:109mm; height:15mm; border-top-width:1px; border-bottom-width:0px;border-right-width:1px">City or town, state, and ZIP code
                          <br/> 
 							<span style="font-family:verdana, arial, sans-serif; font-size:7pt; font-weight:normal;">
 								<!-- <span style="font-family: verdana, arial, sans-serif;font-size: 8pt; font-weight: bold;"> -->
@@ -349,10 +349,11 @@
 												<xsl:with-param name="TargetNode" select="$IRS5471Data/PersonFilingThisReturn/USAddress/CityNm"/>
 											</xsl:call-template>,
 										</div>
+										<span style="width:4px"/>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS5471Data/PersonFilingThisReturn/USAddress/StateAbbreviationCd"/>
 										</xsl:call-template>
-										<span style="width:8px"/>
+										<span style="width:4px"/>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS5471Data/PersonFilingThisReturn/USAddress/ZIPCd"/>
 										</xsl:call-template>
@@ -814,7 +815,7 @@
 										</span>
 									</span>
 								</span>
-								<div class="styIRS5471TableContainer" id="FEIdctn" style="height:9mm;border-top-width:1px;border-left:1px solid black;width:76mm;padding-left:0mm;">
+								<div class="styIRS5471TableContainer" id="FEIdctn" style="height:9mm;border-top-width:1px;width:76mm;padding-left:0mm;">
 									<xsl:call-template name="SetInitialState"/>
 									<table class="styTable" cellspacing="0" style="font-size: 7pt;">
 										<tbody>
@@ -822,7 +823,7 @@
 												<xsl:when test="count($IRS5471Data/ForeignEntityIdentificationGrp) = 0">
 													<tr>
 														<td class="styTableCell"
-														 style="vertical-align:bottom;height:9mm;border-color:black;border-right:0;">
+														 style="vertical-align:bottom;height:9mm;border-color:black;border-right:0;border-left:1px solid black;">
 															<span style="text-align:left;width: 73mm;">
 																<br/>
 															</span>
@@ -832,7 +833,7 @@
 												<xsl:otherwise>
 													<xsl:for-each select="$IRS5471Data/ForeignEntityIdentificationGrp">
 														<tr>
-															<td class="styTableCell" style="vertical-align:bottom;height:9mm;border-color:black;border-right:0;border-left:0;width: 73mm;">
+															<td class="styTableCell" style="vertical-align:bottom;height:9mm;border-color:black;border-right:0;border-left:1px solid black;width: 73mm;">
 																<span style="font-size:6pt;text-align:left;">
 																	<xsl:call-template name="PopulateText">
 																		<xsl:with-param name="TargetNode"
@@ -1088,9 +1089,8 @@
 					</span>
 					<!--   END BLOCK 2A, 2B   -->
 					<!-- Adding parent div to the elements a and b of line 2.  If not when the height of the line e is less than the c and d, then this table will appear next to the line e -->
-					<div class="styGenericDiv" style="width:186mm;border-top:1px solid black">
-						<div class="styBB"
-						 style="width:102mm;border-bottom:0;border-right-width:0px;clear:none;">
+					<div class="styGenericDiv" style="width:186mm;border-top:1px solid black;">
+						<div class="styBB" style="width:102mm;border-bottom:0;border-right-width:0px;clear:none;">
 							<!-- Box 2c -->
 							<div class="styGenericDiv" style="font-size:7pt; ">
 								<b>c</b> &#160;Name and address of foreign corporation's statutory or resident agent in <br/>
@@ -1294,22 +1294,24 @@ books and records, if different
 						</xsl:if>
 					</div>
 					<!--   END BLOCK 2C, 2D   -->
-				<!--<p style="page-break-before:always"/>-->
+<!--				<p style="page-break-before:always"/>
+-->
+					<xsl:if test="($Print != $Separated)">
+						<br style="clear:both;"/>
+					</xsl:if>
 					<!--   BEGIN SCHEDULE A HEADER   -->
 					<div class="styBB" style="width:186mm; border-top: 1px solid black;">
 					<div class="styPartName" style="width: 22mm;height:4.5mm">Schedule A</div>
 						<div class="styPartDesc" style="width: 158mm;">Stock of the Foreign Corporation</div>
 						<div style="height:2mm;float:right;clear:none;width:3mm;"> 
-                                                        <xsl:call-template name="SetDynamicTableToggleButton"> 
-                                                                <xsl:with-param name="TargetNode" 
-                                                                select="$IRS5471AData/StockOfTheForeignCorporation"/> 
-                                                                <xsl:with-param name="containerHeight" select="4"/> 
-                                                                        <xsl:with-param name="containerID" select=" 'SCctn' "/>
-
-                                                        </xsl:call-template> 
-                                                        </div>
-                                                </div>
-
+							<xsl:call-template name="SetDynamicTableToggleButton"> 
+								<xsl:with-param name="TargetNode" 
+								select="$IRS5471AData/StockOfTheForeignCorporation"/> 
+								<xsl:with-param name="containerHeight" select="4"/> 
+									<xsl:with-param name="containerID" select=" 'SCctn' "/>
+							</xsl:call-template> 
+						</div>
+					</div>
 					<!--   END SCHEDULE A HEADER   -->
 					<!--  BEGIN A, B, i and ii   -->
 					 <div class="styIRS5471TableContainer" style="width:187mm;height:auto;" id="SCctn">
@@ -2192,7 +2194,7 @@ books and records, if different
 							<!--  END LINE 9 of Schedule C   -->
 							<!--  BEGIN LINE 10 of Schedule C    -->
 							<div>
-								<div class="styLNLeftNumBoxSD" >10</div>
+								<div class="styLNLeftNumBox" >10</div>
 								<div class="styLNDesc" style="width:89mm;">Total income (add lines 3 through 9)
 									<span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
 								</div>

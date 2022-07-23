@@ -11,6 +11,10 @@
 	<xsl:output method="html" indent="yes" />
 	<xsl:strip-space elements="*" />
 	<xsl:param name="FormData" select="$RtnDoc/IRS965A" />
+	<!-- Special selectors set up to reserve rows 1 and 2 for certain data sets. If an XML group fails rule F965A-002 the data will be missing -->
+	<xsl:variable name="ElectionInclusion2017" select="$FormData/Net965TaxLiabInstalElectGrp[TransactionCd='INITIAL INCLUSION' and NetTaxLiabilityYr='2017'][1]"/>
+	<xsl:variable name="ElectionInclusion2018" select="$FormData/Net965TaxLiabInstalElectGrp[TransactionCd='INITIAL INCLUSION' and NetTaxLiabilityYr='2018'][1]"/>
+	<xsl:variable name="ElectionOther" select="$FormData/Net965TaxLiabInstalElectGrp[not(TransactionCd='INITIAL INCLUSION' and (NetTaxLiabilityYr='2017' or NetTaxLiabilityYr='2018'))]"/>
 	<xsl:template match="/">
 		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
@@ -120,7 +124,7 @@
 					<!-- Table 1, cols (a)-(e) -->
 					<div class="styStdDivLS" style="">
 						<xsl:call-template name="SetInitialState"/>
-						<table class="styTbl" style="display:table;border-collapse:collapse;">
+						<table style="display:table;border-collapse:collapse;">
 							<thead class="styTableThead">
 								<tr>
 									<th class="styTableCellHeader" scope="col" style="width:8mm;font-weight:normal;"> </th>
@@ -160,10 +164,78 @@
 								</tr>
 							</thead>
 							<tbody>
-								<xsl:for-each select="$FormData/Net965TaxLiabInstalElectGrp">
+								<!-- Row 1, 2017 Initial Inclusion. Use $ElectionInclusion2017  -->
+								<tr style="height:4mm;vertical-align:top;">
+									<td class="styTableCellCtrInherit" style="font-weight:bold;vertical-align:bottom;">1</td>
+									<td class="styTableCellCtrInherit">
+										<xsl:if test="not($ElectionInclusion2017/NetTaxLiabilityYr)">2017</xsl:if>
+										<xsl:call-template name="PopulateYear">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/NetTaxLiabilityYr"/>
+										</xsl:call-template>
+										<xsl:call-template name="LinkToLeftoverDataTableInline">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/TransactionCd"/>
+											<xsl:with-param name="Desc">Part I - Transaction Code</xsl:with-param>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/NetTaxLiabilityWith965Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/NetTaxLiabilityWithout965Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/NetSection965TaxLiabilityAmt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit" style="border-right-width:0px;">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$FormData/TotalSCorpNet965TaxCmptGrp[1]/NetSect965DeferredTaxLiabAmt"/>
+										</xsl:call-template>
+									</td>
+								</tr>
+								<!-- Row 2, 2018 Initial Inclusion. Use $ElectionInclusion2018  -->
+								<tr style="height:4mm;vertical-align:top;">
+									<td class="styTableCellCtrInherit" style="font-weight:bold;vertical-align:bottom;">2</td>
+									<td class="styTableCellCtrInherit">
+										<xsl:if test="not($ElectionInclusion2018/NetTaxLiabilityYr)">2018</xsl:if>
+										<xsl:call-template name="PopulateYear">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/NetTaxLiabilityYr"/>
+										</xsl:call-template>
+										<xsl:call-template name="LinkToLeftoverDataTableInline">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/TransactionCd"/>
+											<xsl:with-param name="Desc">Part I - Transaction Code</xsl:with-param>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/NetTaxLiabilityWith965Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/NetTaxLiabilityWithout965Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/NetSection965TaxLiabilityAmt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit" style="border-right-width:0px;">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$FormData/TotalSCorpNet965TaxCmptGrp[2]/NetSect965DeferredTaxLiabAmt"/>
+										</xsl:call-template>
+									</td>
+								</tr>
+								<xsl:for-each select="$ElectionOther">
 									<tr style="height:4mm;vertical-align:top;">
 										<td class="styTableCellCtrInherit" style="font-weight:bold;vertical-align:bottom;">
-											<xsl:number value="position()"/>
+											<xsl:number value="position() + 2"/>
 										</td>
 										<td class="styTableCellCtrInherit">
 											<xsl:call-template name="PopulateYear">
@@ -189,20 +261,12 @@
 												<xsl:with-param name="TargetNode" select="NetSection965TaxLiabilityAmt"/>
 											</xsl:call-template>
 										</td>
-										<td class="styTableCellAmtInherit" style="border-right-width:0px;">
-											<xsl:if test="position() &gt; 2">
-												<xsl:attribute name="style">border-right-width:0px;background-color:lightgrey;</xsl:attribute>
-											</xsl:if>
-											<xsl:variable name="pos" select="position()"/>
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$FormData/TotalSCorpNet965TaxCmptGrp[$pos]/NetSect965DeferredTaxLiabAmt"/>
-											</xsl:call-template>
-										</td>
+										<td class="styTableCellAmtInherit" style="border-right-width:0px;background-color:lightgrey;">&nbsp;</td>
 									</tr>
 								</xsl:for-each>
-								<xsl:if test="count($FormData/Net965TaxLiabInstalElectGrp) &lt; 7">
+								<xsl:if test="count($ElectionOther) &lt; 5">
 									<xsl:call-template name="FillTable1Rows">
-										<xsl:with-param name="LineNumber" select="1 + count($FormData/Net965TaxLiabInstalElectGrp)"/>
+										<xsl:with-param name="LineNumber" select="3 + count($ElectionOther)"/>
 									</xsl:call-template>
 								</xsl:if>
 							</tbody>
@@ -211,7 +275,7 @@
 					<!-- Table 1, cols (f)-(k) -->
 					<div class="styStdDivLS" style="">
 						<xsl:call-template name="SetInitialState"/>
-						<table class="styTbl" style="display:table;border-collapse:collapse;">
+						<table style="display:table;border-collapse:collapse;">
 							<thead class="styTableThead">
 								<tr>
 									<th class="styTableCellHeader" scope="col" style="width:8mm;font-weight:normal;"> </th>
@@ -260,10 +324,118 @@
 								</tr>
 							</thead>
 							<tbody>
-								<xsl:for-each select="$FormData/Net965TaxLiabInstalElectGrp">
+								<!-- Row 1, 2017 Initial Inclusion. Use $ElectionInclusion2017  -->
+								<tr style="height:4mm;vertical-align:top;">
+									<td class="styTableCellCtrInherit" style="font-weight:bold;vertical-align:bottom;">1</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/InstallmentPaymentElectionAmt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellCtrInherit" style="padding:0px;">
+										<div style="width:50%;float:left;text-align:center;border-right:1px solid black;height:4mm;padding-top:0.2mm;">
+											<xsl:call-template name="PopulateYesBoxText">
+												<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/InstallmentElectionInd"/>
+											</xsl:call-template>
+										</div>
+										<div style="width:50%;float:left;text-align:center;height:4mm;padding-top:0.2mm;">
+											<xsl:call-template name="PopulateNoBoxText">
+												<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/InstallmentElectionInd"/>
+											</xsl:call-template>
+										</div>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:if test="$ElectionInclusion2017/InstallmentElectionInd = 'false' or $ElectionInclusion2017/InstallmentElectionInd = '0'">
+											<xsl:call-template name="PopulateAmount">
+												<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/InstallmentPaymentElectionAmt"/>
+											</xsl:call-template>
+										</xsl:if>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:if test="$ElectionInclusion2017/InstallmentElectionInd = 'true' or $ElectionInclusion2017/InstallmentElectionInd = '1'">
+											<xsl:call-template name="PopulateAmount">
+												<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/InstallmentPaymentElectionAmt"/>
+											</xsl:call-template>
+										</xsl:if>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/NetTaxAdjustmentAmt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellCtrInherit" style="border-right-width:0px;">
+										<xsl:choose>
+											<xsl:when test="$ElectionInclusion2017/SSN">
+												<xsl:call-template name="PopulateSSN">
+													<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/SSN"/>
+												</xsl:call-template>
+											</xsl:when>
+											<xsl:otherwise>
+												<xsl:call-template name="PopulateEIN">
+													<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/EIN"/>
+												</xsl:call-template>
+											</xsl:otherwise>
+										</xsl:choose>
+									</td>
+								</tr>
+								<!-- Row 2, 2018 Initial Inclusion. Use $ElectionInclusion2018 -->
+								<tr style="height:4mm;vertical-align:top;">
+									<td class="styTableCellCtrInherit" style="font-weight:bold;vertical-align:bottom;">2</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/InstallmentPaymentElectionAmt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellCtrInherit" style="padding:0px;">
+										<div style="width:50%;float:left;text-align:center;border-right:1px solid black;height:4mm;padding-top:0.2mm;">
+											<xsl:call-template name="PopulateYesBoxText">
+												<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/InstallmentElectionInd"/>
+											</xsl:call-template>
+										</div>
+										<div style="width:50%;float:left;text-align:center;height:4mm;padding-top:0.2mm;">
+											<xsl:call-template name="PopulateNoBoxText">
+												<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/InstallmentElectionInd"/>
+											</xsl:call-template>
+										</div>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:if test="$ElectionInclusion2018/InstallmentElectionInd = 'false' or $ElectionInclusion2018/InstallmentElectionInd = '0'">
+											<xsl:call-template name="PopulateAmount">
+												<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/InstallmentPaymentElectionAmt"/>
+											</xsl:call-template>
+										</xsl:if>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:if test="$ElectionInclusion2018/InstallmentElectionInd = 'true' or $ElectionInclusion2018/InstallmentElectionInd = '1'">
+											<xsl:call-template name="PopulateAmount">
+												<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/InstallmentPaymentElectionAmt"/>
+											</xsl:call-template>
+										</xsl:if>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/NetTaxAdjustmentAmt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellCtrInherit" style="border-right-width:0px;">
+										<xsl:choose>
+											<xsl:when test="$ElectionInclusion2018/SSN">
+												<xsl:call-template name="PopulateSSN">
+													<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/SSN"/>
+												</xsl:call-template>
+											</xsl:when>
+											<xsl:otherwise>
+												<xsl:call-template name="PopulateEIN">
+													<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/EIN"/>
+												</xsl:call-template>
+											</xsl:otherwise>
+										</xsl:choose>
+									</td>
+								</tr>
+								<xsl:for-each select="$ElectionOther">
 									<tr style="height:4mm;vertical-align:top;">
 										<td class="styTableCellCtrInherit" style="font-weight:bold;vertical-align:bottom;">
-											<xsl:number value="position()"/>
+											<xsl:number value="position() + 2"/>
 										</td>
 										<td class="styTableCellAmtInherit">
 											<xsl:call-template name="PopulateAmount">
@@ -317,9 +489,9 @@
 										</td>
 									</tr>
 								</xsl:for-each>
-								<xsl:if test="count($FormData/Net965TaxLiabInstalElectGrp) &lt; 7">
+								<xsl:if test="count($ElectionOther) &lt; 5">
 									<xsl:call-template name="FillTable2Rows">
-										<xsl:with-param name="LineNumber" select="1 + count($FormData/Net965TaxLiabInstalElectGrp)"/>
+										<xsl:with-param name="LineNumber" select="3 + count($ElectionOther)"/>
 									</xsl:call-template>
 								</xsl:if>
 							</tbody>
@@ -333,7 +505,7 @@
 					<!-- Table 2, cols (a)-(f) -->
 					<div class="styStdDivLS" style="">
 						<xsl:call-template name="SetInitialState"/>
-						<table class="styTbl" style="display:table;border-collapse:collapse;">
+						<table style="display:table;border-collapse:collapse;">
 							<thead class="styTableThead">
 								<tr>
 									<th class="styTableCellHeader" scope="col" style="width:8mm;font-weight:normal;"> </th>
@@ -367,10 +539,80 @@
 								</tr>
 							</thead>
 							<tbody>
-								<xsl:for-each select="$FormData/Net965TaxLiabInstalElectGrp">
+								<!-- Row 1, 2017 Initial Inclusion. Use $ElectionInclusion2017 -->
+								<tr style="height:4mm;vertical-align:top;">
+									<td class="styTableCellCtrInherit" style="font-weight:bold;vertical-align:bottom;">1</td>
+									<td class="styTableCellCtrInherit">
+										<xsl:if test="not($ElectionInclusion2017/NetTaxLiabilityYr)">2017</xsl:if>
+										<xsl:call-template name="PopulateYear">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/NetTaxLiabilityYr"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/PaidYear1Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/PaidYear2Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/PaidYear3Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/PaidYear4Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit" style="border-right-width:0px;">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/PaidYear5Amt"/>
+										</xsl:call-template>
+									</td>
+								</tr>
+								<!-- Row 2, 2018 Initial Inclusion. Use $ElectionInclusion2018 -->
+								<tr style="height:4mm;vertical-align:top;">
+									<td class="styTableCellCtrInherit" style="font-weight:bold;vertical-align:bottom;">2</td>
+									<td class="styTableCellCtrInherit">
+										<xsl:if test="not($ElectionInclusion2018/NetTaxLiabilityYr)">2018</xsl:if>
+										<xsl:call-template name="PopulateYear">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/NetTaxLiabilityYr"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/PaidYear1Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/PaidYear2Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/PaidYear3Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/PaidYear4Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit" style="border-right-width:0px;">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/PaidYear5Amt"/>
+										</xsl:call-template>
+									</td>
+								</tr>
+								<xsl:for-each select="$ElectionOther">
 									<tr style="height:4mm;vertical-align:top;">
 										<td class="styTableCellCtrInherit" style="font-weight:bold;vertical-align:bottom;">
-											<xsl:number value="position()"/>
+											<xsl:number value="position() + 2"/>
 										</td>
 										<td class="styTableCellCtrInherit">
 											<xsl:call-template name="PopulateYear">
@@ -404,9 +646,9 @@
 										</td>
 									</tr>
 								</xsl:for-each>
-								<xsl:if test="count($FormData/Net965TaxLiabInstalElectGrp) &lt; 7">
+								<xsl:if test="count($ElectionOther) &lt; 5">
 									<xsl:call-template name="FillTable3Rows">
-										<xsl:with-param name="LineNumber" select="1 + count($FormData/Net965TaxLiabInstalElectGrp)"/>
+										<xsl:with-param name="LineNumber" select="3 + count($ElectionOther)"/>
 									</xsl:call-template>
 								</xsl:if>
 							</tbody>
@@ -430,7 +672,7 @@
 					<!-- Table 2, cols (g)-(k) -->
 					<div class="styStdDivLS" style="">
 						<xsl:call-template name="SetInitialState"/>
-						<table class="styTbl" style="display:table;border-collapse:collapse;">
+						<table style="display:table;border-collapse:collapse;">
 							<thead class="styTableThead">
 								<tr>
 									<th class="styTableCellHeader" scope="col" style="width:8mm;font-weight:normal;"> </th>
@@ -459,10 +701,68 @@
 								</tr>
 							</thead>
 							<tbody>
-								<xsl:for-each select="$FormData/Net965TaxLiabInstalElectGrp">
+								<!-- Row 1, 2017 Initial Inclusion. Use $ElectionInclusion2017 -->
+								<tr style="height:4mm;vertical-align:top;">
+									<td class="styTableCellCtrInherit" style="font-weight:bold;vertical-align:bottom;">1</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/PaidYear6Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/PaidYear7Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/PaidYear8Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/UnpaidTaxLiabilityAmt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit" style="border-right-width:0px;">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/PaidTaxLiabilityAmt"/>
+										</xsl:call-template>
+									</td>
+								</tr>
+								<!-- Row 2, 2018 Initial Inclusion. Use $ElectionInclusion2018 -->
+								<tr style="height:4mm;vertical-align:top;">
+									<td class="styTableCellCtrInherit" style="font-weight:bold;vertical-align:bottom;">2</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/PaidYear6Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/PaidYear7Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/PaidYear8Amt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/UnpaidTaxLiabilityAmt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit" style="border-right-width:0px;">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/PaidTaxLiabilityAmt"/>
+										</xsl:call-template>
+									</td>
+								</tr>
+								<xsl:for-each select="$ElectionOther">
 									<tr style="height:4mm;vertical-align:top;">
 										<td class="styTableCellCtrInherit" style="font-weight:bold;vertical-align:bottom;">
-											<xsl:number value="position()"/>
+											<xsl:number value="position() + 2"/>
 										</td>
 										<td class="styTableCellAmtInherit">
 											<xsl:call-template name="PopulateAmount">
@@ -491,9 +791,9 @@
 										</td>
 									</tr>
 								</xsl:for-each>
-								<xsl:if test="count($FormData/Net965TaxLiabInstalElectGrp) &lt; 7">
+								<xsl:if test="count($ElectionOther) &lt; 5">
 									<xsl:call-template name="FillTable4Rows">
-										<xsl:with-param name="LineNumber" select="1 + count($FormData/Net965TaxLiabInstalElectGrp)"/>
+										<xsl:with-param name="LineNumber" select="3 + count($ElectionOther)"/>
 									</xsl:call-template>
 								</xsl:if>
 								<tr style="height:7mm;vertical-align:bottom;">
@@ -525,7 +825,7 @@
 					<!-- Table 3 -->
 					<div class="styStdDivLS" style="">
 						<xsl:call-template name="SetInitialState"/>
-						<table class="styTbl" style="display:table;border-collapse:collapse;">
+						<table style="display:table;border-collapse:collapse;">
 							<thead class="styTableThead">
 								<tr>
 									<th class="styTableCellHeader" scope="col" rowspan="2" style="width:19mm;font-weight:normal;">
@@ -752,7 +1052,7 @@
 					<!-- Table 4, cols (a)-(d) -->
 					<div class="styStdDivLS" style="">
 						<xsl:call-template name="SetInitialState"/>
-						<table class="styTbl" style="display:table;border-collapse:collapse;">
+						<table style="display:table;border-collapse:collapse;">
 							<thead class="styTableThead">
 								<tr>
 									<th class="styTableCellHeader" scope="col" style="width:8mm;font-weight:normal;"> </th>
@@ -822,7 +1122,7 @@
 					<!-- Table 4, cols (e)-(i) -->
 					<div class="styStdDivLS" style="">
 						<xsl:call-template name="SetInitialState"/>
-						<table class="styTbl" style="display:table;border-collapse:collapse;">
+						<table style="display:table;border-collapse:collapse;">
 							<thead class="styTableThead">
 								<tr>
 									<th class="styTableCellHeader" scope="col" style="width:8mm;font-weight:normal;"> </th>
@@ -933,10 +1233,22 @@
 							<xsl:with-param name="TargetNode" select="$FormData"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
-						<xsl:for-each select="$FormData/Net965TaxLiabInstalElectGrp">
+						<xsl:for-each select="$ElectionInclusion2017">
+							<xsl:call-template name="PopulateLeftoverRow">
+								<xsl:with-param name="TargetNode" select="$ElectionInclusion2017/TransactionCd"/>
+								<xsl:with-param name="Desc">Part I - Transaction Code row 1 (<xsl:value-of select="$ElectionInclusion2017/NetTaxLiabilityYr"/>)</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each select="$ElectionInclusion2018">
+							<xsl:call-template name="PopulateLeftoverRow">
+								<xsl:with-param name="TargetNode" select="$ElectionInclusion2018/TransactionCd"/>
+								<xsl:with-param name="Desc">Part I - Transaction Code row 2 (<xsl:value-of select="$ElectionInclusion2018/NetTaxLiabilityYr"/>)</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each select="$ElectionOther">
 							<xsl:call-template name="PopulateLeftoverRow">
 								<xsl:with-param name="TargetNode" select="TransactionCd"/>
-								<xsl:with-param name="Desc">Part I - Transaction Code <xsl:number value="position()"/> (<xsl:value-of select="NetTaxLiabilityYr"/>)</xsl:with-param>
+								<xsl:with-param name="Desc">Part I - Transaction Code row <xsl:number value="position() + 2"/> (<xsl:value-of select="NetTaxLiabilityYr"/>)</xsl:with-param>
 							</xsl:call-template>
 						</xsl:for-each>
 					</table>

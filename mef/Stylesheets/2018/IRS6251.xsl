@@ -472,12 +472,12 @@
 							<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-bottom:0mm;padding-left: 2.25mm">
                             </div>
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:4mm;padding-bottom:0mm;">
-								<span style="float:left">line 4 is more than $718,800, see instructions.)</span>								
+								<span style="float:left">line 4 is more than $718,800, see instructions.)</span>
+								<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">................</span>
 								<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="Desc">Line 4 - Residual Interest In REMIC Code</xsl:with-param>
 									<xsl:with-param name="TargetNode" select="$FormData/AlternativeMinTaxableIncomeAmt/@residualInterestInREMICCd"/>
 								</xsl:call-template>
-								<span class="styDotLn" style="float:right;clear:none;padding-left:1mm;">.................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4mm;padding-bottom:0mm;border-bottom:none">4</div>
 							<div class="styLNAmountBox" style="width:36mm;height:4mm;padding-bottom:0mm;border-bottom:none;">
@@ -1267,12 +1267,12 @@
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
-							<xsl:with-param name="Desc">Part I, Line 28 - Residual Interest In REMIC Code</xsl:with-param>
+							<xsl:with-param name="Desc">Part I, Line 4 - Residual Interest In REMIC Code</xsl:with-param>
 							<xsl:with-param name="TargetNode" select="$FormData/AlternativeMinTaxableIncomeAmt/@residualInterestInREMICCd"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
-							<xsl:with-param name="Desc">Part II, Line 30 - RPI Special Processing Code</xsl:with-param>
+							<xsl:with-param name="Desc">Part II, Line 6 - RPI Special Processing Code</xsl:with-param>
 							<xsl:with-param name="TargetNode" select="$FormData/AdjAlternativeMinTaxableIncAmt/@rPISpecialProcessingCd"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>

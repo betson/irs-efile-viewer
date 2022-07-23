@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-<!-- Updated by Iskilu Lawal 11/27/2018_DD5 UWR 214980 -->
+<!-- Updated by Iskilu Lawal 02/20/2019_DD5 UWR 214980 -->
 <xsl:include href="PopulateTemplate.xsl"/>
 <xsl:include href="CommonPathRef.xsl"/>
 <xsl:include href="AddHeader.xsl"/>
@@ -294,7 +294,7 @@ Go to
  <b>Qualified carbon oxide captured using carbon capture equipment originally placed in<br/><br/>
 service at a qualified facility on or after February 9, 2018, during the 12-year period beginning on the
 date the equipment was originally placed in service, disposed of in secure geological storage, and not
-used as a tertiary injectant in a qualified enhanced oil or natural gas recovery project, nor used as described in ection 45Q(f)(5).
+used as a tertiary injectant in a qualified enhanced oil or natural gas recovery project, nor used as described in section 45Q(f)(5).
     </b>
     </div>
 

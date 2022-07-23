@@ -280,7 +280,7 @@
 								<span style="width:0mm"/><img src="{$ImagePath}/990EZ_Bullet_Md.gif" alt="bullet"/>
 								<span style="width:1mm"/>
 								 Go to <a href="http://www.irs.gov/form990ez" title="Link to IRS.gov">
-                <i>www.irs.gov/Form990EZ</i></a> for the latest information.<!--www.irs.gov/form990-->
+                <i>www.irs.gov/Form990EZ</i></a> for instructions and the latest information.<!--www.irs.gov/form990-->
 								 
 							</div>
 						</div>

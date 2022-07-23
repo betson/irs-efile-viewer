@@ -2,7 +2,7 @@
 <!-- 06/01/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <!-- 02/16/2016 - Changes made for defect 45738 - Jeremy Nichols -->
 <!-- 02/16/2016 - Changes made for defect 45739 - Jeremy Nichols -->
-
+<!-- 02/06/2019 - Changes made for KISAM IM00536490 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -1364,14 +1364,23 @@
             </div>
           </div>
           <div style="width:187mm;font-size:7pt;border-bottom:1px black solid;">
-            <div class="styLNLeftNumBox" style="height:7mm;width:8mm;"/>
-            <div class="styLNDesc" style="width:175mm;height:7mm;">
-    Complete if making a claim on lines 1a or 2a; or lines 3d and 3e for type of use 14. Enter the information below for <br/>
-    each governmental unit to whom the fuel was sold. If more space is needed, attach additional sheets.
-  </div>
+            <div class="styLNLeftNumBox" style="height:7mm;width:8mm;"><span style="width:7mm;"/></div>
+            <div class="styLNDesc" style="width:178mm;height:7mm;">
+				Complete if making a claim on lines 1a or 2a; or lines 3d and 3e for type of use 14. Enter the information below for <br/>
+				each governmental unit to whom the fuel was sold. If more space is needed, attach additional sheets.
+				<div class="styGenericDiv" style="width:3.2mm;display:inline;float:right;">
+					<!-- button display logic -->
+					<xsl:call-template name="SetDynamicTableToggleButton">
+						<xsl:with-param name="TargetNode" select="$FormData/GovernmentUnitInformation"/>
+						<xsl:with-param name="containerHeight" select="10"/>
+						<xsl:with-param name="containerID" select=" 'GOVctn' "/>
+					</xsl:call-template>
+					<!-- end button display logic -->
+				</div>
+			  </div>
           </div>
           <div class="styBB" style="height:auto;width:187mm;border-top:1px black;border-bottom:0px;">
-            <div class="styTableContainer" style="height:auto;" id="PSOctn">
+            <div class="styTableContainer" style="height:auto;" id="GOVctn">
               <table style="height:auto;width:187mm;font-size:7pt;" cellpadding="0" cellspacing="0">
                 <thead>
                   <tr>
@@ -1384,7 +1393,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <xsl:if test="(count($FormData/GovernmentUnitInformation) &lt; 12 or ($Print != $Separated))">
+                  <xsl:if test="(count($FormData/GovernmentUnitInformation) &lt; 11 or ($Print != $Separated))">
                     <xsl:for-each select="$FormData/GovernmentUnitInformation">
                       <tr>
                         <td style="width:44mm;height:7.7mm;border:0 black solid;border-right-width:1px;border-bottom-width:1px;text-align:center;">
@@ -1409,7 +1418,7 @@
                       </tr>
                     </xsl:for-each>
                   </xsl:if>
-                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 1 or (count($FormData/GovernmentUnitInformation) &gt; 11 and ($Print = $Separated))">
+                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 1 or (count($FormData/GovernmentUnitInformation) &gt; 10 and ($Print = $Separated))">
                     <tr>
                       <td style="width:44mm;height:7.7mm;border:0 black solid;border-right-width:1px;               border-bottom-width:1px;text-align:center;">
                         <span style="width:1px;"/>
@@ -1425,7 +1434,7 @@
                       </td>
                     </tr>
                   </xsl:if>
-                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 2 or (count($FormData/GovernmentUnitInformation) &gt; 11 and ($Print = $Separated))">
+                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 2 or (count($FormData/GovernmentUnitInformation) &gt; 10 and ($Print = $Separated))">
                     <tr>
                       <td style="width:44mm;height:7.7mm;border:0 black solid;border-right-width:1px;               border-bottom-width:1px;text-align:center;">
                         <span style="width:1px;"/>
@@ -1438,7 +1447,7 @@
                       </td>
                     </tr>
                   </xsl:if>
-                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 3 or (count($FormData/GovernmentUnitInformation) &gt; 11 and ($Print = $Separated))">
+                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 3 or (count($FormData/GovernmentUnitInformation) &gt; 10 and ($Print = $Separated))">
                     <tr>
                       <td style="width:44mm;height:7.7mm;border:0 black solid;border-right-width:1px;               border-bottom-width:1px;text-align:center;">
                         <span style="width:1px;"/>
@@ -1451,7 +1460,7 @@
                       </td>
                     </tr>
                   </xsl:if>
-                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 4 or (count($FormData/GovernmentUnitInformation) &gt; 11 and ($Print = $Separated))">
+                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 4 or (count($FormData/GovernmentUnitInformation) &gt; 10 and ($Print = $Separated))">
                     <tr>
                       <td style="width:44mm;height:7.7mm;border:0 black solid;border-right-width:1px;               border-bottom-width:1px;text-align:center;">
                         <span style="width:1px;"/>
@@ -1464,7 +1473,7 @@
                       </td>
                     </tr>
                   </xsl:if>
-                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 5 or (count($FormData/GovernmentUnitInformation) &gt; 11 and ($Print = $Separated))">
+                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 5 or (count($FormData/GovernmentUnitInformation) &gt; 10 and ($Print = $Separated))">
                     <tr>
                       <td style="width:44mm;height:7.7mm;border:0 black solid;border-right-width:1px;               border-bottom-width:1px;text-align:center;">
                         <span style="width:1px;"/>
@@ -1477,7 +1486,7 @@
                       </td>
                     </tr>
                   </xsl:if>
-                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 6 or (count($FormData/GovernmentUnitInformation) &gt; 11 and ($Print = $Separated))">
+                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 6 or (count($FormData/GovernmentUnitInformation) &gt; 10 and ($Print = $Separated))">
                     <tr>
                       <td style="width:44mm;height:7.7mm;border:0 black solid;border-right-width:1px;               border-bottom-width:1px;text-align:center;">
                         <span style="width:1px;"/>
@@ -1490,7 +1499,7 @@
                       </td>
                     </tr>
                   </xsl:if>
-                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 7 or (count($FormData/GovernmentUnitInformation) &gt; 11 and ($Print = $Separated))">
+                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 7 or (count($FormData/GovernmentUnitInformation) &gt; 10 and ($Print = $Separated))">
                     <tr>
                       <td style="width:44mm;height:7.7mm;border:0 black solid;border-right-width:1px;               border-bottom-width:1px;text-align:center;">
                         <span style="width:1px;"/>
@@ -1503,7 +1512,7 @@
                       </td>
                     </tr>
                   </xsl:if>
-                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 8 or (count($FormData/GovernmentUnitInformation) &gt; 11 and ($Print = $Separated))">
+                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 8 or (count($FormData/GovernmentUnitInformation) &gt; 10 and ($Print = $Separated))">
                     <tr>
                       <td style="width:44mm;height:7.7mm;border:0 black solid;border-right-width:1px;               border-bottom-width:1px;text-align:center;">
                         <span style="width:1px;"/>
@@ -1516,7 +1525,7 @@
                       </td>
                     </tr>
                   </xsl:if>
-                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 9 or (count($FormData/GovernmentUnitInformation) &gt; 11 and ($Print = $Separated))">
+                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 9 or (count($FormData/GovernmentUnitInformation) &gt; 10 and ($Print = $Separated))">
                     <tr>
                       <td style="width:44mm;height:7.7mm;border:0 black solid;border-right-width:1px;               border-bottom-width:1px;text-align:center;">
                         <span style="width:1px;"/>
@@ -1525,32 +1534,6 @@
                         <span style="width:1px;"/>
                       </td>
                       <td style="width:35mm;height:7.7mm;border-left:1px black solid;border:0 black solid;               border-bottom-width:1px;text-align:right;">
-                        <span style="width:1px;"/>
-                      </td>
-                    </tr>
-                  </xsl:if>
-                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 10 or (count($FormData/GovernmentUnitInformation) &gt; 11 and ($Print = $Separated))">
-                    <tr>
-                      <td style="width:44mm;height:7.7mm;border:0 black solid;border-right-width:1px;               border-bottom-width:1px;text-align:center;">
-                        <span style="width:1px;"/>
-                      </td>
-                      <td style="width:99mm;height:7.7mm;border-left:1px black solid;border:0 black solid;               border-right-width:1px;border-bottom-width:1px;">
-                        <span style="width:1px;"/>
-                      </td>
-                      <td style="width:35mm;height:7.7mm;border-left:1px black solid;border:0 black solid;               border-bottom-width:1px;text-align:right;">
-                        <span style="width:1px;"/>
-                      </td>
-                    </tr>
-                  </xsl:if>
-                  <xsl:if test="count($FormData/GovernmentUnitInformation) &lt; 11 or (count($FormData/GovernmentUnitInformation) &gt; 11 and ($Print = $Separated))">
-                    <tr>
-                      <td style="width:44mm;height:7.7mm;border:0 black solid;border-right-width:1px;               border-bottom-width:0px;text-align:center;">
-                        <span style="width:1px;"/>
-                      </td>
-                      <td style="width:99mm;height:7.7mm;border-left:1px black solid;border:0 black solid;               border-right-width:1px;border-bottom-width:0px;">
-                        <span style="width:1px;"/>
-                      </td>
-                      <td style="width:35mm;height:7.7mm;border-left:1px black solid;border:0 black solid;               border-bottom-width:0px;text-align:right;">
                         <span style="width:1px;"/>
                       </td>
                     </tr>
@@ -1559,6 +1542,11 @@
               </table>
             </div>
           </div>
+			<xsl:call-template name="SetInitialDynamicTableHeight">
+				<xsl:with-param name="TargetNode" select="$FormData/GovernmentUnitInformation"/>
+				<xsl:with-param name="containerHeight" select="10"/>
+				<xsl:with-param name="containerID" select=" 'GOVctn' "/>
+			</xsl:call-template>
           <!--new section 7-->
           <div class="styBB" style="width:187mm;border-top:0px black;">
             <div class="styLNLeftNumBox" style="height:9mm;text-align:left">
@@ -1812,13 +1800,10 @@
               <xsl:with-param name="DescWidth" select="100"/>
             </xsl:call-template>
           </table>
+          <span style="height:3mm;"/>
           <!--print section 6-->
-          <xsl:if test="count($FormData/GovernmentUnitInformation) &gt; 11 and ($Print = $Separated)">
-            <div class="styLNDesc" style="width:187mm;height:4mm;">
-              <span class="styText" style="font-weight:bold">
-                <br/>IRS Form 8849 Schedule 2, Section 6, Government Unit Information
-    </span>
-            </div>
+          <xsl:if test="count($FormData/GovernmentUnitInformation) &gt; 10 and ($Print = $Separated)">
+            <span class="styRepeatingDataTitle">IRS Form 8849 Schedule 2, Section 6, Government Unit Information</span>
             <table class="styDepTbl" style="font-size:7pt;cellspacing:0;border-collapse:collapse;">
               <thead class="styTableThead">
                 <tr class="styDepTblHdr">

@@ -4,7 +4,7 @@
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
   <xsl:include href="AddOnTable.xsl"/>
-  <xsl:include href="IRS1120PCStyle.xsl"/>
+  <xsl:include href="IRS1120PCEliminationsOrAdjStyle.xsl"/>
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form1120PCData" select="$RtnDoc/IRS1120PCEliminationsOrAdj"/>
@@ -43,7 +43,7 @@
 		<style type="text/css">
 		  <!--EXCEPTION: the value of this pen and ink image will not be display at the Additional data section becz the text is being display on the line inside the form -->
 		  <xsl:if test="not($Print) or $Print=''">
-			<xsl:call-template name="IRS1120PCStyle"/>
+			<xsl:call-template name="IRS1120PCEliminationsOrAdjStyle"/>
 			<xsl:call-template name="AddOnStyle"/>
 		  </xsl:if>
 		</style>
@@ -2566,7 +2566,7 @@
 			  <div class="styLNLeftNumBox" style="height:4.5mm;">37</div>
 			  <div class="styLNDesc" style="width:133mm;height:4.5mm;">
 				<span style="float:left">
-				  <b>Taxable income. &#160;</b> (subtract line 36c from line 35). Enter here and on page 1, line 1
+				  <b>Taxable income. &#160;</b> Subtract line 36c from line 35. Enter here and on page 1, line 1
 				</span>
 				<!--Dotted Line-->
 				<div class="styDotLn" style="float:right;padding-right:1mm;">......</div>
@@ -4271,7 +4271,7 @@
 	<!-- Schedule C Line 23-->
 	<div style="width:187mm;">
 	  <div style="float:left;clear:none:">
-		<div class="styLNLeftNumBox" style="height:4.5mm;">20</div>
+		<div class="styLNLeftNumBox" style="height:4.5mm;">23</div>
 		<div class="styLNDesc" style="height:4.5mm;width:107mm;">
 		  <span style="float:left">Multiply line 6 by 50% (0.50)</span>
 		  <!--Dotted Line -->
@@ -4371,7 +4371,7 @@
 	  <div style="float:left;clear:none:">
 		<div class="styLNLeftNumBox" style="height:8.5mm;">27</div>
 		<div class="styLNDesc" style="height:8.5mm;width:107mm;">
-		  Total. Add line 26, column (a), and line 9, column (a). Enter here and on
+		  <b>Total.</b> Add line 26, column (a), and line 9, column (a). Enter here and on
 		  <span style="float:left">Schedule F, line 10</span>
 		  <!--Dotted Line -->
 		  <div class="styDotLn" style="float:right;padding-right:1mm;">....................</div>
@@ -4601,7 +4601,7 @@
 	  <div style="float:left;clear:none:">
 		<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:4.25mm;">e</div>
 		<div class="styLNDesc" style="height:4.5mm;">
-		  <span style="float:left">  Total. Add lines 2a through 2d</span>
+		  <span style="float:left">  <b>Total.</b> Add lines 2a through 2d</span>
 		  <!--Dotted Line -->
 		  <div class="styDotLn" style="float:right;padding-right:1mm;">........................</div>
 		</div>
@@ -5195,16 +5195,16 @@
 	  <!-- Schedule F Line 13-->
 	  <div style="width:187mm;">
 		<div style="float:left;clear:none:">
-		  <div class="styLNLeftNumBox" style="height:4.5mm;">13</div>
+		  <div class="styLNLeftNumBox" style="height:6.5mm;">13</div>
 		  <div class="styLNDesc" style="height:4.5mm;">
-			<span style="float:left">Reduction of deduction under section 832(b)(5)(B). Multiply line 12 by applicable percentage, see instructions</span>
+			<span style="float:left">Reduction of deduction under section 832(b)(5)(B). Multiply line 12 by applicable percentage (see instructions)</span>
 			<!--Dotted Line -->
 			<!--<div class="styDotLn" style="float:right;padding-right:1mm;">..........</div>-->
 		  </div>
 		</div>
 		<div style="float:right;clear:none;">
-		  <div class="styLNRightNumBox" style="height:4.5mm;">13</div>
-		  <div class="styLNAmountBox" style="width:32mm;height:4.5mm;;">
+		  <div class="styLNRightNumBox" style="height:6.5mm;padding-top:2mm;">13</div>
+		  <div class="styLNAmountBox" style="width:32mm;height:6.5mm;padding-top:2mm;">
 			<xsl:call-template name="PopulateAmount">
 			  <xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleF/ReductionOfDedSect832b5BAmt"/>
 			</xsl:call-template>
@@ -5254,8 +5254,9 @@
 	  <div class="styPartDesc" style="width:164mm;border-top:1px solid black;">Other Capital Losses 
         <span class="styNormalText">(see instructions)</span>
 	  </div>
-	  <div class="styPartDesc" style="font-weight:bold;height:7mm;width:187mm;padding-left:0mm;">
-        Capital assets sold or exchanged to meet abnormal insurance losses and to pay dividends and similar distributions to policyholders
+	  <div class="styPartDesc" style="height:7mm;width:187mm;padding-left:26mm;font-weight: normal;">
+        <b>Note:</b> Capital assets sold or exchanged to meet abnormal insurance losses and to pay dividends and similar distributions to
+policyholders
       </div>
 	</div>
 	<!-- END Schedule G Title  -->
@@ -5321,7 +5322,7 @@
 	  <div style="float:left;clear:none:">
 		<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:2.25mm;">4</div>
 		<div class="styLNDesc" style="height:4.5mm;">
-		  <span style="float:left">Total. Add lines 1, 2, and 3</span>
+		  <span style="float:left"><b>Total.</b> Add lines 1, 2, and 3</span>
 		  <!--Dotted Line -->
 		  <div class="styDotLn" style="float:right;padding-right:1mm;">.........................</div>
 		</div>
@@ -5374,7 +5375,7 @@
 	  <div style="float:left;clear:none:">
 		<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:2.25mm;">6</div>
 		<div class="styLNDesc" style="height:4.5mm;width:99mm;">
-		  <span style="float:left">Dividends-received and inclusions (Schedule C, line 17)</span>
+		  <span style="float:left">Dividends received and inclusions (Schedule C, line 17)</span>
 		  <!--Dotted Line -->
 		  <div class="styDotLn" style="float:right;padding-right:1mm;">......</div>
 		</div>
@@ -7068,8 +7069,8 @@
 	<div class="styPartDesc" style="width:158mm;height:">
       Balance Sheets per Books 
 	</div>
-	<div class="styPartDesc" style="font-weight:bold;height:4mm;width:187mm;padding-left:0mm;padding-left:31mm;">
-        Note:  All filers are reqired to complete this schedule.
+	<div class="styPartDesc" style="font-weight:normal;height:4mm;width:187mm;padding-left:0mm;padding-left:31mm;">
+        <b>Note:</b>  All filers are reqired to complete this schedule.
       </div>
   </div>
   <!-- END Schedule L Title -->
@@ -7913,12 +7914,12 @@
 		  </div>
 		</div>
 		<!-- Schedule L Line 29-->
-		<div class="styBB" style="width:187mm;">
+		<div style="width:187mm;">
 		  <div class="styLNLeftNumBox" style="height:7.5mm;padding-top:1mm;">29</div>
-		  <div class="styGenericDiv" style="width:50mm;height:7.5mm;padding-top:1mm;">
-			Total liabilities and shareholders' equity.
+		  <div class="styGenericDiv" style="width:50mm;height:7.5mm;padding-top:1mm;font-weight:bold;">
+			Total liabilities and shareholders' equity
 			<!--Dotted Line-->
-				<div class="styDotLn" style="float:right;padding-right:1mm;">.........</div>
+				<!--<div class="styDotLn" style="float:right;padding-right:1mm;">.........</div>-->
 		  </div>
 		  <div class="styShadingCell" style="height:7.5mm;"/>
 		  <div class="styLNAmountBoxNBB" style="height:7.5mm;padding-top:4mm;">

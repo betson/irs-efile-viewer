@@ -11,8 +11,8 @@
 <!-- 11/16/2018 - Changes made for KISAM IM00341225 - Jeremy Nichols -->
 <!-- 11/26/2018 - Changes made for defect 126503 - Jeremy Nichols -->
 <!-- 11/26/2018 - Changes made for defect 126564 - Jeremy Nichols -->
-
 <!-- 01/15/2019 - Changes made for defect 127073 - Jeremy Nichols -->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -2232,9 +2232,6 @@ based on all information of which preparer has any knowledge. </td>
 									</td>
 									<td  style="text-align:center;border-right:solid black 1px;border-top:solid black 1px;">
 										<span>
-											<xsl:call-template name="PopulateSpan">
-												<xsl:with-param name="TargetNode" select="RelatedToUSTransferorInd"/>
-											</xsl:call-template>
 											<input type="checkbox" >
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="RelatedToUSTransferorInd"/>
@@ -8029,9 +8026,6 @@ income this tax year (itemize):
 									</td>
 									<td class="styDepTblCell" style="text-align:center;border-right:solid black 1px;border-top:solid black 1px;">
 										<span>
-											<xsl:call-template name="PopulateSpan">
-												<xsl:with-param name="TargetNode" select="RelatedToUSTransferorInd"/>
-											</xsl:call-template>
 											<input type="checkbox" >
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="RelatedToUSTransferorInd"/>

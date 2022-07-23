@@ -396,7 +396,7 @@
 				</div>				
 			</div>
 			<div class="styGenericDiv" style="width:24mm;height:4mm;float:right;">
-				<input type="checkbox" class="styCkbox">
+				<input type="checkbox" alt="NewBusinessInCurrentYear" class="styCkbox">
 					<xsl:call-template name="PopulateCheckbox">
 						<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/NewBusinessInCurrentYearInd"/>
 						<xsl:with-param name="BackupName">IRS1040ScheduleCNewBusinessInCurrentYearInd</xsl:with-param>

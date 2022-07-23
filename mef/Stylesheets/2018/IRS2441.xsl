@@ -100,7 +100,7 @@
 							</xsl:call-template>If your filing status is married filing separately and you meet the requirements listed in the instructions under "Married Persons Filing Separately, " 
 							and under "Who Can Take the Credit or Exclude Dependent Care Benefits?" check this box
                         </label>
-					  <input type="checkbox" class="styCkbox">
+					  <input type="checkbox" alt="EligibilityRequirementMet" class="styCkbox">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/EligibilityRequirementMetInd"/>
 								<xsl:with-param name="BackupName">Eligbility requirement met indicator</xsl:with-param>

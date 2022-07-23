@@ -814,14 +814,14 @@
 							<div style="width:181.8mm;font-size:7pt;float:left;">
 								<div class="styLNLeftNumBoxSD" style="height:4mm;">3</div>
 								<div class="styLNDesc" style="width:134.3mm;height:4mm;">
-									<span style="float:left;">Business income or (loss). Attach Schedule C or C-EZ (Form 1040)
+									<span style="float:left;">Business income or (loss). Attach Schedule C (Form 1040)
 										<xsl:call-template name="SetFormLinkInline">
 											<xsl:with-param name="TargetNode" select="$FormData/NetProfitOrLossAmt"/>
 										</xsl:call-template>
 									</span>
 									<span class="styBoldText" style="float:right;padding-right:10px;">
 										<xsl:call-template name="DotLoop">						
-											<xsl:with-param name="DotQty" select="8"/>
+											<xsl:with-param name="DotQty" select="11"/>
 										</xsl:call-template>		  
 									</span>
 								</div>
@@ -933,14 +933,15 @@
 								</div>	
 								<xsl:choose>
 									<xsl:when test="count($FormData/OtherIncomeDescAndAmt) = 1">
-									
-									<xsl:if test="string-length(concat($FormData/OtherIncomeDescAndAmt/Desc, '  ' , $FormData/OtherIncomeDescAndAmt/Amt)) &gt;= 68">
-									 
- 									    <span style="border-bottom:1px dashed;float:left;height:8mm;width:85mm;">
+
+                                        <xsl:if test="string-length(concat($FormData/OtherIncomeDescAndAmt/Desc, ' ' , $FormData/OtherIncomeDescAndAmt/Amt)) &gt;= 67">
+ 									    <span style="border-bottom:1px dashed;float:left;height:8mm;width:84mm;">
+ 									    <span style="width:2mm"/>
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$FormData/OtherIncomeDescAndAmt/Desc"/>
 												<xsl:with-param name="BackupName">IRS1041OtherIncomeDescAndAmt</xsl:with-param>
 											</xsl:call-template>
+											<span style="width:2mm"/>
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$FormData/OtherIncomeDescAndAmt/Amt"/>
 												<xsl:with-param name="BackupName">IRS1041OtherIncomeDescAndAmt</xsl:with-param>
@@ -948,20 +949,22 @@
 										</span>
 										<span style="float:right">
 											<div class="styLNRightNumBox" style="height:8mm;width:8mm;padding-top:4mm;">8</div>
-											<div class="styLNAmountBox" style="border-bottom-width:1px;height:8mm;padding-top:4mm;width:31.5mm;">
+											<div class="styLNAmountBox" style="border-bottom-width:1px;padding-top:4mm;height:8mm;width:31.5mm;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$FormData/TotalOtherIncomeAmt" />
 												</xsl:call-template>     
 											</div>
-										</span>	
-									</xsl:if>
-									
-									<xsl:if test="string-length(concat($FormData/OtherIncomeDescAndAmt/Desc, '  ' , $FormData/OtherIncomeDescAndAmt/Amt)) &lt; 68">
- 									    <span style="border-bottom:1px dashed;float:left;height:4.5mm;width:85mm;">
+										</span>
+										</xsl:if>
+										
+										 <xsl:if test="string-length(concat($FormData/OtherIncomeDescAndAmt/Desc, ' ' , $FormData/OtherIncomeDescAndAmt/Amt)) &lt;67">
+										<span style="border-bottom:1px dashed;float:left;height:4.5mm;width:85mm;">
+										<span style="width:2mm"/>
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$FormData/OtherIncomeDescAndAmt/Desc"/>
 												<xsl:with-param name="BackupName">IRS1041OtherIncomeDescAndAmt</xsl:with-param>
 											</xsl:call-template>
+											<span style="width:2mm"/>
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$FormData/OtherIncomeDescAndAmt/Amt"/>
 												<xsl:with-param name="BackupName">IRS1041OtherIncomeDescAndAmt</xsl:with-param>
@@ -974,24 +977,23 @@
 													<xsl:with-param name="TargetNode" select="$FormData/TotalOtherIncomeAmt" />
 												</xsl:call-template>     
 											</div>
-										</span>	
-									</xsl:if>
-									
+										</span>
+										</xsl:if>										
 									</xsl:when>
 									
 									<xsl:when test="count($FormData/OtherIncomeDescAndAmt) &gt; 1">
-										<span style="border-bottom:1px dashed;float:left;height:4.5mm;width:85mm;">
+										<span style="border-bottom:1px dashed;float:left;height:4mm;width:85mm;">
 											<xsl:call-template name="LinkToLeftoverDataTableInline">
 												<xsl:with-param name="Desc">Line 8 - Other Income</xsl:with-param>
 												<xsl:with-param name="TargetNode" select="$FormData/OtherIncomeDescAndAmt"/>
 											</xsl:call-template>
 										</span>
 										<span style="float:right">
-											<div class="styLNRightNumBox" style="height:4.5mm;width:8mm;">8</div>
-											<div class="styLNAmountBox" style="border-bottom-width:1px;height:4.5mm;width:31.5mm; ">
+											<div class="styLNRightNumBox" style="height:4mm;width:8mm;">8</div>
+											<div class="styLNAmountBox" style="border-bottom-width:1px;height:4mm;width:31.5mm; ">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$FormData/TotalOtherIncomeAmt" />
-												</xsl:call-template>
+												</xsl:call-template>     
 											</div>
 										</span>
 									</xsl:when>
@@ -1368,7 +1370,7 @@
 									</xsl:call-template>     
 								</div>
 							</div>
-							Line 24
+							<!--Line 24-->
 							<div style="width:181.8mm;font-size:7pt;float:left;">
 								<div class="styLNLeftNumBox" style="height:4mm;">24</div>
 								<div class="styLNDesc" style="width:134.3mm;height:4mm;">

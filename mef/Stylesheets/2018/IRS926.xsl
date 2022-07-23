@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
-<!DOCTYPE xsl:stylesheet [
-  <!ENTITY nbsp "&#160;">
-]>
+<!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
 
 <!--Updated per UWR  107348 and Revision Date to July/2014- By Robert Jones -->
 <!--Did changes per IBM Defect #40742 6/24/2014 Robert Jones-->
@@ -13,6 +11,8 @@
 <!--Did changes per IBM Defect #43153 6/30/2015 by Robert Jones IE11 Related-->
 <!-- Last modified on 5/18/2017 by Robert Jones UWR 194393 and 195664 Return Headers for 1120, 1041, 1040 and 1040NR  -->
 <!-- 9.11.2018 - R10.2 Drop5 Changes per UWR 212295  Circ Date 4.19.2018-->
+<!-- 01/28/19 - updated per KISAM IM00498648  Jeremy Nichols -->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -1364,13 +1364,6 @@
               </div>
         </div>
 
-
-
-
-
-
-
-
 <!-- BEGIN Part III Section B—Other Property (other than intangible property subject to section 367(d)) -->
           <div class="styBB" style="width:187mm;">
             <div class="styPartDesc" style="height:10mm;padding-top:2.5mm;padding-left:0mm">
@@ -1424,15 +1417,15 @@
               
               <!--Begin Part III Section B—Other Property (other than intangible property subject to section 367(d)) -->
                 <!-- Part III Stock and Securities -->
-            <xsl:variable name="AGRowCount1" select="count($Form926Data/TangiblePropertyGrp/TransferDt)"/>
-                <xsl:if test="$AGRowCount1 = 0 or ((count($Form926Data/TangiblePropertyGrp/TransferDt) &gt; 1) and ($Print = $Separated))">
+            <xsl:variable name="AGRowCount1" select="count($Form926Data/StocksAndSecuritiesPropertyGrp/TransferDt)"/>
+                <xsl:if test="$AGRowCount1 = 0 or ((count($Form926Data/StocksAndSecuritiesPropertyGrp/TransferDt) &gt; 1) and ($Print = $Separated))">
                   <tr>
                     <td class="styIRS926TableCellLine " style="width:34mm;vertical-align:middle;border-bottom-width: 0px;">
 						Stock and Securities
 					</td>
                     <td class="styIRS926TableCellA " style="width:24mm;">
                       <xsl:call-template name="PopulateAdditionalDataTableMessage">
-                        <xsl:with-param name="TargetNode" select="$Form926Data/TangiblePropertyGrp"/>
+                        <xsl:with-param name="TargetNode" select="$Form926Data/StocksAndSecuritiesPropertyGrp"/>
                       </xsl:call-template>
                       <span class="styTableCellPad"/>
                     </td>
@@ -1453,8 +1446,8 @@
                            
                 <!-- Adding check for the SRD -->
                 <!-- Part III table Stock and Securities -->
-                <xsl:if test="($Print != $Separated) or (count($Form926Data/TangiblePropertyGrp/TransferDt) &lt;= 1) ">
-                  <xsl:for-each select="$Form926Data/TangiblePropertyGrp">
+                <xsl:if test="($Print != $Separated) or (count($Form926Data/StocksAndSecuritiesPropertyGrp/TransferDt) &lt;= 1) ">
+                  <xsl:for-each select="$Form926Data/StocksAndSecuritiesPropertyGrp">
                     <tr>
                       <xsl:if test="position()=1">
                         <td class="styIRS926TableCellLine " style="width:34mm;vertical-align:middle;border-bottom-width: 0px;">
@@ -2204,7 +2197,7 @@
             <xsl:variable name="AGRowCount20" select="count($Form926Data/IntangiblePropertyDetailGrp/TransferDt)"/>
                 <xsl:if test="$AGRowCount20 = 0 or ((count($Form926Data/IntangiblePropertyDetailGrp/TransferDt) &gt; 1) and ($Print = $Separated))">
                   <tr>
-                    <td class="styIRS926TableCellLine " style="width:34mm;vertical-align:middle;border-bottom-width: 0px;">Cash</td>
+                    <td class="styIRS926TableCellLine " style="width:34mm;vertical-align:middle;border-bottom-width: 0px;">Property described in sec. 367(d)(4)</td>
                     <td class="styIRS926TableCellA " style="width:24mm;">
                       <xsl:call-template name="PopulateAdditionalDataTableMessage">
                         <xsl:with-param name="TargetNode" select="$Form926Data/IntangiblePropertyTotalGrp"/>
@@ -3417,7 +3410,7 @@
           <div style="width:187mm;height: auto; padding-top:1mm; border-top-style: solid; border-top-width: 1px;">
             <div style="float:right;">
               <span style="width:1px;"/>
-            Form <span class="styBoldText">926 </span> (Rev. 12-2018)
+            Form <span class="styBoldText">926 </span> (Rev. 9-2018)
             <div class="pageEnd"/>
         </div>
           </div>

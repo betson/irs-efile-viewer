@@ -3709,27 +3709,28 @@
 										border-right-width: 1px; border-top-width: 1px;
 										 border-bottom-width:0px; width: 122mm">
 										<span style="padding-left:2mm"/>
-											<span class="styIRS4562LNLeftNumBox" style="padding-top:0; height:7mm">30</span>
+											<span class="styIRS4562LNLeftNumBox" style="padding-top:2mm; height:7mm">30</span>
+											<span style="padding-top:5mm"/>
 											Total business/investment miles driven during the year<br/><span style="padding-left:2mm"/> (<b>don't </b>
                                             include commuting miles)
 											<span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
 										</th>
-										<th scope="col" class="styIRS4562TableCellA" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:1px; text-align: center; font-size: 7pt;padding-top:2mm;">
+										<th scope="col" class="styIRS4562TableCellA" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align: center; font-size: 7pt;padding-top:2mm;">
 											<b>(a)</b>
 											<br/>Vehicle 1<br/><br/></th>
-										<th scope="col" class="styIRS4562TableCellB" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:1px; text-align: center; font-size: 7pt;padding-top:2mm;">
+										<th scope="col" class="styIRS4562TableCellB" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align: center; font-size: 7pt;padding-top:2mm;">
 											<b>(b)</b>
 											<br/>Vehicle 2<br/><br/></th>
-										<th scope="col" class="styIRS4562TableCellC" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:1px; text-align: center; font-size: 7pt;padding-top:2mm;">
+										<th scope="col" class="styIRS4562TableCellC" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; text-align: center; font-size: 7pt;padding-top:2mm;">
 											<b>(c)</b>
 											<br/>Vehicle 3<br/><br/></th>
-										<th scope="col" class="styIRS4562TableCellD" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:1px; font-size: 7pt;padding-top:2mm;">
+										<th scope="col" class="styIRS4562TableCellD" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; font-size: 7pt;padding-top:2mm;">
 											<b>(d)</b>
 											<br/>Vehicle 4<br/><br/></th>
-										<th scope="col" class="styIRS4562TableCellE" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:1px; font-size: 7pt;padding-top:2mm;">
+										<th scope="col" class="styIRS4562TableCellE" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; font-size: 7pt;padding-top:2mm;">
 											<b>(e)</b>
 											<br/>Vehicle 5<br/><br/></th>
-										<th scope="col" class="styIRS4562TableCellF" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:1px; text-align: center; font-size: 7pt;padding-top:2mm;">
+										<th scope="col" class="styIRS4562TableCellF" colspan="2" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:0px; text-align: center; font-size: 7pt;padding-top:2mm;">
 											<b>(f)</b>
 											<br/>Vehicle 6<br/><br/></th>
 									</tr>
@@ -3844,8 +3845,8 @@
 									<!-- Line 34, Yes and No Boxes -->
 									<tr>
 										<td class="styIRS4562TableCellA" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; width:122mm">
-											<span class="styIRS4562LNLeftNumBox" style="padding-top:0">34</span>
-                                            <span style="padding-left:2mm"/>
+											<span class="styIRS4562LNLeftNumBox" style="padding-top:1mm;">34</span>
+                                            <span style="padding-left:2mm;padding-top:3.5mm;"/>
                                                Was the vehicle available for personal use
                                             </td>
 										<td class="styIRS4562TableCellSmall" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:1px; font-size:7pt; font-family:verdana">
@@ -3899,9 +3900,9 @@
 									</tr>
 									<!-- Line 34  -->
 									<tr>
-										<td class="styIRS4562TableCellA" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; width:122mm">
+										<td class="styIRS4562TableCellA" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; width:122mm;padding-top:0">
 		        							<span style="width:19px"/> during off-duty hours?
-		        							<!--<span class="styDotLn" style="float:right;padding-right:1mm;">............</span>-->
+		        							<span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
                                      		<span class="styIRS4562TableCellPad"/>
 										</td>
 										<td class="styIRS4562TableCellYesNo">

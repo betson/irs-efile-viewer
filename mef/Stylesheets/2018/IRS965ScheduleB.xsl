@@ -138,7 +138,7 @@
 					<!-- Table 1, cols (a)-(e) -->
 					<div class="styStdDivLS" style="">
 						<xsl:call-template name="SetInitialState"/>
-						<table class="styTbl" style="display:table;border-collapse:collapse;">
+						<table style="display:table;border-collapse:collapse;">
 							<thead class="styTableThead">
 								<tr>
 									<th class="styTableCellHeader" scope="col" style="width:8mm;font-weight:normal;"> </th>
@@ -260,7 +260,7 @@
 					<!-- Table 2, cols (e)-(i) -->
 					<div class="styStdDivLS" style="">
 						<xsl:call-template name="SetInitialState"/>
-						<table class="styTbl" style="display:table;border-collapse:collapse;">
+						<table style="display:table;border-collapse:collapse;">
 							<thead class="styTableThead">
 								<tr>
 									<th class="styTableCellHeader" scope="col" style="width:8mm;font-weight:normal;"> </th>

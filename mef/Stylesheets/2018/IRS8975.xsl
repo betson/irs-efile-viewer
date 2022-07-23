@@ -44,12 +44,7 @@
 						<div class="styFNBox" style="width:33mm; height:24mm; padding-top:1mm;">
 							Form <span class="styFormNumber">8975</span>
 							<br/>							
-							<span class="styAgency" style="font-size:7pt;">(June 2017)</span>
-							<!--<span>
-								<xsl:call-template name="SetFormLinkInline">
-									<xsl:with-param name="TargetNode" select="$FormData"/>
-								</xsl:call-template>
-							</span>-->
+							<span class="styAgency" style="font-size:7pt;">(June 2017)</span>			
 							<br/>
 							<br/>
 							<br/>
@@ -65,7 +60,7 @@
 									<span style="width:20mm; border-bottom:1 solid black; font-weight:normal;">
 										<xsl:call-template name="PopulateReturnHeaderTaxPeriodBeginDate"/>
 									</span>
-								, and ending 
+								    , and ending 
 									<span style="width:20mm; border-bottom:1 solid black; font-weight:normal;">
 										<xsl:call-template name="PopulateReturnHeaderTaxPeriodEndDate"/>
 									</span>
@@ -137,7 +132,7 @@
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/EntityReportingRoleCd"/>
 								</xsl:call-template>					
-						</div>
+							</div>
 						</div>
 						<div style="width:55mm; height:10mm; float:right; border-style:solid; border-color:black; border-top-width:0px; border-bottom-width:0px; border-left-width:0px; border-right-width:0px;">
 							<div class="styLNLeftNumBox" style="padding-left:2.25mm;">1c</div>
@@ -154,16 +149,16 @@
 					<!-- Line 2-->
 					<div class="styBB" style="width:256mm;">
 						<div class="styLNLeftNumBox" style="padding-left:2.25mm; height:10mm;">2</div>
-							<div class="styLNDesc">Number, street, and room or suite no. (if P.O. box, see instructions) <br/>
-							    <!-- Choice of 1120, 1120S, 1065, 1065B vs. 1041-->
-								<xsl:choose>
-								  <xsl:when test="$RtnHdrData/Filer/USAddress">
+						<div class="styLNDesc">Number, street, and room or suite no. (if P.O. box, see instructions) <br/>
+							<!-- Choice of 1120, 1120S, 1065, 1065B vs. 1041-->
+							<xsl:choose>
+								<xsl:when test="$RtnHdrData/Filer/USAddress">
 									<xsl:call-template name="PopulateReturnHeaderFiler">
 										<xsl:with-param name="TargetNode">AddressLine1Txt</xsl:with-param>
 									</xsl:call-template>
 									<br/>
 									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">AddressLine2Txt</xsl:with-param>
+										<xsl:with-param name="TargetNode">AddressLine2Txt</xsl:with-param>
 									</xsl:call-template>
 								</xsl:when>
 								<xsl:when test="$RtnHdrData/Filer/ForeignAddress">
@@ -172,13 +167,13 @@
 									</xsl:call-template>
 									<br/>
 									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">AddressLine2Txt</xsl:with-param>
+										<xsl:with-param name="TargetNode">AddressLine2Txt</xsl:with-param>
 									</xsl:call-template>
 								</xsl:when>								
 								<xsl:otherwise>									
 								</xsl:otherwise>
-								</xsl:choose>				
-							</div>						
+							</xsl:choose>				
+						</div>						
 					</div>
 					<!-- Line 3a, 3b and 3c -->
 					<div class="styBB" style="width:256mm;">
@@ -187,80 +182,77 @@
 							<div class="styLNDesc" style="width:102.5mm;">City or town
 								<br/>
 								<xsl:choose>
-								  <xsl:when test="$RtnHdrData/Filer/USAddress">
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">CityNm</xsl:with-param>
-									</xsl:call-template>									
-								</xsl:when>
-								<xsl:when test="$RtnHdrData/Filer/ForeignAddress">
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">CityNm</xsl:with-param>
-									</xsl:call-template>									
-								</xsl:when>
-								<xsl:otherwise>											
-								</xsl:otherwise>
+									<xsl:when test="$RtnHdrData/Filer/USAddress">
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">CityNm</xsl:with-param>
+										</xsl:call-template>									
+									</xsl:when>
+									<xsl:when test="$RtnHdrData/Filer/ForeignAddress">
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">CityNm</xsl:with-param>
+										</xsl:call-template>									
+									</xsl:when>
+									<xsl:otherwise>											
+									</xsl:otherwise>
 								</xsl:choose>										
-						</div>
+							</div>
 						</div>
 						<div style="width:65mm; height:7mm; float:left; border-style:solid; border-color:black; border-top-width:0px; border-bottom-width:0px; border-left-width:0px; border-right-width:1px;">
 							<div class="styLNLeftNumBox" style="padding-left:2.25mm;">3b</div>
 							<div class="styLNDesc" style="width:56.5mm;">State or province
 								<br/>
 								<xsl:choose>
-								  <xsl:when test="$RtnHdrData/Filer/USAddress">
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">StateAbbreviationCd</xsl:with-param>
-									</xsl:call-template>									
-								</xsl:when>
-								<xsl:when test="$RtnHdrData/Filer/ForeignAddress">
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">ProvinceOrStateNm</xsl:with-param>
-									</xsl:call-template>									
-								</xsl:when>
-								<xsl:otherwise>			
-								</xsl:otherwise>
+									<xsl:when test="$RtnHdrData/Filer/USAddress">
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">StateAbbreviationCd</xsl:with-param>
+										</xsl:call-template>									
+									</xsl:when>
+									<xsl:when test="$RtnHdrData/Filer/ForeignAddress">
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">ProvinceOrStateNm</xsl:with-param>
+										</xsl:call-template>									
+									</xsl:when>
+									<xsl:otherwise>			
+									</xsl:otherwise>
 								</xsl:choose>						
-						</div>
+							</div>
 						</div>
 						<div style="width:75mm; height:7mm; float:right; border-style:solid; border-color:black; border-top-width:0px; border-bottom-width:0px; border-left-width:0px; border-right-width:0px;">
 							<div class="styLNLeftNumBox" style="padding-left:2.25mm;">3c</div>
 							<div class="styLNDesc" style="width:67mm;">Country, and ZIP or foreign postal code 
 								<br/>
 								<xsl:choose>
-								  <xsl:when test="$RtnHdrData/Filer/USAddress">
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">ZIPCd</xsl:with-param>
-									</xsl:call-template>									
-								</xsl:when>
-								<xsl:when test="$RtnHdrData/Filer/ForeignAddress">
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">ForeignPostalCd</xsl:with-param>
-									</xsl:call-template>
-									<span style="width:2mm;"/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-									  <xsl:with-param name="TargetNode">CountryCd</xsl:with-param>
-									</xsl:call-template>									
-								</xsl:when>
-								<xsl:otherwise>											
-								</xsl:otherwise>
+									<xsl:when test="$RtnHdrData/Filer/USAddress">
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">ZIPCd</xsl:with-param>
+										</xsl:call-template>									
+									</xsl:when>
+									<xsl:when test="$RtnHdrData/Filer/ForeignAddress">
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">ForeignPostalCd</xsl:with-param>
+										</xsl:call-template>
+										<span style="width:2mm;"/>
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">CountryCd</xsl:with-param>
+										</xsl:call-template>									
+									</xsl:when>
+									<xsl:otherwise>											
+									</xsl:otherwise>
 								</xsl:choose>					
 							</div>
 						</div>
 					</div>
 					<!--END NAME OF CORPORATION AND EIN LINE -->
-					<!--HINT: Data will be disconnect and display on page 2 instead of Page 1 but if selected PDF Print the data will connect with Page 1 -->
-					<!--2018 XREF IBM Defect 62459 and KISAM IM00351632 -->
+					<!--2018 XREF IBM Defect 62459 and KISAM IM00351632 Data is disconnected, fixed by adding display: block to all class -->
+					<!-- Additional Information line-->
 					<!--BEGIN Part II -->
-					<div class="styBB" style="width:256mm; border-bottom:0;">
+					<div class="styBB" style="width:256mm; border-bottom:0; display:block;">
 						<div class="styPartName">Part II</div>
-						<div class="styPartDesc" style=" width:242mm; border-bottom:1px solid black;">Additional Information </div>
-						<!-- Additional Information line-->
-						<!-- HINT: Remove display:block; because data do not display on Page 1.  The fix still have a clitch where as split data 2 on page 1 and 2 on page 2 but if select print then all data is display on Page 1.-->
-						<div class="styNBB" style="width:256mm;">
-							<div class="styNameBox" style="float:none; border-right-width:0px;">
-								<b>Enter any additional information related to the multinational enterprise group.</b>
-								<br/>
-							</div>
+						<div class="styPartDesc" style=" width:242mm; border-bottom:1px solid black;">Additional Information </div>						
+					    <!--<div class="styNBB" style="width:256mm; display:block;">-->
+						<div class="styNameBox" style="float:none; border-right-width:0px; font-size:7pt; display:block;">
+							<b>Enter any additional information related to the multinational enterprise group.</b>
+							<br/>							
 							<xsl:choose>
 								<!-- Display when there is no data -->
 								<xsl:when test="not($FormData/AdditionalInformationTxt) or $FormData/AdditionalInformationTxt = ''">
@@ -269,17 +261,9 @@
 										<xsl:with-param name="TempToCall" select="'EmptyExplanationLine'"/>
 									</xsl:call-template>
 								</xsl:when>
-								<!--<xsl:when test="((count($FormData/AdditionalInformationTxt) &gt; 1) and ($Print = $Separated))">
-									<xsl:call-template name="EmptyIteratorTemp">
-										<xsl:with-param name="NumEmptyRows" select="21"/>
-										<xsl:with-param name="IsSeparated" select="'yes'"/>
-										<xsl:with-param name="TempToCall" select="'EmptyExplanationLine'"/>
-										<xsl:with-param name="CalledTemplate" select="$FormData/AdditionalInformationTxt"/>
-									</xsl:call-template>
-								</xsl:when>-->
 								<xsl:otherwise>	
 									<xsl:for-each select="$FormData/AdditionalInformationTxt">
-										<div class="styBB" style="width:256mm; text-align:left; padding-top:1mm;">
+										<div class="styNBB" style="border-bottom:1px solid black;font-size:8pt;width:254mm; text-align:left; padding-top:1mm; display:block;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="."/>
 											</xsl:call-template>
@@ -288,15 +272,16 @@
 								</xsl:otherwise>
 							</xsl:choose>
 						</div>
+						<!--</div>-->
 					</div>
 					<!--END Part II -->					
 					<!-- BEGIN Page Footer -->
 					<div style="width:256mm;">
 						<!-- Page Footer -->
-						<div style="clear:both; border-top:1px solid black;">
-						  <div style="width:124mm; font-weight:bold;" class="styGenericDiv">For Paperwork Reduction Act Notice, see separate instructions. </div>
-						  <div style="width:90mm; text-align:center;" class="styGenericDiv">Cat. No. 37798N</div>
-						  <div style="float:right;" class="styGenericDiv">Form <span class="styBoldText">8975</span> (6-2017)</div>
+						<div style="clear:both; border-top:1px solid black;width:256mm;">
+							<div style="width:124mm; font-weight:bold;" class="styGenericDiv">For Paperwork Reduction Act Notice, see separate instructions. </div>
+							<div style="width:90mm; text-align:center;" class="styGenericDiv">Cat. No. 37798N</div>
+							<div style="float:right;" class="styGenericDiv">Form <span class="styBoldText">8975</span> (6-2017)</div>
 						</div>						
 					</div>
 					<div class="pageEnd"/>
