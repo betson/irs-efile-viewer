@@ -142,3 +142,24 @@ STYLESHEET_FIXES = {
         }
     }
 }
+
+FIX_STATUS = {
+    "04a28d1": {
+        status: "resolved",
+        notes: "rrdprd references are automatically cleaned on import"
+    },
+    "b57ff68": {
+        status: "resolved",
+        notes: "similar updates were made in the final IRS download for TY 2016"
+    },
+    "6cbd8cb": {
+        status: "resolved",
+        notes: "similar updates were made in the final IRS download for TY 2016"
+    },
+    "e71ed26": {
+        status: "open"
+    },
+    "5507a3c": {
+        status: "open"
+    }
+}
