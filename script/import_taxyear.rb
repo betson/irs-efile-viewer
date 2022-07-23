@@ -34,7 +34,7 @@ def render_stylesheet_history(year: nil, files: nil)
     if year
         year_info = STYLESHEET_FIXES[year.to_sym]
         unless year_info
-            puts "No stylesheet fixes for #{year}" 
+            puts "No stylesheet fixes for #{year}"
             return
         end
 
@@ -54,7 +54,7 @@ def render_stylesheet_history(year: nil, files: nil)
             year = year_list[0]
             year_info = STYLESHEET_FIXES[year.to_sym]
             unless year_info
-                puts "No stylesheet fixes for #{year}" 
+                puts "No stylesheet fixes for #{year}"
                 next
             end
 
@@ -100,7 +100,10 @@ Dir.chdir(SOURCE_DIRECTORY) do
     # Prep the source archive so all files have `644` permissions. All files in our destination have
     # already been updated to match. This helps ensure the automated copy doesn't run into issues on
     # read-only files.
+    puts "Prepping source files..."
     `find #{SOURCE_DIRECTORY} -type f -exec chmod 644 '{}' #{Shellwords.escape(";")}`
+
+    puts "Importing files from #{SOURCE_DIRECTORY}"
 
     # Move all files from Source -> Target
     # The source directory (IRS archive) lists any additions or alterations for a tax year. It needs to be
@@ -114,8 +117,13 @@ Dir.chdir(SOURCE_DIRECTORY) do
     source_dir_prefix = "./mef/rrprd/common/images"
     Dir.each_child(source_dir_prefix) do |x|
         next if x.start_with?(".")
+        if Dir.exist?("#{source_dir_prefix}/#{x}")
+            puts "  Skipping directory #{x}..."
+            next
+        end
         FileUtils.cp("#{source_dir_prefix}/#{x}", File.expand_path("rrprd/common/images", TARGET_DIRECTORY), :preserve => true)
     end
+    puts "  Common images complete..."
 
     source_dir_prefix = "./mef/rrprd/sdi/versioned"
     target_dir_prefix = "rrprd/sdi/versioned"
@@ -133,12 +141,17 @@ Dir.chdir(SOURCE_DIRECTORY) do
         types.each do |type|
             Dir.each_child("#{source_dir_prefix}/#{year_directory}/#{type}") do |x|
                 next if x.start_with?(".")
+                if Dir.exist?("#{source_dir_prefix}/#{year_directory}/#{type}/#{x}")
+                    puts "  Skipping directory #{x}..."
+                    next
+                end
                 unless type == "images"
                     previously_fixed = STYLESHEET_FIXES.dig(year_directory.to_sym, type.to_sym, x.delete_suffix(".css").delete_suffix(".js").to_sym)
                     modified_stylesheets[year_directory] << {:type => type, :filename => x} if previously_fixed
                 end
                 FileUtils.cp("#{source_dir_prefix}/#{year_directory}/#{type}/#{x}", File.expand_path("#{target_dir_prefix}/#{year_directory}/#{type}", TARGET_DIRECTORY), :preserve => true)
             end
+            puts "  #{year_directory} #{type} complete..."
             # TODO: This skips any additional files outside the standard three. Those haven't appeared since 2009.
         end
     end
@@ -156,16 +169,22 @@ Dir.chdir(SOURCE_DIRECTORY) do
 
         Dir.each_child("#{source_dir_prefix}/#{year_directory}") do |x|
             next if x.start_with?(".")
+            if Dir.exist?("#{source_dir_prefix}/#{year_directory}/#{x}")
+                puts "  Skipping directory #{x}..."
+                next
+            end
             previously_fixed = STYLESHEET_FIXES.dig(year_directory.to_sym, :stylesheets, x.delete_suffix(".xsl").to_sym)
             modified_stylesheets[year_directory] << {:type => "stylesheets", :filename => x} if previously_fixed
             FileUtils.cp("#{source_dir_prefix}/#{year_directory}/#{x}", File.expand_path("#{target_dir_prefix}/#{year_directory}", TARGET_DIRECTORY), :preserve => true)
         end
+        puts "  #{year_directory} stylesheets complete..."
     end
 end
 
-puts "\nImport Completed Successfully\n"
+puts "\nImport Completed Successfully"
 
 # Execute prep_stylesheets() to clean up imported files
+puts "Prepping imported files...\n"
 prep_stylesheets()
 
 # Alert the user if we've replaced files that were previously modified to fix issues in the stylesheets
