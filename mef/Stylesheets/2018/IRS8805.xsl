@@ -53,7 +53,8 @@
 						<div class="styFTBox" style="width:124mm;height:20mm;">
 							<span class="styFST" style="font-size:12pt;">Foreign Partner's Information Statement <br/>of Section 1446 Withholding Tax</span>
 							<br/>
-							<span class="styFBT">&#9658; Go to <em>www.irs.gov/Form8805</em> for instructions and the latest information.</span>
+							<span class="styFBT">
+								<img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/> Go to <em>www.irs.gov/Form8805</em> for instructions and the latest information.</span>
 							<br/>
 							<span style="margin-top:1mm;">
 								For partnership's calendar year 2018, or tax year beginning 
@@ -173,7 +174,7 @@
 							<div style="width:100%;border-top:1px solid black;">
 								<div class="styLNLeftNumBoxSD">3</div>
 								<div style="width:85mm;padding-top:2px;">
-									Type of partner (specify&#8212;see instructions) &#9658;
+									Type of partner (specify&#8212;see instructions) <img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/>
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$FormData/Sect1446WTForeignPartnerGrp/PartnerTypeCd"/>
 									</xsl:call-template>
@@ -296,15 +297,17 @@
 					<div class="styStdDiv" style="border-top:1px solid black;">
 						<div class="styLNLeftNumBoxSD">8a</div>
 						<div class="styLNDesc" style="width:178mm;height:auto;">
-							<label>
-								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$FormData/OwnIntGreaterOnePartnershipInd"/>
-									<xsl:with-param name="BackupName">IRS8805OwnIntGreaterOnePartnershipInd</xsl:with-param>
-								</xsl:call-template>Check if the partnership identified on line 5a owns an interest in one or more partnerships</label>
+							Check if the partnership identified on line 5a owns an interest in one or more partnerships
 							<!-- dots -->
 							<span style="float:right;">
 								<span style="letter-spacing:3.3mm;font-weight:bold;padding-right:4px;">..............</span>
-								<input type="checkbox" class="styCkboxNM">
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/OwnIntGreaterOnePartnershipInd"/>
+										<xsl:with-param name="BackupName">IRS8805OwnIntGreaterOnePartnershipInd</xsl:with-param>
+									</xsl:call-template>
+								</label>
+								<input type="checkbox" alt="OwnIntGreaterOnePartnership" class="styCkboxNM">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/OwnIntGreaterOnePartnershipInd"/>
 										<xsl:with-param name="BackupName">IRS8805OwnIntGreaterOnePartnershipInd</xsl:with-param>
@@ -324,7 +327,7 @@
 								</xsl:call-template>Check if any of the partnership's effectively connected taxable income (ECTI) is exempt from U.S. tax for the partner identified on line 1a</label>
 							<!-- dots -->
 							<span style="float:right;">
-								<input type="checkbox" class="styCkboxNM">
+								<input type="checkbox" alt="ECTIExempt" class="styCkboxNM">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ECTIExemptInd"/>
 										<xsl:with-param name="BackupName">IRS8805ECTIExemptInd</xsl:with-param>

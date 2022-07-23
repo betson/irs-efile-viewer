@@ -9,20 +9,19 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS1120SScheduleK1"/>
 	<xsl:template name="RowWriterCore">
-	<!-- Updated 05/07/2012 (CJ) R8_D2 -->
+		<!-- Updated 05/07/2012 (CJ) R8_D2 -->
 		<tr>
 			<td class="styLeftNumBox">
 				<span style="width:1px;"/>
 			</td>
-			<td height="10px;" style="height:4.5mm;font-size:7pt;text-align:left;width:172mm;"
-			 class="styIRS1120SScheduleK1BBtable">
+			<td height="10px;" style="height:4.5mm;font-size:7pt;text-align:left;width:172mm;" class="styIRS1120SScheduleK1BBtable">
 				<span style="width:1px;"/>
 			</td>
 		</tr>
 	</xsl:template>
 	<!-- This template displays tables populated with data of the CodeAndAmountType data types      -->
-	<!-- The data is displayed in a dependency data style table. There is an optional parameter     -->
-	<!-- that indicates whether to display the associated push pin that comes from the Code element -->
+	<!-- The data is displayed in a dependency data style table. There is an optional parameter         -->
+	<!-- that indicates whether to display the associated push pin that comes from the Code element  -->
 	<!-- By default, this field is set to false unless the caller set it to true.                   -->
 	<xsl:template name="DisplayCodeAndAmountTable">
 		<xsl:param name="TargetNode"/>
@@ -45,33 +44,28 @@
 					<xsl:for-each select="$TargetNode">
 						<tr>
 							<!--Define background colors to the rows -->
-							<xsl:attribute name="class">
-							<xsl:choose>
-							<xsl:when test="position() mod 2 = 1">styDepTblRow1
-							</xsl:when>
-							<xsl:otherwise>styDepTblRow2
-							</xsl:otherwise>
-							</xsl:choose>
-							</xsl:attribute>
+							<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1
+							</xsl:when><xsl:otherwise>styDepTblRow2
+							</xsl:otherwise></xsl:choose></xsl:attribute>
 							<!--First column -->
 							<td class="styDepTblCell" style="text-align:left;width:50mm;">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="*"/>
 								</xsl:call-template>
-							<xsl:choose>
-							  <xsl:when test="$DisplayPushPin = 'true'">
-                                 <xsl:call-template name="SetFormLinkInline">
-                                 <xsl:with-param name="TargetNode" select="*"/>
-                                </xsl:call-template>
-							  </xsl:when>
-							  </xsl:choose>
-							</td>														
-							<!-- Second Column -->
-									<td class="styDepTblCell" style="text-align:right;width:136mm;">
-										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="Amt"/>
+								<xsl:choose>
+									<xsl:when test="$DisplayPushPin = 'true'">
+										<xsl:call-template name="SetFormLinkInline">
+											<xsl:with-param name="TargetNode" select="*"/>
 										</xsl:call-template>
-									</td>
+									</xsl:when>
+								</xsl:choose>
+							</td>
+							<!-- Second Column -->
+							<td class="styDepTblCell" style="text-align:right;width:136mm;">
+								<xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="TargetNode" select="Amt"/>
+								</xsl:call-template>
+							</td>
 						</tr>
 					</xsl:for-each>
 				</tbody>
@@ -82,30 +76,39 @@
             fields  -->
 	<!-- If the number of data elements exceed the specified number of allowable lines, and the print option is              -->
 	<!-- set to separated, then a message is displayed indicating that the data is in an additional data table.              -->
-		<xsl:template name="SpecialPopulateUSAddressTemplate">
-			<xsl:param name="TargetNode"/>
-			<xsl:variable name="addressLine2" select="$TargetNode/AddressLine2Txt"></xsl:variable>
-			<xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/AddressLine1Txt" /></xsl:call-template>			<!-- Only create line space for AddressLine 2 if it exists -->
-			<xsl:if test="$addressLine2 != ''">
-				<br/>
-				<xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/AddressLine2Txt" /></xsl:call-template>
-			</xsl:if>
-			<!-- Only create line space for the City, State, and ForeignPostalCd if they exist-->
-			<xsl:if test="$TargetNode/CityNm != ''or $TargetNode/StateAbbreviationCd != '' or $TargetNode/ZIPCd != ''"> 
-				<br/>
-				<xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/CityNm" /></xsl:call-template>
-				<!-- Only display a comma between city and state if both city and state exist-->
-				<xsl:if test="$TargetNode/CityNm != '' and $TargetNode/StateAbbreviationCd != ''">,
+	<xsl:template name="SpecialPopulateUSAddressTemplate">
+		<xsl:param name="TargetNode"/>
+		<xsl:variable name="addressLine2" select="$TargetNode/AddressLine2Txt"/>
+		<xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="$TargetNode/AddressLine1Txt"/>
+		</xsl:call-template>
+		<!-- Only create line space for AddressLine 2 if it exists -->
+		<xsl:if test="$addressLine2 != ''">
+			<br/>
+			<xsl:call-template name="PopulateText">
+				<xsl:with-param name="TargetNode" select="$TargetNode/AddressLine2Txt"/>
+			</xsl:call-template>
+		</xsl:if>
+		<!-- Only create line space for the City, State, and ForeignPostalCd if they exist-->
+		<xsl:if test="$TargetNode/CityNm != ''or $TargetNode/StateAbbreviationCd != '' or $TargetNode/ZIPCd != ''">
+			<br/>
+			<xsl:call-template name="PopulateText">
+				<xsl:with-param name="TargetNode" select="$TargetNode/CityNm"/>
+			</xsl:call-template>
+			<!-- Only display a comma between city and state if both city and state exist-->
+			<xsl:if test="$TargetNode/CityNm != '' and $TargetNode/StateAbbreviationCd != ''">,
 				<span style="width:2px;">
 				</span>
-				</xsl:if>
-				<xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode"  select="$TargetNode/StateAbbreviationCd" /></xsl:call-template>
-								<span style="width:7px;"></span>
-				<xsl:call-template name="PopulateText">
-				<xsl:with-param name="TargetNode" select="$TargetNode/ZIPCd" />
-				</xsl:call-template>
 			</xsl:if>
-		</xsl:template>
+			<xsl:call-template name="PopulateText">
+				<xsl:with-param name="TargetNode" select="$TargetNode/StateAbbreviationCd"/>
+			</xsl:call-template>
+			<span style="width:7px;"/>
+			<xsl:call-template name="PopulateText">
+				<xsl:with-param name="TargetNode" select="$TargetNode/ZIPCd"/>
+			</xsl:call-template>
+		</xsl:if>
+	</xsl:template>
 	<xsl:template match="/">
 		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
@@ -129,11 +132,11 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-				<!-- Comment out out for separate print -->
-       <xsl:if test="not($Print) or $Print=''">
-					<xsl:call-template name="IRS1120SScheduleK1Style"/>
-					<xsl:call-template name="AddOnStyle"/>
- </xsl:if>
+					<!-- Comment out out for separate print -->
+					<xsl:if test="not($Print) or $Print=''">
+						<xsl:call-template name="IRS1120SScheduleK1Style"/>
+						<xsl:call-template name="AddOnStyle"/>
+					</xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
@@ -172,30 +175,30 @@
 							<span style="width: 186mm;">
 								<span style="float: right; margin-bottom: 0.5mm;">
 									<input alt="IRS1120SScheduleK1/Final K-1 Ind" type="checkbox" class="styCkbox" name="checkbox" onclick="return false;">
-					            <xsl:call-template name="PopulateCheckbox">
-					              <xsl:with-param name="TargetNode" select="$FormData/FinalK1Ind"/>
-					              <xsl:with-param name="backupName">
+										<xsl:call-template name="PopulateCheckbox">
+											<xsl:with-param name="TargetNode" select="$FormData/FinalK1Ind"/>
+											<xsl:with-param name="backupName">
 					              IRS1120SScheduleK1/Final K-1 Ind</xsl:with-param>
-					            </xsl:call-template>
+										</xsl:call-template>
 									</input>
 									<label>
-							        <xsl:call-template name="PopulateLabel">
-                                      <xsl:with-param name="TargetNode" select="$FormData/FinalK1Ind"/>
-							          <xsl:with-param name="BackupName">Final K-1 Ind</xsl:with-param>
-							        </xsl:call-template>
+										<xsl:call-template name="PopulateLabel">
+											<xsl:with-param name="TargetNode" select="$FormData/FinalK1Ind"/>
+											<xsl:with-param name="BackupName">Final K-1 Ind</xsl:with-param>
+										</xsl:call-template>
 										<span style="vertical-align: bottom;">Final K-1</span>
 									</label>
 									<span style="width: 11mm;"/>
-							<!-- *********** Important note: No schema data to match this checkbox ********-->
+									<!-- *********** Important note: No schema data to match this checkbox ********-->
 									<input type="checkbox" alt="IRS1120SScheduleK1/Amended K-1" class="styCkbox" name="checkbox" id="dummyID2" onclick="return false;">
 									</input>
 									<label style="vertical-align: bottom;" for="dummyID2">Amended K-1</label>
-                                            <span style="width: 11mm;"/>
-                           <!-- *********** Important note: No schema data to match this checkbox ********-->                 
+									<span style="width: 11mm;"/>
+									<!-- *********** Important note: No schema data to match this checkbox ********-->                 
                                              OMB No. 1545-0123
 			           					</span>
-                                   </span>
-                          </td>
+							</span>
+						</td>
 					</tr>
 					<tr>
 						<td style="width: 93mm;" valign="top">
@@ -208,7 +211,7 @@
 											</span>
 											<div class="styTY" style="float: right; clear: none; padding-right: 0mm;">
 											20<span class="styTYColor" style="padding-right: 2mm;">18</span>
-						                	</div>
+											</div>
 										</div>
 									</td>
 								</tr>
@@ -216,27 +219,27 @@
 									<td style="font-size: 7pt;">Department of the Treasury<br/>
 										<span style="float: left; clear: none;">Internal Revenue Service</span>
 										<span style="float: left; clear:none;padding-left:1mm">
-        							<xsl:call-template name="SetFormLinkInline">
-        								<xsl:with-param name="TargetNode" select="$FormData"/>
-        							</xsl:call-template>
+											<xsl:call-template name="SetFormLinkInline">
+												<xsl:with-param name="TargetNode" select="$FormData"/>
+											</xsl:call-template>
 											<span style="width:2mm;"/>
 											<!-- Push Pin -->
 											<xsl:call-template name="LinkToLeftoverDataTableInline">
 												<xsl:with-param name="Desc">Form 1120S Schedule K-1, Top Left Margin - Section 1377 (A)(2) Election Indicator</xsl:with-param>
 												<xsl:with-param name="TargetNode" select="$FormData/@section1377a2Cd"/>
 											</xsl:call-template>
-											</span>
+										</span>
 										<span style="float: right; clear: none; padding-right: 2mm;">For calendar year 2018, or tax year 
 										</span>
-											<span style="float: left; clear: both; padding-right: 1mm;">beginning
+										<span style="float: left; clear: both; padding-right: 1mm;">beginning
                                         <span style="width: 26mm; border-bottom: 1px solid black; text-align: center;">
-                                        <xsl:call-template name="PopulateReturnHeaderTaxPeriodBeginDate"/>
-										</span>
-						     				<span style="float: right; clear: both; padding-left :16mm;">ending
+												<xsl:call-template name="PopulateReturnHeaderTaxPeriodBeginDate"/>
+											</span>
+											<span style="float: right; clear: both; padding-left :16mm;">ending
                                         <span style="width: 20mm; border-bottom: 1px solid black; text-align: center;">
-                                          <xsl:call-template name="PopulateReturnHeaderTaxPeriodEndDate"/>
-										  </span>
-										  </span>
+													<xsl:call-template name="PopulateReturnHeaderTaxPeriodEndDate"/>
+												</span>
+											</span>
 										</span>
 									</td>
 								</tr>
@@ -245,7 +248,7 @@
 										<span class="styMainTitle" style="font-size: 12pt;">Shareholder's Share of Income, Deductions,
 										</span>
 										<br/>
-										<span class="styMainTitle" style="float: left; clear: none; font-size: 12pt;">Credits,etc.</span> 
+										<span class="styMainTitle" style="float: left; clear: none; font-size: 12pt;">Credits,etc.</span>
 										<span style="float: right; clear: none; font-weight: bold; font-size: 7pt; padding-right: 1mm;padding-top: 0.5mm;">
 											<img src="{$ImagePath}/1120SSchK1_Bullet.gif" width="4" height="7" alt="Right arrow image" border="0"/> See back of form and separate instructions.</span>
 									</td>
@@ -266,21 +269,21 @@
 										<span style="width: 80mm;">Corporation's employer identification number</span>
 										<br/>
 										<span style="width: 6mm;"/>
-                      <xsl:choose>
-                        <xsl:when test="normalize-space($FormData/CorporationEIN)">                    
-                          <xsl:call-template name="PopulateEIN">
-                          <xsl:with-param name="TargetNode" select="$FormData/CorporationEIN"/>
-                        </xsl:call-template>
-                        <span style="width: 2px"/>
-                        </xsl:when>
-                      <xsl:otherwise>
-                        <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="$FormData/MissingEINReasonCd"/>
-                        </xsl:call-template>
-                        <span style="width: 2px"/>
-	    						      </xsl:otherwise>   
-    						      </xsl:choose>
-								</td>
+										<xsl:choose>
+											<xsl:when test="normalize-space($FormData/CorporationEIN)">
+												<xsl:call-template name="PopulateEIN">
+													<xsl:with-param name="TargetNode" select="$FormData/CorporationEIN"/>
+												</xsl:call-template>
+												<span style="width: 2px"/>
+											</xsl:when>
+											<xsl:otherwise>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="$FormData/MissingEINReasonCd"/>
+												</xsl:call-template>
+												<span style="width: 2px"/>
+											</xsl:otherwise>
+										</xsl:choose>
+									</td>
 								</tr>
 								<tr>
 									<td class="IRS1120SScheduleK1_tdLeft" style="height: 24mm;">
@@ -299,20 +302,20 @@
 													<xsl:with-param name="TargetNode" select="$FormData/CorporationName/BusinessNameLine2Txt"/>
 												</xsl:call-template>
 											</xsl:if>
-											<br/>										
+											<br/>
 											<!-- Display Corporation US Address -->
-                      <xsl:if test="$FormData/CorporationUSAddress and $FormData/CorporationUSAddress != ''">
-                        <xsl:call-template name="SpecialPopulateUSAddressTemplate">
-													<xsl:with-param name="TargetNode" select="$FormData/CorporationUSAddress"/> 
-                        </xsl:call-template>
-                      </xsl:if>
-                      <br/>										
-                      <!-- Display Corporation Foreign Address -->
-                      <xsl:if test="$FormData/CorporationForeignAddress and $FormData/CorporationForeignAddress != ''">
-                        <xsl:call-template name="PopulateForeignAddressTemplate">
-                      <xsl:with-param name="TargetNode" select="$FormData/CorporationForeignAddress"/>
-                        </xsl:call-template>
-                      </xsl:if>
+											<xsl:if test="$FormData/CorporationUSAddress and $FormData/CorporationUSAddress != ''">
+												<xsl:call-template name="SpecialPopulateUSAddressTemplate">
+													<xsl:with-param name="TargetNode" select="$FormData/CorporationUSAddress"/>
+												</xsl:call-template>
+											</xsl:if>
+											<br/>
+											<!-- Display Corporation Foreign Address -->
+											<xsl:if test="$FormData/CorporationForeignAddress and $FormData/CorporationForeignAddress != ''">
+												<xsl:call-template name="PopulateForeignAddressTemplate">
+													<xsl:with-param name="TargetNode" select="$FormData/CorporationForeignAddress"/>
+												</xsl:call-template>
+											</xsl:if>
 										</span>
 									</td>
 								</tr>
@@ -325,7 +328,7 @@
 										<br/>
 										<span style="width: 6mm;"/>
 										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/ServiceCenterWhereRetFiledCd"/> 
+											<xsl:with-param name="TargetNode" select="$FormData/ServiceCenterWhereRetFiledCd"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -374,7 +377,7 @@
 										<span style="font-weight: bold;">E</span>
 										<span style="width: 3mm;"/>Shareholder's name, address, city, state, and ZIP code
                     <!-- Part II, line E pen and ink image -->
-                                       <xsl:call-template name="LinkToLeftoverDataTableInline">
+										<xsl:call-template name="LinkToLeftoverDataTableInline">
 											<xsl:with-param name="Desc">Form 1120S Schedule K-1, Line E - Shareholder's Name Control
 											</xsl:with-param>
 											<xsl:with-param name="TargetNode" select="$FormData/ShareholderNameControlTxt"/>
@@ -400,7 +403,7 @@
 											<br/>
 											<xsl:if test="$FormData/ShareholderForeignAddress and  $FormData/ShareholderForeignAddress !=''">
 												<xsl:call-template name="PopulateForeignAddressTemplate">
-													<xsl:with-param name="TargetNode"  select="$FormData/ShareholderForeignAddress"/>
+													<xsl:with-param name="TargetNode" select="$FormData/ShareholderForeignAddress"/>
 												</xsl:call-template>
 											</xsl:if>
 										</span>
@@ -425,7 +428,8 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="IRS1120SScheduleK1_tdLeft" style="height:90mm; vertical-align: middle;">
+								<!--<td class="IRS1120SScheduleK1_tdLeft" style="height:149mm; vertical-align: middle;background-color:yellow">-->
+									<td class="IRS1120SScheduleK1_tdLeft" style="height:173mm; vertical-align: middle">
 										<!-- IRS Use Only box -->
 										<img src="{$ImagePath}/1120SSchK1_For_IRS_Use_Only.gif" width="24" height="91" alt="For IRS Use Only" style="position: relative; left: -2mm"/>
 									</td>
@@ -434,7 +438,7 @@
 							<!-- End inner table - Header, Part I, Part II -->
 						</td>
 						<td width="93mm" style="width: 93mm;" valign="top">
-							<table width="93mm" border="0" cellpadding="0" cellspacing="0" nowrap="yes"  style="border-top: 2px solid black; border-bottom: 0px;border-right: 2px solid black;">
+							<table width="93mm" border="0" cellpadding="0" cellspacing="0" nowrap="yes" style="border-top: 2px solid black; border-bottom: 0px;border-right: 2px solid black;">
 								<!-- Inner table - Part III -->
 								<tr>
 									<td colspan="2">
@@ -454,85 +458,84 @@
 								</tr>
 								<tr>
 									<td valign="top">
-							<table width="46.5mm" border="0" cellpadding="0" cellspacing="0" style="border-right: 1px solid black;"> 
+										<table width="46.5mm" border="0" cellpadding="0" cellspacing="0" style="border-right: 1px solid black;">
 											<!-- Part III columns 1-12 -->
-                      <tr>
-                        <td colspan="3" class="IRS1120SScheduleK1_tdRight">
+											<tr>
+												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
 													<!-- Line 1 -->
 													<div style="width: 46.5mm;">
 														<div class="IRS1120SScheduleK1_itemLabel" style="width:5.3mm;text-align: center;">														1</div>
 														<div style="width:40.3mm;">Ordinary business income (loss)
 														</div>
-                                                         <div class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height: 5mm;"/>
+														<div class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height: 5mm;"/>
 														<div class="IRS1120SScheduleK1_amountBox" style="width:40.3mm;height: 5mm;padding-top:2mm;">
-														<span style="float:left;padding-left:2px;">
-														<!-- Schedule K-1 Part III Line 1 Push Pin -->
-														  <xsl:call-template name="SetFormLinkInline">
-								                <xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncomeLossAmt"/>
-								              </xsl:call-template>
-                                             </span>													
-												    <span style="float:right;">
-															<xsl:call-template name="PopulateAmount">
-																<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncomeLossAmt"/>
-															</xsl:call-template>
-														</span>
-													  </div>
-												</div>
-											</td>
-										</tr>
-										<tr>
+															<span style="float:left;padding-left:2px;">
+																<!-- Schedule K-1 Part III Line 1 Push Pin -->
+																<xsl:call-template name="SetFormLinkInline">
+																	<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncomeLossAmt"/>
+																</xsl:call-template>
+															</span>
+															<span style="float:right;">
+																<xsl:call-template name="PopulateAmount">
+																	<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncomeLossAmt"/>
+																</xsl:call-template>
+															</span>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
 												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
 													<!-- Line 2 -->
 													<div style="width: 46.5mm;">
-													<div class="IRS1120SScheduleK1_itemLabel" style="width:5.3mm;text-align: center;">2</div>
+														<div class="IRS1120SScheduleK1_itemLabel" style="width:5.3mm;text-align: center;">2</div>
 														<div style="width:40.3mm;font-size: 6.3pt">Net rental real estate income (loss)</div>
-														<div class="IRS1120SScheduleK1_codeBox"  style="width:5.3mm;height: 5mm;"/>
-														  <div class="IRS1120SScheduleK1_amountBox" style="width:40.3mm;height: 5mm;padding-top:2mm;">
-														  <span style="float:left;padding-left:2px;">
-														  <!--Schedule K-1 Part III Line 2 Push Pin -->
-														    <xsl:call-template name="SetFormLinkInline">
+														<div class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height: 5mm;"/>
+														<div class="IRS1120SScheduleK1_amountBox" style="width:40.3mm;height: 5mm;padding-top:2mm;">
+															<span style="float:left;padding-left:2px;">
+																<!--Schedule K-1 Part III Line 2 Push Pin -->
+																<xsl:call-template name="SetFormLinkInline">
 																	<xsl:with-param name="TargetNode" select="$FormData/RealEstateNetIncomeLossAmt"/>
-																	</xsl:call-template>
-															</span>														
-															<span style="float:right;">
-																<xsl:call-template name="PopulateAmount">
-																	<xsl:with-param name="TargetNode"  select="$FormData/RealEstateNetIncomeLossAmt"/>
 																</xsl:call-template>
 															</span>
-												    </div>
-												</div>
-											</td>
-										</tr>
+															<span style="float:right;">
+																<xsl:call-template name="PopulateAmount">
+																	<xsl:with-param name="TargetNode" select="$FormData/RealEstateNetIncomeLossAmt"/>
+																</xsl:call-template>
+															</span>
+														</div>
+													</div>
+												</td>
+											</tr>
 											<tr>
 												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
 													<!-- Line 3 -->
 													<div style="width: 46.5mm;">
-														<div class="IRS1120SScheduleK1_itemLabel"  style="text-align: center;width:5.3mm;">3</div>
-														<div style="width:40.3mm;">Other net rental income (loss)</div>										
-                                                        <div class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height: 5mm;"/>
-     														<div class="IRS1120SScheduleK1_amountBox" style="width:40.3mm;height: 5mm;padding-top:2mm;">
-														<span style="float:left;padding-left:2px;">
-														    <xsl:call-template name="SetFormLinkInline">
-								                  <xsl:with-param name="TargetNode" select="$FormData/OtherRentalIncomeAmt"/>
-						             	</xsl:call-template>
-								             </span>
-													       <span style="float:right;">
+														<div class="IRS1120SScheduleK1_itemLabel" style="text-align: center;width:5.3mm;">3</div>
+														<div style="width:40.3mm;">Other net rental income (loss)</div>
+														<div class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height: 5mm;"/>
+														<div class="IRS1120SScheduleK1_amountBox" style="width:40.3mm;height: 5mm;padding-top:2mm;">
+															<span style="float:left;padding-left:2px;">
+																<xsl:call-template name="SetFormLinkInline">
+																	<xsl:with-param name="TargetNode" select="$FormData/OtherRentalIncomeAmt"/>
+																</xsl:call-template>
+															</span>
+															<span style="float:right;">
 																<xsl:call-template name="PopulateAmount">
 																	<xsl:with-param name="TargetNode" select="$FormData/OtherRentalIncomeAmt"/>
 																</xsl:call-template>
-														 </span>
+															</span>
+														</div>
 													</div>
-												</div>
-											    </td>
+												</td>
 											</tr>
 											<tr>
 												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
-											<!-- Line 4 -->
+													<!-- Line 4 -->
 													<div style="width: 46.5mm;">
-														<div class="IRS1120SScheduleK1_itemLabel"
-														 style="text-align: center;width:5.3mm;">4</div>
+														<div class="IRS1120SScheduleK1_itemLabel" style="text-align: center;width:5.3mm;">4</div>
 														<div style="width:40.3mm;">Interest income</div>
-														<div class="IRS1120SScheduleK1_codeBox"  style="width:5.3mm;height: 5mm;"/>
+														<div class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height: 5mm;"/>
 														<div class="IRS1120SScheduleK1_amountBox" style="width:40.3mm;height:5mm;padding-top:2mm;">
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="$FormData/InterestIncomeAmt"/>
@@ -543,14 +546,14 @@
 											</tr>
 											<tr>
 												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
-											<!-- Line 5a -->
+													<!-- Line 5a -->
 													<div style="width: 46.5mm;">
 														<div class="IRS1120SScheduleK1_itemLabel" style="text-align: right;width:5.3mm;">5a</div>
 														<div style="width:40.3mm;">Ordinary dividends</div>
-														<div class="IRS1120SScheduleK1_codeBox"  style="width:5.3mm;height: 5mm;"/>
+														<div class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height: 5mm;"/>
 														<div class="IRS1120SScheduleK1_amountBox" style="width:40.3mm;text-align: right;height: 5mm;padding-top:2mm;">
 															<xsl:call-template name="PopulateAmount">
-																<xsl:with-param name="TargetNode"  select="$FormData/OrdinaryDividendsAmt"/>
+																<xsl:with-param name="TargetNode" select="$FormData/OrdinaryDividendsAmt"/>
 															</xsl:call-template>
 														</div>
 													</div>
@@ -558,12 +561,12 @@
 											</tr>
 											<tr>
 												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
-						<!-- Line 5b -->
+													<!-- Line 5b -->
 													<div style="width: 46.5mm;">
 														<div class="IRS1120SScheduleK1_itemLabel" style="text-align: right;width:5.3mm;">5b</div>
 														<div style="width:40.3mm;">Qualified dividends</div>
 														<div class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height: 5mm;"/>
-															<div class="IRS1120SScheduleK1_amountBox"  style="width:40.3mm;text-align: right;height: 5mm;padding-top:2mm;">
+														<div class="IRS1120SScheduleK1_amountBox" style="width:40.3mm;text-align: right;height: 5mm;padding-top:2mm;">
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="$FormData/QualifiedDividendsAmt"/>
 															</xsl:call-template>
@@ -571,28 +574,28 @@
 													</div>
 												</td>
 											</tr>
-						<!-- Line 6 -->
+											<!-- Line 6 -->
 											<tr>
 												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
 													<div style="width: 46.5mm;">
 														<div class="IRS1120SScheduleK1_itemLabel" style="text-align: center;width:5.3mm;">6</div>
 														<div style="width:40.3mm;">Royalties</div>
-														<div class="IRS1120SScheduleK1_codeBox"  style="width:5.3mm;height: 5mm;"/>
+														<div class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height: 5mm;"/>
 														<div class="IRS1120SScheduleK1_amountBox" style="width:40.3mm;text-align: right;height: 5mm;padding-top:2mm;">
 															<xsl:call-template name="PopulateAmount">
-																<xsl:with-param name="TargetNode"  select="$FormData/PortfolioIncomeLossRyltsAmt"/>
+																<xsl:with-param name="TargetNode" select="$FormData/PortfolioIncomeLossRyltsAmt"/>
 															</xsl:call-template>
 														</div>
 													</div>
 												</td>
 											</tr>
-					<!-- Line 7 -->
+											<!-- Line 7 -->
 											<tr>
 												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
 													<div style="width: 46.5mm;">
 														<div class="IRS1120SScheduleK1_itemLabel" style="text-align: center;width:5.3mm;">7</div>
 														<div style="width:40.3mm;font-size: 6.5pt;">	Net short-term capital gain (loss)</div>
-														<div class="IRS1120SScheduleK1_codeBox"  style="width:5.3mm;height: 5mm;"/>
+														<div class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height: 5mm;"/>
 														<div class="IRS1120SScheduleK1_amountBox" style="width:40.3mm;text-align: right;height: 5mm;padding-top:2mm;">
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="$FormData/NetSTCapitalGainOrLossAmt"/>
@@ -602,23 +605,23 @@
 												</td>
 											</tr>
 											<tr>
-                                              <td colspan="3" class="IRS1120SScheduleK1_tdRight">
+												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
 													<!-- Line 8a -->
 													<div style="width: 46.5mm;">
 														<div class="IRS1120SScheduleK1_itemLabel" style="text-align: right;width:5.3mm;">8a</div>
 														<div style="width:40.3mm;font-size: 6.5pt;">Net long-term capital gain (loss)
 														</div>
-														<div class="IRS1120SScheduleK1_codeBox"  style="width:5.3mm;height: 5mm;"/>
-														<div class="IRS1120SScheduleK1_amountBox"  style="width:40.3mm;text-align: right;height: 5mm;padding-top:2mm;">
+														<div class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height: 5mm;"/>
+														<div class="IRS1120SScheduleK1_amountBox" style="width:40.3mm;text-align: right;height: 5mm;padding-top:2mm;">
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="$FormData/NetLTCapitalGainOrLossAmt"/>
-																</xsl:call-template>
+															</xsl:call-template>
 														</div>
 													</div>
 												</td>
 											</tr>
 											<tr>
-                        <td colspan="3" class="IRS1120SScheduleK1_tdRight">
+												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
 													<!-- Line 8b -->
 													<div style="width: 46.5mm;">
 														<div class="IRS1120SScheduleK1_itemLabel" style="text-align: right;width:5.3mm;">8b</div>
@@ -632,53 +635,53 @@
 													</div>
 												</td>
 											</tr>
-                      <tr>
-                        <td colspan="3" class="IRS1120SScheduleK1_tdRight">
-                          <!-- Line 8c -->
-                          <div style="width: 46.5mm;">
-                            <div class="IRS1120SScheduleK1_itemLabel" style="text-align:right;width:5.3mm;">8c</div>
+											<tr>
+												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
+													<!-- Line 8c -->
+													<div style="width: 46.5mm;">
+														<div class="IRS1120SScheduleK1_itemLabel" style="text-align:right;width:5.3mm;">8c</div>
 														<div style="width:40.3mm;font-size: 7pt;">Unrecaptured section 1250 gain
 														</div>
-                            <div class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height: 5mm;"/>
-                            <div class="IRS1120SScheduleK1_amountBox"  style="width:40.3mm;height: 5mm;padding-top:2mm;">
-                              <span style="float:left;padding-left:2px;">
-                                <xsl:call-template name="SetFormLinkInline">
-                                  <xsl:with-param name="TargetNode" select="$FormData/UnrecapturedSection1250GainAmt"/>
-                                </xsl:call-template>
-                              </span>
-                              <span style="float:right;">
-                                <xsl:call-template name="PopulateAmount">
-                                  <xsl:with-param name="TargetNode"  select="$FormData/UnrecapturedSection1250GainAmt"/>
-                                </xsl:call-template>
-                              </span>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="3" class="IRS1120SScheduleK1_tdRight">
-                          <!-- Line 9 -->
-                          <div style="width: 46.5mm;">
-                            <div class="IRS1120SScheduleK1_itemLabel" style="text-align: center;width:5.3mm;">9</div>
-							<div style="width:40.3mm;">Net section 1231 gain (loss)</div>
-                            <div class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height: 5mm;"/>
-                            <div class="IRS1120SScheduleK1_amountBox" style="width:40.3mm;height: 5mm;padding-top:2mm;"> 
-                                    <span style="float:left;padding-left:2px;">
-                                <xsl:call-template name="SetFormLinkInline">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NetSection1231GainLossAmt"/>
-                                </xsl:call-template>
-                              </span>
-                              <span style="float:right;">
-                                <xsl:call-template name="PopulateAmount">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NetSection1231GainLossAmt"/>
-                                </xsl:call-template>
-                              </span>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <!-- Line 10 -->
-                      	<tr>
+														<div class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height: 5mm;"/>
+														<div class="IRS1120SScheduleK1_amountBox" style="width:40.3mm;height: 5mm;padding-top:2mm;">
+															<span style="float:left;padding-left:2px;">
+																<xsl:call-template name="SetFormLinkInline">
+																	<xsl:with-param name="TargetNode" select="$FormData/UnrecapturedSection1250GainAmt"/>
+																</xsl:call-template>
+															</span>
+															<span style="float:right;">
+																<xsl:call-template name="PopulateAmount">
+																	<xsl:with-param name="TargetNode" select="$FormData/UnrecapturedSection1250GainAmt"/>
+																</xsl:call-template>
+															</span>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
+													<!-- Line 9 -->
+													<div style="width: 46.5mm;">
+														<div class="IRS1120SScheduleK1_itemLabel" style="text-align: center;width:5.3mm;">9</div>
+														<div style="width:40.3mm;">Net section 1231 gain (loss)</div>
+														<div class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height: 5mm;"/>
+														<div class="IRS1120SScheduleK1_amountBox" style="width:40.3mm;height: 5mm;padding-top:2mm;">
+															<span style="float:left;padding-left:2px;">
+																<xsl:call-template name="SetFormLinkInline">
+																	<xsl:with-param name="TargetNode" select="$FormData/NetSection1231GainLossAmt"/>
+																</xsl:call-template>
+															</span>
+															<span style="float:right;">
+																<xsl:call-template name="PopulateAmount">
+																	<xsl:with-param name="TargetNode" select="$FormData/NetSection1231GainLossAmt"/>
+																</xsl:call-template>
+															</span>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<!-- Line 10 -->
+											<tr>
 												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
 													<div class="IRS1120SScheduleK1_itemLabel" style="width:5.3mm;height:8mm;text-align:center;float:left;vertical-align:top;border-right:1px solid black;">10</div>
 													<div style="width:40.5mm;vertical-align:top;height:8mm;padding-left:1mm; ">
@@ -694,29 +697,29 @@
 															</span>
 														</xsl:if>
 													</div>
-													<div class="styTableContainer"  style="width:46.5mm;float:none;clear:both;" id="SchK10Ctn">
+													<div class="styTableContainer" style="width:46.5mm;float:none;clear:both;" id="SchK10Ctn">
 														<table cellpadding="0" cellspacing="0" style="auto;">
 															<tbody>
 																<xsl:if test="($Print != $Separated)  or (count($FormData/IRS1120SSchK1OtherIncmLossGrp) &lt;=4)">
-																	<xsl:for-each  select="$FormData/IRS1120SSchK1OtherIncmLossGrp">
+																	<xsl:for-each select="$FormData/IRS1120SSchK1OtherIncmLossGrp">
 																		<tr>
-																			<td class="IRS1120SScheduleK1_codeBox"  style="width:5.3mm;height:14mm;padding-top:5mm;float:left;border-top:1px dottedgray;border-right:1px solid black; font-size:7pt;">
+																			<td class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height:8mm;float:left;border-top:1px dottedgray;border-right:1px solid black; font-size:7pt;">
 																			</td>
-																				<td class="IRS1120SScheduleK1_amountBox"  style="height:8mm;padding-top:5mm;border-top:gray dotted 1px; width:40.50mm;font-size:7pt;padding-left:1mm;text-align:right">
+																			<td class="IRS1120SScheduleK1_amountBox" style="height:8mm;padding-top:1mm;border-top:gray dotted 1px; width:40.50mm;font-size:7pt;padding-left:1mm;text-align:right">
 																				<span style="float:left;padding-left:2px;">
-																				<xsl:call-template name="PopulateText">
-																				<xsl:with-param name="TargetNode" select="IRS1120SSchK1OtherIncmLossCd"/>
-																				</xsl:call-template>
-																				<span style="width:1mm;"/>
-																						<xsl:call-template name="SetFormLinkInline">
-																						<xsl:with-param name="TargetNode"  select="IRS1120SSchK1OtherIncmLossCd"/>
-																						</xsl:call-template>
-																					</span><br/>
-																					<span style="float:right;">
-																						<xsl:call-template name="PopulateAmount">
-																							<xsl:with-param name="TargetNode" select="Amt"/>
-																						</xsl:call-template>
-																					</span>
+																					<xsl:call-template name="PopulateText">
+																						<xsl:with-param name="TargetNode" select="IRS1120SSchK1OtherIncmLossCd"/>
+																					</xsl:call-template>
+																					<span style="width:1mm;"/>
+																					<xsl:call-template name="SetFormLinkInline">
+																						<xsl:with-param name="TargetNode" select="IRS1120SSchK1OtherIncmLossCd"/>
+																					</xsl:call-template>
+																				</span>
+																				<span style="float:right;">
+																					<xsl:call-template name="PopulateAmount">
+																						<xsl:with-param name="TargetNode" select="Amt"/>
+																					</xsl:call-template>
+																				</span>
 																			</td>
 																		</tr>
 																	</xsl:for-each>
@@ -739,17 +742,17 @@
 													</div>
 												</td>
 											</tr>
-			 <!-- Line 11 -->
-                     <tr>
-                        <td colspan="3" class="IRS1120SScheduleK1_tdRight">
-                          <div style="width:46.5mm;">
-                            <span class="IRS1120SScheduleK1_itemLabel"  style="text-align:center;width:5.3mm;">11</span>
+											<!-- Line 11 -->
+											<tr>
+												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
+													<div style="width:46.5mm;">
+														<span class="IRS1120SScheduleK1_itemLabel" style="text-align:center;width:5.3mm;">11</span>
 														<div style="width:40.3mm;">Section 179 deduction</div>
 														<div class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height:5mm;"/>
 														<div class="IRS1120SScheduleK1_amountBox" style="width:40.3mm;height: 5mm;text-align:right;padding-top:2mm;">
 															<span style="float:left;padding-left:2px;">
 																<xsl:call-template name="SetFormLinkInline">
-																<xsl:with-param name="TargetNode"  select="$FormData/Section179ExpenseDeductionAmt"/>
+																	<xsl:with-param name="TargetNode" select="$FormData/Section179ExpenseDeductionAmt"/>
 																</xsl:call-template>
 															</span>
 															<span style="float:right;">
@@ -758,13 +761,13 @@
 																</xsl:call-template>
 															</span>
 														</div>
-                          </div>
-                        </td>
-                      </tr> 
-               <!-- Line 12 -->
-                        <tr>
+													</div>
+												</td>
+											</tr>
+											<!-- Line 12 -->
+											<tr>
 												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
-													<div class="IRS1120SScheduleK1_itemLabel" style="width:5.3mm;height:19mm;text-align:center;float:left;vertical-align:top; border-right:1px solid black">12</div>
+													<div class="IRS1120SScheduleK1_itemLabel" style="width:5.3mm;height:9mm;text-align:center;float:left;vertical-align:top; border-right:1px solid black;">12</div>
 													<div style="width:40.5mm;vertical-align:top;height:9mm;padding-left:1mm; ">
 														<span style="float:left;padding-right:4.5mm">Other deductions</span>
 														<xsl:if test="($Print != $Separated) and (count($FormData/IRS1120SSchK1OtherDedGrp) &gt;7)">
@@ -784,54 +787,53 @@
 																<xsl:if test="($Print != $Separated)  or (count($FormData/IRS1120SSchK1OtherDedGrp) &lt;=7)">
 																	<xsl:for-each select="$FormData/IRS1120SSchK1OtherDedGrp">
 																		<tr>
-																			<td class="IRS1120SScheduleK1_codeBox"
-																			 style="width:5.3mm;height:14mm;padding-top:5mm;float:left; border-top:1px dotted gray;  border-right:1px solid black;font-size:7pt;"> 
+																			<td class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height:8mm;float:left; border-top:1px dotted gray;  border-right:1px solid black;font-size:7pt;"> 
 																			</td>
-																				<td class="IRS1120SScheduleK1_amountBox" 	 style="height:8mm;padding-top:5mm; border-top:gray dotted 1px; width:40.50mm;font-size:7pt;padding-left:1mm;text-align:right;">
-																					<span style="float:left;padding-left:2px;">
+																			<td class="IRS1120SScheduleK1_amountBox" style="height:8mm;padding-top:1mm; border-top:gray dotted 1px; width:40.50mm;font-size:7pt;padding-left:1mm;text-align:right;">
+																				<span style="float:left;padding-left:2px;">
 																					<xsl:call-template name="PopulateText">
-																					<xsl:with-param name="TargetNode" select="IRS1120SSchK1OtherDedCd"/>
-																				</xsl:call-template>
-																				<span style="width:1mm;"/>
-																						<xsl:call-template name="SetFormLinkInline">
-																							<xsl:with-param name="TargetNode" select="IRS1120SSchK1OtherDedCd"/>
-																						</xsl:call-template>
-																					</span><br/>
-																					<span style="float:right;">
-																						<xsl:call-template name="PopulateAmount">
-																							<xsl:with-param name="TargetNode" select="Amt"/>
-																						</xsl:call-template>
-																					</span>
+																						<xsl:with-param name="TargetNode" select="IRS1120SSchK1OtherDedCd"/>
+																					</xsl:call-template>
+																					<span style="width:1mm;"/>
+																					<xsl:call-template name="SetFormLinkInline">
+																						<xsl:with-param name="TargetNode" select="IRS1120SSchK1OtherDedCd"/>
+																					</xsl:call-template>
+																				</span>
+																				<span style="float:right;">
+																					<xsl:call-template name="PopulateAmount">
+																						<xsl:with-param name="TargetNode" select="Amt"/>
+																					</xsl:call-template>
+																				</span>
 																			</td>
-																				</tr>
+																		</tr>
 																	</xsl:for-each>
 																</xsl:if>
 																<xsl:if test="count($FormData/IRS1120SSchK1OtherDedGrp) &lt; 7">
 																	<xsl:call-template name="PrintBlanksLines">
 																		<xsl:with-param name="lineNumber" select="12"/>
-																	<xsl:with-param name="numRows" select="7 - count($FormData/IRS1120SSchK1OtherDedGrp)"/>
+																		<xsl:with-param name="numRows" select="8 - count($FormData/IRS1120SSchK1OtherDedGrp)"/>
 																	</xsl:call-template>
 																</xsl:if>
 																<xsl:if test="(count($FormData/IRS1120SSchK1OtherDedGrp) &gt; 7) 	and ($Print = $Separated)">
 																	<xsl:call-template name="PrintBlanksLines">
 																		<xsl:with-param name="lineNumber" select="12"/>
-																		<xsl:with-param name="numRows" select="7"/>
+																		<xsl:with-param name="numRows" select="8"/>
 																	</xsl:call-template>
 																</xsl:if>
 															</tbody>
 														</table>
 													</div>
 												</td>
-                                           </tr>
-              					</table>
+											</tr>
+										</table>
 									</td>
-                    <!-- Part III columns 13-17 -->								
+									<!-- Part III columns 13-17 -->
 									<td valign="top">
-                    <table width="46.5mm" border="0" cellpadding="0" cellspacing="0">
-                      <!-- Line 13 -->
-                         <tr>
-								<td colspan="3" class="IRS1120SScheduleK1_tdRight">
-									<div class="IRS1120SScheduleK1_itemLabel" style="width:5.3mm;height:8.9mm;text-align:center;float:left;vertical-align:top;border-right:1px solid black;">13</div>
+										<table width="46.5mm" border="0" cellpadding="0" cellspacing="0">
+											<!-- Line 13 -->
+											<tr>
+												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
+													<div class="IRS1120SScheduleK1_itemLabel" style="width:5.3mm;height:8.9mm;text-align:center;float:left;vertical-align:top;border-right:1px solid black;">13</div>
 													<div style="width:43mm;vertical-align:top;height:8.9mm;padding-left:1mm;">
 														<span style="float:left;padding-right:4.5mm">Credits</span>
 														<xsl:if test="($Print != $Separated)  and (count($FormData/IRS1120SSchK1CreditsGrp) &gt;4)">
@@ -845,29 +847,29 @@
 															</span>
 														</xsl:if>
 													</div>
-													<div class="styTableContainer" style="width:49mm;float:none;clear:both;" 	id="SchK13Ctn">
+													<div class="styTableContainer" style="width:49mm;float:none;clear:both;" id="SchK13Ctn">
 														<table cellpadding="0" cellspacing="0" style="auto;">
 															<tbody>
 																<xsl:if test="($Print != $Separated) or (count($FormData/IRS1120SSchK1CreditsGrp) &lt;=4)">
 																	<xsl:for-each select="$FormData/IRS1120SSchK1CreditsGrp">
 																		<tr>
-																			<td class="IRS1120SScheduleK1_codeBox"  style="width:5.3mm;height:12mm;padding-top:4.5mm;float:left;border-top:1px dotted gray; border-right:1px solid black;font-size:7pt;">
+																			<td class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height:8mm;float:left;border-top:1px dotted gray; border-right:1px solid black;font-size:7pt;">
 																			</td>
-																				<td class="IRS1120SScheduleK1_amountBox"  style="height:8mm;padding-top:5mm; border-top:gray dotted 1px;  width:40.50mm;font-size:7pt;padding-left:1mm;text-align:right;">
-																					<span style="float:left;padding-left:2px;">
+																			<td class="IRS1120SScheduleK1_amountBox" style="height:8mm;padding-top:1mm; border-top:gray dotted 1px;  width:40.50mm;font-size:7pt;padding-left:1mm;text-align:right;">
+																				<span style="float:left;padding-left:2px;">
 																					<xsl:call-template name="PopulateText">
-																					<xsl:with-param name="TargetNode" select="IRS1120SSchK1CreditsCd"/>
-																				</xsl:call-template>
-																				<span style="width:1mm;"/>
-																						<xsl:call-template name="SetFormLinkInline">
-																							<xsl:with-param name="TargetNode" select="IRS1120SSchK1CreditsCd"/>
+																						<xsl:with-param name="TargetNode" select="IRS1120SSchK1CreditsCd"/>
 																					</xsl:call-template>
-																					</span><br/>
-																					<span style="float:right;">
-																						<xsl:call-template name="PopulateAmount">
-																							<xsl:with-param name="TargetNode" select="Amt"/>
-																						</xsl:call-template>
-																					</span>
+																					<span style="width:1mm;"/>
+																					<xsl:call-template name="SetFormLinkInline">
+																						<xsl:with-param name="TargetNode" select="IRS1120SSchK1CreditsCd"/>
+																					</xsl:call-template>
+																				</span>
+																				<span style="float:right;">
+																					<xsl:call-template name="PopulateAmount">
+																						<xsl:with-param name="TargetNode" select="Amt"/>
+																					</xsl:call-template>
+																				</span>
 																			</td>
 																		</tr>
 																	</xsl:for-each>
@@ -875,7 +877,7 @@
 																<xsl:if test="count($FormData/IRS1120SSchK1CreditsGrp) &lt; 4">
 																	<xsl:call-template name="PrintBlanksLines">
 																		<xsl:with-param name="lineNumber" select="13"/>
-																		<xsl:with-param name="numRows" 	select="4 - count($FormData/IRS1120SSchK1CreditsGrp)"/>
+																		<xsl:with-param name="numRows" select="4 - count($FormData/IRS1120SSchK1CreditsGrp)"/>
 																	</xsl:call-template>
 																</xsl:if>
 																<xsl:if test="(count($FormData/IRS1120SSchK1CreditsGrp) &gt; 4) 	and ($Print = $Separated)">
@@ -888,29 +890,27 @@
 														</table>
 													</div>
 												</td>
-                      </tr> 
-                      <!-- Line 14 -->
-                      <!-- There is a misalignment between the code box of line 14 and "A" in the print preview.
+											</tr>
+											<!-- Line 14 -->
+											<!-- There is a misalignment between the code box of line 14 and "A" in the print preview.
                               It is an display issue of IE8 limitation -->
-                                  <tr>
+											<tr>
 												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
-													<div class="IRS1120SScheduleK1_itemLabel" 
-													style="width:5.3mm;height:9mm;text-align:center;float:left;vertical-align:top;border-right:1px solid black;">14</div>
+													<div class="IRS1120SScheduleK1_itemLabel" style="width:5.3mm;height:9mm;text-align:center;float:left;vertical-align:top;border-right:1px solid black;">14</div>
 													<div style="width:43mm;vertical-align:top;height:9mm;padding-left:1mm">
 														<span style="float:left;padding-right:4.5mm;">Foreign transactions</span>
-													<xsl:if test="($Print != $Separated)	and (count($FormData/IRS1120SSchK1FrgnTransGrp) &gt;6)">
+														<xsl:if test="($Print != $Separated)	and (count($FormData/IRS1120SSchK1FrgnTransGrp) &gt;6)">
 															<span style="float:right;">
 																<xsl:call-template name="SetDynamicTableToggleButton">
-																	<xsl:with-param name="TargetNode"  select="$FormData/IRS1120SSchK1FrgnTransGrp"/>
+																	<xsl:with-param name="TargetNode" select="$FormData/IRS1120SSchK1FrgnTransGrp"/>
 																	<xsl:with-param name="headerHeight" select="0"/>
 																	<xsl:with-param name="containerHeight" select="6"/>
 																	<xsl:with-param name="containerID" select=" 'SchK14Ctn' "/>
 																</xsl:call-template>
 															</span>
-													</xsl:if>
+														</xsl:if>
 													</div>
-													<div class="styTableContainer" 
-													style="width:49mm;float:none;clear:both;"  id="SchK14Ctn">
+													<div class="styTableContainer" style="width:49mm;float:none;clear:both;" id="SchK14Ctn">
 														<table cellpadding="0" cellspacing="0" style="auto;">
 															<tbody>
 																<xsl:if test="($Print != $Separated)  or (count($FormData/IRS1120SSchK1FrgnTransGrp) &lt;=6)">
@@ -919,57 +919,65 @@
 																			<xsl:choose>
 																				<xsl:when test="ForeignCountryOrUSPossessionCd
 																				 or CountryOrPossessionCd">
-																					<td class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height:12mm; padding-top:4.5mm;float:left; border-top:1px dotted gray; border-right:1px solid black; font-size:7p;">
+																					<td class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height:8mm;loat:left; border-top:1px dotted gray; border-right:1px solid black; font-size:7p;">
 																					</td>
-																					<td class="IRS1120SScheduleK1_codeBox"  style="width:1mm;height:8mm;padding-top:4.5mm;border-top:1px dotted gray; border-right:0px; font-size:6pt;text-align:left;">
+																					<td class="IRS1120SScheduleK1_codeBox" style="width:1mm;height:8mm;padding-top:1mm;border-top:1px dotted gray; border-right:0px; font-size:6pt;text-align:left;">
 																					</td>
-																					<td class="IRS1120SScheduleK1_amountBox" style="height:8mm;padding-top:5mm; border-top:gray dotted 1px; width:40.50mm;font-size:7pt;padding-left:mm;text-align:right;">
-																					<span style="float:left;padding-left:2px;">
-																					<xsl:choose>
-																					<xsl:when test="CountryOrPossessionCd">
-																					<xsl:call-template name="PopulateText">
-																					<xsl:with-param name="TargetNode"  select="CountryOrPossessionCd"/>
-																				</xsl:call-template>
-																				<span style="width:1mm;"/>
-																						<xsl:call-template name="SetFormLinkInline">
-																							<xsl:with-param name="TargetNode"  select="CountryOrPossessionCd"/>
-																						</xsl:call-template>
-																						</xsl:when>
-																						<xsl:otherwise>
+																					<td class="IRS1120SScheduleK1_amountBox" style="height:8mm;padding-top:1mm; border-top:gray dotted 1px; width:40.50mm;font-size:7pt;padding-left:1mm;text-align:right;">
+																						<span style="float:left;padding-left:2px;">
+																							<xsl:choose>
+																								<xsl:when test="CountryOrPossessionCd">
+																									<xsl:call-template name="PopulateText">
+																										<xsl:with-param name="TargetNode" select="CountryOrPossessionCd"/>
+																									</xsl:call-template>
+																									<span style="width:1mm;"/>
+																									<xsl:call-template name="SetFormLinkInline">
+																										<xsl:with-param name="TargetNode" select="CountryOrPossessionCd"/>
+																									</xsl:call-template>
+																								</xsl:when>
+																								<xsl:otherwise>
+																									<xsl:call-template name="PopulateText">
+																										<xsl:with-param name="TargetNode" select="ForeignCountryOrUSPossessionCd"/>
+																									</xsl:call-template>
+																								</xsl:otherwise>
+																							</xsl:choose>
+																						</span>
+																						<span style="float:right;padding-left:0mm">
 																							<xsl:call-template name="PopulateText">
-																					<xsl:with-param name="TargetNode"  select="ForeignCountryOrUSPossessionCd"/>
-																				</xsl:call-template>
-																				</xsl:otherwise>
-																			</xsl:choose>
-																					</span><br/>
-																					<span style="float:right;padding-left:18mm">
-																						<xsl:call-template name="PopulateAmount">
-																							<xsl:with-param name="TargetNode" select="Amt"/>
-																						</xsl:call-template>
-																					</span>
-																			</td>
+																								<xsl:with-param name="TargetNode" select="ForeignRegulatedInvestmtCompCd"/>
+																							</xsl:call-template>
+																						<!--</span>-->
+																						<span style="float:right;padding-left:6mm">
+																							<xsl:call-template name="PopulateAmount">
+																								<xsl:with-param name="TargetNode" select="Amt"/>
+																							</xsl:call-template>
+																						</span></span>
+																					</td>
 																				</xsl:when>
 																				<xsl:otherwise>
-																					<td class="IRS1120SScheduleK1_codeBox"
-																					   style="width:5.3mm;height:12mm;padding-top:2mm;float:left;border-top:1px dotted gray;  border-right:1px solid black; font-size:7pt;">
+																					<td class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height:8mm;padding-top:2mm;float:left;border-top:1px dotted gray;  border-right:1px solid black; font-size:7pt;">
 																					</td>
-																					<td class="IRS1120SScheduleK1_codeBox"  style="width:3mm;height:8mm;padding-top:4.5mm;border-top:1px dotted gray; border-right:0px; font-size:7pt;text-align:left;">
+																					<td class="IRS1120SScheduleK1_codeBox" style="width:3mm;height:8mm;padding-top:1mm;border-top:1px dotted gray; border-right:0px; font-size:7pt;text-align:left;">
 																						<span style="width:2mm;"/>
 																					</td>
-																					<td class="IRS1120SScheduleK1_amountBox" style="height:8mm;padding-top:4.5mm;border-top:gray dotted 1px;width:40.5mm;padding-left:1mm;text-align:left;">
-																								<xsl:call-template name="PopulateText">
+																					<td class="IRS1120SScheduleK1_amountBox" style="height:8mm;padding-top:1mm;border-top:gray dotted 1px;width:40.5mm;padding-left:1mm;text-align:left;">
+																						<xsl:call-template name="PopulateText">
 																							<xsl:with-param name="TargetNode" select="IRS1120SSchK1FrgnTransCd"/>
 																						</xsl:call-template>
 																						<span style="width:1mm"/>
-																								<xsl:call-template name="SetFormLinkInline">
-																								<xsl:with-param name="TargetNode" select="IRS1120SSchK1FrgnTransCd"/>
-																								</xsl:call-template>	
-																							<br/>
-																							<span style="float:right;font-size:7pt;">
-																								<xsl:call-template name="PopulateAmount">
-																									<xsl:with-param name="TargetNode" select="Amt"/>
-																								</xsl:call-template>
-																							</span>
+																						<xsl:call-template name="SetFormLinkInline">
+																							<xsl:with-param name="TargetNode" select="IRS1120SSchK1FrgnTransCd"/>
+																						</xsl:call-template>
+																						<span style="float:right;padding-left:0mm">
+																							<xsl:call-template name="PopulateText">
+																								<xsl:with-param name="TargetNode" select="ForeignRegulatedInvestmtCompCd"/>
+																							</xsl:call-template>
+																						<!--</span>-->
+																						<span style="float:right;padding-left:6mm">
+																							<xsl:call-template name="PopulateAmount">
+																								<xsl:with-param name="TargetNode" select="Amt"/>
+																							</xsl:call-template>
+																						</span></span>
 																					</td>
 																				</xsl:otherwise>
 																			</xsl:choose>
@@ -979,7 +987,7 @@
 																<xsl:if test="count($FormData/IRS1120SSchK1FrgnTransGrp) &lt; 6">
 																	<xsl:call-template name="PrintBlanksLines">
 																		<xsl:with-param name="lineNumber" select="14"/>
-																	<xsl:with-param name="numRows"  select="6 - count($FormData/IRS1120SSchK1FrgnTransGrp)"/>
+																		<xsl:with-param name="numRows" select="6 - count($FormData/IRS1120SSchK1FrgnTransGrp)"/>
 																	</xsl:call-template>
 																</xsl:if>
 																<xsl:if test="(count($FormData/IRS1120SSchK1FrgnTransGrp) &gt; 6) 	and ($Print = $Separated)">
@@ -992,15 +1000,14 @@
 														</table>
 													</div>
 												</td>
-                       </tr>  
-                		<!-- The font size of description is small because it aligns with the toggle button, 
+											</tr>
+											<!-- The font size of description is small because it aligns with the toggle button, 
                                                   otherwise the toggle button will be push to next line -->
-                      <!-- Line 15 -->
-                      <tr>
-								<td colspan="3" class="IRS1120SScheduleK1_tdRight">
-									<div class="IRS1120SScheduleK1_itemLabel"
-									 style="width:5.3mm;height:8mm;text-align:center;float:left;vertical-align:top; border-right:1px solid black;">15</div>
-													<div style="width:43mm;vertical-align:top;height:8mm;padding-left:1mm;">
+											<!-- Line 15 -->
+											<tr>
+												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
+													<div class="IRS1120SScheduleK1_itemLabel" style="width:5.3mm;height:10mm;text-align:center;float:left;vertical-align:top; border-right:1px solid black;">15</div>
+													<div style="width:43mm;vertical-align:top;height:10mm;padding-left:1mm;">
 														<span style="float:left;font-size: 7pt;">
 														Alternative minimum tax (AMT) items</span>
 														<xsl:if test="($Print != $Separated) and (count($FormData/IRS1120SSchK1AMTItemsGrp) &gt;4)">
@@ -1014,29 +1021,29 @@
 															</span>
 														</xsl:if>
 													</div>
-													<div class="styTableContainer"  style="width:49mm;float:none;clear:both;" id="SchK15Ctn">
+													<div class="styTableContainer" style="width:49mm;float:none;clear:both;" id="SchK15Ctn">
 														<table cellpadding="0" cellspacing="0" style="auto;">
 															<tbody>
 																<xsl:if test="($Print != $Separated)  or (count($FormData/IRS1120SSchK1AMTItemsGrp) &lt;=4)">
 																	<xsl:for-each select="$FormData/IRS1120SSchK1AMTItemsGrp">
-																	<tr>
-																			<td class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height:12mm;padding-top:5mm;float:left;border-top:1px dotted gray; padding-left:5mm; border-right:1px solid black;font-size:7pt;">
+																		<tr>
+																			<td class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height:8mm;padding-top:1mm;float:left;border-top:1px dotted gray; padding-left:5mm; border-right:1px solid black;font-size:7pt;">
 																		</td>
-																		<td class="IRS1120SScheduleK1_amountBox" style="height:8mm;padding-top:5mm;border-top:gray dotted 1px; width:40.50mm;font-size:7pt;padding-left:1mm;text-align:right;">
-																					<span style="float:left;padding-left:2px;">
+																			<td class="IRS1120SScheduleK1_amountBox" style="height:8mm;padding-top:1mm;border-top:gray dotted 1px; width:40.50mm;font-size:7pt;padding-left:1mm;text-align:right;">
+																				<span style="float:left;padding-left:2px;">
 																					<xsl:call-template name="PopulateText">
-																					<xsl:with-param name="TargetNode" select="IRS1120SSchK1AMTItemsCd"/>
-																				</xsl:call-template>
-																				<span style="width:1mm;"/>
-																						<xsl:call-template name="SetFormLinkInline">
-																							<xsl:with-param name="TargetNode"  select="IRS1120SSchK1AMTItemsCd"/>
-																						</xsl:call-template>
-																					</span><br/>
-																					<span style="float:right;">
-																						<xsl:call-template name="PopulateAmount">
-																							<xsl:with-param name="TargetNode" select="Amt"/>
-																						</xsl:call-template>
-																					</span>
+																						<xsl:with-param name="TargetNode" select="IRS1120SSchK1AMTItemsCd"/>
+																					</xsl:call-template>
+																					<span style="width:1mm;"/>
+																					<xsl:call-template name="SetFormLinkInline">
+																						<xsl:with-param name="TargetNode" select="IRS1120SSchK1AMTItemsCd"/>
+																					</xsl:call-template>
+																				</span>
+																				<span style="float:right;">
+																					<xsl:call-template name="PopulateAmount">
+																						<xsl:with-param name="TargetNode" select="Amt"/>
+																					</xsl:call-template>
+																				</span>
 																			</td>
 																		</tr>
 																	</xsl:for-each>
@@ -1057,12 +1064,12 @@
 														</table>
 													</div>
 												</td>
-                      </tr>
-                      <!-- Line 15 -->
-					<!-- The font size of description is small because it aligns with the toggle button, otherwise the 
+											</tr>
+											<!-- Line 15 -->
+											<!-- The font size of description is small because it aligns with the toggle button, otherwise the 
                                                   toggle button will be push to next line -->
-                      <!-- Line 16 -->
-                      <tr>
+											<!-- Line 16 -->
+											<tr>
 												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
 													<div class="IRS1120SScheduleK1_itemLabel" style="width:5.3mm;height:8mm;text-align:center;float:left;vertical-align:top; border-right:1px solid black;">16</div>
 													<div style="width:43mm;vertical-align:top;height:8mm;padding-left:1mm;">
@@ -1082,23 +1089,22 @@
 														<table cellpadding="0" cellspacing="0" style="auto;">
 															<tbody>
 																<xsl:if test="($Print != $Separated) 	or (count($FormData/IRS1120SSchK1AffectngShrBssGrp) &lt;=4)">
-																	<xsl:for-each 
-																	select="$FormData/IRS1120SSchK1AffectngShrBssGrp">
-																	<tr>
-																			<td class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height:11mm;  padding-top:5mm;float:left;border-top:1px ; dotted gray;border-right:1px solid black; font-size:7pt;">
+																	<xsl:for-each select="$FormData/IRS1120SSchK1AffectngShrBssGrp">
+																		<tr>
+																			<td class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height:8mm;float:left;border-top:1px ; dotted gray;border-right:1px solid black; font-size:7pt;">
 																		</td>
-																			<td class="IRS1120SScheduleK1_amountBox"  style="height:8mm;padding-top:5mm;border-top:gray dotted 1px; width:40.50mm;font-size:7pt;padding-left:1mm;text-align:right;">
-																					<span style="float:left;padding-left:2px;">
+																			<td class="IRS1120SScheduleK1_amountBox" style="height:8mm;border-top:gray dotted 1px; width:40.50mm;font-size:7pt;padding-left:1mm;text-align:right;">
+																				<span style="float:left;padding-left:2px;">
 																					<xsl:call-template name="PopulateText">
-																					<xsl:with-param name="TargetNode"  select="IRS1120SSchK1AffectngShrBssCd"/>
-																				</xsl:call-template>	
-																				<span style="width:1mm;"/>
-																							</span><br/>
-																					<span style="float:right;">
-																						<xsl:call-template name="PopulateAmount">
-																							<xsl:with-param name="TargetNode" select="Amt"/>
-																						</xsl:call-template>
-																					</span>
+																						<xsl:with-param name="TargetNode" select="IRS1120SSchK1AffectngShrBssCd"/>
+																					</xsl:call-template>
+																					<span style="width:1mm;"/>
+																				</span>
+																				<span style="float:right;">
+																					<xsl:call-template name="PopulateAmount">
+																						<xsl:with-param name="TargetNode" select="Amt"/>
+																					</xsl:call-template>
+																				</span>
 																			</td>
 																		</tr>
 																	</xsl:for-each>
@@ -1119,21 +1125,19 @@
 														</table>
 													</div>
 												</td>
-                      </tr>
-                      <!-- Line 17 -->
-                      <!-- There is a misalignment between the code box of line 15 and "*"
+											</tr>
+											<!-- Line 17 -->
+											<!-- There is a misalignment between the code box of line 15 and "*"
                                  in the print preview. It is an display issue of IE8 limitation -->
-                     <tr>
-							<td colspan="3" class="IRS1120SScheduleK1_tdRight">
-													<div class="IRS1120SScheduleK1_itemLabel"
-													 style="width:5.3mm;height:9mm;text-align:center;float:left;vertical-align:top; border-right:1px solid black;">17</div>
+											<tr>
+												<td colspan="3" class="IRS1120SScheduleK1_tdRight">
+													<div class="IRS1120SScheduleK1_itemLabel" style="width:5.3mm;height:9mm;text-align:center;float:left;vertical-align:top; border-right:1px solid black;">17</div>
 													<div style="width:43mm;vertical-align:top;height:8mm;padding-left:1mm;">
-											<span style="float:left;padding-right:4.5mm">Other information</span>
-											<xsl:if test="($Print != $Separated)  and (count($FormData/IRS1120SSchK1OtherInfoGrp) &gt;3)">
+														<span style="float:left;padding-right:4.5mm">Other information</span>
+														<xsl:if test="($Print != $Separated)  and (count($FormData/IRS1120SSchK1OtherInfoGrp) &gt;3)">
 															<span style="float:right;">
 																<xsl:call-template name="SetDynamicTableToggleButton">
-																	<xsl:with-param name="TargetNode" 
-																	select="$FormData/IRS1120SSchK1OtherInfoGrp"/>
+																	<xsl:with-param name="TargetNode" select="$FormData/IRS1120SSchK1OtherInfoGrp"/>
 																	<xsl:with-param name="headerHeight" select="0"/>
 																	<xsl:with-param name="containerHeight" select="3"/>
 																	<xsl:with-param name="containerID" select=" 'SchK17Ctn' "/>
@@ -1141,35 +1145,32 @@
 															</span>
 														</xsl:if>
 													</div>
-													<div class="styTableContainer" style="width:49mm;float:none;clear:both;" 	 id="SchK17Ctn">
+													<div class="styTableContainer" style="width:49mm;float:none;clear:both;" id="SchK17Ctn">
 														<table cellpadding="0" cellspacing="0" style="auto;">
 															<tbody>
 																<xsl:if test="($Print != $Separated)  or (count($FormData/IRS1120SSchK1OtherInfoGrp) &lt;=3)">
-																		<xsl:for-each select="$FormData/IRS1120SSchK1OtherInfoGrp">
-																	<tr>
-																			<td class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height:11mm;
-																			 padding-top:5mm;float:left;border-top:1px ; dotted gray;border-right:1px solid black; font-size:7pt;">
+																	<xsl:for-each select="$FormData/IRS1120SSchK1OtherInfoGrp">
+																		<tr>
+																			<td class="IRS1120SScheduleK1_codeBox" style="width:5.3mm;height:8mm;float:left;border-top:1px ; dotted gray;border-right:1px solid black; font-size:7pt;">
 																		</td>
-																			<td class="IRS1120SScheduleK1_amountBox"
-																			 style="height:8mm;padding-top:5mm;
-																			 border-top:gray dotted 1px; width:40.50mm;font-size:7pt;padding-left:1mm;text-align:right;"> 
-																					<span style="float:left;padding-left:2px;">
+																			<td class="IRS1120SScheduleK1_amountBox" style="height:8mm;padding-top:1mm;border-top:gray dotted 1px; width:40.50mm;font-size:7pt;padding-left:1mm;text-align:right;">
+																				<span style="float:left;padding-left:2px;">
 																					<xsl:call-template name="PopulateText">
-																					<xsl:with-param name="TargetNode" select="IRS1120SSchK1OtherInfoCd"/>
-																				</xsl:call-template>
-																				<span style="width:1mm;"/>
-																						<xsl:call-template name="SetFormLinkInline">
-																							<xsl:with-param name="TargetNode"  select="IRS1120SSchK1OtherInfoCd"/>
-																						</xsl:call-template>
-																					</span><br/>
-																					<span style="float:right;">
-																						<xsl:call-template name="PopulateAmount">
-																							<xsl:with-param name="TargetNode" select="Amt"/>
-																						</xsl:call-template>
-																					</span>
+																						<xsl:with-param name="TargetNode" select="IRS1120SSchK1OtherInfoCd"/>
+																					</xsl:call-template>
+																					<span style="width:1mm;"/>
+																					<xsl:call-template name="SetFormLinkInline">
+																						<xsl:with-param name="TargetNode" select="IRS1120SSchK1OtherInfoCd"/>
+																					</xsl:call-template>
+																				</span>
+																				<span style="float:right;">
+																					<xsl:call-template name="PopulateAmount">
+																						<xsl:with-param name="TargetNode" select="Amt"/>
+																					</xsl:call-template>
+																				</span>
 																			</td>
 																		</tr>
-																</xsl:for-each>
+																	</xsl:for-each>
 																</xsl:if>
 																<xsl:if test="count($FormData/IRS1120SSchK1OtherInfoGrp) &lt; 3">
 																	<xsl:call-template name="PrintBlanksLines">
@@ -1187,13 +1188,13 @@
 														</table>
 													</div>
 												</td>
-                      </tr>
-                      <!-- Line 17 -->
-                    </table>									
-                  </td>
+											</tr>
+											<!-- Line 17 -->
+										</table>
+									</td>
 								</tr>
 								<tr>
-								<td colspan="2" style="height:12mm;font-family: Verdana; font-size: 7pt;border-top: 1px solid black;text-align: center;">
+									<td colspan="2" style="height:12.3mm;font-family: Verdana; font-size: 7pt;border-top: 1px solid black;text-align: center;">
 										* See attached statement for additional information.
 									</td>
 								</tr>
@@ -1202,7 +1203,7 @@
 						</td>
 					</tr>
 					<tr>
-					<td width="187mm" colspan="2" style="width: 187mm; font-family: Verdana; font-size: 6pt;font-weight: bold; border-top: 2px solid black;"> 
+						<td width="187mm" colspan="2" style="width: 187mm; font-family: Verdana; font-size: 6pt;font-weight: bold; border-top: 2px solid black;">
 							<span style="width: 88mm;">For Paperwork Reduction Act Notice, see Instructions for Form 1120S.</span>
 							<span style="font-weight: normal;width: 25mm;">www.irs.gov/Form1120S</span>
 							<span style="font-weight: normal;width: 25mm;padding-left:7mm">Cat. No. 11520D</span>
@@ -1285,10 +1286,10 @@
 						<xsl:with-param name="DescWidth" select="100"/>
 					</xsl:call-template>
 					<xsl:call-template name="PopulateLeftoverRow">
-			        <xsl:with-param name="Desc">Form 1120S Schedule K-1,Top Left Margin - Section 1377 (A)(2) Election Indicator</xsl:with-param> 
-			        <xsl:with-param name="TargetNode" select="$FormData/@section1377a2Cd"/>
-			        <xsl:with-param name="DescWidth" select="100"/>
-             </xsl:call-template>
+						<xsl:with-param name="Desc">Form 1120S Schedule K-1,Top Left Margin - Section 1377 (A)(2) Election Indicator</xsl:with-param>
+						<xsl:with-param name="TargetNode" select="$FormData/@section1377a2Cd"/>
+						<xsl:with-param name="DescWidth" select="100"/>
+					</xsl:call-template>
 					<xsl:call-template name="PopulateLeftoverRow">
 						<xsl:with-param name="Desc">Form 1120S Schedule K-1, Line E - Shareholder's Name Control
 						</xsl:with-param>
@@ -1301,10 +1302,10 @@
 				<xsl:if test="($Print = $Separated) and (count($FormData/IRS1120SSchK1OtherIncmLossGrp) &gt;4) ">
 					<xsl:call-template name="DisplayCodeAndAmountTable">
 						<xsl:with-param name="TargetNode" select="$FormData/IRS1120SSchK1OtherIncmLossGrp"/>
-						<xsl:with-param name="SubTargetNode" select="$FormData/IRS1120SSchK1OtherIncmLossGrp/IRS1120SSchK1OtherIncmLossCd"/> 
+						<xsl:with-param name="SubTargetNode" select="$FormData/IRS1120SSchK1OtherIncmLossGrp/IRS1120SSchK1OtherIncmLossCd"/>
 						<xsl:with-param name="CodeAndAmountTableTitle"> Form 1120S Schedule K1, Part III, Line 10 - Other income (loss):
                   </xsl:with-param>
-         			<xsl:with-param name="DisplayPushPin">true</xsl:with-param>						
+						<xsl:with-param name="DisplayPushPin">true</xsl:with-param>
 					</xsl:call-template>
 				</xsl:if>
 				<!-- End Part III Line 10 separated data -->
@@ -1315,7 +1316,7 @@
 						<xsl:with-param name="SubTargetNode" select="$FormData/IRS1120SSchK1OtherDedGrp/IRS1120SSchK1OtherDedCd"/>
 						<xsl:with-param name="CodeAndAmountTableTitle"> Form 1120S Schedule K1, Part III, Line 12 - Other deductions:
             </xsl:with-param>
-      			<xsl:with-param name="DisplayPushPin">true</xsl:with-param>
+						<xsl:with-param name="DisplayPushPin">true</xsl:with-param>
 					</xsl:call-template>
 				</xsl:if>
 				<!-- End Part III Line 12 separated data -->
@@ -1326,93 +1327,89 @@
 						<xsl:with-param name="SubTargetNode" select="$FormData/IRS1120SSchK1CreditsGrp/IRS1120SSchK1CreditsCd"/>
 						<xsl:with-param name="CodeAndAmountTableTitle"> Form 1120S Schedule K1, Part III, Line 13 - Credits:
             </xsl:with-param>
-      			<xsl:with-param name="DisplayPushPin">true</xsl:with-param>
+						<xsl:with-param name="DisplayPushPin">true</xsl:with-param>
 					</xsl:call-template>
 				</xsl:if>
 				<!-- End Part III Line 13 separated data -->
 				<!-- Additonal Data Table for separated data from Part III, Line 14 -->
 				<xsl:if test="($Print = $Separated) and (count($FormData/IRS1120SSchK1FrgnTransGrp) &gt; 6) ">
-          <br/>
-          <span class="styRepeatingDataTitle">Form 1120S Schedule K1, Part III, Line 14 - Foreign transactions:
+					<br/>
+					<span class="styRepeatingDataTitle">Form 1120S Schedule K1, Part III, Line 14 - Foreign transactions:
           </span>
-          <table class="styDepTbl" style="font-size:7pt">
-            <thead class="styTableTHead">
-              <tr class="styDepTblHdr">
-                <th class="styDepTblCell" scope="col" style="width:70mm;">Country or Possession Code OR IRS Code
+					<table class="styDepTbl" style="font-size:7pt">
+						<thead class="styTableTHead">
+							<tr class="styDepTblHdr">
+								<th class="styDepTblCell" scope="col" style="width:70mm;">Country or Possession Code OR IRS Code
                 </th>
-                <th class="styDepTblCell" scope="col" style="width:70mm;">Country or Possession Name</th>
-                <th class="styDepTblCell" scope="col" style="width:30mm;">Amount </th>
-              </tr>
-            </thead>
-            <tbody>
-              <xsl:for-each select="$FormData/IRS1120SSchK1FrgnTransGrp">
-                <tr>
-                  <!--Define background colors to the rows -->
-                  <xsl:attribute name="class">
-                    <xsl:choose>
-                      <xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
-                      <xsl:otherwise>styDepTblRow2</xsl:otherwise>
-                    </xsl:choose>
-                  </xsl:attribute>
-                  <!-- If either CountryOrPossessionCode or CountryOrPossessionName element exists, -->
-                  <!-- display Country/Possession Code + Country/Possession Name -->
-                  <xsl:choose>
-                    <xsl:when test="ForeignCountryOrUSPossessionCd or CountryOrPossessionCd">
-                      <!--First column -->
-                      <td class="styDepTblCell" style="text-align:left;width:50mm;">
-                        <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="ForeignCountryOrUSPossessionCd"/>
-                        </xsl:call-template><!--<span style="width:1mm"></span>
+								<th class="styDepTblCell" scope="col" style="width:70mm;">Country or Possession Name</th>
+								<th class="styDepTblCell" scope="col" style="width:30mm;">Amount </th>
+							</tr>
+						</thead>
+						<tbody>
+							<xsl:for-each select="$FormData/IRS1120SSchK1FrgnTransGrp">
+								<tr>
+									<!--Define background colors to the rows -->
+									<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+									<!-- If either CountryOrPossessionCode or CountryOrPossessionName element exists, -->
+									<!-- display Country/Possession Code + Country/Possession Name -->
+									<xsl:choose>
+										<xsl:when test="ForeignCountryOrUSPossessionCd or CountryOrPossessionCd">
+											<!--First column -->
+											<td class="styDepTblCell" style="text-align:left;width:50mm;">
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="ForeignCountryOrUSPossessionCd"/>
+												</xsl:call-template>
+												<!--<span style="width:1mm"></span>
                         <xsl:call-template name="SetFormLinkInline">
                           <xsl:with-param name="TargetNode" select="CountryOrPossessionCd"/>
                         </xsl:call-template>-->
-                      </td>
-                      <!--Second column -->
-                      <td class="styDepTblCell" style="width:68mm;text-align:left;">
-                        <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="CountryOrPossessionCd"/>
-                        </xsl:call-template>
-                        <span style="width:1mm"></span>
-                        <xsl:call-template name="SetFormLinkInline">
-                          <xsl:with-param name="TargetNode" select="CountryOrPossessionCd"/>
-                        </xsl:call-template>
-                      </td>
-                      <!--Third column -->
-                      <td class="styDepTblCell" style="width:68mm;text-align:right;">
-                        <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="Amt"/>
-                        </xsl:call-template>
-                      </td>
-                    </xsl:when>
-                    <!-- Otherwise, display Code + Amount -->
-                    <xsl:otherwise>
-                      <!--First Column -->
-                      <td class="styDepTblCell" style="text-align:left;width:50mm;">
-                        <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="IRS1120SSchK1FrgnTransCd"/>
-                        </xsl:call-template>
-                         <span style="width:1mm"></span>
-                        <!-- Schedule K-1 Part III Line 14 Pushpin -->
-                        <xsl:call-template name="SetFormLinkInline">
-                          <xsl:with-param name="TargetNode" select="IRS1120SSchK1FrgnTransCd"/>
-                        </xsl:call-template>                                      
-                      </td>
-                      <!--Second column -->
-                      <td class="styDepTblCell" style="width:68mm;text-align:left;">
-                        <span style="width:2mm;"/>
-                      </td>
-                      <!--Third Column -->
-                      <td class="styDepTblCell" style="width:68mm;text-align:right;">
-                        <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="Amt"/>
-                        </xsl:call-template>
-                      </td>
-                    </xsl:otherwise>
-                  </xsl:choose>
-                </tr>
-              </xsl:for-each>
-            </tbody>
-          </table>
+											</td>
+											<!--Second column -->
+											<td class="styDepTblCell" style="width:68mm;text-align:left;">
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="CountryOrPossessionCd"/>
+												</xsl:call-template>
+												<span style="width:1mm"/>
+												<xsl:call-template name="SetFormLinkInline">
+													<xsl:with-param name="TargetNode" select="CountryOrPossessionCd"/>
+												</xsl:call-template>
+											</td>
+											<!--Third column -->
+											<td class="styDepTblCell" style="width:68mm;text-align:right;">
+												<xsl:call-template name="PopulateAmount">
+													<xsl:with-param name="TargetNode" select="Amt"/>
+												</xsl:call-template>
+											</td>
+										</xsl:when>
+										<!-- Otherwise, display Code + Amount -->
+										<xsl:otherwise>
+											<!--First Column -->
+											<td class="styDepTblCell" style="text-align:left;width:50mm;">
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="IRS1120SSchK1FrgnTransCd"/>
+												</xsl:call-template>
+												<span style="width:1mm"/>
+												<!-- Schedule K-1 Part III Line 14 Pushpin -->
+												<xsl:call-template name="SetFormLinkInline">
+													<xsl:with-param name="TargetNode" select="IRS1120SSchK1FrgnTransCd"/>
+												</xsl:call-template>
+											</td>
+											<!--Second column -->
+											<td class="styDepTblCell" style="width:68mm;text-align:left;">
+												<span style="width:2mm;"/>
+											</td>
+											<!--Third Column -->
+											<td class="styDepTblCell" style="width:68mm;text-align:right;">
+												<xsl:call-template name="PopulateAmount">
+													<xsl:with-param name="TargetNode" select="Amt"/>
+												</xsl:call-template>
+											</td>
+										</xsl:otherwise>
+									</xsl:choose>
+								</tr>
+							</xsl:for-each>
+						</tbody>
+					</table>
 				</xsl:if>
 				<!-- End Part III Line 14 separated data -->
 				<!-- Additonal Data Table for separated data from Part III, Line 15 -->
@@ -1420,19 +1417,18 @@
 					<xsl:call-template name="DisplayCodeAndAmountTable">
 						<xsl:with-param name="TargetNode" select="$FormData/IRS1120SSchK1AMTItemsGrp"/>
 						<xsl:with-param name="SubTargetNode" select="$FormData/IRS1120SSchK1AMTItemsGrp/IRS1120SSchK1AMTItemsCd"/>
-					
 						<xsl:with-param name="CodeAndAmountTableTitle">
                          Form 1120S Schedule K1, Part III, Line 15 - Alternative minimum tax (AMT) items:
             </xsl:with-param>
-      			<xsl:with-param name="DisplayPushPin">true</xsl:with-param>						      
-					</xsl:call-template>			
+						<xsl:with-param name="DisplayPushPin">true</xsl:with-param>
+					</xsl:call-template>
 				</xsl:if>
 				<!-- End Part III Line 15 separated data -->
 				<!-- Additonal Data Table for separated data from Part III, Line 16 -->
 				<xsl:if test="($Print = $Separated)  and (count($FormData/IRS1120SSchK1AffectngShrBssGrp) &gt; 4) ">
 					<xsl:call-template name="DisplayCodeAndAmountTable">
 						<xsl:with-param name="TargetNode" select="$FormData/IRS1120SSchK1AffectngShrBssGrp"/>
-                    <xsl:with-param name="SubTargetNode" select="$FormData/IRS1120SSchK1AffectngShrBssGrp/IRS1120SSchK1AffectngShrBssCd"/>
+						<xsl:with-param name="SubTargetNode" select="$FormData/IRS1120SSchK1AffectngShrBssGrp/IRS1120SSchK1AffectngShrBssCd"/>
 						<xsl:with-param name="CodeAndAmountTableTitle">Form 1120S Schedule K1, Part III, Line 16 - Items affecting hareholder basis:
             </xsl:with-param>
 					</xsl:call-template>
@@ -1442,10 +1438,10 @@
 				<xsl:if test="($Print = $Separated) and (count($FormData/IRS1120SSchK1OtherInfoGrp) &gt; 3) ">
 					<xsl:call-template name="DisplayCodeAndAmountTable">
 						<xsl:with-param name="TargetNode" select="$FormData/IRS1120SSchK1OtherInfoGrp"/>
-						<xsl:with-param name="SubTargetNode"  select="$FormData/IRS1120SSchK1OtherInfoGrp/IRS1120SSchK1OtherInfoCd"/>
+						<xsl:with-param name="SubTargetNode" select="$FormData/IRS1120SSchK1OtherInfoGrp/IRS1120SSchK1OtherInfoCd"/>
 						<xsl:with-param name="CodeAndAmountTableTitle">Form 1120S Schedule K1, Part III, Line 17 - Other information:
             </xsl:with-param>
-      			<xsl:with-param name="DisplayPushPin">true</xsl:with-param>						      
+						<xsl:with-param name="DisplayPushPin">true</xsl:with-param>
 					</xsl:call-template>
 				</xsl:if>
 				<!-- End Part III Line 17 separated data -->
@@ -1457,7 +1453,7 @@
 		<xsl:param name="numRows"/>
 		<xsl:if test="$numRows &gt; 0">
 			<tr style="height:8mm;">
-				<td class="IRS1120SScheduleK1_codeBox" style="height: 5mm;border-top:1px dotted gray; border-right:gray dotted 1px;border-right:1px solid black;"> 
+				<td class="IRS1120SScheduleK1_codeBox" style="height: 5mm;border-top:1px dotted gray; border-right:gray dotted 1px;border-right:1px solid black;">
 					<xsl:if test="(($numRows = 4) and (($lineNumber = 10) or ($lineNumber = 13) 
 					or ($lineNumber = 15) or ($lineNumber = 16))) or
 										(($numRows = 6) and (($lineNumber = 14))) or
@@ -1466,14 +1462,14 @@
 						<xsl:attribute name="style">width:5.3mm;height: 5mm;border-top:0;</xsl:attribute>
 					</xsl:if>
 				</td>
-				<xsl:if test="(($lineNumber = 14)) and ($Print != $Separated)" >
-					<td class="IRS1120SScheduleK1_codeBox" 	style="height: 5mm;border-top:1px dotted gray; width:3mm;border-right:0px;">
+				<xsl:if test="(($lineNumber = 14)) and ($Print != $Separated)">
+					<td class="IRS1120SScheduleK1_codeBox" style="height: 5mm;border-top:1px dotted gray; width:3mm;border-right:0px;">
 						<xsl:if test="$numRows = 6">
 							<xsl:attribute name="style">border-top:0;width:3mm;height: 5mm;border-right:0px;</xsl:attribute>
 						</xsl:if>
 					</td>
 				</xsl:if>
-				<td class="IRS1120SScheduleK1_amountBox" 	style="border-top:gray dotted 1px; width:41mm;height: 5mm;" valign="bottom">
+				<td class="IRS1120SScheduleK1_amountBox" style="border-top:gray dotted 1px; width:41mm;height: 5mm;" valign="bottom">
 					<xsl:if test="(($numRows = 4) and (($lineNumber = 10))) or
 										(($numRows = 7) and (($lineNumber = 12)))">
 						<xsl:attribute name="style">border-top:0; width:41mm;height: 5mm;</xsl:attribute>
@@ -1488,8 +1484,7 @@
 					<div style="padding-left:1mm;float:left;font-size:6pt;">
 						<xsl:if test="($lineNumber = 10) and ($numRows = 4) and ($Print = $Separated) and (count($FormData/IRS1120SSchK1OtherIncmLossGrp) &gt; 4)">
 							<xsl:call-template name="PopulateAdditionalDataTableMessage">
-								<xsl:with-param name="TargetNode" 
-								select="$FormData/IRS1120SSchK1OtherIncmLossGrp"/>
+								<xsl:with-param name="TargetNode" select="$FormData/IRS1120SSchK1OtherIncmLossGrp"/>
 							</xsl:call-template>
 						</xsl:if>
 						<xsl:if test="($lineNumber = 12) and ($numRows = 7) and ($Print = $Separated) and (count($FormData/IRS1120SSchK1OtherDedGrp) &gt; 7)">
@@ -1514,7 +1509,7 @@
 						</xsl:if>
 						<xsl:if test="($lineNumber = 16) and ($numRows = 4)  and ($Print = $Separated) and (count($FormData/IRS1120SSchK1AffectngShrBssGrp) &gt; 4)">
 							<xsl:call-template name="PopulateAdditionalDataTableMessage">
-								<xsl:with-param name="TargetNode" 	select="$FormData/IRS1120SSchK1AffectngShrBssGrp"/>
+								<xsl:with-param name="TargetNode" select="$FormData/IRS1120SSchK1AffectngShrBssGrp"/>
 							</xsl:call-template>
 						</xsl:if>
 						<xsl:if test="($lineNumber = 17) and ($numRows = 3) 	and ($Print = $Separated) and (count($FormData/IRS1120SSchK1OtherInfoGrp) &gt; 3)">

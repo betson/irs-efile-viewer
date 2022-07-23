@@ -136,7 +136,7 @@
 					<!-- Table 1 -->
 					<div class="styStdDivLS" style="">
 						<xsl:call-template name="SetInitialState"/>
-						<table class="styTbl" style="display:table;border-collapse:collapse;">
+						<table style="display:table;border-collapse:collapse;">
 							<thead class="styTableThead">
 								<tr>
 									<th class="styTableCellHeader" scope="col" style="width:8mm;font-weight:normal;"> </th>
@@ -307,7 +307,7 @@
 					<!-- Table 2 -->
 					<div class="styStdDivLS" style="">
 						<xsl:call-template name="SetInitialState"/>
-						<table class="styTbl" style="display:table;border-collapse:collapse;">
+						<table style="display:table;border-collapse:collapse;">
 							<thead class="styTableThead">
 								<tr style="height:16mm;">
 									<th class="styTableCellHeader" scope="col" style="width:8mm;font-weight:normal;"> </th>

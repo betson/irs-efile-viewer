@@ -1297,7 +1297,7 @@
               Check applicable box(es): <span style="width:1mm;"/>
               <!-- Check box 1 -->
               <b>(1)</b>
-              <input type="checkbox" alt="Page 2 Consolidated Group Indicator" class="styCkbox">
+              <input type="checkbox" alt="Consolidated Group Indicator" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form1120PCScheduleM3/IncomeLossItems/ConsolidatedGroupInd"/>
                   <xsl:with-param name="BackupName">ConsolidatedGroupInd</xsl:with-param>
@@ -1314,7 +1314,7 @@
             <div class="styGenericDiv" style="padding-left:1.5mm;">
               <!-- Check box 2 -->
               <b>(2)</b>
-              <input type="checkbox" alt="Page 2 Parent Corporation Indicator" class="styCkbox">
+              <input type="checkbox" alt="Parent Corporation Indicator" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form1120PCScheduleM3/IncomeLossItems/ParentCorporationInd"/>
                   <xsl:with-param name="BackupName">ParentCorporationInd</xsl:with-param>
@@ -1331,7 +1331,7 @@
             <div class="styGenericDiv" style="padding-left:1.5mm;">
               <!-- Check  box 3 -->
               <b>(3)</b>
-              <input type="checkbox" alt="Page 2 Consolidated Eliminations Indicator" class="styCkbox">
+              <input type="checkbox" alt="Consolidated Eliminations Indicator" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form1120PCScheduleM3/IncomeLossItems/ConsolidatedEliminationsInd"/>
                   <xsl:with-param name="BackupName">ConsolidatedEliminationsInd</xsl:with-param>
@@ -1348,7 +1348,7 @@
             <div class="styGenericDiv" style="padding-left:1.5mm;">
               <!-- Check box 4 -->
               <b>(4)</b>
-              <input type="checkbox" alt="Page 2 Subsidiary Corporation Indicator" class="styCkbox">
+              <input type="checkbox" alt="Subsidiary Corporation Indicator" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form1120PCScheduleM3/IncomeLossItems/SubsidiaryCorporationInd"/>
                   <xsl:with-param name="BackupName">SubsidiaryCorporationInd</xsl:with-param>
@@ -1365,7 +1365,7 @@
             <div class="styGenericDiv" style="padding-left:1.5mm;">
               <!-- Check box 5 -->
               <b>(5)</b>
-              <input type="checkbox" alt="Page 2 Mixed 1120/L/PC Group Indicator" class="styCkbox">
+              <input type="checkbox" alt="Mixed 1120/L/PC Group Indicator" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form1120PCScheduleM3/IncomeLossItems/Mixed1120LPCGroupInd"/>
                   <xsl:with-param name="BackupName">Mixed1120LPCGroupInd</xsl:with-param>
@@ -1388,7 +1388,7 @@
            	Check if a sub-consolidated: <span style="width:2mm;"/>
               <!-- Check box 6 -->
               <b>(6)</b>
-              <input type="checkbox" alt="Page 2 1120-PC Group Indicator" class="styCkbox">
+              <input type="checkbox" alt="1120-PC Group Indicator" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form1120PCScheduleM3/IncomeLossItems/Is1120PCGroupInd"/>
                   <xsl:with-param name="BackupName">1120PCGroupInd</xsl:with-param>
@@ -1405,7 +1405,7 @@
             <div class="styGenericDiv" style="padding-left:3mm;">
               <!-- Check box 7 -->
               <b>(7)</b>
-              <input type="checkbox" alt="Page 2 1120-PC Eliminations Indicator" class="styCkbox">
+              <input type="checkbox" alt="1120-PC Eliminations Indicator" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form1120PCScheduleM3/IncomeLossItems/Is1120PCEliminationsInd"/>
                   <xsl:with-param name="BackupName">1120PCEliminationsInd</xsl:with-param>
@@ -2687,7 +2687,7 @@
            	Check applicable box(es): <span style="width:1mm;"/>
               <!-- Check box 1 -->
               <b>(1)</b>
-              <input type="checkbox" alt="Page 3 Consolidated Group Indicator" class="styCkbox">
+              <input type="checkbox" alt="Consolidated Group Indicator" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form1120PCScheduleM3/ExpenseDeductionItems/ConsolidatedGroupInd"/>
                   <xsl:with-param name="BackupName">ConsolidatedGroupInd</xsl:with-param>
@@ -2704,7 +2704,7 @@
             <div class="styGenericDiv" style="padding-left:1.5mm;">
               <!-- Check box 2 -->
               <b>(2)</b>
-              <input type="checkbox" alt="Page 3 Parent Corporation Indicator" class="styCkbox">
+              <input type="checkbox" alt="Parent Corporation Indicator" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form1120PCScheduleM3/ExpenseDeductionItems/ParentCorporationInd"/>
                   <xsl:with-param name="BackupName">Parent CorporationInd</xsl:with-param>
@@ -2721,7 +2721,7 @@
             <div class="styGenericDiv" style="padding-left:1.5mm;">
               <!-- Check box 3 -->
               <b>(3)</b>
-              <input type="checkbox" alt="Page 3 Consolidated Eliminations Indicator" class="styCkbox">
+              <input type="checkbox" alt="Consolidated Eliminations Indicator" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form1120PCScheduleM3/ExpenseDeductionItems/ConsolidatedEliminationsInd"/>
                   <xsl:with-param name="BackupName">ConsolidatedEliminationsInd</xsl:with-param>
@@ -2738,7 +2738,7 @@
             <div class="styGenericDiv" style="padding-left:1.5mm;">
               <!-- Check box 4 -->
               <b>(4)</b>
-              <input type="checkbox" alt="Page 3 Subsidiary Corporation Indicator" class="styCkbox">
+              <input type="checkbox" alt="Subsidiary Corporation Indicator" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form1120PCScheduleM3/ExpenseDeductionItems/SubsidiaryCorporationInd"/>
                   <xsl:with-param name="BackupName">SubsidiaryCorporationInd</xsl:with-param>
@@ -2755,7 +2755,7 @@
             <div class="styGenericDiv" style="padding-left:1.5mm;">
               <!-- Check box 5 -->
               <b>(5)</b>
-              <input type="checkbox" alt="Page 3 Mixed 1120/L/PC Group Indicator" class="styCkbox">
+              <input type="checkbox" alt="Mixed 1120/L/PC Group Indicator" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form1120PCScheduleM3/ExpenseDeductionItems/Mixed1120LPCGroupInd"/>
                   <xsl:with-param name="BackupName">Mixed1120LPCGroupInd</xsl:with-param>
@@ -2777,7 +2777,7 @@
            	Check if a sub-consolidated: <span style="width:2mm;"/>
               <!-- Check box 6 -->
               <b>(6)</b>
-              <input type="checkbox" alt="Page 3 1120-PC Group Indicator" class="styCkbox">
+              <input type="checkbox" alt="1120-PC Group Indicator" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form1120PCScheduleM3/ExpenseDeductionItems/Is1120PCGroupInd"/>
                   <xsl:with-param name="BackupName">1120PCGroupInd</xsl:with-param>
@@ -2794,7 +2794,7 @@
             <div class="styGenericDiv" style="padding-left:2mm;">
               <!-- Check box 7 -->
               <b>(7)</b>
-              <input type="checkbox" alt="Page 3 1120-PC Eliminations Indicator" class="styCkbox">
+              <input type="checkbox" alt="1120-PC Eliminations" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form1120PCScheduleM3/ExpenseDeductionItems/Is1120PCEliminationsInd"/>
                   <xsl:with-param name="BackupName">1120PCEliminationsInd</xsl:with-param>

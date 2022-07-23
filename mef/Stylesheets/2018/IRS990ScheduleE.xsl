@@ -76,7 +76,8 @@
     <span style="font-size:6pt;font-weight:bold;padding-bottom:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> Complete if the organization answered "Yes" on Form 990,</span><br/>
     <span style="font-size:6pt;font-weight:bold;padding-bottom:1mm;">Part IV, line 13, or Form 990-EZ, Part VI, line 48.</span><br/>
     <span style="font-size:6pt;font-weight:bold;padding-bottom:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> Attach to Form 990 or Form 990-EZ.</span><br/>
-    <span style="font-size:6pt;font-weight:bold;padding-bottom:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> Go to <i>www.irs.gov/Form990EZ</i> for the latest instructions. </span><br/>
+    <span style="font-size:6pt;font-weight:bold;padding-bottom:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> 
+ Go to <i>www.irs.gov/Form990EZ</i> for instructions and the latest information.</span><br/>
   </div>
   
   <!-- Tax Year Box -->

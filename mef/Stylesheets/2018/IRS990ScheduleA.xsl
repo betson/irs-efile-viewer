@@ -61,10 +61,10 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-					 <xsl:if test="not($Print) or $Print=''">
+					<xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS990ScheduleAStyle"/>
 						<xsl:call-template name="AddOnStyle"/>
-					</xsl:if>  
+					</xsl:if>
 				</style>
 			</head>
 			<body class="styBodyClass">
@@ -254,58 +254,55 @@
 								<xsl:with-param name="TargetNode" select="$FormData/MedicalResearchOrganizationInd"/>
 								<xsl:with-param name="BackupName">IRS990SchAMedicalResearchOrganizationInd</xsl:with-param>
 							</xsl:call-template>
-     A medical research organization operated in conjunction with a hospital described in
-      <span style="font-weight:bold;">
-         section 170(b)(1)(A)(iii).</span>
-     Enter the hospital's name, city, and state:
-			<xsl:choose>
-					<xsl:when test="($Print != $Separated) or count($FormData/HospitalNameAndAddressGrp) &lt;= 2">
-						<xsl:for-each select="$FormData/HospitalNameAndAddressGrp">
-					<div style="font-family:verdana;font-size:7pt;padding-left:1mm;">
-								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="SupportedOrganizationName/BusinessNameLine1Txt"/>
-								</xsl:call-template>
-				    </div>
-				   
-					<div style="font-family:verdana;font-size:7pt;">
-						<xsl:call-template name="PopulateText">
-							<xsl:with-param name="TargetNode" select="SupportedOrganizationName/BusinessNameLine2Txt"/>
-					</xsl:call-template>          
-				    </div>
-				    
-				   <div style="font-family:verdana;font-size:7pt;padding-left:1mm;"> 
-							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="CityNm"/>
-							</xsl:call-template> <span style="width:1px;"> </span>
-					</div>
-					
-					 <div style="font-family:verdana;font-size:7pt;padding-left:1mm;"> 
-							 <xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="StateAbbreviationCd"/>
-							</xsl:call-template> <span style="width:1px;"> </span>
-					</div>
-					
-					 <div style="font-family:verdana;font-size:7pt;padding-left:1mm;"> 
-							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="CountryCd"/>
-							</xsl:call-template> 
-					</div>
-						</xsl:for-each>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:call-template name="PopulateAdditionalDataTableMessage">
-							<xsl:with-param name="TargetNode" select="$FormData/HospitalNameAndAddressGrp"/>
-						</xsl:call-template>
-					</xsl:otherwise>
-				</xsl:choose>
-				<br/>
-     <span class="styFixedUnderline" style="width:143mm;float:right;padding-left:30mm;padding-top:0;padding-bottom:0;"/>
+								 A medical research organization operated in conjunction with a hospital described in
+								<span style="font-weight:bold;">
+								section 170(b)(1)(A)(iii).</span>
+								Enter the hospital's name, city, and state:
+							<xsl:choose>
+								<xsl:when test="($Print != $Separated) or count($FormData/HospitalNameAndAddressGrp) &lt;= 2">
+									<xsl:for-each select="$FormData/HospitalNameAndAddressGrp">
+										<div style="font-family:verdana;font-size:7pt;padding-left:1mm;">
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="SupportedOrganizationName/BusinessNameLine1Txt"/>
+											</xsl:call-template>
+										</div>
+										<div style="font-family:verdana;font-size:7pt;">
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="SupportedOrganizationName/BusinessNameLine2Txt"/>
+											</xsl:call-template>
+										</div>
+										<div style="font-family:verdana;font-size:7pt;padding-left:1mm;">
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="CityNm"/>
+											</xsl:call-template>
+											<span style="width:1px;"> </span>
+										</div>
+										<div style="font-family:verdana;font-size:7pt;padding-left:1mm;">
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="StateAbbreviationCd"/>
+											</xsl:call-template>
+											<span style="width:1px;"> </span>
+										</div>
+										<div style="font-family:verdana;font-size:7pt;padding-left:1mm;">
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="CountryCd"/>
+											</xsl:call-template>
+										</div>
+									</xsl:for-each>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:call-template name="PopulateAdditionalDataTableMessage">
+										<xsl:with-param name="TargetNode" select="$FormData/HospitalNameAndAddressGrp"/>
+									</xsl:call-template>
+								</xsl:otherwise>
+							</xsl:choose>
+							<br/>
+							<span class="styFixedUnderline" style="width:143mm;float:right;padding-left:30mm;padding-top:0;padding-bottom:0;"/>
 						</label>
 					</div>
 				</div>
 				<!-- Display all rows: If the print parameter is not set to be Separated, OR -->
 				<!--If the print parameter is separated, but there are at most 2 data elements-->
-				
 				<!-- line 5 -->
 				<div class="IRS990ScheduleA_LineContainer">
 					<div class="IRS990ScheduleA_LineIndex">5</div>
@@ -408,11 +405,11 @@
 								<xsl:with-param name="TargetNode" select="$FormData/AgriculturalResearchOrgInd"/>
 								<xsl:with-param name="BackupName">IRS990SchAAgriculturalResearchOrgInd</xsl:with-param>
 							</xsl:call-template>
-    An agricultural research organization described in
-      <span style="font-weight:bold;">
-         170(b)(1)(A)(ix) </span>
-     operated in conjunction with a land-grant college or university or a non-land grant college of agriculture. See instructions. Enter the name, city, and state of the college or university:
-     <span class="styFixedUnderline" style="width:170mm;float:none;padding-left:2mm;padding-top:0;padding-bottom:0;"/>
+								An agricultural research organization described in
+								<span style="font-weight:bold;">
+								170(b)(1)(A)(ix) </span>
+								operated in conjunction with a land-grant college or university or a non-land grant college of agriculture. See instructions. Enter the name, city, and state of the college 
+								or university:
 						</label>
 					</div>
 				</div>
@@ -420,21 +417,22 @@
 				<!--If the print parameter is separated, but there are at most 2 data elements-->
 				<xsl:choose>
 					<xsl:when test="($Print != $Separated) or count($FormData/AgriculturalNameAndAddressGrp) &lt;= 2">
+						<div class="styLNLeftNumBox" style=""/>
 						<xsl:for-each select="$FormData/AgriculturalNameAndAddressGrp">
-							<div style="font-family:verdana;font-size:7pt;padding-left:16mm;">
+							<div style="font-family:verdana;font-size:7pt;padding-left:8mm">
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="SupportedOrganizationName/BusinessNameLine1Txt"/>
+									<xsl:with-param name="TargetNode" select="CollegeUniversityName/BusinessNameLine1Txt"/>
 								</xsl:call-template>,
-          </div>
-							<div style="font-family:verdana;font-size:7pt;padding-left:16mm;">
+							</div>
+							<div style="font-family:verdana;font-size:7pt;padding-left:2mm;">
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="SupportedOrganizationName/BusinessNameLine2Txt"/>
+									<xsl:with-param name="TargetNode" select="CollegeUniversityName/BusinessNameLine2Txt"/>
 								</xsl:call-template>,          
-          </div>
+							</div>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="CityNm"/>
 							</xsl:call-template>,
-         <xsl:call-template name="PopulateText">
+								<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="StateAbbreviationCd"/>
 							</xsl:call-template>
 							<xsl:call-template name="PopulateText">
@@ -448,6 +446,7 @@
 						</xsl:call-template>
 					</xsl:otherwise>
 				</xsl:choose>
+				<span class="styFixedUnderline" style="width:170mm;float:right;padding-left:30mm;padding-top:0;padding-bottom:0;"/>
 				<br/>
 				<!-- line 10 -->
 				<div class="IRS990ScheduleA_LineContainer">
@@ -650,7 +649,7 @@ instructions). <b>You must complete Part IV, Sections A and D, and Part V.</b>
 				<!-- line 12g -->
 				<div class="IRS990ScheduleA_LineIndex">g</div>
 				<div class="IRS990ScheduleA_LineIndex">
-  </div>
+				</div>
 				<div class="IRS990ScheduleA_LineDescIV" style="float:left;display:table;display:inline;">
     Provide the following information about the supported organization(s). 
    </div>
@@ -2506,7 +2505,7 @@ the tests listed below, please complete Part II.)</span>
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">1</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -2534,7 +2533,7 @@ described in section 509(a)(1) or (2).</i>
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">2</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -2562,7 +2561,7 @@ described in section 509(a)(1) or (2).</i>
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">3a</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -2591,7 +2590,7 @@ determination.</i>
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">3b</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -2620,7 +2619,7 @@ determination.</i>
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">3c</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -2649,7 +2648,7 @@ determination.</i>
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">4a</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -2678,7 +2677,7 @@ supervised by or in connection with its supported organizations.</i>
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">4b</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -2708,7 +2707,7 @@ the foreign supported organization was used exclusively for section 170(c)(2)(B)
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">4c</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -2740,7 +2739,7 @@ amendment to the organizing document).</i>
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">5a</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -2768,7 +2767,7 @@ organization's organizing document?
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">5b</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -2817,7 +2816,7 @@ organization’s supported organizations?
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">6</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -2847,7 +2846,7 @@ substantial contributor?
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">7</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -2875,7 +2874,7 @@ substantial contributor?
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">8</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -2905,7 +2904,7 @@ defined in section 4946 (other than foundation managers and organizations descri
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">9a</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -2935,7 +2934,7 @@ organization had an interest?
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">9b</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -2965,7 +2964,7 @@ in which the supporting organization also had an interest?
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">9c</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -2994,7 +2993,7 @@ Type II supporting organizations, and all Type III non-functionally integrated s
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">10a</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -3022,7 +3021,7 @@ whether the organization had excess business holdings).</i>
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">10b</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -3089,7 +3088,7 @@ whether the organization had excess business holdings).</i>
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm;height:4.5;">
-													</div>
+					</div>
 					<div class="styLNRightNumBox" style="height:4.5mm;">11a</div>
 					<div class="styLNRightNumBox" style="height:4.5mm;">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -3168,7 +3167,7 @@ powers during the tax year.</i>
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">1</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -3199,7 +3198,7 @@ organization.</i>
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox" style="height:7.5mm;">2</div>
 					<div class="styLNRightNumBox" style="height:7.5mm;">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -3245,7 +3244,7 @@ supporting organization was vested in the same persons that controlled or manage
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox" style="border-bottom:0px;height:5.5mm;">1</div>
 					<div class="styLNRightNumBox" style="border-bottom:0px;height:5.5mm;">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -3290,7 +3289,7 @@ documents in effect on the date of notification, to the extent not previously pr
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">1</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -3320,7 +3319,7 @@ maintained a close and continuous working relationship with the supported organi
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">2</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -3350,7 +3349,7 @@ year?
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox" style="height:5.5mm;">3</div>
 					<div class="styLNRightNumBox" style="height:5.5mm;">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -3467,7 +3466,7 @@ substantially all of its activities.</i>
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">2a</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -3498,7 +3497,7 @@ involvement.</i>
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">2b</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -3517,8 +3516,7 @@ involvement.</i>
 						<!-- <span class="styIRS990AUnderlinedText" style=" width: 50mm;">-->Parent of Supported Organizations.<b> Answer (a) and (b) below.</b>
 					</div>
 					<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey;">
-							
-						</div>
+					</div>
 					<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"/>
 					<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"/>
 				</div>
@@ -3558,7 +3556,7 @@ supported organizations?
 				<div style="width: 187mm">
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width: 155mm">
-													</div>
+					</div>
 					<div class="styLNRightNumBox">3b</div>
 					<div class="styLNRightNumBox">
 						<xsl:call-template name="PopulateYesBoxText">
@@ -4105,7 +4103,7 @@ from line 3)
 				</table>
 				<table class="styTable" style="font-size:7pt;width:187mm;" cellspacing="0">
 					<div class="styBB" style="width:187mm;">
-             </div>
+					</div>
 					<tr>
 						<td class="styLNLeftNumBox" style="height:4.5mm;padding-left:0mm;border-top-width: 1px"/>
 						<td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">
@@ -4757,7 +4755,7 @@ instructions)
 								</xsl:call-template>
 							</td>
 							<td class="styTableCellSmall" style="width: 37mm; font-size: 6pt;background-color:lightgrey;border-right-width:0px">
-										</td>
+							</td>
 						</tr>
 						<tr>
 							<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
@@ -4771,7 +4769,7 @@ instructions)
 							</td>
 							<td class="styTableCellSmall" style="width: 37mm; padding-top:2mm; font-size: 6pt;background-color:lightgrey">
 								<span style="padding-right: 4mm">
-											</span>
+								</span>
 							</td>
 							<td class="styTableCellSmall" style="width: 37mm; border-right-width:0px">
 								<span class="styTableCellPad"/>
@@ -4788,7 +4786,7 @@ instructions)
 									</td>
 							<td class="styTableCellSmall" style="width: 37mm; padding-top: 2mm; font-size: 6pt">
 								<span style="padding-right: 4mm">
-											</span>
+								</span>
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/DistributionAllocationsGrp/ExcessDistributionAmt"/>
 								</xsl:call-template>
@@ -4809,7 +4807,7 @@ instructions)
 								<span style="width: 6mm"/>If the amount is greater than zero, explain in Part VI. <br/>
 								<span style="width: 6mm"/>See instructions.</td>
 							<td class="styTableCellSmall" style="width: 37mm; font-size: 6pt;background-color:lightgrey;">
-										</td>
+							</td>
 							<td class="styTableCellSmall" style="width: 37mm;padding-top:6mm ">
 								<span class="styTableCellPad"/>
 								<xsl:call-template name="PopulateAmount">
@@ -4828,7 +4826,7 @@ instructions)
 								<span style="width: 6mm"/>lines 3h and 4b from line 1. If the amount is greater <br/>
 								<span style="width: 5mm"/> than zero, explain in Part VI. See instructions.</td>
 							<td class="styTableCellSmall" style="width: 37mm; font-size: 6pt;background-color:lightgrey;">
-										</td>
+							</td>
 							<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey;">
 								<span class="styTableCellPad"/>
 							</td>
@@ -4863,8 +4861,7 @@ instructions)
 								<span style="width: 1mm"/>
         Breakdown of line 7:</td>
 							<td class="styTableCellSmall" style="width: 37mm; font-size: 6pt;background-color:lightgrey">
-										
-									</td>
+							</td>
 							<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey">
 								<span class="styTableCellPad"/>
 							</td>

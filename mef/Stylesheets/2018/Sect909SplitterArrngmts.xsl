@@ -47,8 +47,11 @@
             <xsl:with-param name="TargetNode" select="TaxesAccruedAmt"/>
           </xsl:call-template>        
         </td>
-        <td class="styDepTblCell" style="width: 45mm;text-align:left;">
-            <xsl:call-template name="PopulateText">
+        <td class="styDepTblCell" style="width: 45mm;text-align:middle;">
+            <xsl:call-template name="PopulateYesBoxText">
+              <xsl:with-param name="TargetNode" select="SplitterArrngmRelatedIncomeInd"/>
+            </xsl:call-template>
+            <xsl:call-template name="PopulateNoBoxText">
               <xsl:with-param name="TargetNode" select="SplitterArrngmRelatedIncomeInd"/>
             </xsl:call-template>
         </td>
@@ -85,7 +88,7 @@
         <xsl:call-template name="DocumentHeaderDependency"/>    
           <div class="styDepTitleLine">
             <span class="styDepTitle">
-              <span style="width:98mm;">
+              <span style="padding-right:1mm;">
                 <xsl:value-of select="$depDocTitle"/>
               </span>
             </span>

@@ -1,0 +1,81 @@
+body {   /* Global Styles */
+	color: black; background-color: white;
+	font-family: verdana, arial, sans-serif; font-size: 8pt;
+	font-weight: normal; font-style: normal;
+	line-height: normal;
+	text-align: left; text-indent: 0px; text-decoration: none;
+	vertical-align: middle;
+	margin-top: 6px; margin-bottom: 0px; margin-left: 6px; margin-right: 0px;
+	padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
+	border-style: none; border-color: silver;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 2px;
+	width: auto; height: auto;
+	float: none; clear: none;
+	display: block; cursor: auto; white-space: normal;
+}
+
+.styIconImg {
+	width: 16px; height: 16px;
+	border-style: none; border-color: black;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+	vertical-align: top;
+}
+.styTogglerLabel {   /* Toggler for expanding or collapsing a directory branch */
+	background-color: white;
+	height: 16px;
+	font-weight: normal;
+	border-style: none; border-color: black;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+	padding-top: 0px; padding-bottom: 0px; padding-left: 3px; padding-right: 0px;
+	vertical-align: middle;
+	cursor: default;
+}
+.styDataLabel {
+	background-color: white;
+	height: 16px;
+	font-weight: normal;
+	border-style: none; border-color: black;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+	padding-top: 0px; padding-bottom: 0px; padding-left: 3px; padding-right: 0px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.styRtnStatALbl {   /* Return Status Accepted Label */
+	background-color: #97d5b1;
+	font-weight: bold;
+	text-align: right;
+	vertical-align: top;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 2px; padding-right: 2px;
+}
+.styRtnStatA {   /* Return Status Accepted */
+	background-color: #97d5b1;
+	font-weight: bold;
+	vertical-align: top;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 2px; padding-right: 2px;
+}
+.styRtnStatRLbl {   /* Return Status Rejected Label */
+	background-color: #ff9999;
+	font-weight: bold;
+	text-align: right;
+	vertical-align: top;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 2px; padding-right: 2px;
+}
+.styRtnStatR {   /* Return Status Rejected */
+	background-color: #ff9999;
+	font-weight: bold;
+	vertical-align: top;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 2px; padding-right: 2px;
+}
+.styRtnStatULbl {   /* Return Status Unknown Label */
+	background-color: Gold;
+	font-weight: bold;
+	text-align: right;
+	vertical-align: top;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 2px; padding-right: 2px;
+}
+.styRtnStatU {   /* Return Status Unknown */
+	background-color: Gold;
+	font-weight: bold;
+	vertical-align: top;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 2px; padding-right: 2px;
+}

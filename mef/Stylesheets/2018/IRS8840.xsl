@@ -50,8 +50,8 @@
 						<div class="styFTBox" style="width:131mm;height:20mm;">
 							<span class="styFST" style="font-size:12pt;">Closer Connection Exception Statement for Aliens</span><br />
 							<span class="styFBT">
-								&#9658; Attach to Form 1040NR or Form 1040NR-EZ. <br />
-								&#9658; Go to <a href="http://www.irs.gov/Form8840">www.irs.gov/Form8840</a> for the latest information.
+								<img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/> Attach to Form 1040NR or Form 1040NR-EZ. <br />
+								<img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/> Go to <a href="http://www.irs.gov/Form8840">www.irs.gov/Form8840</a> for the latest information.
 							</span><br/>
 							<span>
 								For the year January 1 &#8212; December 31, 2018, or other tax year<br />beginning 
@@ -136,7 +136,7 @@
 						<div class="styLNLeftNumBoxSD">1</div>
 						<div class="sty8840DescA" style="width:179mm;">
 							<span style="width:110.5mm;float:left;">
-								Type of U.S. visa (for example, F, J, M, etc.) and date you entered the United States &#9658; 
+								Type of U.S. visa (for example, F, J, M, etc.) and date you entered the United States <img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/>
 							</span>
 							<span style="width:68mm;border-bottom:1px dashed black;float:left;">
 								<xsl:choose>
@@ -200,7 +200,7 @@
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBoxSD">4</div>
 						<div class="sty8840DescA" style="width:179mm;">
-							<span style="width:50.5mm;">Enter your passport number(s) &#9658; </span>
+							<span style="width:50.5mm;">Enter your passport number(s) <img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/> </span>
 							<span style="width:128mm;border-bottom:1px dashed black;">
 								<xsl:choose>
 									<xsl:when test="count($FormData/PassportIssuedGrp) &lt; 2">
@@ -251,7 +251,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/AppLawfulPermanentResidentInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="YesAppLawfulPermanentResident" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/AppLawfulPermanentResidentInd"/>
 										<xsl:with-param name="BackupName">IRS8840AppLawfulPermanentResidentInd</xsl:with-param>
@@ -264,7 +264,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="NoAppLawfulPermanentResident" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/AppLawfulPermanentResidentInd"/>
 										<xsl:with-param name="BackupName">IRS8840AppLawfulPermanentResidentInd</xsl:with-param>
@@ -302,7 +302,8 @@
 						<div class="styLNLeftNumBoxSD">8</div>
 						<div class="sty8840DescA" style="width:179mm;">
 							Enter the name of the foreign country to which you had a closer connection than to the United States during 2018 <br />
-							&#9658; <span style="width:174mm;border-bottom:1px dashed black;float:right;">
+							<img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/> 
+							<span style="width:174mm;border-bottom:1px dashed black;float:right;">
 								<xsl:call-template name="PopulateCountry8840">
 									<xsl:with-param name="TargetNode" select="$FormData/CloserConnectionCountryCd"/>
 								</xsl:call-template>
@@ -353,7 +354,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/CloserConnectionFrgnCntryInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="YesCloserConnectionFrgnCntry" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/CloserConnectionFrgnCntryInd"/>
 										<xsl:with-param name="BackupName">IRS8840CloserConnectionFrgnCntryInd</xsl:with-param>
@@ -366,7 +367,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="NoCloserConnectionFrgnCntry" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/CloserConnectionFrgnCntryInd"/>
 										<xsl:with-param name="BackupName">IRS8840CloserConnectionFrgnCntryInd</xsl:with-param>
@@ -398,7 +399,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/TaxResidentInternalLawCntryInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="YesTaxResidentInternalLawCntry" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/TaxResidentInternalLawCntryInd"/>
 										<xsl:with-param name="BackupName">IRS8840TaxResidentInternalLawCntryInd</xsl:with-param>
@@ -411,7 +412,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="NoTaxResidentInternalLawCntry" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/TaxResidentInternalLawCntryInd"/>
 										<xsl:with-param name="BackupName">IRS8840TaxResidentInternalLawCntryInd</xsl:with-param>
@@ -436,7 +437,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/TaxReturnFldTaxHomeCountryInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="YesTaxReturnFldTaxHomeCountry" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/TaxReturnFldTaxHomeCountryInd"/>
 										<xsl:with-param name="BackupName">IRS8840TaxReturnFldTaxHomeCountryInd</xsl:with-param>
@@ -449,7 +450,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="NoTaxReturnFldTaxHomeCountry" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/TaxReturnFldTaxHomeCountryInd"/>
 										<xsl:with-param name="BackupName">IRS8840TaxReturnFldTaxHomeCountryInd</xsl:with-param>
@@ -469,7 +470,7 @@
 								<xsl:with-param name="TargetNode" select="$FormData/TaxReturnFldTaxHomeCountryInd"/>
 							</xsl:call-template>
 							<br />
-							If "No" to either line 12 or line 13, please explain &#9658; 
+							If "No" to either line 12 or line 13, please explain <img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/>
 							<span style="width:113mm;border-bottom:1px dashed black;">&#8194;</span>
 						<div class="sty8840DescA" style="width:179mm;border-bottom:1px dashed black;float:right;">
 								<span style="width:1px;"/>
@@ -515,7 +516,7 @@
 						<div class="styLNLeftNumBox">15</div>
 						<div class="sty8840DescA" style="width:179mm;">
 							If you had more than one permanent home available to you at all times during 2018, list the location of each and <br />
-							<span style="width:16mm;float:left;">explain &#9658; </span>
+							<span style="width:16mm;float:left;">explain <img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/> </span>
 							<span style="width:162.5mm;border-bottom:1px dashed black;float:left;">
 								<xsl:choose>
 									<xsl:when test="count($FormData/MultiplePermanentHomeGrp) &lt; 2">
@@ -664,7 +665,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/BusActyLocOthThanTaxHomeInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="YesBusActyLocOthThanTaxHome" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/BusActyLocOthThanTaxHomeInd"/>
 										<xsl:with-param name="BackupName">IRS8840/BusActyLocOthThanTaxHomeInd</xsl:with-param>
@@ -677,7 +678,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="NoBusActyLocOthThanTaxHome" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/BusActyLocOthThanTaxHomeInd"/>
 										<xsl:with-param name="BackupName">IRS8840/BusActyLocOthThanTaxHomeInd</xsl:with-param>
@@ -791,7 +792,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/FormW8BENOrOtherW8CompletedInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="YesFormW8BENOrOtherW8Completed" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/FormW8BENOrOtherW8CompletedInd"/>
 										<xsl:with-param name="BackupName">IRS8840/FormW8BENOrOtherW8CompletedInd</xsl:with-param>
@@ -804,7 +805,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="NoFormW8BENOrOtherW8Completed" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/FormW8BENOrOtherW8CompletedInd"/>
 										<xsl:with-param name="BackupName">IRS8840/FormW8BENOrOtherW8CompletedInd</xsl:with-param>
@@ -830,7 +831,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/FormW9CompletedInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="YesFormW9Completed" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/FormW9CompletedInd"/>
 										<xsl:with-param name="BackupName">IRS8840/FormW9CompletedInd</xsl:with-param>
@@ -843,7 +844,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="NoFormW9Completed" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/FormW9CompletedInd"/>
 										<xsl:with-param name="BackupName">IRS8840/FormW9CompletedInd</xsl:with-param>
@@ -869,7 +870,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/Form1078CompletedInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="YesForm1078Completed" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/Form1078CompletedInd"/>
 										<xsl:with-param name="BackupName">IRS8840/Form1078CompletedInd</xsl:with-param>
@@ -882,7 +883,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="NoForm1078Completed" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/Form1078CompletedInd"/>
 										<xsl:with-param name="BackupName">IRS8840/Form1078CompletedInd</xsl:with-param>
@@ -902,7 +903,7 @@
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBox" style="padding-left:4.5mm;">d</div>
 						<div class="sty8840DescA" style="width:179mm;">
-							Any other U.S. official forms? If "Yes," indicate the form(s) &#9658;
+							Any other U.S. official forms? If "Yes," indicate the form(s) <img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/>
 							<span style="border-bottom:1px dashed black;width:75mm;margin-left:1mm;">
 								<span style="width:1px;"/>
 								<xsl:call-template name="SetFormLinkInline">
@@ -913,7 +914,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/OthUSOfficialFormCompletedInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="YesOthUSOfficialFormCompleted" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/OthUSOfficialFormCompletedInd"/>
 										<xsl:with-param name="BackupName">IRS8840/OthUSOfficialFormCompletedInd</xsl:with-param>
@@ -926,7 +927,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="NoOthUSOfficialFormCompleted" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/OthUSOfficialFormCompletedInd"/>
 										<xsl:with-param name="BackupName">IRS8840/OthUSOfficialFormCompletedInd</xsl:with-param>
@@ -992,7 +993,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/IncomeFromUSSourceInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="YesIncomeFromUSSource" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/IncomeFromUSSourceInd"/>
 										<xsl:with-param name="BackupName">IRS8840/IncomeFromUSSourceInd</xsl:with-param>
@@ -1005,7 +1006,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="NoIncomeFromUSSource" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/IncomeFromUSSourceInd"/>
 										<xsl:with-param name="BackupName">IRS8840/IncomeFromUSSourceInd</xsl:with-param>
@@ -1059,7 +1060,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/QlfyFrgnNationalHealthPlanInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="YesQlfyFrgnNationalHealthPlan" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/QlfyFrgnNationalHealthPlanInd"/>
 										<xsl:with-param name="BackupName">IRS8840/QlfyFrgnNationalHealthPlanInd</xsl:with-param>
@@ -1072,7 +1073,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" alt="NoQlfyFrgnNationalHealthPlan" class="styCkboxNM" style="">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/QlfyFrgnNationalHealthPlanInd"/>
 										<xsl:with-param name="BackupName">IRS8840/QlfyFrgnNationalHealthPlanInd</xsl:with-param>
@@ -1094,7 +1095,7 @@
 								</xsl:call-template>
 							</span>
 							<br />
-							If "No," please explain &#9658; 
+							If "No," please explain <img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/> 
 							<span style="width:147mm;border-bottom:1px dashed black;min-height:3mm;"> </span>
 							<br />
 							If you have any other information to substantiate your closer connection to a country other than the United States or you wish 

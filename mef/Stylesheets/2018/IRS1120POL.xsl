@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE xsl:stylesheet [
-  <!ENTITY nbsp "&#160;">
-]>
-
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
 <!-- Updated 5/29/2015 per UWR 123023 4/22/15 by Robert L Jones -->
 <!-- Updated 1/06/2015 per IBM Defect 43522 lines not connecting at 1,9,19, Additional Info section after Additional data and Checkbox in header off a bit, changed dots to another format to avoid 508 errors with Jaws -  by Robert L Jones -->
 <!-- Updated 7/22/2015 per IBM Defect 43522 1,9,19 not connecting to line above, Additional Dat to sep page  by Robert L Jones -->
@@ -13,6 +9,7 @@
 <!-- Updated per 46028 IBM Defect 6/21/16 Foreign address overlap at header, Special Condition Pen missing and Spec Cond Pen not in Add Data Section by Robert L Jones -->
 <!-- Updated 9/29/2016 per PDF Review by Robert L Jones -->
 <!-- Updated per UWR 195015 5/19/17 by Robert L Jones -->
+<!-- 01/25/19 - updated per KISAM IM00466018  Jeremy Nichols -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -79,10 +76,13 @@
           <!-- Form Title Box -->
           <div class="IRS1120POL_FormTitleBlock">
             <!-- Form Title -->
-            <span class="styMainTitle">U.S. Income Tax Return for Certain Political Organizations</span><br/><br/>
+            <span class="styMainTitle">U.S. Income Tax Return for Certain Political Organizations</span><br/>
             <img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
-              Go to <!--www.irs.gov/form990.--><a href="http://www.irs.gov/form1120pol" title="Link to IRS.gov">
-                <i>www.irs.gov/Form1120POL</i></a> for the latest information. 
+              Information about Form 1120-POL and its instructions is available at 
+            <a href="http://www.irs.gov/form1120pol" title="Link to IRS.gov">
+                <i>www.irs.gov/form1120pol</i>
+            </a>.
+
 
             <!-- Form Subtitle -->
           </div>
@@ -92,7 +92,7 @@
             <div class="IRS1120POL_OMB">OMB No. 1545-0123</div>
             <!-- Tax Year -->
             <div class="IRS1120POL_TaxYear">
-							<span>20<span class="styTYColor">18</span>
+							<span>20<span class="styTYColor">17</span>
 							</span>
             </div>
           </div>
@@ -100,7 +100,7 @@
         <!-- commenting line -->
         <div class="IRS1120POL_LineContainer">
           <div class="IRS1120POL_LineBottom">
-            For calendar year 2018 or other tax year beginning
+            For calendar year 2017 or other tax year beginning
              <span style="width: 18mm">
 							<xsl:call-template name="PopulateReturnHeaderTaxPeriodBeginDate"/>
             </span>    
@@ -117,14 +117,17 @@
                 <xsl:with-param name="TargetNode" select="$FormData/Sect501cOrgOrSegregatedFundInd"/>
                 <xsl:with-param name="BackupName">IRS1120POLSect501cOrgOrSegregatedFundInd</xsl:with-param>
               </xsl:call-template>Check the box if this is a section 501(c) organization
+                          
+
             </label>
-           <!--Dotted Line-->		
-			<span style="letter-spacing:4mm; font-weight:bold; ">.......................  </span>
+           <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.......................  </span>
             <img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
           <!--span class="IRS1120POL_DotSpacing">..........</span-->
           </div>
           <div class="IRS1120POL_LineBottom" style="width:4mm;text-align:right;padding-bottom:0px;">
-            <input type="checkbox" alt="Section501cOrganization" class="IRS1120POL_Checkbox" >
+            <input class="IRS1120POL_Checkbox" type="checkbox">
               <xsl:call-template name="PopulateCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/Sect501cOrgOrSegregatedFundInd"/>
                 <xsl:with-param name="BackupName">IRS1120POLSect501cOrgOrSegregatedFundInd</xsl:with-param>
@@ -133,11 +136,11 @@
           </div>
         </div>
         <div class="styBB" style="width:187mm;float:none;">
-          <div class="styIRS1120POLRightLine" style="width:27.5mm;height:28mm;border-right-width:0px;padding-top:0.5mm;">
-						
+          <div class="styIRS1120POLRightLine" style="width:27.5mm;height:28mm;border-right-width:0px;">
+						<br/>
             Check if:
             <br/>
-						<input type="checkbox" alt="FinalReturn" class="IRS1120POL_Checkbox" >
+						<input class="IRS1120POL_Checkbox" type="checkbox">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/FinalReturnInd"/>
                   <xsl:with-param name="BackupName">IRS1120POLFinalReturnInd
@@ -154,7 +157,7 @@
             </input>
             <br/>
              
-						<input type="checkbox" alt="NameChange" class="IRS1120POL_Checkbox" >
+						<input class="IRS1120POL_Checkbox" type="checkbox">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/NameChange"/>
                   <xsl:with-param name="BackupName">IRS1120POLNameChange
@@ -171,7 +174,7 @@
             </input>
             <br/>
            
-            <input type="checkbox" alt="AddressChange" class="IRS1120POL_Checkbox">
+            <input class="IRS1120POL_Checkbox" type="checkbox">
               <xsl:call-template name="PopulateCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/AddressChangeInd"/>
                   <xsl:with-param name="BackupName">IRS1120POLAddressChangeInd        </xsl:with-param>
@@ -185,7 +188,7 @@
               </label>            
             </input>
             <br/>
-						<input type="checkbox" alt="AmendedReturn" class="IRS1120POL_Checkbox" >
+						<input class="IRS1120POL_Checkbox" type="checkbox">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/AmendedReturnInd"/>
 								<xsl:with-param name="BackupName">IRS1120POLAmendedReturnInd
@@ -202,7 +205,7 @@
 						</input>
 					</div>
             
-          <div class="styIRS1120POLRightLine" style="width:98mm;height:31mm;border-right-width: 0px;">
+          <div class="styIRS1120POLRightLine" style="width:98mm;height:31mm;">
             <div class="styNameBox" style="width:98mm;height:auto;border-bottom-width:1px;border-right-width:0px;padding-left:4px;font-size:7pt;border-left-width:1px;">
               <span style="font-size:6pt;">Name of organization</span>
               <br/>
@@ -220,7 +223,7 @@
 								</xsl:call-template>
               </span>
             </div>
-            <div class="styNameBox" style="width:159mm;height:10mm;border-right-width:0px;border-bottom-width:1px;padding-left:4px;border-left-width:1px;">
+            <div class="styNameBox" style="width:98mm;height:10mm;border-right-width:0px;border-bottom-width:1px;padding-left:4px;border-left-width:1px;">
 							<span style="font-size:6pt;">Number, street, and room or suite no.</span>
 							<span style="font-size:6pt;"> (If a P.O. box, see instructions.)</span>
 							<br/>
@@ -234,7 +237,7 @@
 								</xsl:call-template>
               </span>
             </div>
-            <div class="styNameBox" style="width:187mm;height:10mm;border-right-width:0px;padding-left:4px;font-size:6pt;border-left-width:1px;">
+            <div class="styNameBox" style="width:98mm;height:10mm;border-right-width:0px;padding-left:4px;font-size:6pt;border-left-width:1px;">
               City or state or province, country, ZIP or foreign postal code
               <br/>
               <span style="font-size:6pt;">
@@ -250,7 +253,7 @@
 						</div>
           </div>
           <div class="styIRS1120POLRightLine" style="width:61mm;height:28mm;border-right-width:0px;">
-						<div class="styGenericDiv" style="width:61mm;height:11mm;border:solid 0 black;border-width:0px 0px 1px 1px;padding-left:4px;">
+						<div class="styGenericDiv" style="width:61mm;height:10mm;border:solid 0 black;border-bottom-width:1px;padding-left:4px;border-right-width:0px;">
               <span style="font-size:6pt;font-weight:bold;">Employer identification number</span>
               <br/>
               <!-- Since this is a main form, we must check for and display an updated EIN.  To do this, we use the EINChanged parameter when calling PopulateReturnHeaderFiler.-->
@@ -258,9 +261,10 @@
 								<xsl:with-param name="EINChanged">true</xsl:with-param>
 								<xsl:with-param name="TargetNode">EIN</xsl:with-param>
 							</xsl:call-template>
-            </div> 
-           <!-- 10.2R5 DELETED XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 
-			<div class="" style="width:61mm;height:9mm;padding-left:4px;">
+            </div>
+            
+            
+            <div class="" style="width:61mm;height:9mm;padding-left:4px;">
               <span style="font-size:6pt;font-weight:bold;">Candidates for U.S. Congress Only</span>
                 <br/>
               <span style="font-size:5pt;">
@@ -281,10 +285,9 @@
                 </span>                             
               </label>
             </span>
-            </div>-->
+            </div>
                 
-                 <!-- 10.2R5 DELETED XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-				 <div class="" style="width:61mm;height:9mm;padding-left:4px;">
+                  <div class="" style="width:61mm;height:9mm;padding-left:4px;">
                  <span style="font-size:5pt;">
                   <label>  
                     <xsl:call-template name="PopulateLabel">
@@ -294,11 +297,9 @@
                   If this is a principal campaign committee, but is NOT the only political committee, check here and attach a copy of designation. See instructions.
                    <xsl:call-template name="SetFormLinkInline">
                     <xsl:with-param name="TargetNode" select="$FormData/USCongressNotOnlyCommitteeInd"/>
-                  </xsl:call-template> 
-                  
-				Dotted Line
-               10.2R5 DELETED XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                    <span style="float:right;">
+                  </xsl:call-template>
+						  <!--Dotted Line-->
+               <span style="float:right;">
 					<span class="styDotLn" style="font-size: 6pt;">.........</span>
                   <xsl:call-template name="PopulateLabel">
                     <xsl:with-param name="TargetNode" select="$FormData/USCongressNotOnlyCommitteeInd"/>
@@ -313,7 +314,8 @@
                 </span>
 				</label>  
               </span>
-				</div>-->
+              
+				</div>
             </div>
           </div>
         <!-- superimposed image title - Income -->
@@ -326,7 +328,7 @@
         <div class="IRS1120POL_LineContainer">
           <div class="IRS1120POL_LabelSpace"/>
           <div class="IRS1120POL_LineIndex">1</div>
-          <div class="IRS1120POL_LineDescLong">Dividends (attach statement)          
+          <div class="IRS1120POL_LineDescLong">Dividends (attach schedule)          
             <xsl:call-template name="SetFormLinkInline">
               <xsl:with-param name="TargetNode" select="$FormData/DividendAmt"/>
             </xsl:call-template>
@@ -543,9 +545,9 @@
         <div class="IRS1120POL_LineContainer">
           <div class="IRS1120POL_LabelSpace"/>
           <div class="IRS1120POL_LineIndex">13</div>
-          <div class="IRS1120POL_LineDescLong">Interest. (see instructions)
+          <div class="IRS1120POL_LineDescLong">Interest
                       <!--Dotted Line-->
-            <span style="letter-spacing:4mm; font-weight:bold; ">.....................</span>
+            <span style="letter-spacing:4mm; font-weight:bold; ">........................</span>
                  <!--span class="IRS1120POL_DotSpacing">...........................................</span-->
           </div>
           <div class="IRS1120POL_LineIndexMid">13</div>
@@ -720,7 +722,7 @@
           <div class="IRS1120POL_LineIndex">20</div>
           <div class="IRS1120POL_LineDescLong">
             <span style="font-weight:bold;">Income tax.</span>
-            (see instructions)
+            See instructions
                  <!--Dotted Line-->
             <span style="letter-spacing:4mm; font-weight:bold; ">..................</span>
              <!--span class="IRS1120POL_DotSpacing">..................................</span-->
@@ -738,7 +740,7 @@
           <div class="IRS1120POL_LineIndex">21</div>
           <div class="IRS1120POL_LineDescLong">
             <span style="font-weight:bold;">Tax credits. </span>
-            Attach the applicable credit  forms. (see instructions) 
+            Attach the applicable credit  forms. See instructions 
                  <!--Dotted Line-->
            <span style="letter-spacing:4mm; font-weight:bold; ">...........</span>
                        <!--span class="IRS1120POL_DotSpacing">.................</span-->
@@ -799,7 +801,7 @@
           <div class="IRS1120POL_LineDescLong" style="width:15mm;border-right-width:0px;"/>
           <div class="IRS1120POL_LineDescLong" style="width:4mm;border-right-width:0px;font-weight:bold;">b</div>
           <div class="IRS1120POL_LineDescLong" style="width:87mm;">
-            <span>
+            <span style="font-family:'arial narrow';">
               Credit for tax paid on undistributed capital gains (attach Form 2439)
             </span>
             <!--Dotted Line-->
@@ -914,9 +916,9 @@
           </div>
         </div>
         <!-- superimposed image title - Additional info -->
-			<div class="IRS1120POL_LineContainer"  style="display:inline;">
-			<span style="padding-right: 10mm; padding-bottom: 23mm; font-size: 10pt; font-weight: bold; position: absolute; transform: rotate(270deg); text-align: center;">
-			Addition<br/>
+		<div class="IRS1120POL_LineContainer"  style="display:inline;">
+			<span style="padding-right: 10mm; padding-bottom: 23mm; font-size: 9pt; font-weight: bold; position: absolute; transform: rotate(270deg); text-align: center;">
+			Additional<br/>
 			Information
 			</span>
         </div>
@@ -928,7 +930,7 @@
 				<div class="IRS1120POL_LabelSpaceWide" style="padding-top:1mm;border-right-width:0px;width:0;"/>
 				<div class="IRS1120POL_LineIndex" style="padding-top:1mm">1</div>
 				<div class="IRS1120POL_LineDescLong" style="width:142mm;border-right-width:0px;font-size:7pt;padding-top:1mm">
-              At any time during the 2018 calendar year, did the organization have an interest in or a signature or other 
+              At any time during the 2017 calendar year, did the organization have an interest in or a signature or other 
               </div>
  </div>
  
@@ -945,7 +947,7 @@
 					<div class="IRS1120POL_LabelSpaceWide" style="border-right-width:0px;width:0;"/>
 					<div class="IRS1120POL_LineIndex" />
 					<div class="IRS1120POL_LineDescLong" style="width:142mm;border-right-width:0px;font-size:7pt;">
-              in a foreign country? (see instructions)
+              in a foreign country? See instructions
                 <span class="styDotLn" style="float:right;">.......................</span>
 </div>
 					<div class="IRS1120POL_MoneyFieldFiller" style="border-right-width:0px;">
@@ -953,35 +955,35 @@
 							<xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$FormData/ForeignAccountsQuestionInd"/>
 							</xsl:call-template>
-							<input type="checkbox" alt="YesCheckBox" class="IRS1120POL_Checkbox" >
+							<input class="IRS1120POL_Checkbox" type="checkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/ForeignAccountsQuestionInd"/>
 									<xsl:with-param name="BackupName">IRS1120POLForeignAccountsQuestionInd</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
-						<span style="font-weight:bold;width:7mm;">
+						<span style="font-weight:bold;width:4mm;">
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$FormData/ForeignAccountsQuestionInd"/>
 									<xsl:with-param name="BackupName">IRS1120POLForeignAccountsQuestionInd</xsl:with-param>
 								</xsl:call-template>
-                Yes
-              </label>
+								Yes
+							</label>
 						</span>
-				
+						<span style="width:4mm;"/>
 						<span>
 							<xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$FormData/ForeignAccountsQuestionInd"/>
-              </xsl:call-template>
-              <input type="checkbox" alt="NoCheckBox" class="IRS1120POL_Checkbox" >
-              <xsl:call-template name="PopulateNoCheckbox">
-                <xsl:with-param name="TargetNode" select="$FormData/ForeignAccountsQuestionInd"/>
-                <xsl:with-param name="BackupName">IRS1120POLForeignFinancialAccount</xsl:with-param>
-              </xsl:call-template>
-            </input>
+					  </xsl:call-template>
+					  <input class="IRS1120POL_Checkbox" type="checkbox">
+					  <xsl:call-template name="PopulateNoCheckbox">
+						<xsl:with-param name="TargetNode" select="$FormData/ForeignAccountsQuestionInd"/>
+						<xsl:with-param name="BackupName">IRS1120POLForeignFinancialAccount</xsl:with-param>
+					  </xsl:call-template>
+					</input>
             </span>
-            <span style="font-weight:bold;width:7mm;">
+            <span style="font-weight:bold;width:4mm;">
               <label>
                 <xsl:call-template name="PopulateLabelNo">
                   <xsl:with-param name="TargetNode" select="$FormData/ForeignAccountsQuestionInd"/>
@@ -1023,21 +1025,18 @@
           <div class="IRS1120POL_LineDescLong" style="width:142mm;border-right-width:0px;">
               to, a foreign trust? If "Yes," the organization may have to file Form 3520
              <!--Dotted Line-->
-				<span class="styDotLn" style="float:right;">............</span>
+				<span class="styDotLn" style="float:right;">.........</span>
 					</div>
 					<div class="IRS1120POL_MoneyFieldFiller" style="border-right-width:0px;">
 						<span>
-							<xsl:call-template name="PopulateSpan">
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignTrustQuestionInd"/>
-                </xsl:call-template>
-                <input type="checkbox" alt="YesCheckBox" class="IRS1120POL_Checkbox" >
+                <input class="IRS1120POL_Checkbox" type="checkbox">
                   <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/ForeignTrustQuestionInd"/>
                     <xsl:with-param name="BackupName">IRS1120POLForeignTrustQuestionInd</xsl:with-param>
                   </xsl:call-template>
                 </input>
             </span>
-            <span style="font-weight:bold;width:7mm;">
+            <span style="font-weight:bold;width:4mm;">
               <label>
                 <xsl:call-template name="PopulateLabelYes">
                   <xsl:with-param name="TargetNode" select="$FormData/ForeignTrustQuestionInd"/>
@@ -1046,18 +1045,19 @@
                 Yes
               </label>            
             </span>
+            <span style="font-weight:bold;width:4mm;"/>
             <span>
               <xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$FormData/ForeignTrustQuestionInd"/>
               </xsl:call-template>
-              <input type="checkbox" alt="NoCheckBox" class="IRS1120POL_Checkbox" >
+              <input class="IRS1120POL_Checkbox" type="checkbox">
                 <xsl:call-template name="PopulateNoCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/ForeignTrustQuestionInd"/>
                   <xsl:with-param name="BackupName">IRS1120POLForeignTrustQuestionInd</xsl:with-param>
                 </xsl:call-template>
               </input>
             </span>
-            <span style="font-weight:bold;width:7mm;">
+            <span style="font-weight:bold;width:4mm;">
               <label>
                 <xsl:call-template name="PopulateLabelNo">
                   <xsl:with-param name="TargetNode" select="$FormData/ForeignTrustQuestionInd"/>
@@ -1128,7 +1128,7 @@
           </div>
         </div>
         <!-- add info line 5cd -->
-<div class="IRS1120POL_LineContainer" style="border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 0; border-left-width: 0px; border-right-width: 0px; height:auto;">
+<div class="IRS1120POL_LineContainer" style="border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; height:auto;">
 				<div class="IRS1120POL_LabelSpaceWide" style="padding-bottom:0mm; height:5mm; border-right-width:0px; width:0;"/>
 				<div class="IRS1120POL_SubLineIndex" style="padding-bottom:0mm;padding-left:1.5mm;">c</div>
 					<div class="IRS1120POL_GenericDesc" style="width:34mm;">The books are located at</div>
@@ -1168,7 +1168,7 @@
   <!-- Implementing the signature section in tables -->
 <table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:6pt;height:auto;">
 	<tr>
-		<td rowspan="3" style="height:auto;width:10mm;font-size: 11pt;font-weight:bold;border-right:1px solid black;border-bottom:1px solid black;">Sign Here</td>
+		<td rowspan="3" style="height:auto;width:10mm;font-size: 11pt;font-weight:bold;border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">Sign Here</td>
 		<td colspan="6" style="height:auto;padding-left:1mm;padding-bottom:1mm;">Under penalties of perjury, I declare that I have examined this return, including accompanying schedules and statements, and to the best of my knowledge and belief, it is true,
 correct, and complete. Declaration of preparer (other than taxpayer) is based on all information of which preparer has any knowledge. </td>
 	</tr>
@@ -1200,7 +1200,7 @@ correct, and complete. Declaration of preparer (other than taxpayer) is based on
 		May the IRS discuss this return<br/>
 with the preparer shown below<br/>
 (see instructions)?
-      <input type="checkbox" alt="AuthorizeThirdPartyYesCheckbox" class="styCkbox"  name="Checkbox" id="dummyidyes" style="width:2.5mm;">
+      <input class="styCkbox" type="checkbox" name="Checkbox" id="dummyidyes" style="width:2.5mm;">
         <xsl:call-template name="PopulateReturnHeaderOfficer">
           <xsl:with-param name="TargetNode">AuthorizeThirdPartyYesCheckbox</xsl:with-param>
           <xsl:with-param name="BackupName">ReturnHeaderMayIRSDiscussReturnWithPrep</xsl:with-param>
@@ -1215,7 +1215,7 @@ with the preparer shown below<br/>
           Yes
         </label>
       </span>
-      <input type="checkbox" alt="AuthorizeThirdPartyNoCheckbox" class="styCkbox"  name="Checkbox" id="dummyidno" style="width:2.5mm;">
+      <input class="styCkbox" type="checkbox" name="Checkbox" id="dummyidno" style="width:2.5mm;">
         <xsl:call-template name="PopulateReturnHeaderOfficer">
           <xsl:with-param name="TargetNode">AuthorizeThirdPartyNoCheckbox</xsl:with-param>
           <xsl:with-param name="BackupName">ReturnHeaderMayIRSDiscussReturnWithPrep</xsl:with-param>
@@ -1363,12 +1363,12 @@ with the preparer shown below<br/>
         <!-- footer line -->
         <div class="IRS1120POL_LineContainer">
 					<div style="font-weight:bold;width:120mm;float:left;">
-            For Paperwork Reduction Act Notice, see seperate instructions.
+            For Paperwork Reduction Act Notice, see instructions.
           </div>
 					<div style="width:30mm;float:left;text-align:center;">
             Cat. No. 11523K
           </div>
-          <div style="width:37mm;text-align:right;float:left;">Form <span style="font-weight:bold;">1120-POL </span> (2018)</div>
+          <div style="width:37mm;text-align:right;float:left;">Form <span style="font-weight:bold;">1120-POL </span> (2017)</div>
         </div>
         <!-- leftover data table -->
 				
@@ -1442,6 +1442,7 @@ Special Condition Description</th>
 </tbody>
 
 </table>
+<p style="page-break-before:always"/>
 
 </body>
     </html>

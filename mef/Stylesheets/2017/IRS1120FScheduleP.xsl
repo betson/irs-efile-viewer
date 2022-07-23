@@ -49,7 +49,7 @@
 			<!--Begin Header-->
 			<div class="styBB" style="width: 187mm">
 			  <!-- Form Name -->
-			  <div class="styFNBox" style="height: 21mm;width:28mm;">
+			  <div class="styFNBox" style="height: 20mm;width:28mm;">
 				<span class="styFormNumber" style="font-size:10pt;">SCHEDULE P</span>
 				<br/>
 				<span class="styFormNumber" style="font-size:10pt;">(Form 1120-F)
@@ -61,7 +61,7 @@
 				<div class="styAgency" style="padding-top:6mm;">Department of the Treasury<br/>Internal Revenue Service</div>
 			  </div>
 			  <!-- Form Title Box -->
-			  <div class="styFTBox" style="height: 21mm;width:131mm;padding-top:3mm;">
+			  <div class="styFTBox" style="height: 20mm;width:131mm;padding-top:3mm;">
 			    <!-- Form Title -->
 			    <span class="styMainTitle" style="padding-top:1mm;">List of Foreign Partner Interests in Partnerships</span>
 			    <span style="font-weight:bold;padding-top:4mm;">
@@ -76,7 +76,7 @@
 			    </span>
 			  </div>
 			  <!-- Tax Year Box -->
-			  <div class="styTYBox" style="height: 21mm;width:28mm;">
+			  <div class="styTYBox" style="height: 20mm;width:28mm;">
 			    <!-- OMB No. -->
 			    <div class="styOMB" style="text-align:center;">OMB No. 1545-0123</div>
 			    <!-- Tax Year -->
@@ -510,6 +510,9 @@
 						<!--For each table with 4 items do the following-->
 						<xsl:for-each select="$FormData/ForeignPartnerInformationGrp">
 						  <xsl:if test="position() mod 4 = 1">
+					    <xsl:variable name="Pos">
+							<xsl:value-of select="position()"/>
+					    </xsl:variable>
 						  <!--Table Header-->
 							<tr>
 							  <td colspan="2" class="styTableCellHeader" style="border:none;"/>
@@ -532,11 +535,28 @@
 								Net income (loss) reported on lines 1 through 3, Schedule K-1
 								<span class="sty1120FSchPDotLn" style="float:right;">...................</span>
 							  </td>
-							  <xsl:call-template name="CreateTable">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/NetIncomeAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/NetIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/NetIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/NetIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/NetIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol" style="width:24mm;">
 								<xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -557,11 +577,28 @@
 						       Gross income included on lines 1 through 3, Schedule K-1
 								<span class="sty1120FSchPDotLn" style="float:right;">...................</span>
 							  </td>
-							  <xsl:call-template name="CreateTable">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/GrossIncomeAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/GrossIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/GrossIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/GrossIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/GrossIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol">
 								<xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -582,11 +619,28 @@
 						        Gross effectively connected income (ECI) on lines 1 through 3, Schedule K-1
 								<span class="sty1120FSchPDotLn" style="float:right;">.........</span>
 							  </td>
-							  <xsl:call-template name="CreateTable">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/GrossECIAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/GrossECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/GrossECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/GrossECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/GrossECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol">
 								<xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -607,11 +661,28 @@
 						        Non-interest expenses on lines 1 through 3, Schedule K-1
 								<span class="sty1120FSchPDotLn" style="float:right;">.....................</span>
 							  </td>
-							  <xsl:call-template name="CreateTable">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OtherNonInterestExpenseAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OtherNonInterestExpenseAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OtherNonInterestExpenseAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OtherNonInterestExpenseAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OtherNonInterestExpenseAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol">
 								<xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -632,11 +703,28 @@
 								Non-interest expenses on lines 1 <span style="float:left;">through 3, Schedule K-1, allocated to gross ECI</span>
 								<!--<span class="sty1120FSchPDotLn" style="float:right;">..</span>-->
 							  </td>
-							  <xsl:call-template name="CreateTable">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/NonIntExpnssAllocGroECIAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/NonIntExpnssAllocGroECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/NonIntExpnssAllocGroECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/NonIntExpnssAllocGroECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/NonIntExpnssAllocGroECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol">
 								<xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -657,11 +745,28 @@
 						        Net income (loss) reported on Schedule <span style="float:left;">K-1, other than on lines 1 through 3.</span>
 								<!--<span class="sty1120FSchPDotLn" style="float:right;">.</span>-->
 							  </td>
-							  <xsl:call-template name="CreateTable">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OtherNetIncomeAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OtherNetIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OtherNetIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OtherNetIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OtherNetIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol">
 								<xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -682,11 +787,28 @@
 						        Other gross income reported on Schedule K-1
 								<span class="sty1120FSchPDotLn" style="float:right;">...............................</span>
 							  </td>
-							  <xsl:call-template name="CreateTable">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OtherGrossIncomeReportedAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OtherGrossIncomeReportedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OtherGrossIncomeReportedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OtherGrossIncomeReportedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OtherGrossIncomeReportedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol">
 								<xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -706,11 +828,28 @@
 							  <td class="sty1120FSchPTableK1Desc" scope="row">
 						        Other gross ECI reported on Schedule K-1.
 						      </td>
-							  <xsl:call-template name="CreateTable">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OtherGrossECIReportedAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OtherGrossECIReportedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OtherGrossECIReportedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OtherGrossECIReportedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OtherGrossECIReportedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol">
 								<xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -731,11 +870,28 @@
 						        Other non-interest expenses reported on Schedule K-1
 								<span class="sty1120FSchPDotLn" style="float:right;">.....................</span>
 							  </td>
-							  <xsl:call-template name="CreateTable">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OtherNonInterestExpensesRptAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OtherNonInterestExpensesRptAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OtherNonInterestExpensesRptAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OtherNonInterestExpensesRptAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OtherNonInterestExpensesRptAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol">
 							    <xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -756,11 +912,28 @@
 								Other non-interest expenses reported on Schedule K-1 allocated to gross ECI 
 								<span class="sty1120FSchPDotLn" style="float:right;">......</span>
 							  </td>
-							  <xsl:call-template name="CreateTable">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OtherNonIntExpnssAllocECIAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OtherNonIntExpnssAllocECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OtherNonIntExpnssAllocECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OtherNonIntExpnssAllocECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OtherNonIntExpnssAllocECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol">
 								<xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -782,11 +955,28 @@
 								  <b>Total gross income.</b> Add lines 2 and 7
 						        </span>
 							  </td>
-							  <xsl:call-template name="CreateTable">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/TotalGrossIncomeAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/TotalGrossIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/TotalGrossIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/TotalGrossIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/TotalGrossIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol">
 								<xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -807,11 +997,28 @@
 								<b>Total gross effectively connected income. </b> Add lines 3 and 8 
 						        <span class="sty1120FSchPDotLn" style="float:right;">..................</span>
 							  </td>
-							  <xsl:call-template name="CreateTable">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/TotalGrossECIAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/TotalGrossECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/TotalGrossECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/TotalGrossECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/TotalGrossECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol">
 								<xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -832,11 +1039,28 @@
 						        Interest expense on lines 1 through 3, Schedule K-1
 								<span class="sty1120FSchPDotLn" style="float:right;">.....................</span>
 							  </td>
-							  <xsl:call-template name="CreateTable">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/InterestExpenseIncludedAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/InterestExpenseIncludedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/InterestExpenseIncludedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/InterestExpenseIncludedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/InterestExpenseIncludedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol">
 								<xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -860,11 +1084,28 @@
 								</xsl:call-template>
 								<span class="sty1120FSchPDotLn" style="float:right;">............</span>
 							  </td>
-							  <xsl:call-template name="CreateTable">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OtherInterestExpenseRptAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OtherInterestExpenseRptAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OtherInterestExpenseRptAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OtherInterestExpenseRptAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OtherInterestExpenseRptAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol">
 								<xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -885,11 +1126,28 @@
 								<b>Total interest expense. </b> Add lines 13 <br/> and 14 
 						        <span class="sty1120FSchPDotLn" style="float:right;">........................</span>
 							  </td>
-							  <xsl:call-template name="CreateTable">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/TotalInterestExpenseAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/TotalInterestExpenseAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/TotalInterestExpenseAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/TotalInterestExpenseAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/TotalInterestExpenseAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol">
 								<xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -912,11 +1170,28 @@
 						        <br/>(<b>Note. </b> Include the line 15b total on <span style="float:left;">Schedule I, line 22.) </span>
 								<span class="sty1120FSchPDotLn" style="float:right;">................</span>
 							  </td>
-							  <xsl:call-template name="CreateTablePaddingTop">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/InterestExpenseAllocableAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:9mm">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/InterestExpenseAllocableAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:9mm">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/InterestExpenseAllocableAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:9mm">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/InterestExpenseAllocableAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:9mm">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/InterestExpenseAllocableAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol" style="padding-top:9mm">
 								<xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -939,11 +1214,28 @@
 						        liabilities on Schedule I, line 9, column (b).)
 						        <span class="sty1120FSchPDotLn" style="float:right;">...............</span>
 							  </td>
-							  <xsl:call-template name="CreateTable14c">
-								<xsl:with-param name="Start" select="position()"/>
-								<xsl:with-param name="Stop" select="position()+4"/>
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/InterestExpenseNotAllocableAmt"/>
-							  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:13mm;border-bottom-width:2px;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/InterestExpenseNotAllocableAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:13mm;border-bottom-width:2px;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/InterestExpenseNotAllocableAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:13mm;border-bottom-width:2px;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/InterestExpenseNotAllocableAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:13mm;border-bottom-width:2px;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/InterestExpenseNotAllocableAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 							  <td class="sty1120FSchPTableK1CellLastCol" style="border-bottom-width:2px; padding-top:13mm">
 								<xsl:choose>
 								  <xsl:when test="position() = 1 ">
@@ -1292,23 +1584,26 @@
 				  <p class="pageEnd"/>
 				  <!-- Begin Page 2 -->
 				  <div style="width:187mm">
-					<span style="font-weigh:normal;float:left;">Schedule P (Form 1120-F) 2017</span>
-					<span style="width:138mm"/>Page <b>2</b>
-				    <!-- Begin Part III Title -->			
-					<div class="styBB" style="width:187mm;border-top-width:1px;">
+				    <span style="font-weigh:normal;float:left;">Schedule P (Form 1120-F) 2017</span>
+				    <span style="width:138mm;"/>Page <b>2</b>
+				    <!-- Begin Part III Title -->
+				    <div class="styBB" style="width:187mm;border-top-width:1px;">
 					  <div class="styPartName" style="height:3.5mm;">Part III</div>
 					  <div class="styPartDesc" style="width:172mm;padding-left:1mm;height:3.5mm;">
                         Foreign Partners Average Outside Basis Under Regulations sections 1.882-5(b) and 1.884-1(d)(3)
                       </div>
-					  </div>
-					  <!-- END Part III Title -->
-					  <!-- Begin Part III Table -->
+					</div>
+					<!-- END Part III Title -->
+					<!-- Begin Part III Table -->
 					  <table cellpadding="0" cellspacing="0" style="width:187mm;font-size:7pt">
 						<tbody>
 						  <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/ForeignPartnerInformationGrp) &lt; 5)">
 							<!--For each table with 4 items do the following-->
 							<xsl:for-each select="$FormData/ForeignPartnerInformationGrp">
 							  <xsl:if test="position() mod 4 = 1">
+					    <xsl:variable name="Pos">
+							<xsl:value-of select="position()"/>
+					    </xsl:variable>
 								<!--Table Header-->
 								<tr>
 								  <td colspan="2" class="styTableCellHeader" style="border:none;"/>
@@ -1334,11 +1629,28 @@
 									</xsl:call-template>
 									<span class="sty1120FSchPDotLn" style="float:right;">............</span>									
 								  </td>
-								  <xsl:call-template name="CreateTable">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/Section705OutsideBasisAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/Section705OutsideBasisAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/Section705OutsideBasisAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/Section705OutsideBasisAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/Section705OutsideBasisAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="sty1120FSchPTableK1CellLastCol" style="width:24mm;">
 									<xsl:choose>
 									  <xsl:when test="position() = 1 ">
@@ -1362,11 +1674,28 @@
 					                under Regulations section 1.882-5(a)(1)(ii)(B)
 					                <span class="sty1120FSchPDotLn" style="float:right;">...........</span>
 								  </td>
-								  <xsl:call-template name="CreateTable17a">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/PartnerLiabSect18825a1iiBAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:13mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/PartnerLiabSect18825a1iiBAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:13mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/PartnerLiabSect18825a1iiBAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:13mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/PartnerLiabSect18825a1iiBAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:13mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/PartnerLiabSect18825a1iiBAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="sty1120FSchPTableK1CellLastCol" style="padding-top:13mm;">
 									<xsl:choose>
 									  <xsl:when test="position() = 1 ">
@@ -1387,11 +1716,28 @@
 						            All other liabilities included in partner&#8217;s outside basis under section 752
 						            <span class="sty1120FSchPDotLn" style="float:right;">.............</span>
 								  </td>
-								  <xsl:call-template name="CreateTable">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OtherLiabilitiesIncludedAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OtherLiabilitiesIncludedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OtherLiabilitiesIncludedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OtherLiabilitiesIncludedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OtherLiabilitiesIncludedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="sty1120FSchPTableK1CellLastCol">
 									<xsl:choose>
 									  <xsl:when test="position() = 1 ">
@@ -1414,11 +1760,28 @@
 					                Add lines 17a and 17b 
 					                <span class="sty1120FSchPDotLn" style="float:right;">...............</span>
 								  </td>
-								  <xsl:call-template name="CreateTable">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/TotalLiabilitiesSection752Amt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/TotalLiabilitiesSection752Amt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/TotalLiabilitiesSection752Amt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/TotalLiabilitiesSection752Amt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/TotalLiabilitiesSection752Amt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="sty1120FSchPTableK1CellLastCol">
 									<xsl:choose>
 									  <xsl:when test="position() = 1 ">
@@ -1440,11 +1803,27 @@
 					                  Subtract line 17c from line 16 
 					                  <span class="sty1120FSchPDotLn" style="float:right;">..........</span>
 									</td>
-									<xsl:call-template name="CreateTable">
-									  <xsl:with-param name="Start" select="position()"/>
-									  <xsl:with-param name="Stop" select="position()+4"/>
-									  <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OutsideBasisLessSect752LiabAmt"/>
-									</xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OutsideBasisLessSect752LiabAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OutsideBasisLessSect752LiabAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OutsideBasisLessSect752LiabAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OutsideBasisLessSect752LiabAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
 									<td class="sty1120FSchPTableK1CellLastCol">
 									  <xsl:choose>
 										<xsl:when test="position() = 1 ">
@@ -1468,11 +1847,28 @@
 						              Regulations section 1.882-5(d).) 
 						              <span class="sty1120FSchPDotLn" style="float:right;">........</span>
 									</td>
-									<xsl:call-template name="CreateTable18">
-									  <xsl:with-param name="Start" select="position()"/>
-									  <xsl:with-param name="Stop" select="position()+4"/>
-									  <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/PartnerLiabSect18841d3viAmt"/>
-									</xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:18mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/PartnerLiabSect18841d3viAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:18mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/PartnerLiabSect18841d3viAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:18mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/PartnerLiabSect18841d3viAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:18mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/PartnerLiabSect18841d3viAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 									<td class="sty1120FSchPTableK1CellLastCol" style="padding-top:18mm;">
 									  <xsl:choose>
 										<xsl:when test="position() = 1 ">
@@ -1494,11 +1890,28 @@
 	                                  1.884-1(d)(3)(vi). </b>  Add lines 17d and 18 
 	                                  <span class="sty1120FSchPDotLn" style="float:right;">..........................</span>
 									</td>
-									<xsl:call-template name="CreateTablePaddingTop">
-									  <xsl:with-param name="Start" select="position()"/>
-									  <xsl:with-param name="Stop" select="position()+4"/>
-									  <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/PartnerBasisSect18841d3viAmt"/>
-									</xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:9mm">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/PartnerBasisSect18841d3viAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:9mm">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/PartnerBasisSect18841d3viAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:9mm">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/PartnerBasisSect18841d3viAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:9mm">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/PartnerBasisSect18841d3viAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 									<td class="sty1120FSchPTableK1CellLastCol" style="padding-top:9mm">
 									  <xsl:choose>
 										<xsl:when test="position() = 1 ">
@@ -1521,11 +1934,28 @@
 						              However, see the instructions for Schedule I, line 5, column (b) before entering an amount on that line.) 
 						              <span class="sty1120FSchPDotLn" style="float:right;">..............</span>
 									</td>
-									<xsl:call-template name="CreateTable20">
-									  <xsl:with-param name="Start" select="position()"/>
-									  <xsl:with-param name="Stop" select="position()+4"/>
-									  <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/PartnerOutsideBssAllcblECIAmt"/>
-									</xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:22mm">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/PartnerOutsideBssAllcblECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:22mm">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/PartnerOutsideBssAllcblECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:22mm">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/PartnerOutsideBssAllcblECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:22mm">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/PartnerOutsideBssAllcblECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 									<td class="sty1120FSchPTableK1CellLastCol" style="padding-top:22mm">
 									  <xsl:choose>
 										<xsl:when test="position() = 1 ">
@@ -1546,12 +1976,29 @@
                                       Enter "income" or "asset" to indicate the allocation method used on line 20 <span style="float:left;">(see instructions) </span>
 									  <span class="sty1120FSchPDotLn" style="float:right;">.................</span>
 									</td>
-									<xsl:call-template name="CreateTable21">
-									  <xsl:with-param name="Start" select="position()"/>
-									  <xsl:with-param name="Stop" select="position()+4"/>
-									  <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/AllocationMethodUsedCd"/>
-									</xsl:call-template>
-									<td class="sty1120FSchPTableK1CellLastCol" style="border-bottom-width:2px; padding-top:9mm">
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;border-bottom-width:2px;padding-top:9mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/AllocationMethodUsedCd[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;border-bottom-width:2px;padding-top:9mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/AllocationMethodUsedCd[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;border-bottom-width:2px;padding-top:9mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/AllocationMethodUsedCd[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;border-bottom-width:2px;padding-top:9mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/AllocationMethodUsedCd[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+									<td class="sty1120FSchPTableK1CellLastCol" style="border-bottom-width:2px;padding-top:9mm;">
 									  <span style="width:1px"/>
 									</td>
 								  </tr>
@@ -1793,7 +2240,7 @@
 							  <th class="styTableCellHeader" scope="col" style="width:5mm;border-right:0;"/>
 							  <th class="styTableCellHeader" scope="col" style="width:45mm;font-weight:normal;"><b>(a) </b>Name of partnership </th>
 							  <th class="styTableCellHeader" scope="col" style="width:62mm;font-weight:normal;"><b>(b) </b>Address </th>
-							  <th class="styTableCellHeader" scope="col" style="width:31mm;border-right-width:1px;font-weight:normal;"><b>(c) </b>EIN </th>
+							  <th class="styTableCellHeader" scope="col" style="width:31mm; border-right-width:1px;font-weight:normal;"><b>(c) </b>EIN </th>
 							  <th class="styTableCellHeader" scope="col" style="width:44mm;text-align:left;padding-left:3mm;font-weight:normal;">
 					            <b>(d) </b>For each partnership interest, is the foreign corporation's distributive share ECI, or treated as ECI,
 					            in whole or in part, with a U.S. trade or business determined under section 875 (see instructions)? 
@@ -1895,7 +2342,7 @@
 									  <xsl:with-param name="TargetNode" select="DistributiveShareTreatedECIInd"/>
 									  <xsl:with-param name="BackupName">IRS1120FSchPDistributiveShareTreatedAsECI</xsl:with-param>
 									</xsl:call-template>
-									<span style="width:2mm;"/><b>Yes</b>   
+									<span style="width:2mm;"/><b>Yes</b> 
 	                              </label>
 								  <span style="width:4mm"/>
 								  <!-- per IBM to add PopulateSpan to boolean (yes/no) checkbox -->
@@ -1939,6 +2386,9 @@
 								<!--For each table with 4 items do the following-->
 								<!--  <xsl:for-each select="$FormData/ForeignPartnerInformationGrp">
                                 <xsl:if test="position() mod 4 = 1">-->
+					    <xsl:variable name="Pos">
+							<xsl:value-of select="position()"/>
+					    </xsl:variable>
 								<!--Table Header-->
 								<tr class="styDepTblHdr">
 								  <td colspan="2" class="styTableCellHeader" style="border:none;"/>
@@ -1963,13 +2413,28 @@
 						            Net income (loss) reported on  lines 1 through 3, Schedule K-1
 						           <span class="sty1120FSchPDotLn" style="float:right;">...................</span>
 								  </td>
-								  <span style="font-size:5.5pt">
-									<xsl:call-template name="CreateTableDepRow3">
-									  <xsl:with-param name="Start" select="position()"/>
-									  <xsl:with-param name="Stop" select="position()+4"/>
-									  <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/NetIncomeAmt"/>
-									 </xsl:call-template>
-								  </span>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/NetIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/NetIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/NetIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/NetIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow3LC" style="width:24mm;padding-top:6mm;">
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -1992,11 +2457,28 @@
 						            Gross income included on  lines 1 through 3, Schedule K-1
 						            <span class="sty1120FSchPDotLn" style="float:right;">.....................</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow4">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/GrossIncomeAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/GrossIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/GrossIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/GrossIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/GrossIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow4LC" style="padding-top:6mm;">
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -2019,11 +2501,28 @@
 						            Gross effectively connected  income (ECI) on lines 1  through 3, Schedule K-1 
 						            <span class="sty1120FSchPDotLn" style="float:right;">.....</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow3">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/GrossECIAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/GrossECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/GrossECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/GrossECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/GrossECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow3LC" style="padding-top:7mm;">
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -2046,11 +2545,28 @@
 						            Non-interest expenses on lines  1 through 3, Schedule K-1  
 						            <span class="sty1120FSchPDotLn" style="float:right;">....................</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow4">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OtherNonInterestExpenseAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OtherNonInterestExpenseAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OtherNonInterestExpenseAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OtherNonInterestExpenseAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OtherNonInterestExpenseAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow4LC" style="padding-top:7mm;">
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -2073,11 +2589,28 @@
 						           Non-interest expenses on lines 1 through 3, Schedule K-1,  allocated to gross ECI  
 						           <span class="sty1120FSchPDotLn" style="float:right;">......</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow3">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/NonIntExpnssAllocGroECIAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/NonIntExpnssAllocGroECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/NonIntExpnssAllocGroECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/NonIntExpnssAllocGroECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/NonIntExpnssAllocGroECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow3LC" style="padding-top:7mm;">
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -2100,11 +2633,28 @@
 					                Net income (loss) reported on Schedule K-1, other than on lines 1 through 3  
 						            <span class="sty1120FSchPDotLn" style="float:right;">........</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow4">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OtherNetIncomeAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OtherNetIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OtherNetIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OtherNetIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OtherNetIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow4LC" style="padding-top:7mm;">
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -2127,11 +2677,28 @@
 						            Other gross income reported on  Schedule K-1  
 						           <!-- <span class="sty1120FSchPDotLn" style="float:right;">........................</span>-->
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow3">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OtherGrossIncomeReportedAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OtherGrossIncomeReportedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OtherGrossIncomeReportedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OtherGrossIncomeReportedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OtherGrossIncomeReportedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow3LC" style="padding-top:7mm;">
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -2154,11 +2721,28 @@
 						            Other gross ECI reported on  Schedule K-1  
 						           <!-- <span class="sty1120FSchPDotLn" style="float:right;">.</span>-->
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow4">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OtherGrossECIReportedAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OtherGrossECIReportedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OtherGrossECIReportedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OtherGrossECIReportedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OtherGrossECIReportedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow4LC" >
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -2181,11 +2765,28 @@
 						            Other non-interest expenses  reported on Schedule K-1  
 						            <span class="sty1120FSchPDotLn" style="float:right;">.....................</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow3">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OtherNonInterestExpensesRptAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OtherNonInterestExpensesRptAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OtherNonInterestExpensesRptAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OtherNonInterestExpensesRptAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OtherNonInterestExpensesRptAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow3LC" style="padding-top:7mm;">
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -2208,11 +2809,28 @@
 						            Other non-interest expenses  reported on Schedule K-1  allocated to ECI  
 						            <span class="sty1120FSchPDotLn" style="float:right;">.........</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow4">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OtherNonIntExpnssAllocECIAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OtherNonIntExpnssAllocECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OtherNonIntExpnssAllocECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OtherNonIntExpnssAllocECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OtherNonIntExpnssAllocECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow4LC" style="padding-top:7mm;">
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -2235,11 +2853,28 @@
 									<b>Total gross income.</b>  Add lines 2 and 7  
 						            <span class="sty1120FSchPDotLn" style="float:right;">...</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow3">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/TotalGrossIncomeAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/TotalGrossIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/TotalGrossIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/TotalGrossIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/TotalGrossIncomeAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow3LC" style="padding-top:7mm;">
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -2263,11 +2898,28 @@
 									<b> income. </b> Add lines 3 and 8  
 						            <span class="sty1120FSchPDotLn" style="float:right;">..........</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow4">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/TotalGrossECIAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/TotalGrossECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/TotalGrossECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/TotalGrossECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/TotalGrossECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow4LC" style="padding-top:7mm;">
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -2289,11 +2941,28 @@
 								  <td class="sty1120FSchPTableK1Desc" style="width:60mm;">Interest expense on lines 1  through 3, Schedule K-1  
 						            <span class="sty1120FSchPDotLn" style="float:right;">....................</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow3">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/InterestExpenseIncludedAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/InterestExpenseIncludedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/InterestExpenseIncludedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/InterestExpenseIncludedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/InterestExpenseIncludedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow3LC" style="padding-top:7mm;">
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -2319,11 +2988,28 @@
 								</xsl:call-template>  
 						            <span class="sty1120FSchPDotLn" style="float:right;">.............</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow4">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OtherInterestExpenseRptAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OtherInterestExpenseRptAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OtherInterestExpenseRptAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OtherInterestExpenseRptAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OtherInterestExpenseRptAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow4LC" style="padding-top:7mm;">
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -2346,11 +3032,28 @@
 									<b>Total interest expense. </b> Add lines 13<br/> and 14  
 						            <span class="sty1120FSchPDotLn" style="float:right;">........................</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow3">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/TotalInterestExpenseAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/TotalInterestExpenseAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/TotalInterestExpenseAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/TotalInterestExpenseAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/TotalInterestExpenseAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow3LC" style="padding-top:7mm;">
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -2376,11 +3079,28 @@
 				                    line 15b  total on Schedule I, line 22.)  
 						            <span class="sty1120FSchPDotLn" style="float:right;">...................</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow4Padding11mm">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/InterestExpenseAllocableAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:13mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/InterestExpenseAllocableAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:13mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/InterestExpenseAllocableAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:13mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/InterestExpenseAllocableAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:13mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/InterestExpenseAllocableAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow4LC" style="padding-top:13mm">
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -2407,11 +3127,28 @@
 						            Schedule I,  line 9, column (b).)  
 						            <span class="sty1120FSchPDotLn" style="float:right;">......</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow4Padding13mm">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/InterestExpenseNotAllocableAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:13mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/InterestExpenseNotAllocableAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:13mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/InterestExpenseNotAllocableAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:13mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/InterestExpenseNotAllocableAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:13mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/InterestExpenseNotAllocableAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow3LC" style="padding-top:13mm">
 									<span style="font-size:5.5pt">
 									  <xsl:choose>
@@ -2439,6 +3176,9 @@
 					  <xsl:if test="($Print = $Separated) and (count($FormData/ForeignPartnerInformationGrp) &gt; 4) ">
 						<xsl:for-each select="$FormData/ForeignPartnerInformationGrp">
 						  <xsl:if test="position() mod 4 = 1">
+					    <xsl:variable name="Pos">
+							<xsl:value-of select="position()"/>
+					    </xsl:variable>
 							<br/>
 							<span class="styRepeatingDataTitle">
 	        	              Form 1120F Schedule P, Part III Foreign Partners Average Outside Basis Under Regulations sections 1.882-5(b) and 1.884-1(d)(3)
@@ -2474,11 +3214,28 @@
 									</span>
 									<span class="sty1120FSchPDotLn" style="float:right;">..........</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow1">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/Section705OutsideBasisAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/Section705OutsideBasisAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/Section705OutsideBasisAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/Section705OutsideBasisAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/Section705OutsideBasisAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow3LC" style="padding-top:3mm;">
 									<xsl:choose>
 									  <xsl:when test="position() = 1 ">
@@ -2503,11 +3260,28 @@
                      	            <span style="float:left;">Regulations section 1.882-5(a)(1)(ii)(B)</span>
 									<!--<span class="sty1120FSchPDotLn" style="float:right;">.</span>-->
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow3Padding14mm">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/PartnerLiabSect18825a1iiBAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:14mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/PartnerLiabSect18825a1iiBAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:14mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/PartnerLiabSect18825a1iiBAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:14mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/PartnerLiabSect18825a1iiBAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:14mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/PartnerLiabSect18825a1iiBAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow4LC" style="padding-top:14mm">
 									<span style="font-size:6pt">
 									  <xsl:choose>
@@ -2532,11 +3306,28 @@
 						            All other liabilities included in partner&#8217;s <span style="float:left;">outside basis under section 752</span>
 									<span class="sty1120FSchPDotLn" style="float:right;">.........</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow3">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OtherLiabilitiesIncludedAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OtherLiabilitiesIncludedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OtherLiabilitiesIncludedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OtherLiabilitiesIncludedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OtherLiabilitiesIncludedAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow3LC" style="padding-top:7mm">
 									<xsl:choose>
 									  <xsl:when test="position() = 1 ">
@@ -2559,11 +3350,28 @@
 									<span style="float:left;">Add lines 17a and 17b</span>
 									<span class="sty1120FSchPDotLn" style="float:right;">..............</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow1BG">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/TotalLiabilitiesSection752Amt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/TotalLiabilitiesSection752Amt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/TotalLiabilitiesSection752Amt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/TotalLiabilitiesSection752Amt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/TotalLiabilitiesSection752Amt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow4LC" style="padding-top:3mm;">
 									<xsl:choose>
 									  <xsl:when test="position() = 1 ">
@@ -2586,11 +3394,28 @@
 									<span style="float:left;">Subtract line 17c from line 16</span>
 									<span class="sty1120FSchPDotLn" style="float:right;">.........</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow1">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/OutsideBasisLessSect752LiabAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/OutsideBasisLessSect752LiabAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/OutsideBasisLessSect752LiabAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/OutsideBasisLessSect752LiabAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/OutsideBasisLessSect752LiabAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow3LC" style="padding-top:3mm;">
 								    <xsl:choose>
 									  <xsl:when test="position() = 1 ">
@@ -2615,11 +3440,28 @@
 									<span class="sty1120FSchPDotLn" style="float:right;">........</span>
 								  </td>
 								  <!--NOTE: adjust column a-d is per create table dep row template below -->
-								  <xsl:call-template name="CreateTableDepRow18">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/PartnerLiabSect18841d3viAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:16mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/PartnerLiabSect18841d3viAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:16mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/PartnerLiabSect18841d3viAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:16mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/PartnerLiabSect18841d3viAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:16mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/PartnerLiabSect18841d3viAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <!--NOTE: Adjust padding top below is for the Total Column -->
 								  <td class="styDepTblRow4LC" style="padding-top:16mm">
 									<xsl:choose>
@@ -2642,11 +3484,28 @@
 									<b>(3)(vi).</b> Add lines 17d and 18
 									<span class="sty1120FSchPDotLn" style="float:right;">...............</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow3Padding6">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/PartnerBasisSect18841d3viAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/PartnerBasisSect18841d3viAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/PartnerBasisSect18841d3viAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/PartnerBasisSect18841d3viAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow3" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/PartnerBasisSect18841d3viAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow3LC" style="padding-top:6mm">
 									<xsl:choose>
 									  <xsl:when test="position() = 1 ">
@@ -2670,11 +3529,28 @@
 						            amount on that line.) <span style="float:left;"></span>
 									<span class="sty1120FSchPDotLn" style="float:right;">.............</span>
 								  </td>
-								  <xsl:call-template name="CreateTableDepRow20">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/PartnerOutsideBssAllcblECIAmt"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:21mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/PartnerOutsideBssAllcblECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:21mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/PartnerOutsideBssAllcblECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:21mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/PartnerOutsideBssAllcblECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+			      			      <td class="styDepTblRow4" style="width:24mm;border-bottom-width:1px;text-align:right;padding-left:1mm;padding-top:21mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/PartnerOutsideBssAllcblECIAmt[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow4LC" style="padding-top:21mm">
 									<xsl:choose>
 									  <xsl:when test="position() = 1 ">
@@ -2695,11 +3571,28 @@
                                     Enter "income" or "asset" to indicate the allocation method used on line 20  (see instructions)  
 									<span class="sty1120FSchPDotLn" style="float:right;">....................</span>
 								   </td>
-								  <xsl:call-template name="CreateTableDep22">
-									<xsl:with-param name="Start" select="position()"/>
-									<xsl:with-param name="Stop" select="position()+4"/>
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp/AllocationMethodUsedCd"/>
-								  </xsl:call-template>
+						      <!-- Start KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos + 0]/AllocationMethodUsedCd[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +1]/AllocationMethodUsedCd[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +2]/AllocationMethodUsedCd[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <td class="sty1120FSchPTableK1Cell" style="width: 24mm;padding-top:7mm;">
+							    <xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInformationGrp[$Pos +3]/AllocationMethodUsedCd[1]"/>
+							    </xsl:call-template>
+						      </td>
+						      <!-- End KISAM IM00251066 - Form 1120-F Schedule P is displaying incorrect data throughout the form. -->
 								  <td class="styDepTblRow3LC" style="border-bottom-width:1px">
 									<span style="width:1px"/>
 								  </td>

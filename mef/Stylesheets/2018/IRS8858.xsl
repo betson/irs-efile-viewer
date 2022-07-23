@@ -3048,8 +3048,8 @@
 								<div style="float:left;clear:none;">
 									<div class="styLNLeftNumBox" style="width:8mm;">1</div>
 									<div class="styLNDesc" style="width:139mm;padding-top:.5mm;padding-bottom:.5mm">
-										<span style="float:left;">Current year net income delete "or" (loss) per foreign books of account </span>
-										<span class="styDotLn" style="float: right; padding-right:1mm;">............</span>
+										<span style="float:left;">Current year net income (loss) per foreign books of account </span>
+										<span class="styDotLn" style="float: right; padding-right:1mm;">...............</span>
 									</div>
 								</div>
 								<div style="float:right;clear;none;">
@@ -3193,9 +3193,9 @@
 									<div style="float:left;">
 										<div class="styLNLeftNumBox">1</div>
 										<div class="styLNDesc" style="padding-top:.5mm;padding-bottom:.5mm">
-											<span style="float:left;">Current year net income delete "or" (loss) per foreign books of account </span>
+											<span style="float:left;">Current year net income (loss) per foreign books of account </span>
 											<!--Dotted Lines -->
-											<span class="styDotLn" style="float: right; padding-right:1mm;">............</span>
+											<span class="styDotLn" style="float: right; padding-right:1mm;">...............</span>
 										</div>
 									</div>
 									<div style="float:right;">

@@ -1023,21 +1023,23 @@ Specify to whom granted, date, and address, including ZIP code.
 	<xsl:with-param name="TargetNode" select="$Form56Data/GranteeDt"/>
 	</xsl:call-template>
 	<br/>
-	<span style="width:25px"/>
+	<!--<span style="width:25px"/>-->
 	<xsl:choose>
 		<xsl:when test="$Form56Data/GranteeUSAddress">
+		<span style="width:25px"/>
 		<!-- US Address -->
 				<xsl:call-template name="PopulateText">
 				<xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/AddressLine1Txt"/>
 				</xsl:call-template>
 				<br/>
-<span style="width:25px"/>
+<!--<span style="width:25px"/>-->
 			<xsl:if test="$Form56Data/GranteeUSAddress/AddressLine2Txt != '' ">
-	
+	<span style="width:25px"/>
 				<xsl:call-template name="PopulateText">
 				<xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/AddressLine2Txt"/>
 				</xsl:call-template>
 				<br/>
+				</xsl:if>
 				<span style="width:25px"/>
 				<xsl:call-template name="PopulateText">
 				<xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/CityNm"/>
@@ -1045,13 +1047,13 @@ Specify to whom granted, date, and address, including ZIP code.
 <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/StateAbbreviationCd"/>
             </xsl:call-template>
-            <span style="width:3px"/>
+            <span style="width:15px"/>
 <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$Form56Data/GranteeUSAddress/ZIPCd"/>
             </xsl:call-template>
             <!--<br/>-->
             <span style="width:28px"/>
-			</xsl:if>
+			<!--</xsl:if>-->
 		</xsl:when>
 		<xsl:otherwise>
 	

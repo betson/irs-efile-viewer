@@ -155,7 +155,7 @@
 						<!-- End Names and Identifying number section -->
 						<!-- Start Part I Title -->
 						<div class="styBB" style="width:187mm;">
-							<div class="styPartName" style="width:12mm;">Part l</div>
+							<div class="styPartName" style="width:12mm;">Part I</div>
 							<div class="styLNDesc" style="width:171mm;padding-left:2mm;height:auto;padding-top:0mm;">
 								<span style="font-size:8pt;">
 									<b>lncome or Loss From Rental Real Estate and Royalties</b>
@@ -179,7 +179,7 @@
 										<xsl:call-template name="PopulateSpan">
 											<xsl:with-param name="TargetNode" select="$FormData/PaymentRqrFilingForm1099Ind"/>
 										</xsl:call-template>
-										<input type="checkbox" class="styCkbox" alt="Checkbox">
+										<input type="checkbox" class="styCkbox" alt="YesPaymentRqrFilingForm1099">
 											<xsl:call-template name="PopulateYesCheckbox">
 												<xsl:with-param name="TargetNode" select="$FormData/PaymentRqrFilingForm1099Ind"/>
 												<xsl:with-param name="BackupName">IRS1040ScheduleEPaymentRqrFilingForm1099Ind</xsl:with-param>
@@ -194,7 +194,7 @@
 											<b>Yes</b>
 										</label>
 										<span style="width:8px;"/>
-										<input type="checkbox" class="styCkbox" alt="Checkbox">
+										<input type="checkbox" class="styCkbox" alt="NoPaymentRqrFilingForm1099">
 											<xsl:call-template name="PopulateNoCheckbox">
 												<xsl:with-param name="TargetNode" select="$FormData/PaymentRqrFilingForm1099Ind"/>
 												<xsl:with-param name="BackupName">IRS1040ScheduleEPaymentRqrFilingForm1099Ind</xsl:with-param>
@@ -221,7 +221,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/RequiredForms1099FiledInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox" alt="Checkbox">
+									<input type="checkbox" class="styCkbox" alt="YesRequiredForms1099Filed">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/RequiredForms1099FiledInd"/>
 											<xsl:with-param name="BackupName">IRS1040ScheduleERequiredForms1099FiledInd</xsl:with-param>
@@ -236,7 +236,7 @@
 										<b>Yes</b>
 									</label>
 									<span style="width:8px;"/>
-									<input type="checkbox" class="styCkbox" alt="Checkbox">
+									<input type="checkbox" class="styCkbox" alt="NoRequiredForms1099Filed">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/RequiredForms1099FiledInd"/>
 											<xsl:with-param name="BackupName">IRS1040ScheduleERequiredForms1099FiledInd</xsl:with-param>
@@ -432,7 +432,7 @@
 											</td>
 											<!-- Column I -->
 											<td class="styTableCell" style="width:16mm;border-right-width:0px;padding-right:6.5mm; vertical-align:center;">
-												<input type="checkbox" class="styCkbox" alt="Checkbox">
+												<input type="checkbox" class="styCkbox" alt="QualifiedJointVenture">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="QualifiedJointVentureInd"/>
 														<xsl:with-param name="BackupName">IRS1040ScheduleEPropertyRealEstAndRoyaltyGroup<xsl:number value="position()"/>QualifiedJointVentureInd</xsl:with-param>
@@ -498,7 +498,7 @@
 										<!-- Column I -->
 										<td class="styTableCell" style="width:16mm;border-right-width:0px;text-align:center; vertical-align:center;">
 											
-										<input type="checkbox" class="styCkbox" alt="Checkbox">
+										<input type="checkbox" class="styCkbox" alt="QualifiedJointVenture">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="RS1040ScheduleEPropertyRealEstAndRoyaltyGroup"/>
 														<xsl:with-param name="BackupName">IRS1040ScheduleEPropertyRealEstAndRoyaltyGroup<xsl:number value="position()"/>QualifiedJointVentureInd</xsl:with-param>
@@ -549,7 +549,7 @@
 										</td>
 										<!-- Column I -->
 										<td class="styTableCell" style="width:16mm;border-right-width:0px;text-align:center; vertical-align:center;">
-											<input type="checkbox" class="styCkbox" alt="Checkbox">
+											<input type="checkbox" class="styCkbox" alt="QualifiedJointVenture">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="IRS1040ScheduleEPropertyRealEstAndRoyaltyGroup"/>
 													</xsl:call-template>
@@ -599,7 +599,7 @@
 										</td>
 										<!-- Column I -->
 										<td class="styTableCell" style="width:16mm;border-right-width:0px;text-align:center; vertical-align:center;padding-left:1.5mm">
-										<input type="checkbox" class="styCkbox" alt="Checkbox">
+										<input type="checkbox" class="styCkbox" alt="QualifiedJointVenture">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="RS1040ScheduleEPropertyRealEstAndRoyaltyGroup"/>
 														<xsl:with-param name="BackupName">IRS1040ScheduleEPropertyRealEstAndRoyaltyGroup<xsl:number value="position()"/>QualifiedJointVentureInd</xsl:with-param>
@@ -3820,7 +3820,7 @@
 					<!-- Part II -->
 					<!-- Part II Title -->
 					<div style="width:187mm;" class="styBB">
-						<div class="styPartName" style="width:15mm;">Part ll</div>
+						<div class="styPartName" style="width:15mm;">Part II</div>
 						<div class="styPartDesc" style="padding-left:3mm;font-weight:normal;height:auto;">
 							<span class="styBoldText">lncome or Loss From Partnerships and S Corporations -- <span style="padding-left:.5mm;padding-right:1mm;">Note:</span>
 							</span>If you report a loss, receive a distribution, dispose of stock, or receive a loan repayment from an S corporation, you <b>must</b> check the box in column 
@@ -3842,7 +3842,7 @@
 								<xsl:with-param name="TargetNode" select="$FormData/PriorYearsLossesInd"/>
 							</xsl:call-template>
 							<!-- Yes Checkbox -->
-							<input type="Checkbox" class="styCkbox" alt="Checkbox">
+							<input type="Checkbox" class="styCkbox" alt="YesPriorYearsLosses">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/PriorYearsLossesInd"/>
 									<xsl:with-param name="BackupName">IRS1040ScheduleEPriorYearsLossesInd</xsl:with-param>
@@ -3858,7 +3858,7 @@
 						</div>
 						<div style="width:13mm;float:left;clear:none;padding-left:2mm;padding-top:5.5mm;">
 							<!-- No Checkbox -->
-							<input type="Checkbox" class="styCkbox" alt="Checkbox">
+							<input type="Checkbox" class="styCkbox" alt="NoPriorYearsLosses">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/PriorYearsLossesInd"/>
 									<xsl:with-param name="BackupName">IRS1040ScheduleEPriorYearsLossesInd</xsl:with-param>
@@ -4004,7 +4004,7 @@
 											<!-- Column c -->
 											<td class="styTableCell" style="width:31.9mm;height:11mm;text-align:center;float:center;clear:none;font-size:7pt;vertical-align:top;">
 												<!-- Checkbox -->
-												<input type="checkbox" alt="Checkbox" class="styCkbox">
+												<input type="checkbox" alt="ForeignPartnership" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="ForeignPartnershipInd"/>
 														<xsl:with-param name="BackupName">IRS1040ScheduleEPartnershipOrSCorpGroupForeignPartnershipInd</xsl:with-param>
@@ -4027,7 +4027,7 @@
 											<!-- Column e -->
 											<td class="styTableCell" style="width:32mm;height:11mm;text-align:center;float:center;clear:none;border-right-width:0px;font-size:7pt;vertical-align:top;">
 												<!-- Checkbox -->
-												<input type="Checkbox" alt="alt" class="styCkbox">
+												<input type="Checkbox" alt="BasisComputationRequired" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="BasisComputationRequiredInd"/>
 														<xsl:with-param name="BackupName">IRS1040ScheduleEPartnershipOrSCorpGroupAnyAmountIsNotAtRiskInd</xsl:with-param>
@@ -4045,7 +4045,7 @@
 											<td class="styTableCell" style="width:32mm;height:11mm;text-align:center;float:center;clear:none;border-left-width:1px;font-size:7pt;vertical-align:top;
 											border-right-width:0px;">
 												<!-- Checkbox -->
-												<input type="Checkbox" alt="alt" class="styCkbox">
+												<input type="Checkbox" alt="AnyAmountIsNotAtRisk" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="AnyAmountIsNotAtRiskInd"/>
 														<xsl:with-param name="BackupName">IRS1040ScheduleEPartnershipOrSCorpGroupAnyAmountIsNotAtRiskInd</xsl:with-param>
@@ -4085,7 +4085,7 @@
 										</td>
 										                                  <!--              This is the C checkbox       -->                                              
 										<td class="styTableCell" style="width:31.9mm;height:5.5mm;text-align:center">
-											<input type="Checkbox" alt="alt" class="styCkbox">
+											<input type="Checkbox" alt="AnyAmountIsNotAtRisk" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="IRS1040ScheduleEPartnershipOrSCorpGroupAnyAmountIsNotAtRiskInd"/>
 													</xsl:call-template>
@@ -4097,14 +4097,14 @@
 										</td> 
 										                                      <!--              This is the E checkbox       --> 
 										<td class="styTableCell" style="width:32mm;height:5.5mm;border-right-width:0px;text-align:center;">
-											<input type="Checkbox" alt="alt" class="styCkbox">
+											<input type="Checkbox" alt="BasisComputationRequired" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="IRS1040ScheduleEPartnershipOrSCorpGroupBasisComputationRequiredInd"/>
 													</xsl:call-template>
 												</input>
 										</td>
 										<td class="styTableCell" style="width:32mm;height:5.5mm;border-right-width:0px;text-align:center;border-left-width:1px;">
-											<input type="Checkbox" alt="alt" class="styCkbox">
+											<input type="Checkbox" alt="AnyAmountIsNotAtRisk" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="IRS1040ScheduleEPartnershipOrSCorpGroupAnyAmountIsNotAtRiskInd"/>
 													</xsl:call-template>
@@ -4130,7 +4130,7 @@
 											<span class="styTableCellPad"/>
 										</td>
 										<td class="styTableCell" style="width:31.9mm;height:5.5mm;clear:none;text-align:center">
-											<input type="Checkbox" alt="alt" class="styCkbox">
+											<input type="Checkbox" alt="AnyAmountIsNotAtRisk" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="IRS1040ScheduleEPartnershipOrSCorpGroupAnyAmountIsNotAtRiskInd"/>
 													</xsl:call-template>
@@ -4140,14 +4140,14 @@
 											<span class="styTableCellPad"/>
 										</td>
 										<td class="styTableCell" style="width:32mm;height:5.5mm;clear:none;border-right-width:0px;text-align:center">
-										<input type="Checkbox" alt="alt" class="styCkbox">
+										<input type="Checkbox" alt="BasisComputationRequired" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="IRS1040ScheduleEPartnershipOrSCorpGroupBasisComputationRequiredInd"/>
 													</xsl:call-template>
 												</input>
 										</td>
 										<td class="styTableCell" style="width:32mm;height:5.5mm;clear:none;border-right-width:0px;text-align:center;border-left-width:1px;">
-										<input type="Checkbox" alt="alt" class="styCkbox">
+										<input type="Checkbox" alt="AnyAmountIsNotAtRisk" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="IRS1040ScheduleEPartnershipOrSCorpGroupAnyAmountIsNotAtRiskInd"/>
 													</xsl:call-template>
@@ -4173,7 +4173,7 @@
 											<span class="styTableCellPad"/>
 										</td>
 										<td class="styTableCell" style="width:31.9mm;height:5.5mm;clear:none;text-align:center">
-											<input type="Checkbox" alt="alt" class="styCkbox">
+											<input type="Checkbox" alt="AnyAmountIsNotAtRisk" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="IRS1040ScheduleEPartnershipOrSCorpGroupAnyAmountIsNotAtRiskInd"/>
 													</xsl:call-template>
@@ -4183,14 +4183,14 @@
 											<span class="styTableCellPad"/>
 										</td>
 										<td class="styTableCell" style="width:32mm;height:5.5mm;clear:none;border-right-width:0px;text-align:center">
-											<input type="Checkbox" alt="alt" class="styCkbox">
+											<input type="Checkbox" alt="AnyAmountIsNotAtRisk" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="IRS1040ScheduleEPartnershipOrSCorpGroupAnyAmountIsNotAtRiskInd"/>
 													</xsl:call-template>
 												</input>
 										</td>
 										<td class="styTableCell" style="width:32mm;height:5.5mm;clear:none;border-right-width:0px;text-align:center;border-left-width:1px;">
-										<input type="Checkbox" alt="alt" class="styCkbox">
+										<input type="Checkbox" alt="AnyAmountIsNotAtRisk" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="IRS1040ScheduleEPartnershipOrSCorpGroupAnyAmountIsNotAtRiskInd"/>
 													</xsl:call-template>
@@ -4216,7 +4216,7 @@
 											<span class="styTableCellPad"/>
 										</td>
 										<td class="styTableCell" style="width:31.9mm;height:5.5mm;clear:none;text-align:center">
-											<input type="Checkbox" alt="alt" class="styCkbox">
+											<input type="Checkbox" alt="AnyAmountIsNotAtRisk" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="IRS1040ScheduleEPartnershipOrSCorpGroupAnyAmountIsNotAtRiskInd"/>
 													</xsl:call-template>
@@ -4226,14 +4226,14 @@
 											<span class="styTableCellPad"/>
 										</td>
 										<td class="styTableCell" style="width:32mm;height:5.5mm;clear:none;border-right-width:0px;text-align:center">
-											<input type="Checkbox" alt="alt" class="styCkbox">
+											<input type="Checkbox" alt="AnyAmountIsNotAtRisk" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="IRS1040ScheduleEPartnershipOrSCorpGroupAnyAmountIsNotAtRiskInd"/>
 													</xsl:call-template>
 												</input>
 										</td>
 										<td class="styTableCell" style="width:32mm;height:5.5mm;clear:none;border-right-width:0px;text-align:center;border-left-width:1px;">
-										<input type="Checkbox" alt="alt" class="styCkbox">
+										<input type="Checkbox" alt="AnyAmountIsNotAtRisk" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="IRS1040ScheduleEPartnershipOrSCorpGroupAnyAmountIsNotAtRiskInd"/>
 													</xsl:call-template>
@@ -4650,7 +4650,7 @@
 						<!-- Start Part III -->
 						<!-- line 33 -->
 						<div class="styBB" style="width:187mm;float:left:clear:none;height:auto;">
-							<div class="styPartName" style="width:15mm;">Part lll</div>
+							<div class="styPartName" style="width:15mm;">Part III</div>
 							<div class="styPartDesc" style="padding-left:3mm;width:86mm;height:auto;">
                              lncome or Loss From Estates and Trusts 
                         </div>
@@ -5140,7 +5140,7 @@
 						<div style="&#160;"/>
 						<!-- Start Part IV -->
 						<div class="styBB" style="width:187mm;border-top-width:1px;">
-							<div class="styPartName" style="width:15mm;height:3.85mm;">Part lV</div>
+							<div class="styPartName" style="width:15mm;height:3.85mm;">Part IV</div>
 							<div class="styPartDesc" style="padding-left:3mm;width:160mm;height:auto;">
                   lncome or Loss From Real Estate Mortgage Investment Conduits (REMICs)-Residual Holder 
                     </div>
@@ -5513,7 +5513,7 @@
 					<p class="pageEnd"/>
 					<!-- Begin Separated Repeating data table for PropertyRealEstAndRoyaltyGroup -->
 					<xsl:if test="($Print = $Separated) and (count($FormData/PropertyRealEstAndRoyaltyGroup) &gt; 3)">
-						<span class="styRepeatingDataTitle">Form 1040 Schedule E, Part l, Lines 1 and 2 - Income or Loss From Rental Real Estate and Royalities</span>
+						<span class="styRepeatingDataTitle">Form 1040 Schedule E, Part I, Lines 1 and 2 - Income or Loss From Rental Real Estate and Royalities</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
@@ -5581,7 +5581,7 @@
 											</xsl:call-template>
 										</td>
 										<td class="styTableCellText" style="width:9mm;text-align:center;">
-											<input class="styCkbox" alt="Checkbox" type="checkbox">
+											<input class="styCkbox" alt="QualifiedJointVenture" type="checkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="QualifiedJointVentureInd"/>
 													<xsl:with-param name="BackupName">IRS1040SchEPropertyRealEstAndRoyaltyGroup<xsl:number value="position()"/>QJVIndSep</xsl:with-param>
@@ -5665,7 +5665,7 @@
 										</td>
 										<td class="styDepTblCell" style="text-align:center;width:17.5mm;">
 											<!-- Checkbox -->
-											<input type="Checkbox" alt="Checkbox" class="styCkbox">
+											<input type="Checkbox" alt="ForeignPartnership" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="ForeignPartnershipInd"/>
 													<xsl:with-param name="BackupName">IRS1040ScheduleEPartnershipOrSCorpGroupForeignPartnershipInd</xsl:with-param>
@@ -5680,7 +5680,7 @@
 										</td>
 										<td class="styDepTblCell" style="text-align:center;width:23.2mm;">
 											<!-- Checkbox -->
-											<input type="Checkbox" alt="Checkbox" class="styCkbox">
+											<input type="Checkbox" alt="AnyAmountIsNotAtRisk" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="AnyAmountIsNotAtRiskInd"/>
 													<xsl:with-param name="BackupName">IRS1040ScheduleEPartnershipOrSCorpGroupAnyAmountIsNotAtRiskInd</xsl:with-param>

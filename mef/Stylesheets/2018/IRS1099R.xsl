@@ -174,7 +174,7 @@
 								  </xsl:call-template>
 							   </xsl:when>
 							   <xsl:when test="normalize-space($Form1099RData/RecipientEIN) != ''">
-								  <xsl:call-template name="PopulateSSN">
+								  <xsl:call-template name="PopulateEIN">
 									<xsl:with-param name="TargetNode" select="$Form1099RData/RecipientEIN"/>
 								  </xsl:call-template>
 							   </xsl:when>

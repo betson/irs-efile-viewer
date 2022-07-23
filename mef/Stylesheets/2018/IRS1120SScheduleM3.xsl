@@ -2808,9 +2808,12 @@
                 </xsl:call-template>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode"  select="$Form1120SScheduleM3/IRS1120SSchM3ExpenseDedItems/DepreciationGrp/DepletionOilGas/TemporaryDifferenceAmt"/>
+               <xsl:call-template name="PopulateAmount">
+                  <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IRS1120SSchM3ExpenseDedItems/DepreciationGrp/TemporaryDifferenceAmt"/>
                 </xsl:call-template>
+             <!--   <xsl:call-template name="PopulateAmount">
+                  <xsl:with-param name="TargetNode"  select="$Form1120SScheduleM3/IRS1120SSchM3ExpenseDedItems/DepreciationGrp/DepletionOilGas/TemporaryDifferenceAmt"/>
+                </xsl:call-template>-->
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">

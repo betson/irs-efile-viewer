@@ -12,6 +12,7 @@
 <!-- 12/07/2018 - Changes made for 2018 pdf review - Jeremy Nichols -->
 <!-- 12/09/2018 - Changes made for KISAM IM00580381 - Jeremy Nichols -->
 <!-- 12/10/2018 - Changes made for KISAM IM00580754 - Jeremy Nichols -->
+<!-- 02/20/2018 - Changes made for defect 127674 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="PopulateTemplate.xsl"/>
@@ -330,19 +331,19 @@
 														<xsl:with-param name="TargetNode" select="ForeignCorporationEIN"/>
 													</xsl:call-template>
 												</xsl:if>
-												<xsl:if test="(ForeignCorpMissingEINReasonCd != '')">
+												<xsl:if test="(ForeignCorpMissingEINReasonCd != '')"><span style="width:1mm;"/>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="ForeignCorpMissingEINReasonCd"/>
 													</xsl:call-template>
 												</xsl:if>
-												<xsl:if test="(ForeignBranchOrQBUCd != '')">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="ForeignBranchOrQBUCd"/>
-													</xsl:call-template>
-												</xsl:if>
-												<xsl:if test="(ForeignEntityIdentificationGrp != '')">
+												<xsl:if test="(ForeignEntityIdentificationGrp != '')"><span style="width:1mm;"/>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="ForeignEntityIdentificationGrp"/>
+													</xsl:call-template>
+												</xsl:if>
+												<xsl:if test="(ForeignBranchOrQBUCd != '')"><span style="width:1mm;"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="ForeignBranchOrQBUCd"/>
 													</xsl:call-template>
 												</xsl:if>
 											</td>
@@ -373,6 +374,16 @@
 												<xsl:if test="Section863bIncomeCd != ' '">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="Section863bIncomeCd"/>
+													</xsl:call-template>
+												</xsl:if>
+												<xsl:if test="Section951AIncomeCd != ' '">
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="Section951AIncomeCd"/>
+													</xsl:call-template>
+												</xsl:if>
+												<xsl:if test="Sect965RepatriationIncomeCd != ' '">
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="Sect965RepatriationIncomeCd"/>
 													</xsl:call-template>
 												</xsl:if>
 											</td>
@@ -622,7 +633,7 @@
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="OtherIncomeLossAmt"/>
 													</xsl:call-template>
-													<xsl:call-template name="PopulateText">
+													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="OtherIncomeLossAmt"/>
 													</xsl:call-template>
 												</xsl:if>
@@ -630,7 +641,7 @@
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="OtherIncomeStatement"/>
 													</xsl:call-template>
-													<xsl:call-template name="PopulateText">
+													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="OtherIncomeStatement"/>
 													</xsl:call-template>
 												</xsl:if>
@@ -846,7 +857,7 @@
 												<span style="width:1px;"/>
 											</td>
 											<td class="styTableCellSmall" style="text-align:right;border-color:black;">
-												<xsl:call-template name="PopulateText">
+												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="ExpensesRelatedSalesIncomeAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
@@ -1057,14 +1068,14 @@
 												<span style="width:1px;"/>
 											</td>
 											<td class="styTableCellSmall" style="text-align:right;border-color:black;">
-												<xsl:call-template name="PopulateText">
+												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="TotIncmOrLossBfrAdjustmentsAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
 										</tr>
 									</xsl:for-each>
-									<!-- Filler rows income or (loss) before adjustments Schedule A-->
+									<!-- Filler rows income or (loss) before adjustments -->
 								</xsl:if>
 								<xsl:if test="(count($Form1118ScheduleA/IncmLossBfrAdjFrgnTxsPdAccrGrp) &lt; 1) or ((count($Form1118ScheduleA/IncmLossBfrAdjFrgnTxsPdAccrGrp) &gt; 3) and ($Print = $Separated))">
 									<xsl:choose>
@@ -2576,22 +2587,17 @@
 														</xsl:call-template>
 													</xsl:when>
 													<xsl:otherwise>
-														<xsl:choose>
-															<xsl:when test="(ForeignEntityIdentificationGrp)">
-																<xsl:for-each select="ForeignEntityIdentificationGrp">
-																	<xsl:call-template name="PopulateText">
-																		<xsl:with-param name="TargetNode" select="ForeignEntityReferenceIdNum"/>
-																	</xsl:call-template><br/>
-																</xsl:for-each>
-															</xsl:when>
-															<xsl:otherwise>
-																<xsl:call-template name="PopulateText">
-																	<xsl:with-param name="TargetNode" select="ForeignCorporationEIN"/>
-																</xsl:call-template>
-															</xsl:otherwise>
-														</xsl:choose>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="ForeignCorporationEIN"/>
+														</xsl:call-template>
 													</xsl:otherwise>
 												</xsl:choose>
+												
+												<xsl:for-each select="ForeignEntityIdentificationGrp"><br/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="ForeignEntityReferenceIdNum"/>
+													</xsl:call-template>
+												</xsl:for-each>
 											</td>
 											<td class="styIRS1118TableCellSmallArial" style="text-align:center;font-size:5pt;">
 												<xsl:call-template name="PopulateText">
@@ -2790,13 +2796,6 @@
 												<br/>
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="ForeignCorporationName/BusinessNameLine2Txt"/>
-												</xsl:call-template>,<br/>
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="ForeignCorporationName/BusinessNameLine1Txt"/>
-												</xsl:call-template>
-												<br/>
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="ForeignCorporationName/BusinessNameLine2Txt"/>
 												</xsl:call-template>
 											</td>
 											<td class="styIRS1118TableCellSmallArial" style="font-size:5pt;text-align:center;">
@@ -2807,22 +2806,17 @@
 														</xsl:call-template>
 													</xsl:when>
 													<xsl:otherwise>
-														<xsl:choose>
-															<xsl:when test="(ForeignEntityIdentificationGrp)">
-																<xsl:for-each select="ForeignEntityIdentificationGrp">
-																	<xsl:call-template name="PopulateText">
-																		<xsl:with-param name="TargetNode" select="ForeignEntityReferenceIdNum"/>
-																	</xsl:call-template><br/>
-																</xsl:for-each>
-															</xsl:when>
-															<xsl:otherwise>
-																<xsl:call-template name="PopulateText">
-																	<xsl:with-param name="TargetNode" select="ForeignCorporationEIN"/>
-																</xsl:call-template>
-															</xsl:otherwise>
-														</xsl:choose>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="ForeignCorporationEIN"/>
+														</xsl:call-template>
 													</xsl:otherwise>
 												</xsl:choose>
+												
+												<xsl:for-each select="ForeignEntityIdentificationGrp"><br/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="ForeignEntityReferenceIdNum"/>
+													</xsl:call-template>
+												</xsl:for-each>
 											</td>
 											<td class="styIRS1118TableCellSmallArial" style="font-size:5pt;text-align:center;">
 												<xsl:call-template name="PopulateText">
@@ -2918,7 +2912,7 @@
 									</td>
 									<td class="styIRS1118TableCellSmallArial" style="font-size:6pt;border-top:1px solid black;border-bottom-width:1px;">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="TotProRataShrCFCTestedIncmAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1118ScheduleD/TotProRataShrCFCTestedIncmAmt"/>
 										</xsl:call-template>
 									</td>
 									<td class="styIRS1118TableCellSmallArial" style="font-size:6pt;background-color:lightgrey;border-top:1px solid black;border-bottom-width:1px;">
@@ -2979,7 +2973,7 @@
 									</td>
 									<td class="styIRS1118TableCellSmallArial" style="font-size:6pt;border-top:0px;border-bottom-width:0px;">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="TotShrFrgnIncmTxPdOrAccrCFCAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form1118ScheduleD/TotShrFrgnIncmTxPdOrAccrCFCAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -3193,22 +3187,16 @@
 														</xsl:call-template>
 													</xsl:when>
 													<xsl:otherwise>
-														<xsl:choose>
-															<xsl:when test="(ForeignEntityIdentificationGrp)">
-																<xsl:for-each select="ForeignEntityIdentificationGrp">
-																	<xsl:call-template name="PopulateText">
-																		<xsl:with-param name="TargetNode" select="ForeignEntityReferenceIdNum"/>
-																	</xsl:call-template><br/>
-																</xsl:for-each>
-															</xsl:when>
-															<xsl:otherwise>
-																<xsl:call-template name="PopulateText">
-																	<xsl:with-param name="TargetNode" select="DistributingForeignCorpEIN"/>
-																</xsl:call-template>
-															</xsl:otherwise>
-														</xsl:choose>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="DistributingForeignCorpEIN"/>
+														</xsl:call-template>
 													</xsl:otherwise>
 												</xsl:choose>
+												<xsl:for-each select="ForeignEntityIdentificationGrp"><br/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="ForeignEntityReferenceIdNum"/>
+													</xsl:call-template>
+												</xsl:for-each>
 											</td>
 											<td class="styIRS1118TableCellSmallArial" style="font-size:6pt;text-align:center;">
 												<xsl:call-template name="PopulateText">
@@ -3292,7 +3280,7 @@
 											</td>
 											<td class="styIRS1118TableCellSmallArial" style="font-size:6pt;bordder-bottom-width:0px;">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="IRS1118ScheduleE/TotalTaxDeemedPdSection960bAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleE/TotalTaxDeemedPdSection960bAmt"/>
 												</xsl:call-template>
 											</td>
 										</tr>
@@ -3379,22 +3367,17 @@
 														</xsl:call-template>
 													</xsl:when>
 													<xsl:otherwise>
-														<xsl:choose>
-															<xsl:when test="(ForeignEntityIdentificationGrp)">
-																<xsl:for-each select="ForeignEntityIdentificationGrp">
-																	<xsl:call-template name="PopulateText">
-																		<xsl:with-param name="TargetNode" select="ForeignEntityReferenceIdNum"/>
-																	</xsl:call-template><br/>
-																</xsl:for-each>
-															</xsl:when>
-															<xsl:otherwise>
-																<xsl:call-template name="PopulateText">
-																	<xsl:with-param name="TargetNode" select="DistributingForeignCorpEIN"/>
-																</xsl:call-template>
-															</xsl:otherwise>
-														</xsl:choose>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="DistributingForeignCorpEIN"/>
+														</xsl:call-template>
 													</xsl:otherwise>
 												</xsl:choose>
+												
+												<xsl:for-each select="ForeignEntityIdentificationGrp"><br/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="ForeignEntityReferenceIdNum"/>
+													</xsl:call-template>
+												</xsl:for-each>
 											</td>
 											<td class="styIRS1118TableCellSmallArial" style="font-size:5pt;text-align:center;">
 												<xsl:call-template name="PopulateText">
@@ -3423,22 +3406,16 @@
 														</xsl:call-template>
 													</xsl:when>
 													<xsl:otherwise>
-														<xsl:choose>
-															<xsl:when test="(LowerTierRecipientFrgnCorpGrp/ForeignEntityIdentificationGrp)">
-																<xsl:for-each select="LowerTierRecipientFrgnCorpGrp/ForeignEntityIdentificationGrp">
-																	<xsl:call-template name="PopulateText">
-																		<xsl:with-param name="TargetNode" select="ForeignEntityReferenceIdNum"/>
-																	</xsl:call-template><br/>
-																</xsl:for-each>
-															</xsl:when>
-															<xsl:otherwise>
-																<xsl:call-template name="PopulateText">
-																	<xsl:with-param name="TargetNode" select="LowerTierRecipientFrgnCorpGrp/DistributingForeignCorpEIN"/>
-																</xsl:call-template>
-															</xsl:otherwise>
-														</xsl:choose>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="LowerTierRecipientFrgnCorpGrp/DistributingForeignCorpEIN"/>
+														</xsl:call-template>
 													</xsl:otherwise>
 												</xsl:choose>
+												<xsl:for-each select="LowerTierRecipientFrgnCorpGrp/ForeignEntityIdentificationGrp">
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="ForeignEntityReferenceIdNum"/>
+													</xsl:call-template><br/>
+												</xsl:for-each>
 											</td>
 											<td class="styIRS1118TableCellSmallArial" style="font-size:5pt;text-align:center;">
 												<xsl:call-template name="PopulateText">
@@ -3840,7 +3817,7 @@
 											</td>
 											<td class="styIRS1118TableCellSmallArial" style="font-size:6pt;bordder-bottom-width:0px;">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="DivDmdInclsnPost1986TxDmdPdAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleF1/DivDmdInclsnPost1986TxDmdPdAmt"/>
 												</xsl:call-template>
 											</td>
 										</tr>
@@ -4165,7 +4142,7 @@
 											</td>
 											<td class="styIRS1118TableCellSmallArial" style="font-size:6pt;bordder-bottom-width:0px;">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="DivPaidPre1987TaxDmdPdAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleF1/DivPaidPre1987TaxDmdPdAmt"/>
 												</xsl:call-template>
 											</td>
 										</tr>
@@ -4327,7 +4304,7 @@
 							</div>
 						</div>
 					<!-- BEGIN SCHEDULE F1 PART III-->
-					<div class="styTableContainerLandscape" style="width:260mm;" id="SCHF1PartIIIctn">
+					<div class="styTableContainerLandscape" style="width:260mm;" id="SCHF1PartIIIctnB">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
@@ -4444,7 +4421,7 @@
 											</td>
 											<td class="styIRS1118TableCellSmallArial" style="font-size:6pt;bordder-bottom-width:0px;">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="DeemedInclsnPre1987TaxDmdPdAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleF1/DeemedInclsnPre1987TaxDmdPdAmt"/>
 												</xsl:call-template>
 											</td>
 										</tr>
@@ -4453,7 +4430,7 @@
 					</div>
 					<!-- Set Initial Height of Above Table -->
 					<xsl:call-template name="SetInitialDynamicTableHeight">
-						<xsl:with-param name="TargetNode" select="$Form1118ScheduleF1/DivPaidPre1987AccumProfits"/>
+						<xsl:with-param name="TargetNode" select="$Form1118ScheduleF1/DeemedInclsnPre1987EarnPrfts"/>
 						<xsl:with-param name="containerHeight" select="6"/>
 						<xsl:with-param name="headerHeight" select="2"/>
 						<xsl:with-param name="containerID" select="SCHF1PartIIIctnB"/>
@@ -5131,7 +5108,7 @@
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="ThirdTierCorpName/BusinessNameLine2Txt"/>
 												</xsl:call-template>
-												<xsl:if test="(RelatedFirstTierCorpName)">
+												<xsl:if test="(RelatedSecondTierCorpName)">
 													<br/>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="RelatedSecondTierCorpName/BusinessNameLine1Txt"/>
@@ -5243,7 +5220,7 @@
 								<!-- end button display logic -->
 							</div>
 						</div>
-					<!-- BEGIN SCHEDULE F1 PART I-->
+					<!-- BEGIN SCHEDULE F2 PART I-->
 					<div class="styTableContainerLandscape" style="width:260mm;" id="SCHF2P2contctn">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
@@ -5406,7 +5383,7 @@
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="ThirdTierCorpName/BusinessNameLine2Txt"/>
 												</xsl:call-template>
-												<xsl:if test="(RelatedFirstTierCorpName)">
+												<xsl:if test="(RelatedSecondTierCorpName)">
 													<br/>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="RelatedSecondTierCorpName/BusinessNameLine1Txt"/>
@@ -5666,7 +5643,7 @@
 							<div class="styGenericDiv" style="width:3.2mm;float:right">
 								<!-- button display logic -->
 								<xsl:call-template name="SetDynamicTableToggleButton">
-									<xsl:with-param name="TargetNode" select="$Form1118ScheduleF2/TaxDeemedPaidBy3rdTier"/>
+									<xsl:with-param name="TargetNode" select="$Form1118ScheduleF3/TaxDeemedPaidBy3rdTier"/>
 									<xsl:with-param name="containerHeight" select="6"/>
 									<xsl:with-param name="headerHeight" select="2"/>
 									<xsl:with-param name="containerID" select=" 'SCHF3ctn' "/>
@@ -5700,7 +5677,7 @@
 							</thead>
 							<tfoot/>
 							<tbody>
-								<xsl:if test="(count($Form1118ScheduleF2/TaxDeemedPaidBy3rdTier) &lt; 7) or ((count($Form1118ScheduleF2/TaxDeemedPaidBy3rdTier) &gt; 6) and ($Print != $Separated))">
+								<xsl:if test="(count($Form1118ScheduleF3/TaxDeemedPaidBy3rdTier) &lt; 7) or ((count($Form1118ScheduleF3/TaxDeemedPaidBy3rdTier) &gt; 6) and ($Print != $Separated))">
 									<xsl:for-each select="$Form1118ScheduleF3/TaxDeemedPaidBy3rdTier">
 										<tr style="height:6mm;">
 											<td class="styIRS1118TableCellSmallArial" style="font-size:5pt;text-align:left;">
@@ -5711,7 +5688,7 @@
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="FourthTierCorpName/BusinessNameLine2Txt"/>
 												</xsl:call-template>
-												<xsl:if test="(RelatedFirstTierCorpName)">
+												<xsl:if test="(RelatedThirdTierCorpName)">
 													<br/>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="RelatedThirdTierCorpName/BusinessNameLine1Txt"/>
@@ -6018,7 +5995,7 @@
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="FifthTierCorpName/BusinessNameLine2Txt"/>
 												</xsl:call-template>
-												<xsl:if test="(RelatedFirstTierCorpName)">
+												<xsl:if test="(RelatedFourthTierCorpName)">
 													<br/>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="RelatedFourthTierCorpName/BusinessNameLine1Txt"/>
@@ -6295,7 +6272,7 @@
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="SixthTierCorpName/BusinessNameLine2Txt"/>
 												</xsl:call-template>
-												<xsl:if test="(RelatedFirstTierCorpName)">
+												<xsl:if test="(RelatedFifthTierCorpName)">
 													<br/>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="RelatedFifthTierCorpName/BusinessNameLine1Txt"/>
@@ -6781,25 +6758,25 @@
 											<td class="styIRS1118TableCellHeaderSmall" style="height:5mm;width:49mm;border-left-width:1px;border-right-width:0px;" colspan="2">
 												Product line #1 (SIC Code: 
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/SICCd"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]//SICCd"/>
 												</xsl:call-template>)*
 											</td>
 											<td class="styIRS1118TableCellHeaderSmall" style="height:5mm;width:49mm;border-left-width:1px;border-right-width:0px;" colspan="2">
 												Product line #2 (SIC Code: 
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/SICCd"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/SICCd"/>
 												</xsl:call-template>)*
 											</td>
 											<td class="styIRS1118TableCellHeaderSmall" style="height:5mm;width:49mm;border-left-width:1px;border-right-width:0px;" colspan="2">
 												Product line #1 (SIC Code: 
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/SICCd"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed/GroIncmMthdGroIncmAndRsrchDed[1]/SICCd"/>
 												</xsl:call-template>)*
 											</td>
 											<td class="styIRS1118TableCellHeaderSmall" style="height:5mm;width:49mm;border-left-width:1px;border-right-width:0px;" colspan="2">
 												Product line #2 (SIC Code: 
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/SICCd"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed/GroIncmMthdGroIncmAndRsrchDed[2]/SICCd"/>
 												</xsl:call-template>)*
 											</td>
 										</tr>
@@ -7080,1331 +7057,9 @@
 							</div>
 						</xsl:when>
 						<xsl:otherwise>
-							<div style="height:auto;width:256mm;display:block;">
-								<table class="styTable" cellspacing="0" cellpadding="0" style="height:auto;width:256mm;">
-									<thead class="styTableThead">
-										<tr >
-											<td class="styIRS1118TableCellHeaderSmall" colspan="2" rowspan="3" style="height:17mm;width:35mm;border-right-width:0px;border-left-width:0px;border-bottom-width:1px;">
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118TableCellHeaderSmall" style="height:5mm;width:98mm;border-left-width:1px;border-right-width:0px;" colspan="4">
-												<span class="styBoldText">(a)</span> Sales Method</td>
-											<td class="styIRS1118TableCellHeaderSmall" style="height:5mm;width:98mm;border-left-width:1px;border-right-width:0px;" colspan="4">
-												<span class="styBoldText">(b)</span> Gross Income Method-Check method used:
-												<input type="checkbox" class="styCkbox">
-													<xsl:call-template name="PopulateCheckbox">
-														<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnGroIncmAndRsrchDed/GrossIncomeMethodOption1Ind"/>
-														<xsl:with-param name="BackupName">IRS1118ScheduleHApprtnGroIncmAndRsrchDedGrossIncomeMethodOption1</xsl:with-param>
-													</xsl:call-template>
-												</input>
-												<label>
-													<xsl:call-template name="PopulateLabel">
-														<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnGroIncmAndRsrchDed/GrossIncomeMethodOption1Ind"/>
-														<xsl:with-param name="BackupName">IRS1118ScheduleHApprtnGroIncmAndRsrchDedGrossIncomeMethodOption1</xsl:with-param>
-													</xsl:call-template>Option 1
-												</label>
-												<input type="checkbox" class="styCkbox">
-													<xsl:call-template name="PopulateCheckbox">
-														<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnGroIncmAndRsrchDed/GrossIncomeMethodOption2Ind"/>
-														<xsl:with-param name="BackupName">IRS1118ScheduleHApprtnGroIncmAndRsrchDedGrossIncomeMethodOption2</xsl:with-param>
-													</xsl:call-template>
-												</input>
-												<label>
-													<xsl:call-template name="PopulateLabel">
-														<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnGroIncmAndRsrchDed/GrossIncomeMethodOption2Ind"/>
-														<xsl:with-param name="BackupName">IRS1118ScheduleHApprtnGroIncmAndRsrchDedGrossIncomeMethodOption2</xsl:with-param>
-													</xsl:call-template>Option 2</label>
-											</td>
-											<td class="styIRS1118TableCellHeaderSmall" rowspan="3" style="height:17mm;width:25mm;padding-top:4mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;">
-												<span class="styBoldText">(c)</span> Total R&amp;E Deductions 
-													(enter the sum of all amounts entered in all applicable "R&amp;E Expenses" columns)
-											</td>
-										</tr>
-										<tr >
-											<td class="styIRS1118TableCellHeaderSmall" style="height:5mm;width:49mm;border-left-width:1px;border-right-width:0px;" colspan="2">
-												Product line #1 (SIC Code: 
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/SICCd"/>
-												</xsl:call-template>)*
-											</td>
-											<td class="styIRS1118TableCellHeaderSmall" style="height:5mm;width:49mm;border-left-width:1px;border-right-width:0px;" colspan="2">
-												Product line #2 (SIC Code: 
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/SICCd"/>
-												</xsl:call-template>)*
-											</td>
-											<td class="styIRS1118TableCellHeaderSmall" style="height:5mm;width:49mm;border-left-width:1px;border-right-width:0px;" colspan="2">
-												Product line #1 (SIC Code: 
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/SICCd"/>
-												</xsl:call-template>)*
-											</td>
-											<td class="styIRS1118TableCellHeaderSmall" style="height:5mm;width:49mm;border-left-width:1px;border-right-width:0px;" colspan="2">
-												Product line #2 (SIC Code: 
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/SICCd"/>
-												</xsl:call-template>)*
-											</td>
-										</tr>
-										<tr >
-											<td class="styIRS1118TableCellHeaderSmall" style="height:7mm;width:24.5mm;border-left-width:1px;border-right-width:0px;">
-												<span class="styBoldText">(i)</span> Gross Sales</td>
-											<td class="styIRS1118TableCellHeaderSmall" style="height:7mm;width:24.5mm;border-left-width:1px;border-right-width:0px;">
-												<span class="styBoldText">(ii)</span> R&amp;E Deductions</td>
-											<td class="styIRS1118TableCellHeaderSmall" style="height:7mm;width:24.5mm;border-left-width:1px;border-right-width:0px;">
-												<span class="styBoldText">(iii)</span> Gross Sales</td>
-											<td class="styIRS1118TableCellHeaderSmall" style="height:7mm;width:24.5mm;border-left-width:1px;border-right-width:0px;">
-												<span class="styBoldText">(iv)</span> R&amp;E Deductions</td>
-											<td class="styIRS1118TableCellHeaderSmall" style="height:7mm;width:24.5mm;border-left-width:1px;border-right-width:0px;">
-												<span class="styBoldText">(v)</span> Gross Income</td>
-											<td class="styIRS1118TableCellHeaderSmall" style="height:7mm;width:24.5mm;border-left-width:1px;border-right-width:0px;">
-												<span class="styBoldText">(vi)</span> R&amp;E Deductions</td>
-											<td class="styIRS1118TableCellHeaderSmall" style="height:7mm;width:24.5mm;border-left-width:1px;border-right-width:0px;">
-												<span class="styBoldText">(vii)</span> Gross Income</td>
-											<td class="styIRS1118TableCellHeaderSmall" style="height:7mm;width:25mm;border-left-width:1px;border-right-width:0px;">
-												<span class="styBoldText">(viii)</span> R&amp;E Deductions</td>
-										</tr>
-									</thead>
-									<tr>
-										<td style="height:8mm;width:5mm;font-weight:bold;padding-left:1mm;padding-top:4mm;border-bottom:1px solid black;">1</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;width:30mm;font-size:5pt;padding-top:4mm;">Totals (see instructions)</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:24.5mm;padding-top:4mm;border-left-width:1px;border-right-width:0px;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/GrossSalesTotalsAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:24.5mm;padding-top:4mm;border-left-width:1px;border-right-width:0px;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/TotResearchExperimentalDedAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:24.5mm;padding-top:4mm;border-left-width:1px;border-right-width:0px;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/GrossSalesTotalsAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:24.5mm;padding-top:4mm;border-left-width:1px;border-right-width:0px;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/TotResearchExperimentalDedAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:24.5mm;padding-top:4mm;border-left-width:1px;border-right-width:0px;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnGroIncmAndRsrchDed/GroIncmMthdGroIncmAndRsrchDed[1]/ApprtnDedGroIncmMethodGroIncm/GrossIncomeTotalsAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:24.5mm;padding-top:4mm;border-left-width:1px;border-right-width:0px;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnGroIncmAndRsrchDed/GroIncmMthdGroIncmAndRsrchDed[1]/ApprtnDedGrossIncmMethodREDed/TotResearchExperimentalDedAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:24.5mm;padding-top:4mm;border-left-width:1px;border-right-width:0px;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnGroIncmAndRsrchDed/GroIncmMthdGroIncmAndRsrchDed[1]/ApprtnDedGroIncmMethodGroIncm/GrossIncomeTotalsAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:24.5mm;padding-top:4mm;border-left-width:1px;border-right-width:0px;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnGroIncmAndRsrchDed/GroIncmMthdGroIncmAndRsrchDed[1]/ApprtnDedGrossIncmMethodREDed/TotResearchExperimentalDedAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:25mm;padding-top:4mm;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-									</tr>
-									<tr>
-										<td style="height:8mm;width:5mm;font-weight:bold;padding-left:1mm;padding-top:4mm;border-bottom:1px solid black;">2</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;width:30mm;padding-top:4mm;">Total to be apportioned</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:24.5mm;border-bottom-width:1px;border-left-width:1px;border-right-width:0px;background-color:lightgrey;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:24.5mm;padding-top:4mm;border-left-width:1px;border-right-width:0px;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/TotResearchExptlDedApprtnAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:24.5mm;border-bottom-width:1px;padding-top:4mm;border-left-width:1px;border-right-width:0px;background-color:lightgrey;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:24.5mm;padding-top:4mm;border-left-width:1px;border-right-width:0px;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/TotResearchExptlDedApprtnAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:24.5mm;border-bottom-width:1px;padding-top:4mm;border-left-width:1px;border-right-width:0px;background-color:lightgrey;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:24.5mm;padding-top:4mm;border-left-width:1px;border-right-width:0px;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnGroIncmAndRsrchDed/GroIncmMthdGroIncmAndRsrchDed[1]/ApprtnDedGrossIncmMethodREDed/TotResearchExptlDedApprtnAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:24.5mm;border-bottom-width:1px;padding-top:4mm;border-left-width:1px;border-right-width:0px;background-color:lightgrey;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:24.5mm;padding-top:4mm;border-left-width:1px;border-right-width:0px;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnGroIncmAndRsrchDed/GroIncmMthdGroIncmAndRsrchDed[2]/ApprtnDedGrossIncmMethodREDed/TotResearchExptlDedApprtnAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:25mm;border-bottom-width:1px;padding-top:4mm;border-left-width:1px;border-right-width:0px;background-color:lightgrey;">
-											<span style="width:1px;"/>
-										</td>
-									</tr>
-									<tr>
-										<td class="styLNLeftNumBox" style="height:8mm;width:8mm;padding-top:1.5mm;border-bottom:1px solid black;">3</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;width:30mm;padding-top:0mm;border-bottom-width:1px;'">Apportionment among statutory groupings (see instructions):</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:24.5mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:24.5mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:24.5mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:24.5mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:24.5mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:24.5mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:24.5mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:24.5mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-									</tr>
-									<tr>
-										<td style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;text-align:center;vertical-align:center;border-bottom:1px solid black;">
-											a				
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;vertical-align:center;">Enter Code
-											<span style="width:20mm;text-align:center;border-bottom:1px solid black;">
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeCd"/>
-												</xsl:call-template>
-											</span>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(1)<span style="width:1mm;"/>Section 245A dividend</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedSect951ASect245ADivAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedSect951ASect245ADivAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(2)<span style="width:1mm;"/>
-											Other
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
-										</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedSect951AOthCatIncmAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedSect951AOthCatIncmAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(3)<span style="width:1mm;"/>
-											Total line a
-											<span style="width:5px;"/>.
-											<span style="width:10px;"/>.
-										</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedSect951ATotCatIncmAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedSect951ATotCatIncmAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;text-align:center;vertical-align:center;border-bottom:1px solid black;">
-											b				
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;vertical-align:center;">Enter Code
-											<span style="width:20mm;text-align:center;border-bottom:1px solid black;">
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeCd"/>
-												</xsl:call-template>
-											</span>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(1)<span style="width:1mm;"/>Section 245A dividend</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedFBSect245ADivAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedFBSect245ADivAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(2)<span style="width:1mm;"/>
-											Other
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
-										</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedFrgnBranchOtherCatAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedFrgnBranchOtherCatAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(3)<span style="width:1mm;"/>
-											Total line b
-											<span style="width:5px;"/>.
-											<span style="width:10px;"/>.
-										</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedFBTotCatIncmAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedFBTotCatIncmAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;text-align:center;vertical-align:center;border-bottom:1px solid black;">
-											c				
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;vertical-align:center;">Enter Code
-											<span style="width:20mm;text-align:center;border-bottom:1px solid black;">
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeCd"/>
-												</xsl:call-template>
-											</span>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(1)<span style="width:1mm;"/>Section 245A dividend</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedPassiveSect245ADivAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedPassiveSect245ADivAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(2)<span style="width:1mm;"/>
-											Other
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
-										</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedPassiveOtherCatIncmAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedPassiveOtherCatIncmAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(3)<span style="width:1mm;"/>
-											Total line c
-											<span style="width:5px;"/>.
-											<span style="width:10px;"/>.
-										</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedPassiveTotalCatIncmAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedPassiveTotalCatIncmAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;text-align:center;vertical-align:center;border-bottom:1px solid black;">
-											d				
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;vertical-align:center;">Enter Code
-											<span style="width:20mm;text-align:center;border-bottom:1px solid black;">
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeCd"/>
-												</xsl:call-template>
-											</span>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(1)<span style="width:1mm;"/>Section 245A dividend</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedGeneralSect245ADivAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedGeneralSect245ADivAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(2)<span style="width:1mm;"/>
-											Other
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
-										</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedGeneralOtherCatIncmAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedGeneralOtherCatIncmAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(3)<span style="width:1mm;"/>
-											Total line d
-											<span style="width:5px;"/>.
-											<span style="width:10px;"/>.
-										</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedGenTotCategoryIncmAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedGenTotCategoryIncmAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;text-align:center;vertical-align:center;border-bottom:1px solid black;">
-											e				
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;vertical-align:center;">Enter Code
-											<span style="width:20mm;text-align:center;border-bottom:1px solid black;">
-												<xsl:for-each select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeCd">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="."/>
-													</xsl:call-template><br/>
-												</xsl:for-each>
-											</span>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(1)<span style="width:1mm;"/>Section 245A dividend</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedSect901jSect245ADivAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedSect901jSect245ADivAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(2)<span style="width:1mm;"/>
-											Other
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
-										</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedSect901jOtherIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedSect901jOtherIncomeAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(3)<span style="width:1mm;"/>
-											Total line e
-											<span style="width:5px;"/>.
-											<span style="width:10px;"/>.
-										</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedSection901jTotIncmAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedSection901jTotIncmAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;text-align:center;vertical-align:center;border-bottom:1px solid black;">
-											f				
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;vertical-align:center;">Enter Code
-											<span style="width:20mm;text-align:center;border-bottom:1px solid black;">
-												<xsl:for-each select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedTreatyIncomeCd">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="."/>
-													</xsl:call-template><br/>
-												</xsl:for-each>
-											</span>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-											<span style="width:1px;"/>
-										</td>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(1)<span style="width:1mm;"/>Section 245A dividend</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedRBTSect245ADivAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedRBTSect245ADivAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(2)<span style="width:1mm;"/>
-											Other
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
-										</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedRBTOtherIncmAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedRBTOtherIncmAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td class="styIRS1118LNDescRD" style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;padding-left:4mm;vertical-align:center;">
-											<span style="width;7mm;"/>
-										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(3)<span style="width:1mm;"/>
-											Total line f
-											<span style="width:5px;"/>.
-											<span style="width:10px;"/>.
-										</td>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt"/>
-										</xsl:call-template>
-										<xsl:call-template name="AddRowsForSchH">
-											<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotREDedRBTTotalIncmAmt)"/>
-											<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedRBTTotalIncmAmt"/>
-										</xsl:call-template>
-									</tr>
-									<tr>
-										<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-left:1mm;padding-top:1mm;">4</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;">Total foreign (add lines 3a through 3f)</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;padding-top:4mm;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/TotalForeignAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;padding-top:4mm;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/TotalForeignAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;padding-top:4mm;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/TotalForeignAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;padding-top:4mm;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[2]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/TotalForeignAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;padding-top:4mm;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnGroIncmAndRsrchDed/GroIncmMthdGroIncmAndRsrchDed[1]/ApprtnDedGroIncmMethodGroIncm/ApportionmentStatutoryGrp/TotalForeignAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;padding-top:4mm;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnGroIncmAndRsrchDed/GroIncmMthdGroIncmAndRsrchDed[1]/ApprtnDedGrossIncmMethodREDed/ApportionmentStatutoryGrp/TotalForeignAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;padding-top:4mm;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnGroIncmAndRsrchDed/GroIncmMthdGroIncmAndRsrchDed[2]/ApprtnDedGroIncmMethodGroIncm/ApportionmentStatutoryGrp/TotalForeignAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;padding-top:4mm;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnGroIncmAndRsrchDed/GroIncmMthdGroIncmAndRsrchDed[2]/ApprtnDedGrossIncmMethodREDed/ApportionmentStatutoryGrp/TotalForeignAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-										<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;padding-top:4mm;">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotREDedForeignIncomeAmt"/>
-											</xsl:call-template>
-											<span style="width:1px;"/>
-										</td>
-									</tr>
-								</table>
-							</div>
 							<!-- Repeat Column Code -->
 							<xsl:for-each select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed">
-								<xsl:if test="(position() mod 4) = 3">
+								<xsl:if test="(position() mod 2) = 1">
 									<xsl:variable name="curPos">
 										<xsl:value-of select="position()"/>
 									</xsl:variable>
@@ -8452,25 +7107,25 @@
 											<td class="styIRS1118TableCellHeaderSmall" style="height:5mm;width:49mm;border-left-width:1px;border-right-width:0px;" colspan="2">
 												Product line #1 (SIC Code: 
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[$curPos + 0]/ApportionmentDedSlsMthdGroSls/SICCd"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[$curPos + 0]/SICCd"/>
 												</xsl:call-template>)*
 											</td>
 											<td class="styIRS1118TableCellHeaderSmall" style="height:5mm;width:49mm;border-left-width:1px;border-right-width:0px;" colspan="2">
 												Product line #2 (SIC Code: 
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[$curPos + 1]/ApportionmentDedSlsMthdGroSls/SICCd"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[$curPos + 1]/SICCd"/>
 												</xsl:call-template>)*
 											</td>
 											<td class="styIRS1118TableCellHeaderSmall" style="height:5mm;width:49mm;border-left-width:1px;border-right-width:0px;" colspan="2">
 												Product line #1 (SIC Code: 
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[$curPos + 2]/ApportionmentDedSlsMthdGroSls/SICCd"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnGroIncmAndRsrchDed/GroIncmMthdGroIncmAndRsrchDed[$curPos + 0]/SICCd"/>
 												</xsl:call-template>)*
 											</td>
 											<td class="styIRS1118TableCellHeaderSmall" style="height:5mm;width:49mm;border-left-width:1px;border-right-width:0px;" colspan="2">
 												Product line #2 (SIC Code: 
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[$curPos + 3]/ApportionmentDedSlsMthdGroSls/SICCd"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnGroIncmAndRsrchDed/GroIncmMthdGroIncmAndRsrchDed[$curPos + 1]/SICCd"/>
 												</xsl:call-template>)*
 											</td>
 										</tr>
@@ -8667,7 +7322,6 @@
 										</td>
 										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(1)<span style="width:1mm;"/>
 											Section 245A dividend
-											<span style="width:5px;"/>.
 										</td>
 										<xsl:call-template name="AddRowsForSchH">
 											<xsl:with-param name="RowCount" select="count(ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt)"/>
@@ -8712,8 +7366,6 @@
 										</td>
 										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(2)<span style="width:1mm;"/>
 											Other
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
@@ -8763,7 +7415,6 @@
 										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(3)<span style="width:1mm;"/>
 											Total line a
 											<span style="width:5px;"/>.
-											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 										</td>
@@ -8849,7 +7500,6 @@
 										</td>
 										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(1)<span style="width:1mm;"/>
 											Section 245A dividend
-											<span style="width:5px;"/>.
 										</td>
 										<xsl:call-template name="AddRowsForSchH">
 											<xsl:with-param name="RowCount" select="count(ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt)"/>
@@ -8894,8 +7544,6 @@
 										</td>
 										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(2)<span style="width:1mm;"/>
 											Other
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
@@ -8945,7 +7593,6 @@
 										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(3)<span style="width:1mm;"/>
 											Total line b
 											<span style="width:5px;"/>.
-											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 										</td>
@@ -9031,7 +7678,6 @@
 										</td>
 										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(1)<span style="width:1mm;"/>
 											Section 245A dividend
-											<span style="width:5px;"/>.
 										</td>
 										<xsl:call-template name="AddRowsForSchH">
 											<xsl:with-param name="RowCount" select="count(ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt)"/>
@@ -9076,8 +7722,6 @@
 										</td>
 										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(2)<span style="width:1mm;"/>
 											Other
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
@@ -9127,7 +7771,6 @@
 										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(3)<span style="width:1mm;"/>
 											Total line c
 											<span style="width:5px;"/>.
-											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 										</td>
@@ -9213,7 +7856,6 @@
 										</td>
 										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(1)<span style="width:1mm;"/>
 											Section 245A dividend
-											<span style="width:5px;"/>.
 										</td>
 										<xsl:call-template name="AddRowsForSchH">
 											<xsl:with-param name="RowCount" select="count(ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt)"/>
@@ -9258,8 +7900,6 @@
 										</td>
 										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(2)<span style="width:1mm;"/>
 											Other
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
@@ -9311,7 +7951,6 @@
 											<span style="width:5px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
 										</td>
 										<xsl:call-template name="AddRowsForSchH">
 											<xsl:with-param name="RowCount" select="count(ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt)"/>
@@ -9354,13 +7993,45 @@
 										<td style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;text-align:center;vertical-align:center;border-bottom:1px solid black;">
 											e				
 										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;vertical-align:center;">Enter Code
+										<td class="styIRS1118LNDescRD" style="height:8mm;vertical-align:center;padding-bottom:0.5mm;">Enter Code
+											<table>
+												<tbody>
+													<tr>
+														<td style="width:7mm;text-align:center;">
+															<xsl:for-each select="ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeCd">
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="@sanctionedCountryCd"/>
+																</xsl:call-template><br/>
+															</xsl:for-each>
+														</td>
+														<td style="width:7mm;text-align:center;">
+															<xsl:for-each select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[$curPos + 1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeCd">
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="@sanctionedCountryCd"/>
+																</xsl:call-template><br/>
+															</xsl:for-each>
+														</td>
+														<td style="width:7mm;text-align:center;">
+															<xsl:for-each select="ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section901jIncomeCd">
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="@sanctionedCountryCd"/>
+																</xsl:call-template><br/>
+															</xsl:for-each>
+														</td>
+														<td style="width:7mm;text-align:center;">
+															<xsl:for-each select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[$curPos + 1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/Section901jIncomeCd">
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="@sanctionedCountryCd"/>
+																</xsl:call-template><br/>
+															</xsl:for-each>
+														</td>
+													</tr>
+												</tbody>
+											</table><br/>
 											<span style="width:20mm;text-align:center;border-bottom:1px solid black;">
-												<xsl:for-each select="ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeCd">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="."/>
-													</xsl:call-template><br/>
-												</xsl:for-each>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeCd"/>
+												</xsl:call-template>
 											</span>
 										</td>
 										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
@@ -9397,7 +8068,6 @@
 										</td>
 										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(1)<span style="width:1mm;"/>
 											Section 245A dividend
-											<span style="width:5px;"/>.
 										</td>
 										<xsl:call-template name="AddRowsForSchH">
 											<xsl:with-param name="RowCount" select="count(ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt)"/>
@@ -9442,8 +8112,6 @@
 										</td>
 										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(2)<span style="width:1mm;"/>
 											Other
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
@@ -9495,7 +8163,6 @@
 											<span style="width:5px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
 										</td>
 										<xsl:call-template name="AddRowsForSchH">
 											<xsl:with-param name="RowCount" select="count(ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt)"/>
@@ -9538,13 +8205,45 @@
 										<td style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;text-align:center;vertical-align:center;border-bottom:1px solid black;">
 											f				
 										</td>
-										<td class="styIRS1118LNDescRD" style="height:8mm;vertical-align:center;">Enter Code
+										<td class="styIRS1118LNDescRD" style="height:8mm;vertical-align:center;padding-bottom:0.5mm;">Enter Code
+											<table>
+												<tbody>
+													<tr>
+														<td style="width:7mm;text-align:center;">
+															<xsl:for-each select="ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedTreatyIncomeCd">
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="@treatyCountryCd"/>
+																</xsl:call-template><br/>
+															</xsl:for-each>
+														</td>
+														<td style="width:7mm;text-align:center;">
+															<xsl:for-each select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[$curPos + 1]/ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedTreatyIncomeCd">
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="@treatyCountryCd"/>
+																</xsl:call-template><br/>
+															</xsl:for-each>
+														</td>
+														<td style="width:7mm;text-align:center;">
+															<xsl:for-each select="ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ResourcedTreatyIncomeCd">
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="@treatyCountryCd"/>
+																</xsl:call-template><br/>
+															</xsl:for-each>
+														</td>
+														<td style="width:7mm;text-align:center;">
+															<xsl:for-each select="$Form1118ScheduleH/SalesMethodGroSalesAndRsrchDed[$curPos + 1]/ApportionmentDedSlsMthdREDed/ApportionmentStatutoryGrp/ResourcedTreatyIncomeCd">
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="@treatyCountryCd"/>
+																</xsl:call-template><br/>
+															</xsl:for-each>
+														</td>
+													</tr>
+												</tbody>
+											</table><br/>
 											<span style="width:20mm;text-align:center;border-bottom:1px solid black;">
-												<xsl:for-each select="ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedTreatyIncomeCd">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="."/>
-													</xsl:call-template><br/>
-												</xsl:for-each>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedTreatyIncomeCd"/>
+												</xsl:call-template>
 											</span>
 										</td>
 										<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
@@ -9581,7 +8280,6 @@
 										</td>
 										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(1)<span style="width:1mm;"/>
 											Section 245A dividend
-											<span style="width:5px;"/>.
 										</td>
 										<xsl:call-template name="AddRowsForSchH">
 											<xsl:with-param name="RowCount" select="count(ApportionmentDedSlsMthdGroSls/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt)"/>
@@ -9626,8 +8324,6 @@
 										</td>
 										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(2)<span style="width:1mm;"/>
 											Other
-											<span style="width:10px;"/>.
-											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
@@ -9677,7 +8373,6 @@
 										<td class="styIRS1118LNDescRD" style="height:8mm;padding-left:1mm;vertical-align:center;">(3)<span style="width:1mm;"/>
 											Total line f
 											<span style="width:5px;"/>.
-											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 											<span style="width:10px;"/>.
 										</td>
@@ -10163,9 +8858,9 @@
 											<td class="styIRS1118TableCellHeaderSmall" colspan="2" style="height:22mm;width:60mm;text-align:left;float:none;border-right-width:0px;border-left-width:1px;">
 												<span style="width:16px"/>
 												<span class="styBoldText">(a)</span>
-                Average Value of Assets–<br/>
+												Average Value of Assets–<br/>
 												<span style="width:48px"/>
-                Check method used:<br/>
+												Check method used:<br/>
 												<div style="padding-left:4mm;">
 												<span style="width:2mm"/>
 												<input type="checkbox" class="styCkbox">
@@ -10240,8 +8935,6 @@
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 											</td>
 											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;">
 												<xsl:call-template name="PopulateAmount">
@@ -10292,10 +8985,6 @@
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.</td>
 											<td class="styIRS1118LNAmountBoxSmall" style="height:10mm;">
 												<xsl:call-template name="PopulateAmount">
@@ -10329,45 +9018,57 @@
 											</td>
 										</tr>
 										<tr>
-											<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-top:4.5mm;">c</td>
-											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;">Other specific allocations under Temporary Regulations section 1.861-10T</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;">
+											<td class="styLNLeftLtrBoxBB" style="height:10mm;padding-top:4.5mm;">c</td>
+											<td class="styIRS1118LNDescDed" style="height:10mm;padding-top:4mm;">Other specific allocations under Temporary Regulations section 1.861-10T
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.</td>
+											<td class="styIRS1118LNAmountBoxSmall" style="height:10mm;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/OtherAllocUnderTempRegsAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;">
+											<td class="styIRS1118LNAmountBoxSmall" style="height:10mm;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/OtherAllocUnderTempRegsAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;">
+											<td class="styIRS1118LNAmountBoxSmall" style="height:10mm;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/OtherAllocUnderTempRegsAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;">
+											<td class="styIRS1118LNAmountBoxSmall" style="height:10mm;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/OtherAllocUnderTempRegsAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;border-top-width:0px;border-bottom-width:0px;background-color:lightgrey;">
+											<td class="styIRS1118LNAmountBoxSmall" style="height:10mm;border-top-width:0px;border-bottom-width:0px;background-color:lightgrey;">
 												<span style="width:1px;"/>
 											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;border-bottom-width:0px;">
+											<td class="styIRS1118LNAmountBoxSmall" style="height:10mm;border-bottom-width:0px;">
 												<span style="width:1px;"/>
 											</td>
 										</tr>
 										<tr>
 											<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-top:4.5mm;">d</td>
 											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;">Assets excluded from apportionment formula
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
@@ -10403,10 +9104,6 @@
 											</td>
 											<td class="styIRS1118LNDescDed" style="height:8mm;">Total to be apportioned (subtract the sum of lines 1b, 1c,
 												and 1d from line 1a)
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
@@ -10515,9 +9212,6 @@
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.</td>
 											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
 												<xsl:call-template name="PopulateAmount">
@@ -10559,8 +9253,6 @@
 										<tr>
 											<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-top:4.5mm;text-align:right;"><span style="width:5mm;"/></td>
 											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;">(2) Other
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
@@ -10616,8 +9308,6 @@
 											<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-top:4.5mm;text-align:right;"><span style="width:5mm;"/></td>
 											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;">(3) Total line a 
 												<span style="width:3px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
@@ -10708,9 +9398,6 @@
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.</td>
 											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
 												<xsl:call-template name="PopulateAmount">
@@ -10738,7 +9425,7 @@
 											</td>
 											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/Section245ADividendAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
@@ -10752,8 +9439,6 @@
 										<tr>
 											<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-top:4.5mm;text-align:right;"><span style="width:5mm;"/></td>
 											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;">(2) Other
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
@@ -10794,7 +9479,7 @@
 											</td>
 											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/OtherCategoryIncomeAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
@@ -10809,8 +9494,6 @@
 											<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-top:4.5mm;text-align:right;"><span style="width:5mm;"/></td>
 											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;">(3) Total line b
 												<span style="width:3px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
@@ -10849,7 +9532,7 @@
 											</td>
 											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/ForeignBranchIncomeGrp/TotalCategoryIncomeAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
@@ -10901,9 +9584,6 @@
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.</td>
 											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
 												<xsl:call-template name="PopulateAmount">
@@ -10931,7 +9611,7 @@
 											</td>
 											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/Section245ADividendAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
@@ -10945,8 +9625,6 @@
 										<tr>
 											<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-top:4.5mm;text-align:right;"><span style="width:5mm;"/></td>
 											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;">(2) Other
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
@@ -10987,7 +9665,7 @@
 											</td>
 											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
@@ -11002,8 +9680,6 @@
 											<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-top:4.5mm;text-align:right;"><span style="width:5mm;"/></td>
 											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;">(3) Total line c
 												<span style="width:3px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
@@ -11042,7 +9718,7 @@
 											</td>
 											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/PassiveCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
@@ -11094,9 +9770,6 @@
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.</td>
 											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
 												<xsl:call-template name="PopulateAmount">
@@ -11124,7 +9797,7 @@
 											</td>
 											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/Section245ADividendAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
@@ -11138,8 +9811,6 @@
 										<tr>
 											<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-top:4.5mm;text-align:right;"><span style="width:5mm;"/></td>
 											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;">(2) Other
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
@@ -11180,7 +9851,7 @@
 											</td>
 											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/OtherCategoryIncomeAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
@@ -11195,8 +9866,6 @@
 											<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-top:4.5mm;text-align:right;"><span style="width:5mm;"/></td>
 											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;">(3) Total line d
 												<span style="width:3px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
@@ -11235,7 +9904,7 @@
 											</td>
 											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/GeneralCategoryIncomeGrp/TotalCategoryIncomeAmt"/>
 												</xsl:call-template>
 												<span style="width:1px;"/>
 											</td>
@@ -11254,200 +9923,9 @@
 												<span style="width:20mm;text-align:center;border-bottom:1px solid black;">
 												<xsl:for-each select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeCd">
 													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="."/>
-													</xsl:call-template><br/>
-												</xsl:for-each>
-											</span>
-											</td>
-											<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-												<span style="width:1px;"/>
-											</td>
-											<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-												<span style="width:1px;"/>
-											</td>
-											<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-												<span style="width:1px;"/>
-											</td>
-											<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-												<span style="width:1px;"/>
-											</td>
-											<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-												<span style="width:1px;"/>
-											</td>
-											<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
-												<span style="width:1px;"/>
-											</td>
-										</tr>
-										<tr>
-											<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-top:4.5mm;text-align:right;"><span style="width:5mm;"/></td>
-											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;">(1) Section 245A dividend
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/Section245ADividendAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotSect901jSect245AAggrgtAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-										</tr>
-										<tr>
-											<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-top:4.5mm;text-align:right;"><span style="width:5mm;"/></td>
-											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;">(2) Other
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotSect901jlOtherCatAggrgtAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-										</tr>
-										<tr>
-											<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-top:4.5mm;text-align:right;"><span style="width:5mm;"/></td>
-											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;">(3) Total line e
-												<span style="width:3px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotSect901jAggregateAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-										</tr>
-										<tr>
-											<td style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;text-align:center;vertical-align:center;border-bottom:1px solid black;">
-												f				
-											</td>
-											<td class="styIRS1118LNDescRD" style="height:8mm;vertical-align:center;">Enter Code
-												<span style="width:20mm;text-align:center;border-bottom:1px solid black;">
-												<xsl:for-each select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedTreatyIncomeCd">
+														<xsl:with-param name="TargetNode" select="@sanctionedCountryCd"/>
+													</xsl:call-template>
+													<span style="width:0.5mm;"/>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="."/>
 													</xsl:call-template><br/>
@@ -11474,8 +9952,7 @@
 											</td>
 										</tr>
 										<tr>
-											<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-top:4.5mm;text-align:right;"><span style="width:5mm;"/></td>
-											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;">(1) Section 245A dividend
+											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;" colspan="2"><span style="width:8mm;"/>(1) Section 245A dividend
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
@@ -11485,51 +9962,34 @@
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
 											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotRBTSect245AAggrgtAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotSect901jSect245AAggrgtAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotSect901jSect245AAggrgtAmt"/>
+											</xsl:call-template>
 										</tr>
 										<tr>
-											<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-top:4.5mm;text-align:right;"><span style="width:5mm;"/></td>
-											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;">(2) Other
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
+											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;" colspan="2"><span style="width:8mm;"/>(2) Other
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
@@ -11544,46 +10004,188 @@
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt"/>
-												</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/OtherCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotSect901jlOtherCatAggrgtAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotSect901jlOtherCatAggrgtAmt"/>
+											</xsl:call-template>
+										</tr>
+										<tr>
+											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;" colspan="2"><span style="width:8mm;"/>(3) Total line e
+												<span style="width:3px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.</td>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/Section901jIncomeGrp/TotalCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotSect901jAggregateAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotSect901jAggregateAmt"/>
+											</xsl:call-template>
+										</tr>
+										<tr>
+											<td style="width:8mm;height:8mm;font-size:6pt;font-weight:bold;text-align:center;vertical-align:center;border-bottom:1px solid black;">
+												f				
+											</td>
+											<td class="styIRS1118LNDescRD" style="height:8mm;vertical-align:center;">Enter Code
+												<span style="width:20mm;text-align:center;border-bottom:1px solid black;">
+												<xsl:for-each select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedTreatyIncomeCd">
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="@treatyCountryCd"/>
+													</xsl:call-template>
+													<span style="width:0.5mm;"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="."/>
+													</xsl:call-template><br/>
+												</xsl:for-each>
+											</span>
+											</td>
+											<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
 												<span style="width:1px;"/>
 											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt"/>
-												</xsl:call-template>
+											<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
 												<span style="width:1px;"/>
 											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt"/>
-												</xsl:call-template>
+											<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
 												<span style="width:1px;"/>
 											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt"/>
-												</xsl:call-template>
+											<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
 												<span style="width:1px;"/>
 											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt"/>
-												</xsl:call-template>
+											<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
 												<span style="width:1px;"/>
 											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotRBTOtherCatAggrgtAmt"/>
-												</xsl:call-template>
+											<td class="styShadingCellSmall" style="height:8mm;width:25mm;padding-top:4mm;float:none;border-left-width:1px;border-right-width:0px;border-bottom-width:1px;">
 												<span style="width:1px;"/>
 											</td>
 										</tr>
 										<tr>
-											<td class="styLNLeftLtrBoxBB" style="height:8mm;padding-top:4.5mm;text-align:right;"><span style="width:5mm;"/></td>
-											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;">(3) Total line f
+											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;" colspan="2"><span style="width:8mm;"/>(1) Section 245A dividend
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+											</td>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/Section245ADividendAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/Section245ADividendAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotRBTSect245AAggrgtAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotRBTSect245AAggrgtAmt"/>
+											</xsl:call-template>
+										</tr>
+										<tr>
+											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;" colspan="2"><span style="width:8mm;"/>(2) Other
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+												<span style="width:10px;"/>.
+											</td>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/OtherCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/OtherCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotRBTOtherCatAggrgtAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotRBTOtherCatAggrgtAmt"/>
+											</xsl:call-template>
+										</tr>
+										<tr>
+											<td class="styIRS1118LNDescDed" style="height:8mm;padding-top:4mm;" colspan="2"><span style="width:8mm;"/>(3) Total line f
 												<span style="width:3px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
@@ -11597,44 +10199,31 @@
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
 											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
-											<td class="styIRS1118LNAmountBoxSmall" style="height:8mm;width:30mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotRBTAggregateAmt"/>
-												</xsl:call-template>
-												<span style="width:1px;"/>
-											</td>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/AverageValueAssetsGrp/AvgAstFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedNonFinclCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApportionmentInterestDedGrp/IntDedFinancialCorporationsGrp/ApportionmentStatutoryGrp/ResourcedByTreatyIncomeGrp/TotalCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/ApprtnAllOtherDedudctionsGrp/ApportionmentStatutoryGrp/Section951AIncomeGrp/TotalCategoryIncomeAmt"/>
+											</xsl:call-template>
+											<xsl:call-template name="AddRowsForSchH">
+												<xsl:with-param name="RowCount" select="count($Form1118ScheduleH/TotRBTAggregateAmt)"/>
+												<xsl:with-param name="TargetNode" select="$Form1118ScheduleH/TotRBTAggregateAmt"/>
+											</xsl:call-template>
 										</tr>
 										<tr>
 											<td style="height:8mm;vertical-align:center;padding-left:1mm;border-bottom:1px solid black;">
@@ -11642,8 +10231,6 @@
 											</td>
 											<td class="styIRS1118LNDescDed" style="height:8mm;vertical-align:center;">Total foreign (add lines 3a through 3f)
 												<span style="width:1px;"/>.
-												<span style="width:10px;"/>.
-												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
 												<span style="width:10px;"/>.
