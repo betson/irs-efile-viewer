@@ -200,7 +200,7 @@ puts %{
     that contained the stylesheet fix. 
 
 
-}
+} unless modified_stylesheets.empty?
 render_stylesheet_history(files: modified_stylesheets.sort_by { |year, entry| year.to_i })
 
 # Alert the user if a new year's information was added
