@@ -1473,80 +1473,82 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 					<br class="pageEnd"/>
 					<!-- BEGIN Signature Section -->
 					<!-- Implementing the signature section as a table -->
-					<table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:6pt;border-bottom:1px solid black;">
-						<tr>
-							<td rowspan="3" style="width:10mm;font-size: 11pt;font-weight:bold;border-right:1px solid black;">Sign Here</td>
-							<td colspan="6" style="padding-left:1mm;padding-bottom:1mm;">Under penalties of perjury, I declare that I have examined this return, including accompanying schedules and statements, and to the best of my knowledge and belief, it is true, correct, and complete. Declaration of preparer (other than taxpayer) is based on all information of which preparer has any knowledge. </td>
-						</tr>
-						<tr>
-							<td rowspan="2" style="padding-left:1mm;">
-								<img src="{$ImagePath}/1120_Bullet_Lg.gif" alt="LargeBullet"/>
-							</td>
-							<td style="width:52mm;border-right:1px solid black;border-bottom:1px solid black;vertical-align:bottom;">
-								<xsl:call-template name="PopulateReturnHeaderOfficer">
-									<xsl:with-param name="TargetNode">TaxpayerPIN</xsl:with-param>
-								</xsl:call-template>
-								<span style="width:1px;"/>
-							</td>
-							<td style="width:20mm;border-bottom:1px solid black;vertical-align:bottom;padding-left:.5mm;">
-								<xsl:call-template name="PopulateReturnHeaderOfficer">
-									<xsl:with-param name="TargetNode">DateSigned</xsl:with-param>
-								</xsl:call-template>
-							</td>
-							<td rowspan="2" style="padding-left:1mm;">
-								<img src="{$ImagePath}/1120_Bullet_Lg.gif" alt="LargeBullet"/>
-							</td>
-							<td style="width:60mm;border-bottom:1px solid black;vertical-align:bottom;">
-								<xsl:call-template name="PopulateReturnHeaderOfficer">
-									<xsl:with-param name="TargetNode">Title</xsl:with-param>
-								</xsl:call-template>
-							</td>
-							<td rowspan="2" style="width:40mm;padding-bottom:1mm;">
-								<div class="styGenericDiv" style="width:2px;"/>
-								<div style="border:3px solid black;float:right;" class="styGenericDiv">
-									<span style="padding-left:1mm;width37mm;">May the IRS discuss this return</span>
-									<span style="padding-left:1mm;width37mm;">with the preparer shown below</span>
-									<span style="padding-left:1mm;width37mm;vertical-align:top;">(see instructions)?
-										<input class="styCkbox" type="checkbox" name="Checkbox" id="dummyidyes" style="width:2.5mm;" >
-											<xsl:call-template name="PopulateReturnHeaderOfficer">
-												<xsl:with-param name="TargetNode">AuthorizeThirdPartyYesCheckbox</xsl:with-param>
-												<xsl:with-param name="BackupName">ReturnHeaderMayIRSDiscussReturnWithPrep</xsl:with-param>
-											</xsl:call-template>
-										</input>
-										<span class="styBoldText" style="vertical-align:top;padding-top:1mm;">
-											<label for="dummyidyes">
+					<div style="width=187">
+						<table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:6pt;border-bottom:1px solid black;">
+							<tr>
+								<td rowspan="3" style="width:10mm;font-size: 11pt;font-weight:bold;border-right:1px solid black;">Sign Here</td>
+								<td colspan="6" style="padding-left:1mm;padding-bottom:1mm;">Under penalties of perjury, I declare that I have examined this return, including accompanying schedules and statements, and to the best of my knowledge and belief, it is true, correct, and complete. Declaration of preparer (other than taxpayer) is based on all information of which preparer has any knowledge. </td>
+							</tr>
+							<tr>
+								<td rowspan="2" style="padding-left:1mm;">
+									<img src="{$ImagePath}/1120_Bullet_Lg.gif" alt="LargeBullet"/>
+								</td>
+								<td style="width:52mm;border-right:1px solid black;border-bottom:1px solid black;vertical-align:bottom;">
+									<xsl:call-template name="PopulateReturnHeaderOfficer">
+										<xsl:with-param name="TargetNode">TaxpayerPIN</xsl:with-param>
+									</xsl:call-template>
+									<span style="width:1px;"/>
+								</td>
+								<td style="width:20mm;border-bottom:1px solid black;vertical-align:bottom;padding-left:.5mm;">
+									<xsl:call-template name="PopulateReturnHeaderOfficer">
+										<xsl:with-param name="TargetNode">DateSigned</xsl:with-param>
+									</xsl:call-template>
+								</td>
+								<td rowspan="2" style="padding-left:1mm;">
+									<img src="{$ImagePath}/1120_Bullet_Lg.gif" alt="LargeBullet"/>
+								</td>
+								<td style="width:60mm;border-bottom:1px solid black;vertical-align:bottom;">
+									<xsl:call-template name="PopulateReturnHeaderOfficer">
+										<xsl:with-param name="TargetNode">Title</xsl:with-param>
+									</xsl:call-template>
+								</td>
+								<td rowspan="2" style="width:40mm;padding-bottom:1mm;">
+									<div class="styGenericDiv" style="width:2px;"/>
+									<div style="border:3px solid black;float:right;" class="styGenericDiv">
+										<span style="padding-left:1mm;width37mm;">May the IRS discuss this return</span>
+										<span style="padding-left:1mm;width37mm;">with the preparer shown below</span>
+										<span style="padding-left:1mm;width37mm;vertical-align:top;">(see instructions)?
+											<input class="styCkbox" type="checkbox" name="Checkbox" id="dummyidyes" style="width:2.5mm;" >
 												<xsl:call-template name="PopulateReturnHeaderOfficer">
-													<xsl:with-param name="TargetNode">AuthorizeThirdPartyYesLabel</xsl:with-param>
+													<xsl:with-param name="TargetNode">AuthorizeThirdPartyYesCheckbox</xsl:with-param>
 													<xsl:with-param name="BackupName">ReturnHeaderMayIRSDiscussReturnWithPrep</xsl:with-param>
 												</xsl:call-template>
-												Yes
-											</label>
-										</span>
-										<input class="styCkbox" type="checkbox" name="Checkbox" id="dummyidno" style="width:2.5mm;">
-											<xsl:call-template name="PopulateReturnHeaderOfficer">
-												<xsl:with-param name="TargetNode">AuthorizeThirdPartyNoCheckbox</xsl:with-param>
-												<xsl:with-param name="BackupName">ReturnHeaderMayIRSDiscussReturnWithPrep</xsl:with-param>
-											</xsl:call-template>
-										</input>
-										<span class="styBoldText" style="vertical-align:top;padding-top:1mm;">
-											<label for="dummyidno">
+											</input>
+											<span class="styBoldText" style="vertical-align:top;padding-top:1mm;">
+												<label for="dummyidyes">
+													<xsl:call-template name="PopulateReturnHeaderOfficer">
+														<xsl:with-param name="TargetNode">AuthorizeThirdPartyYesLabel</xsl:with-param>
+														<xsl:with-param name="BackupName">ReturnHeaderMayIRSDiscussReturnWithPrep</xsl:with-param>
+													</xsl:call-template>
+													Yes
+												</label>
+											</span>
+											<input class="styCkbox" type="checkbox" name="Checkbox" id="dummyidno" style="width:2.5mm;">
 												<xsl:call-template name="PopulateReturnHeaderOfficer">
-													<xsl:with-param name="TargetNode">AuthorizeThirdPartyNoLabel</xsl:with-param>
+													<xsl:with-param name="TargetNode">AuthorizeThirdPartyNoCheckbox</xsl:with-param>
 													<xsl:with-param name="BackupName">ReturnHeaderMayIRSDiscussReturnWithPrep</xsl:with-param>
 												</xsl:call-template>
-												No
-											</label>
+											</input>
+											<span class="styBoldText" style="vertical-align:top;padding-top:1mm;">
+												<label for="dummyidno">
+													<xsl:call-template name="PopulateReturnHeaderOfficer">
+														<xsl:with-param name="TargetNode">AuthorizeThirdPartyNoLabel</xsl:with-param>
+														<xsl:with-param name="BackupName">ReturnHeaderMayIRSDiscussReturnWithPrep</xsl:with-param>
+													</xsl:call-template>
+													No
+												</label>
+											</span>
 										</span>
-									</span>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td style="border-bottom:1px solid black;vertical-align:top;">Signature of officer </td>
-							<td style="border-bottom:1px solid black;vertical-align:top;">Date </td>
-							<td style="border-bottom:1px solid black;vertical-align:top;">Title </td>
-						</tr>
-					</table>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td style="border-bottom:1px solid black;vertical-align:top;">Signature of officer </td>
+								<td style="border-bottom:1px solid black;vertical-align:top;">Date </td>
+								<td style="border-bottom:1px solid black;vertical-align:top;">Title </td>
+							</tr>
+						</table>
+					</div>
 					<!-- END Signature Section -->
 					<!-- BEGIN PREPARER SIGNATURE SECTION -->
 					<!-- paid preparer -->
@@ -1563,10 +1565,12 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 								<div class="styLNDesc" style="height:8mm;width:46.5mm;padding-top:0mm;border-right:1px solid black;border-left:1px solid black;padding-left:1mm;">
 								  Print/Type preparer's name<br/>
 									<br/>
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$RtnHdrData/PreparerPersonGrp/PreparerPersonNm"/>
-										<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpPreparerPersonName</xsl:with-param>
-									</xsl:call-template>
+									<span style="font-size:5.5pt">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$RtnHdrData/PreparerPersonGrp/PreparerPersonNm"/>
+											<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpPreparerPersonName</xsl:with-param>
+										</xsl:call-template>
+									</span>
 								</div>
 								<div class="styLNDesc" style="height:8mm;width:46.5mm;padding-top:0mm;border-right:1px solid black;padding-left:1mm;">
 								Preparer's signature
@@ -3552,7 +3556,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleK/CorpOwnPercentVotingStockInfo"/>
 								<xsl:with-param name="headerHeight" select="1"/>
-								<xsl:with-param name="containerHeight" select="4"/>
+								<xsl:with-param name="containerHeight" select="5"/>
 								<xsl:with-param name="containerID" select=" 'OFCctn3' "/>
 								<xsl:with-param name="imageID" select=" 'OFCimg3' "/>
 								<xsl:with-param name="buttonID" select=" 'OFCbtn3' "/>
@@ -3585,7 +3589,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 							</thead>
 							<tfoot/>
 							<tbody>
-								<xsl:if test="($Print != $Separated) or (count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &lt;= 4) ">
+								<xsl:if test="($Print != $Separated) or (count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &lt;= 5) ">
 									<xsl:for-each select="$Form1120ScheduleK/CorpOwnPercentVotingStockInfo">
 										<tr>
 											<td class="styTableCellText" style="width:95mm;padding-left:2.5mm;">
@@ -3628,7 +3632,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 									</xsl:for-each>
 								</xsl:if>
 								<!-- Build blank row 1 data for Schedule K line 5a table -->
-								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 1 or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 4) and ($Print = $Separated))">
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 1 or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 5) and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;text-align:left;">
 											<span class="styBoldText"/>
@@ -3649,7 +3653,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 									</tr>
 								</xsl:if>
 								<!-- Build blank row 2 data for Schedule K line 5a table -->
-								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 2  or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 4) and ($Print = $Separated))">
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 2  or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 5) and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;text-align:left;">
 											<span class="styTableCellPad"/>
@@ -3666,7 +3670,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 									</tr>
 								</xsl:if>
 								<!-- Build blank row 3 data for Schedule K line 5a table -->
-								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 3  or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 4) and ($Print = $Separated))">
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 3  or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 5) and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;text-align:left;">
 											<span class="styTableCellPad"/>
@@ -3683,7 +3687,23 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 									</tr>
 								</xsl:if>
 								<!-- Build blank row 4 data for Schedule K line 5a table -->
-								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 4  or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 4) and ($Print = $Separated))">
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 4  or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 5) and ($Print = $Separated))">
+									<tr>
+										<td class="styTableCell" style="width:95mm;text-align:left;">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCellCtr" style="width:35mm;">
+											<span style="width:1px;"/>
+										</td>
+										<td class="styTableCell" style="width:20mm">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCell" style="width:36mm;border-right-width:0px;">
+											<span class="styTableCellPad"/>
+										</td>
+									</tr>
+								</xsl:if>
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 5  or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 5) and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;text-align:left;">
 											<span class="styTableCellPad"/>
@@ -3706,7 +3726,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form1120ScheduleK/CorpOwnPercentVotingStockInfo"/>
 						<xsl:with-param name="headerHeight" select="1"/>
-						<xsl:with-param name="containerHeight" select="4"/>
+						<xsl:with-param name="containerHeight" select="5"/>
 						<xsl:with-param name="containerID" select=" 'OFCctn3' "/>
 						<xsl:with-param name="imageID" select=" 'OFCimg3' "/>
 						<xsl:with-param name="buttonID" select=" 'OFCbtn3' "/>
@@ -3773,7 +3793,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleK/CorpOwnPercentPartnershipInfo"/>
 								<xsl:with-param name="headerHeight" select="1"/>
-								<xsl:with-param name="containerHeight" select="4"/>
+								<xsl:with-param name="containerHeight" select="5"/>
 								<xsl:with-param name="containerID" select=" 'OFCctn4' "/>
 								<xsl:with-param name="imageID" select=" 'OFCimg4' "/>
 								<xsl:with-param name="buttonID" select=" 'OFCbtn4' "/>
@@ -3806,7 +3826,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 							</thead>
 							<tfoot/>
 							<tbody>
-								<xsl:if test="($Print != $Separated) or (count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &lt;= 4) ">
+								<xsl:if test="($Print != $Separated) or (count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &lt;= 5) ">
 									<xsl:for-each select="$Form1120ScheduleK/CorpOwnPercentPartnershipInfo">
 										<tr>
 											<td class="styTableCellText" style="width:95mm;padding-left:2.5mm;">
@@ -3848,7 +3868,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 										</tr>
 									</xsl:for-each>
 								</xsl:if>
-								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 1 or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 4) and ($Print = $Separated))">
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 1 or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 5) and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;text-align:left;">
 											<span class="styBoldText"/>
@@ -3868,7 +3888,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 										</td>
 									</tr>
 								</xsl:if>
-								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 2  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 4) and ($Print = $Separated))">
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 2  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 5) and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;">
 											<span class="styTableCellPad"/>
@@ -3884,7 +3904,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 										</td>
 									</tr>
 								</xsl:if>
-								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 3  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 4) and ($Print = $Separated))">
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 3  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 5) and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;">
 											<span class="styTableCellPad"/>
@@ -3900,7 +3920,23 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 										</td>
 									</tr>
 								</xsl:if>
-								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 4  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 4) and ($Print = $Separated))">
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 4  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 5) and ($Print = $Separated))">
+									<tr>
+										<td class="styTableCell" style="width:95mm;">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCellCtr" style="width:35mm;">
+											<span style="width:1px;"/>
+										</td>
+										<td class="styTableCell" style="width:20mm">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCell" style="width:36mm;border-right-width:0px;">
+											<span class="styTableCellPad"/>
+										</td>
+									</tr>
+								</xsl:if>
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 5  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 5) and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;">
 											<span class="styTableCellPad"/>
@@ -3922,7 +3958,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form1120ScheduleK/CorpOwnPercentPartnershipInfo"/>
 						<xsl:with-param name="headerHeight" select="1"/>
-						<xsl:with-param name="containerHeight" select="4"/>
+						<xsl:with-param name="containerHeight" select="5"/>
 						<xsl:with-param name="containerID" select=" 'OFCctn4' "/>
 						<xsl:with-param name="imageID" select=" 'OFCimg4' "/>
 						<xsl:with-param name="buttonID" select=" 'OFCbtn4' "/>

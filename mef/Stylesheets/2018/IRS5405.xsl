@@ -99,7 +99,7 @@
 							<div >
 								Form<span class="styFormNumber">5405</span>
 							</div>
-							<span class="styAgency">(Rev. December 2017)</span>
+							<span class="styAgency">(Rev. November 2018)</span>
 							<!--General Dependency Push Pin-->
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form5405Data"/>
@@ -124,7 +124,7 @@
 											Attach to Form 1040, Form 1040NR, or Form 1040X.
 											<br/>
 											<img src="{$ImagePath}/5405_Bullet_Sm.gif" alt="SmallBullet"/> 
-											Information about Form 5405 is at <i>www.irs.gov/form5405</i>.
+											Go to <i>www.irs.gov/Form5405</i> for instructions and the latest information.
 										</div>
 									</div>
 								</span>
@@ -473,7 +473,7 @@
 									</label>
 								</div>
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
-									The taxpayer who claimed the credit died in 2017. No repayment of the credit is required of the deceased taxpayer. If you<br/>
+									The taxpayer who claimed the credit died in 2018. No repayment of the credit is required of the deceased taxpayer. If you<br/>
 									are filing a joint return for 2017 with the deceased taxpayer, see instructions. Otherwise, stop here.
 								</div>
 							</div>
@@ -535,7 +535,7 @@
 							<div class="styIRS5405LNLeftNumBox" style="height:2mm;">5</div>
 							<div class="styIRS5405CleanDiv" style="height:2mm;width:144mm;">
 									<div class="styIRS5405LNDesc" style="width:144mm;">
-										Enter the amount of the credit you repaid with your tax returns for the years 2010 through 2016
+										Enter the amount of the credit you repaid with your tax returns for the years 2010 through 2017
 										<!--Dotted Line-->
 										<span class="styDotLn" style="float:right;clear:none;">...</span>
 									</div>
@@ -627,7 +627,7 @@
 							<div class="styIRS5405CleanDiv" style="width:180mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
 									<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
-										<b>Next: </b>Enter the amount from line 8 on your 2017 Form 1040, line 60b, or Form 1040NR, line 59b.
+										<b>Next: </b>Enter the amount from line 8 on your 2018 Schedule 4 (Form 1040), line 60b, or Form 1040NR, line 59b.
 									</div>
 								</div>
 							</div>
@@ -756,7 +756,7 @@
 							<div class="styIRS5405LNLeftNumBox">13</div>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
 							Enter the first-time homebuyer credit claimed on Form 5405 <b>minus</b> the amount of the credit you
-							repaid<br/> with your tax returns for the years 2010 through 2016
+							repaid<br/> with your tax returns for the years 2010 through 2017
 							<!--Dotted Line-->
 							<span class="styDotLn" style="float:right;clear:none;">.................</span>
 							</div>
@@ -823,7 +823,7 @@
 							<div class="styIRS5405LNDesc" style="width:144mm;">
 								&#8226; If line 15 is more than -0-, you have a gain. Check the box on line 3a and complete Part II. <b>However</b>,
 								check the box on line 3f (instead of the box on line 3a) if your home was destroyed or you sold the home
-								through condemnation or under threat of condemnation. Then complete Part II if the event occurred in 2015.<br/>
+								through condemnation or under threat of condemnation. Then complete Part II if the event occurred in 2016.<br/>
 								<br/>
 								&#8226; If line 15 is -0- or less, check the box on line 3b. However, if your home was destroyed
 								or you sold the home through condemnation or under threat of condemnation, check the box on line 3g
@@ -845,7 +845,7 @@
 						</div>						
 						<div style="float:right;">
 								Form 
-							<span class="styBoldText" style="font-size:8pt;">5405</span> (Rev. 12-2016)
+							<span class="styBoldText" style="font-size:8pt;">5405</span> (Rev. 11-2018)
 						</div>
 					</div>
 					<!-- END Page Break and Footer-->

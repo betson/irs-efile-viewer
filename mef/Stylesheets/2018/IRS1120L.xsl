@@ -7,7 +7,7 @@
 	<xsl:include href="IRS1120LStyle.xsl"/>
 	<xsl:output method="html" indent="yes"/>
 	<xsl:strip-space elements="*"/>
-	<xsl:param name="Form1120LData" select="$RtnDoc/IRS1120L"/>
+	<xsl:param name="Form1120LEliminationsOrAdjData" select="$RtnDoc/IRS1120L"/>
 	<xsl:param name="IRS1120LScheduleA" select="$RtnDoc/IRS1120L/IRS1120LScheduleA"/>
 	<xsl:param name="IRS1120LScheduleB" select="$RtnDoc/IRS1120L/IRS1120LScheduleB"/>
 	<xsl:param name="IRS1120LScheduleF" select="$RtnDoc/IRS1120L/IRS1120LScheduleF"/>
@@ -31,14 +31,14 @@
 				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
-						<xsl:with-param name="RootElement" select="local-name($Form1120LData)"/>
+						<xsl:with-param name="RootElement" select="local-name($Form1120LEliminationsOrAdjData)"/>
 					</xsl:call-template>
 				</title>
 				<!-- No Browser Caching  -->
 				<meta http-equiv="Pragma" content="no-cache"/>
 				<meta http-equiv="Cache-Control" content="no-cache"/>
 				<meta http-equiv="Expires" content="0"/>
-				<!-- No Proxy Caching  -->
+				<!-- No Proxy Caching -->
 				<meta http-equiv="Cache-Control" content="private"/>
 				<!-- Define Character Set -->
 				<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
@@ -53,24 +53,23 @@
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
-			<body class="styBodyClass" style="width:187mm">
+			<body class="styBodyClass"  style="width:187mm">
 				<form name="Form1120L">
+				<!-- ******************************************************************************************************* -->				
+				<!-- ************* Replace  $Form1120LData  with   $RtnDoc/IRS1120L ******** -->
 				<!-- ******************************************************************************************************* -->
-				<!--  *****************************************   For F1120L E & A  copy 	****************************** -->
-				<!-- ******************************************************************************************************* -->	
-					<xsl:call-template name="DocumentHeader"/>
+				<xsl:call-template name="DocumentHeader"/>
 					<div class="styBB" style="width:187mm;">
 						<div class="styFNBox" style="width:33.3mm;height:21mm;">
                          Form <span class="styFormNumber" style="font-size:20pt">1120-L</span>
 							<br/>
-							<!-- puch pen  -->
 							<xsl:call-template name="SetFormLinkInline">
-								<xsl:with-param name="TargetNode" select="  $Form1120LData"/>
+								<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L"/>
 							</xsl:call-template>
 							<span style="width:1mm"/>
 							<xsl:call-template name="LinkToLeftoverDataTableInline">
 								<xsl:with-param name="Desc">Form 1120L, Top Left Margin - Supporting Statement to Consolidated Return</xsl:with-param>
-								<xsl:with-param name="TargetNode" select="  $Form1120LData/@suprtStmtToCnsldtReturnInd"/>
+								<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/@suprtStmtToCnsldtReturnInd"/>
 							</xsl:call-template>
 							<br/>
 							<br/>
@@ -81,33 +80,33 @@
 						<div class="styFTBox" style="width:120mm;height:21mm;">
 							<div class="styMainTitle" style="height:8mm;">U.S. Life Insurance Company Income Tax Return</div>
 							<div style="height:5mm;font-size:7pt;margin-left:2mm;text-align:center;">
-							For calendar year 2018 or tax year beginning
+								For calendar year 2019 or tax year beginning
 								<span style="width: 18mm;border-bottom:1px solid black;">
 									<!-- No need to send the parameters -->
 									<xsl:call-template name="PopulateMonthDayYear">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/TaxYearBeginDt"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TaxYearBeginDt"/>
 									</xsl:call-template>
 								</span>, and ending 
 								<span style="width: 18mm;border-bottom:1px solid black;">
 									<xsl:call-template name="PopulateMonthDayYear">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/TaxYearEndDt"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TaxYearEndDt"/>
 									</xsl:call-template>
 								</span>
 								<br/>
 								<br/>
 								<br/>
-							<div class="styFST" style="width:125mm;float:left;clear:none;">
-								<img src="{$ImagePath}/1120_Bullet_Md.gif" alt="MediumBullet"/>
-								Go to  			
-								<a style="text-decoration:none;color:black;" href="http://www.irs.gov/form1120l" title="Link to IRS.gov">
-									<i>www.irs.gov/Form1120L</i>
-								</a> for instructions and the latest information.
-							</div>
+								<div class="styFST" style="width:125mm;float:left;clear:none;">
+									<img src="{$ImagePath}/1120_Bullet_Md.gif" alt="right pointing arrow"/>
+									Go to  			
+									<a style="text-decoration:none;color:black;" href="http://www.irs.gov/form1120l" title="Link to IRS.gov">
+										<i>www.irs.gov/Form1120L</i>
+									</a> for instructions and the latest information.
+								</div>
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:21mm;">
 							<div class="styOMB" style="height:4mm;">OMB No. 1545-0123</div>
-							<div class="styTY" style="height:15mm;padding-top:4mm;">20<span class="styTYColor">18</span>
+							<div class="styTY" style="height:11mm;padding-top:3mm;">20<span class="styTYColor">19</span>
 							</div>
 						</div>
 					</div>
@@ -123,19 +122,19 @@
 								<div class="styGenericDiv" style="height:7mm;width:24mm;padding-top:2mm;">
 									<label>
 										<xsl:call-template name="PopulateLabel">
-											<xsl:with-param name="TargetNode" select="  $Form1120LData/ConsolidatedReturnInd"/>
+											<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/ConsolidatedReturnInd"/>
 											<xsl:with-param name="BackupName">IRS1120L Consolidated Return</xsl:with-param>
 										</xsl:call-template>Consolidated return (attach Form 851)
 										<!-- Form to Form Link -->
 										<xsl:call-template name="SetFormLinkInline">
-											<xsl:with-param name="TargetNode" select="  $Form1120LData/ConsolidatedReturnInd"/>
+											<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/ConsolidatedReturnInd"/>
 										</xsl:call-template>
 									</label>
 								</div>
 								<div class="styGenericDiv" style="height:7mm;padding-top:2mm;">
 									<input type="checkbox" alt="Consolidated Return" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
-											<xsl:with-param name="TargetNode" select="  $Form1120LData/ConsolidatedReturnInd"/>
+											<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/ConsolidatedReturnInd"/>
 											<xsl:with-param name="BackupName">IRS1120L Consolidated Return</xsl:with-param>
 										</xsl:call-template>
 									</input>
@@ -149,7 +148,7 @@
 								<div class="styGenericDiv" style="height:7mm;width:24mm;padding-top:2mm;">
 									<label>
 										<xsl:call-template name="PopulateLabel">
-											<xsl:with-param name="TargetNode" select="  $Form1120LData/LifeNonlifeConsolidatedRetInd"/>
+											<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/LifeNonlifeConsolidatedRetInd"/>
 											<xsl:with-param name="BackupName">IRS1120L Life-Nonlife Consolidated Return</xsl:with-param>
 										</xsl:call-template>Life-nonlife consolidated return
 									</label>
@@ -157,7 +156,7 @@
 								<div class="styGenericDiv" style="height:7mm;padding-top:2mm;">
 									<input type="checkbox" alt="Life-Nonlife Consolidated Return" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
-											<xsl:with-param name="TargetNode" select="  $Form1120LData/LifeNonlifeConsolidatedRetInd"/>
+											<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/LifeNonlifeConsolidatedRetInd"/>
 											<xsl:with-param name="BackupName">IRS1120L Life-Nonlife Consolidated Return</xsl:with-param>
 										</xsl:call-template>
 									</input>
@@ -171,18 +170,18 @@
 								<div class="styGenericDiv" style="height:10mm;width:24mm;padding-top:2mm;">
 									<label>
 										<xsl:call-template name="PopulateLabel">
-											<xsl:with-param name="TargetNode" select="  $Form1120LData/ScheduleM3Form1120LInd"/>
+											<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/ScheduleM3Form1120LInd"/>
 											<xsl:with-param name="BackupName">IRS1120L ScheduleM3 Required</xsl:with-param>
 										</xsl:call-template>Schedule M-3 (Form 1120-L) attached
-											<xsl:call-template name="SetFormLinkInline">
-											<xsl:with-param name="TargetNode" select="  $Form1120LData/ScheduleM3Form1120LInd"/>
+									    <xsl:call-template name="SetFormLinkInline">
+											<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/ScheduleM3Form1120LInd"/>
 										</xsl:call-template>
 									</label>
 								</div>
 								<div class="styGenericDiv" style="height:10mm;padding-top:2mm;">
 									<input type="checkbox" alt="ScheduleM3 Required" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
-											<xsl:with-param name="TargetNode" select="  $Form1120LData/ScheduleM3Form1120LInd"/>
+											<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/ScheduleM3Form1120LInd"/>
 											<xsl:with-param name="BackupName">IRS1120L ScheduleM3 Required</xsl:with-param>
 										</xsl:call-template>
 									</input>
@@ -191,129 +190,129 @@
 						</div>
 						<!-- return header Name box -->
 						<div class="styLblNameAddr" style="width:105mm;height:auto;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;">
-							<div class="styUseLbl" style="width:10mm;height:26.5mm;border-right-width:0px;padding-top:8mm;padding-left:1mm">
-  Please<br/> print<br/> or<br/> type</div>
-							<div class="styNameAddr" style="width:94.5mm;height:9mm;border-left-width:1px;padding-left:2mm;">
-Name<br/>
+							<div class="styUseLbl" style="width:9mm;height:26.5mm;border-right-width:0px;padding-top:8mm;padding-left:1mm">
+							  Please<br/> print<br/> or<br/> type</div>
+							<div class="styNameAddr" style="width:95.5mm;height:9mm;border-left-width:1px;padding-left:2mm;">
+								Name<br/>
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/BusinessName/BusinessNameLine1Txt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/BusinessName/BusinessNameLine1Txt"/>
 								</xsl:call-template>
 								<br/>
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/BusinessName/BusinessNameLine2Txt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/BusinessName/BusinessNameLine2Txt"/>
 								</xsl:call-template>
 							</div>
 							<!-- return header Adress box -->
-							<div class="styNameAddr" style="width:94.5mm;height:10mm;border-left-width:1px;padding-left:2mm;">
+							<div class="styNameAddr" style="width:95.5mm;height:10mm;border-left-width:1px;padding-left:2mm;">
 								Number, street, and room or suite no. If a P.O. box, see instructions.<br/>
 								<!-- Address -->
 								<!-- USA Address -->
 								<xsl:choose>
-								<xsl:when test="  $Form1120LData/USAddress/AddressLine1Txt!=''">
+								<xsl:when test="  $RtnDoc/IRS1120L/USAddress/AddressLine1Txt!=''">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/USAddress/AddressLine1Txt"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/USAddress/AddressLine1Txt"/>
 									</xsl:call-template>
 									<br/>
 								<!--</xsl:when>-->
-								<!--<xsl:if test="  $Form1120LData/USAddress/AddressLine1Txt!=''">-->
+								<!--<xsl:if test="  $RtnDoc/IRS1120L/USAddress/AddressLine1Txt!=''">-->
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/USAddress/AddressLine2Txt"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/USAddress/AddressLine2Txt"/>
 									</xsl:call-template>
 									<br/>
 								</xsl:when>
 								<xsl:otherwise>
 								<!-- Foreign Address -->
-								<!--<xsl:if test="  $Form1120LData/ForeignAddress/AddressLine1Txt!=''">-->
+								<!--<xsl:if test="  $RtnDoc/IRS1120L/ForeignAddress/AddressLine1Txt!=''">-->
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/ForeignAddress/AddressLine1Txt"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/ForeignAddress/AddressLine1Txt"/>
 									</xsl:call-template>
 									<span class="styTableCellPad"/>
 								<!--</xsl:if>-->
-								<!--<xsl:if test="  $Form1120LData/ForeignAddress/AddressLine2Txt!=''">-->
+								<!--<xsl:if test="  $RtnDoc/IRS1120L/ForeignAddress/AddressLine2Txt!=''">-->
 									<br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/ForeignAddress/AddressLine2Txt"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/ForeignAddress/AddressLine2Txt"/>
 									</xsl:call-template>
 									<span class="styTableCellPad"/>
 								<!--</xsl:if>-->
 								</xsl:otherwise>
 							</xsl:choose>
 							</div>
-							<div class="styNameAddr" style="border-bottom-width:0px;width:94.5mm;border-left-width:1px;padding-left:2mm;height:10mm;">
-							City or town, state or province, country, and ZIP or foreign postal code
-							<!-- USA Address -->
-							<xsl:choose>
-								<xsl:when test="  $Form1120LData/USAddress/CityNm!=''">
+							<div class="styNameAddr" style="border-bottom-width:0px;width:95.5mm;border-left-width:1px;padding-left:2mm;height:10mm;">
+								City or town, state or province, country, and ZIP or foreign postal code
+								<!-- USA Address -->
+								<xsl:choose>
+								<xsl:when test="  $RtnDoc/IRS1120L/USAddress/CityNm!=''">
 									<br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/USAddress/CityNm"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/USAddress/CityNm"/>
 									</xsl:call-template>
 									<span class="styTableCellPad"/>
 								<!--</xsl:if>-->
-								<!--<xsl:if test="  $Form1120LData/USAddress/StateAbbreviationCd!=''">-->
+								<!--<xsl:if test="  $RtnDoc/IRS1120L/USAddress/StateAbbreviationCd!=''">-->
 									<br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/USAddress/StateAbbreviationCd"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/USAddress/StateAbbreviationCd"/>
 									</xsl:call-template>
 									<span class="styTableCellPad"/>
 								<!--</xsl:if>-->
-								<!--<xsl:if test="  $Form1120LData/USAddress/ZIPCd!=''">-->
+								<!--<xsl:if test="  $RtnDoc/IRS1120L/USAddress/ZIPCd!=''">-->
 									<br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/USAddress/ZIPCd"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/USAddress/ZIPCd"/>
 									</xsl:call-template>
 									<span class="styTableCellPad"/>
 								</xsl:when>
 								<xsl:otherwise>
 								<!-- Foreign Address -->
-								<!--<xsl:if test="  $Form1120LData/ForeignAddress/CityNm!=''">-->
+								<!--<xsl:if test="  $RtnDoc/IRS1120L/ForeignAddress/CityNm!=''">-->
 									<br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/ForeignAddress/CityNm"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/ForeignAddress/CityNm"/>
 									</xsl:call-template>
 									<span class="styTableCellPad"/>
 								<!--</xsl:if>-->
-								<!--<xsl:if test="  $Form1120LData/ForeignAddress/ProvinceOrStateNm!=''">-->
+								<!--<xsl:if test="  $RtnDoc/IRS1120L/ForeignAddress/ProvinceOrStateNm!=''">-->
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/ForeignAddress/ProvinceOrStateNm"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/ForeignAddress/ProvinceOrStateNm"/>
 									</xsl:call-template>
 									<span class="styTableCellPad"/>
 								<!--</xsl:if>-->
-							<!--	<xsl:if test="  $Form1120LData/ForeignAddress/ForeignPostalCd!=''">-->
+							<!--	<xsl:if test="  $RtnDoc/IRS1120L/ForeignAddress/ForeignPostalCd!=''">-->
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/ForeignAddress/ForeignPostalCd"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/ForeignAddress/ForeignPostalCd"/>
 									</xsl:call-template>
 									<span class="styTableCellPad"/>
 								<!--</xsl:if>-->
-								<!--<xsl:if test="  $Form1120LData/ForeignAddress/CountryCd!=''">-->
+								<!--<xsl:if test="  $RtnDoc/IRS1120L/ForeignAddress/CountryCd!=''">-->
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/ForeignAddress/CountryCd"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/ForeignAddress/CountryCd"/>
 									</xsl:call-template>
 									<span class="styTableCellPad"/>
 								<!--</xsl:if>-->
 								</xsl:otherwise>
-	</xsl:choose>
+								</xsl:choose>
 							</div>
 						</div>
 						<!-- EIN B Line -->
 						<!-- Since this is a main form, we must check for and display an updated EIN.  
-    To do this, we use the EINChanged parameter PopulateReturnHeaderFiler.-->
+								To do this, we use the EINChanged parameter PopulateReturnHeaderFiler.-->
 						<div class="styEINDateAssets" style="width:46mm;height:8.5mm;">
 							<span class="styBoldText" style="padding-right:1.5mm">B</span>
 							<b> Employer identification number</b>
 							<br/>
 							<br/>
 							<span style="padding-left:15mm">
-								<xsl:if test="  $Form1120LData/CorporationEIN !=' '">
+								<xsl:if test="  $RtnDoc/IRS1120L/CorporationEIN !=' '">
 									<xsl:call-template name="PopulateEIN">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/CorporationEIN"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/CorporationEIN"/>
 									</xsl:call-template>
 									<span style="width: 2px"/>
 								</xsl:if>
-								<xsl:if test="  $Form1120LData/MissingEINReasonCd!=' '">
+								<xsl:if test="  $RtnDoc/IRS1120L/MissingEINReasonCd!=' '">
 									<span style="font-weight:normal;">
 										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="  $Form1120LData/MissingEINReasonCd"/>
+											<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/MissingEINReasonCd"/>
 										</xsl:call-template>
 									</span>
 								</xsl:if>
@@ -325,7 +324,7 @@ Name<br/>
 							<br/>
 							<span class="styEINFld" style="padding-left:15mm;">
 								<xsl:call-template name="PopulateMonthDayYear">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/IncorporationDt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/IncorporationDt"/>
 								</xsl:call-template>
 							</span>
 						</div>
@@ -335,12 +334,12 @@ Name<br/>
 							<span style="padding-left:1mm">  has been made under section(s):</span>
 							<xsl:call-template name="LinkToLeftoverDataTableInline">
 								<xsl:with-param name="Desc">Line D - Section953D Indicator</xsl:with-param>
-								<xsl:with-param name="TargetNode" select="  $Form1120LData/Section953dElectionInd/@section953dCd"/>
+								<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/Section953dElectionInd/@section953dCd"/>
 								<xsl:with-param name="Style">padding-left:4mm;</xsl:with-param>
 							</xsl:call-template>
 							<xsl:call-template name="LinkToLeftoverDataTableInline">
 								<xsl:with-param name="Desc">Line D - Section953D Amount</xsl:with-param>
-								<xsl:with-param name="TargetNode" select="  $Form1120LData/Section953dElectionInd/@section953dAmt"/>
+								<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/Section953dElectionInd/@section953dAmt"/>
 								<xsl:with-param name="Style">padding-left:4mm;</xsl:with-param>
 							</xsl:call-template>
 						</div>
@@ -351,66 +350,66 @@ Name<br/>
 							<!-- E 1 -->
 							<div class="styGenericDiv" style="width:138mm;height:5mm;">
 								<div class="styBoldText" style="float:left;clear:none;padding-right:2mm;padding-top:1.5mm;">E</div>
-      Check if: <span style="width:3mm;"/>
+								  Check if: <span style="width:3mm;"/>
 								<span class="styBoldText">(1)</span>
 								<span style="width:3px;"/>
 								<input type="checkbox" alt="Final Return" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
-											<xsl:with-param name="TargetNode" select="  $Form1120LData/FinalReturn"/>
+											<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/FinalReturn"/>
 										<xsl:with-param name="BackupName">IRS1120L Final Return</xsl:with-param>
 									</xsl:call-template>
 								</input>
 								<label>
 									<xsl:call-template name="PopulateLabel">
-											<xsl:with-param name="TargetNode" select="  $Form1120LData/FinalReturn"/>
+											<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/FinalReturn"/>
 										<xsl:with-param name="BackupName">IRS1120L Final Return</xsl:with-param>
 									</xsl:call-template>Final return
-      </label>
+								</label>
 								<!-- E 2 -->
 								<span style="width:4px"/>
 								<span class="styBoldText">(2)</span>
 								<span style="width:3px;"/>
 								<input type="checkbox" alt="Name Change" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/NameChange"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/NameChange"/>
 										<xsl:with-param name="BackupName">IRS1120L Name Change</xsl:with-param>
 									</xsl:call-template>
 								</input>
 								<label>
 									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/NameChange"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/NameChange"/>
 										<xsl:with-param name="BackupName">IRS1120L Name Change</xsl:with-param>
 									</xsl:call-template>Name change
-      </label>
+							    </label>
 								<!-- E 3 -->
 								<span style="width:4px"/>
 								<span class="styBoldText">(3)</span>
 								<span style="width:3px;"/>
-								<input type="checkbox" alt="Address Change Ind" class="styCkbox">
+								<input type="checkbox" alt="Address Change" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/AddressChangeInd"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/AddressChangeInd"/>
 										<xsl:with-param name="BackupName">IRS1120L Address Change Ind</xsl:with-param>
 									</xsl:call-template>
 								</input>
 								<label>
 									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/AddressChangeInd"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/AddressChangeInd"/>
 										<xsl:with-param name="BackupName">IRS1120L Address Change Ind</xsl:with-param>
 									</xsl:call-template>Address change
-      </label>
+							    </label>
 								<!--E 4 -->
 								<span style="width:4px"/>
 								<span class="styBoldText">(4)</span>
 								<span style="width:3px;"/>
 								<input type="checkbox" alt="Amended Return" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/AmendedReturn"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/AmendedReturn"/>
 										<xsl:with-param name="BackupName">IRS1120L Amended Return</xsl:with-param>
 									</xsl:call-template>
 								</input>
 								<label>
 									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/AmendedReturn"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/AmendedReturn"/>
 										<xsl:with-param name="BackupName">IRS1120L Amended Return</xsl:with-param>
 									</xsl:call-template>Amended return  <span style="width:2px;hight:1mm"/>
 								</label>
@@ -419,41 +418,40 @@ Name<br/>
 						<span style="padding-left:.5mm"/>
 						<input type="checkbox" alt="Election Made Under Section 953C3C" class="styCkbox">
 							<xsl:call-template name="PopulateCheckbox">
-								<xsl:with-param name="TargetNode" select="  $Form1120LData/Section953c3CElectionInd"/>
+								<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/Section953c3CElectionInd"/>
 								<xsl:with-param name="BackupName">IRS1120L Election Made Under Section953C3C</xsl:with-param>
 							</xsl:call-template>
 						</input>
 						<label>
 							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="  $Form1120LData/Section953c3CElectionInd"/>
+								<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/Section953c3CElectionInd"/>
 								<xsl:with-param name="BackupName">IRS1120L Election Made Under Section953C3C</xsl:with-param>
-							</xsl:call-template>
- 953(c)(3)(C)
- </label>
+							</xsl:call-template>953(c)(3)(C)
+						</label>
 						<span style="padding-left:2mm"/>
 						<input type="checkbox" alt="Election Made Under Section 953D" class="styCkbox">
 							<xsl:call-template name="PopulateCheckbox">
-								<xsl:with-param name="TargetNode" select="  $Form1120LData/Section953dElectionInd"/>
+								<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/Section953dElectionInd"/>
 								<xsl:with-param name="BackupName">IRS1120L Election Made UnderS ection953D</xsl:with-param>
 							</xsl:call-template>
 						</input>
 						<label>
 							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="  $Form1120LData/Section953dElectionInd"/>
+								<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/Section953dElectionInd"/>
 								<xsl:with-param name="BackupName">IRS1120L Election Made Under Section953D</xsl:with-param>
 							</xsl:call-template>953(d)
-      </label>
+					    </label>
 						<xsl:call-template name="SetFormLinkInline">
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/Section953dElectionInd"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/Section953dElectionInd"/>
 						</xsl:call-template>
 					</div>
 					<!--BEGIN Main Form 46 Section-->
 					<div class="styBB" style="width:187mm;">
-						<div class="styIRS1120VTImageBox" style="height:36.5mm;width:19px;padding-top:14mm;">
-							<img src="{$ImagePath}/1120L_Income.gif" alt="VerticalIncome"/>
+						<div class="styIRS1120VTImageBox" style="height:41mm;width:19px;padding-top:14mm">
+							<img src="{$ImagePath}/1120L_Income.gif" alt="Vertical Income"/>
 						</div>
 						<div style="width:000mm;float:right;clear:none;">
-</div>
+						</div>
 						<!-- line 1 -->
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left: 3.5mm">1</div>
 						<div class="styLNDesc" style="height:4mm;width:133mm;padding-left:1mm">
@@ -464,37 +462,51 @@ Name<br/>
 						<div class="styLNRightNumBox" style="height:4mm;padding-left:1.5mm">1</div>
 						<div class="styLNAmountBox" style="height:4mm;width:32.9mm">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="  $Form1120LData/GrossPremiumsAmt"/>
+								<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/GrossPremiumsAmt"/>
 							</xsl:call-template>
 						</div>
 						<!-- line 2 -->
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">2</div>
 							<div class="styLNDesc" style="width:132mm;height:4mm;">
-								<span style="float: left; clear: none;">Net decrease, if any, in reserves (Schedule F, line 12)
-</span>
+								<span style="float: left; clear: none;">Net decrease, if any, in reserves (Schedule F, line 12)</span>
 								<!--Dotted Line-->
 								<span class="styDotLn" style="float:right;padding-right:2mm;">..............</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;;padding-left:1.5mm">2</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/NetDecreaseInReservesAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/NetDecreaseInReservesAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
-						<!-- line3 -->
+						<!-- line3a -->
 						<div style="width:181mm;float:right;clear:none;">
-							<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">3</div>
+							<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">3a</div>
 							<div class="styLNDesc" style="width:132mm;height:4mm;">
 								<span style="float: left; clear: none;">Decrease in reserves under section 807(f)</span>
 								<!--Dotted Line -->
 								<span class="styDotLn" style="float:right;padding-right:2mm;">...................</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:4.5mm;padding-left:1.5mm">3</div>
+							<div class="styLNRightNumBox" style="height:4.5mm;padding-left:3.0mm">3a</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select=" $Form1120LData/DecrReservesUnderSect807fAmt"/>
+									<xsl:with-param name="TargetNode" select=" $RtnDoc/IRS1120L/DecrReservesUnderSect807fAmt"/>
+								</xsl:call-template>
+							</div>
+						</div>
+						<!-- line3b -->
+						<div style="width:181mm;float:right;clear:none;">
+							<div class="styLNLeftNumBox" style="height:4mm;padding-left: 4.25mm">b</div>
+							<div class="styLNDesc" style="width:132mm;height:4mm;">
+								<span style="float: left; clear: none;">Income from Transition Relief (see instructions)</span>
+								<!--Dotted Line -->
+								<span class="styDotLn" style="float:right;padding-right:2mm;">.................</span>
+							</div>
+							<div class="styLNRightNumBox" style="height:4.5mm;padding-left:3.0mm">3b</div>
+							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
+								<xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="TargetNode" select=" $RtnDoc/IRS1120L/TransitionReliefIncomeAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -509,7 +521,7 @@ Name<br/>
 							<div class="styLNRightNumBox" style="height:5mm;padding-left:1.5mm">4</div>
 							<div class="styLNAmountBox" style="height:5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/InvestmentIncomeAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/InvestmentIncomeAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -517,14 +529,14 @@ Name<br/>
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">5</div>
 							<div class="styLNDesc" style="width:132mm;height:4mm;">
-								<span style="float: left; clear: none;">Capital gain net income (Schedule D (Form 1120), line 18)</span>
+								<span style="float: left; clear: none;">Net capital gain (Schedule D (Form 1120), line 18)</span>
 								<!--Dotted Line-->
-								<span class="styDotLn" style="float:right;padding-right:2mm;">............</span>
+								<span class="styDotLn" style="float:right;padding-right:2mm;">................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;padding-left:1.5mm">5</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/CapitalGainNetIncomeAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/CapitalGainNetIncomeAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -533,19 +545,19 @@ Name<br/>
 							<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">6</div>
 							<div class="styLNDesc" style="width:132mm;height:4mm;">
 								<span style="float: left; clear: none;">
-Income from a special loss discount account (attach Form 8816)
-<xsl:call-template name="SetFormLinkInline">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/SpecialLossDscntAcctIncomeAmt"/>
+									Reserved for future use
+									<xsl:call-template name="SetFormLinkInline">
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/SpecialLossDscntAcctIncomeAmt"/>
 									</xsl:call-template>
 								</span>
 								<!--Dotted Line-->
-								<span class="styDotLn" style="float:right;padding-right:2mm;">..........</span>
+								<span class="styDotLn" style="float:right;padding-right:2mm;">........................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;padding-left:1.5mm">6</div>
-							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/SpecialLossDscntAcctIncomeAmt"/>
-								</xsl:call-template>
+								<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm;background-color:lightgrey;">
+								<!--<xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/SpecialLossDscntAcctIncomeAmt"/>
+								</xsl:call-template>-->
 							</div>
 						</div>
 						<!-- line 7 -->
@@ -553,14 +565,14 @@ Income from a special loss discount account (attach Form 8816)
 							<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">7</div>
 							<div class="styLNDesc" style="width:132mm;height:4mm;">
 								<span style="float: left; clear: none;">Other income (attach statement)
-<span style="width:2px;"/>
+									<span style="width:2px;"/>
 									<!-- Form to Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/OtherIncomeAmt"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/OtherIncomeAmt"/>
 									</xsl:call-template>
 									<xsl:call-template name="LinkToLeftoverDataTableInline">
 										<xsl:with-param name="Desc">Line 7 - other Income Item</xsl:with-param>
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/OtherIncomeAmt/@otherIncomeDesc"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/OtherIncomeAmt/@otherIncomeDesc"/>
 										<xsl:with-param name="Style">padding-left:4mm;</xsl:with-param>
 									</xsl:call-template>
 								</span>
@@ -570,7 +582,7 @@ Income from a special loss discount account (attach Form 8816)
 							<div class="styLNRightNumBox" style="height:4.5mm;padding-left:1.5mm">7</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/OtherIncomeAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/OtherIncomeAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -585,7 +597,7 @@ Income from a special loss discount account (attach Form 8816)
 							<div class="styLNRightNumBox" style="height:5mm;border-bottom-width:0px;padding-top:1mm;padding-left:1.5mm">8</div>
 							<div class="styLNAmountBox" style="height:5mm;border-bottom-width:0px;width:32.9mm;padding-top:1mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/LifeInsuranceGrossIncomeAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/LifeInsuranceGrossIncomeAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -593,7 +605,7 @@ Income from a special loss discount account (attach Form 8816)
 					<!--END Main Form Income Section-->
 					<!--BEGIN Main Form Deduction Section-->
 					<div class="styBB" style="width:187mm;">
-						<div class="styIRS1120VTImageBox" style="height:85mm;width:19px;padding-top:15mm;">
+						<div class="styIRS1120VTImageBox" style="height:90mm;width:19px;padding-top:15mm;">
 							<img src="{$ImagePath}/1120L_Deductions.gif" alt="Vertical Deductions (See instructions for limitations on deductions.)"/>
 						</div>
 						<!-- line 9 -->
@@ -607,7 +619,7 @@ Income from a special loss discount account (attach Form 8816)
 							<div class="styLNRightNumBox" style="height:4.5mm;padding-left:1.5mm">9</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/DeathBenefitsAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/DeathBenefitsAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -617,27 +629,42 @@ Income from a special loss discount account (attach Form 8816)
 							<div class="styLNDesc" style="width:132mm;height:4mm;">
 								<span style="float: left; clear: none;">Net increase, if any, in reserves (Schedule F, line 12)</span>
 								<!--Dotted Line-->
-								<span class="styDotLn" style="float:right;padding-right:2mm;">..............</span>
+								<span class="styDotLn" style="float:right;padding-right:2mm;">...............</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;">10</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/NetIncreaseInReservesAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/NetIncreaseInReservesAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
-						<!-- line 11 -->
+						<!-- line 11a -->
 						<div style="width:181mm;float:right;clear:none;">
-							<div class="styLNLeftNumBox" style="height:4mm;">11</div>
+							<div class="styLNLeftNumBox" style="height:4mm;">11a</div>
 							<div class="styLNDesc" style="width:132mm;height:4mm;">
 								<span style="float: left; clear: none;">Increase in reserves under section 807(f)</span>
 								<!--Dotted Line-->
-								<span class="styDotLn" style="float:right;padding-right:2mm;">.................</span>
+								<span class="styDotLn" style="float:right;padding-right:2mm;">...................</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:4.5mm;">11</div>
+							<div class="styLNRightNumBox" style="height:4.5mm;padding-left:2.0mm">11a</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/IncrReservesUnderSect807fAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/IncrReservesUnderSect807fAmt"/>
+								</xsl:call-template>
+							</div>
+						</div>
+						<!-- line 11b  -->
+						<div style="width:181mm;float:right;clear:none;">
+							<div class="styLNLeftNumBox" style="height:4mm;padding-left:4.5mm">b</div>
+							<div class="styLNDesc" style="width:132mm;height:4mm;">
+								<span style="float: left; clear: none;">Deduction from Transition Relief (see instructions)</span>
+								<!--Dotted Line-->
+								<span class="styDotLn" style="float:right;padding-right:2mm;">...............</span>
+							</div>
+							<div class="styLNRightNumBox" style="height:4.5mm;padding-left:2.0mm">11b</div>
+							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
+								<xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TransitionReliefDeductionAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -647,12 +674,12 @@ Income from a special loss discount account (attach Form 8816)
 							<div class="styLNDesc" style="width:132mm;height:4mm;">
 								<span style="float: left; clear: none;">Deductible policyholder dividends under section 808</span>
 								<!--Dotted Line-->
-								<span class="styDotLn" style="float:right;padding-right:2mm;">..............</span>
+								<span class="styDotLn" style="float:right;padding-right:2mm;">...............</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;">12</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/DeductiblePolicyholderDivAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/DeductiblePolicyholderDivAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -661,14 +688,14 @@ Income from a special loss discount account (attach Form 8816)
 							<div class="styLNLeftNumBox" style="height:4mm;">13</div>
 							<div class="styLNDesc" style="width:132mm;height:4mm;">
 								<span style="float: left; clear: none;">Assumption by another person of liabilities under insurance, etc., contracts
-</span>
+								</span>
 								<!--Dotted Line-->
 								<span class="styDotLn" style="float:right;padding-right:2mm;">........</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;">13</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/LiabilitesAssumptionAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/LiabilitesAssumptionAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -683,7 +710,7 @@ Income from a special loss discount account (attach Form 8816)
 							<div class="styLNRightNumBox" style="height:4.5mm;">14</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/ReimbursableDividendsAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/ReimbursableDividendsAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -691,14 +718,14 @@ Income from a special loss discount account (attach Form 8816)
 						<div style="width:181mm;float:right;clear:none;">
 						<div class="styLNLeftNumBox" style="height:4mm;">15a</div>
 						<div class="styLNDesc" style="width:18mm;height:4mm;">Interest
-						<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+						<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 						<xsl:call-template name="SetFormLinkInline">
-						<xsl:with-param name="TargetNode" select="  $Form1120LData/InterestDeductionAmt"/>
+						<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/InterestDeductionAmt"/>
 						</xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="width:30mm;height:4.5mm;border-top-width:1px; border-bottom-width:1px;        border-left-width:1px; border-right-width: 1px;">
+						<div class="styLNAmountBox" style="width:30mm;height:4.5mm;border-top-width:1px; border-bottom-width:1px;border-left-width:1px; border-right-width: 1px;">
 						<xsl:call-template name="PopulateAmount">
-						<xsl:with-param name="TargetNode" select="  $Form1120LData/InterestDeductionAmt"/>
+						<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/InterestDeductionAmt"/>
 						</xsl:call-template>
 						</div>
 						<!-- line 15b -->
@@ -707,7 +734,7 @@ Income from a special loss discount account (attach Form 8816)
 						 </div>
 						<div class="styLNAmountBox" style="width:29.9mm;height:4.5mm;border-top-width:1px;border-bottom-width:1px;border-left-width:1px; border-right-width: 1px;">
 						<xsl:call-template name="PopulateAmount">
-						<xsl:with-param name="TargetNode" select="  $Form1120LData/TaxExemptInterestExpenseAmt"/>
+						<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TaxExemptInterestExpenseAmt"/>
 						</xsl:call-template>
 						</div>
 						<!-- line 15c -->
@@ -715,7 +742,7 @@ Income from a special loss discount account (attach Form 8816)
 						<span style="font-weight=normal"/>
 						<span style="padding-left:1mm"/>
 						</div>
-						<div class="styLNRightNumBox" style="height:5mm;border-bottom-width:0px;width:8mm"/>
+						<div class="styLNRightNumBox" style="height:5mm;border-bottom-width:0px;width:8mm;"/>
 						<div class="styLNAmountBox" style="height:5mm;width:32.9mm;border-bottom-width:0px"/>
 						</div>
 						<!-- ************************************************************************************************** -->
@@ -725,7 +752,7 @@ Income from a special loss discount account (attach Form 8816)
 						<div class="styLNLeftNumBox" style="height:4mm;;padding-left:4mm">c</div>
 						<div class="styLNDesc" style="width:132mm;height:4mm;">
 						<span style="float: left; clear: none;">Bal
-						<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+						<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 						</span>
 						<!--Dotted Line-->
 						<span class="styDotLn" style="float:right;padding-right:2mm;">..............................</span>
@@ -733,11 +760,11 @@ Income from a special loss discount account (attach Form 8816)
 						<div class="styLNRightNumBox" style="height:4.5mm;">15c</div>
 						<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 						<xsl:call-template name="PopulateAmount">
-						<xsl:with-param name="TargetNode" select="  $Form1120LData/InterestBalanceAmt"/>
+						<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/InterestBalanceAmt"/>
 						</xsl:call-template>
 						</div>
 						</div>
-						<!-- ************************************************************************************************** -->
+					<!-- ************************************************************************************************** -->
 						<!-- line 16 -->
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftNumBox" style="height:4.4mm;">16</div>
@@ -749,7 +776,7 @@ Income from a special loss discount account (attach Form 8816)
 							<div class="styLNRightNumBox" style="height:5mm;">16</div>
 							<div class="styLNAmountBox" style="height:5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="  $Form1120LData/DedPolicyAcquisitionExpnssAmt"/>
+								<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/DedPolicyAcquisitionExpnssAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -758,29 +785,29 @@ Income from a special loss discount account (attach Form 8816)
 							<div class="styLNLeftNumBox" style="height:4mm;">17</div>
 							<div class="styLNDesc" style="width:132mm;height:4mm;">
 								<span style="float: left; clear: none;">Reserved for future use
-<!-- Form to Form Link-->
+								<!-- Form to Form Link-->
 									<xsl:call-template name="SetFormLinkInline">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/SpecialLossDscntAcctDedAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/SpecialLossDscntAcctDedAmt"/>
 									</xsl:call-template>
 								</span>
 								<!--Dotted Line-->
-								<span class="styDotLn" style="float:right;padding-right:2mm;">..................</span>
+								<span class="styDotLn" style="float:right;padding-right:2mm;">........................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;">17</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm;background-color:lightgrey;">
-<!--								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/SpecialLossDscntAcctDedAmt"/>
-								</xsl:call-template>
--->							</div>
+								<!--<xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/SpecialLossDscntAcctDedAmt"/>
+								</xsl:call-template>-->
+							</div>
 						</div>
 						<!-- line 18 -->
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftNumBox" style="height:4.5mm;">18</div>
 							<div class="styLNDesc" style="width:132mm;height:4.4mm;">
 								<span style="float: left; clear: none;">Other deductions (see instructions) (attach statement)
-<!-- Form to Form Link -->
+								<!-- Form to Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/OtherDeductionsAmt"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/OtherDeductionsAmt"/>
 									</xsl:call-template>
 								</span>
 								<!--Dotted Line-->
@@ -789,7 +816,7 @@ Income from a special loss discount account (attach Form 8816)
 							<div class="styLNRightNumBox" style="height:5mm;">18</div>
 							<div class="styLNAmountBox" style="height:5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/OtherDeductionsAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/OtherDeductionsAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -804,7 +831,7 @@ Income from a special loss discount account (attach Form 8816)
 							<div class="styLNRightNumBox" style="height:4.5mm;">19</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/PartialTotalDeductionsAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/PartialTotalDeductionsAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -814,14 +841,14 @@ Income from a special loss discount account (attach Form 8816)
 							<div class="styLNDesc" style="width:132mm;height:4mm;">
 								<span style="float: left; clear: none;">
 									<b>Subtotal. </b> Subtract line 19 from line 8
- </span>
+								</span>
 								<!--Dotted Line-->
 								<span class="styDotLn" style="float:right;padding-right:2mm;">....................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;">20</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/DeductionsSubtotalAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/DeductionsSubtotalAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -829,17 +856,17 @@ Income from a special loss discount account (attach Form 8816)
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftNumBox" style="height:4mm;">21a</div>
 							<div class="styLNDesc" style="width:91mm;height:4mm;">
-  Dividends-received and other special deductions (Schedule A, line 22)
-<span style="width:2px;"/>
-						</div>
+							  Dividends-received and other special deductions (Schedule A, line 22)
+								<span style="width:2px;"/>
+							</div>
 							<div class="styLNRightNumBox" style="height:4mm;">21a</div>
 							<div class="styLNAmountBox" style="height:4mm;width:33mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/DividendsReceivedDeductionAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/DividendsReceivedDeductionAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styLNRightNumBox" style="height:4mm;background-color:lightgrey;border-bottom-width:0px"/>
-							<div class="styLNAmountBox" style="height:4mm;width:32.9mm;background-color:lightgrey;border-bottom-width:0px"/>
+							<div class="styLNRightNumBox" style="height:4mm;background-color:lightgrey;border-bottom-width:1px"/>
+							<div class="styLNAmountBox" style="height:4mm;width:32.9mm;background-color:lightgrey;border-bottom-width:1px"/>
 						</div>
 						<!-- line 21b -->
 						<div style="width:181mm;float:right;clear:none;">
@@ -848,22 +875,22 @@ Income from a special loss discount account (attach Form 8816)
 							</div>
 							<div class="styLNDesc" style="width:91mm;height:8mm;">
 								<b>Plus: b. </b>Net operating loss deduction (see instructions) (attach statement)
-							<!-- Form to Form Link  -->
+								<!-- Form to Form Link  -->
 								<xsl:call-template name="SetFormLinkInline">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/NetOperatingLossDeductionAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/NetOperatingLossDeductionAmt"/>
 								</xsl:call-template>
 								<span class="styDotLn" style="float:right;padding-right:2mm;">................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm">21b</div>
 							<div class="styLNAmountBox" style="border-bottom-width:1px;height:8mm;width:33mm;padding-top:4mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/NetOperatingLossDeductionAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/NetOperatingLossDeductionAmt"/>
 								</xsl:call-template>
 							</div>
 							<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm">21c</div>
 							<div class="styLNAmountBox" style="border-bottom-width:1px;height:8mm;width:32.9mm;padding-top:4mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/TotalDivReceivedAndOprLossAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TotalDivReceivedAndOprLossAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -878,7 +905,7 @@ Income from a special loss discount account (attach Form 8816)
 							<div class="styLNRightNumBox" style="height:4.5mm;">22</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/GainOrLossFromOperationsAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/GainOrLossFromOperationsAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -886,15 +913,14 @@ Income from a special loss discount account (attach Form 8816)
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftNumBox" style="height:4mm;">23</div>
 							<div class="styLNDesc" style="width:132mm;height:4mm;">
-								<span style="float: left; clear: none;">Life insurance company taxable income (LICTI).
- Enter line 22 here</span>
+								<span style="float: left; clear: none;">Life insurance company taxable income (LICTI).  Enter line 22 here</span>
 								<!--Dotted Line-->
 								<span class="styDotLn" style="float:right;padding-right:2mm;">...........</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;">23</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/LifeInsuranceCoTxblIncmAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/LifeInsuranceCoTxblIncmAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -903,14 +929,14 @@ Income from a special loss discount account (attach Form 8816)
 							<div class="styLNLeftNumBox" style="height:4mm;">24</div>
 							<div class="styLNDesc" style="width:132mm;height:4mm;">
 								Phased inclusion of balance of policyholders surplus account (see instructions)
-<span style="width:2px;"/>
+								<span style="width:2px;"/>
 								<!--Dotted Line-->
 								<span class="styDotLn" style="float:right;padding-right:2mm;">......</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4mm;border-bottom-width:0px;">24</div>
 							<div class="styLNAmountBox" style="height:4mm;border-bottom-width:0px;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/PhasedInclsnPlcyhldrSurplusAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/PhasedInclsnPlcyhldrSurplusAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -918,7 +944,7 @@ Income from a special loss discount account (attach Form 8816)
 					<!--END Main Form Deductions Section-->
 					<!--BEGIN Main Form Tax and Payment Section-->
 					<div class="styBB" style="width:187mm;">
-						<div class="styIRS1120VTImageBox" style="height:82.5mm;width:19px;padding-top:17mm;">
+						<div class="styIRS1120VTImageBox" style="height:79mm;width:19px;padding-top:10mm;">
 							<img src="{$ImagePath}/1120L_TaxRefundableCreditAndPayment.gif" alt="Vertical Tax, Refundable Credits, and Payments"/>
 						</div>
 						<!-- line 25 -->
@@ -933,24 +959,24 @@ Income from a special loss discount account (attach Form 8816)
 							<div class="styLNRightNumBox" style="height:4.5mm;">25</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/TaxableIncomeAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TaxableIncomeAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
-						<!-- line 26 -->
+						<!--line 26 -->
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftNumBox" style="height:4mm;">26</div>
 							<div class="styLNDesc" style="width:132mm;height:4mm;">
 								<span style="float: left; clear: none;">
-									<b>Total tax.</b>
-(Schedule K, line 10)</span>
+									<b>Total tax.</b> (Schedule K, line 10)
+								</span>
 								<!--Dotted Line-->
 								<span class="styDotLn" style="float:right;padding-right:2mm;">......................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;">26</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/TotalTaxAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TotalTaxAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -958,26 +984,25 @@ Income from a special loss discount account (attach Form 8816)
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftNumBox" style="height:4mm;">27</div>
 							<div class="styLNDesc" style="width:132mm;height:4mm;">
-								<span style="float: left; clear: none;">2018 Net 965 tax liability paid from Form 965-B, Part II, column (k), line 2</span>
+								<span style="float: left; clear: none;">2019 Net 965 tax liability paid from Form 965-B, Part II, column (k), line 3</span>
 								<!--Dotted Line-->
-								<span class="styDotLn" style="float:right;padding-right:2mm;">.......</span>
+								<span class="styDotLn" style="float:right;padding-right:2mm;">........</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;">27</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/NetSection965TaxLiabPaidAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/NetSection965TaxLiabPaidAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
 						<!-- line 28a -->
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftNumBox" style="height:4mm;">28a</div>
-							<div class="styLNDesc" style="width:56mm;height:4mm;font-size:7pt;">2017 overpayment credited to 2018
-							</div>
+							<div class="styLNDesc" style="width:56mm;height:4mm;font-size:7pt;">2018 overpayment credited to 2019</div>
 							<div class="styLNRightNumBox" style="height:5mm;padding-top:1mm">28a</div>
 							<div class="styLNAmountBox" style="width:28.3mm;height:5mm;padding-top:1.5mm;border-right-width:1px;font-size:6pt;">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/PriorYearOverpaymentCreditAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/PriorYearOverpaymentCreditAmt"/>
 								</xsl:call-template>
 							</div>
 							<div class="styShadingCell" style="width:39.7mm;height:5mm;border-left-width:0px;"/>
@@ -986,34 +1011,41 @@ Income from a special loss discount account (attach Form 8816)
 						</div>
 						<!-- line 28b -->
 						<div style="width:181mm;float:right;clear:none;">
-							<div class="styLNLeftLtrBox" style="height:6.5mm;">&#160;&#160;b</div>
-							<div class="styLNDesc" style="width:56mm;height:6.5mm;font-size:7pt;">
- Prior year(s) special estimated tax payments to be applied
-<span style="width:2px;"/>
+							<div class="styLNLeftLtrBox" style="height4mm;">&#160;&#160;b</div>
+							<!--<div class="styLNDesc" style="width:56mm;height:6.5mm;font-size:7pt;">
+								Reserved for future use
+									<span style="letter-spacing:4mm;font-weight:bold">.........</span>
+								<span style="width:2px;"/>
+							
+							</div>-->
+								<div class="styLNDesc" style="width:56mm;height:5mm;font-size:7pt;">
+								Reserved for future use
+								<span style="width:2px;"/>
 								<span style="letter-spacing:4mm;font-weight:bold">.....</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:7.5mm;padding-top:3.5mm">28b</div>
-							<div class="styLNAmountBox" style="height:7.5mm;border-right-width:1px;width:28.3mm;font-size:6pt;padding-top:3.5mm">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/PriorYearEstimatedTaxPymtAmt"/>
-								</xsl:call-template>
+							
+							<div class="styLNRightNumBox" style="height:5mm;padding-top:1.0mm">28b</div>
+							<div class="styLNAmountBox" style="height:5mm;border-right-width:1px;width:28.3mm;font-size:6pt;padding-top:1.5mm;background-color:lightgrey">
+								<!--<xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/PriorYearEstimatedTaxPymtAmt"/>
+								</xsl:call-template>-->
 							</div>
-							<div class="styShadingCell" style="width:39.7mm;height:7.5mm;border-left-width:0px;"/>
-							<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:7.5mm;"/>
-							<div class="styLNAmountBoxNBB" style="height:7.5mm;background-color:lightgrey;"/>
+							<div class="styShadingCell" style="width:39.7mm;height:5mm;border-left-width:0px;"/>
+							<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:5mm;"/>
+							<div class="styLNAmountBoxNBB" style="height:5mm;background-color:lightgrey;"/>
 						</div>
 						<!-- line 28c -->
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftLtrBox" style="height:4mm;">&#160;&#160;c</div>
 							<div class="styLNDesc" style="width:56mm;height:4mm;font-size:7pt;">
-							 2018 estimated tax payments
-							 <span style="width:2px;"/>
+								2019 estimated tax payments
+								<span style="width:2px;"/>
 								<span style="letter-spacing:4mm;font-weight:bold">...</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm">28c</div>
 							<div class="styLNAmountBox" style="height:4.5mm;border-right-width:1px;width:28.3mm;font-size:6pt;padding-top:1mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/EstimatedTaxPaymentsAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/EstimatedTaxPaymentsAmt"/>
 								</xsl:call-template>
 							</div>
 							<div class="styShadingCell" style="width:39.7mm;height:4.5mm;border-left-width:0px;"/>
@@ -1023,19 +1055,19 @@ Income from a special loss discount account (attach Form 8816)
 						<!-- line 28d -->
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftLtrBox" style="height:5m;">&#160;&#160;d</div>
-							<div class="styLNDesc" style="width:56mm;height:5mm;font-size:7pt;">Less 2018 refund applied for on Form 4466
+							<div class="styLNDesc" style="width:56mm;height:5mm;font-size:7pt;">Less 2019 refund applied for on Form 4466
 							</div>
 							<div class="styLNRightNumBox" style="height:5mm;">28d</div>
 							<div class="styLNAmountBox" style="width:28mm;height:5mm;border-right-width:0px;font-size:6pt;">(
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/OverpaymentOfEstimatedTaxAmt"/>
+									<xsl:with-param name="TargetNode" select="   $RtnDoc/IRS1120L/OverpaymentOfEstimatedTaxAmt"/>
 								</xsl:call-template>)
 							</div>
 							<!-- line 28e -->
 							<div class="styLNRightNumBox" style="height:5mm;">28e</div>
 							<div class="styLNAmountBox" style="width:32mm;height:5mm;">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/TotOvpmtCrAndEstTxPaymentsAmt"/>
+									<xsl:with-param name="TargetNode" select="   $RtnDoc/IRS1120L/TotOvpmtCrAndEstTxPaymentsAmt"/>
 								</xsl:call-template>
 							</div>
 							<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:5mm;"/>
@@ -1045,13 +1077,13 @@ Income from a special loss discount account (attach Form 8816)
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftLtrBox" style="height:4mm;">&#160;&#160;f</div>
 							<div class="styLNDesc" style="width:92mm;height:4mm;">
-								<span style="float: left; clear: none;">Tax deposited with Form 7004 </span>
+								<span style="float: left; clear: none;">Tax deposited with Form 7004</span>
 								<span class="styDotLn" style="float:right;padding-right:2mm;">............</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;">28f</div>
 							<div class="styLNAmountBox" style="height:4.5mm;">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/TaxPaidForm7004Amt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TaxPaidForm7004Amt"/>
 								</xsl:call-template>
 							</div>
 							<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm;"/>
@@ -1062,20 +1094,20 @@ Income from a special loss discount account (attach Form 8816)
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftLtrBox" style="height:4.5mm;">&#160;&#160;g</div>
 							<div class="styLNDesc" style="width:45mm;height:4.5mm;">
-Credits <span style="width:7.3mm;"/>
+								Credits <span style="width:7.3mm;"/>
 								<span style="font-weight:bold">(1)</span> Form 2439 
-</div>
+							</div>
 							<div class="styUnderlineAmount">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/TotalUndistributedLTCapGainAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TotalUndistributedLTCapGainAmt"/>
 								</xsl:call-template>
 							</div>
 							<div class="styLNDesc" style="display:inline;float:left;clear:none;width:15mm">
-</div>
+							</div>
 							<div style="width:12mm;display:inline;float:left;clear:none;">
 								<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="Desc">Line 32f(1) - Backup Withholding Amount</xsl:with-param>
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/TotalUndistributedLTCapGainAmt/@backupWithholdingAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TotalUndistributedLTCapGainAmt/@backupWithholdingAmt"/>
 									<xsl:with-param name="Style">padding-left:2mm;</xsl:with-param>
 								</xsl:call-template>
 							</div>
@@ -1083,9 +1115,8 @@ Credits <span style="width:7.3mm;"/>
 							<div class="styLNAmountBoxNBB" style="width:31.8mm;border-left-width:0px;">
 								<span style="padding-right:1mm">
 									<xsl:call-template name="LinkToLeftoverDataTableInline">
-										<xsl:with-param name="Desc">Line 28H - Ozone Depleting Chemical Indicator
-</xsl:with-param>
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/TotalCreditsAmt/@ozoneDepletingChemicalCd"/>
+										<xsl:with-param name="Desc">Line 28G - Ozone Depleting Chemical Indicator</xsl:with-param>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TotalCreditsAmt/@ozoneDepletingChemicalCd"/>
 									</xsl:call-template>
 								</span>
 							</div>
@@ -1096,18 +1127,18 @@ Credits <span style="width:7.3mm;"/>
 								<div class="styLNDesc" style="width:25mm;"/>
 								<div class="styLNDesc" style="width:28mm;height:4.5mm;">
 									<span style="font-weight:bold;">(2)</span> Form 4136
-</div>
+								</div>
 								<div class="styUnderlineAmount">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/TotalFuelTaxCreditAmt"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TotalFuelTaxCreditAmt"/>
 									</xsl:call-template>
 								</div>
 								<div class="styLNDesc" style="height:6mm;font-weight:bold;width:15mm;">
-</div>
+								</div>
 								<div class="styLNRightNumBox" style="height:4.5mm;padding-top:1mm">28g</div>
 								<div class="styLNAmountBox" style="height:4.5mm;padding-top:0mm;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$Form1120LData/TotalCreditsAmt"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TotalCreditsAmt"/>
 									</xsl:call-template>
 									<span style="width:1mm;"/>
 								</div>
@@ -1119,30 +1150,31 @@ Credits <span style="width:7.3mm;"/>
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftLtrBox" style="height:5mm;">&#160;&#160;h</div>
 							<div class="styLNDesc" style="width:92mm;height:5mm;">
- U.S. income tax paid or withheld at source (attach Form 1042-S)
-<xsl:call-template name="SetFormLinkInline">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/IncomeTaxPaidOrWithheldAmt"/>
+								U.S. income tax paid or withheld at source (attach Form 1042-S)
+								<xsl:call-template name="SetFormLinkInline">
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/IncomeTaxPaidOrWithheldAmt"/>
 								</xsl:call-template>
 							</div>
 							<div class="styLNRightNumBox" style="height:5mm;">28h</div>
 							<div class="styLNAmountBox" style="height:5mm;">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/IncomeTaxPaidOrWithheldAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/IncomeTaxPaidOrWithheldAmt"/>
 								</xsl:call-template>
 							</div>
 							<div class="styLNRightNumBoxNBB" style="height:5mm;background-color:lightgrey;border-top-width:0px"/>
-							<div class="styLNAmountBox" style="height:5mm;background-color:lightgrey;border-bottom-width:0px;"/>
+							<div class="styLNAmountBox" style="height:5mm;background-color:lightgrey;border-bottom-width:0px;">
+							</div>
 						</div>
 						<!-- line 28i -->
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftLtrBox" style="height:5mm;">&#160;&#160;i</div>
 							<div class="styLNDesc" style="width:92mm;height:5mm;">
-								2018 Net 965 tax liability from Form 965-B, Part I, column (d), line 2 
+								2019 Net 965 tax liability from Form 965-B, Part I, column (d), line 3 
 							</div>
 							<div class="styLNRightNumBox" style="height:5mm;">28i</div>
 							<div class="styLNAmountBox" style="height:5mm;">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="Form1120LData/NetSection965TaxLiabilityAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/NetSection965TaxLiabilityAmt"/>
 								</xsl:call-template>
 							</div>
 							<div class="styLNRightNumBoxNBB" style="height:5mm;border-bottom-width:0px; background-color:lightgrey;border-top-width:0px"/>
@@ -1153,9 +1185,9 @@ Credits <span style="width:7.3mm;"/>
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftLtrBox" style="height:5mm;padding-top:1mm;">&#160;&#160;j</div>
 							<div class="styLNDesc" style="width:92mm;height:5mm;padding-top:1mm;">
-								<span style="float: left; clear: none;">Refundable credit from Form 8827, line 8c 
-<xsl:call-template name="SetFormLinkInline">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/CYRefundableMinimumTaxCrAmt"/>
+								<span style="float: left; clear: none;">Refundable credit from Form 8827, line 5c 
+								<xsl:call-template name="SetFormLinkInline">
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/CYRefundableMinimumTaxCrAmt"/>
 									</xsl:call-template>
 								</span>
 								<span class="styDotLn" style="float:right;padding-right:2mm;">.......</span>
@@ -1163,56 +1195,55 @@ Credits <span style="width:7.3mm;"/>
 							<div class="styLNRightNumBox" style="height:5mm;padding-top:1mm">28j</div>
 							<div class="styLNAmountBox" style="height:5mm;padding-top:1mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/CYRefundableMinimumTaxCrAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/CYRefundableMinimumTaxCrAmt"/>
 								</xsl:call-template>
 							</div>
 							<div class="styLNRightNumBoxNBB" style="height:5mm;border-bottom-width:1px;padding-top:1mm">28k</div>
 							<div class="styLNAmountBox" style="width:32.9mm;height:5mm;padding-top:1mm">
 								<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="Desc">Line 28k - backup Withholding Indicator</xsl:with-param>
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/TotalPaymentsAmt/@backupWithholdingTypeCd"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TotalPaymentsAmt/@backupWithholdingTypeCd"/>
 								</xsl:call-template>
 								<xsl:call-template name="LinkToLeftoverDataTableInline">
 								<xsl:with-param name="Desc">Line 28k - backup Withholding Amount</xsl:with-param>
-								<xsl:with-param name="TargetNode" select="  $Form1120LData/TotalPaymentsAmt/@backupWithholdingAmt"/>
+								<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TotalPaymentsAmt/@backupWithholdingAmt"/>
 								</xsl:call-template>
 								<span style="font-size:6pt;">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/TotalPaymentsAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TotalPaymentsAmt"/>
 								</xsl:call-template>
 								</span>
 							</div>
 						</div>
 						<!-- line 29 -->
 						<div style="width:181mm;float:right;clear:none;">
-							<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:2mm;">29</div>
-							<div class="styLNDesc" style="width:132mm;height:4.5mm;">
+							<div class="styLNLeftNumBox" style="height:6mm;padding-top:2mm;">29</div>
+							<div class="styLNDesc" style="width:132mm;height:6mm;">Estimated tax penalty. Check if Form 2220 is attached
 								<label>
 									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/Form2220AttachedInd"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/Form2220AttachedInd"/>
 										<xsl:with-param name="BackupName">IRS1120L Form2220 Attached</xsl:with-param>
-									</xsl:call-template>
-									 Estimated tax penalty. Check if Form 2220 is attached
+									</xsl:call-template>									 
 									<span style="width:2px;"/>
 								</label>
 								<!--Dotted Line-->
 								<span style="letter-spacing:4.5mm;font-weight:bold">........</span>
-								<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+								<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 								<span style="width:8px"/>
 								<input type="checkbox" alt="Form2220 Attached" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="  $Form1120LData/Form2220AttachedInd"/>
+										<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/Form2220AttachedInd"/>
 										<xsl:with-param name="BackupName">IRS1120L Form2220 Attached</xsl:with-param>
 									</xsl:call-template>
 								</input>
 								<xsl:call-template name="SetFormLinkInline">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/Form2220AttachedInd"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/Form2220AttachedInd"/>
 								</xsl:call-template>
 							</div>
-							<div class="styLNRightNumBox" style="height:4.5mm;padding-right:1mm">29</div>
-							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
+							<div class="styLNRightNumBox" style="height:6mm;padding-right:1mm;padding-top:1.5mm;">29</div>
+							<div class="styLNAmountBox" style="height:6mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/EsPenaltyAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/EsPenaltyAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -1221,15 +1252,14 @@ Credits <span style="width:7.3mm;"/>
 							<div class="styLNLeftNumBox" style="height:4.5mm;">30</div>
 							<div class="styLNDesc" style="width:132mm;height:4.5mm;">
 								<span style="float: left; clear: none;">
-									<b>Amount owed.</b>If line 28k is smaller than the total of lines 26, 27 and 29, enter amount owed
-								 </span>
+									<b>Amount owed. </b> If line 28k is smaller than the total of lines 26, 27 and 29, enter amount owed</span>
 								<!--Dotted Line-->
-								<span class="styDotLn" style="float:right;padding-right:2mm;">...</span>
+								<span class="styDotLn" style="float:right;padding-right:2mm;">..</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;padding-right:1mm">30</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/BalanceDueAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/BalanceDueAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -1238,14 +1268,13 @@ Credits <span style="width:7.3mm;"/>
 							<div class="styLNLeftNumBox" style="height:4.5mm;">31</div>
 							<div class="styLNDesc" style="width:132mm;height:4.5mm;">
 								<span style="float: left; clear: none;">
-									<b>Overpayment.</b>
-									 If line 28k is larger than the total of lines 26, 27 and 29, enter amount overpaid</span>
+									<b>Overpayment. </b> If line 28k is larger than the total of lines 26, 27 and 29, enter amount overpaid</span>
 								<span class="styDotLn" style="float:right;padding-right:2mm;">..</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;padding-right:1mm">31</div>
 							<div class="styLNAmountBox" style="height:4.5mm;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/OverpaymentSection/OverpaymentAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/OverpaymentSection/OverpaymentAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -1254,27 +1283,27 @@ Credits <span style="width:7.3mm;"/>
 							<div class="styLNLeftNumBox" style="height:4.5mm;">32</div>
 							<div class="styLNDesc" style="width:79mm;height:4.5mm">
 								<span style="font-size:6pt;">Enter amount from line 31: </span>
-								<span class="styBoldText">Credited to 2019 estimated tax</span>
+								<span class="styBoldText">Credited to 2020 estimated tax</span>
 								<span style="width:1px"/>
-								<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+								<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 							</div>
 							<div class="styGenericDiv" style="width:32mm;height:4.5mm;padding-top:1mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120LData/OverpaymentSection /AppliedToEsTaxAmt"/>
+									<xsl:with-param name="TargetNode" select="$RtnDoc/IRS1120L/OverpaymentSection /AppliedToEsTaxAmt"/>
 								</xsl:call-template>
 							</div>
 							<div class="styLNDesc" style="width:21mm;height:4.5mm;font-size:6pt;">
 								<span class="styBoldText">Refunded</span>
 								<span style="width:2px"/>
-								<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+								<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 								<xsl:call-template name="SetFormLinkInline">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/OverpaymentSection/RefundAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/OverpaymentSection/RefundAmt"/>
 								</xsl:call-template>
 							</div>
 							<div class="styLNRightNumBoxNBB" style="height:4.5mm;padding-right:1mm">32</div>
 							<div class="styLNAmountBoxNBB" style="height:4.5mm;;width:32.9mm">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="  $Form1120LData/OverpaymentSection/RefundAmt"/>
+									<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/OverpaymentSection/RefundAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -1290,7 +1319,7 @@ Credits <span style="width:7.3mm;"/>
 						</tr>
 						<tr>
 							<td rowspan="2" style="border-bottom:1px solid black;padding-left:1mm;">
-								<img src="{$ImagePath}/1120_Bullet_Lg.gif" alt="LargeBullet"/>
+								<img src="{$ImagePath}/1120_Bullet_Lg.gif" alt="Large right pointing arrow"/>
 							</td>
 							<td style="width:52mm;border-right:1px solid black;border-bottom:1px solid black;vertical-align:bottom;">
 								<xsl:call-template name="PopulateReturnHeaderOfficer">
@@ -1304,7 +1333,7 @@ Credits <span style="width:7.3mm;"/>
 								</xsl:call-template>
 							</td>
 							<td rowspan="2" style="border-bottom:1px solid black;padding-left:1mm;">
-								<img src="{$ImagePath}/1120_Bullet_Lg.gif" alt="LargeBullet"/>
+								<img src="{$ImagePath}/1120_Bullet_Lg.gif" alt="Large right pointing arrow"/>
 							</td>
 							<td style="width:60mm;border-bottom:1px solid black;vertical-align:bottom;">
 								<xsl:call-template name="PopulateReturnHeaderOfficer">
@@ -1313,8 +1342,8 @@ Credits <span style="width:7.3mm;"/>
 							</td>
 							<td rowspan="2" style="width:40mm;border-bottom:1px solid black;padding-bottom:1mm;">
 								<div class="styGenericDiv" style="width:2px;"/>
-								<div style="border-right:3px solid black;border-left:3px solid black;border-bottom:3px solid black;border-top:3px solid black;float:right;" class="styGenericDiv">		
-May the IRS discuss this return<br/> with the preparer shown below <br/>(see instructions)?
+								<div style="border-right:3px solid black;border-left:3px solid black;border-bottom:3px solid black;border-top:3px solid black;float:right;padding-left:1mm;" class="styGenericDiv">		
+May the IRS discuss this return<br/> with the preparer shown below?. <br/>See instructions.
 <input class="styCkbox" alt="May IRS Discuss Return With Prep Yes" type="checkbox" name="Checkbox" id="dummyidyes" style="width:3mm;">
 										<xsl:call-template name="PopulateReturnHeaderOfficer">
 											<xsl:with-param name="TargetNode">AuthorizeThirdPartyYesCheckbox</xsl:with-param>
@@ -1326,7 +1355,7 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 											<xsl:with-param name="TargetNode">AuthorizeThirdPartyYesLabel</xsl:with-param>
 											<xsl:with-param name="BackupName">May IRS Discuss Return With Prep</xsl:with-param>
 										</xsl:call-template>Yes
-</label>
+									</label>
 									<input class="styCkbox" alt="May IRS Discuss Return With Prep No" type="checkbox" name="Checkbox" id="dummyidno" style="width:2.5mm;">
 										<xsl:call-template name="PopulateReturnHeaderOfficer">
 											<xsl:with-param name="TargetNode">AuthorizeThirdPartyNoCheckbox</xsl:with-param>
@@ -1338,7 +1367,7 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 											<xsl:with-param name="TargetNode">AuthorizeThirdPartyNoLabel</xsl:with-param>
 											<xsl:with-param name="BackupName">May IRS Discuss Return With Prep</xsl:with-param>
 										</xsl:call-template>No
-</label>
+									</label>
 								</div>
 							</td>
 						</tr>
@@ -1422,23 +1451,25 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 								<div class="styLNDesc" style="height:6mm;width:126mm;border-right:1px solid black;border-left:1px solid black;padding-left:1mm;">
 									<span class="styGenericDiv" style="">Firm's name 
 									<span style="width:2.2mm;"/>
-										<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+										<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 										<span style="width:4px;"/>
 									</span>
 									<div class="styGenericDiv" style="padding-right:.5mm;">
 										<xsl:call-template name="PopulateReturnHeaderPreparerFirm">
 											<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-											<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpFirmGrpPreparerFirmBusinessNameBusinessName1</xsl:with-param>
+											<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpFirmGrpPreparerFirmBusinessNameBusinessName1
+										</xsl:with-param>
 										</xsl:call-template>
 										<br/>
 										<xsl:call-template name="PopulateReturnHeaderPreparerFirm">
 											<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-											<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpFirmGrpPreparerFirmBusinessNameBusinessName2</xsl:with-param>
+											<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpFirmGrpPreparerFirmBusinessNameBusinessName2
+										</xsl:with-param>
 										</xsl:call-template>
 									</div>
 								</div>
 								<div class="styLNDesc" style="height:6mm;width:32mm;padding-left:1mm;">Firm's EIN
-									<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+									<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 									<span style="width:4px;"/>
 									<xsl:if test="$RtnHdrData/PreparerFirmGrp/PreparerFirmEIN">
 										<xsl:call-template name="PopulateReturnHeaderPreparerFirm">
@@ -1457,7 +1488,7 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 							<div style="width:164mm;float:left;clear:none;">
 								<div class="styLNDesc" style="width:126mm;border-right:1px solid black;border-left:1px solid black;padding-left:1mm;height:11mm;">
 									<div class="styGenericDiv" style="padding-right:.5mm;">Firm's address 
-									<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+									<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 									</div>
 									<div class="styGenericDiv" style="padding-right:.5mm;">
 										<xsl:call-template name="PopulateReturnHeaderPreparerFirm">
@@ -1470,7 +1501,7 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 											<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpFirmGrpAddressLine2</xsl:with-param>
 										</xsl:call-template>
 										<br/>
-										<xsl:if test="$RtnHdrData/PreparerFirmGrp/PreparerUSAddress">
+										<xsl:if test="(($RtnHdrData/PreparerFirmGrp/PreparerUSAddress!='') and ($Location='RET'))">
 											<xsl:call-template name="PopulateReturnHeaderPreparerFirm">
 												<xsl:with-param name="TargetNode">CityNm</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpFirmGrpUSAddressCity</xsl:with-param>
@@ -1486,7 +1517,7 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 												<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpFirmGrpUSAddressZip</xsl:with-param>
 											</xsl:call-template>
 										</xsl:if>
-										<xsl:if test="$RtnHdrData/PreparerFirmGrp/PreparerForeignAddress">
+										<xsl:if test="(($RtnHdrData/PreparerFirmGrp/PreparerForeignAddress!='') and ($Location='RET'))">
 											<xsl:call-template name="PopulateReturnHeaderPreparerFirm">
 												<xsl:with-param name="TargetNode">CityNm</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpFirmGrpForeignAddressCity</xsl:with-param>
@@ -1529,19 +1560,19 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 						<div style="float:left;">
 							<span class="styBoldText">For Paperwork Reduction Act Notice, see separate instructions.</span>
 							<span style="width:13mm;"/>                        
-  Cat. No. 11480E 
-    </div>
+							  Cat. No. 11480E 
+						</div>
 						<div style="float:right;">
 							<span style="width:40px;"/>  
- Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
-</div>
+						 Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2019)
+						</div>
 					</div>
 					<!--div class="pageEnd" /-->
 					<!-- END Page Break and Footer-->
 					<!--Begin Page 2 -->
 					<!-- Page Header -->
 					<div class="styBB" style="width:187mm;padding-top:.5mm;float:none;">
-						<div style="float:left;">Form 1120-L (2018)<span style="width:148mm;"/>
+						<div style="float:left;">Form 1120-L (2019)<span style="width:148mm;"/>
 						</div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span>
 						</div>
@@ -1551,7 +1582,7 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartName" style="width:23mm;">Schedule A</div>
 						<div class="styPartDesc" style="width:164mm;">Dividends, Inclusions, Dividends-Received Deduction, and Other Special Deductions
-<span class="styNormalText">(see instructions)</span>
+							<span class="styNormalText">(see instructions)</span>
 						</div>
 					</div>
 					<!-- END Schedule A Title -->
@@ -1562,20 +1593,20 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 								<tr scope="col">
 									<th scope="col" class="styBB" colspan="2" style="width:85mm;border-bottom-width:0px;float:none;clear:none;">
 										<div class="styPartDesc" style="width:84mm;text-align:center;">Dividends subject to proration
-	</div>
+										</div>
 									</th>
 									<th class="styBB" style="width:11mm;height:4mm;border-right-width:1px;float:none;clear:none;">
 										<span style="width:1px;font-weight:bold;"/>
 									</th>
 									<th scope="col" class="styLNAmountBox" style="width:45mm;height:8mm;text-align:center;font-size:7pt; padding-top:1mm;font-weight:normal;border-left-width:0px;float:none;clear:none;">
 										<b>(a)</b> Dividends and inclusions
-</th>
+									</th>
 									<th scope="col" class="styIRS1120LNPercentBox" style="height:8mm;font-size:7pt;float:none;clear:none; padding-top:0mm;font-weight:normal;width:15mm;padding-left:4mm;">
 										<b>(b)</b>%
-</th>
+									</th>
 									<th scope="col" class="styLNAmountBox" style="width:40mm;height:8mm;text-align:center;font-size:7pt;  padding-top:1mm;font-weight:normal;" colspan="2">
 										<b>(c)</b>Deductions <br/>(<b>(a)</b> times <b>(b)</b>)
-</th>
+									</th>
 								</tr>
 							</thead>
 							<tfoot/>
@@ -1584,8 +1615,8 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 								<tr>
 									<td class="styLNLeftNumBox" style="height:4mm;padding-left:3mm;width:5mm;float:none;clear:none;">1</td>
 									<td class="styLNDesc" style="width:65mm;height:5mm;display:inline;text-align:left;float:none;clear:none">
-   Dividends from less-than-20%-owned domestic corporations (other than debt-financed stock)
-<span class="styDotLn" style="float:right;padding-right:2mm;">........</span>
+									   Dividends from less-than-20%-owned domestic corporations (other than debt-financed stock)
+										<span class="styDotLn" style="float:right;padding-right:2mm;">........</span>
 									</td>
 									<td class="styBB" style="width:4mm;height:4mm;vertical-align:bottom;border-left-width:1px;text-align:center;float:none;clear:none">
 										<span style="width:1px;font-weight:bold">1</span>
@@ -1646,11 +1677,9 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/DebtFincdStockCorpDivRcvdAmt"/>
 										</xsl:call-template>
 									</td>
-									<td class="styIRS1120LNPercentBox" style="height:5mm;vertical-align:bottom; font-size:6pt;padding-left:4mm;float:none;clear:none;">see instructions
-<!--<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/DebtFincdStockCorpPct"/>
-										</xsl:call-template>
--->									</td>
+									<td class="styIRS1120LNPercentBox" style="height:5mm;vertical-align:bottom; font-size:6pt;padding-left:4mm;float:none;clear:none;">
+										see instructions
+									</td>
 									<td class="styLNAmountBox" style="width:40mm;vertical-align:bottom;float:none;clear:none;" colspan="2">
 										<span style="width:1px;"/>
 										<!-- Form to Form Link -->
@@ -1673,14 +1702,14 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 									<td class="styBB" style="width:10mm;height:5mm;border-left-width:1px;text-align:center;float:none;clear:none;">
 										<span style="width:1px;font-weight:bold;padding-top:3mm;">4</span>
 									</td>
-									<td class="styLNAmountBox" style="width:40mm;height:5mm;padding-top:3mm;float:none;clear:none;">
+									<td class="styLNAmountBox" style="width:40mm;height:5mm;;float:none;clear:none;padding-top:3mm;">
 										<span style="width:1px;"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/PubUtilityBelow20DivRcvdAmt"/>
 										</xsl:call-template>
 									</td>
-									<td class="styIRS1120LNPercentBox" style="height:5mm;padding-left:3mm;padding-top:3mm;float:none;clear:none;">42</td>
-									<td class="styLNAmountBox" style="width:40mm;height:5mm;padding-top:3mm;float:none;clear:none;" colspan="2">
+									<td class="styIRS1120LNPercentBox" style="height:5mm;padding-left:3mm;padding-top:3mm;float:none;clear:none;">23.3</td>
+									<td class="styLNAmountBox" style="width:40mm;height:5mm;;float:none;clear:none;padding-top:3mm;" colspan="2">
 										<span style="width:1px;"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/PubUtilityBelow20DedAmt"/>
@@ -1697,14 +1726,14 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 									<td class="styBB" style="width:10mm;height:4mm;border-left-width:1px;text-align:center;float:none;clear:none;">
 										<span style="width:1px;font-weight:bold;padding-top:3mm;">5</span>
 									</td>
-									<td class="styLNAmountBox" style="width:40mm;height:4mm;padding-top:3mm;float:none;clear:none;">
+									<td class="styLNAmountBox" style="width:40mm;height:4mm;;float:none;clear:none;padding-top:3mm;">
 										<span style="width:1px;"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/PubUtility20OrMoreDivRcvdAmt"/>
 										</xsl:call-template>
 									</td>
-									<td class="styIRS1120LNPercentBox" style="height:4mm;padding-left:3mm;padding-top:3mm;float:none;clear:none;">48</td>
-									<td class="styLNAmountBox" style="width:40mm;height:4mm;padding-top:3mm;float:none;clear:none;" colspan="2">
+									<td class="styIRS1120LNPercentBox" style="height:4mm;padding-left:3mm;padding-top:3mm;float:none;clear:none;">26.7</td>
+									<td class="styLNAmountBox" style="width:40mm;height:4mm;;float:none;clear:none;padding-top:3mm;" colspan="2">
 										<span style="width:1px;"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/PubUtility20OrMoreDedAmt"/>
@@ -1717,8 +1746,8 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 									<td class="styLNDesc" style="width:84mm;height:4mm;;float:none;clear:none;">
 										Dividends from less-than-20%-owned foreign corporations and certain foreign sales corporations (FSCs)
 										<!--Dotted Line-->
-										<span class="styDotLn" style="float:right;padding-right:2mm;">......</span>
-										</td>
+										<span class="styDotLn" style="float:right;padding-right:2mm;">....</span>
+									</td>
 									<td class="styBB" style="width:10mm;height4mm;border-left-width:1px;text-align:center;vertical-align:bottom;float:none;clear:none;">
 										<span style="width:1px;font-weight:bold;">6</span>
 									</td>
@@ -1789,8 +1818,8 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 								<tr>
 									<td class="styLNLeftNumBox" style="height:4mm;padding-left:3mm;float:none;clear:none;">9</td>
 									<td class="styLNDesc" style="width:84mm;height:4mm;font-size:7pt;float:none;clear:none;">
-										<span style="float: left; clear: none;">Dividends from certain affiliated company dividends</span>
-										<span class="styDotLn" style="float:right;padding-right:2mm;">..</span>
+										<span style="float: left; clear: none;">Dividends from certain affiliated companies</span>
+										<span class="styDotLn" style="float:right;padding-right:2mm;">.....</span>
 									</td>
 									<td class="styBB" style="width:10mm;height:4mm;vertical-align:bottom;border-left-width:1px;text-align:center;float:none;clear:none;">
 										<span style="width:1px;font-weight:bold">9</span>
@@ -1814,9 +1843,9 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 									<td class="styLNLeftNumBox" style="height:4mm;float:none;clear:none;">10</td>
 									<td class="styLNDesc" style="width:84mm;height:4mm;float:none;clear:none;">
 										<span style="float: left; clear: none;">Gross dividends-received deduction. Add lines 1 through 9
-<!--<span style="float: left; clear: none;"> through 9</span>-->
-											<!--Dotted Line-->
-											<!--<span class="styDotLn" style="float:right;padding-right:2mm;">.</span>-->
+										<!--<span style="float: left; clear: none;"> through 9</span>-->
+										<!--Dotted Line-->
+										<!--<span class="styDotLn" style="float:right;padding-right:2mm;">.</span>-->
 										</span>
 									</td>
 									<td class="styBB" style="width:10mm;height:4mm;vertical-align:bottom;border-left-width:1px;text-align:center;float:none;clear:none;">
@@ -1840,7 +1869,7 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 									<td class="styLNLeftNumBox" style="height:4mm;float:none;clear:none;">11</td>
 									<td class="styLNDesc" style="width:84mm;height:4mm;float:none;clear:none;">
 										<span style="float: left; clear: none;">Company share percentage
-</span>
+										</span>
 										<!--Dotted Line-->
 										<span class="styDotLn" style="float:right;padding-right:2mm;">........</span>
 									</td>
@@ -1909,23 +1938,21 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 										<span style="float: left; clear: none;">Affiliated company dividends</span>
 										<span class="styDotLn" style="float:right;padding-right:2mm;">.........</span>
 									</td>
-									<td class="styBB" style="width:10mm;height:7mm;vertical-align:bottom;  float:none;clear:none; border-left-width:1px;text-align:center">
+									<td class="styBB" style="width:10mm;height:7mm;vertical-align:bottom;float:none;clear:none; border-left-width:1px;text-align:center">
 										<span style="width:1px;font-weight:bold;padding-right:3mm">13</span>
 									</td>
 									<td class="styLNAmountBox" style="width:40mm;height:7mm;vertical-align:bottom;float:none;clear:none;">
 										<xsl:call-template name="SetFormLinkInline">
 											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/AffiliatedCompanyDivRcvdAmt"/>
 										</xsl:call-template>
+										<br/>
 										<span style="width:1px;"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/AffiliatedCompanyDivRcvdAmt"/>
 										</xsl:call-template>
 									</td>
 									<td class="styIRS1120LNPercentBox" style="height:5mm;padding-top:4mm; padding-bottom: 0mm;padding-left:3mm;font-size:6pt;text-align:center;float:none;clear:none;">see instructions
-<!--<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/AffiliatedCompanyDivPct"/>
-										</xsl:call-template>
--->									</td>
+									</td>
 									<td class="styLNAmountBox" style="width:40mm;height:4mm;vertical-align:bottom;float:none;clear:none;" colspan="2">
 										<span style="width:1px;"/>
 										<xsl:call-template name="PopulateAmount">
@@ -1964,7 +1991,7 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 								<tr>
 									<td class="styLNLeftNumBox" style="height:7mm;float:none;clear:none;">15</td>
 									<td class="styLNDesc" style="width:84mm;height:7mm;float:none;clear:none;">
-										Dividends from foreign corporations not included on lines 3, 6, 
+										Dividends from foreign corporations not included on line 3, 6, 
 										<!--Dotted Line-->
 										<span style="float: left; clear: none;">7, 8, or 14(including hybrid dividends)</span>
 										<!-- No Dotted Line-->
@@ -2003,14 +2030,14 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 										</xsl:call-template>
 									</td>
 									<td class="styIRS1120LNPercentBox" style="height:4mm;padding-bottom: 0mm;padding-left:3mm;font-size:6pt;text-align:center;float:none;clear:none;">see instructions
-<!--<xsl:call-template name="PopulateText">
+										<!--<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/Section965aInclusionPct"/>
-										</xsl:call-template>
--->									</td>
+										</xsl:call-template>-->
+									</td>
 									<td class="styLNAmountBox" style="width:40mm;height:4mm;vertical-align:bottom;float:none;clear:none;" colspan="2">
 										<span style="width:1px;"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/Section965aInclusionDedAmt"/>
+											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/Section965cDeductionAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -2037,6 +2064,10 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 										100
 									</td>
 									<td class="styLNAmountBox" style="width:40mm;height:7mm;vertical-align:bottom;border-bottom-width:1px;float:none;clear:none;" colspan="2">
+									<!-- Form to Form Link -->
+										<xsl:call-template name="SetFormLinkInline">
+											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/SubpartFLowTierCFCDedAmt"/>
+										</xsl:call-template>
 										<span style="width:1px;"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/SubpartFLowTierCFCDedAmt"/>
@@ -2057,6 +2088,10 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 										<span style="width:1px;font-weight:bold;padding-right:3mm;">17b</span>
 									</td>
 									<td class="styLNAmountBox" style="width:40mm;height:4mm;vertical-align:bottom;float:none;clear:none;">
+									<!-- Form to Form Link -->
+										<xsl:call-template name="SetFormLinkInline">
+											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/SubpartFHybridDivRcvdAmt"/>
+										</xsl:call-template>
 										<span style="width:1px;"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/SubpartFHybridDivRcvdAmt"/>
@@ -2073,16 +2108,17 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 								<tr>
 									<td class="styLNLeftNumBox" style="height:7mm;float:none;clear:none;padding-left:4mm;">c</td>
 									<td class="styLNDesc" style="width:84mm;height:7mm;float:none;clear:none;">
-										Other inclusions from CFCs under subpart F not included on line 16, 17a or 17b, or 18 (attach Form(s) 5471) 
-										<!--Dotted Line-->
-										<span style="float: left; clear: none;">(see instructions)</span>
-										<!-- No Dotted Line-->
-										<span class="styDotLn" style="float:right;padding-right:2mm;">.............</span>
+										Other inclusions from CFCs under subpart F not included on line 16, 17a, 17b, or 18 (attach Form(s) 5471) (see instructions)										
+										<!-- No Dotted Line-->										
 									</td>
 									<td class="styBB" style="width:10mm;height:4mm;vertical-align:bottom;border-left-width:1px;text-align:center;float:none;clear:none;">
 										<span style="width:1px;font-weight:bold;padding-right:3mm;">17c</span>
 									</td>
 									<td class="styLNAmountBox" style="width:40mm;height:4mm;vertical-align:bottom;float:none;clear:none;">
+									<!-- Form to Form Link -->
+										<xsl:call-template name="SetFormLinkInline">
+											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/OtherSubpartFNotIncludedAmt"/>
+										</xsl:call-template>
 										<span style="width:1px;"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/OtherSubpartFNotIncludedAmt"/>
@@ -2106,9 +2142,13 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 										<span class="styDotLn" style="float:right;padding-right:2mm;">.............</span>
 									</td>
 									<td class="styBB" style="width:10mm;height:4mm;vertical-align:bottom;border-left-width:1px;text-align:center;float:none;clear:none;">
-										<span style="width:1px;font-weight:bold;padding-right:3mm;">17c</span>
+										<span style="width:1px;font-weight:bold;padding-right:3mm;">18</span>
 									</td>
 									<td class="styLNAmountBox" style="width:40mm;height:4mm;vertical-align:bottom;float:none;clear:none;">
+									<!-- Form to Form Link -->
+										<xsl:call-template name="SetFormLinkInline">
+											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/GILTIReceivedAmt"/>
+										</xsl:call-template>
 										<span style="width:1px;"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/GILTIReceivedAmt"/>
@@ -2150,7 +2190,7 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 									<td class="styLNDesc" style="width:84mm;height:7mm;float:none;clear:none;">
 										<span style="float: left; clear: none;">
 											<span class="styBoldText">Total dividends and inclusions.  </span>
- Add lines 1 through 19, </span>
+											  Add lines 1 through 19, </span>
 										<!--Dotted Line-->
 										<span style="float: left; clear: none;">column (a). Enter here and on Schedule B, line 2 </span>
 										<!-- No Dotted Line-->
@@ -2188,7 +2228,10 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 									<td class="styIRS1120LNPercentBox" style="border-bottom-width: 1px;height:4mm;vertical-align:bottom;background-color:lightgrey;float:none;clear:none;">
 										<span style="width:1px;"/>
 									</td>
-									<td class="styLNAmountBox" style="width:40mm;height:4mm;vertical-align:bottom;border-bottom-width:1px;float:none;clear:none;" colspan="2">
+									<td class="styLNAmountBox" style="width:40mm;height:4mm;vertical-align:bottom;border-bottom-width:1px;float:none;clear:none;" colspan="2">									<!-- Form to Form Link -->
+										<xsl:call-template name="SetFormLinkInline">
+											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/Section250DeductionAmt"/>
+										</xsl:call-template>
 										<span style="width:1px;"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/Section250DeductionAmt"/>
@@ -2200,8 +2243,8 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 									<td class="styLNLeftNumBox" style="height:7mm;float:none;clear:none;border-bottom: 1px solid black;">22</td>
 									<td class="styLNDesc" style="width:84mm;height:7mm;float:none;clear:none;border-bottom: 1px solid black;">
 										<span class="styBoldText">Total deductions.</span> 
-										Add lines 12, 13, 14, 16, 17a, and 21 column (c). Enter here and on page 1, line 21a.
-										<!-- No Dotted Line-->
+										Add lines 12, 13, 14, 16, 17a, and 21, column (c).  Enter here and on page 1, line 21a
+										<!-- Dotted Line-->
 										<span class="styDotLn" style="float:right;padding-right:2mm;">....</span>
 									</td>
 									<td class="styBB" style="width:10mm;height:7mm;vertical-align:bottom;border-left-width:1px;text-align:center;border-bottom-width: 1px;float:none;clear:none;">
@@ -2235,7 +2278,7 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left:3mm">1</div>
 						<div class="styLNDesc" style="height:4mm;">
 							<span style="float: left; clear: none;">Interest (excluding tax-exempt interest)
-<!-- Form to Form Link -->
+							<!-- Form to Form Link -->
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$IRS1120LScheduleB/TaxableInterestAmt"/>
 								</xsl:call-template>
@@ -2310,7 +2353,6 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 							</xsl:call-template>
 						</div>
 					</div>
-
 					<!-- SCH B line 6 -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:5mm;padding-left:3mm">6</div>
@@ -2326,21 +2368,19 @@ May the IRS discuss this return<br/> with the preparer shown below <br/>(see ins
 							</xsl:call-template>
 						</div>
 					</div>
-
-
 					<!-- Page Break and Footer-->
 					<div class="pageEnd" style="width:187mm;padding-top:1mm;clear:all;float:none;">
 						<div style="float:left;"/>
 						<div style="float:right;">
 							<span style="width:40px;"/>  
-Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
-</div>
+							Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2019)
+						</div>
 					</div>
 					<!-- END Page Break and Footer-->
 					<!--Begin Page 3 -->
 					<!-- Page Header -->
 					<div class="styBB" style="width:187mm;padding-top:.5mm;clear:all;float:none">
-						<div style="float:left;">Form 1120-L (2018)<span style="width:148mm;"/>
+						<div style="float:left;">Form 1120-L (2019)<span style="width:148mm;"/>
 						</div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">3</span>
 						</div>
@@ -2349,7 +2389,8 @@ Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
 					<!-- BEGIN Schedule F Title -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartName" style="width:23mm;">Schedule F</div>
-						<div class="styPartDesc" style="width:164mm;height:auto;">Increase (Decrease) in Reserves<span class="styNormalText">(section 807) </span> <span class="styNormalText">(see instructions)</span>
+						<div class="styPartDesc" style="width:164mm;height:auto;">Increase (Decrease) in Reserves<span class="styNormalText">(section 807) </span>
+						 <span class="styNormalText">(see instructions)</span>
 						</div>
 					</div>
 					<!-- - table header  -->
@@ -2361,7 +2402,7 @@ Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
 							<b>(a)</b>Beginning of tax year</div>
 						<div class="styLNAmountBox" style="height:4.5mm;border-bottom-width:1px;text-align:center">
 							<b>(b)</b> End of tax year
-</div>
+						</div>
 					</div>
 					<!-- SCH F line 1 -->
 					<div style="width:187mm;clear:all;">
@@ -2371,13 +2412,13 @@ Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
 							<span class="styDotLn" style="float:right;padding-right:2mm;">................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.5mm;">1 </div>
-						<div class="styLNAmountBox" style="border-bottom-width:1px;height:4.5mm;">
+						<div class="styLNAmountBox" style="border-bottom-width:1px;height:4.5mm;width:40mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/LifeInsuranceReservesBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNRightNumBox" style="height:4.5mm;border-bottom-width:1px"/>
-						<div class="styLNAmountBox" style="height:4.5mm;border-bottom-width:1px">
+						<!--<div class="styLNRightNumBox" style="height:4.5mm;border-bottom-width:1px"/>-->
+						<div class="styLNAmountBox" style="height:4.5mm;border-bottom-width:1px;width:32mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/LifeInsuranceReservesEOYAmt"/>
 							</xsl:call-template>
@@ -2391,12 +2432,12 @@ Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
 							<span class="styDotLn" style="float:right;padding-right:2mm;">............</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.5mm;">2 </div>
-						<div class="styLNAmountBox" style="border-bottom-width:1px;height:4.5mm;">
+						<div class="styLNAmountBox" style="border-bottom-width:1px;height:4.5mm;width:40mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/UnearnedPremUnpaidLossesBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNRightNumBox" style="height:4.5mm;border-bottom-width:1px"/>
+						<!--<div class="styLNRightNumBox" style="height:4.5mm;border-bottom-width:1px"/>-->
 						<div class="styLNAmountBox" style="height:4.5mm;border-bottom-width:1px">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/UnearnedPremUnpaidLossesEOYAmt"/>
@@ -2411,12 +2452,12 @@ Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
 							<span class="styDotLn" style="float:right;padding-right:2mm;">................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.5mm;">3 </div>
-						<div class="styLNAmountBox" style="border-bottom-width:1px;height:4.5mm;">
+						<div class="styLNAmountBox" style="border-bottom-width:1px;height:4.5mm;width:40mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/SupplementaryContractsBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNRightNumBox" style="height:4.5mm;border-bottom-width:1px"/>
+						<!--<div class="styLNRightNumBox" style="height:4.5mm;border-bottom-width:1px"/>-->
 						<div class="styLNAmountBox" style="height:4.5mm;border-bottom-width:1px">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/SupplementaryContractsEOYAmt"/>
@@ -2431,12 +2472,12 @@ Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
 							<span class="styDotLn" style="float:right;padding-right:2mm;">..........</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.5mm;">4 </div>
-						<div class="styLNAmountBox" style="border-bottom-width:1px;height:4.5mm;">
+						<div class="styLNAmountBox" style="border-bottom-width:1px;height:4.5mm;width:40mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/DividendAccumulationsBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNRightNumBox" style="height:4.5mm;border-bottom-width:1px"/>
+						<!--<div class="styLNRightNumBox" style="height:4.5mm;border-bottom-width:1px"/>-->
 						<div class="styLNAmountBox" style="height:4.5mm;border-bottom-width:1px">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/DividendAccumulationsEOYAmt"/>
@@ -2451,12 +2492,12 @@ Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
 							<span class="styDotLn" style="float:right;padding-right:2mm;">..................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.5mm;">5 </div>
-						<div class="styLNAmountBox" style="border-bottom-width:1px;height:4.5mm;">
+						<div class="styLNAmountBox" style="border-bottom-width:1px;height:4.5mm;width:40mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/AdvancePremiumsBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNRightNumBox" style="height:4.5mm;border-bottom-width:1px"/>
+						<!--<div class="styLNRightNumBox" style="height:4.5mm;border-bottom-width:1px"/>-->
 						<div class="styLNAmountBox" style="height:4.5mm;border-bottom-width:1px">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/AdvancePremiumsEOYAmt"/>
@@ -2471,12 +2512,12 @@ Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
 							<span class="styDotLn" style="float:right;padding-right:2mm;">..............</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.5mm;">6 </div>
-						<div class="styLNAmountBox" style="border-bottom-width:1px;height:4.5mm;">
+						<div class="styLNAmountBox" style="border-bottom-width:1px;height:4.5mm;width:40mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/SpecialContingencyBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNRightNumBox" style="height:4.5mm;border-bottom-width:1px"/>
+						<!--<div class="styLNRightNumBox" style="height:4.5mm;border-bottom-width:1px"/>-->
 						<div class="styLNAmountBox" style="height:4.5mm;border-bottom-width:1px">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/SpecialContingencyEOYAmt"/>
@@ -2487,15 +2528,15 @@ Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm">7 </div>
 						<div class="styLNDesc" style="width:99mm;height:4.5mm;">Add lines 1 through 6
-<span class="styDotLn" style="float:right;padding-right:2mm;">.................</span>
+							<span class="styDotLn" style="float:right;padding-right:2mm;">.................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.5mm;">7 </div>
-						<div class="styLNAmountBox" style="border-bottom-width:1px;height:4.5mm;">
+						<div class="styLNAmountBox" style="border-bottom-width:1px;height:4.5mm;width:40mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/TotalReservesBOYAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNRightNumBox" style="height:4.5mm;border-bottom-width:1px"/>
+						<!--<div class="styLNRightNumBox" style="height:4.5mm;border-bottom-width:1px"/>-->
 						<div class="styLNAmountBox" style="height:4.5mm;border-bottom-width:1px">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/TotalReservesEOYAmt"/>
@@ -2506,8 +2547,9 @@ Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left:3mm">8 </div>
 						<div class="styLNDesc" style="width:139mm;height:4mm;">
-Increase (decrease) in reserves under section 807.  Subtract line 7, coloumn (a) from line 7, coloumn (b)
-</div>
+							Increase (decrease) in reserves under section 807.  Subtract line 7, column (a) from line 7, column (b)
+							<span class="styDotLn" style="float:right;padding-right:2mm;">..</span>
+						</div>
 						<div class="styLNRightNumBoxNBB" style="height:4.5mm;">8</div>
 						<div class="styLNAmountBoxNBB" style="height:4.5mm;">
 							<xsl:call-template name="PopulateAmount">
@@ -2516,28 +2558,56 @@ Increase (decrease) in reserves under section 807.  Subtract line 7, coloumn (a)
 						</div>
 					</div>
 					<!-- SCH F line 9 -->
-					<!-- Part II line 9 -1-->
+					<!-- Part II line 9a -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4mm;padding-left:3mm">9</div>
-						<div class="styLNDesc" style="width:99mm;height:4mm;">
-						Tax-exempt interest and the increase in policy cash value of section 264(f) policies as
-defined in section 805(a)(4)(F)
-							<span class="styDotLn" style="float:right;padding-right:2mm;">..........</span>
+						<div class="styLNLeftNumBox" style="height:5mm;padding-left:3mm">9a</div>
+						<div class="styLNDesc" style="width:99mm;height:5mm;">
+						Tax-exempt interest
+							<span class="styDotLn" style="float:right;padding-right:2mm;">.................</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:8mm;padding-top:3mm;border-bottom-width:1px;">9</div>
-						<div class="styLNAmountBox" style="width:32mm;border-bottom-width:1px;height:8mm;border-bottom-width:1px;padding-top:4mm;">
+						<div class="styLNRightNumBox" style="height:5mm;padding-top:1mm;border-bottom-width:1px;">9a</div>
+						<div class="styLNAmountBox" style="width:32mm;border-bottom-width:1px;height:5mm;border-bottom-width:1px;padding-top:1mm;">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/TaxExemptInterestAmt"/>
+							</xsl:call-template>
+						</div>
+						<div class="styLNRightNumBox" style="height:5mm;background-color:lightgrey;border-bottom-width:0px;border-top-width:1px;"/>
+						<div class="styLNAmountBox" style="height:5mm;background-color:lightgrey;border-bottom-width:0px;border-top-width:1px;"/>
+					</div>
+				<!-- Part II line 9b -->
+					<div style="width:187mm;">
+						<div class="styLNLeftNumBox" style="height:7mm;padding-left:5.0mm">b</div>
+						<div class="styLNDesc" style="width:99mm;height:7mm;">
+						 Increase in policy cash value of section 264(f) policies as defined in section 805(a)(4)(F)
+							<span class="styDotLn" style="float:right;padding-right:2mm;">...................</span>
+						</div>
+						<div class="styLNRightNumBox" style="height:7mm;padding-top:3mm;border-bottom-width:1px;">9b</div>
+						<div class="styLNAmountBox" style="width:32mm;border-bottom-width:1px;height:7mm;border-bottom-width:1px;padding-top:3mm;">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/IncrPolicyCashValueSect264fAmt"/>
+							</xsl:call-template>
+						</div>
+							<div class="styLNRightNumBox" style="height:7mm;background-color:lightgrey;border-bottom-width:0px;border-top-width:0px;"/>
+						<div class="styLNAmountBox" style="height:7mm;background-color:lightgrey;border-bottom-width:0px;border-top-width:0px;"/>
+					</div>
+		<!-- Part II line 9c -->
+					<div style="width:187mm;">
+						<div class="styLNLeftNumBox" style="height:6mm;padding-left:5.0mm;padding-top:1mm">c</div>
+						<div class="styLNDesc" style="width:99mm;height:6mm;padding-top:1mm">
+						Add lines 9a and 9b
+							<span class="styDotLn" style="float:right;padding-right:2mm;">.................</span>
+						</div>
+						<div class="styLNRightNumBox" style="height:6mm;padding-top:2mm;border-bottom-width:1px;">9c</div>
+						<div class="styLNAmountBox" style="width:32mm;border-bottom-width:1px;height:6mm;border-bottom-width:1px;padding-top:2mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/TaxExemptInterestIncrInPlcyAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNRightNumBox" style="height:8mm;background-color:lightgrey;border-bottom-width:1px;border-top-width:1px;"/>
-						<div class="styLNAmountBox" style="height:8mm;background-color:lightgrey;border-bottom-width:1px;border-top-width:1px;"/>
-					</div>
-
-
+							<div class="styLNRightNumBox" style="height:6mm;background-color:lightgrey;border-bottom-width:0px;border-top-width:0px;"/>
+						<div class="styLNAmountBox" style="height:6mm;background-color:lightgrey;border-bottom-width:0px;border-top-width:0px;"/>
+					</div>				
 					<!-- SCH F line 10 -->
-					<!--Customer approved - When data value is longer then 16 digits expand the width of the 
-amount box so the data value can be displayed properly.
+					<!--Customer approved - When data value is longer then 16 digits expand the width of the amount box so the data value can be displayed properly.
 Otherwise display the data value in an amount box with a normal width.-->
 					<div style="width:187mm;">
 						<xsl:choose>
@@ -2563,10 +2633,10 @@ Otherwise display the data value in an amount box with a normal width.-->
 									</div>
 									<div class="styLNRightNumBox" style="height:4.5mm;border-top-width:0px;border-bottom-width:1px;">10</div>
 									<div class="styLNAmountBox" style="height:4.5mm;border-top-width:0px;border-bottom-width:1px;">
-<!--									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/PolicyholderSharePct"/>
-									</xsl:call-template>
--->								30%	</div>
+<!--										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleF/PolicyholderSharePct"/>
+										</xsl:call-template>-->30%
+									</div>
 								</div>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -2575,9 +2645,9 @@ Otherwise display the data value in an amount box with a normal width.-->
 					<div style="width:187mm;clear:all;">
 						<div class="styLNLeftNumBox" style="height:4.5mm;">11</div>
 						<div class="styLNDesc" style="width:139mm;height:4mm;">
-Policyholders share of tax-exempt interest and the increase in policy cash value of section 264(f)
-  <span style="float: left; clear: none;">policies as defined in section 805(a)(4)(F). Multiply line 9 by line 10</span>
-							<span class="styDotLn" style="float:right;padding-right:2mm;">...........</span>
+							Policyholders share of tax-exempt interest and the increase in policy cash value of section 264(f)
+							<span style="float: left; clear: none;">policies as defined in section 805(a)(4)(F). Multiply line 9c by line 10</span>
+							<span class="styDotLn" style="float:right;padding-right:2mm;">............</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm">11</div>
 						<div class="styLNAmountBox" style="height:8mm;padding-top:4mm">
@@ -2591,9 +2661,9 @@ Policyholders share of tax-exempt interest and the increase in policy cash val
 						<div class="styLNLeftNumBox" style="height:4.5mm;">12</div>
 						<div class="styLNDesc" style="width:139mm;height:4mm;">
 							<span class="styBoldText">Net increase (decrease) in reserves. </span>
- Subtract line 11 from line 8. If an increase, enter here and on 
-  <span style="float: left; clear: none;">page 1, line 10. If a (decrease), enter here and on page 1, line 2</span>
-							<span class="styDotLn" style="float:right;padding-right:2mm;">.............</span>
+							 Subtract line 11 from line 8. If an increase, enter here and on 
+							<span style="float: left; clear: none;">page 1, line 10. If a decrease, enter here and on page 1, line 2</span>
+							<span class="styDotLn" style="float:right;padding-right:2mm;">..............</span>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:8mm;padding-top:4mm">12</div>
 						<div class="styLNAmountBoxNBB" style="height:8mm;padding-top:4mm">
@@ -2605,7 +2675,8 @@ Policyholders share of tax-exempt interest and the increase in policy cash val
 					<!-- BEGIN Schedule G Title -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartName" style="width:23mm;">Schedule G</div>
-						<div class="styPartDesc" style="width:164mm;">Policy Acquisition Expenses <span style="font-weight: normal">(section 848) (see instructions)</span>
+						<div class="styPartDesc" style="width:164mm;">Policy Acquisition Expenses 
+							<span style="font-weight: normal">(section 848) (see instructions)</span>
 						</div>
 					</div>
 					<!-- SCH G header line -->
@@ -2674,7 +2745,7 @@ Policyholders share of tax-exempt interest and the increase in policy cash val
 						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm">3</div>
 						<div class="styLNDesc" style="width:75mm;height:4mm;">
 							<span style="float: left; clear: none;"><b>Net premiums.</b> Subtract line 2 from line 1</span>
-							<span class="styDotLn" style="float:right;padding-right:2mm;">...</span>
+							<span class="styDotLn" style="float:right;padding-right:2mm;">....</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.5mm;">3</div>
 						<div class="styLNAmountBox" style="height:4.5mm;width:32mm">
@@ -2697,8 +2768,8 @@ Policyholders share of tax-exempt interest and the increase in policy cash val
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm">4</div>
 						<div class="styLNDesc" style="width:75mm;height:4mm;">
-							<span style="float: left; clear: none;">Net premium percentage</span>
-							<span class="styDotLn" style="float:right;padding-right:2mm;">..........</span>
+							<span style="float: left; clear: none;">Net premium percentage (see instructions)</span>
+							<span class="styDotLn" style="float:right;padding-right:2mm;">....</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.5mm;">4</div>
 						<div class="styLNAmountBox" style="height:4.5mm;width:32mm;font-size:6pt;">
@@ -2764,17 +2835,17 @@ Policyholders share of tax-exempt interest and the increase in policy cash val
 						</div>
 						<div class="styLNRightNumBox" style="height:5mm;">7</div>
 						<div class="styLNAmountBox" style="height:5mm;">(
-<xsl:call-template name="PopulateAmount">
+							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleG/UnsdBalNegCapitalizationPYAmt"/>
 							</xsl:call-template>)
-</div>
+						</div>
 					</div>
 					<!-- SCH F line 8 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:5mm;padding-left:3mm">8 </div>
 						<div class="styLNDesc" style="width:139mm;height:4mm;">
 							<span style="float: left; clear: none;">Combine lines 6 and 7. If zero or less, enter -0-
-</span>
+							</span>
 							<span class="styDotLn" style="float:right;padding-right:2mm;">..................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:5mm;">8</div>
@@ -2789,7 +2860,7 @@ Policyholders share of tax-exempt interest and the increase in policy cash val
 						<div class="styLNLeftNumBox" style="height:5mm;padding-left:3mm">9 </div>
 						<div class="styLNDesc" style="width:139mm;height:4mm;">
 							<span style="float: left; clear: none;">General deductions (attach statement)
-<xsl:call-template name="SetFormLinkInline">
+								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$IRS1120LScheduleG/GeneralDeductionsAmt"/>
 								</xsl:call-template>
 							</span>
@@ -2820,8 +2891,8 @@ Policyholders share of tax-exempt interest and the increase in policy cash val
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4.5mm;">11</div>
 						<div class="styLNDesc" style="width:139mm;height:4mm;">
-   Deductible general deductions. Subtract line 10 from line 9. Enter here and include on page 1, line 18
- </div>
+						   Deductible general deductions. Subtract line 10 from line 9. Enter here and include on page 1, line 18
+						</div>
 						<div class="styLNRightNumBox" style="height:4.5mm;">11</div>
 						<div class="styLNAmountBox" style="height:4.5mm;">
 							<xsl:call-template name="PopulateAmount">
@@ -2834,11 +2905,11 @@ Policyholders share of tax-exempt interest and the increase in policy cash val
 						<div class="styLNLeftNumBox" style="height:5mm;">12</div>
 						<div class="styLNDesc" style="width:139mm;height:5mm;">
 							<span style="float: left; clear: none;">If the amount on line 6 is negative, enter it as a positive amount. If the amount on line 6 is positive,
-</span>
+							</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:5mm;border-bottom-width:0px"/>
 						<div class="styLNAmountBox" style="height:5mm;border-bottom-width:0px">
-</div>
+						</div>
 					</div>
 					<!-- SCH G line 12-2 -->
 					<div style="width:187mm;">
@@ -2886,9 +2957,8 @@ Policyholders share of tax-exempt interest and the increase in policy cash val
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:8mm;">15a </div>
 						<div class="styLNDesc" style="width:99mm;height:8mm;">
-Tentative 60-month specified policy acquisition 
-expenses. Enter amount 
-<span style="float: left; clear: none;">from line 10, but not more than $5 million</span>
+							Tentative 60-month specified policy acquisition expenses. Enter amount 
+							<span style="float: left; clear: none;">from line 10, but not more than $5 million</span>
 							<span class="styDotLn" style="float:right;padding-right:2mm;">..........</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm">15a </div>
@@ -2927,7 +2997,7 @@ expenses. Enter amount
 						</div>
 						<div class="styLNAmountBox" style="height:5mm;background-color:lightgrey;border-bottom-width:0px"/>
 					</div>
-					<!-- SCH GF line 17a -1-->
+					<!-- SCH G line 17a -1-->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;">17a </div>
 						<div class="styLNDesc" style="width:99mm;height:4mm;">
@@ -2935,10 +3005,10 @@ expenses. Enter amount
 						</div>
 						<div class="styLNRightNumBox" style="height:5mm;border-bottom-width:0px"> </div>
 						<div class="styLNAmountBox" style="width:40mm;border-bottom-width:0px;height:5mm">
-</div>
+						</div>
 						<div class="styLNAmountBox" style="height:5mm;background-color:lightgrey;border-bottom-width:0px"/>
 					</div>
-					<!-- SCH GF line 17a-2 -->
+					<!-- SCH G line 17a-2 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4.5mm;"> </div>
 						<div class="styLNDesc" style="width:99mm;height:4.5mm;">
@@ -2955,14 +3025,14 @@ expenses. Enter amount
 					</div>
 					<!-- SCH G line 17b -->
 					<div style="width:187mm;">
-						<div class="styLNLeftLtrBox" style="height:8mm;padding-top:2.5mm">
-							<span style="width:4px;padding-top:4mm"/>b</div>
-						<div class="styLNDesc" style="width:139mm;height:4mm;padding-top:4mm">
-Enter 10% of line 17a
-<span style="letter-spacing:4mm;font-weight:bold">......................</span>
+						<div class="styLNLeftLtrBox" style="height:5mm">
+							<span style="width:4px;padding-top:2mm"/>b</div>
+						<div class="styLNDesc" style="width:139mm;height:6mm;">
+							Enter 10% (0.10) of line 17a
+							<span style="letter-spacing:4mm;font-weight:bold">....................</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:9mm;padding-top:5mm">17b</div>
-						<div class="styLNAmountBox" style="height:9mm;padding-top:5mm">
+						<div class="styLNRightNumBox" style="height:6mm;padding-top:2mm">17b</div>
+						<div class="styLNAmountBox" style="height:6mm;padding-top:2mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleG/CY60MonthSpcfdPlcyPctAmt"/>
 							</xsl:call-template>
@@ -2972,8 +3042,8 @@ Enter 10% of line 17a
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:8mm;">18a </div>
 						<div class="styLNDesc" style="width:99mm;height:8mm;">
-Current year 180-month specified policy acquisition expenses. Subtract line 17a from line 10
-<span style="letter-spacing:4mm;font-weight:bold">...............</span>
+							Current year 180-month specified policy acquisition expenses. Subtract line 17a from line 10
+							<span style="letter-spacing:4mm;font-weight:bold">...............</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm">18a </div>
 						<div class="styLNAmountBox" style="width:40mm;border-bottom-width:1px;height:8mm;padding-top:4mm">
@@ -2985,14 +3055,14 @@ Current year 180-month specified policy acquisition expenses. Subtract line 17a 
 					</div>
 					<!-- SCH G line 18b -->
 					<div style="width:187mm;">
-						<div class="styLNLeftLtrBox" style="height:8mm;">
-							<span style="width:4px;padding-top:6mm;"/>b</div>
-						<div class="styLNDesc" style="width:139mm;height:8mm;padding-top:4mm">
-							<span style="float: left; clear: none;">Enter 3.34% of line 18a</span>
-							<span class="styDotLn" style="float:right;padding-right:2mm;">.........................</span>
+						<div class="styLNLeftLtrBox" style="height:5mm;">
+							<span style="width:4px;padding-top:1mm;"/>b</div>
+						<div class="styLNDesc" style="width:139mm;height:5mm;padding-top:1mm">
+							<span style="float: left; clear: none;">Enter 3.34% (0.0334) of line 18a</span>
+							<span class="styDotLn" style="float:right;padding-right:2mm;">.......................</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:9mm;padding-top:5mm">18b</div>
-						<div class="styLNAmountBox" style="height:9mm;padding-top:5mm">
+						<div class="styLNRightNumBox" style="height:5mm;padding-top:1mm">18b</div>
+						<div class="styLNAmountBox" style="height:5mm;padding-top:1mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleG/CYMonthSpcfdPolicyAcquisPctAmt"/>
 							</xsl:call-template>
@@ -3006,14 +3076,14 @@ Current year 180-month specified policy acquisition expenses. Subtract line 17a 
 						</div>
 						<div class="styLNRightNumBox" style="height:5mm;border-bottom-width:0px"/>
 						<div class="styLNAmountBox" style="height:5mm;border-bottom-width:0px">
-</div>
+						</div>
 					</div>
 					<!-- SCH G line 19-2 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:5mm;"/>
 						<div class="styLNDesc" style="width:139mm;height:5mm;">
 							<span style="float: left; clear: none;">prior years and deductible this year. Attach statement 
-<xsl:call-template name="SetFormLinkInline">
+								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$IRS1120LScheduleG/AmortzSpcfdPlcyAcqExpnssAmt"/>
 								</xsl:call-template>
 							</span>
@@ -3045,15 +3115,14 @@ Current year 180-month specified policy acquisition expenses. Subtract line 17a 
 					<div class="pageEnd" style="width:187mm;padding-top:1mm;clear:all;float:none;">
 						<div style="float:left;"/>
 						<div style="float:right;">
-							<span style="width:40px;"/>  
-Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
-</div>
+							<span style="width:40px;"/>Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2019)
+						</div>
 					</div>
 					<!-- END Page Break and Footer-->
 					<!--Begin Page 4 -->
 					<!-- Page Header -->
 					<div class="styBB" style="width:187mm;padding-top:.5mm;clear:all;float:none;">
-						<div style="float:left;">Form 1120-L (2018)<span style="width:148mm;"/>
+						<div style="float:left;">Form 1120-L (2019)<span style="width:148mm;"/>
 						</div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">4</span>
 						</div>
@@ -3061,9 +3130,8 @@ Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
 					<!-- BEGIN Schedule K Title -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartName" style="width:23mm;">Schedule K</div>
-						<div class="styPartDesc" style="width:164mm;">
-Tax Computation
-<span class="styNormalText"> (see instructions)</span>
+						<div class="styPartDesc" style="width:164mm;">Tax Computation
+							<span class="styNormalText"> (see instructions)</span>
 						</div>
 					</div>
 					<!-- SCH K line 1 -->
@@ -3083,7 +3151,7 @@ Tax Computation
 								</xsl:call-template>
 							</label>
 							<span style="letter-spacing:4mm;font-weight:bold">.</span>
-							<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+							<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 							<span style="width:4px"/>
 							<input type="checkbox" alt="Member Of Controlled Group" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
@@ -3093,14 +3161,14 @@ Tax Computation
 							</input>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.5mm;background-color:lightgrey;border-bottom-width:0px"/>
-						<div class="styLNAmountBox" style="height:4.5mm;border-bottom-width:0px"/>
+						<div class="styLNAmountBox" style="height:4.5mm;border-bottom-width:0px;background-color:lightgrey"/>
 					</div>
 					<!-- SCH K line 2 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left:3mm">2</div>
 						<div class="styLNDesc" style="width:139mm;height:4mm;">
 							<span style="float: left; clear: none;">Income tax
-<xsl:call-template name="LinkToLeftoverDataTableInline">
+								<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="Desc">Schedule K Line 2 - differential Rate316 Indicator</xsl:with-param>
 									<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/IncomeTaxAmt/@differentialRate316Cd"/>
 								</xsl:call-template>
@@ -3146,15 +3214,20 @@ Tax Computation
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left:3mm">3</div>
 						<div class="styLNDesc" style="width:139mm;height:4mm;">
-							<span style="float: left; clear: none;">Base erosion minimum tax (attach Form 8991)
+							<span style="float: left; clear: none;">Base erosion minimum tax amount (attach Form 8991)		
 								<xsl:call-template name="SetFormLinkInline">
-									<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/BaseErosionMinimumTaxAmt"/>
+								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/BaseErosionMinimumTaxAmt"/>
 								</xsl:call-template>
 							</span>
-							<span class="styDotLn" style="float:right;padding-right:2mm;">..................</span>
+							<span class="styDotLn" style="float:right;padding-right:2mm;">...............</span>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:5mm;border-bottom-width:1px;">3</div>
 						<div class="styLNAmountBoxNBB" style="height:5mm;border-bottom-width:1px;">
+						<!-- Form to Form Link -->
+						<xsl:call-template name="SetFormLinkInline">
+							<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/BaseErosionMinimumTaxAmt"/>
+						</xsl:call-template>
+							<span style="width:1px;"/>
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/BaseErosionMinimumTaxAmt"/>
 							</xsl:call-template>
@@ -3170,7 +3243,7 @@ Tax Computation
 						<div class="styLNRightNumBoxNBB" style="height:4mm;border-bottom-width:1px;">4</div>
 						<div class="styLNAmountBoxNBB" style="height:4mm;border-bottom-width:1px;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/IncomeTxPlusAltMinimumTaxAmt"/>
+								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/IncomeTaxPlusBaseErosionTaxAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -3179,7 +3252,7 @@ Tax Computation
 						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm">5a </div>
 						<div class="styLNDesc" style="width:99mm;height:4mm;">
 							<span style="float: left; clear: none;">Foreign tax credit (attach Form 1118)
-<xsl:call-template name="SetFormLinkInline">
+								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/ForeignTaxCreditAmt"/>
 								</xsl:call-template>
 							</span>
@@ -3198,9 +3271,8 @@ Tax Computation
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:5mm">b </div>
 						<div class="styLNDesc" style="width:99mm;height:4mm;">
-							<span style="float: left; clear: none;">
-Credit from Form 8834 (attach Form 8834) 
-<xsl:call-template name="SetFormLinkInline">
+							<span style="float: left; clear: none;">Credit from Form 8834 (attach Form 8834) 
+								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/QlfyElecMotorVehCrAmt"/>
 								</xsl:call-template>
 							</span>
@@ -3220,7 +3292,7 @@ Credit from Form 8834 (attach Form 8834)
 						<div class="styLNLeftNumBox" style="height:5mm;padding-left:5mm">c </div>
 						<div class="styLNDesc" style="width:99mm;height:5mm;">
 							<span style="float: left; clear: none;">General business credit (attach Form 3800)
-<xsl:call-template name="SetFormLinkInline">
+								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/CYGenBusinessCreditAllowedAmt"/>
 								</xsl:call-template>
 							</span>
@@ -3240,7 +3312,7 @@ Credit from Form 8834 (attach Form 8834)
 						<div class="styLNLeftNumBox" style="height:5mm;padding-left:5mm">d </div>
 						<div class="styLNDesc" style="width:99mm;height:5mm;">
 							<span style="float: left; clear: none;">Credit for prior year minimum tax (attach Form 8827)
-<xsl:call-template name="SetFormLinkInline">
+								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/CurrentYearMinimumTaxCreditAmt"/>
 								</xsl:call-template>
 							</span>
@@ -3260,7 +3332,7 @@ Credit from Form 8834 (attach Form 8834)
 						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:5mm">e </div>
 						<div class="styLNDesc" style="width:99mm;height:4mm;">
 							<span style="float: left; clear: none;">Bond credits from Form 8912
-<xsl:call-template name="SetFormLinkInline">
+								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/CurrentYearAllowableCreditAmt"/>
 								</xsl:call-template>
 							</span>
@@ -3295,8 +3367,7 @@ Credit from Form 8834 (attach Form 8834)
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left:3mm">7</div>
 						<div class="styLNDesc" style="width:139mm;height:4mm;">
 							<span style="float: left; clear: none;">Subtract line 6 from line 4</span>
-							<span class="styDotLn" style="float:right;padding-right:2mm;">
-.........................</span>
+							<span class="styDotLn" style="float:right;padding-right:2mm;">.........................</span>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:4mm;border-bottom-width:1px;">7</div>
 						<div class="styLNAmountBoxNBB" style="height:4mm;border-bottom-width:1px;">
@@ -3310,7 +3381,7 @@ Credit from Form 8834 (attach Form 8834)
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left:3mm">8</div>
 						<div class="styLNDesc" style="width:139mm;height:4mm;">
 							<span style="float: left; clear: none;">Foreign corporations tax on income not effectively connected with U.S. business
-<!-- Form to Form Link   -->
+								<!-- Form to Form Link   -->
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/ForeignCorporationTaxOnIncmAmt"/>
 								</xsl:call-template>
@@ -3328,7 +3399,7 @@ Credit from Form 8834 (attach Form 8834)
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left:3mm;padding-top:2mm">9</div>
 						<div class="styLNDesc" style="width:139mm;height:4mm;">Other taxes. Check if from: 
-<span style="width:8px"/>
+							<span style="width:8px"/>
 							<input type="checkbox" alt="Form4255 Attached" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/Form4255Ind"/>
@@ -3339,9 +3410,8 @@ Credit from Form 8834 (attach Form 8834)
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/Form4255Ind"/>
 									<xsl:with-param name="BackupName">IRS1120LForm4255Attached</xsl:with-param>
-								</xsl:call-template>
-Form 4255
-<span style="width:2px;"/>
+								</xsl:call-template>Form 4255
+								<span style="width:2px;"/>
 							</label>
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/Form4255Ind"/>
@@ -3357,9 +3427,8 @@ Form 4255
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/Form8611Ind"/>
 									<xsl:with-param name="BackupName">IRS1120LForm8611Attached</xsl:with-param>
-								</xsl:call-template>
-Form 8611
-<span style="width:2px;"/>
+								</xsl:call-template>Form 8611
+								<span style="width:2px;"/>
 							</label>
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/Form8611Ind"/>
@@ -3375,9 +3444,8 @@ Form 8611
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/OtherInd"/>
 									<xsl:with-param name="BackupName">IRS1120LFormOtherAttached</xsl:with-param>
-								</xsl:call-template>
-Other (attach statement)
-<span style="width:2px;"/>
+								</xsl:call-template>Other (attach statement)
+								<span style="width:2px;"/>
 							</label>
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/OtherInd"/>
@@ -3399,8 +3467,8 @@ Other (attach statement)
 						<div class="styLNDesc" style="width:139mm;height:4mm;">
 							<span style="float: left; clear: none;">
 								<b>Total tax. </b>
-Add lines 7 through 9. Enter here and on page 1, line 26 
-<xsl:call-template name="SetFormLinkInline">
+								Add lines 7 through 9. Enter here and on page 1, line 26 
+								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$IRS1120LScheduleK/TotalTaxAmt"/>
 								</xsl:call-template>
 							</span>
@@ -3417,7 +3485,7 @@ Add lines 7 through 9. Enter here and on page 1, line 26
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartName" style="width:23mm;">Schedule L</div>
 						<div class="styPartDesc" style="width:164mm;">
-Part I Total Assets <span class="styNormalText"> (see instructions)</span>
+							Part I Total Assets <span class="styNormalText">(see instructions)</span>
 						</div>
 					</div>
 					<!-- Schedule L head line -->
@@ -3426,17 +3494,16 @@ Part I Total Assets <span class="styNormalText"> (see instructions)</span>
 						<div class="styLNDesc" style="width:107mm;height:8mm;padding-top:4mm"/>
 						<div class="styLNAmountBox" style="width:40mm;height:8mm;;border-bottom-width:1px; border-left-width:1px;text-align:center;padding-top:2mm">
 							<b>(a)</b> Beginning of tax year</div>
-						<div class="styLNAmountBox" style="height:8mm;border-bottom-width:1px;padding-top:2mm; text-align:center">
-							<b>(b)</b> End of tax year
-</div>
+							<div class="styLNAmountBox" style="height:8mm;border-bottom-width:1px;padding-top:2mm; text-align:center">
+								<b>(b)</b> End of tax year
+							</div>
 					</div>
 					<!-- Schedule L line 1 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left:3mm">1 </div>
 						<div class="styLNDesc" style="width:107mm;height:4mm;">
 							<span style="float: left; clear: none;">Real property</span>
-							<span class="styDotLn" style="float:right;padding-right:2mm;">
-.....................</span>
+							<span class="styDotLn" style="float:right;padding-right:2mm;">.....................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4mm;border-bottom-width:1px">1</div>
 						<div class="styLNAmountBox" style="height:4mm;border-bottom-width:1px">
@@ -3455,8 +3522,7 @@ Part I Total Assets <span class="styNormalText"> (see instructions)</span>
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left:3mm">2 </div>
 						<div class="styLNDesc" style="width:107mm;height:4mm">
 							<span style="float: left; clear: none;">Stocks</span>
-							<span class="styDotLn" style="float:right;padding-right:2mm;">
-.......................</span>
+							<span class="styDotLn" style="float:right;padding-right:2mm;">.......................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4mm;border-bottom-width:1px">2</div>
 						<div class="styLNAmountBox" style="height:4mm;border-bottom-width:1px">
@@ -3474,8 +3540,7 @@ Part I Total Assets <span class="styNormalText"> (see instructions)</span>
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left:3mm">3 </div>
 						<div class="styLNDesc" style="width:107mm;height:4mm">
-							<span style="float: left; clear: none;">
-Proportionate share of partnership and trust assets</span>
+							<span style="float: left; clear: none;">Proportionate share of partnership and trust assets</span>
 							<span class="styDotLn" style="float:right;padding-right:2mm;">.........</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4mm;border-bottom-width:1px">3</div>
@@ -3524,7 +3589,7 @@ Proportionate share of partnership and trust assets</span>
 						<div class="styLNDesc" style="width:107mm;height:4mm">
 							<span style="float: left; clear: none;">
 								<b>Total assets.</b> Add lines 1 through 4</span>
-							<span class="styDotLn" style="float:right;padding-right:2mm;">..............</span>
+							<span class="styDotLn" style="float:right;padding-right:2mm;">.............</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4mm;border-bottom-width:0px">5</div>
 						<div class="styLNAmountBox" style="height:4mm;border-bottom-width:0px">
@@ -3540,20 +3605,22 @@ Proportionate share of partnership and trust assets</span>
 					</div>
 					<!-- BEGIN Schedule L Part II Title1 -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styPartDesc" style="width:164mm;">
-   Part II Total Assets and Total Insurance Liabilities <span class="styNormalText">
-  (section 842(b)(2)(B)(i)) (see instructions)</span>
+						<div class="styPartDesc" style="width:187mm;padding-left:26mm;height:10mm;">
+						   Part II Total Assets and Total Insurance Liabilities 
+							<span class="styNormalText">  (section 842(b)(2)(B)(i)) (see instructions)</span>
+							<br/><span class="styNormalText">
+  <b>Note: </b>The information provided in Part II should conform with the “Assets” and “Liabilities, Surplus, and Other Funds” sections of the NAIC Annual Statement.			</span>
 						</div>
 					</div>
 					<!-- BEGIN Schedule L Part II Title II -->
 					<!-- Schedule L head line -->
 					<div style="width:187mm;clear:all;">
-						<div class="styLNDesc" style="width:115mm;height:8mm;"><b>The information provided in Part II should conform with the “Assets” and “Liabilities, Surplus, and Other Funds” sections of the NAIC Annual Statement.</b></div>
-						<div class="styLNAmountBox" style="width:40mm;height:8mm;;border-bottom-width:1px; border-left-width:1px;text-align:center;padding-top:2mm">
+						<div class="styLNDesc" style="width:115mm;height:8mm;"></div>
+						<div class="styLNAmountBox" style="width:40mm;height:8mm;border-bottom-width:1px; border-left-width:1px;text-align:center;padding-top:2mm">
 							<b>(a)</b> Beginning of tax year</div>
 						<div class="styLNAmountBox" style="height:8mm;border-bottom-width:1px;padding-top:2mm; text-align:center">
 							<b>(b)</b> End of tax year
-</div>
+						</div>
 					</div>
 					<!-- Schedule L line 1 -->
 					<div style="width:187mm;clear:all;">
@@ -3643,7 +3710,7 @@ Proportionate share of partnership and trust assets</span>
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left:3mm">5 </div>
 						<div class="styLNDesc" style="width:107mm;height:4mm">
 							<span style="float: left; clear: none;">Liability for deposit-type contracts 
-</span>
+							</span>
 							<span class="styDotLn" style="float:right;padding-right:2mm;">...............</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4mm;border-bottom-width:1px">5</div>
@@ -3719,9 +3786,9 @@ Proportionate share of partnership and trust assets</span>
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left:3mm">9 </div>
 						<div class="styLNDesc" style="width:107mm;height:4mm">
-Premiums and annuity considerations received in advance less discount 
-<span class="styDotLn" style="float:right;padding-right:2mm;">...</span>
-</div>
+							Premiums and annuity considerations received in advance less discount 
+							<span class="styDotLn" style="float:right;padding-right:2mm;">...</span>
+						</div>
 						<div class="styLNRightNumBox" style="height:4mm;border-bottom-width:1px">9 </div>
 						<div class="styLNAmountBox" style="height:4mm;border-bottom-width:1px">
 							<xsl:call-template name="PopulateAmount">
@@ -3776,9 +3843,8 @@ Premiums and annuity considerations received in advance less discount
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:8mm">12 </div>
 						<div class="styLNDesc" style="width:107mm;height:8mm">
-							<span style="float: left; clear: none;">Part of aggregate write-ins for liabilities. (Only include items or 
-amounts includible in 
-</span>
+							<span style="float: left; clear: none;">Part of aggregate write-ins for liabilities. (Only include items or amounts includible in 
+							</span>
 							<span style="float: left; clear: none;">“total insurance liabilities on U.S. business" as defined in section 842(b)(2)(B)(i)) </span>
 						</div>
 						<div class="styLNRightNumBox" style="height:8mm;border-bottom-width:1px;padding-top:4mm">12 </div>
@@ -3795,8 +3861,8 @@ amounts includible in
 					</div>
 					<!-- Schedule L line 13 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">13 </div>
-						<div class="styLNDesc" style="width:107mm;height:4mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
+						<div class="styLNLeftNumBox" style="height:4mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;">13 </div>
+						<div class="styLNDesc" style="width:107mm;height:4mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;">
 							<span style="float: left; clear: none;">Separate accounts statement </span>
 							<span class="styDotLn" style="float:right;padding-right:2mm;">................</span>
 						</div>
@@ -3836,15 +3902,14 @@ amounts includible in
 					<div class="pageEnd" style="width:187mm;padding-top:1mm;clear:all;float:none;">
 						<div style="float:left;"/>
 						<div style="float:right;">
-							<span style="width:40px;"/>  
-Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
-</div>
+							<span style="width:40px;"/>Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2019)
+						</div>
 					</div>
 					<!-- END Page Break and Footer-->
 					<!--Begin Page 5 -->
 					<!-- Page Header -->
 					<div class="styBB" style="width:187mm;padding-top:.5mm;float:none;float:none;">
-						<div style="float:left;">Form 1120-L (2018)<span style="width:148mm;"/>
+						<div style="float:left;">Form 1120-L (2019)<span style="width:148mm;"/>
 						</div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">5</span>
 						</div>
@@ -3854,7 +3919,7 @@ Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
 						<div class="styBB" style="width:187mm;">
 							<div class="styPartName" style="width:23mm;">Schedule M</div>
 							<div class="styPartDesc" style="width:164mm;">
-Other Information  <span class="styNormalText">(see instructions)</span>
+								Other Information  <span class="styNormalText">(see instructions)</span>
 							</div>
 						</div>
 						<!-- BEGIN Line Items -->
@@ -3886,7 +3951,7 @@ Other Information  <span class="styNormalText">(see instructions)</span>
 													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/MethodOfAccountingAccrualInd"/>
 													<xsl:with-param name="BackupName">IRS1120L ScheduleM Method Of Accounting Accrual</xsl:with-param>
 												</xsl:call-template>
-													Accrual
+												Accrual
 											</label>
 											<!-- Line 1 B -->
 											<span style="width:6px;"/>
@@ -3895,17 +3960,17 @@ Other Information  <span class="styNormalText">(see instructions)</span>
 											<input type="checkbox" alt="ScheduleM Method Of Accounting Other" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/MethodOfAccountingOtherInd"/>
-													<xsl:with-param name="BackupName">IRS1120M ScheduleK Method Of Accounting Other</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS1120L ScheduleM Method Of Accounting Other</xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/MethodOfAccountingOtherInd"/>
-													<xsl:with-param name="BackupName">IRS1120M ScheduleK Method Of Accounting Other</xsl:with-param>
+													<xsl:with-param name="BackupName">IRS1120L ScheduleM Method Of Accounting Other</xsl:with-param>
 												</xsl:call-template>
 												Other (specify)
 											</label>
-											<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+											<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 											<xsl:call-template name="LinkToLeftoverDataTableInline">
 												<xsl:with-param name="Desc">Schedule M Line 1b - Method Of Accounting Other</xsl:with-param>
 												<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/MethodOfAccountingOtherInd/@methodOfAccountingOtherDesc"/>
@@ -3919,7 +3984,8 @@ Other Information  <span class="styNormalText">(see instructions)</span>
 										<!--div class="styGenericDiv" style="width:.4mm;"/-->
 										<div class="styShadingCell" style="width:6mm;height:8mm;"/>
 										<div class="styShadingCellRB" style="width:6mm;height:8mm;"/>
-									</div>									<!-- Sch M line 2 -->
+									</div>
+									<!-- Sch M line 2 -->
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftNumBox" style="height:4mm;">2</div>
 										<div class="styLNDesc" style="width:72mm;height:4mm;">Check if the corporation is a:</div>
@@ -3943,7 +4009,7 @@ Other Information  <span class="styNormalText">(see instructions)</span>
 													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/LegalReserveCompanyInd"/>
 													<xsl:with-param name="BackupName">IRS1120LScheduleM Legal Reserve Company</xsl:with-param>
 												</xsl:call-template>
-Legal reserve company if checked:<br/>
+													Legal reserve company if checked:<br/>
 												<span style="padding-left:2mm">Kind of company:</span>
 											</label>
 										</div>
@@ -3967,8 +4033,8 @@ Legal reserve company if checked:<br/>
 													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/StockCompanyInd"/>
 													<xsl:with-param name="BackupName">IRS1120L ScheduleM Stock Company</xsl:with-param>
 												</xsl:call-template>
-Stock
-</label>
+													Stock
+											</label>
 											<span style="width:6px;"/>
 											<span class="styBoldText">(2)</span>
 											<span style="width:3px;"/>
@@ -3983,8 +4049,8 @@ Stock
 													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/MutualCompanyInd"/>
 													<xsl:with-param name="BackupName">IRS1120L ScheduleM Mutual Company</xsl:with-param>
 												</xsl:call-template>
-Mutual<br/>Principal business:
-</label>
+													Mutual<br/>Principal business:
+											</label>
 										</div>
 										<div class="styGenericDiv" style="width:12mm;">
 											<div class="styShadingCell" style="width:6mm;height:7mm;"/>
@@ -4008,8 +4074,8 @@ Mutual<br/>Principal business:
 													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/LifeInsuranceBusinessInd"/>
 													<xsl:with-param name="BackupName">IRS1120L ScheduleM Life Insurance Business</xsl:with-param>
 												</xsl:call-template>
-Life insurance
-</label>
+													Life insurance
+											</label>
 										</div>
 										<div class="styShadingCell" style="width:6mm;height:4.5mm;"/>
 										<div class="styShadingCellRB" style="width:6mm;height:4.5mm;"/>
@@ -4031,8 +4097,8 @@ Life insurance
 													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/HealthAndAccidentInsBusInd"/>
 													<xsl:with-param name="BackupName">IRS1120LScheduleM Health And AccidentI ns BusI nd</xsl:with-param>
 												</xsl:call-template>
-Health and accident insurance
-</label>
+													Health and accident insurance
+											</label>
 										</div>
 										<div class="styShadingCell" style="width:6mm;height:4.5mm;"/>
 										<div class="styShadingCellRB" style="width:6mm;height:4.5mm;"/>
@@ -4054,8 +4120,8 @@ Health and accident insurance
 													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/FraternalOrAssessmentAssocInd"/>
 													<xsl:with-param name="BackupName">IRS1120LScheduleMFraternal Assessment Association</xsl:with-param>
 												</xsl:call-template>
-Fraternal or assessment association
-</label>
+													Fraternal or assessment association
+											</label>
 										</div>
 										<div class="styShadingCell" style="width:6mm;height:4.5mm;"/>
 										<div class="styShadingCellRB" style="width:6mm;height:4.5mm;"/>
@@ -4077,8 +4143,8 @@ Fraternal or assessment association
 													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/BurialOrOtherInsuranceCoInd"/>
 													<xsl:with-param name="BackupName">IRS1120L ScheduleM Burial Or OtherInsurance Company</xsl:with-param>
 												</xsl:call-template>
-Burial or other insurance company
-</label>
+													Burial or other insurance company
+											</label>
 										</div>
 										<div class="styShadingCell" style="width:6mm;height:4.5mm;"/>
 										<div class="styShadingCellRB" style="width:6mm;height:4.5mm;"/>
@@ -4087,15 +4153,14 @@ Burial or other insurance company
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftNumBox" style="height:4.5mm;">3</div>
 										<div class="styLNDesc" style="width:72mm;height:4.5mm;">
-											<span class="stySmallText">Enter the percentage that the total of the corporation’s life insurance reserves (section 816 (b)) plus
-unearned premiums and unpaid losses (whether or not ascertained) on noncancelable life, health 
-or accident policies not included in life insurance reserves bears to the corporation’s total reserves (section 816 (c)) 
+											<span class="stySmallText">Enter the percentage that the total of the corporation’s life insurance reserves (section 816 (b)) plus unearned premiums and unpaid losses (whether or not ascertained) on noncancelable life, health 
+or accident policies not included in life insurance reserves bears to the corporation’s total reserves (section 816 (c))
 												<!-- Form to Form Link  -->
 												<xsl:call-template name="SetFormLinkInline">
 													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/TotalCorpLifeInsuranceRsrvPct"/>
 												</xsl:call-template>
 												<span style="width:3px;"/>
-												<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+												<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 												<span style="width:3px;"/>
 												<span style="width:25.5mm;font-size:6pt;border-bottom:1px solid black;text-align:right">
 													<xsl:call-template name="PopulatePercent">
@@ -4113,8 +4178,8 @@ or accident policies not included in life insurance reserves bears to the corpor
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftNumBox" style="height:4.5mm;">4</div>
 										<div class="styLNDesc" style="width:72mm;height:4.5mm;padding-bottom:0px;padding-top:0px;">
-Does the corporation have any variable annuity contracts outstanding?
-<span style="letter-spacing:4mm;font-weight:bold">............</span>
+											Does the corporation have any variable annuity contracts outstanding?
+											<span style="letter-spacing:4mm;font-weight:bold">............</span>
 											<br/>
 										</div>
 										<div class="styGenericDiv" style="width:12mm;">
@@ -4143,9 +4208,9 @@ Does the corporation have any variable annuity contracts outstanding?
 										<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0mm;padding-bottom:0mm;">5</div>
 										<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
 											<span class="stySmallText">
-At the end of the tax year, did the corporation own, directly or indirectly, 50% or more of the voting stock of a 
-domestic corporation? (For rules of attribution, see section 267(c).)
-<xsl:call-template name="SetFormLinkInline">
+												At the end of the tax year, did the corporation own, directly or indirectly, 50% or more of the voting stock of a 
+												domestic corporation? (For rules of attribution, see section 267(c).)
+												<xsl:call-template name="SetFormLinkInline">
 													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/CorpOwn50PctOrMoreVotingStkInd"/>
 												</xsl:call-template>
 											</span>
@@ -4174,11 +4239,12 @@ domestic corporation? (For rules of attribution, see section 267(c).)
 										<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0mm;padding-bottom:0mm;"/>
 										<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
 											<span class="stySmallText">If "Yes," attach a statement showing <span class="styBoldText">
-(a)  </span>name and employer identification number
-(EIN),  <span class="styBoldText">(b)  </span>percentage owned, and  <span class="styBoldText">
-(c)  </span>taxable income or (loss) before NOL and special deductions of such 
-corporation for the tax year ending with or within your tax year.
-</span>
+												(a)  </span>name and employer identification number
+												(EIN),  <span class="styBoldText">(b)  </span>percentage owned, and  <span class="styBoldText">
+												<span style="width:0.5px;"/>
+												(c)  </span>taxable income or (loss) before NOL and special deductions of such 
+												corporation for the tax year ending with or within your tax year.
+											</span>
 										</div>
 										<div class="styShadingCell" style="width:6mm;height:12mm;"/>
 										<div class="styShadingCellRB" style="width:6mm;height:12mm;"/>
@@ -4187,8 +4253,8 @@ corporation for the tax year ending with or within your tax year.
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0mm;padding-bottom:0mm;">6</div>
 										<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
-Is the corporation a subsidiary in an affiliated group or a parent-subsidiary controlled group? 
-<span style="letter-spacing:4mm;font-weight:bold">........</span>
+											Is the corporation a subsidiary in an affiliated group or a parent-subsidiary controlled group? 
+											<span style="letter-spacing:4mm;font-weight:bold">........</span>
 										</div>
 										<div class="styGenericDiv" style="width:12mm;">
 											<div class="styShadingCell" style="width:6mm;height:2mm;"/>
@@ -4215,9 +4281,9 @@ Is the corporation a subsidiary in an affiliated group or a parent-subsidiary co
 									<div class="styGenericDiv" style="width:92mm;">
 										<div class="styLNLeftLtrBox" style="height:4.5mm;"/>
 										<div class="styLNDesc" style="width:72mm;height:4.5mm;">
-If "Yes," enter name and EIN of the parent corporation.
-<span style="width:3px;"/>
-											<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+											If "Yes," enter name and EIN of the parent corporation.
+											<span style="width:3px;"/>
+											<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 											<span style="width:6px;"/>
 											<span style="width:70mm;border-bottom:1px solid black;">
 												<xsl:call-template name="PopulateText">
@@ -4235,6 +4301,7 @@ If "Yes," enter name and EIN of the parent corporation.
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/ParentCorporationEIN"/>
 												</xsl:call-template>
+												<br/>
 												<xsl:if test="$IRS1120LScheduleM/MissingEINReasonCd!=' '">
 													<span style="font-weight:normal;">
 														<xsl:call-template name="PopulateText">
@@ -4251,11 +4318,11 @@ If "Yes," enter name and EIN of the parent corporation.
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0mm;padding-bottom:0mm;">7</div>
 										<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
-At the end of the tax year, did any individual, partnership, corporation, estate, or trust own, directly or indirectly,
-50% or more of the corporation’s voting stock? (For rules of attribution, see section 267(c).) 
-<span style="letter-spacing:4mm;font-weight:bold">.........</span><br/>
-If "Yes,"complete <span class="styBoldText">a</span> and <span class="styBoldText"> b </span> below.
-<xsl:call-template name="SetFormLinkInline">
+											At the end of the tax year, did any individual, partnership, corporation, estate, or trust own, directly or indirectly,
+											50% or more of the corporation’s voting stock? (For rules of attribution, see section 267(c).) 
+											<span style="letter-spacing:4mm;font-weight:bold">.........</span><br/>
+											If "Yes," complete <span class="styBoldText">a</span> and <span class="styBoldText">b</span> below.
+											<xsl:call-template name="SetFormLinkInline">
 												<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/Own50PercentOrMoreVotingStkInd"/>
 											</xsl:call-template>
 										</div>
@@ -4285,8 +4352,8 @@ If "Yes,"complete <span class="styBoldText">a</span> and <span class="styBoldTex
 										<div class="styLNLeftLtrBox" style="height:4.5mm;">a</div>
 										<div class="styLNDesc" style="width:72mm;height:4.5mm;">
 											<span class="stySmallText">Attach a statement showing name and identifying number.
-(Do not include any information already entered in <b>6</b> above.)
-<span style="width:3px;"/>
+												(Do not include any information already entered in <b>6</b> above.)
+												<span style="width:3px;"/>
 											</span>
 										</div>
 										<div class="styShadingCell" style="width:6mm;height:7mm;"/>
@@ -4296,9 +4363,9 @@ If "Yes,"complete <span class="styBoldText">a</span> and <span class="styBoldTex
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftLtrBox" style="height:4.5mm;">b</div>
 										<div class="styLNDesc" style="width:72mm;height:4.5mm;">
-Enter percentage owned
-<span style="width:3px;"/>
-											<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+											Enter percentage owned
+											<span style="width:3px;"/>
+											<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 											<span style="width:6px;"/>
 											<span style="width:25mm;border-bottom:1px solid black;text-align:right">
 												<xsl:call-template name="PopulatePercent">
@@ -4309,7 +4376,7 @@ Enter percentage owned
 										<div class="styShadingCell" style="width:6mm;height:4.5mm;border-bottom-width:0mm"/>
 										<div class="styShadingCell" style="width:6mm;height:4.5mm;border-right-width:1px;border-bottom-width:0mm"/>
 									</div>
-								<!--Line 8 -->
+									<!--Line 8 -->
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0mm;padding-bottom:0mm;">8</div>
 										<div class="styLNDesc" style="width:72mm;height:4.5mm;">
@@ -4331,7 +4398,7 @@ Enter percentage owned
 													</xsl:call-template>
 												</span>
 											</div>
-											<div class="styIRS1120LNYesNoBox">
+											<div class="styIRS1120LNYesNoBox" style="border-right-width:1px;">
 												<span style="font-weight:normal;">
 													<xsl:call-template name="PopulateNoBoxText">
 														<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/FrgnOwn25PctTotVotingPowerInd"/>
@@ -4341,33 +4408,33 @@ Enter percentage owned
 											</div>
 										</div>
 									</div>
-									<!-- line 8 a-->
+									<!-- line 8a-->
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftNumBox" style="height:6mm;"/>
 										<div class="styLNDesc" style="width:72mm;height:6mm;">
-											<span class="styBoldText">If “Yes,” enter:</span><br/>
-											<span class="styBoldText">a</span>
+											If "Yes," enter: <br/>
+											<span class="styBoldText">a </span>
 											<span style="width:3px;"/>
 												Percentage owned and
-											<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+											<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 											<span style="width:6px;"/>
 											<span style="width:20mm;border-bottom:1px solid black;text-align:right">
-												<xsl:call-template name="PopulatePercent">
-													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/VotingStockForeignOwnedPct"/>
-												</xsl:call-template>
+											<xsl:call-template name="PopulatePercent">
+												<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/VotingStockForeignOwnedPct"/>
+											</xsl:call-template>
 											</span>
 										</div>
 										<div class="styShadingCell" style="width:6mm;height:6mm;"/>
 										<div class="styShadingCellRB" style="width:6mm;height:6mm;"/>
 									</div>
-									<!-- line 8 b -->
+									<!-- line 8b -->
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftNumBox" style="height:6mm;"/>
 										<div class="styLNDesc" style="width:72mm;height:6mm;">
 											<span class="styBoldText">b</span>
 											<span style="width:3px;"/>
-											Owner’s country
-											<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+											Owner's country
+											<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 											<span style="width:6px;"/>
 											<span style="width:20mm;border-bottom:1px solid black;text-align:right">
 												<xsl:call-template name="PopulateText">
@@ -4378,12 +4445,10 @@ Enter percentage owned
 										<div class="styShadingCell" style="width:6mm;height:6mm;"/>
 										<div class="styShadingCellRB" style="width:6mm;height:6mm;"/>
 									</div>
-
 								</td>
 								<!--END Schedule M Left Side-->
 								<!--BEGIN Schedule M Right Side-->
 								<td class="styGenericDiv" style="width:92mm;vertical-align:top;">
-
 									<!-- Line 8c-->
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0mm;padding-bottom:0mm;padding-left:3mm">8c</div>
@@ -4396,7 +4461,7 @@ Enter percentage owned
 													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/TotalForm5472FiledCnt"/>
 												</xsl:call-template>
 												<span style="width:3px;"/>
-												<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+												<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 												<span style="width:3px;"/>
 												<span style="width:27mm;font-size:6pt;border-bottom:1px solid black;text-align:right;">
 													<xsl:call-template name="PopulateAmount">
@@ -4445,15 +4510,15 @@ Enter percentage owned
 									<!-- Line 10a -->
 									<div class="styGenericDiv" style="width:92mm;">
 										<div class="styLNLeftNumBox" style="height:4.5mm;">10a</div>
-										<div class="styLNDesc" style="width:72mm;height:4.5mm;">Enter the total unpaid losses shown on the
-corporation’s annual statement:</div>
+										<div class="styLNDesc" style="width:72mm;height:4.5mm;">Enter the total unpaid losses shown on the corporation’s annual statement:
+										</div>
 										<div class="styShadingCell" style="width:6mm;height:6.5mm;"/>
 										<div class="styShadingCellRB" style="width:6mm;height:6.5mm;border-right-width:0px"/>
 									</div>
 									<div class="styGenericDiv" style="width:93mm;height:4.5mm;">
 										<div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:8mm;width:12mm;">(1)</div>
 										<div class="styLNDesc" style="width:31mm;height:4.5mm;padding-left:1mm">
-										For the current year: <span style="width:4px;"/>$ 
+											For the current year: <span style="width:4px;"/>$ 
 										</div>
 										<div class="styIRS1120BBText" style="width:37mm;text-align:right">
 											<xsl:call-template name="PopulateAmount">
@@ -4467,8 +4532,8 @@ corporation’s annual statement:</div>
 									<div class="styGenericDiv" style="width:93mm;height:4.5mm;">
 										<div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:8mm;width:12mm;">(2)</div>
 										<div class="styLNDesc" style="width:31mm;height:4.5mm;padding-left:1mm">
-										For the previous year: $ 
-									</div>
+												For the previous year: $ 
+										</div>
 										<div class="styIRS1120BBText" style="width:37mm;text-align:right">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/UnpaidLossesForPreviousYearAmt"/>
@@ -4483,7 +4548,7 @@ corporation’s annual statement:</div>
 										<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:4.5mm">  b</div>
 										<div class="styLNDesc" style="width:72mm;height:4.5mm;">Enter the total unpaid loss adjustment expenses
 shown on the corporation’s annual statement:
-</div>
+										</div>
 										<div class="styShadingCell" style="width:6mm;height:6.5mm;"/>
 										<div class="styShadingCellRB" style="width:6mm;height:6.5mm;border-right-width:0px"/>
 									</div>
@@ -4504,8 +4569,8 @@ shown on the corporation’s annual statement:
 									<div class="styGenericDiv" style="width:92mm;height:4.5mm;">
 										<div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:8mm;width:12mm;">(2)</div>
 										<div class="styLNDesc" style="width:31mm;height:4.5mm;padding-left:1mm">
-											For the previous year: $ 
-											</div>
+										For the previous year: $ 
+										</div>
 										<div class="styIRS1120BBText" style="width:37mm;text-align:right">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/TotalUnpaidLossForPrevYrAmt"/>
@@ -4520,9 +4585,9 @@ shown on the corporation’s annual statement:
 										<div class="styLNLeftNumBox" style="height:4.5mm;">11</div>
 										<div class="styLNDesc" style="width:72mm;height:4.5mm;">
 											Enter the available net operating loss carryover from prior tax years. (Do not reduce it by any deduction on page 1, line 21b.)
-											<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+										<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 											<br/> $
-												<span style="width:25mm;border-bottom:1px solid black;text-align:right">
+											<span style="width:25mm;border-bottom:1px solid black;text-align:right">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/NOLCarryoverFromPriorYearAmt"/>
 												</xsl:call-template>
@@ -4537,8 +4602,8 @@ shown on the corporation’s annual statement:
 										<div class="styGenericDiv" style="width:92mm;">
 											<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0mm; padding-bottom:0mm;">12a</div>
 											<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
-												Enter the corporation’s state of domicile.
-												<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+											Enter the corporation’s state of domicile
+											<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 												<span style="width:15mm;border-bottom:1px solid black;text-align:left">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/CorporationStateOfDomicileCd"/>
@@ -4554,8 +4619,8 @@ shown on the corporation’s annual statement:
 										<div class="styGenericDiv" style="width:92mm;">
 											<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0mm; padding-bottom:0mm;padding-left:5mm">b</div>
 											<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
-Was the annual statement used to prepare the tax return filed with the state of domicile?
-</div>
+												Was the annual statement used to prepare the tax return filed with the state of domicile?
+											</div>
 											<div class="styGenericDiv" style="width:12mm;">
 												<div class="styShadingCell" style="width:6mm;height:3mm;"/>
 												<div class="styShadingCell" style="width:6mm;height:3mm;"/>
@@ -4582,7 +4647,7 @@ Was the annual statement used to prepare the tax return filed with the state of 
 											<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0mm; padding-bottom:0mm;padding-left:5mm"/>
 											<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
 												If "No," complete<b> c</b> below.
-												</div>
+											</div>
 											<div class="styGenericDiv" style="width:12mm;">
 												<div class="styShadingCell" style="width:6mm;height:5mm;"/>
 												<div class="styShadingCell" style="width:6mm;height:5mm;"/>
@@ -4592,8 +4657,8 @@ Was the annual statement used to prepare the tax return filed with the state of 
 										<div class="styGenericDiv" style="width:92mm;">
 											<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0mm; padding-bottom:0mm;padding-left:5mm">c</div>
 											<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
-Enter the state where the annual statement used to prepare the tax return was filed.
-<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
+												Enter the state where the annual statement used to prepare the tax return was filed.
+												<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/>
 												<span style="width:15mm;border-bottom:1px solid black;text-align:left">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/AnnlStmtUsedToPrepTxRetStFldCd"/>
@@ -4609,8 +4674,8 @@ Enter the state where the annual statement used to prepare the tax return was fi
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftNumBox" style="height:6mm;padding-top:0mm;padding-bottom:0mm;">13</div>
 										<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
-Is the corporation required to file Schedule UTP (Form 1120), Uncertain Tax Position Statement (see instructions)? 
-<!--Dotted Line-->
+											Is the corporation required to file Schedule UTP (Form 1120), Uncertain Tax Position Statement?  See instructions. 
+											<!--Dotted Line-->
 											<span style="letter-spacing:4mm;font-weight:bold">...</span>
 										</div>
 										<div class="styGenericDiv" style="width:12mm;">
@@ -4637,14 +4702,15 @@ Is the corporation required to file Schedule UTP (Form 1120), Uncertain Tax Posi
 									<div class="styGenericDiv" style="width:92mm;">
 										<div class="styLNLeftNumBox" style="height:4mm;padding-top:0mm;padding-bottom:0mm;"/>
 										<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
-If "Yes," complete and attach Schedule UTP.
-</div>
+											If "Yes," complete and attach Schedule UTP.
+										</div>
 										<div class="styGenericDiv" style="width:12mm;">
 											<div class="styShadingCell" style="width:6mm;height:4mm;"/>
 											<div class="styShadingCell" style="width:6mm;height:4mm;"/>
 										</div>
 									</div>
 									<!-- Line 14 -->
+									<!--Form 1120-L Sch M Line 14 should be Boolean. We will post it as a known issue and add the fix to a TY20/PY21 UWR.-->
 									<div class="styGenericDiv" style="width:92mm;">
 										<div class="styLNLeftNumBox" style="height:4mm;padding-top:0mm;padding-bottom:0mm;">14</div>
 										<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
@@ -4676,7 +4742,7 @@ If "Yes," complete and attach Schedule UTP.
 									<div class="styGenericDiv" style="width:92mm;">
 										<div class="styLNLeftNumBox" style="height:4mm;padding-top:0mm;padding-bottom:0mm;"/>
 										<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
-											 If “Yes,” complete and attach Form 8991.
+											If "Yes", complete and attach Form 8991.
 											<!-- Form to Form Link   -->
 											<xsl:call-template name="SetFormLinkInline">
 												<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/GrossReceiptsLast3YearsInd"/>
@@ -4691,7 +4757,7 @@ If "Yes," complete and attach Schedule UTP.
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftNumBox" style="height:4.5mm;">15</div>
 										<div class="styLNDesc" style="width:72mm;height:4.5mm;">
-											During the tax year, did the corporation pay or accrue any interest or royalty for which the deduction is not allowed under section 267A (See instructions)?
+											During the tax year, did the corporation pay or accrue any interest or royalty for which the deduction is not allowed under section 267A? See instructions
 											<!--Dotted Line-->
 											<span style="letter-spacing:4mm;font-weight:bold">.........</span>
 										</div>
@@ -4719,8 +4785,8 @@ If "Yes," complete and attach Schedule UTP.
 									<div class="styGenericDiv" style="width:92mm;">
 										<div class="styLNLeftNumBox" style="height:4mm;padding-top:0mm;padding-bottom:0mm;"/>
 										<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
-										  If “Yes,” enter the total amount of the disallowed deductions 
-											<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/><br/>$
+										  If “Yes,” enter the total amount of the disallowed deductions  
+											<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="right pointing arrow"/><br/>$
 												<span style="width:25mm;border-bottom:1px solid black;text-align:right">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/NondedIntRoyaltyUndSect267AAmt"/>
@@ -4736,9 +4802,9 @@ If "Yes," complete and attach Schedule UTP.
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftNumBox" style="height:4mm;padding-top:0mm;padding-bottom:0mm;">16</div>
 										<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
-											Did the corporation have an election under section 163(j) for any real property trade or business or any farming business in effect during the taxable year (see instructions)?
+											Did the corporation have an election under section 163(j) for any real property trade or business or any farming business in effect during the tax year?  See instructions.
 											<!--Dotted Line-->
-											<span style="letter-spacing:4mm;font-weight:bold">.....</span>
+											<span style="letter-spacing:4mm;font-weight:bold">......</span>
 										</div>
 										<div class="styGenericDiv" style="width:12mm;">
 											<div class="styShadingCell" style="width:6mm;height:5mm;"/>
@@ -4765,7 +4831,7 @@ If "Yes," complete and attach Schedule UTP.
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftNumBox" style="height:4mm;padding-top:0mm;padding-bottom:0mm;">17</div>
 										<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
-											Is the corporation required to file Form 8990, Limitation on Business Interest Expense IRC 163(j), to calculate the amount of deductible business interest (see instructions)?
+											Is the corporation required to file Form 8990, Limitation on Business Interest Expense IRC 163(j), to calculate the amount of deductible business interest? See instructions.
 											<!-- Form to Form Link   -->
 											<xsl:call-template name="SetFormLinkInline">
 												<xsl:with-param name="TargetNode" select="$IRS1120LScheduleM/Form8990RequiredInd"/>
@@ -4793,7 +4859,7 @@ If "Yes," complete and attach Schedule UTP.
 												</span>
 											</div>
 										</div>
-									</div>																		
+									</div>
 								</td>
 								<!--END Schedule M Right Side-->
 							</tr>
@@ -4804,7 +4870,7 @@ If "Yes," complete and attach Schedule UTP.
 					<div class="pageEnd" style="width:187mm;clear:all;float:none;">
 						<div style="float:right;">
 							<span style="width:80px;"/>  
-Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2018)
+Form <span class="styBoldText" style="font-size:8pt;">1120-L</span> (2019)
 </div>
 					</div>
 					<!-- BEGIN Left Over Table -->
@@ -4820,123 +4886,123 @@ Additional Data
 					<!-- ****************************Additional Data Table **********************************-->
 					<table class="styLeftOverTbl">
 						<xsl:call-template name="PopulateCommonLeftover">
-							<xsl:with-param name="TargetNode" select="  $Form1120LData"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Form 1120L, Top Left Margin - Supporting Statement to Consolidated Return 
 </xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/@suprtStmtToCnsldtReturnInd"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/@suprtStmtToCnsldtReturnInd"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRowAmount">
 							<xsl:with-param name="Desc">Form 1120, Top Left Margin - Section 1291 Interest Amount</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/@section1291InterestAmt"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/@section1291InterestAmt"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Form 1120, Top Left Margin - Section 1294 Interest Indicator</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/@section1294InterestIndicator"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/@section1294InterestIndicator"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRowAmount">
 							<xsl:with-param name="Desc">Form 1120, Top Left Margin - Section 1294 Interest Amount</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/@section1294InterestAmount"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/@section1294InterestAmount"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Form 1120, Top Left Margin - Section 501d Indicator</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/@section501dIndicator"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/@section501dIndicator"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Form 1120, Top Left Margin - Subchapter T Cooperative Indicator</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/@subchapterTCoopIndicator"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/@subchapterTCoopIndicator"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line D - SECTION 953(D) Indicator</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/Section953dElectionInd/@section953dCd"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/Section953dElectionInd/@section953dCd"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRowAmount">
 							<xsl:with-param name="Desc">Line D - SECTION 953(D) Amount</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/Section953dElectionInd/@section953dAmt"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/Section953dElectionInd/@section953dAmt"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line 7 - Other Income Item</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/OtherIncomeAmt/@otherIncomeDesc"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/OtherIncomeAmt/@otherIncomeDesc"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line 9 - Form 4684 Indicator</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/NetGainLoss/@form4684Indicator"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/NetGainLoss/@form4684Indicator"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line 30 - CCF Indicator</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/TaxableIncomeAmt/@cCFIndicator"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TaxableIncomeAmt/@cCFIndicator"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
-							<xsl:with-param name="Desc">Line 29h -ODCIndicator</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/TotalCreditsAmt/@ozoneDepletingChemicalCd"/>
+							<xsl:with-param name="Desc">Line 28g - ODCIndicator</xsl:with-param>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TotalCreditsAmt/@ozoneDepletingChemicalCd"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
-							<xsl:with-param name="Desc">Line 29k - backupWithholdingIndicator</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/TotalPaymentsAmt/@backupWithholdingTypeCd"/>
+							<xsl:with-param name="Desc">Line 28k - backupWithholdingIndicator</xsl:with-param>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TotalPaymentsAmt/@backupWithholdingTypeCd"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRowAmount">
-							<xsl:with-param name="Desc">Line 29k - backupWithholdingAmount</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/TotalPaymentsAmt/@backupWithholdingAmt"/>
+							<xsl:with-param name="Desc">Line 28k - backupWithholdingAmount</xsl:with-param>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TotalPaymentsAmt/@backupWithholdingAmt"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRowAmount">
 							<xsl:with-param name="Desc">Line 30 - CCF Amount</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/TaxableIncomeAmt/@cCFAmount"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TaxableIncomeAmt/@cCFAmount"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line 32b - Beneficiary Of Trust Indicator</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/EstimatedTaxPaymentsAmt/@beneficiaryOfTrustIndicator"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/EstimatedTaxPaymentsAmt/@beneficiaryOfTrustIndicator"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRowAmount">
 							<xsl:with-param name="Desc">Line 32b - Beneficiary Of Trust Amount</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/EstimatedTaxPaymentsAmt/@beneficiaryOfTrustAmount"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/EstimatedTaxPaymentsAmt/@beneficiaryOfTrustAmount"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line 32b - Form 8816 Indicator</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/EstimatedTaxPaymentsAmt/@f8816Indicator"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/EstimatedTaxPaymentsAmt/@f8816Indicator"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRowAmount">
 							<xsl:with-param name="Desc">Line 32b - Form 8816 Amount</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/EstimatedTaxPaymentsAmt/@f8816Amount"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/EstimatedTaxPaymentsAmt/@f8816Amount"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line 32b - Section 847 Deduction Indicator</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/EstimatedTaxPaymentsAmt/@section847DeductionIndicator"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/EstimatedTaxPaymentsAmt/@section847DeductionIndicator"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line 32f(1) - Backup Withholding Indicator</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/TotalUndistributedLTCapGainAmt/@backupWithholdingTypeCd"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TotalUndistributedLTCapGainAmt/@backupWithholdingTypeCd"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRowAmount">
 							<xsl:with-param name="Desc">Line 32f(1) - Backup Withholding Amount</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/TotalUndistributedLTCapGainAmt/@backupWithholdingAmt"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TotalUndistributedLTCapGainAmt/@backupWithholdingAmt"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line 32f(2) - Ozone Depleting Chemicals Indicator</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="  $Form1120LData/TotalFuelTaxCreditAmt/@ozoneDepletingChemicalsInd"/>
+							<xsl:with-param name="TargetNode" select="  $RtnDoc/IRS1120L/TotalFuelTaxCreditAmt/@ozoneDepletingChemicalsInd"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
@@ -4990,7 +5056,7 @@ Additional Data
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 					</table>
-					<!-- ****************************END Left Over Table  *******************************-->
+					<!-- ****************************END Left Over Table *******************************-->
 					<!-- Begin Separated Repeating data table  -->
 					<xsl:if test="($Print = $Separated) and (count($Form1120ScheduleE/Officer) &gt; 5)">
 						<span class="styRepeatingDataTitle">Form 1120, Schedule E -  Compensation of Officers:</span>

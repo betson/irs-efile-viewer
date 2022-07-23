@@ -240,24 +240,19 @@
 						<div style="width:187mm">
 							<div class="styLNLeftNumBoxSD">7</div>
 							<div class="styLNDesc" style="width:114.8mm;height:3mm;">
-		       Regular tax before credits:
-		      <span style="padding-left:4mm;">
-									<li>Individuals. Enter the sum of the amounts from Form 1040, lines 44 and 46; or the 
-					sum of the amounts from Form 1040NR, lines 42 and 44
-					<span class="styDotLn" style="float:right;">...........</span>
-									</li>
-								</span>
-								<span style="padding-left:4mm;">
-									<li>Corporations. Enter the amount from Form 1120, Schedule J, Part I, line 2; or the applicable line of your return
-					<span class="styDotLn" style="float:right;">..................</span>
-									</li>
-								</span>
-								<span style="padding-left:4mm;">
-									<li>Estates and trusts. Enter the sum of the amounts from Form 1041, Schedule G,
-					 lines 1a and 1b; or the amount from the applicable line of your return
-					<span class="styDotLn" style="float:right;">........</span>
-									</li>
-								</span>
+							   Regular tax before credits:
+								<ul style="padding-left:0;margin-left:4mm;margin-top:0;">
+									<li>Individuals. Enter the sum of the amounts from Form 1040, line 11a, and Schedule 2(Form 1040), line 46, or the 
+										sum of the amounts from Form 1040NR, lines 42 and 44
+								</li>
+								<li>Corporations. Enter the amount from Form 1120, Schedule J, Part I, line 2; or the applicable line of your return
+									<span class="styDotLn" style="float:right;">..................</span>
+								</li>
+								<li>Estates and trusts. Enter the sum of the amounts from Form 1041, Schedule G,
+									 lines 1a and 1b; or the amount from the applicable line of your return
+									<span class="styDotLn" style="float:right;">........</span>
+								</li>
+							</ul>
 							</div>
 							<div class="styLNDesc" style="width:5mm;">
 								<img src="{$ImagePath}/3800_Bracket_Lger.gif" height="85mm" alt="Curly Bracket Image"/>
@@ -279,21 +274,17 @@
 							<div class="styLNLeftNumBoxSD">8</div>
 							<div class="styLNDesc" style="width:114.8mm;height:3mm;">
                  Alternative minimum tax: 
-		      <span style="padding-left:4mm;width:114.8mm;">
-									<li>Individuals. Enter the amount from Form 6251, line 35
-					<span class="styDotLn" style="float:right;">..........</span>
-									</li>
-								</span>
-								<span style="padding-left:4mm;width:114.8mm;">
-									<li>Corporations. Enter -0- 
-					<span class="styDotLn" style="float:right;">....................</span>
-									</li>
-								</span>
-								<span style="padding-left:4mm;width:114.8mm;">
-									<li>Estates and trusts. Enter the amount from Schedule I (Form 1041), line 56
-					<span class="styDotLn" style="float:right;">....</span>
-									</li>
-								</span>
+					<ul style="padding-left:0;margin-left:4mm;margin-top:0;">
+						<li>Individuals. Enter the amount from Form 6251, line 11
+							<span class="styDotLn" style="float:right;">..........</span>
+						</li>
+						<li>Corporations. Enter -0- 
+							<span class="styDotLn" style="float:right;">....................</span>
+						</li>
+						<li>Estates and trusts. Enter the amount from Schedule I (Form 1041), line 56
+							<span class="styDotLn" style="float:right;">....</span>
+						</li>
+					</ul>
 							</div>
 							<div class="styLNDesc" style="width:5mm;">
 								<img src="{$ImagePath}/3800_Bracket_Sm.gif" height="50mm" alt="Curly Bracket Image"/>
@@ -445,7 +436,7 @@
 							<div class="styLNDesc" style="height:4mm;width:99mm;">
 								<span style="float:left;">
 									<span style="font-family:arial;">
-              Enter 25% (0.25) of the excess, if any, of line 12 over $25,000 (see instructions)</span>
+              Enter 25% (0.25) of the excess, if any, of line 12 over $25,000.  See instructions</span>
 								</span>
 								<div class="styDotLn" style="float:right;">...</div>
 							</div>
@@ -465,22 +456,18 @@
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox">14</div>
 							<div class="styLNDesc" style="width:85.8mm;">
-             Tentative minimum tax: 
-		      <span style="padding-left:4mm;width:85.8mm;">
-									<li>Individuals. Enter the amount from Form 6251, line 33
-					<span class="styDotLn" style="float:right;">..</span>
-									</li>
-								</span>
-								<span style="padding-left:4mm;width:85.8mm;">
-									<li> Corporations. Enter -0-
-					<span class="styDotLn" style="float:right;">............</span>
-									</li>
-								</span>
-								<span style="padding-left:4mm;">
-									<li> Estates and trusts. Enter the amount from Schedule I (Form 1041), line 54
-					<span class="styDotLn" style="float:right;">...............</span>
-									</li>
-								</span>
+								 Tentative minimum tax: 
+									<ul style="padding-left:0;margin-left:4mm;margin-top:0;">
+										<li>Individuals. Enter the amount from Form 6251, line 9
+											<span class="styDotLn" style="float:right;">...</span>
+										</li>
+										<li> Corporations. Enter -0-
+											<span class="styDotLn" style="float:right;">............</span>
+										</li>
+										<li> Estates and trusts. Enter the amount from Schedule I (Form 1041), line 54
+											<span class="styDotLn" style="float:right;">...............</span>
+										</li>
+									</ul>
 							</div>
 							<div class="styLNDesc" style="width:5mm;">
 								<img src="{$ImagePath}/3800_Bracket_Sm.gif" style="padding-top:2mm;" height="55mm" alt="Curly Bracket Image"/>
@@ -1002,8 +989,8 @@
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox">35</div>
 							<div class="styLNDesc" style="width:139mm;">
-              Carryback of business credit from 2019. Enter the amount from line 5 of Part III with box D checked 
-              <span style="float:left;">(see instructions)
+              Carryback of business credit from 2019. Enter the amount from line 5 of Part III with box D checked.  
+              <span style="float:left;">See instructions
 							</span>
 								<div class="styDotLn" style="float:right;">............................</div>
 							</div>
@@ -1086,13 +1073,12 @@
 						</div>
 						<div class="styBB" style="width:187mm;">
 							<div class="styLNLeftNumBox"/>
-							<div class="styLNDesc" style="width:115mm;padding-left:4mm;">
-								<li>Individuals. Form 1040, line 54, or Form 1040NR, line 51	<span class="styDotLn" style="float:right;">.........</span>
-								</li>
-								<li>Corporations. Form 1120, Schedule J, Part I, line 5c <span class="styDotLn" style="float:right;">...........</span>
-								</li>
-								<li>Estates and trusts. Form 1041, Schedule G, line 2b <span class="styDotLn" style="float:right;">...........</span>
-								</li>
+							<div class="styLNDesc" style="width:115mm;">
+								<ul style="padding-left:0;margin-left:4mm;margin-top:0;">
+									<li>Individuals. Schedule 3 (Form 1040), line 54, or Form 1040NR, line 51	<span class="styDotLn" style="float:right;">.....</span></li>
+									<li>Corporations. Form 1120, Schedule J, Part I, line 5c <span class="styDotLn" style="float:right;">...........</span></li>
+									<li>Estates and trusts. Form 1041, Schedule G, line 2b <span class="styDotLn" style="float:right;">...........</span></li>
+								</ul>
 							</div>
 							<div class="styLNDesc" style="width:5mm;">
 								<img src="{$ImagePath}/3800_Bracket_Sm.gif" height="40mm" alt="Curly Bracket Image"/>

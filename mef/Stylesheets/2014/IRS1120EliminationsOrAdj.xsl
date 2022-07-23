@@ -1502,11 +1502,11 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 							<div style="width:164mm;float:left;clear:none;">
 								<div class="styLNDesc" style="height:8mm;width:46.5mm;padding-top:0mm;border-right:1px solid black;border-left:1px solid black;padding-left:1mm;">
 								  Print/Type preparer's name<br/>
-								  <span style="height:8mm;padding-top:2mm;">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$RtnHdrData/PreparerPersonGrp/PreparerPersonNm"/>
-										<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpPreparerPersonName</xsl:with-param>
-									</xsl:call-template>
+								  <span style="height:8mm;padding-top:2mm;font-size:5.5pt">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$RtnHdrData/PreparerPersonGrp/PreparerPersonNm"/>
+											<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpPreparerPersonName</xsl:with-param>
+										</xsl:call-template>
 									</span>
 								</div>
 								<div class="styLNDesc" style="height:8mm;width:46.5mm;padding-top:0mm;border-right:1px solid black;padding-left:1mm;">
@@ -3488,7 +3488,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleK/CorpOwnPercentVotingStockInfo"/>
 								<xsl:with-param name="headerHeight" select="1"/>
-								<xsl:with-param name="containerHeight" select="4"/>
+								<xsl:with-param name="containerHeight" select="5"/>
 								<xsl:with-param name="containerID" select=" 'OFCctn3' "/>
 								<xsl:with-param name="imageID" select=" 'OFCimg3' "/>
 								<xsl:with-param name="buttonID" select=" 'OFCbtn3' "/>
@@ -3521,7 +3521,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 							</thead>
 							<tfoot/>
 							<tbody>
-								<xsl:if test="($Print != $Separated) or (count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &lt;= 4) ">
+								<xsl:if test="($Print != $Separated) or (count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &lt;= 5) ">
 									<xsl:for-each select="$Form1120ScheduleK/CorpOwnPercentVotingStockInfo">
 										<tr>
 											<td class="styTableCellText" style="width:95mm;padding-left:2.5mm;">
@@ -3564,7 +3564,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 									</xsl:for-each>
 								</xsl:if>
 								<!-- Build blank row 1 data for Schedule K line 5a table -->
-								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 1 or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 4) and ($Print = $Separated))">
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 1 or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 5) and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;text-align:left;">
 											<span class="styBoldText"/>
@@ -3585,7 +3585,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 									</tr>
 								</xsl:if>
 								<!-- Build blank row 2 data for Schedule K line 5a table -->
-								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 2  or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 4) and ($Print = $Separated))">
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 2  or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 5) and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;text-align:left;">
 											<span class="styTableCellPad"/>
@@ -3602,7 +3602,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 									</tr>
 								</xsl:if>
 								<!-- Build blank row 3 data for Schedule K line 5a table -->
-								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 3  or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 4) and ($Print = $Separated))">
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 3  or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 5) and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;text-align:left;">
 											<span class="styTableCellPad"/>
@@ -3619,7 +3619,23 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 									</tr>
 								</xsl:if>
 								<!-- Build blank row 4 data for Schedule K line 5a table -->
-								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 4  or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 4) and ($Print = $Separated))">
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 4  or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 5) and ($Print = $Separated))">
+									<tr>
+										<td class="styTableCell" style="width:95mm;text-align:left;">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCellCtr" style="width:35mm;">
+											<span style="width:1px;"/>
+										</td>
+										<td class="styTableCell" style="width:20mm">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCell" style="width:36mm;border-right-width:0px;">
+											<span class="styTableCellPad"/>
+										</td>
+									</tr>
+								</xsl:if>
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 5  or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 5) and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;text-align:left;">
 											<span class="styTableCellPad"/>
@@ -3641,7 +3657,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form1120ScheduleK/CorpOwnPercentVotingStockInfo"/>
 						<xsl:with-param name="headerHeight" select="1"/>
-						<xsl:with-param name="containerHeight" select="4"/>
+						<xsl:with-param name="containerHeight" select="5"/>
 						<xsl:with-param name="containerID" select=" 'OFCctn3' "/>
 						<xsl:with-param name="imageID" select=" 'OFCimg3' "/>
 						<xsl:with-param name="buttonID" select=" 'OFCbtn3' "/>
@@ -3708,7 +3724,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleK/CorpOwnPercentPartnershipInfo"/>
 								<xsl:with-param name="headerHeight" select="1"/>
-								<xsl:with-param name="containerHeight" select="4"/>
+								<xsl:with-param name="containerHeight" select="5"/>
 								<xsl:with-param name="containerID" select=" 'OFCctn4' "/>
 								<xsl:with-param name="imageID" select=" 'OFCimg4' "/>
 								<xsl:with-param name="buttonID" select=" 'OFCbtn4' "/>
@@ -3737,7 +3753,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
               </thead>
               <tfoot/>
               <tbody>
-                <xsl:if test="($Print != $Separated) or (count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &lt;= 4) ">
+                <xsl:if test="($Print != $Separated) or (count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &lt;= 5) ">
                   <xsl:for-each select="$Form1120ScheduleK/CorpOwnPercentPartnershipInfo">
                     <tr>
                       <td class="styTableCellText" style="width:95mm;padding-left:2.5mm;">
@@ -3779,7 +3795,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
                     </tr>
                   </xsl:for-each>
                 </xsl:if>
-                <xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 1 or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 4) and ($Print = $Separated))">
+                <xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 1 or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 5) and ($Print = $Separated))">
                   <tr>
                     <td class="styTableCell" style="width:95mm;text-align:left;">
                       <span class="styBoldText"/>
@@ -3799,7 +3815,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
                     </td>
                   </tr>
                 </xsl:if>
-                <xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 2  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 4) and ($Print = $Separated))">
+                <xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 2  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 5) and ($Print = $Separated))">
                   <tr>
                     <td class="styTableCell" style="width:95mm;">
                       <span class="styTableCellPad"/>
@@ -3815,7 +3831,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
                     </td>
                   </tr>
                 </xsl:if>
-                <xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 3  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 4) and ($Print = $Separated))">
+                <xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 3  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 5) and ($Print = $Separated))">
                   <tr>
                     <td class="styTableCell" style="width:95mm;">
                       <span class="styTableCellPad"/>
@@ -3831,7 +3847,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
                     </td>
                   </tr>
                 </xsl:if>
-                <xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 4  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 4) and ($Print = $Separated))">
+                <xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 4  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 5) and ($Print = $Separated))">
                   <tr>
                     <td class="styTableCell" style="width:95mm;">
                       <span class="styTableCellPad"/>
@@ -3847,13 +3863,29 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
                     </td>
                   </tr>
                 </xsl:if>
-              </tbody>
+                <xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 5  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 5) and ($Print = $Separated))">
+                  <tr>
+                    <td class="styTableCell" style="width:95mm;">
+                      <span class="styTableCellPad"/>
+                    </td>
+                    <td class="styTableCellCtr" style="width:35mm;">
+                      <span style="width:1px;"/>
+                    </td>
+                    <td class="styTableCell" style="width:20mm">
+                      <span class="styTableCellPad"/>
+                    </td>
+                    <td class="styTableCell" style="width:36mm;border-right-width:0px;">
+                      <span class="styTableCellPad"   style="background-color:yellow;"/>
+                    </td>
+                  </tr>
+                </xsl:if>
+             </tbody>
             </table>
           </div>
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form1120ScheduleK/CorpOwnPercentPartnershipInfo"/>
 						<xsl:with-param name="headerHeight" select="1"/>
-						<xsl:with-param name="containerHeight" select="4"/>
+						<xsl:with-param name="containerHeight" select="5"/>
 						<xsl:with-param name="containerID" select=" 'OFCctn4' "/>
 						<xsl:with-param name="imageID" select=" 'OFCimg4' "/>
 						<xsl:with-param name="buttonID" select=" 'OFCbtn4' "/>
@@ -6187,7 +6219,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
             </table>
           </xsl:if>
           <div style="width:187mm;"/>
-          <xsl:if test="($Print = $Separated) and (count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 4)">
+          <xsl:if test="($Print = $Separated) and (count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 5)">
             <span class="styRepeatingDataTitle">Form 1120, Schedule K, Line 5a &#8208; Partnership, Corporation, or Trust Owning 20% &#8208; 50% of the Corporation's Voting Stock</span>
             <table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
               <thead class="styTableThead">
@@ -6255,7 +6287,7 @@ Per version Tree TY2008 directory, IBM modified the Style Sheet code from just a
           </xsl:if>
           <!-- table 4 Schedule K-->
           <div style="width:187mm;"/>
-          <xsl:if test="($Print = $Separated) and (count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 4)">
+          <xsl:if test="($Print = $Separated) and (count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 5)">
             <span class="styRepeatingDataTitle">Form 1120, Schedule K, Line 5b &#8208; Corporation Owning 20% &#8208; 50% or More in Foreign or Domestic Partnership</span>
             <table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
               <thead class="styTableThead">

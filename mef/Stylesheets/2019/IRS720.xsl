@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 01/25/2017 - Modified per UWR #195212 - Jeremy Nichols-->
-<!-- 02/21/2017 - Modified per defect #47844 - Jeremy Nichols-->
 <!-- 01/12/2018 - Modified per UWR #205558 - Jeremy Nichols-->
 <!-- 02/08/2018 - Modified per UWR #208207 - Jeremy Nichols-->
 <!-- 10/26/2018 - Modified per UWR #214980 - Jeremy Nichols-->
 <!-- 01/15/2019 - Modified per defect #127590 - Jeremy Nichols-->
 <!-- 01/16/2019 - Modified per defect #127591 - Jeremy Nichols-->
+<!-- 03/15/2019 - Modified per KISAM IM00505957 and defect 62895 - Jeremy Nichols-->
+<!-- 03/18/2019 - Modified per defect #127814 - Jeremy Nichols-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -1367,40 +1367,39 @@
 						</td>
 					</tr>
 					<!-- End Part I, Fuel Taxes, line 124-->
-					<!-- Begin Page 1 Footer -->
-					<tr>
-						<td colspan="8" style="width:187mm;float:left;clear:none; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 2px; border-bottom-width: 0px">
-							<div style="float:left;">
-								<span class="styBoldText">For Privacy Act and Paperwork Reduction Act Notice, see the separate instructions.</span>
-								<span style="width:6mm;"/>                        
-        Cat. No. 10175Y
-      </div>
-							<div style="float:right;">
-								<span style="width:20px;"/>  
-        Form <span class="styBoldText" style="font-size:8pt;">720</span> (Rev. 1-2019)
-      </div>
-						</td>
-					</tr>
 				</tbody>
 			</table>
+			
+			<!-- Begin Page 1 Footer -->
+			<div style="width:187mm;float:left;clear:none; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 2px; border-bottom-width: 0px">
+				<div style="float:left;">
+					<span class="styBoldText">For Privacy Act and Paperwork Reduction Act Notice, see the separate instructions.</span>
+					<span style="width:6mm;"/>                        
+					Cat. No. 10175Y
+				  </div>
+				<div style="float:right;">
+					<span style="width:20px;"/>  
+				Form <span class="styBoldText" style="font-size:8pt;">720</span> (Rev. 1-2019)
+			  </div>
+			</div>
 			</div>
 			</div>
 			<div class="pageEnd"/>
 					<!-- End Page 1 Footer -->
+					
 					<!-- Begin page 2 Header -->
 			<div style="display:block">
+				<div  class="styBB" style="width:187mm">
+					<div style="float: left; clear: none">Form 720 (Rev. 1-2019)</div>
+					<div style="float:right">Page <span class="styBoldText" style="font-size: 8pt">2</span>
+					</div>
+				</div>
+				<!-- End page 2 Header -->
+					
+					<!-- Begin Part I, Retail Taxes, Line 33 -->
 			<div style="height:34mm;width:187mm; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; border-bottom-width: 0px;display:block;">
 				<table class="styTable" cellspacing="0" border="0" style="height:auto;width:187mm;">
 				<tbody>
-					<tr>
-						<td colspan="8" class="styBB" style="width:187mm">
-							<div style="float: left; clear: none">Form 720 (Rev. 1-2019)</div>
-							<div style="float:right">Page <span class="styBoldText" style="font-size: 8pt">2</span>
-							</div>
-						</td>
-					</tr>
-					<!-- End page 2 Header -->
-					<!-- Begin Part I, Retail Taxes, Line 33 -->
 					<tr>
 						<th style="height:4mm;width:11mm;float:left;clear:none;text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;">
 							<b>IRS No.</b>
@@ -1427,7 +1426,7 @@
 								<xsl:with-param name="TargetNode" select="$FormData/QrtlyFederalExciseTaxPartI/PartIIRSNum33/IRSNum"/>
 							</xsl:call-template>
 						</td>
-						<td colspan="3" style="height:3.5mm;width:100mm;float:left;clear:none;text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px; padding-left:5px;"><b>Retail Tax</b> - Truck, trailer, and semitrailer chassis and bodies, and tractor
+						<td colspan="3" style="height:3.5mm;width:100mm;float:left;clear:none;text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px; padding-left:5px;font-size:7pt;"><b>Retail Tax</b> - Truck, trailer, and semitrailer chassis and bodies, and tractor
               </td>
 						<td colspan="2" style="height:3.5mm;width:30mm;float:left;clear:none;text-align: center; border-color: black; border-style: solid; border-top-width: 0px; border-right-width:1px; border-left-width:0px; border-bottom-width:0px; font-weight:normal; padding-right:1mm; font-size:6pt" >
 							<xsl:call-template name="PopulatePercent">
@@ -2692,35 +2691,32 @@
 					</tbody>
 				  </table>
 						<!-- END PREPARER SIGNATURE SECTION -->
-					</div>
 					
-					<table cellspacing="0" cellpadding="0" style="height:auto;width:187mm;font-size:7pt;" border="0">
-					<!-- Begin Page 2 Footer -->
-					<tr>
-						<td colspan="8" style="width:187mm;border-top:1px solid black;float:left;clear:none;">
-							<div style="float:left;">
-								<span class="styBoldText"/>
-								<span style="width:13mm;"/>
-							</div>
-							<div style="float:right;">
-								<span style="width:40px;"/>  
-								Form <span class="styBoldText" style="font-size:8pt;">720</span> (Rev. 1-2019)
-							</div>
-						</td>
-					</tr>
-					</table>
-					<div class="pageEnd"/>
+			<!-- Begin Page 2 Footer -->
+			<div style="width:187mm;float:left;clear:none; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 2px; border-bottom-width: 0px">
+				<div style="float:left;">
+					<span class="styBoldText"> </span>
+					<span style="width:6mm;"/>
+				  </div>
+				<div style="float:right;">
+					<span style="width:20px;"/>  
+				Form <span class="styBoldText" style="font-size:8pt;">720</span> (Rev. 1-2019)
+			  </div>
+			</div>
+			</div>
+			</div>
+			<div class="pageEnd"/>
 					<!-- End Page 2 Footer -->
+					
 					<!-- Begin page 3 Header -->
+				<div  class="styBB" style="width:187mm">
+					<div style="float: left; clear: none">Form 720 (Rev. 1-2019)</div>
+					<div style="float:right">Page <span class="styBoldText" style="font-size: 8pt">3</span>
+					</div>
+				</div>
+				<!-- End page 3 Header -->
+				
 					<table cellspacing="0" cellpadding="0" style="height:auto;width:187mm;font-size:7pt;" border="0">
-					<tr>
-						<td colspan="8" class="styBB" style="width:187mm; border-bottom: 2px solid black">
-							<div style="float: left; clear: none">Form 720 (Rev. 1-2019)</div>
-							<div style="float:right">Page <span class="styBoldText" style="font-size: 8pt">3</span>
-							</div>
-						</td>
-					</tr>
-					<!-- End page 3 Header -->
 					<!-- Begin Part III Line-->
 					<tr>
 						<td colspan="8">
@@ -2740,7 +2736,6 @@
 					</tr>
 					<!-- End Part III,  Table title  -->
 			</table>
-			</div>
 		<!-- Begin Part III Section Header -->
 		<table cellspacing="0" cellpadding="0" style="width:187mm; font-size:7pt;" border="0">
 			<thead>
@@ -3325,7 +3320,9 @@
 					<th scope="col" rowspan="3" style="height: 13mm; width:15.5mm;font-size: 11pt;font-weight:bold;border-right:1px solid black;border-bottom:0 solid black; text-align:left;padding-top:9mm" >
 					  Sign Here
 					  </th>
-					<th scope="col" colspan="5" style="padding-left:3mm;padding-bottom:1mm;font-weight:normal" >Under penalties of perjury, I declare that I've examined this return, including accompanying schedules and statements, and to the best of my knowledge and belief, it's true, correct, and complete. Declaration of preparer (other than taxpayer) is based on all information of which preparer has any knowledge.
+					<th scope="col" colspan="5" style="padding-left:3mm;padding-bottom:1mm;font-size:6pt;font-weight:normal;text-align:left;" >
+						Under penalties of perjury, I declare that I have examined this return, including accompanying schedules and statements, and to the best of my knowledge and
+						belief, it is true, correct, and complete. Declaration of preparer (other than taxpayer) is based on all information of which preparer has any knowledge.
 					  </th>
 				</tr>
 				<tr>
@@ -3579,39 +3576,33 @@
         </tbody>
       </table>
 			<!-- END PREPARER SIGNATURE SECTION -->
-		</div>
 		
-		<table cellspacing="0" cellpadding="0" style="height:auto;width:187mm;font-size:7pt;" border="0">
-			<thead class="styTableHead">
-				<!-- Begin Page 3 Footer -->
-				<tr>
-					<td colspan="8" style="width:187mm;border-top:1px solid black;float:left;clear:none;">
-						<div style="float:left;">
-							<span class="styBoldText"/>
-							<span style="width:13mm;"/>
-						</div>
-						<div style="float:right;">
-							<span style="width:40px;"/>  
-							Form <span class="styBoldText" style="font-size:8pt;">720</span> (Rev. 1-2019)
-						</div>
-					</td>
-				</tr>
-			</thead>
-		</table>
-		<div class="pageEnd"/>
-				<!-- End Page 3 Footer -->
-				<!-- Begin page 4 Header -->
-		<table cellspacing="0" cellpadding="0" style="height:auto;width:187mm;font-size:7pt;" border="0">
-			<thead class="styTableHead">
-				<tr>
-					<td colspan="8" class="styBB" style="width:187mm; border-bottom: 2px solid black">
-						<div style="float: left; clear: none">Form 720 (Rev. 1-2019)</div>
-						<div style="float:right">Page <span class="styBoldText" style="font-size: 8pt">4</span>
-						</div>
-					</td>
-				</tr>
+		<!-- Begin Page 3 Footer -->
+			<div style="width:187mm;float:left;clear:none; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 2px; border-bottom-width: 0px">
+				<div style="float:left;">
+					<span class="styBoldText"> </span>
+					<span style="width:6mm;"/>
+				  </div>
+				<div style="float:right;">
+					<span style="width:20px;"/>  
+				Form <span class="styBoldText" style="font-size:8pt;">720</span> (Rev. 1-2019)
+			  </div>
+			</div>
+			</div>
+			<div class="pageEnd"/>
+					<!-- End Page 3 Footer -->
+					
+					<!-- Begin page 4 Header -->
+				<div  class="styBB" style="width:187mm">
+					<div style="float: left; clear: none">Form 720 (Rev. 1-2019)</div>
+					<div style="float:right">Page <span class="styBoldText" style="font-size: 8pt">4</span>
+					</div>
+				</div>
 				<!-- End page 4 Header -->
-				<tr>
+				
+		<table cellspacing="0" cellpadding="0" style="height:auto;width:187mm;font-size:7pt;" border="0">
+			<thead class="styTableHead">
+				<tr >
 					<th scope="col" style="height:1px;width:10mm;" />
 					<th scope="col" style="height:1px;width:39mm;" />
 					<th scope="col" style="height:1px;width:10mm;" />

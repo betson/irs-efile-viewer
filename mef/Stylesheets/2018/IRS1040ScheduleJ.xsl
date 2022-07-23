@@ -94,7 +94,7 @@
 						<div class="styGenericDiv" style="width:187mm;">
 							<div class="styLNLeftNumBoxSD">1</div>
 							<div class="styLNDesc">
-								<span style="float:left;">Enter the taxable income from your <b>2018</b> Form 1040, line 43, or Form 1040NR, line 41</span>
+								<span style="float:left;">Enter the taxable income from your <b>2018</b> Form 1040, line 10, or Form 1040NR, line 41</span>
 								<span class="styIRS1040SJDots">....</span>
 							</div>
 							<div class="styLNRightNumBox">1</div>
@@ -759,7 +759,7 @@
 						<div class="styGenericDiv" style="width:187mm;">
 							<div class="styLNLeftNumBox">23</div>
 							<div class="styLNDesc" style="">
-								<b>Tax.</b> Subtract line 22 from line 18. Also include this amount on Form 1040, line 44; or Form 1040NR,<br/> line 42
+								<b>Tax.</b> Subtract line 22 from line 18. Also include this amount on Form 1040, line 11; or Form 1040NR,<br/> line 42
 							</div>
 							<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm">23</div>
 							<div class="styLNAmountBox" style="height:8mm;padding-top:4mm">

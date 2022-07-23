@@ -124,8 +124,8 @@
           <!-- BEGIN PART I HEADER -->
 		  <div class="styBB" style="width:187mm;margin-top:2mm;padding-bottom:2mm">
             <span class="styPartName" style="height:5mm;width:14mm;font-size:10pt;">Part l</span>
-			<div class="styPartDesc" style="padding-left:1mm;width:168mm;font-size:9pt;padding-bottom:4mm;">
-          Short-Term Capital Gains and Losses (See instructions) 
+			<div class="styPartDesc" style="padding-left:1mm;width:168mm;font-size:8pt;padding-bottom:4mm;">
+          Short-Term Capital Gains and Losses - Generally Assets Held One Year or Less (see instructions) 
 			</div>
           </div>
           <!-- END PART I HEADER -->
@@ -436,8 +436,8 @@
           <!-- BEGIN PART II HEADER -->
            <div class="styBB" style="width:187mm;margin-top:2mm;padding-bottom:2mm;">
                <span class="styPartName" style="height:4mm;width:12mm;font-size:9pt;padding-bottom:2mm;">Part ll</span>
-            <div class="styPartDesc" style="padding-left:1mm;width:168mm;font-size:9pt;padding-bottom:2mm;">
-          Long-Term Capital Gains and Losses (See instructions)
+            <div class="styPartDesc" style="padding-left:1mm;width:168mm;font-size:8pt;padding-bottom:2mm;">
+          Long-Term Capital Gains and Losses—Generally Assets Held More Than One Year (see instructions)
 			</div>
           </div>
           <!-- END PART II HEADER -->
@@ -872,8 +872,8 @@
            <div class="styLNLeftNumBox" style="width:6mm;padding-top:1mm;"/>
           <div class="styLNDesc" style="width: 135mm;">
               <img src="{$ImagePath}/1040SchD_Bullet_Round.gif" alt="bullet image"/>
-            <span style="width: .5mm"/>  If line 16 is a<b> gain, </b>enter the amount from line 16 on Form 1040, line 13, or Form 1040NR, line 14.<br/> 
-            <span style="width: 2.1mm"/>Then go to line 17 below.
+            <span style="width: .5mm"/>  If line 16 is a<b> gain, </b>enter the amount from line 16 on Schedule 1 (Form 1040), line 13, or Form 1040NR,  
+            <span style="width: 2.4mm"/>line 14.  Then go to line 17 below.
           </div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;height:8mm;"/>
           <div class="styLNAmountBox" style="width: 37mm;border-bottom-width:0px;height:8mm;"/>
@@ -898,8 +898,8 @@
             <span>
               <img src="{$ImagePath}/1040SchD_Bullet_Round.gif" alt="bullet image"/>
             </span>
-              <span style="width:1mm"/> If line 16 is <b>zero,</b> skip lines 17 through 21 below and enter -0- on Form 1040, line 13, or Form<br/>  
-            <span style="width: 2mm"/> 1040NR, line 14. Then go to line 22.    
+              <span style="width:1mm"/> If line 16 is <b>zero,</b> skip lines 17 through 21 below and enter -0- on Schedule 1 (Form 1040), line 13, or <br/>  
+            <span style="width: 2mm"/> Form 1040NR, line 14. Then go to line 22.    
           </div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;height:9mm;"/>
           <div class="styLNAmountBox" style="width:37mm;border-bottom-width:0px;height:9mm;"/>
@@ -1070,9 +1070,9 @@
       </label>
             Complete the <b>Qualified Dividends and Capital Gain Tax Worksheet </b>
 			in the instructions for<br/>
-			<span style="padding-left:7mm;"/>  Form 1040, line 44 (or in the instructions for 
-			Form 1040NR, line 42). <b>Do not</b>  complete lines 21<br/>
-			<span style="padding-left:7mm;"/>  and 22 below.
+			<span style="padding-left:6mm;"/>  Form 1040, line 11a (or in the instructions for 
+			Form 1040NR, line 42). <b>Don't</b>  complete lines 21<br/>
+			<span style="padding-left:6mm;"/>  and 22 below.
           </div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;height:10.5mm;"/>
           <div class="styLNAmountBox" style="width:37mm;border-bottom-width:0px;height:10.5mm;"/>
@@ -1095,7 +1095,7 @@
         </xsl:call-template>
         <span style="font-weight:bold;padding-left:1mm;">No.</span>
       </label>
-           Complete the <b>Schedule D Tax Worksheet</b> in the instructions. <b> Do not</b> complete lines 21 and 22<br/> 		   <span style="padding-left:7mm;"/>  below.
+           Complete the <b>Schedule D Tax Worksheet</b> in the instructions. <b> Do not</b> complete lines 21 and 22<br/> 		   <span style="padding-left:6mm;"/>  below.
           </div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;height:11mm;"/>
           <div class="styLNAmountBox" style="width:37mm;border-bottom-width:0px;height:11mm;"/>
@@ -1105,7 +1105,7 @@
         <!-- BEGIN LINE 21 -->
         <div class="styGenericDiv " style="width:187mm;">
             <div class="styLNLeftNumBox" style="width:6mm;">21</div>
-          <div class="styLNDesc" style="width: 135mm;">If line 16 is a loss, enter here and on Form 1040, line 13, or Form 1040NR, line 14, the <b>smaller</b> of:
+          <div class="styLNDesc" style="width: 135mm;">If line 16 is a loss, enter here and on Schedule 1 (Form 1040), line 13, or Form 1040NR, line 14, the <b>smaller</b> of:
           </div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;height:6mm"/>
           <div class="styLNAmountBox" style="width:37mm;border-bottom-width:0px;height:6mm"/>
@@ -1159,7 +1159,7 @@
         <!-- BEGIN LINE 22 -->
         <div class="styGenericDiv " style="width:187mm;">
           <div class="styLNLeftNumBox" style="width:6mm;">22</div>
-          <div class="styLNDesc" style="width:135mm;">Do you have qualified dividends on Form 1040, line 9b, or Form 1040NR, line 10b?
+          <div class="styLNDesc" style="width:135mm;">Do you have qualified dividends on Form 1040, line 3a, or Form 1040NR, line 10b?
              </div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;"/>
           <div class="styLNAmountBox" style="width: 37mm;border-bottom-width:0px;border-left-width:0;background-color:lightgrey;"/>
@@ -1185,7 +1185,7 @@
         <span style="font-weight:bold;padding-left:1mm;">Yes.</span>
       </label>
           Complete the <b>Qualified Dividends and Capital Gain Tax Worksheet</b> in the Instructions for<br/>
-          <span style="padding-left:7mm;"/>  Form 1040, line 44 (or in the Instructions for Form 1040NR, line 42).</div>
+          <span style="padding-left:7mm;"/>  Form 1040, line 11a (or in the Instructions for Form 1040NR, line 42).</div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;height:7.5mm"/>
           <div class="styLNAmountBox" style="width:37mm;border-bottom-width:0px;height:7.5mm;border-left-width:0;background-color:lightgrey;"/>
         </div>

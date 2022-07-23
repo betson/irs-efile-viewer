@@ -133,7 +133,7 @@
 											<!--Information about Form 8606 and its separate instructions is at <a href="http://www.irs.gov/form8606">www.irs.gov/form8606</a>-->
 											<br/><br/>
 											<img src="{$ImagePath}/8606_Bullet_Sm.gif" alt="SmallBullet"/> 
-                                                  Attach to 2018 Form 1040, 2018 Form 1040A, or 2018 Form 1040NR
+                                                  Attach to 2018 Form 1040 or 2018 Form 1040NR.
 										</div>
 									</div>
 								</span>
@@ -921,9 +921,11 @@
                              </div>
                                 <div class="styLNLeftNumBoxSD" style="padding-left:6mm;height:4mm;float:left">c</div>
 							<div class="styLNDesc" style="width:142mm;padding-left:2mm;height:3mm;text-align:left">
-							   <b>Taxable amount. </b>Subtract line 15b from line 15a. If more than zero, also include this 
-						         amount on<br/> 2018 Form 1040, line 15b; 2018 Form 1040A, line 11b; or 2018 Form 1040NR, line16b
-						          <span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
+							   <b>Taxable amount. </b>Subtract line 15b from line 15a. If more than zero, also include this amount on 2018 Form 
+                                     1040, line 4b; or 2018 Form 1040NR, line 17b
+						          <span class="styDotLn" style="float:right;padding-right:1mm;">..........................</span>
+						        <!-- this amount on2018 Form 1040, line 4b; or 2018 Form 1040NR, line 17b
+						         -->
 						     </div>
 							<div class="styLNRightNumBox" style="border-bottom-width:0px;font-size:7pt;height:6.5mm;padding-top:3.5mm;">15c</div>
 							<div class="styLNAmountBox" style="width:29mm;border-bottom-width:1px;height:6.5mm;padding-top:3.5mm;font-size:6.5pt">
@@ -1048,11 +1050,11 @@
 							<div class="styIRS8606LNLeftNumBox">18</div>
 							<div class="styIRS8606LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
 								<div class="styIRS8606LNDesc" style="width:auto;height:100%;">
-									<b>Taxable amount.</b>  Subtract line 17 from line 16. If more than zero, also include this amount on
-									2018 Form 1040, line 15b; 2018 Form 1040A, line 11b; or 2018 Form 1040NR line, 16b
+									<b>Taxable amount.</b>  Subtract line 17 from line 16. If more than zero, also include this amount on 
+                                    2018 Form 1040, line 4b; or 2018 Form 1040NR, line 17b
 									<!--<span style="float:left;">line  or Form 1040NR, line 16b</span>-->
 									<!--Dotted Line-->
-									<span class="styDotLn" style="float:right;padding-right:1mm;">...................</span>
+									<span class="styDotLn" style="float:right;padding-right:1mm;">............................</span>
 								</div>
 							</div>
 							<div class="styIRS8606LNDesc" style="height:100%;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -1243,8 +1245,8 @@
                                 <div class="styLNLeftNumBoxSD" style="padding-left:6mm;height:4mm;float:left;">c</div>
 							<div class="styLNDesc" style="width:142mm;padding-left:2mm;height:3mm;float:left;">
 						<b>Taxable amount.</b> Subtract line 25b from line 25a. If more than zero, also include this 
-                                  amount on 2018 Form 1040, line 15b;  2018 Form 1040A, line 11b; or 2018 Form 1040NR, line 16b
-						          <span class="styDotLn" style="float:right;padding-right:1mm;">..................</span>
+                                  amount on 2018 Form 1040, line 4b; or 2018 Form 1040NR, line 17b
+						          <span class="styDotLn" style="float:right;padding-right:1mm;">..........................</span>
 						     </div>
 							<div class="styLNRightNumBox" style="border-bottom-width:0px;font-size:7pt;height:7.5mm;padding-top:3.5mm;">25c</div>
 							<div class="styLNAmountBox" style="width:29mm;border-bottom-width:0px;height:7.5mm;padding-top:3.5mm;font-size:6.5pt">

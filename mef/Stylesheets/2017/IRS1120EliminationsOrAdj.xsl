@@ -396,10 +396,11 @@
 									</xsl:call-template>
 								</span>
 							</div>
+							<!--Box D-->
 							<div class="styEINDateAssets" style="width:48mm;height:11mm;border-bottom-width:1px;">
 								<span class="styBoldText">D </span> Total assets (see instructions)<br/>
-								<div style="width:46mm;padding-left:1.5mm;">
-									<span style="float:left;padding-top:5mm;">$</span>
+								<div style="width:46mm;padding-left:16mm;">
+									<span style="float:left;padding-top:4mm;font-size: 7pt;">$</span>
 									<div style="text-align:right;float:right;padding-top:5mm;font-size: 7pt;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form1120Data/TotalAssetsAmt"/>
@@ -3882,7 +3883,7 @@
 								<xsl:with-param name="TargetNode" 
 								select="$Form1120ScheduleK/CorpOwnPercentVotingStockInfo"/>
 								<xsl:with-param name="headerHeight" select="1"/>
-								<xsl:with-param name="containerHeight" select="4"/>
+								<xsl:with-param name="containerHeight" select="5"/>
 								<xsl:with-param name="containerID" select=" 'OFCctn3' "/>
 								<xsl:with-param name="imageID" select=" 'OFCimg3' "/>
 								<xsl:with-param name="buttonID" select=" 'OFCbtn3' "/>
@@ -3922,7 +3923,7 @@
 							<tfoot/>
 							<tbody>
 								<xsl:if test="($Print != $Separated) 
-								or (count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &lt;= 4) ">
+								or (count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &lt;= 5) ">
 									<xsl:for-each select="$Form1120ScheduleK/CorpOwnPercentVotingStockInfo">
 										<tr>
 											<td class="styTableCellText" style="width:95mm;padding-left:2.5mm;">
@@ -3968,7 +3969,7 @@
 								</xsl:if>
 								<!-- Build blank row 1 data for Schedule K line 5a table -->
 								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 1 
-								or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 4)
+								or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 5)
 								 and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;text-align:left;">
@@ -3992,7 +3993,7 @@
 								</xsl:if>
 								<!-- Build blank row 2 data for Schedule K line 5a table -->
 								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 2
-								  or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 4) 
+								  or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 5) 
 								and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;text-align:left;">
@@ -4011,7 +4012,7 @@
 								</xsl:if>
 								<!-- Build blank row 3 data for Schedule K line 5a table -->
 								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 3 
-								 or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 4) 
+								 or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 5) 
 								 and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;text-align:left;">
@@ -4030,7 +4031,25 @@
 								</xsl:if>
 								<!-- Build blank row 4 data for Schedule K line 5a table -->
 								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 4 
-								 or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 4) 
+								 or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 5) 
+								 and ($Print = $Separated))">
+									<tr>
+										<td class="styTableCell" style="width:95mm;text-align:left;">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCellCtr" style="width:35mm;">
+											<span style="width:1px;"/>
+										</td>
+										<td class="styTableCell" style="width:20mm">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCell" style="width:36mm;border-right-width:0px;">
+											<span class="styTableCellPad"/>
+										</td>
+									</tr>
+								</xsl:if>
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo)&lt; 5 
+								 or ((count($Form1120ScheduleK/CorpOwnPercentVotingStockInfo) &gt; 5) 
 								 and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;text-align:left;">
@@ -4053,7 +4072,7 @@
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form1120ScheduleK/CorpOwnPercentVotingStockInfo"/>
 						<xsl:with-param name="headerHeight" select="1"/>
-						<xsl:with-param name="containerHeight" select="4"/>
+						<xsl:with-param name="containerHeight" select="5"/>
 						<xsl:with-param name="containerID" select=" 'OFCctn3' "/>
 						<xsl:with-param name="imageID" select=" 'OFCimg3' "/>
 						<xsl:with-param name="buttonID" select=" 'OFCbtn3' "/>
@@ -4128,7 +4147,7 @@
 								<xsl:with-param name="TargetNode"
 								 select="$Form1120ScheduleK/CorpOwnPercentPartnershipInfo"/>
 								<xsl:with-param name="headerHeight" select="1"/>
-								<xsl:with-param name="containerHeight" select="4"/>
+								<xsl:with-param name="containerHeight" select="5"/>
 								<xsl:with-param name="containerID" select=" 'OFCctn4' "/>
 								<xsl:with-param name="imageID" select=" 'OFCimg4' "/>
 								<xsl:with-param name="buttonID" select=" 'OFCbtn4' "/>
@@ -4164,7 +4183,7 @@
 							<tfoot/>
 							<tbody>
 								<xsl:if test="($Print != $Separated) or
-                 (count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &lt;= 4) ">
+                 (count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &lt;= 5) ">
 									<xsl:for-each select="$Form1120ScheduleK/CorpOwnPercentPartnershipInfo">
 										<tr>
 											<td class="styTableCellText" style="width:95mm;padding-left:2.5mm;">
@@ -4207,7 +4226,7 @@
 									</xsl:for-each>
 								</xsl:if>
 								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 1 
-                or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 4) and ($Print = $Separated))">
+                or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 5) and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;text-align:left;">
 											<span class="styBoldText"/>
@@ -4229,7 +4248,7 @@
 									</tr>
 								</xsl:if>
 								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 2 
-                 or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 4) 
+                 or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 5) 
                 and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;">
@@ -4247,7 +4266,7 @@
 									</tr>
 								</xsl:if>
 								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 3
-                  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 4)
+                  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 5)
                    and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;">
@@ -4264,9 +4283,23 @@
 										</td>
 									</tr>
 								</xsl:if>
-								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 4
-                  or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 4) 
-                  and ($Print = $Separated))">
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 4 or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 5)  and ($Print = $Separated))">
+									<tr>
+										<td class="styTableCell" style="width:95mm;">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCellCtr" style="width:35mm;">
+											<span style="width:1px;"/>
+										</td>
+										<td class="styTableCell" style="width:20mm">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCell" style="width:36mm;border-right-width:0px;">
+											<span class="styTableCellPad" style="background-color:yellow;"/>
+										</td>
+									</tr>
+								</xsl:if>
+								<xsl:if test="count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo)&lt; 5 or ((count($Form1120ScheduleK/CorpOwnPercentPartnershipInfo) &gt; 5)  and ($Print = $Separated))">
 									<tr>
 										<td class="styTableCell" style="width:95mm;">
 											<span class="styTableCellPad"/>
@@ -4288,7 +4321,7 @@
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form1120ScheduleK/CorpOwnPercentPartnershipInfo"/>
 						<xsl:with-param name="headerHeight" select="1"/>
-						<xsl:with-param name="containerHeight" select="4"/>
+						<xsl:with-param name="containerHeight" select="5"/>
 						<xsl:with-param name="containerID" select=" 'OFCctn4' "/>
 						<xsl:with-param name="imageID" select=" 'OFCimg4' "/>
 						<xsl:with-param name="buttonID" select=" 'OFCbtn4' "/>

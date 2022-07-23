@@ -26,7 +26,7 @@
     <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
     <xsl:call-template name="InitJS"/>
     <style type="text/css">
-	<xsl:if test="not($Print) or $Print=''">
+		<xsl:if test="not($Print) or $Print=''">
         <xsl:call-template name="IRS5713ScheduleBStyle"/>    
         <xsl:call-template name="AddOnStyle"/> 
     </xsl:if>
@@ -38,34 +38,38 @@
 	<!-- start page header-->
 	 <xsl:call-template name="DocumentHeader"/>
         <div style="width:187mm;">
-        <div class="styFNBox" style="width:32mm;height:24.5mm;">
+        <div class="styFNBox" style="width:32mm;height:28.5mm;">
           <div class="styFormNumber" style="font-size: 11pt;">SCHEDULE B</div>
-            <div class="styFormNumber" style="font-size: 9pt;height:8mm;">(Form 5713)</div><br/>
-        <div style="width:31mm;font-weight:normal;font-size:7pt;height:5.8mm;">(Rev. December 2010)</div>
-        <br/>
-        <!--General Dependency Push Pin
-              <xsl:call-template name="SetFormLinkInline">
-                <xsl:with-param name="TargetNode" select="$Form1120Data"/>
-              </xsl:call-template> -->
+          <div class="styFormNumber" style="font-size: 9pt;height:8mm;">(Form 5713)</div><br/>
+					<div style="width:31mm;font-weight:normal;font-size:7pt;height:5.8mm;">(Rev. September 2018)</div>
+					<br/><br/>
           <div>
             <span class="styAgency">Department of the Treasury</span><br/>
             <span class="styAgency">Internal Revenue Service</span>
           </div>        
         </div>
-        <div class="styFTBox" style="width:125mm;height:24.5mm;">
-          <div class="styMainTitle"><b>Specifically Attributable Taxes</b><br/><b>and Income (Section 999(c)(2))</b></div><br/>
+        <div class="styFTBox" style="width:125mm;height:28.5mm;">
+          <div class="styMainTitle"><b>Specifically Attributable Taxes</b><br/><b>and Income (Section 999(c)(2))</b></div>
+					<br/>
           <div style="height:4mm;font-size: 7pt;"><img src="{$ImagePath}/5713SchB_Bullet.gif" alt="bullet image pointing to right" width="6"/>
-          <span style="width: 1mm;"/>Complete only if you are <b>not</b> computing a loss of tax benefits<br/> 
-          using the international boycott factor on Schedule A (Form 5713).
-        </div>
-		<div class="styFBT" style="padding-top:2mm"><img src="{$ImagePath}/5713SchB_Bullet.gif" alt="bullet image pointing to right" width="6"/>
-			<span style="width: 1mm;"/>Attach to Form 5713. 
-			<span style="width:15mm;"/><img src="{$ImagePath}/5713SchB_Bullet.gif" alt="bullet image pointing to right" width="6"/>
-			<span style="width: 1mm;"/>See instructions on page 2.</div>
-        </div>
-        <div class="styTYBox" style="width:30mm;height:24.5mm;"><br/><br/>
-          <div style="font-size:7pt;">OMB No. 1545-0216</div>
-        </div>
+						<span style="width: 1mm;"/>Complete only if you are <b>not</b> computing a loss of tax benefits<br/> 
+						using the international boycott factor on Schedule A (Form 5713).
+					</div>
+					<div class="styFBT"><img src="{$ImagePath}/5713SchB_Bullet.gif" alt="bullet image pointing to right" width="6"/>
+						<span style="width: 1mm;"/>Attach to Form 5713. 
+						<span style="width:15mm;"/><img src="{$ImagePath}/5713SchB_Bullet.gif" alt="bullet image pointing to right" width="6"/>
+						<span style="width: 1mm;"/>See instructions on page 2.
+					</div>
+					<div class="styFST" style="font-size:7pt;">
+					  <img src="{$ImagePath}/5713SchB_Bullet.gif" alt="MediumBullet" style="padding-right:1mm"/>Go to 
+					  <a style="text-decoration:none;color:black;" href="http://www.irs.gov/forms-pubs/about-schedule-b-form-5713" title="Link to irs.gov">
+						<i>www.irs.gov/forms-pubs/about-schedule-b-form-5713 </i>
+					  </a>for the latest information.
+					</div>
+				</div>
+				<div class="styTYBox" style="width:30mm;height:28.5mm;"><br/><br/><br/><br/>
+					<div style="font-size:7pt;">OMB No. 1545-0216</div>
+				</div>
 <!-- end header -->
 <!--Name and Identifying number Begin-->
         <div class="styBB" style="width:187mm;border-top-width:1px">
@@ -150,7 +154,7 @@
   <!-- Show table in expanded form -->
   <xsl:call-template name="SetInitialState"/>
   <!-- end -->  
-  <table cellspacing="0" summary="Specifically Attributable Taxes and  Income by Operation">
+  <table cellspacing="0">
       <tr>
         <th class="styTableCell" scope="col" style="width:25mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;"></th>
         <th class="styTableCell" scope="col" colspan="2" style="width:38mm;text-align:center;font-size:7pt;border-color:black;">Principal business activity</th>
@@ -452,7 +456,7 @@
       <div class="pageEnd" style="width:187mm;">
         <div class="stySmallText" style="width:110mm;padding-top:1mm"><span class="styBoldText">For Paperwork Reduction Act Notice, see the instructions for Form 5713.</span></div>
         <div class="stySmallText" style="width:20mm;padding-top:1mm">Cat. No. 12060S</div>
-        <div class="stySmallText" style="width:56mm;text-align:right;padding-top:1mm"><span class="styBoldText">Schedule B (Form 5713) (Rev. 12-2010)</span>
+        <div class="stySmallText" style="width:56mm;text-align:right;padding-top:1mm"><span class="styBoldText">Schedule B (Form 5713) (Rev. 9-2018)</span>
         </div>
       </div>
       <!--End Footer-->

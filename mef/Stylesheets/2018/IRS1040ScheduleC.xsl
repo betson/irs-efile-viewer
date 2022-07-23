@@ -1191,8 +1191,8 @@ Enter expenses for business use of your home
 <div style="width:187mm;float:none;clear:both;height:6mm;height:auto;">
 	<div class="styLNLeftNumBox" style="height:100%; padding-top:0mm;">31</div>
 	<div class="styLNDesc" style="width:135.8mm;padding-top:0mm;padding-bottom:0mm;height:auto;">
-		<span class="styBoldText">Net profit or (loss). </span>Subtract line 30 from line 29.
-		<li>If a profit, enter on both <b>Form 1040, line 12,</b> (or <b>Form 1040NR, line 13</b>) and on <b> Schedule SE, line<br/>2.</b> (If you checked the box on line 1, see instructions). Estates and trusts, enter on <b>Form 1041, line 3.</b>
+		<span class="styBoldText">Net profit or (loss). </span> Subtract line 30 from line 29.
+		<li>If a profit, enter on both <b>Schedule 1 (Form 1040), line 12,</b> (or <b>Form 1040NR, line 13</b>) and on <b> Schedule SE, line 2.</b> (If you checked the box on line 1, see instructions). Estates and trusts, enter on <b>Form 1041, line 3.</b>
 		<xsl:call-template name="LinkToLeftoverDataTableInline">
 			<xsl:with-param name="Desc">Line 31 - Passive Activity Loss Literal </xsl:with-param>
 			<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/NetProfitOrLossAmt/@passiveActivityLossLiteralCd"/>
@@ -1222,7 +1222,7 @@ Enter expenses for business use of your home
 	<div class="styLNLeftNumBox" style="height:100%; padding-top:0mm;">32</div>
 	<div class="styLNDesc" style="width:131mm;padding-top:0mm;padding-bottom:0mm;">
 		If you have a loss, check the box that describes your investment in this activity (see instructions).                 
-		<li>If you checked 32a, enter the loss on both <span class="styBoldText">Form 1040, line 12,</span> (or <b>Form 1040NR, line 13</b>) and on <span class="styBoldText   ">Schedule SE, line 2</span>. (If you checked the box on line 1, see the line 31 instructions). Estates and trusts, enter on <b>Form 1041, line 3.</b>
+		<li>If you checked 32a, enter the loss on both <span class="styBoldText">Schedule 1 (Form 1040), line 12,</span> (or <b>Form 1040NR, line 13</b>) and on <span class="styBoldText   ">Schedule SE, line 2</span>. (If you checked the box on line 1, see the line 31 instructions). Estates and trusts, enter on <b>Form 1041, line 3.</b>
 		</li>
 		<li>If you checked 32b, you <span class="styBoldText">must</span> attach <span class="styBoldText">Form 6198.</span> Your loss may be limited.</li>
 	</div>      

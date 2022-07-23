@@ -480,31 +480,41 @@ amounts to enter.  If none of these boxes are checked, enter 25% (0.25) of line 
 								</xsl:call-template>
 							</div>
 						</div>
-						<!--Line 12 -->
+						<!--Line 12 Header-->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:14mm;padding-top:7mm">12</div>
-							<div class="styIRS2220LNDescTbl" style="height:14mm;">
+							<div class="styLNLeftNumBox" style="height:8mm;"/>
+							<div class="styIRS2220LNDescTbl" style="height:8mm;">
 								<span class="styBoldItalicText">Complete lines 12 through 18
 of one column before going to the next column.
 </span>
-Enter amount, if any, from line 18 of the
-<span style="float:left;">preceding column</span>
+							</div>
+							<div class="styLNRightNumBox" style="height:8mm;border-bottom-width:0;"/>
+							<div class="styShadingCell" style="border-bottom-width:1px;height:8mm;width:28mm;"/>
+							<div class="styIRS2220Part2LNCell" style="height:8mm;"/>
+							<div class="styIRS2220Part2LNCell" style="height:8mm;"/>
+							<div class="styIRS2220Part2LNCell" style="height:8mm;"/>
+						</div>
+						<!--Line 12 -->
+						<div style="width:187mm;">
+							<div class="styLNLeftNumBox" style="height:8mm;">12</div>
+							<div class="styIRS2220LNDescTbl" style="height:8mm;">
+								Enter amount, if any, from line 18 of the <span style="float:left;">preceding column</span>
 								<!--Dotted Line -->
 								<span class="styDotLn" style="float:right;">........</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:14mm;padding-top:10mm;">12</div>
-							<div class="styShadingCell" style="border-bottom-width:1px;height:14mm;width:28mm;"/>
-							<div class="styIRS2220Part2LNCell" style="height:14mm;padding-top:10.5mm;">
+							<div class="styLNRightNumBox" style="height:8mm;">12</div>
+							<div class="styShadingCell" style="border-bottom-width:1px;height:8mm;width:28mm;"/>
+							<div class="styIRS2220Part2LNCell" style="height:8mm;padding-top:4mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2220Data/Overpayment1Amt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2220Part2LNCell" style="height:14mm;padding-top:10.5mm;">
+							<div class="styIRS2220Part2LNCell" style="height:8mm;padding-top:4mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2220Data/Overpayment2Amt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2220Part2LNCell" style="height:14mm;padding-top:10.5mm;">
+							<div class="styIRS2220Part2LNCell" style="height:8mm;padding-top:4mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2220Data/Overpayment3Amt"/>
 								</xsl:call-template>
@@ -570,7 +580,7 @@ Add amounts on lines 16 and 17 of the
 Subtract line 14 from line 13. If zero or
 <span style="float:left;">less, enter -0-</span>
 								<!--Dotted Line -->
-								<span class="styDotLn" style="float:right;">..........</span>
+								<span class="styDotLn" style="float:right;">.........</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">15</div>
 							<div class="styIRS2220Part2LNCell" style="height:8mm;padding-top:4mm;">
@@ -1824,7 +1834,7 @@ Add lines 22, 24, 26, 28, 30, 32, 34, and 36
 									<div class="styLNLeftNumBox" style="height:6mm;">38</div>
 									<div class="styLNDesc" style="height:6mm;">
 										<span class="styBoldText">Penalty. </span>
-Add columns (a) through (d) of line 37. Enter the total here and on Form 1120, line 33;
+Add columns (a) through (d) of line 37. Enter the total here and on Form 1120, line 34;
 or the comparable line for other income tax returns
 <!--Dotted Line -->
 										<span class="styDotLn" style="float:right;">....................</span>
@@ -1883,7 +1893,7 @@ Schedule A <span style="width:16px;"/> Adjusted Seasonal Installment Method and 
 							<!--Line -->
 							<div style="width:187mm;float:left;clear:none;font-size:8pt;">
 								<b> Form 1120S filers: </b>
-								<i> For lines 1, 2, 3, and 21, below, "taxable income" refers to excess
+								<i> For lines 1, 2, 3, and 21  "taxable income" refers to excess
 net passive income or the amount on which tax is imposed under section 1374(a), whichever applies. </i>
 							</div>
 						</div>

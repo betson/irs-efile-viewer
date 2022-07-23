@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 07/23/2018 -->
+<!-- Last Modified by Eugenia McDonald on 12/12/2019 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -124,19 +124,18 @@
 						</div>
 						<div class="styFTBox" style="width: 125mm; height: 22mm;">
 							<!--  Main Title >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-							<div class="styMainTitle" style="height:10mm;">
+							<div class="styMainTitle" style="height:10mm;padding-top:2mm">
 								Allocation of Individual Income Tax<br/>
 								to the U.S. Virgin Islands
 							</div>
 							<div class="styFST" style="width: 125mm; height: 6mm; text-align: center; font-size: 7pt;">
 								<span style="text-align:center;font-weight:bold;">
-									<div style="width: 125mm; height: 11.5mm; padding-top:2mm;">
+									<div style="width: 125mm; height: 11.5mm; padding-top:.5mm;">
 											<br/>
 											<img src="{$ImagePath}/8689_Bullet_Sm.gif" alt="SmallBullet"/> 
 											Attach to Form 1040.<br/>
 											<img src="{$ImagePath}/8689_Bullet_Sm.gif" alt="SmallBullet"/> 
-											Go to <a style="text-decoration:none;color:black;" href="http://www.irs.gov/form8689" title="Link to IRS.gov">
-											<i>www.irs.gov/Form8689</i></a> for the latest information.
+											Go to <i>www.irs.gov/Form8689</i> for the latest information.
 									</div>
 								</span>
 							</div>
@@ -515,8 +514,8 @@
 						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
 							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">20</div>
 							<div class="styIRS8689LNDesc" style="width:105mm; height:4.5mm; padding:1.75mm 0mm 0mm 3mm;">
-									Moving expenses
-                  				  	<span class="styDotLn" style="float:none;clear:none;padding-left:4mm;">...................</span>
+									Moving expenses for members of the armed forces
+                  				  	<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">.........</span>
 							</div>
 							<div class="styIRS8689LNDesc" style="height:100%;width:75mm;float:right;padding:0px 0px 0px 0px;">
 								<div class="styIRS8689LNDesc" style="height:5mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -676,21 +675,21 @@
 						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
 							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">27</div>
 							<div class="styIRS8689LNDesc" style="width:105mm; height:4.5mm;padding:1.75mm 0mm 0mm 3mm;">
-								Reserved for future use
-								<span class="styDotLn" style="float:none;clear:none;padding-left:4.25mm;">................</span>
+								Tuition and fees deduction (see instructions)
+								<span class="styDotLn" style="float:none;clear:none;padding-left:4.25mm;">..........</span>
 								</div>
 							<div class="styIRS8689LNDesc" style="height:100%; width:75mm; float:right; padding:0px 0px 0px 0px;">
 								<div class="styIRS8689LNDesc" style="height:5mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
 										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8689LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
-										<!--<xsl:with-param name="TargetNode" select="$Form8689Data/TuitionAndFeesDedAmt"/>-->
-										<xsl:with-param name="AmountBoxStyle">background-color:lightgrey</xsl:with-param>
+										<xsl:with-param name="TargetNode" select="$Form8689Data/TuitionAndFeesDedAmt"/>
+										<!--<xsl:with-param name="AmountBoxStyle">background-color:lightgrey</xsl:with-param>-->
 										<xsl:with-param name="Number">27</xsl:with-param>
 									</xsl:call-template>
 								</div>
@@ -738,7 +737,7 @@
 						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
 							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">30</div>
 							<div class="styIRS8689LNDesc" style="width: 144mm; height: 4.5mm;padding:1.75mm 0mm 0mm 3mm;">
-								Enter amount from Form 1040, line 63
+								Enter amount from Form 1040, line 15
 	  						    <span class="styDotLn" style="float:none;clear:none;padding-left:2.75mm;">......................</span>
 							</div>
 							<xsl:call-template name="CreateBox">
@@ -747,20 +746,12 @@
 							</xsl:call-template>
 						</div>
 						<!-- (31) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem" style="width: 187mm; height: 13.5mm; clear: left; float: left;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
 							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">31</div>
-							<div class="styIRS8689LNDesc" style="width: 144mm; height: 13.5mm;padding:1.75mm 0mm 0mm 3mm;">
-									Enter the total of the amounts from Form 1040, lines 57, 58, 60a, 66a, 67, 68, 73 (boxes c and d). Include <br/>
-									any uncollected social security and Medicare or tier 1 RRTA tax, tax on excess golden parachute payments, <br/>
-									or excise tax on insider stock compensation reported on line 62. Also include any amount from Form 5329, <br/>
-									Parts III, IV, V, VI, VII, VIII, or IX reported on Form 1040, line 59
-	     						    <span class="styDotLn" style="float:none;clear:none;padding-left:.5mm;">..............</span>
+							<div class="styIRS8689LNDesc" style="width: 144mm; height: 4.5mm;padding:1.75mm 0mm 0mm 3mm;">
+									Enter total of certain amounts from Form 1040.  See instructions on page 4 for amount to enter
+	     						    <span class="styDotLn" style="float:none;clear:none;padding-left:.5mm;">.....</span>
 							</div>
-							<xsl:call-template name="CreateBox">
-								<xsl:with-param name="Height">8.6mm</xsl:with-param>
-								<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-								<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-							</xsl:call-template>
 							<xsl:call-template name="CreateBox">
 								<xsl:with-param name="TargetNode" select="$Form8689Data/VirginIslandsTaxAdjustmentAmt"/>
 								<xsl:with-param name="Number">31</xsl:with-param>
@@ -782,7 +773,7 @@
 						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
 							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">33</div>
 							<div class="styIRS8689LNDesc" style="width: 106mm; height: 4.5mm;padding:1.75mm 0mm 0mm 3mm;">
-									Enter amount from Form 1040, line 38
+									Enter amount from Form 1040, line 7
 	  						       <span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">.............</span>
 							</div>
 							<div class="styIRS8689LNDesc" style="height:100%;width:75mm;float:right;padding:0px 0px 0px 0px;">
@@ -930,7 +921,8 @@
 						<div class="styGenericDiv" style="width:187mm; height:7mm; clear: left; float: left; border-bottom:1px solid black;">
 							<div class="styIRS8689LNLeftNumBox" style="padding-top: 0.5mm;">40</div>
 							<div class="styIRS8689LNDesc" style="width: 144mm; height: 7mm;padding:.5mm 0mm 0mm 3mm;">
-									Enter the smaller of line 35 or line 39. Include this amount in the total on Form 1040, line 74. On the<br/>dotted line next to line 74, enter "Form 8689" and show this amount
+									Enter the smaller of line 35 or line 39. Include this amount in the total on Form 1040, line 18. On the<br/>
+									dotted line next to line 18, enter "Form 8689" and show this amount
 	  					          <span class="styDotLn" style="float:none;clear:none;padding-left:2.75mm;">.............</span>
 							</div>
 							<div class="styIRS8689LNDesc" style="height:100%;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -1021,25 +1013,30 @@
 							</div>
 						</div>
 						<!-- (45) ////////////////////////////////////////////////////-->
-						<div class="styGenericDiv" style="width:187mm; height:11mm; clear: left; float: left;">
+						<div class="styGenericDiv" style="width:187mm; height:14.5mm; clear: left; float: left;">
 							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">45</div>
-							<div class="styIRS8689LNDesc" style="width: 144mm; height: 11mm;padding:1.75mm 0mm 0mm 3mm;">
+							<div class="styIRS8689LNDesc" style="width: 144mm; height: 11mm;padding:1.55mm 0mm 0mm 2.75mm;">
 									Enter the amount from line 44 that you will pay when you file your income tax return. Include this amount<br/>
-									in the total of Form 1040, line 74. On the dotted line next to line 74, enter "Form 8689" and show this<br/>
+									in the total of Form 1040, line 18. On the dotted line next to line 18, enter "Form 8689" and show this<br/>
 									amount
 	  					           <span class="styDotLn" style="float:none;clear:none;padding-left:2.5mm;">................................</span>
 							</div>
-							<xsl:call-template name="CreateBox">
-								<xsl:with-param name="Height">6mm</xsl:with-param>
-								<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-								<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-							</xsl:call-template>
-							<xsl:call-template name="CreateBox">
-								<xsl:with-param name="TargetNode" select="$Form8689Data/USVIPaymentAmt"/>
-								<xsl:with-param name="Number">45</xsl:with-param>
-								<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-								<xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
-							</xsl:call-template>
+							<div class="styIRS8689LNDesc" style="height:100%;width:37mm;float:right;padding:0px 0px 0px 0px;">
+								<div class="styIRS8689LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
+									<xsl:call-template name="CreateBox">
+										<xsl:with-param name="Height">8mm</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+									</xsl:call-template>
+									<xsl:call-template name="CreateBox">
+										<xsl:with-param name="TargetNode" select="$Form8689Data/USVIPaymentAmt"/>
+										<xsl:with-param name="Height">6mm</xsl:with-param>
+										<xsl:with-param name="Number">45</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;padding-top:1.2mm;</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
+									</xsl:call-template>
+								</div>
+							</div>
 						</div>
 					<!--</div>-->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->

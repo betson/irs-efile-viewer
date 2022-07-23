@@ -24,7 +24,7 @@
 		  <meta http-equiv="Pragma" content="no-cache"/>
 		  <meta http-equiv="Cache-Control" content="no-cache"/>
 		  <meta http-equiv="Expires" content="0"/>
-		  <!-- No Proxy Caching -->
+		  <!-- No Proxy Caching  -->
 		  <meta http-equiv="Cache-Control" content="private"/>
 		  <meta name="Description" content="Schedule P (Form 5735)"/>
 		  <meta name="Generator" content="IBM WebSphere Studio"/>
@@ -60,13 +60,13 @@
 				  <div class="styFST" style="padding-top:2mm;font-weight:normal;">
 					<img src="{$ImagePath}/8916_Bullet.gif" alt="bullet image"/>
 					<span style="padding-left:1mm;"/>
-                    Attach to Schedule M-3 for Forms 1120, 1120-L, or 1120-PC.
+                   <b> Attach to Schedule M-3 for Forms 1120, 1120-L, or 1120-PC.</b>
 					<br/>
 					<img src="{$ImagePath}/8916_Bullet.gif" alt="bullet image"/>
 					<span style="padding-left:1mm;">
-						Go to <a style="text-decoration:none;color:black;" href="http://www.irs.gov/form8916" title="Link to IRS.gov">
+						<b>Go to <a style="text-decoration:none;color:black;" href="http://www.irs.gov/form8916" title="Link to IRS.gov">
 							<i>www.irs.gov/Form8916</i>								
-						</a> for the latest information.
+						</a> for the latest information.</b>
 					</span> 
                   </div>
 				</div>
@@ -115,8 +115,8 @@
 			    <div style="float:left;clear:none;">
 			      <div class="styLNLeftNumBox" style="height:6mm;padding-top:3mm;">1</div>
 			      <div class="styLNDesc" style="width:99mm;height:6mm;padding-top:3mm;">
-			        Enter the tax reconciliation amount from the applicable line of 
-			        <span style="float:left;">Schedule M-3. See instructions.</span>
+			       Enter total tax reconciliation amount from the applicable line of Schedule M-3. See instructions
+			      <!--  <span style="float:left;">Schedule M-3. See instructions.</span>-->
 				    <!--Dotted Line-->
 				    <div class="styDotLn" style="float:right;padding-right:1mm;">.............</div>
 			      </div>
@@ -135,44 +135,44 @@
 			  <!-- line 2a -->
 			  <div style="width:187mm">
 			    <div style="float:left;clear:none;">
-			      <div class="styLNLeftNumBox" style="height:6mm;padding-top:5mm;">2a</div>
-			      <div class="styLNDesc" style="width:99mm;height:6mm;padding-top:5mm;">
+			      <div class="styLNLeftNumBox" style="height:6mm;padding-top:4mm;">2a</div>
+			      <div class="styLNDesc" style="width:99mm;height:6mm;padding-top:4mm;">
 			        <span style="float:left;">Life/non-life loss limitation amount </span> 
 				    <!--Dotted Line-->
 				    <div class="styDotLn" style="float:right;padding-right:1mm;">............</div>
 			      </div>
 			    </div>
 			    <div style="float:right;clear:none;">
-			      <div class="styLNRightNumBox" style="height:9mm;padding-top:5mm;">2a</div>
-			      <div class="styLNAmountBox" style="height:9mm;padding-top:5mm;">
+			      <div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">2a</div>
+			      <div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
 				    <xsl:call-template name="PopulateAmount">
 				      <xsl:with-param name="TargetNode" select="$FormData/LifeNonLifeLossLimitationAmt"/>
 				    </xsl:call-template>
 			      </div>
-			      <div class="styLNRightNumBox" style="height:9mm;background-color:lightgrey;border-bottom-width:0px;"/>
-			      <div class="styLNAmountBox" style="height:9mm;border-bottom-width:0px;"/>
+			      <div class="styLNRightNumBox" style="height:8mm;background-color:lightgrey;border-bottom-width:0px;"/>
+			      <div class="styLNAmountBox" style="height:8mm;border-bottom-width:0px;"/>
 			    </div>
 			  </div>		
 			  <!-- Line 2b -->
 			  <div style="width:187mm">
 			    <div style="float:left;clear:none;">
-			      <div class="styLNLeftNumBox" style="height:13mm;padding-left:3mm;">b</div>
-			      <div class="styLNDesc" style="width:99mm;height:13mm;">
-			        <span style="float:left;">Phased inclusion of December 31, 2017 balance of policyholders surplus account (1/8 of such balance in each of the first eight tax years beginning after December 31, 2017) (cannot be offset by life </span> 
-			        <span style="float:left;">insurance company losses) (Form 1120-L, page 1, line 24)</span>
+			      <div class="styLNLeftNumBox" style="height:8mm;padding-left:3mm;">b</div>
+			      <div class="styLNDesc" style="width:99mm;height:8mm;">
+			        <span style="float:left;">Phased inclusion of balance of policyholders surplus account</span>  
+			        <span style="float:left;">(Form 1120-L, page 1, line 24)</span>
 			        <!--Dotted Line-->
-				    <div class="styDotLn" style="float:right;padding-right:1mm;">...</div> 
+				    <div class="styDotLn" style="float:right;padding-right:1mm;">.............</div> 
 				  </div>
 			    </div>
 			    <div style="float:right;clear:none;">
-			      <div class="styLNRightNumBox" style="height:15mm;padding-top:11mm;">2b</div>
-			      <div class="styLNAmountBox" style="height:15mm;padding-top:11mm;">
+			      <div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">2b</div>
+			      <div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
 				    <xsl:call-template name="PopulateAmount">
 				      <xsl:with-param name="TargetNode" select="$FormData/PhasedInclsnPlcyhldrSurplusAmt"/>
 				    </xsl:call-template>
 			      </div>
-			      <div class="styLNRightNumBox" style="height:15mm;background-color:lightgrey;border-bottom-width:0px;"/>
-			      <div class="styLNAmountBox" style="height:15mm;border-bottom-width:0px;"/>
+			      <div class="styLNRightNumBox" style="height:8mm;background-color:lightgrey;border-bottom-width:0px;"/>
+			      <div class="styLNAmountBox" style="height:8mm;border-bottom-width:0px;"/>
 			    </div>
 			  </div>		  
 			  <!--removed old line 2c per UWR 213998-->
@@ -199,8 +199,8 @@
 			  <!-- Line 2c(1) -->
 			  <div style="width:187mm">
 			    <div style="float:left;clear:none;">
-			      <div class="styLNLeftNumBox" style="height:6mm;padding-top:5mm;padding-left:3mm;">c</div>
-			      <div class="styLNDesc" style="width:99mm;height:6mm;padding-top:5mm;">
+			      <div class="styLNLeftNumBox" style="height:6mm;padding-top:3mm;padding-left:3mm;">c</div>
+			      <div class="styLNDesc" style="width:99mm;height:6mm;padding-top:3mm;">
 			        <span style="float:left;">
 					  <span class="styBoldText"> (1)</span>
 						Non-life capital loss limitation
@@ -210,14 +210,14 @@
 				  </div>
 			    </div>
 			    <div style="float:right;clear:none;">
-			      <div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">2c(1)</div>
-			      <div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
+			      <div class="styLNRightNumBox" style="height:7mm;padding-top:3mm;">2c(1)</div>
+			      <div class="styLNAmountBox" style="height:7mm;padding-top:3mm;">
 				    <xsl:call-template name="PopulateAmount">
 				      <xsl:with-param name="TargetNode" select="$FormData/NonLifeCapitalLossLmtAmt"/>
 				    </xsl:call-template>
 			      </div>
-			      <div class="styLNRightNumBox" style="height:8mm;background-color:lightgrey;border-bottom-width:0px;"/>
-			      <div class="styLNAmountBox" style="height:8mm;border-bottom-width:0px;"/>
+			      <div class="styLNRightNumBox" style="height:7mm;background-color:lightgrey;border-bottom-width:0px;"/>
+			      <div class="styLNAmountBox" style="height:7mm;border-bottom-width:0px;"/>
 			    </div>
 			  </div>
 			  <!-- Line 2c(2) -->
@@ -333,8 +333,8 @@
 				      <xsl:with-param name="TargetNode" select="$FormData/LifeDualConsolidatedLossAmt"/>
 				    </xsl:call-template>
 			      </div>
-			      <div class="styLNRightNumBox" style="height:8mm;background-color:lightgrey;border-bottom-width:0px;"/>
-			      <div class="styLNAmountBox" style="height:8mm;border-bottom-width:0px;"/>
+			      <div class="styLNRightNumBox" style="height:8mm;background-color:lightgrey;border-bottom-width:1px;"/>
+			      <div class="styLNAmountBox" style="height:8mm;border-bottom-width:1px;"/>
 			    </div>
 			  </div>
 			  <!-- Line 3 -->
@@ -363,10 +363,10 @@
 			      <div class="styLNDesc" style="width:99mm;height:6mm;padding-top:5mm;">
 			        <span style="float:left;">
 					  <span class="styBoldText"> (1)</span>
-						Non-life net operating loss deduction (Form 1120-PC)
+						1120-PC net operating loss deduction
 					  </span>
 			        <!--Dotted Line-->
-				    <div class="styDotLn" style="float:right;padding-right:1mm;">....</div> 
+				    <div class="styDotLn" style="float:right;padding-right:1mm;">.........</div> 
 				  </div>
 			    </div>
 			    <div style="float:right;clear:none;">
@@ -386,10 +386,10 @@
 			      <div class="styLNDesc" style="width:107mm;height:6mm;padding-top:5mm;">
 			        <span style="float:left;padding-left:8mm;">
 					  <span class="styBoldText"> (2)</span>
-						Life net operating loss deduction (Form 1120-L)
+						1120-L net operating loss deduction
 					  </span>
 			        <!--Dotted Line-->
-				    <div class="styDotLn" style="float:right;padding-right:1mm;">.....</div> 
+				    <div class="styDotLn" style="float:right;padding-right:1mm;">..........</div> 
 				  </div>
 			    </div>
 			    <div style="float:right;clear:none;">
@@ -409,10 +409,10 @@
 			      <div class="styLNDesc" style="width:107mm;height:6mm;padding-top:5mm;">
 			        <span style="float:left;padding-left:8mm;">
 					  <span class="styBoldText"> (3)</span>
-						Non-life net operating loss deduction (Form 1120)
+						1120 net operating loss deduction
 					  </span>
 			        <!--Dotted Line-->
-				    <div class="styDotLn" style="float:right;padding-right:1mm;">.....</div> 
+				    <div class="styDotLn" style="float:right;padding-right:1mm;">..........</div> 
 				  </div>
 			    </div>
 			    <div style="float:right;clear:none;">
@@ -530,7 +530,7 @@
 						Non-life charitable deduction carryforward used
 					  </span>
 			        <!--Dotted Line-->
-				    <div class="styDotLn" style="float:right;padding-right:1mm;">.....</div> 
+				    <div class="styDotLn" style="float:right;padding-right:1mm;">......</div> 
 				  </div>
 			    </div>
 			    <div style="float:right;clear:none;">
@@ -563,8 +563,8 @@
 				      <xsl:with-param name="TargetNode" select="$FormData/LifeCharitableDedCfwdUsedAmt"/>
 				    </xsl:call-template>
 			      </div>
-			      <div class="styLNRightNumBox" style="height:9mm;background-color:lightgrey;border-bottom-width:0px;"/>
-			      <div class="styLNAmountBox" style="height:9mm;border-bottom-width:0px;"/>
+			      <div class="styLNRightNumBox" style="height:9mm;background-color:lightgrey;border-bottom-width:1px;"/>
+			      <div class="styLNAmountBox" style="height:9mm;border-bottom-width:1px;"/>
 			    </div>
 			  </div>
 			  <!-- removed line 4e(1) per UWR 213998-->
@@ -629,8 +629,8 @@
 			  <!-- Line 7 -->
 			  <div style="width:187mm">
 			    <div style="float:left;clear:none;">
-			      <div class="styLNLeftNumBox" style="height:8mm;padding-top:4mm;">7</div>
-			      <div class="styLNDesc" style="width:139mm;height:8mm;padding-top:4mm;">
+			      <div class="styLNLeftNumBox" style="height:7mm;padding-top:4mm;">7</div>
+			      <div class="styLNDesc" style="width:139mm;height:7mm;padding-top:4mm;">
 			        <span style="float:left;">Other adjustments to reconcile to taxable income on tax return (attach schedule)</span> 
 					  <xsl:call-template name="SetFormLinkInline">
 					    <xsl:with-param name="TargetNode" select="$FormData/OtherAdjustmentsToReconcileAmt"/>
@@ -640,8 +640,8 @@
 			      </div>
 			    </div>
 			    <div style="float:right;clear:none;">
-			      <div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">7</div>
-			      <div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
+			      <div class="styLNRightNumBox" style="height:7mm;padding-top:3mm;">7</div>
+			      <div class="styLNAmountBox" style="height:7mm;padding-top:3mm;">
 				    <xsl:call-template name="PopulateAmount">
 				      <xsl:with-param name="TargetNode" select="$FormData/OtherAdjustmentsToReconcileAmt"/>
 				    </xsl:call-template>
@@ -651,15 +651,15 @@
 			  <!-- Line 8 -->
 			  <div style="width:187mm">
 			    <div style="float:left;clear:none;">
-			      <div class="styLNLeftNumBox" style="height:5mm;padding-top:4mm;">8</div>
-			      <div class="styLNDesc" style="width:139mm;height:5mm;padding-top:4mm;">
+			      <div class="styLNLeftNumBox" style="height:4mm;padding-top:2mm;">8</div>
+			      <div class="styLNDesc" style="width:139mm;height:4mm;padding-top:2mm;yellow">
 				    Total. Combine lines 6 and 7. This amount must equal the amount reported on the "Taxable Income"
 			        line of the consolidated Form 1120, Form 1120-L, or Form 1120-PC. See instructions.
 			      </div>
 			    </div>
 			    <div style="float:right;clear:none;">
-			      <div class="styLNRightNumBox" style="height:12mm;padding-top:8mm;border-bottom-width:0px;">8</div>
-			      <div class="styLNAmountBox" style="height:12mm;padding-top:8mm;border-bottom-width:0px;">
+			      <div class="styLNRightNumBox" style="height:10mm;padding-top:6mm;border-bottom-width:0px;">8</div>
+			      <div class="styLNAmountBox" style="height:10mm;padding-top:6mm;border-bottom-width:0px;">
 				    <xsl:call-template name="PopulateAmount">
 				      <xsl:with-param name="TargetNode" select="$FormData/TotalAmt"/>
 				    </xsl:call-template>

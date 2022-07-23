@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Last Modified by Eugenia McDonald on 02/06/2020 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -101,7 +102,7 @@
 											Attach to Form 1040, Form 1040NR, Form 1040-SS, or Form 1040-PR.
 											<br/><br/>
 											<img src="{$ImagePath}/8885_Bullet_Sm.gif" alt="SmallBullet"/> 
-											Go to <i>www.irs.gov/Form8885</i> for the latest information.  
+											Go to <i>www.irs.gov/Form8885</i> for instructions and the latest information.  
 										</div>
 									</div>
 								</span>
@@ -196,7 +197,7 @@
 								</span>
 								<span>
 									<xsl:call-template name="PopulateBulletSpan"/>
-									You and/or your family member(s) were covered by HCTC-qualified health insurance coverage for which you paid the entire premiums, or your portion of the premiums, directly to your health plan or to "US Treasury-HCTC." .
+									You and/or your family member(s) were covered by HCTC-qualified health insurance coverage for which you paid the entire premiums, or your portion of the premiums, directly to your health plan or to "US Treasury-HCTC."
 								</span>
 								<span>
 									<xsl:call-template name="PopulateBulletSpan"/>
@@ -322,9 +323,9 @@
 				      <div class="styGenericDiv" style="height:16mm;width:187mm;">
 							<div class="styLNLeftNumBoxSD" style="height:100%;width:6mm">2</div>
 							<div class="styGenericDiv" style="padding-left:2mm;padding-right:1mm;width:138.4mm;padding-top:0.5mm;">
-								Enter the total amount paid directly to your health plan for HCTC-qualified health insurance coverage for the months checked on line 1 (see the instructions).  <b> Do not</b> include on line 2 any insurance premiums paid to “US Treasury-HCTC” or any advance monthly payments made on your behalf as shown on Form 1099-H or any insurance premiums you paid for which you received a reimbursement of the HCTC during the year by filing Form 14095
-								           <!--Dotted Line-->
-								<span class="styBoldText" style="letter-spacing:12px;">...........................</span>
+								Enter the total amount paid directly to your health plan for HCTC-qualified health insurance coverage for the months checked on line 1. See instructions.  <b> Do not</b> include on line 2 any insurance premiums paid to “US Treasury-HCTC” or any advance monthly payments made on your behalf as shown on Form 1099-H or any insurance premiums you paid for which you received a reimbursement of the HCTC during the year by filing Form 14095
+								<!--Dotted Line-->
+								<span style="letter-spacing:3.3mm;font-weight:bold;padding-right:4px;float:right;">..........................</span>            
 							</div>
 							<div class="styLNRightNumBox" style="height:16mm;padding-top:12.5mm;">2</div>
 							<div class="styLNAmountBox" style="height:16mm;width:34mm;padding-top:12.5mm;">
@@ -357,7 +358,7 @@
 								Enter the total amount of any Archer MSA or health savings accounts distributions used to pay for <br/>
 								<span style="float:left;">HCTC-qualified health insurance coverage for the months checked on line 1</span>
 								<!--Dotted Line-->
-								<span class="styBoldText" style="float:right;letter-spacing:12px;padding-right:3mm;">.........</span>
+								<span style="letter-spacing:3.3mm;font-weight:bold;padding-right:4px;float:right;">.........</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:6.5mm;padding-top:3mm;">3</div>
 							<div class="styLNAmountBox" style="width:34mm;height:6.5mm;padding-top:3mm;">
@@ -372,7 +373,7 @@
 							<div class="styGenericDiv" style="padding-left:2mm;padding-right:1mm;width:138.4mm;padding-top:0.5mm;">
 								<span style="float:left;">Subtract line 3 from line 2.  Enter the result, but not less than zero</span>
 								<!--Dotted Line-->
-								<span class="styBoldText" style="float:right;letter-spacing:12px;">............</span>
+								<span style="letter-spacing:3.3mm;font-weight:bold;padding-right:4px;float:right;">............</span>
 							</div>
 							<div class="styLNRightNumBox" style="">4</div>
 							<div class="styLNAmountBox" style="width:34mm;">
@@ -385,10 +386,8 @@
 		                <div class="styGenericDiv" style="width:187mm;border-bottom:1px solid black;height:16mm;">
 		                <div class="styLNLeftNumBoxSD" style="width:6mm;">5</div>
 		                <div class="styGenericDiv" style="padding-left:2mm;padding-right:1mm;width:138.4mm;padding-top:0.5mm;">
-                          <b>Health Coverage Tax Credit.</b> If you received the benefit of the advance monthly payment program for any month not checked on line 1 or received a reimbursement of the HCTC during the year by filing Form 14095 for any month not checked on line 1, see the instructions for line 5 for more details. Otherwise, multiply the amount on line 4 by 72.5% (0.725). Enter the result here and on Form 1040, line 73 (check box c); Form 1040NR, line 69 (check box c); Form 1040-SS, line 10; or Form 1040-PR, line 10
-								<!--Dotted Line-->
-								<span class="styBoldText" style="letter-spacing:12px;">...</span>		                
-		                </div>
+                          <b>Health Coverage Tax Credit.</b> If you received the benefit of the advance monthly payment program for any month not checked on line 1 or received a reimbursement of the HCTC during the year by filing Form 14095 for any month not checked on line 1, see the instructions for line 5 for more details. Otherwise, multiply the amount on line 4 by 72.5% (0.725). Enter the result here and on Schedule 5 (Form 1040), line 74 (check box <b>c</b>); Form 1040NR, line 69 (check box <b>c</b>); Form 1040-SS, line 10; or Form 1040-PR, line 10
+						</div>
 		                <div class="styLNRightNumBox" style="border-bottom-width:0;height:16mm;padding-top:12.5mm;">5</div>
 							<div class="styLNAmountBox" style="width:34mm;border-bottom-width:0;height:16mm;padding-top:12.5mm;">
 								<xsl:call-template name="PopulateAmount">

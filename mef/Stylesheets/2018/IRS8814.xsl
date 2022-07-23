@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 04/05/2018 -->
+<!-- Last Modified by Eugenia McDonald on 07/16/2019 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -123,7 +123,7 @@
 						</div>
 						<div class="styFTBox" style="width:128mm;">
 							<!--  Main Title >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-							<div class="styMainTitle" style="height:8mm;padding-top:1mm;">
+							<div class="styMainTitle" style="height:8mm;padding-top:3mm;">
 								Parents' Election To Report<br/>
 								Child's Interest and Dividends
 							</div>
@@ -132,9 +132,9 @@
 									<div style="width:100%;padding-top:4mm;height:5mm;padding-left:35px;">
 										<div style="width:100%;height:5mm;">
 											<br/>
-											<img src="{$ImagePath}/8814_Bullet_Sm.gif" alt="SmallBullet"/> Information about Form 8814 and its instructions is at 
+											<img src="{$ImagePath}/8814_Bullet_Sm.gif" alt="SmallBullet"/> Go to 
 											 <a style="text-decoration:none;color:black;" href="http://www.irs.gov/form8814" title="Link to IRS.gov">
-														<i>www.irs.gov/form8814.</i>
+														<i>www.irs.gov/Form8814</i> for the latest information.
 											</a><br/>
 											<img src="{$ImagePath}/8814_Bullet_Sm.gif" alt="SmallBullet"/> 
 											Attach to parents' Form 1040 or Form 1040NR.
@@ -868,8 +868,8 @@
 						<div class="styIRS8814LineItem" style="height:7mm">
 							<span style="height:100%;padding-bottom:3px;">
 								<b>Note:</b> If you checked the box on line C above, see the instructions. Otherwise, include the 
-								  amount from line 15 in the tax you enter on Form 1040, line 44, or Form 1040NR, line 42. Be sure 
-								  to check box <b>a</b> on Form 1040, line 44, or Form 1040NR, line 42.
+								  amount from line 15 in the tax you enter on Form 1040, line 11, or Form 1040NR, line 42. Be sure 
+								  to check box <b>1</b> on Form 1040, line 11, or check box <b>a</b> on Form 1040NR, line 42.
 							</span>
 						</div>
 					</div>

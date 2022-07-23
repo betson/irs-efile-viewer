@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 11/21/2018 -->
+<!-- Last Modified by Eugenia McDonald on 01/30/2020 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -142,7 +142,7 @@
 						<!-- end button display logic -->
 					</div>
 					<!-- Line 1 -->
-					<div style="width:187mm;">
+					<div style="width:187mm;display:block">
 						<div class="styTableContainer" id="UnreportedTipIncomePerEmployer" style="table-layout:fixed;width:187mm;height:100%;border-bottom-width:0px;">
 							<xsl:call-template name="SetInitialState"/>
 							<table class="styTable" cellspacing="0" style="width:187mm;font-size:7pt;border-collapse:collapse;border-left:none;border-right:none;text-align:center;overflow-x:auto;table-layout:fixed;">
@@ -381,9 +381,9 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">3</div>
 						<div class="styIRS4137Desc" style="height:auto;">
-							Total cash and charge tips you <b>reported</b> to your employer(s) in 2017. Add the amounts from <br/>
-							<span style="float:left;">line 1, column (d)</span>
-							<span class="styIRS4137Dots">..........................</span>
+							Total cash and charge tips you <b>reported</b> to your employer(s) in 2017. Add the amounts from line 1, <br/>
+							<span style="float:left;">column (d)</span>
+							<span class="styIRS4137Dots">.............................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:auto;"><br/>3</div>
 						<div class="styIRS4137AmountBox" style="height:auto;">
@@ -397,9 +397,9 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">4</div>
 						<div class="styIRS4137Desc" style="height:auto;">
-							Subtract line 3 from line 2. This amount is income you <b>must</b> include in the total on Form 1040, <br/>
-							<span style="float:left;">line 7; Form 1040NR, line 8; or Form 1040NR-EZ, line 3</span>
-							<span class="styIRS4137Dots">..............</span>
+							Subtract line 3 from line 2. This amount is income you <b>must</b> include in the total on Form 1040, line 1; <br/>
+							<span style="float:left;"> Form 1040NR, line 8; or Form 1040NR-EZ, line 3</span>
+							<span class="styIRS4137Dots">.................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:auto;"><br/>4</div>
 						<div class="styIRS4137AmountBox" style="height:auto;">
@@ -413,9 +413,9 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">5</div>
 						<div class="styIRS4137Desc" style="height:auto;">
-							Cash and charge tips you received but didn't report to your employer because the total was <br/>
-							<span style="float:left;">less than $20 in a calendar month (see instructions)</span>
-							<span class="styIRS4137Dots">...............</span>
+							Cash and charge tips you received but didn't report to your employer because the total was less than $20<br/>
+							<span style="float:left;"> in a calendar month (see instructions)</span>
+							<span class="styIRS4137Dots">....................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:auto;"><br/>5</div>
 						<div class="styIRS4137AmountBox" style="height:auto;">
@@ -430,7 +430,7 @@
 						<div class="styLNLeftNumBoxSD"><br/>6</div>
 						<div class="styIRS4137Desc" style="height:auto;">
 						   <br/>Unreported tips subject to Medicare tax. Subtract line 5 from line 4
-							<span class="styIRS4137Dots">..........</span>
+							<span class="styIRS4137Dots">...........</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:auto;"><br/>6</div>
 						<div class="styIRS4137AmountBox" style="height:auto;">
@@ -479,7 +479,7 @@
 						<div class="styLNLeftNumBoxSD">9</div>
 						<div class="styIRS4137Desc" style="height:auto;">
 							Subtract line 8 from line 7. If line 8 is more than line 7, enter -0-
-							<span class="styIRS4137Dots">...........</span>
+							<span class="styIRS4137Dots">............</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:auto;">9</div>
 						<div class="styIRS4137AmountBox" style="height:auto;">
@@ -492,9 +492,9 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox">10</div>
 						<div class="styIRS4137Desc" style="height:7.5mm;">
-							Unreported tips subject to social security tax. Enter the <b>smaller</b> of line 6 or line 9. If you <br/>
+							Unreported tips subject to social security tax. Enter the <b>smaller</b> of line 6 or line 9. If you received tips<br/>
 							<span style="float:left;">
-								received tips as a federal, state, or local government employee, see instructions
+								 as a federal, state, or local government employee, see instructions
 								<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="Desc">Government Employee Tip Code</xsl:with-param>
 									<xsl:with-param name="TargetNode" select="$Form4137Data/GovernmentEmployeeTipAmt/@governmentEmployeeTipCd"/>
@@ -504,7 +504,7 @@
 									<xsl:with-param name="TargetNode" select="$Form4137Data/GovernmentEmployeeTipAmt"/>
 								</xsl:call-template>
 							</span>
-							<span class="styIRS4137Dots">....</span>
+							<span class="styIRS4137Dots">..........</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:7.5mm;"><br/>10</div>
 						<div class="styIRS4137AmountBox" style="height:7.5mm;">
@@ -519,7 +519,7 @@
 						<div class="styLNLeftNumBox">11</div>
 						<div class="styIRS4137Desc" style="height:auto;">
 							Multiply line 10 by 0.062 (social security tax rate)
-							<span class="styIRS4137Dots">................</span>
+							<span class="styIRS4137Dots">.................</span>
 						</div>
 						<div class="styLNRightNumBox">11</div>
 						<div class="styIRS4137AmountBox">
@@ -546,9 +546,9 @@
 					<div style="width:187mm;border-bottom:2px solid black;">
 						<div class="styLNLeftNumBox">13</div>
 						<div class="styIRS4137Desc" style="height:auto;">
-							Add lines 11 and 12. Enter the result here and on Form 1040, line 58; Form 1040NR, line 56; or <br/>
-							<span style="float:left;">Form 1040NR-EZ, line 16 (Form 1040-SS and 1040-PR filers, see instructions.)</span>
-							<span class="styIRS4137Dots">......</span>
+							Add lines 11 and 12. Enter the result here and on Schedule 4 (Form 1040), line 58; Form 1040NR, line 56;<br/>
+							<span style="float:left;">or Form 1040NR-EZ, line 14 (Form 1040-SS and 1040-PR filers, see instructions.)</span>
+							<span class="styIRS4137Dots">.......</span>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:auto;"><br/>13</div>
 						<div class="styIRS4137AmountBox" style="height:auto;border-bottom:none;">

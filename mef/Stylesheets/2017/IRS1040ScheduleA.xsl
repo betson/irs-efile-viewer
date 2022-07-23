@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 02/15/2018 -->
+<!-- Last Modified by Eugenia McDonald on 11/21/2019 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -73,7 +73,7 @@
 				 	 <img src="{$ImagePath}/1040SchA_Bullet.gif" alt="SmallBullet Image"/> <b>Attach to Form 1040.</b>
 				  </span>    
 				  <span style="padding-top:.5mm;">				  
-					   <b>Caution:</b> If you are claiming a net hurricane disaster loss on Form 4684, see the instructions <br/>for line 28.
+					   <b>Caution:</b> If you are claiming a net qualified disaster loss on Form 4684, see the instructions <br/>for line 28.
 				  </span>                  
               </div>
             </div>           
@@ -470,9 +470,9 @@
                 border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.2mm">
                 <span class="styBoldText">13</span>
                 <span style="width:2mm"/>
-                    Reserved (see instructions)
+                    Mortgage insurance premiums (see instructions)
                 <span style="width:2mm"/>   
-               <span style=" letter-spacing:3.2mm; font-weight:bold; ">............</span> 
+               <span style=" letter-spacing:3.2mm; font-weight:bold; ">......</span> 
               </div>
               <!--Line 14 Verbiage only-->
               <div class="styIRS1040ScheduleAleftBox" style="width:95mm;height:3.9mm;font-size:7pt;border-left-width:0px;
@@ -539,8 +539,11 @@
             <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px;"/>
             <!--Line 13 amount boxes-->
             <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.2mm;border-left-width:1px;border-bottom-width:1px;">13</div>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.2mm;background-color:lightgrey;border-bottom-width:1px;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.2mm;border-bottom-width:1px;
                 padding-right:.5mm;font-size:6pt;padding-top:.8mm"> 
+                <xsl:call-template name="PopulateAmount">
+                <xsl:with-param name="TargetNode" select="$FormData/MortgageInsurancePremiumsAmt"/>
+              </xsl:call-template>
             </div> 
             <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.2mm;background-color:lightgrey;border-bottom-width:0px;"/>
             <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.2mm;border-bottom-width:0px;"/>  
@@ -695,7 +698,7 @@
               <div class="styIRS1040ScheduleAleftBox" style="width: 131.5mm; height:3mm;font-size:7pt;border-left-width:0px;
                 border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:0mm;">
                 <span class="styBoldText">20</span>
-                <span style="width:3.2mm"/>Casualty or theft loss(es) other than net hurricane disaster losses. Attach Form 4684 and enter<br/>
+                <span style="width:3.2mm"/>Casualty or theft loss(es) other than net qualified disaster losses. Attach Form 4684 and enter<br/>
                 <span style="width:7mm"/>the amount from line 18 of that form. See instructions 
                       <xsl:call-template name="SetFormLinkInline">
 						  <xsl:with-param name="TargetNode" select="$FormData/CasualtyOrTheftLossesAmt"/>

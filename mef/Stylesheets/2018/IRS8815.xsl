@@ -65,7 +65,7 @@
 								<img src="{$ImagePath}/8815_Bullet.gif" width="9" height="9" alt="bullet image"/>
 								Go to <i> www.irs.gov/Form8815</i> for the latest information. <br/>
 								<img src="{$ImagePath}/8815_Bullet.gif" width="9" height="9" alt="bullet image"/>
-								Attach to Form 1040 or Form 1040A.
+								Attach to Form 1040.
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:22.2mm;">
@@ -479,7 +479,7 @@ column (a) of line 1. See the instructions to find out which expenses qualify<sp
 						</div>
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="padding-left:1mm;width:5mm;height:8mm">3</div>
-							<div class="styLNDesc" style="width:141mm;height:8mm;">Enter the total of any nontaxable educational benefits (such as nontaxable scholarship or fellowship grants) received for 2018 for the person(s) listed in column (a) of line 1 (see instructions)<span style="letter-spacing:3mm;">.........</span></div>
+							<div class="styLNDesc" style="width:141mm;height:8mm;">Enter the total of any nontaxable educational benefits (such as nontaxable scholarship or fellowship grants) received for 2018 for the person(s) listed in column (a) of line 1. See instructions<span style="letter-spacing:3mm;">.........</span></div>
 							<div class="styLNRightNumBox" style="height:8mm;padding-left:0mm;padding-top:5mm;">
 								<span>3</span>
 							</div>
@@ -517,7 +517,7 @@ after 1989</span> that you <span style="font-weight:bold">cashed during 2018</sp
 						</div>
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:1mm;width:5mm;">6</div>
-							<div class="styLNDesc" style="width:141mm;height:4.5mm;">Enter the interest included on line 5 (see instructions) <span style="letter-spacing:3mm;"> ..................</span>
+							<div class="styLNDesc" style="width:141mm;height:4.5mm;">Enter the interest included on line 5. See instructions <span style="letter-spacing:3mm;"> ..................</span>
 							</div>
 							<div class="styLNRightNumBox" style="position:relative;height:4.5mm;">
 								<span style="padding-top:1mm">6</span>
@@ -561,7 +561,7 @@ after 1989</span> that you <span style="font-weight:bold">cashed during 2018</sp
 						</div>
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:1mm;width:5mm;">9</div>
-							<div class="styLNDesc" style="width:101mm;height:4.5mm;">Enter your modified adjusted gross income (see instructions)<span style="letter-spacing:3mm;">.....</span>
+							<div class="styLNDesc" style="width:101mm;height:4.5mm;">Enter your modified adjusted gross income. See instructions<span style="letter-spacing:3mm;">.....</span>
 							</div>
 							<div class="styLNRightNumBox" style="position:relative;height:4.5mm;">
 								<span style="padding-top:.5mm;">9</span>
@@ -615,7 +615,7 @@ after 1989</span> that you <span style="font-weight:bold">cashed during 2018</sp
 						</div>
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="height:12mm;padding-left:0mm;padding-top:4mm;width:5mm;">12</div>
-							<div class="styLNDesc" style="width:141mm;height:12mm;padding-top:4mm;">Divide line 11 by: $15,000 if single, head of household, or qualifying widow(er) with dependent child; $30,000 if married filing jointly.    Enter the result as a decimal (rounded to at least three places)<span style="letter-spacing:3mm;">........</span>
+							<div class="styLNDesc" style="width:141mm;height:12mm;padding-top:4mm;">Divide line 11 by: $15,000 if single, head of household, or qualifying widow(er); $30,000 if married filing jointly.  Enter the result as a decimal (rounded to at least three places)<span style="letter-spacing:3mm;">................</span>
 							</div>
 							<div class="styLNRightNumBox" style="padding-left:2px;height:12mm;padding-top:2mm;">
 								<br/><br/>12
@@ -640,10 +640,8 @@ after 1989</span> that you <span style="font-weight:bold">cashed during 2018</sp
 						</div>
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="height:8mm;padding-left:0mm;width:5mm;">14</div>
-							<div class="styLNDesc" style="width:141mm;height:8mm;"><span style="font-weight:bold;">Excludable savings bond interest.</span> Subtract line 13 from line 8. Enter the result here and on Schedule B (Form 1040A or 1040), line 3<span style="letter-spacing:3mm;">..........................</span><img src="{$ImagePath}/2441_Bullet_Md.gif" alt="MediumBullet" align="middle"/></div>
-							<div class="styLNRightNumBox" style="padding-left:2px;height:8mm;border-bottom:none;padding-top:2mm;;">
-								<br/>14
-							</div>
+							<div class="styLNDesc" style="width:141mm;height:8mm;"><span style="font-weight:bold;">Excludable savings bond interest.</span> Subtract line 13 from line 8. Enter the result here and on Schedule B (Form 1040), line 3<span style="letter-spacing:3mm;">..........................</span><img src="{$ImagePath}/2441_Bullet_Md.gif" alt="MediumBullet" align="middle"/></div>
+							<div class="styLNRightNumBox" style="padding-left:2px;height:8mm;border-bottom:none;padding-top:4mm;;">14</div>
 							<div class="styLNAmountBox" style="height:8mm;border-bottom:none;"><br/>
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/ExcludableSavingsBondIntAmt"/>

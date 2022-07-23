@@ -57,15 +57,15 @@
 						</div>
 						<div class="styFTBox" style="width:127mm;height:24mm;">
 							<span class="styFMT" style="font-size:12.5pt;">Paid Preparer's Due Diligence Checklist</span>
-							<span class="styFMT" style="font-size:7.5pt;font-weight:normal;"><i>Earned Income Credit (EIC), American Opportunity Tax Credit (AOTC), Child Tax Credit (CTC)/ (including the Additional Child Tax Credit (ACTC) and Credit for Other Dependents (ODC)),
-and Head of Household (HOH) Filing Status.</i></span>
+							<span class="styFMT" style="font-size:7.5pt;font-weight:normal;"><i>Earned Income Credit (EIC), American Opportunity Tax Credit (AOTC), Child Tax Credit (CTC) (including the Additional Child Tax Credit (ACTC) and Credit for Other Dependents (ODC)),
+and Head of Household (HOH) Filing Status</i></span>
 							<img src="{$ImagePath}/8867_Bullet.gif" alt="Bullet" />
-							<b>To be completed by preparer and filed with Form 1040, 1040A, 1040EZ, 1040NR, 1040SS, or 1040PR.</b>			       
+							<b>To be completed by preparer and filed with Form 1040, 1040NR, 1040SS, or 1040PR.</b>			       
 							 <br/><img src="{$ImagePath}/8867_Bullet.gif" alt="Bullet"/> 
                      <b> Go to <a style="text-decoration:none;color:black;" href="http://www.irs.gov/Form8867"  title="Link to IRS.gov"> <i>www.irs.gov/Form8867</i></a> for instructions and the latest information.</b>
 						</div>
 						<div class="styTYBox" style="width:32.7mm;height:24mm;">
-							<div class="styOMB">OMB No. 1545-1629</div>
+							<div class="styOMB">OMB No. 1545-0074</div>
 							<span class="styTaxYear">20<span class="styTYColor">18</span></span><br/><br/>
 							<span class="stySequence">Attachment <br/>Sequence No. <span style="font-size:10pt;font-weight:bold;">70</span></span>
 						</div>
@@ -106,7 +106,7 @@ and Head of Household (HOH) Filing Status.</i></span>
 				</div>
 				<div class="styBB" style="width:187mm;">
 					<div class="styBB" style="width:100mm;border-bottom-width: 0px;padding-top:2px;padding-bottom:8px;padding-left:1mm;text-align:center;">
-						Please check the appropriate box for  the credit(s) and/or HOH filing status claimed on this return and complete the related Parts I-V for the credit(s) claimed (check all that apply).
+						Please check the appropriate box for  the credit(s) and/or HOH filing status claimed on this return and complete the related Parts I-V for the benefit(s),and /or HOH filing status claimed (check all that apply).
 					</div>
 					<div class="styLNDesc" style="width:13mm;"></div>
 					<div class="styIRS8867ChildBox" style="width:18mm;height:13mm;font-weight:normal;;padding-left:6mm;padding-right:2mm;padding-top:1mm;border-bottom-width: 0px;"> <label>
@@ -239,7 +239,7 @@ and Head of Household (HOH) Filing Status.</i></span>
 						<div class="styGenericDiv" style="width:187mm;height:17mm;">
 							<div class="styLNLeftNumBoxBB" style="padding-top:3mm;height:19mm;">2</div>
 							<div class="styIRS8867ChildDesc" style="width:105mm;padding-top:3.1mm;height:14mm;" >
-							  If credits are claimed on the return, did you complete the applicable EIC and/or CTC/ACTC worksheets found in the Form 1040, 1040A, 1040EZ, 1040SS, 1040PR or 1040NR instructions, and/or the AOTC worksheet found in the Form 8863 instructions, or your own worksheet(s) that provides the same information, and all related forms and schedules for each credit claimed?<span class="styDotLn" style="float:none;clear:none;padding-left:1.5mm;">.........</span>
+							  If credits are claimed on the return, did you complete the applicable EIC and/or CTC/ACTC/ODC worksheets found in the Form 1040, 1040SS, 1040PR or 1040NR instructions, and/or the AOTC worksheet found in the Form 8863 instructions, or your own worksheet(s) that provides the same information, and all related forms and schedules for each credit claimed?<span class="styDotLn" style="float:none;clear:none;padding-left:1.5mm;">.........</span>
 							   <div class="styBB" style="width:105mm;padding-top:.65mm;float:clear"></div>
 							</div>
 							<div class="styIRS8867ChildBox" style="height:19mm;width:73mm;padding-left:10mm;padding-top:10mm;;" >
@@ -306,7 +306,7 @@ and Head of Household (HOH) Filing Status.</i></span>
 						<div class="styGenericDiv" style="width:187mm;height:8.5mm;padding-top:1mm;">
 							<div class="styLNLeftNumBox" style="height:8.5mm;padding-top:1mm;">3</div>
 							<div class="styIRS8867ChildDesc"  style="height:8.5mm;padding-top:1mm;width:105mm;">
-								Did you satisfy the knowledge requirement? To meet the knowledge requirement, you must do both of the following:	
+								Did you satisfy the knowledge requirement? To meet the knowledge requirement, you must do both of the following.	
 								</div>
 <div class="styIRS8867ChildBox" style="height:25.5mm;width:73mm;padding-left:10mm;padding-top:14mm;">
 							<span>
@@ -364,7 +364,7 @@ and Head of Household (HOH) Filing Status.</i></span>
 						<div class="styGenericDiv" style="width:187mm;height:12mm;">
 							<div class="styLNLeftNumBox" style="height:12mm;padding-top:.4mm;">4</div>
 							<div class="styIRS8867ChildDesc"  style="height:14mm;padding-top:.4mm;width:105mm;">
-								Did any information provided by the taxpayer, or a third party for use in preparing the return, or information reasonably known to you, appear to be incorrect, incomplete, or inconsistent? (If &#8220;Yes,&#8221; answer questions 4a and 4b. If &#8220;No,&#8221; go to question 5.)
+								Did any information provided by the taxpayer or a third party for use in preparing the return, or information reasonably known to you, appear to be incorrect, incomplete, or inconsistent? (If &#8220;Yes,&#8221; answer questions 4a and 4b. If &#8220;No,&#8221; go to question 5.)
 								</div>
 							<div class="styIRS8867ChildBox" style="height:13mm;width:73mm;padding-left:10mm;padding-top:6.5mm;" >
 							<span>

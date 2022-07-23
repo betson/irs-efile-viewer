@@ -95,8 +95,8 @@
 					<!--   END TAXPAYER INFO   -->
 					<!-- Name and Identifying number END-->
 					<div class="styIRS4136CautionHdr" style="padding-left:1.5mm;border-top-width:2px;">
-						<span class="styIRS4136CautionHdrTitle" style="padding-left:2mm;padding-right:1mm;">Caution.</span>
-						<span style="width:160mm;float:left;font-size:7.75pt;padding-right:1mm;padding-bottom:1mm;">
+						<span class="styIRS4136CautionHdrTitle" style="padding-left:2mm;padding-right:1mm;">Caution:  </span>
+						<span style="font-style:normal;width:160mm;float:left;font-size:7.75pt;padding-right:1mm;padding-bottom:1mm;">
         Claimant has the name and address of the person who sold the fuel to the claimant and the dates of purchase. 
          For claims on lines 1c and 2b (type of use 13 or 14), 3d, 4c, and 5, claimant has not waived the right to 
          make the claim. For claims on lines 1c and 2b (type of use 13 or 14), claimant certifies that a certificate has 
@@ -1401,7 +1401,7 @@
 					sold by the claimant to any person for use as a fuel or was used as a fuel by the claimant. Claimant has attached 
 					the Certificate for Biodiesel and, if applicable, the Statement of Biodiesel Reseller. <b>  Renewable diesel mixtures.  </b> Claimant 
 					produced a mixture by mixing renewable diesel with liquid fuel (other than renewable diesel). The renewable diesel used
-					to produce the renewable diesel mixture was derived from biomass process, met EPA's registration requirements for fuels 
+					to produce the renewable diesel mixture was derived from biomass, met EPA's registration requirements for fuels 
 					and fuel additives, and met ASTM D975, D396, or other equivalent standard approved by the IRS. The mixture was sold by 
 					the claimant to any person for use as a fuel or was used as a fuel by the claimant. Claimant has attached the Certificate 
 					for Biodiesel and, if applicable, the Statement of Biodiesel Reseller, both of which have been edited as discussed in the 
@@ -1513,7 +1513,7 @@
 								<xsl:variable name="RowCount11a" select="count($IRS4136Data/NontxLiquifiedPetroleumGas) + count($IRS4136Data/BusNontxLiquifiedPetroleumGas)"/>
 								<xsl:call-template name="PopulateSubRows">
 									<xsl:with-param name="RowLetter" select="'a'"/>
-									<xsl:with-param name="RowLabel" select="'Liquefied petroleum gas (LPG)'"/>
+									<xsl:with-param name="RowLabel" select="'Liquefied petroleum gas (LPG) (see instructions)'"/>
 									<xsl:with-param name="NonTXRowCount" select="count($IRS4136Data/NontxLiquifiedPetroleumGas)"/>
 									<xsl:with-param name="BusNonTXRowCount" select="count($IRS4136Data/BusNontxLiquifiedPetroleumGas)"/>
 									<xsl:with-param name="NonTXRowDataNode" select="$IRS4136Data/NontxLiquifiedPetroleumGas"/>
@@ -1543,7 +1543,7 @@
 								<xsl:variable name="RowCount11c" select="count($IRS4136Data/NontxCompressedNaturalGas) + count($IRS4136Data/BusNontxCompressedNaturalGas)"/>
 								<xsl:call-template name="PopulateSubRows">
 									<xsl:with-param name="RowLetter" select="'c'"/>
-									<xsl:with-param name="RowLabel" select="'Compressed natural gas (CNG)'"/>
+									<xsl:with-param name="RowLabel" select="'Compressed natural gas (CNG) (see instructions)'"/>
 									<xsl:with-param name="NonTXRowCount" select="count($IRS4136Data/NontxCompressedNaturalGas)"/>
 									<xsl:with-param name="BusNonTXRowCount" select="count($IRS4136Data/BusNontxCompressedNaturalGas)"/>
 									<xsl:with-param name="NonTXRowDataNode" select="$IRS4136Data/NontxCompressedNaturalGas"/>
@@ -1603,7 +1603,7 @@
 								<xsl:variable name="RowCount11g" select="count($IRS4136Data/NontxLiquefiedNaturalGas) + count($IRS4136Data/BusNontxLiquefiedNaturalGas)"/>
 								<xsl:call-template name="PopulateSubRows">
 									<xsl:with-param name="RowLetter" select="'g'"/>
-									<xsl:with-param name="RowLabel" select="'Liquefied natural gas (LNG)'"/>
+									<xsl:with-param name="RowLabel" select="'Liquefied natural gas (LNG) (see instructions)'"/>
 									<xsl:with-param name="NonTXRowCount" select="count($IRS4136Data/NontxLiquefiedNaturalGas)"/>
 									<xsl:with-param name="BusNonTXRowCount" select="count($IRS4136Data/BusNontxLiquefiedNaturalGas)"/>
 									<xsl:with-param name="NonTXRowDataNode" select="$IRS4136Data/NontxLiquefiedNaturalGas"/>
@@ -2147,7 +2147,9 @@
 						<div class="styGenericDiv" style="width:6mm;height:10mm;font-weight:bold;padding-left:1mm;padding-top:3px; font-size:8pt;">17
       </div>
 						<div class="styGenericDiv" style="width:131mm;height:10mm;padding-left:5px;padding-top:3px;">
-							<b>Total income tax credit claimed. </b>Add lines 1 through 16, column (d). Enter here and on Form 1040, line 72; Form 1120, Schedule J, line 19b; Form 1120S, line 23c; Form 1041, line 24g; or the proper line of other returns.
+
+							<b>Total income tax credit claimed. </b> Add lines 1 through 16, column (d). Enter here and on Schedule 5 (Form 1040),
+							 line 73; Form 1120, Schedule J, line 20b; Form 1120S, line 23c; Form 1041, line 25h; or the proper line of other returns
         <span style="padding-left:2mm">
 								<img src="{$ImagePath}/4136_Bullet.gif" alt="Bullet"/>
 							</span>
@@ -2464,7 +2466,7 @@
 								<tbody>
 									<xsl:call-template name="PopulateSeparateTable">
 										<xsl:with-param name="RowLetter" select="'a'"/>
-										<xsl:with-param name="RowLabel" select="'Liquefied petroleum gas (LPG)'"/>
+										<xsl:with-param name="RowLabel" select="'Liquefied petroleum gas (LPG) (see instructions)'"/>
 										<xsl:with-param name="NonTXRowCount" select="count($IRS4136Data/NontxLiquifiedPetroleumGas)"/>
 										<xsl:with-param name="BusNonTXRowCount" select="count($IRS4136Data/BusNontxLiquifiedPetroleumGas)"/>
 										<xsl:with-param name="NonTXRowDataNode" select="$IRS4136Data/NontxLiquifiedPetroleumGas"/>
@@ -2520,7 +2522,7 @@
 								<tbody>
 									<xsl:call-template name="PopulateSeparateTable">
 										<xsl:with-param name="RowLetter" select="'c'"/>
-										<xsl:with-param name="RowLabel" select="'Compressed natural gas (CNG)'"/>
+										<xsl:with-param name="RowLabel" select="'Compressed natural gas (CNG) (see instructions)'"/>
 										<xsl:with-param name="NonTXRowCount" select="count($IRS4136Data/NontxCompressedNaturalGas)"/>
 										<xsl:with-param name="BusNonTXRowCount" select="count($IRS4136Data/BusNontxCompressedNaturalGas)"/>
 										<xsl:with-param name="NonTXRowDataNode" select="$IRS4136Data/NontxCompressedNaturalGas"/>
@@ -2632,7 +2634,7 @@
 								<tbody>
 									<xsl:call-template name="PopulateSeparateTable">
 										<xsl:with-param name="RowLetter" select="'g'"/>
-										<xsl:with-param name="RowLabel" select="'Liquefied natural gas (LNG)'"/>
+										<xsl:with-param name="RowLabel" select="'Liquefied natural gas (LNG) (see instructions)'"/>
 										<xsl:with-param name="NonTXRowCount" select="count($IRS4136Data/NontxLiquefiedNaturalGas)"/>
 										<xsl:with-param name="BusNonTXRowCount" select="count($IRS4136Data/BusNontxLiquefiedNaturalGas)"/>
 										<xsl:with-param name="NonTXRowDataNode" select="$IRS4136Data/NontxLiquefiedNaturalGas"/>

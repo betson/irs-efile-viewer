@@ -197,8 +197,8 @@
 					<div class="styGenericDiv" style="width:187mm;height:10mm;">
 						<div class="styLNLeftNumBoxSD">3</div>
 						<div class="styLNDesc">
-							<b>Current year credit.</b> Enter the <b>smaller</b> of line 1 or line 2. Also include this amount on Form 1040, <br/>
-							line 54, or Form 1040NR, line 51. Check box <b>c</b> on that line and enter "8859" in the space next to <br/>
+							<b>Current year credit.</b> Enter the <b>smaller</b> of line 1 or line 2. Also include this amount on  Schedule 3 (Form 1040), 
+							line 54, or Form 1040NR, line 51. Check box <b>c</b> on that line and enter "8859" in the space next to 
 							<span class="styGenericDiv">that box</span>
 							<span class="styIRS8859Dots">................................</span>
 						</div>
@@ -222,8 +222,8 @@
 								<b>Credit carryforward to 2019.</b> Subtract line 3 from line 1</span>
 							<span class="styIRS8859Dots">...............</span>
 						</div>
-						<div class="styLNRightNumBoxNBB">4</div>
-						<div class="styLNAmountBoxNBB">
+						<div class="styLNRightNumBoxNBB" >4</div>
+						<div class="styLNAmountBoxNBB"   style="width:33mm;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/DCHmByrCreditCfwdNextYearAmt"/>
 							</xsl:call-template>

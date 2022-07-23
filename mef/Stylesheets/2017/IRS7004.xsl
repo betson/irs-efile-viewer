@@ -56,7 +56,7 @@
 							</span>	
 						</div>
 						<div class="styFTBox" style="width:120mm;">
-							<div class="styFMT" style=";padding-top:3mm;font-size:9pt">Application for Automatic Extenstion of Time To File</div>
+							<div class="styFMT" style=";padding-top:3mm;font-size:9pt">Application for Automatic Extension of Time To File</div>
 							<div class="styFMT" style="font-size:9pt">Certain Business Income Tax, Information, and Other Returns</div>
 							<div class="styFBT" style=" font-size: 7pt;"></div>
 							<br/>

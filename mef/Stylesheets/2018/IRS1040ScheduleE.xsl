@@ -35,10 +35,10 @@
 				<xsl:call-template name="InitJS">
             </xsl:call-template>
 				<style type="text/css">
-					<xsl:if test="not($Print) or $Print=''">
+		         <xsl:if test="not($Print) or $Print=''">
 					<xsl:call-template name="IRS1040ScheduleEStyle"/>
 					<xsl:call-template name="AddOnStyle"/>
-					</xsl:if>
+				 </xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
@@ -47,10 +47,10 @@
 					<xsl:call-template name="DocumentHeader">
                </xsl:call-template>
 					<div class="styTBB" style="width:187mm;">
-						<div class="styFNBox" style="width:28mm;height:21mm;">
-							<div style="padding-top:1mm;line-height:150%;">
+						<div class="styFNBox" style="width:30mm;height:23mm;">
+							<div style="padding-top:1mm;line-height:100%;">
 								<span class="styFormNumber" style="font-size:9pt;">SCHEDULE E</span>
-								<br/>
+						
 								<span class="styFormNumber" style="font-size:9pt;padding-top:2mm;">(Form 1040)</span>
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$FormData"/>
@@ -62,7 +62,7 @@
 								<span class="styAgency">Internal Revenue Service (99)</span>
 							</div>
 						</div>
-						<div class="styFTBox" style="width:127mm;height:20mm;">
+						<div class="styFTBox" style="width:127mm;height:23mm;">
 							<div class="styMainTitle" style="height:12mm;font-size:14pt;padding-top:0mm;">
                      Supplemental Income and Loss<br/>
 								<span class="styTitleDesc" style="width:127mm;font-size:10pt;">
@@ -79,7 +79,7 @@
 								<span class="styBoldText" style="font-size:6pt;">Go to <i>www.irs.gov/ScheduleE</i> for instructions and the latest information. </span>
 							</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;height:21mm;">
+						<div class="styTYBox" style="width:30mm;height:23mm;">
 							<div class="styOMB" style="height:4mm;">
                      OMB No. 1545-0074
                      </div>
@@ -398,6 +398,7 @@
 														<xsl:with-param name="TargetNode" select="PropertyDesc"/>
 													</xsl:call-template>
 												</xsl:if>
+												<span style="width:2mm"></span>
 												<xsl:if test="OtherPropertyTypeDesc">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="OtherPropertyTypeDesc"/>
@@ -1543,7 +1544,7 @@
 																</td>
 															</xsl:if>
 															<!-- Col A -->
-															<td class="styTableCell" style="width:32mm;height:auto;">
+															<td class="styTableCell" style="width:32mm;height:auto;padding-top:2mm;padding-top:2mm;">
 																<xsl:call-template name="SetFormLinkInline">
 																	<xsl:with-param name="TargetNode" select="$FormData/PropertyRealEstAndRoyaltyGroup/OtherExpenseDetail"/>
 																</xsl:call-template>
@@ -1582,7 +1583,7 @@
 																	<span style="font-size:7pt;">19</span>
 																</td>
 															</xsl:if>
-															<td class="styTableCell" style="width:32mm;">
+															<td class="styTableCell" style="width:32mm;padding-top:2mm;padding-top:2mm;">
 																<xsl:call-template name="SetFormLinkInline">
 																	<xsl:with-param name="TargetNode" select="."/>
 																</xsl:call-template>
@@ -1628,7 +1629,7 @@
 													<td class="styTableCell" style="width:32mm;">
 														<span class="styTableCellPad" style="width:10mm;"/>
 													</td>
-													<td class="styTableCell" style="width:37mm;">
+													<td class="styTableCell" style="width:37mm;padding-top:2mm;">
 														<xsl:call-template name="SetFormLinkInline">
 															<xsl:with-param name="TargetNode" select="."/>
 														</xsl:call-template>
@@ -1672,7 +1673,7 @@
 													<td class="styTableCell" style="width:37mm;height:auto;">
 														<span class="styTableCellPad" style="width:22mm;"/>
 													</td>
-													<td class="styTableCell" style="width:40mm;height:auto;">
+													<td class="styTableCell" style="width:40mm;height:auto;padding-top:2mm;">
 														<xsl:call-template name="SetFormLinkInline">
 															<xsl:with-param name="TargetNode" select="."/>
 														</xsl:call-template>
@@ -2469,14 +2470,20 @@
 												<!-- Column 4 -->
 												<td class="styTableCell" style="width:34.5mm;vertical-align:text-bottom;">
 													<span class="styTableCellPad" style="border-left-width:0px;"/>
+													<span style="float:left;padding-top:10mm;">(</span>
+													<span style="float:right;padding-top:10mm;">)</span>
 												</td>
 												<!-- Column 5 -->
 												<td class="styTableCell" style="vertical-align:text-bottom;width:39mm;">
 													<span class="styTableCellPad" style="border-left-width:0px;"/>
+													<span style="float:left;padding-top:10mm;">(</span>
+													<span style="float:right;padding-top:10mm;">)</span>
 												</td>
 												<!-- Column 6 -->
 												<td class="styTableCell" style="vertical-align:text-bottom;width:37.5mm;">
 													<span class="styTableCellPad" style="border-left-width:0px;"/>
+													<span style="float:left;padding-top:10mm;">(</span>
+													<span style="float:right;padding-top:10mm;">)</span>
 												</td>
 											</tr>
 											<!-- End of Line 22 -->
@@ -2701,7 +2708,7 @@
 												</td>
 												<!-- Column 2 -->
 												<td class="styTableCell" style="width:63.6mm;text-align:left;border-bottom-width:0px;">
-													<span style="font-size:7pt;float:left;padding-left:1.5mm;">Auto and travel (see instructions))</span>
+													<span style="font-size:7pt;float:left;padding-left:1.5mm;">Auto and travel (see instructions)</span>
 													<span class="styDotLn" style="float:right;clear:none;padding-right:1mm;">.....</span>
 												</td>
 												<!-- Column 3 -->
@@ -3308,7 +3315,7 @@
 																<span class="styTableCellPad"/>
 															</td>
 															<!-- Col A -->
-															<td class="styTableCell" style="width:32mm;">
+															<td class="styTableCell" style="width:32mm;padding-top:2mm;">
 																<xsl:call-template name="SetFormLinkInline">
 																	<xsl:with-param name="TargetNode" select="."/>
 																</xsl:call-template>
@@ -3347,7 +3354,7 @@
 																	<span style="font-size:7pt;">19</span>
 																</td>
 															</xsl:if>
-															<td class="styTableCell" style="width:33mm;">
+															<td class="styTableCell" style="width:33mm;padding-top:2mm;">
 																<xsl:call-template name="SetFormLinkInline">
 																	<xsl:with-param name="TargetNode" select="."/>
 																</xsl:call-template>
@@ -3390,7 +3397,7 @@
 															<span style="font-size:7pt;">19</span>
 														</td>
 													</xsl:if>
-													<td class="styTableCell" style="width:33mm;">
+													<td class="styTableCell" style="width:33mm;padding-top:2mm;">
 														<span class="styTableCellPad"/>
 													</td>
 													<td class="styTableCell" style="width:38mm;">
@@ -3737,13 +3744,13 @@
 						</div>
 						<!-- End Line 25  -->
 						<!-- Line 26  -->
-						<div class="styBB" style="width:187mm;height:11mm;float:left;clear:none;height:auto;">
+						<div class="styBB" style="width:187mm;height:13mm;float:left;clear:none;">
 							<div style="width:187mm;">
 								<div style="float:left;">
 									<div class="styLNLeftNumBox" style="float:left;clear:none;padding-left:0mm;width:7.3mm;padding-top:.5mm;padding-left:0mm;height:11mm;">26</div>
 									<div class="styLnDesc" style="padding-top:.5mm;width:141.8mm;padding-left:2mm;padding-right:1mm;height:11mm;">
 										<b> Total rental real estate and royalty income or (loss).</b> Combine lines 24 and 25. Enter the result here.
-								   If Parts II, III, IV, and line 40 on page 2 do not apply to you, also enter this amount on Form 1040,
+								   If Parts II, III, IV, and line 40 on page 2 do not apply to you, also enter this amount on Schedule 1 (Form 1040),
 								   line 17, or Form 1040NR, line 18. Otherwise, include this amount in the total on line 41 on page 2
 								   <xsl:call-template name="LinkToLeftoverDataTableInline">
 											<xsl:with-param name="Desc">Part I, Line 26 NonPassive Activity Literal </xsl:with-param>
@@ -3753,15 +3760,15 @@
 											<xsl:with-param name="Desc">Part I, Line 26 NonPassive Activity Amount</xsl:with-param>
 											<xsl:with-param name="TargetNode" select="$FormData/TotalIncomeOrLossAmt/@nonpassiveActivityAmt"/>
 										</xsl:call-template>
-										<span class="styDotLn" style="float:right;clear:none;padding-right:1mm;">....</span>
+										<span class="styDotLn" style="float:right;clear:none;padding-right:1mm;"></span>
 									</div>
 								</div>
-								<div class="styLNRightNumBox" style="width:5.5mm;height:11mm;border-bottom-width:0px;">
+								<div class="styLNRightNumBox" style="width:5.5mm;height:13mm;border-bottom-width:0px;padding-top:3mm;">
 									<br/>
 									<br/>
 									 26
 							   </div>
-								<div class="styLNAmountBox" style="font-size:6.5pt;padding-right:.5mm;width:32mm;height:11mm;border-bottom-width:0px;">
+								<div class="styLNAmountBox" style="font-size:6.5pt;padding-right:.5mm;width:32mm;height:13mm;border-bottom-width:0px;padding-top:3mm">
 									<br/>
 									<br/>
 									<xsl:call-template name="PopulateAmount">
@@ -3822,9 +3829,9 @@
 					<div style="width:187mm;" class="styBB">
 						<div class="styPartName" style="width:15mm;">Part II</div>
 						<div class="styPartDesc" style="padding-left:3mm;font-weight:normal;height:auto;">
-							<span class="styBoldText">lncome or Loss From Partnerships and S Corporations -- <span style="padding-left:.5mm;padding-right:1mm;">Note:</span>
+							<span class="styBoldText">lncome or Loss From Partnerships and S Corporations - <span style="padding-left:.5mm;padding-right:1mm;">Note:</span>
 							</span>If you report a loss, receive a distribution, dispose of stock, or receive a loan repayment from an S corporation, you <b>must</b> check the box in column 
-							(e) on line 28 and attach the required basis computation.   If you report a loss from an at-risk activity for which <span class="styBoldText">any</span> amount is <span class="styBoldText">not</span> at risk, you <span class="styBoldText">must</span> check the box in column <b>(f)</b> on line 28 and attach <span class="styBoldText">Form 6198</span> (see instructions). 
+							<b>(e)</b> on line 28 and attach the required basis computation.   If you report a loss from an at-risk activity for which <span class="styBoldText">any</span> amount is <span class="styBoldText">not</span> at risk, you <span class="styBoldText">must</span> check the box in column <b>(f)</b> on line 28 and attach <span class="styBoldText">Form 6198</span> (see instructions). 
                   </div>
 					</div>
 					<!-- End Part II Title -->
@@ -3965,7 +3972,7 @@
 									<xsl:for-each select="$FormData/PartnershipOrSCorpGroup">
 										<tr style="height:11mm;">
 											<!-- Column 0 -->
-											<td class="styTableCell" style="width:5mm;height:11mm;float:left;clear:none;">
+											<td class="styTableCell" style="width:5mm;height:13mm;float:left;clear:none;">
 												<span class="styBoldText" style="padding-right:2mm;font-size:8pt;width:5mm;">
 													<xsl:call-template name="AlphaPosition">
 														<xsl:with-param name="Position" select="position()"/>
@@ -4720,7 +4727,7 @@
 													</xsl:call-template>
 												</td>
 												<!-- Column 3 -->
-												<td class="styTableCell" style="width:36.5mm;height:8mm;text-align:center;border-right-width:0px;float:left;clear:none;font-size:7pt;vertical-align:top;">
+												<td class="styTableCell" style="width:36.5mm;height:8mm;text-align:center;padding-top:4mm;border-right-width:0px;float:left;clear:none;font-size:7pt;vertical-align:top;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="EstateOrTrustEIN"/>
 														<xsl:with-param name="BackupName">IRS1040ScheduleEEstateAndTrustGroupEstateOrTrustEIN</xsl:with-param>
@@ -5372,11 +5379,11 @@
 								<div class="styLNLeftNumBox" style="padding-left:1mm;">41</div>
 								<div style="width:141mm;padding-top:0.5mm;" class="styLnDesc">
 									<span style="float:left;clear:none;">
-										<span class="styBoldText">Total income or (loss).</span> Combine lines 26, 32, 37, 39, and 40. Enter the result here and on Form 1040,
-                                    <span style="float:left;">line 17, or Form 1040NR, line 18
+										<span class="styBoldText">Total income or (loss).</span> Combine lines 26, 32, 37, 39, and 40. Enter the result here and on Schedule 1 
+                                    <span style="float:left;">(Form 1040),  line 17, or Form 1040NR, line 18
                                           <img src="{$ImagePath}/1040_Bullet.gif" alt="Right pointing arrowhead image"/>
 										</span>
-										<span class="styDotLn" style="clear:none;padding-right:1mm;float:right;">......................</span>
+										<span class="styDotLn" style="clear:none;padding-right:1mm;float:right;">.................</span>
 									</span>
 								</div>
 							</div>
@@ -5399,7 +5406,7 @@
 							<div style="width:99mm;float:left;clear:none;padding-top:0.5mm;">
 								<span class="styBoldText">Reconciliation of farming and fishing income.</span> Enter your <span class="styBoldText">gross  </span> farming
                            and fishing income reported on Form 4835, line 7; Schedule K-1 (Form
-                           1065), box 14, code B; Schedule K-1 (Form 1120S), box 17, code V; and
+                           1065), box 14, code B; Schedule K-1 (Form 1120S), box 17, code AC; and
                            Schedule
                            <span style="float:left;">K-1 (Form 1041), line 14, code F (see instructions)</span>
 								<span class="styDotLn" style="clear:none;padding-right:1mm;float:right;">.......</span>
@@ -5425,7 +5432,7 @@
 						<div class="styBB" style="width:187mm;">
 							<div class="styLNLeftNumBox" style="padding-left:1mm;">43</div>
 							<div style="width:99mm;float:left;padding-top:0.5mm;" class="styLnDesc">
-								<span class="styBoldText">Reconciliation for real estate professionals. </span>If you were a real estate<br/>
+								<span class="styBoldText">Reconciliation for real estate professionals. </span>  If you were a real estate<br/>
                            professional (see instructions), enter the net income or (loss) you reported<br/>
                            anywhere on Form 1040 or Form 1040NR from all rental real estate<br/>
                            activities in which you materially participated under the passive activity<br/>
@@ -5564,6 +5571,7 @@
 													<xsl:with-param name="TargetNode" select="PropertyDesc"/>
 												</xsl:call-template>
 											</xsl:if>
+											<span style="width:2mm"></span>
 											<xsl:if test="OtherPropertyTypeDesc">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="OtherPropertyTypeDesc"/>
@@ -5626,8 +5634,14 @@
 											<span> identification number</span>
 										</span>
 									</th>
-									<th class="styDepTblCell" scope="col" rowspan="2" style="width:23.2mm;">
+									<th class="styDepTblCell" scope="col" rowspan="2" style="width:17.5mm;">
 										<span style="font-weight:bold;">(e)</span>
+										  Check if
+										  basis
+										  computation is required
+                           </th>
+									<th class="styDepTblCell" scope="col" rowspan="2" style="width:23.2mm;">
+										<span style="font-weight:bold;">(f)</span>
                               Check if
                               any amount is
                               not at risk
@@ -5679,6 +5693,15 @@
 											</xsl:call-template>
 										</td>
 										<td class="styDepTblCell" style="text-align:center;width:23.2mm;">
+												<!-- Checkbox -->
+												<input type="Checkbox" alt="BasisComputationRequired" class="styCkbox">
+													<xsl:call-template name="PopulateCheckbox">
+														<xsl:with-param name="TargetNode" select="BasisComputationRequiredInd"/>
+														<xsl:with-param name="BackupName">IRS1040ScheduleEPartnershipOrSCorpGroupBasisComputationRequiredInd</xsl:with-param>
+													</xsl:call-template>
+												</input>
+											</td>
+										<td class="styDepTblCell" style="text-align:center;width:23.2mm;">
 											<!-- Checkbox -->
 											<input type="Checkbox" alt="AnyAmountIsNotAtRisk" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
@@ -5702,27 +5725,27 @@
 									<th class="styDepTblCell" scope="col" rowspan="2" style="width:3.4mm;">
                            </th>
 									<th class="styDepTblCell" scope="col" rowspan="2" style="width:41.9mm;">
-										<span style="font-weight:bold;">(f)</span>
+										<span style="font-weight:bold;">(g)</span>
                               Passive loss allowed<br/>
 										<span style="font-weight:normal">(attach Form 8582 if required)</span>
 									</th>
 									<th class="styDepTblCell" scope="col" rowspan="2" style="width:40mm;">
-										<span style="font-weight:bold;">(g)</span>
+										<span style="font-weight:bold;">(h)</span>
                               Passive income
                               from Schedule K-1
                            </th>
 									<th class="styDepTblCell" scope="col" rowspan="2" style="width:35.9mm;">
-										<span style="font-weight:bold;">(h)</span>
+										<span style="font-weight:bold;">(i)</span>
                               Nonpassive loss
                               from Schedule K-1
                            </th>
 									<th class="styDepTblCell" scope="col" rowspan="2" style="width:30.9mm;">
-										<span style="font-weight:bold;">(i)</span>
+										<span style="font-weight:bold;">(j)</span>
                               Section 179 expense
                               deduction from Form 4562
                            </th>
 									<th class="styDepTblCell" scope="col" rowspan="2" style="width:35.9mm;">
-										<span style="font-weight:bold;">(j)</span>
+										<span style="font-weight:bold;">(k)</span>
                               Nonpassive income
                               from Schedule K-1
                            </th>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Last Modified by Eugenia McDonald on 10/17/2019 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	version="1.0">
 	<xsl:include href="PopulateTemplate.xsl" />
@@ -95,40 +96,39 @@
 								style="width:46mm;height:12.5mm;border-width:1px 1px 1px 0px;">
 								<span>Unique Form Identifier</span>
 								<br />
-								<span style="padding-left:4mm;padding-top:1mm;">
+								<span style="padding-left:0mm;padding-top:1mm;">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$FormData/FormId" />
 									</xsl:call-template>
 								</span>
 							</div>
 							<!-- Closes Unique Form Identifier -->
-							<!-- Box 1 -->
+							<!-- Amendment Number Box  -->
 							<div class="styRRB1042SLineDiv styRRB1042SDesc"
 								style="width:35mm;height:12.5mm;border-width:1px 1px 1px 0px;">
 								<span>
-									1.
 									<span style="width:.5mm" />
 								</span>
-								<span>Income Code</span>
+								<span>Amendment Number</span>
 								<br />
-								<span style="padding-left:7mm;padding-top:1mm;">
+								<span style="padding-left:1mm;padding-top:1mm;">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/IncomeTypeCd" />
+										<xsl:with-param name="TargetNode" select="$FormData/AmendmentNum" />
 									</xsl:call-template>
 								</span>
 							</div>
-							<!-- Closes Box 1 -->
-							<!-- Box 5 -->
+							<!-- Closes Amendment Number Boxr -->
+							<!-- Box 6 -->
 							<div class="styRRB1042SLineDiv styRRB1042SDesc"
 								style="width:51mm;height:12.5mm;border-width:1px 1px 1px 0px;">
 								<span>
-									5.
+									6.
 									<span style="width:.5mm" />
 								</span>
 								<span>Claim Number and Payee Code</span>
 								<br />
 								<span
-									style="padding-top:1mm;text-align:center;width:50mm;font-size:6pt;">
+									style="padding-top:1mm;padding-left:.5mm;width:50mm;font-size:6.0pt">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$FormData/ClaimNum" />
 									</xsl:call-template>
@@ -138,18 +138,18 @@
 									</xsl:call-template>
 								</span>
 							</div>
-							<!-- Closes Box 5 -->
-							<!-- Box 6 -->
+							<!-- Closes Box 6 -->
+							<!-- Box 7 -->
 							<div class="styRRB1042SLineDiv styRRB1042SDesc"
 								style="width:55mm;height:12.5mm;border-width:1px 1px 1px 0px;">
 								<span style="width:1.5mm" />
 								<span>
-									6.
+									7.
 									<span style="width:.5mm" />
 								</span>
-								<span>Recipient’s U.S. Taxpayer</span>
+								<span>Recipient’s U.S. Taxpayer Identification</span>
 								<br />
-								<span style="padding-left:4mm;">Identification Number</span>
+								<span style="padding-left:4mm;"> Number</span>
 								<br />
 								<span style="padding-top:1mm;float:bottom;padding-left:4mm;">
 									<xsl:call-template name="PopulateSSN">
@@ -157,10 +157,10 @@
 									</xsl:call-template>
 								</span>
 							</div>
-							<!-- Closes Box 6 -->
+							<!-- Closes Box 7 -->
 							<!-- Box Recipient’s Name, Street Address, City, State, and ZIP code -->
 							<div class="styRRB1042SLineDiv styRRB1042SDesc"
-								style="width:81mm;height:50mm;float:none;border-width:0px 1px 1px 0px;float:left;">
+								style="width:81mm;height:37.5mm;float:none;border-width:0px 1px 1px 0px;float:left;">
 								Recipient’s Name, Street Address, City, State, and ZIP code
 								<br />
 								<span style="font-family:Arial;">
@@ -186,44 +186,23 @@
 							</div>
 							<!-- closes Box Recipient’s Name, Street Address, City, State, and 
 								ZIP code -->
-							<!-- Boxes 7 -->
+							<!-- Boxes 8 -->
 							<div class="styRRB1042SLineDiv styRRB1042SDesc"
-								style="width:28mm;height:12.5mm;border-width:0px 1px 1px 0px;">
-								<span style="width:1.5mm" />
+								style="width:51mm;height:12.5mm;border-width:0px 1px 1px 0px;">
+								<span style="width:.3mm" />
 								<span>
-									7.
+									8.
 									<span style="width:.5mm" />
 								</span>
-								<span>Recipient’s Chapter</span>
+								<span>Recipient’s Chapter 3 Status Code</span>
 								<br />
-								<span style="padding-left:4mm;">3 Status Code</span>
-								<br />
-								<span style="width:24mm;padding-top:1mm;text-align:center;">
+								<span style="width:48mm;padding-top:1mm;padding-left:3mm">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode"
 											select="$FormData/RecipientChapter3StatusCd" />
 									</xsl:call-template>
 								</span>
 							</div>
-							<!-- Box 8 -->
-							<div class="styRRB1042SLineDiv styRRB1042SDesc"
-								style="width:23mm;height:12.5mm;border-width:0px 1px 1px 0px;">
-								<span style="width:1.5mm" />
-								<span>
-									8.
-									<span style="width:.5mm" />
-								</span>
-								<span>Recipient’s</span>
-								<br />
-								<span style="padding-left:4.5mm;">Date of Birth</span>
-								<br />
-								<span style="padding-top:1mm;padding-left:4mm;">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/BirthDt" />
-									</xsl:call-template>
-								</span>
-							</div>
-							<!-- Closes Box 8 -->
 							<!-- Box 9 -->
 							<div class="styRRB1042SLineDiv styRRB1042SDesc"
 								style="width:55mm;height:12.5mm;border-width:0px 1px 1px 0px;">
@@ -232,14 +211,12 @@
 									9.
 									<span style="width:.5mm" />
 								</span>
-								<span>Gross Social Security Equivalent</span>
+									<span>Recipient’s Date of Birth</span>
+								
 								<br />
-								<span style="padding-left:4.5mm;">Benefit Paid in 2018</span>
-								<br />
-								<span style="width:53mm;padding-top:3.5mm;text-align:right;">
-									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode"
-											select="$FormData/GrossSocSecBnftTier1PaidAmt " />
+								<span style="padding-top:1mm;padding-left:4mm;">
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$FormData/BirthDt" />
 									</xsl:call-template>
 								</span>
 							</div>
@@ -247,21 +224,21 @@
 							<!-- Box 10 -->
 							<div class="styRRB1042SLineDiv styRRB1042SDesc"
 								style="width:51mm;height:12.5mm;border-width:0px 1px 1px 0px;">
-								<span style="width:1.5mm" />
+								<span style="width:.3mm" />
 								<span>
 									10.
 									<span style="width:.5mm" />
 								</span>
-								<span>Social Security Equivalent Benefit</span>
+								<span>Gross Benefit Paid in 2018</span>
 								<br />
-								<span style="padding-left:5.5mm;">Repaid to RRB in 2018</span>
+								<span style="padding-left:4.5mm;"></span>
 								<br />
 								<span style="width:48mm;padding-top:3.5mm;text-align:right;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode"
-											select="$FormData/SocSecBnftTier1RepaidRRBAmt" />
+											select="$FormData/GrossSocSecBnftTier1PaidAmt " />
 									</xsl:call-template>
-								</span>
+								</span>								
 							</div>
 							<!-- Closes Box 10 -->
 							<!-- Box 11 -->
@@ -272,14 +249,13 @@
 									11.
 									<span style="width:.5mm" />
 								</span>
-								<span>Net Social Security Equivalent</span>
+								<span>Benefit Repaid to RRB in 2018</span>
 								<br />
-								<span style="padding-left:5.5mm;">Benefit Paid in 2018</span>
 								<br />
-								<span style="width:53mm;padding-top:3.5mm;text-align:right;">
+								<span style="width:51mm;padding-top:3.5mm;text-align:right;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode"
-											select="$FormData/NetSocSecBnftTier1PaidAmt" />
+											select="$FormData/SocSecBnftTier1RepaidRRBAmt" />
 									</xsl:call-template>
 								</span>
 							</div>
@@ -287,17 +263,18 @@
 							<!-- Box 12 -->
 							<div class="styRRB1042SLineDiv styRRB1042SDesc"
 								style="width:51mm;height:12.5mm;border-width:0px 1px 1px 0px;">
-								<span style="width:1.5mm" />
+								<span style="width:.3mm" />
 								<span>
 									12.
 									<span style="width:.5mm" />
 								</span>
-								<span>Federal Tax Withheld</span>
+								<span>Net Benefit Paid in 2018</span>
 								<br />
-								<span style="width:48mm;padding-top:6.5mm;text-align:right;">
+								<br />
+								<span style="width:48mm;padding-top:3.5mm;text-align:right;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode"
-											select="$FormData/FederalIncomeTaxWithheldAmt" />
+											select="$FormData/NetSocSecBnftTier1PaidAmt" />
 									</xsl:call-template>
 								</span>
 							</div>
@@ -310,60 +287,35 @@
 									13.
 									<span style="width:.5mm" />
 								</span>
-								<span>Social Security Equivalent Benefit</span>
+								<span>Federal Tax Withheld</span>
 								<br />
-								<span style="padding-left:5.5mm;">Paid for 2017</span>
-								<br />
-								<span style="width:53mm;padding-top:3.5mm;text-align:right;">
+								<span style="width:51mm;padding-top:6.5mm;text-align:right;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode"
-											select="$FormData/SocSecBnftTier1PaidPrYr1Amt" />
+											select="$FormData/FederalIncomeTaxWithheldAmt" />
 									</xsl:call-template>
 								</span>
 							</div>
 							<!-- Closes Box 13 -->
-							<!-- Box 14 -->
-							<div class="styRRB1042SLineDiv styRRB1042SDesc"
-								style="width:51mm;height:12.5mm;border-width:0px 1px 1px 0px;">
-								<span style="width:1.5mm" />
-								<span>
-									14.
-									<span style="width:.5mm" />
-								</span>
-								<span>Social Security Equivalent Benefit</span>
-								<br />
-								<span style="padding-left:5.5mm;">Paid for 2016</span>
-								<br />
-								<span style="width:48mm;padding-top:3.5mm;text-align:right;">
-									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode"
-											select="$FormData/SocSecBnftTier1PaidPrYr2Amt" />
-									</xsl:call-template>
-								</span>
-							</div>
-							<!-- Closes Box 14 -->
-							<!-- Box 15 -->
-							<div class="styRRB1042SLineDiv styRRB1042SDesc"
-								style="width:55mm;height:12.5mm;border-width:0px 1px 1px 0px;">
-								<span style="width:1.5mm" />
-								<span>
-									15.
-									<span style="width:.5mm" />
-								</span>
-								<span>Social Security Equivalent Benefit</span>
-								<br />
-								<span style="padding-left:5.5mm;">Paid for Years Prior to 2016</span>
-								<br />
-								<span style="width:53mm;padding-top:3.5mm;text-align:right;">
-									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode"
-											select="$FormData/SocSecBnftTier1PaidBfrPrYr2Amt" />
-									</xsl:call-template>
-								</span>
-							</div>
-							<!-- Closes Box 15 -->
-							<!-- Boxes 2,3,4,16,17 and 18 -->
+							<!-- Boxes 1,2,3,14 and 15 -->
 							<div style="width:187mm;height:12.5mm;float:left;">
+								<!-- Box 2 -->
+								<div class="styRRB1042SLineDiv styRRB1042SDesc"
+									style="width:27mm;height:12.5mm;border-width:0px 1px 1px 0px;">
+									<span style="width:1.5mm" />
+									<span>
+										1.
+										<span style="width:.5mm" />
+									</span>
+									<span>Income Code</span>
+									<br />
+									<span style="width:25mm;padding-top:3.7mm;padding-left:4mm;">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$FormData/IncomeTypeCd" />
+										</xsl:call-template>
+									</span>
+								</div>
+								<!-- Closes Box 1 -->
 								<!-- Box 2 -->
 								<div class="styRRB1042SLineDiv styRRB1042SDesc"
 									style="width:27mm;height:12.5mm;border-width:0px 1px 1px 0px;">
@@ -374,7 +326,7 @@
 									</span>
 									<span>Chapter Indicator</span>
 									<br />
-									<span style="width:25mm;padding-top:3.7mm;text-align:center;">
+									<span style="width:25mm;padding-top:3.7mm;padding-left:4mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/ChapterTypeCd" />
 										</xsl:call-template>
@@ -389,30 +341,65 @@
 										3.
 										<span style="width:.5mm" />
 									</span>
-									<span>Chapter 3 status</span>
-									<br />
-									<span style="padding-left:4.2mm;">Code</span>
-									<span style="width:25mm;padding-top:1mm;text-align:center;">
+									<span>Chapter 3 Status Code</span>
+									<br /><br/>
+									<span style="width:25mm;padding-top:1mm;padding-left:4mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode"
 												select="$FormData/Chapter3StatusCd" />
 										</xsl:call-template>
 									</span>
 								</div>
-								<!-- Closes Box 3 -->
+								<!-- Box 14 -->
+								<div class="styRRB1042SLineDiv styRRB1042SDesc"
+									style="width:51mm;height:12.5mm;border-width:0px 1px 1px 0px;">
+									<span style="width:.3mm" />
+									<span>
+										14.
+										<span style="width:.5mm" />
+									</span>
+									<span>Country</span>
+									<br />
+									<span style="width:51mm;padding-top:3.7mm;padding-left:4.5mm;">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$FormData/CountryCd" />
+										</xsl:call-template>
+									</span>
+								</div>
+								<!-- Closes Box 14 -->
+								<!-- Box 15 -->
+								<div class="styRRB1042SLineDiv styRRB1042SDesc"
+									style="width:55mm;height:12.5mm;border-width:0px 1px 1px 0px;">
+									<span style="width:1.5mm" />
+									<span>
+										15.
+										<span style="width:.5mm" />
+									</span>
+									<span>Tax Rate</span>
+									<br />
+									<span style="width:55mm;padding-top:3.7mm;padding-left:6mm;">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$FormData/TaxRt" />
+										</xsl:call-template>
+									</span>
+								</div>
+							<!-- Closes Box 15 -->
+							</div>
+							<!-- Closes Boxes 1, 2,3,14 and 15 -->
+							<!-- Boxes 4,5,16 and 17 -->
+							<div style="width:187mm;height:12.5mm;float:left;">
 								<!-- Box 4 -->
 								<div class="styRRB1042SLineDiv styRRB1042SDesc"
-									style="width:27mm;height:12.5mm;border-width:0px 1px 1px 0px;">
+									style="width:40.5mm;height:12.5mm;border-width:0px 1px 1px 0px;">
 									<span style="width:1.5mm" />
 									<span>
 										4.
 										<span style="width:.5mm" />
 									</span>
-									<span>Chapter 4 Status</span>
+									<span>Chapter 4 Status Code</span>
 									<br />
-									<span style="padding-left:4.2mm;">Code</span>
 									<br />
-									<span style="width:25mm;padding-top:1mm;text-align:center;">
+									<span style="width:40mm;padding-top:1mm;padding-left:4.5mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode"
 												select="$FormData/Chapter4StatusCd" />
@@ -420,104 +407,71 @@
 									</span>
 								</div>
 								<!-- Closes Box 4 -->
+								<!-- Box 5 -->
+								<div class="styRRB1042SLineDiv styRRB1042SDesc"
+									style="width:40.5mm;height:12.5mm;border-width:0px 1px 1px 0px;">
+									<span style="width:1.5mm" />
+									<span>
+										5.
+										<span style="width:.5mm" />
+									</span>
+									<span>Employee Contributions</span>
+									<br />
+									<br />
+									<span style="width:40mm;padding-top:1mm;padding-right:2mm;text-align:right;">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode"
+												select="$FormData/EmployeeContributionsAmt" />
+										</xsl:call-template>
+									</span>
+								</div>
+								<!-- Closes Box 5 -->
 								<!-- Box 16 -->
 								<div class="styRRB1042SLineDiv styRRB1042SDesc"
-									style="width:43mm;height:12.5mm;border-width:0px 1px 1px 0px;">
-									<span style="width:1.5mm" />
+									style="width:51mm;height:12.5mm;border-width:0px 1px 1px 0px;">
+									<span style="width:.3mm" />
 									<span>
 										16.
 										<span style="width:.5mm" />
 									</span>
-									<span>Country</span>
+									<span>Exemption Code</span>
 									<br />
-									<span style="width:15mm;padding-top:3.7mm;text-align:center;">
+									<span style="width:51mm;padding-top:3.5mm;padding-left:4.5mm;">
 										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/CountryCd" />
+											<xsl:with-param name="TargetNode"
+												select="$FormData/ExemptionCd" />
 										</xsl:call-template>
 									</span>
 								</div>
 								<!-- Closes Box 16 -->
 								<!-- Box 17 -->
 								<div class="styRRB1042SLineDiv styRRB1042SDesc"
-									style="width:23mm;height:12.5mm;border-width:0px 1px 1px 0px;">
+									style="width:55mm;height:12.5mm;border-width:0px 1px 1px 0px;">
 									<span style="width:1.5mm" />
 									<span>
 										17.
 										<span style="width:.5mm" />
 									</span>
-									<span>Tax Rate</span>
-									<br />
-									<span style="width:20mm;padding-top:3.7mm;text-align:center;">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxRt" />
-										</xsl:call-template>
-									</span>
-								</div>
-								<!-- Closes Box 17 -->
-								<!-- Box 18 -->
-								<div class="styRRB1042SLineDiv styRRB1042SDesc"
-									style="width:40mm;height:12.5mm;border-width:0px 0px 1px 0px;">
-									<span style="width:1.5mm" />
-									<span>
-										18.
-										<span style="width:.5mm" />
-									</span>
-									<span>Exemption Code</span>
-									<br />
-									<span style="width:20mm;padding-top:3.7mm;text-align:center;">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/ExemptionCd" />
-										</xsl:call-template>
-									</span>
-								</div>
-								<!-- Closes Box 18 -->
-							</div>
-							<!-- Closes Boxes 2,3,4,16,17 and 18 -->
-							<!-- Shaded area and Boxes 19 and 20 -->
-							<div style="width:187mm;height:12.5mm;float:left;">
-								<!-- Shaded area -->
-								<div class="styRRB1042SLineDiv styRRB1042SDesc"
-									style="width:81mm;height:12.5mm;text-align:center;padding-top:4mm;border-width:0px 1px 0px 0px;background-color:lightgray;">
-									<span style="font-weight:bold;font-size:11pt;">FORM RRB-1042S</span>
-								</div>
-								<!-- Box 19 -->
-								<div class="styRRB1042SLineDiv styRRB1042SDesc"
-									style="width:37mm;height:12.5mm;border-width:0px 1px 0px 0px;">
-									<span style="width:1.5mm" />
-									<span>
-										19.
-										<span style="width:.5mm" />
-									</span>
 									<span>Medicare Premium Total</span>
 									<br />
-									<span style="width:35mm;padding-top:6.5mm;text-align:right;">
+									<span style="width:55mm;padding-top:6mm;padding-right:4mm;text-align:right;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode"
 												select="$FormData/TotalMedicarePremiumAmt" />
 										</xsl:call-template>
 									</span>
 								</div>
-								<!-- Closes Box 19 -->
-								<!-- Box 20 -->
-								<div class="styRRB1042SLineDiv styRRB1042SDesc"
-									style="width:69mm;height:12.5mm;border-width:0px 0px 0px 0px;">
-									<span style="width:1.5mm" />
-									<span>
-										20.
-										<span style="width:.5mm" />
-									</span>
-									<span>Workers’ Compensation Offset in 2018</span>
-									<br />
-									<span style="width:67mm;padding-top:6.5mm;text-align:right;">
-										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode"
-												select="$FormData/WorkersCompensationOffsetAmt" />
-										</xsl:call-template>
-									</span>
-								</div>
-								<!-- Closes Box 20 -->
+								<!-- Closes Box 17 -->
 							</div>
-							<!-- Closes Shaded area and Boxes 19 and 20 -->
+							<!-- Closes Boxes 4, 5, 16 and 17 -->
+							<!-- Shaded area -->
+							<div style="width:187mm;height:12.5mm;float:left;">
+								<!-- Shaded area -->
+								<div class="styRRB1042SLineDiv styRRB1042SDesc"
+									style="width:187mm;height:12.5mm;text-align:center;padding-top:4mm;border-width:0px 1px 0px 0px;background-color:lightgray;">
+									<span style="font-weight:bold;font-size:11pt;">FORM RRB-1042S (01-19)</span>
+								</div>
+								</div>
 						</div>
 					</div>
 					<!-- Additonal Data Title Bar and Button -->
@@ -549,7 +503,6 @@
 										</xsl:call-template>
 										Top Left Corner – Corrected Indicator
 									</label>
-									:
 								</td>
 								<td class="styLeftOverTableRowAmount" style="width:87mm;">
 									<input type="checkbox" class="styCkboxNM">
@@ -576,7 +529,6 @@
 											</xsl:call-template>
 											Top Left Corner – Duplicate Indicator
 										</label>
-										:
 									</td>
 									<td class="styLeftOverTableRowAmount" style="width:87mm;">
 										<input type="checkbox" class="styCkboxNM">

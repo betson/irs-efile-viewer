@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE stylesheet [
   <!ENTITY nbsp "&#160;">
-]><!-- Last Modified by Eugenia McDonald on 11/21/2018 -->
+]><!-- Last Modified by Eugenia McDonald on 11/14/2019 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -113,7 +113,7 @@
           <!-- END PART I TITLE -->
           <!-- Foreign Address Lines 1, 2-->
           <div class="styBB" style="width:187mm;">
-            <div class="styNameBox" style="width:139mm;height:15mm;font-size:7pt;font-weight:normal;padding-left:3.5mm">
+            <div class="styNameBox" style="width:139mm;height:18.5mm;font-size:7pt;font-weight:normal;padding-left:3.5mm">
 			  <b style="margin-right:2mm;height:100%;float:left;">1</b> Your foreign address (including country)
               <br/>
               <xsl:call-template name="PopulateForeignAddressTemplate">
@@ -394,7 +394,7 @@
             <div style="float:left;width:5mm;font-weight:bold;">a</div>
             <div style="float:left;width:154mm;">
               Did you maintain a separate foreign residence for your family because of adverse living conditions at your<br/>
-              tax home? See <b>Second foreign household</b> in the instructions
+              tax home? See <b><i>Second foreign household</i></b> in the instructions
               <span style="letter-spacing:3mm;">...................</span>
             </div>
             <div style="float:left;width:22mm;margin-top:3mm">
@@ -2339,7 +2339,7 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:4mm">28</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:131mm;padding-left:5mm;padding-top:4mm">
-              Qualified housing expenses for the tax year (see instructions)
+              Qualified housing expenses for the tax year. See instructions
               <span style="letter-spacing:3mm;font-weight:bold;">............</span>
             </div>
             <div style="float:left;">
@@ -2359,9 +2359,9 @@
             <div class="styLNDesc" style="width:186mm;padding-bottom:0mm;height:auto;">
                <span style="padding-left:1.6mm;height:auto;">
                   <span style="width:5mm;font-weight:bold;text-align:right;height:3.5mm">29a</span>
-                  <span style="width:1.6mm"/>
-                <span style="width:87mm;">
-				  Enter location where housing expenses incurred (see instructions)<img src="{$ImagePath}/2555_Bullet.gif"
+                  <span style="width:3.6mm"/>
+                <span style="width:85mm;">
+				  Enter location where housing expenses incurred. See instructions<img src="{$ImagePath}/2555_Bullet.gif"
                   width="9" height="9" alt="Bullet" style="margin:0mm 2px;"/>
                 </span>
                 <div style="width:90mm;height:100%;">
@@ -2388,7 +2388,7 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
             <div style="float:left;width:5mm;font-weight:bold;padding-left:5mm;padding-top:1mm;">b</div>
             <div class="styLNDesc" style="width:131mm;padding-left:5mm;padding-top:1mm;">
-              Enter limit on housing expenses (see instructions)
+              Enter limit on housing expenses. See instructions
               <span style="letter-spacing:3mm;font-weight:bold;">................</span>
             </div>
             <div style="float:left;">
@@ -2489,7 +2489,7 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:.5mm">34</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:81mm;padding-left:5mm;padding-top:.5mm">
-              Enter employer-provided amounts (see instructions)<span style="letter-spacing:3mm;font-weight:bold;">..</span>
+              Enter employer-provided amounts. See instructions<span style="letter-spacing:3mm;font-weight:bold;">..</span>
             </div>
             <div style="float:left;">
               <div style="height:4.5mm;width:8mm;font-weight:bold;text-align:center;border-bottom:1px solid black;
@@ -2587,7 +2587,7 @@
               </div>
               <div class="styLNDesc" style="font-size:7pt;width:81mm;height:3mm;padding-right:4mm;padding-left:5mm">
                 <li>If you completed Part VI, enter the number from line 31.</li>
-                <li>All others, enter the number of days in your qualifying period that fall within your 2018 tax year (see the instructions for line 31).</li>
+                <li>All others, enter the number of days in your qualifying period that fall within your 2018 tax year. See the instructions for line 31.</li>
               </div>
             </div>
             <div style="float:left;">
@@ -2727,7 +2727,7 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:.5mm">44</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:131mm;padding-left:5mm">
-              Deductions allowed in figuring your adjusted gross income (Form 1040, line 37) that are allocable
+              Deductions allowed in figuring your adjusted gross income (Form 1040, line 7) that are allocable
               to the excluded income. See instructions and attach computation
               <span style="letter-spacing:3mm;font-weight:bold;">............</span>
             </div>
@@ -2747,20 +2747,20 @@
             </div>
           </div>
           <!-- Line 45 -->
-          <div style="width:187mm;height:10mm;">
+          <div style="width:187mm;height:13mm;">
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;">45</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:131mm;padding-left:5mm">
-              Subtract line 44 from line 43. Enter the result here and in parentheses on <b>Form 1040, line 21.</b>
-              Next to the amount enter "Form 2555." On Form 1040, subtract this amount from your income
-              to arrive at total income on Form 1040, line 22
-              <span style="letter-spacing:3mm;font-weight:bold;">.................</span>
+              Subtract line 44 from line 43. Enter the result here and in parentheses on <b>Schedule 1 (Form 1040), line 21.</b>
+              Next to the amount enter "Form 2555." On Schedule 1 (Form 1040), subtract this amount from your additional income
+              to arrive at the amount reported on Schedule 1 (Form 1040), line 22
+              <span style="letter-spacing:3mm;font-weight:bold;">..............................</span>
             </div>
             <div style="float:left;">
-              <div style="height:10mm;width:8mm;text-align:center;font-weight:bold;border-left:1px solid black;padding-top:6mm">45</div>
+              <div style="height:13mm;width:8mm;text-align:center;font-weight:bold;border-left:1px solid black;padding-top:9.5mm">45</div>
             </div>
             <div style="float:left;">
-              <div class="styLNAmountBox" style="height:10mm;width:42mm;border-bottom:none;padding-top:6mm">
+              <div class="styLNAmountBox" style="height:13mm;width:42mm;border-bottom:none;padding-top:9.5mm">
                 <xsl:call-template name="LinkToLeftoverDataTableInline">
                   <xsl:with-param name="Desc">Line 45 - Foreign Earned Income PY Exclusion Amount</xsl:with-param>
                   <xsl:with-param name="TargetNode"
@@ -2780,7 +2780,7 @@
           <!-- BEGIN PART IX TITLE -->
           <div class="styBB" style="width:187mm;height:8.5mm;padding:1mm 0mm;border-top:1px solid black;">
             <div class="styPartName" style="font-family:sans-serif;pad">Part IX</div>
-            <div class="styPartDesc">
+            <div class="styPartDesc" style="font-weight:normal">
               <b>Taxpayers Claiming the Housing Deduction -</b> Complete this part only if <b>(a)</b> line 33
                     is more than line 36 and <b>(b)</b> line 27 is more than line 43.</div>
           </div>
@@ -2879,10 +2879,10 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:.5mm">50</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:131mm;padding-left:5mm">
-              <b>Housing deduction.</b> Add lines 48 and 49. Enter the total here and on Form 1040 to the left of
-              line 36. Next to the amount on Form 1040, enter "Form 2555." Add it to the total adjustments
-              reported on that line
-              <span style="letter-spacing:3mm;font-weight:bold;">.........................</span>
+              <b>Housing deduction.</b> Add lines 48 and 49. Enter the total here and on Schedule 1 (Form 1040) to the left of
+              line 36. Next to the amount on Schedule 1 (Form 1040), line 36, enter "Form 2555." Add it to the total adjustments
+              to income reported on line 36
+              <span style="letter-spacing:3mm;font-weight:bold;">............</span>
               <img src="{$ImagePath}/2555_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
             </div>
             <div style="float:left;">
