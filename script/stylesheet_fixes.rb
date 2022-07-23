@@ -136,6 +136,7 @@ STYLESHEET_FIXES = {
             style: ["04a28d1"]
         },
         stylesheets: {
+            CommonPathRef: ["f291eb2"],
             IRS941ScheduleBStyle: ["04a28d1"],
             PrintDocList: ["04a28d1"],
             PrintReturnSections: ["04a28d1"]
@@ -160,6 +161,9 @@ FIX_STATUS = {
         status: "open"
     },
     "5507a3c": {
+        status: "open"
+    },
+    "f291eb2": {
         status: "open"
     }
 }
