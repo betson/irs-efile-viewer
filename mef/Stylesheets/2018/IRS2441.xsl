@@ -97,8 +97,7 @@
 							<xsl:call-template name="PopulateLabel">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/EligibilityRequirementMetInd"/>
 								<xsl:with-param name="BackupName">Eligbility requirement met indicator</xsl:with-param>
-							</xsl:call-template>If your filing status is married filing separately and you meet the requirements listed in the instructions under "Married Persons Filing Separately, " 
-							and under "Who Can Take the Credit or Exclude Dependent Care Benefits?" check this box
+							</xsl:call-template>You cannot claim a credit for child and dependent care expenses if your filing status is married filing separately unless you meet the requirements listed in the instructions under "Married Persons Filing Separately," If you meet these requirements, check this box. 
                         </label>
 					  <input type="checkbox" alt="EligibilityRequirementMet" class="styCkbox">
 							<xsl:call-template name="PopulateCheckbox">
@@ -415,7 +414,7 @@ Did you receive<br/>
 							<img src="{$ImagePath}/2441_Bullet_Md.gif" alt="MediumBullet" align="bottom" style="padding-top:1.6mm;"/> Complete Part III on the back next.  
 						</div>
 						<div class="styPartDesc" style="font-weight:Normal;width:187mm;padding-top:2mm;font-size:8pt;height:10mm;padding-left:0mm;">
-							<b>Caution.</b> If the care was provided in your home, you may owe employment taxes. If you do, you can't file Form 1040A. For details,see the instructions for Form      1040, line 60a, or Form 1040NR, line 59a. </div>
+							<b>Caution.</b> If the care was provided in your home, you may owe employment taxes. For details,see the instructions for Schedule 4(Form 1040), line 60a, or Form 1040-NR, line 59a. </div>
 						<!-- BEGIN PART II TITLE -->
 						<div class="styBB" style="width:187mm;border-top-width: 2px;height:4.5mm;">
 							<span class="styPartName" style="width:12mm;font-size:13;">Part ll</span>
@@ -638,12 +637,12 @@ Did you receive<br/>
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="height:4mm;"><span style="width:1.5mm"/>7
                         </div>
-							<div class="styLNDesc" style="width:123mm;height:4mm;">Enter the amount from Form 1040, line 38; Form 1040A, line 22; or Form   
+							<div class="styLNDesc" style="width:123mm;height:4mm;">Enter the amount from Form 1040, line 7; or Form 
        		                </div>
 							<div class="styLNRightNumBoxNBB" style="height:4mm;border-right-width:0px;background-color:lightgrey;"/>
 							<div class="styIRS2441RightSpaceBox" style="height:4mm;border-right-width:0px;width:48mm;"/>
 							<div class="styLNDesc" style="width:91mm;height:4mm;font-size:7pt;">
-								<span style="width:8mm"/>1040NR, line 37    
+								<span style="width:8mm"/>1040-NR, line 36    
 								<!--Dotted Line -->
 								<span class="styDotLn" style="float:right;padding-right:1mm;">..............</span>
 							</div>
@@ -814,7 +813,7 @@ Did you receive<br/>
 							<div class="styLNLeftNumBox" style="height:5mm;padding-top:0.5mm;">11
 					        </div>
 							<div class="styLNDesc" style="width:123mm;height:5mm;padding-top:0.5mm;">
-								<span class="styBoldText">Credit for child and dependent care expenses.</span> Enter the <b> smaller </b>of line 9 or line 10 here and on Form 1040, line 49; Form 1040A, line 31; or Form 1040NR, line 47
+								<span class="styBoldText">Credit for child and dependent care expenses.</span> Enter the <b> smaller </b>of line 9 or line 10 here and on Schedule 3 (Form 1040), line 49; or Form 1040-NR, line 47
 								<!--Dotted Line -->
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
 							</div>
@@ -1110,7 +1109,7 @@ Did you receive<br/>
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
 								</xsl:call-template>
-								 <input type="checkbox" alt="No" class="styCkbox">
+								 <input type="checkbox" alt="Form1040AFiledIndNo" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
 										<xsl:with-param name="BackupName">Form2441DataFiled1040ANoInd</xsl:with-param>
@@ -1134,7 +1133,7 @@ Did you receive<br/>
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
 								</xsl:call-template>
-								<input type="checkbox" alt="Yes" class="styCkbox">
+								<input type="checkbox" alt="Form1040AFiledIndYes" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
 										<xsl:with-param name="BackupName">Form2441DataFiled1040AYesInd</xsl:with-param>
@@ -1215,9 +1214,9 @@ Did you receive<br/>
 						<div class="styLNLeftNumBox" style="height:5mm; padding-top: 3.5mm;">26
                          </div>
 						<div class="styLNDesc" style="width:123mm;height:5mm;font-size:7pt;padding-top: 3.5mm;">
-							<b>Taxable benefits. Form 1040 and 1040NR filers:</b> Subtract line 25 from line 23. If zero or less, enter -0-. Also, include this amount on Form 1040, line 7, or Form 1040NR, line 8. On the dotted line next to Form 1040, line 7, or Form 1040NR, line 8, enter &#8220;DCB.&#8221; <b>Form 1040A filers:</b> Subtract line 25 from line 15. Also, include this amount on Form 1040A, line 7. In the space to the left of line 7, enter &#8220;DCB.&#8221;
+							<b>Taxable benefits.</b> Subtract line 25 from line 23. If zero or less, enter -0-. Also, include this amount on Form 1040, line 1, or Form 1040NR, line 8. On the dotted line next to Form 1040, line 1, or Form 1040NR, line 8, enter &#8220;DCB.&#8221; 
 							<!--Dotted Line -->
-							<span class="styDotLn" style="float:right;padding-right:1mm;">....................</span>
+							<span class="styDotLn" style="float:right;padding-right:1mm;">..................</span>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:12mm;border-right-width:0px;background-color:lightgrey;"/>
 						<div class="styIRS2441RightSpaceBox" style="height:12mm;width:48mm;border-right-width:0px;"/>						

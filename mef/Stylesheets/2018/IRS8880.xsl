@@ -107,14 +107,14 @@ Name(s) shown on return<br/>
 </div>
 <div class="styLNDesc" style="padding-left:0mm;padding-top:1mm;padding-bottom:0mm;width:165mm;">
 <img src="{$ImagePath}/8880_Bullet_Round.gif" alt="Bullet"/> 
-The amount on Form 1040, line 38; Form 1040A, line 22; or Form 1040NR, line 37 is more  than $31,500 ($47,250 if head of household; $63,000 if married filing jointly).<br/>
+The amount on Form 1040, line 7 or Form 1040NR, line 36 is more than $31,500 ($47,250 if head of household; $63,000 if married filing jointly).<br/>
 <br/>
 <img src="{$ImagePath}/8880_Bullet_Round.gif" alt="Bullet"/> 
 The person(s) who made the qualified contribution or elective deferral 
 <b>(a)</b> 
-was born after January 1, 2001,  
+was born after January 1, 2001;  
 <b>(b)</b> is claimed as a<br/> 
-dependent on someone else's 2018 tax return, or
+dependent on someone else's 2018 tax return; or
 <b>(c)</b> was a  <b>student</b> (see instructions).<br/>
 </div>
 </div>
@@ -138,10 +138,10 @@ dependent on someone else's 2018 tax return, or
 <div style="width:187mm;">
 <div class="styLNLeftNumBoxSD" style="width:8mm;font-size:8pt;">1
 </div>
-<div class="styLNDesc" style="width:95.2mm;font-size:8pt;font-family:Arial;">
-Traditional and Roth IRA contributions for 2018.  <b> Do not </b>  include rollover contributions
+<div class="styLNDesc" style="width:95.2mm;font-size:8pt;font-family:Arial;padding-top:.7mm;">
+Traditional and Roth IRA contributions, and ABLE account contributions by the designated beneficiary for 2018.  <b> Do not </b>  include rollover contributions
 <!--Dotted Line-->
-<span class="styDotLn" style="float:right;">....................</span>
+<span class="styDotLn" style="float:right;">.</span>
 </div>
 <div class="styLNRightNumBox" style="font-size:8pt;border-right-width:1px;border-top-width:0px;padding-top:3mm;height:8.5mm;">1
 </div>
@@ -162,7 +162,7 @@ Traditional and Roth IRA contributions for 2018.  <b> Do not </b>  include rollo
 <div style="width:187mm;clear:all">
 <div class="styLNLeftNumBoxSD" style="width:8mm;font-size:8pt;">2
 </div>
-<div class="styLNDesc" style="width:95.2mm;font-size:8pt;font-family:Arial;">
+<div class="styLNDesc" style="width:95.2mm;font-size:8pt;font-family:Arial;padding-top:.7mm;">
 Elective deferrals to a 401(k) or other qualified employer plan, voluntary employee contributions, and 501(c)(18)(D) plan contributions for 2018 (see instructions)
 <!--Dotted Line-->
 <span class="styDotLn" style="float:right;">...................</span>
@@ -190,7 +190,7 @@ Elective deferrals to a 401(k) or other qualified employer plan, voluntary emplo
 <div style="width:187mm;clear:all">
 <div class="styLNLeftNumBoxSD" style="width:8mm;font-size:8pt;">3
 </div>
-<div class="styLNDesc" style="width:95.2mm;font-size:8pt;font-family:Arial;">Add lines 1 and 2
+<div class="styLNDesc" style="width:95.2mm;font-size:8pt;font-family:Arial;padding-top:.8mm;">Add lines 1 and 2
 <!--Dotted Line-->
 <span class="styDotLn" style=" float:right;">.................</span>
 </div>
@@ -213,7 +213,7 @@ Elective deferrals to a 401(k) or other qualified employer plan, voluntary emplo
 <div style="width:187mm;clear:all">
 <div class="styLNLeftNumBoxSD" style="width:8mm;font-size:8pt;">4
 </div>
-<div class="styLNDesc" style=" width:95.2mm;font-size:8pt;font-family:Arial;">
+<div class="styLNDesc" style=" width:95.2mm;font-size:8pt;font-family:Arial;padding-top:.7mm;">
 Certain distributions received <span class="styBoldText">after</span> 2015 and 
 <span class="styBoldText">before</span> the due date<br/>
 (including extensions) of your 2018 tax return (see instructions). If<br/>
@@ -246,7 +246,7 @@ See instructions for an exception
 <div style="width:187mm;clear:all">
 <div class="styLNLeftNumBoxSD" style="width:8mm;font-size:8pt;">5
 </div>
-<div class="styLNDesc" style=" width:95.2mm;font-size:8pt;font-family:Arial;">Subtract line 4 from line 3. If zero or less, enter -0-
+<div class="styLNDesc" style=" width:95.2mm;font-size:8pt;font-family:Arial;padding-top:.9mm;">Subtract line 4 from line 3. If zero or less, enter -0-
 <!--Dotted Line-->
 <span class="styDotLn" style="float:right;">....... </span>
 </div>
@@ -269,7 +269,7 @@ See instructions for an exception
 <div style="width:187mm;clear:all">
 <div class="styLNLeftNumBoxSD" style="width:8mm;font-size:8pt;">6
 </div>
-<div class="styLNDesc" style=" width:95.2mm;font-size:8pt;font-family:Arial;">In each column, enter the  
+<div class="styLNDesc" style=" width:95.2mm;font-size:8pt;font-family:Arial;padding-top:.7mm;">In each column, enter the  
 <span class="styBoldText">smaller</span>  of line 5 or $2,000
 <!--Dotted Line-->
 <span class="styDotLn" style="float:right;">...... </span>
@@ -293,14 +293,14 @@ See instructions for an exception
 <div style="width:187mm;clear:all">
 <div class="styLNLeftNumBoxSD" style="width:8mm;font-size:8pt;">7
 </div>
-<div class="styLNDesc" style="width:135.2mm;height:auto;font-size:8pt;font-family:Arial;">Add the amounts on line 6. If zero, 
+<div class="styLNDesc" style="width:135.2mm;height:auto;font-size:8pt;font-family:Arial;padding-top:.7mm;">Add the amounts on line 6. If zero, 
 <span class="styBoldText">stop</span>; you cannot take this credit
 <!--Dotted Line-->
 <span class="styDotLn" style="float:right;">............</span>
 </div>
-<div class="styLNRightNumBox" style="font-size:8pt;border-right-width:1px;border-top-width:0px;padding-top:.5mm;width:8.2mm;height:4.2mm;">7
+<div class="styLNRightNumBox" style="font-size:8pt;border-right-width:1px;border-top-width:0px;padding-top:.5mm;width:8.2mm;height:4.4mm;">7
 </div>
-<div class="styLNAmountBox" style="border-left-width:0px;border-top-width:0px;padding-top:.5mm;height:4.2mm;">
+<div class="styLNAmountBox" style="border-left-width:0px;border-top-width:0px;padding-top:.5mm;height:4.4mm;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$Form8880Data/TotalCalculatedAmt"/>
 </xsl:call-template>
@@ -311,18 +311,17 @@ See instructions for an exception
 <div style="width:187mm;clear:all">
 <div class="styLNLeftNumBoxSD" style="width:8mm;font-size:8pt;">8
 </div>
-<div class="styLNDesc" style=" width:93.2mm;font-size:8pt;font-family:Arial;">Enter the amount from Form 1040, line 38*; Form 1040A, line 22; or
-<br/> Form 1040NR, line 37 
+<div class="styLNDesc" style=" width:93.2mm;font-size:8pt;font-family:Arial;padding-top:.9mm;">Enter the amount from Form 1040, line 7* or Form 1040NR, line 36
 <!--Dotted Line-->
-<span class="styDotLn" style="float:right;">................ </span>
+<span class="styDotLn" style="float:right;">..</span>
 </div>
 <!-- Container -->
 <div class="styLNRightNumBoxNBB" style="height:7.5mm;padding-top:0mm;width:2mm; border-left-width:0px;">
 </div>
 <div class="styLNAmountBoxNB" style="height:7.5mm;width:0mm;border-left-width:0px;padding-top:0mm;clear:right;"/>
-<div class="styLNRightNumBox" style="height:7.5mm;font-size:8pt;border-right-width:1px;border-top-width:0px;padding-top:4mm;">8
+<div class="styLNRightNumBox" style="height:4.5mm;font-size:8pt;border-right-width:1px;border-top-width:0px;padding-top:1mm;">8
 </div>
-<div class="styLNAmountBox" style="height:7.5mm;border-left-width:0px;border-top-width:0px;padding-top:4mm;">
+<div class="styLNAmountBox" style="height:4.5mm;border-left-width:0px;border-top-width:0px;padding-top:1mm;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$Form8880Data/ TaxReturnAGIAmt"/>
 </xsl:call-template>
@@ -334,7 +333,7 @@ See instructions for an exception
 <div style="width:187mm;clear:all">
 <div class="styLNLeftNumBoxSD" style="width:8mm;font-size:8pt;">9
 </div>
-<div class="styLNDesc" style="width:135.2mm;font-size:8pt;font-family:Arial;">Enter the applicable decimal amount shown below:
+<div class="styLNDesc" style="width:135.2mm;font-size:8pt;font-family:Arial;padding-top:.7mm;">Enter the applicable decimal amount shown below:
 </div>
 <!--<div class="styLNRightNumBoxNBB" style="height:4mm;border-left-width:0px;padding-top:1mm;padding-bottom:0mm;"/>
 <div class="styLNAmountBoxNB" style="height:4mm;padding-top:1mm;padding-bottom:0mm;border:1px solid red;"/> -->
@@ -501,7 +500,7 @@ Single, Married filing
 <div class="styLNDesc" style="width:135.2mm;height:9mm;padding-top:3mm;font-size:8pt;font-family:Arial;">
 Multiply line 7 by line 9
 <!--Dotted Line-->
-<span class="styDotLn" style="float:right;">......................... </span>
+<span class="styDotLn" style="float:right;">........................... </span>
 </div>
 <div class="styLNRightNumBox" style="font-size:8pt;border-right-width:0px;border-left-width:1px;border-top-width:0px;padding-top:3mm;width:8mm;height:6.3mm;">10
 </div>
@@ -516,10 +515,10 @@ Multiply line 7 by line 9
 <div style="width:187mm;clear:all;">
 <div class="styLNLeftNumBoxSD" style="width:8mm;font-size:8pt;">11
 </div>
-<div class="styLNDesc" style="width:135.2mm;height:0mm;font-size:8pt;font-family:Arial;">
-Limitation based on tax liability. Enter the amount from the Credit Limit Worksheet in the<br/> instructions.
+<div class="styLNDesc" style="width:135.2mm;height:0mm;font-size:8pt;font-family:Arial;padding-top:1mm;">
+Limitation based on tax liability. Enter the amount from the Credit Limit Worksheet in the<br/> instructions
 <!--Dotted Line-->
-<span class="styDotLn" style="float:right;">.............................</span>
+<span class="styDotLn" style="float:right;">...............................</span>
 </div>
 <div class="styLNRightNumBox" style="font-size:8pt;border-right-width:0px;border-left-width:1px;border-top-width:0px;padding-top:3.5mm;width:8mm;height:7mm;">11
 </div>
@@ -534,11 +533,11 @@ Limitation based on tax liability. Enter the amount from the Credit Limit Worksh
 <div style="width:187mm;clear:all">
 <div class="styLNLeftNumBoxSD" style="width:8mm;font-size:8pt;">12
 </div>
-<div class="styLNDesc" style="width:135.2mm;height:0mm;font-size:8pt;font-family:Arial;">
+<div class="styLNDesc" style="width:135.2mm;height:0mm;font-size:8pt;font-family:Arial;padding-top:1mm;">
 <span class="styBoldText">Credit for qualified retirement savings contributions.  </span> Enter the 
-<span class="styBoldText">smaller </span> of line 10 or line 11<br/> here and on Form 1040, line 51; Form 1040A, line 34; or Form 1040NR, line 48.
+<span class="styBoldText">smaller </span> of line 10 or line 11<br/> here and on Schedule 3 (Form 1040), line 51; or Form 1040NR, line 48
 <!--Dotted Line-->
-<span class="styDotLn" style="float:right;">........</span>
+<span class="styDotLn" style="float:right;">...........</span>
 </div>
 <div class="styLNRightNumBox" style="font-size:8pt;border-right-width:0px;border-left-width:1px;border-top-width:0px;padding-top:3.5mm;width:8mm;height:7mm;">12
 </div>
@@ -552,13 +551,12 @@ Limitation based on tax liability. Enter the amount from the Credit Limit Worksh
 <br/>
 
 <!--Instructions See pub-->
-<div style="width:187mm;padding-top:0mm;height:7mm;">
+<div style="width:187mm;padding-top:0mm;height:9.5mm;">
 <div class="styLNLeftNumBox" style="height:7mm;padding-top:0mm;">
 </div>
 <div class="styLNDesc" style="width:176mm;height:auto;padding-bottom:0mm;font-size:7.5pt;font-family:Arial;">
 <br/>      
-* See Pub. 590-A for the amount to enter if you are filing Form 2555, 2555-EZ, or 
-4563 or you are excluding income from Puerto Rico.
+* See Pub. 590-A for the amount to enter if you claim any exclusion or deduction for foreign earned income, foreign housing, or income from Puerto Rico or for bona fide residents of American Samoa.
 </div>
 </div>
 

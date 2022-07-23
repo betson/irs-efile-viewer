@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 07/25/2018 -->
+<!-- Last Modified by Eugenia McDonald on 07/02/2020 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="PopulateTemplate.xsl"/>
@@ -62,16 +62,17 @@
 							<div class="styMainTitle" style="width: 125mm; height: 1.5mm; padding-top: .5mm;">
 							   Employee Business Expenses
 						    </div>
-							<div class="styFBT" style="width: 125mm; height: 2mm; font-size: 6.5pt; margin-top: 5mm;">
+							<div class="styFBT" style="width: 125mm; height: 2mm; font-size: 6.5pt; margin-top: 6mm;">
 								<img src="{$ImagePath}/2106_Bullet.gif" alt="Bullet"/> Attach to Form 1040 or Form 1040NR.
 							 </div>
-							 <div class="styFBT" style="width: 125mm; height: 2mm; font-size: 6.5pt; margin-top: 2mm;">
-								<img src="{$ImagePath}/2106_Bullet.gif" alt="Bullet"/> For use only by Armed Forces reservists, qualified performing artists, fee-basis state
-								or local <br/>government officials, employees with impairment-related work expenses, and employees who <br/>received employer
-								reimbursements	in excess of their employee business expenses.
+							 <div class="styFBT" style="width: 125mm; height: 2mm; font-size: 6.5pt; margin-top: 3mm;">
+								<img src="{$ImagePath}/2106_Bullet.gif" alt="Bullet"/> For use only by Armed Forces reservists, 
+									qualified performing artists, fee-basis state or local <br/>government officials, and employees with 
+									impairment-related work expenses.
 							 </div>
-							 <div class="styFBT" style="width: 125mm; height: 8mm; padding-top: 0mm; font-size: 6.5pt; margin-top: 8mm;">
-								<img src="{$ImagePath}/2106_Bullet.gif" alt="Bullet"/> Go to <i> www.irs.gov/Form2106</i> for instructions and the latest information.
+							 <div class="styFBT" style="width: 125mm; height: 8mm; padding-top: 0mm; font-size: 6.5pt; margin-top: 6mm;">
+								<img src="{$ImagePath}/2106_Bullet.gif" alt="Bullet"/> Go to <i> www.irs.gov/Form2106</i> for instructions 
+									and the latest information.
 							 </div>
 						</div>
 						<div class="styTYBox" style="width: 30mm; height: 26mm;border-left-width:2px;">
@@ -358,7 +359,7 @@
 						     8
 					    </div>
 						<div class="styLNDesc" style="width: 103mm; height:4.5mm; ">
-						Subtract<span style="width:1mm"/> line<span style="width:1mm"/> 7<span style="width:1mm"/> from<span style="width:1mm"/> line<span style="width:1mm"/> 6.  If zero or less, enter -0-.  However, <br/> if line 7 is greater than line 6 in Column A, report the excess as<br/>income on Form 1040, line 7 (or on Form 1040NR, line 8) 
+						Subtract<span style="width:1mm"/> line<span style="width:1mm"/> 7<span style="width:1mm"/> from<span style="width:1mm"/> line<span style="width:1mm"/> 6.  If zero or less, enter -0-.  However, <br/> if line 7 is greater than line 6 in Column A, report the excess as<br/>income on Form 1040, line 1 (or on Form 1040NR, line 8) 
 							<!--Dotted Line -->
 							<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
 						</div>
@@ -381,7 +382,7 @@
 					<!-- BEGIN Step 3.9 -->
 					<div style="width: 187mm; height: 12mm; clear: all; font-size: 8pt; float: left;">
 						<div class="styLNDesc" style="width: 111mm; height: 14mm; padding-top: 2mm; padding-left: 8mm;">
-							<b>Note:</b> If <span style="font-weight:bold;font-style:italic;"> both columns </span> of line 8  are zero, you cannot deduct<br/>employee business expenses. Stop here and attach Form 2106 to<br/>your return.
+							<b>Note:</b> If <span style="font-weight:bold;"> both columns </span> of line 8  are zero, you cannot deduct<br/>employee business expenses. Stop here and attach Form 2106 to<br/>your return.
 					</div>
 						<div class="styIRS2106ColBoxGrey" style="border-width: 0px 1px; border-style: solid; border-color: black; width: 6mm; padding-top: 3mm; background-color: lightgrey;"/>
 						<div class="styIRS2106ColBox" style="border-right-width: 1px; border-bottom-width: 0px; border-left-width: 0px;"/>
@@ -419,10 +420,11 @@
 						10
 					</div>
 						<div class="styLNDesc" style="width: 140.8mm; height: 11mm; padding-top: 1mm; font-size: 7.5pt;">
-						Add the amounts on line 9 of both columns and enter the total here. Also, enter the total on Form <br/>1040, line 24 (or Form 1040NR, line 35).
-						Employees with impairment-related work expenses, see the instructions for rules on where to enter the total on your return.
+						 Add the amounts on line 9 of both columns and enter the total here. Also, enter the total on Schedule 1<br/>
+						 (Form 1040), line 24 (or Form 1040NR, line 34). Employees with impairment-related work  expenses,<br/>
+						 see the instructions for rules on where to enter the total on your return.
 							<!--Dotted Line -->
-							<span class="styDotLn" style="float:right;padding-right:1mm;">...........
+							<span class="styDotLn" style="float:right;padding-right:1mm;">.........
 							<!--Arrow Image-->
 							<img src="{$ImagePath}/2106_Bullet.gif" alt="Bullet"/></span>
 						</div>
@@ -899,7 +901,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleAvailableOffDutyHrsInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Vehicle Available Off Duty Hrs Ind Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleAvailableOffDutyHrsInd"/>
 										<xsl:with-param name="BackupName">$Form2106DataVehicleAvailableOffDutyHrsInd</xsl:with-param>
@@ -919,7 +921,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleAvailableOffDutyHrsInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Vehicle Available Off Duty Hrs Ind No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleAvailableOffDutyHrsInd"/>
 										<xsl:with-param name="BackupName">$Form2106DataVehicleAvailableOffDutyHrsInd</xsl:with-param>
@@ -949,7 +951,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/AnotherVehicleForPrsnlUseInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Another Vehicle For Prsnl Use Ind Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/AnotherVehicleForPrsnlUseInd"/>
 										<xsl:with-param name="BackupName">$Form2106DataAnotherVehicleForPrsnlUseInd</xsl:with-param>
@@ -969,7 +971,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/AnotherVehicleForPrsnlUseInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Another Vehicle For Prsnl Use Ind No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/AnotherVehicleForPrsnlUseInd"/>
 										<xsl:with-param name="BackupName">$Form2106DataAnotherVehicleForPrsnlUseInd</xsl:with-param>
@@ -999,7 +1001,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/EvidenceToSupportDeductionInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Evidence To Support Deduction Ind Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/EvidenceToSupportDeductionInd"/>
 										<xsl:with-param name="BackupName">$Form2106DataEvidenceSupportDeductionInd</xsl:with-param>
@@ -1019,7 +1021,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/EvidenceToSupportDeductionInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Evidence To Support Deduction Ind No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/EvidenceToSupportDeductionInd"/>
 										<xsl:with-param name="BackupName">$Form2106DataEvidenceSupportDeductionInd</xsl:with-param>
@@ -1049,7 +1051,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/EvidenceWrittenInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Evidence Written Ind Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/EvidenceWrittenInd"/>
 										<xsl:with-param name="BackupName">$Form2106DataIsEvidenceWrittenInd</xsl:with-param>
@@ -1069,7 +1071,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/EvidenceWrittenInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Evidence Written Ind No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/EvidenceWrittenInd"/>
 										<xsl:with-param name="BackupName">$Form2106DataIsEvidenceWrittenInd</xsl:with-param>

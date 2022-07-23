@@ -207,6 +207,32 @@ function setInitialDynamicTableHeight( containerId, headerRowCount, displayRowCo
   }
   */
 
+	//helper function to get an element's exact position
+	function getPosition(el) {
+	  var xPosition = 0;
+	  var yPosition = 0;
+	 
+	  while (el) {
+		if (el.tagName == "BODY") {
+		  // deal with browser quirks with body/window/document and page scroll
+		  var xScrollPos = el.scrollLeft || document.documentElement.scrollLeft;
+		  var yScrollPos = el.scrollTop || document.documentElement.scrollTop;
+	 
+		  xPosition += (el.offsetLeft - xScrollPos + el.clientLeft);
+		  yPosition += (el.offsetTop - yScrollPos + el.clientTop);
+		} else {
+		  xPosition += (el.offsetLeft - el.scrollLeft + el.clientLeft);
+		  yPosition += (el.offsetTop - el.scrollTop + el.clientTop);
+		}
+	 
+		el = el.offsetParent;
+	  }
+	  return {
+		x: xPosition,
+		y: yPosition
+	  };
+	}
+  
 //=========================================================
 // Script Name:  showAttachedDocs()
 //=========================================================
@@ -259,13 +285,25 @@ function showAttachedDocs( elemId, colorSchema, docList ){
 	elemObj = elemObj.offsetParent;
     }
 
+	xElem1 = getPosition(document.getElementById( elemId )).x;
+    yElem1 = getPosition(document.getElementById( elemId )).y;
+
 	// Get the x and y coordinates of the browser's document display area, relative to the screen
 	xWindow = window.screenLeft;
 	yWindow = window.screenTop;
+	
+	xPopup = xElem1 + xWindow;
+	yPopup = yElem1 + yWindow;
+	
+	
+	
+	// Get the x and y coordinates of the browser's document display area, relative to the screen
+	//xWindow = window.screenLeft;
+	//yWindow = window.screenTop;
 
 	// Set the x and y coordinates of the calendar popup, relative to the screen, and substract off pixels scrolled by the document body.
-	xPopup = xElem + xWindow - document.body.scrollLeft;
-	yPopup = yElem + yWindow - document.body.scrollTop;
+	//xPopup = xElem + xWindow - document.body.scrollLeft;
+	//yPopup = yElem + yWindow - document.body.scrollTop;
 
 	//==================================================================
 	// Note: IE aligns the right edge of the popup with the right edge of the screen if there is not enough

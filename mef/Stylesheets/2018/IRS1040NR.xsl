@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 01/18/2018 -->
+<!-- Last Modified by Eugenia McDonald on 02/11/2021 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -44,7 +44,7 @@
 					<!-- Page 1 -->
 					<!-- Header -->
 					<div class="styStdDiv">
-						<div class="styFNBox" style="width:27mm;height:14.5mm;">
+						<div class="styFNBox" style="width:27mm;height:20.2mm;">
 							Form
 							<span class="styFN" style="font-size:12pt;">1040NR</span>
 							<br/>
@@ -53,36 +53,33 @@
 							</xsl:call-template>
 							<xsl:call-template name="LinkToLeftoverCheckboxDataTableInline">
 								<xsl:with-param name="TargetNode" select="$FormData/ProtectiveReturnInd"/>
-								<xsl:with-param name="Desc">
-									Top Left Header - Check this box for a protective return
-								</xsl:with-param>
+								<xsl:with-param name="Desc">Top Left Header - Check this box for a protective return</xsl:with-param>
 							</xsl:call-template>
 							<xsl:call-template name="LinkToLeftoverDataTableInline">
 								<xsl:with-param name="TargetNode" select="$FormData/PrimaryDeathDt"/>
-								<xsl:with-param name="Desc">
-									Top Left Header - Primary Date of Death
-								</xsl:with-param>
+								<xsl:with-param name="Desc">Top Left Header - Primary Date of Death</xsl:with-param>
 							</xsl:call-template>
 							<xsl:call-template name="LinkToLeftoverDataTableInline">
 								<xsl:with-param name="TargetNode" select="$FormData/SpecialConditionDesc"/>
-								<xsl:with-param name="Desc">
-									Top Left Header - Special Condition Description
-								</xsl:with-param>
+								<xsl:with-param name="Desc">Top Left Header - Special Condition Description</xsl:with-param>
 							</xsl:call-template>
 							<br/>
+							<span class="styAgency">(rev. February 2020)</span><br/>
 							<span class="styAgency">
 								Department of the Treasury
 								<br/>
 								Internal Revenue Service
 							</span>
 						</div>
-						<div class="styFTBox" style="width:135mm;height:14.5mm;">
-							<span class="styFMT" style="font-size:10pt;">U.S. Nonresident Alien Income Tax
+						<div class="styFTBox" style="width:133mm;height:20.2mm;">
+							<span class="styFMT" style="font-size:10pt;padding-top:2mm">U.S. Nonresident Alien Income Tax
 								Return</span>
 							<br/>
-							<span style="font-weight:bold;">
-								&#9658;Go to
-								<span style="font-style:italic">www.irs.gov/Form1040NR</span>
+							<span style="font-weight:bold;"><img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" 
+								alt="Right Arrow"/>Go to
+								<a style="text-decoration:none;color:black;" href="http://www.irs.gov/form1040nr" title="Link to irs.gov">
+									<i>www.irs.gov/Form1040NR </i>
+								</a>
 								for instructions and the latest information.
 							</span>
 							<br/>
@@ -97,9 +94,9 @@
 								<xsl:call-template name="PopulateReturnHeaderTaxPeriodEndDate"/>
 							</span>
 						</div>
-						<div class="styTYBox" style="width:25mm;height:14.5mm;">
-							<div class="styOMB" style="font-size:6pt;">OMB No. 1545-0074</div>
-							<span class="styTaxYear">
+						<div class="styTYBox" style="width:27mm;height:20.2mm;">
+							<div class="styOMB" style="font-size:6pt;height:5mm;padding-top:1mm;padding-bottom:1mm">OMB No. 1545-0074</div>
+							<span class="styTaxYear" style="padding-top:2mm">
 								20<span class="styTYColor" style="display:inline;">18</span>
 							</span>
 						</div>
@@ -123,15 +120,11 @@
 								</xsl:call-template>
 								<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimaryNameControlTxt"/>
-									<xsl:with-param name="Desc">
-										Filer Information - Primary Name Control
-									</xsl:with-param>
+									<xsl:with-param name="Desc">Filer Information - Primary Name Control</xsl:with-param>
 								</xsl:call-template>
 								<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/InCareOfNm"/>
-									<xsl:with-param name="Desc">
-										Filer Information - In Care Of name
-									</xsl:with-param>
+									<xsl:with-param name="Desc">Filer Information - In Care Of name</xsl:with-param>
 								</xsl:call-template>
 							</div>
 							<div style="width:47mm;height:6.5mm;float:left;padding-left:3px;border-right:1px solid black;">
@@ -166,7 +159,7 @@
 							<div style="width:47mm;float:left;padding-left:3px;">
 								<span style="width:15mm;height:6mm;float:left;">Check if:</span>
 								<span style="float:left;">
-									<input type="checkbox" class="sty1040NRCkbox" style="margin-top:1px;" checked="checked">
+									<input type="checkbox" class="sty1040NRCkbox" alt="Individual Ind" style="margin-top:1px;" checked="checked">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/IndividualInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/IndividualInd</xsl:with-param>
@@ -178,7 +171,7 @@
 											<xsl:with-param name="BackupName">IRS1040NR/IndividualInd</xsl:with-param>
 										</xsl:call-template>Individual</label>
 									<br/>
-									<input type="checkbox" class="sty1040NRCkbox">
+									<input type="checkbox" class="sty1040NRCkbox" alt="Estate Or Trust Ind">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/EstateOrTrustInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/EstateOrTrustInd</xsl:with-param>
@@ -234,7 +227,7 @@
 					</div>
 					<!-- Filing Status section -->
 					<div class="styStdDiv" style="border-top:1px solid black;">
-						<div class="sty1040NRIndentSection" style="height:17.7mm;border-right:1px solid black;">
+						<div class="sty1040NRIndentSection" style="height:20.2mm;border-right:1px solid black;">
 							Filing <br/>Status
 							<br/>
 							<br/>
@@ -244,12 +237,13 @@
 							<div style="width:83mm;float:left;">
 								<div class="styLNLeftLtrBox" style="width:7mm;">1</div>
 								<div class="styLNDesc" style="width:75mm;font-family:Arial;">
-									<input type="checkbox" class="styCkboxNM" style="background-color:light-grey" id="StatusReserved1">
-										<!--<xsl:call-template name="PopulateCheckbox">
+									<div class="styCkboxNM" style="border:1px solid black;background-color:lightgrey;"/>	
+									<!--<input type="checkbox" class="styCkboxNM" style="background-color:light-grey" id="StatusReserved1">
+										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/SnglResCanadaMexicoUSNatlInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/SnglResCanadaMexicoUSNatlInd</xsl:with-param>
-										</xsl:call-template>-->
-									</input>
+										</xsl:call-template>
+									</input>-->
 									<label style="padding-left:1mm;" for="StatusReserved1">
 									  Reserved
 										<!--<xsl:call-template name="PopulateLabel">
@@ -261,7 +255,7 @@
 								<br/>
 								<div class="styLNLeftLtrBox" style="width:7mm;">2</div>
 								<div class="styLNDesc" style="width:75mm;">
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Single Nonresident Alien Ind">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/SingleNonresidentAlienInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/SingleNonresidentAlienInd</xsl:with-param>
@@ -277,12 +271,13 @@
 								<br/>
 								<div class="styLNLeftLtrBox" style="width:7mm;">3</div>
 								<div class="styLNDesc" style="width:75mm;font-family:Arial;">
-									<input type="checkbox" class="styCkboxNM" style="background-color:light-grey" id="StatusReserved2">
-										<!--<xsl:call-template name="PopulateCheckbox">
+									<div class="styCkboxNM" style="border:1px solid black;background-color:lightgrey;"/>	
+										<!--<input type="checkbox" class="styCkboxNM" style="background-color:light-grey" id="StatusReserved2">
+										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/MarResCanadaMexicoUSNatlInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/MarResCanadaMexicoUSNatlInd</xsl:with-param>
-										</xsl:call-template>-->
-									</input>
+										</xsl:call-template>
+									</input>-->
 									<label style="padding-left:1mm;" for="StatusReserved2">
 									   Reserved 
 										<!--<xsl:call-template name="PopulateLabel">
@@ -295,12 +290,13 @@
 							<div style="width:83mm;float:left;">
 								<div class="styLNLeftLtrBox" style="width:7mm;">4</div>
 								<div class="styLNDesc" style="width:75mm;">
-									<input type="checkbox" class="styCkboxNM" style="background-color:light-grey" id="StatusReserved3">
-										<!--<xsl:call-template name="PopulateCheckbox">
+									<div class="styCkboxNM" style="border:1px solid black;background-color:lightgrey;"/>	
+									<!--<input type="checkbox" class="styCkboxNM" style="background-color:light-grey" id="StatusReserved3">
+										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/MarResSouthKoreaInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/MarResSouthKoreaInd</xsl:with-param>
-										</xsl:call-template>-->
-									</input>
+										</xsl:call-template>
+									</input>-->
 									<label style="padding-left:1mm;" for="StatusReserved3">
 										Reserved
 										<!--<xsl:call-template name="PopulateLabel">
@@ -312,7 +308,7 @@
 								<br/>
 								<div class="styLNLeftLtrBox" style="width:7mm;">5</div>
 								<div class="styLNDesc" style="width:75mm;">
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Married Nonresident Alien Ind">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/MarriedNonresidentAlienInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/MarriedNonresidentAlienInd</xsl:with-param>
@@ -328,7 +324,7 @@
 								<br/>
 								<div class="styLNLeftLtrBox" style="width:7mm;">6</div>
 								<div class="styLNDesc" style="width:75mm;font-family:Arial;">
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Qualifying Widow Ind">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/QualifyingWidowInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/QualifyingWidowInd</xsl:with-param>
@@ -352,228 +348,241 @@
 							</div>
 							<div style="width:93mm;padding-left:3.8mm;">
 							</div>
-							Child’s name &#9658;
-								<span style="border:1px solid black;border-bottom-width:1px;height:4mm;width:53mm;text-align:center;">
+							Child’s name <img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/>
+								<span style="border:1px solid black;border-bottom-width:1px;height:4mm;width:53mm;
+									text-align:center;">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/ChildName"/>
 								</xsl:call-template>
 							</span>
 						</div>
+						<!-- Table expand/collapse toggle button -->
+						<span style="float:right;">
+							<xsl:call-template name="SetDynamicTableToggleButton">
+								<xsl:with-param name="TargetNode" select="$FormData/DependentDetail"/>
+								<xsl:with-param name="containerHeight" select="4"/>
+								<xsl:with-param name="headerHeight" select="1"/>
+								<xsl:with-param name="containerID" select=" 'dpntContainerId'  "/>
+							</xsl:call-template>
+						</span>
 					</div>
 					<!-- Dependents section -->
-					<div class="styStdDiv" style="border-top:1px solid black;overflow:visible;">
-					
-					
-						<div class="sty1040NRIndentSection" style="width:19.8mm;border-right:none;clear:none;">
-							Dependents
-							<br/>
-							<label>
-								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$FormData/MoreDependentsInd"/>
-									<xsl:with-param name="BackupName">IRS1040NR/MoreDependentsInd</xsl:with-param>
-								</xsl:call-template>
-								<span style="display:inline;font-weight:normal;font-size:6.5pt;">If more <br/>than four <br/>dependents, <br/>see instructions<br/>
-									and check <br/>here.</span>
-							</label>
-							<span style="width:1mm"/>
-							<input type="checkbox" class="styCkboxNM" style="margin-top:-1px;">
-								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$FormData/MoreDependentsInd"/>
-									<xsl:with-param name="BackupName">IRS1040NR/MoreDependentsInd</xsl:with-param>
-								</xsl:call-template>
-							</input>
-						</div>
-						<div style="width:167.2mm;float:left;border-left:1px solid black;">
-							<div style="width:167mm;float:left;clear:none">
-								<!-- Table 7c -->
-								<div class="sty1040NRTableContainerD" style="height:auto;width:167mm;border-bottom:0px;border-top:0px" id="dpntContainerId">
-									<xsl:call-template name="SetInitialState"/>
-									<table class="styTable" style="display:table;font-size:6pt;border-collapse:collapse;width:167mm;">
-										<thead class="styTableThead">
-											<tr>
-												<th class="styTableCellHeader" scope="col" style="width:60mm;font-weight:normal;text-align:left;">
-													<div style="font-weight:bold;font-size:7pt;padding-left:3mm;">7 </div>
-													<strong> Dependents: </strong> (see instructions)<br/>
-													<span style="padding-top:1mm;padding-left:6mm"><strong>(1)</strong> First name <span style="width:10mm;"/> Last Name</span>
-												</th>
-												<th class="styTableCellHeader" scope="col" style="width:28mm;font-weight:normal;">
-													<strong>(2)</strong> Dependent's <br/>identifying number
-												</th>
-												<th class="styTableCellHeader" scope="col" style="width:28mm;font-weight:normal;">
-													<strong>(3)</strong> Dependent's <br/>relationship to you
-												</th>
-												<th class="styTableCellHeader" scope="col" style="width:50mm;font-weight:normal;text-align:left">			
-													<span>												
-														<span style="padding-left:7mm"><strong>(4)</strong> &#10004; if qualifies for (see instr.): </span>
-														<br/>
-														<span style="width:18mm;border-right:1px solid black;text-align:left;padding-top:1mm">
-															Child tax credit </span>
-														<span style="width:.4mm"/>Credit for other dependents
-													</span>
-												</th>
-											</tr>
-										</thead>
-										<tbody>
-											<xsl:if test="not(($Print = $Separated) and (count($FormData/DependentDetail) &gt; 4))">
-												<xsl:for-each select="$FormData/DependentDetail">
-													<tr>
-														<td class="sty1040NRTableCellText" style="width:60mm">
-															<xsl:call-template name="PopulateText">
-																<xsl:with-param name="TargetNode" select="DependentFirstNm"/>
-															</xsl:call-template>
-															<span style="width:4mm;"/>
-															<xsl:call-template name="PopulateText">
-																<xsl:with-param name="TargetNode" select="DependentLastNm"/>
-															</xsl:call-template>
-															<span style="float:right;">
-																<xsl:call-template name="LinkToLeftoverDataTableInline">
-																	<xsl:with-param name="TargetNode" select="DependentNameControlTxt"/>
-																	<xsl:with-param name="Desc">Line 7c(1) - Dependent <xsl:value-of select="position()"/> Name Control</xsl:with-param>
-																</xsl:call-template>
-															</span>
-														</td>
-														<td class="sty1040NRTableCellCenter" style="width:28mm">
-															<xsl:choose>
-																<xsl:when test="DiedLiteralCd">
-																	<xsl:call-template name="PopulateText">
-																		<xsl:with-param name="TargetNode" select="DiedLiteralCd"/>
-																	</xsl:call-template>
-																</xsl:when>
-																<xsl:otherwise>
-																	<xsl:call-template name="PopulateSSN">
-																		<xsl:with-param name="TargetNode" select="DependentSSN"/>
-																	</xsl:call-template>
-																</xsl:otherwise>
-															</xsl:choose>
-														</td>
-														<td class="sty1040NRTableCellText" style="width:28mm">
-															<xsl:call-template name="PopulateText">
-																<xsl:with-param name="TargetNode" select="DependentRelationshipCd"/>
-															</xsl:call-template>
-														</td>
-														<td class="sty1040NRTableCellCenter" style="text-align:left;width:50mm;height:3mm">
-															<div style="width:18mm;border-right:1px solid black;padding-left:8mm;height:3.2mm">
-																<input type="checkbox" class="sty1040NRCkbox" style="margin:0px;">
-																	<xsl:call-template name="PopulateCheckbox">
-																		<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
-																		<xsl:with-param name="BackupName">IRS1040NR/Dependent<xsl:value-of select="position()"/>/ChildCreditInd</xsl:with-param>
-																	</xsl:call-template>
-																</input>
-																<label style="font-size:0pt;">
-																	<xsl:call-template name="PopulateLabel">
-																		<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
-																		<xsl:with-param name="BackupName">IRS1040NR/Dependent<xsl:value-of select="position()"/>/ChildCreditInd</xsl:with-param>
-																	</xsl:call-template>Child tax credit
-																</label>
-															</div>
-															<div style="width:7mm;padding-left:14mm;">
-																<input type="checkbox" class="sty1040NRCkbox">
-																	<xsl:call-template name="PopulateCheckbox">
-																		<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
-																		<xsl:with-param name="BackupName">IRS1040NREligibleForODCInd<xsl:number value="position()"/>EligibleForODCInd</xsl:with-param>
-																	</xsl:call-template>
-																</input>
-																<label style="font-size:0pt;">
-																	<xsl:call-template name="PopulateLabel">
-																		<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
-																		<xsl:with-param name="BackupName">IRS1040NREligibleForODCInd<xsl:number value="position()"/>EligibleForODCInd</xsl:with-param>
-																	</xsl:call-template>Credit for other dependents
-																</label>
-															</div>
-														</td>
-													</tr>
-												</xsl:for-each>
-											</xsl:if>
-											<xsl:if test="(count($FormData/DependentDetail) &lt; 1) or (($Print = $Separated) and (count($FormData/DependentDetail) &gt; 4))">
-												<tr>
-													<td class="sty1040NRTableCellText" style="width:60mm">
-														<xsl:call-template name="PopulateAdditionalDataTableMessage">
-															<xsl:with-param name="TargetNode" select="$FormData/DependentDetail"/>
-														</xsl:call-template>
-													</td>
-													<td class="sty1040NRTableCellCenter" style="width:28mm">
-													&#8194;
-													</td>
-													<td class="sty1040NRTableCellText" style="width:28mm">
-													&#8194;
-													</td>
-													<td class="sty1040NRTableCellCenter" style="text-align:left;padding-left:8.2mm;width:50mm">
-														<div style="width:10mm;border-right:1px solid black">
-															<div style="border:1px solid black;width:10px;height:10px;">&#8194;</div>
-														</div>
-														<div style="width:23mm;padding-left:14.2mm">
-															<div style="border:1px solid black;width:10px;height:10px;pad">&#8194;</div>
-														</div>
-													</td>
-												</tr>
-											</xsl:if>
-											<xsl:if test="(count($FormData/DependentDetail) &lt; 2) or (($Print = $Separated) and (count($FormData/DependentDetail) &gt; 4))">
-												<tr>
-													<td class="sty1040NRTableCellText" style="width:60mm">
-													&#8194;
-													</td>
-													<td class="sty1040NRTableCellCenter" style="width:28mm">
-													&#8194;
-													</td>
-													<td class="sty1040NRTableCellText" style="width:28mm">
-													&#8194;
-													</td>
-													<td class="sty1040NRTableCellCenter" style="text-align:left;padding-left:8.2mm;width:50mm">
-														<div style="width:10mm;border-right:1px solid black">
-															<div style="border:1px solid black;width:10px;height:10px;">&#8194;</div>
-														</div>
-														<div style="width:23mm;padding-left:14.2mm">
-															<div style="border:1px solid black;width:10px;height:10px;pad">&#8194;</div>
-														</div>
-													</td>
-												</tr>
-											</xsl:if>
-											<xsl:if test="(count($FormData/DependentDetail) &lt; 3) or (($Print = $Separated) and (count($FormData/DependentDetail) &gt; 4))">
-												<tr>
-													<td class="sty1040NRTableCellText" style="width:60mm">
-													&#8194;
-													</td>
-													<td class="sty1040NRTableCellCenter" style="width:28mm">
-													&#8194;
-													</td>
-													<td class="sty1040NRTableCellText" style="width:28mm">
-													&#8194;
-													</td>
-													<td class="sty1040NRTableCellCenter" style="text-align:left;padding-left:8.2mm;width:50mm">
-														<div style="width:10mm;border-right:1px solid black">
-															<div style="border:1px solid black;width:10px;height:10px;">&#8194;</div>
-														</div>
-														<div style="width:23mm;padding-left:14.2mm">
-															<div style="border:1px solid black;width:10px;height:10px;">&#8194;</div>
-														</div>
-													</td>
-												</tr>
-											</xsl:if>
-											<xsl:if test="(count($FormData/DependentDetail) &lt; 4) or (($Print = $Separated) and (count($FormData/DependentDetail) &gt; 4))">
-												<tr>
-													<td class="sty1040NRTableCellText" style="width:60mm">
-													&#8194;
-													</td>
-													<td class="sty1040NRTableCellCenter" style="width:28mm">
-													&#8194;
-													</td>
-													<td class="sty1040NRTableCellText" style="width:28mm">
-													&#8194;
-													</td>
-													<td class="sty1040NRTableCellCenter" style="text-align:left;padding-left:8.2mm;width:50mm">
-														<div style="width:10mm;border-right:1px solid black">
-															<div style="border:1px solid black;width:10px;height:10px;">&#8194;</div>
-														</div>
-														<div style="width:23mm;padding-left:14.2mm">
-															<div style="border:1px solid black;width:10px;height:10px;">&#8194;</div>
-														</div>
-													</td>
-												</tr>
-											</xsl:if>
-										</tbody>
-									</table>
-								</div>
+					<div class="sty1040SRDepdContainer" style="" id="depdContainerId">
+						<div class="styGenericDiv" style="width:20mm;padding-top:1mm;border-right:1px solid black;
+							font-family:Arial;font-size:9pt;border-bottom:0px solid black;height:24.3mm;
+							border-top:1px solid black">
+							<div style="width:100%;padding-bottom:3mm;padding-left:1mm;">
+								<strong>Dependents</strong><br />
+								<span style="font-size:8pt;font-family:Arial Narrow">
+									If more<br/>than four <br/>dependents,<br/>see instructions<br/>and check<br/>here.
+						  			<label>
+										<xsl:call-template name="PopulateLabel">
+											<xsl:with-param name="TargetNode" select="$FormData/MoreDependentsInd"/>
+											<xsl:with-param name="BackupName">IRS1040NRMoreDependentsInd
+										    </xsl:with-param>
+										</xsl:call-template>
+									</label>
+						    		<img src="{$ImagePath}/1040_Bullet.gif" alt="Right arrow"/>
+						    		<span style="width:2px"/>
+									<input type="checkbox" class="styCkboxNM" style="" alt="More Dependents Ind">
+										<xsl:call-template name="PopulateCheckbox">
+											<xsl:with-param name="TargetNode" select="$FormData/MoreDependentsInd"/>
+											<xsl:with-param name="BackupName">IRS1040NRMoreDependentsInd
+											</xsl:with-param>
+									   </xsl:call-template>
+									</input>
+								</span>
 							</div>
+						</div>
+						<!-- Table 7c -->
+						<xsl:call-template name="SetInitialState"/>
+							<table class="styTable" style="display:table;font-size:6pt;border-collapse:collapse;
+								width:167mm;border-top:1px solid black">
+								<thead class="styTableThead">
+									<tr>
+										<th class="styTableCellHeader" scope="col" style="width:60mm;font-weight:normal;text-align:left;">
+											<div style="font-weight:bold;font-size:7pt;padding-left:3mm;">7 </div>
+											<strong> Dependents: </strong> (see instructions)<br/>
+											<span style="padding-top:1mm;padding-left:6mm"><strong>(1)</strong> First name <span style="width:10mm;"/> Last Name</span>
+										</th>
+										<th class="styTableCellHeader" scope="col" style="width:28mm;font-weight:normal;">
+											<strong>(2)</strong> Dependent's <br/>identifying number
+										</th>
+										<th class="styTableCellHeader" scope="col" style="width:28mm;font-weight:normal;">
+											<strong>(3)</strong> Dependent's <br/>relationship to you
+										</th>
+										<th class="styTableCellHeader" scope="col" style="width:50mm;font-weight:normal;text-align:left">			
+											<span>												
+												<span style="padding-left:7mm"><strong>(4)</strong> &#10004; if qualifies for (see instr.): </span>
+												<br/>
+												<span style="width:18mm;border-right:1px solid black;text-align:left;padding-top:1mm">
+													Child tax credit </span>
+												<span style="width:.4mm"/>Credit for other dependents
+											</span>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<xsl:if test="not(($Print = $Separated) and (count($FormData/DependentDetail) &gt; 4))">
+										<xsl:for-each select="$FormData/DependentDetail">
+											<tr>
+												<td class="sty1040NRTableCellText" style="width:60mm">
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="DependentFirstNm"/>
+													</xsl:call-template>
+													<span style="width:4mm;"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="DependentLastNm"/>
+													</xsl:call-template>
+													<span style="float:right;">
+														<xsl:call-template name="LinkToLeftoverDataTableInline">
+															<xsl:with-param name="TargetNode" select="DependentNameControlTxt"/>
+															<xsl:with-param name="Desc">Line 7c(1) - Dependent <xsl:value-of select="position()"/> Name Control</xsl:with-param>
+														</xsl:call-template>
+													</span>
+												</td>
+												<td class="sty1040NRTableCellCenter" style="width:28mm">
+													<xsl:choose>
+														<xsl:when test="DiedLiteralCd">
+															<xsl:call-template name="PopulateText">
+																<xsl:with-param name="TargetNode" select="DiedLiteralCd"/>
+															</xsl:call-template>
+														</xsl:when>
+														<xsl:otherwise>
+															<xsl:call-template name="PopulateSSN">
+																<xsl:with-param name="TargetNode" select="DependentSSN"/>
+															</xsl:call-template>
+														</xsl:otherwise>
+													</xsl:choose>
+												</td>
+												<td class="sty1040NRTableCellText" style="width:28mm">
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="DependentRelationshipCd"/>
+													</xsl:call-template>
+												</td>
+												<td class="sty1040NRTableCellCenter" style="text-align:left;
+													width:50mm;height:3mm">
+													<div style="width:18mm;border-right:1px solid black;
+														padding-left:8mm;height:3.2mm">
+														<input type="checkbox" class="sty1040NRCkbox"															alt="Eligible For Child Tax Credit Ind" style="margin:0px;">
+															<xsl:call-template name="PopulateCheckbox">
+																<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
+																<xsl:with-param name="BackupName">IRS1040NR/Dependent<xsl:value-of select="position()"/>/ChildCreditInd</xsl:with-param>
+															</xsl:call-template>
+														</input>
+														<label style="font-size:0pt;">
+															<xsl:call-template name="PopulateLabel">
+																<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
+																<xsl:with-param name="BackupName">IRS1040NR/Dependent<xsl:value-of select="position()"/>/ChildCreditInd</xsl:with-param>
+															</xsl:call-template>Child tax credit
+														</label>
+													</div>
+													<div style="width:7mm;padding-left:14mm;">
+														<input type="checkbox" class="sty1040NRCkbox" 																alt="Eligible For ODC Ind">
+															<xsl:call-template name="PopulateCheckbox">
+																<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
+																<xsl:with-param name="BackupName">IRS1040NREligibleForODCInd<xsl:number value="position()"/>EligibleForODCInd</xsl:with-param>
+															</xsl:call-template>
+														</input>
+														<label style="font-size:0pt;">
+															<xsl:call-template name="PopulateLabel">
+																<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
+																<xsl:with-param name="BackupName">IRS1040NREligibleForODCInd<xsl:number value="position()"/>EligibleForODCInd</xsl:with-param>
+															</xsl:call-template>Credit for other dependents
+														</label>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+									</xsl:if>
+									<xsl:if test="(count($FormData/DependentDetail) &lt; 1) or (($Print = $Separated) and (count($FormData/DependentDetail) &gt; 4))">
+										<tr>
+											<td class="sty1040NRTableCellText" style="width:60mm">
+												<xsl:call-template name="PopulateAdditionalDataTableMessage">
+													<xsl:with-param name="TargetNode" select="$FormData/DependentDetail"/>
+												</xsl:call-template>
+											</td>
+											<td class="sty1040NRTableCellCenter" style="width:28mm">
+												&#8194;
+											</td>
+											<td class="sty1040NRTableCellText" style="width:28mm">
+												&#8194;
+											</td>
+											<td class="sty1040NRTableCellCenter" style="text-align:left;padding-left:8.2mm;width:50mm">
+												<div style="width:10mm;border-right:1px solid black">
+													<div style="border:1px solid black;width:10px;height:10px;">&#8194;</div>
+												</div>
+												<div style="width:23mm;padding-left:14.2mm">
+													<div style="border:1px solid black;width:10px;height:10px;pad">&#8194;</div>
+												</div>
+											</td>
+										</tr>
+									</xsl:if>
+									<xsl:if test="(count($FormData/DependentDetail) &lt; 2) or (($Print = $Separated) and (count($FormData/DependentDetail) &gt; 4))">
+										<tr>
+											<td class="sty1040NRTableCellText" style="width:60mm">
+												&#8194;
+											</td>
+											<td class="sty1040NRTableCellCenter" style="width:28mm">
+												&#8194;
+											</td>
+											<td class="sty1040NRTableCellText" style="width:28mm">
+												&#8194;
+											</td>
+											<td class="sty1040NRTableCellCenter" style="text-align:left;padding-left:8.2mm;width:50mm">
+												<div style="width:10mm;border-right:1px solid black">
+													<div style="border:1px solid black;width:10px;height:10px;">&#8194;</div>
+												</div>
+												<div style="width:23mm;padding-left:14.2mm">
+													<div style="border:1px solid black;width:10px;height:10px;pad">&#8194;</div>
+												</div>
+											</td>
+										</tr>
+									</xsl:if>
+									<xsl:if test="(count($FormData/DependentDetail) &lt; 3) or (($Print = $Separated) and (count($FormData/DependentDetail) &gt; 4))">
+										<tr>
+											<td class="sty1040NRTableCellText" style="width:60mm">
+												&#8194;
+											</td>
+											<td class="sty1040NRTableCellCenter" style="width:28mm">
+												&#8194;
+											</td>
+											<td class="sty1040NRTableCellText" style="width:28mm">
+												&#8194;
+											</td>
+											<td class="sty1040NRTableCellCenter" style="text-align:left;padding-left:8.2mm;width:50mm">
+												<div style="width:10mm;border-right:1px solid black">
+													<div style="border:1px solid black;width:10px;height:10px;">&#8194;</div>
+												</div>
+												<div style="width:23mm;padding-left:14.2mm">
+													<div style="border:1px solid black;width:10px;height:10px;">&#8194;</div>
+												</div>
+											</td>
+										</tr>
+									</xsl:if>
+									<xsl:if test="(count($FormData/DependentDetail) &lt; 4) or (($Print = $Separated) and (count($FormData/DependentDetail) &gt; 4))">
+										<tr>
+											<td class="sty1040NRTableCellText" style="width:60mm">
+												&#8194;
+											</td>
+											<td class="sty1040NRTableCellCenter" style="width:28mm">
+												&#8194;
+											</td>
+											<td class="sty1040NRTableCellText" style="width:28mm">
+												&#8194;
+											</td>
+											<td class="sty1040NRTableCellCenter" style="text-align:left;padding-left:8.2mm;width:50mm">
+												<div style="width:10mm;border-right:1px solid black">
+													<div style="border:1px solid black;width:10px;height:10px;">&#8194;</div>
+												</div>
+												<div style="width:23mm;padding-left:14.2mm">
+													<div style="border:1px solid black;width:10px;height:10px;">&#8194;</div>
+												</div>
+											</td>
+										</tr>
+									</xsl:if>
+								</tbody>
+							</table>
 						</div>
 						<xsl:call-template name="SetInitialDynamicTableHeight">
 							<xsl:with-param name="TargetNode" select="$FormData/DependentDetail"/>
@@ -581,7 +590,6 @@
 							<xsl:with-param name="headerHeight" select="1"/>
 								<xsl:with-param name="containerID" select=" 'dpntContainerId' "/>
 						</xsl:call-template>
-					</div>
 					<!-- Income Effectively Connected With U.S. Trade/Business section -->
 					<div class="styStdDiv" style="border-top:1px solid black;">
 						<div class="sty1040NRIndentSection" style="height:76mm;border-right:1px solid black;">
@@ -748,7 +756,8 @@
 										<xsl:with-param name="TargetNode" select="$FormData/CapitalDistributionInd"/>
 										<xsl:with-param name="BackupName">IRS1040NR/CapitalDistributionInd</xsl:with-param>
 									</xsl:call-template>Capital gain or (loss). Attach Schedule D (Form 1040) if required. If not required, check here</label>
-								<input type="checkbox" class="styCkboxNM" style="margin-top:-1px;">
+								<input type="checkbox" class="styCkboxNM" alt="Capital Distribution Ind"
+									style="margin-top:-1px;">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/CapitalDistributionInd"/>
 										<xsl:with-param name="BackupName">IRS1040NR/CapitalDistributionInd</xsl:with-param>
@@ -954,7 +963,8 @@
 								Combine the amounts in the far right column for lines 8 through 21. This is your <strong>total </strong>
 								<br/>
 								<strong>effectively connected income</strong>
-								<span class="sty1040NRDotLn">.................<span style="letter-spacing:6px;">&#9658;</span>
+								<span class="sty1040NRDotLn">.................<span style="letter-spacing:6px;">
+									<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/></span>
 								</span>
 							</div>
 							<div class="styLNRightNumBox" style="border-bottom:none;background-color:lightgrey;"/>
@@ -1115,11 +1125,11 @@
 							</div>
 							<div class="styLNRightNumBox">32</div>
 							<div class="styLNAmountBox">
-								<span style="float:left;padding-left:2px;">
+								<!--<span style="float:left;padding-left:2px;">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$FormData/IRADeductionCd"/>
 									</xsl:call-template>
-								</span>
+								</span>-->
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/IRADeductionAmt"/>
 								</xsl:call-template>
@@ -1174,7 +1184,9 @@
 							<div class="styLNLeftNumBox">35</div>
 							<div class="sty1040NRIndentDesc">
 								<strong>Adjusted Gross Income.</strong> Subtract line 34 from line 23. 
-								<span class="sty1040NRDotLn" style="text-align:right;">..........<span style="letter-spacing:6px;">&#9658;</span>
+								<span class="sty1040NRDotLn" style="text-align:right;">..........
+									<span style="letter-spacing:6px;">
+										<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/></span>
 								</span>
 							</div>
 							<div class="styLNRightNumBox" style="border-bottom:none;">35</div>
@@ -1325,7 +1337,7 @@
 								</xsl:call-template>
 								Check if any is from Form(s): 
 								<div style="width:3mm;font-weight:bold;padding-left:1mm;">a</div>
-								<input type="checkbox" class="sty1040NRCkbox">
+								<input type="checkbox" class="sty1040NRCkbox" alt="Form 8814 Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/Form8814Ind"/>
 										<xsl:with-param name="BackupName">IRS1040NR/Form8814Ind</xsl:with-param>
@@ -1348,7 +1360,7 @@
 								</xsl:if>-->
 								<span style="width:1mm"/>
 								<div style="width:3mm;font-weight:bold;padding-left:1mm;">b</div>
-								<input type="checkbox" class="sty1040NRCkbox">
+								<input type="checkbox" class="sty1040NRCkbox" alt="Form 4972 Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/Form4972Ind"/>
 										<xsl:with-param name="BackupName">IRS1040NR/Form4972Ind</xsl:with-param>
@@ -1367,7 +1379,7 @@
 									<xsl:with-param name="TargetNode" select="$FormData/HealthCoverageTaxCreditCd"/>
 								</xsl:call-template>
 								<div style="width:2mm;font-weight:bold;padding-left:0.0mm;">c</div>
-								<input type="checkbox" class="sty1040NRCkbox">
+								<input type="checkbox" class="sty1040NRCkbox" alt="Other Tax Amt Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherTaxAmtInd"/>
 										<xsl:with-param name="BackupName">IRS1040NR/OtherTaxAmtInd</xsl:with-param>
@@ -1442,7 +1454,9 @@
 						<div style="width:167mm;float:left;">
 							<div class="styLNLeftNumBox">45</div>
 							<div class="sty1040NRIndentDesc">
-								Add lines 42, 43, and 44  <span class="sty1040NRDotLn">....................<span style="letter-spacing:6px;">&#9658;</span>
+								Add lines 42, 43, and 44  <span class="sty1040NRDotLn">....................
+								<span style="letter-spacing:6px;">
+									<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/></span>
 								</span>
 							</div>
 							<div class="styLNRightNumBox">45</div>
@@ -1536,7 +1550,7 @@
 						<div style="width:167mm;float:left;">
 							<div class="styLNLeftNumBox">50</div>
 							<div class="sty1040NRIndent2Desc">
-								Residential energy credit. Attach Form 5695 <span class="sty1040NRDotLn">.....</span>
+								Residential energy credits. Attach Form 5695 <span class="sty1040NRDotLn">.....</span>
 							</div>
 							<div class="styLNRightNumBox">50</div>
 							<div class="styLNAmountBox">
@@ -1558,7 +1572,7 @@
 							<div class="sty1040NRIndent2Desc">
 								Other credits from Form:
 								<div style="width:2mm;font-weight:bold;padding-left:0mm;">a</div>
-								<input type="checkbox" class="sty1040NRCkbox">
+								<input type="checkbox" class="sty1040NRCkbox" alt="Form 3800 Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/Form3800Ind"/>
 										<xsl:with-param name="BackupName">IRS1040NR/Form3800Ind</xsl:with-param>
@@ -1573,7 +1587,7 @@
 									<xsl:with-param name="TargetNode" select="$FormData/Form3800Ind"/>
 								</xsl:call-template>
 								<div style="width:3mm;font-weight:bold;padding-left:1mm;">b</div>
-								<input type="checkbox" class="sty1040NRCkbox">
+								<input type="checkbox" class="sty1040NRCkbox" alt="Form 8801 Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/Form8801Ind"/>
 										<xsl:with-param name="BackupName">IRS1040NR/Form8801Ind</xsl:with-param>
@@ -1588,11 +1602,12 @@
 									<xsl:with-param name="TargetNode" select="$FormData/Form8801Ind"/>
 								</xsl:call-template>
 								<div style="width:3mm;font-weight:bold;padding-left:1mm;">c</div>
-								<input type="checkbox" class="sty1040NRCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/SpecificOtherCreditsInd"/>
-										<xsl:with-param name="BackupName">IRS1040NR/SpecificOtherCreditsInd</xsl:with-param>
-									</xsl:call-template>
+									<input type="checkbox" class="sty1040NRCkbox" alt="Specific Other Credits Ind">
+										<xsl:call-template name="PopulateCheckbox">
+											<xsl:with-param name="TargetNode" 
+												select="$FormData/SpecificOtherCreditsInd"/>
+											<xsl:with-param name="BackupName">IRS1040NR/SpecificOtherCreditsInd</xsl:with-param>
+										</xsl:call-template>
 								</input>
 								<label style="font-size:0pt;">
 									<xsl:call-template name="PopulateLabel">
@@ -1665,7 +1680,9 @@
 						<div style="width:167mm;float:left;">
 							<div class="styLNLeftNumBox">53</div>
 							<div class="sty1040NRIndentDesc">
-								Subtract line 52 from line 45. If zero or less, enter -0- <span class="sty1040NRDotLn">......<span style="letter-spacing:6px;">&#9658;</span>
+								Subtract line 52 from line 45. If zero or less, enter -0- 
+								<span class="sty1040NRDotLn">......<span style="letter-spacing:6px;">
+									<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/></span>
 								</span>
 							</div>
 							<div class="styLNRightNumBox" style="border-bottom:none;">53</div>
@@ -1728,7 +1745,7 @@
 							<div class="sty1040NRIndentDesc">
 								Unreported social security and Medicare tax from Form: 
 								<div style="width:6mm;font-weight:bold;padding-left:4mm;">a</div>
-								<input type="checkbox" class="sty1040NRCkbox">
+								<input type="checkbox" class="sty1040NRCkbox" alt="Form 4137 Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/Form4137Ind"/>
 										<xsl:with-param name="BackupName">IRS1040NR/Form4137Ind</xsl:with-param>
@@ -1743,7 +1760,7 @@
 									<xsl:with-param name="TargetNode" select="$FormData/Form4137Ind"/>
 								</xsl:call-template>
 								<div style="width:10mm;font-weight:bold;padding-left:8mm;">b</div>
-								<input type="checkbox" class="sty1040NRCkbox">
+								<input type="checkbox" class="sty1040NRCkbox" alt="Form 8919 Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/Form8919Ind"/>
 										<xsl:with-param name="BackupName">IRS1040NR/Form8919Ind</xsl:with-param>
@@ -1847,7 +1864,7 @@
 							<div class="sty1040NRIndentDesc">
 								Taxes from: 
 								<div style="width:3mm;font-weight:bold;padding-left:1mm;">a</div>
-								<input type="checkbox" class="sty1040NRCkbox">
+								<input type="checkbox" class="sty1040NRCkbox" alt="Form 8959 Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/Form8959Ind"/>
 										<xsl:with-param name="BackupName">IRS1040NR/Form8959Ind</xsl:with-param>
@@ -1862,7 +1879,7 @@
 									<xsl:with-param name="TargetNode" select="$FormData/Form8959Ind"/>
 								</xsl:call-template>
 								<div style="width:4mm;font-weight:bold;padding-left:2mm;">b</div>
-								<input type="checkbox" class="sty1040NRCkbox">
+								<input type="checkbox" class="sty1040NRCkbox" alt="Other Tax Cd Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherTaxCdInd"/>
 										<xsl:with-param name="BackupName">IRS1040NR/OtherTaxCdInd</xsl:with-param>
@@ -1905,7 +1922,8 @@
 									<xsl:with-param name="TargetNode" select="$FormData/Form8854DeferredTaxGrp/ExpatriationCd"/>
 									<xsl:with-param name="Desc">Line 61 - Form 8854 Expatriation code</xsl:with-param>
 								</xsl:call-template>
-								<span class="sty1040NRDotLn">...............<span style="letter-spacing:6px;">&#9658;</span>
+								<span class="sty1040NRDotLn">...............<span style="letter-spacing:6px;">
+									<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/></span>
 								</span>
 							</div>
 							<div class="styLNRightNumBox" style="border-bottom:none;">61</div>
@@ -2151,7 +2169,7 @@
 							<div class="sty1040NRIndent2Desc" style="font-family:Arial;">
 								Credits from Form:
 								<div style="width:2mm;font-weight:bold;padding-left:1px;">a</div>
-								<input type="checkbox" class="sty1040NRCkbox">
+								<input type="checkbox" class="sty1040NRCkbox" alt="Form 2439 Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/Form2439Ind"/>
 										<xsl:with-param name="BackupName">IRS1040NR/Form2439Ind</xsl:with-param>
@@ -2169,7 +2187,7 @@
 								<div class="sty1040NRCkbox" style="border:1px solid black;background-color:lightgrey;margin:-4px 0px 2px 0px;"/>
 								<span style="font-family:Arial Narrow;">Reserved</span>
 								<div style="width:2.5mm;font-weight:bold;padding-left:1mm;">c</div>
-								<input type="checkbox" class="sty1040NRCkbox">
+								<input type="checkbox" class="sty1040NRCkbox" alt="Reserved">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/Form8885Ind"/>
 										<xsl:with-param name="BackupName">IRS1040NR/Form8885Ind</xsl:with-param>
@@ -2184,7 +2202,7 @@
 									<xsl:with-param name="TargetNode" select="$FormData/Form8885Ind"/>
 								</xsl:call-template>
 								<div style="width:3.5mm;font-weight:bold;padding-left:2mm;">d</div>
-								<input type="checkbox" class="sty1040NRCkbox">
+								<input type="checkbox" class="sty1040NRCkbox" alt="Other Payments Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherPaymentsInd"/>
 										<xsl:with-param name="BackupName">IRS1040NR/OtherPaymentsInd</xsl:with-param>
@@ -2247,7 +2265,8 @@
 							<div class="styLNLeftNumBox">71</div>
 							<div class="sty1040NRIndentDesc">
 								Add lines 62a through 70. These are your <strong>total payments</strong>
-								<span class="sty1040NRDotLn">.........<span style="letter-spacing:6px;">&#9658;</span>
+								<span class="sty1040NRDotLn">.........<span style="letter-spacing:6px;">
+									<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/></span>
 								</span>
 							</div>
 							<div class="styLNRightNumBox" style="border-bottom:none;">71</div>
@@ -2286,8 +2305,10 @@
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$FormData/Form8888Ind"/>
 										<xsl:with-param name="BackupName">IRS1040NR/Form8888Ind</xsl:with-param>
-									</xsl:call-template>If Form 8888 is attached, check here</label>
-								<span style="width:4mm;text-align:center;font-weight:bold;"> . </span> &#9658;
+									</xsl:call-template>
+								</label>If Form 8888 is attached, check here
+								<span style="width:4mm;text-align:left;font-weight:bold;">. </span>
+									<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/>
 								<input type="checkbox" class="sty1040NRCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/Form8888Ind"/>
@@ -2317,10 +2338,13 @@
 										<xsl:with-param name="TargetNode" select="$FormData/RoutingTransitNum"/>
 									</xsl:call-template>
 								</span>
-								&#9658;
-								<div class="styLNLeftNumBox" style="width:3mm;padding-left:1.5mm;float:none;height:3mm;padding-top:0px;">c</div>
+								<span style="padding-left:1mm;">
+									<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/>
+								</span>
+								<div class="styLNLeftNumBox" style="width:3mm;padding-left:1.5mm;float:none;
+									height:3mm;padding-top:0px;">c</div>
 								Type: 
-								<input type="checkbox" class="sty1040NRCkbox">
+								<input type="checkbox" class="sty1040NRCkbox" alt="Checking">
 									<xsl:call-template name="PopulateEnumeratedCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/BankAccountTypeCd"/>
 										<xsl:with-param name="DisplayedCheckboxValue">1</xsl:with-param>
@@ -2333,7 +2357,7 @@
 										<xsl:with-param name="DisplayedCheckboxValue">1</xsl:with-param>
 										<xsl:with-param name="BackupName">IRS1040NR/BankAccountTypeCd[1]</xsl:with-param>
 									</xsl:call-template>Checking</label>
-								<input type="checkbox" class="sty1040NRCkbox">
+								<input type="checkbox" class="sty1040NRCkbox" alt="Savings">
 									<xsl:call-template name="PopulateEnumeratedCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/BankAccountTypeCd"/>
 										<xsl:with-param name="DisplayedCheckboxValue">2</xsl:with-param>
@@ -2388,7 +2412,10 @@
 						<div style="width:167mm;float:left;">
 							<div class="styLNLeftNumBox">74</div>
 							<div class="sty1040NRIndent2Desc" style="font-family:Arial;">
-								Amount of line 72 you want <strong>applied to your 2019 estimated tax</strong> &#9658;
+								Amount of line 72 you want <strong>applied to your 2019 estimated tax</strong> 
+								<span style="padding-left:1mm;">
+									<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/>
+								</span>
 							</div>
 							<div class="styLNRightNumBox" style="border-bottom:none;">74</div>
 							<div class="styLNAmountBox" style="border-bottom:none;">
@@ -2414,7 +2441,8 @@
 						<div style="width:167mm;float:left;">
 							<div class="styLNLeftNumBox">75</div>
 							<div class="sty1040NRIndentDesc" style="">
-								<strong>Amount you owe.</strong> Subtract line 71 from line 61. For details on how to pay, see instructions &#9658;
+								<strong>Amount you owe.</strong> Subtract line 71 from line 61. For details on how to pay, see instructions 
+									<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/>
 							</div>
 							<div class="styLNRightNumBox">75</div>
 							<div class="styLNAmountBox">
@@ -2457,7 +2485,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/ThirdPartyDesigneeInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkboxNM">
+								<input type="checkbox" class="styCkboxNM" alt="Third Party Designee Ind Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ThirdPartyDesigneeInd"/>
 										<xsl:with-param name="BackupName">IRS1040NR/ThirdPartyDesigneeInd</xsl:with-param>
@@ -2468,7 +2496,7 @@
 										<xsl:with-param name="TargetNode" select="$FormData/ThirdPartyDesigneeInd"/>
 										<xsl:with-param name="BackupName">IRS1040NR/ThirdPartyDesigneeInd</xsl:with-param>
 									</xsl:call-template>Yes.</label> Complete below. <span style="width:4mm"/>
-								<input type="checkbox" class="styCkboxNM">
+								<input type="checkbox" class="styCkboxNM" alt="Third Party Designee Ind No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ThirdPartyDesigneeInd"/>
 										<xsl:with-param name="BackupName">IRS1040NR/ThirdPartyDesigneeInd</xsl:with-param>
@@ -2484,7 +2512,7 @@
 						<div class="sty1040NRIndentDesc" style="width:167mm;float:left;padding-left:2px;height:6.4mm;">
 							<span style="font-size:6pt;width:21.5mm;">
 								<br/>
-								Designee's name &#9658;
+								Designee's name <img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/>								
 							</span>
 							<span style="width:58mm;">
 								<xsl:call-template name="PopulateText">
@@ -2492,7 +2520,7 @@
 								</xsl:call-template>
 							</span>
 							<span style="font-size:6pt;width:8mm;">
-								Phone <br/>no. &#9658;
+								Phone <br/>no. <img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/>
 							</span>
 							<span style="width:40mm;">
 								<xsl:choose>
@@ -2509,7 +2537,8 @@
 								</xsl:choose>
 							</span>
 							<span style="font-size:6pt;width:26mm;">
-								Personal identification <br/>number (PIN) &#9658;
+								Personal identification <br/>number (PIN) 
+								<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/>
 							</span>
 							<span style="width:12mm;height:4mm;text-align:center;border:1px solid black;margin-bottom:1px;padding-top:2px;">
 								<xsl:call-template name="PopulatePin">
@@ -2528,8 +2557,7 @@
 						<!-- sign -->
 						<div class="sty1040NRIndentDesc" style="width:167mm;float:left;padding-left:2px;padding-bottom:0px;height:auto;">
 							<span style="width:100%;font-size:8pt;font-family:Arial Narrow;height:7mm;">
-								Under penalties of perjury, I declare that I have examined this return and accompanying schedules and statements, and to the best of my knowledge and 
-								belief, they are true, correct, and complete. Declaration of preparer (other than taxpayer) is based on all information of which preparer has any knowledge.
+								Under penalties of perjury, I declare that I have examined this return and accompanying schedules and statements, and to the best of my knowledge and belief, they are true, correct, and complete. Declaration of preparer (other than taxpayer) is based on all information of which preparer has any knowledge.
 							</span>
 							<div style="float:left;width:40mm;height:10mm;border-right:1px solid black;">
 								Your signature<br/>
@@ -2618,7 +2646,8 @@
 										<xsl:with-param name="BackupName">IRS1040NR/SelfEmployedLabel</xsl:with-param>
 									</xsl:call-template>
 									Check 
-									<input type="checkbox" class="sty1040NRCkbox" style="margin-right:2px;">
+									<input type="checkbox" class="sty1040NRCkbox" alt="Self Employed"
+										style="margin-right:2px;">
 										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 											<xsl:with-param name="TargetNode">SelfEmployedCheckbox</xsl:with-param>
 											<xsl:with-param name="BackupName">IRS1040NR/SelfEmployedCheckbox</xsl:with-param>
@@ -2650,7 +2679,8 @@
 						</div>
 						<div style="width:167.2mm;float:left;border-top:1px solid black;border-left:1px solid black;">
 							<div style="width:130mm;border-right:1px solid black;padding-left:3px;padding-bottom:1px;float:left;">
-								<span style="width:19mm;height:3.2mm;float:left;">Firm's name &#9658; </span>
+								<span style="width:19mm;height:3.2mm;float:left;">Firm's name 
+									<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/> </span>
 								<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerFirmName">
 									<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
@@ -2664,7 +2694,7 @@
 								</xsl:if>
 							</div>
 							<div style="width:36.8mm;padding-left:3px;float:left;">
-								Firm's EIN &#9658; 
+								Firm's EIN <img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/>
 								<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 									<xsl:with-param name="TargetNode">PreparerFirmIDNumber</xsl:with-param>
 								</xsl:call-template>
@@ -2672,7 +2702,8 @@
 						</div>
 						<div style="width:167.2mm;float:left;border-top:1px solid black;border-left:1px solid black;">
 							<div style="width:130mm;border-right:1px solid black;padding-left:3px;float:left;">
-								<span style="width:22mm;height:6.2mm;float:left;">Firm's address &#9658; </span>
+								<span style="width:22mm;height:6.2mm;float:left;">Firm's address  
+									<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/></span>
 								<span style="width:106mm;min-height:6mm;float:left;">
 									<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 										<xsl:with-param name="TargetNode">AddressLine1Txt</xsl:with-param>
@@ -2915,7 +2946,8 @@
 						<div style="width:167mm;float:left;">
 							<div class="styLNLeftNumBoxSD">7</div>
 							<div class="sty1040NRIndentDesc" style="height:26mm;">
-								Other&#8212;from list in instructions. List type and amount &#9658;
+								Other&#8212;from list in instructions. List type and amount 
+								<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/>
 							 <xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$FormData/OtherMiscDedTypeAndAmt"/>
 								</xsl:call-template>
@@ -2992,7 +3024,6 @@
 					<!-- Page 4 -->
 					<div class="sty1040NRLandDiv" style="display:inline;width:256mm;">
 						<div class="styStdDivLS">
-						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 						Form 1040NR (2018)
 						<div style="float:right;">Page <strong>4</strong>
 							</div>
@@ -3328,11 +3359,11 @@
 						<div class="styStdDivLS">
 							<div class="styLNLeftNumBox" style="">12</div>
 							<div class="styLNDesc" style="width:80mm;">
-							Other (specify) &#9658; 
-							<span style="width:56mm;border-bottom:1px dashed black;">&#8194;
-								<xsl:if test="$FormData//OtherIncomeTyp">
-									See additional data table
-								</xsl:if>
+								Other (specify) <img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/>
+								<span style="width:56mm;border-bottom:1px dashed black;">&#8194;
+									<xsl:if test="$FormData//OtherIncomeTyp">
+										See additional data table
+									</xsl:if>
 								</span>
 							</div>
 							<div class="styLNRightNumBoxNBB"/>
@@ -3382,7 +3413,8 @@
 							<div class="styLNDescLandscape" style="height:7mm;width:208mm;">
 								<strong>Tax on income not effectively connected with a U.S. trade or business. </strong> Add columns (a) through (d) of line 14. Enter the total here and on <br/>
 							Form 1040NR, line 54
-							<span class="sty1040NRDotLn">...........................................&#9658;</span>
+							<span class="sty1040NRDotLn">...........................................
+								<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/></span>
 							</div>
 							<div class="styLNRightNumBoxNBB" style="height:7mm;">
 								<br/>15</div>
@@ -3410,9 +3442,7 @@
 						<!-- Sch NEC Lines 16-18 -->
 						<div class="styStdDivLS">
 							<div class="sty1040NRIndentSection" style="width:35mm;font-size:7pt;font-family:Arial Narrow;text-align:justify;padding-right:1mm;">
-							Enter only the capital gains and losses from property sales or exchanges that are from sources within the United States and not effectively
-							connected with a U.S. business. 
-							Do not include a gain or loss on disposing of a U.S. real property interest; report these gains and losses on Schedule D (Form 1040).<br/>
+							Enter only the capital gains and losses from property sales or exchanges that are from sources within the United States and not effectively connected with a U.S. business.  Do not include a gain or loss on disposing of a U.S. real property interest; report these gains and losses on Schedule D (Form 1040).<br/>
 							Report property sales or exchanges that are effectively connected with a U.S. business on Schedule D (Form 1040), Form 4797, or both.
 						</div>
 							<div style="width:221mm;border-left:1px solid black;float:left;">
@@ -3593,8 +3623,10 @@
 								<div class="styStdDivLS" style="width:220.7mm;">
 									<div class="styLNLeftNumBox">18</div>
 									<div class="styLNDesc" style="width:176.6mm;">
-										<strong>Capital gain. </strong> Combine columns (f) and (g) of line 17. Enter the net gain here and on line 9 above (if a loss, enter -0-) 
-									<span class="sty1040NRDotLn">.....&#9658;</span>
+										<strong>Capital gain. </strong> Combine columns (f) and (g) of line 17. Enter the
+										net gain here and on line 9 above (if a loss, enter -0-)
+										<span class="sty1040NRDotLn">.....
+											<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/></span>
 									</div>
 									<div class="styLNRightNumBoxNBB">18</div>
 									<div class="styLNAmountBoxNBB" style="width:28mm;">
@@ -3661,7 +3693,8 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/AppLawfulPermanentResidentInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM"
+										alt="App Lawful Permanent Resident Ind Yes">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/AppLawfulPermanentResidentInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/AppLawfulPermanentResidentInd</xsl:with-param>
@@ -3672,7 +3705,8 @@
 											<xsl:with-param name="TargetNode" select="$FormData/AppLawfulPermanentResidentInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/AppLawfulPermanentResidentInd</xsl:with-param>
 										</xsl:call-template>Yes</label>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM"
+										alt="App Lawful Permanent Resident Ind No">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/AppLawfulPermanentResidentInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/AppLawfulPermanentResidentInd</xsl:with-param>
@@ -3697,7 +3731,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/USCitizenInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="US Citizen Ind Yes">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/USCitizenInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/USCitizenInd</xsl:with-param>
@@ -3708,7 +3742,7 @@
 											<xsl:with-param name="TargetNode" select="$FormData/USCitizenInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/USCitizenInd</xsl:with-param>
 										</xsl:call-template>Yes</label>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="US Citizen Ind No">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/USCitizenInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/USCitizenInd</xsl:with-param>
@@ -3730,7 +3764,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/LawfulPermanentResidentInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Lawful Permanent Resident Ind Yes">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/LawfulPermanentResidentInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/LawfulPermanentResidentInd</xsl:with-param>
@@ -3741,7 +3775,7 @@
 											<xsl:with-param name="TargetNode" select="$FormData/LawfulPermanentResidentInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/LawfulPermanentResidentInd</xsl:with-param>
 										</xsl:call-template>Yes</label>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Lawful Permanent Resident Ind No">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/LawfulPermanentResidentInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/LawfulPermanentResidentInd</xsl:with-param>
@@ -3798,7 +3832,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/USImmigrationStatVisaTypChgInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="US Immigration Stat Visa Typ Chg Ind Yes">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/USImmigrationStatVisaTypChgInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/USImmigrationStatVisaTypChgInd</xsl:with-param>
@@ -3809,7 +3843,7 @@
 											<xsl:with-param name="TargetNode" select="$FormData/USImmigrationStatVisaTypChgInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/USImmigrationStatVisaTypChgInd</xsl:with-param>
 										</xsl:call-template>Yes</label>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="US Immigration Stat Visa Typ Chg Ind No">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/USImmigrationStatVisaTypChgInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/USImmigrationStatVisaTypChgInd</xsl:with-param>
@@ -3822,7 +3856,8 @@
 										</xsl:call-template>No</label>
 								</span>
 								<br/>
-								<span style="padding-top:6px">If you answered "Yes," indicate the date and nature of the change. &#9658; 
+								<span style="padding-top:6px">If you answered "Yes," indicate the date and nature of the change. 
+									<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/>
 								</span>
 							<span style="border-bottom:1px dashed black;width:64mm;padding-top:6px">
 									<xsl:call-template name="PopulateMonthDayYear">
@@ -3847,7 +3882,7 @@
 									<strong>check the box for Canada or Mexico </strong> and skip to item H
 								</span>
 								<span style="letter-spacing:13px;font-weight:bold;padding-left:2mm;padding-right:1mm;padding-top:6px">.........</span>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Canada Resident Work In US Ind">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/CanadaResidentWorkInUSInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/CanadaResidentWorkInUSInd</xsl:with-param>
@@ -3858,7 +3893,7 @@
 											<xsl:with-param name="TargetNode" select="$FormData/CanadaResidentWorkInUSInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/CanadaResidentWorkInUSInd</xsl:with-param>
 										</xsl:call-template>Canada</label>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Mexico Resident Work In US Ind">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/MexicoResidentWorkInUSInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/MexicoResidentWorkInUSInd</xsl:with-param>
@@ -4021,7 +4056,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/USTaxRetFiledForAnyPYInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="US Tax Ret Filed For Any PY Ind Yes">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/USTaxRetFiledForAnyPYInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/USTaxRetFiledForAnyPYInd</xsl:with-param>
@@ -4032,7 +4067,7 @@
 											<xsl:with-param name="TargetNode" select="$FormData/USTaxRetFiledForAnyPYInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/USTaxRetFiledForAnyPYInd</xsl:with-param>
 										</xsl:call-template>Yes</label>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="US Tax Ret Filed For Any PY Ind No">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/USTaxRetFiledForAnyPYInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/USTaxRetFiledForAnyPYInd</xsl:with-param>
@@ -4046,7 +4081,8 @@
 								</span>
 								<br/>
 								<span style="padding-top:6px">If "Yes," give the latest year and form number you filed 
-									<span style="letter-spacing:3.1mm;font-weight:bold;padding-left:7px;">...</span> &#9658; 
+									<span style="letter-spacing:3.1mm;font-weight:bold;padding-left:7px;">...</span> 
+										<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/>
 								</span>
 								<span style="border-bottom:1px dashed black;width:65mm;padding-top:6px">
 									<xsl:call-template name="PopulateYear">
@@ -4071,7 +4107,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/FilingReturnForTrustInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Filing Return For Trust Ind Yes">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/FilingReturnForTrustInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/FilingReturnForTrustInd</xsl:with-param>
@@ -4083,7 +4119,7 @@
 											<xsl:with-param name="BackupName">IRS1040NR/FilingReturnForTrustInd</xsl:with-param>
 										</xsl:call-template>Yes</label>
 									<!-- Note that for release 10, business has specified that this checkbox must be always marked No -->
-									<input type="checkbox" class="styCkboxNM" checked="checked">
+									<input type="checkbox" class="styCkboxNM" alt="Filing Return For Trust Ind No" checked="checked">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/FilingReturnForTrustInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/FilingReturnForTrustInd</xsl:with-param>
@@ -4107,7 +4143,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/GrantorTrDistriLoanOrContriInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Grantor Tr Distri Loan Or Contri Ind Yes">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/GrantorTrDistriLoanOrContriInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/GrantorTrDistriLoanOrContriInd</xsl:with-param>
@@ -4118,7 +4154,7 @@
 											<xsl:with-param name="TargetNode" select="$FormData/GrantorTrDistriLoanOrContriInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/GrantorTrDistriLoanOrContriInd</xsl:with-param>
 										</xsl:call-template>Yes</label>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Grantor Tr Distri Loan Or Contri Ind No">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/GrantorTrDistriLoanOrContriInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/GrantorTrDistriLoanOrContriInd</xsl:with-param>
@@ -4144,7 +4180,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/TotalComp250KOrMoreInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Total Comp 250K Or More Ind Yes">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TotalComp250KOrMoreInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/TotalComp250KOrMoreInd</xsl:with-param>
@@ -4155,7 +4191,7 @@
 											<xsl:with-param name="TargetNode" select="$FormData/TotalComp250KOrMoreInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/TotalComp250KOrMoreInd</xsl:with-param>
 										</xsl:call-template>Yes</label>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Total Comp 250K Or More Ind No">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TotalComp250KOrMoreInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/TotalComp250KOrMoreInd</xsl:with-param>
@@ -4180,7 +4216,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/AltBasisCompensationSourceInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Alt Basis Compensation Source Ind Yes">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/AltBasisCompensationSourceInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/AltBasisCompensationSourceInd</xsl:with-param>
@@ -4191,7 +4227,7 @@
 											<xsl:with-param name="TargetNode" select="$FormData/AltBasisCompensationSourceInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/AltBasisCompensationSourceInd</xsl:with-param>
 										</xsl:call-template>Yes</label>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Alt Basis Compensation Source Ind No">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/AltBasisCompensationSourceInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/AltBasisCompensationSourceInd</xsl:with-param>
@@ -4313,7 +4349,8 @@
 								<br/>
 								<strong>(e) <span style="width:2mm;"/> Total. </strong> 
 							Enter this amount on Form 1040NR, line 22. Do not enter it on line 8 or line 12
-							<span class="sty1040NRDotLn" style="padding-right:8px;">....<span style="width:2px"/>&#9658;</span>
+							<span class="sty1040NRDotLn" style="padding-right:8px;">....<span style="width:2px"/>
+								<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/></span>
 							</div>
 							<div class="styLNAmountBox" style="width:45.1mm;height:7.5mm;">
 								<br/>
@@ -4345,7 +4382,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/TxFrgnCntryExemptIncmCurrTYInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Tx Frgn Cntry Exempt Incm Curr TY Ind Yes">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TxFrgnCntryExemptIncmCurrTYInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/TxFrgnCntryExemptIncmCurrTYInd</xsl:with-param>
@@ -4356,7 +4393,7 @@
 											<xsl:with-param name="TargetNode" select="$FormData/TxFrgnCntryExemptIncmCurrTYInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/TxFrgnCntryExemptIncmCurrTYInd</xsl:with-param>
 										</xsl:call-template>Yes</label>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Tx Frgn Cntry Exempt Incm Curr TY Ind No">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TxFrgnCntryExemptIncmCurrTYInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/TxFrgnCntryExemptIncmCurrTYInd</xsl:with-param>
@@ -4380,7 +4417,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/CompetentAuthorityDetermInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Competent Authority Determ Ind Yes">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/CompetentAuthorityDetermInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/CompetentAuthorityDetermInd</xsl:with-param>
@@ -4391,7 +4428,7 @@
 											<xsl:with-param name="TargetNode" select="$FormData/CompetentAuthorityDetermInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/CompetentAuthorityDetermInd</xsl:with-param>
 										</xsl:call-template>Yes</label>
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Competent Authority Determ Ind No">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/CompetentAuthorityDetermInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/CompetentAuthorityDetermInd</xsl:with-param>
@@ -4425,11 +4462,12 @@
 								<span class="sty1040NRLongDesc" style="width:172mm;padding-left:1mm;">This the first year you are making
 									 an election to treat income from real property located in the United States as effectively connected</span>
 								<span class="sty1040NRLongDesc" style="padding-left:12mm;width:174mm;">with a U.S. trade or business under section 871(d).  See instructions
-									<span class="sty1040NRDotLn">.................<span style="width:2px"/>&#9658;</span>
+									<span class="sty1040NRDotLn">.................<span style="width:2px"/>
+										<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/></span>
 								</span>
 							</label>
 							<span style="float:left;padding-top:2px">
-								<input type="checkbox" class="sty1040NRCkbox">
+								<input type="checkbox" class="sty1040NRCkbox" alt="Section871d Election Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/Section871dElectionInd"/>
 										<xsl:with-param name="BackupName">IRS1040NR/Section871dElectionInd</xsl:with-param>
@@ -4447,11 +4485,12 @@
 								<span class="sty1040NRLongDesc" style="width:172mm;padding-left:1mm;">You have made an election in a previous year that has not been revoked,
 									 to treat income from real property located in the United</span>
 								<span class="sty1040NRLongDesc" style="padding-left:12mm;width:174mm;">States as effectively connected with a U.S. trade or business under section 871(d).  See instructions
-									<span class="sty1040NRDotLn">.......<span style="width:2px"/>&#9658;</span>
+									<span class="sty1040NRDotLn">.......<span style="width:2px"/>
+										<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right Arrow"/></span>
 								</span>	
 							</label>
 							<span style="float:left;">
-								<input type="checkbox" class="sty1040NRCkbox">
+								<input type="checkbox" class="sty1040NRCkbox" alt="PY Section871d Election Not Rvk Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/PYSection871dElectionNotRvkInd"/>
 										<xsl:with-param name="BackupName">IRS1040NR/PYSection871dElectionNotRvkInd</xsl:with-param>
@@ -4487,7 +4526,7 @@
 											<xsl:with-param name="BackupName">IRS1040NR/ProtectiveReturnInd</xsl:with-param>
 										</xsl:call-template>Top Left Header - Check this box for a protective return</label>:</td>
 								<td class="styLeftOverTableRowAmount" style="width:87mm;">
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Protective Return Ind">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/ProtectiveReturnInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/ProtectiveReturnInd</xsl:with-param>
@@ -4583,7 +4622,7 @@
 											<xsl:with-param name="BackupName">IRS1040NR/ProtectiveSec108iELCRecordInd</xsl:with-param>
 										</xsl:call-template>Line 21 - Protective Section 108(i) ELC Record indicator</label>:</td>
 								<td class="styLeftOverTableRowAmount" style="width:87mm;">
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Protective Sec108i ELC Record Ind">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/ProtectiveSec108iELCRecordInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/ProtectiveSec108iELCRecordInd</xsl:with-param>
@@ -4592,9 +4631,12 @@
 								</td>
 							</tr>
 						</xsl:if>
-						<xsl:call-template name="PopulateLeftoverRow">
+						<xsl:call-template name="PopulateLeftoverRowAmount">
+							<xsl:with-param name="TargetNode" select="$FormData/OtherAdjustmentsTotalAmt"/>
+							<xsl:with-param name="Desc">Line 34 - Other Adjustments Total Amt</xsl:with-param>
+						</xsl:call-template><xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="TargetNode" select="$FormData/IndiaStandardDedTaxTreatyGrp/IndiaStandardDedTaxTreatyCd"/>
-							<xsl:with-param name="Desc">Line 38 - India standard deduction tax treaty code</xsl:with-param>
+							<xsl:with-param name="Desc">Line 37 - India standard deduction tax treaty code</xsl:with-param>
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="TargetNode" select="$FormData/ScheduleQCd"/>
@@ -4682,7 +4724,7 @@
 							<xsl:with-param name="TargetNode" select="$FormData/PriorYearEarnedIncomeCd"/>
 							<xsl:with-param name="Desc">Line 64 - Prior year earned income code</xsl:with-param>
 						</xsl:call-template>
-						<xsl:call-template name="PopulateLeftoverRow">
+						<xsl:call-template name="PopulateLeftoverRowAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/PriorYearEarnedIncomeAmt"/>
 							<xsl:with-param name="Desc">Line 64 - Prior year earned income amount</xsl:with-param>
 						</xsl:call-template>
@@ -4736,7 +4778,7 @@
 											<xsl:with-param name="BackupName">IRS1040NR/PowerOfAttorneySignedByInd</xsl:with-param>
 										</xsl:call-template>Sign Here box - Power Of Attorney Signed By Indicator</label>:</td>
 								<td class="styLeftOverTableRowAmount" style="width:87mm;">
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Power Of Attorney Signed By Ind">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/PowerOfAttorneySignedByInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/PowerOfAttorneySignedByInd</xsl:with-param>
@@ -4758,7 +4800,7 @@
 											<xsl:with-param name="BackupName">IRS1040NR/PersonalRepresentativeInd</xsl:with-param>
 										</xsl:call-template>Sign Here box - Personal Representative Indicator</label>:</td>
 								<td class="styLeftOverTableRowAmount" style="width:87mm;">
-									<input type="checkbox" class="styCkboxNM">
+									<input type="checkbox" class="styCkboxNM" alt="Personal Representative Ind">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/PersonalRepresentativeInd"/>
 											<xsl:with-param name="BackupName">IRS1040NR/PersonalRepresentativeInd</xsl:with-param>
@@ -4900,7 +4942,7 @@
 											</xsl:call-template>
 										</td>
 										<td class="styTableCellText" style="text-align:center;">
-											<input type="checkbox" class="sty1040NRCkbox" style="margin:0px;">
+											<input type="checkbox" class="sty1040NRCkbox" alt="Eligible For Child Tax Credit Ind" style="margin:0px;">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
 													<xsl:with-param name="BackupName">SepIRS1040NR/Dependent<xsl:value-of select="position()"/>/ChildCreditInd</xsl:with-param>
@@ -5070,7 +5112,7 @@
 					<xsl:if test="$FormData/OtherAdjustmentsGrp">
 						<br/>
 						<br/>
-						<span class="styRepeatingDataTitle">Line 35 - Other Adjustments</span>
+						<span class="styRepeatingDataTitle">Line 34 - Other Adjustments</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">

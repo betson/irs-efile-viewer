@@ -120,7 +120,7 @@
 					</div>
 					<!-- END Part I  Title -->
 					<!-- Caution line -->
-					<div class="GenericDiv" style="width:187mm; height:4mm; padding-top:1mm;clear:left; float: left;">
+					<div class="styBB" style="width: 187mm; height: 4.5mm; border-top-width: 1px; clear:left; float: left;">
 						<div style="width: 170mm; height: 14mm;">
 								<b>Caution:</b>  If you file Form 2555 or 2555-EZ, <b>stop here;</b> you cannot claim the additional child tax credit.
 							</div>
@@ -142,7 +142,7 @@
 											</div>
 											<div class="styLNDesc" style="width: 111mm; height: 9mm;">
 						                        Enter the amount from line 8 of your Child Tax Credit and Credit for Other Dependents
-						                        Worksheet (see the instructions for Schedule 3 (Form 1040), line 52).
+						                        Worksheet (see the instructions for Form 1040, line 12a).
 				                            </div>
 											<div class="styLNDesc" style="width: 24mm; height: 8mm;">
 												<b>1040NR filers:</b>
@@ -171,8 +171,8 @@
 								<div style="width: 187mm; height: 8mm; clear: left; font-size: 7.5pt; float: left;">
 									<div class="styLNLeftNumBoxSD" style="width: 8mm; height: 8mm; padding-top: 2mm; padding-left: 3mm;">2</div>
 									<div class="styLNDesc" style="width: 141mm; padding-top: 2mm; height: 8mm;">
-										<span style="float:left;clear:none;">Enter the amount from Form 1040, line 12, if you did not prepare Schedule 3 (Form 1040); otherwise, Schedule 3 (Form 1040), line 52; or Form 1040NR, line 49.
-										<span class="styDotLn" style="float:right;padding-right:1mm;">..............</span></span>
+										<span style="float:left;clear:none;">Enter the amount from Form 1040, line 12a, or Form 1040NR, line 49.
+										<span class="styDotLn" style="float:right;padding-left:1mm;">...........</span></span>
 									</div>
 									<div class="styLNRightNumBox" style="width: 6mm; height: 8mm; padding-top: 2mm;border-bottom-width:1px;">2</div>
 									<div class="styLNAmountBox" style="width: 32mm; height: 8mm; padding-top: 2mm;border-bottom-width:1px;">
@@ -210,10 +210,10 @@
 												</xsl:call-template></span>
 												<span style="padding-left:1mm">X $1,400.</span>
 										</span><br/>
-										Enter the result
-										<span class="styDotLn" style="float:right;padding-right:10mm;">..........................</span>
+										Enter the result. If zero, <b>stop here;</b> you cannot claim this credit
+										<span class="styDotLn" style="float:right;padding-right:10mm;">...........</span>
 										<span style="width:140mm;"><b>TIP:</b> The number of children you use  for this line
-										is the same as the number of children you used for line 1 of the Child Tax Credit and Credit for Other Dependents Worksheets.</span>
+										is the same as the number of children you used for line 1 of the Child Tax Credit and Credit for Other Dependents Worksheet.</span>
 									</div>
 									<div class="styLNRightNumBox" style="width: 6mm; height: 7mm;padding-top:2.5mm;">4</div>
 									<div class="styLNAmountBox" style="width: 32mm; height: 7mm;padding-top:2.5mm;">
@@ -489,9 +489,9 @@
 											</div>
 											<div class="styLNDesc" style="width: 75mm; height: 13mm;">
 											    Enter the total of the amounts from Schedule 1 (Form <br/>
-												1040), line 27, and Schedule 4 (Form 1040), lines 58a <br/>
-												and 58b, plus any taxes that you identified using code <br/>
-												“UT” and entered on Schedule 4 (Form 1040), line 62c.
+												1040), line 27, and Schedule 4 (Form 1040), lines 58, <br/>
+											 plus any taxes that you identified using code <br/>
+												“UT” and entered on Schedule 4 (Form 1040), line 62.
 				                            </div>
 											<br/>
 											<div class="styLNDesc" style="width: 22mm; height: 11mm;">

@@ -313,13 +313,6 @@ Created new styles for the table container without the bottom border.styTableCon
 			border-style: solid;
 			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
 		}
-		.styTableCellAmtInherit {   /* Table Cell for amount with inherited width  */
-			color: black;
-			text-align: right; padding-right: 0.5mm;
-			border-style: solid;
-			border-color: black;
-			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
-		}
 		.styTableCellText {   /* Table Cell that aligns to the left for text */
 			width: 32mm;
 			color: black;
@@ -334,13 +327,6 @@ Created new styles for the table container without the bottom border.styTableCon
 			border-style: solid;
 			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
 		}
-		.styTableCellTextInherit {   /* Table Cell that aligns to the left for text with inherited width */
-			color: black;
-			text-align: left; padding-left: 0.5mm; padding-right: 0.5mm;
-			border-style: solid;
-			border-color: black;
-			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
-		}
 		.styTableCellCtr {   /* Table Cell that aligns to the center */
 			width: 32mm;
 			color: black;
@@ -353,13 +339,6 @@ Created new styles for the table container without the bottom border.styTableCon
 			color: black;
 			text-align: center;
 			border-style: solid;
-			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
-		}
-		.styTableCellCtrInherit {  /* Table cell that aligns to center with inherited width */
-			color: black;
-			text-align: center; 
-			border-style: solid;
-			border-color: black;
 			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
 		}
 		.styTableCellPad {   /* Table Cell Padding */

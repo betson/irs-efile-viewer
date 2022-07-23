@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 04/05/2018 -->
+<!-- Last Modified by Eugenia McDonald on 06/25/2020 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -67,14 +67,14 @@
 							<div class="styFST" style="height:5mm;font-size:7pt;padding-top:5mm;">
 							    <img src="{$ImagePath}/3903_Bullet.gif" width="9" height="9" alt="Bullet"/>
 							     Go to <a style="text-decoration:none;color:black;" href="http://www.irs.gov/Form3903" title="Link to IRS.gov">
-							     <i>www.irs.gov/Form3903</i></a> for the latest information.<br/>
+							     <i>www.irs.gov/Form3903</i></a> for instructions and the latest information.<br/>
 								<img src="{$ImagePath}/3903_Bullet.gif" width="9" height="9" alt="bullet image"/><span style= "width:1mm;"/>Attach to Form
-								 1040 or Form 1040NR.
+								 1040, Form 1040-SR, or Form 1040-NR.
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:20mm;">
 							<div class="styOMB" style="height:4mm;">OMB No. 1545-0074</div>
-							<div class="styTY" style="height:7mm;font-size:22pt;">2018</div>
+							<div class="styTY" style="height:7mm;font-size:22pt;">2019</div>
 							<div class="stySequence" style="height:9mm;border-bottom-width:0px;padding-left:4mm;border-left-width:0px;
 								padding-top:2mm">Attachment<br/>Sequence No. <span class="styBoldText">170</span>
 							</div>
@@ -103,9 +103,8 @@
 					<div class="styBB" style="width:187mm;height:8mm;font-size:8pt">
 						<div style="height:8mm;width:30mm;float:left;font-weight:bold;padding top:1mm"><i>Before you begin:</i></div>
 						<div style="height:6mm;width:156mm;padding-top:.0mm;padding-bottom:0mm;padding-left:2mm">
-							<img src="{$ImagePath}/3903_checkmark.gif" width="11" height="10" alt="checkmark image"/> You can deduct
-							 moving expenses only if you are a <b> Member of the Armed Forces</b> and meet certain <br/>
-							<span style="width:3.5mm"/>other requirements. See the instructions to find out if you qualify.
+							You can deduct moving expenses only if you are a <b> Member of the Armed Forces</b> and meet certain other<br/>
+							<span style="width:.5mm"/>requirements. See the instructions to find out if you qualify.
 						</div>
 					</div>
 					<!-- Begin the amount boxes -->
@@ -193,19 +192,17 @@
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="width:5mm;height:4.5mm"/>
 							<div class="styLNDesc" style="width:141mm;height:4.5mm;"/>
-							<div class="styLNRightNumBox" style="height:4.5mm;border-bottom:none;background-color:lightgrey;"/>
+							<div class="styLNRightNumBox" style="height:4.5mm;border-bottom:none;
+								background-color:lightgrey;"/>
 							<div class="styLNAmountBox" style="height:4.5mm;border-bottom:none;"/>
 						</div>
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="padding-left:1mm;width:5mm;height:24mm">5</div>
+							<div class="styLNLeftNumBox" style="padding-left:1mm;width:5mm;height:27.5mm">5</div>
 							<div class="styLNDesc" style="width:141mm;height:24mm;font-size:7.5pt">
 								Is line 3 <span style="font-weight:bold;">more than</span> line 4?
 							<p style="padding-left:3mm;">
 							<span style="float:left;">
-								<xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$FormData/MovingExpensesDeductibleInd"/>
-								</xsl:call-template>
-								<input type="checkbox" alt="Checkbox" name="Checkbox">
+								<input type="checkbox" alt="Moving Expenses Deductible Ind No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/MovingExpensesDeductibleInd"/>
 									</xsl:call-template>
@@ -213,22 +210,19 @@
 							</span>
 							<span style="height:7mm;float:left;font-weight:bold;">
 								<label>
-									<xsl:call-template name="PopulateLabel">
+									<xsl:call-template name="PopulateLabelNo">
 										<xsl:with-param name="TargetNode" select="$FormData/MovingExpensesDeductibleInd"/>
 									</xsl:call-template>
 									No.
 								</label>
 							</span> 
-							
 							<span style= "width:3mm;"/>You <span style="font-weight:bold;">cannot</span>
-							 deduct your moving expenses. If line 3 is less than line 4, subtract line 3 from<br/><span style= "width:2.8mm;"/> line 4 and include
-							 the result on Form 1040, line 7, or Form 1040NR, line 8.</p>
+								deduct your moving expenses. If line 3 is less than line 4, subtract line 3 from<br/>
+							<span style= "width:2.8mm;"/> line 4 and include	the result on Form 1040 or Form 1040-SR,
+								line 1; or Form 1040-NR, <br/> <span style= "width:2.8mm;"/> line 8.</p>
 							<p style="padding-left:3mm;padding-top:2mm;">
 							<span style="float:left;">
-								<xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$FormData/MovingExpensesDeductibleInd"/>
-								</xsl:call-template>
-								<input type="checkbox" alt="Checkbox" name="Checkbox">
+								<input type="checkbox" alt="Moving Expenses Deductible Ind Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/MovingExpensesDeductibleInd"/>
 									</xsl:call-template>
@@ -236,21 +230,20 @@
 							</span>
 							<span style="height:7mm;float:left;font-weight:bold;">
 								<label>
-									<xsl:call-template name="PopulateLabel">
+									<xsl:call-template name="PopulateLabelYes">
 										<xsl:with-param name="TargetNode" select="$FormData/MovingExpensesDeductibleInd"/>
 									</xsl:call-template>
 									Yes.
 								</label>
 							</span> 
-							
-							<span style= "width:2mm;"/>Subtract line 4 from line 3. Enter the result here and on Form 1040, line 26, or Form <br/>
-								<span style= "width:2mm;"/>1040NR, line 26. This is your
-							   <b>moving expense deduction</b><span class="styDotLn" style="float:right;">..........</span></p>
+							<span style= "width:2mm;"/>Subtract line 4 from line 3. Enter the result here and on Schedule 1 (Form 1040 or <br/> 
+								<span style= "width:2mm;"/>1040-SR), line 13; or Form 1040-NR, line 26. This is your
+							   <b>moving expense deduction</b><span class="styDotLn" style="float:right;">.</span></p>
 							</div>
-							<div class="styLNRightNumBox" style="height:20mm;border-bottom:none;background-color:lightgrey;text-align:left;"/>
-							<div class="styLNAmountBox" style="height:20mm;border-bottom:none;"/>
-							<div class="styLNRightNumBox" style="height:4mm;padding-left:1.66mm;text-align:center;border-bottom:none">5</div>
-							<div class="styLNAmountBox" style="height:4mm;border-bottom:none">
+							<div class="styLNRightNumBox" style="height:22mm;border-bottom:none;background-color:lightgrey;text-align:left;"/>
+							<div class="styLNAmountBox" style="height:22mm;border-bottom:none;"/>
+							<div class="styLNRightNumBox" style="height:6mm;padding-left:1.66mm;text-align:center;border-bottom:none">5</div>
+							<div class="styLNAmountBox" style="height:6mm;border-bottom:none">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/MovingDeductionAmt"/>
 								</xsl:call-template>
@@ -266,7 +259,7 @@
 						<div style="float:right">
 						Cat. No. 12490K
 						<span style="width:15mm"/>
-						Form <b style="font-size:9pt">3903</b> (2018)
+						Form <b style="font-size:9pt">3903</b> (2019)
 						</div>
 					</div>
 					<br/><br/><br/><br/><br/><br/><br/><br/><br/>

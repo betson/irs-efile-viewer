@@ -199,7 +199,7 @@
           <!-- Header -->
           <div style="width:187mm;height:11.5mm;" class="styBB">
             <!-- Content -->
-            <div class="styPartName" style="width:12mm;height:4mm;font-size:8.5pt;">Part l</div>
+            <div class="styPartName" style="width:12mm;height:4mm;font-size:8.5pt;">Part I</div>
             <div class="styPartDesc" style="padding-left:4mm;font-weight:normal;font-size:8.5pt;">
               <b>Archer MSA Contributions and Deductions.</b> See instructions before completing this part. If you are filing jointly and both you and your spouse have 
               high deductible health plans with self-only coverage, complete a separate Part I for each spouse.
@@ -300,10 +300,10 @@
               <div class="styIRS8853LNDesc" style="width:144mm;height:100%;padding:.75mm 0px 0px 0px;">
                 <div class="styIRS8853LNDesc" style="width:auto;height:100%;">
                   <b>Archer MSA deduction.</b> Enter the <b>smallest</b> of line 2, 3, or 4 here. Also include this amount on<br/>
-                  Form 1040, line 36, or Form 1040NR, line 35. On the dotted line next to Form 1040, line 36, or<br/>
-                  Form 1040NR, line 35, enter &#8220;MSA&#8221; and the amount
-                  <!--Dotted Line-->
- 				<span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1.5mm;">..................</span>
+				  Schedule 1 (Form 1040), line 36, or Form 1040NR, line 34. On the dotted line next to Schedule 1<br/>
+				 (Form 1040), line 36, or Form 1040NR, line 34, enter &#8220;MSA&#8221; and the amount                
+				<!--Dotted Line-->
+ 				<span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1.5mm;">..........</span>
                 </div>
               </div>
               <xsl:call-template name="CreateBox">
@@ -328,7 +328,7 @@
           <!-- Header -->
           <div style="width:187mm;" class="styBB">
             <!-- Content -->
-            <div class="styPartName" style="width:13mm;height:4mm;font-size:8.5pt;">Part ll</div>
+            <div class="styPartName" style="width:13mm;height:4mm;font-size:8.5pt;">Part II</div>
             <div class="styPartDesc" style="padding-left:4mm;font-size:8.5pt;">
               Archer MSA Distributions
             </div>
@@ -357,7 +357,7 @@
                 <div class="styIRS8853LNDesc" style="width:auto;padding-top:.5mm;">
                   Distributions included on line 6a that you rolled over to another Archer MSA or a health savings<br/>
                   account. Also include any excess contributions (and the earnings on those excess contributions)<br/>
-                  included on line 6a that were withdrawn by the due date of your return (see instructions)
+                  included on line 6a that were withdrawn by the due date of your return. See instructions.
                   <!--Dotted Line-->
      			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1.5mm;">......</span>
                 </div>
@@ -409,10 +409,10 @@
               <div class="styIRS8853LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8853LNDesc" style="width:auto;height:100%;">
                   <b>Taxable Archer MSA distributions.</b> Subtract line 7 from line 6c. If zero or less, enter -0-. Also<br/>
-                  include this amount in the total on Form 1040, line 21, or Form 1040NR, line 21. On the dotted<br/>
-                  line next to line 21, enter &#8220;MSA&#8221; and the amount
+					include this amount in the total on Schedule 1 (Form 1040), line 21, or Form 1040NR, line 21. On<br/>
+					the dotted line next to Schedule 1 (Form 1040), line 21, enter &#8220;MSA&#8221; and the amount
                   <!--Dotted Line-->
-     			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1.5mm;">...................</span>
+     			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1.5mm;">.......</span>
                 </div>
               </div>
               <xsl:call-template name="CreateBox">
@@ -463,11 +463,11 @@
               <div class="styIRS8853LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8853LNDesc" style="width:auto;height:100%;">
                   <b>Additional 20% tax</b> (see instructions). Enter 20% (0.20) of the distributions included on line 8 that<br/>
-                  are subject to the additional 20% tax. Also include this amount in the total on Form 1040, line 62, or <br/>
-                  Form 1040NR, line 60. Check box c on Form 1040, line 62, or box b on Form 1040NR, line 60. Enter<br/>
-                  "MSA" and the amount on the line next to the box
+						are subject to the additional 20% tax. Also include this amount in the total on Schedule 4 (Form<br/>
+						1040), line 62, or Form 1040NR, line 60. Check box c on Schedule 4 (Form 1040), line 62, or box b<br/>
+						on Form 1040NR, line 60. Enter “MSA” and the amount on the line next to the box
                   <!--Dotted Line-->
-       			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1mm;">..................</span>
+       			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1mm;">........</span>
                 </div>
               </div>
               <xsl:call-template name="CreateBox">
@@ -494,8 +494,8 @@
             </div>
             <div style="padding-left:3mm;width:170mm;font-size:8.5pt;">
               <b>Medicare Advantage MSA Distributions.</b> If you are filing jointly and both you and your spouse received
-              distributions in 2018 from a Medicare Advantage MSA, complete a separate Section B for each spouse (see
-              instructions). 
+              distributions in 2018 from a Medicare Advantage MSA, complete a separate Section B for each spouse. See
+              instructions. 
             </div>
           </div>
           <!-- Body -->
@@ -540,11 +540,11 @@
               <div class="styIRS8853LNLeftNumBox" style="padding-top:.5mm;">12</div>
               <div class="styIRS8853LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8853LNDesc" style="width:auto;height:100%;">
-                  <b>Taxable Medicare Advantage MSA distributions.</b> Subtract line 11 from line 10. If zero or less,<br/>
-                  enter -0-. Also include this amount in the total on Form 1040, line 21, or Form 1040NR, line 21.<br/>
-                  On the dotted line next to line 21, enter &#8220;Med MSA&#8221; and the amount
+                  <b>Taxable Medicare Advantage MSA distributions.</b>Subtract line 11 from line 10. If zero or less,<br/>
+					enter -0-. Also include this amount in the total on Schedule 1 (Form 1040), line 21, or Form1040NR,<br/>
+					line 21. On the dotted line next to Schedule 1 (Form 1040), line 21, enter “Med MSA” and the amount
                   <!--Dotted Line-->
-          			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1mm;">.............</span>
+          			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1mm;">..</span>
               </div>
               </div>
               <xsl:call-template name="CreateBox">
@@ -590,22 +590,22 @@
               </xsl:call-template>
             </div>
             <!-- (Line 13b) ////////////////////////////////////////////////////-->
-            <div class="styIRS8853LineItem" style="height:16mm;">
+            <div class="styIRS8853LineItem" style="height:17mm;">
               <div class="styIRS8853LNLeftNumBox" style="padding-top:.5mm;padding-right:0px;">b</div>
               <div class="styIRS8853LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8853LNDesc" style="width:auto;height:100%;">
-                  <b>Additional 50% tax</b>. Enter 50% (0.50) of the distributions included on line 12 that are subject to <br/>
-                  the additional 50% tax. See instructions for the amount to enter if you had a Medicare Advantage MSA<br/>
-                  at the end of 2017. Also include this amount in the total on Form 1040, line 62, or Form 1040NR, line 60.<br/>
-                  Check box c on Form 1040, line 62, or box b on Form 1040NR, line 60. Enter "Med MSA" and the amount<br/>
-                  on the line next to the box
+                  <b>Additional 50% tax</b>. Enter 50% (0.50) of the distributions included on line 12 that are subject to<br/>
+the additional 50% tax. See instructions for the amount to enter if you had a Medicare Advantage<br/>  
+MSA at the end of 2017. Also include this amount in the total on Schedule 4 (Form 1040), line 62,<br/> 
+ or Form 1040NR, line 60. Check box c on Schedule 4 (Form 1040), line 62, or box b on Form<br/> 
+ 1040NR, line 60. Enter “Med MSA” and the amount on the line next to the box 
                   <!--Dotted Line-->
-        			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1mm;">..........................</span>
+        			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1mm;">..........</span>
                 </div>
               </div>
               <xsl:call-template name="CreateBox">
-                <xsl:with-param name="AmountBoxStyle">height:12mm;border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                <xsl:with-param name="NumberBoxStyle">height:12mm;border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+                <xsl:with-param name="AmountBoxStyle">height:13mm;border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+                <xsl:with-param name="NumberBoxStyle">height:13mm;border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
               </xsl:call-template>
               <xsl:call-template name="CreateBox">
                 <xsl:with-param name="TargetNode" select="$Form8853Data/ArcherMSAAndMedcrAdvntgMSAGrp/MedicareMSAAddnlDistriTaxAmt"/>
@@ -705,7 +705,7 @@
                       <xsl:with-param name="BackupName">Form8853DataForm8853LTCMultipleCopiesInd</xsl:with-param>
                     </xsl:call-template>
                   </label>
-                  <input class="styCkbox" type="checkbox" alt="More than on Section C attached" style="width:3mm;">
+                  <input class="styCkbox" type="checkbox" alt="More than one Section C attached" style="width:3mm;">
                     <xsl:call-template name="PopulateCheckbox">
                       <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/Form8853LTCMultipleCopiesInd"/>
                       <xsl:with-param name="BackupName">Form8853DataForm8853LTCMultipleCopiesInd</xsl:with-param>
@@ -751,7 +751,7 @@
             <!-- (Line 15) ////////////////////////////////////////////////////-->
             <div class="styIRS8853LineItem" style="height:10.5mm;">
               <div class="styIRS8853LNLeftNumBox" style="padding-top:.5mm;">15</div>
-              <div class="styIRS8853LNDesc" style="width:153mm;">
+              <div class="styIRS8853LNDesc" style="width:140mm;">
                 In 2018, did anyone other than you receive payments on a per diem or other periodic basis under a<br/>
                 qualified LTC insurance contract covering the insured or receive accelerated death benefits under a life<br/>
                 insurance policy covering the insured?
@@ -765,15 +765,15 @@
                     <xsl:otherwise>
                     </xsl:otherwise>
                   </xsl:choose>
-        			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1mm;">........................</span>
+        			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1mm;">....................</span>
               </div>
-              <div class="styIRS8853LNDesc" style="width:28mm;padding-top:5.5mm;">
+              <div class="styIRS8853LNDesc" style="width:40mm;padding-top:5.5mm;">
                 <!-- ++++++++++++++ Yes Checkbox +++++++++++++ -->
                 <span>
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
                   </xsl:call-template>
-                  <input type="checkbox" class="styCkbox" alt="Yes">
+                  <input type="checkbox" class="styCkbox" alt="LTCInsuranceOtherPayment Yes">
                     <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd">
                       <xsl:call-template name="PopulateYesCheckbox">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
@@ -801,7 +801,7 @@
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
                   </xsl:call-template>
-                  <input type="checkbox" class="styCkbox" alt="No">
+                  <input type="checkbox" class="styCkbox" alt="LTCInsuranceOtherPayment No">
                     <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd">
                       <xsl:call-template name="PopulateNoCheckbox">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
@@ -829,17 +829,17 @@
             <!-- (Line 16) ////////////////////////////////////////////////////-->
             <div class="styIRS8853LineItem" style="height:11.5mm;">
               <div class="styIRS8853LNLeftNumBox" style="padding-top:.5mm;" >16</div>
-              <div class="styIRS8853LNDesc" style="width:153mm">
+              <div class="styIRS8853LNDesc" style="width:140mm">
                 Was the insured a terminally ill individual?
-        			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm -1mm;">........................</span>
+        			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm -1mm;">....................</span>
               </div>
-              <div class="styIRS8853LNDesc" style="width:28mm;padding:0mm 0mm 1mm 3mm;">
+              <div class="styIRS8853LNDesc" style="width:40mm;padding:0mm 0mm 1mm 3mm;">
                 <!-- ++++++++++++++ Yes Checkbox +++++++++++++ -->
                 <span>
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
                   </xsl:call-template>
-                  <input type="checkbox" class="styCkbox" alt="Yes">
+                  <input type="checkbox" class="styCkbox" alt="LTCInsuredTerminallyIll Yes">
                     <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd">
                       <xsl:call-template name="PopulateYesCheckbox">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
@@ -867,7 +867,7 @@
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
                   </xsl:call-template>
-                  <input type="checkbox" class="styCkbox" alt="No">
+                  <input type="checkbox" class="styCkbox" alt="LTCInsuredTerminallyIll No">
                     <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd">
                       <xsl:call-template name="PopulateNoCheckbox">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
@@ -890,10 +890,11 @@
                   <span class="styBoldText">No</span>
                 </label>
                 <br/>
-			    <div class="styIRS8853LNDesc" style="width:181mm;padding:0mm 0mm 1mm 3mm;float:right;clear:none;">              
-					 <b>Note:</b> If &#8220;Yes&#8221; and the <b>only</b> payments you received in 2018 were accelerated death benefits that were paid to you<br/> because the insured was terminally ill, skip lines 17 through 25 and enter -0- on line 26.              
-				</div>                                
+                             
               </div>
+<div class="styIRS8853LNDesc" style="width:181mm;padding:0mm 0mm 1mm 3mm;float:right;clear:none;">              
+					 <b>Note:</b> If &#8220;Yes&#8221; and the <b>only</b> payments you received in 2018 were accelerated death benefits that were paid to you<br/> because the insured was terminally ill, skip lines 17 through 25 and enter -0- on line 26.              
+				</div>   
             </div>
             <!-- (Line 17) ////////////////////////////////////////////////////-->
             <div class="styIRS8853LineItem" style="height:10.5mm;">
@@ -926,9 +927,9 @@
                 <div class="styIRS8853LNDesc" style="width:auto;height:100%;">
                   <b>Caution: Don't</b> use lines 18 through 26 to figure the taxable amount of benefits paid under an<br/>
                   LTC insurance contract that isn't a <b>qualified</b> LTC insurance contract. Instead, if the benefits aren't<br/>
-                  excludable from your income (for example, if the benefits aren't paid for personal injuries or<br/>
-                  sickness through accident or health insurance), report the amount not excludable as income on<br/>
-                  Form 1040, line 21.
+					excludable from your income (for example, if the benefits aren't paid for personal injuries or<br/>
+					sickness through accident or health insurance), report the amount not excludable as income on<br/>
+					Schedule 1 (Form 1040), line 21.
                 </div>
               </div>
               <xsl:call-template name="CreateBox">
@@ -956,7 +957,7 @@
               <div class="styIRS8853LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8853LNDesc" style="width:auto;height:100%;">
                   Accelerated death benefits received on a per diem or other periodic basis. Don't include any<br/>
-                  amounts you received because the insured was terminally ill (see instructions)
+                  amounts you received because the insured was terminally ill. See instructions
                   <!--Dotted Line-->
          			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1mm;">..........</span>
                 </div>
@@ -1192,10 +1193,10 @@
               <div class="styIRS8853LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8853LNDesc" style="width:auto;height:100%;">
                   <b>Taxable payments.</b> Subtract line 25 from line 20. If zero or less, enter -0-. Also include this<br/>
-                  amount in the total on Form 1040, line 21. On the dotted line next to line 21, enter &#8220;LTC&#8221; and the<br/>
-                  <span style="float:left;clear:none;padding-right:0px;">amount</span>
+						amount in the total on Schedule 1 (Form 1040), line 21. On the dotted line next to Schedule 1<br/>
+						(Form 1040), line 21, enter “LTC” and the amount
                   <!--Dotted Line-->
-          			<span class="styDotLn" style="float:none;clear:none;padding:.25mm 0mm 0mm 1mm;">................................</span>
+          			<span class="styDotLn" style="float:none;clear:none;padding:.25mm 0mm 0mm 1mm;">..................</span>
                 </div>
               </div>
               <xsl:call-template name="CreateBox">

@@ -1286,7 +1286,11 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
 							</xsl:when>
 							<xsl:when test="$RtnHdrData/Filer/PersonFullName">
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PersonFullName"/>
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PersonFullName/PersonFirstNm"/>
+								</xsl:call-template>
+								<xsl:text> </xsl:text>
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PersonFullName/PersonLastNm"/>
 								</xsl:call-template>
 							</xsl:when>
 							<xsl:when test="$RtnHdrData/Filer/PrimaryNm">
@@ -2702,10 +2706,6 @@ Log: - Mike Farrell - This is a Modification of the original by Charles Moore
 </xsl:template>
 	
 	
-	
-	
-	
-	
 	<!--
 ***************************************************************************************************************************************************************
 Name:           LinkToLeftoverBooleanDataTableInline
@@ -2755,8 +2755,6 @@ Log:
 		<xsl:param name="Desc"/>
 		<xsl:param name="TargetNode"/>
 		<xsl:param name="TabOrder">1</xsl:param>
-		<!-- do nothing if for printing -->
-		<!--xsl:if test="not($Print) or $Print=''" Commented to print pen images Chris Jung 11/24/04-->
 		<xsl:if test="($TargetNode or $TargetNode!='')">
 			<xsl:choose>
 				<xsl:when test="count($TargetNode) &gt; 1">
@@ -2764,12 +2762,11 @@ Log:
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:if test="($TargetNode='X')">
-						<img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: Yes" title="{$Desc}: Yes" TabIndex="{$TabOrder}" style="cursor:pointer;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );" onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+						<img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: Checked" title="{$Desc}: Checked" TabIndex="{$TabOrder}" style="cursor:pointer;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );" onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
 					</xsl:if>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:if>
-		<!--/xsl:if-->
 	</xsl:template>
 	<!--
 ***************************************************************************************************************************************************************
@@ -3051,6 +3048,36 @@ Log:
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$TargetNode"/>
 					</xsl:call-template>
+				</td>
+			</tr>
+		</xsl:if>
+	</xsl:template>
+	<!--
+***************************************************************************************************************************************************************
+Name:           PopulateLeftoverRowCheckbox
+Description:    Template for displaying leftover table rows with data that is a checkbox. Displays the word "Checked" if value X
+Req Param:  
+Opt Param:   
+Called By:      Stylesheets
+Calls:          PopulateSpan
+Log:
+***************************************************************************************************************************************************************
+-->
+	<xsl:template name="PopulateLeftoverRowCheckbox">
+		<xsl:param name="Desc"/>
+		<xsl:param name="TargetNode"/>
+		<xsl:param name="DescWidth">100</xsl:param>
+		<xsl:param name="AmountWidth" select="187 - $DescWidth"/>
+		<xsl:if test="($TargetNode='X')">
+			<tr>
+				<td class="styLeftOverTableRowDesc" style="width:{$DescWidth}mm;" scope="row">
+					<xsl:value-of select="$Desc"/>:
+				</td>
+				<td class="styLeftOverTableRowAmount" style="width:{$AmountWidth}mm;">
+					<span>
+						<xsl:call-template name="PopulateSpan">
+							<xsl:with-param name="TargetNode" select="$TargetNode"/>
+						</xsl:call-template>Checked</span>
 				</td>
 			</tr>
 		</xsl:if>
