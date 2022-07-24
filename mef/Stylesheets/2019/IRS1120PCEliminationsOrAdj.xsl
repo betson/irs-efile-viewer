@@ -982,7 +982,7 @@
 					<div class="styDotLn" style="float:right;padding-right:1mm;">....</div> 
 				</div>
 				<div class="styLNRightNumBox" style="height:4.5mm;padding-top:1mm;">15b</div>
-				<div class="styLNAmountBox" style="height:4.5mm;border-right-width:1px;padding-top:1mm;">
+				<div class="styLNAmountBox" style="height:4.5mm;border-right-width:1px;padding-top:1mm;background-color:lightgrey;">
 <!--
 				  <xsl:call-template name="PopulateAmount">
 					<xsl:with-param name="TargetNode" select="$Form1120PCData/PriorYearEstimatedTaxPymtAmt"/>
@@ -1900,7 +1900,7 @@
 			</div>
 			<div style="float:right;clear:none;">
 			  <div class="styLNRightNumBox" style="height:4.5mm;">12</div>
-			  <div class="styLNAmountBox" style="height:4.5mm;">
+			  <div class="styLNAmountBox" style="height:4.5mm;background-color:lightgrey;">
 <!--
 				<xsl:call-template name="PopulateAmount">
 				  <xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleA/SpecialLossDscntAcctIncomeAmt"/>
@@ -2646,7 +2646,7 @@
 		  <div style="float:left;clear:none;">
 			<div class="styLNLeftNumBox" style="height:8.5mm;padding-left: 2.25mm;padding-top:4mm;">1a</div>
 			<div class="styLNDesc" style="width:68mm;height:8.5mm;padding-top:4mm;">
-			  <span style="float:left">Interest (excluding tax-exempt interest)</span>
+			  <span style="float:left">Interest (including tax-exempt interest)</span>
 			  <!--Dotted Line-->
 			  <div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
 			</div>

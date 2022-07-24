@@ -405,7 +405,7 @@
 						<div class="styLNDesc" style="width:130mm;height:6mm;padding-left:2mm;padding-top:2mm;">
 				                          Total. Add lines 5a, 5b, and 5c
                                        <!--Dotted Line-->
-								<span class="styDotLn" style="float:none;padding-left:2mm">...............</span>
+								<span class="styDotLn" style="float:none;padding-left:2mm">...................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:6mm;padding-top:2mm">5d</div>
 						<div class="styLNAmountBox" style=" height:6mm;padding-top:2mm">
@@ -500,7 +500,7 @@
 						<div class="styLNDesc" style="width:130mm;padding-left:2mm">
 				                          Total. Add lines 6a and 6b
                         <!--Dotted Line-->
-								<span class="styDotLn" style="float:none;padding-left:2mm">...................</span>
+								<span class="styDotLn" style="float:none;padding-left:2mm">.....................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.5mm;width:8mm;">6c</div>
 						<div class="styLNAmountBox" style="height:4.5mm;">
@@ -566,7 +566,7 @@
 								<div class="styLNLeftNumBox" style="height:5mm;padding-top:1mm;padding-left:2mm">8</div>
 								<div class="styLNDesc" style="height:5mm;width:130mm;padding-top:1mm;padding-left:2mm">
 								Reserved for future use
-								<span class="styDotLn" style="float:none;padding-left:2mm">....................</span>
+								<span class="styDotLn" style="float:none;padding-left:2mm">......................</span>
 <!--                                          Qualifying therapeutic discovery project credit (see instructions):
                                   <span style="float:left;">Qualified investment in a qualifying therapeutic discovery project</span>
 									<span style="float:left;">
@@ -672,7 +672,7 @@
   									<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form3468Data/RehabilitationExpendElectInd"/>
 									</xsl:call-template>
-								<span class="styDotLn"	style="float:none">..................</span>
+								<span class="styDotLn"	style="float:none">.......................</span>
 								<img src="{$ImagePath}/3468_Bullet.gif" style="float" alt="right arrow"/>
 								<span style="width:2mm;"/>
 								<input type="checkbox" alt="RehabilitationExpendituresUsed" class="styCkbox">
@@ -846,16 +846,16 @@
 					<!-- End of Line 11f -->
 					<!-- Lines 11e and 11f above were removed 160503 re UWR 183333.  Lines below were re-lettered. gdy-->
 					<!-- Line 11e -->
-					<div  style="width:187mm;font-size:8pt">
+					<div  style="width:187mm;font-size:8pt;height:8mm;">
 						<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="text-align:right;">e</div>
 							<div class="styLNDesc" style="width:130mm;padding-left:2mm;">
-                                Pre-1936 buildings under the transition rule
+                                Pre-1936 buildings under the transition rule (see instructions)
   									<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form3468Data/Pre1936BuildingCreditAmt"/>
 									</xsl:call-template>
-								<span class="styDotLn" style="float:none;">...</span>
-								<span style="float:none;font-size:6pt">
+								<span style="float:none;font-size:6pt">								
+								<span class="styDotLn" style="float:none;">......................</span>
 									<span style="width:2mm;border-botom-width:0px;padding-left:2mm; ">$</span>
 									<span class="styUnderlineAmount" style="width:22mm; float:none;">
 										<xsl:call-template name="PopulateAmount">
@@ -866,8 +866,8 @@
 								</span>
 							</div>
 							<div style="float:left;clear:none;">						
-								<div class="styLNRightNumBox" style="height:auto;padding-top:2mm;">11e</div>
-								<div class="styLNAmountBox" style="height:auto;padding-top:2mm;">
+								<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">11e</div>
+								<div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form3468Data/Pre1936BuildingCreditAmt"/>
 									</xsl:call-template>
@@ -943,16 +943,16 @@
 					<!-- End of Line 11i -->
 					<!-- Lines 11h and 11i above were removed 160503 re UWR 183333.  Lines after were re-lettered. gdy-->
 					<!-- Line 11f -->
-					<div  style="width:187mm;font-size:8pt">
+					<div  style="width:187mm;height:8mm;font-size:8pt">
 						<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="text-align:right;">f</div>
 							<div class="styLNDesc" style="width:130mm;padding-left:2mm;">
-                                Certified historic structures under the transition rule.
+                                Certified historic structures under the transition rule (see instructions).
   									<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form3468Data/CertHistoricStructureCrAmt"/>
 									</xsl:call-template>
-								<!--<span class="styDotLn" style="float:none;">...</span>-->
 								<span style="float:none;font-size:6pt">
+								<span class="styDotLn" style="float:none;">......................</span>
 									<span style="width:2mm;border-botom-width:0px;padding-left:2mm; ">$</span>
 									<span class="styUnderlineAmount" style="width:22mm; float:none;">
 										<xsl:call-template name="PopulateAmount">
@@ -963,8 +963,8 @@
 								</span>
 							</div>
 							<div style="float:left;clear:none;">						
-								<div class="styLNRightNumBox" style="height:auto;padding-top:2mm;">11f</div>
-								<div class="styLNAmountBox" style="height:auto;padding-top:2mm;">
+								<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">11f</div>
+								<div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form3468Data/CertHistoricStructureCrAmt"/>
 									</xsl:call-template>
@@ -974,13 +974,6 @@
 					</div>
 					<!-- End of Line 11f -->
 					<!-- Note -->
-					<div style="width:187mm;font-size:8pt">
-						<div class="styLNLeftNumBox" style="padding-top:0mm;"/>
-						<div class="styLNDesc" style="width:130mm;padding-top:0mm">
-                            For properties identified on line 11f or 11g, complete lines 11h and 11i.</div>
-						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4mm"/>
-						<div class="styLNAmountBox" style="border-bottom-width: 0px; height: 4mm"/>
-					</div>
 					<!-- End of note -->
 					<!-- Line 11g -->
 					<div  style="width:187mm;font-size:8pt">
@@ -996,7 +989,7 @@
 									<span style="width:2mm;border-botom-width:0px;padding-left:2mm; ">$</span>
 									<span class="styUnderlineAmount" style="width:22mm; float:none;">
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form3468Data/OtherCertifiedHistStrctrCrAmt"/>
+											<xsl:with-param name="TargetNode" select="$Form3468Data/OtherCertifiedHistStrctrAmt"/>
 										</xsl:call-template>
 									</span>
 											<span style="width:15mm;">x 4% (0.04)</span>
@@ -1009,7 +1002,7 @@
 								<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">11g</div>
 								<div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$Form3468Data/OtherCertifiedHistStrctrAmt"/>
+										<xsl:with-param name="TargetNode" select="$Form3468Data/OtherCertifiedHistStrctrCrAmt"/>
 									</xsl:call-template>
 								</div>						
 							</div>
@@ -1025,6 +1018,13 @@
 						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4mm"/>
 						<div class="styLNAmountBox" style="border-bottom-width: 0px; height: 4mm"/>
 						<div class="styLNDesc" style="width:138mm;padding-top:0mm"/>
+						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4mm"/>
+						<div class="styLNAmountBox" style="border-bottom-width: 0px; height: 4mm"/>
+					</div>
+					<div style="width:187mm;font-size:8pt">
+						<div class="styLNLeftNumBox" style="padding-top:0mm;"/>
+						<div class="styLNDesc" style="width:130mm;padding-top:0mm">
+                            For properties identified on line 11f or 11g, complete lines 11h and 11i.</div>
 						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4mm"/>
 						<div class="styLNAmountBox" style="border-bottom-width: 0px; height: 4mm"/>
 					</div>
@@ -1166,11 +1166,10 @@
 								<div class="styLNLeftNumBox" style="text-align:right;">b</div>
 								<div class="styLNDesc" style="width:130mm;padding-left:2mm;">
                                          Basis of property using solar illumination or solar energy placed in service during the tax
-                                         year that was acquired after December 31, 2005, and before January 1, 2020 and the basis attributable to construction,
-                                         reconstruction, or erection by the taxpayer after December 31, 2005, and before January 1, 2020 <br/>
+                                         year that is attributable to periods after December 31, 2005 and the construction of which began before 2020
 										 (see instructions)  
                                         <!--Dotted Line-->
-										<span class="styDotLn" style="float:none;padding-left:2mm">.........</span>
+										<span class="styDotLn" style="float:none;padding-left:2mm">....</span>
 									<span style="float:right; font-size:6pt;padding-right:4mm">								
 									<span style="width:2mm;float:left">$</span>
 									<span class="styUnderlineAmount" style="width:22mm;text-align:right;padding-bottom:0mm">
@@ -1185,8 +1184,8 @@
 						</div>
 						<div style="float:left;clear:none;">
 							<div style="float:left;">
-								<div class="styLNRightNumBox" style="height:18mm;padding-top:14mm;">12b</div>
-								<div class="styLNAmountBox" style="height:18mm;padding-top:14mm;">
+								<div class="styLNRightNumBox" style="height:11mm;padding-top:7mm;">12b</div>
+								<div class="styLNAmountBox" style="height:11mm;padding-top:7mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form3468Data/CalcPropSolarIllmntnOrEgyAmt"/>
 									</xsl:call-template>
@@ -1201,11 +1200,10 @@
 							<div style="width:138mm;">
 								<div class="styLNLeftNumBox" style="text-align:right;">c</div>
 								<div class="styLNDesc" style="width:130mm;padding-left:2mm;">
-                                        Basis of property using solar illumination or solar energy placed in service during the tax year that was acquired during 2020, 
-										and the basis attributable to construction, reconstruction, or erection by the taxpayer during 2020 <br/>
-										(see instructions)
+                                        Basis of property using solar illumination or solar energy placed in service during the tax year and the construction of which began in
+										2020 (see instructions)
                                         <!--Dotted Line-->
-										<span class="styDotLn" style="float:none;padding-left:2mm">..........</span>
+										<span class="styDotLn" style="float:none;padding-left:2mm">...................</span>
 									<span style="float:right; font-size:6pt;padding-right:4mm">								
 									<span style="width:2mm;float:left">$</span>
 									<span class="styUnderlineAmount" style="width:22mm;text-align:right;padding-bottom:0mm">
@@ -1220,8 +1218,8 @@
 						</div>
 						<div style="float:left;clear:none;">
 							<div style="float:left;">
-								<div class="styLNRightNumBox" style="height:16mm;padding-top:12mm;">12c</div>
-								<div class="styLNAmountBox" style="height:16mm;padding-top:12mm;">
+								<div class="styLNRightNumBox" style="height:11mm;padding-top:7mm;">12c</div>
+								<div class="styLNAmountBox" style="height:11mm;padding-top:7mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form3468Data/CalcPropSolarIllmntnEgyDurAmt"/>
 									</xsl:call-template>
@@ -1234,7 +1232,7 @@
 					<div style="width:187mm;font-size:8pt">
 						<!--<div class="styLNLeftNumBox" style="width:9.5mm;height:4.5mm; padding-left:1mm; "/>-->
 						<div class="styLNDesc" style="width:138mm;height:4.5mm;padding-left:7.5mm;">
-                            Qualified fuel cell property: 
+                            Qualified fuel cell property (see instructions): 
                         </div>
 						<div class="styLNRightNumBoxNBB" style="height:4.5mm;background-color:lightgrey"/>
 						<div class="styLNAmountBoxNBB" style="height:4.5mm"/>
@@ -1272,7 +1270,7 @@
 						<div class="styLNDesc" style="width:130mm;padding-left:2mm">
                                   Applicable kilowatt capacity of property on line 12d (see instructions)
 							<!--Dotted Line-->
-							<span class="styDotLn" style="float:none;padding-left:2mm">................</span>							
+							<span class="styDotLn" style="float:none;padding-left:2mm">...................</span>							
 							<span style="float:right;font-size:6pt">
 							<img src="{$ImagePath}/3468_Bullet.gif" style="float:left" alt="right arrow"/>
 							<span class="styUnderlineAmount" style=";width:26mm;text-align:right;padding-bottom:0mm">
@@ -1311,9 +1309,9 @@
 					<div style="width:187mm;font-size:8pt">
 						<div class="styLNLeftNumBox" style="text-align:right;">g</div>
 						<div class="styLNDesc" style="width:130mm;padding-left:2mm;">
-                                  Basis of property placed in service during the tax year that was acquired after October 3, 2008, and before January 1, 2020
-                                  and the basis attributable to construction, reconstruction, or erection by the taxpayer after October 3, 2008, and before January 1, 2020 
-							<span class="styDotLn" style="float:none;padding-left:2mm">.........</span>
+                                  Basis of property placed in service during the tax year that is attributable to periods after October 3, 2008 and the construction of which 	
+									began before 2020.
+							<span class="styDotLn" style="float:none;padding-left:2mm">.................</span>
 						<span style="float:right; font-size:6pt">							
 							<span style="width:1mm;float:left;;">$</span>
 							<span class="styUnderlineAmount" style="width:22mm;padding-bottom:0mm">
@@ -1324,8 +1322,8 @@
 							<span style="width:16mm;padding-top:1mm">x 30% (0.30)</span>
 						</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:15mm;padding-top:11mm;">12g</div>
-						<div class="styLNAmountBox" style="height:15mm;padding-top:11mm;">
+						<div class="styLNRightNumBox" style="height:11mm;padding-top:7mm;">12g</div>
+						<div class="styLNAmountBox" style="height:11mm;padding-top:7mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form3468Data/CalcBssQlfyFuelCellPropAcqAmt"/>
 							</xsl:call-template>
@@ -1338,7 +1336,7 @@
 						<div class="styLNDesc" style="width:130mm;padding-left:2mm">
                                   Applicable kilowatt capacity of property on line 12g (see instuctions)
 							<!--Dotted Line-->
-								<span class="styDotLn" style="float:left;padding-left:2mm">.................</span>
+								<span class="styDotLn" style="float:left;padding-left:2mm">...................</span>
 							<span style="float:right; font-size:6pt">
 								<img src="{$ImagePath}/3468_Bullet.gif" style="float:left" alt="right arrow"/>
 								<span class="styUnderlineAmount" style="width:26mm;text-align:right;padding-bottom:0mm">
@@ -1377,9 +1375,8 @@
 					<div style="width:187mm;font-size:8pt">
 						<div class="styLNLeftNumBox" style="text-align:right;">j</div>
 						<div class="styLNDesc" style="width:130mm;padding-left:2mm;">
-                                  Basis of property placed in service during the tax year that was acquired during 2020, and the basis attributable to construction,
-								  reconstruction, or erection by the taxpayer during 2020
-							<span class="styDotLn" style="float:none;padding-left:2mm">.........</span>
+                                  Basis of property placed in service during the tax year and the construction of which began in 2020.
+							<span class="styDotLn" style="float:none;padding-left:2mm">...............</span>
 						<span style="float:right; font-size:6pt">							
 							<span style="width:1mm;float:left;;">$</span>
 							<span class="styUnderlineAmount" style="width:22mm;padding-bottom:0mm">
@@ -1390,8 +1387,8 @@
 							<span style="width:16mm;padding-top:1mm">x 26% (0.26)</span>
 						</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:12mm;padding-top:8mm;">12j</div>
-						<div class="styLNAmountBox" style="height:12mm;padding-top:8mm;">
+						<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">12j</div>
+						<div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form3468Data/CalcBssQlfyFuelCellPropDurAmt"/>
 							</xsl:call-template>
@@ -1404,7 +1401,7 @@
 						<div class="styLNDesc" style="width:130mm;padding-left:2mm">
                                   Applicable kilowatt capacity of property on line 12j (see instructions)
 							<!--Dotted Line-->
-								<span class="styDotLn" style="float:left;padding-left:2mm">.................</span>
+								<span class="styDotLn" style="float:left;padding-left:2mm">...................</span>
 							<span style="float:right; font-size:6pt">
 								<img src="{$ImagePath}/3468_Bullet.gif" style="float:left" alt="right arrow"/>
 								<span class="styUnderlineAmount" style="width:26mm;text-align:right;padding-bottom:0mm">
@@ -1466,7 +1463,7 @@
 					<div style="width:187mm;font-size:8pt">
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left:3mm;"/>
 						<div class="styLNDesc" style="width:130mm;">
-                                 Qualified microturbine property:	
+                                 Qualified microturbine property (see instructions):	
                         </div>
 						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:5mm"/>
 						<div class="styLNAmountBox" style="border-bottom-width: 0px; height:5mm"/>
@@ -1515,7 +1512,7 @@
 							<span style="float:left;">
                                   Kilowatt capacity of property on line 12m
                                               <!--Dotted Line-->
-									<span class="styDotLn" style="float:none;padding-left:2mm">.....</span>
+									<span class="styDotLn" style="float:none;padding-left:2mm">....</span>
 								<!--<span style="width:2mm;"/>-->
 							</span>
 							
@@ -1606,10 +1603,10 @@
 					<div style="width:187mm;font-size:8pt">
 						<div class="styLNLeftNumBox" style="text-align:right">q</div>
 						<div class="styLNDesc" style="width:130mm;padding-left:2mm">
-								 <img src="{$ImagePath}/8827_Bullet_Round.gif" width="4" height="4" alt="Bullet Image"/>
 							<span style="width:2mm"/>
                                  If the electrical capacity of the property is measured in:<br/>
-                                 <span style="width:3mm"/>
+								 <img src="{$ImagePath}/8827_Bullet_Round.gif" width="4" height="4" alt="Bullet Image"/>
+                                 <span style="width:2mm"/>
 										 Megawatts, divide 15 by the megawatt capacity. Enter 1.0 if the capacity is 15<br/>
                                  <span style="width:3mm"/>
                                         megawatts or less.<br/>
@@ -1648,22 +1645,11 @@
 					<div style="width:187mm;font-size:8pt">
 						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;"/>
 						<div class="styLNDesc" style="width:130mm;height:4.5mm;">
-                                 Qualified small wind energy property:</div>
+                                 Qualified small wind energy property (see instructions):</div>
 						<div class="styLNRightNumBoxNBB" style="height:6mm;background-color:lightgrey"/>
 						<div class="styLNAmountBox" style="border-bottom-width: 0px; height: 6mm"/>
 					</div>
 					<!-- Line 12s title -->
-					<!-- Start of Line 12s Note-->
-					<div style="width:187mm;font-size:8pt">
-						<div class="styLNDesc" style="height:15mm;width:138mm;padding-left:9.5mm">
-                            Note:  The  credit for qualified small wind energy property expired after 2016.  However, a shareholder
-                            in a fiscal year S corporation, a partner (other than a partner in an electing large partnership) in a 
-                            fiscal year partnership, or benficiary of the designated fiscal year pass-through entity may be able to 
-                            claim the credit.  See Instructions. </div>
-						<div class="styLNRightNumBoxNBB" style="height:15mm;background-color:lightgrey"/>
-						<div class="styLNAmountBoxNBB" style="height:15mm"/>
-					</div>
-					<!-- End of Line 12s Note-->
 					<!-- Begin of Line 12s -->
 					<div style="width:187mm;font-size:8pt">
 						<div class="styLNLeftNumBox" style="text-align:right;">s</div>
@@ -1672,7 +1658,7 @@
                                   and before January 1, 2009, and the basis attributable to construction, reconstruction, or erection
                                   by the taxpayer after October 3, 2008, and before January 1, 2009
                                  
-                            <span class="styDotLn" style="float:none;padding-left:2mm">...............</span>
+                            <span class="styDotLn" style="float:none;padding-left:2mm">..................</span>
                             <span style="float:right;font-size:6pt">                                  
     								<span style="width:2mm;float:left;">$</span>
     							<span class="styUnderlineAmount" style="width:22mm;text-align:right;padding-bottom:0mm">
@@ -1697,7 +1683,7 @@
 						<div class="styLNDesc" style="width:130mm;padding-left:2mm;">
 						   Enter the smaller of line 12s or $4,000
 							<!--Dotted Line-->
-							<span class="styDotLn" style="float:none;padding-left:2mm">...............</span>
+							<span class="styDotLn" style="float:none;padding-left:2mm">................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:6mm;padding-top:2mm;">12t</div>
 						<div class="styLNAmountBox" style=" height:6mm;padding-top:2mm;">
@@ -1712,12 +1698,11 @@
 						<div style="float:left;clear:none;">
 							
 								<div class="styLNLeftNumBox" style="text-align:right;">u</div>
-								<div class="styLNDesc" style="width:130mm;padding-left:2mm">
-									 Basis of property placed in service during the tax year that was acquired  after December 31, 2008,
-									 and the basis attributable to construction, reconstruction, or erection by the taxpayer after
-									 December 31, 2008, and before January 1, 2020<br/>
+								<div class="styLNDesc" style="width:130mm;height:12mm;padding-left:2mm;">
+									Basis of property placed in service during the tax year is attributable to periods after December 31, 2008 and the construction of which 
+									began before 2020.
 									<!--Dotted Line-->
-										<span class="styDotLn" style="float:none;padding-left:2mm">........</span>
+										<span class="styDotLn" style="float:none;padding-left:2mm">....................</span>
 										<span style="float:right; font-size:6pt">
 									<span style="float:left;width:2mm;">$</span>
 									<span class="styUnderlineAmount" style="width:22mm;text-align:right;padding-bottom:0mm">
@@ -1727,35 +1712,25 @@
 									</span>
 									<span style="width:16mm;padding-top:0mm;padding-top:1mm;">x 30% (0.30)</span>
 									</span>
-								</div>
-							
+								</div>							
 						</div>
-						<div class="styLNRightNumBox" style="height:15mm;padding-top:11mm;">12u</div>
-						<div class="styLNAmountBox" style="height:15mm;padding-top:11mm;">
+						<div class="styLNRightNumBox" style="height:12mm;padding-top:8mm;">12u</div>
+						<div class="styLNAmountBox" style="height:12mm;padding-top:8mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form3468Data/CalcBssOfWindEgyConstrErctnAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
 					<!-- End of line 12u -->
-					<div style="width:187mm;font-size:8pt">
-						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;"/>
-						<div class="styLNDesc" style="width:130mm;height:4.5mm;">
-                                 Geothermal heat pump systems (see instructions):</div>
-						<!--						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm"/>  -->
-						<div class="styLNRightNumBoxNBB" style="height:4.5mm;background-color:lightgrey"/>
-						<div class="styLNAmountBox" style="border-bottom-width: 0px; height: 4.5mm"/>
-					</div>
 					<!-- Line 12v -->
 					<div style="width:187mm;font-size:8pt">
 						<div style="float:left;clear:none;">
 							
 								<div class="styLNLeftNumBox" style="text-align:right;">v</div>
 								<div class="styLNDesc" style="width:130mm;padding-left:2mm">
-									 Basis of property placed in service during the tax year that was acquired during 2020,
-									 and the basis attributable to construction, reconstruction, or erection by the taxpayer during 2020
+									 Basis of property placed in service during the tax year and the construction of which began in 2020
 									<!--Dotted Line-->
-										<span class="styDotLn" style="float:none;padding-left:2mm">........</span>
+										<span class="styDotLn" style="float:none;padding-left:2mm">...............</span>
 										<span style="float:right; font-size:6pt">
 									<span style="float:left;width:2mm;">$</span>
 									<span class="styUnderlineAmount" style="width:22mm;text-align:right;padding-bottom:0mm">
@@ -1765,17 +1740,24 @@
 									</span>
 									<span style="width:16mm;padding-top:0mm;padding-top:1mm;">x 26% (0.26)</span>
 									</span>
-								</div>
-							
+								</div>							
 						</div>
-						<div class="styLNRightNumBox" style="height:12mm;padding-top:8mm;">12v</div>
-						<div class="styLNAmountBox" style="height:12mm;padding-top:8mm;">
+						<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">12v</div>
+						<div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form3468Data/CalcBssWindEgyConstrDurAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
 					<!-- End of line 12v -->
+					<div style="width:187mm;font-size:8pt">
+						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;"/>
+						<div class="styLNDesc" style="width:130mm;height:4.5mm;">
+                                 Geothermal heat pump systems (see instructions):</div>
+						<!--						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm"/>  -->
+						<div class="styLNRightNumBoxNBB" style="height:4.5mm;background-color:lightgrey"/>
+						<div class="styLNAmountBox" style="border-bottom-width: 0px; height: 4.5mm"/>
+					</div>
 					<!-- Line 12w -->
 					<div style="width:187mm;font-size:8pt">
 						<div style="float:left;clear:none;">
@@ -1819,10 +1801,10 @@
 					<div style="width:187mm;font-size:8pt">
 							<div class="styLNLeftNumBox" style="text-align:right;">x</div>
 						<div class="styLNDesc" style="width:130mm;padding-left:2mm;">
-                            Basis of property (other than wind facility property and the construction of which began after 2016)
+                            Basis of property the construction of which began before 2021 (other than wind facility property and the construction of which began after 2016)
                             placed in service during the tax year                               
 							<!--Dotted Line-->
-							<span class="styDotLn" style="float:none;padding-left:2mm">...</span>
+							<span class="styDotLn" style="float:none;padding-left:2mm">..................</span>
 							<span style="float:right;font-size:6pt">
 								<span style="width:2mm;float:left">$</span>
 								<span class="styUnderlineAmount" style=";width:22mm;text-align:right;padding-bottom:0mm">
@@ -1834,8 +1816,8 @@
 							</span>
 						</div>
 						<div style="float:left;clear:none;">
-							<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">12x</div>
-							<div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
+							<div class="styLNRightNumBox" style="height:12mm;padding-top:8mm;">12x</div>
+							<div class="styLNAmountBox" style="height:12mm;padding-top:8mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form3468Data/CalcBssOfPropPlacedInSrvcAmt"/>
 								</xsl:call-template>
@@ -1885,9 +1867,9 @@
 							<div class="styLNLeftNumBox" style="text-align:right;">z</div>
 						<div class="styLNDesc" style="width:130mm;padding-left:2mm;">
                             Basis of wind facility property placed in service during the tax year
-                            and the construction of which began during 2018
+                            and the construction of which began during 2018 or 2020.
 							<!--Dotted Line-->
-							<span class="styDotLn" style="float:none;padding-left:2mm">..........</span>
+							<span class="styDotLn" style="float:none;padding-left:2mm">.......</span>
 							<span style="float:right;font-size:6pt">
 								<span style="width:2mm;float:left">$</span>
 								<span class="styUnderlineAmount" style=";width:22mm;text-align:right;padding-bottom:0mm">
@@ -1959,7 +1941,7 @@
 			                Add lines 11e, 11f, 11g, 12a, 12b, 12c, 12f, 12i, 12l, 12o, 12r, 12t, 12u, 12v, 12w, 12x, 12y, 12z, 12aa 
 			                and 13.  Report this amount on Form 3800, Part III, line 4a
                                 <!--Dotted Line-->
-								<span class="styDotLn" style="float:none;padding-left:2mm">...</span>
+								<span class="styDotLn" style="float:none;padding-left:2mm">....</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:8mm;;padding-top:4mm;border-bottom-width:0px;">14</div>
 						<div class="styLNAmountBox" style="height:8mm;padding-top:4mm;border-bottom-width:0px;">

@@ -262,26 +262,26 @@
 								<label>
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$IRS5471Data/CategoryOfFiler1Ind"/>
-										<xsl:with-param name="BackupName">IRS5471CategoryOfFiler1Label</xsl:with-param>
+										<xsl:with-param name="BackupName">CategoryOfFiler1Label</xsl:with-param>
 									</xsl:call-template>1</label>
 								<span style="width:8px"/>
 								<input type="checkbox" alt="Category Of Filer 1 Indicator" class="styCkbox" >
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471Data/CategoryOfFiler1Ind"/>
-										<xsl:with-param name="BackupName">IRS5471CategoryOfFiler1</xsl:with-param>
+										<xsl:with-param name="BackupName">CategoryOfFiler1Ind</xsl:with-param>
 									</xsl:call-template>
 								</input> 
 							    <span style="width:4px;"/>
 								<label>
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$IRS5471Data/CategoryOfFiler2Ind"/>
-										<xsl:with-param name="BackupName">IRS5471CategoryOfFiler2Label</xsl:with-param>
+										<xsl:with-param name="BackupName">CategoryOfFiler2Label</xsl:with-param>
 									</xsl:call-template>2</label>
 								<span style="width:8px"/>
 								<input type="checkbox" alt="Category Of Filer 2 Indicator" class="styCkbox" name="CategoryOfFiler2Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471Data/CategoryOfFiler2Ind"/>
-										<xsl:with-param name="BackupName">IRS5471CategoryOfFiler2</xsl:with-param>
+										<xsl:with-param name="BackupName">CategoryOfFiler2Ind</xsl:with-param>
 									</xsl:call-template>
 								</input>
 								<span style="width:12px;"/>
@@ -293,39 +293,39 @@
 								<label>
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$IRS5471Data/CategoryOfFiler3Ind"/>
-										<xsl:with-param name="BackupName">IRS5471CategoryOfFiler3Label</xsl:with-param>
+										<xsl:with-param name="BackupName">CategoryOfFiler3Label</xsl:with-param>
 									</xsl:call-template>3</label>
 								<span style="width: 8px"/>
 								<input type="checkbox" alt="Category Of Filer 3 Indicator" class="styCkbox" name="CategoryOfFiler3Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471Data/CategoryOfFiler3Ind"/>
-										<xsl:with-param name="BackupName">IRS5471CategoryOfFiler3</xsl:with-param>
+										<xsl:with-param name="BackupName">CategoryOfFiler3Ind</xsl:with-param>
 									</xsl:call-template>
 								</input>
 								<span style="width:12px;"/>
 								<label>
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$IRS5471Data/CategoryOfFiler4Ind"/>
-										<xsl:with-param name="BackupName">IRS5471CategoryOfFiler4Label</xsl:with-param>
+										<xsl:with-param name="BackupName">CategoryOfFiler4Label</xsl:with-param>
 									</xsl:call-template>4</label>
 								<span style="width:8px"/>
 								<input type="checkbox" alt="Category Of Filer 4 Indicator" class="styCkbox" name="CategoryOfFiler4Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471Data/CategoryOfFiler4Ind"/>
-										<xsl:with-param name="BackupName">IRS5471CategoryOfFiler4</xsl:with-param>
+										<xsl:with-param name="BackupName">CategoryOfFiler4Ind</xsl:with-param>
 									</xsl:call-template>
 								</input>
 								<span style="width:12px;"/>
 								<label>
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$IRS5471Data/CategoryOfFiler5Ind"/>
-										<xsl:with-param name="BackupName">IRS5471CategoryOfFiler5Label</xsl:with-param>
+										<xsl:with-param name="BackupName">CategoryOfFiler5Label</xsl:with-param>
 									</xsl:call-template>5</label>
 								<span style="width:8px"/>
 								<input type="checkbox" alt="Category Of Filer 5 Indicator" class="styCkbox" name="CategoryOfFiler5Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471Data/CategoryOfFiler5Ind"/>
-										<xsl:with-param name="BackupName">IRS5471CategoryOfFiler5</xsl:with-param>
+										<xsl:with-param name="BackupName">CategoryOfFiler5Ind</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -418,14 +418,14 @@
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$IRS5471Data/FinalForm5471Ind"/>
-									<xsl:with-param name="BackupName">IRS5471FinalForm5471Label</xsl:with-param>
+									<xsl:with-param name="BackupName">FinalForm5471Label</xsl:with-param>
 								</xsl:call-template>
 							</label>
 							<span style="width:8px"/>
 							<input type="checkbox" alt="Final Form 5471 Indicator" class="styCkbox" name="FinalForm5471Ind">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471Data/FinalForm5471Ind"/>
-									<xsl:with-param name="BackupName">IRS5471FinalForm5471Ind</xsl:with-param>
+									<xsl:with-param name="BackupName">FinalForm5471Ind</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</div>
@@ -441,14 +441,14 @@
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$IRS5471Data/ForeignFinancialAssetInd"/>
-									<xsl:with-param name="BackupName">IRS5471ForeignFinancialAssetLabel</xsl:with-param>
+									<xsl:with-param name="BackupName">ForeignFinancialAssetLabel</xsl:with-param>
 								</xsl:call-template>
 							</label>
 							<span style="width:8px"/>
 							<input type="checkbox" alt="Foreign Financial Asset Indicator" class="styCkbox" name="ForeignFinancialAssetInd">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471Data/ForeignFinancialAssetInd"/>
-									<xsl:with-param name="BackupName">IRS5471ForeignFinancialAssetInd</xsl:with-param>
+									<xsl:with-param name="BackupName">ForeignFinancialAssetInd</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</div>
@@ -726,7 +726,7 @@
 						</xsl:when>
 						<xsl:when test="($Print != $Separated)">
 							<div style="width:187mm;font-size:7pt;">
-								<span class="styTableCell" style="float:left;vertical-align:top;width: 110.1mm;height:25mm;text-align:left;border-right-width:0px;border-bottom-width:0px;background">
+								<span class="styTableCell" style="float:left;vertical-align:top;width: 110.1mm;height:25mm;text-align:left;border-right-width:0px;border-bottom-width:0px;">
 									<b>1a</b>
 									<span class="styNBSP"/>Name and address of foreign corporation<br/>
 									<br/>
@@ -1453,7 +1453,7 @@
 								<xsl:variable name="FSRowCount" select="count(ForeignCorporationStocks)"/>
 									<xsl:if test="($Print != $Separated) 
 									or ((count($IRS5471BData/USShareholdersOfForeignCorp[count(ForeignCorporationStocks)
-									 &gt; 4]) &lt;=0))          and (count($IRS5471BData/USShareholdersOfForeignCorp) &lt;=5)">
+									 &gt; 4]) &lt;=0)) and (count($IRS5471BData/USShareholdersOfForeignCorp) &lt;=5)">
 									<xsl:for-each select="ForeignCorporationStocks">
 										<xsl:choose>
 											<xsl:when test="position()=1">
@@ -1484,7 +1484,7 @@
 															</xsl:when>
 														</xsl:choose>
 														<xsl:choose>
-															<xsl:when test="../BusinessName/BusinessNameLine1Txt != ''">
+															<xsl:when test="../BusinessName/BusinessNameLine2Txt != ''">
 																<br/>
 																<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" 
@@ -1529,26 +1529,26 @@
 														</xsl:choose>
 														<span class="styTableCellPad"/>
 													</td>
-													<td class="styTableCell" style="text-align:left; border-color: black; width: 50mm;">
+													<td class="styTableCell" style="text-align:left; vertical-align:bottom; border-color: black; width: 50mm;">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="StockClassDesc"/>
 														</xsl:call-template>
 														<span class="styTableCellPad"/>
 													</td>
-													<td class="styTableCell" style="text-align:left;border-color: black;text-size:4mm; width: 27mm;">
+													<td class="styTableCell" style="text-align:left; vertical-align:bottom; border-color:black; font-size:95%; width: 27mm;">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="AnnualAcctPeriodBeginShareCnt"/>
 														</xsl:call-template>
 														<span class="styTableCellPad"/>
 													</td>
-													<td class="styTableCell" style="text-align:left;border-color: black; text-size:5mm;width: 27mm;
+													<td class="styTableCell" style="text-align:left; vertical-align:bottom; border-color: black; font-size:95%; width: 27mm;
 													 border-right-width: 1px">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="AnnualAcctPeriodEndShareCnt"/>
 														</xsl:call-template>
 														<span class="styTableCellPad"/>
 													</td>
-													<td class="styTableCell" style="border-color: black; width: 35mm; text-align: right; border-right-width: 0px;font-size:6pt;">
+													<td class="styTableCell" style="border-color:black; width:35mm; text-align:right;  vertical-align:bottom; border-right-width:0px;font-size:6pt;">
 														<xsl:choose>
 															<xsl:when test="$FSRowCount&gt;4">
 																<xsl:attribute name="rowspan"><xsl:value-of select="$FSRowCount"/>
@@ -1574,22 +1574,22 @@
 											</xsl:when>
 											<xsl:otherwise>
 												<tr>
-													<td class="styTableCell" style="border-color: black; width: 50mm;text-align:left;">
+													<td class="styTableCell" style="border-color:black; width:50mm;text-align:left; vertical-align:bottom; ">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="StockClassDesc"/>
 														</xsl:call-template>
 														<span class="styTableCellPad"/>
 													</td>
 													<td class="styTableCell"
-													 style="text-align:left;text-size:5mm;border-color: black; width: 29mm;">
+													 style="text-align:left;text-size:5mm; font-size:95%; border-color:black; width:29mm; vertical-align:bottom; ">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="AnnualAcctPeriodBeginShareCnt"/>
 														</xsl:call-template>
 														<span class="styTableCellPad"/>
 													</td>
 													<td class="styTableCell" 
-													style="text-align:left;text-size:5mm;border-color: black; width: 29mm;
-													border-right-width: 1px;">
+													style="text-align:left; vertical-align:bottom; font-size:95%; border-color:black; width:29mm;
+													border-right-width:1px;">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="AnnualAcctPeriodEndShareCnt"/>
 														</xsl:call-template>
@@ -1764,23 +1764,6 @@
 														</xsl:call-template>
 														<span class="styTableCellPad"/>
 													</td>
-													<!--<td class="styTableCell" style="border-color:black; width:35mm; text-align:right; border-right-width:0px; font-size:6pt;">
-														<xsl:choose>
-															<xsl:when test="$FSRowCount&gt;4">
-																<xsl:attribute name="rowspan">
-																	<xsl:value-of select="$FSRowCount"/>
-																</xsl:attribute>
-															</xsl:when>
-															<xsl:otherwise>
-																<xsl:attribute name="rowspan">4</xsl:attribute>
-															</xsl:otherwise>
-														</xsl:choose>
-														<span style="width:34mm;">
-															<xsl:call-template name="PopulatePercent">
-																<xsl:with-param name="TargetNode" select="../ProRataShareSubpartFIncomeRt"/>
-															</xsl:call-template>
-														</span>
-													</td>-->
 													<td class="styIRS5471TableLastCol" id="FSspcr"/>
 												</tr>
 												<xsl:if test="position()=last()">
@@ -3034,8 +3017,8 @@
 					<!--   BEGIN LINE 12D SCHEDULE F  -->
 					<div class="styGenericDiv" style="width: 187mm">
 						<div class="styLNLeftNumBox" style="padding-left: 4mm">d</div>
-						<div class="styLNDesc" style="width: 100mm">Less accumulated amortization for lines 12a, b, and c
-							<span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
+						<div class="styLNDesc" style="width: 100mm">Less accumulated amortization for lines 12a, 12b, and 12c
+							<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
 						</div>
 						<div class="styLNRightNumBox">12d</div>
 						<div class="styLNAmountBox" style="width: 34mm">
@@ -3412,7 +3395,7 @@
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/Owns10PctOrMoreFrgnPrtshpInd"/>
-									<xsl:with-param name="BackupName">IRS5471Owns10PctOrMoreFrgnPartnershipYesLabel</xsl:with-param>
+									<xsl:with-param name="BackupName">Owns10PercenttOrMoreForeignPartnershipYesLabel</xsl:with-param>
 								</xsl:call-template>
 								<b>Yes</b>
 							</label>
@@ -3420,7 +3403,7 @@
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/Owns10PctOrMoreFrgnPrtshpInd"/>
-									<xsl:with-param name="BackupName">IRS5471Owns10PctOrMoreFrgnPartnershipNoLabel</xsl:with-param>
+									<xsl:with-param name="BackupName">Owns10PercenttOrMoreForeignPartnershipNoLabel</xsl:with-param>
 								</xsl:call-template>
 								<b>&#160;No</b>
 							</label>
@@ -3449,7 +3432,7 @@
 							<input type="checkbox" alt="Owns 10 Percent Or More Foreign Partnership Indicator Yes" class="styCkbox" style="width:3mm; height:3mm">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/Owns10PctOrMoreFrgnPrtshpInd"/>
-									<xsl:with-param name="BackupName">IRS5471Owns10PctOrMoreFrgnPartnershipIndYes</xsl:with-param>
+									<xsl:with-param name="BackupName">Owns10PctOrMoreForeignPartnershipIndYes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -3461,7 +3444,7 @@
 							<input type="checkbox" alt="Owns 10 Percent Or More Foreign Partnership Indicator No" class="styCkbox" style="width:3mm; height:3mm">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/Owns10PctOrMoreFrgnPrtshpInd"/>
-									<xsl:with-param name="BackupName">IRS5471Owns10PctOrMoreFrgnPartnershipIndNo</xsl:with-param>
+									<xsl:with-param name="BackupName">Owns10PctOrMoreForeignPartnershipIndNo</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -3485,7 +3468,7 @@
 							<input type="checkbox" alt="Foreign Corporation Owns Interest In Any Trust Indicator Yes" class="styCkbox" style="width:3mm; height:3mm">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpOwnsInterestInTrustInd"/>
-									<xsl:with-param name="BackupName">IRS5471FrgnCorpOwnsInterestInTrustIndYes</xsl:with-param>
+									<xsl:with-param name="BackupName">ForeignCorporationOwnsInterestInTrustIndYes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -3497,7 +3480,7 @@
 							<input type="checkbox" alt="Foreign Corporation Owns Interest In Any Trust Indicator No" class="styCkbox" style="width:3mm; height:3mm">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpOwnsInterestInTrustInd"/>
-									<xsl:with-param name="BackupName">IRS5471FrgnCorpOwnsInterestInTrustIndNo</xsl:with-param>
+									<xsl:with-param name="BackupName">ForeignCorporationOwnsInterestInTrustIndNo</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -3505,13 +3488,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpOwnsInterestInTrustInd"/>
-							<xsl:with-param name="BackupName">IRS5471FrgnCorpOwnsInterestInTrustIndYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ForeignCorporationOwnsInterestInTrustYesLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpOwnsInterestInTrustInd"/>
-							<xsl:with-param name="BackupName">IRS5471FrgnCorpOwnsInterestInTrustIndNoLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ForeignCorporationOwnsInterestInTrustNoLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<!--   END LINE 2 of Schedule G  -->
@@ -3529,7 +3512,7 @@
 								Regulations sections 301.7701-2 and 301.7701-3 or did the foreign corporation own any foreign branches (see instructions)?
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpOwnsForeignEntityInd"/>
-									<xsl:with-param name="BackupName">IRS5471OwnsAnyForeignEntities</xsl:with-param>
+									<xsl:with-param name="BackupName">ForeignCorporationOwnsForeignEntity</xsl:with-param>
 								</xsl:call-template>
 							</span>
 							<span>
@@ -3539,7 +3522,7 @@
 								<input type="checkbox" alt="Foreign Owns Any Foreign Entities Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpOwnsForeignEntityInd"/>
-										<xsl:with-param name="BackupName">IRS5471FrgnCorpOwnsForeignEntityIndYes</xsl:with-param>
+										<xsl:with-param name="BackupName">ForeignCorporationOwnsForeignEntityIndYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -3551,7 +3534,7 @@
 								<input type="checkbox" alt="Foreign Owns Any Foreign Entities Indicator No" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpOwnsForeignEntityInd"/>
-										<xsl:with-param name="BackupName">IRS5471FrgnCorpOwnsForeignEntityIndNo</xsl:with-param>
+										<xsl:with-param name="BackupName">ForeignCorporationOwnsForeignEntityIndNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -3560,13 +3543,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpOwnsForeignEntityInd"/>
-							<xsl:with-param name="BackupName">IRS5471FrgnCorpOwnsForeignEntityIndYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ForeignCorporationOwnsForeignEntityLabelYes</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpOwnsForeignEntityInd"/>
-							<xsl:with-param name="BackupName">IRS5471FrgnCorpOwnsForeignEntityIndNoLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ForeignCorporationOwnsForeignEntityLabelNo</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<div class="styGenericDiv" style="width:187mm;">
@@ -3585,7 +3568,7 @@
 							<br/>foreign corporation (see instructions)?  
 							 <xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/BaseErosionPaymentBenefitInd"/>
-									<xsl:with-param name="BackupName">IRS5471BaseErosionPaymentBenefitInd</xsl:with-param>
+									<xsl:with-param name="BackupName">BaseErosionPaymentBenefitInd</xsl:with-param>
 								</xsl:call-template>
 								</span>
 						</span>
@@ -3600,7 +3583,7 @@
 								<input type="checkbox" alt="Base Erosion Payment Benefit Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/BaseErosionPaymentBenefitInd"/>
-										<xsl:with-param name="BackupName">IRS5471BaseErosionPaymentBenefitIndYes</xsl:with-param>
+										<xsl:with-param name="BackupName">BaseErosionPaymentBenefitIndYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -3612,7 +3595,7 @@
 								<input type="checkbox" alt="Base Erosion Payment Benefit Indicator No" class="styCkbox" style="width: 3mm; height: 3mm">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/BaseErosionPaymentBenefitInd"/>
-										<xsl:with-param name="BackupName">IRS5471BaseErosionPaymentBenefitIndNo</xsl:with-param>
+										<xsl:with-param name="BackupName">BaseErosionPaymentBenefitIndNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -3621,13 +3604,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/BaseErosionPaymentBenefitInd"/>
-							<xsl:with-param name="BackupName">IRS5471BaseErosionPaymentBenefitIndYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">BaseErosionPaymentBenefitIndYesLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/BaseErosionPaymentBenefitInd"/>
-							<xsl:with-param name="BackupName">IRS5471BaseErosionPaymentBenefitIndNoLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">BaseErosionPaymentBenefitIndNoLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<div class="styGenericDiv" style="width:187mm;">
@@ -3692,7 +3675,7 @@
 								<input type="checkbox" alt="Non deduction interest royalty under section 267A Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/NondedIntRoyaltyUndSect267AInd"/>
-										<xsl:with-param name="BackupName">IRS5471NondedIntRoyaltyUndSect267AIndYes</xsl:with-param>
+										<xsl:with-param name="BackupName">NonDeductionInterestRoyaltyUnderSection267AIndYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -3704,7 +3687,7 @@
 								<input type="checkbox" alt="Non deduction interest royalty under section 267A Indicator No" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/NondedIntRoyaltyUndSect267AInd"/>
-										<xsl:with-param name="BackupName">IRS5471NondedIntRoyaltyUndSect267AIndNo</xsl:with-param>
+										<xsl:with-param name="BackupName">NonDeductionInterestRoyaltyUnderSection267AIndNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -3713,13 +3696,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/NondedIntRoyaltyUndSect267AInd"/>
-							<xsl:with-param name="BackupName">IRS5471NondedIntRoyaltyUndSect267AIndYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">NonDeductionInterestRoyaltyUnderSection267AYesLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/NondedIntRoyaltyUndSect267AInd"/>
-							<xsl:with-param name="BackupName">IRS5471NondedIntRoyaltyUndSect267AIndNoLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">NonDeductionInterestRoyaltyUnderSection267ANoLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<div class="styGenericDiv" style="width:187mm;">
@@ -3767,7 +3750,7 @@
 								<input type="checkbox" alt="Foreign derived intangible income benefits claim Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/FDIIBenefitsClaimInd"/>
-										<xsl:with-param name="BackupName">IRS5471FDIIBenefitsClaimIndYes</xsl:with-param>
+										<xsl:with-param name="BackupName">FDIIBenefitsClaimIndYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -3779,7 +3762,7 @@
 								<input type="checkbox" alt="Foreign derived intangible income benefits claim Indicator No" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/FDIIBenefitsClaimInd"/>
-										<xsl:with-param name="BackupName">IRS5471FDIIBenefitsClaimIndNo</xsl:with-param>
+										<xsl:with-param name="BackupName">FDIIBenefitsClaimIndNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -3788,13 +3771,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/FDIIBenefitsClaimInd"/>
-							<xsl:with-param name="BackupName">IRS5471FDIIBenefitsClaimIndYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">FDIIBenefitsClaimIndYesLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/FDIIBenefitsClaimInd"/>
-							<xsl:with-param name="BackupName">IRS5471FDIIBenefitsClaimIndNoLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">FDIIBenefitsClaimIndNoLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<div class="styGenericDiv" style="width:187mm;">
@@ -3875,7 +3858,7 @@
 							<input type="checkbox" alt="Foreign Corporation Was Participant Yes" class="styCkbox" style="width:3mm; height:3mm;">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpPartcpCostShrInd"/>
-									<xsl:with-param name="BackupName">IRS5471ForeignCorporationWasParticipantIndYes</xsl:with-param>
+									<xsl:with-param name="BackupName">ForeignCorporationWasParticipantIndYes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -3887,7 +3870,7 @@
 							<input type="checkbox" alt="Foreign Corporation Was Participant No" class="styCkbox" style="width:3mm; height:3mm;">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpPartcpCostShrInd"/>
-									<xsl:with-param name="BackupName">IRS5471ForeignCorporationWasParticipantIndNo</xsl:with-param>
+									<xsl:with-param name="BackupName">ForeignCorporationWasParticipantIndNo</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -3895,13 +3878,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpPartcpCostShrInd"/>
-							<xsl:with-param name="BackupName">IRS5471ForeignCorpWasParticipantLabelYes</xsl:with-param>
+							<xsl:with-param name="BackupName">ForeignCorpWasParticipantLabelYes</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpPartcpCostShrInd"/>
-							<xsl:with-param name="BackupName">IRS5471ForeignCorpWasParticipantLabelNo</xsl:with-param>
+							<xsl:with-param name="BackupName">ForeignCorpWasParticipantLabelNo</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<!--   END LINE 7 of Schedule G   -->
@@ -3921,7 +3904,7 @@
 							<input type="checkbox" alt="Foreign Corporationoration Became Participant Yes" class="styCkbox" style="width:3mm; height:3mm;">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpBecamePartcpCostShrInd"/>
-									<xsl:with-param name="BackupName">IRS5471ForeignCorpBecameParticipantIndYes</xsl:with-param>
+									<xsl:with-param name="BackupName">ForeignCorporationBecameParticipantIndYes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -3933,7 +3916,7 @@
 							<input type="checkbox" alt="Foreign Corporationoration Became Participant No" class="styCkbox" style="width:3mm; height:3mm;">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpBecamePartcpCostShrInd"/>
-									<xsl:with-param name="BackupName">IRS5471ForeignCorpBecameParticipantIndNo</xsl:with-param>
+									<xsl:with-param name="BackupName">ForeignCorporationBecameParticipantIndNo</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -3941,13 +3924,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpBecamePartcpCostShrInd"/>
-							<xsl:with-param name="BackupName">IRS5471ForeignCorpBecameParticipantYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ForeignCorporationBecameParticipantYesLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnCorpBecamePartcpCostShrInd"/>
-							<xsl:with-param name="BackupName">IRS5471ForeignCorpBecameParticipantLabelNo</xsl:with-param>
+							<xsl:with-param name="BackupName">ForeignCorporationBecameParticipantNoLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<!--   END LINE 8 of Schedule G  -->
@@ -3971,7 +3954,7 @@
 								<input type="checkbox" alt="Participant cost sharing prior specified date Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/PartcpCostShrPriorSpcfdDateInd"/>
-										<xsl:with-param name="BackupName">IRS5471PartcpCostShrPriorSpcfdDateIndYes</xsl:with-param>
+										<xsl:with-param name="BackupName">ParticipantCostSharingPriorSpecifiedDateIndYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -3983,7 +3966,7 @@
 								<input type="checkbox" alt="Participant cost sharing prior specified date Indicator No" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/PartcpCostShrPriorSpcfdDateInd"/>
-										<xsl:with-param name="BackupName">IRS5471PartcpCostShrPriorSpcfdDateIndNo</xsl:with-param>
+										<xsl:with-param name="BackupName">ParticipantCostSharingPriorSpecifiedDateIndNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -3992,13 +3975,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/PartcpCostShrPriorSpcfdDateInd"/>
-							<xsl:with-param name="BackupName">IRS5471PartcpCostShrPriorSpcfdDateIndYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ParticipantCostSharingPriorSpecifiedDateYesLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/PartcpCostShrPriorSpcfdDateInd"/>
-							<xsl:with-param name="BackupName">IRS5471PartcpCostShrPriorSpcfdDateIndNoLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ParticipantCostSharingPriorSpecifiedDateNoLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<!--   END LINE 9 of Schedule G  -->
@@ -4022,7 +4005,7 @@
 								<input type="checkbox" alt="Platform contribution Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/PlatformContributionInd"/>
-										<xsl:with-param name="BackupName">IRS5471PlatformContributionIndYes</xsl:with-param>
+										<xsl:with-param name="BackupName">PlatformContributionIndYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -4034,7 +4017,7 @@
 								<input type="checkbox" alt="Platform contribution Indicator No" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/PlatformContributionInd"/>
-										<xsl:with-param name="BackupName">IRS5471PlatformContributionIndNo</xsl:with-param>
+										<xsl:with-param name="BackupName">PlatformContributionIndNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -4043,13 +4026,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/PlatformContributionInd"/>
-							<xsl:with-param name="BackupName">IRS5471PlatformContributionIndYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">PlatformContributionIndYesLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/PlatformContributionInd"/>
-							<xsl:with-param name="BackupName">IRS5471PlatformContributionIndNoLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">PlatformContributionIndNoLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<!--   END LINE 10 of Schedule G   -->
@@ -4085,14 +4068,14 @@
 							<input type="checkbox" alt="Comparable Uncontrolled Transaction" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/ComparableUncontrolledTransInd"/>
-									<xsl:with-param name="BackupName">IRS5471ComparableUncontrolledTrans</xsl:with-param>
+									<xsl:with-param name="BackupName">ComparableUncontrolledTransacationInd</xsl:with-param>
 								</xsl:call-template>
 							</input>								
 							<span style="width:2mm;"/>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/ComparableUncontrolledTransInd"/>
-									<xsl:with-param name="BackupName">IIRS5471ComparableUncontrolledTransLabel</xsl:with-param>
+									<xsl:with-param name="BackupName">ComparableUncontrolledTransacationLabel</xsl:with-param>
 								</xsl:call-template>
 								<span>Comparable uncontrolled transaction </span>
 							</label>								
@@ -4101,14 +4084,14 @@
 							<input type="checkbox" alt="Income Method" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/IncomeMethodInd"/>
-									<xsl:with-param name="BackupName">IRS5471IncomeMethod</xsl:with-param>
+									<xsl:with-param name="BackupName">IncomeMethodInd</xsl:with-param>
 								</xsl:call-template>
 							</input>								
 							<span style="width:2mm;"/>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/IncomeMethodInd"/>
-									<xsl:with-param name="BackupName">IIRS5471IncomeMethodLabel</xsl:with-param>
+									<xsl:with-param name="BackupName">IncomeMethodLabel</xsl:with-param>
 								</xsl:call-template>
 								<span>Income method </span>
 							</label>						
@@ -4117,14 +4100,14 @@
 							<input type="checkbox" alt="Acquisition Price Method" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/AquisitionPriceMethodInd"/>
-									<xsl:with-param name="BackupName">IRS5471AquisitionPriceMethod</xsl:with-param>
+									<xsl:with-param name="BackupName">AquisitionPriceMethodInd</xsl:with-param>
 								</xsl:call-template>
 							</input>								
 							<span style="width:2mm;"/>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/AquisitionPriceMethodInd"/>
-									<xsl:with-param name="BackupName">IIRS5471AquisitionPriceMethodLabel</xsl:with-param>
+									<xsl:with-param name="BackupName">AquisitionPriceMethodLabel</xsl:with-param>
 								</xsl:call-template>
 								<span>Acquisition price method </span>
 							</label>							
@@ -4134,14 +4117,14 @@
 							<input type="checkbox" alt="Market Capitalization Method" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/MarketCapitalizationMethodInd"/>
-									<xsl:with-param name="BackupName">IRS5471MarketCapitalizationMethod</xsl:with-param>
+									<xsl:with-param name="BackupName">MarketCapitalizationMethodInd</xsl:with-param>
 								</xsl:call-template>
 							</input>								
 							<span style="width:2mm;"/>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/MarketCapitalizationMethodInd"/>
-									<xsl:with-param name="BackupName">IIRS5471MarketCapitalizationMethodLabel</xsl:with-param>
+									<xsl:with-param name="BackupName">MarketCapitalizationMethodLabel</xsl:with-param>
 								</xsl:call-template>
 								<span>Market capitalization method </span>
 							</label>								
@@ -4150,14 +4133,14 @@
 							<input type="checkbox" alt="Residual Profit Split Method" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/ResidualProfitSplitMethodInd"/>
-									<xsl:with-param name="BackupName">IRS5471ResidualProfitSplitMethod</xsl:with-param>
+									<xsl:with-param name="BackupName">ResidualProfitSplitMethodInd</xsl:with-param>
 								</xsl:call-template>
 							</input>								
 							<span style="width:2mm;"/>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/ResidualProfitSplitMethodInd"/>
-									<xsl:with-param name="BackupName">IIRS5471ResidualProfitSplitMethodLabel</xsl:with-param>
+									<xsl:with-param name="BackupName">ResidualProfitSplitMethodLabel</xsl:with-param>
 								</xsl:call-template>
 								<span>Residual profit split method </span>
 							</label>						
@@ -4166,14 +4149,14 @@
 							<input type="checkbox" alt="Unspecified Methods" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/UnspecifiedMethodsInd"/>
-									<xsl:with-param name="BackupName">IRS5471UnspecifiedMethods</xsl:with-param>
+									<xsl:with-param name="BackupName">UnspecifiedMethodsInd</xsl:with-param>
 								</xsl:call-template>
 							</input>								
 							<span style="width:2mm;"/>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/UnspecifiedMethodsInd"/>
-									<xsl:with-param name="BackupName">IIRS5471UnspecifiedMethodsLabel</xsl:with-param>
+									<xsl:with-param name="BackupName">UnspecifiedMethodsLabel</xsl:with-param>
 								</xsl:call-template>
 								<span>Unspecified methods </span>
 							</label>							
@@ -4189,7 +4172,7 @@
 								From April 25, 2014, to December 31, 2017, did the foreign corporation purchase stock or securities of a shareholder of the foreign 
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/PurchaseStockOrSecuritiesInd"/>
-									<xsl:with-param name="BackupName">IRS5471PurchaseStockOrSecurities</xsl:with-param>
+									<xsl:with-param name="BackupName">PurchaseStockOrSecurities</xsl:with-param>
 								</xsl:call-template>
 								</span>
 						</span>
@@ -4205,7 +4188,7 @@
 								<input type="checkbox" alt="Purchase stock or securities Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/PurchaseStockOrSecuritiesInd"/>
-										<xsl:with-param name="BackupName">IRS5471PurchaseStockOrSecuritiesIndYes</xsl:with-param>
+										<xsl:with-param name="BackupName">PurchaseStockOrSecuritiesIndYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -4217,7 +4200,7 @@
 								<input type="checkbox" alt="Purchase stock or securities Indicator No" class="styCkbox" style="width: 3mm; height: 3mm">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/PurchaseStockOrSecuritiesInd"/>
-										<xsl:with-param name="BackupName">IRS5471PurchaseStockOrSecuritiesIndNo</xsl:with-param>
+										<xsl:with-param name="BackupName">PurchaseStockOrSecuritiesIndNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -4226,13 +4209,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/PurchaseStockOrSecuritiesInd"/>
-							<xsl:with-param name="BackupName">IRS5471PurchaseStockOrSecuritiesIndYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">PurchaseStockOrSecuritiesIndYesLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/PurchaseStockOrSecuritiesInd"/>
-							<xsl:with-param name="BackupName">IRS5471PurchaseStockOrSecuritiesIndNoLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">PurchaseStockOrSecuritiesIndNoLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<!--   END LINE 13 of Schedule G  -->
@@ -4260,7 +4243,7 @@
 								<input type="checkbox" alt="Intangible property received Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/IntangiblePropertyReceivedInd"/>
-										<xsl:with-param name="BackupName">IRS5471IntangiblePropertyReceivedIndYes</xsl:with-param>
+										<xsl:with-param name="BackupName">IntangiblePropertyReceivedIndYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -4272,7 +4255,7 @@
 								<input type="checkbox" alt="Intangible property received Indicator No" class="styCkbox" style="width: 3mm; height: 3mm">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/IntangiblePropertyReceivedInd"/>
-										<xsl:with-param name="BackupName">IRS5471IntangiblePropertyReceivedIndNo</xsl:with-param>
+										<xsl:with-param name="BackupName">IntangiblePropertyReceivedIndNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -4281,13 +4264,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/IntangiblePropertyReceivedInd"/>
-							<xsl:with-param name="BackupName">IRS5471IntangiblePropertyReceivedIndYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">IntangiblePropertyReceivedIndYesLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/IntangiblePropertyReceivedInd"/>
-							<xsl:with-param name="BackupName">IRS5471IntangiblePropertyReceivedIndNoLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">IntangiblePropertyReceivedIndNoLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<div class="styGenericDiv" style="width:187mm;">
@@ -4337,7 +4320,7 @@
 								<input type="checkbox" alt="Expatriated foreign subsidiary Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/ExpatriatedFrgnSubsidiaryInd"/>
-										<xsl:with-param name="BackupName">IRS5471ExpatriatedFrgnSubsidiaryIndYes</xsl:with-param>
+										<xsl:with-param name="BackupName">ExpatriatedForeignSubsidiaryIndYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -4349,7 +4332,7 @@
 								<input type="checkbox" alt="Expatriated foreign subsidiary Indicator No" class="styCkbox" style="width: 3mm; height: 3mm">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS5471GData/ExpatriatedFrgnSubsidiaryInd"/>
-										<xsl:with-param name="BackupName">IRS5471ExpatriatedFrgnSubsidiaryIndNo</xsl:with-param>
+										<xsl:with-param name="BackupName">ExpatriatedForeignSubsidiaryIndNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -4358,13 +4341,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/ExpatriatedFrgnSubsidiaryInd"/>
-							<xsl:with-param name="BackupName">IRS5471ExpatriatedFrgnSubsidiaryIndYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ExpatriatedForeignSubsidiaryLabelYes</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/ExpatriatedFrgnSubsidiaryInd"/>
-							<xsl:with-param name="BackupName">IRS5471ExpatriatedFrgnSubsidiaryIndNoLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ExpatriatedForeignSubsidiaryLabelNo</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<div class="styGenericDiv" style="width:187mm;">
@@ -4394,7 +4377,7 @@
 							<input type="checkbox" alt="Reportable Transaction Participation Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/ReportableTransactionPrtcptInd"/>
-									<xsl:with-param name="BackupName">IRS5471ReportableTransactionPrtcptIndYes</xsl:with-param>
+									<xsl:with-param name="BackupName">ReportableTransactionParticipationIndYes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -4406,7 +4389,7 @@
 							<input type="checkbox" alt="Reportable Transaction Participation Indicator No" class="styCkbox" style="width:3mm; height:3mm;">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/ReportableTransactionPrtcptInd"/>
-									<xsl:with-param name="BackupName">IRS5471ReportableTransactionPrtcptIndNo</xsl:with-param>
+									<xsl:with-param name="BackupName">ReportableTransactionParticipationIndNo</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -4414,13 +4397,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/ReportableTransactionPrtcptInd"/>
-							<xsl:with-param name="BackupName">IRS5471ReportableTransactionPrtcptIndYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ReportableTransactionParticipationYesLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/ReportableTransactionPrtcptInd"/>
-							<xsl:with-param name="BackupName">IRS5471ReportableTransactionPrtcptIndNoLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ReportableTransactionParticipationNoLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<div class="styGenericDiv" style="width:187mm;">
@@ -4451,7 +4434,7 @@
 							<input type="checkbox" alt="Foreign Tax Disqualified Section 901m Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnTaxDisqualifiedSec901mInd"/>
-									<xsl:with-param name="BackupName">IRS5471FrgnTaxDisqualifiedSec901mIndYes</xsl:with-param>
+									<xsl:with-param name="BackupName">ForeignTaxDisqualifiedSection901mIndYes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -4463,7 +4446,7 @@
 							<input type="checkbox" alt="Foreign Tax Disqualified Section 901m Indicator No" class="styCkbox" style="width:3mm; height:3mm;">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnTaxDisqualifiedSec901mInd"/>
-									<xsl:with-param name="BackupName">IRS5471FrgnTaxDisqualifiedSec901mIndNo</xsl:with-param>
+									<xsl:with-param name="BackupName">ForeignTaxDisqualifiedSection901mIndNo</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -4471,13 +4454,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnTaxDisqualifiedSec901mInd"/>
-							<xsl:with-param name="BackupName">IRS5471FrgnTaxDisqualifiedSec901mIndYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ForeignTaxDisqualifiedSection901mYesLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/FrgnTaxDisqualifiedSec901mInd"/>
-							<xsl:with-param name="BackupName">IRS5471FrgnTaxDisqualifiedSec901mIndNoLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ForeignTaxDisqualifiedSection901mNoLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<!--   END LINE 17 of Schedule G   -->
@@ -4503,7 +4486,7 @@
 							style="width: 3mm; height: 3mm">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/ForeignTaxSection909Ind"/>
-									<xsl:with-param name="BackupName">IRS5471ForeignTaxSection909IndYes</xsl:with-param>
+									<xsl:with-param name="BackupName">ForeignTaxSection909IndYes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -4515,7 +4498,7 @@
 							<input type="checkbox" alt="Foreign Tax Section 909 Indicator No" class="styCkbox" style="width:3mm; height:3mm;">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/ForeignTaxSection909Ind"/>
-									<xsl:with-param name="BackupName">IRS5471ForeignTaxSection909IndNo</xsl:with-param>
+									<xsl:with-param name="BackupName">ForeignTaxSection909IndNo</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -4523,13 +4506,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/ForeignTaxSection909Ind"/>
-							<xsl:with-param name="BackupName">IRS5471ForeignTaxSection909IndYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ForeignTaxSection909LabelYes</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/ForeignTaxSection909Ind"/>
-							<xsl:with-param name="BackupName">IRS5471ForeignTaxSection909IndNoLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ForeignTaxSection909LabelNo</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<!--   END LINE 18 of Schedule G -->
@@ -4549,7 +4532,7 @@
 							<input type="checkbox" alt="Answer Yes Any Question Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/AnswerYesAnyQuestionInd"/>
-									<xsl:with-param name="BackupName">IRS5471AnswerYesAnyQuestionIndYes</xsl:with-param>
+									<xsl:with-param name="BackupName">AnswerYesAnyQuestionIndYes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -4561,7 +4544,7 @@
 							<input type="checkbox" alt="Answer Yes Any Question Indicator No" class="styCkbox" style="width:3mm; height:3mm;">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/AnswerYesAnyQuestionInd"/>
-									<xsl:with-param name="BackupName">IRS5471AnswerYesAnyQuestionIndNo</xsl:with-param>
+									<xsl:with-param name="BackupName">AnswerYesAnyQuestionIndNo</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -4569,13 +4552,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/AnswerYesAnyQuestionInd"/>
-							<xsl:with-param name="BackupName">IRS5471AnswerYesAnyQuestionIndYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">AnswerYesAnyQuestionYesLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/AnswerYesAnyQuestionInd"/>
-							<xsl:with-param name="BackupName">IRS5471AnswerYesAnyQuestionIndNoLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">AnswerYesAnyQuestionNoLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<div class="styGenericDiv" style="width:187mm;">
@@ -4661,7 +4644,7 @@
 							<input type="checkbox" alt="Disallowed Interest Expense Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/DisallowedInterestExpenseInd"/>
-									<xsl:with-param name="BackupName">IRS5471DisallowedInterestExpenseIndYes</xsl:with-param>
+									<xsl:with-param name="BackupName">DisallowedInterestExpenseIndYes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -4673,7 +4656,7 @@
 							<input type="checkbox" alt="Disallowed Interest Expense Indicator No" class="styCkbox" style="width:3mm; height:3mm;">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/DisallowedInterestExpenseInd"/>
-									<xsl:with-param name="BackupName">IRS5471DisallowedInterestExpenseIndNo</xsl:with-param>
+									<xsl:with-param name="BackupName">DisallowedInterestExpenseIndNo</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -4681,13 +4664,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/DisallowedInterestExpenseInd"/>
-							<xsl:with-param name="BackupName">IRS5471DisallowedInterestExpenseIndYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">DisallowedInterestExpenseIndYesLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/DisallowedInterestExpenseInd"/>
-							<xsl:with-param name="BackupName">IRS5471DisallowedInterestExpenseIndNoLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">DisallowedInterestExpenseIndNoLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<div class="styGenericDiv" style="width:187mm;">
@@ -4725,7 +4708,7 @@
 							<input type="checkbox" alt="Foreign Corporation Previously Disallowed Interest Expense Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/CfwdPrevDsallwIntExpenseInd"/>
-									<xsl:with-param name="BackupName">IRS5471CfwdPrevDsallwIntExpenseIndYes</xsl:with-param>
+									<xsl:with-param name="BackupName">ForeignCorporationPreviouslyDisallowedInterestExpenseIndYes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -4737,7 +4720,7 @@
 							<input type="checkbox" alt="Foreign Corporation Previously Disallowed Interest Expense Indicator No" class="styCkbox" style="width:3mm; height:3mm;">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS5471GData/CfwdPrevDsallwIntExpenseInd"/>
-									<xsl:with-param name="BackupName">IRS5471CfwdPrevDsallwIntExpenseIndNo</xsl:with-param>
+									<xsl:with-param name="BackupName">ForeignCorporationPreviouslyDisallowedInterestExpenseIndNo</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -4745,13 +4728,13 @@
 					<label>
 						<xsl:call-template name="PopulateLabelYes">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/CfwdPrevDsallwIntExpenseInd"/>
-							<xsl:with-param name="BackupName">IRS5471CfwdPrevDsallwIntExpenseIndYesLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ForeignCorporationPreviouslyDisallowedInterestExpenseYesLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<label>
 						<xsl:call-template name="PopulateLabelNo">
 							<xsl:with-param name="TargetNode" select="$IRS5471GData/CfwdPrevDsallwIntExpenseInd"/>
-							<xsl:with-param name="BackupName">IRS5471CfwdPrevDsallwIntExpenseIndNoLabel</xsl:with-param>
+							<xsl:with-param name="BackupName">ForeignCorporationPreviouslyDisallowedInterestExpenseNoLabel</xsl:with-param>
 						</xsl:call-template>
 					</label>
 					<div class="styGenericDiv" style="width:187mm;">
@@ -5020,7 +5003,7 @@
 								<input type="checkbox" alt="Any Income of Foreign Corportation Blocked Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="IncomeBlockedInd"/>
-										<xsl:with-param name="BackupName">IRS5471AnyIncomeBlockedIndYes</xsl:with-param>
+										<xsl:with-param name="BackupName">AnyIncomeBlockedIndYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 								<label>
@@ -5038,7 +5021,7 @@
 								<input type="checkbox" alt="Any Income of Foreign Corportation Blocked Indicator No" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="IncomeBlockedInd"/>
-										<xsl:with-param name="BackupName">IRS5471AnyIncomeBlockedIndNo</xsl:with-param>
+										<xsl:with-param name="BackupName">AnyIncomeBlockedIndNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 								<label>
@@ -5069,7 +5052,7 @@
 								<input type="checkbox" alt="Any Income Become Unblocked During This Year Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="IncomeUnblockedInd"/>
-										<xsl:with-param name="BackupName">IRS5471IncomeBecomeUnblockedThisTYIndYes</xsl:with-param>
+										<xsl:with-param name="BackupName">IncomeBecomeUnblockedThisYearIndYes</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -5081,7 +5064,7 @@
 								<input type="checkbox" alt="Any Income Become Unblocked During This Year Indicator No" class="styCkbox" style="width:3mm; height:3mm;">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="IncomeUnblockedInd"/>
-										<xsl:with-param name="BackupName">IRS5471IncomeBecomeUnblockedThisTYIndNo</xsl:with-param>
+										<xsl:with-param name="BackupName">IncomeBecomeUnblockedThisYearIndNo</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</span>
@@ -5378,13 +5361,13 @@
 										<input type="checkbox" alt="Any Income of Foreign Corportation Blocked Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 											<xsl:call-template name="PopulateYesCheckbox">
 												<xsl:with-param name="TargetNode" select="IncomeBlockedInd"/>
-												<xsl:with-param name="BackupName">IRS547IRS5471AnyIncomeBlockedIndYes</xsl:with-param>
+												<xsl:with-param name="BackupName">IncomeBlockedIndYes</xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<label>
 											<xsl:call-template name="PopulateLabelYes">
-												<xsl:with-param name="TargetNode" select="IncomeUnblockedInd"/>
-												<xsl:with-param name="BackupName">IRS547IncomeBecomeUnblockedLabelYes</xsl:with-param>
+												<xsl:with-param name="TargetNode" select="IncomeBlockedInd"/>
+												<xsl:with-param name="BackupName">IncomeBlockedIndYesLabel</xsl:with-param>
 											</xsl:call-template>
 										</label>
 									</span>
@@ -5396,13 +5379,13 @@
 										<input type="checkbox"  alt="Any Income of Foreign Corportation Blocked Indicator No" class="styCkbox" style="width:3mm; height:3mm">
 											<xsl:call-template name="PopulateNoCheckbox">
 												<xsl:with-param name="TargetNode" select="IncomeBlockedInd"/>
-												<xsl:with-param name="BackupName">IRS547IRS5471AnyIncomeBlockedIndNo</xsl:with-param>
+												<xsl:with-param name="BackupName">IncomeBlockedIndNo</xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<label>
 											<xsl:call-template name="PopulateLabelNo">
-												<xsl:with-param name="TargetNode" select="IncomeUnblockedInd"/>
-												<xsl:with-param name="BackupName">IRS547IncomeBecomeUnblockedLabelNo</xsl:with-param>
+												<xsl:with-param name="TargetNode" select="IncomeBlockedInd"/>
+												<xsl:with-param name="BackupName">IncomeBlockedIndNoLabel</xsl:with-param>
 											</xsl:call-template>
 										</label>
 									</span>
@@ -5426,7 +5409,7 @@
 										<input type="checkbox" alt="Any Income Become Unblocked During This Year Indicator Yes" class="styCkbox" style="width:3mm; height:3mm;">
 											<xsl:call-template name="PopulateYesCheckbox">
 												<xsl:with-param name="TargetNode" select="IncomeUnblockedInd"/>
-												<xsl:with-param name="BackupName">IRS547IncomeBecomeUnblockedThisTYIndYes</xsl:with-param>
+												<xsl:with-param name="BackupName">IncomeBecomeUnblockedThisYearIndYes</xsl:with-param>
 											</xsl:call-template>
 										</input>
 									</span>
@@ -5438,7 +5421,7 @@
 										<input type="checkbox" alt="Any Income Become Unblocked During This Year Indicator No" class="styCkbox" style="width: 3mm; height: 3mm">
 											<xsl:call-template name="PopulateNoCheckbox">
 												<xsl:with-param name="TargetNode" select="IncomeUnblockedInd"/>
-												<xsl:with-param name="BackupName">IRS547IncomeBecomeUnblockedThisTYIndNo</xsl:with-param>
+												<xsl:with-param name="BackupName">IncomeBecomeUnblockedThisYearIndNo</xsl:with-param>
 											</xsl:call-template>
 										</input>
 									</span>

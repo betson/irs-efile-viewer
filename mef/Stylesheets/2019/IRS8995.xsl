@@ -3,6 +3,7 @@
   <!ENTITY nbsp "&#160;">
   <!ENTITY mdash "&#8212;">
 ]>
+<!-- Last Modified by Iskilu Lawal on 10/8/2020 drop 2 UWR # 237401 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl" />
 	<xsl:include href="AddHeader.xsl" />
@@ -80,7 +81,7 @@
 							</div>
 							<div style="margin-left:3mm;text-align:left;font-size:7pt;">
 								Attachment<br/>Sequence No. 
-								<span class="styBoldText" style="font-size:9pt;">XX</span>
+								<span class="styBoldText" style="font-size:9pt;">55</span>
 							</div>
 						</div>
 					</div>
@@ -117,7 +118,7 @@
 								<tr>
 									<th class="styTableCellHeader" scope="col" style="width:8mm;font-weight:bold;"> 1 </th>
 									<th class="styTableCellHeader" scope="col" style="min-width:66mm;width:108.25mm;font-weight:normal;">
-										<span style="font-weight:bold;">(a) </span> Trade or business name
+										<span style="font-weight:bold;">(a) </span> Trade, business, or aggregation name
 									</th>
 									<th class="styTableCellHeader" scope="col" style="width:30mm;font-weight:normal;vertical-align:top;">
 										<span style="font-weight:bold;">(b) </span> Taxpayer <br />

@@ -61,10 +61,10 @@
 							<div class="styMainTitle" style="height:8mm;padding-top:3mm">Gains and Losses From Section 1256<br/>Contracts and Straddles</div>
 							<div style="height:3.5mm;font-size:7pt;padding-top:6mm;border:0px;" class="styFST">
 							
-								<img src="{$ImagePath}/6781_Bullet.gif" alt="Bullet Image"/> Go to <a style="text-decoration:none;color:black;" href="http://www.irs.gov/form6781">www.irs.gov/Form6781</a> for the latest information.<br/>
+								<img src="{$ImagePath}/6781_Bullet.gif" alt="Right Pointing Arrow"/> Go to <a style="text-decoration:none;color:black;" href="http://www.irs.gov/form6781">www.irs.gov/Form6781</a> for the latest information.<br/>
 							</div><br/>
 							<div class="styFBT" style="height:5mm;padding-top:1mm">
-								<img src="{$ImagePath}/6781_Bullet.gif" alt="bullet"/> 
+								<img src="{$ImagePath}/6781_Bullet.gif" alt="Right Pointing Arrow"/> 
 								<span style="width:.5mm"/>
 								Attach to your tax return.
 						    </div>
@@ -102,33 +102,33 @@
 						<div class="styGenericDiv" style="width:65mm;">
 							<span class="styBoldText">A</span>
 							<span style="width:12px;"/>
-							<input type="checkbox" alt="IRS6781MixedStraddleElection" class="styCkbox">
+							<input type="checkbox" alt="Mixed Straddle Election Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form6781Data/MixedStraddleElectionInd"/>
-									<xsl:with-param name="BackupName">IRS6781MixedStraddleElection</xsl:with-param>
+									<xsl:with-param name="BackupName">MixedStraddleElection</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<span style="width:12px;"/>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form6781Data/MixedStraddleElectionInd"/>
-									<xsl:with-param name="BackupName">IRS6781MixedStraddleElection</xsl:with-param>
+									<xsl:with-param name="BackupName">MixedStraddleElectionLabel</xsl:with-param>
 								</xsl:call-template>Mixed straddle election</label>
 						</div>
 						<div class="styGenericDiv" style="width:65mm;">
 							<span class="styBoldText">C</span>
 							<span style="width:12px;"/>
-							<input type="checkbox"   alt="IRS6781MixedStraddleAccountElection" class="styCkbox">
+							<input type="checkbox"   alt="Mixed Straddle Account Election Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form6781Data/MixedStraddleAccountInd"/>
-									<xsl:with-param name="BackupName">IRS6781MixedStraddleAccountElection</xsl:with-param>
+									<xsl:with-param name="BackupName">MixedStraddleAccountElection</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<span style="width:12px;"/>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form6781Data/MixedStraddleAccountInd"/>
-									<xsl:with-param name="BackupName">IRS6781MixedStraddleAccountElection</xsl:with-param>
+									<xsl:with-param name="BackupName">MixedStraddleAccountElectionLabel</xsl:with-param>
 								</xsl:call-template>Mixed straddle account election</label>
 							<span style="width:2px;"/>
 							<xsl:call-template name="SetFormLinkInline">
@@ -140,34 +140,34 @@
 						<div class="styGenericDiv" style="width:65mm;">
 							<span class="styBoldText">B</span>
 							<span style="width:12px;"/>
-							<input type="checkbox"  alt="IRS6781StraddleByStraddleIdentificationElection" class="styCkbox">
+							<input type="checkbox"  alt="Straddle-by-straddle Identification Election Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form6781Data/StraddleByStraddleInd"/>
-									<xsl:with-param name="BackupName">IRS6781StraddleByStraddleIdentificationElection</xsl:with-param>
+									<xsl:with-param name="BackupName">StraddleByStraddleIdentificationElection</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<span style="width:12px;"/>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form6781Data/StraddleByStraddleInd"/>
-									<xsl:with-param name="BackupName">IRS6781StraddleByStraddleIdElection</xsl:with-param>
+									<xsl:with-param name="BackupName">StraddleByStraddleIdentificationElectionLabel</xsl:with-param>
 								</xsl:call-template>Straddle-by-straddle identification election
                            </label>
 						</div>
 						<div class="styGenericDiv" style="width:65mm;">
 							<span class="styBoldText">D</span>
 							<span style="width:12px;"/>
-							<input type="checkbox" alt="IRS6781NetSection1256ContractsLossElectionInd" class="styCkbox">
+							<input type="checkbox" alt="Net Section 1256 Contracts Loss Election Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form6781Data/NetSection1256ElectionInd"/>
-									<xsl:with-param name="BackupName">IRS6781NetSection1256ContractsLossElectionInd</xsl:with-param>
+									<xsl:with-param name="BackupName">NetSection1256ContractsLossElection</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<span style="width:12px;"/>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form6781Data/NetSection1256ElectionInd"/>
-									<xsl:with-param name="BackupName">IRS6781NetSection1256ElectionInd</xsl:with-param>
+									<xsl:with-param name="BackupName">NetSection1256ContractsLossElectionLabel</xsl:with-param>
 								</xsl:call-template>Net section 1256 contracts loss election</label>
 							<span style="width:2px;"/>
 						</div>

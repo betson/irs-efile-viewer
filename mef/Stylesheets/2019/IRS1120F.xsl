@@ -2692,24 +2692,26 @@
 										<div class="styLNLeftNumBox" style="">GG</div>
 										<div style="width:85.8mm; float:left; clear: none;">
 											<div class="styLNDesc" style="width:73.6mm;">						    
-												Does the corporation satisfy <b>one or more</b> of the following (see instructions)? <br/>
+												Does the corporation satisfy <b>one or more</b> of the following<br/>
+												<span style="float:left">(see instructions)? </span>
+												<span class="styDotLn" style="float:right; padding-right:1mm;">............</span><br/>
 												<b>(1) </b>The corporation owns a pass-through entity with current, or prior year carryover, excess business interest expense.
 											</div>
 											<div style="width:12.01mm; height:8mm; float:right; clear:none;">
-												<div class="styShadingCell" style="width:6mm; height:3.5mm;"/>
-												<div class="styShadingCellRB" style="width:6mm; height:3.5mm; border-right-width:0px;"/>
-												<div class="styIRS1120FYesNoBox" style="width:6mm; height:3mm; border-bottom-width:0px;">
+												<div class="styShadingCell" style="width:6mm; height:4mm;"/>
+												<div class="styShadingCellRB" style="width:6mm; height:4mm; border-right-width:0px;"/>
+												<div class="styIRS1120FYesNoBox" style="width:6mm; height:3.5mm; border-bottom-width:0px;">
 													<xsl:call-template name="PopulateYesBoxText">
 														<xsl:with-param name="TargetNode" select="$FormData/SatisfyOneOrMoreConditionsInd"/>
 													</xsl:call-template>
 												</div>
-												<div class="styIRS1120FYesNoBoxRB" style="width:6mm; height:3mm; border-right-width:0px; border-bottom-width:0px;">
+												<div class="styIRS1120FYesNoBoxRB" style="width:6mm; height:3.5mm; border-right-width:0px; border-bottom-width:0px;">
 													<xsl:call-template name="PopulateNoBoxText">
 														<xsl:with-param name="TargetNode" select="$FormData/SatisfyOneOrMoreConditionsInd"/>
 													</xsl:call-template>
 												</div>
-												<div class="styShadingCell" style="width:6mm; height:13.5mm;"/>
-												<div class="styShadingCellRB" style="width:6mm; height:13.5mm; border-right-width:0px;"/>
+												<div class="styShadingCell" style="width:6mm; height:12.5mm;"/>
+												<div class="styShadingCellRB" style="width:6mm; height:12.5mm; border-right-width:0px;"/>
 											</div>
 										</div>
 									</div>
@@ -2764,33 +2766,23 @@
 									</div>
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftNumBox" style="height:4.5mm; padding-left:3mm;"/>
-										<div class="styLNDesc" style="width:72mm; height:9.5mm;">
-						receipts. (determined under section 448(c)) for the 3 tax years preceding the current tax year are $26 million or more.<br/>
+										<div class="styLNDesc" style="width:72mm; height:13mm;">
+						receipts (determined under section 448(c)) for the 3 tax years preceding the current tax year are more than $26 million and the corporation has business interest expense.<br/>
 										</div>
-										<div class="styShadingCell" style="width:6mm; height:10mm;"/>
-										<div class="styShadingCellRB" style="width:6mm; height:10mm; border-right-width:1px;"/>
+										<div class="styShadingCell" style="width:6mm; height:13mm;"/>
+										<div class="styShadingCellRB" style="width:6mm; height:13mm; border-right-width:1px;"/>
 									</div>
 									<!-- End Line 2. of GG Line Page 3 of Additional Information -->
 									<!-- begin Line 3. of GG Line Page 3 of Additional Information -->
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftNumBox" style="height:4mm; padding-left:3mm;"/>
-										<div class="styLNDesc" style="width:72mm; height:4mm;">
-											<b>(3) </b>The corporation is a tax shelter (see instructions).
+										<div class="styLNDesc" style="width:72mm; height:6.5mm;">
+											<b>(3) </b>The corporation is a tax shelter and the corporation has business interest expense.
 						</div>
-										<div class="styShadingCell" style="width:6mm; height:4mm;"/>
-										<div class="styShadingCellRB" style="width:6mm; height:4mm; border-right-width:1px;"/>
+										<div class="styShadingCell" style="width:6mm; height:6.5mm;"/>
+										<div class="styShadingCellRB" style="width:6mm; height:6.5mm; border-right-width:1px;"/>
 									</div>
 									<!-- End Line 3. of GG Line Page 3 of Additional Information -->
-									<!-- begin Line 4. of GG Line Page 3 of Additional Information -->
-									<div class="styGenericDiv" style="width:93mm;">
-										<div class="styLNLeftNumBox" style="height:4.5mm; padding-left:3mm;"/>
-										<div class="styLNDesc" style="width:72mm; height:12.5mm;">
-											<b>(4) </b>The corporation has interest expense from a trade or business other than (a) electing real property trades or businesses, (b) electing farming businesses, or (c) certain utility businesses under section 163(j)(7).
-						</div>
-										<div class="styShadingCell" style="width:6mm; height:12.5mm;"/>
-										<div class="styShadingCellRB" style="width:6mm; height:12.5mm; border-right-width:1px;"/>
-									</div>
-									<!-- End Line 4. of GG Line Page 3 of Additional Information -->
 									<!-- Begin Yes Line of Line GG Line Page 3 of Additional Information -->
 									<div class="styGenericDiv" style="width:93mm;">
 										<div class="styLNLeftNumBox" style="height:4mm;"/>
@@ -2885,8 +2877,8 @@
 											</xsl:call-template>
 										  </span>
 										</div>
-										<div class="styShadingCell" style="width:6mm;height:16.5mm;"/>
-										<div class="styShadingCellRB" style="width:6mm;height:16.5mm; border-right-width:0px;"/>
+										<div class="styShadingCell" style="width:6mm;height:9.5mm;"/>
+										<div class="styShadingCellRB" style="width:6mm;height:9.5mm; border-right-width:0px;"/>
 									</div>
 									<!-- End Line II Page 3 Additional Information  -->
 								</td>

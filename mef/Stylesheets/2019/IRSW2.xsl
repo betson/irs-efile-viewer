@@ -841,7 +841,7 @@
 																<br/>
 																<span style="float:right">
 																	<xsl:call-template name="PopulateText">
-																		<xsl:with-param name="TargetNode" select="PriorYearUserraContribution"/>
+																		<xsl:with-param name="TargetNode" select="PriorUSERRAContributionYr"/>
 																	</xsl:call-template>
 																</span>
 															</xsl:when>
@@ -891,7 +891,7 @@
 																<br/>
 																<span style="float:right">
 																	<xsl:call-template name="PopulateText">
-																		<xsl:with-param name="TargetNode" select="PriorYearUserraContribution"/>
+																		<xsl:with-param name="TargetNode" select="PriorUSERRAContributionYr"/>
 																	</xsl:call-template>
 																</span>
 															</xsl:when>
@@ -941,7 +941,7 @@
 																<br/>
 																<span style="float:right">
 																	<xsl:call-template name="PopulateText">
-																		<xsl:with-param name="TargetNode" select="PriorYearUserraContribution"/>
+																		<xsl:with-param name="TargetNode" select="PriorUSERRAContributionYr"/>
 																	</xsl:call-template>
 																</span>
 															</xsl:when>
@@ -991,7 +991,7 @@
 																<br/>
 																<span style="float:right">
 																	<xsl:call-template name="PopulateText">
-																		<xsl:with-param name="TargetNode" select="PriorYearUserraContribution"/>
+																		<xsl:with-param name="TargetNode" select="PriorUSERRAContributionYr"/>
 																	</xsl:call-template>
 																</span>
 															</xsl:when>
@@ -1175,7 +1175,7 @@
 																			<br/>
 																			<span style="float:right">
 																				<xsl:call-template name="PopulateText">
-																					<xsl:with-param name="TargetNode" select="PriorYearUserraContribution"/>
+																					<xsl:with-param name="TargetNode" select="PriorUSERRAContributionYr"/>
 																				</xsl:call-template>
 																			</span>
 																		</xsl:when>
@@ -1231,7 +1231,7 @@
 																			<br/>
 																			<span style="float:right">
 																				<xsl:call-template name="PopulateText">
-																					<xsl:with-param name="TargetNode" select="PriorYearUserraContribution"/>
+																					<xsl:with-param name="TargetNode" select="PriorUSERRAContributionYr"/>
 																				</xsl:call-template>
 																			</span>
 																		</xsl:when>
@@ -1289,7 +1289,7 @@
 																			<br/>
 																			<span style="float:right">
 																				<xsl:call-template name="PopulateText">
-																					<xsl:with-param name="TargetNode" select="PriorYearUserraContribution"/>
+																					<xsl:with-param name="TargetNode" select="PriorUSERRAContributionYr"/>
 																				</xsl:call-template>
 																			</span>
 																		</xsl:when>
@@ -1347,7 +1347,7 @@
 																			<br/>
 																			<span style="float:right">
 																				<xsl:call-template name="PopulateText">
-																					<xsl:with-param name="TargetNode" select="PriorYearUserraContribution"/>
+																					<xsl:with-param name="TargetNode" select="PriorUSERRAContributionYr"/>
 																				</xsl:call-template>
 																			</span>
 																		</xsl:when>
@@ -1409,7 +1409,7 @@
 																			<br/>
 																			<span style="float:right">
 																				<xsl:call-template name="PopulateText">
-																					<xsl:with-param name="TargetNode" select="PriorYearUserraContribution"/>
+																					<xsl:with-param name="TargetNode" select="PriorUSERRAContributionYr"/>
 																				</xsl:call-template>
 																			</span>
 																		</span>
@@ -1463,7 +1463,7 @@
 																					<br/>
 																					<span style="float:right">
 																						<xsl:call-template name="PopulateText">
-																							<xsl:with-param name="TargetNode" select="PriorYearUserraContribution"/>
+																							<xsl:with-param name="TargetNode" select="PriorUSERRAContributionYr"/>
 																						</xsl:call-template>
 																					</span>
 																				</span>
@@ -1562,7 +1562,7 @@
 																				<br/>
 																				<span style="float:right">
 																					<xsl:call-template name="PopulateText">
-																						<xsl:with-param name="TargetNode" select="PriorYearUserraContribution"/>
+																						<xsl:with-param name="TargetNode" select="PriorUSERRAContributionYr"/>
 																					</xsl:call-template>
 																				</span>
 																			</xsl:when>
@@ -1618,7 +1618,7 @@
 																				<br/>
 																				<span style="float:right">
 																					<xsl:call-template name="PopulateText">
-																						<xsl:with-param name="TargetNode" select="PriorYearUserraContribution"/>
+																						<xsl:with-param name="TargetNode" select="PriorUSERRAContributionYr"/>
 																					</xsl:call-template>
 																				</span>
 																			</xsl:when>
@@ -1676,7 +1676,7 @@
 																				<br/>
 																				<span style="float:right">
 																					<xsl:call-template name="PopulateText">
-																						<xsl:with-param name="TargetNode" select="PriorYearUserraContribution"/>
+																						<xsl:with-param name="TargetNode" select="PriorUSERRAContributionYr"/>
 																					</xsl:call-template>
 																				</span>
 																			</xsl:when>
@@ -1734,7 +1734,7 @@
 																				<br/>
 																				<span style="float:right">
 																					<xsl:call-template name="PopulateText">
-																						<xsl:with-param name="TargetNode" select="PriorYearUserraContribution"/>
+																						<xsl:with-param name="TargetNode" select="PriorUSERRAContributionYr"/>
 																					</xsl:call-template>
 																				</span>
 																			</xsl:when>
@@ -1796,7 +1796,7 @@
 																				<br/>
 																				<span style="float:right">
 																					<xsl:call-template name="PopulateText">
-																						<xsl:with-param name="TargetNode" select="PriorYearUserraContribution"/>
+																						<xsl:with-param name="TargetNode" select="PriorUSERRAContributionYr"/>
 																					</xsl:call-template>
 																				</span>
 																			</span>
@@ -1850,7 +1850,7 @@
 																						<br/>
 																						<span style="float:right">
 																							<xsl:call-template name="PopulateText">
-																								<xsl:with-param name="TargetNode" select="PriorYearUserraContribution"/>
+																								<xsl:with-param name="TargetNode" select="PriorUSERRAContributionYr"/>
 																							</xsl:call-template>
 																						</span>
 																					</span>
@@ -2341,7 +2341,7 @@
 						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line C - Employer Name Control</xsl:with-param>
-							<xsl:with-param name="TargetNode" select="$FormW2Data/EmployerNameControl"/>
+							<xsl:with-param name="TargetNode" select="$FormW2Data/EmployerNameControlTxt"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 					</table>

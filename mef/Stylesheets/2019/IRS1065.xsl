@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Steven Fook on 6/14/2019 --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -259,8 +259,8 @@ province, country, and ZIP or foreign postal code<br/><br/>
 									<xsl:with-param name="TargetNode" select="$Form1065Data/InitialReturnInd"/>
 									<xsl:with-param name="BackupName">IRS1065InitialReturn</xsl:with-param>
 								</xsl:call-template>
-         Initial return
-            </label>
+								 Initial return
+							</label>
 							<span style="width:.7px"/>
 							<span class="styBoldText">(2)</span>
 							<span style="width:.7px;"/>
@@ -409,9 +409,9 @@ province, country, and ZIP or foreign postal code<br/><br/>
                             <span style="width:.2mm;"/>
 							<img src="{$ImagePath}/1065_Bullet_Sm.gif" alt="MidSizeBullet"/>
 							<span style="width:.2mm"/>
-							<!--<xsl:call-template name="SetFormLinkInline">
+							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1065Data/ScheduleK1AttachedCnt"/>
-							</xsl:call-template>-->
+							</xsl:call-template>
 						</div>
 						<div class="styGenericDiv" style="width:37mm;font-size:7pt;text-align:right;border-bottom:solid black 1px;">
 							<xsl:call-template name="PopulateAmount">
@@ -420,9 +420,9 @@ province, country, and ZIP or foreign postal code<br/><br/>
 						</div>
 					</div>
 					<!-- J -->
-					<div class="styBB" style="width:187mm;height:6mm">
+					<div class="styNBB" style="width:187mm;">
 						<div class="styBoldText" style="width:5mm;float:left;clear:none;padding-left:1.5mm;padding-top:.5mm;">J</div>
-						<div class="styGenericDiv" style="width:175mm;">
+						<div class="styGenericDiv" style="width:175mm;padding-top:.5mm;">
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1065Data/ScheduleCAndScheduleM3AttInd"/>
@@ -436,7 +436,10 @@ province, country, and ZIP or foreign postal code<br/><br/>
 							</label>
 							<!--Dotted Line-->
 							<span style="width:1.8mm"/>
-							<span style=" letter-spacing:3.1mm; font-weight:bold; ">............................</span>
+							<span style=" letter-spacing:3.1mm; font-weight:bold; ">...........................</span>
+                            <span style="width:.2mm;"/>
+							<img src="{$ImagePath}/1065_Bullet_Sm.gif" alt="MidSizeBullet"/>
+							<span style="width:.2mm"/>
 						</div>
 						<div class="styGenericDiv" style="width:5mm;float:right;text-align:right;">
 							<input type="checkbox" class="styCkbox">
@@ -446,6 +449,47 @@ province, country, and ZIP or foreign postal code<br/><br/>
 									</xsl:with-param>
 								</xsl:call-template>
 							</input>
+						</div>
+					</div>
+					<!-- K -->
+					<div class="styBB" style="width:187mm;">
+						<div class="styBoldText" style="width:5mm;float:left;clear:none;padding-left:1.5mm;padding-top:1.5mm;">K</div>
+						<div class="styGenericDiv" style="font-size:6.5pt;">
+                                  Check if partnership: 
+							<span style="width:6px;"/>
+							<span class="styBoldText" style="width:2mm">(1)</span>
+							<span style="width:12px;"/>
+							<input type="checkbox" class="styCkbox">
+								<xsl:call-template name="PopulateCheckbox">
+									<xsl:with-param name="TargetNode" select="$Form1065Data/Sect465AtRiskAggregatedActyInd"/>
+									<xsl:with-param name="BackupName">Section465AtRiskAggregatedActivityIndicator</xsl:with-param>
+								</xsl:call-template>
+							</input>
+							<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$Form1065Data/Sect465AtRiskAggregatedActyInd"/>
+									<xsl:with-param name="BackupName">Section465AtRiskAggregatedActivityIndicator</xsl:with-param>
+								</xsl:call-template>
+								 Aggregated activities for section 465 at-risk purposes
+							</label>							
+						</div>
+						<div class="styGenericDiv" style="font-size:6.5pt;">
+							<span style="width:6px;"/>
+							<span class="styBoldText" style="width:2mm">(2)</span>
+							<span style="width:3px;"/>
+							<input type="checkbox" class="styCkbox">
+								<xsl:call-template name="PopulateCheckbox">
+									<xsl:with-param name="TargetNode" select="$Form1065Data/Sect469PALGroupedActyInd"/>
+									<xsl:with-param name="BackupName">Section469PassiveGroupedActivityIndicator</xsl:with-param>
+								</xsl:call-template>
+							</input>
+							<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$Form1065Data/Sect469PALGroupedActyInd"/>
+									<xsl:with-param name="BackupName">Section469PassiveGroupedActivityIndicator</xsl:with-param>
+								</xsl:call-template>
+								 Grouped activities for section 469 passive activity purposes
+							</label>							
 						</div>
 					</div>
 					<!-- Caution -->
@@ -1003,7 +1047,7 @@ province, country, and ZIP or foreign postal code<br/><br/>
 						<div style="width:181mm;float:right;clear:none;">
 							<div class="styLNLeftNumBox" style="height:4mm;">27</div>
 							<div class="styLNDesc" style="width:132mm;height:4mm;">
-								<span class="styBoldText">Total balance due.</span>  Add lines 23 through 27
+								<span class="styBoldText">Total balance due.</span>  Add lines 23 through 26
 								<!--Dotted Line-->
 								<!--<span style="width:1.8mm"/>-->
 								<span style=" letter-spacing:3.1mm; font-weight:bold; ">..................</span>
@@ -1151,11 +1195,11 @@ province, country, and ZIP or foreign postal code<br/><br/>
 					<!-- BEGIN PREPARER SIGNATURE SECTION -->
 					<!-- Implementing the Preparer section in table -->
 					<div class="styBB" style="width:187mm;font-size:6pt;">
-						   <div style="height:23mm;width:18mm;padding-top:5mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 1px 0px 0px;">
+						   <div style="height:26mm;width:18mm;padding-top:5mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 1px 0px 0px;">
 								<span class="styMainTitle" style="font-size:11pt;">
 										  Paid<br/> Preparer<br/> Use Only</span>
 							</div>
-						  <div style="height:23mm;width:168mm;float:left;clear:none;">
+						  <div style="width:168mm;float:left;clear:none;">
 								<div style="width:168mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
 								<div class="styLNDesc" style="height:8mm;width:50mm;padding-left:.5mm;border-style:solid;border-color:black;border-width:0px 1px 0px 0px;">
 									  Print/Type preparer's name<br/>
@@ -1224,7 +1268,7 @@ province, country, and ZIP or foreign postal code<br/><br/>
 							</div>
 						</div>
 						<div style="width:168mm;float:left;clear:none;">	
-							<div class="styLNDesc" style="height:8.5mm;width:127.3mm;border-style:solid;border-color:black;border-width:0px 1px 0px 0px;">
+							<div class="styLNDesc" style="height:11.5mm;width:127.3mm;border-style:solid;border-color:black;border-width:0px 1px 0px 0px;">
 								<div class="styGenericDiv" style="padding-left:.5mm;">Firm's address
 							  	<img src="{$ImagePath}/1065_Bullet_Sm.gif" alt="SmallBullet"/>
 								</div>
@@ -2107,7 +2151,7 @@ province, country, and ZIP or foreign postal code<br/><br/>
 					<div class="styBB" style="width:187mm">
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left:1.0mm;">8</div>
 						<div class="styLNDesc" style="height:9mm;width:167mm">
-							At any time during calendar year 2018 
+							At any time during calendar year 2019 
 						   did the partnership have an interest in or a signature or other authority over a <br/>financial account
 						   in a foreign country (such as a bank account, securities account, or other financial account)? See
 						   the<br/>instructions for exceptions and filing requirements for FinCEN Form 114, Report of
@@ -2260,7 +2304,8 @@ province, country, and ZIP or foreign postal code<br/><br/>
 					<!-- END Page Header -->
 					<div class="styBB" style="width:187mm;">
 							<div class="styPartName" style="width:23mm;">Schedule B</div>
-							<div class="styPartDesc" style="width:164mm;">Other Information <i>(continued)</i></div>
+							<div class="styPartDesc" style="width:33mm;">Other Information</div>
+							<div class="styPartDesc" style="width:131mm;font-style:italic;font-weight:normal;">(continued)</div>
 					</div>
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;padding-left:1.5mm;"></div>
@@ -2430,7 +2475,7 @@ province, country, and ZIP or foreign postal code<br/><br/>
 					<div style="width:187mm">
 						<div class="styLNLeftLtrBox" style="height:4mm;padding-left:1mm">16a</div>
 						<div class="styLNDesc" style="height:4mm;width:167mm">
-						  Did you make any payments in 2018 that would require you to file Form(s) 1099? See instructions
+						  Did you make any payments in 2019 that would require you to file Form(s) 1099? See instructions
 							<span style="width:1.8mm"/>
 						    <span style=" letter-spacing:3.2mm; font-weight:bold; ">........</span>
                             <xsl:call-template name="SetFormLinkInline">
@@ -2471,7 +2516,7 @@ province, country, and ZIP or foreign postal code<br/><br/>
 					<div class="styBB" style="width:187mm">
 						<div class="styLNLeftNumBox" style="height:4mm">17</div>
 						<div class="styLNDesc" style="height:4mm;width:167mm">
-						  Enter the number of Form(s) 5471, Information Return of U.S. Persons With Respect To Certain
+						  Enter the number of Forms 5471, Information Return of U.S. Persons With Respect To Certain
 							<br/>Foreign Corporations, attached to this return.
                             <span style="height:4mm;width:1mm;"/>
 							<img src="{$ImagePath}/1065_Bullet_Sm.gif" alt="MidSizeBullet"/>
@@ -2550,7 +2595,7 @@ province, country, and ZIP or foreign postal code<br/><br/>
 					<div class="styBB" style="width:187mm">
 						<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;">21</div>
 						<div class="styLNDesc" style="height:4mm; width:167mm;padding-top:1mm;">
-						  Is the partnership a section 721(c) partnership, as defined in Treasury Regulations section 1.721(c)-1T(b)(14)?
+						  Is the partnership a section 721(c) partnership, as defined in Regulations section 1.721(c)-1T(b)(14)?
                            <span style="width:1.8mm"/>
 								<span style=" letter-spacing:3.2mm; font-weight:bold; ">......</span>
                           <span style="width:1.8mm"/>
@@ -2567,22 +2612,41 @@ province, country, and ZIP or foreign postal code<br/><br/>
 						</div>
 					</div>
 					<!-- SCHEDULE B Line 22-->
-					<div class="styBB" style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm">22</div>
-						<div class="styLNDesc" style="height:4mm;width:167mm">
+					<div class="styBB" style="width:187mm;height:8.5mm;">
+						<div class="styLNLeftNumBox">22</div>
+						<div class="styLNDesc" style="width:167mm">
 						  During the tax year, did the partnership pay or accrue any interest or royalty for which the deduction is not allowed under
-						  section 267A?  See instructions.  If "Yes," enter the total amount of the disallowed deductions.
-                            <span style="height:4mm;width:1mm;"/>
+						  section</div>
+							<div class="styIRS1065LNYesNoBox" style="background:gray;border-bottom:0"/>
+							<div class="styIRS1065LNYesNoBox" style="background:gray;border-bottom:0"/>
+						<div style="width:187mm;">                          
+						<div class="styLNLeftNumBox" style="padding-left:3.5mm;"></div>						  
+						<div class="styLNDesc" style="width:167mm;">267A?  See instructions.  If "Yes," enter the total amount of the disallowed deductions.
+                            <span style="width:1mm;"/>
 							<img src="{$ImagePath}/1065_Bullet_Sm.gif" alt="MidSizeBullet"/>
 							<span style="width:1mm;"/>$
-							<span style="height:3mm;width:30mm;text-align:right;">
+							<span style="width:30mm;text-align:right;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/NondedIntRoyaltyUndSect267AAmt"/>
 								</xsl:call-template>
 							</span>
 						</div>
-						<div class="styIRS1065LNYesNoBox" style="height:8.2mm;right-border-width:0;background:gray;border-bottom-width:0;"/>
-						<div class="styIRS1065LNYesNoBox" style="height:8.2mm;background:gray;border-bottom-width:0;"/>
+							<span>
+								<xsl:call-template name="PopulateSpan">
+									<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/NondedIntRoyaltyUndSect267AInd"/>
+								</xsl:call-template>
+							<div class="styIRS1065LNYesNoBox" style="border-left-width:1;border-bottom-width:0;font-weight:normal;">
+								<xsl:call-template name="PopulateYesBoxText">
+									<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/NondedIntRoyaltyUndSect267AInd"/>
+								</xsl:call-template>
+							</div>
+							<div class="styIRS1065LNYesNoBox" style="border-left-width:1;border-bottom-width:0;font-weight:normal;">
+								<xsl:call-template name="PopulateNoBoxText">
+									<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/NondedIntRoyaltyUndSect267AInd"/>
+								</xsl:call-template>
+							</div>
+							</span>
+						</div>
 					</div>
 					<!-- SCHEDULE B Line 23-->
 					<div class="styBB" style="width:187mm">
@@ -2612,55 +2676,54 @@ province, country, and ZIP or foreign postal code<br/><br/>
 					</div>
 					<!-- SCHEDULE B Line 24-->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:7mm;">24</div>
-						<div class="styLNDesc" style="height:7mm; width:167mm;">Does the partnership satisfy one of the following conditions
-						  and the partnership does not own a pass-through entity with current year, or prior year,
-						  carryover excess business interest expense? (see instructions)
+						<div class="styLNLeftNumBox" style="height:4.5mm;">24</div>
+						<div class="styLNDesc" style="height:4.5mm; width:167mm;">Does the partnership satisfy one or more of the following (see instructions):
                             <xsl:call-template name="SetFormLinkInline">
-								<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/SatisfyAllConditionsInd"/>
+								<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/SatisfyOneOrMoreConditionsInd"/>
 							</xsl:call-template>
 							<span style="width:1.8mm"/>
-							<span style=" letter-spacing:3.2mm; font-weight:bold; ">..............</span>
+							<span style=" letter-spacing:3.2mm; font-weight:bold; ">................</span>
 						</div>
-							<div class="styIRS1065LNYesNoBox" style="height:7mm;border-left-width:1;border-bottom-width:1;padding-top:3.5mm;font-weight:normal;">
+							<div class="styIRS1065LNYesNoBox" style="height:4.5mm;border-left-width:1;border-bottom-width:1;font-weight:normal;">
 								<xsl:call-template name="PopulateYesBoxText">
-									<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/SatisfyAllConditionsInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/SatisfyOneOrMoreConditionsInd"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS1065LNYesNoBox" style="height:7mm;border-left-width:1;border-bottom-width:1;padding-top:3.5mm;font-weight:normal;">
+							<div class="styIRS1065LNYesNoBox" style="height:4.5mm;border-left-width:1;border-bottom-width:1;font-weight:normal;">
 								<xsl:call-template name="PopulateNoBoxText">
-									<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/SatisfyAllConditionsInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/SatisfyOneOrMoreConditionsInd"/>
 								</xsl:call-template>
 							</div>
 					</div>
 					<div style="width:187mm;padding-left:4.5mm;">
-						<div class="styLNLeftLtrBox" style="height:7mm;padding-left:3.5mm">a</div>
-						<div class="styLNDesc" style="height:7mm;width:162.5mm">
-						  The partnership's aggregate average annual gross receipts (determined under section 448(c)) for the
-						  3 tax years preceding the current tax year do not exceed $25 milion, and the partnership is not a tax shelter, or
+						<div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:3.5mm">a</div>
+						<div class="styLNDesc" style="height:4.5mm;width:162.5mm">
+						 The partnership owns a pass-through entity with current, or prior year carryover, excess business interest expense.
 						</div>
-						<div class="styIRS1065LNYesNoBox" style="height:7mm;background:gray;border-bottom:0"/>
-						<div class="styIRS1065LNYesNoBox" style="height:7mm;background:gray;border-bottom:0"/>
+						<div class="styIRS1065LNYesNoBox" style="height:4.5mm;background:gray;border-bottom:0"/>
+						<div class="styIRS1065LNYesNoBox" style="height:4.5mm;background:gray;border-bottom:0"/>
 					</div>
 					<div style="width:187mm;padding-left:4.5mm;">
 						<div class="styLNLeftLtrBox" style="height:7mm;padding-left:3.5mm">b</div>
 						<div class="styLNDesc" style="height:7mm;width:162.5mm">
-						  The partnership only has business interest expense from (1) an electing real property trade or business,
-						  (2) an electing farming business, or (3) certain utility businesses under section 163(j)(7).
+						  The partnership's aggregate average annual gross receipts (determined under section 448(c)) for the 3 tax years
+							preceding the current tax year are more than $26 million and the partnership has business interest expense.
 						</div>
 						<div class="styIRS1065LNYesNoBox" style="height:7mm;background:gray;border-bottom:0"/>
 						<div class="styIRS1065LNYesNoBox" style="height:7mm;background:gray;border-bottom:0"/>
 					</div>
-					<div style="width:187mm">
-						<div class="styLNLeftLtrBox" style="height:4mm;padding-left:3.5mm"/>
-						<div class="styLNDesc" style="height:4mm;width:167mm"/>
-						<div class="styIRS1065LNYesNoBox" style="height:4mm;background:gray;border-bottom:0"/>
-						<div class="styIRS1065LNYesNoBox" style="height:4mm;background:gray;border-bottom:0"/>					
+					<div style="width:187mm;padding-left:4.5mm;">
+						<div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:3.5mm">c</div>
+						<div class="styLNDesc" style="height:4.5mm;width:162.5mm">
+						 The partnership is a tax shelter (see instructions) and the partnership has business interest expense.
+						</div>
+						<div class="styIRS1065LNYesNoBox" style="height:4.5mm;background:gray;border-bottom:0"/>
+						<div class="styIRS1065LNYesNoBox" style="height:4.5mm;background:gray;border-bottom:0"/>
 					</div>
 					<div class="styBB" style="width:187mm">
 						<div class="styLNLeftLtrBox" style="height:4mm;padding-left:3.5mm"/>
-						<div class="styLNDesc" style="height:4mm;width:167mm">
-						  If "No," complete and attach Form 8990.</div>
+						<div class="styLNDesc" style="height:4mm;width:167mm;padding-left:4.5mm;">
+						  If "Yes," to any, complete and attach Form 8990.</div>
 						<div class="styIRS1065LNYesNoBox" style="height:4mm;background:gray;border-bottom:0"/>
 						<div class="styIRS1065LNYesNoBox" style="height:4mm;background:gray;border-bottom:0"/>
 					</div>
@@ -2727,25 +2790,19 @@ province, country, and ZIP or foreign postal code<br/><br/>
 						</div>
 						<div class="styGenericDiv" style="width:104mm;padding-top:2mm;">
 							<xsl:choose>
-								<xsl:when test="$Form1065ScheduleB/EntityPRDesignationGrp">
-									<xsl:call-template name="PopulateFilerName">
-										<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/EntityPRDesignationGrp/BusinessName"/>
+								<xsl:when test="$Form1065ScheduleB/EntityPRDesignationGrp/BusinessName/BusinessNameLine1Txt">
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/EntityPRDesignationGrp/BusinessName/BusinessNameLine1Txt"/>
+									</xsl:call-template><br/>
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/EntityPRDesignationGrp/BusinessName/BusinessNameLine2Txt"/>
 									</xsl:call-template>
 								</xsl:when>
-							</xsl:choose>
-						</div>
-						<div class="styGenericDiv" style="width:20mm;">
-                          U.S. taxpayer<br/>identification<br/>number of PR</div>
-						<div class="styGenericDiv" style="width:5mm;padding-top:2mm;">
-							<img src="{$ImagePath}/1065_Bullet_Lg.gif" alt="LargeBullet"/>
-						</div>
-						<div class="styGenericDiv" style="width:38mm;padding-top:5mm;">
-							<xsl:choose>
-								<xsl:when test="$Form1065ScheduleB/EntityPRDesignationGrp">
-									<xsl:call-template name="PopulateEIN">
-										<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/EntityPRDesignationGrp/EIN"/>
-									</xsl:call-template>
-								</xsl:when>
+								<xsl:otherwise>
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/IndividualPRDesignationGrp/PersonNm"/>
+									</xsl:call-template>								
+								</xsl:otherwise>
 							</xsl:choose>
 						</div>
 					</div>
@@ -2758,11 +2815,16 @@ province, country, and ZIP or foreign postal code<br/><br/>
 						</div>
 						<div class="styGenericDiv" style="width:91mm;padding-top:2mm;">
 							<xsl:choose>
-								<xsl:when test="$Form1065ScheduleB/EntityPRDesignationGrp">
+								<xsl:when test="$Form1065ScheduleB/EntityPRDesignationGrp/BusinessName/BusinessNameLine1Txt">
 									<xsl:call-template name="PopulateUSAddressTemplate">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/EntityPRDesignationGrp/USAddress"/>
 									</xsl:call-template>
-								</xsl:when>
+								</xsl:when>									
+								<xsl:otherwise>									
+									<xsl:call-template name="PopulateUSAddressTemplate">
+										<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/IndividualPRDesignationGrp/USAddress"/>
+									</xsl:call-template>									
+								</xsl:otherwise>
 							</xsl:choose>
 						</div>
 						<div class="styGenericDiv" style="width:23mm;padding-top:3mm;">
@@ -2772,11 +2834,16 @@ province, country, and ZIP or foreign postal code<br/><br/>
 						</div>
 						<div class="styGenericDiv" style="width:35mm;padding-top:5mm;">
 							<xsl:choose>
-								<xsl:when test="$Form1065ScheduleB/EntityPRDesignationGrp">
+								<xsl:when test="$Form1065ScheduleB/EntityPRDesignationGrp/BusinessName/BusinessNameLine1Txt">
 									<xsl:call-template name="PopulatePhoneNumber">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/EntityPRDesignationGrp/PhoneNum"/>
 									</xsl:call-template>
-								</xsl:when>
+								</xsl:when>									
+								<xsl:otherwise>									
+									<xsl:call-template name="PopulatePhoneNumber">
+										<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/IndividualPRDesignationGrp/PhoneNum"/>
+									</xsl:call-template>
+								</xsl:otherwise>
 							</xsl:choose>
 						</div>
 					</div>
@@ -2788,44 +2855,22 @@ province, country, and ZIP or foreign postal code<br/><br/>
 							<img src="{$ImagePath}/1065_Bullet_Lg.gif" alt="LargeBullet"/>
 						</div>
 						<div class="styGenericDiv" style="width:97mm;padding-top:11mm;">
-							<xsl:choose>
-								<xsl:when test="$Form1065ScheduleB/IndividualPRDesignationGrp">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/IndividualPRDesignationGrp/PersonNm"/>
+										<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/EntityPRDesignationGrp/IndividualDesigneeApptGrp/PersonNm"/>
 									</xsl:call-template>
-								</xsl:when>
-							</xsl:choose>
-						</div>
-						<div class="styGenericDiv" style="width:19mm;">
-                          U.S. taxpayer<br/>identification<br/>number of the<br/>designated<br/>individual</div>
-						<div class="styGenericDiv" style="width:5mm;padding-top:9mm;">
-							<img src="{$ImagePath}/1065_Bullet_Lg.gif" alt="LargeBullet"/>
-						</div>
-						<div class="styGenericDiv" style="width:39mm;padding-top:11mm;">
-							<xsl:choose>
-								<xsl:when test="$Form1065ScheduleB/IndividualPRDesignationGrp">
-									<xsl:call-template name="PopulateSSN">
-										<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/IndividualPRDesignationGrp/SSN"/>
-									</xsl:call-template>
-								</xsl:when>
-							</xsl:choose>
 						</div>
 					</div>
 					<div style="width:187mm;"></div>
 					<div class="styBB" style="width:187mm;">
 						<div class="styGenericDiv" style="width:22mm;padding-top:3mm;">
-                          U.S. Address of<br/>designated<br/>individual</div>
+                          U.S. address of<br/>designated<br/>individual</div>
 						<div class="styGenericDiv" style="width:5mm;padding-top:5mm;">
 							<img src="{$ImagePath}/1065_Bullet_Lg.gif" alt="LargeBullet"/>
 						</div>
 						<div class="styGenericDiv" style="width:96mm;padding-top:3mm;">
-							<xsl:choose>
-								<xsl:when test="$Form1065ScheduleB/IndividualPRDesignationGrp">
-									<xsl:call-template name="PopulateUSAddressTemplate">
-										<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/IndividualPRDesignationGrp/USAddress"/>
-									</xsl:call-template>
-								</xsl:when>
-							</xsl:choose>
+							<xsl:call-template name="PopulateUSAddressTemplate">
+								<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/EntityPRDesignationGrp/IndividualDesigneeApptGrp/USAddress"/>
+							</xsl:call-template>
 						</div>
 						<div class="styGenericDiv" style="width:16mm;">
                           U.S. phone<br/>number of<br/>designated<br/>individual</div>
@@ -2833,13 +2878,9 @@ province, country, and ZIP or foreign postal code<br/><br/>
 							<img src="{$ImagePath}/1065_Bullet_Lg.gif" alt="LargeBullet"/>
 						</div>
 						<div class="styGenericDiv" style="width:42mm;padding-top:8mm;">
-							<xsl:choose>
-								<xsl:when test="$Form1065ScheduleB/IndividualPRDesignationGrp">
-									<xsl:call-template name="PopulatePhoneNumber">
-										<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/IndividualPRDesignationGrp/PhoneNum"/>
-									</xsl:call-template>
-								</xsl:when>
-							</xsl:choose>
+							<xsl:call-template name="PopulatePhoneNumber">
+								<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/EntityPRDesignationGrp/IndividualDesigneeApptGrp/PhoneNum"/>
+							</xsl:call-template>
 						</div>
 					</div>
 					<!-- SCHEDULE B Line 26-->
@@ -2867,7 +2908,9 @@ province, country, and ZIP or foreign postal code<br/><br/>
 					<div class="styBB" style="width:187mm">
 						<div class="styLNLeftLtrBox" style="height:4mm;padding-left:3.5mm"/>
 						<div class="styLNDesc" style="height:4mm;width:167mm">
-						  If "Yes," enter the amount from Form 8996, line 13.
+						  If "Yes," enter the amount from Form 8996, line 14.
+						  	<span style="width:1.8mm"/>
+							<span style=" letter-spacing:3.2mm; font-weight:bold; ">..............</span>
 							<span style="width:1mm;"/>
 							<img src="{$ImagePath}/1065_Bullet_Sm.gif" alt="MidSizeBullet"/>
 							<span style="width:1mm;"/>$
@@ -2879,6 +2922,63 @@ province, country, and ZIP or foreign postal code<br/><br/>
 					</div>
 						<div class="styIRS1065LNYesNoBox" style="height:4mm;background:gray;border-bottom:0"/>
 						<div class="styIRS1065LNYesNoBox" style="height:4mm;background:gray;border-bottom:0"/>
+					</div>
+					<!-- SCHEDULE B Line 27-->
+					<div style="width:187mm">
+						<div class="styLNLeftNumBox" style="height:4mm;">27</div>
+						<div class="styLNDesc" style="height:4mm; width:167mm">
+						  Enter the number of foreign partners that transferred all or a portion of their partnership interests or received a
+								distribution subject
+						</div>
+						<div class="styIRS1065LNYesNoBox" style="height:4mm;background:gray;border-bottom:0"/>
+						<div class="styIRS1065LNYesNoBox" style="height:4mm;background:gray;border-bottom:0"/>
+					</div>
+					<div class="styBB" style="width:187mm">
+						<div class="styLNLeftLtrBox" style="height:4mm;padding-left:3.5mm"/>
+						<div class="styLNDesc" style="height:4mm;width:167mm">
+						  to section 864(c)(8)
+						  	<span style="width:1.8mm"/>
+							<span style=" letter-spacing:3.2mm; font-weight:bold; ">........................</span>
+							<span style="width:1mm;"/>
+							<img src="{$ImagePath}/1065_Bullet_Sm.gif" alt="MidSizeBullet"/>
+							<span style="width:1mm;"/>
+							<span style="width:30mm;text-align:right;border-bottom-solid 1px;">
+								<xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/FrgnPrtnrTrnsfrIntDistriCnt"/>
+								</xsl:call-template>
+							</span>
+					</div>
+						<div class="styIRS1065LNYesNoBox" style="height:4mm;background:gray;border-bottom:0"/>
+						<div class="styIRS1065LNYesNoBox" style="height:4mm;background:gray;border-bottom:0"/>
+					</div>
+					<!-- SCHEDULE B Line 28-->
+					<div class="styBB" style="width:187mm">
+						<div class="styLNLeftNumBox" style="height:4mm;">28</div>
+						<div class="styLNDesc" style="height:4mm; width:167mm">
+						  At any time during the tax year, were there any transfers between the partnership and its partners subject to the disclosure</div>
+							<div class="styIRS1065LNYesNoBox" style="height:4mm;background:gray;border-bottom:0"/>
+							<div class="styIRS1065LNYesNoBox" style="height:4mm;background:gray;border-bottom:0"/>
+						<div style="width:187mm">                          
+						<div class="styLNLeftNumBox" style="height:4mm; padding-left:3.5mm;"></div>						  
+						<div class="styLNDesc" style="width:167mm;">
+						   requirements of Regulations section 1.707-8?
+                            <xsl:call-template name="SetFormLinkInline">
+								<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/TransfersSubjectToDisclRqrInd"/>
+							</xsl:call-template>
+                           <span style="width:1.8mm"/>
+								<span style=" letter-spacing:3.1mm; font-weight:bold; ">..........................</span>  
+						</div>
+							<div class="styIRS1065LNYesNoBox" style="height:4mm;border-left-width:1;border-bottom-width:0;font-weight:normal;">
+								<xsl:call-template name="PopulateYesBoxText">
+									<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/TransfersSubjectToDisclRqrInd"/>
+								</xsl:call-template>
+							</div>
+							<div class="styIRS1065LNYesNoBox" style="height:4mm;border-left-width:1;border-bottom-width:0;font-weight:normal;">
+								<xsl:call-template name="PopulateNoBoxText">
+									<xsl:with-param name="TargetNode" select="$Form1065ScheduleB/TransfersSubjectToDisclRqrInd"/>
+								</xsl:call-template>
+							</div>
+						</div>
 					</div>
 					<!-- Designation Of Tax Matters Partners -->
 					<!--<div style="height:4mm;width:187mm;font-size:8pt;">
@@ -3091,19 +3191,47 @@ province, country, and ZIP or foreign postal code<br/><br/>
 											</xsl:call-template>
 										</div>
 								<!-- Schedule K, Line 4 -->
-										<div class="styLNLeftNumBoxSD" style="height:4.5mm;padding-left:3mm">4</div>
-										<div class="styIRS1065LNDesc" style="height:4.5mm;width:124.5mm;">Guaranteed payments
-										<!--<span style="width:15px;"/>-->
+										<div class="styLNLeftNumBoxSD" style="height:4.5mm;padding-left:3mm;padding-top:1.5mm;">4</div>
+										<div class="styIRS1065LNDesc" style="height:4.5mm;width:124.5mm;font-size:6.5pt;">Guaranteed payments:
+											<span class="styBoldText">a</span> Services
+										<span style="padding-left:1mm;"/>
+											<div style="width:34mm;height:4mm;">
+												<div class="styLNRightNumBox" style="height:4mm;">4a</div>
+												<div class="styLNAmountBox" style="height:4mm;width:26mm;">
+													<xsl:call-template name="PopulateAmount">
+														<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/GuaranteedPaymentsServicesAmt"/>
+													</xsl:call-template>
+												</div>											
+											</div>
+										<span style="width:11px;"/>
+											<span class="styBoldText">b</span> Capital
+												<span style="padding-left:1mm;"/>
+											<div style="width:34mm;height:4mm;float:right;">
+												<div class="styLNRightNumBox" style="height:4mm;">4b</div>
+												<div class="styLNAmountBox" style="height:4mm;width:26mm;">
+													<xsl:call-template name="PopulateAmount">
+														<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/GuaranteedPaymentsCapitalAmt"/>
+													</xsl:call-template>
+												</div>											
+											</div>
+										</div>
+										<div class="styLNRightNumBoxNBB" style="width:11.5mm; background-color:lightgrey;height:4.4mm; border-bottom-width:0px;"/>
+										<div class="styLNAmountBoxNBB" style="height:4.5mm;"/>
+										
+										<div class="styIRS1065LNLeftLtrBoxTD" style="height:4mm;"/>
+										<div class="styIRS1065LNDesc" style="height:4mm;width:124.5mm;padding-top:1mm;">
+											<span class="styBoldText">c</span>
+												<span style="width:3px;"/>Total.  Add line 4a and line 4b
 										<span style="float:right;">
-											<span class="styIRS1065DotLn">......................</span>
+											<span class="styIRS1065DotLn">....................</span>
 										</span>
 										</div>
-										<div class="styLNRightNumBox" style="width:11.5mm;height:4.5mm;">4</div>
-										<div class="styLNAmountBox" style="height:4.5mm;">
+										<div class="styLNRightNumBox" style="width:11.5mm;height:4mm;">4c</div>
+										<div class="styLNAmountBox" style="height:4mm;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/GuaranteedPaymentsAmt"/>
 											</xsl:call-template>
-										</div>
+										</div>										
 								<!-- Schedule K, Line 5 -->
 										<div class="styLNLeftNumBoxSD" style="height:4mm;padding-left:3mm;">5</div>
 										<div class="styIRS1065LNDesc" style="height:4mm;width:124.5mm;">Interest income
@@ -3133,42 +3261,34 @@ province, country, and ZIP or foreign postal code<br/><br/>
 												<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/OrdinaryDividendsAmt"/>
 											</xsl:call-template>
 										</div>
-								<!-- Schedule K, Line 6b -->
-										<div class="styLNLeftNumBoxSD"/>
-										<div class="styIRS1065LNDesc" style="width:84.5mm;padding-top:1mm;">
-											<span style="width:45mm;"/>
-											<b>b</b> Qualified dividends
-										<!--<span style="width:3px;"/>-->
-										<span style="float:right;">
-											<span class="styIRS1065DotLn">..</span>
-										</span>
+
+										<div class="styIRS1065LNLeftLtrBoxTD" style="height:4mm;"/>
+										<div class="styIRS1065LNDesc" style="height:4mm;width:124.5mm;font-size:6.5pt;">
+											<span class="styBoldText">b</span>
+												<span style="width:3px;"/>Qualified dividends
+											<span style="padding-left:1mm;"/>
+												<div style="width:34mm;height:4mm;">
+													<div class="styLNRightNumBox" style="height:4mm;">6b</div>
+													<div class="styLNAmountBox" style="height:4mm;width:25mm;">
+														<xsl:call-template name="PopulateAmount">
+															<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/QualifiedDividendsAmt"/>
+														</xsl:call-template>
+													</div>											
+												</div>
+											<span style="width:1px;"/>
+												<span class="styBoldText">c</span> Dividend equivalents
+													<span style="padding-left:1mm;"/>
+												<div style="width:33mm;height:4mm;float:right;">
+													<div class="styLNRightNumBox" style="height:4mm;">6c</div>
+													<div class="styLNAmountBox" style="height:4mm;width:25mm;">
+														<xsl:call-template name="PopulateAmount">
+															<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/DividendEquivalentsAmt"/>
+														</xsl:call-template>
+													</div>											
+												</div>
 										</div>
-											<div class="styLNRightNumBox" style="height:4mm;">6b</div>
-											<div class="styLNAmountBox" style="height:4mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/QualifiedDividendsAmt"/>
-												</xsl:call-template>
-											</div>
-										<span class="styLNRightNumBoxNBB" style="width:11.5mm; background-color:lightgrey;height:4mm; border-bottom-width:0px;"/>
-										<span class="styLNAmountBoxNBB" style="height:4mm;"/>
-								<!-- Schedule K, Line 6c -->
-										<div class="styLNLeftNumBoxSD"/>
-										<div class="styIRS1065LNDesc" style="width:84.5mm;padding-top:1mm;">
-											<span style="width:45mm;"/>
-											<b>c</b> Dividend equivalents
-										<!--<span style="width:3px;"/>-->
-										<span style="float:right;">
-											<span class="styIRS1065DotLn">..</span>
-										</span>
-										</div>
-											<div class="styLNRightNumBox" style="height:4mm;">6c</div>
-											<div class="styLNAmountBox" style="height:4mm;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form1065ScheduleK/DividendEquivalentsAmt"/>
-												</xsl:call-template>
-											</div>
-										<span class="styLNRightNumBoxNBB" style="width:11.5mm; background-color:lightgrey;height:4.5mm; border-bottom-width:0px;"/>
-										<span class="styLNAmountBoxNBB" style="height:4.5mm;"/>
+										<div class="styLNRightNumBoxNBB" style="width:11.5mm; background-color:lightgrey;height:4.4mm; border-bottom-width:0px;"/>
+										<div class="styLNAmountBoxNBB" style="height:4.5mm;"/>
 								<!-- Schedule K, Line 7 -->
 										<div class="styLNLeftNumBoxSD" style="height:4mm;padding-left:3mm;">7</div>
 										<div class="styIRS1065LNDesc" style="height:4mm;width:124.5mm;">Royalties
@@ -6069,23 +6189,17 @@ province, country, and ZIP or foreign postal code<br/><br/>
 
 				<div class="styIRS1065LNLeftLtrBoxTD" style="height:4mm;">d</div>
 				<div style="height:4mm;width:62mm;float:left; clear: none;">	
-				<div class="styIRS1065LNDesc" style="height:4mm;width:32mm;">Section 951A category
+				<div class="styIRS1065LNDesc" style="height:4mm;width:33mm;">Reserved for future use
                           <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
                 </div>          
-					<div style="height:4mm;width:22mm;font-family:arial; font-size:7pt; text-align:right; border-bottom:dashed 1px;padding-top:0.5mm;">
-						<xsl:call-template name="PopulateAmount">
-							<xsl:with-param name="TargetNode" select="FrgnGroIncmPrtshpLvl951AAmt"/>
-						</xsl:call-template>
+					<div style="height:4mm;width:22mm;font-family:arial; font-size:7pt; text-align:right; border-bottom:dashed 1px;padding-top:0.5mm;background-color:lightgrey;">
 					</div>
 			</div>
 			<div style="height:4mm;width:62.5mm;float:left; clear: none;">
 					<div style="height:4mm;float:left; clear: none;width:6mm;font-size:7pt;font-weight:bold; padding-left:3mm;padding-top:0.5mm;">e</div>
-					<div class="styIRS1065LNDesc" style="height:4mm;width:34mm;font-size:7pt;vertical-align:bottom;">Foreign branch category
-                          <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
-                    </div>
-					<span style="float:right;padding-top:0.5mm;">
-						<span class="styIRS1065DotLn">.....</span>
-					</span>
+					<div class="styIRS1065LNDesc" style="height:4mm;width:34mm;font-size:7pt;vertical-align:bottom;">Foreign branch category</div>
+						<span class="styIRS1065DotLn" style="padding-top:0.5mm;">....</span>
+                        <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
 			</div>
 			<div style="height:4mm;float:right; clear: none;">
 				<div class="styLNRightNumBox" style="height:4mm;width:11.5mm;">16e</div>
@@ -6191,23 +6305,17 @@ province, country, and ZIP or foreign postal code<br/><br/>
 
 				<div class="styIRS1065LNLeftLtrBoxTD" style="height:4mm;">k</div>
 				<div style="height:4mm;width:62mm;float:left; clear: none;">	
-				<div class="styIRS1065LNDesc" style="height:4mm;width:32mm;">Section 951A category
+				<div class="styIRS1065LNDesc" style="height:4mm;width:33mm;">Reserved for future use
                           <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
                 </div>          
-					<div style="height:4mm;width:22mm;font-family:arial; font-size:7pt; text-align:right; border-bottom:dashed 1px;padding-top:0.5mm;">
-						<xsl:call-template name="PopulateAmount">
-							<xsl:with-param name="TargetNode" select="DedAllocApprtnPrtshpLvl951AAmt"/>
-						</xsl:call-template>
+					<div style="height:4mm;width:22mm;font-family:arial; font-size:7pt; text-align:right; border-bottom:dashed 1px;padding-top:0.5mm;background-color:lightgrey;">
 					</div>
 			</div>
 			<div style="height:4mm;width:62.5mm;float:left; clear: none;">
 					<div style="height:4mm;float:left; clear: none;width:6mm;font-size:7pt;font-weight:bold; padding-left:3mm;padding-top:0.5mm;">l</div>
-					<div class="styIRS1065LNDesc" style="height:4mm;width:34mm;font-size:7pt;vertical-align:bottom;">Foreign branch category
-                          <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
-                    </div>
-					<span style="float:right;padding-top:0.5mm;">
-						<span class="styIRS1065DotLn">.....</span>
-					</span>
+					<div class="styIRS1065LNDesc" style="height:4mm;width:34mm;font-size:7pt;vertical-align:bottom;">Foreign branch category</div>
+						<span class="styIRS1065DotLn" style="padding-top:0.5mm;">....</span>
+                        <img src="{$ImagePath}/1065_Bullet_Md.gif" alt="MidSizeBullet"/>
 			</div>
 			<div style="height:4mm;float:right; clear: none;">
 				<div class="styLNRightNumBox" style="height:4mm;width:11.5mm;">16l</div>

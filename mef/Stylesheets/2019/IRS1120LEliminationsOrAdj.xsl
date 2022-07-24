@@ -2031,7 +2031,7 @@ May the IRS discuss this return<br/> with the preparer shown below?. <br/>See in
 									<td class="styLNAmountBox" style="width:40mm;height:4mm;vertical-align:bottom;float:none;clear:none;" colspan="2">
 										<span style="width:1px;"/>
 										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/Section965aInclusionDedAmt"/>
+											<xsl:with-param name="TargetNode" select="$IRS1120LScheduleA/Section965cDeductionAmt"/>
 										</xsl:call-template>
 									</td>
 								</tr>

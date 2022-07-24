@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE stylesheet [
   <!ENTITY nbsp "&#160;">
-]><!-- Last Modified by Eugenia McDonald on 11/14/2019 -->
+]><!-- Last Modified by Eugenia McDonald on 07/30/2019 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -52,6 +52,10 @@
 				<xsl:call-template name="SetFormLinkInline">
 					<xsl:with-param name="TargetNode" select="$FormData"/>
 				</xsl:call-template>
+				<xsl:call-template name="LinkToLeftoverDataTableInline">
+                  <xsl:with-param name="Desc">Top Left Margin - Claiming Waiver Relief Code</xsl:with-param>
+                  <xsl:with-param name="TargetNode" select="$FormData/@claimWaiverReliefCd"/>
+                </xsl:call-template>
                 <xsl:call-template name="LinkToLeftoverDataTableInline">
                   <xsl:with-param name="Desc">Top Left Margin - Claiming Foreign Earned Income Waiver Code</xsl:with-param>
                   <xsl:with-param name="TargetNode" select="$FormData/@claimFrgnEarnIncWaiverCd"/>
@@ -68,10 +72,10 @@
               Foreign Earned Income
               </div>
               <div class="styFBT" style="height:4mm;margin-top:1.5mm">
-                <img src="{$ImagePath}/2555_Bullet.gif" width="9" height="9" alt="Bullet"/> Attach to Form 1040 or 1040-SR. Complete the Foreign 
-                Earned Income Tax  Worksheet in 
+                <img src="{$ImagePath}/2555_Bullet.gif" width="9" height="9" alt="Bullet"/> Attach to Form 1040 or Form 1040-SR. Complete the Foreign 
+                Earned Income Tax 
                 <br/>
-                the Instructions for Forms 1040 and 1040-SR if you enter an amount on lines 45 or 50. <br/>
+                Worksheet in the Instructions for Form 1040 if you enter an amount on lines 45 or 50. <br/>
                 <img src="{$ImagePath}/2555_Bullet.gif" width="9" height="9" alt="Bullet"/> Go to <i>www.irs.gov/Form2555</i> for instructions and the latest information. 
               </div>
             </div>
@@ -91,7 +95,7 @@
           <!--Name Line -->
           <div class="styBB" style="width:187mm;">
             <div class="styNameBox" style="width:139mm;height:8mm;font-size:7pt;font-weight:normal;">
-              Name shown on Form 1040 or 1040-SR<br/>
+              Name shown on Form 1040 or Form 1040-SR<br/>
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$FormData/NameLine1Txt"/>
               </xsl:call-template>
@@ -113,7 +117,7 @@
           <!-- END PART I TITLE -->
           <!-- Foreign Address Lines 1, 2-->
           <div class="styBB" style="width:187mm;">
-            <div class="styNameBox" style="width:139mm;height:18.5mm;font-size:7pt;font-weight:normal;padding-left:3.5mm">
+            <div class="styNameBox" style="width:139mm;height:15mm;font-size:7pt;font-weight:normal;padding-left:3.5mm">
 			  <b style="margin-right:2mm;height:100%;float:left;">1</b> Your foreign address (including country)
               <br/>
               <xsl:call-template name="PopulateForeignAddressTemplate">
@@ -182,7 +186,7 @@
             <div style="float:left;width:143mm;">
               <span style="width:60mm;padding:.5mm 0mm;">
                 <b>a</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Employer Foreign Entity Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/EmployerForeignEntityInd"/>
                     <xsl:with-param name="BackupName">IRS2555EmployerForeignEntityInd</xsl:with-param>
@@ -198,7 +202,7 @@
               </span>
               <span style="width:45mm;padding:.5mm 0mm;">
                 <b>b</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Employer United States Company Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/EmployerUnitedStatesCompanyInd"/>
                     <xsl:with-param name="BackupName">IRS2555EmployerUnitedStatesCompanyInd</xsl:with-param>
@@ -213,7 +217,7 @@
               </span>
               <span style="width:28mm;padding:.5mm 0mm;">
                 <b>c</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Self Employment Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/SelfEmploymentInd"/>
                     <xsl:with-param name="BackupName">IRS2555SelfEmploymentInd</xsl:with-param>
@@ -230,7 +234,7 @@
               <br/>
               <span style="width:60mm;padding:.5mm 0mm;">
                 <b>d</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Foreign Affiliate Employer Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/ForeignAffiliateEmployerInd"/>
                     <xsl:with-param name="BackupName">IRS2555ForeignAffiliateEmployerInd</xsl:with-param>
@@ -246,7 +250,7 @@
               </span>
               <span style="width:73mm;padding:.5mm 0mm">
                 <b>e</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Other Employer Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/OtherEmployerTypeGroup/OtherEmployerInd"/>
                     <xsl:with-param name="BackupName">IRS2555OtherEmployerTypeGroupOtherEmployerInd</xsl:with-param>
@@ -296,7 +300,7 @@
               <img src="{$ImagePath}/2555_Bullet.gif" width="9" height="9" alt="Bullet" style="margin-right:0.5mm;"/>
             </div>
             <div style="float:left;width:5mm;text-align:center;">
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="No Frgn Earn Inc Excl Prev Filed Ind">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/NoFrgnEarnIncExclPrevFiledInd"/>
                   <xsl:with-param name="BackupName">IRS2555NoFrgnEarnIncExclPrevFiledInd</xsl:with-param>
@@ -316,7 +320,7 @@
 			  <xsl:call-template name="PopulateSpan">
 			    <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Foreign Earn Inc Excl Revoked Ind Yes">
                 <xsl:call-template name="PopulateYesCheckbox">
 					<xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
 					<xsl:with-param name="BackupName">IRS2555ForeignEarnIncExclRevokedInd</xsl:with-param>
@@ -335,7 +339,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Foreign Earn Inc Excl Revoked Ind No">
                 <xsl:call-template name="PopulateNoCheckbox">
 					<xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
 					<xsl:with-param name="BackupName">IRS2555ForeignEarnIncExclRevokedInd</xsl:with-param>
@@ -401,7 +405,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/SeparateForeignResidenceInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Separate Foreign Residence Ind Yes">
                 <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/SeparateForeignResidenceInd"/>
                     <xsl:with-param name="BackupName">IRS2555SeparateForeignResidenceInd</xsl:with-param>
@@ -420,7 +424,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/SeparateForeignResidenceInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Separate Foreign Residence Ind No">
                 <xsl:call-template name="PopulateNoCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/SeparateForeignResidenceInd"/>
                     <xsl:with-param name="BackupName">IRS2555SeparateForeignResidenceInd</xsl:with-param>
@@ -590,7 +594,7 @@
             <div style="float:left;width:115mm;clear:none;">
               <span style="width:35mm;padding:.5mm 0mm;">
                 <b>a</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Purchased House Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/PurchasedHouseInd"/>
                     <xsl:with-param name="BackupName">IRS2555PurchasedHouseInd</xsl:with-param>
@@ -606,7 +610,7 @@
               </span>
               <span style="width:45mm;padding:.5mm 0mm;">
                 <b>b</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Rented House Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/RentedHouseInd"/>
                     <xsl:with-param name="BackupName">IRS2555RentedHouseInd</xsl:with-param>
@@ -622,7 +626,7 @@
               </span>
               <span style="width:30mm;padding:.5mm 0mm;">
                 <b>c</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Rented Room Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/RentedRoomInd"/>
                     <xsl:with-param name="BackupName">IRS2555RentedRoomInd</xsl:with-param>
@@ -639,7 +643,7 @@
               <br/>
               <span style="width:80mm;padding:.5mm 0mm;">
                 <b>d</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Employer Furnished Quarters Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/EmployerFurnishedQuartersInd"/>
                     <xsl:with-param name="BackupName">IRS2555EmployerFurnishedQuartersInd</xsl:with-param>
@@ -669,7 +673,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/FamilyLivedAbroadInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Family Lived Abroad Ind Yes">
                 <xsl:call-template name="PopulateYesCheckbox">
 					<xsl:with-param name="TargetNode" select="$FormData/FamilyLivedAbroadInd"/>
 					<xsl:with-param name="BackupName">IRS2555FamilyLivedAbroadInd</xsl:with-param>
@@ -688,7 +692,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/FamilyLivedAbroadInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Family Lived Abroad Ind No">
                 <xsl:call-template name="PopulateNoCheckbox">
 					<xsl:with-param name="TargetNode" select="$FormData/FamilyLivedAbroadInd"/>
 					<xsl:with-param name="BackupName">IRS2555FamilyLivedAbroadInd</xsl:with-param>
@@ -744,7 +748,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/SubmittedNonResidentStmtInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Submitted Non Resident Stmt Ind Yes">
                 <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/SubmittedNonResidentStmtInd"/>
                     <xsl:with-param name="BackupName">IRS2555SubmittedNonResidentStmtInd</xsl:with-param>
@@ -763,7 +767,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/SubmittedNonResidentStmtInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Submitted Non Resident Stmt Ind No">
                 <xsl:call-template name="PopulateNoCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/SubmittedNonResidentStmtInd"/>
                     <xsl:with-param name="BackupName">IRS2555SubmittedNonResidentStmtInd</xsl:with-param>
@@ -793,7 +797,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/RequiredToPayIncomeTaxInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Required To Pay Income Tax Ind Yes">
                 <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/RequiredToPayIncomeTaxInd"/>
                     <xsl:with-param name="BackupName">IRS2555RequiredToPayIncomeTaxInd</xsl:with-param>
@@ -812,7 +816,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/RequiredToPayIncomeTaxInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Required To Pay Income Tax Ind No">
                 <xsl:call-template name="PopulateNoCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/RequiredToPayIncomeTaxInd"/>
                     <xsl:with-param name="BackupName">IRS2555RequiredToPayIncomeTaxInd</xsl:with-param>
@@ -843,7 +847,7 @@
 		<div style="float:left;width:5mm;font-weight:bold;"/>
 		<div style="float:left;width:176mm;padding-left:5mm">
 			If you were present in the United States or its possessions during the tax year, complete columns <b>(a)-(d)</b> below. <b>Don't</b>
-			include the income from column <b>(d)</b> in Part IV, but report it on Form 1040 or 1040-SR.
+			include the income from column <b>(d)</b> in Part IV, but report it on Form 1040 or Form 1040-SR.
 		</div>
 		<xsl:choose>
 			<xsl:when test="count($FormData/PresenceInTheUSGroup) &lt; 1      or ((count($FormData/PresenceInTheUSGroup) &gt;8 ) and ($Print=$Separated))">
@@ -1153,7 +1157,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/VisaLimitStayOrEmploymentInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Visa Limit Stay Or Employment Ind Yes">
                 <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/VisaLimitStayOrEmploymentInd"/>
                     <xsl:with-param name="BackupName">IRS2555VisaLimitStayOrEmploymentInd</xsl:with-param>
@@ -1172,7 +1176,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/VisaLimitStayOrEmploymentInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Visa Limit Stay Or Employment Ind No">
                 <xsl:call-template name="PopulateNoCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/VisaLimitStayOrEmploymentInd"/>
                     <xsl:with-param name="BackupName">IRS2555VisaLimitStayOrEmploymentInd</xsl:with-param>
@@ -1202,7 +1206,7 @@
               <xsl:call-template name="PopulateSpan">
 			        <xsl:with-param name="TargetNode" select="$FormData/MaintainedHouseInUSInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Maintained House In US Ind Yes">
                 <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/MaintainedHouseInUSInd"/>
                     <xsl:with-param name="BackupName">IRS2555MaintainedHouseInUSInd</xsl:with-param>
@@ -1221,7 +1225,7 @@
               <xsl:call-template name="PopulateSpan">
 			    <xsl:with-param name="TargetNode" select="$FormData/MaintainedHouseInUSInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Maintained House In US Ind No">
                 <xsl:call-template name="PopulateNoCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/MaintainedHouseInUSInd"/>
                     <xsl:with-param name="BackupName">IRS2555MaintainedHouseInUSInd</xsl:with-param>
@@ -1247,7 +1251,6 @@
               If "Yes," enter address of your home, whether it was rented, the names of the occupants, and their 
               relationship<br/> to you. 
 				<img src="{$ImagePath}/2555_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
-				<span style="width:155mm;padding-left:0mm;border-bottom:dotted 1px"/>
 				<xsl:if test="((count($FormData/USHomeWhileLivingAbroad) &gt;1) and ($Print=$Separated))">
 					<xsl:call-template name="PopulateAdditionalDataTableMessage">
 						<xsl:with-param name="TargetNode" select="$FormData/USHomeWhileLivingAbroad"/>
@@ -1289,12 +1292,12 @@
         <!-- Page Break and Footer-->
           <div class="PageEnd" style="width:187mm;padding-top:0mm;border-top:1px solid black">
 				<div style="float:left;">
-					<span class="styBoldText">For Paperwork Reduction Act Notice, see the Instructions for Forms 1040 and 1040-SR.</span>
-					<span style="width:10mm;"/>                        
+					<span class="styBoldText">For Paperwork Reduction Act Notice, see the Form 1040 or Form 1040-SR instructions.</span>
+					<span style="width:13mm;"/>                        
 					  Cat. No. 11900P
 				</div>
 				<div style="float:right;">
-					<span style="width:30px;"/>  
+					<span style="width:40px;"/>  
 					  Form <span class="styBoldText" style="font-size:8pt;">2555</span> (2019)
 				</div>
           </div>
@@ -1382,7 +1385,7 @@
               below. Exclude travel between foreign countries that didn't involve travel on or over international waters,
               or in or over the United States, for 24 hours or more. If you have no travel to report during the period, 
               enter "Physically present in a foreign country or countries for the entire 12-month period." <b>Don't</b>
-               include the income from column <b>(f)</b> below in Part IV, but report it on Form 1040 or 1040-SR.
+               include the income from column <b>(f)</b> below in Part IV, but report it on Form 1040 or Form 1040-SR.
             </div>
           </div>
           <div class="styGenericDiv" style="text-align:right;width:187mm;height:4mm;clear:none;">
@@ -1767,7 +1770,7 @@
              or line 18, column <b>(f)</b>. Report amounts in U.S. dollars, using the exchange rates in effect when you 
              actually or constructively received the income.
             <p style="font-weight:bold;padding-left:10mm;font-style:normal;margin-top:2mm;padding-bottom:0.8mm">
-              If you are a cash basis taxpayer, report on Form 1040 or 1040-SR all income you received in 2019, no matter when you
+              If you are a cash basis taxpayer, report on Form 1040 or Form 1040-SR all income you received in 2019, no matter when you
               performed the service.
             </p>
           </div>
@@ -2270,8 +2273,7 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:4mm">27</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:131mm;padding-left:5mm;padding-top:4mm">
-              Enter the amount from line 26<span style="width:2mm"/>
-				<span style="letter-spacing:3mm;font-weight:bold;">......................</span>
+              Enter the amount from line 26<span style="letter-spacing:3mm;font-weight:bold;">......................</span>
             </div>
             <div style="float:left;">
               <div style="height:8mm;width:8mm;font-weight:bold;text-align:center;border-bottom:1px solid black;
@@ -2294,7 +2296,7 @@
             <xsl:call-template name="PopulateSpan">
 			    <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
 			</xsl:call-template>
-            <input type="checkbox" style="height:3.5mm;">
+            <input type="checkbox" style="height:3.5mm;" alt="Claiming Housing Excl Or Ded Ind Yes">
               <xsl:call-template name="PopulateYesCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
                 <xsl:with-param name="BackupName">IRS2555ClaimingHousingExclOrDedInd</xsl:with-param>
@@ -2313,7 +2315,7 @@
             <xsl:call-template name="PopulateSpan">
 			    <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
 			</xsl:call-template>
-            <input type="checkbox" style="height:3.5mm;">
+            <input type="checkbox" style="height:3.5mm;" alt="Claiming Housing Excl Or Ded Ind No">
               <xsl:call-template name="PopulateNoCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
                 <xsl:with-param name="BackupName">IRS2555ClaimingHousingExclOrDedInd</xsl:with-param>
@@ -2410,8 +2412,7 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:.5mm">30</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:131mm;padding-left:5mm">
-              Enter the <b>smaller</b> of line 28 or line 29b<span style="width:2mm"/>
-				<span style="letter-spacing:3mm;font-weight:bold;">...................</span>
+              Enter the <b>smaller</b> of line 28 or line 29b<span style="letter-spacing:3mm;font-weight:bold;">...................</span>
             </div>
             <div style="float:left;">
               <div style="height:4.5mm;width:8mm;font-weight:bold;text-align:center;border-bottom:1px solid black;
@@ -2431,8 +2432,7 @@
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:81mm;padding-left:5mm;">
               Number of days in your qualifying period that fall within your 2019 tax
-              year (see instructions)<span style="width:2mm"/>
-				<span style="letter-spacing:3mm;font-weight:bold;">.......</span>
+              year (see instructions)<span style="letter-spacing:3mm;font-weight:bold;">.......</span>
             </div>
             <div style="float:left;">
               <div style="height:8mm;width:8mm;text-align:center;font-weight:bold;border-bottom:1px solid black;
@@ -2493,8 +2493,7 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:.5mm">34</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:81mm;padding-left:5mm;padding-top:.5mm">
-              Enter employer-provided amounts. See instructions<span style="width:2mm"/>
-				<span style="letter-spacing:3mm;font-weight:bold;">..</span>
+              Enter employer-provided amounts (see instructions)<span style="letter-spacing:3mm;font-weight:bold;">..</span>
             </div>
             <div style="float:left;">
               <div style="height:4.5mm;width:8mm;font-weight:bold;text-align:center;border-bottom:1px solid black;
@@ -2578,7 +2577,7 @@
             </div>
             <div style="float:left;">
               <div class="styLNAmountBox" style="height:4.5mm;width:42mm;border-bottom:1px solid black;">
-              $105,900</div>
+              </div>
             </div>
           </div>
           <!-- Line 38 -->
@@ -2589,9 +2588,13 @@
               <div style="position:absolute;top:2mm;;right:0mm;">
                 <img alt="right bracket" src="{$ImagePath}/2555_sm_lft_bracket.gif" style="float:right;"/>
               </div>
-              <div class="styLNDesc" style="font-size:7pt;width:81mm;height:3mm;padding-right:4mm;padding-left:5mm">
-                <li>If you completed Part VI, enter the number from line 31.</li>
-                <li>All others, enter the number of days in your qualifying period that fall within your 2019 tax year (see the instructions for line 31).</li>
+              <div class="styLNDesc" style="font-size:7pt;width:81mm;height:3mm;padding-right:4mm;padding-left:1mm">
+                <img alt="Bullet Round" src="{$ImagePath}/2441_Bullet_Round.gif"/> <span style="width:8px;"/> 
+                If you completed Part VI, enter the number from line 31.
+                <img alt="Bullet Round" src="{$ImagePath}/2441_Bullet_Round.gif"/> <span style="width:8px;"/> 
+                All others, enter the number of days in your qualifying <br/> 
+                <span style="width:12px;"/> period that fall within your 2019 tax year (see the <br/>
+                <span style="width:12px;"/> instructions for line 31).
               </div>
             </div>
             <div style="float:left;">
@@ -2621,10 +2624,13 @@
               <div style="position:absolute;top:2mm;;right:0mm;">
                 <img alt="right bracket" src="{$ImagePath}/2555_sm_lft_bracket.gif" style="float:right;"/>
               </div>
-              <div class="styLNDesc" style="font-size:7pt;width:131mm;height:3mm;padding-right:4mm;padding-left:5mm">
-                <li>If line 38 and the number of days in your 2019 tax year (usually 365) are the same, enter "1.000."</li>
-                <li>Otherwise, divide line 38 by the number of days in your 2019 tax year and enter the result as a decimal
-                 (rounded to at least three places).</li>
+              <div class="styLNDesc" style="font-size:7pt;width:131mm;height:3mm;padding-right:4mm;padding-left:1mm">
+                <img alt="Bullet Round" src="{$ImagePath}/2441_Bullet_Round.gif"/> <span style="width:8px;"/>
+                If line 38 and the number of days in your 2019 tax year (usually 365) are the same, enter <br/>
+                <span style="width:12px;"/> "1.000."<br/>
+                <img alt="Bullet Round" src="{$ImagePath}/2441_Bullet_Round.gif"/> <span style="width:8px;"/>
+                Otherwise, divide line 38 by the number of days in your 2019 tax year and enter the result as a <br/>
+                <span style="width:12px;"/> decimal (rounded to at least three places).
               </div>
             </div>
             <div style="float:left;">
@@ -2710,8 +2716,8 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:.5mm">43</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:131mm;padding-left:5mm">
-              Add lines 36 and 42<span style="width:4mm"/>
-              <span style="letter-spacing:3mm;font-weight:bold;">........................</span>
+              Add lines 36 and 42
+              <span style="letter-spacing:3mm;font-weight:bold;">.........................</span>
             </div>
             <div style="float:left;">
               <div style="height:4.5mm;width:8mm;font-weight:bold;text-align:center;border-bottom:1px solid black;
@@ -2730,9 +2736,9 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:.5mm">44</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:131mm;padding-left:5mm">
-              Deductions allowed in figuring your adjusted gross income (Form 1040 or 1040-SR, line 8b) that are allocable
-              to the excluded income. See instructions and attach computation<span style="width:2mm"/>
-              <span style="letter-spacing:3mm;font-weight:bold;">........</span>
+              Deductions allowed in figuring your adjusted gross income (Form 1040 or Form 1040-SR, line 8) that are allocable
+              to the excluded income. See instructions and attach computation
+              <span style="letter-spacing:3mm;font-weight:bold;">.....</span>
             </div>
             <div style="float:left;">
               <div style="height:8mm;width:8mm;text-align:center;font-weight:bold;border-left:1px solid black;
@@ -2754,10 +2760,10 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;">45</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:131mm;padding-left:5mm">
-              Subtract line 44 from line 43. Enter the result here and in parentheses on <b>Schedule 1 (Form 1040 or 1040-SR), line 8.</b>
-              Next to the amount, enter "Form 2555." On Schedule 1 (Form 1040 or 1040-SR), subtract this amount from your additional income
-              to arrive at the amount reported on Schedule 1 (Form 1040 or 1040-SR), line 9
-              <span style="letter-spacing:3mm;font-weight:bold;">....................</span>
+              Subtract line 44 from line 43. Enter the result here and in parentheses on <b>Scheedule 1 (Form 1040 or Form 1040-SR), line 21.</b>
+              Next to the amount, enter "Form 2555." On Schedule 1 (Form 1040 or Form 1040-SR), subtract this amount from your additional income
+              to arrive at the amount reported on Schedule 1 (Form 1040 or Form 1040-SR), line 22
+              <span style="letter-spacing:3mm;font-weight:bold;">............</span>
             </div>
             <div style="float:left;">
               <div style="height:13mm;width:8mm;text-align:center;font-weight:bold;border-left:1px solid black;padding-top:9mm">45</div>
@@ -2783,7 +2789,7 @@
           <!-- BEGIN PART IX TITLE -->
           <div class="styBB" style="width:187mm;height:8.5mm;padding:1mm 0mm;border-top:1px solid black;">
             <div class="styPartName" style="font-family:sans-serif;pad">Part IX</div>
-            <div class="styPartDesc" style="font-weight:normal">
+            <div class="styPartDesc">
               <b>Taxpayers Claiming the Housing Deduction -</b> Complete this part only if <b>(a)</b> line 33
                     is more than line 36 and <b>(b)</b> line 27 is more than line 43.</div>
           </div>
@@ -2793,7 +2799,7 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:.5mm">46</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:131mm;padding-left:5mm">
-              Subtract line 36 from line 33<span style="width:4mm"/>
+              Subtract line 36 from line 33
               <span style="letter-spacing:3mm;font-weight:bold;">......................</span>
             </div>
             <div style="float:left;">
@@ -2813,7 +2819,7 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:.5mm">47</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:131mm;padding-left:5mm">
-              Subtract line 43 from line 27<span style="width:4mm"/>
+              Subtract line 43 from line 27
               <span style="letter-spacing:3mm;font-weight:bold;">......................</span>
             </div>
             <div style="float:left;">
@@ -2833,7 +2839,7 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:.5mm">48</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:131mm;padding-left:5mm">
-              Enter the <b>smaller</b> of line 46 or line 47<span style="width:4mm"/>
+              Enter the <b>smaller</b> of line 46 or line 47
               <span style="letter-spacing:3mm;font-weight:bold;">...................</span>
             </div>
             <div style="float:left;">
@@ -2882,9 +2888,9 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:.5mm">50</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:131mm;padding-left:5mm">
-              <b>Housing deduction.</b> Add lines 48 and 49. Enter the total here and on Schedule 1 (Form 1040 or 1040-SR) to the left of
-              line 22. Next to the amount on Schedule 1 (Form 1040 or 1040-SR), line 22, enter "Form 2555." Add it to the total adjustments to income
-              reported on line 8a
+              <b>Housing deduction.</b> Add lines 48 and 49. Enter the total here and on Schedule 1 (Form 1040 or Form 1040-SR) to the left of
+              line 36. Next to the amount on Schedule 1 (Form 1040 or Form 1040-SR), enter "Form 2555." Add it to the total adjustments to income
+              reported on line 36
               <span style="letter-spacing:3mm;font-weight:bold;">...</span>
               <img src="{$ImagePath}/2555_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
             </div>
@@ -2918,6 +2924,11 @@
           <table class="styLeftOverTbl">
             <xsl:call-template name="PopulateCommonLeftover">
               <xsl:with-param name="TargetNode" select="$FormData"/>
+              <xsl:with-param name="DescWidth" select="100"/>
+            </xsl:call-template>
+            <xsl:call-template name="PopulateLeftoverRow">
+              <xsl:with-param name="Desc">Top Left Margin - Claiming Waiver Relief</xsl:with-param>
+              <xsl:with-param name="TargetNode" select="$FormData/@claimWaiverReliefCd"/>
               <xsl:with-param name="DescWidth" select="100"/>
             </xsl:call-template>
             <xsl:call-template name="PopulateLeftoverRow">

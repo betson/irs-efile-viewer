@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- 05/29/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
-<!-- 06/24/2015 - Changes made per UWR #159846 - Jeremy Nichols -->
-<!-- 12/16/2016 - Changes made per defect 47601 - Jeremy Nichols -->
-<!-- 01/05/2017 - Changes made per defect 47676 - Jeremy Nichols -->
-<!-- 01/09/2017 - Changes made per defect 47677 - Jeremy Nichols -->
-<!-- 10/10/2018 - Changes made per defect 126818 - Jeremy Nichols -->
-<!-- 10/11/2018 - Changes made per defect 126819 - Jeremy Nichols -->
-<!-- 12/13/2018 - Additional changes made per defect 126818 - Jeremy Nichols -->
-<!-- 12/13/2018 - Additional changes made per defect 126819 - Jeremy Nichols -->
 <!-- 01/22/2019 - Additional changes made per defect 126838 - Jeremy Nichols -->
 <!-- 09/30/2019 - Changes made per UWR 224850 - Jeremy Nichols -->
+<!-- 12/16/2019 - Additional changes made per defect 128864 - Jeremy Nichols -->
+<!-- 12/16/2019 - Additional changes made per defect 128863 - Jeremy Nichols -->
+<!-- 02/06/2020 - Additional changes made per defect 129100 - Jeremy Nichols -->
+<!-- 02/07/2020 - Additional changes made per defect 128863 - Jeremy Nichols -->
+<!-- 03/10/2020 - Additional changes made per defect 126819 - Jeremy Nichols -->
+<!-- 05/06/2020 - Changes made per UWR 234103 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -121,84 +118,162 @@
             </div>
           </div>
           
-          <!--Begin Part I-->
+           <!--Begin Part I-->
           <div style="width:187mm">
             <table cellpadding="0" cellspacing="0" style="width:187mm;border-color:black;font-size:7pt">
               <tbody>
                 <tr>
-                  <th class="styTableCell" style="height:8mm;width:94mm;border-right-width:0px;" scope="col">
+                  <th class="styTableCell" style="width:94mm;border-right-width:0px;" scope="col">
                     <div class="styPartName">Part I</div>
-                    <div class="styPartDesc" style="width:70mm;text-align:left;"><span style="width:4mm;"/>Reserved for future use</div>
+                    <div class="styPartDesc" style="width:70mm;text-align:left;"><span style="width:4mm;"/>Tax on Petroleum</div>
                   </th>
-                  <th class="styTableCell" style="height:8mm;width:38mm;font-weight:bold;text-align:center;border-left-width:1px">
+                  <th class="styTableCell" style="width:38mm;font-weight:bold;text-align:center;border-left-width:1px">
                     (a)<br />Barrels
                   </th>
-                  <th class="styTableCell" style="height:8mm;width:17mm;font-weight:bold;text-align:center" scope="col">
+                  <th class="styTableCell" style="width:17mm;font-weight:bold;text-align:center" scope="col">
                     (b)<br />Rate
                   </th>
-                  <th class="styTableCell" style="height:8mm;width:38mm:font-weight:bold;border-right-width:0;text-align:center" scope="col">
+                  <th class="styTableCell" style="width:38mm:font-weight:bold;border-right-width:0;text-align:center" scope="col">
                     (c)<br />Tax
                   </th>
                 </tr>
                 <tr style="padding-top:1mm">
-                  <td class="styTableCell" style="width:94mm;height:8mm;border-right-width:0px;text-align:left">
+                  <td class="styTableCell" style="width:94mm;border-right-width:0px;text-align:left">
                     <div class="styLNLeftNumBoxSD" style="height:5mm;padding-top:1mm">1</div>
-                    <div style="width:84mm;height:5mm;float:left;clear:none;padding-top:1mm">Reserved for future use
-                    <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:mm">............</span>
+                    <div style="width:84mm;height:5mm;float:left;clear:none;padding-top:1mm">Crude oil received at a U.S. refinery
+                    <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:mm">.........</span>
                   </div></td>
-                  <td class="styTableCell" style="width:38mm;border-left-width:1px;valign:bottom;background-color:lightgrey;"><span style="width:1px" /></td>
+                  <td class="styTableCell" style="width:38mm;border-left-width:1px;valign:bottom">
+                    <xsl:call-template name="PopulateAmount">
+                      <xsl:with-param name="TargetNode" select="$FormData/USRefineryCrudeOilBarrelQty"></xsl:with-param>
+                    </xsl:call-template>
+                  </td>
                   <td class="styTableCell" style="width:17mm;background-color:lightgrey;text-align:center"><span style="width:1px" /></td>
                   <td class="styTableCell" style="width:38mm;background-color:lightgrey;border-right:0px"><span style="width:1px" /></td>
                 </tr>
                 <tr style="padding-top:1mm">
-                  <td class="styTableCell" style="width:94mm;height:8mm;border-right-width:0px;text-align:left">
+                  <td class="styTableCell" style="width:94mm;border-right-width:0px;text-align:left">
                     <div class="styLNLeftNumBoxSD" style="height:5mm;padding-top:1mm">2</div>
-                    <div style="width:84mm;height:5mm;float:left;clear:none;padding-top:1mm">Reserved for future use
-                    <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:mm">............</span>
+                    <div style="width:84mm;height:5mm;float:left;clear:none;padding-top:1mm">Crude oil taxed before receipt at refinery
+                     <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:mm">.......</span>
                   </div></td>
-                  <td class="styTableCell" style="width:38mm;border-left-width:1px;valign:bottom;background-color:lightgrey;"><span style="width:1px" /></td>
+                  <td class="styTableCell" style="width:38mm;border-left-width:1px;valign:bottom">
+                    <xsl:call-template name="PopulateAmount">
+                      <xsl:with-param name="TargetNode" select="$FormData/USRefineryCrudeOilBarrelTxdQty"></xsl:with-param>
+                    </xsl:call-template>
+                  </td>
                   <td class="styTableCell" style="width:17mm;background-color:lightgrey"><span style="width:1px" /></td>
                   <td class="styTableCell" style="width:38mm;background-color:lightgrey;border-right:0px"><span style="width:1px" /></td>
                 </tr>
                 <tr>
-                  <td class="styTableCell" style="width:94mm;height:8mm;border-right-width:0px;text-align:left">
-                    <div class="styLNLeftNumBoxSD" style="height:5mm;padding-top:1mm">3</div>
-                    <div style="width:84mm;height:5mm;float:left;clear:none;padding-top:1mm">Reserved for future use
-                    <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:mm">............</span>
-                  </div></td>
-				  <td class="styTableCell" style="width:38mm;border-left-width:1px;vertical-align:bottom;padding-bottom:1mm;background-color:lightgrey;"><span style="width:1px" /></td>
-                  <td class="styTableCell" style="width:17mm;text-align:center;background-color:lightgrey;"><span style="width:1px" /></td>
-                  <td class="styTableCell" style="width:38mm;border-right-width:0;background-color:lightgrey;"><span style="width:1px" /></td>
+                  <td  class="styTableCell" style="width:94mm;border-right-width:0px;text-align:left;padding-bottom:0.5mm">
+                    <div class="styLNLeftNumBoxSD" style="height:8mm;padding-top:1mm">3</div>
+                    <div style="width:84mm;height:8mm;float:left;clear:none;padding-top:1mm;text-align:justify">
+                      Taxable crude oil. Subtract line 2 from line 1. Multiply column (a) by column (b) and enter the amount of tax in column (c)
+                      <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:mm"></span>
+                    </div>
+                  </td>
+                  <td class="styTableCell" style="width:38mm;border-left-width:1px;vertical-align:bottom;padding-bottom:1mm">
+                    <xsl:call-template name="PopulateAmount">
+                      <xsl:with-param name="TargetNode" select="$FormData/TaxableCrudeOil/TaxableCrudeOilBarrelQty"></xsl:with-param>
+                    </xsl:call-template>
+                  </td>
+                  <td class="styTableCell" style="width:17mm;text-align:center;padding-top:4mm">
+                    <span style="padding-left:.5mm;float:left;clear:none">$</span>
+                    <xsl:call-template name="PopulateText">
+                      <xsl:with-param name="TargetNode" select="$FormData/TaxableCrudeOil/TaxableCrudeOilRt"></xsl:with-param>
+                    </xsl:call-template>
+                    <span> bbl.</span>
+                  </td>
+                  <td class="styTableCell" style="width:38mm;padding-top:4mm;border-right-width:0">
+                    <span style="float:left;clear:none;padding-left:.5mm">$</span>
+                    <span style="text-align:right;padding-right:1mm">
+                      <xsl:call-template name="PopulateAmount">
+                        <xsl:with-param name="TargetNode" select="$FormData/TaxableCrudeOil/TaxableCrudeOilTaxAmt"></xsl:with-param>
+                      </xsl:call-template>
+                    </span>
+                  </td>
                 </tr>
                 <tr>
-                  <td class="styTableCell" style="width:94mm;height:8mm;border-right-width:0px;text-align:left">
-                    <div class="styLNLeftNumBoxSD" style="height:5mm;padding-top:1mm">4</div>
-                    <div style="width:84mm;height:5mm;float:left;clear:none;padding-top:1mm">Reserved for future use
-                    <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:mm">............</span>
-                  </div></td>
-                  <td class="styTableCell" style="width:38mm;border-left-width:1px;vertical-align:bottom;padding-bottom:1mm;background-color:lightgrey;"><span style="width:1px" /></td>
-                  <td class="styTableCell" style="width:17mm;text-align:center;background-color:lightgrey;"><span style="width:1px" /></td>
-                  <td class="styTableCell" style="width:38mm;border-right-width:0;background-color:lightgrey;"><span style="width:1px" /></td>
+                  <td  class="styTableCell" style="width:94mm;border-right-width:0px;text-align:left">
+                    <div class="styLNLeftNumBoxSD" style="height:12mm;padding-top:1mm">4</div>
+                    <div style="width:84mm;height:12mm;float:left;clear:none;padding-top:1mm;text-align:justify">
+                      Crude oil used in or exported from the U.S. before the tax was imposed. Multiply column (a) by column (b) and enter the amount of tax in column (c)
+                      <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:4mm">..........</span>
+                    </div>
+                  </td>
+                  <td class="styTableCell" style="width:38mm;border-left-width:1px;vertical-align:bottom;padding-bottom:1mm">
+                    <xsl:call-template name="PopulateAmount">
+                      <xsl:with-param name="TargetNode" select="$FormData/USCrudeOilBfrTaxImposed/USCrudeOilBfrTxBarrelQty"></xsl:with-param>
+                    </xsl:call-template>
+                  </td>
+                  <td class="styTableCell" style="width:17mm;text-align:center;padding-top:7mm">
+                    <span style="padding-left:.5mm;float:left;clear:none">$</span>
+                    <xsl:call-template name="PopulateText">
+                      <xsl:with-param name="TargetNode" select="$FormData/USCrudeOilBfrTaxImposed/USCrudeOilBfrTxRt"></xsl:with-param>
+                    </xsl:call-template>
+                    <span> bbl.</span>
+                  </td>
+                  <td class="styTableCell" style="width:38mm;padding-top:7mm;border-right-width:0">
+                    <span style="float:left;clear:none;padding-left:.5mm">$</span>
+                    <span style="text-align:right;padding-right:1mm">
+                      <xsl:call-template name="PopulateAmount">
+                        <xsl:with-param name="TargetNode" select="$FormData/USCrudeOilBfrTaxImposed/USCrudeOilBfrTxAmt"></xsl:with-param>
+                      </xsl:call-template>
+                    </span>
+                  </td>
                 </tr>
                 <tr>
-                  <td class="styTableCell" style="width:94mm;height:8mm;border-right-width:0px;text-align:left">
-                    <div class="styLNLeftNumBoxSD" style="height:5mm;padding-top:1mm">5</div>
-                    <div style="width:84mm;height:5mm;float:left;clear:none;padding-top:1mm">Reserved for future use
-                    <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:mm">............</span>
-                  </div></td>
+                  <td  class="styTableCell" style="width:94mm;border-right-width:0px;text-align:left">
+                    <div class="styLNLeftNumBoxSD" style="height:12mm;padding-top:1mm">5</div>
+                    <div style="width:84mm;height:12mm;float:left;clear:none;padding-top:1mm;text-align:justify">
+                      Total domestic petroleum oil spill tax. Add lines 3 and 4, column (c). Enter the total here and on Form 720 on the line for <b>IRS No. 18</b>
+                      <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:3.5mm;padding-right:2mm">...............</span>
+                      <img src="{$ImagePath}/6627_Bullet_Md.gif" alt="MediumBullet"/>
+                    </div>
+                  </td>
                   <td class="styTableCell" style="width:38mm;border-left-width:1px;background-color:lightgrey"><span style="width:1px" /></td>
                   <td class="styTableCell" style="width:17mm;background-color:lightgrey"><span style="width:1px" /></td>
-                  <td class="styTableCell" style="width:38mm;border-right-width:0;background-color:lightgrey;"><span style="width:1px" /></td>
+                  <td class="styTableCell" style="width:38mm;padding-top:7mm;border-right-width:0">
+                    <span style="float:left;clear:none;padding-left:.5mm">$</span>
+                    <span style="text-align:right;padding-right:1mm">
+                      <xsl:call-template name="PopulateAmount">
+                        <xsl:with-param name="TargetNode" select="$FormData/TotDomesticPtrlmOilSpillTxAmt"></xsl:with-param>
+                      </xsl:call-template>
+                    </span>
+                  </td>
                 </tr>
                 <tr>
-                  <td class="styTableCell" style="width:94mm;height:8mm;border-right-width:0px;text-align:left">
-                    <div class="styLNLeftNumBoxSD" style="height:5mm;padding-top:1mm">6</div>
-                    <div style="width:84mm;height:5mm;float:left;clear:none;padding-top:1mm">Reserved for future use
-                    <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:mm">............</span>
-                  </div></td>
-                  <td class="styTableCell" style="width:38mm;border-left-width:1px;vertical-align:bottom;padding-bottom:1mm;background-color:lightgrey;"><span style="width:1px" /></td>
-                  <td class="styTableCell" style="width:17mm;text-align:center;background-color:lightgrey;"><span style="width:1px" /></td>
-                  <td class="styTableCell" style="width:38mm;border-right-width:0;background-color:lightgrey;"><span style="width:1px" /></td>
+                  <td  class="styTableCell" style="width:94mm;border-right-width:0px;text-align:left">
+                    <div class="styLNLeftNumBoxSD" style="height:16mm;padding-top:1mm">6</div>
+                    <div style="width:84mm;height:12mm;float:left;clear:none;padding-top:1mm;text-align:justify">
+                      Imported petroleum products oil spill tax. Enter the number of barrels imported in column (a). Multiply column (a) by column (b) and enter the amount of tax in column (c). Also enter the amount
+                    
+                      on Form 720 on the line for <b>IRS No. 21</b>
+                      <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:4.3mm;padding-right:2mm">...</span>
+                      <img src="{$ImagePath}/6627_Bullet_Md.gif" alt="MediumBullet"/>
+                    </div>
+                  </td>
+                  <td class="styTableCell" style="width:38mm;border-left-width:1px;vertical-align:bottom;padding-bottom:1mm">
+                    <xsl:call-template name="PopulateAmount">
+                      <xsl:with-param name="TargetNode" select="$FormData/ImportedPetroleumOilSpillTax/ImpPtrlmOilSpillTaxBarrelQty"></xsl:with-param>
+                    </xsl:call-template>
+                  </td>
+                  <td class="styTableCell" style="width:17mm;text-align:center;padding-top:10.5mm">
+                    <span style="padding-left:.5mm;float:left;clear:none">$</span>
+                    <xsl:call-template name="PopulateText">
+                      <xsl:with-param name="TargetNode" select="$FormData/ImportedPetroleumOilSpillTax/ImpPtrlmOilSpillTaxRt"></xsl:with-param>
+                    </xsl:call-template>
+                    <span> bbl.</span>
+                  </td>
+                  <td class="styTableCell" style="width:38mm;padding-top:10mm;border-right-width:0">
+                    <span style="float:left;clear:none;padding-left:.5mm">$</span>
+                    <span style="text-align:right;padding-right:1mm">
+                      <xsl:call-template name="PopulateAmount">
+                        <xsl:with-param name="TargetNode" select="$FormData/ImportedPetroleumOilSpillTax/ImpPtrlmOilSpillTaxAmt"></xsl:with-param>
+                      </xsl:call-template>
+                    </span>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -644,7 +719,7 @@
                   </tr>
                 </xsl:if>
                 <tr>
-                  <td class="styTableCellText" style="width:4mm;font-size:7pt;font-weight:bold;vertical-align:top;padding-top:1mm;border-color:black;border-top-width:0;border-bottom-width:0;border-right-width:0px;">
+                  <td class="styTableCellText" style="width:4mm;font-size:7pt;font-weight:bold;vertical-align:top;padding-top:1mm;border-color:black;border-top-width:1px;border-bottom-width:0;border-right-width:0px;">
                     <xsl:choose>
                       <xsl:when test="($Print != $Separated) and (count($FormData/ODCTaxOnImportedProductsGrp) &gt; 3)">
                         <xsl:value-of select="(count($FormData/ODCTaxOnImportedProductsGrp) + 1)"></xsl:value-of>
@@ -654,13 +729,13 @@
                       </xsl:otherwise>
                     </xsl:choose>
                   </td>
-                  <td class="styTableCellText" colspan="5" style="width:152mm;font-size:7pt;border-color:black;border-top-width:0;border-bottom-width:0">
+                  <td class="styTableCellText" colspan="5" style="width:152mm;font-size:7pt;border-color:black;border-top-width:1px;border-bottom-width:0">
                       <b>Total ODC tax on imported products.</b> Add all amounts in column (f), include amounts from any
                       additional sheets. Enter the total here and on Form 720 on the line for <b>IRS No. 19</b>
                       <span class="styDotLn" style="float:none;padding-left:2mm;padding-right:0.5mm">...............</span>
                       <img src="{$ImagePath}/6627_Bullet_Md.gif" alt="MediumBullet"/>
                   </td>
-                  <td class="styTableCell" style="height:8mm;width:31mm;vertical-align:bottom;padding-bottom:1mm;border-color:black;border-right-width:0;border-top-width:0;border-bottom-width:0;padding-top:3.5mm;">
+                  <td class="styTableCell" style="height:8mm;width:31mm;vertical-align:bottom;padding-bottom:1mm;border-color:black;border-right-width:0;border-top:1px solid black;border-bottom-width:0;padding-top:3.5mm;">
                     <div style="width:2mm;float:left;clear:none;font-size:7pt;display:inline;">$</div>
                     <div style="width:26mm;font-size:7pt;display:inline;">
                       <xsl:choose>
@@ -831,7 +906,7 @@
                   </td>
                   <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
                     <span style="width:1mm;clear:none;"></span>
-                    <span style="height:8mm;width:2mm;text-align:bottom;padding-top:5mm;padding-right:4mm;">$</span>
+                    <span style="height:8mm;width:2mm;text-align:bottom;padding-top:3.5mm;padding-right:4mm;">$</span>
                     <span style="width:36mm;height:8mm;padding-top:5mm;">
                       <xsl:choose>
                         <xsl:when test="(count($FormData/TaxOnFloorStocksOfODCGrp) = 0) or (($Print = $Separated) and (count($FormData/TaxOnFloorStocksOfODCGrp) &gt; 3))">
@@ -859,7 +934,7 @@
           <!-- End Set Initial Height of Above Table -->
           
           <xsl:if test="($Print = $Separated)" >
-				<span style="height:9mm;"></span>
+				<span style="height:10mm;"></span>
 		  </xsl:if>
 					
           <!--END Part IVTable-->

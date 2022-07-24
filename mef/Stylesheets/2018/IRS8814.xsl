@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 07/16/2019 -->
+<!-- Last Modified by Eugenia McDonald on 07/09/2020 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -798,7 +798,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="No" class="styCkbox">
+											<input type="checkbox" alt="Child Tax Basis Under Spcfd Amt Ind No" class="styCkbox">
 												<xsl:if test="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd">
 													<xsl:call-template name="PopulateNoCheckbox">
 														<xsl:with-param name="TargetNode" select="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd"/>
@@ -822,7 +822,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="Yes" class="styCkbox">
+											<input type="checkbox" alt="Child Tax Basis Under Spcfd Amt Ind Yes" class="styCkbox">
 												<xsl:if test="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd">
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd"/>

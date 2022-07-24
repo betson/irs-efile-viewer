@@ -1342,34 +1342,33 @@
 						<span class="styNormalText"> (see instructions)</span>
 						</span>
 					</div>
-					<div class="styBB" style="width:187mm;font-size: 9pt">
+					<div class="styBB" style="height:auto;width:187mm;font-size: 9pt;padding-bottom:1mm;">
+						<div class="styLNDesc" style="width:187mm; height:auto;">
+							<b>Important: </b>
+								<i>
+								Report all information in functional currency in accordance with U.S. GAAP. Also, report each amount in U.S. 
+								dollars translated from functional currency (using GAAP translation rules or the average exchange rate determined 
+								under section 989(b)). If the functional currency is the U.S. dollar, complete only the U.S. Dollars column. See 
+								instructions for special rules for FDEs or FBs that use DASTM. </i>
+						</div>	
 						<!-- Schedule C description -->
-						<label for="Section989bAvgExchangeRateInd">
-							<!-- The xsl:choose code block below will display multiple schema versions using one stylesheet -->
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$Form8858Data/IRS8858ScheduleC/Section989bAvgExchangeRateInd"/>
-								<xsl:with-param name="BackupName">IRS8858ScheduleCSection989(b)AverageExchangeRate</xsl:with-param>
-							</xsl:call-template>
-							<span class="styBoldText" style="height: 4mm; width: 20mm; font-size: 9pt;vertical-align: top;">Important: </span>
-							<i>
-							Report all information in functional currency in accordance with U.S. GAAP. Also, report each amount in U.S. 
-							dollars translated from functional currency (using GAAP translation rules or the average exchange rate determined 
-							under section 989(b)). If the functional currency is the U.S. dollar, complete only the U.S. Dollars column. See 
-							instructions for special rules for FDEs or FBs that use DASTM. </i>
-						</label>
-						<br/>
-						<div class="styItalicText" style="float:left;clear:none;">
-							If you are using the average exchange rate (determined under section 989(b)), check the following box
-						</div>
-						<div style="float:right;clear:none;">
-							<span class="styDotLn">...</span>
-							<input type="checkbox" class="styCkbox" id="Section989bAvgExchangeRateInd">
-								<xsl:call-template name="PopulateCheckbox">
+						<div class="styLNDesc" style="width:187mm;float:none;clear:none;">
+							<label >
+								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form8858Data/IRS8858ScheduleC/Section989bAvgExchangeRateInd"/>
 									<xsl:with-param name="BackupName">IRS8858ScheduleCSection989(b)AverageExchangeRate</xsl:with-param>
-								</xsl:call-template>
-							</input>
-						</div>
+								</xsl:call-template><i>If you are using the average exchange rate (determined under section 989(b)), check the following box</i>
+								<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">...</span>
+							</label>
+							<span style="height:5.5mm;float:right;clear:none;">
+								<input type="checkbox" class="styCkbox" >
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$Form8858Data/IRS8858ScheduleC/Section989bAvgExchangeRateInd"/>
+										<xsl:with-param name="BackupName">IRS8858ScheduleCSection989(b)AverageExchangeRate</xsl:with-param>
+									</xsl:call-template>
+								</input>
+							</span>
+						</div>	
 					</div>
 					<br/>
 					<br/>
@@ -1918,7 +1917,7 @@
 										<div class="styLNLeftNumBoxSD" style="height:4mm;">1</div>
 										<div class="styLNDesc" style="height:4mm;width:105mm;">
 											<span style="float:left;">Remittances from the FDE or FB 
-												<!-- puch pen  -->
+												<!-- push pen  -->
 												<xsl:call-template name="SetFormLinkInline">
 													<xsl:with-param name="TargetNode" select="$Form8858Data/IRS8858ScheduleC1/
 														RecipientRemittanceAmt"/>
@@ -1947,8 +1946,13 @@
 									<div style="float:left;">
 										<div class="styLNLeftNumBoxSD" style="height:4mm;">2</div>
 										<div class="styLNDesc" style="height:4mm;width:105mm;">
-											<span style="float:left;">Section 987 gain (loss) recognized by recipient </span>
-											<span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
+											<span style="float:left;">Section 987 gain (loss) recognized by recipient 
+												<!-- push pen  -->
+												<xsl:call-template name="SetFormLinkInline">
+													<xsl:with-param name="TargetNode" select="Section987GainOrLossAmt"/>
+												</xsl:call-template>
+											</span>
+											<span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
 										</div>
 									</div>
 									<div style="float:right;">
@@ -2077,23 +2081,18 @@
 								for FDEs or FBs that use DASTM.</i>
 						</span>
 					</div>
-					<div class="styBB" style="width:187mm;float:none;clear:none;border-bottom-width:0px;">
+					<div class="styBB" style="height: 11mm;width:187mm;float:none;clear:none;border-bottom-width:0px;">
 						<!-- Schedule F data -->
-						<div style="height: 11mm;">
 							<span class="styLNLeftNumBox" style="height: 11mm;"/>
 							<span style="width: 107mm; height: 11mm; float: left; clear: none; text-align: center; 
-              font-size: 12; font-weight: bold;padding-top:3mm;">Assets</span>
+								font-size: 12; font-weight: bold;padding-top:3mm;">Assets</span>
+							<span class="styLNRightNumBoxNBB" style="height: 11mm; border-bottom-width:1px;"/>
 							<span class="styLNAmountBoxNBB" style="text-align: center; height: 11mm;
-              border-bottom-width:1px; float: right; clear: none;">
-								<span class="styBoldText">(b)</span>
-								<br/>End of annual<br/>accounting period</span>
-							<span class="styLNAmountBoxNBB" style="text-align: center; height: 11mm;
-              border-bottom-width:1px;  float: right; clear: none;">
-								<span class="styBoldText">(a)</span>
+								border-bottom-width:1px;"><b>(a)</b>
 								<br/>Beginning of annual accounting period</span>
-							<span class="styLNRightNumBoxNBB" style="height: 11mm; border-bottom-width:1px;
-               float: right; clear: none;"/>
-						</div>
+							<span class="styLNAmountBoxNBB" style="text-align: center; height: 11mm;
+								  border-bottom-width:1px;"><b>(b)</b>
+								<br/>End of annual<br/>accounting period</span>
 					</div>
 					<!-- Schedule F line 1 -->
 					<div style="width:187mm;">
@@ -3523,7 +3522,7 @@
 										<b>(b) </b><br/> Foreign Currency
 									</div>
 								</th>
-								<th style="width:26mm;border-color:black;font-weight:normal;vertical-align:middle;border:1px solid black;border-top:0px;border-left:0px;" class="styTablecellHeader" scope="col">
+								<th style="width:32.5mm;border-color:black;font-weight:normal;vertical-align:middle;border:1px solid black;border-top:0px;border-left:0px;" class="styTablecellHeader" scope="col">
 									<div style="padding-top:.5mm;text-align:center;padding-bottom:.5mm;">
 										<b>(c) </b><br/> Conversion Rate
 									</div>
@@ -3631,7 +3630,7 @@
 											</xsl:call-template>
 										</td>
 										<!-- Column (c) -->
-										<td class="styTableCellSmall" style="height:4mm;width:26mm;font-size: 6pt;">
+										<td class="styTableCellSmall" style="height:4mm;width:32.5mm;font-size: 6pt;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="ConversionRt"/>
 											</xsl:call-template>
@@ -3734,7 +3733,7 @@
 								<!-- Column (b) -->
 								<td class="styTableCellSmall" style="height:4mm;width:26mm;background-color:lightgrey;"/>
 								<!-- Column (c) -->
-								<td class="styTableCellSmall" style="height:4mm;width:26mm;background-color:lightgrey;"/>
+								<td class="styTableCellSmall" style="height:4mm;width:32.5mm;background-color:lightgrey;"/>
 								<!-- Column (d) -->
 								<td class="styTableCellSmall" style="height:4mm;width:23mm;font-size: 6pt;">
 									<xsl:call-template name="PopulateAmount">
@@ -4239,7 +4238,7 @@
 									<tr class="styDepTblRow1">
 										<td class="styDepTblCell"  style="text-align:left;">
 											<div class="styLNLeftNumBox" style="text-align:left">3</div>
-                      Were all remittances from the FDE or FB treated as made to the direct owner?
+                      Section 987 gain (loss) deferred under Regulations section 1.987-12T (attach statement)
                     </td>
 										<td class="styDepTblCell" style="text-align:center;font-weight:bold;">3</td>
 										<td class="styDepTblCell" style="text-align:right;">
@@ -4264,8 +4263,7 @@
 									<tr class="styDepTblRow1">
 										<td class="styDepTblCell" colspan="3" style="text-align:left;">
 											<div class="styLNLeftNumBox" style="text-align:left">4</div>
-												Did the tax owner change its method of accounting for section 987 gain or loss with respect to 
-												remittances from the disregarded entity during the tax year?
+												Were all remittances from the FDE or FB treated as made to the direct owner? 
 										</td>
 										<td class="styDepTblCell" style="text-align:center">
 											<xsl:call-template name="PopulateYesBoxText">

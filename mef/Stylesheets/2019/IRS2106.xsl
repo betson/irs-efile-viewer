@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 02/06/2020 -->
+<!-- Last Modified by Eugenia McDonald on 06/25/2020 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="PopulateTemplate.xsl"/>
@@ -903,7 +903,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleAvailableOffDutyHrsInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Vehicle Available Off Duty Hrs Ind Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleAvailableOffDutyHrsInd"/>
 										<xsl:with-param name="BackupName">$Form2106DataVehicleAvailableOffDutyHrsInd</xsl:with-param>
@@ -923,7 +923,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleAvailableOffDutyHrsInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Vehicle Available Off Duty Hrs Ind No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleAvailableOffDutyHrsInd"/>
 										<xsl:with-param name="BackupName">$Form2106DataVehicleAvailableOffDutyHrsInd</xsl:with-param>
@@ -953,7 +953,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/AnotherVehicleForPrsnlUseInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Another Vehicle For Prsnl Use Ind Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/AnotherVehicleForPrsnlUseInd"/>
 										<xsl:with-param name="BackupName">$Form2106DataAnotherVehicleForPrsnlUseInd</xsl:with-param>
@@ -973,7 +973,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/AnotherVehicleForPrsnlUseInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Another Vehicle For Prsnl Use Ind No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/AnotherVehicleForPrsnlUseInd"/>
 										<xsl:with-param name="BackupName">$Form2106DataAnotherVehicleForPrsnlUseInd</xsl:with-param>
@@ -1003,7 +1003,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/EvidenceToSupportDeductionInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Evidence To Support Deduction Ind Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/EvidenceToSupportDeductionInd"/>
 										<xsl:with-param name="BackupName">$Form2106DataEvidenceSupportDeductionInd</xsl:with-param>
@@ -1023,7 +1023,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/EvidenceToSupportDeductionInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Evidence To Support Deduction Ind No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/EvidenceToSupportDeductionInd"/>
 										<xsl:with-param name="BackupName">$Form2106DataEvidenceSupportDeductionInd</xsl:with-param>
@@ -1053,7 +1053,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/EvidenceWrittenInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Evidence Written Ind Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/EvidenceWrittenInd"/>
 										<xsl:with-param name="BackupName">$Form2106DataIsEvidenceWrittenInd</xsl:with-param>
@@ -1073,7 +1073,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/EvidenceWrittenInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Evidence Written Ind No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/EvidenceWrittenInd"/>
 										<xsl:with-param name="BackupName">$Form2106DataIsEvidenceWrittenInd</xsl:with-param>

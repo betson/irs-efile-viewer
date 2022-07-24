@@ -57,7 +57,7 @@
 							<br/>
 							<span class="styFBT" style="margin-top:0px;margin-bottom:2mm;">
 								For use by alien individuals only. <br/>
-								&#9658; Go to  <em>www.irs.gov/Form8843</em> for the latest information.
+								<img src="{$ImagePath}/1040_Bullet.gif" alt="Right pointing arrowhead image"/> Go to  <em>www.irs.gov/Form8843</em> for the latest information.
 							</span>
 							<br/>
 							<span>
@@ -130,7 +130,7 @@
 						<div class="styLNLeftNumBoxSD">1a</div>
 						<div class="sty8843DescA" style="width:179mm;">
 							<span style="width:114.5mm;float:left;">
-								Type of U.S. visa (for example, F, J, M, Q, etc.) and date you entered the United States &#9658; 
+								Type of U.S. visa (for example, F, J, M, Q, etc.) and date you entered the United States <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 							</span>
 							<span style="width:64mm;border-bottom:1px dashed black;float:left;">
 								<xsl:choose>
@@ -164,7 +164,7 @@
 						<div class="styLNLeftNumBoxSD" style="padding-left:4.2mm;">b</div>
 						<div class="sty8843DescA" style="width:179mm;">
 							<span style="width:157mm;float:left;">
-								Current nonimmigrant status. If your status has changed, also enter date of change and previous status. See instructions &#9658; 
+								Current nonimmigrant status. If your status has changed, also enter date of change and previous status. See instructions <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 							</span>
 							<span style="width:22mm;border-bottom:1px dashed black;float:left;">
 								<xsl:call-template name="PopulateText">
@@ -219,7 +219,7 @@
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBoxSD" style="padding-left:4.2mm;">b</div>
 						<div class="sty8843DescA" style="width:179mm;">
-							<span style="width:45mm;">Enter your passport number(s) &#9658; </span>
+							<span style="width:45mm;">Enter your passport number(s) <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> </span>
 							<span style="width:132.5mm;border-bottom:1px dashed black;">
 								<xsl:choose>
 									<xsl:when test="count($FormData/ExmptIndivOrMedicalGenInfoGrp/PassportIssuedGrp) &lt; 2">
@@ -264,7 +264,7 @@
 						<div class="styLNLeftNumBoxSD" style="padding-left:4.2mm;">b</div>
 						<div class="sty8843DescA" style="width:179mm;">
 							<span style="width:138.5mm;float:left;">
-								Enter the number of days in 2018 you claim you can exclude for purposes of the substantial presence test &#9658; 
+								Enter the number of days in 2018 you claim you can exclude for purposes of the substantial presence test <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 							</span>
 							<span style="width:40mm;">
 								<xsl:call-template name="PopulateText">
@@ -284,7 +284,7 @@
 							<div class="styLNLeftNumBoxSD">5</div>
 							<div class="sty8843DescA" style="width:179mm;">
 								<span style="width:158.5mm;float:left;">
-									For teachers, enter the name, address, and telephone number of the academic institution where you taught in 2018 &#9658; 
+									For teachers, enter the name, address, and telephone number of the academic institution where you taught in 2018 <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 								</span>
 								<span style="width:20mm;height:3mm;border-bottom:1px dashed black;"/>
 								<br/>
@@ -345,7 +345,7 @@
 							<div class="sty8843DescA" style="width:179mm;">
 								For trainees, enter the name, address, and telephone number of the director of the academic or other specialized program <br/>
 								<span style="width:48.5mm;float:left;">
-									you participated in during 2018 &#9658; 
+									you participated in during 2018 <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 								</span>
 								<span style="width:130mm;border-bottom:1px dashed black;">
 									<xsl:call-template name="PopulateText">
@@ -396,7 +396,7 @@
 						<div class="styStdDiv">
 							<div class="styLNLeftNumBoxSD" style="height:6mm;">7</div>
 							<div class="sty8843DescA" style="width:179mm;">
-								Enter the type of U.S. visa (J or Q) you held during &#9658; 
+								Enter the type of U.S. visa (J or Q) you held during <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 								<span style="width:6.3mm;"/>
 								2012
 								<span style="border-bottom:1px solid black;width:25mm;margin-right:4.5mm;text-align:center;">
@@ -476,7 +476,7 @@
 							<div class="styLNLeftNumBoxSD">5</div>
 							<div class="sty8843DescA" style="width:179mm;">
 								<span style="width:158.5mm;float:left;">
-									For teachers, enter the name, address, and telephone number of the academic institution where you taught in 2018 &#9658; 
+									For teachers, enter the name, address, and telephone number of the academic institution where you taught in 2018 <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 								</span>
 								<span style="width:20mm;height:3mm;border-bottom:1px dashed black;"/>
 								<br/>
@@ -491,7 +491,7 @@
 							<div class="sty8843DescA" style="width:179mm;">
 								For trainees, enter the name, address, and telephone number of the director of the academic or other specialized program <br/>
 								<span style="width:48.5mm;float:left;">
-									you participated in during 2018 &#9658; 
+									you participated in during 2018 <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 								</span>
 								<span style="width:130mm;border-bottom:1px dashed black;">&#8194;</span>
 								<br/>
@@ -504,7 +504,7 @@
 						<div class="styStdDiv">
 							<div class="styLNLeftNumBoxSD" style="height:6mm;">7</div>
 							<div class="sty8843DescA" style="width:179mm;">
-								Enter the type of U.S. visa (J or Q) you held during &#9658; 
+								Enter the type of U.S. visa (J or Q) you held during <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 								<span style="width:6.3mm;"/>
 								2012
 								<span style="border-bottom:1px solid black;width:25mm;margin-right:4.5mm;text-align:center;">&#8194;</span>
@@ -534,7 +534,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/TeacherTraineeStdnt2of6PrCYInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" class="styCkboxNM" style="" alt="Teacher Trainee Stdnt 2 of 6 Pr CY Ind Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/TeacherTraineeStdnt2of6PrCYInd"/>
 										<xsl:with-param name="BackupName">IRS8843TeacherTraineeStdnt2of6PrCYInd</xsl:with-param>
@@ -547,7 +547,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" class="styCkboxNM" style="" alt="Teacher Trainee Stdnt 2 of 6 Pr CY Ind No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/TeacherTraineeStdnt2of6PrCYInd"/>
 										<xsl:with-param name="BackupName">IRS8843TeacherTraineeStdnt2of6PrCYInd</xsl:with-param>
@@ -576,7 +576,7 @@
 							<div class="styLNLeftNumBoxSD">9</div>
 							<div class="sty8843DescA" style="width:179mm;">
 								<span style="width:133mm;float:left;">
-									Enter the name, address, and telephone number of the academic institution you attended during 2018 &#9658; 
+									Enter the name, address, and telephone number of the academic institution you attended during 2018 <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 								</span>
 								<span style="width:46mm;height:3mm;border-bottom:1px dashed black;"/>
 								<br/>
@@ -637,7 +637,7 @@
 							<div class="sty8843DescA" style="width:179mm;">
 								Enter the name, address, and telephone number of the director of the academic or other specialized program you participated<br/>
 								<span style="width:23mm;float:left;">
-									 in during 2018 &#9658; 
+									 in during 2018 <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 								</span>
 								<span style="width:156mm;border-bottom:1px dashed black;">
 									<xsl:call-template name="PopulateText">
@@ -688,7 +688,7 @@
 						<div class="styStdDiv">
 							<div class="styLNLeftNumBox" style="height:6mm;">11</div>
 							<div class="sty8843DescA" style="width:179mm;">
-								Enter the type of U.S. visa (F, J, M, or Q) you held during &#9658; 
+								Enter the type of U.S. visa (F, J, M, or Q) you held during <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 								<span style="width:6.3mm;"/>
 								2012
 								<span style="border-bottom:1px solid black;width:25mm;margin-right:4.5mm;text-align:center;">
@@ -768,7 +768,7 @@
 							<div class="styLNLeftNumBoxSD">9</div>
 							<div class="sty8843DescA" style="width:179mm;">
 								<span style="width:133mm;float:left;">
-									Enter the name, address, and telephone number of the academic institution you attended during 2018 &#9658; 
+									Enter the name, address, and telephone number of the academic institution you attended during 2018 <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 								</span>
 								<span style="width:46mm;height:3mm;border-bottom:1px dashed black;"/>
 								<br/>
@@ -783,7 +783,7 @@
 							<div class="sty8843DescA" style="width:179mm;">
 								Enter the name, address, and telephone number of the director of the academic or other specialized program you participated<br/>
 								<span style="width:23mm;float:left;">
-									 in during 2018 &#9658; 
+									 in during 2018 <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 								</span>
 								<span style="width:156mm;border-bottom:1px dashed black;">&#8194;</span>
 								<br/>
@@ -796,7 +796,7 @@
 						<div class="styStdDiv">
 							<div class="styLNLeftNumBox" style="height:6mm;">11</div>
 							<div class="sty8843DescA" style="width:179mm;">
-								Enter the type of U.S. visa (F, J, M, or Q) you held during &#9658; 
+								Enter the type of U.S. visa (F, J, M, or Q) you held during <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 								<span style="width:6.3mm;"/>
 								2012
 								<span style="border-bottom:1px solid black;width:25mm;margin-right:4.5mm;text-align:center;">&#8194;</span>
@@ -830,7 +830,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/TeacherTraineeStdntGrtr5CYInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" class="styCkboxNM" style="" alt="Teacher Trainee Stdnt Grtr 5 CY Ind Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/TeacherTraineeStdntGrtr5CYInd"/>
 										<xsl:with-param name="BackupName">IRS8843TeacherTraineeStdntGrtr5CYInd</xsl:with-param>
@@ -843,7 +843,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" class="styCkboxNM" style="" alt="Teacher Trainee Stdnt Grtr 5 CY Ind No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/TeacherTraineeStdntGrtr5CYInd"/>
 										<xsl:with-param name="BackupName">IRS8843TeacherTraineeStdntGrtr5CYInd</xsl:with-param>
@@ -872,7 +872,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/AppLawfulPermanentResidentInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" class="styCkboxNM" style="" alt="App Lawful Permanent Resident Ind Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/AppLawfulPermanentResidentInd"/>
 										<xsl:with-param name="BackupName">IRS8843AppLawfulPermanentResidentInd</xsl:with-param>
@@ -885,7 +885,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<input type="checkbox" class="styCkboxNM" style="">
+								<input type="checkbox" class="styCkboxNM" style="" alt="App Lawful Permanent Resident Ind No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/AppLawfulPermanentResidentInd"/>
 										<xsl:with-param name="BackupName">IRS8843AppLawfulPermanentResidentInd</xsl:with-param>
@@ -906,7 +906,7 @@
 						<div class="styLNLeftNumBox">14</div>
 						<div class="sty8843DescA" style="width:179mm;">
 							<span style="width:70.5mm;float:left;">
-								If you checked the "Yes" box on line 13, explain &#9658; 
+								If you checked the "Yes" box on line 13, explain <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 							</span>
 							<span style="width:108mm;border-bottom:1px dashed black;float:left;">
 								<xsl:choose>
@@ -952,7 +952,7 @@
 						<div class="sty8843DescA" style="width:179mm;">
 							Enter the name of the charitable sports event(s) in the United States in which you competed during 2018 and the dates of <br/>
 							<span style="width:20.5mm;float:left;">
-								competition &#9658; 
+								competition <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 							</span>
 							<span style="width:158mm;height:3mm;border-bottom:1px dashed black;"/>
 							<br/>
@@ -983,7 +983,7 @@
 						<div class="sty8843DescA" style="width:179mm;">
 							Enter the name(s) and employer identification number(s) of the charitable organization(s) that benefited from the sports <br/>
 							<span style="width:18.5mm;float:left;">
-								event(s) &#9658; 
+								event(s) <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 							</span>
 							<span style="width:160mm;border-bottom:1px dashed black;"/>
 							<xsl:if test="$FormData/SportEvtBnftCharitableOrgGrp">
@@ -1029,7 +1029,7 @@
 						<div class="styLNLeftNumBox">17a</div>
 						<div class="sty8843DescA" style="width:179mm;">
 							<span style="width:134.5mm;float:left;">
-								Describe the medical condition or medical problem that prevented you from leaving the United States &#9658; 
+								Describe the medical condition or medical problem that prevented you from leaving the United States <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 							</span>
 							<span style="min-height:3mm;width:44mm;border-bottom:1px dashed black;float:left;">
 								<xsl:call-template name="SetFormLinkInline">
@@ -1052,7 +1052,7 @@
 						<div class="sty8843DescA" style="width:179mm;">
 							Enter the date you intended to leave the United States prior to the onset of the medical condition or medical problem described <br/>
 							<span style="width:21.5mm;float:left;">
-								on line 17a &#9658; 
+								on line 17a <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 							</span>
 							<span style="width:40mm;border-bottom:1px dashed black;float:left;text-align:center;">
 								<xsl:call-template name="PopulateMonthDayYear">
@@ -1066,7 +1066,7 @@
 						<div class="styLNLeftNumBox" style="padding-left:4.2mm;">c</div>
 						<div class="sty8843DescA" style="width:179mm;">
 							<span style="width:66.5mm;float:left;">
-								Enter the date you actually left the United States &#9658; 
+								Enter the date you actually left the United States <img src="{$ImagePath}/56_Bullet.gif" alt="Right pointing arrowhead image"/> 
 							</span>
 							<span style="width:40mm;border-bottom:1px dashed black;float:left;text-align:center;">
 								<xsl:call-template name="PopulateMonthDayYear">
@@ -1113,7 +1113,7 @@
 						</div>
 						<div style="width:169mm;height:25mm;padding-left:1mm;">
 							Under penalties of perjury, I declare that I have examined this form and the accompanying attachments, 
-							and to the best of my knowledge and belief, they are true, correct, and complete.<br/>
+							and, to the best of my knowledge and belief, they are true, correct, and complete.<br/>
 							<br/>
 							<br/>
 							<br/>

@@ -1,22 +1,24 @@
 <?xml version="1.0"?>
-<!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">
-<!-- Last modified on 01/12/2017 by Harold Nadel for KISAM # IM02756170 defect # 60683 -->	
-<!-- Last modified on 11/04/2016 by Harold Nadel for KISAM # IM02756170 updated "(.20)" to "(0.20)" on line 17b -->	
-<!-- Last modified on 10/03/2016 by Harold Nadel for UWR # 186620 per pdf dated 06/09/2016 -->
-<!-- Last modified on 06/22/2016 by Harold Nadel for UWR # 182027 legislative changes per PDF 3/9/2016 -->
-<!-- Last modified on 06/21/2016 by Harold Nadel for UWR # 174572 update TY from 2015 to 2016 -->
-<!-- Last modified on 05/03/2016 by Harold Nadel for UWR# 177234-->
-<!-- Last modified on 01/13/2016 by Harold Nadel for WR # 172666-->
-<!-- Last modified on 12/04/2015 by Harold Nadel for defect # 59621-->
-<!-- Last modified on 11/10/2015 by Harold Nadel for WR #166114 -->
-<!-- Last modified on 09/30/2015 by Harold Nadel for WR #159749 -->
-<!-- Last modified on 06/24/2015 by Harold Nadel for WR # 123023 changes for IE11-->
-<!--Updated per UWR 117705 and PDF 03/27/2014 on 09/17/2014 by Harold Nadel  -->
-<!-- 08/14/2017 - Changes made for UWR 199207 - Jeremy Nichols -->
-<!-- 09/28/2017 - Rate Changes made for UWR 199320 by Harold Nadel -->
-<!-- 01/19/2018 - Changes made for KISAM IM00056733 - Jeremy Nichols -->
-<!-- 01/19/2018 - Changes made for KISAM IM00022569 - Jeremy Nichols -->
-]><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<!DOCTYPE xsl:stylesheet [
+	<!ENTITY nbsp "&#160;">
+	<!-- Last modified on 01/12/2017 by Harold Nadel for KISAM # IM02756170 defect # 60683 -->
+	<!-- Last modified on 11/04/2016 by Harold Nadel for KISAM # IM02756170 updated "(.20)" to "(0.20)" on line 17b -->
+	<!-- Last modified on 10/03/2016 by Harold Nadel for UWR # 186620 per pdf dated 06/09/2016 -->
+	<!-- Last modified on 06/22/2016 by Harold Nadel for UWR # 182027 legislative changes per PDF 3/9/2016 -->
+	<!-- Last modified on 06/21/2016 by Harold Nadel for UWR # 174572 update TY from 2015 to 2016 -->
+	<!-- Last modified on 05/03/2016 by Harold Nadel for UWR# 177234-->
+	<!-- Last modified on 01/13/2016 by Harold Nadel for WR # 172666-->
+	<!-- Last modified on 12/04/2015 by Harold Nadel for defect # 59621-->
+	<!-- Last modified on 11/10/2015 by Harold Nadel for WR #166114 -->
+	<!-- Last modified on 09/30/2015 by Harold Nadel for WR #159749 -->
+	<!-- Last modified on 06/24/2015 by Harold Nadel for WR # 123023 changes for IE11-->
+	<!--Updated per UWR 117705 and PDF 03/27/2014 on 09/17/2014 by Harold Nadel  -->
+	<!-- 08/14/2017 - Changes made for UWR 199207 - Jeremy Nichols -->
+	<!-- 09/28/2017 - Rate Changes made for UWR 199320 by Harold Nadel -->
+	<!-- 01/19/2018 - Changes made for KISAM IM00056733 - Jeremy Nichols -->
+	<!-- 01/19/2018 - Changes made for KISAM IM00022569 - Jeremy Nichols -->
+]>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -74,8 +76,9 @@
 							<span class="styAgency">Internal Revenue Service</span>
 						</div>
 						<div class="styFTBox" style="height: auto;width:125mm">
-							<div class="styMainTitle" style="height:auto; padding-top: 1mm">Renewable Electricity, Refined Coal,<br/>and Indian Coal Production Credit</div><br/>
-	<!--						<div class="styFST" style="font-size:7pt;font-weight:bold; padding-top: 5mm">
+							<div class="styMainTitle" style="height:auto; padding-top: 1mm">Renewable Electricity, Refined Coal,<br/>and Indian Coal Production Credit</div>
+							<br/>
+							<!--						<div class="styFST" style="font-size:7pt;font-weight:bold; padding-top: 5mm">
 								<img src="{$ImagePath}/8835_Bullet.gif" alt="MediumBullet"/>  
                 See separate instructions.
                					 <span style="padding-left: 8mm">
@@ -83,14 +86,14 @@
 								</span>						
                 Attach to your tax return. 
           		   				 </div>  -->
-          		   				 <div class="styFST" style="font-size:7pt;font-weight:bold; padding-top: 1mm">
-								 <img src="{$ImagePath}/8835_Bullet.gif" alt="MediumBullet"/>
+							<div class="styFST" style="font-size:7pt;font-weight:bold; padding-top: 1mm">
+								<img src="{$ImagePath}/8835_Bullet.gif" alt="MediumBullet"/>
 				Attach to your tax return. 
-          		   				 </div>	
-            		   			 <div class="styFST" style="font-size:6.5pt;font-weight:bold; padding-top: 1mm">
-								 <img src="{$ImagePath}/8835_Bullet.gif" alt="MediumBullet"/>
+          		   				 </div>
+							<div class="styFST" style="font-size:6.5pt;font-weight:bold; padding-top: 1mm">
+								<img src="{$ImagePath}/8835_Bullet.gif" alt="MediumBullet"/>
 								 Go to <i>www.irs.gov/Form8835</i> for instructions and the latest information
-          		   				 </div>	       		   				 			   
+          		   				 </div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:auto; border-left-width: 1px">
 							<div class="styOMB" style="height:auto;">OMB No. 1545-1362</div>
@@ -105,7 +108,7 @@
 					<div class="styBB" style="width:187mm">
 						<div class="styNameBox" style="width:145.2mm;font-size:7pt;">
 						     Name(s) shown on return<br/>
- 							<xsl:choose>
+							<xsl:choose>
 								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
 									<br/>
 									<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -124,11 +127,12 @@
 							</xsl:choose>
 						</div>
 						<div class="styEINBox" style=" padding-left:2mm;font-size:7pt;">
-							<span class="BoldText">Identifying number</span><br/>
+							<span class="BoldText">Identifying number</span>
+							<br/>
 							<div style="text-align:left;font-weight:normal;">
 								<br/>
 								<xsl:call-template name="PopulateFilerTIN">
-								   <xsl:with-param name="TargetNode" select="$FormData"/>
+									<xsl:with-param name="TargetNode" select="$FormData"/>
 								</xsl:call-template>
 							</div>
 						</div>
@@ -142,8 +146,11 @@
 										 border-top-width: 0px;height:auto;" scope="col">
 										<!--<span class="styBoldText" style="padding-left:1.5mm;">13 Electricity produced at qualified <br/>facilities using:-->
 										<!--<span style="width: 3mm"/>-->
-										<span class="styNormalText"><span style="padding-left:8mm;"/>Electricity produced at qualified <br/><span style="padding-left:8mm"/>
-											facilities using:</span><!--</span>-->
+										<span class="styNormalText">
+											<span style="padding-left:8mm;"/>Electricity produced at qualified <br/>
+											<span style="padding-left:8mm"/>
+											facilities using:</span>
+										<!--</span>-->
 										<!--									<span class="styTableCellPad"/>    -->
 									</th>
 									<th class="styTableCellHeader" style="width: 36mm;" scope="col">
@@ -152,7 +159,8 @@
 									</th>
 									<th class="styTableCellHeader" style="width: 15mm" scope="col">
 										(b)<br/>
-										<span class="styNormalText">Rate</span><br/>
+										<span class="styNormalText">Rate</span>
+										<br/>
 										($)
 									</th>
 									<th class="styTableCellHeader" style="width: 39.25mm" scope="col">
@@ -162,7 +170,7 @@
 									<th class="styTableCellHeader" style="width: 8mm; background-color:lightgrey;color:lightgrey;
 										border-color: black;border-right-width:1px;border-bottom-width:0px;" scope="col">.
 									</th>
-									<th class="styTableCellHeader"  scope="col" style="width: 32mm; border-right-width: 0px;border-bottom-width:0px;"/>
+									<th class="styTableCellHeader" scope="col" style="width: 32mm; border-right-width: 0px;border-bottom-width:0px;"/>
 								</tr>
 							</thead>
 							<tfoot/>
@@ -310,7 +318,9 @@
 							<!--<thead>
 								<tr scope="col">
 									<th class="styTableCellHeader" colspan="2" scope="col" style="text-align:left;width: 48mm; border-bottom-width: 0px; border-left-width: 0px; border-top-width: 0px">
-									<span class="styNormalText"> <b>2</b><span style="padding-left:2mm;"/>Electricity produced at qualified <br/><span style="padding-left:6mm"/>facilities using:</span>--><!--</span>--><!--
+									<span class="styNormalText"> <b>2</b><span style="padding-left:2mm;"/>Electricity produced at qualified <br/><span style="padding-left:6mm"/>facilities using:</span>-->
+							<!--</span>-->
+							<!--
 										
 										<span class="styTableCellPad"/>
 									</th>
@@ -487,8 +497,8 @@
 									<td class="styTableCell" style="text-align:left; border-bottom-width: 0px; border-left-width: 0px; border-top-width: 0px; width: 47mm">
 										<span class="styBoldText" style="padding-left: 4mm">f</span>
 										<span style="width: 1.5mm"/>
-											 Marine and hydrokinetic <br/><span style="padding-left:8mm"/>renewables<span class="styDotLn" 
-											 style="float:none; clear:none">......
+											 Marine and hydrokinetic <br/>
+										<span style="padding-left:8mm"/>renewables<span class="styDotLn" style="float:none; clear:none">......
 										</span>
 									</td>
 									<td class="styTableCellSmall" style="width: 8mm;text-align:center;font-weight:bold;padding-top:3mm;">2f
@@ -647,24 +657,24 @@
 						<span class="styLNDesc" style="width: 137mm">
 						    Phaseout adjustment (see instructions)  
 						<span style="width: 37mm">
-							<span class="styDotLn" style="float: none">  
+								<span class="styDotLn" style="float: none">  
 							 .........
 							</span>
-						</span>$
+							</span>$
 						<span style="border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; border-bottom-width:1px; 
 							width: 25mm;text-align:right">
-							<xsl:call-template name="PopulateAmount">
+								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/RefinedCoalCrBfrPhaseoutAdjAmt"/>
 								</xsl:call-template>
 							</span>
 							<span style="width: 22mm">
 								<span style="width: 3mm"/> X<span style="width: 2mm"/>
-									<span style="border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; 
+								<span style="border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; 
 										border-bottom-width: 1px; width: 10mm;text-align:right">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/RefinedCoalPhaseoutAdjRt"/>
-										</xsl:call-template>
-									</span>
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/RefinedCoalPhaseoutAdjRt"/>
+									</xsl:call-template>
+								</span>
 							</span>
 						</span>
 						<span class="styLNRightNumBox" style="height: 5mm">7</span>
@@ -703,22 +713,20 @@
 						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;"/>
 						<div class="styLNAmountBoxNBB"/>
 					</div>  -->
-					
 					<!--Line 9 -->
 					<div style="width: 187mm">
 						<div class="styLNLeftNumBox" style="height: 5mm;">9</div>
 						<span class="styLNDesc" style="width: 137mm;">
 							 Reserved for future use
 							 	<span style="width:2mm;">
-							<span class="styDotLn" style="float: none;padding-left:3mm;">  
+								<span class="styDotLn" style="float: none;padding-left:3mm;">  
 							  ..........................
 							</span>
 							</span>
 							<span style="width: 35mm">
 								<span style="width:1mm"/>
-								
 							</span>
-							<span style="width: 21mm"></span>
+							<span style="width: 21mm"/>
 						</span>
 						<span class="styLNRightNumBox" style="height: 5mm">9</span>
 						<span class="styLNAmountBox" style="width: 34mm; height: 5mm;background-color:lightgrey;">
@@ -728,52 +736,50 @@
 							</xsl:call-template>  -->
 						</span>
 					</div>
-					
-					<!--  Line 10 -->
-					<div style="width: 187mm">
-						<div class="styLNLeftNumBox" style="height: 5mm;">10</div>
-						<span class="styLNDesc" style="width: 137mm;">
-							 Reserved for future use
-							 	<span style="width:2mm;">
-							<span class="styDotLn" style="float: none;padding-left:3mm;">  
-							  ..........................
-							</span>
-							</span>
-							<span style="width: 35mm">
-								<span style="width:1mm"/>
-								
-							</span>
-							<span style="width: 21mm"></span>
-						</span>
-						 
-						
-						<span class="styLNRightNumBox" style="height: 5mm;border-bottom-width:1px;">10</span>
-						
-					
-						 <!--<span class="styLNAmountBox" style="width: 34mm; height: 5mm;border-bottom-width:1px;"/>-->
-						 
-						<span class="styLNAmountBox" style="width: 34mm; height: 5mm;border-bottom-width:1px;background-color:lightgrey; ">
-							<span style="float: left; clear:none"/>
-							<span style="width:1mm"/>
-						</span>
-						
-						<!--<span class="styLNRightNumBox" style="border-bottom-width: 0px"/>
-						<span class="styLNAmountBox" style="width: 34mm; border-bottom-width: 0px"/>
-						<span class="styLNRightNumBox" style="height: 5mm">22</span>
-						<span class="styLNAmountBox" style="width: 34mm; height: 5mm;background-color:lightgrey;">
-							<span style="float: left; clear:none"/></span>-->
+						<div style="width187mm;height:auto;">
+						<div class="styLNDesc" style="font-weight:bold; width:145mm; padding-left:9mm; ">Indian coal produced at a qualified coal production facility
+						</div>
+						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;padding-left:4mm;"/>
+						<div class="styLNAmountBoxNBB"/>
 					</div>
 					<!--  Line 10 -->
-
-<!--  Line 11 -->
+					<div style="width: 187mm">
+						<div class="styLNLeftNumBox">10</div>
+						<span class="styLNDesc" style="width: 137mm">
+              Tons produced and sold (see instructions)
+              <span style="width: 27mm">
+								<span class="styDotLn" style="float: none">  
+                  .......
+                </span>
+							</span>
+							<span style="border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; 
+								border-bottom-width: 1px;text-align:right; width: 35mm">
+								<xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="MaxSize" select="18"/>
+									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/IndianCoalTonPrdcdSoldQty"/>
+								</xsl:call-template>
+							</span>
+							<span style="width: 21mm">
+								<span style="width: 2mm"/> X<span style="width: 2mm"/>$2.525</span>
+						</span>
+						<span class="styLNRightNumBox" style="height: 4mm">10</span>
+						<span class="styLNAmountBox" style="width: 34mm; height: 4mm">
+							<span style="float: left; clear:none"/>
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/TotIndianCoalTonPrdcdSoldCrAmt"/>
+							</xsl:call-template>
+						</span>
+					</div>
+					<!--  Line 10 -->
+					<!--  Line 11 -->
 					<div style="width: 187mm">
 						<div class="styLNLeftNumBox" style="padding-left: 1mm">11</div>
 						<div style="float:left; padding-top: .5mm">
-              Credit before reduction. Add lines 5 and 8
+              Credit before reduction. Add lines 5, 8, and 10
             </div>
 						<div style="float:right">
 							<span class="styDotLn" style="padding-top: .5mm">  
-                ....................
+                ...................
               </span>
 							<div class="styLNRightNumBox">11</div>
 							<div class="styLNAmountBox" style="width: 34mm">
@@ -782,8 +788,7 @@
 								</xsl:call-template>
 							</div>
 						</div>
-					</div>					
-					
+					</div>
 					<div style="width: 187mm">
 						<div style="float:left; padding-left: 8.5mm; padding-top: .5mm">
 							<span class="styBoldText">
@@ -900,7 +905,6 @@
 						</div>
 					</div>
 					<!--  Line 16  -->
-					
 					<!--  Line 17a -->
 					<div style="width: 187mm">
 						<div class="styLNLeftNumBox" style="padding-left: 1mm">17a</div>
@@ -928,8 +932,8 @@
             </div>
 						<div style="float:right">
 							<span class="styDotLn" style="padding-top: .5mm">  
-        ........................
-      </span>
+								........................
+						  </span>
 							<div class="styLNRightNumBox">17b</div>
 							<div class="styLNAmountBox" style="width: 34mm">
 								<xsl:call-template name="PopulateAmount">
@@ -943,12 +947,28 @@
 					<div style="width: 187mm">
 						<div class="styLNLeftNumBox" style="padding-left: 4.5mm">c</div>
 						<div style="float:left; padding-top: .5mm">
-						  Enter the amount from line 16 applicable to wind facilities the construction of which began during 2018
+							  Enter the amount from line 16 applicable to wind facilities the construction of which began during 2018</div>
+						<div style="float: right">
+						<!--Dotted Line-->
+							<span class="styDotLn">  
+								  ..
+							</span>
+							<div class="styLNRightNumBox" style="height:4.5mm;background-color:lightgrey;border-bottom-width: 0px"/>
+							<div class="styLNAmountBox" style="height:4.5mm;border-bottom-width: 0px;width: 34mm"/>
 						</div>
-						<div style="float:right">
-							<span class="styDotLn" style="padding-top: .5mm">.</span>
-							<div class="styLNRightNumBox">17c</div>
-							<div class="styLNAmountBox" style="width: 34mm">
+					</div>
+					<div style="width:187mm">
+						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div style="float:left">
+							or 2020
+						</div>
+						<div style="float: right">
+							<!--Dotted Line-->
+							<span class="styDotLn">  
+								  ...............................
+							</span>
+							<div class="styLNRightNumBox" style="height:4.5mm;">17c</div>
+							<div class="styLNAmountBox" style="height:4.5mm;width: 34mm">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/WindFacilityYr2Amt"/>
 								</xsl:call-template>
@@ -1048,7 +1068,7 @@
 							</div>
 						</div>
 					</div>
-					<!--  Line 18 -->					
+					<!--  Line 18 -->
 					<!--  Line 19  -->
 					<div style="width:187mm">
 						<div class="styLNLeftNumBox" style="height:4mm;">19</div>
@@ -1156,7 +1176,6 @@
 						</div>
 					</div>
 					<!--  Line 20  -->
-					
 					<!--  Line 21 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;">21</div>
@@ -1218,13 +1237,13 @@
 								</xsl:call-template>
 							</div>
 						</div>
-					</div>					
+					</div>
 					<!-- End Line 22  -->
 					<!--  FOOTER-->
 					<div style="width:187mm">
 						<div style="float:left; font-size:8pt">
-							  <b>For Paperwork Reduction Act Notice, see separate instructions.</b>
-							  <span style="width:20mm"/>
+							<b>For Paperwork Reduction Act Notice, see separate instructions.</b>
+							<span style="width:20mm"/>
 								Cat. No. 14954R
 						</div>
 						<span style="float: right">
@@ -1235,7 +1254,6 @@
 					<br/>
 					<br/>
 					<!--END FOOTER-->
-					
 					<!-- BEGIN Left Over Table -->
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">
@@ -1257,7 +1275,7 @@
 							<xsl:with-param name="TargetNode" select="$FormData/@fiscalYearTaxpayerCd"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
-<!--						<xsl:call-template name="PopulateLeftoverRow">
+						<!--						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line 34 - Form 8884 Indicator</xsl:with-param>
 							<xsl:with-param name="TargetNode" select="$FormData/QualifiedFacilitiesAfter1022/CfwdRnwblElecRefinedCoalCr/@form8884Indicator"/>
 							<xsl:with-param name="DescWidth" select="100"/>

@@ -47,35 +47,35 @@
 					<!-- Page 1 -->
 					<!-- Header -->
 					<div class="styStdDiv">
-						<div class="styFNBox" style="width:30mm;height:18.5mm;">
+						<div class="styFNBox" style="width:30mm;height:22.5mm;">
 							Form <span class="styFN" style="font-size:18pt;">8997</span> 
+							<br />
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$FormData" />
 							</xsl:call-template>
-							<br />
-							<br />
+							<br /><br />
 							<span class="styAgency">
-								Department of the Treasury
-								<br />
+								Department of the Treasury <br />
 								Internal Revenue Service
 							</span>
 						</div>
-						<div class="styFTBox" style="width:127mm;height:18.5mm;">
+						<div class="styFTBox" style="width:127mm;height:22.5mm;">
 							<span class="styFMT" style="font-size:10pt;padding-top:1mm;padding-bottom:1mm;">Initial and Annual Statement of <br />
 							Qualified Opportunity Fund (QOF) Investments</span>
-							<br />
-							<span style="font-weight:bold;">
-								&#9658;Attach this form to Form 8949
-							</span><br />
+							<br /><br />
 							<span style="font-weight:bold;">
 								&#9658;Go to
 								<span style="font-style:italic">www.irs.gov/Form8997</span>
 								for instructions and the latest information.
 							</span>
 						</div>
-						<div class="styTYBox" style="width:30mm;height:18.5mm;">
+						<div class="styTYBox" style="width:30mm;height:22.5mm;">
 							<div class="styOMB" style="height:auto;font-size:6pt;">OMB No. XXXX-NNNN</div>
 							<div class="styTY">20<span class="styTYColor">19</span></div>
+							<div style="margin-left:3mm;text-align:left;font-size:7pt;">
+								Attachment<br/>Sequence No. 
+								<span class="styBoldText" style="font-size:9pt;">997</span>
+							</div>
 						</div>
 					</div>
 					<!-- Filer information section -->
@@ -90,75 +90,20 @@
 							</xsl:call-template>
 						</div>
 						<div class="styEINBox" style="width:62mm;padding-left:0.5mm;font-weight:normal;">
-							<strong>Taxpayer identification number</strong> (see instructions)<br />
+							<strong>Tax identification number</strong> (see instructions)<br />
 							<xsl:call-template name="PopulateReturnHeaderFilerTIN"/>
-						</div>
-					</div>
-					<div class="styStdDiv" style="border-bottom:1px solid black;">
-						<div class="styNameBox" style="width:125mm;">
-							Address (number and street)<br />
-							<xsl:choose>
-								<xsl:when test="$RtnHdrData/Filer/ForeignAddress">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/ForeignAddress/AddressLine1Txt"/>
-									</xsl:call-template>
-									<br />
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/ForeignAddress/AddressLine2Txt"/>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/AddressLine1Txt"/>
-									</xsl:call-template>
-									<br />
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/AddressLine2Txt"/>
-									</xsl:call-template>
-								</xsl:otherwise>
-							</xsl:choose>
-						</div>
-						<div class="styEINBox" style="width:62mm;padding-left:0.5mm;font-weight:normal;">
-							Room/suite <br /> &nbsp;
-						</div>
-					</div>
-					<div class="styStdDiv" style="border-bottom:1px solid black;">
-						<div class="styNameBox" style="width:125mm;height:7mm;">
-							City, town or post office, state, and ZIP code <br />
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">CityStateInfo</xsl:with-param>
-							</xsl:call-template>
-							<span style="width:8px;"/>
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">CountryCd</xsl:with-param>
-							</xsl:call-template>
-						</div>
-						<div class="styEINBox" style="width:62mm;padding-left:0.5mm;font-weight:normal;">
-							Telephone number<br />
-							<xsl:choose>
-								<xsl:when test="$FormData/ForeignPhoneNum">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/ForeignPhoneNum"/>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:call-template name="PopulatePhoneNumber">
-										<xsl:with-param name="TargetNode" select="$FormData/PhoneNum"/>
-									</xsl:call-template>
-								</xsl:otherwise>
-							</xsl:choose>
 						</div>
 					</div>
 					<!-- Part 1 -->
 					<div class="styStdDiv" style="border-bottom:1px solid black;">
 						<div class="styPartName">Part I</div>
 						<div class="styPartDesc" style="width:167mm;height:auto;font-weight:normal;">
-							<strong>Total QOF investment holdings at beginning of current tax year</strong> <br />
+							<strong>Total QOF investment holdings at beginning of tax year</strong> <br />
 							If different from last year's ending QOF investment holdings, attach explanation.
 						</div>
 						<div style="float:right;width:4mm;height:3mm;">
 							<xsl:call-template name="SetDynamicTableToggleButton">
-								<xsl:with-param name="TargetNode" select="$FormData/TotQOFInvstHoldBegngCurrTYGrp"/>
+								<xsl:with-param name="TargetNode" select="$FormData/TotQOFInvstHoldBOYGrp"/>
 								<xsl:with-param name="containerID" select=" 'Part1Table' "/>
 								<xsl:with-param name="headerHeight" select="2"/>
 								<xsl:with-param name="containerHeight" select="5"/>
@@ -166,7 +111,7 @@
 						</div>
 					</div>
 					<!-- Table 1, cols (a)-(e) -->
-					<xsl:variable name="shouldSeparateP1" select="($Print = $Separated) and (count($FormData/TotQOFInvstHoldBegngCurrTYGrp) &gt; 5)"/>
+					<xsl:variable name="shouldSeparateP1" select="($Print = $Separated) and (count($FormData/TotQOFInvstHoldBOYGrp) &gt; 5)"/>
 					<div class="styStdDiv" style="" id="Part1Table">
 						<xsl:call-template name="SetInitialState"/>
 						<table style="display:table;border-collapse:collapse;">
@@ -182,7 +127,7 @@
 									</th>
 									<th class="styTableCellHeader" scope="col" rowspan="2" style="min-width:59mm;width:71mm;font-weight:normal;">
 										<strong>(c)</strong><br />
-										Description of interest acquired <br /> (For example, 100 shares or 25% interest)
+										Description of QOF investment <br /> (For example, 100 shares or 25% interest)
 									</th>
 									<th class="styTableCellHeader" scope="col" colspan="2" style="width:58mm;font-weight:normal;border-right-width:0px;">
 										Deferred gain held in QOF
@@ -191,17 +136,17 @@
 								<tr>
 									<th class="styTableCellHeader" scope="col" style="width:29mm;font-weight:normal;vertical-align:top;">
 										<span style="font-weight:bold;">(d) </span> <br /> 
-										Amount of short-term <br /> deferred gain <br /> invested in QOF
+										Amount of short-term <br /> deferred gain <br /> remaining in QOF
 									</th>
 									<th class="styTableCellHeader" scope="col" style="width:29mm;font-weight:normal;vertical-align:top;border-right-width:0px;">
 										<span style="font-weight:bold;">(e) </span> <br /> 
-										Amount of long-term <br /> deferred gain <br /> invested in QOF
+										Amount of long-term <br /> deferred gain <br /> remaining in QOF
 									</th>
 								</tr>
 							</thead>
 							<tbody>
 								<xsl:if test="not($shouldSeparateP1)">
-									<xsl:for-each select="$FormData/TotQOFInvstHoldBegngCurrTYGrp">
+									<xsl:for-each select="$FormData/TotQOFInvstHoldBOYGrp">
 										<tr style="height:7.5mm;vertical-align:top;">
 											<td class="styTableCellCtrInherit">
 												<xsl:call-template name="PopulateEIN">
@@ -215,25 +160,25 @@
 											</td>
 											<td class="styTableCellTextInherit">
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="InterestAcquiredDesc"/>
+													<xsl:with-param name="TargetNode" select="QOFInvestmentDesc"/>
 												</xsl:call-template>
 											</td>
 											<td class="styTableCellAmtInherit">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="ShortTermDefrdGainInvstAmt"/>
+													<xsl:with-param name="TargetNode" select="ShortTermDefrdGainRmngQOFAmt"/>
 												</xsl:call-template>
 											</td>
 											<td class="styTableCellAmtInherit" style="border-right-width:0px;">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="LongTermDefrdGainInvstAmt"/>
+													<xsl:with-param name="TargetNode" select="LongTermDefrdGainRmngQOFAmt"/>
 												</xsl:call-template>
 											</td>
 										</tr>
 									</xsl:for-each>
 								</xsl:if>
-								<xsl:if test="$shouldSeparateP1 or count($FormData/TotQOFInvstHoldEndCurrTYGrp) &lt; 5">
+								<xsl:if test="$shouldSeparateP1 or count($FormData/TotQOFInvstHoldBOYGrp) &lt; 5">
 									<xsl:call-template name="FillTable5Cols">
-										<xsl:with-param name="LineNumber" select="1 + count($FormData/TotQOFInvstHoldBegngCurrTYGrp)"/>
+										<xsl:with-param name="LineNumber" select="1 + count($FormData/TotQOFInvstHoldBOYGrp)"/>
 										<xsl:with-param name="SepMessage" select="$shouldSeparateP1"/>
 									</xsl:call-template>
 								</xsl:if>
@@ -242,7 +187,7 @@
 					</div>
 					<xsl:if test="not($shouldSeparateP1)">
 						<xsl:call-template name="SetInitialDynamicTableHeight">
-							<xsl:with-param name="TargetNode" select="$FormData/TotQOFInvstHoldBegngCurrTYGrp"/>
+							<xsl:with-param name="TargetNode" select="$FormData/TotQOFInvstHoldBOYGrp"/>
 							<xsl:with-param name="containerID" select=" 'Part1Table' "/>
 							<xsl:with-param name="headerHeight" select="2"/>
 							<xsl:with-param name="containerHeight" select="5"/>
@@ -262,14 +207,14 @@
 							Enter the totals from columns (d) and (e) 
 							<span class="sty8997DotLn" style="padding-right:0px;margin-right:-4px;">.................&#9658;</span>
 						</div>
-						<div class="styLNAmountBox" style="height:7.5mm;width:29.1mm;"><br />
+						<div class="styLNAmountBox" style="height:7.5mm;width:29.1mm;padding-right:0.5mm;"><br />
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$FormData/TotBOYSTDefrdGainInvstAmt"/>
+								<xsl:with-param name="TargetNode" select="$FormData/TotBOYSTDefrdGainRmngQOFAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styLNAmountBox" style="height:7.5mm;width:29.1mm;"><br />
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$FormData/TotBOYLTDefrdGainInvstAmt"/>
+								<xsl:with-param name="TargetNode" select="$FormData/TotBOYLTDefrdGainRmngQOFAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -277,7 +222,7 @@
 					<div class="styStdDiv" style="border-bottom:1px solid black;">
 						<div class="styPartName">Part II</div>
 						<div class="styPartDesc" style="width:167mm;height:auto;">
-							Capital gains deferred and invested in QOF in current tax year
+							Current tax year capital gains deferred by investing in QOF
 						</div>
 						<div style="float:right;width:4mm;height:3mm;">
 							<xsl:call-template name="SetDynamicTableToggleButton">
@@ -314,11 +259,11 @@
 								<tr>
 									<th class="styTableCellHeader" scope="col" style="width:29mm;font-weight:normal;vertical-align:top;">
 										<span style="font-weight:bold;">(d) </span> <br /> 
-										Amount of short-term <br /> deferred gain <br /> invested in QOF
+										Amount of short-term <br /> deferred gain <br /> remaining in QOF
 									</th>
 									<th class="styTableCellHeader" scope="col" style="width:29mm;font-weight:normal;vertical-align:top;border-right-width:0px;">
 										<span style="font-weight:bold;">(e) </span> <br /> 
-										Amount of long-term <br /> deferred gain <br /> invested in QOF
+										Amount of long-term <br /> deferred gain <br /> remaining in QOF
 									</th>
 								</tr>
 							</thead>
@@ -343,18 +288,18 @@
 											</td>
 											<td class="styTableCellAmtInherit">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="ShortTermDefrdGainInvstAmt"/>
+													<xsl:with-param name="TargetNode" select="ShortTermDefrdGainRmngAmt"/>
 												</xsl:call-template>
 											</td>
 											<td class="styTableCellAmtInherit" style="border-right-width:0px;">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="LongTermDefrdGainInvstAmt"/>
+													<xsl:with-param name="TargetNode" select="LongTermDefrdGainRmngAmt"/>
 												</xsl:call-template>
 											</td>
 										</tr>
 									</xsl:for-each>
 								</xsl:if>
-								<xsl:if test="$shouldSeparateP2 or count($FormData/TotQOFInvstHoldEndCurrTYGrp) &lt; 5">
+								<xsl:if test="$shouldSeparateP2 or count($FormData/TotQOFInvstHoldEOYGrp) &lt; 5">
 									<xsl:call-template name="FillTable5Cols">
 										<xsl:with-param name="LineNumber" select="1 + count($FormData/CapGainDefrdInvstQOFCurrTYGrp)"/>
 										<xsl:with-param name="SepMessage" select="$shouldSeparateP2"/>
@@ -385,14 +330,14 @@
 							Enter the totals from columns (d) and (e). See instructions for reporting on Form 8949
 							<span class="sty8997DotLn" style="padding-right:0px;margin-right:-4px;">...&#9658;</span>
 						</div>
-						<div class="styLNAmountBox" style="height:7.5mm;width:29.1mm;"><br />
+						<div class="styLNAmountBox" style="height:7.5mm;width:29.1mm;padding-right:0.5mm;"><br />
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$FormData/TotShortTermDefrdGainInvstAmt"/>
+								<xsl:with-param name="TargetNode" select="$FormData/TotShortTermDefrdGainRmngAmt"/>
 							</xsl:call-template>
 						</div>
 						<div class="styLNAmountBox" style="height:7.5mm;width:29.1mm;"><br />
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$FormData/TotLongTermDefrdGainInvstAmt"/>
+								<xsl:with-param name="TargetNode" select="$FormData/TotLongTermDefrdGainRmngAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -441,7 +386,7 @@
 										Description of interest disposed <br /> (For example, 100 shares or 25% interest)
 									</th>
 									<th class="styTableCellHeader" scope="col" colspan="2" style="width:58mm;font-weight:normal;border-right-width:0px;">
-										Deferred gain recognized <br /> due to disposition of QOF interest
+										Deferred gain included <br /> due to disposition of QOF interest
 									</th>
 								</tr>
 								<tr>
@@ -518,7 +463,7 @@
 							Enter the totals from columns (d) and (e). See instructions for reporting on Form 8949
 							<span class="sty8997DotLn" style="padding-right:0px;margin-right:-4px;">...&#9658;</span>
 						</div>
-						<div class="styLNAmountBox" style="height:7.5mm;width:29.1mm;"><br />
+						<div class="styLNAmountBox" style="height:7.5mm;width:29.1mm;padding-right:0.5mm;"><br />
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/TotPrevDefrdShortTermGainAmt"/>
 							</xsl:call-template>
@@ -529,23 +474,33 @@
 							</xsl:call-template>
 						</div>
 					</div>
-					<!-- Part 4 -->
-					<div class="styStdDiv" style="border-bottom:1px solid black;">
-						<div class="styPartName">Part IV</div>
-						<div class="styPartDesc" style="width:167mm;height:auto;font-weight:normal;">
-							<strong>Reserved</strong> <br />
-							(Deferred gain reported in taxable income as a result of the 12/31/2026 deferral period ending)
+					<div class="styStdDiv" style="">
+						<div class="styLNLeftNumBox">
+							<input type="checkbox" class="styCkbox" alt="Form 1099-B Not Received Indicator">
+								<xsl:call-template name="PopulateCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/Form1099BNotReceivedInd"/>
+									<xsl:with-param name="BackupName">IRS8997Form1099BNotReceived</xsl:with-param>
+								</xsl:call-template>
+							</input>
+						</div>
+						<div class="styLNDesc" style="height:8mm;width:175mm;">
+							<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$FormData/Form1099BNotReceivedInd"/>
+									<xsl:with-param name="BackupName">IRS8997Form1099BNotReceived</xsl:with-param>
+								</xsl:call-template>Check this box, if you disposed of any investment(s) and didn't receive a Form 1099-B reporting the disposition from the 
+							qualified opportunity fund or other third party. See the Instructions for Form 8949 for reporting requirements of any gain or loss.</label>
 						</div>
 					</div>
-					<!-- Part 5 -->
-					<div class="styStdDiv" style="border-bottom:1px solid black;">
-						<div class="styPartName">Part V</div>
+					<!-- Part 4 -->
+					<div class="styStdDiv" style="border-bottom:1px solid black;border-top:1px solid black;">
+						<div class="styPartName">Part IV</div>
 						<div class="styPartDesc" style="width:167mm;height:auto;">
-							Total QOF investment holdings at end of current tax year
+							Total QOF investment holdings at year end due to deferrals (See Instructions)
 						</div>
 						<div style="float:right;width:4mm;height:3mm;">
 							<xsl:call-template name="SetDynamicTableToggleButton">
-								<xsl:with-param name="TargetNode" select="$FormData/TotQOFInvstHoldEndCurrTYGrp"/>
+								<xsl:with-param name="TargetNode" select="$FormData/TotQOFInvstHoldEOYGrp"/>
 								<xsl:with-param name="containerID" select=" 'Part5Table' "/>
 								<xsl:with-param name="headerHeight" select="2"/>
 								<xsl:with-param name="containerHeight" select="5"/>
@@ -553,7 +508,7 @@
 						</div>
 					</div>
 					<!-- Table 5, cols (a)-(e) -->
-					<xsl:variable name="shouldSeparateP5" select="($Print = $Separated) and (count($FormData/TotQOFInvstHoldEndCurrTYGrp) &gt; 5)"/>
+					<xsl:variable name="shouldSeparateP5" select="($Print = $Separated) and (count($FormData/TotQOFInvstHoldEOYGrp) &gt; 5)"/>
 					<div class="styStdDiv" style="" id="Part5Table">
 						<xsl:call-template name="SetInitialState"/>
 						<table style="display:table;border-collapse:collapse;">
@@ -588,7 +543,7 @@
 							</thead>
 							<tbody>
 								<xsl:if test="not($shouldSeparateP5)">
-									<xsl:for-each select="$FormData/TotQOFInvstHoldEndCurrTYGrp">
+									<xsl:for-each select="$FormData/TotQOFInvstHoldEOYGrp">
 										<tr style="height:7.5mm;vertical-align:top;">
 											<td class="styTableCellCtrInherit">
 												<xsl:call-template name="PopulateEIN">
@@ -618,9 +573,9 @@
 										</tr>
 									</xsl:for-each>
 								</xsl:if>
-								<xsl:if test="$shouldSeparateP5 or count($FormData/TotQOFInvstHoldEndCurrTYGrp) &lt; 5">
+								<xsl:if test="$shouldSeparateP5 or count($FormData/TotQOFInvstHoldEOYGrp) &lt; 5">
 									<xsl:call-template name="FillTable5Cols">
-										<xsl:with-param name="LineNumber" select="1 + count($FormData/TotQOFInvstHoldEndCurrTYGrp)"/>
+										<xsl:with-param name="LineNumber" select="1 + count($FormData/TotQOFInvstHoldEOYGrp)"/>
 										<xsl:with-param name="SepMessage" select="$shouldSeparateP5"/>
 									</xsl:call-template>
 								</xsl:if>
@@ -629,7 +584,7 @@
 					</div>
 					<xsl:if test="not($shouldSeparateP5)">
 						<xsl:call-template name="SetInitialDynamicTableHeight">
-							<xsl:with-param name="TargetNode" select="$FormData/TotQOFInvstHoldEndCurrTYGrp"/>
+							<xsl:with-param name="TargetNode" select="$FormData/TotQOFInvstHoldEOYGrp"/>
 							<xsl:with-param name="containerID" select=" 'Part5Table' "/>
 							<xsl:with-param name="headerHeight" select="2"/>
 							<xsl:with-param name="containerHeight" select="5"/>
@@ -649,7 +604,7 @@
 							Enter the totals from columns (d) and (e) 
 							<span class="sty8997DotLn" style="padding-right:0px;margin-right:-4px;">.................&#9658;</span>
 						</div>
-						<div class="styLNAmountBox" style="height:7.5mm;width:29.1mm;"><br />
+						<div class="styLNAmountBox" style="height:7.5mm;width:29.1mm;padding-right:0.5mm;"><br />
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/TotEOYSTDefrdGainInvstAmt"/>
 							</xsl:call-template>
@@ -660,30 +615,7 @@
 							</xsl:call-template>
 						</div>
 					</div>
-					<!-- Part 6 -->
-					<div class="styStdDiv" style="border-bottom:1px solid black;">
-						<div class="styPartName">Part VI</div>
-						<div class="styPartDesc" style="width:167mm;height:auto;font-weight:normal;">&nbsp;</div>
-					</div>
-					<div class="styStdDiv" style="">
-						<div class="styLNLeftNumBox">
-							<input type="checkbox" class="styCkbox">
-								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$FormData/Form1099BNotReceivedInd"/>
-									<xsl:with-param name="BackupName">IRS8997Form1099BNotReceived</xsl:with-param>
-								</xsl:call-template>
-							</input>
-						</div>
-						<div class="styLNDesc" style="height:8mm;width:175mm;">
-							<label>
-								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$FormData/Form1099BNotReceivedInd"/>
-									<xsl:with-param name="BackupName">IRS8997Form1099BNotReceived</xsl:with-param>
-								</xsl:call-template>Check this box, if you disposed of any investment(s) and didn't receive a Form 1099-B reporting the disposition from the 
-							qualified opportunity fund or other third party. See the Instructions for Form 8949 for reporting requirements of any gain or loss.</label>
-						</div>
-					</div>
-					<div class="styStdDiv pageEnd" style="border-top:2px solid black;">
+					<div class="styStdDiv pageEnd" style="border-top:1px solid black;">
 						<span style="float:right;">Form <strong>8997</strong> (2019)</span>
 					</div>
 					<!-- Additonal Data Title Bar and Button -->
@@ -706,7 +638,7 @@
 					<xsl:if test="$shouldSeparateP1">
 						<br/>
 						<br/>
-						<span class="styRepeatingDataTitle">Part I - Total QOF investment holdings at beginning of current tax year</span>
+						<span class="styRepeatingDataTitle">Part I - Total QOF investment holdings at beginning of tax year</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
@@ -720,7 +652,7 @@
 									</th>
 									<th class="styDepTblCell" scope="col" rowspan="2" style="width:80mm;">
 										<strong>(c)</strong><br />
-										Description of interest acquired <br /> (For example, 100 shares or 25% interest)
+										Description of QOF investment <br /> (For example, 100 shares or 25% interest)
 									</th>
 									<th class="styDepTblCell" scope="col" colspan="2" style="width:58mm;">
 										Deferred gain held in QOF
@@ -729,15 +661,15 @@
 								<tr class="styDepTblHdr">
 									<th class="styDepTblCell" scope="col" style="width:29mm;">
 										<span style="font-weight:bold;">(d) </span> <br /> 
-										Amount of short-term <br /> deferred gain <br /> invested in QOF</th>
+										Amount of short-term <br /> deferred gain <br /> remaining in QOF</th>
 									<th class="styDepTblCell" scope="col" style="width:29mm;">
 										<span style="font-weight:bold;">(e) </span> <br /> 
-										Amount of long-term <br /> deferred gain <br /> invested in QOF
+										Amount of long-term <br /> deferred gain <br /> remaining in QOF
 									</th>
 								</tr>
 							</thead>
 							<tbody>
-								<xsl:for-each select="$FormData/TotQOFInvstHoldBegngCurrTYGrp">
+								<xsl:for-each select="$FormData/TotQOFInvstHoldBOYGrp">
 									<tr style="border-color:black;height:6mm;">
 										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
 										<td class="styTableCellCtrInherit">
@@ -752,17 +684,17 @@
 										</td>
 										<td class="styTableCellTextInherit">
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="InterestAcquiredDesc"/>
+												<xsl:with-param name="TargetNode" select="QOFInvestmentDesc"/>
 											</xsl:call-template>
 										</td>
 										<td class="styTableCellAmtInherit">
 											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="ShortTermDefrdGainInvstAmt"/>
+												<xsl:with-param name="TargetNode" select="ShortTermDefrdGainRmngQOFAmt"/>
 											</xsl:call-template>
 										</td>
 										<td class="styTableCellAmtInherit">
 											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="LongTermDefrdGainInvstAmt"/>
+												<xsl:with-param name="TargetNode" select="LongTermDefrdGainRmngQOFAmt"/>
 											</xsl:call-template>
 										</td>
 									</tr>
@@ -774,7 +706,7 @@
 					<xsl:if test="$shouldSeparateP2">
 						<br/>
 						<br/>
-						<span class="styRepeatingDataTitle">Part II - Capital gains deferred and invested in QOF in current tax year</span>
+						<span class="styRepeatingDataTitle">Part II - Current tax year recognized capital gains deferred by investing in QOF</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
@@ -911,7 +843,7 @@
 					<xsl:if test="$shouldSeparateP5">
 						<br/>
 						<br/>
-						<span class="styRepeatingDataTitle">Part V - Total QOF investment holdings at end of current tax year</span>
+						<span class="styRepeatingDataTitle">Part IV - Total QOF investment holdings at year end due to deferrals (See Instructions)</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
@@ -942,7 +874,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<xsl:for-each select="$FormData/TotQOFInvstHoldEndCurrTYGrp">
+								<xsl:for-each select="$FormData/TotQOFInvstHoldEOYGrp">
 									<tr style="border-color:black;height:6mm;">
 										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
 										<td class="styTableCellCtrInherit">

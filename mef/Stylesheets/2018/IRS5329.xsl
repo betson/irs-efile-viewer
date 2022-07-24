@@ -86,13 +86,14 @@
           <xsl:call-template name="DocumentHeader"/>
           <div class="styBB" style="height:22mm;width:187mm;border-bottom-width:2px;float:none;clear:both;">
             <div class="styFNBox" style="height:22mm;width:28mm;border-right-width:1px;padding-top:.4mm;">
-              <div style="padding-top:1mm;padding-bottom:5mm;">
+              <div style="padding-top:1mm;padding-bottom:2mm;">
                 Form<span class="styFormNumber">  5329</span>
               </div>
               <!--General Dependency Push Pin-->
               <xsl:call-template name="SetFormLinkInline">
                 <xsl:with-param name="TargetNode" select="$Form5329Data"/>
               </xsl:call-template>
+              <span class="styAgency">(Rev. February 2020)</span>
               <br/>
               <span class="styAgency">Department of the Treasury</span>
               <br/>
@@ -243,8 +244,8 @@
           </div>
           
           <div class="styBB" style="width:187mm;">
-            If you <b>only</b> owe the additional 10% tax on early distributions, you may be able to report this tax directly on Form 1040, line 59, or<br/>
-            Form 1040NR, line 57, without filing Form 5329. See the instructions for Form 1040, line 59, or for Form 1040NR, line 57.
+            If you <b>only</b> owe the additional 10% tax on early distributions, you may be able to report this tax directly on Schedule 4 (Form 1040), line 59, <br/>
+			or Form 1040NR, line 57, without filing Form 5329. See the instructions for Schedule 4 (Form 1040), line 59, or for Form 1040NR, line 57.
           </div>
           <!-- End Top Section -->
           <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
@@ -259,11 +260,11 @@
 					Complete this part if you took a taxable distribution (other than a qualified disaster 
 					distribution) before you reached age 59½ from a qualified retirement plan (including an IRA) or modified endowment contract (unless
 					you are reporting this tax directly on Form 1040 or Form 1040NR—see above). You may also have to complete this part to indicate
-					that you qualify for an exception to the additional tax on early distributions or for certain Roth IRA distributions (see instructions).
+					that you qualify for an exception to the additional tax on early distributions or for certain Roth IRA distributions. See instructions.
 				</div>
           </div>
           <!-- Body -->
-          <div class="styBB" style="height:25mm;width:187mm;">
+          <div class="styBB" style="height:28mm;width:187mm;">
             <!-- (1) ////////////////////////////////////////////////////-->
             <div class="styIRS5329LineItem"  style="height:4mm;">
               <div class="styIRS5329LNLeftNumBox">1</div>
@@ -328,31 +329,33 @@
               </xsl:call-template>
             </div>
             <!-- (4) ////////////////////////////////////////////////////-->
-            <div class="styIRS5329LineItem"  style="height:6mm;">
-              <div class="styIRS5329LNLeftNumBox">4</div>
-              <div class="styIRS5329LNDesc" style="width:145mm;padding:0px 0px 0px 0px;">
-                <div class="styIRS5329LNDesc" style="width:auto;">
-                  <b>Additional tax.</b> Enter 10% (0.10) of line 3. Include this amount on Form 1040, line 59, or Form 1040NR, line 57
-                  <!--Dotted Line-->
-                   <br/>
-                  <span class="styItalicText"><b>Caution: </b>If any part of the amount on line 3 was a distribution from a SIMPLE IRA, you may have
-                  to include 25% of that amount on line 4 instead of 10% (see instructions).</span>
+            <div class="styIRS5329LineItem"  style="height:13mm;">
+                <div class="styIRS5329LNLeftNumBox">4</div>
+                <div class="styIRS5329LNDesc" style="height:8mm;width:145mm;padding:0px 0px 0px 0px;">
+					<div class="styIRS5329LNDesc" style="width:auto;">
+					  <b>Additional tax.</b> Enter 10% (0.10) of line 3. Include this amount on Schedule 4 (Form 1040), line 59, or Form 1040NR, line 57
+					  <!--Dotted Line-->
+					  <span class="styDotLn" style="float:right;clear:none;padding-right:1mm;">..............................</span>
+					   <br/>
+					  <b>Caution: </b>If any part of the amount on line 3 was a distribution from a SIMPLE IRA, you may have
+					  to include 25% of that amount on line 4 instead of 10%.  See instructions.
+					</div>
                 </div>
-              </div>
-                <div class="styIRS5329LNDesc" style="width:36mm;float:right;padding:0px 0px 0px 0px;border-color:black;border-width:0px 0px 1px 0px;">
-                  <xsl:call-template name="CreateBox">
-                    <xsl:with-param name="Number">4</xsl:with-param>
-                    <xsl:with-param name="TargetNode" select="$Form5329Data/IRAEarlyDistributionsTaxAmt"/>
+                <div class="styIRS5329LNDesc" style="height:7mm;width:36mm;float:right;padding:0px 0px 0px 0px;border-color:black;border-width:0px 0px 1px 0px;">
+                    <xsl:call-template name="CreateBox">
+						<xsl:with-param name="Height">7mm;padding-top:3mm</xsl:with-param>
+                        <xsl:with-param name="Number">4</xsl:with-param>
+                        <xsl:with-param name="TargetNode" select="$Form5329Data/IRAEarlyDistributionsTaxAmt"/>
                   </xsl:call-template>
                 </div>
                 <div class="styIRS5329LNDesc" style="width:36mm;float:right;padding:0px 0px 0px 0px;">
-                  <xsl:call-template name="CreateBox">
-                    <xsl:with-param name="Height">5.8mm</xsl:with-param>
-                    <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 0px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                    <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                  </xsl:call-template>
+                    <xsl:call-template name="CreateBox">
+						<xsl:with-param name="Height">5.6mm</xsl:with-param>
+						<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 0px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+						<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+                    </xsl:call-template>
                 </div>
-             </div>
+            </div>
           </div>
           <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
           <!-- Begin Part II                                                 -->
@@ -362,13 +365,13 @@
             <!-- Content -->
             <div class="styPartName" style="width:15mm;">Part II</div>
             <div class="styLNDesc" style="height:auto;width:172mm;padding-left:3mm;">
-				<span style="font-size:8pt;padding-right:1mm;"><b>Additional Tax on Certain Distributions From Education Accounts and ABLE Accounts.</b></span>
-                Complete this part if you included an amount in income, on Form 1040 or Form 1040NR, line 21, from a Coverdell 
-                education savings account (ESA), a qualified tuition program (QTP) or an ABLE account.
+				<span style="font-size:8pt;padding-right:1mm;"><b>Additional Tax on Certain Distributions From Education Accounts and ABLE Accounts.</b></span> Complete this part if 
+																							you included an amount in income, on Schedule 1 (Form 1040), line 21, or Form 1040NR, line 21, from a Coverdell education 
+																							savings account (ESA), a qualified tuition program (QTP), or an ABLE account.
             </div>
           </div>
           <!-- Body -->
-          <div class="styBB" style="height:16.2mm;width:187mm;">
+          <div class="styBB" style="height:19.2mm;width:187mm;">
             <!-- (5) ////////////////////////////////////////////////////-->
             <div class="styIRS5329LineItem"  style="height:4mm;">
               <div class="styIRS5329LNLeftNumBox">5</div>
@@ -428,15 +431,15 @@
               <div class="styIRS5329LNLeftNumBox">8</div>
               <div class="styIRS5329LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS5329LNDesc" style="width:auto;height:100%;">
-                  <b>Additional tax.</b> Enter 10% (0.10) of line 7. Include this amount on Form 1040, line 59, or Form 1040NR, line 57
+                  <b>Additional tax.</b> Enter 10% (0.10) of line 7. Include this amount on Schedule 4 (Form 1040), line 59, or Form 1040NR, line 57
                  <!--Dotted Line-->
-                    <!--<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">...............................</span>-->	  
+                    <span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">.............................</span>	  
                 </div>
               </div>
               <div class="styIRS5329LNDesc" style="height:100%;width:36mm;float:right;padding:0px 0px 0px 0px;">
                  <div class="styIRS5329LNDesc" style="height:auto;width:36mm;float:right;padding:0px 0px 0px 0px;">
                   <xsl:call-template name="CreateBox">
-					<xsl:with-param name="Height">4mm;padding-top:.5mm</xsl:with-param>
+					<xsl:with-param name="Height">6.8mm;padding-top:3mm</xsl:with-param>
 					<xsl:with-param name="Number">8</xsl:with-param>
                     <xsl:with-param name="TargetNode" select="$Form5329Data/EducIRADistributionsTaxAmt"/>
                     <xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
@@ -466,7 +469,7 @@
               <div class="styIRS5329LNLeftNumBox">9</div>
               <div class="styIRS5329LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS5329LNDesc" style="width:auto;height:100%;">
-                  Enter your excess contributions from line 16 of your 2017 Form 5329 (see instructions). If zero, go to line 15
+                  Enter your excess contributions from line 16 of your 2017 Form 5329.  See instructions. If zero, go to line 15
                  <!--Dotted Line-->
                     <!--<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">...............................</span>-->
                 </div>
@@ -626,8 +629,8 @@
               <div class="styIRS5329LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS5329LNDesc" style="width:auto;height:100%;">
                   <b>Additional tax.</b> Enter 6% (0.06) of the <b>smaller</b> of line 16 <b>or</b> the value of your traditional IRAs on <br/>
-                  December 31, 2018 (including 2018 contributions made in 2019). Include this amount on Form 1040, line 59, or Form 1040NR, line 57.
-				<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">...........................</span>
+                  December 31, 2018 (including 2018 contributions made in 2019). Include this amount on Schedule 4 (Form 1040), line 59, or Form 1040NR, line 57
+				<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">......................</span>
                 </div>
               </div>
               <div class="styIRS5329LNDesc" style="height:100%;width:36mm;float:right;padding:0px 0px 0px 0px;">
@@ -663,7 +666,7 @@
               <div class="styIRS5329LNLeftNumBox">18</div>
               <div class="styIRS5329LNDesc" style="width:145mm;height:auto;padding:0px 0px 0px 0px;">
                 <div class="styIRS5329LNDesc" style="width:auto;height:4mm;">
-                  Enter your excess contributions from line 24 of your 2017 Form 5329 (see instructions). If zero, go to line 23
+                  Enter your excess contributions from line 24 of your 2017 Form 5329.  See instructions. If zero, go to line 23
                   <!--Dotted Line-->
                   <!--<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">...............................</span>-->
                  </div>
@@ -800,9 +803,9 @@
               <div class="styIRS5329LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS5329LNDesc" style="width:auto;height:100%;">
                   <b>Additional tax.</b> Enter 6% (0.06) of the <b>smaller</b> of line 24 <b>or</b> the value of your Roth IRAs on December 31, 2018
-                  (including 2018 contributions made in 2019). Include this amount on Form 1040, line 59, or Form 1040NR, line<br/> 57
+                  (including 2018 contributions made in 2019). Include this amount on Schedule 4 (Form 1040), line 59, or Form 1040NR, line 57
                    <!--Dotted Line-->
-                  <span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">..................................</span>
+                  <span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">.............................</span>
                 </div>
               </div>
               <div class="styIRS5329LNDesc" style="height:100%;width:36mm;float:right;padding:0px 0px 0px 0px;">
@@ -868,7 +871,7 @@
               <div class="styIRS5329LNLeftNumBox">26</div>
               <div class="styIRS5329LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS5329LNDesc" style="width:auto;height:100%;">
-                  Enter the excess contributions from line 32 of your 2017 Form 5329 (see instructions). If zero, go to line 31
+                  Enter the excess contributions from line 32 of your 2017 Form 5329.  See instructions. If zero, go to line 31
                   <!--Dotted Line-->
                   <!--<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">...............................</span>-->
                 </div>
@@ -1001,10 +1004,9 @@
               <div class="styIRS5329LNLeftNumBox">33</div>
               <div class="styIRS5329LNDesc" style="padding-left:3mm;width:145mm;height:100%;">
                   <b>Additional tax.</b> Enter 6% (0.06) of the <b>smaller</b> of line 32 <b>or</b> the value of your Coverdell ESAs on
-                  December 31, 2018 (including 2018 contributions made in 2019). Include this amount on Form
-                  1040, line 59, or Form 1040NR, <br/>line 57
+                  December 31, 2018 (including 2018 contributions made in 2019). Include this amount on Schedule 4 (Form 1040), line 59, or Form 1040NR, line 57
                   <!--Dotted Line-->
-                 <span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">................................</span> 
+                 <span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">............................</span> 
                </div>
 				<xsl:call-template name="CreateBox">
 					<xsl:with-param name="Height">5.9mm</xsl:with-param>
@@ -1040,7 +1042,7 @@
               <div class="styIRS5329LNLeftNumBox">34</div>
               <div class="styIRS5329LNDesc" style="width:145mm;height:100%;padding:1px 0px 0px 0px;">
                 <div class="styIRS5329LNDesc" style="width:auto;height:100%;">
-                  Enter the excess contributions from line 40 of your 2017 Form 5329 (see instructions). If zero, go to line 39
+                  Enter the excess contributions from line 40 of your 2017 Form 5329.  See instructions. If zero, go to line 39
                   <!--Dotted Line-->
                   <!--<span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">...............................</span>-->
                 </div>
@@ -1191,10 +1193,9 @@
               <div class="styIRS5329LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS5329LNDesc" style="width:auto;height:100%;">
                   <b>Additional tax.</b> Enter 6% (0.06) of the <b>smaller</b> of line 40 <b>or</b> the value of your Archer MSAs on<br/> 
-                  December 31, 2018 (including 2018 contributions made in 2019). Include this amount on Form
-                  1040, line 59, or <br/>Form 1040NR, line 57
+                  December 31, 2018 (including 2018 contributions made in 2019). Include this amount on Schedule 4 (Form 1040), line 59, or Form 1040NR, line 57
                   <!--Dotted Line-->
-                  <span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">............................</span>
+                  <span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">......................</span>
                 </div>
               </div>
               <xsl:call-template name="CreateBox">
@@ -1225,7 +1226,7 @@
               </div>
           </div>
           <!-- Body -->
-          <div class="styBB" style="height:41mm;width:187mm;">
+          <div class="styBB" style="height:41.2mm;width:187mm;">
             <!-- (42) ////////////////////////////////////////////////////-->
             <div class="styIRS5329LineItem" style="height:4mm;">
               <div class="styIRS5329LNLeftNumBox">42</div>
@@ -1379,9 +1380,9 @@
               <div class="styIRS5329LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS5329LNDesc" style="width:auto;height:100%;">
                   <b>Additional tax.</b> Enter 6% (0.06) of the <b>smaller</b> of line 48 <b>or</b> the value of your HSAs on December 31, 2018
-                  (including 2018 contributions made in 2019). Include this amount on Form 1040, line 59, or Form 1040NR, line<br/> 57
+                  (including 2018 contributions made in 2019). Include this amount on Schedule 4 (Form 1040), line 59, or Form 1040NR, line 57
                   <!--Dotted Line-->
-                  <span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">.................................</span>
+                  <span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">.............................</span>
                 </div>
               </div>
               <div class="styIRS5329LNDesc" style="height:100%;width:36mm;float:right;padding:0px 0px 0px 0px;">
@@ -1436,9 +1437,9 @@
               <div class="styIRS5329LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS5329LNDesc" style="width:auto;height:100%;">
                   <b>Additional tax. </b> Enter 6% (0.06) of the <b>smaller</b> of line 50 <b>or</b> the value of your ABLE account on<br/>
-				  December 31, 2018. Include this amount on Form 1040, line 59, or Form 1040NR, line 57
+				  December 31, 2018. Include this amount on Schedule 4 (Form 1040), line 59, or Form 1040NR, line 57
                    <!--Dotted Line-->
-                   <span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">.......</span>
+                   <span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">..</span>
                 </div>
                </div>
               <xsl:call-template name="CreateBox">
@@ -1553,9 +1554,9 @@
               <div class="styIRS5329LNLeftNumBox">55</div>
               <div class="styIRS5329LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS5329LNDesc" style="width:auto;height:100%;">
-                  <b>Additional tax.</b> Enter 50% (0.50) of line 54. Include this amount on Form 1040, line 59, or Form 1040NR, line <br/>57
+                  <b>Additional tax.</b> Enter 50% (0.50) of line 54. Include this amount on Schedule 4 (Form 1040), line 59, or Form 1040NR, line 57
                    <!--Dotted Line-->
-                  <span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">..................................</span>
+                  <span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">.............................</span>
                 </div>
               </div>
               <div class="styIRS5329LNDesc" style="height:100%;width:36mm;float:right;padding:0px 0px 0px 0px;">

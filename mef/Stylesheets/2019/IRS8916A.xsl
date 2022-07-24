@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE xsl:stylesheet [
 	<!ENTITY nbsp "&#160;">
-]><!-- Last Modified by Iskilu Lawal on 9/10/2019 UWR # 225142 -->
+]><!-- Last Modified by Iskilu Lawal on 10/30/2019 UWR # 129013 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -63,11 +63,11 @@
 							<div class="styMainTitle" style="">Supplemental  Attachment to Schedule M-3</div>
 							<br/>
 							<br/>
-							<div style="font-size:7.3pt;margin-left:3mm;height:5.5mm;font-weight: normal;padding-top:2mm;">
+							<div style="font-size:7.3pt;margin-left:3mm;height:5.5mm;font-weight: bold;padding-top:2mm;">
 								<img src="{$ImagePath}/8916A_Bullet.gif" alt="MediumBullet"/>  
         Attach to Schedule M-3 for Form 1065, 1120, 1120-L, 1120-PC, or 1120-S. 
 							</div>
-							<div style="font-size:7.3pt;margin-left:1mm;font-weight: normal;">
+							<div style="font-size:7.3pt;margin-left:1mm;font-weight: bold;">
 								<img src="{$ImagePath}/8916A_Bullet.gif" alt="MediumBullet"/>  
        Go to 
         <a href="http://www.irs.gov/Form 1120" title="Link to IRS.gov"><i>www.irs.gov/Form 1120  </i></a> for the latest information.
@@ -136,7 +136,7 @@
 					<!--  End Name and Employer indentification number 2 -->
 					<!-- BEGIN Part I Title -->
 					<div class="styBB" style="width:187mm;">
-					 <div class="styPartName" style="width:11mm;font-size:9pt;height:4.5mm">Part l</div>
+					 <div class="styPartName" style="width:11mm;font-size:9pt;height:4.5mm">Part I</div>
      <div class="styPartDesc" style="width:164mm;font-size:9pt;padding-left:4mm;height:4.5mm">Cost of Goods Sold</div>
 					</div>
 					<!-- END Part I Title -->
@@ -173,7 +173,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:1.5mm;"/>1</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="height:8mm;padding-top: 2mm;">
+								<span style="height:8mm;padding-top: 1.5mm;">
 									<span style="float:left">Amounts attributable to cost flow assumptions</span>
 									<span class="styDotLn" style="float:right;">.</span>
 								</span>
@@ -213,7 +213,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:1.5mm;"/>2</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:4mm;">Amounts attributable to:</span>
+								<span style="height:8mm;padding-top: 1.5mm;">Amounts attributable to:</span>
 								<!-- pushpin data -->
 							</td>
 							<!-- col 1 -->
@@ -238,7 +238,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:3mm;"/>a</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Stock option expense</span>
 									<span class="styDotLn" style="float:right;">..........</span>
 								</span>
@@ -278,7 +278,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:3mm;"/>b</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Other equity based compensation</span>
 									<span class="styDotLn" style="float:right;">......</span>
 								</span>
@@ -318,7 +318,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:3mm;"/>c</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Meals and entertainment</span>
 									<span class="styDotLn" style="float:right;">.........</span>
 								</span>
@@ -358,7 +358,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:3mm;"/>d</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Parachute payments</span>
 									<span class="styDotLn" style="float:right;">...........</span>
 								</span>
@@ -398,7 +398,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:3mm;"/>e</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Compensation with section 162(m) limitation</span>
 									<span class="styDotLn" style="float:right;">..</span>
 								</span>
@@ -438,7 +438,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:3mm;"/>f</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Pension and profit sharing</span>
 									<span class="styDotLn" style="float:right;">.........</span>
 								</span>
@@ -478,7 +478,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:3mm;"/>g</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Other post-retirement benefits</span>
 									<span class="styDotLn" style="float:right;">.......</span>
 								</span>
@@ -518,7 +518,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:3mm;"/>h</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Deferred compensation</span>
 									<span class="styDotLn" style="float:right;">..........</span>
 								</span>
@@ -558,7 +558,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:3mm;"/>i</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Reserved</span>
 									<span class="styDotLn" style="float:right;">..............</span>
 								</span>
@@ -586,7 +586,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:3mm;"/>j</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Amortization</span>
 									<span class="styDotLn" style="float:right;">.............</span>
 								</span>
@@ -626,7 +626,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:3mm;"/>k</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Depletion</span>
 									<span class="styDotLn" style="float:right;">..............</span>
 								</span>
@@ -666,7 +666,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:3mm;"/>l</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Depreciation</span>
 									<span class="styDotLn" style="float:right;">.............</span>
 								</span>
@@ -706,7 +706,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:3mm;"/>m</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Corporate-owned life insurance premiums</span>
 									<span class="styDotLn" style="float:right;">...</span>
 								</span>
@@ -746,7 +746,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:3mm;"/>n</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Other section 263A costs</span>
 									<span class="styDotLn" style="float:right;">.........</span>
 								</span>
@@ -786,7 +786,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:1.5mm;"/>3</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Inventory shrinkage accruals</span>
 									<span class="styDotLn" style="float:right;">........</span>
 								</span>
@@ -826,7 +826,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:1.5mm;"/>4</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Excess inventory and obsolescence reserves</span>
 									<span class="styDotLn" style="float:right;">..</span>
 								</span>
@@ -866,7 +866,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:1.5mm;"/>5</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Lower of cost or market write-downs</span>
 									<span class="styDotLn" style="float:right;">.....</span>
 								</span>
@@ -906,7 +906,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:1.5mm;"/>6</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Other items with differences (attach statement)
 									    <xsl:call-template name="SetFormLinkInline">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherItemsWithDifferencesGrp"/>
@@ -948,7 +948,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:1.5mm;"/>7</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">Other items with no differences</span>
 									<span class="styDotLn" style="float:right;">.......</span>
 								</span>
@@ -982,7 +982,7 @@
 							<td class="styIRS8916ANumberCell">
 								<span style="width:1.5mm;"/>8</td>
 							<td class="styLNDesc" style="width:78mm;">
-								<span style="padding-top:2mm;height:8mm;">
+								<span style="padding-top:1.5mm;height:8mm;">
 									<span style="float:left">
 										<b>Total cost of goods sold.</b> Add lines 1 through 7 in columns a, b, c, and d. Enter totals on the applicable Schedule M-3. See instructions.
 										<span class="styBoldText">
@@ -1027,12 +1027,15 @@
 					<!-- table end -->
 					<!--  FOOTER-->
 					<div style="width:187mm;border-top:1px solid black;">
-						<span class="styBoldText;">For Paperwork Reduction Act Notice, see instructions. </span>
-						<span style="width:120px;"/>                      
-                        <span style="font-size:6.5pt;padding-right:0mm;width:22mm;">Cat. No. 48657X</span>
-                        <span style="width:106px;"/>  
-                        <span style="font-size:6.5pt;padding-right:1mm;"> Form </span><span style="font-size:8pt">
-                        <span class="styBoldText;">8916-A</span></span> (Rev. 11- 2019)
+						<div style="float:left;">
+							<span class="styBoldText">For Paperwork Reduction Act Notice, see instructions.</span>
+							<span style="width:20mm;"/>                        
+       Cat. No. 48657X 
+    </div>
+						<div style="float:right;">
+							<span style="width:40px;"/>  
+        Form <span class="styBoldText" style="font-size:8pt;">8916-A </span> (Rev. 11- 2019)
+    </div>
                     </div>
 					<p style="page-break-before: always"/> 
 					<!--Begin Page 2 -->
@@ -1046,7 +1049,7 @@
 					<!-- END Page Header -->
 					<!-- BEGIN Part ll Title -->
 					<div class="styBB" style="width:187mm;border-top:1px solid black">
-						<div class="styPartName" style="width:13mm;font-size:9pt;height:4.5mm">Part ll</div>
+						<div class="styPartName" style="width:13mm;font-size:9pt;height:4.5mm">Part II</div>
 						<div class="styPartDesc" style="width:164mm;font-size:9pt;height:4.5mm;padding-left:4mm">Interest Income</div>
 					</div>
 					<!-- END Part ll Title -->
@@ -1331,7 +1334,7 @@
 					</table>
 					<!-- BEGIN Part lll Title -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styPartName" style="width:13mm;font-size:9pt;height:4.5mm">Part lll</div>
+						<div class="styPartName" style="width:15mm;font-size:9pt;height:4.5mm">Part III</div>
 						<div class="styPartDesc" style="width:164mm;font-size:9pt;padding-left:4mm;height:4.5mm">Interest Expense</div>
 					</div>
 					<!-- END Part lll Title -->
@@ -1586,7 +1589,7 @@
 					<!--  FOOTER-->
 					<div style="width:187mm;border-top:1px solid black;">
 						<span style="width:144mm;"/>  
-                          Form <span style="font-size:8pt;width:13mm;"><span class="">8916-A</span></span> (Rev. 11- 2019)
+                          Form <div style="font-size:8pt;width:13mm;font-weight: bold;"><span class="">8916-A</span></div> (Rev. 11- 2019)
                     </div>
 					<p style="page-break-before: always"/> 
 					<!-- BEGIN Left Over Table -->

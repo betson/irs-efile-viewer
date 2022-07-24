@@ -52,7 +52,7 @@
         <div style="padding-top:1mm;">                  
           <span class="styFormNumber" style="font-size:9pt;">SCHEDULE EIC</span>
           <br/>
-          <span class="styFormNumber" style="font-size:7pt;">(Form 1040 or 1040SR)</span>
+          <span class="styFormNumber" style="font-size:7pt;">(Form 1040 or 1040-SR)</span>
           <br/>
         </div>
         <div style="padding-top:8mm;">
@@ -64,14 +64,14 @@
         <div class="styMainTitle" style="height:5mm;margin-top:0mm;padding-left:3px;">
           <div style="width:70mm;float:left;clear:none;vertical-align:top;padding-top:1mm;padding-left:20mm;"> Earned Income Credit  </div> 
           <div style="float:right;text-align:right;width:19mm;padding-top:2mm;padding-right:13mm;">
-             <img src="{$ImagePath}/1040SchEIC_Form.gif" alt="Attach to Form 1040 or 1040-SR icon" border="darkgray" width="56" height="57"/>
+             <img src="{$ImagePath}/1040_EIC_Hdr.gif" alt="Attach to Form 1040 or 1040-SR icon" border="darkgray" width="56" height="57"/>
           </div>
           <div style="width:69.5mm;font-size:9pt;margin-top:0mm;font-weight:normal;vertical-align:top;float:left;clear:none;padding-left:16mm;padding-bottom:2mm;">
           Qualifying Child Information</div>
 		  
 		  <div class="styFBT" style="width:92mm;font-size:7pt;margin-top:0mm;font-weight:normal;float:left;text-align:left">
 		    <img src="{$ImagePath}/1040SchEIC_Bullet_Sm.gif" alt="SmallBullet" style="margin-right:2px;"/>Complete and attach to Form 1040 or 
-		    1040SR only if you have a qualifying child.</div>
+		    1040-SR only if you have a qualifying child.</div>
 		  <div class="styFBT" style="width:100mm;font-size:7pt;margin-top:0mm;font-weight:normal;float:left;text-align:left;font-family:Arial Narrow;font-size:7pt;">
 		    <img src="{$ImagePath}/1040SchEIC_Bullet_Sm.gif" alt="SmallBullet" style="margin-right:2px;"/>
 		    Go to <i>www.irs.gov/ScheduleEIC</i> for the latest information.
@@ -113,7 +113,7 @@
      <i><b>Before you begin:</b></i>
 </div>
 <div class="styLNDesc" style="width:149mm;height:16mm;">
-         <li>See the instructions for Form 1040 or 1040SR, line 18a, to make sure that <b>(a) </b>you can take the EIC, and <b>(b) </b>you have a qualifying child.</li>         
+         <li>See the instructions for Form 1040 or 1040-SR, line 18a, to make sure that <b>(a) </b>you can take the EIC, and <b>(b) </b>you have a qualifying child.</li>         
           <li>Be sure the child's name on line 1 and social security number (SSN) on line 2 agree with the child's social security card. 
           Otherwise, at the time we process your return, we may reduce or disallow your EIC. If the name or SSN on the child's social security card is not correct, call the Social Security Administration at 1-800-772-1213.</li> 
 </div>
@@ -194,7 +194,7 @@
             <td scope="row" style="width:75mm;border-bottom:1px solid black;padding-top:1mm:padding-left:0mm;">
 				<span style="font-size:9pt;"><b>Child's SSN</b></span><br/>
 				<span style="font-weight:normal;"> The child must have an SSN as defined in the 
-					instructions for Form 1040, or 1040SR line 18a, unless the child was 
+					instructions for Form 1040, or 1040-SR line 18a, unless the child was 
 					born and died in 2019. If your child was born and died 
 					in 2019 and did not have an SSN, enter "Died" on this 
 					line and attach a copy of the child's birth certificate, 
@@ -569,7 +569,7 @@
              <span style="font-size:9pt;"><b>Number of months child lived with</b></span><br/>
              <span style="font-size:9pt;"><b>you in the United States during 2019</b></span><br/><br/>
              <li>If the child lived with you for more than half of<br/>
-				2018 but less than 7 months, enter "7".</li>         
+				2019 but less than 7 months, enter "7".</li>         
           <li style="padding-top:2mm;">If the child was born or died in 2019 and your<br/>
 			home was the child's home for more than half the<br/>
 			time he or she was alive during 2019, enter "12."<br/></li> 

@@ -226,7 +226,6 @@
                             </div>
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:4mm;padding-bottom:0mm;">
 								<span style="float:left">Net operating loss deduction from Schedule 1 (Form 1040 or 1040-SR), line 21. Enter as a positive amount</span>
-								<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">..</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4mm;padding-bottom:0mm;bottom-border-width:1px;">2e</div>
 							<div class="styLNAmountBox" style="width:36mm;height:4mm;padding-bottom:0mm;bottom-border-width:1px;">

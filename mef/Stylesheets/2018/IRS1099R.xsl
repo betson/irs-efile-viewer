@@ -293,13 +293,13 @@
 								<div class="styIRS1099RleftBox" style="width:27.6mm;height:25mm;text-align:center;border-top:2px solid black;border-right:2px solid black;border-bottom: 2px solid black;">
 									<span style="font-size: 6pt">OMB No. 1545-0119</span>
 									<span style="padding-top:1mm;height:auto;">
-										<div class="styTY" style="padding-top:3mm; font-size:30;">
+										<div class="styTY" style="padding-top:3mm; font-size:15pt;">
                                             20<span class="styTYColor">18</span>
 										</div>
 									</span>
-									<span style="padding-top:1mm;font-size:6pt;">
+									<br/><br/><span style="padding-top:1mm;font-size:6pt;">
 										Form 
-									<span style="padding-top:1mm;font-size:8pt;font-weight:bold;">&#160;1099-R </span>
+									<span style="padding-top:3mm;font-size:8pt;font-weight:bold;">&#160;1099-R </span>
 									</span>
 								</div>
 								<!-- Distributions from Pensions, etc. -->  
@@ -499,15 +499,15 @@
 									</span>
 								</span>
 								<!-- Box 8 Other -->
-								<span class="styIRS1099RleftBoxWithBottom" style="height:13.8mm;width:25mm;border-right:1px solid black;">
+								<span class="styIRS1099RleftBoxWithBottom" style="height:13.8mm;width:23.4mm;border-right:1px solid black;">
 									<span style="width:4px;"/>
 									<span style="font-size: 7.5pt;font-weight:bold;">8</span>
 									<span style="width:6px;"/>
 									<span style="font-size: 7.5pt;">Other</span>
 									<br/>
 									<br/>
-									<span style="padding-top:3mm;width:24.9mm;float:bottom;text-align:right;padding-right:1mm;">
-										<span style="font-size: 8.5pt;float:left;padding-left:.3mm">$</span>
+									<span style="padding-top:3mm;width:23.4mm;float:bottom;text-align:right;padding-right:.5mm;">
+										<span style="font-size: 7.5pt;float:left;padding-left:.3mm">$</span>
 										<span style="font-size: 6pt;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form1099RData/OtherDistributionAmt"/>
@@ -517,12 +517,15 @@
 									</span>
 								</span>
 								<!--  Blank box to right of Box 8 (Other) -->
-								<span class="styIRS1099RrightBoxWithBottom" style="height:13.8mm;width:11.5mm;border-bottom:1px solid black;border-right:1px solid black;border-left:0px solid black;">
+								<span class="styIRS1099RrightBoxWithBottom" style="height:13.8mm;width:13mm;border-bottom:1px solid black;border-right:1px solid black;border-left:0px solid black;">
 									
-									<span style="padding-top:9.5mm;padding-bottom:.1mm;padding-left:2mm;padding-right:.2mm;width:11.4mm;font-size:6pt;float:bottom;">
+									<span style="padding-top:9.5mm;padding-bottom:.1mm;padding-left:.5mm;padding-right:.2mm;width:13mm;font-size:6pt;float:bottom;">
 										<xsl:call-template name="PopulatePercent">
 											<xsl:with-param name="TargetNode" select="$Form1099RData/RcpntOthDistributionPct"/>
 										</xsl:call-template>
+										<xsl:if test="not($Form1099RData/RcpntOthDistributionPct)">
+										<span style="font-size: 6pt;float:right;padding-left:.3mm">%</span>
+										</xsl:if>
 									</span>
 								</span>
 							</div><!-- Closes Boxes 7 and 8 (Distribution Codes and Other) -->
@@ -631,11 +634,27 @@
 							</span>
 							<span class="styIRS1099RleftBoxWithBottom" style="padding-left:1mm;height:11.2mm;font-size: 7.5pt;font-family:arial narrow;width:19.46mm;">Date of payment
 								<br/>
-								<span style="padding-top:2mm;width:50mm;float:bottom;text-align:left">
+								<!--FATCA filing requirement. -->
+								<span class="styIRS1099RleftBoxWithBottom" style="padding-left:.5mm;height:10.9mm;width:20mm;">
+									<span style="font-size: 7pt;font-family:arial narrow;padding-left:2mm;"><label>
+										<xsl:call-template name="PopulateLabel">
+											<xsl:with-param name="TargetNode" select="$Form1099RData/FATCAFilingRequirementInd"/>
+											<xsl:with-param name="BackupName">Form1099RFATCAFilingRequirementInd</xsl:with-param>
+										</xsl:call-template>FATCA filing requirement</label></span><br/>
+										<span style="padding-left:5mm"></span>
+									<input type="checkbox" alt="FATCA" class="styCkbox" style="height:3mm;width:4mm;">
+										<xsl:call-template name="PopulateCheckbox">
+											<xsl:with-param name="TargetNode" select="$Form1099RData/FATCAFilingRequirementInd"/>
+											<xsl:with-param name="BackupName">Form1099RFATCAFilingRequirementInd</xsl:with-param>
+										</xsl:call-template>
+									</input>
+								</span>
+								
+							<!--<span style="padding-top:2mm;width:50mm;float:bottom;text-align:left">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$Form1099RData/PaymentDt"/>
 									</xsl:call-template>
-								</span>
+								</span>-->
 							</span>
 							<br/>
 						</div>

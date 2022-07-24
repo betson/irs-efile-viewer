@@ -2114,8 +2114,8 @@
 							<tr>
 								<td class="styLNLeftNumBox" style="height:8mm;padding-top:3mm">15</td>
 								<td class="styLNDesc" style="width:85mm;height:8mm;padding-top:3mm;">
-									Section 965c Deduction Amount
-									<span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
+									Section 965 (a) inclusion
+									<span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
 								</td>
 								<td class="styLNAmountBox" style="width:40mm;height:8mm;padding-top:4.5mm;">
 									<xsl:call-template name="PopulateAmount">
@@ -5539,7 +5539,7 @@ reported on page 1, line 29a.)
 						</div>
 					</div>
 					<!-- Schedule L, line 15-->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm;border-bottom-width:2px;">
 						<div class="styLNLeftNumBox" style="height:4.5mm;">15</div>
 						<div class="styLNDesc" style="width:51mm;height:4.5mm;">
 							<span style="float:left;">Total assets </span>

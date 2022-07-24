@@ -14,7 +14,7 @@ Description: This file contains parameters that define XPaths or string values t
 -->
 
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
-  <!-- Parameters that define the XPath for the parameters from the framework -->
+  <!-- Parameters that define the XPath for the parameters from the framework 2/24/2021 -->
   <xsl:param name="AppProp" select="/AppData/ApplicationProperties" />
   <xsl:param name="UserPref" select="AppData/UserPreferences" />  
   <xsl:param name="XPath" select="/AppData/Parameters/XPath"/>
@@ -74,7 +74,7 @@ Description: This file contains parameters that define XPaths or string values t
   <!-- The following parameters define data that can be used to categorize the IRS forms being displayed. -->
   <xsl:param name="Version" select="/AppData/Parameters/SubmissionVersion"></xsl:param>
   <xsl:param name="Type" select="/AppData/Parameters/SubmissionType"></xsl:param>
-  <!--<xsl:param name="TaxYear" select="/AppData/Parameters/TaxYear"></xsl:param>-->
+ <!--<xsl:param name="TaxYear" select="/AppData/Parameters/TaxYear"></xsl:param>-->
   <!-- not sure why this gets changed every few years - ReadMeF is not coded for the change -->
 <xsl:param name="TaxYear" select="substring(/AppData/Parameters/SubmissionVersion,1,4)"></xsl:param>
   <!-- The DisplayName parameter is for displaying the form name (this is different from the stylesheet file name). -->

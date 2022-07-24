@@ -6,6 +6,7 @@
 <!-- 01/16/2019 - Modified per defect #127591 - Jeremy Nichols-->
 <!-- 03/15/2019 - Modified per KISAM IM00505957 and defect 62895 - Jeremy Nichols-->
 <!-- 03/18/2019 - Modified per defect #127814 - Jeremy Nichols-->
+<!-- 05/12/2020 - Modified per defect #127826 - Jeremy Nichols-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -6311,16 +6312,28 @@ taxed at $.219</td>
 							</xsl:call-template>
 						</td>
 						<td class="styIRS720TableCellText" style="padding-bottom:2mm;border-right-width:0px" rowspan="2">
-							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$FormData/IRS720ScheduleC/SalesByRegdVndrOfGas/FuelUseNonprofitEducationalOrg/CreditReferenceNum"/>
-							</xsl:call-template>
+							<xsl:choose>
+								<xsl:when test="$FormData/IRS720ScheduleC/SalesByRegdVndrOfGas/FuelUsedByStateLocalGovt/CreditReferenceNum ">
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$FormData/IRS720ScheduleC/SalesByRegdVndrOfGas/FuelUsedByStateLocalGovt/CreditReferenceNum"/>
+									</xsl:call-template>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$FormData/IRS720ScheduleC/SalesByRegdVndrOfGas/FuelUseNonprofitEducationalOrg/CreditReferenceNum"/>
+									</xsl:call-template>
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$FormData/IRS720ScheduleC/SalesByRegdVndrOfGas/FuelUsedByStateLocalGovt/CreditReferenceNum"/>
+									</xsl:call-template>
+								</xsl:otherwise>
+							</xsl:choose>
 						</td>
 					</tr>
 					<!-- Line 10 (b) -->
 					<tr>
 						<td class="styIRS720TableCellLineNumber" style="border-right-width:0px;font-size:8pt;padding-right:1mm">b</td>
 						<td class="styIRS7204BoldTableHeaderCell" style="border-left-width:0px;border-top-width:0px;font-weight:normal;text-align:left">Use by a state or local government
-            <xsl:call-template name="SetFormLinkInline">
+							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$FormData/IRS720ScheduleC/SalesByRegdVndrOfGas/FuelUsedByStateLocalGovt"/>
 							</xsl:call-template>
 						</td>

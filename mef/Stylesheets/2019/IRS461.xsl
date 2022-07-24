@@ -74,12 +74,12 @@
 							</span>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:22.5mm;">
-							<div class="styOMB" style="height:auto;font-size:6pt;">OMB No. XXXX-XXXX</div>
+							<div class="styOMB" style="height:auto;font-size:6pt;">OMB No. 1545-2283</div>
 							<div class="styTY">20<span class="styTYColor">19</span>
 							</div>
 							<div style="margin-left:3mm;text-align:left;font-size:7pt;">
 								Attachment<br/>Sequence No. 
-								<span class="styBoldText" style="font-size:9pt;">XX</span>
+								<span class="styBoldText" style="font-size:9pt;">461</span>
 							</div>
 						</div>
 					</div>
@@ -104,15 +104,15 @@
 						<div class="styPartName" style="height:auto;margin-top:1.5mm;margin-bottom:1.5mm;">Part I</div>
 						<div class="styPartDesc" style="height:auto;">
 							Total Income/Loss Items <br />
-							<span style="font-weight:normal;">See instructions if you are filing a tax return other than Form 1040.</span>
+							<span style="font-weight:normal;">See instructions if you are filing a tax return other than Form 1040 or 1040-SR.</span>
 						</div>
 					</div>
 					<!-- Line 1 -->
 					<div class="styStdDiv" style="border-bottom:1px solid black;">
 						<div class="sty461LeftBox">1</div>
 						<div class="sty461Desc">
-							Enter amount from Form 1040, line 1
-							<span class="sty461DotLn">......................</span>
+							Enter amount from Form 1040 or 1040-SR, line 1
+							<span class="sty461DotLn">..................</span>
 						</div>
 						<div class="styLNRightNumBoxNBB">1</div>
 						<div class="styLNAmountBoxNBB">
@@ -125,8 +125,8 @@
 					<div class="styStdDiv" style="border-bottom:1px solid black;">
 						<div class="sty461LeftBox">2</div>
 						<div class="sty461Desc">
-							Enter amount from Schedule 1 (Form 1040), line 12
-							<span class="sty461DotLn">.................</span>
+							Enter amount from Schedule 1 (Form 1040 or 1040-SR), line 3
+							<span class="sty461DotLn">..............</span>
 						</div>
 						<div class="styLNRightNumBoxNBB">2</div>
 						<div class="styLNAmountBoxNBB">
@@ -139,8 +139,8 @@
 					<div class="styStdDiv" style="border-bottom:1px solid black;">
 						<div class="sty461LeftBox">3</div>
 						<div class="sty461Desc">
-							Enter amount from Schedule 1 (Form 1040), line 13
-							<span class="sty461DotLn">.................</span>
+							Enter amount from Form 1040 or 1040-SR, line 6
+							<span class="sty461DotLn">..................</span>
 						</div>
 						<div class="styLNRightNumBoxNBB">3</div>
 						<div class="styLNAmountBoxNBB">
@@ -153,8 +153,8 @@
 					<div class="styStdDiv" style="border-bottom:1px solid black;">
 						<div class="sty461LeftBox">4</div>
 						<div class="sty461Desc">
-							Enter amount from Schedule 1 (Form 1040), line 14
-							<span class="sty461DotLn">.................</span>
+							Enter amount from Schedule 1 (Form 1040 or 1040-SR), line 4
+							<span class="sty461DotLn">..............</span>
 						</div>
 						<div class="styLNRightNumBoxNBB">4</div>
 						<div class="styLNAmountBoxNBB">
@@ -167,8 +167,8 @@
 					<div class="styStdDiv" style="border-bottom:1px solid black;">
 						<div class="sty461LeftBox">5</div>
 						<div class="sty461Desc">
-							Enter amount from Schedule 1 (Form 1040), line 17
-							<span class="sty461DotLn">.................</span>
+							Enter amount from Schedule 1 (Form 1040 or 1040-SR), line 5
+							<span class="sty461DotLn">..............</span>
 						</div>
 						<div class="styLNRightNumBoxNBB">5</div>
 						<div class="styLNAmountBoxNBB">
@@ -181,8 +181,8 @@
 					<div class="styStdDiv" style="border-bottom:1px solid black;">
 						<div class="sty461LeftBox">6</div>
 						<div class="sty461Desc">
-							Enter amount from Schedule 1 (Form 1040), line 18
-							<span class="sty461DotLn">.................</span>
+							Enter amount from Schedule 1 (Form 1040 or 1040-SR), line 6
+							<span class="sty461DotLn">..............</span>
 						</div>
 						<div class="styLNRightNumBoxNBB">6</div>
 						<div class="styLNAmountBoxNBB">
@@ -195,8 +195,8 @@
 					<div class="styStdDiv" style="border-bottom:1px solid black;">
 						<div class="sty461LeftBox">7</div>
 						<div class="sty461Desc">
-							Enter amount from Schedule 1 (Form 1040), line 19
-							<span class="sty461DotLn">.................</span>
+							Enter amount from Schedule 1 (Form 1040 or 1040-SR), line 7
+							<span class="sty461DotLn">..............</span>
 						</div>
 						<div class="styLNRightNumBoxNBB">7</div>
 						<div class="styLNAmountBoxNBB">
@@ -209,8 +209,8 @@
 					<div class="styStdDiv" style="border-bottom:1px solid black;">
 						<div class="sty461LeftBox">8</div>
 						<div class="sty461Desc">
-							Enter other income, gain, or losses not reported on lines 1 through 7
-							<span class="sty461DotLn">............</span>
+							Enter other income, gain, or losses from a trade or business not reported on lines 1 through 7
+							<span class="sty461DotLn">....</span>
 						</div>
 						<div class="styLNRightNumBoxNBB">8</div>
 						<div class="styLNAmountBoxNBB">
@@ -238,7 +238,7 @@
 						<div class="styPartName" style="height:auto;margin-top:1.5mm;margin-bottom:1.5mm;">Part II</div>
 						<div class="styPartDesc" style="height:auto;">
 							Adjustment for Amounts Not Attributable to Trade or Business <br />
-							<span style="font-weight:normal;">See instructions if you are filing a tax return other than Form 1040.</span>
+							<span style="font-weight:normal;">See instructions if you are filing a tax return other than Form 1040 or 1040-SR.</span>
 						</div>
 					</div>
 					<!-- Line 10 -->
@@ -323,7 +323,7 @@
 					<div class="styStdDiv" style="border-bottom:1px solid black;">
 						<div class="sty461LeftBox">15</div>
 						<div class="sty461Desc">
-							Enter $250,000 (or $500,000 if married filing jointly)
+							Enter $255,000 (or $510,000 if married filing jointly)
 							<span class="sty461DotLn">.................</span>
 						</div>
 						<div class="styLNRightNumBoxNBB">15</div>
@@ -337,9 +337,9 @@
 					<div class="styStdDiv">
 						<div class="sty461LeftBox">16</div>
 						<div class="sty461Desc">
-							Add lines 14 and 15. If less than zero, enter the amount from line 16 as a positive number on Schedule 1 (Form 1040), line 21. 
-							See instructions if you are filing a tax return other than a Form 1040. If zero or greater, do not attach this form to your tax return
-							<span class="sty461DotLn">..................</span>
+							Add lines 14 and 15. If less than zero, enter the amount from line 16 as a positive number on Schedule 1 (Form 1040 or 1040-SR), line 8. 
+							See instructions if you are filing a tax return other than a Form 1040 or 1040-SR. If zero or greater, do not attach this form to your tax return
+							<span class="sty461DotLn">............</span>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:10mm;"><br /><br />16</div>
 						<div class="styLNAmountBoxNBB" style="height:10mm;"><br /><br />
@@ -348,9 +348,9 @@
 							</xsl:call-template>
 						</div>
 					</div>
-					<div class="styStdDiv pageEnd" style="border-top:2px solid black;">
-						<span style="font-weight:bold;font-family:Arial;">For Paperwork Reduction Act Notice, see the separate instructions.</span>
-						<span style="margin-left:20mm;">Cat. No. 16654I</span>
+					<div class="styStdDiv" style="border-top:2px solid black;">
+						<span style="font-weight:bold;font-family:Arial;">For Privacy Act and Paperwork Reduction Act Notice, see the separate instructions.</span>
+						<span style="margin-left:14mm;">Cat. No. 16654I</span>
 						<span style="float:right;">Form <strong>461</strong> (2019)</span>
 					</div>
 					<!-- Additonal Data Title Bar and Button -->

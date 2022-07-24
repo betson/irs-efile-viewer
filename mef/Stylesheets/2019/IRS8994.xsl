@@ -91,10 +91,7 @@
 							<div class="styEINBox" style="width:52mm;padding-left:0.5mm;font-weight:normal;">
 								<strong>Identifying number</strong>
 								<br />
-								<!-- IRS8994 may only be filed with BMF tax types (1065, 1120S), so populate using the EIN from ReturnHeader -->
-								<xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-								</xsl:call-template>
+								<xsl:call-template name="PopulateReturnHeaderFilerTIN"/>
 							</div>
 						</div>
 						<!-- End of header -->
@@ -367,12 +364,29 @@
 					</div>
 					<!-- End body -->
 					<!-- Form footer-->
-					<div class="styStdDiv pageEnd" style="border-top:2px solid black;">
+					<div class="styStdDiv" style="border-top:2px solid black;">
 						<span style="font-weight:bold;font-family:Arial;">For Paperwork Reduction Act Notice, see separate instructions.</span>
 						<span style="margin-left:20mm;font-size:6.5pt;">Cat. No. 37804G</span>
 						<span style="float:right;font-weight:normal;font-size:6.5pt;">Form <span style="font-size:10pt;"><strong>8994</strong></span> (2019)</span>
 					</div>
 					<!-- End form footer -->
+					<!-- Additional Data title bar and button -->
+					<div class="styLeftOverTitleLine" id="LeftoverData">
+						<div class="styLeftOverTitle">
+							Additional Data        
+						</div>
+						<div class="styLeftOverButtonContainer">
+							<input class="styLeftoverTableBtn" type="button" TabIndex="-1" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
+						</div>
+					</div>
+					<!-- Additional Data table -->
+					<table class="styLeftOverTbl">
+						<xsl:call-template name="PopulateCommonLeftover">
+							<xsl:with-param name="TargetNode" select="$FormData"/>
+							<xsl:with-param name="DescWidth" select="100"/>
+						</xsl:call-template>
+					</table>
+					<br/>
 				</form>
 			</body>
 		</html>

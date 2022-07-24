@@ -175,7 +175,7 @@
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBoxSD">5</div>
 						<div class="styLNDesc">
-							Residential energy credit. Attach Form 5695 
+							Residential energy credits. Attach Form 5695 
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$FormData/ResidentialEnergyCreditAmt"/>
 							</xsl:call-template>
@@ -494,9 +494,9 @@
 						</div>
 					</div>
 					<!-- Form footer-->
-					<div class="styStdDiv pageEnd" style="border-top:2px solid black;">
+					<div class="styStdDiv" style="border-top:2px solid black;">
 						<span style="font-weight:bold;font-family:Arial;">For Paperwork Reduction Act Notice, see your tax return instructions.</span>
-						<span style="margin-left:16mm;font-size:6.5pt;">Cat. No. 71478U</span>
+						<span style="margin-left:16mm;font-size:6.5pt;">Cat. No. 71480G</span>
 						<span style="float:right;font-weight:bold;font-size:6.5pt;">Schedule 3 (Form 1040 or 1040-SR) 2019</span>
 					</div>
 					<!-- Additional Data title bar and button -->

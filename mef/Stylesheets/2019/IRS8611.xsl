@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
-<!--  updated by iskilu lawal 08/24/2016  -->
+<!--  updated by iskilu lawal UWR 230855 6/30/2020  -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -47,7 +47,7 @@
 							<div style="height:14mm">
 								  Form <span class="styFormNumber">8611</span>
 								  <br/><br/>
-								(Rev. December 2013)
+								(Rev. December 2019)
 								
 								<!--General Dependency Push Pin -->
 								<xsl:call-template name="SetFormLinkInline">
@@ -63,16 +63,21 @@
 						<div class="styFTBox" style="width:125mm;height:21.5mm;">
 							<div class="styMainTitle" style="padding-top:1mm;">Recapture of Low-Income Housing Credit</div>
 							<br/>
-							<div class="styFST" style="font-size:7pt;">
-								<img src="{$ImagePath}/8611_Bullet.gif" alt="Bullet Image"/> Attach to your tax return.
+							<div class="styFST" style="font-size:7pt;;height:4mm;padding-top:0mm">
+								<img src="{$ImagePath}/8611_Bullet.gif" alt="Bullet Image"/> Attach to your return.
               </div>
               <br/>
-							<div class="styFST" style="font-size:6.2pt;padding-top:4mm;">
-								<img src="{$ImagePath}/8611_Bullet.gif" alt="Bullet Image"/> Information about Form 8611 and its instructions is at <a href="http://www.irs.gov/form8611" title="Link to IRS.gov">
-                <i>www.IRS.gov/form8611.</i>
-            </a>
-							</div>
-						<div class="styFST" style="font-size:6.2pt;">
+							<span style="text-align:center;margin-left:0mm;font-weight:bold;">
+                        <img src="{$ImagePath}/1120_Bullet_Md.gif" alt="right pointing arrow"/> 
+                        <b>
+                                    Go to 
+                                                <a style="text-decoration:none;color:black;" 
+                                                            href="http://www.irs.gov/form8611" title="Link to IRS.gov">
+                                                                        <i>www.irs.gov/Form8611</i> for instructions and the latest information.
+                                                </a></b>
+            </span>
+
+						<div class="styFST" style="font-size:7pt;height:0mm;padding-top:3mm">
 						<div style="padding-top:0mm;">
 								Note: </div>
 								<!--<img src="{$ImagePath}/8611_Bullet.gif" alt="Bullet Image"/>-->
@@ -125,6 +130,7 @@
 							<div style="height:4mm">
 								<b>B Identifying number</b>
 							</div>
+							<br/>
 							<div style="text-align:left;padding-top:1.5mm;height:5mm;font-weight:normal;">
 								<xsl:choose>
 									<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
@@ -406,18 +412,35 @@
 					<!--  Line 7 -->
 					<div style="width: 187mm;height:4mm;">
 						<div class="styLNLeftNumBox" style="padding-left: 2.7mm; padding-top:0;">7</div>
-						<div style="float:left">
+						
 								  Amount of accelerated portion recaptured (see instructions if prior recapture on building). Multiply  
+												<div style="float:right">
+							<div class="styLNRightNumBoxNBB" style="height:15mm;background-color:lightgrey;border-top-width:1px"/>
+							<div class="styLNAmountBoxNBB" style="height:24mm;border-top-width:1px;"/>
 						</div>
+					</div>
+					
+						<div class="styLNLeftNumBox"/>
+													 line 5 by line 6. Section 42(j)(5) partnerships, go to line 16. All other flow-through entities,enter 
+					
 						<div style="float:right">
-							<div class="styLNRightNumBoxNBB" style="height:20mm;background-color:lightgrey;;border-top-width:1px"/>
-							<div class="styLNAmountBoxNBB" style="height:24mm;;border-top-width:1px"/>
+							<div class="styLNRightNumBoxNBB"/>
+							<div class="styLNAmountBoxNBB" style="border-left-width:0px "/>
+						</div>
+					
+					<div style="width: 187mm">
+						<div class="styLNLeftNumBox"/>
+													  the result here and enter each recipient’s share in the appropriate box of Schedule K-1. Generally,
+					
+						<div style="float:right">
+							<div class="styLNRightNumBoxNBB"/>
+							<div class="styLNAmountBoxNBB" style="border-left-width:0px "/>
 						</div>
 					</div>
 					<div style="width: 187mm">
 						<div class="styLNLeftNumBox"/>
 						<div style="float:left">
-							 line 5 by line 6. Section 42(j)(5) partnerships, go to line 16. All other flow-through entities (except 
+							   flow-through entities will stop here. (<span><b>Note:&#160;</b></span><i>An estate or trust enters on line 8 only its share of recapture</i>
 						</div>
 						<div style="float:right">
 							<div class="styLNRightNumBoxNBB"/>
@@ -427,29 +450,13 @@
 					<div style="width: 187mm">
 						<div class="styLNLeftNumBox"/>
 						<div style="float:left">
-							  electing large partnerships), enter the result here and enter each recipient’s share in the appropriate  
+							 
+							<i>amount attributable to the</i>
 						</div>
-						<div style="float:right">
-							<div class="styLNRightNumBoxNBB"/>
-							<div class="styLNAmountBoxNBB" style="border-left-width:0px "/>
-						</div>
-					</div>
-					<div style="width: 187mm">
-						<div class="styLNLeftNumBox"/>
 						<div style="float:left">
-							  box of Schedule K-1. Generally, flow-through entities other than electing large partnerships will stop  
-						</div>
-						<div style="float:right">
-							<div class="styLNRightNumBoxNBB"/>
-							<div class="styLNAmountBoxNBB" style="border-left-width:0px "/>
-						</div>
-					</div>
-					<div style="width: 187mm">
-						<div class="styLNLeftNumBox"/>
-						<div style="float:left">
-							  here. (<span><b>Note:&#160;</b></span>
-							<i>An estate or trust enters on line 8 only its share of recapture amount attributable to the</i>
-						</div>
+							<span class="styItalicText">credit amount reported on its  Form 8586.) </span>
+						</div><span style="letter-spacing:4mm; font-weight:bold; float:left">  ..........
+						   </span>
 						<div style="float:right">
 							<div class="styLNRightNumBoxNBB"/>
 							<div class="styLNAmountBoxNBB" style="border-left-width:0px " />
@@ -457,14 +464,12 @@
 					</div>
 					<div style="width: 187mm">
 						<div class="styLNLeftNumBox" />
-						<div style="float:left">
-							<span class="styItalicText">credit amount reported on its  Form 8586.) </span>
-						</div>
+						
 						<div style="float:right">
-							<span style="letter-spacing:4mm; font-weight:bold; float:left">  .................
-						   </span>
+							
+						   
 							<div class="styLNRightNumBox">7</div>
-							<div class="styLNAmountBox" style="border-left-width:0px ">
+							<div class="styLNAmountBox" style="border-left-width:0px; ">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/AcceleratedPrtnRecapturedAmt"/>
 								</xsl:call-template>
@@ -637,8 +642,8 @@
 							<span class="styBoldText">Recapture tax.</span> Subtract line 13 from line 12. If zero or less, enter -0-. Enter the result here and on the
 						</div>
 						<div style="float:right">
-							<div class="styLNRightNumBoxNBB" style="height:12mm;background-color:lightgrey;border-top-width:1px"/>
-							<div class="styLNAmountBoxNBB" style="height:16mm;border-top-width:1px"/>
+							<div class="styLNRightNumBoxNBB" style="height:8mm;background-color:lightgrey;border-top-width:1px"/>
+							<div class="styLNAmountBoxNBB" style="height:16mm;border-top-width:1px;"/>
 						</div>
 					</div>
 					<div style="width: 187mm">
@@ -652,23 +657,24 @@
 					</div>
 					<div style="width: 187mm">
 						<div class="styLNLeftNumBox"/>
-						<div style="float:left">line 14 amounts from all forms and enter the total on the appropriate line of your return. Electing large
+						<div style="float:left">line 14 amounts from all forms and enter the total on the appropriate line of your return
 						</div>
+						<span style="letter-spacing:2mm; font-weight:bold; float:left;">  
+								..........
+							</span>
 						<div style="float:right">
 							<div class="styLNRightNumBoxNBB" />
-							<div class="styLNAmountBoxNBB" style="border-left-width:0px"/>
+							<div class="styLNAmountBoxNBB" style="border-left-width:0px;"/>
 						</div>
 					</div>
 					<div style="width: 187mm">
 						<div class="styLNLeftNumBox"/>
-						<div style="float:left">partnerships, see instructions
+						<div style="float:left">
 						</div>
 						<div style="float:right">
-							<span style="letter-spacing:4mm; font-weight:bold; float:left">  
-								....................
-							</span>
-							<div class="styLNRightNumBox">14</div>
-							<div class="styLNAmountBox" style="border-left-width:0px"> 
+							
+							<div class="styLNRightNumBox ">14</div>
+							<div class="styLNAmountBox" style="border-left-width:0px;"> 
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/RecaptureTaxAmt"/>
 								</xsl:call-template>
@@ -766,7 +772,7 @@
 						<span style="width:60mm;text-align:center">                   
 								Cat. No. 63983Q </span>   
 						<span style="width:50mm;text-align:right">
-								Form <b>8611</b> (Rev. 12-2013)</span>  
+								Form <b>8611</b> (Rev. 12-2019)</span>  
 					</div>
 					<!-- BEGIN Left Over Table -->
 					<p style="page-break-before:always"/>

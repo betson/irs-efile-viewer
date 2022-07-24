@@ -13,6 +13,9 @@
 <!-- 12/18/2018 - Additional changes made for KISAM IM00347621 - Jeremy Nichols -->
 <!-- 06/18/2019 - Changes made for UWR 217968 - Jeremy Nichols -->
 <!-- 08/26/2019 - Changes made for defect 128234 - Jeremy Nichols -->
+<!-- 02/12/2020 - Changes made for defect 128244 - Jeremy Nichols -->
+<!-- 02/13/2020 - Changes made for defect 129401 - Jeremy Nichols -->
+<!-- 05/13/2020 - Additional changes made for defect 128244 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -98,7 +101,7 @@
 						</div>
 					</div>
 					<!-- End Form Number and Name section -->
-					<!-- Begin Names and Identifying number section -->
+					<!-- Begin Names and Identification number section -->
 					<div class="styBB" style="width:187mm;border-bottom-width:1px solid black;">
 						  <div colspan="2" style="width:146mm;font-size:6pt;vertical-align:top;border-right:1px solid black;border-bottom:0px solid black;">
 							Name of transferor<br/>
@@ -112,7 +115,7 @@
 							<br/>
 						  </div>
 						  <div style="width:40mm;font-size:6pt;vertical-align:top;padding-left:0.5mm;border-right:0 solid black;border-bottom:0px solid black;">
-							<b>Filer's identifying number</b><br/>
+							<b>Filer's Identification number</b><br/>
 							<br/>
 							<xsl:choose>
 								<!-- EIN-->
@@ -188,7 +191,7 @@
 							</xsl:for-each>
 						</div>  			
 					</div>
-					<!-- End Names and Identifying number section -->
+					<!-- End Names and Identification number section -->
 					<xsl:variable name="defaultRows" select="4"/>
 					<xsl:variable name="p1RecCount1" select="count($Form8865ScheduleOData/StkNtsRcvblPyblOtherSecGrp)"/>
 					<xsl:variable name="p1RecCount2" select="count($Form8865ScheduleOData/InventoryTransfersGrp)"/>
@@ -271,9 +274,10 @@
 									</td>
 									<td style="width:11mm;">
 										<span style="display:inline;">
-											<input type="checkbox" class="styCkbox" name="Checkbox721" alt="section 721 yes">
+											<input type="checkbox" class="styCkbox" name="Check721PartnershipYes" id="Check721PartnershipYes" alt="Check 721 Partnership Yes">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/Section721cPartnershipInd"/>
+													<xsl:with-param name="BackupName">Check721PartnershipYes</xsl:with-param>
 												</xsl:call-template>
 											</input>
 										</span>
@@ -281,15 +285,17 @@
 										<label>
 											<xsl:call-template name="PopulateLabelYes">
 												<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/Section721cPartnershipInd"/>
+													<xsl:with-param name="BackupName">Check721PartnershipYes</xsl:with-param>
 											</xsl:call-template>
 											Yes
 										</label>
 									</td>
 									<td style="width:11mm;text-align:right;">
 										<span style="display:inline;">
-											<input type="checkbox" class="styCkbox" name="Checkbox721" alt="section 721 no">
+											<input type="checkbox" class="styCkbox"  name="Check721PartnershipNo" id="Check721PartnershipNo" alt="Check 721 Partnership No">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/Section721cPartnershipInd"/>
+													<xsl:with-param name="BackupName">Check721PartnershipNo</xsl:with-param>
 												</xsl:call-template>
 											</input>
 										</span>
@@ -297,22 +303,24 @@
 										<label>
 											<xsl:call-template name="PopulateLabelNo">
 												<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/Section721cPartnershipInd"/>
+													<xsl:with-param name="BackupName">Check721PartnershipNo</xsl:with-param>
 											</xsl:call-template>
 											No
 										</label>
 									</td>
 								</tr>
 								<tr>
-									<td style="width:5mm;"><span style="width:1.5mm;" />b</td>
+									<td style="width:5mm;">b</td>
 									<td style="width:160mm;">
 										If “Yes”, was the gain deferral method applied to avoid the recognition of gain upon the contribution of property?
 										<span class="styDotLn" style="float:right;">...</span>
 									</td>
 									<td style="width:11mm;">
 										<span style="display:inline;">
-											<input type="checkbox" class="styCkbox" name="CheckboxApp" alt="deferral method applied yes">
+											<input type="checkbox" class="styCkbox" name="GainDeferralMethodAppliedIndYes" id="GainDeferralMethodAppliedIndYes" alt="Gain Deferral Method Applied Yes">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/GainDeferralMethodAppliedInd"/>
+													<xsl:with-param name="BackupName">GainDeferralMethodAppliedIndYes</xsl:with-param>
 												</xsl:call-template>
 											</input>
 										</span>
@@ -320,15 +328,17 @@
 										<label>
 											<xsl:call-template name="PopulateLabelYes">
 												<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/GainDeferralMethodAppliedInd"/>
+													<xsl:with-param name="BackupName">GainDeferralMethodAppliedIndYes</xsl:with-param>
 											</xsl:call-template>
 											Yes
 										</label>
 									</td>
 									<td style="width:11mm;text-align:right;">
 										<span style="display:inline;">
-											<input type="checkbox" class="styCkbox" name="CheckboxApp" alt="deferral method applied no">
+											<input type="checkbox" class="styCkbox"  name="GainDeferralMethodAppliedIndNo" id="GainDeferralMethodAppliedIndNo" alt="Gain Deferral Method Applied No">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/GainDeferralMethodAppliedInd"/>
+													<xsl:with-param name="BackupName">GainDeferralMethodAppliedIndNo</xsl:with-param>
 												</xsl:call-template>
 											</input>
 										</span>
@@ -336,23 +346,25 @@
 										<label>
 											<xsl:call-template name="PopulateLabelNo">
 												<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/GainDeferralMethodAppliedInd"/>
+													<xsl:with-param name="BackupName">GainDeferralMethodAppliedIndNo</xsl:with-param>
 											</xsl:call-template>
 											No
 										</label>
 									</td>
 								</tr>
 								<tr>
-									<td style="width:5mm;vertical-align:top;">2</td>
+									<td style="width:5mm;padding-bottom:3mm;">2</td>
 									<td style="width:160mm;">
-										Was any intangible property transferred considered or anticipated to be, at the time of the transfer or at any time thereafter,
-										a platform contribution as defined in Regulations section1.482-7(c)(1)? 
+										Was any intangible property transferred considered or anticipated to be, at the time of the transfer or at any 
+										time thereafter, a platform contribution as defined in Regulations section 1.482-7(c)(1)?
 										<span class="styDotLn" style="float:right;">................</span>
 									</td>
-									<td style="width:11mm;vertical-align:bottom;">
+									<td style="width:11mm;">
 										<span style="display:inline;">
-											<input type="checkbox" class="styCkbox" name="CheckboxProp" alt="contribution as defined in Regulations section1.482-7(c)(1) yes">
+											<input type="checkbox" class="styCkbox" name="IntngblPropTrnsfrContriIndYes" id="IntngblPropTrnsfrContriIndYes" alt="Intngbl Prop Trnsfr Contri Yes">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/IntngblPropTrnsfrContriInd"/>
+													<xsl:with-param name="BackupName">IntngblPropTrnsfrContriIndYes</xsl:with-param>
 												</xsl:call-template>
 											</input>
 										</span>
@@ -360,15 +372,17 @@
 										<label>
 											<xsl:call-template name="PopulateLabelYes">
 												<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/IntngblPropTrnsfrContriInd"/>
+													<xsl:with-param name="BackupName">IntngblPropTrnsfrContriIndYes</xsl:with-param>
 											</xsl:call-template>
 											Yes
 										</label>
 									</td>
-									<td style="width:11mm;text-align:right;vertical-align:bottom;">
+									<td style="width:11mm;text-align:right;">
 										<span style="display:inline;">
-											<input type="checkbox" class="styCkbox" name="CheckboxProp" alt="contribution as defined in Regulations section1.482-7(c)(1) no">
+											<input type="checkbox" class="styCkbox"  name="IntngblPropTrnsfrContriIndNo" id="IntngblPropTrnsfrContriIndNo" alt="Intngbl Prop Trnsfr Contri No">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/IntngblPropTrnsfrContriInd"/>
+													<xsl:with-param name="BackupName">IntngblPropTrnsfrContriIndNo</xsl:with-param>
 												</xsl:call-template>
 											</input>
 										</span>
@@ -376,6 +390,7 @@
 										<label>
 											<xsl:call-template name="PopulateLabelNo">
 												<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/IntngblPropTrnsfrContriInd"/>
+													<xsl:with-param name="BackupName">IntngblPropTrnsfrContriIndNo</xsl:with-param>
 											</xsl:call-template>
 											No
 										</label>

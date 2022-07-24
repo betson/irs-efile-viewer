@@ -59,7 +59,7 @@
 						<div class="styFTBox" style="width:123.5mm;height:19mm;">
 							<!--  Main Title >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 							<div class="styMainTitle" style="height:6mm;padding-top:2mm;">
-								Residential Energy Credit
+								Residential Energy Credits
 							</div>
 							<div class="styGenericDiv" style="height:5mm;font-size:7pt;margin-left:9mm;">
 								<div style="width:100%;height:5mm;font-weight:bold;padding-top:1mm;">
@@ -275,7 +275,7 @@
 								<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyInUSInd"/>
 							</xsl:call-template>
 							<span style="width:1mm;"/>
-							<input type="checkbox" class="styCkbox">
+							<input type="checkbox" class="styCkbox" alt="HomeLocatedInUSA Yes">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyInUSInd"/>
 									<xsl:with-param name="BackupName">IRS5695RsdntlHomeLocatedInUSAInd</xsl:with-param>
@@ -290,7 +290,7 @@
 								<b>Yes</b>
 							</label>
 							<span style="width:4mm;"/>
-							<input type="checkbox" class="styCkbox">
+							<input type="checkbox" class="styCkbox" alt="HomeLocatedInUSA No">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyInUSInd"/>
 									<xsl:with-param name="BackupName">IRS5695RsdntlHomeLocatedInUSAInd</xsl:with-param>
@@ -325,20 +325,23 @@
 						<div class="styLNAmountBoxNBB" style="height:7mm;"/>
 					</div>
 					<!-- Address////////////////////////////////////////////////////-->
+					<xsl:choose>
+					 <xsl:when test="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyHmAddress">
+					<xsl:for-each select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyHmAddress">
 					<div class="styIRS5695LineItem" style="height:26mm;"><br/>
 						<div class="styLNLeftNumBox"/>
 						<div class="styLNDesc" style="padding-left:34mm;">
     					<xsl:choose>							
-							<xsl:when test="normalize-space($Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyHmAddress/AddressLine1Txt) !=''">
+							<xsl:when test="normalize-space(AddressLine1Txt) !=''">
 								<span style="padding-top:5mm;"/>			
 								<span style="width:80mm">				
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyHmAddress/AddressLine1Txt"/>
+									<xsl:with-param name="TargetNode" select="AddressLine1Txt"/>
 								</xsl:call-template>
 								</span>	
 								<span >	
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyHmAddress/AddressLine2Txt"/>
+									<xsl:with-param name="TargetNode" select="AddressLine2Txt"/>
 								</xsl:call-template>	
 								</span>														
 							</xsl:when>
@@ -351,15 +354,15 @@
 								Number and street<span style="width:65mm"/>Unit No. <br/>
 															<span style="padding-top:4mm;"/>
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyHmAddress/CityNm"/>
+									<xsl:with-param name="TargetNode" select="CityNm"/>
 								</xsl:call-template>
 								<span style="width:.5mm;"/>
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyHmAddress/StateAbbreviationCd"/>
+									<xsl:with-param name="TargetNode" select="StateAbbreviationCd"/>
 								</xsl:call-template>
 								<span style="width:1mm;"/>
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyHmAddress/ZIPCd"/>
+									<xsl:with-param name="TargetNode" select="ZIPCd"/>
 								</xsl:call-template>
 							</div>
 							<div class="styGenericDiv" style="width:102mm;border-top:1px solid black;">
@@ -369,6 +372,17 @@
 						<div class="styLNRightNumBoxNBB" style="height:26mm;background-color:lightgrey;"/>
 						<div class="styLNAmountBoxNBB" style="height:26mm;"/>
 					</div>
+					</xsl:for-each>
+					</xsl:when>
+					<xsl:otherwise>
+					<div class="styIRS5695LineItem" style="height:8mm;">
+					<div class="styLNLeftNumBox"/>
+					<div class="styLNDesc" style="padding-left:34mm;"/>
+					<div class="styLNRightNumBoxNBB" style="height:8mm;background-color:lightgrey;"/>
+					<div class="styLNAmountBoxNBB" style="height:8mm;"/>
+					</div>
+					</xsl:otherwise>
+					</xsl:choose>
 					<!-- (8) ////////////////////////////////////////////////////-->
 					<div class="styIRS5695LineItem" style="">
 						<div class="styLNLeftNumBoxSD" style="padding-top:2mm;">8</div>
@@ -579,7 +593,7 @@
 					<!-- Header -->
 					<div class="styBB" style="width:187mm;height:4.25mm">
 						<div class="styPartName" style="font-size:9pt;">Part II</div>
-						<div class="styPartDesc" style="font-size:9pt;padding-left:3mm;">Nonbusiness Energy Property Credit   (Reserved for Future Use)</div>
+						<div class="styPartDesc" style="font-size:9pt;padding-left:3mm;">Nonbusiness Energy Property Credit</div>
 					</div>
 					<div style="width:187mm;height:3mm;font-size:4pt;">
 						<div class="styLNLeftNumBox" style="height:3mm;font-size:4pt;"/>
@@ -603,7 +617,7 @@
 								<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/HomeLocatedInUSAInd"/>
 							</xsl:call-template>
 							<span style="width:1mm;"/>
-							<input type="checkbox" class="styCkbox">
+							<input type="checkbox" class="styCkbox" alt="HomeLocatedInUSA Yes">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/HomeLocatedInUSAInd"/>
 									<xsl:with-param name="BackupName">IRS5695HomeLocatedInUSAInd</xsl:with-param>
@@ -618,7 +632,7 @@
 								<b>Yes</b>
 							</label>
 							<span style="width:4mm;"/>
-							<input type="checkbox" class="styCkbox">
+							<input type="checkbox" class="styCkbox" alt="HomeLocatedInUSA No">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/HomeLocatedInUSAInd"/>
 									<xsl:with-param name="BackupName">IRS5695HomeLocatedInUSAInd</xsl:with-param>
@@ -698,7 +712,7 @@
 								<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/ImprvRltdToConstMainHomeInd"/>
 							</xsl:call-template>
 							<span style="width:1mm;"/>
-							<input type="checkbox" class="styCkbox">
+							<input type="checkbox" class="styCkbox" alt="ImprvRltdToConstMainHome Yes">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/ImprvRltdToConstMainHomeInd"/>
 									<xsl:with-param name="BackupName">IRS5695ImprvRltdToConstMainHomeInd</xsl:with-param>
@@ -713,7 +727,7 @@
 								<b>Yes</b>
 							</label>
 							<span style="width:4mm;"/>
-							<input type="checkbox" class="styCkbox">
+							<input type="checkbox" class="styCkbox" alt="ImprvRltdToConstMainHome No">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/ImprvRltdToConstMainHomeInd"/>
 									<xsl:with-param name="BackupName">IRS5695ImprvRltdToConstMainHomeInd</xsl:with-param>
@@ -848,7 +862,7 @@
 					<div class="styIRS5695LineItem" style="height:10mm;">
 						<div class="styLNLeftLtrBox">f</div>
 						<div class="styLNDesc" style="width:98.05mm;">
-							If you claimed window expenses on your Form 5695 prior to 2016, enter the amount from the Window 
+							If you claimed window expenses on your Form 5695 prior to 2019, enter the amount from the Window 
 							Expense Worksheet (see instructions); otherwise enter -0-
 							<span class="styIRS5695Dots">...................</span>
 						</div>
@@ -1013,8 +1027,8 @@
 							<span class="styIRS5695Dots">........</span>
 						</div>
 						<div class="styLNRightNumBox" style="width:7.8mm;">25</div>
-						<div class="styLNAmountBox" style="">
-							<xsl:choose>
+						<div class="styLNAmountBox" style="">$500
+							<!---<xsl:choose>
 								<xsl:when test="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/MaximumResidentialEnergyCrAmt">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/MaximumResidentialEnergyCrAmt"/>
@@ -1023,7 +1037,7 @@
 								<xsl:otherwise>
 									$500
 								</xsl:otherwise>
-							</xsl:choose>
+							</xsl:choose>-->
 						</div>
 					</div>
 					<!-- 26-->

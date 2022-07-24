@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 06/03/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
-<!-- 06/23/2015 - Changes made for UWR 151655 - Jeremy Nichols -->
-<!-- 12/08/2015 - Changes made per 2015 pdf review - Jeremy Nichols -->
-<!-- 01/05/2016 - Changes made for KISAM IM02391827 - Jeremy Nichols -->
-<!-- 06/14/2016 - Changes made for UWR 182766 - Jeremy Nichols -->
-<!-- 08/22/2016 - Changes made for defect 46564 - Jeremy Nichols -->
-<!-- 08/22/2016 - Changes made for defect 46566 - Jeremy Nichols -->
-<!-- 08/22/2016 - Changes made for defect 46567 - Jeremy Nichols -->
-<!-- 10/28/2016 - Changes made for pdf review under defect 60594 - Jeremy Nichols -->
-<!-- 06/26/2017 - Changes made for UWR 198707 - Jeremy Nichols -->
-<!-- 06/27/2017 - Changes made for defect 48208 - Jeremy Nichols -->
-<!-- 06/28/2017 - Changes made for defect 48209 - Jeremy Nichols -->
-<!-- 04/24/2018 - Changes made for defect 201239 - Jeremy Nichols -->
-<!-- 11/27/2018 - Changes made for defect 127343 - Jeremy Nichols -->
-<!-- 11/28/2018 - Changes made for defect 127349 - Jeremy Nichols -->
-<!-- 11/29/2018 - Changes made for defect 127350 - Jeremy Nichols -->
 <!-- 06/18/2019 - Changes made for UWR 217968 - Jeremy Nichols -->
 <!-- 08/23/2019 - Changes made for defect 128233 - Jeremy Nichols -->
 <!-- 09/23/2019 - Changes made for UWR 219393 - Jeremy Nichols -->
+<!-- 09/10/2019 - Changes made for UWR 230467 - Jeremy Nichols -->
+<!-- 01/15/2020 - Changes made for KISAM IM0924271 - Jeremy Nichols -->
+<!-- 01/31/2020 - Changes made for defect 129172 - Jeremy Nichols -->
+<!-- 01/31/2020 - Changes made for defect 129175 - Jeremy Nichols -->
+<!-- 02/13/2020 - Changes made for defect 129401 - Jeremy Nichols -->
+<!-- 03/02/2020 - Additional changes made for KISAM IM0924271 - Jeremy Nichols -->
+<!-- 06/25/2020 - Additional changes made for KISAM IM01010106 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" version="1.0">
 	<xsl:import href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -37,12 +28,7 @@
 			</td>
 		</tr>
 	</xsl:template>
-	<!-- This template is called to fill in blank filler rows in Part III where multiple of rows of data -->
-	<!-- may be applicable. The parameter NumOfTotRows is the set number of rows required to display on the page -->
-	<!-- even if no data is populated. The parameter CurrentRowCount is the current number of rows already -->
-	<!-- populated with data or blank row(s). When this template is called, a new blank row is populated in the -->
-	<!-- form and the CurrentRowCount is incremented by 1. It will keep popoulating blank rows as long as -->
-	<!-- CurrentRowCount is less than NumOfTotRows and stop when these two numbers are equal. -->
+
 	<xsl:template name="AddBlankFillerRows">
 		<xsl:param name="NumOfTotRows"/>
 		<xsl:param name="CurrentRowCount"/>
@@ -63,10 +49,7 @@
 			</xsl:call-template>
 		</xsl:if>
 	</xsl:template>
-	<!-- This template displays tables populated with data of the CodeAndAmountType data types      -->
-	<!-- The data is displayed in a dependency data style table. There is an optional parameter     -->
-	<!-- that indicates whether to display the associated push pin that comes from the Code element -->
-	<!-- By default, this field is set to false unless the caller set it to true.  -->
+
 	<xsl:template name="DisplayCodeAndAmountTable">
 		<xsl:param name="TargetNode"/>
 		<xsl:param name="CodeAndAmountTableTitle"/>
@@ -303,8 +286,8 @@
 								</xsl:call-template>
 							</xsl:if>
 						</td>
-						<td style="width:41.5mm;font-size:7pt;border-bottom:1px solid lightgrey;width:5mm;height:6mm;text-align:right;padding-top:2mm;">
-							<span style="width:41.5mm;">
+						<td style="width:45mm;font-size:7pt;border-bottom:1px solid lightgrey;width:5mm;height:6mm;text-align:right;padding-top:2mm;">
+							<span style="width:45mm;">
 							<xsl:if test="$Line = 11">
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="SchK1OtherIncomeLossCd"/>
@@ -351,7 +334,7 @@
 					<td style="width:4.9mm;height:8mm;font-size:7pt;font-family:Verdana;border-right:1px solid black;border-bottom:1px solid lightgrey;text-align:center;border-left:0px;padding-top:4mm;">
 						<span class="styTableCellPad"/>
 					</td>
-					<td colspan="2" style="float:right;font-size:7pt;width:41.5mm;border-bottom:1px solid lightgrey;padding-top:4mm;text-align:left;">
+					<td colspan="2" style="float:right;font-size:7pt;width:45mm;border-bottom:1px solid lightgrey;padding-top:4mm;text-align:left;">
 						<xsl:call-template name="PopulateAdditionalDataTableMessage">
 							<xsl:with-param name="TargetNode" select="$TargetNode"/>
 						</xsl:call-template>
@@ -561,9 +544,9 @@
 								<tr>
 									<td class="IRS8865ScheduleK1_tdLeft" style="height: 8mm;border-left:0;">
 										<!-- Line A -->
-										<span style="font-weight: bold;">A1</span>
+										<span style="font-weight: bold;display:inline;">A1</span>
 										<span style="width: 1mm;"/>
-										<span style="width: 80mm;">Partnership's employer identification number</span>
+										<span style="width: 80mm;display:inline;">Partnership's employer identification number</span>
 										<br/>
 										<span style="width: 5mm;"/>
 										<xsl:choose>
@@ -583,9 +566,9 @@
 								<tr>
 									<td class="IRS8865ScheduleK1_tdLeft" style="height: 8mm;border-left:0;">
 										<!-- Line A -->
-										<span style="font-weight: bold;">A2</span>
+										<span style="font-weight: bold;display:inline;">A2</span>
 										<span style="width: 1mm;"/>
-										<span style="width: 80mm;">Reference ID number (see instr.)</span>
+										<span style="width: 80mm;display:inline;">Reference ID number (see instr.)</span>
 										<xsl:for-each select="$FormData/ForeignEntityIdentificationGrp">
 											<br/>
 											<span style="width: 5mm;"/>
@@ -598,9 +581,9 @@
 								<tr>
 									<td class="IRS8865ScheduleK1_tdLeft" style="height: 24mm;border-left:0;">
 										<!-- Line B -->
-										<span style="font-weight: bold;">B</span>
-										<span style="width: 2.5mm;"/>
-										<span style="width: 80mm;">Partnership's name, address, city, state, and ZIP code</span>
+										<span style="font-weight: bold;display:inline;">B</span>
+										<span style="width: 1mm;"/>
+										<span style="width: 80mm;display:inline;">Partnership's name, address, city, state, and ZIP code</span>
 										<br/>
 										<span style="width: 5mm;"/>
 										<span style="width: 75mm;">
@@ -692,9 +675,9 @@
 								<tr>
 									<td class="IRS8865ScheduleK1_tdLeft" style="height: 8mm;border-left:0;">
 										<!-- Line C -->
-										<span style="font-weight: bold;">C</span>
-										<span style="width: 3mm;"/>
-										<span style="width: 80mm;">Partner's identifying number</span>
+										<span style="font-weight: bold;display:inline;">C</span>
+										<span style="width: 1mm;"/>
+										<span style="width: 80mm;display:inline;">Partner's SSN or TIN (Do not use TIN of a disregarded entity). See instructions.</span>
 										<br/>
 										<span style="width: 5mm;"/>
 										<!-- If EIN exists -->
@@ -723,9 +706,9 @@
 								<tr>
 									<td class="IRS8865ScheduleK1_tdLeft" style="height: 24mm;border-left:0;">
 										<!-- Line D -->
-										<span style="font-weight: bold;">D</span>
-										<span style="width: 3mm;"/>
-										<span style="width: 80mm;">Partner's name, address, city, state, and ZIP code</span>
+										<span style="font-weight: bold;display:inline;">D1</span>
+										<span style="width: 1mm;"/>
+										<span style="width: 80mm;display:inline;">Name, address, city, state, and ZIP code for partner entered in C. See Instructions.</span>
 										<br/>
 										<span style="width: 5mm;"/>
 										<span style="width: 75mm;">
@@ -812,6 +795,55 @@
 													<xsl:with-param name="TargetNode" select="$FormData/PartnersForeignAddress/CountryCd"/>
 												</xsl:call-template>
 											</xsl:if>
+										</span><br/>
+										<span style="font-weight: bold;display:inline;">D2</span>
+										<span style="width: 3mm;display:inline;"/>
+										<span style="width: 80mm;display:inline;">
+											<input type="checkbox" class="styckbox" name="checkbox" id="amdId">
+												<xsl:call-template name="PopulateCheckbox">
+													<xsl:with-param name="TargetNode" select="$FormData/DisregardedEntityInd"/>
+												</xsl:call-template>
+											</input>
+											<label>
+												<xsl:call-template name="PopulateLabel">
+													<xsl:with-param name="TargetNode" select="$FormData/DisregardedEntityInd"/>
+													<xsl:with-param name="BackupName">IRS8865ScheduleK1DisregardedEntityInd</xsl:with-param>
+												</xsl:call-template>
+												If partnership interest is owned through a disregarded entity (DE), enter DE's: <br/>
+												<span style="width:5mm;"/>TIN:<span style="width:0.4mm;"/>
+												<span style="width: 20mm; border-bottom: 1px solid black; text-align: center;">
+													<!-- If EIN exists -->
+													<xsl:if test="($FormData/DisregardedEntityEIN)">
+														<xsl:call-template name="PopulateEIN">
+															<xsl:with-param name="TargetNode" select="$FormData/DisregardedEntityEIN"/>
+														</xsl:call-template>
+														<br/>
+													</xsl:if>
+													<!-- Else if SSN exists -->
+													<xsl:if test="($FormData/DisregardedEntitySSN)">
+														<xsl:call-template name="PopulateSSN">
+															<xsl:with-param name="TargetNode" select="$FormData/DisregardedEntitySSN"/>
+														</xsl:call-template>
+														<br/>
+													</xsl:if>
+													<!-- Else reason for no EIN/SSN -->
+													<xsl:if test="($FormData/AppliedForEINReasonCd)">
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/AppliedForEINReasonCd"/>
+														</xsl:call-template>
+														<br/>
+													</xsl:if>
+												</span><span style="width:0.4mm;"/>
+												Name:<span style="width:0.4mm;"/>
+												<span style="width: 42mm; border-bottom: 1px solid black; text-align: center;">
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$FormData/DisregardedEntityName/BusinessNameLine1Txt"/>
+													</xsl:call-template><span style="width:0.4mm;"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$FormData/DisregardedEntityName/BusinessNameLine2Txt"/>
+													</xsl:call-template>
+												</span>
+											</label>
 										</span>
 									</td>
 								</tr>
@@ -820,9 +852,9 @@
 									<td class="IRS8865ScheduleK1_tdLeft" style="height: 12mm;border-left:0;">
 										<span style="font-weight: bold;">E</span>
 										<span style="width: 3mm;"/>
-             Partner's share of profit, loss, capital, and deductions:<br/>
+										 Partner's share of profit, loss, capital, and deductions:<br/>
 										<span style="width: 5mm;"/>
-             (see Partner's Instr. (Form 1065))<br/>
+										 (see Partner's Instr. (Form 1065))<br/>
 										<table cellpadding="0" cellspacing="0" style="margin-left: 5mm;">
 											<tbody>
 												<tr>
@@ -884,23 +916,60 @@
 												</tr>
 											</tbody>
 										</table>
+										<span style="width: 5mm;"/>
+										<span style="padding-top:0.5mm;">
+											<label id="DSEPPInd">
+												<xsl:call-template name="PopulateLabel">
+													<xsl:with-param name="TargetNode" select="$FormData/DecrSaleExchPrtnrPrtshpIntInd"/>
+													<xsl:with-param name="BackupName">IRS8865ScheduleK1DecrSaleExchPrtnrPrtshpIntInd</xsl:with-param>
+												</xsl:call-template>
+												Check if decrease is due to sale or exchange of partnership <br/>interest
+											</label>
+											<span style="font-weight: bold;">
+												<span style="width: 6px;"/>.
+												<span style="width: 12px;"/>.
+												<span style="width: 12px;"/>.
+												<span style="width: 12px;"/>.
+												<span style="width: 12px;"/>.
+												<span style="width: 12px;"/>.
+												<span style="width: 12px;"/>.
+												<span style="width: 12px;"/>.
+												<span style="width: 12px;"/>.
+												<span style="width: 12px;"/>.
+												<span style="width: 12px;"/>.
+												<span style="width: 12px;"/>.
+											</span>
+											<input type="checkbox" class="styckbox" name="checkbox" id="DSEPPInd">
+												<xsl:call-template name="PopulateCheckbox">
+													<xsl:with-param name="TargetNode" select="$FormData/DecrSaleExchPrtnrPrtshpIntInd"/>
+												</xsl:call-template>
+											</input>
+										</span>
 									</td>
 								</tr>
 								<!-- Line F -->
 								<tr>
 									<td class="IRS8865ScheduleK1_tdLeft" style="height: 12mm;border-left:0;">
 										<span style="font-weight: bold;">F</span>
-										<span style="width: 3mm;"/>
-             Partner's capital account analysis:<br/>
+										<span style="width: 9mm;"/>
+										 <b>Partner's capital account analysis:</b><br/>
 										<table style="font-family: Verdana; font-size: 7pt; margin-left: 4.5mm;">
 											<tbody>
 												<tr>
 													<td style="width: 52mm;">
-														<span style="float: left; clear: none;">Beginning capital account</span>
+														<span style="width:52mm;"/>
+													</td>
+													<td style="border-bottom: 0px solid black;font-size:6pt;text-align:center;width:35mm;" colspan="2">
+														<b>Tax Basis Capital</b>
+													</td>
+												</tr>
+												<tr>
+													<td style="width: 52mm;">
+														<span style="float: left; clear: none;"><b>Beginning capital account</b></span>
 														<span style="float: right; clear: none; font-weight: bold;">
 															<span style="width: 2px;"/>.
-                      <span style="width: 12px;"/>.
-                    </span>
+														  <span style="width: 12px;"/>.
+														</span>
 													</td>
 													<td>$</td>
 													<td style="border-bottom: 1px solid black;font-size:6pt;text-align:right;width:35mm;">
@@ -911,13 +980,14 @@
 												</tr>
 												<tr>
 													<td style="width: 52mm;">
-														<span style="float: left; clear: none;font-size:7pt;">Capital contributed during the year</span>
-														<!--span style="float: right; clear: none; font-weight: bold;">
-                      <span style="width: 12px;"></span>.
-                    </span-->
+														<span style="float: left; clear: none;font-size:7pt;display:inline;">Capital contributed during the year
+														<span style="height:2mm;font-weight: bold;display:inline;">
+															<span style="width: 6px;"/>.
+															<span style="width: 12px;"/>.
+														</span></span>
 													</td>
-													<td>$</td>
-													<td style="border-bottom: 1px solid black;font-size:6pt;text-align:right;">
+													<td style="padding-top:2mm;">$</td>
+													<td style="border-bottom: 1px solid black;padding-top:2mm;font-size:6pt;text-align:right;">
 														<xsl:call-template name="PopulateAmount">
 															<xsl:with-param name="TargetNode" select="$FormData/CapitalContributedDuringYrAmt"/>
 														</xsl:call-template>
@@ -925,16 +995,36 @@
 												</tr>
 												<tr>
 													<td style="width: 52mm;">
-														<span style="float: left; clear: none;">Current year increase (decrease)</span>
+														<span style="float: left; clear: none;">Current year net income (loss)</span>
 														<span style="float: right; clear: none; font-weight: bold;">
-															<!--span style="width: 2px;"></span>.
-                      <span style="width: 12px;"></span>.-->
+															<span style="width: 12px;"></span>.
 														</span>
 													</td>
 													<td>$</td>
 													<td style="border-bottom: 1px solid black;font-size:6pt;text-align:right;">
 														<xsl:call-template name="PopulateAmount">
-															<xsl:with-param name="TargetNode" select="$FormData/CurrentYrIncreaseDecreaseAmt"/>
+															<xsl:with-param name="TargetNode" select="$FormData/CurrentYearNetIncomeOrLossAmt"/>
+														</xsl:call-template>
+													</td>
+												</tr>
+												<tr>
+													<td style="width: 52mm;">
+														<span style="float: left; clear: none;">Other increase (decrease)<br/>(attach explanation)
+															<span style="height:2mm;font-weight: bold;display:inline;">
+																<span style="width: 2px;"/>.
+																<span style="width: 12px;"/>.
+																<span style="width: 12px;"/>.
+																<span style="width: 12px;"/>.
+															</span>
+															<xsl:call-template name="SetFormLinkInline">
+																<xsl:with-param name="TargetNode" select="$FormData/OtherIncreaseDecreaseAmt"/>
+															</xsl:call-template>
+														</span>
+													</td>
+													<td>$</td>
+													<td style="border-bottom: 1px solid black;padding-top:2mm;font-size:6pt;text-align:right;">
+														<xsl:call-template name="PopulateAmount">
+															<xsl:with-param name="TargetNode" select="$FormData/OtherIncreaseDecreaseAmt"/>
 														</xsl:call-template>
 													</td>
 												</tr>
@@ -943,8 +1033,8 @@
 														<span style="float: left; clear: none;">Withdrawals &amp; distributions</span>
 														<span style="float: right; clear: none; font-weight: bold;">
 															<span style="width: 2px;"/>.
-                      <span style="width: 12px;"/>.
-                    </span>
+														  <span style="width: 12px;"/>.
+														</span>
 													</td>
 													<td>$</td>
 													<td style="border-bottom: 1px solid black;font-size:6pt;text-align:right;">
@@ -955,7 +1045,7 @@
 												</tr>
 												<tr>
 													<td style="width: 52mm;">
-														<span style="float: left; clear: none;">Ending capital account</span>
+														<span style="float: left; clear: none;"><b>Ending capital account</b></span>
 														<span style="float: right; clear: none; font-weight: bold;">
 															<span style="width: 2px;"/>.
                       <span style="width: 12px;"/>.
@@ -971,75 +1061,55 @@
 												</tr>
 											</tbody>
 										</table>
+									</td>
+								</tr>
+								<!-- Line G -->
+								<tr>
+									<td class="IRS8865ScheduleK1_tdLeft" style="height: 12mm;border-left:0;">
+										<span style="font-weight: bold;">G</span>
+										<span style="width: 5mm;"/>
+										<b>Partner’s Share of Net Unrecognized Section 704(c) 
+										<br/><span style="width: 25mm;"/>Gain or (Loss)</b><br/>
 										<table style="font-family: Verdana; font-size: 7pt; margin-left: 4.5mm;">
 											<tbody>
 												<tr>
-													<td>
-														<input type="checkbox" class="styCKbox" name="checkbox" id="taxbasisId">
-															<xsl:call-template name="PopulateCheckbox">
-																<xsl:with-param name="TargetNode" select="$FormData/TaxBasisInd"/>
-															</xsl:call-template>
-														</input>
-														<label>
-															<xsl:call-template name="PopulateLabel">
-																<xsl:with-param name="TargetNode" select="$FormData/TaxBasisInd"/>
-																<xsl:with-param name="BackupName">IRS8865ScheduleK1TaxBasis</xsl:with-param>
-															</xsl:call-template>
-                   	Tax basis    
-                   </label>
-														<span style="width: 4mm;"/>
+													<td style="width: 52mm;">
+														<span style="float: left; clear: none;">Beginning</span>
+														<span style="float: right; clear: none; font-weight: bold;">
+															<span style="width: 2px;"/>.
+															<span style="width: 12px;"/>.
+															<span style="width: 12px;"/>.
+															<span style="width: 12px;"/>.
+															<span style="width: 12px;"/>.
+															<span style="width: 12px;"/>.
+														</span>
 													</td>
-													<td>
-														<input type="checkbox" class="styCKbox" name="checkbox" id="gaapId">
-															<xsl:call-template name="PopulateCheckbox">
-																<xsl:with-param name="TargetNode" select="$FormData/GAAPInd"/>
-															</xsl:call-template>
-														</input>
-														<label>
-															<xsl:call-template name="PopulateLabel">
-																<xsl:with-param name="TargetNode" select="$FormData/GAAPInd"/>
-																<xsl:with-param name="BackupName">IRS8865ScheduleK1GAAP</xsl:with-param>
-															</xsl:call-template>
-                     GAAP
-                   </label>
-														<span style="width: 4mm;"/>
-													</td>
-													<td>
-														<input type="checkbox" class="styCKbox" name="checkbox" id="sbkId">
-															<xsl:call-template name="PopulateCheckbox">
-																<xsl:with-param name="TargetNode" select="$FormData/Section704bBookInd"/>
-															</xsl:call-template>
-														</input>
-														<label>
-															<xsl:call-template name="PopulateLabel">
-																<xsl:with-param name="TargetNode" select="$FormData/Section704bBookInd"/>
-																<xsl:with-param name="BackupName">IRS8865ScheduleK1Section704bBook</xsl:with-param>
-															</xsl:call-template>
-                     Section 704(b) book
-                   </label>
+													<td>$</td>
+													<td style="border-bottom: 1px solid black;font-size:6pt;text-align:right;width:35mm;">
+														<xsl:call-template name="PopulateAmount">
+															<xsl:with-param name="TargetNode" select="$FormData/NetUnrcgnzd704cGainLossBOYAmt"/>
+														</xsl:call-template>
 													</td>
 												</tr>
 												<tr>
-													<td colspan="2">
-														<input type="checkbox" class="styCKbox" name="checkbox" id="othId">
-															<xsl:call-template name="PopulateCheckbox">
-																<xsl:with-param name="TargetNode" select="$FormData/OtherInd"/>
-															</xsl:call-template>
-														</input>
-														<label>
-															<xsl:call-template name="PopulateLabel">
-																<xsl:with-param name="TargetNode" select="$FormData/OtherInd"/>
-																<xsl:with-param name="BackupName">IRS8865ScheduleK1Other</xsl:with-param>
-															</xsl:call-template>                   
-                     Other (explain)
-                   </label>
-														<span style="width:3px;"/>
-														<xsl:call-template name="LinkToLeftoverDataTableInline">
-															<xsl:with-param name="Desc">Form 8865 Schedule K-1, Line F - Other (explain)</xsl:with-param>
-															<xsl:with-param name="TargetNode" select="$FormData/OtherInd/@shortExplanationTxt"/>
+													<td style="width: 52mm;">
+														<span style="float: left; clear: none;">Ending</span>
+														<span style="float: right; clear: none; font-weight: bold;">
+															<span style="width: 2px;"/>.
+														  <span style="width: 12px;"/>.
+														  <span style="width: 12px;"/>.
+															<span style="width: 12px;"/>.
+															<span style="width: 12px;"/>.
+															<span style="width: 12px;"/>.
+															<span style="width: 12px;"/>.
+														</span>
+													</td>
+													<td>$</td>
+													<td style="border-bottom: 1px solid black;font-size:6pt;text-align:right;">
+														<xsl:call-template name="PopulateAmount">
+															<xsl:with-param name="TargetNode" select="$FormData/NetUnrcgnzd704cGainLossEOYAmt"/>
 														</xsl:call-template>
 													</td>
-													<td/>
 												</tr>
 											</tbody>
 										</table>
@@ -1057,18 +1127,18 @@
 							<!-- End inner table - Header, Part I, Part II -->
 						</td>
 						<!-- Beginning of border-right-width:1px;, header and lines 1-20 -->
-						<td width="93mm" style="width: 93mm;" valign="top">
-							<table width="93mm" border="0" cellpadding="0" cellspacing="0" style="width:93mm;border-top: 1px solid black; border-bottom: 0px; border-left:1px solid black; border-right:1px solid black;">
+						<td style="width: 100mm;" valign="top">
+							<table border="0" cellpadding="0" cellspacing="0" style="width:100mm;border-top: 1px solid black; border-bottom: 0px; border-left:1px solid black; border-right:1px solid black;">
 								<!-- Inner table - Part III -->
 								<tr>
 									<td colspan="2">
 										<!-- Part III header -->
 										<table cellpadding="0" cellspacing="0">
 											<tr>
-												<td class="IRS8865ScheduleK1_tdPart" style="height:13mm; width:93mm;border-top:0px; border-right:0px; border-left:0px;" colspan="2">
+												<td class="IRS8865ScheduleK1_tdPart" style="height:13mm; width:100mm;border-top:0px; border-right:0px; border-left:0px;" colspan="2">
 													<!-- Part III header -->
 													<span class="IRS8865ScheduleK1_partName" style="margin: 1mm;  position: relative: top: -5mm;display:inline;">Part III</span>
-													<span class="IRS8865ScheduleK1_partDesc" style="width: 73mm; display:inline;">Partner's Share of Current Year Income,<br/><span style="width:19mm;"/>Deductions, Credits, and Other Items</span>
+													<span class="IRS8865ScheduleK1_partDesc" style="width: 93mm; display:inline;">Partner's Share of Current Year Income,<br/><span style="width:19mm;"/>Deductions, Credits, and Other Items</span>
 												</td>
 											</tr>
 										</table>
@@ -1076,14 +1146,14 @@
 								</tr>
 								<tr>
 									<td valign="top">
-										<table width="46.5mm" border="0" cellpadding="0" cellspacing="0" style="border-right: 0px solid black;">
+										<table width="50mm" border="0" cellpadding="0" cellspacing="0" style="border-right: 0px solid black;">
 											<!-- Part III columns 1-14 -->
 											<!-- Line 1 -->
 											<tr>
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;border-top:1px solid black;">
 													1
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;border-top:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;border-top:1px solid black;">
 													Ordinary business income (loss)
 												</td>
 											</tr>
@@ -1091,7 +1161,7 @@
 												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
 													<span style="width:5mm;"/>
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncomeLossAmt"/>
 													</xsl:call-template>
@@ -1105,7 +1175,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
 													2
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
 													Net rental real estate income (loss)
 												</td>
 											</tr>
@@ -1113,7 +1183,7 @@
 												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
 													<span style="width:5mm;"/>
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="$FormData/RealEstateNetIncomeLossAmt"/>
 													</xsl:call-template>
@@ -1127,7 +1197,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
 													3
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
 													Other net rental income (loss)
 												</td>
 											</tr>
@@ -1135,7 +1205,7 @@
 												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
 													<span style="width:5mm;"/>
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="$FormData/OtherRentalIncomeAmt"/>
 													</xsl:call-template>
@@ -1144,20 +1214,64 @@
 													</xsl:call-template>
 												</td>
 											</tr>
-											<!-- Line 4 -->
+											<!-- Line 4a -->
 											<tr>
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
-													4
+													4a
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
-													Guaranteed payments
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+													Guaranteed payments for services
 												</td>
 											</tr>
 											<tr>
 												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
 													<span style="width:5mm;"/>
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+													<xsl:call-template name="SetFormLinkInline">
+														<xsl:with-param name="TargetNode" select="$FormData/GuaranteedPaymentsServicesAmt"/>
+													</xsl:call-template>
+													<xsl:call-template name="PopulateAmount">
+														<xsl:with-param name="TargetNode" select="$FormData/GuaranteedPaymentsServicesAmt"/>
+													</xsl:call-template>
+												</td>
+											</tr>
+											<!-- Line 4b -->
+											<tr>
+												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
+													4b
+												</td>
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+													Guaranteed payments for capital
+												</td>
+											</tr>
+											<tr>
+												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
+													<span style="width:5mm;"/>
+												</td>
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+													<xsl:call-template name="SetFormLinkInline">
+														<xsl:with-param name="TargetNode" select="$FormData/GuaranteedPaymentsCapitalAmt"/>
+													</xsl:call-template>
+													<xsl:call-template name="PopulateAmount">
+														<xsl:with-param name="TargetNode" select="$FormData/GuaranteedPaymentsCapitalAmt"/>
+													</xsl:call-template>
+												</td>
+											</tr>
+											<!-- Line 4c -->
+											<tr>
+												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
+													4c
+												</td>
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+													Total guaranteed payments
+												</td>
+											</tr>
+											<tr>
+												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
+													<span style="width:5mm;"/>
+												</td>
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="$FormData/GuaranteedPymtsToPartnerAmt"/>
 													</xsl:call-template>
@@ -1171,7 +1285,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
 													5
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
 													Interest income
 												</td>
 											</tr>
@@ -1179,7 +1293,7 @@
 												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
 													<span style="width:5mm;"/>
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="$FormData/InterestIncomeAmt"/>
 													</xsl:call-template>
@@ -1193,7 +1307,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
 													6a
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
 													Ordinary dividends
 												</td>
 											</tr>
@@ -1201,7 +1315,7 @@
 												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
 													<span style="width:5mm;"/>
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="$FormData/OrdinaryDividendsAmt"/>
 													</xsl:call-template>
@@ -1215,7 +1329,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
 													6b
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
 													Qualified dividends
 												</td>
 											</tr>
@@ -1223,7 +1337,7 @@
 												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
 													<span style="width:5mm;"/>
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="$FormData/QualifiedDividendsAmt"/>
 													</xsl:call-template>
@@ -1237,7 +1351,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
 													6c
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
 													Dividend equivalents
 												</td>
 											</tr>
@@ -1245,7 +1359,7 @@
 												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
 													<span style="width:5mm;"/>
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="$FormData/DividendEquivalentsAmt"/>
 													</xsl:call-template>
@@ -1259,7 +1373,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
 													7
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
 													Royalties
 												</td>
 											</tr>
@@ -1267,7 +1381,7 @@
 												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
 													<span style="width:5mm;"/>
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="$FormData/PortfolioIncomeLossRyltsAmt"/>
 													</xsl:call-template>
@@ -1281,7 +1395,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
 													8
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
 													Net short-term capital gain (loss)
 												</td>
 											</tr>
@@ -1289,7 +1403,7 @@
 												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
 													<span style="width:5mm;"/>
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="$FormData/NetSTCapitalGainOrLossAmt"/>
 													</xsl:call-template>
@@ -1303,7 +1417,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
 													9a
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
 													Net long-term capital gain (loss)
 												</td>
 											</tr>
@@ -1311,7 +1425,7 @@
 												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
 													<span style="width:5mm;"/>
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="$FormData/NetLTCapitalGainOrLossAmt"/>
 													</xsl:call-template>
@@ -1325,7 +1439,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
 													9b
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
 													Collectibles (28%) gain (loss)
 												</td>
 											</tr>
@@ -1333,7 +1447,7 @@
 												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
 													<span style="width:5mm;"/>
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="$FormData/CollectiblesGainLossAmt"/>
 													</xsl:call-template>
@@ -1347,7 +1461,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
 													9c
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
 													Unrecaptured section 1250 gain
 												</td>
 											</tr>
@@ -1355,7 +1469,7 @@
 												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
 													<span style="width:5mm;"/>
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="$FormData/UnrecapturedSection1250GainAmt"/>
 													</xsl:call-template>
@@ -1369,7 +1483,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
 													10
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
 													Net section 1231 gain (loss)
 												</td>
 											</tr>
@@ -1377,7 +1491,7 @@
 												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
 													<span style="width:5mm;"/>
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="$FormData/NetSection1231GainLossAmt"/>
 													</xsl:call-template>
@@ -1391,7 +1505,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
 													11
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
 													Other income (loss)
 												</td>
 											</tr>
@@ -1410,7 +1524,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
 													12
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
 													Section 179 deduction
 												</td>
 											</tr>
@@ -1418,7 +1532,7 @@
 												<td style="height:6mm;width:5mm;border-right:1px solid black;border-bottom:1px solid black;">
 													<span style="width:5mm;"/>
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:7pt;text-align:right;padding-right:0.5mm;padding-left:0.5mm;border-bottom:1px solid black;">
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="$FormData/Section179ExpenseDeductionAmt"/>
 													</xsl:call-template>
@@ -1432,7 +1546,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;">
 													13
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;">
 													Other deductions
 												</td>
 											</tr>
@@ -1451,7 +1565,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;border-top:1px solid black;">
 													14
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;border-top:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;border-top:1px solid black;">
 													Self-employment earnings (loss)
 												</td>
 											</tr>
@@ -1463,14 +1577,14 @@
 										</table>
 									</td>
 									<!-- Part III columns 15-20 -->
-									<td style="width:93mm;border-left:1px solid black;" valign="top">
-										<table width="46.5mm" border="0" cellpadding="0" cellspacing="0" style="border-left: 0;">
+									<td style="width:100mm;border-left:1px solid black;" valign="top">
+										<table width="50mm" border="0" cellpadding="0" cellspacing="0" style="border-left: 0;">
 											<!-- Line 15 -->
 											<tr>
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;border-top:1px solid black;">
 													15
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;border-top:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;border-top:1px solid black;">
 													Credits
 												</td>
 											</tr>
@@ -1479,12 +1593,17 @@
 												<xsl:with-param name="NumOfTotalRows" select="4"/>
 												<xsl:with-param name="Line" select="15"/>
 											</xsl:call-template>
+											
+											<xsl:call-template name="AddBlankFillerRows">
+												<xsl:with-param name="NumOfTotRows" select="'6'"/>
+												<xsl:with-param name="CurrentRowCount" select="count($FormData/SchK1CreditsAndCrRcptrGrp)"/>
+											</xsl:call-template>
 											<!-- Line 16 -->
 											<tr>
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;border-top:1px solid black;">
 													16
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;border-top:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;border-top:1px solid black;">
 													Foreign transactions
 												</td>
 											</tr>
@@ -1546,7 +1665,7 @@
 														<td style="width:4.9mm;height:8mm;font-size:7pt;font-family:Verdana;border-right:1px solid black;border-bottom:1px solid lightgrey;text-align:center;border-left:0px;padding-top:4mm;">
 															<span class="styTableCellPad"/>
 														</td>
-														<td colspan="2" style="float:right;font-size:7pt;width:41.5mm;border-bottom:1px solid lightgrey;padding-top:4mm;text-align:right;">
+														<td colspan="2" style="float:right;font-size:7pt;width:45mm;border-bottom:1px solid lightgrey;padding-top:4mm;text-align:right;">
 															<xsl:call-template name="PopulateAdditionalDataTableMessage">
 																<xsl:with-param name="TargetNode" select="$FormData/SchK1ForeignTransactionsGrp"/>
 															</xsl:call-template>
@@ -1563,7 +1682,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;border-top:1px solid black;">
 													17
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;border-top:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;border-top:1px solid black;">
 													Alternative minimum tax (AMT) items
 												</td>
 											</tr>
@@ -1582,7 +1701,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;border-top:1px solid black;">
 													18
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;border-top:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;border-top:1px solid black;">
 													Tax-exempt income and nondeductible expenses
 												</td>
 											</tr>
@@ -1601,7 +1720,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;border-top:1px solid black;">
 													19
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;border-top:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;border-top:1px solid black;">
 													Distributions
 												</td>
 											</tr>
@@ -1620,7 +1739,7 @@
 												<td style="width:5mm;font-weight:bold;text-align:center;border-right:1px solid black;border-top:1px solid black;">
 													20
 												</td>
-												<td colspan="2" style="width:41.5mm;font-size:6pt;text-align:left;padding-left:0.5mm;border-top:1px solid black;">
+												<td colspan="2" style="width:45mm;font-size:6pt;text-align:left;padding-left:0.5mm;border-top:1px solid black;">
 													Other information
 												</td>
 											</tr>
@@ -1637,24 +1756,19 @@
 										</table>
 									</td>
 								</tr>
-								<tr>
-									<td colspan="2" style="font-family: Verdana; font-size: 7pt; border-top: 1px solid black; text-align: center;">
-        * See attached statement for additional information.
-      </td>
-								</tr>
 							</table>
 							<!-- End inner table - Part III -->
 						</td>
 					</tr>
 					<tr>
 						<td width="186mm" colspan="2" style="width: 186mm; font-family: Verdana; font-size: 6pt; font-weight: bold; border-top: 1px solid black;">
-							<span style="width: 89mm;">For Paperwork Reduction Act Notice, see Instructions for Form 8865.</span>
-							<span style="width: 1mm;"/>
-							<span style="font-weight: normal; width: 24mm;">IRS.gov/Form8865</span>
-							<span style="width: 1mm;"/>
+							<span style="width: 85mm;">For Paperwork Reduction Act Notice, see Instructions for Form 8865.</span>
+							<span style="width: 3mm;"/>
+							<span style="font-weight: normal; width: 24mm;">www.IRS.gov/Form8865</span>
+							<span style="width: 5mm;"/>
 							<span style="font-weight: normal; width: 24mm;">Cat. No. 28396B</span>
 							<span style="width: 1mm;"/>
-							<span style="width: 41mm;">Schedule K-1 (Form 8865) 2019</span>
+							<span style="width: 39mm;">Schedule K-1 (Form 8865) 2019</span>
 						</td>
 					</tr>
 				</table>

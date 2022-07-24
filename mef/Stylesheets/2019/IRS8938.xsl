@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Iskilu Lawal 8/13/2019  Defect #126854 -->
+<!-- Last Modified by Iskilu Lawal 5/21/2020  Defect #126854 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -101,7 +101,7 @@
 										<xsl:with-param name="TargetNode" select="$FormData/TaxYearEndDt"/>
 									</xsl:call-template>
 								</span>
-								<!--
+			<!--
 									, 										<span style="width: 10mm;">
 											<xsl:call-template name="PopulateReturnHeaderTaxYear"></xsl:call-template>
 									</span>        
@@ -131,7 +131,7 @@
 								<b>If you have attached continuation statements, check here</b>
 							</label>
 							<span style="width:5px;"/>
-							<input type="Checkbox" class="styCkbox">
+							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/DummyInd"/>
 									<xsl:with-param name="BackupName">IRS8938DummyInd</xsl:with-param>
@@ -163,7 +163,7 @@
 						</div>
 						<div class="styLNLeftLtrBox" style="padding-left:4mm;font-size:9pt;padding-top:.0mm;">2</div>
 						<div class="styEINBox" style="padding-left:1mm;font-size:8pt;font-weight:normal">
-      TIN
+   Taxpayer Identification Number (TIN)
 						<br/>
 						<br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -173,10 +173,8 @@
 								<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
 							</xsl:call-template>
 						</div>
-						
-					</div>
-					
-					<!--  End Name and Employer indentification number  -->
+											</div>
+										<!--  End Name and Employer indentification number  -->
 					<div class="styBB" style="width:187mm;">
 					<!--  Line 3  Start of Type of filer-->
 								<div style="width:187mm;font-size:9pt;">
@@ -188,7 +186,7 @@
 									<div class="styLNDesc" style="width:45.3mm;">
 										<b>a</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$FormData/SpcfdIndividualInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ANSP0L3SpcfdIndividualInd</xsl:with-param>
@@ -208,7 +206,7 @@
 									<div class="styLNDesc" style="width:45.5mm;">
 										<b>b</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$FormData/PartnershipInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ANSP0L3PartnershipInd</xsl:with-param>
@@ -228,7 +226,7 @@
 									<div class="styLNDesc" style="width:45mm;">
 										<b>c</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$FormData/CorporationInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ANSP0L3CorporationInd</xsl:with-param>
@@ -248,7 +246,7 @@
 									<div class="styLNDesc" style="width:40mm;">
 										<b>d</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$FormData/TrustInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ANSP0L3TrustInd</xsl:with-param>
@@ -268,9 +266,7 @@
 																</div></div>
 																<!--PART   Line 4 Start-->
 					<!--PART VI  Line 4 Start-->
-																
-	
-	<div class="styBB" style="width:187mm;">
+		<div class="styBB" style="width:187mm;">
 		<div  style="width:187mm;padding-bottom:1mm;">
 			<div class="styLNLeftLtrBox" style="padding-left:4mm;font-size:8pt;font-weight:normal;">4</div>
 			<div class="styLNDesc" style="width:178mm;font-weight:normal;font-size:8pt;height:auto;float:right">
@@ -280,10 +276,8 @@ trust. (See instructions for definitions and what to do if you have more than on
 					
 			</div>
 		</div>
-		
-<xsl:if test=" (count($FormData/SpecifiedIndivOrPersonInfo ) &lt;1)">
-	
-         <div class="styLNDesc" style="width:120mm;">
+		<xsl:if test=" (count($FormData/SpecifiedIndivOrPersonInfo ) &lt;1)">
+	         <div class="styLNDesc" style="width:120mm;">
             <div class="styLNLeftLtrBox" style="width:12mm;text-align:right;padding-left:4mm;font-size:8pt;">a</div>
 				<div class="styLNDesc" style="padding-left:6mm;width:15mm;">Name</div> 
 					
@@ -297,9 +291,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 						<div class="styLNLeftLtrBox" style="font-size:8pt;font-weight:normal;width:5mm;text-align:right;"/> 
 						<div class="styLNDesc" style="width:10mm;text-align:right"/>	
          </div>
-			
-</xsl:if>
-
+			</xsl:if>
     <!--Choice of Person Name vs Business Name -->
        <xsl:for-each select="$FormData/SpecifiedIndivOrPersonInfo "> 
         <xsl:variable name="curPos">
@@ -317,8 +309,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 						<div class="styLNDesc" style="padding-left:6mm;width:15mm;"/>
 					</xsl:otherwise>
 				</xsl:choose> 
-	
-				<div style="width:113mm;">
+					<div style="width:113mm;">
 					<xsl:choose>
 						<xsl:when test="PersonNm">
 						  <xsl:call-template name="PopulateText">
@@ -489,7 +480,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 							<xsl:call-template name="PopulateSpan">
               <xsl:with-param name="TargetNode" select="$FormData/AnyDepOrCstdAcctClosedDurTYInd"/>
         </xsl:call-template>
-      <input type="Checkbox" alt="Any Dep Or Cstd Acct Closed Dur TY Ind Yes" class="styCkbox">
+      <input type="checkbox" class="styCkbox" alt="Any Deposit Or Custodial Accountt Closed During TaxYear Indicator Yes"  >
         <xsl:call-template name="PopulateYesCheckbox">
              <xsl:with-param name="TargetNode" select="$FormData/AnyDepOrCstdAcctClosedDurTYInd"/>
 									<xsl:with-param name="BackupName">IRS8938AnyDepOrCstAcctCloDurTYInd</xsl:with-param>
@@ -513,7 +504,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 							<xsl:call-template name="PopulateSpan">
 	        <xsl:with-param name="TargetNode" select="$FormData/AnyDepOrCstdAcctClosedDurTYInd"/>
 	       </xsl:call-template>
-	      <input type="Checkbox" alt="Any Dep Or Cstd Acct Closed Dur TY Ind No" class="styCkbox">
+	      <input type="checkbox"  class="styCkbox" alt="Any Deposit Or Custodial Accountt Closed During TaxYear Indicator No" >
 	       <xsl:call-template name="PopulateNoCheckbox">
 	    <xsl:with-param name="TargetNode" select="$FormData/AnyDepOrCstdAcctClosedDurTYInd"/>
 									<xsl:with-param name="BackupName">IRS8938AnyDepOrCstAcctCloDurTYInd</xsl:with-param>
@@ -586,12 +577,19 @@ trust. (See instructions for definitions and what to do if you have more than on
 			<span class="styDotLn" style="float:none;clear:none;padding-left:0mm;">.............<span style="width:.6mm"/>
 							</span>
 							<!--PART II Line 3  Start "Yes" Checkbox-->
-							<input type="Checkbox" class="styCkbox">
-								<xsl:call-template name="PopulateYesCheckbox">
+							<span>
+								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/AnyFrgnAssetAcqOrSoldDurTYInd"/>
-									<xsl:with-param name="BackupName">IRS8938AnyFrgnAssetAcqOrSoldDurTYInd</xsl:with-param>
+
 								</xsl:call-template>
-							</input>
+								<input type="checkbox"  class="styCkbox"  alt="Any Foreign Asset Acquired Or Sold Dur TaxYear Ind Yes">
+									<xsl:call-template name="PopulateYesCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/AnyFrgnAssetAcqOrSoldDurTYInd"/>
+										<xsl:with-param name="BackupName">IRS8938AnyFrgnAssetAcqOrSoldDurTYInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+						</span>
+							<span>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$FormData/AnyFrgnAssetAcqOrSoldDurTYInd"/>
@@ -599,15 +597,23 @@ trust. (See instructions for definitions and what to do if you have more than on
 								</xsl:call-template>
 				Yes
 			</label>
+			</span>
 							<span style="width:10mm;"/>
 							<!-- PART II Line 3  End "Yes" Checkbox-->
 							<!-- PART II Line 3  Start "No" Checkbox-->
-							<input type="Checkbox" class="styCkbox">
-								<xsl:call-template name="PopulateNoCheckbox">
+							<span>
+								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/AnyFrgnAssetAcqOrSoldDurTYInd"/>
-									<xsl:with-param name="BackupName">IRS8938AnyFrgnAssetAcqOrSoldDurTYInd</xsl:with-param>
+
 								</xsl:call-template>
-							</input>
+								<input type="checkbox"  class="styCkbox"  alt="Any Foreign Asset Acquired Or Sold Dur TaxYear Ind No">
+									<xsl:call-template name="PopulateNoCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/AnyFrgnAssetAcqOrSoldDurTYInd"/>
+										<xsl:with-param name="BackupName">IRS8938AnyFrgnAssetAcqOrSoldDurTYInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								</span>
+								<span>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$FormData/AnyFrgnAssetAcqOrSoldDurTYInd"/>
@@ -615,6 +621,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								</xsl:call-template>
 				No
 			</label>
+			</span>
 														<!-- PART II LINE 3  End "No" Checkbox-->
 						</div>
 					</div>
@@ -1782,7 +1789,6 @@ trust. (See instructions for definitions and what to do if you have more than on
 						<!-- Other Interest Test Form >1 and (Form > Sched)-->
 						<xsl:if test="    ((count($FormData/OtherForeignAssetSumGrp/InterestSumGrp/WhereReportedFormAndLineTxt) &gt;1)         and    ((count($FormData/OtherForeignAssetSumGrp/InterestSumGrp/WhereReportedFormAndLineTxt)) &gt;    (count($FormData/OtherForeignAssetSumGrp/InterestSumGrp/WhereReportedSchAndLineTxt))))">
 
-
 							<div class="styLNDesc" style="width:41.3mm;text-align:left;padding-left:0mm;height:auto;
        		  border-style:solid;border-color:black;border-width: 0px 0px 1px 1px;
        		  padding-top:0mm">
@@ -2913,7 +2919,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/DepositAccountTypeInd"/>
 									</xsl:call-template>
-								<input type="Checkbox" alt="Deposit Account Type Indicator" class="styCkbox">
+								<input type="checkbox" alt="Deposit Account Type Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/DepositAccountTypeInd"/>
 										<xsl:with-param name="BackupName">IRS8938FFADepositAccountTypeInd</xsl:with-param>
@@ -2937,7 +2943,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/CustodialAccountTypeInd"/>
 									</xsl:call-template>
-								<input type="Checkbox" alt="Custodial Account Type Indicator" class="styCkbox">
+								<input type="checkbox" alt="Custodial Account Type Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/CustodialAccountTypeInd"/>
 										<xsl:with-param name="BackupName">IRS8938FFACustodialAccountTypeInd</xsl:with-param>
@@ -3001,7 +3007,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/AccountOpenedDuringTaxYearInd"/>
 									</xsl:call-template>	
-										<input type="Checkbox" alt="Account Opened During Tax Year Indicator" class="styCkbox">
+										<input type="checkbox" alt="Account Opened During Tax Year Indicator" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/AccountOpenedDuringTaxYearInd"/>
 												<xsl:with-param name="BackupName">IRS8938FFAAccountOpenedDuringTaxYearInd</xsl:with-param>
@@ -3028,7 +3034,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/AccountClosedDuringTaxYearInd"/>
 									</xsl:call-template>
-										<input type="Checkbox" alt="Account Closed During Tax Year Ind" class="styCkbox">
+										<input type="checkbox" alt="Account Closed During Tax Year Ind" class="styCkbox">
                              <xsl:call-template name="PopulateCheckbox">
                          <xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/AccountClosedDuringTaxYearInd"/>
 												<xsl:with-param name="BackupName">IRS8938FFAAccountClosedDuringTaxYearInd
@@ -3056,7 +3062,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/JointlyOwnedWithSpouseInd"/>
 									</xsl:call-template>
-										<input type="Checkbox" alt="Jointly Owned With Spouse Ind" class="styCkbox">
+										<input type="checkbox" alt="Jointly Owned With Spouse Ind" class="styCkbox">
                                      <xsl:call-template name="PopulateCheckbox">
                      <xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/JointlyOwnedWithSpouseInd"/>
 												<xsl:with-param name="BackupName">IRS8938FFAJointlyOwnedWithSpouseInd
@@ -3084,7 +3090,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/NoTaxItemReportedInd"/>
 									</xsl:call-template>
-										<input type="Checkbox" alt="No Tax Item Reported Ind" class="styCkbox">
+										<input type="checkbox" alt="No Tax Item Reported Ind" class="styCkbox">
                                       <xsl:call-template name="PopulateCheckbox">
                                <xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/NoTaxItemReportedInd"/>
 												<xsl:with-param name="BackupName">IRS8938FFANoTaxItemReportedInd</xsl:with-param>
@@ -3140,7 +3146,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/ExchangeRateUsedInd"/>
 								</xsl:call-template>
-								<input type="Checkbox" alt="Exchange Rate Used Indicator Yes" class="styCkbox">
+								<input type="checkbox"  class="styCkbox"  alt="Exchange Rate Used Indicator Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/ExchangeRateUsedInd"/>
 										<xsl:with-param name="BackupName">IRS8938FFAExchangeRateUsedInd</xsl:with-param>
@@ -3152,7 +3158,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<label>
 									<xsl:call-template name="PopulateLabelYes">
 										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/ExchangeRateUsedInd"/>
-										<xsl:with-param name="BackupName">IRS8938FFAExchangeRateUsed</xsl:with-param>
+										<xsl:with-param name="BackupName">IRS8938FFAExchangeRateUsedInd</xsl:with-param>
 									</xsl:call-template>
 									Yes
 									</label>
@@ -3164,7 +3170,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/ExchangeRateUsedInd"/>
 								</xsl:call-template>
-								<input type="Checkbox" alt="Exchange Rate Used Indicator No" class="styCkbox">
+								<input type="checkbox"  class="styCkbox"  alt="Exchange Rate Used Indicator No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/ExchangeRateUsedInd"/>
 										<xsl:with-param name="BackupName">IRS8938FFAExchangeRateUsedInd</xsl:with-param>
@@ -3383,14 +3389,14 @@ trust. (See instructions for definitions and what to do if you have more than on
 									</xsl:call-template>,
 								<span style="width:2px;"/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/ForeignAddress/ForeignPostalCd"/>
-										<xsl:with-param name="BackupName">IRS8938FFAForeignAddressPostalCd
+										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/ForeignAddress/CountryCd"/>
+										<xsl:with-param name="BackupName">IRS8938FFAForeignAddressCountryCd
 									</xsl:with-param>
 									</xsl:call-template>,
 								<span style="width:2px;"/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/ForeignAddress/CountryCd"/>
-										<xsl:with-param name="BackupName">IRS8938FFAForeignAddressCountry
+										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/ForeignAddress/ForeignPostalCd"/>
+										<xsl:with-param name="BackupName">IRS8938FFAForeignAddressPostalCd
 									</xsl:with-param>
 									</xsl:call-template>
 								</xsl:if>
@@ -3401,7 +3407,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 						<!--PART V  Line 9  End of City, state and country-->
 					</xsl:if>
 					<!--PART V REPEATING INFORMATION  Start of Foreign Deposit and Custodial Accounts-->
-					<xsl:if test="(count($FormData/ForeignFinclAccountGrp) &gt;= 1) and ($Print != $Separated)">
+					<xsl:if test="(count($FormData/ForeignFinclAccountGrp) &gt;= 1) and ($Print != $Separated) or ((count($FormData/ForeignFinclAccountGrp) = 1) and ($Print = $Separated))">
 						<xsl:for-each select="$FormData/ForeignFinclAccountGrp">
 							<xsl:choose>
 								<xsl:when test="position()>=2">
@@ -3492,7 +3498,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								</div>
 								<div style="width:65mm;float:left;clear:none;">
 									<!--PART V REPEATING INFORMATION  Start of Deposit Account Type Ind-->
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="DepositAccountTypeInd"/>
 											<xsl:with-param name="BackupName">IRS8938FFA-RDepositAccountTypeInd<xsl:number value="position()"/></xsl:with-param>
@@ -3509,7 +3515,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<!--PART V REPEATING INFORMATION  End of Deposit Account Type Ind-->
 									<span style="width:8mm;"/>
 									<!--PART V REPEATING INFORMATION  Start of Custodial Account Type Ind-->
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="CustodialAccountTypeInd"/>
 											<xsl:with-param name="BackupName">IRS8938FFA-RCustodialAccountTypeInd<xsl:number value="position()"/></xsl:with-param>
@@ -3565,7 +3571,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:61mm;">
 										<b>a</b>
 								<!--		<span style="width:.5mm;"/>  -->
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AccountOpenedDuringTaxYearInd"/>
 												<xsl:with-param name="BackupName">IRS8938FFA-RAccountOpenedDuringTaxYearInd<xsl:number value="position()"/></xsl:with-param>
@@ -3587,7 +3593,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:87mm;">
 										<b>b</b>
 										<span style="width:.5mm;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AccountClosedDuringTaxYearInd"/>
 												<xsl:with-param name="BackupName">IRS8938FFA-RAccountClosedDuringTaxYearInd<xsl:number value="position()"/></xsl:with-param>
@@ -3613,7 +3619,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<span style="padding-right:38mm;"/>
 										<b>c</b>
 										<span style="width:0mm;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="JointlyOwnedWithSpouseInd"/>
 												<xsl:with-param name="BackupName">IRS8938FFA-RJointlyOwnedWithSpouseInd<xsl:number value="position()"/></xsl:with-param>
@@ -3636,7 +3642,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<span style="padding-right:4mm;"/>
 										<b>d</b>
 										<span style="width:.5mm;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
 												<xsl:with-param name="BackupName">IRS8938FFA-RNoTaxItemReportedInd<xsl:number value="position()"/></xsl:with-param>
@@ -3691,13 +3697,14 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="Exchange Rate Used Ind Yes" class="styCkbox">
+									<input type="checkbox"  class="styCkbox" alt="Exchange Rate Used Indicator Yes" >
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
 											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									</span>
+																		
 									<span>
 									<span style="width:5px;"/>
 									<label>
@@ -3711,11 +3718,11 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<!--PART V REPEATING INFORMATION  End of Exchange Rate Used Ind "Yes"-->
 									<span style="width:10px;"/>
 									<!--PART V REPEATING INFORMATION  Start of Exchange Rate Used Ind "No"-->
-									<span>
+								<span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
 									</xsl:call-template>
-								<input type="checkbox" alt="Exchange Rate Used Ind No" class="styCkbox">
+								<input type="checkbox"  class="styCkbox"  alt="Exchange Rate Used Indicator No">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
 											<xsl:with-param name="BackupName">IRS8938FFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
@@ -3965,14 +3972,14 @@ trust. (See instructions for definitions and what to do if you have more than on
 										</xsl:call-template>,
 						<span style="width:2px;"/>
 										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RForeignAddressPostalCd
+											<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
+											<xsl:with-param name="BackupName">IRS8938FFA-RForeignAddressCountryCd
 							</xsl:with-param>
 										</xsl:call-template>,
 						<span style="width:2px;"/>
 										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
-											<xsl:with-param name="BackupName">IRS8938FFA-RForeignAddressCountry
+											<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
+											<xsl:with-param name="BackupName">IRS8938FFA-RForeignAddressPostalCd
 							</xsl:with-param>
 										</xsl:call-template>
 									</xsl:if>
@@ -3988,7 +3995,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 					<!--PART V REPEATING INFORMATION   End of Foreign Deposit and Custodial Accounts-->
 					<!--SEE ADDITIONAL TABLE MESSAGE WHEN PART V REPEATING INFORMATION
         FOR FOREIGN DEPOSIT AND CUSTODIAL ACCOUNTS IS GREATER THAN 1 ITEM-->
-					<xsl:if test="(count($FormData/ForeignFinclAccountGrp) &gt;= 1) and ($Print = $Separated)">
+					<xsl:if test="(count($FormData/ForeignFinclAccountGrp) &gt;= 2) and ($Print = $Separated)">
 						<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE
          Start of Foreign Deposit and Custodial Accounts-->
 						<div class="styBB" style="width:187mm;padding-top:2.5mm;"/>
@@ -4024,7 +4031,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div style="width:65mm;float:left;clear:none;">
 									<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE
                      Start of  Deposit Account Type Ind-->
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="DepositAccountTypeInd"/>
 											<xsl:with-param name="BackupName">IRS8938FFA-ATMDepositAccountTypeInd
@@ -4047,7 +4054,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<span style="width:8mm;"/>
 									<!--PART V REPEATING INFORMATION ADDITIONAL TABLE MESSAGE
                          Start of Custodial Account Type Ind-->
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="CustodialAccountTypeInd"/>
 											<xsl:with-param name="BackupName">IRS8938FFA-ATMCustodialAccountTypeInd
@@ -4103,7 +4110,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:60mm;">
 										<b>a</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AccountOpenedDuringTaxYearInd"/>
 												<xsl:with-param name="BackupName">IRS8938FFA-ATMAccountOpenedDuringTaxYearInd
@@ -4129,7 +4136,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:87mm;">
 										<b>b</b>
 										<span style="width:.5mm;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AccountClosedDuringTaxYearInd"/>
 												<xsl:with-param name="BackupName">IRS8938FFA-ATMAccountClosedDuringTaxYearInd
@@ -4159,7 +4166,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<span style="padding-right:38mm;"/>
 										<b>c</b>
 										<span style="width:1mm;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="JointlyOwnedWithSpouseInd"/>
 												<xsl:with-param name="BackupName">IRS8938FFA-ATMJointlyOwnedWithSpouseInd
@@ -4186,7 +4193,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<span style="padding-right:3mm;"/>
 										<b>d</b>
 											<span style="width:.5mm;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
 												<xsl:with-param name="BackupName">IRS8938FFA-ATMNoTaxItemReportedInd
@@ -4245,7 +4252,7 @@ trust. (See instructions for definitions and what to do if you have more than on
                                   <xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="Exchange Rate Used Ind Yes" class="styCkbox">
+									<input type="checkbox"  class="styCkbox" alt="Exchange Rate Used Indicator Yes" >
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
 											<xsl:with-param name="BackupName">IRS8938FFA-ATMExchangeRateUsedInd
@@ -4275,8 +4282,7 @@ trust. (See instructions for definitions and what to do if you have more than on
                               <xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="Exchange Rate Used Ind No" class="styCkbox">
-																		
+									<input type="checkbox"  class="styCkbox"  alt="Exchange Rate Used Indicator No">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
 											<xsl:with-param name="BackupName">IRS8938FFA-ATMExchangeRateUsedInd
@@ -4581,7 +4587,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/JointlyOwnedWithSpouseInd"/>
 									</xsl:call-template>
 									<span style="width:2mm"/>
-									<input type="Checkbox" alt="Jointly Owned With SpouseInd" class="styCkbox">
+									<input type="checkbox" alt="Jointly Owned With SpouseInd" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/JointlyOwnedWithSpouseInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFAJointlyOwnedWithSpouseInd</xsl:with-param>
@@ -4609,7 +4615,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/NoTaxItemReportedInd"/>
 									</xsl:call-template>
-									<input type="Checkbox" alt="No TaxItem Reported Ind" class="styCkbox">
+									<input type="checkbox" alt="No TaxItem Reported Ind" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/NoTaxItemReportedInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFANoTaxItemReportedInd</xsl:with-param>
@@ -4648,7 +4654,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDuringTY0To50000Ind"/>
 									</xsl:call-template>
-									<input type="Checkbox" alt="Max Value DuringTY 0 To 50000Ind" class="styCkbox">
+									<input type="checkbox" alt="Max Value DuringTY 0 To 50000Ind" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDuringTY0To50000Ind"/>
 											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDuringTY0To50000Ind</xsl:with-param>
@@ -4676,7 +4682,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY50001To100000Ind"/>
 									</xsl:call-template>
-									<input type="Checkbox" alt="Max Value DurTY 50001 To 100000 Ind" class="styCkbox">
+									<input type="checkbox" alt="Max Value DurTY 50001 To 100000 Ind" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY50001To100000Ind"/>
 											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY50001To100000Ind</xsl:with-param>
@@ -4704,7 +4710,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY100001To150000Ind"/>
 									</xsl:call-template>
-									<input type="Checkbox" alt="Max Value Dur TY 100001 To 150000 Ind" class="styCkbox">
+									<input type="checkbox" alt="Max Value Dur TY 100001 To 150000 Ind" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY100001To150000Ind"/>
 											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY100001To150000Ind</xsl:with-param>
@@ -4731,7 +4737,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY150001To200000Ind"/>
 									</xsl:call-template>
-									<input type="Checkbox" alt="Max Value DurTY 150001 To 200000 Ind" class="styCkbox">
+									<input type="checkbox" alt="Max Value DurTY 150001 To 200000 Ind" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/MaxValueDurTY150001To200000Ind"/>
 											<xsl:with-param name="BackupName">IRS8938OFAMaxValueDurTY150001To200000Ind</xsl:with-param>
@@ -4790,7 +4796,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 									</xsl:call-template>
-								<input type="checkbox" alt="Exchange Rate UsedInd Yes" class="styCkbox">
+								<input type="checkbox"  class="styCkbox"  alt="Exchange Rate Used Indicator Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 										<xsl:with-param name="BackupName">IRS8938OFAExchangeRateUsedInd</xsl:with-param>
@@ -4814,7 +4820,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 									</xsl:call-template>
-							<input type="checkbox" alt="Exchange Rate Used Ind No" class="styCkbox">
+							<input type="checkbox"  class="styCkbox"  alt="Exchange Rate Used Indicator No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 										<xsl:with-param name="BackupName">IRS8938OFAExchangeRateUsedInd</xsl:with-param>
@@ -4946,7 +4952,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/PartnershipInd"/>
 									</xsl:call-template>
-								<input type="Checkbox" alt="Partnership Ind" class="styCkbox">
+								<input type="checkbox" alt="Partnership Ind" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/PartnershipInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFAPartnershipInd</xsl:with-param>
@@ -4975,7 +4981,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/CorporationInd"/>
 									</xsl:call-template>
-								<input type="Checkbox" alt="Corporation Ind" class="styCkbox">
+								<input type="checkbox" alt="Corporation Ind" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/CorporationInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFACorporationInd</xsl:with-param>
@@ -5003,7 +5009,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/TrustInd"/>
 									</xsl:call-template>
-								<input type="Checkbox" alt="Trust Ind" class="styCkbox">
+								<input type="checkbox" alt="Trust Ind" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/TrustInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFATrustInd</xsl:with-param>
@@ -5031,7 +5037,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/EstateInd"/>
 									</xsl:call-template>
-								<input type="Checkbox" alt="Estate Ind" class="styCkbox">
+								<input type="checkbox" alt="Estate Ind" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/EstateInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFAEstateInd</xsl:with-param>
@@ -5127,14 +5133,14 @@ trust. (See instructions for definitions and what to do if you have more than on
 										</xsl:call-template>,
 						<span style="width:2px;"/>
 										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ForeignAddress/ForeignPostalCd"/>
-											<xsl:with-param name="BackupName">IRS8938OFAForeignAddressZip
+											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ForeignAddress/CountryCd"/>
+											<xsl:with-param name="BackupName">IRS8938OFAForeignAddressCountryCd
 							</xsl:with-param>
 										</xsl:call-template>,
 						<span style="width:2px;"/>
 										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ForeignAddress/CountryCd"/>
-											<xsl:with-param name="BackupName">IRS8938OFAForeignAddressCountry
+											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ForeignAddress/ForeignPostalCd"/>
+											<xsl:with-param name="BackupName">IRS8938OFAForeignAddressZip
 							</xsl:with-param>
 										</xsl:call-template>
 									</xsl:if>
@@ -5184,7 +5190,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div style="width:187mm;padding-left:10mm;font-size:8pt;height:8mm;">
 									<div class="styLNDesc" style="width:50.5mm;">Check if information is for</div>
 									<div class="styLNDesc" style="width:35mm;">
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="IssuerInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ANSIssuerInd</xsl:with-param>
@@ -5200,7 +5206,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 						</label>
 									</div>
 									<div class="styLNDesc" style="width:35.5mm;">
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="CounterpartyInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ANSCounterpartyInd</xsl:with-param>
@@ -5227,7 +5233,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:35mm;">
 										<b>(1)</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="IndividualInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ANSIndividualInd</xsl:with-param>
@@ -5247,7 +5253,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:31.5mm;">
 										<b>(2)</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="PartnershipInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ANSPartnershipInd</xsl:with-param>
@@ -5267,7 +5273,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:35mm;">
 										<b>(3)</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="CorporationInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ANSCorporationInd</xsl:with-param>
@@ -5287,7 +5293,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:25mm;">
 										<b>(4)</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="TrustInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ANSTrustInd</xsl:with-param>
@@ -5306,7 +5312,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:25mm;">
 										<b>(5)</b>
 										<span style="width:4px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="EstateInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ANSEstateInd</xsl:with-param>
@@ -5331,7 +5337,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:55mm;padding-left:2mm;">Check if issuer or counterparty is a
 					</div>
 									<div class="styLNDesc" style="width:30.5mm;">
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="USPersonInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ANSUSPersonInd</xsl:with-param>
@@ -5347,7 +5353,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 						</label>
 									</div>
 									<div class="styLNDesc" style="width:40mm;padding-left:2mm;">
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="ForeignPersonInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ANSForeignPersonInd</xsl:with-param>
@@ -5431,11 +5437,11 @@ trust. (See instructions for definitions and what to do if you have more than on
 											</xsl:call-template>,
 							<span style="width:2px;"/>
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
+												<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
 											</xsl:call-template>,
 							<span style="width:2px;"/>
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
+												<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
 											</xsl:call-template>
 										</xsl:if>
 									</div>
@@ -5499,7 +5505,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div style="width:187mm;padding-left:10mm;font-size:8pt;height:8mm">
 										<div class="styLNDesc" style="width:50.5mm;">Check if information is for</div>
 										<div class="styLNDesc" style="width:35mm;">
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="IssuerInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-ANSIssuerInd</xsl:with-param>
@@ -5515,7 +5521,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 							</label>
 										</div>
 										<div class="styLNDesc" style="width:35.5mm;">
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="CounterpartyInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-ANSCounterpartyInd</xsl:with-param>
@@ -5542,7 +5548,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:35mm;">
 											<b>(1)</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="IndividualInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-ANSIndividualInd</xsl:with-param>
@@ -5562,7 +5568,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:30mm;">
 											<b>(2)</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="PartnershipInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-ANSPartnershipInd</xsl:with-param>
@@ -5582,7 +5588,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:35mm;">
 											<b>(3)</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="CorporationInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-ANSCorporationInd</xsl:with-param>
@@ -5602,7 +5608,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:25mm;">
 											<b>(4)</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="TrustInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-ANSTrustInd</xsl:with-param>
@@ -5621,7 +5627,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:25mm;">
 											<b>(5)</b>
 											<span style="width:4px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="EstateInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-ANSEstateInd</xsl:with-param>
@@ -5647,7 +5653,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:55mm;padding-left:2mm;">Check if issuer or counterparty is a
 						</div>
 										<div class="styLNDesc" style="width:30.5mm;">
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="USPersonInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-ANSUSPersonInd</xsl:with-param>
@@ -5663,7 +5669,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 							</label>
 										</div>
 										<div class="styLNDesc" style="width:40mm;padding-left:2mm;">
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="ForeignPersonInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-ANSForeignPersonInd</xsl:with-param>
@@ -5747,11 +5753,11 @@ trust. (See instructions for definitions and what to do if you have more than on
 												</xsl:call-template>,
 								<span style="width:2px;"/>
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
+													<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
 												</xsl:call-template>,
 								<span style="width:2px;"/>
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
+													<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
 												</xsl:call-template>
 											</xsl:if>
 										</div>
@@ -5771,7 +5777,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 					<!--PART VI  End of Other Foreign Assets Continued-->
 					<!--PART VI REPEATING INFORMATION  Start of Other Foreign Assets 
         (see instructions) Lines 1-5-->
-					<xsl:if test="(count($FormData/OtherForeignAssetGrp) &gt;= 1) and ($Print != $Separated)">
+					<xsl:if test="(count($FormData/OtherForeignAssetGrp) &gt;= 1) and ($Print != $Separated) or ((count($FormData/OtherForeignAssetGrp) = 1) and ($Print = $Separated))">
 						<xsl:for-each select="$FormData/OtherForeignAssetGrp">
 							<xsl:choose>
 								<xsl:when test="position()=1">
@@ -5990,7 +5996,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div style="width:187mm;">
 									<div class="styLNLeftLtrBox" style="padding-left:4mm;">c</div>
 									<div class="styLNDesc" style="width:68mm;padding-left:2mm;">
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="JointlyOwnedWithSpouseInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-RJointlyOwnedWithSpouseInd<xsl:number value="position()"/></xsl:with-param>
@@ -6010,7 +6016,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:110mm;padding-left:2mm;">
 										<b>d</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-RNoTaxItemReportedInd<xsl:number value="position()"/></xsl:with-param>
@@ -6042,7 +6048,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div style="width:187mm;">
 									<div class="styLNLeftLtrBox" style="padding-left:4mm;">a</div>
 									<div class="styLNDesc" style="width:35mm;padding-left:2mm;">
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MaxValueDuringTY0To50000Ind"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDuringTY0To50000Ind<xsl:number value="position()"/></xsl:with-param>
@@ -6064,7 +6070,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:45mm;padding-left:2mm;">
 										<b>b</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY50001To100000Ind"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY50001To100000Ind<xsl:number value="position()"/></xsl:with-param>
@@ -6086,7 +6092,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:50mm;padding-left:2mm;">
 										<b>c</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY100001To150000Ind"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY100001To150000Ind<xsl:number value="position()"/></xsl:with-param>
@@ -6108,7 +6114,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:45mm;padding-left:2mm;">
 										<b>d</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY150001To200000Ind"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-RMaxValueDurTY150001To200000Ind<xsl:number value="position()"/></xsl:with-param>
@@ -6160,44 +6166,45 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<!--Start of Exchange Rate Used Ind "Yes"-->
 									<span>
 									<xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$FormData/ExchangeRateUsedInd"/>
+									<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 								</xsl:call-template>
-									<input type="Checkbox" alt="Exchange Rate Used Indicator Yes" class="styCkbox">
+									<input type="checkbox"  class="styCkbox"  alt="Exchange Rate Used Indicator Yes">
 										<xsl:call-template name="PopulateYesCheckbox">
-											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									</span>
-									<span>
+<span>
 									<span style="width:5px;"/>
 									<label>
 																			<xsl:call-template name="PopulateLabelYes">
-											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 							Yes
 						</label>
-						</span>
-						<span>
-									<!--PART VI REPEATING INFORMATION  End of Exchange Rate Used Ind "Yes"-->
+						</span>						
+<!--PART VI REPEATING INFORMATION  End of Exchange Rate Used Ind "Yes"-->
 									<span style="width:5px;"/>
 									<!--PART VI REPEATING INFORMATION  Start of Exchange Rate Used Ind "No"-->
+									<span>
 									<xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$FormData/ExchangeRateUsedInd"/>
+									<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 								</xsl:call-template>
-									<input type="Checkbox" alt="Exchange Rate Used Indicator No" class="styCkbox">
+									<input type="checkbox"  class="styCkbox"  alt="Exchange Rate Used Indicator No">
 										<xsl:call-template name="PopulateNoCheckbox">
-											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 									</input>
 									</span>
+									<span style="width:5px;"/>
 									<span>
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
-											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-RExchangeRateUsedInd<xsl:number value="position()"/></xsl:with-param>
 										</xsl:call-template>
 							No
@@ -6323,7 +6330,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div class="styLNDesc" style="width:35mm;">
 									<b>(1)</b>
 									<span style="width:5px;"/>
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="PartnershipInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-RPartnershipInd<xsl:number value="position()"/></xsl:with-param>
@@ -6344,7 +6351,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div class="styLNDesc" style="width:35mm;">
 									<b>(2)</b>
 									<span style="width:5px;"/>
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="CorporationInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-RCorporationInd<xsl:number value="position()"/></xsl:with-param>
@@ -6365,7 +6372,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div class="styLNDesc" style="width:35mm;">
 									<b>(3)</b>
 									<span style="width:5px;"/>
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="TrustInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-RTrustInd<xsl:number value="position()"/></xsl:with-param>
@@ -6386,7 +6393,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div class="styLNDesc" style="width:35mm;">
 									<b>(4)</b>
 									<span style="width:5px;"/>
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="EstateInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-REstateInd<xsl:number value="position()"/></xsl:with-param>
@@ -6469,11 +6476,11 @@ trust. (See instructions for definitions and what to do if you have more than on
 										</xsl:call-template>,
 						<span style="width:2px;"/>
 										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
+											<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
 										</xsl:call-template>,
 						<span style="width:2px;"/>
 										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
+											<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
 										</xsl:call-template>
 									</xsl:if>
 								</div>
@@ -6523,7 +6530,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div style="width:187mm;padding-left:10mm;font-size:8pt">
 									<div class="styLNDesc" style="width:50.5mm;">Check if information is for</div>
 									<div class="styLNDesc" style="width:35mm;">
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="IssuerInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IssuerInd<xsl:number value="position()"/></xsl:with-param>
@@ -6539,7 +6546,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 						</label>
 									</div>
 									<div class="styLNDesc" style="width:35.5mm;">
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="CounterpartyInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CounterpartyInd<xsl:number value="position()"/></xsl:with-param>
@@ -6567,7 +6574,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:47.3mm;">
 										<b>(1)</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/IndividualInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IndividualInd<xsl:number value="position()"/></xsl:with-param>
@@ -6587,7 +6594,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:32.5mm;">
 										<b>(2)</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/PartnershipInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>PartnershipInd<xsl:number value="position()"/></xsl:with-param>
@@ -6607,7 +6614,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:35mm;">
 										<b>(3)</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/CorporationInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CorporationInd<xsl:number value="position()"/></xsl:with-param>
@@ -6627,7 +6634,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:37mm;">
 										<b>(4)</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/TrustInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>TrustInd<xsl:number value="position()"/></xsl:with-param>
@@ -6646,7 +6653,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:20mm;">
 										<b>(5)</b>
 										<span style="width:4px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/EstateInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>EstateInd<xsl:number value="position()"/></xsl:with-param>
@@ -6673,7 +6680,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 					  Check if issuer or counterparty is a
 					</div>
 									<div class="styLNDesc" style="width:30.5mm;">
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/USPersonInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>USPersonInd<xsl:number value="position()"/></xsl:with-param>
@@ -6689,7 +6696,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 						</label>
 									</div>
 									<div class="styLNDesc" style="width:40mm;padding-left:2mm;">
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/ForeignPersonInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>ForeignPersonInd<xsl:number value="position()"/></xsl:with-param>
@@ -6774,11 +6781,11 @@ trust. (See instructions for definitions and what to do if you have more than on
 											</xsl:call-template>,
 							<span style="width:2px;"/>
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
+												<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
 											</xsl:call-template>,
 							<span style="width:2px;"/>
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
+												<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
 											</xsl:call-template>
 										</xsl:if>
 									</div>
@@ -6845,7 +6852,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div style="width:187mm;padding-left:10mm;font-size:8pt">
 										<div class="styLNDesc" style="width:50.5mm;">Check if information is for</div>
 										<div class="styLNDesc" style="width:35mm;">
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="IssuerInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IssuerInd<xsl:number value="position()"/></xsl:with-param>
@@ -6861,7 +6868,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 							</label>
 										</div>
 										<div class="styLNDesc" style="width:35.5mm;">
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="CounterpartyInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CounterpartyInd<xsl:number value="position()"/></xsl:with-param>
@@ -6890,7 +6897,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:47.3mm;">
 											<b>(1)</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="IndividualInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>IndividualInd<xsl:number value="position()"/></xsl:with-param>
@@ -6910,7 +6917,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:32.5mm;">
 											<b>(2)</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="PartnershipInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>PartnershipInd<xsl:number value="position()"/></xsl:with-param>
@@ -6930,7 +6937,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:35mm;">
 											<b>(3)</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="CorporationInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>CorporationInd<xsl:number value="position()"/></xsl:with-param>
@@ -6950,7 +6957,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:32mm;">
 											<b>(4)</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="TrustInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>TrustInd<xsl:number value="position()"/></xsl:with-param>
@@ -6969,7 +6976,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:25mm;">
 											<b>(5)</b>
 											<span style="width:4px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="EstateInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>EstateInd<xsl:number value="position()"/></xsl:with-param></xsl:call-template>
@@ -6995,7 +7002,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 						  counterparty is a
 						</div>
 										<div class="styLNDesc" style="width:30.5mm;">
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="USPersonInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>USPersonInd<xsl:number value="position()"/></xsl:with-param>
@@ -7011,7 +7018,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 							</label>
 										</div>
 										<div class="styLNDesc" style="width:40mm;padding-left:2mm;">
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="ForeignPersonInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-R-ANS-R<xsl:number value="$pos"/>ForeignPersonInd<xsl:number value="position()"/></xsl:with-param>
@@ -7097,11 +7104,11 @@ trust. (See instructions for definitions and what to do if you have more than on
 												</xsl:call-template>,
 								<span style="width:2px;"/>
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
+													<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
 												</xsl:call-template>,
 								<span style="width:2px;"/>
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
+													<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
 												</xsl:call-template>
 											</xsl:if>
 										</div>
@@ -7126,7 +7133,7 @@ trust. (See instructions for definitions and what to do if you have more than on
          FOR OTHER FOREIGN ASSETS IS GREATER THAN 1 ITEM-->
 					<!--PART VI REPEATING ADDITIONAL TABLE MESSAGE  Start of Other Foreign Assets
         (see instructions) Lines 1-5-->
-					<xsl:if test="(count($FormData/OtherForeignAssetGrp) &gt;= 1) and ($Print = $Separated)">
+					<xsl:if test="(count($FormData/OtherForeignAssetGrp) &gt;= 2) and ($Print = $Separated)">
 						<div style="font-size:8pt">
 							<!-- PART VI REPEATING-SEPARATED ADDITIONAL TABLE MESSAGE  BEGIN TITLE -->
 							<div class="styBB" style="width:187mm"/>
@@ -7230,7 +7237,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div style="width:187mm;height:8mm;">
 									<div class="styLNLeftLtrBox" style="padding-left:4mm;">c</div>
 									<div class="styLNDesc" style="width:70mm;padding-left:2mm;">
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="JointlyOwnedWithSpouseInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ATMJointlyOwnedWithSpouseInd
@@ -7256,7 +7263,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:105mm;padding-left:2mm;">
 										<b>d</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ATMNoTaxItemReportedInd
@@ -7293,7 +7300,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div style="width:187mm;">
 									<div class="styLNLeftLtrBox" style="padding-left:4mm;">a</div>
 									<div class="styLNDesc" style="width:35mm;padding-left:2mm;">
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MaxValueDuringTY0To50000Ind"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ATMMaxValueDuringTY0To50000Ind
@@ -7319,7 +7326,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:45mm;padding-left:2mm;">
 										<b>b</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY50001To100000Ind"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ATMMaxValueDurTY50001To100000Ind
@@ -7345,7 +7352,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:50mm;padding-left:2mm;">
 										<b>c</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY100001To150000Ind"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ATMMaxValueDurTY100001To150000Ind
@@ -7371,7 +7378,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:45mm;padding-left:2mm;">
 										<b>d</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MaxValueDurTY150001To200000Ind"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-ATMMaxValueDurTY150001To200000Ind
@@ -7426,11 +7433,11 @@ trust. (See instructions for definitions and what to do if you have more than on
                          Start of Exchange Rate Used Ind "Yes"-->
                          <span>
 									<xsl:call-template name="PopulateSpan">
-										<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="Exchange Rate Used Ind Yes" class="styCkbox">
+									<input type="checkbox"  class="styCkbox"  alt="Exchange Rate Used Indicator Yes">
 										<xsl:call-template name="PopulateYesCheckbox">
-											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 											<xsl:with-param name="BackupName">IRS8938FFA-ATMExchangeRateUsedInd
 								<xsl:number value="position()"/>
 											</xsl:with-param>
@@ -7441,7 +7448,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
-											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 											<xsl:with-param name="BackupName">IRS8938FFA-ATMExchangeRateUsedInd
 								<xsl:number value="position()"/>
 											</xsl:with-param>
@@ -7456,12 +7463,12 @@ trust. (See instructions for definitions and what to do if you have more than on
                         Start of Exchange Rate Used Ind "No"-->
                          <span>
 									<xsl:call-template name="PopulateSpan">
-										<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="Exchange Rate Used Ind No" class="styCkbox">
+									<input type="checkbox"  class="styCkbox"  alt="Exchange Rate Used Indicator No">
 																		
 										<xsl:call-template name="PopulateNoCheckbox">
-											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 											<xsl:with-param name="BackupName">IRS8938FFA-ATMExchangeRateUsedInd
 								<xsl:number value="position()"/>
 											</xsl:with-param>
@@ -7472,8 +7479,8 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<span style="width:5px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
-											<xsl:with-param name="TargetNode" select="ExchangeRateUsedInd"/>
-											<xsl:with-param name="BackupName">IRS8938OFA-ATMExchangeRateUsedInd
+											<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
+											<xsl:with-param name="BackupName">IRS8938FFA-ATMExchangeRateUsedInd
 							<xsl:number value="position()"/>
 											</xsl:with-param>
 										</xsl:call-template>
@@ -7593,7 +7600,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div class="styLNDesc" style="width:35mm;">
 									<b>(1)</b>
 									<span style="width:5px;"/>
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="PartnershipInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-ATMPartnershipInd
@@ -7620,7 +7627,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div class="styLNDesc" style="width:35mm;">
 									<b>(2)</b>
 									<span style="width:5px;"/>
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="CorporationInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-ATMCorporationInd
@@ -7647,7 +7654,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div class="styLNDesc" style="width:35mm;">
 									<b>(3)</b>
 									<span style="width:5px;"/>
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="TrustInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-ATMTrustInd<xsl:number value="position()"/>
@@ -7672,7 +7679,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div class="styLNDesc" style="width:35mm;">
 									<b>(4)</b>
 									<span style="width:5px;"/>
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="EstateInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-ATMEstateInd
@@ -7757,7 +7764,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 							<div style="width:187mm;padding-left:10mm;">
 								<div class="styLNDesc" style="width:50.5mm;">Check if information is for</div>
 								<div class="styLNDesc" style="width:35mm;">
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="IssuerInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-ATMIssuerInd
@@ -7777,7 +7784,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 						</label>
 								</div>
 								<div class="styLNDesc" style="width:35.5mm;">
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="CounterpartyInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-ATMCounterpartyInd
@@ -7810,7 +7817,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div class="styLNDesc" style="width:47.3mm;">
 									<b>(1)</b>
 									<span style="width:5px;"/>
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="IndividualInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-ATMIndividualInd
@@ -7836,7 +7843,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div class="styLNDesc" style="width:32.5mm;">
 									<b>(2)</b>
 									<span style="width:5px;"/>
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="PartnershipInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-ATMPartnershipInd
@@ -7862,7 +7869,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div class="styLNDesc" style="width:35mm;">
 									<b>(3)</b>
 									<span style="width:5px;"/>
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="CorporationInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-ATMCorporationInd
@@ -7888,7 +7895,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div class="styLNDesc" style="width:37mm;">
 									<b>(4)</b>
 									<span style="width:5px;"/>
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="TrustInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-ATMTrustInd
@@ -7912,7 +7919,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div class="styLNDesc" style="width:25mm;">
 									<b>(5)</b>
 									<span style="width:4px;"/>
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="EstateInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-ATMEstateInd
@@ -7943,7 +7950,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 								<div class="styLNDesc" style="width:55mm;padding-left:2mm;">
 					 Check if issuer or counterparty is a</div>
 								<div class="styLNDesc" style="width:30.5mm;">
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="USPersonInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-ATMUSPersonInd
@@ -7963,7 +7970,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 						</label>
 								</div>
 								<div class="styLNDesc" style="width:40mm;padding-left:2mm;">
-									<input type="Checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="ForeignPersonInd"/>
 											<xsl:with-param name="BackupName">IRS8938OFA-ATMForeignPersonInd
@@ -8052,14 +8059,14 @@ trust. (See instructions for definitions and what to do if you have more than on
 					<!--OPTIONAL SEPARATED PRINT FOR REPEATING DATA TABLE FOR PART V LINES 1 - 9 -->
 					<!--PART V SEPARATED PRINT  Start of Foreign Deposit and Custodial Accounts-->
 					<div style="font-size:8pt;">
-						<xsl:if test="(count($FormData/ForeignFinclAccountGrp) &gt;= 1) and ($Print = $Separated)">
+						<xsl:if test="(count($FormData/ForeignFinclAccountGrp) &gt;= 2) and ($Print = $Separated)">
 							<span class="styRepeatingDataTitle" style="font-weight:bold; font-size:10pt;">
 								Part V Detailed Information for Each Foreign Deposit and Custodial Account Lines 1-9</span>
 							<br/>
 							<br/>
 							<xsl:for-each select="$FormData/ForeignFinclAccountGrp">
 								<xsl:choose>
-									<xsl:when test="position()>=2">
+									<xsl:when test="position()>=1">
 									<p style="page-break-before: always" /> 
 
 										<div style="width:187mm;font-size:8pt;border-bottom:1px solid black;">
@@ -8128,7 +8135,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									</div>
 									<div style="width:65mm;float:left;clear:none;">
 										<!--PART V SEPARATED PRINT  Start of Deposit Account Type Ind-->
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="DepositAccountTypeInd"/>
 												<xsl:with-param name="BackupName">IRS8938FFA-SEPDepositAccountTypeInd
@@ -8149,7 +8156,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<!--PART V SEPARATED PRINT  End of Deposit Account Type Ind-->
 										<span style="width:8mm;"/>
 										<!--PART V SEPARATED PRINT  Start of Custodial Account Type Ind-->
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="CustodialAccountTypeInd"/>
 												<xsl:with-param name="BackupName">IRS8938FFA-SEPCustodialAccountTypeInd
@@ -8205,7 +8212,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:58mm;padding-left:2mm;">
 											<b>a</b>
 											<span style="width:1mm;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="AccountOpenedDuringTaxYearInd"/>
 													<xsl:with-param name="BackupName">IRS8938FFA-SEPAccountOpenedDuringTaxYearInd
@@ -8229,7 +8236,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:87mm;padding-left:6mm;">
 											<b>b</b>
 											<span style="width:1mm;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="AccountClosedDuringTaxYearInd"/>
 													<xsl:with-param name="BackupName">IRS8938FFA-SEPAccountClosedDuringTaxYearInd
@@ -8257,7 +8264,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<span style="padding-right:40mm;"/>
 											<b>c</b>
 											<span style="width:.5mm;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="JointlyOwnedWithSpouseInd"/>
 													<xsl:with-param name="BackupName">IRS8938FFA-SEPJointlyOwnedWithSpouseInd
@@ -8281,7 +8288,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:87mm;padding-left:2.5mm;">
 											<b>d</b>
 											<span style="width:1mm;"/>								
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
 													<xsl:with-param name="BackupName">IRS8938FFA-SEPNoTaxItemReportedInd
@@ -8334,11 +8341,11 @@ trust. (See instructions for definitions and what to do if you have more than on
 										
 										<span>
 								<xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
+									<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/ExchangeRateUsedInd"/>
 								</xsl:call-template>
-								<input type="Checkbox" alt="Exchange Rate Used Indicator Yes" class="styCkbox">
+								<input type="checkbox"  class="styCkbox"  alt="Exchange Rate Used Indicator Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/ExchangeRateUsedInd"/>
 										<xsl:with-param name="BackupName">IRS8938FFAExchangeRateUsedInd
 									<xsl:number value="position()"/>
 												</xsl:with-param>
@@ -8349,7 +8356,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabelYes">
-										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/ExchangeRateUsedInd"/>
 												<xsl:with-param name="BackupName">IRS8938FFA-SEPExchangeRateUsedInd
 									<xsl:number value="position()"/>
 												</xsl:with-param>
@@ -8357,16 +8364,16 @@ trust. (See instructions for definitions and what to do if you have more than on
 							Yes
 						</label>
 						</span>
-						<span>
+										<span>
 										<!--PART V SEPARATED PRINT  End of Exchange Rate Used Ind "Yes"-->
 										<span style="width:10px;"/>
 										<!--PART V SEPARATED PRINT  Start of Exchange Rate Used Ind "No"-->
 										<xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
+									<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/ExchangeRateUsedInd"/>
 								</xsl:call-template>
-								<input type="Checkbox" alt="Exchange Rate Used Indicator No" class="styCkbox">
+								<input type="checkbox"  class="styCkbox"  alt="Exchange Rate Used Indicator No">
 									<xsl:call-template name="PopulateNoCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/ExchangeRateUsedInd"/>
 										<xsl:with-param name="BackupName">IRS8938FFAExchangeRateUsedInd
 									<xsl:number value="position()"/>
 												</xsl:with-param>
@@ -8377,8 +8384,8 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<span style="width:5px;"/>
 										<label>
 											<xsl:call-template name="PopulateLabelNo">
-												<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
-										<xsl:with-param name="BackupName">IRS8938FFAExchangeRateUsed
+												<xsl:with-param name="TargetNode" select="$FormData/ForeignFinclAccountGrp/ExchangeRateUsedInd"/>
+										<xsl:with-param name="BackupName">IRS8938FFAExchangeRateUsedInd
 									<xsl:number value="position()"/>
 												</xsl:with-param>
 											</xsl:call-template>
@@ -8408,8 +8415,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 											<span style="font-weight:normal;">
 												<span class="styBoldText">(a)</span>
 						  Foreign currency in which<br/>account is maintained<br/>
-												
-												<xsl:call-template name="PopulateText">
+																								<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="ForeignCurrencyDesc"/>
 													<xsl:with-param name="BackupName">IRS8938FFA-RForeignCurrencyDescTxt</xsl:with-param>
 												</xsl:call-template>
@@ -8584,14 +8590,14 @@ trust. (See instructions for definitions and what to do if you have more than on
 											</xsl:call-template>,
 						<span style="width:2px;"/>
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-SEPForeignAddressPostalCd
+												<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
+												<xsl:with-param name="BackupName">IRS8938FFA-SEPForeignAddressCountryCd
 							</xsl:with-param>
 											</xsl:call-template>,
 						<span style="width:2px;"/>
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
-												<xsl:with-param name="BackupName">IRS8938FFA-SEPForeignAddressCountry
+												<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
+												<xsl:with-param name="BackupName">IRS8938FFA-SEPForeignAddressPostalCd
 							</xsl:with-param>
 											</xsl:call-template>
 										</xsl:if>
@@ -8619,7 +8625,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 							<br/>
 							<xsl:for-each select="$FormData/OtherForeignAssetGrp">
 								<xsl:choose>
-									<xsl:when test="position()>=2">
+									<xsl:when test="position()>=1">
 									<p style="page-break-before: always" /> 
 
 										<div style="width:187mm;font-size:8pt;border-bottom:1px solid black">
@@ -8790,7 +8796,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div style="width:187mm;">
 										<div class="styLNLeftLtrBox" style="padding-left:4mm;">c</div>
 										<div class="styLNDesc" style="width:76mm;padding-left:2mm;">
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="JointlyOwnedWithSpouseInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-SEPJointlyOwnedWithSpouseInd
@@ -8814,7 +8820,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:102mm;">
 											<b>d</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="NoTaxItemReportedInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-SEPNoTaxItemReportedInd
@@ -8850,7 +8856,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div style="width:187mm;height:5mm;">
 										<div class="styLNLeftLtrBox" style="padding-left:4mm;">a</div>
 										<div class="styLNDesc" style="width:35mm;padding-left:2mm;">
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="MaxValueDuringTY0To50000Ind"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-SEPMaxValueDuringTY0To50000Ind
@@ -8876,7 +8882,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:45mm;padding-left:2mm;">
 											<b>b</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="MaxValueDurTY50001To100000Ind"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-SEPMaxValueDurTY50001To100000Ind
@@ -8902,7 +8908,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:50mm;padding-left:2mm;">
 											<b>c</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="MaxValueDurTY100001To150000Ind"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-SEPMaxValueDurTY100001To150000Ind
@@ -8928,7 +8934,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:45mm;padding-left:2mm;">
 											<b>d</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="MaxValueDurTY150001To200000Ind"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-SEPMaxValueDurTY150001To200000Ind
@@ -8980,15 +8986,14 @@ trust. (See instructions for definitions and what to do if you have more than on
 				  padding-top:.7mm;padding-bottom:0mm;">Did you use a foreign currency 
 				  exchange rate to convert the value of the asset into U.S. dollars?
 					<!--Dotted Line-->
-					
-										<span class="styDotLn" style="float:none;clear:none;
+															<span class="styDotLn" style="float:none;clear:none;
 					  padding-right:1mm;">...</span>
 										<!--PART VI SEPARATED PRINT  Start of Exchange Rate Used Ind "Yes"-->
-							<span>			
+										<span>			
 										<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 								</xsl:call-template>
-								<input type="Checkbox" alt="Exchange Rate Used Indicator Yes" class="styCkbox">
+								<input type="checkbox"  class="styCkbox"  alt="Exchange Rate Used Indicator Yes">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 										<xsl:with-param name="BackupName">IRS8938OFA-SEPExchangeRateUsedInd
@@ -9009,14 +9014,14 @@ trust. (See instructions for definitions and what to do if you have more than on
 							Yes
 						</label>
 						</span>
-						<span>	
+										<span>	
 										<!--PART VI SEPARATED PRINT  End of Exchange Rate Used Ind "Yes"-->
 										<span style="width:5px;"/>
 										<!--PART VI SEPARATED PRINT  Start of Exchange Rate Used Ind "No"-->
 										<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 								</xsl:call-template>
-								<input type="Checkbox" alt="Exchange Rate Used Indicator No" class="styCkbox">
+								<input type="checkbox"  class="styCkbox"  alt="Exchange Rate Used Indicator No">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherForeignAssetGrp/ExchangeRateUsedInd"/>
 										<xsl:with-param name="BackupName">RS8938OFA-SEPExchangeRateUsedInd
@@ -9143,8 +9148,7 @@ trust. (See instructions for definitions and what to do if you have more than on
                   </xsl:call-template>
                   </div>
 							</div>
-						
-								</div>	
+														</div>	
 								<!--PART VI SEPARATED PRINT  Line 7a  End of Name of Foreign Entity-->
 								<!--PART VI SEPARATED PRINT  Line 7b  Start of Type of Foreign Entity-->
 								<div style="width:187mm;padding-top:2.5mm;">
@@ -9155,7 +9159,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:35mm;">
 										<b>(1)</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="PartnershipInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-SEPPartnershipInd
@@ -9180,7 +9184,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:35mm;">
 										<b>(2)</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="CorporationInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-SEPCorporationInd
@@ -9205,7 +9209,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:35mm;">
 										<b>(3)</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="TrustInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-SEPTrustInd<xsl:number value="position()"/>
@@ -9228,7 +9232,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div class="styLNDesc" style="width:35mm;">
 										<b>(4)</b>
 										<span style="width:5px;"/>
-										<input type="Checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="EstateInd"/>
 												<xsl:with-param name="BackupName">IRS8938OFA-SEPEstateInd
@@ -9315,11 +9319,11 @@ trust. (See instructions for definitions and what to do if you have more than on
 											</xsl:call-template>,
 						<span style="width:2px;"/>
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
+												<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
 											</xsl:call-template>,
 						<span style="width:2px;"/>
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
+												<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
 											</xsl:call-template>
 										</xsl:if>
 									</div>
@@ -9367,7 +9371,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 									<div style="width:187mm;padding-left:10mm;">
 										<div class="styLNDesc" style="width:50.5mm;">Check if information is for</div>
 										<div class="styLNDesc" style="width:35mm;">
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="IssuerInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSIssuerInd
@@ -9387,7 +9391,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 						</label>
 										</div>
 										<div class="styLNDesc" style="width:35.5mm;">
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="CounterpartyInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSCounterpartyInd
@@ -9419,7 +9423,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:47.3mm;">
 											<b>(1)</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/IndividualInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSIndividualInd
@@ -9443,7 +9447,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:32.5mm;">
 											<b>(2)</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/PartnershipInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSPartnershipInd
@@ -9467,7 +9471,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:35mm;">
 											<b>(3)</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/CorporationInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSCorporationInd
@@ -9491,7 +9495,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:20mm;">
 											<b>(4)</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/TrustInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSTrustInd
@@ -9514,7 +9518,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div class="styLNDesc" style="width:20mm;">
 											<b>(5)</b>
 											<span style="width:5px;"/>
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/EstateInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSEstateInd
@@ -9545,7 +9549,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 					  Check if issuer or counterparty is a
 					</div>
 										<div class="styLNDesc" style="width:30.5mm;">
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/USPersonInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSUSPersonInd
@@ -9565,7 +9569,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 						</label>
 										</div>
 										<div class="styLNDesc" style="width:40mm;padding-left:2mm;">
-											<input type="Checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="AssetNotStockOfForeignEntGrp/ForeignPersonInd"/>
 													<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSForeignPersonInd
@@ -9653,11 +9657,11 @@ trust. (See instructions for definitions and what to do if you have more than on
 												</xsl:call-template>,
 							<span style="width:2px;"/>
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
+													<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
 												</xsl:call-template>,
 							<span style="width:2px;"/>
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
+													<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
 												</xsl:call-template>
 											</xsl:if>
 										</div>
@@ -9726,7 +9730,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 										<div style="width:187mm;padding-left:10mm;">
 											<div class="styLNDesc" style="width:50.5mm;">Check if information is for</div>
 											<div class="styLNDesc" style="width:35mm;">
-												<input type="Checkbox" class="styCkbox">
+												<input type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="IssuerInd"/>
 														<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSIssuerInd
@@ -9746,7 +9750,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 							</label>
 											</div>
 											<div class="styLNDesc" style="width:35.5mm;">
-												<input type="Checkbox" class="styCkbox">
+												<input type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="CounterpartyInd"/>
 														<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSCounterpartyInd
@@ -9778,7 +9782,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 											<div class="styLNDesc" style="width:47.3mm;">
 												<b>(1)</b>
 												<span style="width:5px;"/>
-												<input type="Checkbox" class="styCkbox">
+												<input type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="IndividualInd"/>
 														<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSIndividualInd
@@ -9802,7 +9806,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 											<div class="styLNDesc" style="width:32.5mm;">
 												<b>(2)</b>
 												<span style="width:5px;"/>
-												<input type="Checkbox" class="styCkbox">
+												<input type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="PartnershipInd"/>
 														<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSPartnershipInd
@@ -9826,7 +9830,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 											<div class="styLNDesc" style="width:35mm;">
 												<b>(3)</b>
 												<span style="width:5px;"/>
-												<input type="Checkbox" class="styCkbox">
+												<input type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="CorporationInd"/>
 														<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSCorporationInd
@@ -9850,7 +9854,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 											<div class="styLNDesc" style="width:35mm;">
 												<b>(4)</b>
 												<span style="width:1px;"/>
-												<input type="Checkbox" class="styCkbox">
+												<input type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="TrustInd"/>
 														<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSTrustInd
@@ -9873,7 +9877,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 											<div class="styLNDesc" style="width:25mm;">
 												<b>(5)</b>
 												<span style="width:1px;"/>
-												<input type="Checkbox" class="styCkbox">
+												<input type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="EstateInd"/>
 														<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSEstateInd
@@ -9903,7 +9907,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 											<div class="styLNDesc" style="width:55mm;padding-left:2mm;">
 						  Check if issuer or counterparty is a</div>
 											<div class="styLNDesc" style="width:30.5mm;">
-												<input type="Checkbox" class="styCkbox">
+												<input type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="USPersonInd"/>
 														<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSUSPersonInd
@@ -9923,7 +9927,7 @@ trust. (See instructions for definitions and what to do if you have more than on
 							</label>
 											</div>
 											<div class="styLNDesc" style="width:40mm;padding-left:2mm;">
-												<input type="Checkbox" class="styCkbox">
+												<input type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="ForeignPersonInd"/>
 														<xsl:with-param name="BackupName">IRS8938OFA-SEP-ANSForeignPersonInd
@@ -10013,11 +10017,11 @@ trust. (See instructions for definitions and what to do if you have more than on
 													</xsl:call-template>,
 								<span style="width:2px;"/>
 													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
+														<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
 													</xsl:call-template>,
 								<span style="width:2px;"/>
 													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
+														<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
 													</xsl:call-template>
 												</xsl:if>
 											</div>

@@ -65,7 +65,7 @@
 								<img src="{$ImagePath}/8815_Bullet.gif" width="9" height="9" alt="bullet image"/>
 								Go to <i> www.irs.gov/Form8815</i> for the latest information. <br/>
 								<img src="{$ImagePath}/8815_Bullet.gif" width="9" height="9" alt="bullet image"/>
-								Attach to Form 1040 or Form 1040SR.
+								Attach to Form 1040 or Form 1040-SR.
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:22.2mm;">
@@ -86,29 +86,29 @@
 							<div>
 								Name(s) shown on return
 							</div><br/>
-					 <xsl:choose>
-					    <xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
-							</xsl:call-template>
-					   </xsl:when>	
-					 </xsl:choose>	
-					</div>
+							<xsl:choose>
+								<xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+									</xsl:call-template>
+							   </xsl:when>	
+							</xsl:choose>	
+						</div>
 						<div class="styEINBox" style="width:46mm;height:100%;padding-left:4px;">
 							Your social security number<br/>
 							<span style="width:100%;font-weight:normal;">
-							<xsl:choose>
-							<xsl:when test="$RtnHdrData/Filer/PrimarySSN">
-								<xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-							   </xsl:call-template>
-				   		  </xsl:when>
-					    </xsl:choose>
-      				   </span>
+								<xsl:choose>
+									<xsl:when test="$RtnHdrData/Filer/PrimarySSN">
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+										</xsl:call-template>
+									</xsl:when>
+								</xsl:choose>
+						    </span>
 						</div>
 					  <!--+++++++++++++++++++ Table Toggle Button +++++++++++++++++++-->
 						<!-- button display logic -->
-						<div class="styGenericDiv" style="width:4.2mm;float:right;padding-top:7.55mm;">
+						<div class="styGenericDiv" style="width:4.2mm;float:right;padding-top:7.55mm;clear:none">
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp"/>
 								<xsl:with-param name="containerHeight" select="5"/>
@@ -116,15 +116,18 @@
 							</xsl:call-template>
 						</div>
 						<!-- end button display logic -->
-					</div>					
-					<div class="styTableContainer" id="tblctn">
+					</div>
+					<div class="styTableContainer" id="tblctn" style="display:block">
 						<xsl:call-template name="SetInitialState"/>
-						<table style="width:187mm;border-collapse:collapse;font-size:7pt;float:right;">
+						<table style="width:187mm;border-collapse:collapse;font-size:7pt;float:right;clear:none">
 							<thead>
-								<th scope="col" style="width:91mm;font-weight:normal;border:1px solid black;border-left:none;border-top:none;height:12mm;">
-									<div style="font-weight:bold;float:left;padding-left:6mm;font-size:7pt;padding-top:3mm;">1</div><b>(a)</b><br/>Name of person (you, your spouse, or your dependent) who was <br/>enrolled at or attended an eligible educational institution
+								<th scope="col" style="width:91mm;font-weight:normal;border:1px solid black;border-left:none;
+									border-top:none;height:12mm;">
+									<div style="font-weight:bold;float:left;padding-left:6mm;font-size:7pt;padding-top:3mm;">1</div><b>(a)</b><br/>										Name of person (you, your spouse, or your dependent) who was <br/>enrolled at or attended an eligible
+									   educational institution
 								</th>
-								<th scope="col" style="width:94mm;font-weight:normal;height:auto;border:1px solid black;border-right:none;border-top:none;font-size:7pt;padding-top:0mm;">
+								<th scope="col" style="width:94mm;font-weight:normal;height:auto;border:1px solid black;border-right:none;
+									border-top:none;font-size:7pt;padding-top:0mm;">
 									<b>(b)</b><br/>Name and address of eligible educational institution
 								</th>
 							</thead>
@@ -144,7 +147,7 @@
 											</xsl:otherwise>
 										</xsl:choose>
 									</td>
-								<td style="border:1px solid black;border-right:none;height:18.5mm;width:94mm;">
+									<td style="border:1px solid black;border-right:none;height:18.5mm;width:94mm;">
 										<div style="border-bottom:1px dashed black;height:7.5mm;width:94mm;">
 											<xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/EligibleEducationInstnGrp) &lt; 4)">
 												<xsl:call-template name="PopulateText">
@@ -160,300 +163,289 @@
 												</xsl:call-template>
 											</xsl:if>
 										</div>
-										<div style="height:auto;">
-											<xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/EligibleEducationInstnGrp) &lt; 4)">				
-										<xsl:choose>
-										<xsl:when test="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionUSAddress">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionUSAddress/AddressLine1Txt"/>
-										</xsl:call-template>
-						<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionUSAddress/AddressLine2Txt"/>
-										</xsl:call-template>
-								<br/>
-											<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionUSAddress/CityNm"/>
-												</xsl:call-template><span style="width:2mm;"/>
+										<xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/EligibleEducationInstnGrp) &lt; 4)">				
+											<xsl:choose>
+												<xsl:when test="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionUSAddress">
 													<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionUSAddress/StateAbbreviationCd"/>
-												</xsl:call-template><span style="width:2mm;"/>
-                                    <xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionUSAddress/ZIPCd"/>
-												</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>	
-										
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionFrgnAddress/AddressLine1Txt"/>
-										</xsl:call-template>
-					<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionFrgnAddress/AddressLine2Txt"/>
-										</xsl:call-template>	<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionFrgnAddress/CityNm"/>
-										</xsl:call-template>					<span style="width:2mm;"/>
-                                                 <xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionFrgnAddress/ProvinceOrStateNm"/>
-										</xsl:call-template>	<span style="width:2mm;"/>
-                                                 <xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionFrgnAddress/ForeignPostalCd"/>
-										</xsl:call-template>	<span style="width:2mm;"/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionFrgnAddress/CountryCd"/>
-										</xsl:call-template>		
-								</xsl:otherwise>
-								</xsl:choose>							
-								</xsl:if>
-								
-									
-								
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td style="border:1px solid black;border-left:none;width:93mm;vertical-align:bottom;padding-left:6mm">
-										<xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/EligibleEducationInstnGrp) &lt; 4)">
-											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligiblePersonNm"/>
-											</xsl:call-template>
-										</xsl:if>
-									</td>
-									<td style="border:1px solid black;border-right:none;height:18.5mm;width:94mm;">
-										<div style="border-bottom:1px dashed black;height:7.5mm;width:94mm;">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionUSAddress/AddressLine1Txt"/>
+													</xsl:call-template>
+													<br/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionUSAddress/AddressLine2Txt"/>
+													</xsl:call-template>
+													<br/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionUSAddress/CityNm"/>
+													</xsl:call-template><span style="width:2mm;"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionUSAddress/StateAbbreviationCd"/>
+													</xsl:call-template><span style="width:2mm;"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionUSAddress/ZIPCd"/>
+													</xsl:call-template>
+												</xsl:when>
+												<xsl:otherwise>	
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionFrgnAddress/AddressLine1Txt"/>
+													</xsl:call-template>
+													<br/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionFrgnAddress/AddressLine2Txt"/>
+													</xsl:call-template><br/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionFrgnAddress/CityNm"/>
+													</xsl:call-template><span style="width:2mm;"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionFrgnAddress/ProvinceOrStateNm"/>
+													</xsl:call-template>	<span style="width:2mm;"/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionFrgnAddress/ForeignPostalCd"/>
+														</xsl:call-template>	<span style="width:2mm;"/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[1]/EligibleInstitutionFrgnAddress/CountryCd"/>
+														</xsl:call-template>		
+													</xsl:otherwise>
+												</xsl:choose>							
+											</xsl:if>
+										</td>
+									</tr>
+									<tr>
+										<td style="border:1px solid black;border-left:none;width:93mm;vertical-align:bottom;padding-left:6mm">
 											<xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/EligibleEducationInstnGrp) &lt; 4)">
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionNm"/>
-												</xsl:call-template>
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Line 1b - Qualified Tuition Program Code</xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionNm/@qualifiedTuitionProgramCd"/>
-												</xsl:call-template>
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Line 1b - Covered IIE Savings Account Code</xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionNm/@coverdellEducationalSavAcctCd"/>
+													<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligiblePersonNm"/>
 												</xsl:call-template>
 											</xsl:if>
-										</div>
-								<div style="height:auto;">
-											<xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/EligibleEducationInstnGrp) &lt; 4)">				
-										<xsl:choose>
-										<xsl:when test="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionUSAddress">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionUSAddress/AddressLine1Txt"/>
-										</xsl:call-template>
-						<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionUSAddress/AddressLine2Txt"/>
-										</xsl:call-template>
-								<br/>
-											<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionUSAddress/CityNm"/>
-												</xsl:call-template><span style="width:2mm;"/>
+										</td>
+										<td style="border:1px solid black;border-right:none;height:18.5mm;width:94mm;">
+											<div style="border-bottom:1px dashed black;height:7.5mm;width:94mm;">
+												<xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/EligibleEducationInstnGrp) &lt; 4)">
 													<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionUSAddress/StateAbbreviationCd"/>
-												</xsl:call-template><span style="width:2mm;"/>
-                                    <xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionUSAddress/ZIPCd"/>
-												</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>	
-										
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionFrgnAddress/AddressLine1Txt"/>
-										</xsl:call-template>
-					<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionFrgnAddress/AddressLine2Txt"/>
-										</xsl:call-template>	<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionFrgnAddress/CityNm"/>
-										</xsl:call-template>					<span style="width:2mm;"/>
-                                                 <xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionFrgnAddress/ProvinceOrStateNm"/>
-										</xsl:call-template>	<span style="width:2mm;"/>
-                                                 <xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionFrgnAddress/ForeignPostalCd"/>
-										</xsl:call-template>	<span style="width:2mm;"/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionFrgnAddress/CountryCd"/>
-										</xsl:call-template>		
-								</xsl:otherwise>
-								</xsl:choose>							
-								</xsl:if>
-								
-									
-								
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td style="border:1px solid black;border-left:none;width:93mm;vertical-align:bottom;height:4.5mm;padding-left:6mm">
-										<xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/EligibleEducationInstnGrp) &lt; 4)">
-											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligiblePersonNm"/>
-											</xsl:call-template>
-										</xsl:if>
-									</td>
-								<td style="border:1px solid black;border-right:none;height:18.5mm;width:94mm;">
-										<div style="border-bottom:1px dashed black;height:7.5mm;width:94mm;">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionNm"/>
+													</xsl:call-template>
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Line 1b - Qualified Tuition Program Code</xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionNm/@qualifiedTuitionProgramCd"/>
+													</xsl:call-template>
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Line 1b - Covered IIE Savings Account Code</xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionNm/@coverdellEducationalSavAcctCd"/>
+													</xsl:call-template>
+												</xsl:if>
+											</div>	
+											<xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/EligibleEducationInstnGrp) &lt; 4)">				
+												<xsl:choose>
+													<xsl:when test="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionUSAddress">
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionUSAddress/AddressLine1Txt"/>
+														</xsl:call-template>
+														<br/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionUSAddress/AddressLine2Txt"/>
+														</xsl:call-template>
+														<br/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionUSAddress/CityNm"/>
+														</xsl:call-template><span style="width:2mm;"/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionUSAddress/StateAbbreviationCd"/>
+														</xsl:call-template><span style="width:2mm;"/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionUSAddress/ZIPCd"/>
+														</xsl:call-template>
+													</xsl:when>
+												<xsl:otherwise>	
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionFrgnAddress/AddressLine1Txt"/>
+													</xsl:call-template>
+													<br/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionFrgnAddress/AddressLine2Txt"/>
+													</xsl:call-template><br/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionFrgnAddress/CityNm"/>
+													</xsl:call-template><span style="width:2mm;"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionFrgnAddress/ProvinceOrStateNm"/>
+													</xsl:call-template><span style="width:2mm;"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionFrgnAddress/ForeignPostalCd"/>
+													</xsl:call-template><span style="width:2mm;"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[2]/EligibleInstitutionFrgnAddress/CountryCd"/>
+													</xsl:call-template>		
+												</xsl:otherwise>
+												</xsl:choose>							
+											</xsl:if>
+										</td>
+									</tr>
+									<tr>
+										<td style="border:1px solid black;border-left:none;width:93mm;vertical-align:bottom;height:4.5mm;
+											padding-left:6mm">
 											<xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/EligibleEducationInstnGrp) &lt; 4)">
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionNm"/>
-												</xsl:call-template>
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Line 1b - Qualified Tuition Program Code</xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionNm/@qualifiedTuitionProgramCd"/>
-												</xsl:call-template>
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Line 1b - Covered IIE Savings Account Code</xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionNm/@coverdellEducationalSavAcctCd"/>
+													<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligiblePersonNm"/>
 												</xsl:call-template>
 											</xsl:if>
-										</div>			
-											<div style="height:auto;">
-											<xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/EligibleEducationInstnGrp) &lt; 4)">				
-										<xsl:choose>
-										<xsl:when test="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionUSAddress">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionUSAddress/AddressLine1Txt"/>
-										</xsl:call-template>
-						<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionUSAddress/AddressLine2Txt"/>
-										</xsl:call-template>
-								<br/>
-											<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionUSAddress/CityNm"/>
-												</xsl:call-template><span style="width:2mm;"/>
+										</td>
+										<td style="border:1px solid black;border-right:none;height:18.5mm;width:94mm;">
+											<div style="border-bottom:1px dashed black;height:7.5mm;width:94mm;">
+												<xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/EligibleEducationInstnGrp) &lt; 4)">
 													<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionUSAddress/StateAbbreviationCd"/>
-												</xsl:call-template><span style="width:2mm;"/>
-                                    <xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionUSAddress/ZIPCd"/>
-												</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>	
-										
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionFrgnAddress/AddressLine1Txt"/>
-										</xsl:call-template>
-					<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionFrgnAddress/AddressLine2Txt"/>
-										</xsl:call-template>	<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionFrgnAddress/CityNm"/>
-										</xsl:call-template>					<span style="width:2mm;"/>
-                                                 <xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionFrgnAddress/ProvinceOrStateNm"/>
-										</xsl:call-template>	<span style="width:2mm;"/>
-                                                 <xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionFrgnAddress/ForeignPostalCd"/>
-										</xsl:call-template>	<span style="width:2mm;"/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionFrgnAddress/CountryCd"/>
-										</xsl:call-template>		
-								</xsl:otherwise>
-								</xsl:choose>							
-								</xsl:if>
-								
-									
-								
-										</div>
-									</td>
-								</tr>				
-										<!-- <div style="height:4.5mm;">
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionNm"/>
+													</xsl:call-template>
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Line 1b - Qualified Tuition Program Code</xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionNm/@qualifiedTuitionProgramCd"/>
+													</xsl:call-template>
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Line 1b - Covered IIE Savings Account Code</xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionNm/@coverdellEducationalSavAcctCd"/>
+													</xsl:call-template>
+												</xsl:if>
+											</div>			
+											<xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/EligibleEducationInstnGrp) &lt; 4)">				
+												<xsl:choose>
+													<xsl:when test="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionUSAddress">
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionUSAddress/AddressLine1Txt"/>
+														</xsl:call-template>
+														<br/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionUSAddress/AddressLine2Txt"/>
+														</xsl:call-template>
+														<br/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionUSAddress/CityNm"/>
+														</xsl:call-template><span style="width:2mm;"/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionUSAddress/StateAbbreviationCd"/>
+														</xsl:call-template><span style="width:2mm;"/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionUSAddress/ZIPCd"/>
+														</xsl:call-template>
+													</xsl:when>
+													<xsl:otherwise>	
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionFrgnAddress/AddressLine1Txt"/>
+														</xsl:call-template>
+														<br/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionFrgnAddress/AddressLine2Txt"/>
+														</xsl:call-template><br/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionFrgnAddress/CityNm"/>
+														</xsl:call-template><span style="width:2mm;"/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionFrgnAddress/ProvinceOrStateNm"/>
+														</xsl:call-template><span style="width:2mm;"/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionFrgnAddress/ForeignPostalCd"/>
+														</xsl:call-template>	<span style="width:2mm;"/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionFrgnAddress/CountryCd"/>
+														</xsl:call-template>		
+													</xsl:otherwise>
+												</xsl:choose>							
+											</xsl:if>
+										</td>
+									</tr>				
+									<!-- <div style="height:4.5mm;">
 											<xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/EligibleEducationInstnGrp) &lt; 4)">
 												<xsl:call-template name="PopulateUSAddressTemplate">
 													<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp[3]/EligibleInstitutionUSAddress"/>
 												</xsl:call-template>
 											</xsl:if>
 										</div>  -->		
-								<xsl:if test="$Print != $Separated">
-									<xsl:for-each select="$FormData/EligibleEducationInstnGrp[position() &gt; 3]">
-										<tr>
-											<td style="border:1px solid black;border-left:none;width:93mm;vertical-align:bottom;height:4.5mm;padding-left:6mm">
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="EligiblePersonNm"/>
-												</xsl:call-template>
-											</td>
-											<td style="border:1px solid black;border-right:none;height:18.5mm;width:94mm;">
-										<div style="border-bottom:1px dashed black;height:7.5mm;width:94mm;">
+									<xsl:if test="$Print != $Separated">
+										<xsl:for-each select="$FormData/EligibleEducationInstnGrp[position() &gt; 3]">
+											<tr>
+												<td style="border:1px solid black;border-left:none;width:93mm;vertical-align:bottom;height:4.5mm;
+													padding-left:6mm">
 													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="EligibleInstitutionNm"/>
+														<xsl:with-param name="TargetNode" select="EligiblePersonNm"/>
 													</xsl:call-template>
-													<xsl:call-template name="LinkToLeftoverDataTableInline">
-														<xsl:with-param name="Desc">Line 1b - Qualified Tuition Program Code</xsl:with-param>
-														<xsl:with-param name="TargetNode" select="EligibleInstitutionNm/@qualifiedTuitionProgramCd"/>
-													</xsl:call-template>
-													<xsl:call-template name="LinkToLeftoverDataTableInline">
-														<xsl:with-param name="Desc">Line 1b - Covered IIE Savings Account Code</xsl:with-param>
-														<xsl:with-param name="TargetNode" select="EligibleInstitutionNm/@coverdellEducationalSavAcctCd"/>
-													</xsl:call-template>																								
-												</div>
-															<div style="height:auto;">
-											<xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/EligibleEducationInstnGrp) &lt; 4)">				
-										<xsl:choose>
-										<xsl:when test="$FormData/EligibleEducationInstnGrp/EligibleInstitutionUSAddress">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="EligibleInstitutionUSAddress/AddressLine1Txt"/>
-										</xsl:call-template>
-						<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="EligibleInstitutionUSAddress/AddressLine2Txt"/>
-										</xsl:call-template>
-								<br/>
-											<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="EligibleInstitutionUSAddress/CityNm"/>
-												</xsl:call-template><span style="width:2mm;"/>
-													<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="EligibleInstitutionUSAddress/StateAbbreviationCd"/>
-												</xsl:call-template><span style="width:2mm;"/>
-                                    <xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="EligibleInstitutionUSAddress/ZIPCd"/>
-												</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>						
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="EligibleInstitutionFrgnAddress/AddressLine1Txt"/>
-										</xsl:call-template>
-					<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="EligibleInstitutionFrgnAddress/AddressLine2Txt"/>
-										</xsl:call-template>	<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="EligibleInstitutionFrgnAddress/CityNm"/>
-										</xsl:call-template>					<span style="width:2mm;"/>
-                                                 <xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="EligibleInstitutionFrgnAddress/ProvinceOrStateNm"/>
-										</xsl:call-template>	<span style="width:2mm;"/>
-                                                 <xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="EligibleInstitutionFrgnAddress/ForeignPostalCd"/>
-										</xsl:call-template>	<span style="width:2mm;"/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="EligibleInstitutionFrgnAddress/CountryCd"/>
-										</xsl:call-template>								
-								</xsl:otherwise>
-								</xsl:choose>							
-								</xsl:if>
-										</div>
-											</td>
-										</tr>
-									</xsl:for-each>
-								</xsl:if>
-							</tbody>
-						</table>
-					</div>
-					<xsl:call-template name="SetInitialDynamicTableHeight">
-						<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp"/>
-						<xsl:with-param name="containerHeight" select="3"/>
-						<xsl:with-param name="containerID" select="'tblctn'"/>
-					</xsl:call-template>
-					<div class="styBB" style="width:187mm;padding-top:1mm;padding-bottom:1mm;clear:left;">
-						<div class="styPartDesc" style="font-weight:normal;">If you need more space, attach a statement.</div>
-					</div>
+												</td>
+												<td style="border:1px solid black;border-right:none;height:18.5mm;width:94mm;">
+													<div style="border-bottom:1px dashed black;height:7.5mm;width:94mm;">
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="EligibleInstitutionNm"/>
+														</xsl:call-template>
+														<xsl:call-template name="LinkToLeftoverDataTableInline">
+															<xsl:with-param name="Desc">Line 1b - Qualified Tuition Program Code</xsl:with-param>
+															<xsl:with-param name="TargetNode" select="EligibleInstitutionNm/@qualifiedTuitionProgramCd"/>
+														</xsl:call-template>
+														<xsl:call-template name="LinkToLeftoverDataTableInline">
+															<xsl:with-param name="Desc">Line 1b - Covered IIE Savings Account Code</xsl:with-param>
+															<xsl:with-param name="TargetNode" select="EligibleInstitutionNm/@coverdellEducationalSavAcctCd"/>
+														</xsl:call-template>																					
+													</div>
+													<xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/EligibleEducationInstnGrp) &lt; 4)">				
+														<xsl:choose>
+															<xsl:when test="$FormData/EligibleEducationInstnGrp/EligibleInstitutionUSAddress">
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="EligibleInstitutionUSAddress/AddressLine1Txt"/>
+																</xsl:call-template>
+																<br/>
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="EligibleInstitutionUSAddress/AddressLine2Txt"/>
+																</xsl:call-template>
+																<br/>
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="EligibleInstitutionUSAddress/CityNm"/>
+																</xsl:call-template><span style="width:2mm;"/>
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="EligibleInstitutionUSAddress/StateAbbreviationCd"/>
+																</xsl:call-template><span style="width:2mm;"/>
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="EligibleInstitutionUSAddress/ZIPCd"/>
+																</xsl:call-template>
+															</xsl:when>
+															<xsl:otherwise>						
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="EligibleInstitutionFrgnAddress/AddressLine1Txt"/>
+																</xsl:call-template>
+																<br/>
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="EligibleInstitutionFrgnAddress/AddressLine2Txt"/>
+																</xsl:call-template><br/>
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="EligibleInstitutionFrgnAddress/CityNm"/>
+																</xsl:call-template><span style="width:2mm;"/>
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="EligibleInstitutionFrgnAddress/ProvinceOrStateNm"/>
+																</xsl:call-template><span style="width:2mm;"/>
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="EligibleInstitutionFrgnAddress/ForeignPostalCd"/>
+																</xsl:call-template><span style="width:2mm;"/>
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="EligibleInstitutionFrgnAddress/CountryCd"/>
+																</xsl:call-template>								
+															</xsl:otherwise>
+														</xsl:choose>
+														<p style="page-break-after:always"/>
+													</xsl:if>
+												</td>
+											</tr>
+										</xsl:for-each>
+									</xsl:if>
+								</tbody>
+							</table>
+						</div>
+						<xsl:call-template name="SetInitialDynamicTableHeight">
+							<xsl:with-param name="TargetNode" select="$FormData/EligibleEducationInstnGrp"/>
+							<xsl:with-param name="containerHeight" select="3"/>
+							<xsl:with-param name="containerID" select="'tblctn'"/>
+						</xsl:call-template>
+						<div class="styBB" style="width:187mm;padding-top:1mm;padding-bottom:1mm;clear:none;">
+							<div class="styPartDesc" style="font-weight:normal;">If you need more space, attach a statement.</div>
+						</div>
+						<div class="pageEnd" style="width:187mm;border-top:1px solid black;clear:both">
+							
+							</div>
+							<!--<p style="page-break-before: always"/>-->
+						
+						
 					<!-- Begin the amount boxes -->
 					<div class="styBB" style="width:187mm;">
 						<div style="width:187mm;">
@@ -471,7 +463,7 @@ column (a) of line 1. See the instructions to find out which expenses qualify<sp
 						</div>
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="padding-left:1mm;width:5mm;height:8mm">3</div>
-							<div class="styLNDesc" style="width:141mm;height:8mm;">Enter the total of any nontaxable educational benefits (such as nontaxable scholarship or fellowship grants) received for 2019 for the person(s) listed in column (a) of line 1 (see instructions)<span style="letter-spacing:3mm;">.........</span></div>
+							<div class="styLNDesc" style="width:141mm;height:8mm;">Enter the total of any nontaxable educational benefits (such as nontaxable scholarship or fellowship grants) received for 2019 for the person(s) listed in column (a) of line 1. See instructions<span style="letter-spacing:3mm;">.........</span></div>
 							<div class="styLNRightNumBox" style="height:8mm;padding-left:0mm;padding-top:4mm;">3</div>
 							<div class="styLNAmountBox" style="height:8mm;"><br/>
 								<xsl:call-template name="PopulateAmount">
@@ -503,7 +495,7 @@ after 1989</span> that you <span style="font-weight:bold">cashed during 2019</sp
 						</div>
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:1mm;width:5mm;">6</div>
-							<div class="styLNDesc" style="width:141mm;height:4.5mm;">Enter the interest included on line 5 (see instructions) <span style="letter-spacing:3mm;"> ..................</span>
+							<div class="styLNDesc" style="width:141mm;height:4.5mm;">Enter the interest included on line 5. See instructions <span style="letter-spacing:3mm;"> ..................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;padding-top: .75mm;">6</div>
 							<div class="styLNAmountBox" style="height:4.5mm;">
@@ -541,7 +533,7 @@ after 1989</span> that you <span style="font-weight:bold">cashed during 2019</sp
 						</div>
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:1mm;width:5mm;">9</div>
-							<div class="styLNDesc" style="width:101mm;height:4.5mm;">Enter your modified adjusted gross income (see instructions)<span style="letter-spacing:3mm;">.....</span>
+							<div class="styLNDesc" style="width:101mm;height:4.5mm;">Enter your modified adjusted gross income. See instructions<span style="letter-spacing:3mm;">.....</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;">9</div>
 							<div class="styLNAmountBox" style="height:4.5mm;padding-right:2px;">
@@ -611,7 +603,7 @@ after 1989</span> that you <span style="font-weight:bold">cashed during 2019</sp
 						</div>
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="height:7mm;padding-left:0mm;width:5mm;">14</div>
-							<div class="styLNDesc" style="width:141mm;height:7mm;"><span style="font-weight:bold;">Excludable savings bond interest.</span> Subtract line 13 from line 8. Enter the result here and on Schedule B (Form 1040 or 1040SR), line 3<span style="letter-spacing:3mm;">.........................</span><img src="{$ImagePath}/2441_Bullet_Md.gif" alt="MediumBullet" align="middle"/></div>
+							<div class="styLNDesc" style="width:141mm;height:7mm;"><span style="font-weight:bold;">Excludable savings bond interest.</span> Subtract line 13 from line 8. Enter the result here and on Schedule B (Form 1040 or 1040-SR), line 3<span style="letter-spacing:3mm;">.........................</span><img src="{$ImagePath}/2441_Bullet_Md.gif" alt="MediumBullet" align="middle"/></div>
 							<div class="styLNRightNumBox" style="padding-left:2px;height:7mm;border-bottom:none;padding-top:3.5mm;">14</div>
 							<div class="styLNAmountBox" style="height:7mm;border-bottom:none;"><br/>
 								<xsl:call-template name="PopulateAmount">
@@ -622,7 +614,7 @@ after 1989</span> that you <span style="font-weight:bold">cashed during 2019</sp
 					</div>
 					<!-- End the amount boxes -->
 					<!-- capturing the page bottom info -->
-					<div class="pageEnd" style="width:187mm; font-size:7pt; border-top:1 solid black; padding-top:0.5mm;clear:all;">
+					<!--<div class="pageEnd" style="width:187mm; font-size:7pt; border-top:1 solid black; padding-top:0.5mm;clear:all;">-->
 						<div style="float:left; font-size:8pt;clear:all;">
 							<b>For Paperwork Reduction Act Notice, see your tax return instructions.</b>
 						</div>
@@ -631,7 +623,7 @@ after 1989</span> that you <span style="font-weight:bold">cashed during 2019</sp
 						<span style="width:15mm"/>
 						Form <b style="font-size:9pt">8815</b> (2019)
 						</div>
-					</div>
+					<!--</div>-->
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">

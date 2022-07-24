@@ -12,7 +12,8 @@
 <!-- 06/18/2019 - Changes made for UWR 217968 - Jeremy Nichols -->
 <!-- 08/28/2019 - Changes made for defect 128235 - Jeremy Nichols -->
 <!-- 09/09/2019 - Changes made for UWR 226019 - Jeremy Nichols -->
-
+<!-- 02/13/2020 - Changes made for defect 129401 - Jeremy Nichols -->
+<!-- 04/21/2020 - Changes made for defect 129076 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -91,7 +92,7 @@
 							</xsl:call-template>
 						</div>
 						  <div colspan="2" style="width:40mm;font-size:6pt;vertical-align:top;padding-left:0.5mm;border-right:0 solid black;border-bottom:0px solid black;">
-							<b>Filer's identifying number</b><br/>
+							<b>Filer's Identification number</b><br/>
 							<br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">EIN</xsl:with-param>
@@ -105,7 +106,7 @@
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;border-bottom:1px solid black;">
-					  <div style="width:100mm;height:auto;font-size:6pt;vertical-align:top;border-right:1px solid black;border-bottom:0px solid black;">
+					  <div style="width:95mm;height:auto;font-size:6pt;vertical-align:top;border-right:1px solid black;border-bottom:0px solid black;">
 							<b>Name of foreign partnership</b><br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form8865SchedulePData/ForeignPartnershipName/BusinessNameLine1Txt"/>
@@ -132,7 +133,7 @@
 								</xsl:otherwise>	 
 							</xsl:choose>
 						</div>
-						<div style="width:50mm;height:auto;font-size:6pt;vertical-align:top;padding-left:0.5mm;border-left:1px solid black;border-bottom:0px solid black;">
+						<div style="width:54mm;height:auto;font-size:6pt;vertical-align:top;padding-left:0.5mm;border-left:1px solid black;border-bottom:0px solid black;">
 							<b>Reference ID number (see instr.)</b>
 							<xsl:if test="(count($Form8865SchedulePData/ForeignEntityIdentificationGrp) &lt;=1)">
 								<br/>
@@ -167,7 +168,7 @@
 							<thead class="styTableThead">
 								<tr align="center" style="height:11.7mm">
 									<th class="styIRS8865SchedulePTblRB" nowrap="nowrap" style="width:61mm" scope="col">(a)<br/>
-										<span style="font-weight:normal">Name, address, and identifying number of<br/>person from whom your interest was acquired</span>
+										<span style="font-weight:normal">Name, address, and Identification number of<br/>person from whom your interest was acquired</span>
 									</th>
 									<th class="styIRS8865SchedulePTblRB" nowrap="nowrap" style="width:20mm" scope="col">(b)<br/>
 										<span style="font-weight:normal">Date of acquisition</span>
@@ -333,7 +334,7 @@
 							<thead class="styTableThead">
 								<tr align="center" style="height:11.7mm">
 									<th class="styIRS8865SchedulePTblRB" nowrap="nowrap" style="width:61mm" scope="col">(a)<br/>
-										<span style="font-weight:normal">Name, address, and identifying number of<br/>person who acquired your interest</span>
+										<span style="font-weight:normal">Name, address, and Identification number of<br/>person who acquired your interest</span>
 									</th>
 									<th class="styIRS8865SchedulePTblRB" nowrap="nowrap" style="width:20mm" scope="col">(b)<br/>
 										<span style="font-weight:normal">Date of disposition</span>
@@ -724,7 +725,7 @@
 							<table class="styDepTbl" style="width:187mm;font-size:7pt;display:block;">
 								<thead class="styTableThead">
 									<tr class="styDepTblHdr" align="center" style="height:11.7mm">
-										<th class="styDepTblCell" style="width:66mm" scope="col">(a)<br/>Name, address, and identifying number of<br/>person from whom your interest was acquired</th>
+										<th class="styDepTblCell" style="width:66mm" scope="col">(a)<br/>Name, address, and Identification number of<br/>person from whom your interest was acquired</th>
 										<th class="styDepTblCell" style="width:20mm" scope="col">(b)<br/>Date of acquisition</th>
 										<th class="styDepTblCell" style="width:31mm" scope="col">(c)<br/>FMV of<br/>interest acquired</th>
 										<th class="styDepTblCell" style="width:31mm" scope="col">(d)<br/>Basis in<br/>interest acquired</th>
@@ -756,7 +757,7 @@
 							<table class="styDepTbl" style="font-size:7pt">
 								<thead class="styTableThead;">
 									<tr class="styDepTblHdr" align="center" style="height:11.7mm">
-										<th class="styDepTblCell" style="width:66mm" scope="col">(a)<br/>Name, address, and identifying number of<br/>person who acquired your interest</th>
+										<th class="styDepTblCell" style="width:66mm" scope="col">(a)<br/>Name, address, and Identification number of<br/>person who acquired your interest</th>
 										<th class="styDepTblCell" style="width:20mm" scope="col">(b)<br/>Date of disposition</th>
 										<th class="styDepTblCell" style="width:31mm" scope="col">(c)<br/>FMV of<br/>interest disposed</th>
 										<th class="styDepTblCell" style="width:31mm" scope="col">(d)<br/>Basis in<br/>interest disposed</th>

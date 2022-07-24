@@ -288,7 +288,7 @@
 					
 								<div class="styIRS8606LineItem" style="width:100%;height:33%;">
 									<div class="styIRS8606LineItem" style="width:100%;height:100%;float:left;">
-										<div class="styGenericDiv" style="width:55mm;border-right:1px solid black;height:100%;padding-left:4px;">
+										<div class="styGenericDiv" style="width:55mm;border-right:1px solid black;height:8mm;padding-left:4px;">
 											Foreign country name<br/>
                                                	<xsl:choose>
 										                <xsl:when test="$RtnHdrData/ReturnTypeCd='8606'">
@@ -302,7 +302,7 @@
 											           </xsl:otherwise>
 											    </xsl:choose>
 										</div>
-										<div class="styGenericDiv" style="width:56mm;border-right:1px solid black;height:100%;padding-left:4px;">
+										<div class="styGenericDiv" style="width:56mm;border-right:1px solid black;height:8mm;padding-left:4px;">
 				               				Foreign province/state/county<br/>
 								                                                             			
 											           <xsl:choose>
@@ -362,7 +362,7 @@
 							    	<span class="styNormalText" style="font-size:7pt;padding-bottom:1.5mm;">
 							            <img src="{$ImagePath}/8606_Bullet_Round.gif" alt="RoundBullet"/>
 							            <div style="padding-left:4mm;padding-top:1mm;">You took distributions from a traditional, SEP, or SIMPLE IRA in 2019 <b>and</b> you made nondeductible contributions to a </div><br/>
-							            <div style="padding-left:6mm">traditional IRA in 2019 or an earlier year. For this purpose, a distribution does not include a rollover (other than a repayment of a qualified disaster distribution, if any (see instructions)), qualified charitable distribution,  one-time  distribution to fund an HSA, conversion, recharacterization, or return of certain contributions.</div> 
+							            <div style="padding-left:6mm">traditional IRA in 2019 or an earlier year. For this purpose, a distribution does not include a rollover (other than a repayment of a qualified disaster distribution (see 2019 Forms 8915-C and 8915-D)), qualified charitable distribution,  one-time  distribution to fund an HSA, conversion, recharacterization, or return of certain contributions.</div> 
 							        
 							    	</span>
 							         <span class="styNormalText" style="font-size:7pt;">
@@ -504,7 +504,7 @@
 							<div class="styIRS8606LNLeftNumBox">6</div>
 							<div class="styIRS8606LNDesc" style="width:105mm;height:100%;padding-left:3mm;">
 								Enter the value of <b>all</b> your traditional, SEP, and SIMPLE IRAs as of December 31, 2019, 
-								<span style="float:left;">plus any outstanding rollovers. Subtract any repayments of qualified disaster distributions, if any (see instructions)
+								<span style="float:left;">plus any outstanding rollovers. Subtract any repayments of qualified disaster distributions (see 2019 Forms 8915-C and 8915-D)
 								<span class="styDotLn" style="float:right;padding-right:1mm;">..............</span>
 								</span>
 	                            <!--Dotted Line-->
@@ -547,7 +547,7 @@
 								<div class="styIRS8606LNDesc" style="width:auto;height:100%;font-size:7pt;">
 									<span style="float:left;">
 									Enter your distributions from traditional, SEP, and SIMPLE IRAs in 2019.
-									<b>Do not</b> include rollovers (other than repayments of qualified disaster distributions, if any (see instructions), qualified charitable distributions, a one-time
+									<b>Do not</b> include rollovers (other than repayments of qualified disaster distributions (see 2019 Forms 8915-C and 8915-D)), qualified charitable distributions, a one-time
 									 distribution to fund an HSA, conversions to a Roth IRA, certain returned contributions, or recharacterizations of traditional IRA contributions (see instructions) 
                                         <span class="styDotLn" style="float:right;padding-right:1mm;">..............</span>
                                         </span>
@@ -867,7 +867,7 @@
                              </div>
                              <div class="styLNLeftNumBoxSD" style="padding-left:6mm;height:4mm;float-left">b</div>
 							<div class="styLNDesc" style="float:left;width:142mm;padding-left:2mm;height:3mm;">
-							      Enter the amount on line 15a attributable to qualified disaster distributions, if any (see instructions)
+							      Enter the amount on line 15a attributable to qualified disaster distributions from 2019 Forms 8915-C and 8915-D (see instructions). Also, enter this amount on 2019 Form 8915-C, line 22, <b>or</b> 2019 Form 8915-D, line 13, as applicable
 						          <span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
 						     </div>
 							<div class="styLNRightNumBox" style="border-bottom-width:1px;font-size:7pt;height:7mm;padding-top:3.5mm;">15b</div>
@@ -1042,8 +1042,7 @@
 							Distributions From Roth IRAs<br/>
 							<span class="styNormalText">
 								Complete this part only if you took a distribution from a Roth IRA in 2019. For this purpose, a distribution does not
-								include a rollover (other than a repayment of a qualified disaster distribution, if any (see instructions)) qualified charitable distribution,  one-time 
-								distribution to fund an HSA, recharacterization, or return of certain contributions (see instructions)).
+								include a rollover (other than a repayment of a qualified disaster distribution (see 2019 Forms 8915-C and 8915-D)), qualified charitable distribution,  one-time distribution to fund an HSA, recharacterization, or return of certain contributions (see instructions)).
 							</span>
 						</div>
 					</div>
@@ -1054,10 +1053,10 @@
 						<div class="styIRS8606LNLeftNumBox" style="padding-left:2.2mm;">19</div>
 						<div class="styIRS8606LNDesc" style="width:144mm;height:100%;padding:1mm 0 0 3mm;">
 								Enter your total nonqualified distributions from Roth IRAs in 2019, including any
-								qualified first-time homebuyer distributions, and any qualified disaster distributions, if any (see instructions)
+								qualified first-time homebuyer distributions, and any qualified disaster distributions (see instructions). Also see 2019 Forms 8915-C and 8915-D
 								
 								<!--Dotted Line-->
-								<span class="styDotLn" style="float:right;padding-right:1mm;">.................</span>
+								<span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
 						</div>
 						<div class="styIRS8606LNDesc" style="height:100%;width:37mm;float:right;padding:0px 0px 0px 0px;">
 							<div class="styIRS8606LNDesc" style="height:3mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -1188,8 +1187,8 @@
                              
                                   <div class="styLNLeftNumBoxSD" style="padding-left:6mm;height:4mm;float:left;">b</div>
 							<div class="styLNDesc" style="width:142mm;padding-left:2mm;height:3mm;float:left">
-							Enter the amount on line 25a attributable to qualified disaster distributions, if any (see instructions)
-						          <span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
+							Enter the amount on line 25a attributable to qualified disaster distributions from 2019 Forms 8915-C and 8915-D (see instructions). Also, enter this amount on 2019 Form 8915-C, line 23, <b>or</b> 2019 Form 8915-D, line 14, as applicable
+						          <span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
 						     </div>
 							<div class="styLNRightNumBox" style="border-bottom-width:1px;font-size:7pt;height:5mm;padding-top:1.5mm;">25b</div>
 							<div class="styLNAmountBox" style="width:29mm;border-bottom-width:1px;height:5mm;padding-top:1.5mm;font-size:6.5pt">
@@ -1198,7 +1197,7 @@
 								</xsl:call-template>
                              </div>
                                 <div class="styLNLeftNumBoxSD" style="padding-left:6mm;height:4mm;float:left;">c</div>
-							<div class="styLNDesc" style="width:142mm;padding-left:2mm;height:3mm;float:left;">
+							<div class="styLNDesc" style="width:142mm;padding-left:2mm;height:3mm;float:left;padding-top:1mm">
 						<b>Taxable amount.</b> Subtract line 25b from line 25a. If more than zero, also include this 
                                   amount on 2019 Form 1040 or 1040-SR, line 4b; or 2019 Form 1040-NR, line 16b
 						          <span class="styDotLn" style="float:right;padding-right:1mm;">..................</span>

@@ -7,6 +7,7 @@
 <!--                                           Defect # 60719 -->
 <!-- Last modified on -->
 <!-- 10/01/2019 - Changes made per UWR 225455 - Jeremy Nichols -->
+<!-- 10/24/2019 - Changes made per UWR 225455 - Greg Young-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -71,8 +72,9 @@ Refund Due a Deceased Taxpayer</div>
 						<div class="styTYBox" style="width:30mm;height:22mm;">
 							<div class="styOMB" style="height:8mm;padding-top:2mm">OMB No. 1545-0074</div>
 							<div class="stySequence" style="padding-top:2mm">Attachment<br/>Sequence No. <b>87</b>
-							<!--<div class="stySequence" style="height:9mm;border-bottom-width:0px;padding-left:4mm;border-left-width:0px;padding-top:1mm;">Attachment<br/>
-            Sequence No. <span class="styBoldText">87</span>-->
+								<!--<div class="stySequence" 		
+										style="height:9mm;border-bottom-width:0px;padding-left:4mm;border-left-width:0px;padding-top:1mm;">Attachment<br/>
+										Sequence No. <span class="styBoldText">87</span>-->
 							</div>
 						</div>
 					</div>
@@ -184,6 +186,17 @@ Refund Due a Deceased Taxpayer</div>
 										</xsl:call-template>
 									</xsl:if>
 								</span>
+								<span>
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantForeignAddress/AddressLine1Txt"/>
+									</xsl:call-template>
+									<xsl:if test="$FormData/RefundClaimantForeignAddress/AddressLine2Txt!=''">
+										<br/>
+										<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantForeignAddress/AddressLine2Txt"/>
+										</xsl:call-template>
+									</xsl:if>
+								</span>
 							</span>
 							<span class="styNameBox" style="width:30mm;height:auto;font-size:7pt;border-right:none;padding-left:2mm;">Apt. no.</span>
 						</div>
@@ -193,6 +206,29 @@ Refund Due a Deceased Taxpayer</div>
 								<span>
 									<xsl:call-template name="PopulateCityStateInfo">
 										<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantUSAddress"/>
+									</xsl:call-template>
+								</span>
+								<span>
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantForeignAddress/CityNm"/>
+									</xsl:call-template>
+								</span>
+								<span style="width:2mm"/>
+								<span>
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantForeignAddress/ProvinceOrStateNm"/>
+									</xsl:call-template>
+								</span>
+								<span style="width:2mm"/>
+								<span>
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantForeignAddress/CountryCd"/>
+									</xsl:call-template>
+								</span>
+								<span style="width:2mm"/>
+								<span>
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantForeignAddress/ForeignPostalCd"/>
 									</xsl:call-template>
 								</span>
 							</div>
@@ -235,13 +271,16 @@ Refund Due a Deceased Taxpayer</div>
 						  </xsl:call-template>
 							<div class="styGenericDiv" style="line-height:4mm;width:175mm;">Court-appointed or certified personal representative (defined below). Attach a court certificate showing your appointment, <br/> unless previously filed (see instructions).</div>
 						</label>
+						
 						<xsl:call-template name="SetFormLinkInline">
 							<xsl:with-param name="TargetNode" select="$FormData/CertificatePreviouslyFiledCd"/>
 						</xsl:call-template>
+						<!--
 						<xsl:call-template name="LinkToLeftoverDataTableInline">
 							<xsl:with-param name="TargetNode" select="$FormData/CertificatePreviouslyFiledCd"/>
 							<xsl:with-param name="Desc">Certificate Previously Filed Code</xsl:with-param>
 						</xsl:call-template>
+						-->
 					</div>
 					<!-- Part I, Line C -->
 					<div class="styGenericDiv" style="width:187mm;padding-bottom:1mm;font-size:8pt;">
@@ -263,7 +302,8 @@ Refund Due a Deceased Taxpayer</div>
 						  <xsl:with-param name="TargetNode" select="$FormData/OtherPersonClaimingRefundInd"/>
 						  <xsl:with-param name="BackupName">FormDataOtherPersonClaimingRefundInd</xsl:with-param>
 						  </xsl:call-template>
-							<span style="line-height:4mm;">Person, <span style="font-weight:bold;">other</span> than A or B, claiming refund for the decedent&#8221;s estate (see instructions). Also, complete Part II.</span>
+							<span style="line-height:4mm;">Person, <span style="font-weight:bold;">other</span> than A or B, claiming refund for the decedent's
+								 estate (see instructions). Also, complete Part II.</span>
 						</label>
 						</div>
 							<!-- Part I END -->
@@ -337,7 +377,9 @@ Refund Due a Deceased Taxpayer</div>
 					</div>
 					<div style="width:187mm;font-size:8pt;">
 						<div class="styLNLeftNumBox" style="padding-left:1mm;width:7mm;"/>
-						<div class="styLNDesc" style="width:180mm;">If you answered <span style="font-weight:bold;">"No"</span> to 3, a refund cannot be made until you submit a court certificate showing your appointment <br/> as personal representative or other evidence that you are entitled under state law to receive the refund.</div>
+						<div class="styLNDesc" style="width:180mm;">If you answered <span style="font-weight:bold;">"No"</span> to 3, a refund cannot be made until
+							 you submit a court certificate showing your appointment <br/> as personal representative or other evidence that you are entitled under state law
+							 to receive the refund.</div>
 						<div class="styLNRightNumBox" style="width:30mm;border:none;"/>
 					</div>
 					<!-- Part III -->
@@ -346,33 +388,69 @@ Refund Due a Deceased Taxpayer</div>
 						<div class="styPartDesc">Signature and verification. All filers must complete this part.</div>
 					</div>
 					<div style="width:187mm;font-size:8pt;height:16mm;">
-						I request a refund of taxes overpaid by or on behalf of the decedent. Under penalties of perjury, I declare that I have examined this claim, and to the best of my knowledge and belief, it is true, correct, and complete.
+						I request a refund of taxes overpaid by or on behalf of the decedent. Under penalties of perjury, I declare that I have examined this claim, and to the
+						best of my knowledge and belief, it is true, correct, and complete.
 					</div>
 					<div style="width:187mm;font-size:8pt;font-weight:bold;">
-						<!-- <span style="width:150mm;"><img src="{$ImagePath}/1310_Bullet.gif" width="9" height="9" alt="bullet image"/>Signature of person claiming refund</span> -->
-						<span style="width:150mm;">Signature of person claiming refund  <img src="{$ImagePath}/1310_Bullet.gif" width="9" height="9" alt="bullet image"/></span>
+						<!-- <span style="width:150mm;"><img src="{$ImagePath}/1310_Bullet.gif" width="9" height="9" alt="bullet image"/>Signature of person claiming 
+						refund</span> -->
+						<span style="width:150mm;">Signature of person claiming refund  
+							<img src="{$ImagePath}/1310_Bullet.gif" width="9" height="9" alt="bullet image"/></span>
 						<span style="width:37mm;">Date  <img src="{$ImagePath}/1310_Bullet.gif" width="9" height="9" alt="bullet image"/>
-						<xsl:call-template name="PopulateMonth">
-							<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantSignatureDt"/>
-						</xsl:call-template>-<xsl:call-template name="PopulateDay">
-							<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantSignatureDt"/>
-						</xsl:call-template>-<xsl:call-template name="PopulateYear">
-							<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantSignatureDt"/>
-						</xsl:call-template>
+							<xsl:call-template name="PopulateMonth">
+								<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantSignatureDt"/>
+							</xsl:call-template>-<xsl:call-template name="PopulateDay">
+								<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantSignatureDt"/>
+							</xsl:call-template>-<xsl:call-template name="PopulateYear">
+								<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantSignatureDt"/>	
+							</xsl:call-template>
 						</span>
 					</div>
+					<div class="StyNBB" style="width:187mm;height:4mm;font-size:7pt">
+						<div class="styGenericDiv" style="width:187mm;height:4mm;padding-top:1mm;border-top:1px solid black;border-right:0px">
+							Phone No. (optional)
+							<xsl:call-template name="PopulatePhoneNumber">
+								<xsl:with-param name="TargetNode" select="$FormData/PhoneNum"/>
+							</xsl:call-template>
+						</div>
+						<!--<div class="styGenericDiv" style="width:137mm;height:4mm;padding-top:1mm;padding-left:1mm;border-top:1px solid black">
+							Email Address
+							<span style="width:2mm"/>
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$FormData/EmailAddressTxt"/>
+							</xsl:call-template>
+						</div>-->
+
+					</div>
+					
 					<!-- capturing the page bottom info -->
 					<div class="pageEnd" style="width:187mm; font-size:7pt; border-top:1px solid black; padding-top:0.5mm">
-						<div style="float:left; font-size:8pt">
+						<div style="float:left; font-size:8pt; padding-left:2mm;">
 							<b>For Privacy Act and Paperwork Reduction Act Notice, see page 2.</b>
 						</div>
+						<!--
+						<div>
+						<xsl:call-template name="LinkToLeftoverDataTableInline">
+							<xsl:with-param name="TargetNode" select="$FormData/CertificatePreviouslyFiledCd"/>
+							<xsl:with-param name="Desc">Certificate Previously Filed Code</xsl:with-param>
+						</xsl:call-template>
+						</div>
+						-->
 						<div style="float:right">
 						<span style="width:2.5mm"/>
 						Cat. No. 11566B
 						<span style="width:10mm"/>
 						Form <b style="font-size:9pt">1310</b> (Rev. 8-2019)
 						</div>
+						<br></br>
+						<div>
+						<xsl:call-template name="LinkToLeftoverDataTableInline">
+							<xsl:with-param name="TargetNode" select="$FormData/CertificatePreviouslyFiledCd"/>
+							<xsl:with-param name="Desc">Certificate Previously Filed Code</xsl:with-param>
+						</xsl:call-template>
+						</div>
 					</div>
+
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">
@@ -382,6 +460,8 @@ Refund Due a Deceased Taxpayer</div>
 							<input class="styLeftoverTableBtn" type="button" TabIndex="-1" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
 						</div>
 					</div>
+
+						
 					<!-- Additional Data Table -->
 					<table class="styLeftOverTbl">
 						<xsl:call-template name="PopulateCommonLeftover">
@@ -397,6 +477,7 @@ Refund Due a Deceased Taxpayer</div>
 						<xsl:with-param name="TargetNode" select="$FormData/CertificatePreviouslyFiledCd"/>
 						<xsl:with-param name="Desc">Certificate Previously Filed Code</xsl:with-param>
 						</xsl:call-template>
+
 						<xsl:call-template name="PopulateLeftoverRow">
 						<xsl:with-param name="TargetNode" select="$FormData/ValidProofOfDeathInd"/>
 						<xsl:with-param name="Desc">Part I Line C - Valid Proof Of Death Indicator</xsl:with-param>

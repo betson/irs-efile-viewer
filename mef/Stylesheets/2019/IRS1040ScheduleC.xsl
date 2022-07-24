@@ -44,12 +44,12 @@
     <xsl:call-template name="DocumentHeader"/>
     <!-- Begin Form Number and Name -->
      <!-- put comment here -->
-    <div class="styBB" style="width:187mm;height:auto;float:none;clear:both;">
-	<div class="styFNBox" style="width:29mm;height:28mm;">
+    <div class="styBB" style="width:187mm;height:23mm;float:none;clear:both;">
+	<div class="styFNBox" style="width:31mm;height:23mm;">
 		<div style="padding-top:1mm;line-height:150%;">                  
 			<span class="styFormNumber" style="font-size:9pt;">SCHEDULE C</span>
 			<br/>
-			<span class="styFormNumber" style="font-size:9pt;padding-top:1mm;">(Form 1040 or 1040-SR)</span>
+			<span class="styFormNumber" style="font-size:9pt;padding-top:.5mm;">(Form 1040 or<br/> 1040-SR)</span>
 			<br/>
 		</div>
 		<xsl:call-template name="SetFormLinkInline">
@@ -57,21 +57,21 @@
 		</xsl:call-template>
 		<div style="padding-top:0mm;">
 			<span class="styAgency"><br/>Department of the Treasury</span><br/>
-			<span class="styAgency">Internal Revenue Service <span style="width:1mm"/> (99)</span>  
+			<span class="styAgency">Internal Revenue Service (99)</span>  
 		</div>
 	</div>	
-	<div class="styFTBox" style="width:127mm;height:20mm;">
-		<div class="styMainTitle" style="height:auto;margin-top:2mm;">Profit or Loss From Business    
+	<div class="styFTBox" style="width:127mm;height:23mm;">
+		<div class="styMainTitle" style="height:auto;margin-top:1mm;">Profit or Loss From Business    
 		</div> 
-		<div class="styFBT" style="height:auto;font-size:7pt;margin-top:1mm;width:127mm;">
+		<div class="styFBT" style="height:auto;font-size:7pt;margin-top:0mm;width:127mm;">
 				<b>(Sole Proprietorship)</b>
 		</div>   
 		<div class="styFBT" style="height:3mm;margin-top:1mm;font:size:6pt;width:127mm;">
 			 <img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Bullet Image"/>Go to <i><a href="http://www.irs.gov/schedulec">www.irs.gov/ScheduleC</a></i> for instructions and the latest information.<br/>
-			  <img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Bullet Image"/> Attach to Form 1040, 1040-SR, 1040-NR, or 1041; partnerships generally must file Form 1065.        
+			 <span style="margin-top:2mm;"> <img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Bullet Image"/> Attach to Form 1040, 1040-SR, 1040-NR, or 1041; partnerships generally must file Form 1065. </span>       
 		</div>
 	</div>	
-	<div class="styTYBox" style="width:30mm;height:28mm;">
+	<div class="styTYBox" style="width:29mm;height:23mm;">
 		<div class="styOMB" style="height:4mm;">
 			<!--<span style="font-size:6pt;text-align:right;">Version A, Cycle 1</span>-->
 			OMB No. 1545-0074
@@ -79,7 +79,7 @@
 		<div class="styTaxYear" style="padding-bottom:0mm;">
 			20<span class="styTYColor">19</span>
 		</div>
-		<div style="margin-left:2mm; text-align:left;padding-top:0mm;">
+		<div style="margin-left:2mm; text-align:left;padding-top:2mm;">
 			Attachment<br/>Sequence No. <span class="styBoldText">09</span>
 		</div>
 	</div>
@@ -1885,7 +1885,7 @@ Enter expenses for business use of your home
 		  <span style="width:182mm;">      
 			  <div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;">44</div>      
 			  <div class="styLNDesc" style="width: 165mm; height:4mm;padding-top:1mm;">        
-				Of the total number of miles you drove your vehicle during 2018, enter the number of miles you used your vehicle for:
+				Of the total number of miles you drove your vehicle during 2019, enter the number of miles you used your vehicle for:
 			  </div>
 			   </span>         
 			  <div class="styLNLeftNumBox" style="height:4mm;">
@@ -2437,7 +2437,7 @@ Enter expenses for business use of your home
               <div style="width:187mm;float:left;clear:none">
       <div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;text-align:left">44</div>      
       <div class="styLNDesc" style="width: 155mm; height:4.5mm;padding-top:1mm;text-align:left">        
-        Of the total number of miles you drove your vehicle during 2018, enter the number of miles you used your vehicle for:
+        Of the total number of miles you drove your vehicle during 2019, enter the number of miles you used your vehicle for:
       </div>      
         </div>
             <div style="width:187mm">

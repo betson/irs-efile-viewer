@@ -31,10 +31,10 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-					<!--<xsl:if test="not($Print) or $Print=''">-->
+					<xsl:if test="not($Print) or $Print=''">
 					<xsl:call-template name="IRS4563Style"/>
 					<xsl:call-template name="AddOnStyle"/>
-					<!--</xsl:if>-->
+					</xsl:if>
 				</style>
 				<!--
 				<link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
@@ -93,7 +93,7 @@
 					<!--  End Header section 1 -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styNameBox" style="width:140mm;height:8mm;font-size:7pt;">
-							Name(s) shown on Form 1040 or Form 1040-SR<br/>
+							Name(s) shown on Form 1040 or 1040-SR<br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form4563Data/NameLine1Txt"/>
 							</xsl:call-template>
@@ -508,7 +508,7 @@
 								<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 								<!--													Table Start																	-->
 								<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-								<xsl:call-template name="SetInitialState"/>
+								<!--<xsl:call-template name="SetInitialState"/> ss 2020.06.25 -->
 								<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 								<table class="styTable" cellspacing="0">
 									<!-- ++++++++++++++++++++++++ Start: Table Headers ++++++++++++++++++++++ -->

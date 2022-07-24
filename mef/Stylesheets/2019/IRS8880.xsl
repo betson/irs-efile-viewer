@@ -468,11 +468,17 @@ Single, Married filing
 <div class="styLNRightNumBox" style="width:8.2mm;border-right-width:1px;padding-top:0mm;float:left;clear:left;font-size:8pt;border-bottom-width:1px;">9
 </div>
 <div class="styLNAmountBox" style="border-left-width:0px;padding-top:0mm;font-size:8pt;">
-<span class="styBoldText" style="font-size:8pt;">x 0 .</span>
-<span style="width:1mm"/>
-<xsl:call-template name="PopulateAmount">
-<xsl:with-param name="TargetNode" select="$Form8880Data/QlfyRetirementSavDecimalAmt"/>
-</xsl:call-template>
+	<xsl:choose>
+		<xsl:when test="$Form8880Data/QlfyRetirementSavDecimalAmt">
+			<xsl:call-template name="PopulateAmount">
+				<xsl:with-param name="TargetNode" select="$Form8880Data/QlfyRetirementSavDecimalAmt"/>
+			</xsl:call-template>
+		</xsl:when>
+		<xsl:otherwise>
+			<span class="styBoldText" style="font-size:8pt;">x 0 .</span>
+			<span style="width:1mm"/>
+		</xsl:otherwise>
+	</xsl:choose> 
 </div>
 <div class="styLNRightNumBox" style="height:32mm;border-right-width:0px;border-left-width:1px;border-bottom-width:0px;background:#B8B8B8;"/>
 <div class="styLNAmountBox" style="height:32mm;border-left-width:1px;border-bottom-width:0px;"/>

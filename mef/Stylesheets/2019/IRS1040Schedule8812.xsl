@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Corey Rooks on 4/25/2019 -->
+<!-- Last Modified by Corey Rooks on 4/29/2020 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -69,7 +69,7 @@
 							</div>
 							<div class="styFBT" style="width: 120mm; height: 10mm; padding-right: 15mm; padding-bottom: 2px; font-family: Arial; font-size: 8pt;">
 									<img src="{$ImagePath}/8812_Bullet_Md.gif" alt="MediumBullet" height="9" width="9"/>
-									Attach to Form 1040,1040SR, or Form 1040NR.<br/>
+									Attach to Form 1040,1040SR, or 1040-NR.<br/>
 								<div style="width: 100mm; height: 5mm;">
 									<div style="width: 86mm; height: 8mm; padding-left: 3px; font-family: Arial; font-size: 7pt;">
 										<img src="{$ImagePath}/8812_Bullet_Md.gif" alt="MediumBullet" height="9" width="9"/>
@@ -121,7 +121,7 @@
 					<!-- Caution line -->
 					<div class="styBB" style="width: 187mm; height: 4.5mm; border-top-width: 1px; clear:left; float: left;">
 						<div style="width: 170mm; height: 14mm;">
-								<b>Caution:</b>  If you file Form 2555 or 2555-EZ, <b>stop here;</b> you cannot claim the additional child tax credit.
+								<b>Caution:</b>  If you file Form 2555, <b>stop here;</b> you cannot claim the additional child tax credit.
 							</div>
 					</div>
 					<!--BEGIN-->
@@ -141,14 +141,14 @@
 											</div>
 											<div class="styLNDesc" style="width: 111mm; height: 9mm;">
 						                        Enter the amount from line 8 of your Child Tax Credit and Credit for Other Dependents
-						                        Worksheet (see the instructions for Form 1040 and 1040SR, line 13a).
+						                        Worksheet (see the instructions for Forms 1040 and 1040SR, line 13a).
 				                            </div>
 											<div class="styLNDesc" style="width: 24mm; height: 8mm;">
-												<b>1040NR filers:</b>
+												<b>1040-NR filers:</b>
 											</div>
 											<div class="styLNDesc" style="width: 105mm; height: 8mm;">
 											    Enter the amount from line 8 of your Child Tax Credit and Credit for Other Dependents
-											    Worksheet (see the instructions for Form 1040NR, line 49).
+											    Worksheet (see the instructions for Form 1040-NR, line 49).
 											</div>
                                         </div>
 										<div class="styLNDesc" style="width: 2.8mm; height: 20mm; float: right;padding-top:5mm;">
@@ -170,7 +170,7 @@
 								<div style="width: 187mm; height: 8mm; clear: left; font-size: 7.5pt; float: left;">
 									<div class="styLNLeftNumBoxSD" style="width: 8mm; height: 8mm; padding-top: 2mm; padding-left: 3mm;">2</div>
 									<div class="styLNDesc" style="width: 141mm; padding-top: 2mm; height: 8mm;">
-										<span style="float:left;clear:none;">Enter the amount from Form 1040, line 13a; Form 1040SR, line 13a; or Form 1040NR, line 49.
+										<span style="float:left;clear:none;">Enter the amount from Form 1040, line 13a; Form 1040SR, line 13a; or Form 1040-NR, line 49
 										<span class="styDotLn" style="float:right;padding-left:1mm;">...</span></span>
 									</div>
 									<div class="styLNRightNumBox" style="width: 6mm; height: 8mm; padding-top: 2mm;border-bottom-width:1px;">2</div>
@@ -212,7 +212,7 @@
 										Enter the result. If zero, <b>stop here;</b> you cannot claim this credit
 										<span class="styDotLn" style="float:right;padding-right:10mm;">..........</span>
 										<span style="width:140mm;"><b>TIP:</b> The number of children you use  for this line
-										is the same as the number of children you used for line 1 of the Child Tax Credit and Credit for Other Dependents Worksheets.</span>
+										is the same as the number of children you used for line 1 of the Child Tax Credit and Credit for Other Dependents Worksheet.</span>
 									</div>
 									<div class="styLNRightNumBox" style="width: 6mm; height: 7mm;padding-top:2.5mm;">4</div>
 									<div class="styLNAmountBox" style="width: 32mm; height: 7mm;padding-top:2.5mm;">
@@ -487,14 +487,14 @@
 												<b>1040 and 1040SR filers:</b>
 											</div>
 											<div class="styLNDesc" style="width: 75mm; height: 15mm;">
-											    Enter the total of the amounts from Schedule 1 (Form 1040 or 1040SR), line 27, and Schedule 4 (Form 1040 or 1040SR), lines 58 plus any taxes that you identified using code “UT” and entered on Schedule 4 (Form 1040 or 1040SR), line 62.
+											    Enter the total of the amounts from Schedule 1 (Form 1040 or 1040SR), line 14, and Schedule 2 (Form 1040 or 1040SR), line 5, plus any taxes that you identified using code “UT” and entered on Schedule 2 (Form 1040 or 1040SR), line 8.
 				                            </div>
 											<br/>
 											<div class="styLNDesc" style="width: 22mm; height: 11mm;">
-												<b>1040NR filers:</b>
+												<b>1040-NR filers:</b>
 											</div>
 											<div class="styLNDesc" style="width: 75mm; height: 11mm;">
-					                             Enter the total of the amounts from Form 1040NR, lines<br/>
+					                             Enter the total of the amounts from Form 1040-NR, lines<br/>
 					                             27 and 56, plus any taxes that you identified using code<br/>
 					                             "UT" and entered on line 60.
 			                                </div>
@@ -540,13 +540,13 @@
 											<div class="styLNDesc" style="width: 22mm; height: 8mm;">
 												<b>1040 and 1040SR filers:</b>
 											</div>
-											<div class="styLNDesc" style="width: 77mm; height: 8mm;">Enter the total of the amounts from Form 1040 or 1040SR, line 18a, and Schedule 5 (Form 1040 or 1040SR), line 72.
+											<div class="styLNDesc" style="width: 77mm; height: 8mm;">Enter the total of the amounts from Form 1040 or 1040SR, line 18a, and Schedule 3 (Form 1040 or 1040SR), line 11.
 				                            </div>
 											<br/>
 											<div class="styLNDesc" style="width: 22mm; height: 9mm;">
-												<b>1040NR filers:</b>
+												<b>1040-NR filers:</b>
 											</div>
-											<div class="styLNDesc" style="width: 77mm; height: 9mm; font-size: 7.5pt;">Enter the amount from Form 1040NR, line 67.</div>
+											<div class="styLNDesc" style="width: 77mm; height: 9mm; font-size: 7.5pt;">Enter the amount from Form 1040-NR, line 67.</div>
 										</div>
 										<div class="styLNDesc" style="width: 2.8mm; height: 27mm;">
 											<img src="{$ImagePath}/8812_Bracket_Lger_1.gif" alt="Curly Bracket Image" width="6" height="60"/>
@@ -630,11 +630,11 @@
 									<div class="styLNDesc" style="border-width: 2px; border-style: none dotted dotted none; border-color: black; width: 35mm; height: 12mm; text-align: left; padding-top: 0.5mm; padding-left: 3.5mm; clear: left; font-size: 6pt;float: right;">
 										<span style="width: 28.3mm;"><i>Enter this amount on</i></span>
 										<br/>
-										<span style="width: 28.3mm;"><i>Form 1040, line 18b, or</i></span>
+										<span style="width: 28.3mm;"><i>Form 1040, line 18b; or</i></span>
 										<br/>
-										<span style="width: 28.3mm,"><i>Form 1040SR, line 18b, or</i></span>
+										<span style="width: 28.3mm,"><i>Form 1040SR, line 18b; or</i></span>
 										<br/>
-										<span style="width: 28.3mm;"><i>Form 1040NR, line 64.</i></span>
+										<span style="width: 28.3mm;"><i>Form 1040-NR, line 64.</i></span>
 									</div>
 								</div>
 								<div style="width: 187mm; height: 1mm; clear: left; float: left;"/>
@@ -644,7 +644,7 @@
 								<div class="pageEnd" style="width: 187mm; height: 4mm; clear: both; font-family: Arial; font-size: 7pt; border-top-color: black; border-top-width: 2px; border-top-style: solid; float: none;">
 									<span style="float:left;clear:none;">
 										<b>For Paperwork Reduction Act Notice, see your tax return instructions.</b>
-										<span style="width:25mm;"/>Cat. No. 59761M</span>
+										<span style="width:18mm;"/>Cat. No. 59761M</span>
 									<span style="float:right;clear:none;font-weight:bold;">Schedule 8812 (Form 1040 or 1040SR) 2019</span>
 								</div>								
 								<!-- Adding page break -->

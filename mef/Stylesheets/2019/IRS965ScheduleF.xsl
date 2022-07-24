@@ -55,7 +55,7 @@
 							<br />
 							
 							<br />
-							(January 2019)<br />
+							(Rev. December 2019)<br />
 							<br />
 							<span class="styAgency">
 								Department of the Treasury
@@ -67,7 +67,7 @@
 							<span class="styFMT" style="font-size:12pt;padding-top:1mm;">Foreign Taxes Deemed Paid by Domestic Corporation</span>
 							<br />
 							<span style="font-weight:bold;font-size:8pt;padding-top:0.5mm;padding-bottom:1mm;">
-								For tax years of foreign corporations whose last taxable year beginning before January 1, 2018, ends during the <br /> U.S. shareholder's 2018 tax year<br />
+								For tax years of foreign corporations whose last taxable year beginning before January 1, 2019, ends during the <br /> U.S. shareholder's 2019 tax year<br />
 							</span><br />
 							<span style="font-weight:bold;">
 								&#9658;Attach to Form 965.
@@ -253,7 +253,7 @@
 										<xsl:with-param name="LineNumber" select="1 + count($FormData/DeferredForeignIncomeCorpGrp)"/>
 									</xsl:call-template>
 								</xsl:if>
-								<tr style="height:8mm;vertical-align:top;">
+								<tr style="height:7.5mm;vertical-align:top;">
 									<td class="styTableCellCtrInherit" style="font-weight:bold;">16</td>
 									<td class="styTableCellTextInherit" style="font-weight:bold;padding-left:1mm;">
 										Total not from pass-throughs (sum <br /> of lines 1-15) 
@@ -271,7 +271,7 @@
 									</td>
 									<td class="styTableCellAmtInherit" style="background-color:lightgrey;border-right-width:0px;">&nbsp;</td>
 								</tr>
-								<tr style="height:8mm;vertical-align:top;">
+								<tr style="height:7.5mm;vertical-align:top;">
 									<td class="styTableCellCtrInherit" style="font-weight:bold;">17</td>
 									<td class="styTableCellTextInherit" style="font-weight:bold;padding-left:1mm;">
 										Total from pass-throughs (sum of <br /> lines 1-15) 
@@ -295,11 +295,11 @@
 					<div class="styStdDivLS pageEnd">
 						<span style="font-weight:bold;">For Disclosure, Privacy Act, and Paperwork Reduction Act Notice, see separate instructions.</span>
 						<span style="margin-left:25mm;">Cat. No. 71326R</span>
-						<span style="float:right;font-weight:bold;">Schedule F (Form 965) (1-2019)</span>
+						<span style="float:right;font-weight:bold;">Schedule F (Form 965) (Rev. 12-2019)</span>
 					</div>
 					<!-- Page 2 -->
 					<div class="styStdDivLS" style="border-bottom:2px solid black;">
-						Schedule F  (Form 965) (1-2019)
+						Schedule F  (Form 965) (Rev. 12-2019)
 						<div style="float:right;">Page <strong>2</strong></div>
 					</div>
 					<!-- Table 2 -->
@@ -432,7 +432,7 @@
 						</table>
 					</div>
 					<div class="styStdDivLS pageEnd" style="border-top:1px solid black;">
-						<span style="float:right;font-weight:bold;">Schedule F (Form 965) (1-2019)</span>
+						<span style="float:right;font-weight:bold;">Schedule F (Form 965) (Rev. 12-2019)</span>
 					</div>
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLineLandscape" id="LeftoverData">

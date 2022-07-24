@@ -54,7 +54,7 @@
 								<xsl:with-param name="TargetNode" select="$FormData" />
 							</xsl:call-template>
 							<br /><br />
-							(December 2018)<br />
+							(Rev. January 2020)<br />
 							<br />
 							<span class="styAgency">
 								Department of the Treasury
@@ -150,8 +150,8 @@
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBoxSD">1</div>
 						<div class="styLNDesc">
-							Sum of Pro Rata Share of Net Tested Income (total from Form 8992&ndash;Schedule A, column (e) line 1)
-							<span class="sty8992DotLn">...</span>
+							Sum of Pro Rata Share of Net Tested Income. Enter total from Schedule A, line 1, column (e)
+							<span class="sty8992DotLn">.....</span>
 						</div>
 						<div class="styLNRightNumBox">1</div>
 						<div class="styLNAmountBox">
@@ -164,8 +164,8 @@
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBoxSD">2</div>
 						<div class="styLNDesc">
-							Sum of Pro Rata Share of Net Tested Loss (total from Form 8992&ndash;Schedule A, column (f) line 1)
-							<span class="sty8992DotLn">....</span>
+							Sum of Pro Rata Share of Net Tested Loss. Enter total from Schedule A, line 1, column (f)
+							<span class="sty8992DotLn">......</span>
 						</div>
 						<div class="styLNRightNumBox">2</div>
 						<div class="styLNAmountBox">
@@ -178,7 +178,7 @@
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBoxSD">3</div>
 						<div class="styLNDesc">
-							Net CFC Tested Income (combine line 1 and line 2) (if zero or negative, stop here)
+							Net CFC Tested Income. Combine line 1 and line 2. If zero or negative, stop here
 							<span class="sty8992DotLn">........</span>
 						</div>
 						<div class="styLNRightNumBoxNBB">3</div>
@@ -199,8 +199,8 @@
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBoxSD">1</div>
 						<div class="styLNDesc">
-							Net CFC Tested Income (from Part I, line 3)
-							<span class="sty8992DotLn">....................</span>
+							Net CFC Tested Income. Enter amount from Part I, line 3
+							<span class="sty8992DotLn">...............</span>
 						</div>
 						<div class="styLNRightNumBox">1</div>
 						<div class="styLNAmountBox">
@@ -209,61 +209,88 @@
 							</xsl:call-template>
 						</div>
 					</div>
-					<!-- Line 2a -->
+					<!-- Line 2 -->
 					<div class="styStdDiv">
-						<div class="styLNLeftNumBoxSD">2a</div>
-						<div class="styLNDesc" style="width:98mm;height:7mm;">
-							Pro Rata Share of QBAI multiplied by 10% (total from Form 8992&ndash;Schedule A, <br />
-							column (g), line 1)
-							<span class="sty8992DotLn">..................</span>
-						</div>
-						<div class="styLNRightNumBox" style="height:7mm;"><br />2a</div>
-						<div class="styLNAmountBox" style="height:7mm;"><br />
-							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$FormData/TotProRataShareQBAI10PctAmt"/>
-							</xsl:call-template>
-						</div>
-						<div class="styLNRightNumBoxNBB" style="height:7mm;background-color:lightgrey;"></div>
-						<div class="styLNAmountBoxNBB" style="height:7mm;"></div>
-					</div>
-					<!-- Line 2b -->
-					<div class="styStdDiv">
-						<div class="styLNLeftLtrBox">b</div>
-						<div class="styLNDesc" style="width:98mm;height:7mm;">
-							Specified Interest Expense (total from Form 8992&ndash;Schedule A, column (i), <br />
-							line 1)
-							<span class="sty8992DotLn">......................</span>
-						</div>
-						<div class="styLNRightNumBox" style="height:7mm;"><br />2b</div>
-						<div class="styLNAmountBox" style="height:7mm;"><br />
-							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$FormData/TotSpecifiedInterestExpenseAmt"/>
-							</xsl:call-template>
-						</div>
-						<div class="styLNRightNumBoxNBB" style="height:7mm;background-color:lightgrey;"></div>
-						<div class="styLNAmountBoxNBB" style="height:7mm;"></div>
-					</div>
-					<!-- Line 2c -->
-					<div class="styStdDiv">
-						<div class="styLNLeftLtrBox">c</div>
+						<div class="styLNLeftNumBoxSD">2</div>
 						<div class="styLNDesc">
-							Net Deemed Tangible Income Return (DTIR) (subtract line 2b from line 2a) (if zero or less, enter -0- here)
+							Deemed Tangible Income Return (DTIR). Multiply the total from Schedule A, line 1, column (g) by 10% (0.10)
+							<!--<span class="sty8992DotLn">.</span>-->
 						</div>
-						<div class="styLNRightNumBox">2c</div>
+						<div class="styLNRightNumBox">2</div>
+						<div class="styLNAmountBox">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/DeemedTangibleIncomeReturnAmt"/>
+							</xsl:call-template>
+						</div>
+					</div>
+					<!-- Line 3a -->
+					<div class="styStdDiv">
+						<div class="styLNLeftNumBoxSD">3a</div>
+						<div class="styLNDesc" style="width:98mm;height:7mm;">
+							Sum of Pro Rata Share of Tested Interest Expense. Enter total from <br /> Schedule A, line 1, column (j)
+							<span class="sty8992DotLn">..............</span>
+						</div>
+						<div class="styLNRightNumBox" style="height:7mm;"><br />3a</div>
+						<div class="styLNAmountBox" style="height:7mm;"><br />
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/TotProRataShrTestedIntExpnsAmt"/>
+							</xsl:call-template>
+						</div>
+						<div class="styLNRightNumBoxNBB" style="height:7mm;background-color:lightgrey;"></div>
+						<div class="styLNAmountBoxNBB" style="height:7mm;"></div>
+					</div>
+					<!-- Line 3b -->
+					<div class="styStdDiv">
+						<div class="styLNLeftLtrBox" style="padding-left:4.2mm;">b</div>
+						<div class="styLNDesc" style="width:98mm;height:7mm;">
+							Sum of Pro Rata Share of Tested Interest Income. Enter total from <br /> Schedule A, line 1, column (i)
+							<span class="sty8992DotLn">..............</span>
+						</div>
+						<div class="styLNRightNumBox" style="height:7mm;"><br />3b</div>
+						<div class="styLNAmountBox" style="height:7mm;"><br />
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/TotProRataShrTestedIntIncmAmt"/>
+							</xsl:call-template>
+						</div>
+						<div class="styLNRightNumBoxNBB" style="height:7mm;background-color:lightgrey;"></div>
+						<div class="styLNAmountBoxNBB" style="height:7mm;"></div>
+					</div>
+					<!-- Line 3c -->
+					<div class="styStdDiv">
+						<div class="styLNLeftLtrBox" style="padding-left:4.2mm;">c</div>
+						<div class="styLNDesc">
+							Specified Interest Expense. Subtract line 3b from line 3a. If zero or less, enter -0- 
+							<span class="sty8992DotLn">........</span>
+						</div>
+						<div class="styLNRightNumBox">3c</div>
+						<div class="styLNAmountBox">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/SpecifiedInterestExpenseAmt"/>
+							</xsl:call-template>
+						</div>
+					</div>
+					<!-- Line 4 -->
+					<div class="styStdDiv">
+						<div class="styLNLeftNumBoxSD">4</div>
+						<div class="styLNDesc">
+							Net DTIR. Subtract line 3c from line 2. If zero or less, enter -0-
+							<span class="sty8992DotLn">..............</span>
+						</div>
+						<div class="styLNRightNumBox">4</div>
 						<div class="styLNAmountBox">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/NetDTIRAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
-					<!-- Line 3 -->
+					<!-- Line 5 -->
 					<div class="styStdDiv">
-						<div class="styLNLeftNumBoxSD">3</div>
+						<div class="styLNLeftNumBoxSD">5</div>
 						<div class="styLNDesc">
-							GILTI (subtract line 2c from line 1) (see instructions)
-							<span class="sty8992DotLn">.................</span>
+							GILTI. Subtract line 4 from line 1
+							<span class="sty8992DotLn">.......................</span>
 						</div>
-						<div class="styLNRightNumBoxNBB">3</div>
+						<div class="styLNRightNumBoxNBB">5</div>
 						<div class="styLNAmountBoxNBB">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/GILTIReceivedAmt"/>
@@ -272,12 +299,12 @@
 					</div>
 					<div class="styStdDiv pageEnd" style="border-top:2px solid black;">
 						<span style="font-weight:bold;font-family:Arial;">For Paperwork Reduction Act Notice, see separate instructions.</span>
-						<span style="margin-left:20mm;">Cat. No. 37816Y</span>
-						<span style="float:right;">Form <strong>8992</strong> (12-2018)</span>
+						<span style="margin-left:25mm;">Cat. No. 37816Y</span>
+						<span style="float:right;">Form <strong>8992</strong> (Rev. 1-2020)</span>
 					</div>
 					<!-- Page 2 -->
 					<div class="styStdDivLS" style="border-bottom:2px solid black;">
-						Form 8992 (12-2018)
+						Form 8992 (Rev. 1-2020)
 						<div style="float:right;">Page <strong>2</strong></div>
 					</div>
 					<!-- Sch A -->
@@ -289,7 +316,7 @@
 					</div>
 					<div class="styStdDivLS" style="border-top:1px solid black;border-bottom:1px solid black;">
 						<div class="styNameBox" style="width:180mm;">
-							Name of person filing this return <br />
+							Name of person filing this form <br />
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
 							</xsl:call-template><br />
@@ -369,48 +396,52 @@
 						<table style="display:table;border-collapse:collapse;">
 							<thead class="styTableThead">
 								<tr>
-									<th class="styTableCellHeader" scope="col" style="min-width:32mm;width:37mm;font-weight:normal;">
+									<th class="styTableCellHeader" scope="col" style="min-width:24mm;width:32mm;font-weight:normal;">
 										<span style="font-weight:bold;">(a) </span> <br /> Name of CFC
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:18mm;font-weight:normal;">
+									<th class="styTableCellHeader" scope="col" style="width:14mm;font-weight:normal;">
 										<span style="font-weight:bold;">(b) </span> <br />
 										EIN or <br /> Reference ID
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:23mm;font-weight:normal;">
+									<th class="styTableCellHeader" scope="col" style="width:21.5mm;font-weight:normal;">
 										<span style="font-weight:bold;">(c) </span> <br />
 										Tested Income
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:23mm;font-weight:normal;">
+									<th class="styTableCellHeader" scope="col" style="width:22.3mm;font-weight:normal;">
 										<span style="font-weight:bold;">(d) </span> <br />
 										Tested Loss
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:23mm;font-weight:normal;">
+									<th class="styTableCellHeader" scope="col" style="width:21.5mm;font-weight:normal;">
 										<span style="font-weight:bold;">(e) </span> <br />
 										Pro Rata Share <br /> of Tested <br /> Income
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:23mm;font-weight:normal;">
+									<th class="styTableCellHeader" scope="col" style="width:22.3mm;font-weight:normal;">
 										<span style="font-weight:bold;">(f) </span> <br />
-										Pro Rata Share <br /> of (Tested <br /> Loss)
+										Pro Rata Share <br /> of Tested <br /> Loss
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:23mm;font-weight:normal;">
+									<th class="styTableCellHeader" scope="col" style="width:22.3mm;font-weight:normal;">
 										<span style="font-weight:bold;">(g) </span> <br />
-										Pro Rata Share <br /> of Qualified <br /> Business Asset <br /> Investment <br /> (QBAI) Multiplied <br /> by 10% (0.10)
+										Pro Rata Share <br /> of Qualified <br /> Business Asset <br /> Investment <br /> (QBAI)
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:23mm;font-weight:normal;">
+									<th class="styTableCellHeader" scope="col" style="width:22.3mm;font-weight:normal;">
 										<span style="font-weight:bold;">(h) </span> <br />
-										Pro Rata Share <br /> of Interest <br /> Expense
+										Pro Rata Share <br /> of Tested <br /> Loss QBAI <br /> Amount
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:23mm;font-weight:normal;">
+									<th class="styTableCellHeader" scope="col" style="width:21.5mm;font-weight:normal;">
 										<span style="font-weight:bold;">(i) </span> <br />
-										Specified <br /> Interest <br /> Expense
+										Pro Rata Share <br /> of Tested <br /> Interest <br /> Income
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:15mm;font-weight:normal;">
+									<th class="styTableCellHeader" scope="col" style="width:21.5mm;font-weight:normal;">
 										<span style="font-weight:bold;">(j) </span> <br />
-										GILTI <br /> Allocation <br /> Ratio <br /> (Divide <br /> Col. (e) by <br /> Col. (e), <br /> Line 1 <br /> Total)
+										Pro Rata Share <br /> of Tested <br /> Interest <br /> Expense
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:23mm;font-weight:normal;border-right-width:0px;">
-										<span style="font-weight:bold;">(k) </span> <br />
-										GILTI Allocated to Tested Income CFCs (Multiply Form 8992, Part II, Line 3, by Col. (j)) (see instructions)
+									<th class="styTableCellHeader" scope="col" style="width:12.5mm;font-weight:normal;">
+										<span style="font-weight:bold;">(k) </span> <br /> <span style="font-family:Arial;">
+										GILTI <br /> Allocation <br /> Ratio <br /> (Divide <br /> Col. (e) by <br /> Col. (e), <br /> Line 1 <br /> Total)</span>
+									</th>
+									<th class="styTableCellHeader" scope="col" style="width:21.5mm;font-weight:normal;border-right-width:0px;">
+										<span style="font-weight:bold;">(l) </span> <br />
+										GILTI Allocated to Tested Income CFCs (Multiply Form 8992, Part II, Line 5, by Col. (k))
 									</th>
 								</tr>
 							</thead>
@@ -468,17 +499,22 @@
 											</td>
 											<td class="styTableCellAmtInherit">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="ProRataShareQBAI10PctAmt"/>
+													<xsl:with-param name="TargetNode" select="ProRataShareQBAIAmt"/>
 												</xsl:call-template>
 											</td>
 											<td class="styTableCellAmtInherit">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="ProRataShareIntExpenseAmt"/>
+													<xsl:with-param name="TargetNode" select="ProRataShrTestedLossQBAIAmt"/>
 												</xsl:call-template>
 											</td>
 											<td class="styTableCellAmtInherit">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="SpecifiedInterestExpenseAmt"/>
+													<xsl:with-param name="TargetNode" select="ProRataShrTestedIntIncomeAmt"/>
+												</xsl:call-template>
+											</td>
+											<td class="styTableCellAmtInherit">
+												<xsl:call-template name="PopulateAmount">
+													<xsl:with-param name="TargetNode" select="ProRataShrTestedIntExpenseAmt"/>
 												</xsl:call-template>
 											</td>
 											<td class="styTableCellAmtInherit">
@@ -510,6 +546,7 @@
 										<td class="styTableCellAmtInherit">&nbsp;</td>
 										<td class="styTableCellAmtInherit">&nbsp;</td>
 										<td class="styTableCellAmtInherit">&nbsp;</td>
+										<td class="styTableCellAmtInherit">&nbsp;</td>
 										<td class="styTableCellAmtInherit" style="border-right-width:0px;">&nbsp;</td>
 									</tr>
 								</xsl:if>
@@ -531,51 +568,56 @@
 						</xsl:call-template>
 					</xsl:if>
 					<div class="styStdDivLS" style="font-size:6pt;">
-						<div class="styLNDesc" style="width:54.9mm;font-size:7pt;">
+						<div class="styLNDesc" style="width:45.9mm;font-size:7pt;">
 							<strong>1. </strong> Totals (see instructions)
-							<span class="sty8992DotLn">.....</span>
+							<span class="sty8992DotLn">..</span>
 						</div>
-						<div class="styLNAmountBoxNBB" style="width:23mm;padding-right:1px;">
+						<div class="styLNAmountBoxNBB" style="width:21.49mm;padding-right:1px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/TotalNetTestedIncomeAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBoxNBB" style="width:23mm;padding-right:1px;">
+						<div class="styLNAmountBoxNBB" style="width:22.3mm;padding-right:1px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/TotalNetTestedLossAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBoxNBB" style="width:23mm;padding-right:1px;">
+						<div class="styLNAmountBoxNBB" style="width:21.50mm;padding-right:1px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/TotProRataShrCFCTestedIncmAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBoxNBB" style="width:23mm;padding-right:1px;">
+						<div class="styLNAmountBoxNBB" style="width:22.29mm;padding-right:1px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/TotProRataShrNetTestedLossAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBoxNBB" style="width:23mm;padding-right:1px;">
+						<div class="styLNAmountBoxNBB" style="width:22.35mm;padding-right:1px;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$FormData/TotProRataShareQBAI10PctAmt"/>
+								<xsl:with-param name="TargetNode" select="$FormData/TotalProRataShareQBAIAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBoxNBB" style="width:23mm;padding-right:1px;">
+						<div class="styLNAmountBoxNBB" style="width:22.30mm;padding-right:1px;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$FormData/TotProRataShareIntExpenseAmt"/>
+								<xsl:with-param name="TargetNode" select="$FormData/TotProRataShrTestedLossQBAIAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBoxNBB" style="width:23mm;padding-right:1px;">
+						<div class="styLNAmountBoxNBB" style="width:21.5mm;padding-right:1px;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$FormData/TotSpecifiedInterestExpenseAmt"/>
+								<xsl:with-param name="TargetNode" select="$FormData/TotProRataShrTestedIntIncmAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBoxNBB" style="width:15mm;padding-right:1px;">
+						<div class="styLNAmountBoxNBB" style="width:21.4mm;padding-right:1px;">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/TotProRataShrTestedIntExpnsAmt"/>
+							</xsl:call-template>
+						</div>
+						<div class="styLNAmountBoxNBB" style="width:12.6mm;padding-right:1px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/TotalGILTIAllocationRt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNAmountBoxNBB" style="width:23mm;padding-right:1px;">
+						<div class="styLNAmountBoxNBB" style="width:21.5mm;padding-right:1px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/TotGILTIAllocTestedIncmCFCAmt"/>
 							</xsl:call-template>
@@ -585,14 +627,14 @@
 						Totals on line 1 should include the totals from any continuation sheets.
 					</div>
 					<div class="styStdDivLS pageEnd" style="border-top:2px solid black;">
-						<span style="float:right;">Form <strong>8992</strong> (12-2018)</span>
+						<span style="float:right;">Form <strong>8992</strong> (Rev. 1-2020)</span>
 					</div>
 					<!-- Additonal Data Title Bar and Button -->
-					<div class="styLeftOverTitleLine" id="LeftoverData">
+					<div class="styLeftOverTitleLineLandscape" id="LeftoverData">
 						<div class="styLeftOverTitle">
 						   Additional Data        
 						</div>
-						<div class="styLeftOverButtonContainer">
+						<div class="styLeftOverButtonContainerLandscape">
 							<input class="styLeftoverTableBtn" type="button" TabIndex="-1" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
 						</div>
 					</div>
@@ -611,48 +653,52 @@
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;width:256mm;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
-									<th class="styDepTblCell" scope="col" style="min-width:32mm;width:37mm;font-weight:normal;">
+									<th class="styDepTblCell" scope="col" style="min-width:24mm;width:32mm;font-weight:normal;">
 										<span style="font-weight:bold;">(a) </span> <br /> Name of CFC
 									</th>
-									<th class="styDepTblCell" scope="col" style="width:18mm;font-weight:normal;">
+									<th class="styDepTblCell" scope="col" style="width:14mm;font-weight:normal;">
 										<span style="font-weight:bold;">(b) </span> <br />
 										EIN or <br /> Reference ID
 									</th>
-									<th class="styDepTblCell" scope="col" style="width:23mm;font-weight:normal;">
+									<th class="styDepTblCell" scope="col" style="width:21.5mm;font-weight:normal;">
 										<span style="font-weight:bold;">(c) </span> <br />
 										Tested Income
 									</th>
-									<th class="styDepTblCell" scope="col" style="width:23mm;font-weight:normal;">
+									<th class="styDepTblCell" scope="col" style="width:22.3mm;font-weight:normal;">
 										<span style="font-weight:bold;">(d) </span> <br />
 										Tested Loss
 									</th>
-									<th class="styDepTblCell" scope="col" style="width:23mm;font-weight:normal;">
+									<th class="styDepTblCell" scope="col" style="width:21.5mm;font-weight:normal;">
 										<span style="font-weight:bold;">(e) </span> <br />
 										Pro Rata Share <br /> of Tested <br /> Income
 									</th>
-									<th class="styDepTblCell" scope="col" style="width:23mm;font-weight:normal;">
+									<th class="styDepTblCell" scope="col" style="width:22.3mm;font-weight:normal;">
 										<span style="font-weight:bold;">(f) </span> <br />
-										Pro Rata Share <br /> of (Tested <br /> Loss)
+										Pro Rata Share <br /> of Tested <br /> Loss
 									</th>
-									<th class="styDepTblCell" scope="col" style="width:23mm;font-weight:normal;">
+									<th class="styDepTblCell" scope="col" style="width:22.3mm;font-weight:normal;">
 										<span style="font-weight:bold;">(g) </span> <br />
-										Pro Rata Share <br /> of Qualified <br /> Business Asset <br /> Investment <br /> (QBAI) Multiplied <br /> by 10% (0.10)
+										Pro Rata Share <br /> of Qualified <br /> Business Asset <br /> Investment <br /> (QBAI)
 									</th>
-									<th class="styDepTblCell" scope="col" style="width:23mm;font-weight:normal;">
+									<th class="styDepTblCell" scope="col" style="width:22.3mm;font-weight:normal;">
 										<span style="font-weight:bold;">(h) </span> <br />
-										Pro Rata Share <br /> of Interest <br /> Expense
+										Pro Rata Share <br /> of Tested <br /> Loss QBAI <br /> Amount
 									</th>
-									<th class="styDepTblCell" scope="col" style="width:23mm;font-weight:normal;">
+									<th class="styDepTblCell" scope="col" style="width:21.5mm;font-weight:normal;">
 										<span style="font-weight:bold;">(i) </span> <br />
-										Specified <br /> Interest <br /> Expense
+										Pro Rata Share <br /> of Tested <br /> Interest <br /> Income
 									</th>
-									<th class="styDepTblCell" scope="col" style="width:15mm;font-weight:normal;">
+									<th class="styDepTblCell" scope="col" style="width:21.5mm;font-weight:normal;">
 										<span style="font-weight:bold;">(j) </span> <br />
-										GILTI <br /> Allocation <br /> Ratio <br /> (Divide <br /> Col. (e) by <br /> Col. (e), <br /> Line 1 <br /> Total)
+										Pro Rata Share <br /> of Tested <br /> Interest <br /> Expense
 									</th>
-									<th class="styDepTblCell" scope="col" style="width:23mm;font-weight:normal;">
-										<span style="font-weight:bold;">(k) </span> <br />
-										GILTI Allocated to Tested Income CFCs (Multiply Form 8992, Part II, Line 3, by Col. (j)) (see instructions)
+									<th class="styDepTblCell" scope="col" style="width:12.5mm;font-weight:normal;">
+										<span style="font-weight:bold;">(k) </span> <br /> <span style="font-family:Arial;">
+										GILTI <br /> Allocation <br /> Ratio <br /> (Divide <br /> Col. (e) by <br /> Col. (e), <br /> Line 1 <br /> Total)</span>
+									</th>
+									<th class="styDepTblCell" scope="col" style="width:21.5mm;font-weight:normal;">
+										<span style="font-weight:bold;">(l) </span> <br />
+										GILTI Allocated to Tested Income CFCs (Multiply Form 8992, Part II, Line 5, by Col. (k))
 									</th>
 								</tr>
 							</thead>
@@ -660,7 +706,7 @@
 								<xsl:for-each select="$FormData/USShrCalcGILTIGrp">
 									<tr style="border-color:black;font-size:6pt;">
 										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-										<td class="styTableCellTextInherit">
+										<td class="styTableCellTextInherit" style="">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="CFCName/BusinessNameLine1Txt"/>
 											</xsl:call-template>
@@ -710,17 +756,22 @@
 										</td>
 										<td class="styTableCellAmtInherit">
 											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="ProRataShareQBAI10PctAmt"/>
+												<xsl:with-param name="TargetNode" select="ProRataShareQBAIAmt"/>
 											</xsl:call-template>
 										</td>
 										<td class="styTableCellAmtInherit">
 											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="ProRataShareIntExpenseAmt"/>
+												<xsl:with-param name="TargetNode" select="ProRataShrTestedLossQBAIAmt"/>
 											</xsl:call-template>
 										</td>
 										<td class="styTableCellAmtInherit">
 											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="SpecifiedInterestExpenseAmt"/>
+												<xsl:with-param name="TargetNode" select="ProRataShrTestedIntIncomeAmt"/>
+											</xsl:call-template>
+										</td>
+										<td class="styTableCellAmtInherit">
+											<xsl:call-template name="PopulateAmount">
+												<xsl:with-param name="TargetNode" select="ProRataShrTestedIntExpenseAmt"/>
 											</xsl:call-template>
 										</td>
 										<td class="styTableCellAmtInherit">
@@ -770,6 +821,7 @@
 		<tr>
 			<td class="styTableCellTextInherit">&nbsp;</td>
 			<td class="styTableCellCtrInherit">&nbsp;</td>
+			<td class="styTableCellAmtInherit">&nbsp;</td>
 			<td class="styTableCellAmtInherit">&nbsp;</td>
 			<td class="styTableCellAmtInherit">&nbsp;</td>
 			<td class="styTableCellAmtInherit">&nbsp;</td>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 03/14/2019 - Made changes per UWR 2018147 - Jeremy Nichols -->
+<!-- 04/27/2020 - Made changes perdefect 127971 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -188,7 +189,7 @@
                 </td>
                 <td style="width:51mm;border:0 solid black;border-right-width:1px;border-bottom-width:1px;text-align:center;vertical-align:bottom;padding-bottom:0.25mm;padding-left:1mm">
                   <div style="vertical-align:top;">
-					  Month of first use in 2019
+					  Month of first use
 					  <br/>
 					  (See instructions)
 				  </div>
@@ -1723,7 +1724,7 @@
               <span class="styBoldText" style="font-size:6pt">For Privacy Act and Paperwork Reduction Act Notice, see the separate instructions.</span>
             </span>
             <span style="float:right">
-              <span class="styBoldText" style="font-size:6pt">Cat. No. 112500 <span style="width:5mm;"/>Schedule 1 (Form 2290)</span> (Rev. 7-2019)</span>
+              <span style="font-size:6pt">Cat. No. 112500</span> <span style="width:5mm;"/><span class="styBoldText" style="font-size:6pt">Schedule 1 (Form 2290)</span> (Rev. 7-2019)</span>
           </div>
           
           <!-- BEGIN  CONSENT TO DISCLOSURE OF TAX INFORMATION  -->

@@ -3,7 +3,7 @@
 <!-- 05/07/2018 - Changes made for UWR 207539 - Jeremy Nichols -->
 <!-- 11/26/2018 - Changes made for defect 126490 - Jeremy Nichols -->
 <!-- 06/18/2019 - Changes made for UWR 220903 - Jeremy Nichols -->
-
+<!-- 02/05/2020 - Changes made for defect 129365 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <xsl:include href="PopulateTemplate.xsl"/>
@@ -188,7 +188,7 @@
           
           
           <!--Box C -->
-        	<div class="styLblNameAddr" style="width:98mm;height:54mm;border-bottom-width: 1.5px;">
+        	<div class="styLblNameAddr" style="width:98mm;height:auto;border-bottom-width: 1.5px;">
                    <div class="styNameAddr" style="width:97mm;height:10.5mm;border-left-width:1px;">
             		<b>C</b> Name of organization<br/>
             <span class="stySmallText" style="padding-left:2mm;">
@@ -204,23 +204,26 @@
            </span>
           </div>
          
+         <xsl:if test="count($IRS990NData/DoingBusinessAsName) &lt; 1">
+          		<div class="styNameAddr" style="width:97mm;height:8mm;border-left-width:1px;">
+					<span style="width:2mm;"/>Doing Business As Name<br/>
+					<span class="stySmallText" style="height:8mm;"></span>
+				</div>
+		 </xsl:if>
+		 
          <xsl:for-each select="$IRS990NData/DoingBusinessAsName">
           		<div class="styNameAddr" style="width:97mm;height:8mm;border-left-width:1px;">
-            			<span style="width:2mm;"/>Doing Business As Name<br/>
-            			<span class="stySmallText" style="padding-left:2mm;">
+					<span style="width:2mm;"/>Doing Business As Name<br/>
+					<span class="stySmallText" style="padding-left:2mm;">
                			<xsl:call-template name="PopulateText">
-   	 					<xsl:with-param name="TargetNode" select="BusinessNameLine1Txt"/>
+							<xsl:with-param name="TargetNode" select="BusinessNameLine1Txt"/>
     		 			</xsl:call-template>
-		<br/>
-          	   <xsl:call-template name="PopulateText">
-   	 		<xsl:with-param name="TargetNode" select="BusinessNameLine2Txt"/>
-    		   </xsl:call-template>
-    		<!--<br/>          	   
-                <xsl:call-template name="PopulateReturnHeaderFiler">
-                <xsl:with-param name="TargetNode">InCareOfName</xsl:with-param>
-                </xsl:call-template>-->
-           </span>
-          </div>
+						<br/>
+					    <xsl:call-template name="PopulateText">
+							<xsl:with-param name="TargetNode" select="BusinessNameLine2Txt"/>
+					    </xsl:call-template>
+					</span>
+				</div>
          </xsl:for-each>
 
           <div class="styNameAddr" style="width:97mm;height:10mm;border-left-width:1px;">

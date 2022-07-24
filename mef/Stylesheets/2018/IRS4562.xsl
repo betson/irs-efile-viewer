@@ -69,6 +69,7 @@
         </xsl:if>
 		<span class="styIRS4562TableCellPad"/>
 	  </td>
+	  <!-- Part III, Section C column B -->
 	  <td class="styIRS4562TableCellB">
 		<xsl:if test="$Classification != 3 or $Classification != 1">
 		  <xsl:attribute name="style">border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; background-color:lightgrey</xsl:attribute>
@@ -81,9 +82,10 @@
 		</xsl:if>
 		<span class="styIRS4562TableCellPad"/>
 	  </td>
+	  <!-- Part III, Section C column C -->
 	  <td class="styIRS4562TableCellC">
 		<xsl:if test="$Classification != 1">
-		  <xsl:attribute name="style">border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; text-align:right;</xsl:attribute>
+		  <xsl:attribute name="style">border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:right;</xsl:attribute>
 		</xsl:if>
 		<xsl:if test="$Classification = 1">
 		  <xsl:attribute name="style">border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:right;</xsl:attribute>
@@ -93,6 +95,7 @@
 		</xsl:if>
 		<span class="styIRS4562TableCellPad"/>
 	  </td>
+	  <!-- Column D -->
 	  <td class="styIRS4562TableCellD" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px">
 		<xsl:if test="$Classification = 25">25 yrs.</xsl:if>
 		<xsl:if test="$Classification = 12">12 yrs.</xsl:if>
@@ -319,10 +322,10 @@
 				  <div class="styFMT" style="font-size:9pt; padding-top:1mm;">(Including Information on Listed Property)</div>
                   <br/>							
 				  <div class="styFBT" style=" font-size:7pt;">
-					<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="bullet"/> Attach to your tax return. 
+					<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="Right Pointing Arrow"/> Attach to your tax return. 
 				  </div>
 				  <div class="styFBT" style=" font-size:7pt;">
-					<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="bullet"/>
+					<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="Right Pointing arrow"/>
 					<span  style="font-size:6pt; padding-top:0mm">&#160;
 					  Go to
 					  <span style="width:.5mm"/> 
@@ -755,7 +758,7 @@
 				  Carryover of disallowed deduction to 2019. Add lines 9 and 10, less line 12
                   <div style="float:right;">
 					<!--<div class="styDotLn"> .. </div>-->										
-					<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="bullet"/>	
+					<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="Right Pointing arrow"/>	
 					<span style="width:1mm"/>
 				  </div>
 				</span>
@@ -868,7 +871,7 @@
 				<div class="styPartName">Part III</div>
 				<div class="styPartDesc">
 				  <span style="width:5px;"/>MACRS Depreciation (Don't
-				  <span class="styNormalText">include listed property. </span>
+				  <span class="styNormalText">include listed property. </span><span style="width:1mm;"/>
 				  <span class="styNormalText"> See instructions.</span>)
 				</div>
 			  </div>
@@ -902,18 +905,18 @@
 					If you are electing to group any assets placed in service during the tax year into one or more general asset<br/> accounts, check here
 					<!--Dotted Line-->
 					<span class="styFormTDotLnDesc" style="letter-spacing:4mm; font-weight:bold; text-align:right">...................</span>
-					<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="bullet"/>
+					<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="Right Pointing Arrow"/>
 					<span style="width:1mm;"/>
-					<input type="checkbox" alt="General Asset Account Election" class="styIRS4562Ckbox">
+					<input type="checkbox" alt="General Asset Account Election Indicator" class="styIRS4562Ckbox">
 					  <xsl:call-template name="PopulateCheckbox">
 						<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralAssetAccountElectionInd"/>
-						<xsl:with-param name="BackupName">IRS4562GeneralAssetAccountElection</xsl:with-param>
+						<xsl:with-param name="BackupName">GeneralAssetAccountElection</xsl:with-param>
 					  </xsl:call-template>
 					</input>
 					<label>
 					  <xsl:call-template name="PopulateLabel">
 						<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralAssetAccountElectionInd"/>
-						<xsl:with-param name="BackupName">IRS4562GeneralAssetAccountElection</xsl:with-param>
+						<xsl:with-param name="BackupName">GeneralAssetAccountElectionLabel</xsl:with-param>
 					  </xsl:call-template>
 					</label>
 				  </div>
@@ -1142,7 +1145,7 @@
                                 3-year property
                                 <span class="styIRS4562TableCellPad"/>
 							  </td>
-							  <td class="styIRS4562TableCellB" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; background-color:lightgrey;">
+							  <td class="styIRS4562TableCellB" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:01px; border-bottom-width:0px; background-color:lightgrey;">
 							    <span class="styIRS4562TableCellPad"/>
 							  </td>
 							  <td class="styIRS4562TableCellC" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:right">
@@ -1179,7 +1182,7 @@
 							<xsl:attribute name="style">border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; background-color:lightgrey;</xsl:attribute>
 							<span class="styIRS4562TableCellPad"/>
 						  </td>
-						  <td class="styIRS4562TableCellC" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:1px; text-align:right">
+						  <td class="styIRS4562TableCellC" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:right">
 							See Add'l Data
 							<span class="styIRS4562TableCellPad"/>
 						  </td>
@@ -1714,7 +1717,7 @@
 						  <td class="styIRS4562TableCellB" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px">
 							<span class="styIRS4562TableCellPad"/>
 						  </td>
-						  <td class="styIRS4562TableCellC" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; text-align: right">
+						  <td class="styIRS4562TableCellC" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align: right">
 							<span class="styIRS4562TableCellPad"/>
 						  </td>
 						  <td class="styIRS4562TableCellD" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px">
@@ -2025,7 +2028,7 @@
 
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 20 START &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Line 20 START &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
-			  <!--  BEGIN SECTION B TABLE  -->
+			  <!--  BEGIN SECTION C TABLE  -->
 			  <div class="styIRS4562TableContainer"  id="SecBLine20">
 				<!--print logic-->
 				<xsl:call-template name="SetInitialState"/>
@@ -2170,7 +2173,10 @@
 								30-year
 								<span class="styIRS4562TableCellPad"/>
 							</td>
-							<td class="styIRS4562TableCellB" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; background-color:lightgrey;">
+							<td class="styIRS4562TableCellB" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:center;">
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="MonthAndYearPlacedInServiceDt"/>
+							  </xsl:call-template>
 							  <span class="styIRS4562TableCellPad"/>
 							</td>
 							<td class="styIRS4562TableCellC" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:right;">
@@ -2329,7 +2335,7 @@
 							<xsl:attribute name="style">border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; background-color:lightgrey</xsl:attribute>
 							<span class="styIRS4562TableCellPad"/>
 						  </td>
-						  <td class="styIRS4562TableCellC" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align: right,">
+						  <td class="styIRS4562TableCellC" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align: right;">
 							<span class="styIRS4562TableCellPad"/>
 						  </td>
 						  <td class="styIRS4562TableCellD" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px">
@@ -2522,7 +2528,7 @@
 				</div>
 				<!--   END PART V HEADER   -->
 				<div class="styIRS4562Section" style="text-align:left; font-weight:normal; border-top-width:0px; clear:all;">
-				  <b>Section A&#151;Depreciation and Other Information (Caution:</b> See the instructions for limits for passenger automobiles. <b>)</b>
+				  <b>Section A&#151;Depreciation and Other Information (Caution:</b> See the instructions for limits for passenger automobiles.<b>)</b>
 				</div>
 				<!--   BEGIN LINE 24a of section a Part V -->
 				<span class="styIRS4562LNDesc" style="width:106mm;">
@@ -2533,7 +2539,7 @@
 				  <xsl:call-template name="PopulateSpan">
 					<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceToSupportDeductionInd"/>
 				  </xsl:call-template>
-				  <input type="checkbox" alt="Have Evidence To Support Claims Yes" class="styIRS4562Ckbox">
+				  <input type="checkbox" alt="Have Evidence To Support Claims Indicator Yes" class="styIRS4562Ckbox">
 					<xsl:call-template name="PopulateYesCheckbox">
 					  <xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceToSupportDeductionInd"/>
 					  <xsl:with-param name="BackupName">HaveEvidenceToSupportClaimsYes</xsl:with-param>
@@ -2545,7 +2551,7 @@
 					<label>
 					  <xsl:call-template name="PopulateLabelYes">
 						<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceToSupportDeductionInd"/>
-						<xsl:with-param name="BackupName">HaveEvidenceToSupportClaimsLabel</xsl:with-param>
+						<xsl:with-param name="BackupName">HaveEvidenceToSupportClaimsYesLabel</xsl:with-param>
 					  </xsl:call-template>Yes
 					</label>
 				  </b>
@@ -2554,7 +2560,7 @@
 				  <xsl:call-template name="PopulateSpan">
 					<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceToSupportDeductionInd"/>
 				  </xsl:call-template>
-				  <input type="checkbox"  alt="Have Evidence To Support Claims No" class="styIRS4562Ckbox">
+				  <input type="checkbox"  alt="Have Evidence To Support Claims Indicator No" class="styIRS4562Ckbox">
 					<xsl:call-template name="PopulateNoCheckbox">
 					  <xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceToSupportDeductionInd"/>
 					  <xsl:with-param name="BackupName">HaveEvidenceToSupportClaimsNo</xsl:with-param>
@@ -2566,7 +2572,7 @@
 					<label>
 					  <xsl:call-template name="PopulateLabelNo">
 						<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceToSupportDeductionInd"/>
-						<xsl:with-param name="BackupName">HaveEvidenceToSupportClaimsLabel</xsl:with-param>
+						<xsl:with-param name="BackupName">HaveEvidenceToSupportClaimsNoLabel</xsl:with-param>
 					  </xsl:call-template>No
 					</label>
 				  </b>
@@ -2577,7 +2583,7 @@
 				<xsl:call-template name="PopulateSpan">
 				  <xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
 				</xsl:call-template>
-				<input type="checkbox" alt="Is Evidence Written Yes" class="styIRS4562Ckbox">
+				<input type="checkbox" alt="Is Evidence Written Indicator Yes" class="styIRS4562Ckbox">
 				  <xsl:call-template name="PopulateYesCheckbox">
 					<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
 					<xsl:with-param name="BackupName">IsEvidenceWrittenYes</xsl:with-param>
@@ -2588,7 +2594,7 @@
 					<label>
 					  <xsl:call-template name="PopulateLabelYes">
 						<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
-						<xsl:with-param name="BackupName">IsEvidenceWrittenLabel</xsl:with-param>
+						<xsl:with-param name="BackupName">IsEvidenceWrittenYesLabel</xsl:with-param>
 					  </xsl:call-template>Yes
 					</label>
 				  </b>
@@ -2598,7 +2604,7 @@
 					<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
 				  </xsl:call-template>
 				  <span style="width:2mm"/>
-				  <input type="checkbox" alt="Is Evidence Written No" class="styIRS4562Ckbox">
+				  <input type="checkbox" alt="Is Evidence Written Indicator No" class="styIRS4562Ckbox">
 					<xsl:call-template name="PopulateNoCheckbox">
 					  <xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
 					  <xsl:with-param name="BackupName">IsEvidenceWrittenNo</xsl:with-param>
@@ -2609,7 +2615,7 @@
 				  <label>
 					<xsl:call-template name="PopulateLabelNo">
 					  <xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
-					  <xsl:with-param name="BackupName">IRS4562IsEvidenceWrittenLabel</xsl:with-param>
+					  <xsl:with-param name="BackupName">IsEvidenceWrittenNoLabel</xsl:with-param>
 					</xsl:call-template>No
 				  </label>
 				</b>
@@ -5647,7 +5653,10 @@
                               30-year
                               <span class="styIRS4562TableCellPad"/>
 							</td>
-							<td class="styIRS4562TableCellB" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; background-color:lightgrey;">
+							<td class="styIRS4562TableCellB" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:center;">
+							  <xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="MonthAndYearPlacedInServiceDt"/>
+							  </xsl:call-template>
 							  <span class="styIRS4562TableCellPad"/>
 							</td>
 							<td class="styIRS4562TableCellC" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:right;">

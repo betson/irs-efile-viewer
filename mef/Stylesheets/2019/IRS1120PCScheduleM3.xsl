@@ -2031,7 +2031,7 @@
             <!-- Table R19 L18 -->
             <tr>
               <td class="styIRS1120PCScheduleM3NumberCell">18</td>
-              <td><span style="float:left;">Section 481(a) adjustments</span><span class="styDotLn" style="float:right;                   padding-right:1mm;">.........</span>
+              <td><span style="float:left;">Section 481(a) adjustments</span><span class="styDotLn" style="float:right; padding-right:1mm;">.........</span>
               </td>
               <td class="styIRS1120PCScheduleM3ShadedCell">
                 <span style="width:1mm"/>
@@ -2056,7 +2056,7 @@
             <!-- Table R20 L19 -->
             <tr>
               <td class="styIRS1120PCScheduleM3NumberCell">19</td>
-              <td><span style="float:left;">Income from a special loss discount account</span><span class="styDotLn" style="float:right;                   padding-right:1mm;">...</span>
+              <td><span style="float:left;">Reserved for future use</span><span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
               </td>
               <td class="styIRS1120PCScheduleM3ShadedCell" style="border-top-width:0mm;">
                 <span style="width:1mm"/>

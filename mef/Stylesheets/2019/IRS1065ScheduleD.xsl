@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified on 7/17/2019 -->
 	<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="PopulateTemplate.xsl"/>
@@ -143,9 +142,10 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1065SchDData/DisposeInvestmentQOFInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Dispose Investment Q O F Yes Indicator"  class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065SchDData/DisposeInvestmentQOFInd"/>
+										<xsl:with-param name="BackupName" select="Form1065SchDData/DisposeInvestmentQOFInd"/>
 									</xsl:call-template>
 								</input>
 								<label>
@@ -155,9 +155,10 @@
 									</xsl:call-template>
 									<span style="padding-left:1mm;">Yes</span>
 								</label>   
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Dispose Investment Q O F No Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065SchDData/DisposeInvestmentQOFInd"/>
+										<xsl:with-param name="BackupName" select="Form1065SchDData/DisposeInvestmentQOFInd"/>
 									</xsl:call-template>
 								</input>
 								<label>
@@ -897,7 +898,7 @@
 									<td class="styLeftOverTableRowDesc" style="width:130mm;" scope="row">
 										<xsl:text>Check the box if you have Like-Kind Exchange, or Related Party Exchange or Related Party Like-Kind Exchange</xsl:text>:</td>
 									<td class="styLeftOverTableRowAmount" style="width:87mm;">
-										<input type="checkbox" class="styCkbox">
+										<input type="checkbox" class="styCkbox" alt="Related Party and or Like-Kind Exchange">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$Form1065SchDData/RelatedPartyLikeKindExchInd"/>
 												<xsl:with-param name="BackupName">IRS1065ScheduleDRelatedPartyLikeKindExchInd</xsl:with-param>

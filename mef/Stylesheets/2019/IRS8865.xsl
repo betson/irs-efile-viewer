@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
-<!-- 04/24/2018 - Changes made for defect 201239 - Jeremy Nichols -->
-<!-- 05/07/2018 - Changes made for UWR 204940 - Jeremy Nichols -->
-<!-- 07/26/2018 - Changes made for defect 126341 - Jeremy Nichols -->
-<!-- 08/02/2018 - Changes made for KISAM IM00341482 - Jeremy Nichols -->
-<!-- 09/24/2018 - Changes made for defect 126564 - Jeremy Nichols -->
-<!-- 09/24/2018 - Changes made for defect 62431 - Jeremy Nichols -->
-<!-- 10/19/2018 - Changes made for UWR 212406 under defect 62736- Jeremy Nichols -->
-<!-- 11/13/2018 - Changes made for defect 62431 - Jeremy Nichols -->
-<!-- 11/16/2018 - Changes made for KISAM IM00341225 - Jeremy Nichols -->
-<!-- 11/26/2018 - Changes made for defect 126503 - Jeremy Nichols -->
-<!-- 11/26/2018 - Changes made for defect 126564 - Jeremy Nichols -->
 <!-- 01/15/2019 - Changes made for defect 127073 - Jeremy Nichols -->
 <!-- 06/17/2019 - Changes made for UWR 217922 - Jeremy Nichols -->
 <!-- 09/10/2019 - Changes made for KISAM IM00874773 - Jeremy Nichols -->
 <!-- 09/23/2019 - Changes made for UWR 219393 - Jeremy Nichols -->
+<!-- 01/10/2020 - Changes made for KISAM IM00921666 - Jeremy Nichols -->
+<!-- 01/17/2020 - Changes made for KISAM IM00921582 - Jeremy Nichols -->
+<!-- 01/31/2020 - Changes made for defect 129325 - Jeremy Nichols -->
+<!-- 02/03/2020 - Changes made for defect 129326 - Jeremy Nichols -->
+<!-- 02/06/2020 - Changes made for defect 129348 - Jeremy Nichols -->
+<!-- 02/12/2020 - Changes made for defect 128353 - Jeremy Nichols -->
+<!-- 02/13/2020 - Changes made for defect 129401 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -27,7 +23,6 @@
 	
 	<xsl:param name="FormData" select="$RtnDoc/IRS8865"/>
 	<xsl:param name="IRS1065ScheduleD" select="$RtnDoc/IRS1065ScheduleD"/>
-	
 	<xsl:template match="/">
 	
 		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
@@ -129,7 +124,7 @@
 				</div>
 				<!-- Name and Address -->
 				<div class="IRS8865_LineContainer">
-					<div class="IRS8865_NameBox" style=" width:150mm;line-height:100%;      font-size:7pt;">Name of person filing this return<br/>
+					<div class="IRS8865_NameBox" style=" width:137mm;line-height:100%;      font-size:7pt;">Name of person filing this return<br/>
 						<xsl:choose>
 							<xsl:when test="normalize-space($FormData/FilerPersonNm) != ''">
 								<br/>
@@ -155,8 +150,8 @@
 							</xsl:otherwise>
 						</xsl:choose>
 					</div>
-					<div class="IRS8865_EINBox" style=" width:37mm;padding-left:1mm;font-size:7pt;">
-						<span style="font-weight:bold">Filer's identifying number</span>
+					<div class="IRS8865_EINBox" style=" width:50mm;padding-left:1mm;font-size:7pt;padding-bottom:0.5mm;vertical-align:top;">
+						<span style="font-weight:bold;vertical-align:top;">Filer's identification number</span>
 						<span style="height:4.5mm;"/>
 						<span style="font-weight:normal;">
 						<xsl:choose>
@@ -209,7 +204,7 @@
 					<div class="IRS8865_CatLine" style="padding-left:2mm;font-size:6pt; height: 13mm;">
 						<span style="font-weight:bold;font-size:7pt;">A</span><span style="width:0.5mm;"/>
 						<span style="font-size:6pt;">
-						  Category of filer (see Categories of Filers 
+						  Category of filer (see <b>Categories of Filers</b> 
 						  in the instructions and check applicable box(es)):
 						</span>
 						<br/>
@@ -218,12 +213,14 @@
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$FormData/CategoryOfFiler1Ind"/>
+									<xsl:with-param name="BackupName">CategoryOfFiler1</xsl:with-param>
 								</xsl:call-template>
 								1
 						   </label>
-							<input type="checkbox" class="IRS8865_Checkbox">
+							<input type="checkbox" class="IRS8865_Checkbox" name="CategoryOfFiler1" alt="Category of filer 1">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/CategoryOfFiler1Ind"/>
+									<xsl:with-param name="BackupName">CategoryOfFiler1</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -231,12 +228,14 @@
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$FormData/CategoryOfFiler2Ind"/>
+									<xsl:with-param name="BackupName">CategoryOfFiler2</xsl:with-param>
 								</xsl:call-template>
 								2
 						    </label>
-							<input type="checkbox" class="IRS8865_Checkbox">
+							<input type="checkbox" class="IRS8865_Checkbox" name="CategoryOfFiler2" alt="Category of filer 2">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/CategoryOfFiler2Ind"/>
+									<xsl:with-param name="BackupName">CategoryOfFiler2</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -244,14 +243,16 @@
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$FormData/CategoryOfFiler3Ind"/>
+									<xsl:with-param name="BackupName">CategoryOfFiler3</xsl:with-param>
 								</xsl:call-template>
 
         3
 
       </label>
-							<input type="checkbox" class="IRS8865_Checkbox">
+							<input type="checkbox" class="IRS8865_Checkbox" name="CategoryOfFiler3" alt="Category of filer 3">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/CategoryOfFiler3Ind"/>
+									<xsl:with-param name="BackupName">CategoryOfFiler3</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -259,14 +260,16 @@
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$FormData/CategoryOfFiler4Ind"/>
+									<xsl:with-param name="BackupName">CategoryOfFiler4</xsl:with-param>
 								</xsl:call-template>
 
         4
 
       </label>
-							<input type="checkbox" class="IRS8865_Checkbox">
+							<input type="checkbox" class="IRS8865_Checkbox" name="CategoryOfFiler4" alt="Category of filer 4">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/CategoryOfFiler4Ind"/>
+									<xsl:with-param name="BackupName">CategoryOfFiler4</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -337,14 +340,14 @@
 					</div>
 					<div class="IRS8865_CatLine" style="width:32mm;height:6.5mm;padding-left:4px;">
             EIN
-            <span style="width:6px;"/>
+            <span style="width:6px;"/><br/>
 						<div>
 							<!-- Start here -->
-							<xsl:if test="$FormData/ParentFilerEIN">
-								<xsl:call-template name="PopulateEIN">
-									<xsl:with-param name="TargetNode" select="$FormData/ParentFilerEIN"/>
-								</xsl:call-template>
-							</xsl:if>
+										<xsl:if test="not($FormData/ParentFilerEIN='')">
+											<xsl:call-template name="PopulateEIN">
+												<xsl:with-param name="TargetNode" select="$FormData/ParentFilerEIN"/>
+											</xsl:call-template>
+										</xsl:if>
 							<xsl:if test="$FormData/ParentFilerMissingEINReasonCd">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/ParentFilerMissingEINReasonCd"/>
@@ -424,7 +427,7 @@
 							<th scope="col" rowspan="2" class="IRS8865_SchATabAddrCol" style="height:8mm;">
 								<span style="font-weight:bold;">(2) </span>Address</th>
 							<th scope="col" rowspan="2" class="IRS8865_SchATabIDCol" style="height:8mm;">
-								<span style="font-weight:bold;">(3) </span>Identifying number</th>
+								<span style="font-weight:bold;">(3) </span><span style="width:0.5mm;"/>Identification number</th>
 							<th scope="col" colspan="3" style="height:4mm">
 								<span style="font-weight:bold;">(4) </span>Check applicable box(es)</th>
 						</tr>
@@ -799,7 +802,7 @@
 				<div class="IRS8865_LineContainer">
 					<table cellspacing="0" cellpadding="0" style="font-size:7pt;">
 						<tr>
-							<td class="IRS8865_LineFTab" style="border-right-width:1px;border-bottom-width:1px;width:28mm" colspan="2">
+							<td class="IRS8865_LineFTab" style="border-right-width:1px;border-bottom-width:1px;width:25mm" colspan="2">
 								<div style="width 27mm;height:8mm;padding-left:3mm;">
 									<b>4</b><span style="width:2mm;"/>Date of<br/><span style="width:4.5mm;"/>organization
 								</div>
@@ -809,7 +812,7 @@
 									</xsl:call-template>
 								</div>
 							</td>
-							<td class="IRS8865_LineFTab" style="border-right-width:1px;border-bottom-width:1px;width:33mm" colspan="2">
+							<td class="IRS8865_LineFTab" style="border-right-width:1px;border-bottom-width:1px;width:32mm" colspan="2">
 								<div style="width 32mm;height:8mm;padding-left:1.5mm;">
 									<b>5</b><span style="width:1mm;"/>Principal place of<br/><span style="width:3.5mm;"/>business
 								</div>
@@ -819,7 +822,7 @@
 									</xsl:call-template>
 								</div>
 							</td>
-							<td class="IRS8865_LineFTab" style="border-right-width:1px;border-bottom-width:1px;width:37mm" colspan="2">
+							<td class="IRS8865_LineFTab" style="border-right-width:1px;border-bottom-width:1px;width:36mm" colspan="2">
 								<div style="width 36mm;height:8mm;padding-left:1.5mm;">
 									<b>6</b><span style="width:1mm;"/>Principal business<br/><span style="width:3.5mm;"/>activity code number
 								</div>
@@ -837,7 +840,7 @@
 									</xsl:if>
 								</div>
 							</td>
-							<td class="IRS8865_LineFTab" style="border-right-width:1px;border-bottom-width:1px;width:36mm" colspan="2">
+							<td class="IRS8865_LineFTab" style="border-right-width:1px;border-bottom-width:1px;width:35mm" colspan="2">
 								<div style="width 35mm;height:8mm;padding-left:1.5mm;">
 									<b>7</b><span style="width:1mm;"/>Principal business<br/><span style="width:3.5mm;"/>activity
 								</div>
@@ -847,7 +850,7 @@
 									</xsl:call-template>
 								</div>
 							</td>
-							<td class="IRS8865_LineFTab" style="border-right-width:1px;border-bottom-width:1px;width:35mm" colspan="2">
+							<td class="IRS8865_LineFTab" style="border-right-width:1px;border-bottom-width:1px;width:33mm" colspan="2">
 								<div style="width 34mm;height:8mm;padding-left:1mm;">
 									<b>8a</b> Functional currency
 								</div>
@@ -861,7 +864,7 @@
 									</xsl:call-template>
 								</div>
 							</td>
-							<td class="IRS8865_LineFTab" colspan="2" style="border-bottom-width:1px;width:29mm;">
+							<td class="IRS8865_LineFTab" colspan="2" style="border-bottom-width:1px;width:37mm;">
 								<div style="width 28mm;height:8mm;padding-left:1mm;">
 									<b>8b</b> Exchange rate<br/><span style="width:4mm;"/>(see instructions)
 								</div>
@@ -891,7 +894,7 @@
 						<tr>
 							<td class="IRS8865_LineGTab" style="width:8mm;border-top-width:1px;font-weight:bold;text-align:center;border-bottom-width:1px;">1</td>
 							<td class="IRS8865_LineGTab" style="width:88mm;border-right-width:1px;border-top-width:1px;border-bottom-width:1px;">
-								Name, address, and identifying number of agent (if any) in the United States<br/>
+								Name, address, and identification number of agent (if any) in the United States<br/>
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/USAgentName/BusinessNameLine1Txt"/>
 								</xsl:call-template>
@@ -955,18 +958,18 @@
 								<span style="width:12px;"/>
 								<input type="checkbox" class="IRS8865_Checkbox">
 									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/FileForm1065or1065BInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/FileForm1065Ind"/>
 									</xsl:call-template>
 								</input>
 								<label>
 									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/FileForm1065or1065BInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/FileForm1065Ind"/>
 									</xsl:call-template>
 									Form 1065
 								</label><br/>
 								Service Center where Form 1065 is filed:<br/>
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$FormData/SCWhereForm1065or1065BFiledTxt"/>
+									<xsl:with-param name="TargetNode" select="$FormData/SCWhereForm1065FiledTxt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1074,6 +1077,7 @@
 							<input type="checkbox" class="IRS8865_Checkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/NondedIntRoyaltyUndSect267AInd"/>
+									<xsl:with-param name="BackupName">NondedIntRoyaltyUndSect267AYes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -1101,6 +1105,7 @@
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$FormData/NondedIntRoyaltyUndSect267AInd"/>
+									<xsl:with-param name="BackupName">NondedIntRoyaltyUndSect267ANo</xsl:with-param>
 								</xsl:call-template>
 								No
 							</label>
@@ -1136,6 +1141,7 @@
 							<input type="checkbox" class="IRS8865_Checkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/Section721cPartnershipInd"/>
+									<xsl:with-param name="BackupName">Section721cPartnershipYes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -1163,6 +1169,7 @@
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$FormData/Section721cPartnershipInd"/>
+									<xsl:with-param name="BackupName">Section721cPartnershipNo</xsl:with-param>
 								</xsl:call-template>
 								No
 							</label>
@@ -1187,6 +1194,7 @@
 							<input type="checkbox" class="IRS8865_Checkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/SpclAllocnMadeByFrgnPrtshpInd"/>
+									<xsl:with-param name="BackupName">SpclAllocnMadeByFrgnPrtshpYes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -1214,6 +1222,7 @@
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$FormData/SpclAllocnMadeByFrgnPrtshpInd"/>
+									<xsl:with-param name="BackupName">SpclAllocnMadeByFrgnPrtshpNo</xsl:with-param>
 								</xsl:call-template>
 								No
 							</label>
@@ -1224,15 +1233,15 @@
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LineIndex" style="text-align:center;">8</div>
 					<div class="IRS8865_LineDescLong" style="height:7mm;width:148mm;border-right-width:0px;">
-						 Enter the number of Forms 8858, Information Return of U.S. Persons With Respect To Foreign Disregarded Entities,
-						 attached to this return (See instructions) 
-<!--
+						Enter the number of Forms 8858, Information Return of U.S. Persons With Respect to Foreign Disregarded Entities
+						(FDEs) and Foreign Branches (FBs), attached to this return. See instructions
+<!--					
             <span style="width:3px;"/>
             <xsl:call-template name="SetFormLinkInline">
               <xsl:with-param name="TargetNode" select="$FormData/NumOfFrgnDisregardedEntOwned"/>
             </xsl:call-template>
             -->
-						<span class="IRS8865_DotSpacing">...............................</span>
+						<span class="IRS8865_DotSpacing">.................</span>
 					</div>
 					<div class="IRS8865_LineIndex">
 						<br/>
@@ -1250,7 +1259,7 @@
 					<div class="IRS8865_LineIndex" style="text-align:center;">9</div>
 					<div class="IRS8865_LineDescLong" style="width:120mm;height:6mm;border-right-width:0px;">
             How is this partnership classified under the law of the country in which it's organized?
-          <span class="IRS8865_DotSpacing">..</span>
+          <span class="IRS8865_DotSpacing">....</span>
 					</div>
 					<div class="IRS8865_LineIndex" style="width:7mm;height:auto;">
 						<img src="{$ImagePath}/8865_Bullet_Sm.gif" alt="Small Right Arrow" border="0"/>
@@ -1271,7 +1280,7 @@
 						<xsl:call-template name="SetFormLinkInline">
 							<xsl:with-param name="TargetNode" select="$FormData/FrgnPrtshpInterestSepUnitInd"/>
 						</xsl:call-template>
-						<span style="width:0.75mm;"/><span class="IRS8865_DotSpacing">......................................</span>
+						<span style="width:0.75mm;"/><span class="IRS8865_DotSpacing">....................................</span>
 					</div>
 					<div class="IRS8865_LineIndex" style="width:7mm; padding-top:6.5mm;">
 						<img src="{$ImagePath}/8865_Bullet_Sm.gif" alt="Small Right Arrow" border="0"/>
@@ -1284,6 +1293,7 @@
 							<input type="checkbox" class="IRS8865_Checkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/FrgnPrtshpInterestSepUnitInd"/>
+									<xsl:with-param name="BackupName">FrgnPrtshpInterestSepUnitYes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -1304,6 +1314,7 @@
 							<input type="checkbox" class="IRS8865_Checkbox">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/FrgnPrtshpInterestSepUnitInd"/>
+									<xsl:with-param name="BackupName">FrgnPrtshpInterestSepUnitNo</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -1338,6 +1349,7 @@
 							<input type="checkbox" class="IRS8865_Checkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/SepCombSepDualCnsldtLossInd"/>
+									<xsl:with-param name="BackupName">SepCombSepDualCnsldtLossYes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -1358,6 +1370,7 @@
 							<input type="checkbox" class="IRS8865_Checkbox">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/SepCombSepDualCnsldtLossInd"/>
+									<xsl:with-param name="BackupName">SepCombSepDualCnsldtLossNo</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -1375,7 +1388,9 @@
 				<div class="IRS8865_LineContainer" style="height:4mm;">
 					<div class="IRS8865_LineIndex" style="text-align:center;">11</div>
 					<div class="IRS8865_LineDescLong" style="width:180mm;border-right-width:0px;">
-					   Does this partnership meet <span style="font-weight:bold">both</span> of the following requirements? 
+					   Does this partnership meet <span style="font-weight:bold">both</span> of the following requirements? <br/><br/>
+						1. The partnership's total receipts for the tax year were less than $250,000<br/>
+						2. The value of the partnership's total assets at the end of the tax year was less than $1 million. 
 					  </div>
 				</div>
 				<!-- parences -->
@@ -1388,15 +1403,13 @@
 				<div class="IRS8865_LineContainer" style="height:4mm;">
 					<div class="IRS8865_LineIndex"/>
 					<div class="IRS8865_LineDescLong" style="width:148mm;border-right-width:0px;">
-						1. The partnership's total receipts for the tax year were less than $250,000
 					</div>
 				</div>
 				<!-- line 11 sub 2 -->
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LineIndex"/>
 					<div class="IRS8865_LineDescLong" style="width:149mm;border-right-width:0px;">
-						2. The value of the partnership's total assets at the end of the tax year was less than $1 million. 
-					   <span class="IRS8865_DotSpacing" style="padding-left:40px;">....</span>
+					   <span class="IRS8865_DotSpacing" style="padding-left:80px;">....</span>
 					</div>
 					<div class="IRS8865_LineIndex" style="width:7mm;">
 						<img src="{$ImagePath}/8865_Bullet_Sm.gif" width="6" height="7" alt="right pointing bullet image" border="0"/>
@@ -1409,6 +1422,7 @@
 							<input type="checkbox" class="IRS8865_Checkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/TotalRcptsAssetsLessThanLmtInd"/>
+									<xsl:with-param name="BackupName">TotalRcptsAssetsLessThanLmtes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -1429,6 +1443,7 @@
 							<input type="checkbox" class="IRS8865_Checkbox">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/TotalRcptsAssetsLessThanLmtInd"/>
+									<xsl:with-param name="BackupName">TotalRcptsAssetsLessThanLmtNo</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -1476,15 +1491,13 @@
 				<!-- line 12a -->
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LineIndex">12a</div>
-					<div class="IRS8865_LineDescLong" style="height:8mm;width:149mm;border-right-width:0px;">
+					<div class="IRS8865_LineDescLong" style="height:8mm;width:146mm;border-right-width:0px;">
 						Is the filer of this Form 8865 claiming a foreign-derived intangible income deduction (under section 250) with respect to any amounts listed on Schedule N?
 						<span style="width:1px;"/>
-						<span style="width:0.75mm;"/><span class="IRS8865_DotSpacing">..................................</span>
-					</div>
-					<div class="IRS8865_LineIndex" style="width:7mm; padding-top:3mm;">
+						<span style="width:1mm;"/><span class="IRS8865_DotSpacing">.............................</span>
 						<img src="{$ImagePath}/8865_Bullet_Sm.gif" alt="Small Right Arrow" border="0"/>
 					</div>
-					<div class="IRS8865_LineDescLong" style="padding-top:3mm;width:12mm;border-right-width:0px;">
+					<div class="IRS8865_LineDescLong" style="padding-top:2mm;width:12mm;border-right-width:0px;">
 						<span>
 							<xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$FormData/FDIIBenefitsClaimInd"/>
@@ -1492,6 +1505,7 @@
 							<input type="checkbox" class="IRS8865_Checkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/FDIIBenefitsClaimInd"/>
+									<xsl:with-param name="BackupName">FDIIBenefitsClaimYes</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -1504,7 +1518,7 @@
 							  </label>
 						</span>
 					</div>
-					<div class="IRS8865_LineDescLong" style="width:12mm;border-right-width:0px; padding-top:3mm;">
+					<div class="IRS8865_LineDescLong" style="width:12mm;border-right-width:0px; padding-top:2mm;">
 						<span>
 							<xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$FormData/FDIIBenefitsClaimInd"/>
@@ -1512,6 +1526,7 @@
 							<input type="checkbox" class="IRS8865_Checkbox">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/FDIIBenefitsClaimInd"/>
+									<xsl:with-param name="BackupName">FDIIBenefitsClaimNo</xsl:with-param>
 								</xsl:call-template>
 							</input>
 						</span>
@@ -1528,69 +1543,242 @@
 				<!-- line 12b -->
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LineIndex"><span style="width:2.3mm;"/>b</div>
-					<div class="IRS8865_LineDescLong" style="height:10mm;width:149mm;border-right-width:0px;">
+					<div class="IRS8865_LineDescLong" style="height:10mm;width:146mm;border-right-width:0px;">
 						If “Yes,” enter the amount of gross income derived from sales, leases, exchanges, or other
-						dispositions (but not licenses) from transactions with the foreign partnership that the filer included in its
-						computation of foreign-derived deduction eligible income (FDDEI).  $
-						<span style="width:40mm;border-bottom:1px solid black;text-align:right;">
+						dispositions (but not licenses) from transactions with or by the foreign partnership that the filer included in its
+						computation of foreign-derived deduction eligible income (FDDEI).<span style="width:2.5mm;"/>
+						<span class="IRS8865_DotSpacing">..............................</span>
+						<img src="{$ImagePath}/8865_Bullet_Sm.gif" alt="Small Right Arrow" border="0"/>
+					</div>
+					<div class="IRS8865_LineDescLong" style="width:33mm;padding-top:2mm;border-right-width:0px;">
+						<span style="width:33mm;border-bottom:1px solid black;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/NotLicensePropertyGrossIncmAmt"/>
 							</xsl:call-template>
 						</span>
 					</div>
-					<div class="IRS8865_LineIndex" style="width:7mm; padding-top:3.5mm;">
-						
-					</div>
-					<div class="IRS8865_LineDescLong" style="padding-top:3.5mm;width:12mm;border-right-width:0px;">
-						
-					</div>
-					<div class="IRS8865_LineDescLong" style="width:12mm;border-right-width:0px; padding-top:3.5mm;">
-						
-					</div>
 				</div>
 				<!-- line 12c -->
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LineIndex"><span style="width:2.3mm;"/>c</div>
-					<div class="IRS8865_LineDescLong" style="height:7mm;width:149mm;border-right-width:0px;">
-						If “Yes,” enter the amount of gross income derived from a license of property to the foreign
-						partnership that the filer included in its computation of FDDEI.  $
-						<span style="width:40mm;border-bottom:1px solid black;text-align:right;">
+					<div class="IRS8865_LineDescLong" style="height:7mm;width:146mm;border-right-width:0px;">
+						If “Yes,” enter the amount of gross income derived from a license of property to or by the foreign
+						partnership that the filer included in its computation of FDDEI.<span style="width:2mm;"/>
+						<span class="IRS8865_DotSpacing">.............................</span>
+						<img src="{$ImagePath}/8865_Bullet_Sm.gif" alt="Small Right Arrow" border="0"/>
+					</div>
+					<div class="IRS8865_LineDescLong" style="width:33mm;padding-top:2mm;border-right-width:0px;">
+						<span style="width:33mm;border-bottom:1px solid black;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/LicensePropertyGrossIncomeAmt"/>
 							</xsl:call-template>
 						</span>
 					</div>
-					<div class="IRS8865_LineIndex" style="width:7mm; padding-top:3.5mm;">
-						
-					</div>
-					<div class="IRS8865_LineDescLong" style="padding-top:3.5mm;width:12mm;border-right-width:0px;">
-						
-					</div>
-					<div class="IRS8865_LineDescLong" style="width:12mm;border-right-width:0px; padding-top:3.5mm;">
-						
-					</div>
 				</div>
 				<!-- line 12d -->
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LineIndex"><span style="width:2.3mm;"/>d</div>
-					<div class="IRS8865_LineDescLong" style="height:8mm;width:149mm;border-right-width:0px;">
-						If “Yes,” enter the amount of gross income derived from services provided to the foreign partnership
-						that the filer included in its computation of FDDEI.  $
-						<span style="width:40mm;border-bottom:1px solid black;text-align:right;">
+					<div class="IRS8865_LineDescLong" style="height:8mm;width:146mm;border-right-width:0px;">
+						If “Yes,” enter the amount of gross income derived from services provided to or by the foreign partnership
+						that the filer included in its computation of FDDEI.<span style="width:2mm;"/>
+						<span class="IRS8865_DotSpacing">...............................</span>
+						<img src="{$ImagePath}/8865_Bullet_Sm.gif" alt="Small Right Arrow" border="0"/>
+					</div>
+					<div class="IRS8865_LineDescLong" style="width:33mm;padding-top:2mm;border-right-width:0px;">
+						<span style="width:33mm;border-bottom:1px solid black;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/ForeignServiceGrossIncomeAmt"/>
 							</xsl:call-template>
 						</span>
-					</div>
-					<div class="IRS8865_LineIndex" style="width:7mm; padding-top:3.5mm;">
 						
+					</div>				
+				<!-- line 13 -->
+				<div class="IRS8865_LineContainer">
+					<div class="IRS8865_LineIndex" style="height:8mm;text-align:center;">13</div>
+					<div class="IRS8865_LineDescLong" style="height:8mm;width:146mm;border-right-width:0px;">
+						Enter the number of foreign partners that transferred all or a portion of their partnership interests or received a
+						distribution subject to section 864(c)(8).
+						<span class="IRS8865_DotSpacing">................................</span>
+						<img src="{$ImagePath}/8865_Bullet_Sm.gif" alt="Small Right Arrow" border="0"/>
 					</div>
-					<div class="IRS8865_LineDescLong" style="padding-top:3.5mm;width:12mm;border-right-width:0px;">
-						
+					<div class="IRS8865_LineDescLong" style="height:8mm;width:33mm;padding-top:2mm;border-right-width:0px;">
+						<span style="width:33mm;border-bottom:1px solid black;text-align:right;">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/FrgnPrtnrTrnsfrIntDistriCnt"/>
+							</xsl:call-template>
+						</span>
 					</div>
-					<div class="IRS8865_LineDescLong" style="width:12mm;border-right-width:0px; padding-top:3.5mm;">
-						
+				</div>
+				
+				<!-- line 14 -->
+				<div class="IRS8865_LineContainer">
+					<div class="IRS8865_LineIndex" style="height:8mm;text-align:center;">14</div>
+					<div class="IRS8865_LineDescLong" style="height:8mm;width:146mm;border-right-width:0px;">
+						At any time during the tax year were any transfers between the partnership and its partners subject to the disclosure requirements of Regulations section 1.707-8?.
+						<xsl:call-template name="SetFormLinkInline">
+							<xsl:with-param name="TargetNode" select="$FormData/TransfersSubjectToDisclRqrInd"/>
+						</xsl:call-template>
+						<span style="width:2mm;"/>
+						<span style="width:0.75mm;"/><span style="float:right;"><span class="IRS8865_DotSpacing">......................</span>
+						<img src="{$ImagePath}/8865_Bullet_Sm.gif" alt="Small Right Arrow" border="0"/></span>
 					</div>
+					<div class="IRS8865_LineDescLong" style="padding-top:2mm;width:12mm;border-right-width:0px;">
+						<span>
+							<xsl:call-template name="PopulateSpan">
+								<xsl:with-param name="TargetNode" select="$FormData/TransfersSubjectToDisclRqrInd"/>
+							</xsl:call-template>
+							<input type="checkbox" class="IRS8865_Checkbox">
+								<xsl:call-template name="PopulateYesCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/TransfersSubjectToDisclRqrInd"/>
+									<xsl:with-param name="BackupName">TransfersSubjectToDisclRqrYes</xsl:with-param>
+								</xsl:call-template>
+							</input>
+						</span>
+						<span style="font-weight:bold;">
+							<label>
+								<xsl:call-template name="PopulateLabelYes">
+									<xsl:with-param name="TargetNode" select="$FormData/TransfersSubjectToDisclRqrInd"/>
+								</xsl:call-template>
+								Yes
+							  </label>
+						</span>
+					</div>
+					<div class="IRS8865_LineDescLong" style="width:12mm;border-right-width:0px; padding-top:2mm;">
+						<span>
+							<xsl:call-template name="PopulateSpan">
+								<xsl:with-param name="TargetNode" select="$FormData/TransfersSubjectToDisclRqrInd"/>
+							</xsl:call-template>
+							<input type="checkbox" class="IRS8865_Checkbox">
+								<xsl:call-template name="PopulateNoCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/TransfersSubjectToDisclRqrInd"/>
+									<xsl:with-param name="BackupName">TransfersSubjectToDisclRqrNo</xsl:with-param>
+								</xsl:call-template>
+							</input>
+						</span>
+						<span style="font-weight:bold;">
+							<label>
+								<xsl:call-template name="PopulateLabelNo">
+									<xsl:with-param name="TargetNode" select="$FormData/TransfersSubjectToDisclRqrInd"/>
+								</xsl:call-template>
+							  No
+							</label>
+						</span>
+					</div>
+				</div>
+				
+				<!-- line 15a -->
+				<div class="IRS8865_LineContainer">
+					<div class="IRS8865_LineIndex">15a</div>
+					<div class="IRS8865_LineDescLong" style="height:15mm;width:146mm;border-right-width:0px;">
+						Were there any transfers of property or money within a 2-year period between the partnership and any of its partners
+						that would require disclosure under Regs. 1.703-3 or 1.707-6? If “Yes,” attach a statement identifying the transfers, the
+						amount or value of each transfer, and an explanation of the tax treatment. See instructions for exceptions
+						<xsl:call-template name="SetFormLinkInline">
+							<xsl:with-param name="TargetNode" select="$FormData/PropTrnsfrRegs17033Or17036Ind"/>
+						</xsl:call-template>
+						<span style="width:2mm;"/>
+						<span style="width:0.75mm;"/><span style="float:right;"><span class="IRS8865_DotSpacing">..........................................</span>
+						<img src="{$ImagePath}/8865_Bullet_Sm.gif" alt="Small Right Arrow" border="0"/></span>
+					</div>
+					<div class="IRS8865_LineDescLong" style="padding-top:8mm;width:12mm;border-right-width:0px;">
+						<span>
+							<xsl:call-template name="PopulateSpan">
+								<xsl:with-param name="TargetNode" select="$FormData/PropTrnsfrRegs17033Or17036Ind"/>
+							</xsl:call-template>
+							<input type="checkbox" class="IRS8865_Checkbox">
+								<xsl:call-template name="PopulateYesCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/PropTrnsfrRegs17033Or17036Ind"/>
+									<xsl:with-param name="BackupName">PropTrnsfrRegs17033Or17036Yes</xsl:with-param>
+								</xsl:call-template>
+							</input>
+						</span>
+						<span style="font-weight:bold;">
+							<label>
+								<xsl:call-template name="PopulateLabelYes">
+									<xsl:with-param name="TargetNode" select="$FormData/PropTrnsfrRegs17033Or17036Ind"/>
+								</xsl:call-template>
+								Yes
+							  </label>
+						</span>
+					</div>
+					<div class="IRS8865_LineDescLong" style="width:12mm;border-right-width:0px; padding-top:8mm;">
+						<span>
+							<xsl:call-template name="PopulateSpan">
+								<xsl:with-param name="TargetNode" select="$FormData/PropTrnsfrRegs17033Or17036Ind"/>
+							</xsl:call-template>
+							<input type="checkbox" class="IRS8865_Checkbox">
+								<xsl:call-template name="PopulateNoCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/PropTrnsfrRegs17033Or17036Ind"/>
+									<xsl:with-param name="BackupName">PropTrnsfrRegs17033Or17036No</xsl:with-param>
+								</xsl:call-template>
+							</input>
+						</span>
+						<span style="font-weight:bold;">
+							<label>
+								<xsl:call-template name="PopulateLabelNo">
+									<xsl:with-param name="TargetNode" select="$FormData/PropTrnsfrRegs17033Or17036Ind"/>
+								</xsl:call-template>
+							  No
+							</label>
+						</span>
+					</div>
+				</div>
+				
+				<!-- line 15b -->
+				<div class="IRS8865_LineContainer">
+					<div class="IRS8865_LineIndex">b</div>
+					<div class="IRS8865_LineDescLong" style="height:13mm;width:146mm;border-right-width:0px;">
+						Did the partnership assume a liability or receive property subject to a liability where such liability was incurred by a partner within
+						a 2-year period of transferring the property to the partnership? If “Yes,” attach a statement identifying the property transferred,
+						the amount or value of each transfer, the debt assumed or taken by the partnership, and an explanation of the tax treatment
+						<xsl:call-template name="SetFormLinkInline">
+							<xsl:with-param name="TargetNode" select="$FormData/PropLiabIncurdTrnsfrPrtshpInd"/>
+						</xsl:call-template>
+						<span style="width:3mm;"/>
+						<span style="width:0.75mm;"/><span style="float:right;"><span class="IRS8865_DotSpacing">.......................</span>
+						<img src="{$ImagePath}/8865_Bullet_Sm.gif" alt="Small Right Arrow" border="0"/></span>
+					</div>
+					<div class="IRS8865_LineDescLong" style="padding-top:8mm;width:12mm;border-right-width:0px;">
+						<span>
+							<xsl:call-template name="PopulateSpan">
+								<xsl:with-param name="TargetNode" select="$FormData/PropLiabIncurdTrnsfrPrtshpInd"/>
+							</xsl:call-template>
+							<input type="checkbox" class="IRS8865_Checkbox">
+								<xsl:call-template name="PopulateYesCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/PropLiabIncurdTrnsfrPrtshpInd"/>
+								</xsl:call-template>
+							</input>
+						</span>
+						<span style="font-weight:bold;">
+							<label>
+								<xsl:call-template name="PopulateLabelYes">
+									<xsl:with-param name="TargetNode" select="$FormData/PropLiabIncurdTrnsfrPrtshpInd"/>
+								</xsl:call-template>
+								Yes
+							  </label>
+						</span>
+					</div>
+					<div class="IRS8865_LineDescLong" style="width:12mm;border-right-width:0px; padding-top:8mm;">
+						<span>
+							<xsl:call-template name="PopulateSpan">
+								<xsl:with-param name="TargetNode" select="$FormData/PropLiabIncurdTrnsfrPrtshpInd"/>
+							</xsl:call-template>
+							<input type="checkbox" class="IRS8865_Checkbox">
+								<xsl:call-template name="PopulateNoCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/PropLiabIncurdTrnsfrPrtshpInd"/>
+								</xsl:call-template>
+							</input>
+						</span>
+						<span style="font-weight:bold;">
+							<label>
+								<xsl:call-template name="PopulateLabelNo">
+									<xsl:with-param name="TargetNode" select="$FormData/PropLiabIncurdTrnsfrPrtshpInd"/>
+								</xsl:call-template>
+							  No
+							</label>
+						</span>
+					</div>
+				</div>
 				</div>
 				<!-- BEGIN SIGNATURE SECTION -->
 				<!-- Implement the signature section as table -->
@@ -1603,33 +1791,31 @@ knowledge and belief, it's true, correct, and complete. Declaration of preparer 
 based on all information of which preparer has any knowledge. </td>
 					</tr>
 					<tr>
-						<td rowspan="2" style="border-bottom:1px solid black;padding-left:1mm;">
+						<td style="border-bottom:1px solid black;padding-left:1mm;">
 							<img src="{$ImagePath}/8865_Bullet_Lg.gif" alt="Big Right Arrow" border="0"/>
 						</td>
-						<td style="width:83mm;border-bottom:1px solid black;vertical-align:bottom;">
-							<xsl:call-template name="PopulateReturnHeaderOfficer">
-								<xsl:with-param name="TargetNode">TaxpayerPIN</xsl:with-param>
-							</xsl:call-template>
-							<span style="width:1px;"/>
+						<td style="width:83mm;border-bottom:1px solid black;vertical-align:bottom;padding-left:2mm;padding-right:2mm;padding-bottom:3mm;">
+							<div style="width:79mm; border-bottom:1px solid black;">
+								<xsl:call-template name="PopulateReturnHeaderOfficer">
+									<xsl:with-param name="TargetNode">TaxpayerPIN</xsl:with-param>
+								</xsl:call-template>
+							</div><br/>
+							Signature of general partner or limited liability company member
 						</td>
 						<td style="border-right:1px solid black;width:3mm;">
 							<span style="width:2px;"/>
 						</td>
-						<td rowspan="2" style="border-bottom:1px solid black;padding-left:3mm;">
+						<td style="border-bottom:1px solid black;padding-left:3mm;">
 							<img src="{$ImagePath}/8865_Bullet_Lg.gif" alt="Big Right Arrow" border="0"/>
 						</td>
-						<td style="width:60mm;border-bottom:1px solid black;vertical-align:bottom;">
-							<xsl:call-template name="PopulateReturnHeaderOfficer">
-								<xsl:with-param name="TargetNode">DateSigned</xsl:with-param>
-							</xsl:call-template>
+						<td style="width:84mm;border-bottom:1px solid black;vertical-align:bottom;padding-left:2mm;padding-bottom:3mm;">
+							<div style="width:82mm; border-bottom:1px solid black;">
+								<xsl:call-template name="PopulateReturnHeaderOfficer">
+									<xsl:with-param name="TargetNode">DateSigned</xsl:with-param>
+								</xsl:call-template>
+							</div><br/>
+							Date
 						</td>
-					</tr>
-					<tr>
-						<td style="border-bottom:1px solid black;vertical-align:top;">Signature of general partner or limited liability company member</td>
-						<td style="border-bottom:1px solid black;vertical-align:top;border-right:1px solid black;">
-							<span style="width:2px;"/>
-						</td>
-						<td style="border-bottom:1px solid black;vertical-align:top;">Date</td>
 					</tr>
 				</table>
 				<!-- END OFFICER SIGNATURE -->
@@ -1831,7 +2017,7 @@ based on all information of which preparer has any knowledge. </td>
 						<tr>
 							<th scope="col" class="IRS8865_SchATabNameCol">Name</th>
 							<th scope="col" class="IRS8865_SchATabAddrCol">Address</th>
-							<th scope="col" class="IRS8865_SchATabIDCol">Identifying number (if any)</th>
+							<th scope="col" class="IRS8865_SchATabIDCol">Identification number (if any)</th>
 							<th scope="col" class="IRS8865_SchATabCatCol">Check if foreign person</th>
 							<th scope="col" class="IRS8865_SchATabCatCol" style="border-right-width:0px;">Check if direct partner</th>
 						</tr>
@@ -2015,19 +2201,19 @@ based on all information of which preparer has any knowledge. </td>
 				<!-- SchA-1 info table -->
 				<div class="IRS8865_TableContainer3" name="SchA1Table" id="SchA1Table" style="height:auto;border-bottom-width:0px;">
 					<xsl:call-template name="SetInitialState"/>
-					<table class="styTable" cellspacing="0" style="height:auto;width:187mm;font-size:7pt;border-color:black;">
+					<table class="styTable" cellspacing="0" style="height:auto;width:187mm;font-size:7pt;border-color:black;border-bottom-width:0px;">
 						<tr>
-							<th scope="col" class="IRS8865_SchATabNameCol">Name</th>
-							<th scope="col" class="IRS8865_SchATabAddrCol">Address</th>
-							<th scope="col" class="IRS8865_SchA1TabIDCol">Identifying number (if any)</th>
-							<th scope="col" class="IRS8865_SchATabCatCol" style="border-right-width:0px;">Check if foreign person</th>
+							<th scope="col" class="IRS8865_SchATabNameCol" style="border-bottom:0px;">Name</th>
+							<th scope="col" class="IRS8865_SchATabAddrCol" style="border-bottom:0px;">Address</th>
+							<th scope="col" class="IRS8865_SchA1TabIDCol" style="border-bottom:0px;">Identification number (if any)</th>
+							<th scope="col" class="IRS8865_SchATabCatCol" style="border-right-width:0px;border-bottom:0px;">Check if foreign person</th>
 						</tr>
 						<!-- Display all rows: If the print parameter is not set to be Separated, OR -->
 						<!-- If the print parameter is separated, but there are fewer elements than the container height (5) -->
 						<xsl:if test="($Print != $Separated) or (count($FormData/IRS8865ScheduleA1/CertainPartnersInformationGrp) &lt;=2) ">
 							<xsl:for-each select="$FormData/IRS8865ScheduleA1/CertainPartnersInformationGrp">
 								<tr>
-									<td class="IRS8865_SchATabNameCol" style="font-size:6.5pt; l">
+									<td class="IRS8865_SchATabNameCol" style="font-size:6.5pt;border-top:1px solid black;border-bottom:0px;">
 										<xsl:choose>
 										  <xsl:when test="normalize-space(CertainPartnerPersonNm)!=''">  
 											<xsl:call-template name="PopulateText">
@@ -2047,7 +2233,7 @@ based on all information of which preparer has any knowledge. </td>
 										  </xsl:otherwise>
 										</xsl:choose> 										
 									</td>
-									<td class="IRS8865_SchATabAddrCol" style="font-size:6.5pt;padding-left:1mm; line-height:90%">
+									<td class="IRS8865_SchATabAddrCol" style="font-size:6.5pt;padding-left:1mm;border-top:1px solid black;border-bottom:0px; line-height:90%">
 										<xsl:choose>
 											<xsl:when test="CertainPartnerUSAddress">
 												<xsl:call-template name="PopulateText">
@@ -2097,7 +2283,7 @@ based on all information of which preparer has any knowledge. </td>
 										</xsl:choose>
 									</td>
 									<!-- point 3 -->
-									<td class="IRS8865_SchA1TabIDCol">
+									<td class="IRS8865_SchA1TabIDCol" style="border-top:1px solid black;border-bottom:0px;">
 										<xsl:if test="CertainPartnerSSN">
 											<xsl:call-template name="PopulateSSN">
 												<xsl:with-param name="TargetNode" select="CertainPartnerSSN"/>
@@ -2114,9 +2300,10 @@ based on all information of which preparer has any knowledge. </td>
 											</xsl:call-template>
 										</xsl:if>
 									</td>
-									<td class="IRS8865_SchATabCatCol" style="border-right-width:0px;">
+									<td class="IRS8865_SchATabCatCol" style="border-right-width:0px;border-top:1px solid black;border-bottom:0px;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="CertainPartnerIsForeignPrsnInd"/>
+											<xsl:with-param name="BackupName">CheckForeignPerson</xsl:with-param>
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -2127,35 +2314,35 @@ based on all information of which preparer has any knowledge. </td>
 						<!-- Blank rows will be added after that to fill the container height -->
 						<xsl:if test="(count($FormData/IRS8865ScheduleA1/CertainPartnersInformationGrp) &gt; 2) and ($Print = $Separated) or count($FormData/IRS8865ScheduleA1/CertainPartnersInformationGrp) &lt; 1">
 							<tr>
-								<td class="IRS8865_SchATabNameCol" style="font-size:6.5pt; line-height:100%">
+								<td class="IRS8865_SchATabNameCol" style="font-size:6.5pt;border-top:1px solid black;border-bottom:0px; line-height:100%">
 									<xsl:call-template name="PopulateAdditionalDataTableMessage">
 										<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleA1/CertainPartnersInformationGrp"/>
 									</xsl:call-template>
 									<span style="width:3px;"/>
 								</td>
-								<td class="IRS8865_SchATabAddrCol" style="font-size:6.5pt; line-height:90%">
+								<td class="IRS8865_SchATabAddrCol" style="font-size:6.5pt;border-top:1px solid black;border-bottom:0px; line-height:90%">
 									<span style="width:3px;"/>
 								</td>
-								<td class="IRS8865_SchA1TabIDCol">
+								<td class="IRS8865_SchA1TabIDCol" style="border-top:1px solid black;border-bottom:0px;">
 									<span style="width:3px;"/>
 								</td>
-								<td class="IRS8865_SchATabCatCol" style="border-right-width:0px;">
+								<td class="IRS8865_SchATabCatCol" style="border-right-width:0px;border-top:1px solid black;border-bottom:0px;">
 									<span style="width:3px;"/>
 								</td>
 							</tr>
 						</xsl:if>
 						<xsl:if test="(count($FormData/IRS8865ScheduleA1/CertainPartnersInformationGrp) &gt; 2) and ($Print = $Separated) or count($FormData/IRS8865ScheduleA1/CertainPartnersInformationGrp) &lt; 2">
 							<tr>
-								<td class="IRS8865_SchATabNameCol" style="font-size:6.5pt; line-height:100%">
+								<td class="IRS8865_SchATabNameCol" style="font-size:6.5pt;border-top:1px solid black;border-bottom:0px; line-height:100%">
 									<span style="width:3px;"/>
 								</td>
-								<td class="IRS8865_SchATabAddrCol" style="font-size:6.5pt; line-height:90%">
+								<td class="IRS8865_SchATabAddrCol" style="font-size:6.5pt;border-top:1px solid black;border-bottom:0px; line-height:90%">
 									<span style="width:3px;"/>
 								</td>
-								<td class="IRS8865_SchA1TabIDCol">
+								<td class="IRS8865_SchA1TabIDCol" style="border-top:1px solid black;border-bottom:0px;">
 									<span style="width:3px;"/>
 								</td>
-								<td class="IRS8865_SchATabCatCol" style="border-right-width:0px;">
+								<td class="IRS8865_SchATabCatCol" style="border-right-width:0px;border-top:1px solid black;border-bottom:0px;">
 									<span style="width:3px;"/>
 								</td>
 							</tr>
@@ -2169,57 +2356,7 @@ based on all information of which preparer has any knowledge. </td>
 					<xsl:with-param name="containerID" select=" 'SchA1Table' "/>
 				</xsl:call-template>
 				<!-- End Set Initial Height of Above Table -->
-				<!-- table schedule A-1 foot note -->
-				<div class="IRS8865_LineContainer">
-					<div class="IRS8865_LineDescLong" style="width:148mm;border-right-width:0px;">Does the partnership have any other foreign person as a direct partner? 
-
-          <span class="IRS8865_DotSpacing">...................</span>
-					</div>
-					<div class="IRS8865_LineIndex">
-						<img src="{$ImagePath}/8865_Bullet_Sm.gif" width="4" height="7" alt="right pointing bullet image" border="0"/>
-					</div>
-					<div class="IRS8865_LineDescLong" style="width:12mm;border-right-width:0px;">
-						<span>
-							<xsl:call-template name="PopulateSpan">
-								<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleA1/HaveOtherForeignDirectPrtnrInd"/>
-							</xsl:call-template>
-							<input type="checkbox" class="IRS8865_Checkbox">
-								<xsl:call-template name="PopulateYesCheckbox">
-									<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleA1/HaveOtherForeignDirectPrtnrInd"/>
-								</xsl:call-template>
-							</input>
-						</span>
-						<span style="font-weight:bold;">
-							<label>
-								<xsl:call-template name="PopulateLabelYes">
-									<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleA1/HaveOtherForeignDirectPrtnrInd"/>
-								</xsl:call-template>
-								Yes
-							</label>
-						</span>
-					</div>
-					<div class="IRS8865_LineDescLong" style="width:12mm;border-right-width:0px;">
-						<!--span style="width:24px;"></span-->
-						<span>
-							<xsl:call-template name="PopulateSpan">
-								<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleA1/HaveOtherForeignDirectPrtnrInd"/>
-							</xsl:call-template>
-							<input type="checkbox" class="IRS8865_Checkbox">
-								<xsl:call-template name="PopulateNoCheckbox">
-									<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleA1/HaveOtherForeignDirectPrtnrInd"/>
-								</xsl:call-template>
-							</input>
-						</span>
-						<span style="font-weight:bold;">
-							<label>
-								<xsl:call-template name="PopulateLabelNo">
-									<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleA1/HaveOtherForeignDirectPrtnrInd"/>
-								</xsl:call-template>
-        No
-      </label>
-						</span>
-					</div>
-				</div>
+				
 				<!-- Schedule A-2-->
 				<div class="IRS8865_LineContainer" style="border-top:solid black 1px;">
 					<div class="IRS8865_PartIndex" style="border-top-width:0px;border-bottom-width:1px;height:4.25mm;">Schedule A-2</div>
@@ -2356,9 +2493,10 @@ based on all information of which preparer has any knowledge. </td>
 									</td>
 									<td  style="text-align:center;border-right:solid black 1px;border-top:solid black 1px;">
 										<span>
-											<input type="checkbox" >
+											<input type="checkbox" name="RelatedToUSTransferor" alt="Related To US Transferor">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="RelatedToUSTransferorInd"/>
+													<xsl:with-param name="BackupName">CheckRelatedUSTransferor</xsl:with-param>
 												</xsl:call-template>
 											</input>
 										</span>
@@ -2366,6 +2504,7 @@ based on all information of which preparer has any knowledge. </td>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="RelatedToUSTransferorInd"/>
+													<xsl:with-param name="BackupName">CheckRelatedUSTransferor</xsl:with-param>
 												</xsl:call-template>
 											</label>
 										</span>									
@@ -2452,6 +2591,56 @@ based on all information of which preparer has any knowledge. </td>
 					<xsl:with-param name="containerID" select=" 'SchA2Table' "/>
 				</xsl:call-template>
 				<!-- End Set Initial Height of Above Table -->
+				<!-- table schedule A-2 foot note -->
+				<div class="IRS8865_LineContainer">
+					<div class="IRS8865_LineDescLong" style="width:148mm;border-right-width:0px;">Does the partnership have any other foreign person as a direct partner? 
+						<span class="IRS8865_DotSpacing">...................</span>
+					</div>
+					<div class="IRS8865_LineIndex">
+						<img src="{$ImagePath}/8865_Bullet_Sm.gif" width="4" height="7" alt="right pointing bullet image" border="0"/>
+					</div>
+					<div class="IRS8865_LineDescLong" style="width:12mm;border-right-width:0px;">
+						<span>
+							<xsl:call-template name="PopulateSpan">
+								<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleA1/HaveOtherForeignDirectPrtnrInd"/>
+							</xsl:call-template>
+							<input type="checkbox" class="IRS8865_Checkbox">
+								<xsl:call-template name="PopulateYesCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleA1/HaveOtherForeignDirectPrtnrInd"/>
+								</xsl:call-template>
+							</input>
+						</span>
+						<span style="font-weight:bold;">
+							<label>
+								<xsl:call-template name="PopulateLabelYes">
+									<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleA1/HaveOtherForeignDirectPrtnrInd"/>
+								</xsl:call-template>
+								Yes
+							</label>
+						</span>
+					</div>
+					<div class="IRS8865_LineDescLong" style="width:12mm;border-right-width:0px;">
+						<!--span style="width:24px;"></span-->
+						<span>
+							<xsl:call-template name="PopulateSpan">
+								<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleA1/HaveOtherForeignDirectPrtnrInd"/>
+							</xsl:call-template>
+							<input type="checkbox" class="IRS8865_Checkbox">
+								<xsl:call-template name="PopulateNoCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleA1/HaveOtherForeignDirectPrtnrInd"/>
+								</xsl:call-template>
+							</input>
+						</span>
+						<span style="font-weight:bold;">
+							<label>
+								<xsl:call-template name="PopulateLabelNo">
+									<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleA1/HaveOtherForeignDirectPrtnrInd"/>
+								</xsl:call-template>
+								No
+							</label>
+						</span>
+					</div>
+				</div>
 				<!-- Schedule A-3 header-->
 				<div class="IRS8865_LineContainer" style="font-size:8pt;border-right-width:0px;border-top:1px solid black;width:187mm;">
 					<div class="IRS8865_PartIndex">Schedule A-3</div>
@@ -2634,6 +2823,28 @@ based on all information of which preparer has any knowledge. </td>
 					<xsl:with-param name="headerHeight" select="1"/>
 					<xsl:with-param name="containerID" select=" 'SchA3Table' "/>
 				</xsl:call-template>
+				
+				<!-- Page Break and Footer-->
+				<div class="pageEnd" style="width:187mm;padding-top:.5mm;">
+					<div style="float:right;">
+						<span style="width:80px;"/>  
+      Form <span class="styBoldText" style="font-size:8pt;">8865</span> (2019)
+    </div>
+				</div>
+				<!-- END Page Break and Footer-->
+
+				<!-- schedule D removed -->
+				<!-- END Page Break and Footer-->
+				<!--Begin Page 3 -->
+				<!-- Page Header -->
+				<div style="width:187mm;padding-top:.5mm;">
+					<div style="float:left;">Form 8865 (2019)<span style="width:148mm;"/>
+					</div>
+					<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">3</span>
+					</div>
+				</div>
+				<!-- END Page Header -->
+				
 				<!-- Schedule B header-->
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_PartIndex" style="border-top-width:1px;border-bottom-width:0px; width: 21mm;">Schedule B</div>
@@ -3111,124 +3322,124 @@ based on all information of which preparer has any knowledge. </td>
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LabelSpace" style="padding-top:0.5mm;"/>
 					<div class="IRS8865_LineIndex" style="padding-top:0.5mm;">23</div>
-					<div class="IRS8865_LineDescLong" style="padding-top:0.5mm;">Interest due under the look-back method - completed long-term contracts (attach Form 8697)
-						<xsl:call-template name="SetFormLinkInline">
+					<div class="IRS8865_LineDescLong" style="padding-top:0.5mm;">Reserved for future use<!--Interest due under the look-back method - completed long-term contracts (attach Form 8697)-->
+						<!--<xsl:call-template name="SetFormLinkInline">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleB/Form8697Amt"/>
-						</xsl:call-template>
-						<span class="IRS8865_DotSpacing">.....</span>
+						</xsl:call-template>-->
+						<span class="IRS8865_DotSpacing">.....................................</span>
 					</div>
 					<div class="IRS8865_LineIndexMid" style="padding-top:0.5mm;">23</div>
-					<div class="IRS8865_MoneyField" style="padding-top:0.5mm;">
-						<xsl:call-template name="PopulateAmount">
+					<div class="IRS8865_MoneyField" style="padding-top:0.5mm;background-color:lightgrey;">
+						<!--<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleB/Form8697Amt"/>
-						</xsl:call-template>
+						</xsl:call-template>-->
 					</div>
 				</div>
 				<!-- line 24 -->
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LabelSpace"/>
 					<div class="IRS8865_LineIndex">24</div>
-					<div class="IRS8865_LineDescLong">Interest due under look-back - income forecast method (attach Form 8866)
-						<xsl:call-template name="SetFormLinkInline">
+					<div class="IRS8865_LineDescLong">Reserved for future use<!--Interest due under look-back - income forecast method (attach Form 8866)-->
+						<!--<xsl:call-template name="SetFormLinkInline">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleB/Form8866Amt"/>
-						</xsl:call-template>
-						<span class="IRS8865_DotSpacing">.............</span>
+						</xsl:call-template>-->
+						<span class="IRS8865_DotSpacing">.....................................</span>
 					</div>
 					<div class="IRS8865_LineIndexMid">24</div>
-					<div class="IRS8865_MoneyField">
-						<xsl:call-template name="PopulateAmount">
+					<div class="IRS8865_MoneyField" style="background-color:lightgrey;">
+						<!--<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleB/Form8866Amt"/>
-						</xsl:call-template>
+						</xsl:call-template>-->
 					</div>
 				</div>
 				<!-- line 25 -->
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LabelSpace"/>
 					<div class="IRS8865_LineIndex">25</div>
-					<div class="IRS8865_LineDescLong">BBA AAR imputed underpayment (see instructions)
+					<div class="IRS8865_LineDescLong">Reserved for future use<!--BBA AAR imputed underpayment (see instructions)-->
 
-             <span class="IRS8865_DotSpacing">.........................</span>
+             <span class="IRS8865_DotSpacing">.....................................</span>
 					</div>
 					<div class="IRS8865_LineIndexMid">25</div>
-					<div class="IRS8865_MoneyField">
-						<xsl:call-template name="PopulateAmount">
+					<div class="IRS8865_MoneyField" style="background-color:lightgrey;">
+						<!--<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleB/BBAImputeUnderpaymentAmt"/>
-						</xsl:call-template>
+						</xsl:call-template>-->
 					</div>
 				</div>
 				<!-- line 26 -->
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LabelSpace"/>
 					<div class="IRS8865_LineIndex">26</div>
-					<div class="IRS8865_LineDescLong">Other taxes (see instructions)
+					<div class="IRS8865_LineDescLong">Reserved for future use<!--Other taxes (see instructions)-->
 
-             <span class="IRS8865_DotSpacing">..................................</span>
+             <span class="IRS8865_DotSpacing">.....................................</span>
 					</div>
 					<div class="IRS8865_LineIndexMid">26</div>
-					<div class="IRS8865_MoneyField">
-						<xsl:call-template name="PopulateAmount">
+					<div class="IRS8865_MoneyField" style="background-color:lightgrey;">
+						<!--<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleB/OtherTaxAmt"/>
-						</xsl:call-template>
+						</xsl:call-template>-->
 					</div>
 				</div>
 				<!-- line 27 -->
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LabelSpace"/>
 					<div class="IRS8865_LineIndex">27</div>
-					<div class="IRS8865_LineDescLong"><b>Total balance due.</b>  Add lines 23 through 27
+					<div class="IRS8865_LineDescLong">Reserved for future use<!--<b>Total balance due.</b>  Add lines 23 through 27-->
 
-             <span class="IRS8865_DotSpacing">...........................</span>
+             <span class="IRS8865_DotSpacing">.....................................</span>
 					</div>
 					<div class="IRS8865_LineIndexMid">27</div>
-					<div class="IRS8865_MoneyField">
-						<xsl:call-template name="PopulateAmount">
+					<div class="IRS8865_MoneyField" style="background-color:lightgrey;">
+						<!--<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleB/TotalBalanceDueAmt"/>
-						</xsl:call-template>
+						</xsl:call-template>-->
 					</div>
 				</div>
 				<!-- line 28 -->
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LabelSpace"/>
 					<div class="IRS8865_LineIndex">28</div>
-					<div class="IRS8865_LineDescLong">Payment (see instructions)
+					<div class="IRS8865_LineDescLong">Reserved for future use<!--Payment (see instructions)-->
 
-             <span class="IRS8865_DotSpacing">...................................</span>
+             <span class="IRS8865_DotSpacing">.....................................</span>
 					</div>
 					<div class="IRS8865_LineIndexMid">28</div>
-					<div class="IRS8865_MoneyField">
-						<xsl:call-template name="PopulateAmount">
+					<div class="IRS8865_MoneyField" style="background-color:lightgrey;">
+						<!--<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleB/TotalPaymentsAmt"/>
-						</xsl:call-template>
+						</xsl:call-template>-->
 					</div>
 				</div>
 				<!-- line 29 -->
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LabelSpace"/>
 					<div class="IRS8865_LineIndex">29</div>
-					<div class="IRS8865_LineDescLong"><b>Amount owed.</b>  If line 28 is smaller than line 27, enter amount owed
+					<div class="IRS8865_LineDescLong">Reserved for future use<!--<b>Amount owed.</b>  If line 28 is smaller than line 27, enter amount owed-->
 
-             <span class="IRS8865_DotSpacing">.................</span>
+             <span class="IRS8865_DotSpacing">.....................................</span>
 					</div>
 					<div class="IRS8865_LineIndexMid">29</div>
-					<div class="IRS8865_MoneyField">
-						<xsl:call-template name="PopulateAmount">
+					<div class="IRS8865_MoneyField" style="background-color:lightgrey;">
+						<!--<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleB/OwedAmt"/>
-						</xsl:call-template>
+						</xsl:call-template>-->
 					</div>
 				</div>
 				<!-- line 30 -->
 				<div class="IRS8865_LineContainer" style="border-bottom:1px solid black;" >
 					<div class="IRS8865_LabelSpace"/>
 					<div class="IRS8865_LineIndex">30</div>
-					<div class="IRS8865_LineDescLong"><b>Overpayment.</b>  If line 28 is larger than 27, enter overpayment
+					<div class="IRS8865_LineDescLong">Reserved for future use<!--<b>Overpayment.</b>  If line 28 is larger than 27, enter overpayment-->
 
-             <span class="IRS8865_DotSpacing">....................</span>
+             <span class="IRS8865_DotSpacing">.....................................</span>
 					</div>
 					<div class="IRS8865_LineIndexMid" style="border-bottom:0;">30</div>
-					<div class="IRS8865_MoneyField" style="border-bottom:0;">
-						<xsl:call-template name="PopulateAmount">
+					<div class="IRS8865_MoneyField" style="border-bottom:0;background-color:lightgrey;">
+						<!--<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleB/OverpaymentAmt"/>
-						</xsl:call-template>
+						</xsl:call-template>-->
 					</div>
 				</div>
 				<!-- Page Break and Footer-->
@@ -3247,7 +3458,7 @@ based on all information of which preparer has any knowledge. </td>
 				<div style="width:187mm;padding-top:.5mm;">
 					<div style="float:left;">Form 8865 (2019)<span style="width:148mm;"/>
 					</div>
-					<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">3</span>
+					<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">4</span>
 					</div>
 				</div>
 				<!-- END Page Header -->
@@ -3276,12 +3487,12 @@ based on all information of which preparer has any knowledge. </td>
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LabelSpaceWide" style="height:4.5mm;padding-top:0.5mm;"/>
 					<div class="IRS8865_LineIndex" style="height:4.5mm;padding-top:0.5mm;">1</div>
-					<div class="IRS8865_LineDescLongSchK" style="height:4.5mm;padding-top:0.5mm;">Ordinary business income (loss) (page 2, line 22)
+					<div class="IRS8865_LineDescLongSchK" style="height:4.5mm;padding-top:0.5mm;">Ordinary business income (loss) (Schedule B, line 22)
 					<!-- **** Maybe Later *******
 					    <xsl:call-template name="SetFormLinkInline">
 						<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleK"/>
 						</xsl:call-template>    -->
-						<span class="IRS8865_DotSpacing">.......................</span>
+						<span class="IRS8865_DotSpacing">......................</span>
 					</div>
 					<div class="IRS8865_LineIndexMid" style="height:4.5mm;padding-top:0.5mm;">1</div>
 					<div class="IRS8865_MoneyField" style="height:4.5mm;padding-top:0.5mm;">
@@ -3366,10 +3577,44 @@ based on all information of which preparer has any knowledge. </td>
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LabelSpaceWide"/>
 					<div class="IRS8865_LineIndex">4</div>
-					<div class="IRS8865_LineDescLongSchK">Guaranteed payments
-           <span class="IRS8865_DotSpacing">...................................</span>
+					<div class="IRS8865_LineDescShortSchK">Guaranteed payments: <span style="width:2mm"/>
+						<span style="font-weight:bold;">a </span> Services
+						<span class="IRS8865_DotSpacing">..................</span>
 					</div>
-					<div class="IRS8865_LineIndexMid">4</div>
+					<div class="IRS8865_LineIndexMid">4a</div>
+					<div class="IRS8865_MoneyFieldMid">
+						<xsl:call-template name="PopulateAmount">
+							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleK/GuaranteedPaymentsServicesAmt"/>
+						</xsl:call-template>
+					</div>
+					<div class="IRS8865_LineIndexMidFillerGray"/>
+					<div class="IRS8865_MoneyFieldFiller" style="width:20mm;"/>
+				</div>
+				<div class="IRS8865_LineContainer" style="float:right;">
+					<div class="IRS8865_LabelSpaceWide" style="width:13mm;"/>
+					<div class="IRS8865_LineIndex"/>
+					<div class="IRS8865_LineDescShortSchK" style="width:100mm;">
+						<span style="padding-left:31mm"/>
+						<span style="font-weight:bold;">b </span> Capital
+						<span class="IRS8865_DotSpacing">..................</span>
+					</div>
+					<div class="IRS8865_LineIndexMid">4b</div>
+					<div class="IRS8865_MoneyFieldMid">
+						<xsl:call-template name="PopulateAmount">
+							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleK/GuaranteedPaymentsCapitalAmt"/>
+						</xsl:call-template>
+					</div>
+					<div class="IRS8865_LineIndexMidFillerGray"/>
+					<div class="IRS8865_MoneyFieldFiller" style="width:20mm;"/>
+				</div>
+				<div class="IRS8865_LineContainer">
+					<div class="IRS8865_LabelSpaceWide"/>
+					<div class="IRS8865_LineIndex"></div>
+					<div class="IRS8865_LineDescLongSchK"><span style="width:31mm"/>
+						<span style="font-weight:bold;">c </span> Total .  Add line 4a and line 4b
+						<span class="IRS8865_DotSpacing">....................</span>
+					</div>
+					<div class="IRS8865_LineIndexMid">4c</div>
 					<div class="IRS8865_MoneyField">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleK/GuaranteedPaymentsToPrtnrAmt"/>
@@ -3944,7 +4189,7 @@ based on all information of which preparer has any knowledge. </td>
 					<div class="IRS8865_LabelSpaceWide"/>
 					<div class="IRS8865_LineIndex" style="padding-right:9px;"/>
 					<div class="IRS8865_LineDescLongSchK">
-						<span style="font-style:italic;">Foreign gross income sourced at partnership level</span>
+						<span style="font-style:bold;">Foreign gross income sourced at partnership level</span>
 					</div>
 					<div class="IRS8865_LineIndexMidFillerGray"/>
 					<div class="IRS8865_MoneyField" style="border-bottom-width:0px;">
@@ -3955,13 +4200,13 @@ based on all information of which preparer has any knowledge. </td>
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LabelSpaceWide" style="height:4.5mm;"/>
 					<div class="IRS8865_LineIndex" style="height:4.5mm;padding-right:9px;">d</div>
-					<div class="IRS8865_LineDescLongSchK" style="height:4.5mm;width:30mm;border-right-width:0px;vertical-align: top;font-size:6pt;"> Section 951A category
+					<div class="IRS8865_LineDescLongSchK" style="height:4.5mm;width:30mm;border-right-width:0px;vertical-align: top;font-size:6pt;"> Reserved for future use
                   <img src="{$ImagePath}/8865_Bullet_Sm.gif" alt="Small Right Arrow" border="0"/>
 					</div>
 					<div class="IRS8865_MoneyField" style="height:4.5mm;width:22mm;border-style:solid; text-align: right; ">
-						<xsl:call-template name="PopulateAmount">
+						<!--<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleK/DistributiveShareItemsFrgnTxs[$pos]/FrgnGroIncmPrtshpLvl951AAmt"/>
-						</xsl:call-template>
+						</xsl:call-template>-->
 					</div>
 					<!-- Schedule K line 16e -->
 					<div class="IRS8865_LineDescLongSchK" style="height:4.5mm;width:82mm;padding-left:5px; border-right-width:1px;">
@@ -4077,13 +4322,13 @@ based on all information of which preparer has any knowledge. </td>
 				<div class="IRS8865_LineContainer">
 					<div class="IRS8865_LabelSpaceWide" style="height:4.5mm;"/>
 					<div class="IRS8865_LineIndex" style="height:4.5mm;padding-right:9px;">k</div>
-					<div class="IRS8865_LineDescLongSchK" style="height:4.5mm;width:32mm;border-right-width:0px;vertical-align: top;font-size:7pt;"> Section 951A category
+					<div class="IRS8865_LineDescLongSchK" style="height:4.5mm;width:32mm;border-right-width:0px;vertical-align: top;font-size:7pt;"> Reserved for future use
                   <img src="{$ImagePath}/8865_Bullet_Sm.gif" alt="Small Right Arrow" border="0"/>
 					</div>
 					<div class="IRS8865_MoneyField" style="height:4.5mm;width:22mm;border-style:solid; text-align: right; ">
-						<xsl:call-template name="PopulateAmount">
+						<!--<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleK/DistributiveShareItemsFrgnTxs[$pos]/DedAllocApprtnPrtshpLvl951AAmt"/>
-						</xsl:call-template>
+						</xsl:call-template>-->
 					</div>
 					<!-- Schedule K line 16l -->
 					<div class="IRS8865_LineDescLongSchK" style="height:4.5mm;width:80mm;padding-left:5px; border-right-width:1px;">
@@ -4157,19 +4402,19 @@ based on all information of which preparer has any knowledge. </td>
 					<div class="IRS8865_LabelSpaceWide" style="height:5.5mm;"/>
 					<div class="IRS8865_LineIndex" style="height:5.5mm;padding-top:2mm;padding-right:9px;">p</div>
 					<div class="IRS8865_LineDescLongSchK" style="height:5.5mm;border-right-width:1px;vertical-align: top;"> Total foreign taxes (check one): 
-             <span style="width:2mm;"/>
+						<span style="width:2mm;"/>
 						<img src="{$ImagePath}/8865_Bullet_Sm.gif" alt="Small Right Arrow" border="0"/>
 						<span style="width:2mm;"/>
-						<input type="checkbox" class="styCkbox">
+						<input type="checkbox" class="styCkbox" name="CheckTotalForeignTaxesPaid" alt="Check Total Foreign Taxes Paid" id="CheckTotalForeignTaxesPaid">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleK/DistributiveShareItemsFrgnTxs[$pos]/TotalForeignTaxesPaidInd"/>
-								<xsl:with-param name="BackupName">IRS8865ScheduleKTotalForeignTaxesPaid</xsl:with-param>
+								<xsl:with-param name="BackupName">CheckTotalForeignTaxesPaid</xsl:with-param>
 							</xsl:call-template>
 						</input>
 						<label>
 							<xsl:call-template name="PopulateLabel">
 								<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleK/DistributiveShareItemsFrgnTxs[$pos]/TotalForeignTaxesPaidInd"/>
-								<xsl:with-param name="BackupName">IRS8865ScheduleKTotalForeignTaxesPaid</xsl:with-param>
+								<xsl:with-param name="BackupName">CheckTotalForeignTaxesPaid</xsl:with-param>
 							</xsl:call-template>
 							<span style="padding-top:1.5mm;padding-bottom:0mm;"> Paid</span>
 						</label>
@@ -4177,16 +4422,16 @@ based on all information of which preparer has any knowledge. </td>
 							<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleK/DistributiveShareItemsFrgnTxs[$pos]/TotalForeignTaxesPaidInd"/>
 						</xsl:call-template>
 						<span style="width:12px"/>
-						<input type="checkbox" class="styCkbox">
+						<input type="checkbox" class="styCkbox" name="CheckTotalForeignTaxesAccrued" alt="Check Total Foreign Taxes Accrued" id="CheckTotalForeignTaxesAccrued">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleK/DistributiveShareItemsFrgnTxs[$pos]/TotalForeignTaxesAccruedInd"/>
-								<xsl:with-param name="BackupName">$FormData/IRS8865ScheduleKTotalForeignTaxesAccrued</xsl:with-param>
+								<xsl:with-param name="BackupName">CheckTotalForeignTaxesAccrued</xsl:with-param>
 							</xsl:call-template>
 						</input>
 						<label>
 							<xsl:call-template name="PopulateLabel">
 								<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleK/DistributiveShareItemsFrgnTxs[$pos]/TotalForeignTaxesAccruedInd"/>
-								<xsl:with-param name="BackupName">$FormData/IRS8865ScheduleKTotalForeignTaxesAccrued</xsl:with-param>
+								<xsl:with-param name="BackupName">CheckTotalForeignTaxesAccrued</xsl:with-param>
 							</xsl:call-template>
 							<span style="padding-top:2mm;padding-bottom:0mm;">  Accrued</span>
 						</label>
@@ -4800,7 +5045,7 @@ based on all information of which preparer has any knowledge. </td>
 				<div style="width:187mm;padding-top:.5mm;">
 					<div style="float:left;">Form 8865 (2019)<span style="width:148mm;"/>
 					</div>
-					<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">4</span>
+					<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">5</span>
 					</div>
 				</div>
 				<!-- END Page Header -->
@@ -4811,7 +5056,7 @@ based on all information of which preparer has any knowledge. </td>
 						<span style="font-weight:bold;">
               Balance Sheets per Books.
             </span>
-              (Not required if Item H9, page 1, is answered "Yes.")
+              (Not required if Item H11, page 1, is answered "Yes.")
           </div>
 				</div>
 				<!-- overlay title text -->
@@ -5496,7 +5741,7 @@ based on all information of which preparer has any knowledge. </td>
 				<div style="width:187mm;padding-top:.5mm;">
 					<div style="float:left;">Form 8865 (2019)<span style="width:148mm;"/>
 					</div>
-					<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">5</span>
+					<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">6</span>
 					</div>
 				</div>
 				<!-- END Page Header -->
@@ -5632,7 +5877,7 @@ based on all information of which preparer has any knowledge. </td>
 						<span style="font-weight:bold;">
               Reconciliation of Income (Loss) per Books With Income (Loss) per Return
             </span>
-            (Not required if Item H9, page 1, is answered "Yes.")
+            (Not required if Item H11, page 1, is answered "Yes.")
         </div>
 				</div>
 				<div style="width:188mm">
@@ -5845,7 +6090,7 @@ income this tax year (itemize):
 						<span style="font-weight:bold;">
 							 Analysis of Partners' Capital Accounts
 						 </span>
-						(Not required if Item H9, page 1, is answered "Yes.")
+						(Not required if Item H11, page 1, is answered "Yes.")
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleM2"/>
 							</xsl:call-template>
@@ -6021,11 +6266,11 @@ income this tax year (itemize):
 								</div>
 								<div class="IRS8865_MoneyFieldFull" style="height:7.2mm;border-bottom:0;border-right:0;">
 									<!-- INSERT -->
-									<span style="float: left;clear:both;">
+									<!--<span style="float: left;clear:both;">
 										<xsl:call-template name="SetFormLinkInline">
 											<xsl:with-param name="TargetNode" select="$FormData/IRS8865ScheduleM2"/>
 										</xsl:call-template>
-									</span>
+									</span>-->
 									<br/>
 									<span style="float:right;clear:both;">
 										<xsl:call-template name="PopulateAmount">
@@ -6050,7 +6295,7 @@ income this tax year (itemize):
 				<div style="width:187mm;padding-top:.5mm;">
 					<div style="float:left;">Form 8865 (2019)<span style="width:148mm;"/>
 					</div>
-					<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">6</span>
+					<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">7</span>
 					</div>
 				</div>
 				<!-- END Page Header -->
@@ -7779,7 +8024,7 @@ income this tax year (itemize):
 									<span style="font-weight:bold;">(2) </span>Address
                 </th>
 								<th scope="col" rowspan="2" class="styDepTblCell" style="width:40mm">
-									<span style="font-weight:bold;">(3) </span>Identifying number
+									<span style="font-weight:bold;">(3) </span>Identification number
                 </th>
 								<th scope="col" colspan="3" class="styDepTblCell" style="width:42mm">
 									<span style="font-weight:bold;">(4)</span> Check applicable box(es)
@@ -7871,7 +8116,7 @@ income this tax year (itemize):
 							<tr class="styDepTblHdr">
 								<th scope="col" class="styDepTblCell" style="width:58mm">Name</th>
 								<th scope="col" class="styDepTblCell" style="width:50mm">Address</th>
-								<th scope="col" class="styDepTblCell" style="width:40mm">Identifying number (if any)</th>
+								<th scope="col" class="styDepTblCell" style="width:40mm">Identification number (if any)</th>
 								<th scope="col" class="styDepTblCell" style="width:20mm">Check if foreign person</th>
 								<th scope="col" class="styDepTblCell" style="width:20mm">Check if direct partner</th>
 							</tr>
@@ -7960,7 +8205,7 @@ income this tax year (itemize):
 							<tr class="styDepTblHdr">
 								<th scope="col" class="styDepTblCell">Name</th>
 								<th scope="col" class="styDepTblCell">Address</th>
-								<th scope="col" class="styDepTblCell">Identifying number (if any)</th>
+								<th scope="col" class="styDepTblCell">Identification number (if any)</th>
 								<th scope="col" class="styDepTblCell">Check if foreign person</th>
 							</tr>
 						</thead>

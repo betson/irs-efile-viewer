@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 07/16/2019 -->
+<!-- Last Modified by Eugenia McDonald on 07/09/2020 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -137,7 +137,7 @@
 														<i>www.irs.gov/Form8814</i> for the latest information.
 											</a><br/>
 											<img src="{$ImagePath}/8814_Bullet_Sm.gif" alt="SmallBullet"/> 
-											Attach to parents' Form 1040, Form 1040SR, or Form 1040NR.
+											Attach to parents' Form 1040, Form 1040-SR, or Form 1040-NR.
 										</div>
 									</div>
 								</span>
@@ -482,7 +482,6 @@
 							<xsl:call-template name="CreateBox">
 								<!--<xsl:with-param name="StaticText">2,100.00</xsl:with-param>-->
 								<xsl:with-param name="AmountBoxStyle">text-align:right;</xsl:with-param>
-								<xsl:with-param name="TargetNode" select="$Form8814Data/BaseAmountCd"/>
 								<xsl:with-param name="Number">5</xsl:with-param>
 							</xsl:call-template>
 						</div>
@@ -716,8 +715,8 @@
 							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;padding-top:7px">12</div>
 							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:5px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
-									Subtract line 11 from line 6. Include this amount in the total on Schedule 1 (Form 1040 or 1040SR), line 21, <br/>
-									or Form	1040NR, line 21. In the space next to line 21, enter &#8220;Form 8814&#8221; and show the amount. If you<br/>
+									Subtract line 11 from line 6. Include this amount in the total on Schedule 1 (Form 1040 or 1040-SR), line 8,<br/>
+									or Form	1040-NR, line 21. In the space next to that line, enter &#8220;Form 8814&#8221; and show the amount. If you<br/>
 									<span style="float:left;">checked the box on line C above, see the instructions. Go to line 13 below</span>
 									<!--Dotted Line-->
 									<span class="styDotLn"  style="float:right;padding-left:3.1mm;">...........</span>
@@ -767,7 +766,6 @@
 							<xsl:call-template name="CreateBox">
 								<!--<xsl:with-param name="StaticText">1,050.00</xsl:with-param>-->
 								<xsl:with-param name="AmountBoxStyle">text-align:right;</xsl:with-param>
-								<xsl:with-param name="TargetNode" select="$Form8814Data/AmountNotTaxedCd"/>
 								<xsl:with-param name="Number">13</xsl:with-param>
 							</xsl:call-template>
 						</div>
@@ -800,7 +798,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="No" class="styCkbox">
+											<input type="checkbox" alt="Child Tax Basis Under Spcfd Amt Ind No" class="styCkbox">
 												<xsl:if test="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd">
 													<xsl:call-template name="PopulateNoCheckbox">
 														<xsl:with-param name="TargetNode" select="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd"/>
@@ -824,7 +822,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="Yes" class="styCkbox">
+											<input type="checkbox" alt="Child Tax Basis Under Spcfd Amt Ind Yes" class="styCkbox">
 												<xsl:if test="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd">
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="$Form8814Data/ChildTaxBasisUnderSpcfdAmtInd"/>
@@ -870,8 +868,8 @@
 						<div class="styIRS8814LineItem" style="height:9mm">
 							<span style="height:100%;padding-bottom:3px;">
 								<b>Note:</b> If you checked the box on line C above, see the instructions. Otherwise, include the 
-								  amount from line 15 in the tax you enter on Form 1040 or Form 1040SR, line 12a, or Form 1040NR, line 42. Be sure 
-								  to check box <b>1</b> on Form 1040 or Form 1040SR, line 12, or check box <b>a</b> on Form 1040NR, line 42.
+								  amount from line 15 in the tax you enter on Form 1040 or Form 1040-SR, line 12a, or Form 1040-NR, line 42. Be sure 
+								  to check box <b>1</b> on Form 1040 or Form 1040-SR, line 12a, or check box <b>a</b> on Form 1040-NR, line 42.
 							</span>
 						</div>
 					</div>

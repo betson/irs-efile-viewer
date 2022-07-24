@@ -44,8 +44,9 @@
             <xsl:call-template name="DocumentHeader"/>
             <!-- Begin Form Number and Name -->
             <div class="styBB" style="width:187mm;">
-              <div class="styFNBox" style="width:31mm; height:18mm;">
+              <div class="styFNBox" style="width:31mm; height:21mm;">
                 Form <span class="styFormNumber">8827</span>
+                <br/>(Rev. May 2020)
                 <!--General Dependency Push Pin --> 
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form8827Data"/>
@@ -56,23 +57,23 @@
                 <br/>
                 <span class="styAgency">Internal Revenue Service</span>
               </div>
-              <div class="styFTBox" style="width:123mm; height:18mm;">
+              <div class="styFTBox" style="width:123mm; height:21mm;">
                 <div class="styMainTitle" style="height:8mm; padding-top:1mm;">
                   Credit for Prior Year Minimum Tax-Corporations
                 </div>
                 <div class="styFST" style="height:5mm; font-size:7pt; padding-top:2mm;">
-                  <img src="{$ImagePath}/8827_Bullet_Title.gif" width="4" height="7" alt="Bullet Image"/>
+                  <img src="{$ImagePath}/8827_Bullet_Title.gif" width="4" height="7" alt="Right Pointing Arrow"/>
                   Attach to the corporation's tax return.
                 </div>
                 <div class="styFST" style="height:5mm; font-size:7pt; padding-top:2mm; font-size:6.5pt;">
-                  <img src="{$ImagePath}/8827_Bullet_Title.gif" width="4" height="7" alt="Bullet Image"/>
+                  <img src="{$ImagePath}/8827_Bullet_Title.gif" width="4" height="7" alt="Right Pointing Arrow"/>
                   Go to 
 			      <a style="text-decoration:none; color:black;" href="http://www.irs.gov/form8827" title="Link to IRS.gov">
 					<i>www.irs.gov/Form8827</i>
 				  </a> for the latest information.             
                 </div>
               </div>
-              <div class="styTYBox" style="width:32mm; height:18mm;">
+              <div class="styTYBox" style="width:32mm; height:21mm;">
                 <div class="styOMB" style="height:4mm; width:32mm;">
                   OMB No. 1545-0123
                 </div>
@@ -248,10 +249,11 @@
             <div style="width:187mm;">
               <div class="styLNLeftNumBox">6</div>
               <div class="styLNDesc" style="width:138.75mm;">
-                <span class="styBoldText">Minimum tax credit carryforward to 2020. </span> 
-				Subtract line 5a from line 1.  Keep a record of this amount to <span style="float:left;">carry forward and use in future years </span>
+                <span class="styBoldText">Minimum tax credit carryforward. </span> 
+				Subtract line 5a from line 1.  Keep a record of this amount to carry 
+				<span style="float:left;">forward and use in future years </span>
                 <!--Dotted Line-->
-                <div class="styDotLn" style="float:right;padding-right:1mm;">......................</div>
+                <div class="styDotLn" style="float:right;padding-right:1mm;">........................</div>
               </div>
               <div class="styLNRightNumBoxNBB" style="height:8mm; padding-top:4mm; padding-right:1mm;">6</div>
               <div class="styLNAmountBoxNBB" style="height:8mm; padding-top:1mm;">
@@ -263,12 +265,12 @@
             </div>
           </div>
           <!--Page Footer -->
-  		  <div style="width:110mm; font-weight:bold;" class="styGenericDiv">For Paperwork Reduction Act Notice, see instructions.</div>
-          <div style="width:77mm; text-align:left;">                            
+  		  <div style="width:100mm; font-weight:bold;" class="styGenericDiv">For Paperwork Reduction Act Notice, see instructions.</div>
+          <div style="width:87mm; text-align:left;">                            
             Cat. No. 13008K        
             <span style="width:116px;"/>  
             Form <span class="styBoldText">8827</span>
-            (2019) 
+            (Rev. 5-2020) 
           </div>
           <br/>
           <!--Page break -->

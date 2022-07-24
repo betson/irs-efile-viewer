@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- 06/05/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
+<!-- 02/27/2020 - Changes made for KISAM IM00980946 - Jeremy Nichols -->
+<!-- 05/07/2020 - Additional changes made for KISAM IM00980946 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes" />
   <xsl:strip-space elements="*" />
@@ -56,9 +58,9 @@
         <div class="styTopSectionLine" style="width:187mm;">        
           <div class=" styTopSectionLineLbl" style="float:left;clear:none;">Name:</div>
           <div style="float:left;clear:none;">            
-            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/Name/BusinessNameLine1Txt"/></xsl:call-template>
-            <xsl:if test="$DependencyData/Name/BusinessNameLine2Txt !=''">
-              <br/><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/Name/BusinessNameLine2Txt"/></xsl:call-template>
+            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/BusinessName/BusinessNameLine1Txt"/></xsl:call-template>
+            <xsl:if test="$DependencyData/BusinessName/BusinessNameLine2Txt !=''">
+              <br/><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/BusinessName/BusinessNameLine2Txt"/></xsl:call-template>
             </xsl:if>
           </div>
         </div>  
@@ -66,10 +68,10 @@
         
         <div class="styTopSectionLine" style="width:187mm;">
           <div class="styTopSectionLineLbl" style="float:left;clear:both;">Address:</div>
-          <div style="float:left;clear:right;">
-            <xsl:if test="$DependencyData/Address">
+          <div class="styExplanationLine">
+            <xsl:if test="$DependencyData/USAddress">
                 <xsl:call-template name="PopulateUSAddressTemplate">
-                <xsl:with-param name="TargetNode" select="$DependencyData/Address"/>
+                <xsl:with-param name="TargetNode" select="$DependencyData/USAddress"/>
                 </xsl:call-template>
               </xsl:if>
               <xsl:if test="$DependencyData/ForeignAddress">
@@ -84,18 +86,18 @@
  <!--      Placed line and label formatting within choose statement 3/16/07  -->
    
          <xsl:choose>
-              <xsl:when test="$DependencyData/SocialSecurityNumber">
+              <xsl:when test="$DependencyData/SSN">
  <!-- added Line label for ssn case -->  
               <div class="styTopSectionLine" style="width:187mm;"> 
                 <div class="styTopSectionLineLbl" style="float:left;clear:both;">Social Security Number: </div>
                <div style="float:left;clear:right;"> 
                  <xsl:call-template name="PopulateSSN">
-              	  <xsl:with-param name="TargetNode" select="$DependencyData/SocialSecurityNumber"/>
+              	  <xsl:with-param name="TargetNode" select="$DependencyData/SSN"/>
                 </xsl:call-template>
                 </div>
                 </div>
               </xsl:when>
-              <xsl:when test="$DependencyData/MissingEINReason">
+              <xsl:when test="$DependencyData/MissingSSNEINReasonCd">
 
   <!-- added Line label for missing ein case --> 
        
@@ -104,7 +106,7 @@
       		 </div>
       		 <div style="float:left;clear:right;"> 
                  <xsl:call-template name="PopulateText">
-              	  <xsl:with-param name="TargetNode" select="$DependencyData/MissingEINReason" />
+              	  <xsl:with-param name="TargetNode" select="$DependencyData/MissingSSNEINReasonCd" />
                 </xsl:call-template>
                 </div>
                 </div>
@@ -116,7 +118,7 @@
               	 <div class="styTopSectionLine" style="width:187mm;"> 
               	 <div class="styTopSectionLineLbl" style="float:left;clear:both;"> Employer Identification Number: </div>
                  <div style="float:left;clear:right;"> 
-              	<xsl:call-template name="PopulateEIN"><xsl:with-param name="TargetNode" select="$DependencyData/EmployerIdentificationNumber" />
+              	<xsl:call-template name="PopulateEIN"><xsl:with-param name="TargetNode" select="$DependencyData/EIN" />
               	</xsl:call-template>  
               	 </div>
                 </div>
@@ -127,7 +129,7 @@
           <div class="styTopSectionLineLbl" style="float:left;clear:both;">Amount Included in Income:</div>
           <div style="float:left;clear:right;">            
             <!--span style="width:44mm;text-align:right;"-->
-              <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$DependencyData/AmountIncludedInIncome"/></xsl:call-template>
+              <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$DependencyData/IncludedAsIncomeAmt"/></xsl:call-template>
             <!--/span-->
          </div> 
         </div>            
@@ -136,31 +138,31 @@
             Tax Year in Which the Amount was Previously Included in Income:
           </div>
           <div style="float:left;clear:right;">            
-            <br/><br /><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/TaxYearAmountIncludedInIncome"/></xsl:call-template>
+            <br/><br /><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/IncludedIncomeForTaxYr"/></xsl:call-template>
           </div>
         </div>            
         <div class="styTopSectionLine" style="width:187mm;">        
           <div class="styTopSectionLineLbl" style="float:left;clear:both;text-align:right;">
             The Law Under Which the Amount was Previously Included in Income:
           </div>
-          <div style="float:left;clear:right;">            
-            <br/><br /><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/LawUnderWhichAmountWasIncluded"/></xsl:call-template>
+          <div class="styExplanationLine">            
+            <br/><br/><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/LawForIncludedIncomeTxt"/></xsl:call-template>
           </div>
         </div>  
         <div class="styTopSectionLine" style="width:187mm;">        
           <div  class="styTopSectionLineLbl" style="float:left;clear:both;">
             Description of Transaction in Which the Shareholder Acquired the Stock of the PFIC from                     the Other US Person:
           </div>
-          <div class="styExplanationLine">            
-            <br/><br/><br /><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/DescriptionOfTransaction"/></xsl:call-template>
+          <div style="float:left;clear:right;">            
+            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/TransactionDesc"/></xsl:call-template>
           </div>
         </div>            
         <div class="styTopSectionLine" style="width:187mm;">        
           <div class="styTopSectionLineLbl" style="float:left;clear:both;">
             The Law Under Which the Shareholder's Holding Period Includes the Holding Period of the                     Other US Person:
           </div>
-          <div style="float:left;clear:right;">            
-            <br/><br/><br /><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/ShareholdersHoldingPeriodLaw"/></xsl:call-template>
+          <div class="styExplanationLine">            
+            <br/><br/><br /><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/LawForShareholdersHoldPrdTxt"/></xsl:call-template>
           </div>
         </div>        
         

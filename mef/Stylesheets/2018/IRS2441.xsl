@@ -1109,7 +1109,7 @@ Did you receive<br/>
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
 								</xsl:call-template>
-								 <input type="checkbox" alt="No" class="styCkbox">
+								 <input type="checkbox" alt="Form1040AFiledIndNo" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
 										<xsl:with-param name="BackupName">Form2441DataFiled1040ANoInd</xsl:with-param>
@@ -1133,7 +1133,7 @@ Did you receive<br/>
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
 								</xsl:call-template>
-								<input type="checkbox" alt="Yes" class="styCkbox">
+								<input type="checkbox" alt="Form1040AFiledIndYes" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
 										<xsl:with-param name="BackupName">Form2441DataFiled1040AYesInd</xsl:with-param>

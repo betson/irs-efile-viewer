@@ -95,7 +95,7 @@
 					<!--  Begin Header section 1 -->
 					<xsl:call-template name="DocumentHeader"/>
 					<div class="styBB" style="width:187mm;border-bottom-width:1px;">
-						<div class="styFNBox" style="width:31mm;height:16.5mm;border-right-width:1px;">
+						<div class="styFNBox" style="width:31mm;height:18.5mm;border-right-width:1px;">
 							<div >
 								Form<span class="styFormNumber">5405</span>
 							</div>
@@ -105,7 +105,7 @@
 								<xsl:with-param name="TargetNode" select="$Form5405Data"/>
 							</xsl:call-template>
 							<br/>
-							<span class="styAgency" >Department of the Treasury</span>
+							<span class="styAgency">Department of the Treasury</span>
 							<br/>
 							<span class="styAgency" >Internal Revenue Service</span>
 						</div>
@@ -627,7 +627,7 @@
 							<div class="styIRS5405CleanDiv" style="width:180mm;height:auto;padding:0px 0px 0px 0px;bac">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
 									<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
-										<b>Next: </b>Enter the amount from line 8 on your 2019 Schedule 2/ line 7b (Form 1040 or 1040-SR), Schedule 2/ line 7b, or Form 1040-NR, line 59b.
+										<b>Next: </b>Enter the amount from line 8 on your 2019 Schedule 2 (Form 1040 or 1040-SR), line 7b; or Form 1040-NR, line 59b.
 									</div>
 								</div>
 							</div>
@@ -823,7 +823,7 @@
 							<div class="styIRS5405LNDesc" style="width:144mm;">
 								&#8226; If line 15 is more than -0-, you have a gain. Check the box on line 3a and complete Part II. <b>However</b>,
 								check the box on line 3f (instead of the box on line 3a) if your home was destroyed or you sold the home
-								through condemnation or under threat of condemnation. Then complete Part II if the event occurred in 2016.<br/>
+								through condemnation or under threat of condemnation. Then complete Part II if the event occurred in 2017.<br/>
 								<br/>
 								&#8226; If line 15 is -0- or less, check the box on line 3b. However, if your home was destroyed
 								or you sold the home through condemnation or under threat of condemnation, check the box on line 3g
@@ -840,12 +840,12 @@
 							</span>
 						</div>
 						<div style="font-size:7pt;">
-							<span style="width:39mm;"/>  
+							<span style="width:28mm;"/>  
 							Cat. No. 11880I
 						</div>						
 						<div style="float:right;">
 								Form 
-							<span class="styBoldText" style="font-size:8pt;">5405</span> (Rev. 12-2019)
+							<span class="styBoldText" style="font-size:8pt;">5405</span> (Rev. 11-2019)
 						</div>
 					</div>
 					<!-- END Page Break and Footer-->

@@ -60,11 +60,11 @@
                 At-Risk Limitations
               </div>
               <div class="styFST" style="height:4mm;font-size:7pt;display:block;">
-                <img src="{$ImagePath}/6198_Bullet.gif" alt="Bullet Image"/>
+                <img src="{$ImagePath}/6198_Bullet.gif" alt="6198 Bullet"/>
                   Attach to your tax return.
               </div>
               <div class="styFST" style="height:4mm;font-size:7pt;">
-                <img src="{$ImagePath}/6198_Bullet.gif" alt="Bullet Image"/>
+                <img src="{$ImagePath}/6198_Bullet.gif" alt="6198 Bullet"/>
                 See separate instructions.   
               </div>
             </div>
@@ -153,7 +153,7 @@
             </div>
             <div style="width:187mm">
               <div class="styLNLeftLtrBox" style="padding-left:4mm">a</div>
-              <div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;">
+              <div style="float:left;">
       Schedule D                    
       <!-- set the push pin image -->
              <xsl:call-template name="SetFormLinkInline">
@@ -174,7 +174,7 @@
             </div>
             <div style="width:187mm">
               <div class="styLNLeftLtrBox" style="padding-left:4mm">b</div>
-              <div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;">
+              <div style="float:left;">
       Form 4797  
       <!-- set the push pin image -->
          <xsl:call-template name="SetFormLinkInline">
@@ -195,7 +195,7 @@
             </div>
             <div style="width:187mm">
               <div class="styLNLeftLtrBox" style="padding-left:4mm">c</div>
-              <div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;width: 38mm">
+              <div style="float:left;width: 38mm">
       Other form or schedule  
       <!-- set the push pin image -->
          <xsl:call-template name="SetFormLinkInline">
@@ -221,10 +221,9 @@
             </div>
             <div style="width:187mm">
               <div class="styLNLeftNumBox" style="padding-left:3mm">3</div>
-              <div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;">
-      Other income and gains from the activity, from Schedule K-1 of Form 1065, Form 1065-B, or
-Form              
-    </div>
+              <div style="float:left;">
+								Other income and gains from the activity, from Schedule K-1 of Form 1065, or Form 1120S, that were              
+							</div>
               <div style="float:right;">
                 <div class="styLNRightNumBoxNBB"/>
                 <div class="styLNAmountBoxNBB" style="width:34mm;"/>
@@ -233,12 +232,12 @@ Form
             <div style="width:187mm">
               <div class="styLNLeftNumBox"/>
               <div style="float:left;">
-      1120S, that were not included on lines 1 through 2c
-    </div>
+							not included on lines 1 through 2c
+						</div>
               <div style="float:right">
                 <span class="styIRS6198DotLn">  
-        ................  
-      </span>
+									.....................  
+								</span>
                 <div class="styLNRightNumBox">3</div>
                 <div class="styLNAmountBox" style="width:34mm;">
                   <xsl:call-template name="PopulateAmount">
@@ -399,7 +398,7 @@ the  </div>
       .............. 
       </span>
                 <div class="styGenericDiv">
-                  <img src="{$ImagePath}/6198_Bullet.gif" alt="Bullet Image"/>
+                  <img src="{$ImagePath}/6198_Bullet.gif" alt="6198 Bullet"/>
                   <span style="width:5px;"/>
                 </div>
                 <div class="styLNRightNumBox">10a</div>
@@ -544,7 +543,7 @@ the  </div>
                   <span style="border:0 solid yellow;" class="">
                     <span class="" style="border:0 solid violet;width:8mm;height:4mm;padding-left:3.3mm;                     padding-top:.5mm;padding-bottom:.5mm;font-weight:bold;padding-left:4.5mm">a</span>
                     <span class="" style="border:0 solid violet;height:4mm;padding-top:.5mm;                     padding-bottom:.5mm;">
-                      <input type="checkbox" class="styCkboxNM" onclick="return false;">
+                      <input type="checkbox" class="styCkboxNM" alt="At Risk Effective Date" onclick="return false;">
                         <xsl:call-template name="PopulateCheckbox">
                           <xsl:with-param name="TargetNode" select="$Form6198Data/EffectiveDateRiskAmountInd"/>
                     <xsl:with-param name="BackupName">At Risk Effective Date</xsl:with-param>   
@@ -564,7 +563,7 @@ the  </div>
                   <span style="border:0 solid red;" class="styGenericDiv">
                     <span class="" style="border:0 solid violet;width:8mm;height:4mm;padding-left:3.3mm;                     padding-top:.5mm;padding-bottom:.5mm;font-weight:bold;padding-left:4.5mm">b</span>
                  
-                      <input type="checkbox" class="styCkboxNM" onclick="return false;">
+                      <input type="checkbox" class="styCkboxNM" alt="Prior Year Form6198" onclick="return false;">
                         <xsl:call-template name="PopulateCheckbox">
                           <xsl:with-param name="TargetNode" select="$Form6198Data/Form6198PriorYearInd"/>
                            <xsl:with-param name="BackupName">Prior Year Form6198</xsl:with-param>  
@@ -583,7 +582,7 @@ the  </div>
                   </span>
                 </div>
                 <div style="border:0 solid green;width:2mm;" class="styLnDesc">
-                  <img src="{$ImagePath}/6198_Bracket.gif" alt="bracket image"/>
+                  <img src="{$ImagePath}/6198_Bracket.gif" alt="6198 Bracket"/>
                 </div>
                </div>
               <div style="border:0 solid red;float:right">            
@@ -616,7 +615,7 @@ the  </div>
             <div style="width:187mm">
               <div class="styLNLeftLtrBox" style="padding-left:5mm">a</div>
               <div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;">
-                <input type="checkbox" class="styCkboxNM" onclick="return false;">
+                <input type="checkbox" class="styCkboxNM" alt="Increases Of Effective Date" onclick="return false;">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$Form6198Data/IncreaseSinceEffectiveDateInd"/>
                <xsl:with-param name="BackupName">Increases Of Effective Date</xsl:with-param>           
@@ -632,7 +631,7 @@ the  </div>
                 <span style="width:5mm;"/>
                 <span class="styBoldText">b</span>
                 <span style="width:2mm;"/>
-                <input type="checkbox" class="styCkboxNM" onclick="return false;">
+                <input type="checkbox" class="styCkboxNM" alt="Increases End Of Prior Year" onclick="return false;">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$Form6198Data/IncreaseSincePriorYearInd"/>
                 <xsl:with-param name="BackupName">Increases End Of Prior Year</xsl:with-param>      
@@ -688,7 +687,7 @@ the  </div>
             <div style="width:187mm">
               <div class="styLNLeftLtrBox" style="padding-left:4.5mm">a</div>
               <div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;">
-                <input type="checkbox" class="styCkboxNM" onclick="return false;">
+                <input type="checkbox" class="styCkboxNM" alt="Decreases Of Effective Date" onclick="return false;">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$Form6198Data/DecreaseSinceEffectiveDateInd"/>
                     <xsl:with-param name="BackupName">Decreases Of Effective Date</xsl:with-param>   
@@ -704,7 +703,7 @@ the  </div>
                 <span style="width:5mm;"/>
                 <span class="styBoldText">b</span>
                 <span style="width:2mm;"/>
-                <input type="checkbox" class="styCkboxNM" onclick="return false;">
+                <input type="checkbox" class="styCkboxNM" alt="Decreases End Of Prior Year" onclick="return false;">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$Form6198Data/DecreaseSincePriorYearInd"/>
                     <xsl:with-param name="BackupName">Decreases End Of Prior Year</xsl:with-param>
@@ -740,7 +739,7 @@ the  </div>
       ............
       </span>
                 <div class="styGenericDiv">
-                  <img src="{$ImagePath}/6198_Bullet.gif" alt="Bullet Image"/>
+                  <img src="{$ImagePath}/6198_Bullet.gif" alt="6198 Bullet"/>
                   <span style="width:5px;"/>
                 </div>
                 <div class="styLNRightNumBox">19a</div>

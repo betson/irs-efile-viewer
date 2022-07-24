@@ -227,9 +227,11 @@
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$FormData/SpouseNm"/>
 							</xsl:call-template>
+							<xsl:if test="$FormData/SpouseNm"><span style="width:8px;"/></xsl:if>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$FormData/NRALiteralCd"/>
 							</xsl:call-template>
+							<xsl:if test="$FormData/NRALiteralCd"><span style="width:8px;"/></xsl:if>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$FormData/QualifyingHOHNm"/>
 							</xsl:call-template>
@@ -237,6 +239,7 @@
 								<xsl:with-param name="Desc">Filing Status - Qualifying HOH SSN</xsl:with-param>
 								<xsl:with-param name="TargetNode" select="$FormData/QualifyingHOHSSN"/>
 							</xsl:call-template>
+							<xsl:if test="$FormData/QualifyingHOHNm or $FormData/QualifyingHOHSSN"><span style="width:8px;"/></xsl:if>
 							<xsl:if test="$FormData/QualifyingPersonName">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/QualifyingPersonName/PersonFirstNm"/>
@@ -568,251 +571,199 @@
 										<tr>
 											<!-- Column 1 -->
 											<td class="styTableCell" style="width:59.4mm;height:4mm;border-right-width:1px;">
-												<label>
-													<xsl:call-template name="PopulateLabel">
-														<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
-														<xsl:with-param name="BackupName">IRS1040DependentInformations<xsl:number value="position()"/>EligibleForChildTaxCreditInd</xsl:with-param>
-													</xsl:call-template>
-													<span style="width:29mm;text-align:left;float:left;clear:none;">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="DependentFirstNm"/>
-														</xsl:call-template>
-													</span>
-													<span style="width:29mm;text-align:left;">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="DependentLastNm"/>
-														</xsl:call-template>
-														<span style="float:right;">
-															<xsl:call-template name="LinkToLeftoverDataTableInline">
-																<xsl:with-param name="Desc">Dependent<xsl:number value="position()"/> Name Control</xsl:with-param>
-																<xsl:with-param name="TargetNode" select="DependentNameControlTxt"/>
-															</xsl:call-template>
-														</span>
-													</span>
-												</label>
-											</td>
-										<!-- Column 2 -->
-										<td class="styTableCell" style="text-align:center;width:35.2mm;height:4mm;border-right-width:1px;">
-											<xsl:choose>
-												<xsl:when test="DiedLiteralCd">
+												<span style="width:29mm;text-align:left;float:left;clear:none;">
 													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="DiedLiteralCd"/>
+														<xsl:with-param name="TargetNode" select="DependentFirstNm"/>
 													</xsl:call-template>
-												</xsl:when>
-												<xsl:otherwise>
-													<xsl:call-template name="PopulateSSN">
-														<xsl:with-param name="TargetNode" select="DependentSSN"/>
+												</span>
+												<span style="width:29mm;text-align:left;">
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="DependentLastNm"/>
 													</xsl:call-template>
-												</xsl:otherwise>
-											</xsl:choose>
-										</td>
-										<!-- Column 3 -->
-										<td class="styTableCell" style="width:30.6mm;height:4mm;text-align:left;border-right-width:1px;">
-											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="DependentRelationshipCd"/>
+													<span style="float:right;">
+														<xsl:call-template name="LinkToLeftoverDataTableInline">
+															<xsl:with-param name="Desc">Dependent <xsl:number value="position()"/> Name Control</xsl:with-param>
+															<xsl:with-param name="TargetNode" select="DependentNameControlTxt"/>
+														</xsl:call-template>
+													</span>
+												</span>
+											</td>
+											<!-- Column 2 -->
+											<td class="styTableCell" style="text-align:center;width:35.2mm;height:4mm;border-right-width:1px;">
+												<xsl:choose>
+													<xsl:when test="DiedLiteralCd">
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="DiedLiteralCd"/>
+														</xsl:call-template>
+													</xsl:when>
+													<xsl:otherwise>
+														<xsl:call-template name="PopulateSSN">
+															<xsl:with-param name="TargetNode" select="DependentSSN"/>
+														</xsl:call-template>
+													</xsl:otherwise>
+												</xsl:choose>
+											</td>
+											<!-- Column 3 -->
+											<td class="styTableCell" style="width:30.6mm;height:4mm;text-align:left;border-right-width:1px;">
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="DependentRelationshipCd"/>
+												</xsl:call-template>
+											</td>
+											<!-- Column 4 -->
+											<td class="styTableCell" style="text-align:left;height:4mm;padding-top:0px;padding-bottom:0px;border-right:0px solid black">
+												<div style="width:50%;height:4mm;border-right:1px solid black;padding:0.5mm;text-align:center;">
+													<input type="Checkbox" class="styCkboxNM">
+														<xsl:call-template name="PopulateCheckbox">
+															<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
+															<xsl:with-param name="BackupName">IRS1040DependentInformation<xsl:number value="position()"/>EligibleForChildTaxCreditInd</xsl:with-param>
+														</xsl:call-template>
+														<xsl:attribute name="alt">Dependent <xsl:number value="position()"/> Eligible for CTC Indicator</xsl:attribute>
+													</input>
+												</div>
+												<div style="width:45%;padding:0.5mm;text-align:center;height:4mm;">
+													<input type="Checkbox" class="styCkboxNM">
+														<xsl:call-template name="PopulateCheckbox">
+															<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
+															<xsl:with-param name="BackupName">IRS1040DependentInformation<xsl:number value="position()"/>EligibleForODCInd</xsl:with-param>
+														</xsl:call-template>
+														<xsl:attribute name="alt">Dependent <xsl:number value="position()"/> Eligible for ODC Indicator</xsl:attribute>
+													</input>
+												</div>
+											</td>
+										</tr>
+									</xsl:for-each>
+								</xsl:if>
+								<!-- Table Filler Rows -->
+								<xsl:if test="count($FormData/DependentDetail) &lt; 1 or ((count($FormData/DependentDetail) &gt; 4) and ($Print = $Separated))">
+									<tr>
+										<td class="styTableCell" style="width:59.4mm;text-align:left;height:4mm;
+										  border-right-width:1px;">
+											<xsl:call-template name="PopulateAdditionalDataTableMessage">
+												<xsl:with-param name="TargetNode" select="$FormData/DependentDetail"/>
 											</xsl:call-template>
+											<span class="styTableCellPad"/>
 										</td>
-										<!-- Column 4 -->
-										<td class="styTableCell" style="text-align:left;height:4mm;padding-top:0px;padding-bottom:0px;border-right:0px solid black">
+										<td class="styTableCell" style="width:35.2mm;height:4mm;border-right-width:1px;">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCell" style="width:30.6mm;height:4mm;border-right-width:1px;">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCell" style="text-align:left;height:3mm;padding:0px;border-right-width:0px;">
 											<div style="width:50%;height:4mm;border-right:1px solid black;padding:0.5mm;text-align:center;">
-												<input type="Checkbox" class="styCkboxNM">
+												<input type="Checkbox" class="styCkboxNM" alt="Dependent 1 Eligible for CTC Indicator">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
-														<xsl:with-param name="BackupName">IRS1040DependentInformations<xsl:number value="position()"/>EligibleForChildTaxCreditInd</xsl:with-param>
+														<xsl:with-param name="BackupName">IRS1040DependentInformation1EligibleForChildTaxCreditInd</xsl:with-param>
 													</xsl:call-template>
 												</input>
 											</div>
 											<div style="width:45%;padding:0.5mm;text-align:center;height:4mm;">
-												<input type="Checkbox" class="styCkboxNM">
+												<input type="Checkbox" class="styCkboxNM" alt="Dependent 1 Eligible for ODC Indicator">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
-														<xsl:with-param name="BackupName">IRS1040OtherDependentInformations<xsl:number value="position()"/>EligibleForODCInd</xsl:with-param>
+														<xsl:with-param name="BackupName">IRS1040DependentInformation1EligibleForODCInd</xsl:with-param>
 													</xsl:call-template>
 												</input>
 											</div>
 										</td>
 									</tr>
-								</xsl:for-each>
-							</xsl:if>
-							<!-- Table Filler Rows -->
-							<xsl:if test="count($FormData/DependentDetail) &lt; 1 or ((count($FormData/DependentDetail) &gt; 4) and ($Print = $Separated))">
-								<tr>
-									<td class="styTableCell" style="width:59.4mm;text-align:left;height:4mm;
-									  border-right-width:1px;">
-										<xsl:call-template name="PopulateAdditionalDataTableMessage">
-											<xsl:with-param name="TargetNode" select="$FormData/DependentDetail"/>
-										</xsl:call-template>
-										<span class="styTableCellPad"/>
-									</td>
-									<td class="styTableCell" style="width:35.2mm;height:4mm;border-right-width:1px;">
-										<span class="styTableCellPad"/>
-									</td>
-									<td class="styTableCell" style="width:30.6mm;height:4mm;border-right-width:1px;">
-										<span class="styTableCellPad"/>
-									</td>
-									<td class="styTableCell" style="text-align:left;height:3mm;padding:0px;border-right-width:0px;">
-										<div style="width:50%;height:4mm;border-right:1px solid black;padding:0.5mm;text-align:center;">
-											<input type="Checkbox" class="styCkboxNM">
-												<xsl:call-template name="PopulateCheckbox">
-													<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
-													<xsl:with-param name="BackupName">IRS1040DependentInformations3EligibleForChildTaxCreditInd</xsl:with-param>
-												</xsl:call-template>
-											</input>
-											<label>
-												<xsl:call-template name="PopulateLabel">
-													<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
-													<xsl:with-param name="BackupName">IRS1040DependentInformations3EligibleForChildTaxCreditInd</xsl:with-param>
-												</xsl:call-template>
-											</label>
-										</div>
-										<div style="width:45%;padding:0.5mm;text-align:center;height:4mm;">
-											<input type="Checkbox" class="styCkboxNM">
-												<xsl:call-template name="PopulateCheckbox">
-													<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
-													<xsl:with-param name="BackupName">IRS1040OtherDependentInformations3EligibleForODCInd></xsl:with-param>
-												</xsl:call-template>
-											</input>
-											<label>
-												<xsl:call-template name="PopulateLabel">
-													<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
-													<xsl:with-param name="BackupName">IRS1040OtherDependentInformations3EligibleForODCInd</xsl:with-param>
-												</xsl:call-template>
-											</label>
-										</div>
-									</td>
-								</tr>
-							</xsl:if>
-							<xsl:if test="count($FormData/DependentDetail) &lt; 2 or ((count($FormData/DependentDetail) &gt; 4) and ($Print = $Separated))">
-								<tr>
-									<td class="styTableCell" style="width:59.4mm;height:4mm;border-right-width:1px;">
-										<span class="styTableCellPad"/>
-									</td> 
-									<td class="styTableCell" style="width:35.2mm;height:4mm;border-right-width:1px;">
-										<span class="styTableCellPad"/>
-									</td>
-									<td class="styTableCell" style="width:30.6mm;height:4mm;border-right-width:1px;">
-										<span class="styTableCellPad"/>
-									</td>
-									<td class="styTableCell" style="text-align:left;height:3mm;padding:0px;border-right-width:0px;">
-										<div style="width:50%;height:4mm;border-right:1px solid black;padding:0.5mm;text-align:center;">
-											<input type="Checkbox" class="styCkboxNM">
-												<xsl:call-template name="PopulateCheckbox">
-													<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
-													<xsl:with-param name="BackupName">IRS1040DependentInformations3EligibleForChildTaxCreditInd</xsl:with-param>
-												</xsl:call-template>
-											</input>
-											<label>
-												<xsl:call-template name="PopulateLabel">
-													<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
-													<xsl:with-param name="BackupName">IRS1040DependentInformations3EligibleForChildTaxCreditInd</xsl:with-param>
-												</xsl:call-template>
-											</label>
-										</div>
-										<div style="width:45%;padding:0.5mm;text-align:center;height:4mm;">
-											<input type="Checkbox" class="styCkboxNM">
-												<xsl:call-template name="PopulateCheckbox">
-													<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
-													<xsl:with-param name="BackupName">IRS1040OtherDependentInformations3EligibleForODCInd></xsl:with-param>
-												</xsl:call-template>
-											</input>
-											<label>
-												<xsl:call-template name="PopulateLabel">
-													<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
-													<xsl:with-param name="BackupName">IRS1040OtherDependentInformations3EligibleForODCInd</xsl:with-param>
-												</xsl:call-template>
-											</label>
-										</div>
-									</td>
-								</tr>
-							</xsl:if>
-							<xsl:if test="count($FormData/DependentDetail) &lt; 3 or ((count($FormData/DependentDetail) &gt; 4) and ($Print = $Separated))">
-								<tr>
-									<td class="styTableCell" style="width:59.4mm;height:4mm;border-right-width:1px;">
-										<span class="styTableCellPad"/>
-									</td>
-									<td class="styTableCell" style="width:35.2mm;height:4mm;border-right-width:1px;">
-										<span class="styTableCellPad"/>
-									</td>
-									<td class="styTableCell" style="width:30.6mm;height:4mm;border-right-width:1px;">
-										<span class="styTableCellPad"/>
-									</td>
-									<td class="styTableCell" style="text-align:left;height:3mm;padding:0px;border-right-width:0px;">
-										<div style="width:50%;height:4mm;border-right:1px solid black;padding:0.5mm;text-align:center;">
-											<input type="Checkbox" class="styCkboxNM">
-												<xsl:call-template name="PopulateCheckbox">
-													<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
-													<xsl:with-param name="BackupName">IRS1040DependentInformations3EligibleForChildTaxCreditInd</xsl:with-param>
-												</xsl:call-template>
-											</input>
-											<label>
-												<xsl:call-template name="PopulateLabel">
-													<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
-													<xsl:with-param name="BackupName">IRS1040DependentInformations3EligibleForChildTaxCreditInd</xsl:with-param>
-												</xsl:call-template>
-											</label>
-										</div>
-										<div style="width:45%;padding:0.5mm;text-align:center;height:4mm;">
-											<input type="Checkbox" class="styCkboxNM">
-												<xsl:call-template name="PopulateCheckbox">
-													<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
-													<xsl:with-param name="BackupName">IRS1040OtherDependentInformations3EligibleForODCInd></xsl:with-param>
-												</xsl:call-template>
-											</input>
-											<label>
-												<xsl:call-template name="PopulateLabel">
-													<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
-													<xsl:with-param name="BackupName">IRS1040OtherDependentInformations3EligibleForODCInd</xsl:with-param>
-												</xsl:call-template>
-											</label>
-										</div>
-									</td>
-								</tr>
-							</xsl:if>
-							<xsl:if test="count($FormData/DependentDetail) &lt; 4 or ((count($FormData/DependentDetail) &gt; 4) and ($Print = $Separated))">
-								<tr>
-									<td class="styTableCell" style="width:59.4mm;height:4mm;border-right-width:1px;">
-										<span class="styTableCellPad"/>
-									</td>
-									<td class="styTableCell" style="width:35.2mm;height:4mm;border-right-width:1px;">
-										<span class="styTableCellPad"/>
-									</td>
-									<td class="styTableCell" style="width:30.6mm;height:4mm;border-right-width:1px;">
-										<span class="styTableCellPad"/>
-									</td>
-									<td class="styTableCell" style="text-align:left;height:3mm;padding:0px;border-right-width:0px;">
-										<div style="width:50%;height:4mm;border-right:1px solid black;padding:0.5mm;text-align:center;">
-											<input type="Checkbox" class="styCkboxNM">
-												<xsl:call-template name="PopulateCheckbox">
-													<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
-													<xsl:with-param name="BackupName">IRS1040DependentInformations3EligibleForChildTaxCreditInd</xsl:with-param>
-												</xsl:call-template>
-											</input>
-											<label>
-												<xsl:call-template name="PopulateLabel">
-													<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
-													<xsl:with-param name="BackupName">IRS1040DependentInformations3EligibleForChildTaxCreditInd</xsl:with-param>
-												</xsl:call-template>
-											</label>
-										</div>
-										<div style="width:45%;padding:0.5mm;text-align:center;height:4mm;">
-											<input type="Checkbox" class="styCkboxNM">
-												<xsl:call-template name="PopulateCheckbox">
-													<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
-													<xsl:with-param name="BackupName">IRS1040OtherDependentInformations3EligibleForODCInd></xsl:with-param>
-												</xsl:call-template>
-											</input>
-											<label>
-												<xsl:call-template name="PopulateLabel">
-													<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
-													<xsl:with-param name="BackupName">IRS1040OtherDependentInformations3EligibleForODCInd</xsl:with-param>
-												</xsl:call-template>
-											</label>
-										</div>
-									</td>
-								</tr>
-							</xsl:if>
-							<!-- End of filler rows -->
-						</tbody>
+								</xsl:if>
+								<xsl:if test="count($FormData/DependentDetail) &lt; 2 or ((count($FormData/DependentDetail) &gt; 4) and ($Print = $Separated))">
+									<tr>
+										<td class="styTableCell" style="width:59.4mm;height:4mm;border-right-width:1px;">
+											<span class="styTableCellPad"/>
+										</td> 
+										<td class="styTableCell" style="width:35.2mm;height:4mm;border-right-width:1px;">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCell" style="width:30.6mm;height:4mm;border-right-width:1px;">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCell" style="text-align:left;height:3mm;padding:0px;border-right-width:0px;">
+											<div style="width:50%;height:4mm;border-right:1px solid black;padding:0.5mm;text-align:center;">
+												<input type="Checkbox" class="styCkboxNM" alt="Dependent 2 Eligible for CTC Indicator">
+													<xsl:call-template name="PopulateCheckbox">
+														<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
+														<xsl:with-param name="BackupName">IRS1040DependentInformation2EligibleForChildTaxCreditInd</xsl:with-param>
+													</xsl:call-template>
+												</input>
+											</div>
+											<div style="width:45%;padding:0.5mm;text-align:center;height:4mm;">
+												<input type="Checkbox" class="styCkboxNM" alt="Dependent 2 Eligible for ODC Indicator">
+													<xsl:call-template name="PopulateCheckbox">
+														<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
+														<xsl:with-param name="BackupName">IRS1040DependentInformation2EligibleForODCInd</xsl:with-param>
+													</xsl:call-template>
+												</input>
+											</div>
+										</td>
+									</tr>
+								</xsl:if>
+								<xsl:if test="count($FormData/DependentDetail) &lt; 3 or ((count($FormData/DependentDetail) &gt; 4) and ($Print = $Separated))">
+									<tr>
+										<td class="styTableCell" style="width:59.4mm;height:4mm;border-right-width:1px;">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCell" style="width:35.2mm;height:4mm;border-right-width:1px;">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCell" style="width:30.6mm;height:4mm;border-right-width:1px;">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCell" style="text-align:left;height:3mm;padding:0px;border-right-width:0px;">
+											<div style="width:50%;height:4mm;border-right:1px solid black;padding:0.5mm;text-align:center;">
+												<input type="Checkbox" class="styCkboxNM" alt="Dependent 3 Eligible for CTC Indicator">
+													<xsl:call-template name="PopulateCheckbox">
+														<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
+														<xsl:with-param name="BackupName">IRS1040DependentInformation3EligibleForChildTaxCreditInd</xsl:with-param>
+													</xsl:call-template>
+												</input>
+											</div>
+											<div style="width:45%;padding:0.5mm;text-align:center;height:4mm;">
+												<input type="Checkbox" class="styCkboxNM" alt="Dependent 3 Eligible for ODC Indicator">
+													<xsl:call-template name="PopulateCheckbox">
+														<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
+														<xsl:with-param name="BackupName">IRS1040DependentInformation3EligibleForODCInd</xsl:with-param>
+													</xsl:call-template>
+												</input>
+											</div>
+										</td>
+									</tr>
+								</xsl:if>
+								<xsl:if test="count($FormData/DependentDetail) &lt; 4 or ((count($FormData/DependentDetail) &gt; 4) and ($Print = $Separated))">
+									<tr>
+										<td class="styTableCell" style="width:59.4mm;height:4mm;border-right-width:1px;">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCell" style="width:35.2mm;height:4mm;border-right-width:1px;">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCell" style="width:30.6mm;height:4mm;border-right-width:1px;">
+											<span class="styTableCellPad"/>
+										</td>
+										<td class="styTableCell" style="text-align:left;height:3mm;padding:0px;border-right-width:0px;">
+											<div style="width:50%;height:4mm;border-right:1px solid black;padding:0.5mm;text-align:center;">
+												<input type="Checkbox" class="styCkboxNM" alt="Dependent 4 Eligible for CTC Indicator">
+													<xsl:call-template name="PopulateCheckbox">
+														<xsl:with-param name="TargetNode" select="EligibleForChildTaxCreditInd"/>
+														<xsl:with-param name="BackupName">IRS1040DependentInformation4EligibleForChildTaxCreditInd</xsl:with-param>
+													</xsl:call-template>
+												</input>
+											</div>
+											<div style="width:45%;padding:0.5mm;text-align:center;height:4mm;">
+												<input type="Checkbox" class="styCkboxNM" alt="Dependent 4 Eligible for ODC Indicator">
+													<xsl:call-template name="PopulateCheckbox">
+														<xsl:with-param name="TargetNode" select="EligibleForODCInd"/>
+														<xsl:with-param name="BackupName">IRS1040DependentInformation4EligibleForODCInd</xsl:with-param>
+													</xsl:call-template>
+												</input>
+											</div>
+										</td>
+									</tr>
+								</xsl:if>
+								<!-- End of filler rows -->
+							</tbody>
 						</table>
 					</div>
 					<!-- Set Initial Height of Above Table -->
@@ -1199,7 +1150,9 @@
 						<!-- End -->
 					<!--</div>-->
 					<!-- Standard Deduction Chart -->
-					<div class="styGenericDiv" style="width:24mm;padding-top:0mm;height:44mm;font-family:Arial Narrow;font-size:7pt;border-top:1px solid black;">
+					<div class="styStdDiv" style="font-size:0pt;"/>
+					<div class="styStdIBDiv">
+					<div class="styGenericDiv" style="width:24mm;padding-top:0mm;height:44.8mm;font-family:Arial Narrow;font-size:7pt;border-top:1px solid black;">
 						<div style="width:20mm;padding-top:0.5mm;padding-left:1mm;">
 							<strong style="font-size:12pt;font-family:Arial Narrow;">Standard Deduction Chart</strong><br />
 							Don't use this chart if someone can claim you (or your spouse if filing jointly) as a dependent, your 
@@ -1277,6 +1230,7 @@
 						<div style="width:27mm;padding-top:1mm;float:left;text-align:center;">
 							12,200 <br /> 13,500 <br /> 14,800 <br /> 16,100 <br /> 17,400
 						</div>
+					</div>
 					</div>
 					<!-- Form footer-->
 					<div class="styStdDiv pageEnd" style="border-top:2px solid black;">
