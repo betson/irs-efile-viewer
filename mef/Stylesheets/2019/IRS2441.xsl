@@ -414,7 +414,7 @@ Did you receive<br/>
 							<img src="{$ImagePath}/2441_Bullet_Md.gif" alt="MediumBullet" align="bottom" style="padding-top:1.6mm;"/> Complete Part III on the back next.  
 						</div>
 						<div class="styPartDesc" style="font-weight:Normal;width:187mm;padding-top:2mm;font-size:8pt;height:10mm;padding-left:0mm;">
-							<b>Caution.</b> If the care was provided in your home, you may owe employment taxes. For details,see the instructions for Schedule 2 (Form 1040 or 1040-SR), line 60a, or Form 1040-NR, line 59a. </div>
+							<b>Caution.</b> If the care was provided in your home, you may owe employment taxes. For details, see the instructions for Schedule 2 (Form 1040 or 1040-SR), line 7a; or Form 1040-NR, line 59a. </div>
 						<!-- BEGIN PART II TITLE -->
 						<div class="styBB" style="width:187mm;border-top-width: 2px;height:4.5mm;">
 							<span class="styPartName" style="width:12mm;font-size:13;">Part ll</span>

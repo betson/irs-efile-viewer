@@ -504,7 +504,7 @@
 							<div class="styIRS5405CleanDiv" style="width:144mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
 									<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
-										Enter the amount of the credit you claimed on Form 5405 for 2009. See instructions 
+										Enter the amount of the credit you claimed on Form 5405 for 2008. See instructions 
 										if you filed a joint return for 2008 or you checked the box on line 3f or 3g
 										<!--Dotted Line-->
 										<span class="styDotLn" style="float:right;clear:none;">.................</span>
@@ -535,7 +535,7 @@
 							<div class="styIRS5405LNLeftNumBox" style="height:2mm;">5</div>
 							<div class="styIRS5405CleanDiv" style="height:2mm;width:144mm;">
 									<div class="styIRS5405LNDesc" style="width:144mm;">
-										Enter the amount of the credit you repaid with your tax returns for the years 2011 through 2019
+										Enter the amount of the credit you repaid with your tax returns for the years 2010 through 2019
 										<!--Dotted Line-->
 										<span class="styDotLn" style="float:right;clear:none;">...</span>
 									</div>
@@ -756,7 +756,7 @@
 							<div class="styIRS5405LNLeftNumBox">13</div>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
 							Enter the first-time homebuyer credit claimed on Form 5405 <b>minus</b> the amount of the credit you
-							repaid<br/> with your tax returns for the years 2011 through 2019
+							repaid<br/> with your tax returns for the years 2010 through 2019
 							<!--Dotted Line-->
 							<span class="styDotLn" style="float:right;clear:none;">.................</span>
 							</div>

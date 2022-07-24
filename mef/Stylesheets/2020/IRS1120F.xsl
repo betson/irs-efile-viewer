@@ -16,7 +16,7 @@
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
-					</xsl:call-template>
+					</xsl:call-template> 
 				</title>
 				<!-- No Browser Caching -->
 				<meta http-equiv="Pragma" content="no-cache"/>
@@ -2961,7 +2961,7 @@
 									<div class="styGenericDiv" style="width:94mm; ">
 										<div class="styLNLeftNumBox" style="height:4mm;"/>
 										<div class="styLNDesc" style="width:73.6mm;height:6.5mm; border-right-width:0px;">
-										  If "Yes," enter amount from Form 8996, line 14 				  
+										  If "Yes," enter amount from Form 8996, line 15 				  
 										  <br/>
 										  <img src="{$ImagePath}/1120F_Bullet_Sm.gif" alt="SmallBullet"/>
 										  <span style="width:1mm;"/>$
@@ -3425,7 +3425,9 @@ Income From U.S. Sources Not Effectively Connected With the Conduct of a Trade o
 						<div class="styIRS1120FDivTreatyDataRG" style="width:187mm; height:9mm; text-align:left;">
 							<span style="padding-left:0mm; padding-right:1mm; font-weight:bold;">13</span>
 							Is the corporation fiscally transparent under the laws of the foreign jurisdiction with respect to any item of income listed above?		
-							<span style="padding-left:11mm;">
+							<span class="styDotLn" style="float:none">..<img src="{$ImagePath}/1120F_Bullet_Md.gif" alt="MediumBullet"/>
+							</span>
+							<span style="padding-left:1mm;">
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/IRS1120FSectionI/CorpFiscallyTransparentInd"/>
 								</xsl:call-template>
@@ -3448,7 +3450,7 @@ Income From U.S. Sources Not Effectively Connected With the Conduct of a Trade o
 							</span>
 							<!-- end check box for Yes -->
 							<!-- begin check box for No -->
-							<span style="padding-left:8mm;">
+							<span style="padding-left:6mm;">
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/IRS1120FSectionI/CorpFiscallyTransparentInd"/>
 								</xsl:call-template>

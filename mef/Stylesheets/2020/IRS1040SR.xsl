@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 02/04/2021 -->
+<!-- Last Modified by Eugenia McDonald on 03/31/2022 -->
 <!DOCTYPE xsl:stylesheet [
   <!ENTITY nbsp "&#160;">
   <!ENTITY ndash "&#8211;">
@@ -630,20 +630,20 @@
 						</div>
 					</div>
 					<!-- Dependents area -->
-					<div class="sty1040SRDepdContainer" style="" id="depdContainerId">
+					<div class="sty1040SRDepdContainer" style="">
 						<div class="styGenericDiv" style="width:20mm;padding-top:1mm;
 							font-family:Arial;font-size:9pt;border-bottom:0px solid black;height:29mm">
 							<div style="width:100%;padding-bottom:3mm;padding-left:1mm;">
 								<strong>Dependents</strong><br />
 								<span style="font-size:8pt;font-family:Arial Narrow">(see instructions):
-									<br/><br/>If 
+									<br/><br/>If more than four dependents,
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$FormData/MoreDependentsInd"/>
 											<xsl:with-param name="BackupName">IRS1040MoreDependentsInd</xsl:with-param>
-										</xsl:call-template>more than four dependents
-									</label>, see instructions and	check here 
-									<img src="{$ImagePath}/1040_Bullet.gif" alt="Right arrow"/>
+										</xsl:call-template>
+									</label>see instructions and check here 
+									<img src="{$ImagePath}/1040_Bullet.gif" alt="Right arrow"/><span style="width:.2mm"/>
 									<input type="checkbox" class="styCkboxNM" alt="More Dependents Ind" style="">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/MoreDependentsInd"/>
@@ -653,8 +653,9 @@
 								</span>
 							</div>
 						</div>
-						<xsl:call-template name="SetInitialState"/>
-						<table class="styTable" style="display:table;font-size:6pt;border-collapse:collapse;
+						<div class="sty1040SRDepdContainer2" style="" id="depdContainerId">
+						  <xsl:call-template name="SetInitialState"/>
+					      <table class="styTable" style="display:table;font-size:6pt;border-collapse:collapse;
 							width:167mm;">	
 							<thead class="styTableThead">
 								<tr>
@@ -941,7 +942,8 @@
 								</xsl:if>
 								<!-- End of filler rows -->
 							</tbody>
-						</table>
+						  </table>
+						</div>
 					</div>
 					<!-- Set Initial Height of Above Table -->
 					<xsl:if test="(count($FormData/DependentDetail) &gt;= 4) and ($Print != $Separated)">
@@ -2478,7 +2480,7 @@
 											border-top-width:1px;font-weight:normal">
 											<xsl:call-template name="PopulatePin">
 												<xsl:with-param name="TargetNode"
-													select="$RtnHdrData/IdentityProtectionPIN"/>
+													select="$RtnHdrData/SpouseIdentityProtectionPIN"/>
 											</xsl:call-template>
 										</div>
 									</span>

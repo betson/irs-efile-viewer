@@ -74,7 +74,7 @@
 							</span>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:22.5mm;">
-							<div class="styOMB" style="height:auto;font-size:6pt;">OMB No. 1545-0123</div>
+							<div class="styOMB" style="height:auto;font-size:6pt;">OMB No. 1545-2294</div>
 							<div class="styTY">20<span class="styTYColor">20</span>
 							</div>
 							<div style="margin-left:3mm;text-align:left;font-size:7pt;">
@@ -98,7 +98,7 @@
 						</div>
 					</div>
 					<div class="styStdDiv" style="border-top:1px solid black;padding-top:0.5mm;padding-bottom:0.5mm;font-style:italic;font-family:Arial;border-bottom:1px solid black;">
-						For use by taxpayers whose taxable income, before any qualified business income deduction, is above $163,300 ($326,600 if married filing jointly), or who are patrons of a specified cooperative.
+					<b>Note:</b> You can claim the qualified business income deduction <b>only</b> if you have qualified business income from a qualified trade or business, real estate investment trust dividends, publicly traded partnership income, or a domestic production activities deduction passed through from an agricultural or horticultural cooperative. See instructions. Use this form if your taxable income, before your qualified business income deduction, is above $163,300 ($326,600 if married filing jointly), or you’re a patron of an agricultural or horticultural cooperative.
 						</div>
 					<!-- Part 1 -->
 					<div class="styStdDiv" style="border-top:1px solid black;">
@@ -497,8 +497,8 @@
 							<div class="styStdIBDiv">
 								<div class="styLNLeftNumBox">11</div>
 								<div class="sty8995ADesc" style="min-height:7.2mm;height:auto;">
-									W-2 wage and qualified property limitation. Enter the smaller of line 3 or line 10
-									<span class="sty8995ADotLn">..............</span>
+									W-2 wage and UBIA of qualified property limitation. Enter the smaller of line 3 or line 10
+									<span class="sty8995ADotLn">...........</span>
 								</div>
 								<div class="styLNRightNumBox" style="min-height:7.2mm;height:auto;"><br />11</div>
 								<div class="sty8995AAmtBox" style="min-height:7.2mm;height:auto;"><br />

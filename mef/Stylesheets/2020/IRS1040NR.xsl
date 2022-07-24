@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 02/11/2021 -->
+<!-- Last Modified by Eugenia McDonald on 02/24/2022 -->
 <!DOCTYPE xsl:stylesheet [
   <!ENTITY nbsp "&#160;">
   <!ENTITY ndash "&#8211;">
@@ -469,7 +469,7 @@
 						</div>
 					</div>
 					<!-- Dependents area -->
-					<div class="sty1040SRDepdContainer" style="" id="depdContainerId">
+					<div class="sty1040NRDepdContainer" style="">
 						<div class="styGenericDiv" style="width:20mm;padding-top:1mm;
 							font-family:Arial;font-size:9pt;border-bottom:0px solid black;height:29mm">
 							<div style="width:100%;padding-bottom:3mm;padding-left:1mm;">
@@ -495,18 +495,35 @@
 								</span>
 							</div>
 						</div>
-						<xsl:call-template name="SetInitialState"/>
-						<table class="styTable" style="display:table;font-size:6pt;border-collapse:collapse;
+						<div class="sty1040NRDepdContainer2" style="" id="depdContainerId">
+						  <xsl:call-template name="SetInitialState"/>
+						  <table class="styTable" style="display:table;font-size:6pt;border-collapse:collapse;
 							width:167mm;">	
 							<thead class="styTableThead">
 								<tr>
 									<th class="styTableCellHeader" rowspan="2"	scope="col" 
 										style="min-width:59.4mm;width:59.4mm;text-align:left;padding-left:1mm;
 										padding-top:0mm;">
+										<xsl:call-template name="LinkToLeftoverDataTableInline">
+					<xsl:with-param name="Desc">Dependents - Total Exempt Primary And Spouse Count</xsl:with-param>
+						<xsl:with-param name="TargetNode" select="$FormData/TotalExemptPrimaryAndSpouseCnt"/>
+										</xsl:call-template>
+										<xsl:call-template name="LinkToLeftoverDataTableInline">
+					<xsl:with-param name="Desc">Dependents - Child Who Lived With You Count</xsl:with-param>
+						<xsl:with-param name="TargetNode" select="$FormData/ChldWhoLivedWithYouCnt"/>
+										</xsl:call-template>
+										<xsl:call-template name="LinkToLeftoverDataTableInline">
+					<xsl:with-param name="Desc">Dependents - Other Dependents Listed Count</xsl:with-param>
+						<xsl:with-param name="TargetNode" select="$FormData/OtherDependentsListedCnt"/>
+										</xsl:call-template>
+										<xsl:call-template name="LinkToLeftoverDataTableInline">
+					<xsl:with-param name="Desc">Dependents - Total Exemptions Count</xsl:with-param>
+						<xsl:with-param name="TargetNode" select="$FormData/TotalExemptionsCnt"/>
+										</xsl:call-template>
 										<br/>
-										<div style="font-weight:normal;padding-top:15px;padding-left:1mm">
+										<div style="font-weight:normal;padding-top:7px;padding-left:1mm;">
 											<span style="font-weight:bold">(1)</span><span style="width:1mm;"/>
-												First name
+											First name
 											<span style="width:12mm;"/>Last name
 										</div>
 									</th>
@@ -748,7 +765,8 @@ EligibleForODCInd</xsl:with-param>
 								</xsl:if>
 								<!-- End of filler rows -->
 							</tbody>
-						</table>
+						  </table>
+						</div>
 					</div>
 					<!-- Set Initial Height of Above Table -->
 					<xsl:if test="(count($FormData/DependentDetail) &gt;= 4) and ($Print != $Separated)">
@@ -770,12 +788,27 @@ EligibleForODCInd</xsl:with-param>
 						<div class="sty1040NRLN">
 							<div class="styLNLeftNumBoxSD" style="padding-left:1.7mm">1a</div>
 							<div class="sty1040NRDesc">Wages, salaries, tips, etc. Attach Form(s) W-2
-								<xsl:call-template name="LinkToLeftoverDataTableInline">
-									<xsl:with-param name="Desc">Line 1 - Wages Not Shown Lit Only Code	</xsl:with-param>
-									<xsl:with-param name="TargetNode" 
-									select="$FormData/WagesSalariesAndTipsAmt/@wagesNotShownLitOnlyCd"/>
-								</xsl:call-template>
-								<span class="sty1040NRDotLn">...............</span>
+								<xsl:if test="count($FormData/WagesNotShownGrp) &lt; 2">
+									<xsl:call-template name="LinkToLeftoverDataTableInline">
+										<xsl:with-param name="Desc">Line 1a - Wages Literal Code</xsl:with-param>
+										<xsl:with-param name="TargetNode" select="$FormData/WagesNotShownGrp/WagesLiteralCd"/>
+									</xsl:call-template>
+									<xsl:call-template name="LinkToLeftoverDataTableInline">
+										<xsl:with-param name="Desc">Line 1a - Other Wages Not Shown Text</xsl:with-param>
+										<xsl:with-param name="TargetNode" select="$FormData/WagesNotShownGrp/OtherWagesNotShownTxt"/>
+									</xsl:call-template>
+									<xsl:call-template name="LinkToLeftoverDataTableInline">
+										<xsl:with-param name="Desc">Line 1a - Wages Not Shown Amount	</xsl:with-param>
+										<xsl:with-param name="TargetNode" select="$FormData/WagesNotShownGrp/WagesNotShownAmt"/>
+									</xsl:call-template>
+								</xsl:if>
+								<xsl:if test="count($FormData/WagesNotShownGrp) &gt;= 2">
+									<xsl:call-template name="LinkToLeftoverDataTableInline">
+										<xsl:with-param name="Desc">Line 1a - Wages Not Shown Group</xsl:with-param>
+										<xsl:with-param name="TargetNode" select="$FormData/WagesNotShownGrp"/>
+									</xsl:call-template>
+								</xsl:if>
+								<span class="sty1040NRDotLn">..............</span>
 							</div>
 							<div class="sty1040NRRightNumBox">1a</div>
 							<div class="sty1040NRAmountBox">
@@ -797,10 +830,15 @@ EligibleForODCInd</xsl:with-param>
 							<div class="sty1040NRDesc">
 								Scholarship and fellowship grants. Attach Form(s) 1042-S or required statement.
 									See instructions
-								<span class="sty1040NRDotLn">.</span>
 							</div>
 							<div class="sty1040NRRightNumBox">1b</div>
 							<div class="sty1040NRAmountBox">
+								<span style="float:left;">
+									<xsl:call-template name="SetFormLinkInline">
+										<xsl:with-param name="TargetNode" 
+											select="$FormData/GrantsOrScholarshipsAmt"/>
+									</xsl:call-template>
+								</span>
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" 
 										select="$FormData/GrantsOrScholarshipsAmt"/>
@@ -922,7 +960,7 @@ EligibleForODCInd</xsl:with-param>
 							<div class="styLNLeftLtrBox" style="width:7mm;">b</div>
 							<div class="sty1040NRDesc" style="width:49mm;">
 								Taxable amount
-								<xsl:if test="count($FormData/IRADistributionsGrp) &lt; 3">
+								<xsl:if test="count($FormData/IRADistributionsGrp) &lt; 2">
 									<xsl:call-template name="LinkToLeftoverDataTableInline">
 										<xsl:with-param name="Desc">Line 4b - IRA Distributions Literal Code</xsl:with-param>
 										<xsl:with-param name="TargetNode" select="$FormData/IRADistributionsGrp/IRADistributionsLiteralCd"/>
@@ -932,7 +970,7 @@ EligibleForODCInd</xsl:with-param>
 										<xsl:with-param name="TargetNode" select="$FormData/IRADistributionsGrp/IRADistributionsLiteralAmt"/>
 									</xsl:call-template>
 								</xsl:if>
-								<xsl:if test="count($FormData/IRADistributionsGrp) &gt;= 3">
+								<xsl:if test="count($FormData/IRADistributionsGrp) &gt;= 2">
 									<xsl:call-template name="LinkToLeftoverDataTableInline">
 										<xsl:with-param name="Desc">Line 4b - IRA Distributions Groups</xsl:with-param>
 										<xsl:with-param name="TargetNode"	select="$FormData/IRADistributionsGrp"/>
@@ -966,7 +1004,7 @@ EligibleForODCInd</xsl:with-param>
 							<div class="styLNLeftLtrBox" style="width:7mm;">b</div>
 							<div class="sty1040NRDesc" style="width:49mm;">
 								Taxable amount
-								<xsl:if test="count($FormData/IRADistributionsGrp) &lt; 2">
+								<xsl:if test="count($FormData/PensionsAnnuitiesGrp) &lt; 2">
 									<xsl:call-template name="LinkToLeftoverDataTableInline">
 										<xsl:with-param name="Desc">Line 5b - Pensions Annuities Literal Code</xsl:with-param>
 										<xsl:with-param name="TargetNode" select="$FormData/PensionsAnnuitiesGrp/PensionsAnnuitiesLiteralCd"/>
@@ -976,7 +1014,7 @@ EligibleForODCInd</xsl:with-param>
 										<xsl:with-param name="TargetNode" select="$FormData/PensionsAnnuitiesGrp/PensionsAnnuitiesLiteralAmt"/>
 									</xsl:call-template>
 								</xsl:if>
-								<xsl:if test="count($FormData/PensionsAnnuitiesGrp) &gt;= 3">
+								<xsl:if test="count($FormData/PensionsAnnuitiesGrp) &gt;= 2">
 									<xsl:call-template name="LinkToLeftoverDataTableInline">
 										<xsl:with-param name="Desc">Line 5b - Pensions Annuities Groups</xsl:with-param>
 										<xsl:with-param name="TargetNode" select="$FormData/PensionsAnnuitiesGrp"/>
@@ -1386,6 +1424,11 @@ EligibleForODCInd</xsl:with-param>
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$FormData/Form8814Ind"/>
 								</xsl:call-template>
+								<xsl:call-template name="LinkToLeftoverDataTableInline">
+										<xsl:with-param name="Desc">Line 16(1) - Child Interest and Dividend Tax Amount</xsl:with-param>
+										<xsl:with-param name="TargetNode"
+			select="$FormData/Form8814Ind/@childInterestAndDividendTaxAmt"/>
+									</xsl:call-template>
 								<span style="width:1mm;height:3mm;"/>
 								<span style="font-weight:bold;font-family:Verdana;padding-left:1mm;
 									padding-right:1mm">2
@@ -1421,14 +1464,9 @@ EligibleForODCInd</xsl:with-param>
 									</xsl:call-template>
 								</input>
 								<span style="border-bottom:1px solid black;
-									width:14mm">
+									width:10mm">
 									<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherTaxAmtInd"/>
-									</xsl:call-template>
-									<xsl:call-template name="LinkToLeftoverDataTableInline">
-										<xsl:with-param name="Desc">Line 16(1) - Child Interest and Dividend Tax Amount</xsl:with-param>
-										<xsl:with-param name="TargetNode"
-			select="$FormData/Form8814Ind/@childInterestAndDividendTaxAmt"/>
 									</xsl:call-template>
 									<xsl:if test="count($FormData/OtherTaxAmtGrp) &lt; 2">
 										<xsl:call-template
@@ -1459,6 +1497,12 @@ EligibleForODCInd</xsl:with-param>
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode"
 									select="$FormData/CanadaIncomeTaxTreatyArtXXVCd"/>
+								</xsl:call-template>
+								<xsl:call-template
+											name="LinkToLeftoverDataTableInline">
+									<xsl:with-param name="Desc">Canada Income Tax Treaty Article XXV Code</xsl:with-param>
+									<xsl:with-param name="TargetNode"
+										select="$FormData/CanadaIncomeTaxTreatyArtXXVCd"/>
 								</xsl:call-template>
 							</div>
 							<div class="sty1040NRRightNumBox">16</div>
@@ -2350,7 +2394,23 @@ EligibleForODCInd</xsl:with-param>
 							<div class="sty1040NRDesc">
 								<strong>Amount you owe. </strong> Subtract line 33 from line 24. For details on how
 									to pay, see instructions 
-								<span class="sty1040NRDotLn" style="padding-right:0px;margin-right:8px;">
+								<xsl:if test="count($FormData/InterestPenaltyTypeAndAmt) &lt; 2">
+									<xsl:call-template name="LinkToLeftoverDataTableInline">
+										<xsl:with-param name="Desc">Line 37 - Interest Penalty Decription</xsl:with-param>
+										<xsl:with-param name="TargetNode" select="$FormData/InterestPenaltyTypeAndAmt/Desc"/>
+									</xsl:call-template>
+									<xsl:call-template name="LinkToLeftoverDataTableInline">
+										<xsl:with-param name="Desc">Line 37 - Interest Penalty Amount</xsl:with-param>
+										<xsl:with-param name="TargetNode" select="$FormData/InterestPenaltyTypeAndAmt/Amt"/>
+									</xsl:call-template>
+								</xsl:if>
+								<xsl:if test="count($FormData/InterestPenaltyTypeAndAmt) &gt;= 2">
+									<xsl:call-template name="LinkToLeftoverDataTableInline">
+										<xsl:with-param name="Desc">Line 37 - Interest Penalty Type And Amt</xsl:with-param>
+										<xsl:with-param name="TargetNode" select="$FormData/InterestPenaltyTypeAndAmt"/>
+									</xsl:call-template>
+								</xsl:if>	
+								<span class="sty1040NRDotLn" style="padding-right:0px;margin-right:2px;">
 									<img src="{$ImagePath}/1040_Bullet.gif" alt="Right arrow"/>
 								</span>
 							</div>
@@ -2895,17 +2955,29 @@ EligibleForODCInd</xsl:with-param>
 						<xsl:with-param name="TargetNode" select="$FormData/ChldWhoLivedWithYouCnt"/>
 					</xsl:call-template>
 					<xsl:call-template name="PopulateLeftoverRow">
-						<xsl:with-param name="Desc">Child Who Lived With You Cnt</xsl:with-param>
+						<xsl:with-param name="Desc">Other Dependents Listed Count</xsl:with-param>
 						<xsl:with-param name="TargetNode" select="$FormData/OtherDependentsListedCnt"/>
 					</xsl:call-template>
 					<xsl:call-template name="PopulateLeftoverRow">
 						<xsl:with-param name="Desc">Total Exemptions Cnt</xsl:with-param>
 						<xsl:with-param name="TargetNode" select="$FormData/TotalExemptionsCnt"/>
 					</xsl:call-template>
-					<xsl:call-template name="PopulateLeftoverRow">
-						<xsl:with-param name="Desc">Line 1 - Wages Not Shown Lit Only Code</xsl:with-param>
-						<xsl:with-param name="TargetNode" select="$FormData/WagesSalariesAndTipsAmt/@wagesNotShownLitOnlyCd"/>
-					</xsl:call-template>
+					
+					<!-- WagesNotShownGrp separate repeating -->
+					<xsl:if test="count($FormData/WagesNotShownGrp) &lt; 2">
+						<xsl:call-template name="PopulateLeftoverRow">
+							<xsl:with-param name="Desc">Line 1a - Wages Literal Code</xsl:with-param>
+							<xsl:with-param name="TargetNode" select="$FormData/WagesNotShownGrp/WagesLiteralCd"/>
+						</xsl:call-template>
+						<xsl:call-template name="PopulateLeftoverRow">
+							<xsl:with-param name="Desc">Line 1a - Other Wages Not Shown Text</xsl:with-param>
+							<xsl:with-param name="TargetNode" select="$FormData/WagesNotShownGrp/OtherWagesNotShownTxt"/>
+						</xsl:call-template>
+						<xsl:call-template name="PopulateLeftoverRowAmount">
+							<xsl:with-param name="Desc">Line 1a - Wages Not Shown Amt</xsl:with-param>
+							<xsl:with-param name="TargetNode" select="$FormData/WagesNotShownGrp/WagesNotShownAmt"/>
+						</xsl:call-template>
+					</xsl:if>
 					<xsl:call-template name="PopulateLeftoverRow">
 						<xsl:with-param name="Desc">Line 3a - Qualified Form 8814 Code</xsl:with-param>
 						<xsl:with-param name="TargetNode" select="$FormData/QualifiedF8814Cd"/>
@@ -2923,7 +2995,7 @@ EligibleForODCInd</xsl:with-param>
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryF8814Amt"/>
 					</xsl:call-template>
 					<!-- IRADistributionsGrp separate repeating -->
-					<xsl:if test="count($FormData/IRADistributionsGrp) &lt; 3">
+					<xsl:if test="count($FormData/IRADistributionsGrp) &lt; 2">
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line 4b - IRA Distributions Literal Code</xsl:with-param>
 							<xsl:with-param name="TargetNode" select="$FormData/IRADistributionsGrp/IRADistributionsLiteralCd"/>
@@ -2993,6 +3065,10 @@ EligibleForODCInd</xsl:with-param>
 					<xsl:call-template name="PopulateLeftoverRow">
 						<xsl:with-param name="Desc">Line 15 - Schedule Q Code</xsl:with-param>
 						<xsl:with-param name="TargetNode" select="$FormData/ScheduleQCd"/>
+					</xsl:call-template>
+					<xsl:call-template name="PopulateLeftoverRow">
+						<xsl:with-param name="Desc">Line 16 - Canada Income Tax Treaty Article XXV Code</xsl:with-param>
+						<xsl:with-param name="TargetNode" select="$FormData/CanadaIncomeTaxTreatyArtXXVCd"/>
 					</xsl:call-template>
 					<xsl:call-template name="PopulateLeftoverRowAmount">
 						<xsl:with-param name="Desc">Line 16(1) - Child Interest and Dividend Tax Amount</xsl:with-param>
@@ -3076,6 +3152,18 @@ EligibleForODCInd</xsl:with-param>
 						<xsl:with-param name="Desc">Line 32 - Form 8689 Amount</xsl:with-param>
 						<xsl:with-param name="TargetNode" select="$FormData/TotalPaymentsAmt/@form8689Amt"/>
 					</xsl:call-template>
+					<!-- Interest Penalty Type And Amount separate repeating -->
+					<xsl:if test="count($FormData/InterestPenaltyTypeAndAmt) &lt; 2">
+						<xsl:call-template name="PopulateLeftoverRow">
+							<xsl:with-param name="Desc">Line 37 - Interest Penalty Description</xsl:with-param>
+							<xsl:with-param name="TargetNode" 
+								select="$FormData/InterestPenaltyTypeAndAmt/Desc"/>
+						</xsl:call-template>
+						<xsl:call-template name="PopulateLeftoverRowAmount">
+							<xsl:with-param name="Desc">Line 37 - Interest Penalty Amount</xsl:with-param>
+							<xsl:with-param name="TargetNode" select="$FormData/InterestPenaltyTypeAndAmt/Amt"/>
+						</xsl:call-template>
+					</xsl:if>
 				</table>
 				<!-- Special Condition Descriptions -->
 				<xsl:if test="count($FormData/SpecialConditionDesc) &gt; 1">
@@ -3263,8 +3351,51 @@ EligibleForODCInd</xsl:with-param>
 						</tbody>
 					</table>
 				</xsl:if>
+				<!-- Wages Not Shown Group -->
+				<xsl:if test="count($FormData/WagesNotShownGrp) &gt; 1">
+					<br/>
+					<br/>
+					<span class="styRepeatingDataTitle">Line 1a - Wages Not Shown Group</span>
+					<table class="styDepTbl" cellspacing="0" style="font-size:7pt;width:120mm;">
+						<thead class="styTableThead">
+							<tr class="styDepTblHdr">
+								<th class="styDepTblCell" scope="col" style="width:32mm;">
+									Wages Literal Code
+								</th>
+								<th class="styDepTblCell" scope="col" style="width:32mm;">
+									Other Wages Not Shown Text
+								</th>
+								<th class="styDepTblCell" scope="col" style="width:32mm;">
+									Wages Not Shown Amount
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<xsl:for-each select="$FormData/WagesNotShownGrp">
+								<tr style="border-color:black;height:6mm;">
+									<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+									<td class="styTableCellTextInherit">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="WagesLiteralCd"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellTextInherit">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="OtherWagesNotShownTxt"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="WagesNotShownAmt"/>
+										</xsl:call-template>
+									</td>
+								</tr>
+							</xsl:for-each>
+						</tbody>
+					</table>
+				</xsl:if>
 				<!-- IRA Distributions Group -->
-				<xsl:if test="count($FormData/IRADistributionsGrp) &gt; 2">
+				<xsl:if test="count($FormData/IRADistributionsGrp) &gt; 1">
 					<br/>
 					<br/>
 					<span class="styRepeatingDataTitle">Line 4b - IRA Distributions Group</span>
@@ -3368,6 +3499,42 @@ EligibleForODCInd</xsl:with-param>
 					</table>
 				</xsl:if>
 				<br />
+				<xsl:if test="count($FormData/InterestPenaltyTypeAndAmt) &gt; 1">
+					<br/>
+					<br/>
+					<span class="styRepeatingDataTitle">Line 37 - Interest Penalty Type And Amount</span>
+					<table class="styDepTbl" cellspacing="0" style="font-size:7pt;width:120mm;">
+						<thead class="styTableThead">
+							<tr class="styDepTblHdr">
+								<th class="styDepTblCell" scope="col" style="width:32mm;">
+									Description
+								</th>
+								<th class="styDepTblCell" scope="col" style="width:32mm;">
+									Amount
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<xsl:for-each select="$FormData/InterestPenaltyTypeAndAmt">
+								<tr style="border-color:black;height:6mm;">
+									<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+									<td class="styTableCellTextInherit">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="Desc"/>
+										</xsl:call-template>
+									</td>
+									<td class="styTableCellAmtInherit">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="Amt"/>
+										</xsl:call-template>
+									</td>
+								</tr>
+							</xsl:for-each>
+						</tbody>
+					</table>
+				</xsl:if>
+				<br />
+
 			</form>
 		</body>
 	  </html>

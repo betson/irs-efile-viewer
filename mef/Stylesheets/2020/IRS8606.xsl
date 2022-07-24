@@ -131,8 +131,9 @@
 											<img src="{$ImagePath}/8606_Bullet_Sm.gif" alt="SmallBullet"/> 
 											Go to  <i>www.irs.gov/Form8606</i> for instructions and the latest information.
 											<!--Information about Form 8606 and its separate instructions is at <a href="http://www.irs.gov/form8606">www.irs.gov/form8606</a>-->
-											<br/><br/>
-											<img src="{$ImagePath}/8606_Bullet_Sm.gif" alt="SmallBullet"/> 
+											<br/><img src="{$ImagePath}/8606_Bullet_Sm.gif" alt="SmallBullet"/>
+											For coronavirus-related distributions, see the instructions.
+											<br/><img src="{$ImagePath}/8606_Bullet_Sm.gif" alt="SmallBullet"/> 
                                                   Attach to 2020 Form 1040, 1040-SR, or 1040-NR.
 										</div>
 									</div>
@@ -505,7 +506,7 @@
 							<div class="styIRS8606LNDesc" style="width:105mm;height:100%;padding-left:3mm;">
 								Enter the value of <b>all</b> your traditional, SEP, and SIMPLE IRAs as of December 31, 2020, 
 								<span style="float:left;">plus any outstanding rollovers. Subtract any repayments of qualified disaster distributions (see 2020 Forms 8915-C, 8915-D, and 8915-E)
-								<span class="styDotLn" style="float:right;padding-right:1mm;">..............</span>
+								<span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
 								</span>
 	                            <!--Dotted Line-->
 								<!--<span class="styDotLn" style="float:right;padding-right:1mm;">......................</span>-->

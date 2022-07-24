@@ -271,7 +271,7 @@
 												<xsl:with-param name="BackupName">IRS1040ScheduleHDataHsldEmplPdCashWageOverLmtCYInd</xsl:with-param>
 											</xsl:call-template>
 											<span style="width:2mm;"/>
-											<span class="styBoldText">Yes.</span> Skip lines B and C and go to line 1. 
+											<span class="styBoldText">Yes.</span> Skip lines B and C and go to line 1a. 
 										</label>											
 									</div>
 									<!-- No -->
@@ -406,7 +406,7 @@
 												<xsl:with-param name="BackupName">IRS1040ScheduleHDataHsldEmplPdCashWageOvrLmtQtrInd</xsl:with-param>
 											</xsl:call-template>
 											<span style="width:2mm;"/>
-											<span class="styBoldText">Yes.</span> Skip lines 1-9 and go to line 10.
+											<span class="styBoldText">Yes.</span> Skip lines 1a-9 and go to line 10.
 										</label>
 									</div>
 								</div>
@@ -506,7 +506,7 @@
 						<div class="styIRS1040ScheduleHLineItem" style="height:8mm;">
 							<div class="styIRS1040ScheduleHLNLeftNumBox">b</div>
 							<div class="styIRS1040ScheduleHLNDesc" style="width:139mm; height:8mm; padding-top:1mmF8c">
-                                <span style="float:none; display:inline;">Employer share of social security tax on qualified sick and family leave wages Multiply line 1b by 6.2% <br/>(0.062))</span>
+                                <span style="float:none; display:inline;">Employer share of social security tax on qualified sick and family leave wages. Multiply line 1b by 6.2% <br/>(0.062)</span>
                                 <!--Dotted Line-->
                                 <span class="styDotLn" style="float:right; display:inline;">...............</span>
 							</div>
@@ -656,7 +656,7 @@
 						<div class="styIRS1040ScheduleHLineItem" style="height:auto;">
 							<div class="styIRS1040ScheduleHLNLeftNumBox">8a</div>
 							<div class="styIRS1040ScheduleHLNDesc" style="width:122mm;">
-								<span class="styBoldText">Total social security, Medicare, and federal income taxes.</span> Add lines 2c, 4, 6, and 7
+								Total social security, Medicare, and federal income taxes. Add lines 2c, 4, 6, and 7
                                 <xsl:if test="$Form1040ScheduleHData/HsldEmplStateDisabilityPymtGrp/HsldEmplStateDisabilityPymtAmt">
 									<span style="width:3px;"/>
 									<xsl:call-template name="LinkToLeftoverDataTableInline">
@@ -722,12 +722,10 @@
 						<!-- (8d) ////////////////////////////////////////////////////////////-->
 
 						<div class="styIRS1040ScheduleHLineItem" style="height:8mm;">
-							<div class="styIRS1040ScheduleHLNLeftNumBox">d</div>
-							<div class="styIRS1040ScheduleHLNDesc" style="width:139mm;">
-								Maximum amount of the employer share of social security tax that can be deferred. Subtract line 2b from 50% of line 2a. If you enter an amount here, see the instructions for line 12e of Schedule 3 (Form 1040).
-							
-							</div>
-							 <!--Dotted Line-->
+							<div class="styIRS1040ScheduleHLNLeftNumBox" style="padding-top:4mm">d</div>
+							<div class="styIRS1040ScheduleHLNDesc" style="width:139mm;padding-top:4mm">
+								Maximum amount of the employer share of social security tax that can be deferred; see instructions. </div>
+							<!--Dotted Line-->
                             
 							<div class="styLNRightNumBox" style="height:8mm; padding-top:4mm">8d</div>
 							<!-- Box with content -->
@@ -941,8 +939,8 @@
 							<div style="height:auto;">
 								<div class="styIRS1040ScheduleHLNLeftNumBox" style="text-align:left;">10</div>
 								<div class="styIRS1040ScheduleHLNDesc" style="width:148mm; height:auto;">
-                                     Did you pay unemployment contributions to only one state? (If you paid contributions to a credit reduction
-                                     <span style="float:left;">state, see instructions and check "<b>No.</b>")</span>
+                                     Did you pay unemployment contributions to only one state? If you paid contributions to a credit reduction
+                                     <span style="float:left;">state, see instructions and check "<b>No.</b>"</span>
                                      <!--Dotted Line-->
 									 <span class="styDotLn" style="float:right;padding-right:1mm;">.....................</span>
 								</div>
@@ -1006,7 +1004,7 @@
 							<div class="styIRS1040ScheduleHLineItem" style="height:auto;">
 								<div class="styIRS1040ScheduleHLNLeftNumBox" style="text-align:left;height:5mm;">11</div>
 								<div class="styIRS1040ScheduleHLNDesc" style="width:153.5mm;height:5mm;">
-								  Did you pay all state unemployment contributions for 2020 by April 15, 2021? Fiscal year filers see instructions
+								  Did you pay all state unemployment contributions for 2020 by April 15, 2021? Fiscal year filers, see instructions
 								</div>
 								<div class="styIRS1040ScheduleHLNDesc" style="width:25mm;float:right;padding:0px 0px 0px 0px;">
 								<!-- Number Box -->
@@ -1648,7 +1646,7 @@
 							<div class="styIRS1040ScheduleHLNLeftNumBox" style="text-align:left;">21</div>
 							<!-- Description -->
 							<div class="styIRS1040ScheduleHLNDesc" style="width:137mm;">
-                                <span style="float:left;">Multiply line 20 by 6.0% (0.060) </span>
+                                <span style="float:left;">Multiply line 20 by 6.0% (0.06) </span>
                                 <!--Dotted Line-->
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.....................</span>
 							</div>
@@ -1699,7 +1697,7 @@
 								                                             <!--Dotted Line-->
 								       <span class="styDotLn" style="float:right;">...................</span> </span>                             
 							    </div>
-							<input type="checkbox" alt="UnemplFundMultiStateGroupCreditReductionStateWrkshtInd" class="styCkbox">
+							<input type="checkbox" alt="UnemplFundMultiStateGroupCreditReductionStateWrksht" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/UnemplFundMultiStateGroup/CreditReductionStateWrkshtInd"/>
 										<xsl:with-param name="BackupName">IRS1040ScheduleHDataUnemplFundMultiStateGroupCreditReductionStateWrkshtInd</xsl:with-param>
@@ -1823,7 +1821,7 @@
 											</xsl:call-template>
 											<span style="width:2mm;"/>
 											<span class="styBoldText" style="">Yes. Stop.</span> Include the amount from line 26 above on Schedule 2 (Form 1040), line 7a. 
-											Include the amount, if any, from <br/><span style="padding-left:7mm"/>line 8e, on Schedule 3 (Form 1040), line 12b. <span class="styBoldText">Don't</span> complete Part IV. below.
+											Include the amount, if any, from <br/><span style="padding-left:7mm"/>line 8e, on Schedule 3 (Form 1040), line 12b. <span class="styBoldText">Don't</span> complete Part IV below.
                                         </label>
 									</div>
 									<!-- No -->

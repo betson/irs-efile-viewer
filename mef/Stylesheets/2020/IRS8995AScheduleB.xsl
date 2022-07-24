@@ -65,16 +65,16 @@
 							<span class="styFMT" style="font-size:12pt;padding-top:1mm;padding-bottom:2mm;">Aggregation of Business Operations</span>
 							<br /><br />
 							<span style="font-weight:bold;">
-								&#9658;Attach to your Form 8995-A.
+								&#9658;Attach to Form 8995-A.
 							</span><br />
 							<span style="font-weight:bold;">
 								&#9658;Go to
-								<span style="font-style:italic">www.irs.gov/Form8995-A</span>
+								<span style="font-style:italic">www.irs.gov/Form8995A</span>
 								for instructions and the latest information.
 							</span>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:22.5mm;">
-							<div class="styOMB" style="height:auto;font-size:6pt;">OMB No. XXXX-XXXX</div>
+							<div class="styOMB" style="height:auto;font-size:6pt;">OMB No. 1545-2294 </div>
 							<div class="styTY">20<span class="styTYColor">20</span>
 							</div>
 							<div style="margin-left:3mm;text-align:left;font-size:7pt;">
@@ -85,7 +85,7 @@
 					</div>
 					<!-- Filer information section -->
 					<div class="styStdDiv" style="border-top:2px solid black;">
-						<div class="styNameBox" style="width:135mm;">Name(s) shown on return
+						<div class="styNameBox" style="width:135mm;height:8mm;">Name(s) shown on return
 							<br />
 							<xsl:call-template name="PopulateFilerName">
 								<xsl:with-param name="TargetNode" select="$FormData" />
@@ -93,7 +93,7 @@
 						</div>
 						<div class="styEINBox" style="width:52mm;padding-left:0.5mm;font-weight:normal;">
 							<strong>Your taxpayer identification number</strong>
-							<br />
+							<br /><br />
 							<xsl:call-template name="PopulateReturnHeaderFilerTIN"/>
 						</div>
 					</div>
@@ -109,7 +109,7 @@
 						<div class="styStdDiv">
 							<div class="styLNLeftNumBoxSD">1</div>
 							<div class="styLNDesc" style="width:179mm;height:auto;">
-								Provide a description of the aggregated trade or business and explanation of the factors met that allow the aggregation in 
+								Provide a description of the aggregated trade or business and an explanation of the factors met that allow the aggregation in 
 								accordance with Regulations section 1.199A-4. In addition, if you hold a direct or indirect interest in a relevant pass-through 
 								entity (RPE) that aggregates multiple trades or businesses, you must attach a copy of the RPE's aggregations.
 							</div>
@@ -126,7 +126,7 @@
 							<div class="styLNLeftNumBoxSD">2</div>
 							<div class="styLNDesc" style="width:179mm;height:auto;">
 								Has this trade or business aggregation changed from the prior year? This includes changes in the aggregation due to a trade 
-								or business being formed, acquired, disposed of, or ceasing operations. If yes, explain.
+								or business being formed, acquired, disposed of, or ceasing operations. If "Yes," explain. If "No," skip line 2 and go to line 3.
 							</div>
 						</div>
 						<div class="styStdDiv" style="border-bottom:1px dashed black;min-height:7mm;"><br />
@@ -168,7 +168,7 @@
 											<span style="font-weight:bold;">(d) </span> W-2 wages
 										</th>
 										<th class="styTableCellHeader" scope="col" style="width:27mm;font-weight:normal;border-right-width:0px;padding-top:1.5mm;">
-											<span style="font-weight:bold;">(e) </span> UBIA
+											<span style="font-weight:bold;">(e) </span> Unadjusted <br />basis immediately <br />after acquisition
 										</th>
 									</tr>
 								</thead>
@@ -324,7 +324,7 @@
 							<div class="styLNLeftNumBoxSD">2</div>
 							<div class="styLNDesc" style="width:179mm;height:auto;">
 								Has this trade or business aggregation changed from the prior year? This includes changes in the aggregation due to a trade 
-								or business being formed, acquired, disposed of, or ceasing operations. If yes, explain.
+								or business being formed, acquired, disposed of, or ceasing operations. If "Yes," explain. If "No," skip line 2 and go to line 3.
 							</div>
 						</div>
 						<div class="styStdDiv" style="border-bottom:1px dashed black;min-height:7mm;">&nbsp;
@@ -355,7 +355,7 @@
 											<span style="font-weight:bold;">(d) </span> W-2 wages
 										</th>
 										<th class="styTableCellHeader" scope="col" style="width:27mm;font-weight:normal;border-right-width:0px;padding-top:1.5mm;">
-											<span style="font-weight:bold;">(e) </span> UBIA
+											<span style="font-weight:bold;">(e) </span> Unadjusted <br />basis immediately <br />after acquisition
 										</th>
 									</tr>
 								</thead>
@@ -453,7 +453,7 @@
 								corresponding aggregation, as appropriate. See instructions
 								<span class="sty8995ASchBDotLn">.....</span>
 							</div>
-							<div class="styLNAmountBoxNBB" style="width:26.95mm;height:10mm;background-color:lightgrey;">&nbsp;</div>
+							<div class="styLNAmountBoxNBB" style="width:26.95mm;height:10mm;">&nbsp;</div>
 							<div class="styLNAmountBoxNBB" style="width:26.95mm;height:10mm;padding-right:2px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/TotCYSCorpShrExcessTxblIncmAmt"/>
@@ -509,7 +509,7 @@
 											<span style="font-weight:bold;">(d) </span> W-2 wages
 										</th>
 										<th class="styDepTblCell" scope="col" style="width:27mm;font-weight:normal;padding-top:1.5mm;">
-											<span style="font-weight:bold;">(e) </span> UBIA
+											<span style="font-weight:bold;">(e) </span> Unadjusted <br />basis immediately <br />after acquisition
 										</th>
 									</tr>
 								</thead>

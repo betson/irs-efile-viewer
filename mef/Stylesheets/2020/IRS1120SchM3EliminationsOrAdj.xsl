@@ -1214,7 +1214,7 @@
 							<span class="styBoldText">For Paperwork Reduction Act Notice, see the Instructions for Form 1120.</span>
 							<span style="width:2mm;"/>
 							  Cat. No. 37961C 						
-							<span class="styBoldText" style="float:right;padding-left:2.3mm; font-size:6pt;">Schedule M-3 (Form 1120) (Rev. December 2019)</span>
+							<span class="styBoldText" style="float:right;padding-left:10.5mm; font-size:6pt;">Schedule M-3 (Form 1120) (Rev. 12-2019)</span>
 						</div>
 					</div>
 					<p style="page-break-before: always"/>
@@ -1223,7 +1223,7 @@
 					<!-- *************************************************************************************************************************** -->
 					<!-- Page 2 Header -->
 					<div class="styTBB" style="width:187mm;clear:all;">
-						<div style="float:left;">Schedule M-3 (Form 1120) (Rev. December 2019)</div>
+						<div style="float:left;">Schedule M-3 (Form 1120) (Rev. 12-2019)</div>
 						<div style="float:right;">Page <span style="font-size:9pt;font-weight:bold;">2</span>
 						</div>
 					</div>
@@ -2641,7 +2641,7 @@
 						 Line 30, column (a), must equal Part I, line 11, and column (d) must equal Form 1120, page 1, line 28.
 					 </div>
 					<div class="pageEnd" style="width:187mm;clear:all;">
-						<div class="styBoldText" style="float:right;padding-top:1mm;">Schedule M-3 (Form 1120) (Rev. December 2019) </div>
+						<div class="styBoldText" style="float:right;padding-top:1mm;">Schedule M-3 (Form 1120) (Rev. 12-2019) </div>
 					</div>
 					</div>
 					<p style="page-break-before: always"/>
@@ -2650,7 +2650,7 @@
 					<!-- *************************************************************************************************************************** -->
 					<!-- Page 3 Header -->
 					<div class="styTBB" style="width:187mm;">
-						<div style="float:left;">Schedule M-3 (Form 1120) (Rev. December 2019) </div>
+						<div style="float:left;">Schedule M-3 (Form 1120) (Rev. 12-2019) </div>
 						<div style="float:right;">Page <span style="font-size:9pt;font-weight:bold;">3</span>
 						</div>
 					</div>
@@ -4035,7 +4035,7 @@
 					<div class="styTBB" style="width:187mm;padding-left:8mm;">
 					</div>
 					<div class="pageEnd" style="width:187mm;clear:all;">
-						<div class="styBoldText" style="float:right;padding-top:1mm;">Schedule M-3 (Form 1120) (Rev. December 2019) </div>
+						<div class="styBoldText" style="float:right;padding-top:1mm;">Schedule M-3 (Form 1120) (Rev. 12-2019) </div>
 					</div>
 					<!-- *************************************************************************************************************************** -->
 					<!-- Start Additonal Data Title Bar and Button -->

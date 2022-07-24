@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald 11/12/2020 -->
+<!-- Last Modified by Eugenia McDonald 09/02/2021 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -452,7 +452,7 @@
 						</div>
 						<!-- Line 8a -->
 						<div style="width:166mm;font-size:7pt;float:left;">
-							<div class="styLNLeftNumBox" style="height:4.5mm;width:4mm;padding-left:2mm;">a</div>
+							<div class="styLNLeftNumBox" style="height:4.5mm;width:4mm;padding-left:3.5mm;">a</div>
 							<div class="styLNDesc" style="width:96mm;height:9mm;padding-left:2mm;">
 								<span style="float:left;">Home mortgage interest and points reported to you on Form 1098. </span>
 								<br/>
@@ -494,7 +494,7 @@
 								<span style="width:1mm;"/>
 								<span class="styBoldText" style="float:right;padding-right:1mm;">
 									<xsl:call-template name="DotLoop">
-										<xsl:with-param name="DotQty" select="14"/>
+										<xsl:with-param name="DotQty" select="16"/>
 									</xsl:call-template>
 								</span>
 								<span style="float:left;">
@@ -626,10 +626,14 @@
 							<div class="styLNLeftNumBox" style="height:9mm;width:4mm;padding-left:.3mm;padding-top:1mm;">11</div>
 							<div class="styLNDesc" style="width:96mm;height:9mm;padding-left:2mm;padding-top:1mm;">
 								<span style="float:left;">Gifts by cash or check. If you made any gift of $250 or more, see </span>
-								instructions 
+								instructions
+								<xsl:call-template name="LinkToLeftoverDataTableInline">
+									<xsl:with-param name="Desc">Line 11 - Qualified Contributions Amount</xsl:with-param>
+									<xsl:with-param name="TargetNode" select="$FormData/GiftsByCashOrCheckAmt/@qualifiedContributionsAmt"/>
+								</xsl:call-template> 
 								<span class="styBoldText" style="float:right;padding-right:1mm;">
 									<xsl:call-template name="DotLoop">
-										<xsl:with-param name="DotQty" select="18"/>
+										<xsl:with-param name="DotQty" select="17"/>
 									</xsl:call-template>
 								</span>
 							</div>
@@ -860,6 +864,11 @@
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line 2c - Form or schedule number</xsl:with-param>
 							<xsl:with-param name="TargetNode" select="$FormData/FormScheduleNumber"/>
+							<xsl:with-param name="DescWidth" select="100"/>
+						</xsl:call-template>
+						<xsl:call-template name="PopulateLeftoverRowAmount">
+							<xsl:with-param name="Desc">Line 11 - Qualified Contribution Amount</xsl:with-param>
+							<xsl:with-param name="TargetNode" select="$FormData/GiftsByCashOrCheckAmt/@qualifiedContributionsAmt"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 					</table>

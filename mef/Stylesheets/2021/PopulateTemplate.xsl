@@ -1303,6 +1303,11 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessNameLine1Txt"/>
 								</xsl:call-template>
 							</xsl:when>
+							<xsl:when test="$RtnHdrData/Filer/PersonNm">
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PersonNm"/>
+								</xsl:call-template>
+							</xsl:when>
 							<xsl:otherwise>
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
@@ -1575,15 +1580,26 @@ Log:
 	<xsl:template name="PopulateReturnHeaderFilerTIN">
 		<xsl:param name="EINChanged" select="false()"/>
 		<xsl:variable name="Blank"/>
-		<xsl:variable name="SSNExists">
+		<xsl:variable name="PrimarySSNExists">
 			<xsl:call-template name="PopulateReturnHeaderFiler">
 				<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
 			</xsl:call-template>
 		</xsl:variable>
+		<xsl:variable name="SSNExists">
+			<xsl:call-template name="PopulateReturnHeaderFiler">
+				<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+			</xsl:call-template>
+		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="$SSNExists != $Blank">
+			<xsl:when test="$PrimarySSNExists != $Blank">
 				<xsl:call-template name="PopulateReturnHeaderFiler">
 					<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+					<xsl:with-param name="EINChanged" select="$EINChanged"/>
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:when test="$SSNExists != $Blank">
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">SSN</xsl:with-param>
 					<xsl:with-param name="EINChanged" select="$EINChanged"/>
 				</xsl:call-template>
 			</xsl:when>
@@ -2401,7 +2417,7 @@ Log:
 		<link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
 		<link rel="stylesheet" type="text/css" name="BodyStyleSheet" href="{$CSSPath}/body.css"/>
 		<link rel="stylesheet" type="text/css" name="General" href="{$CSSPath}/general.css"/>
-		<!-- </xsl:if>-->
+		 <!--</xsl:if>-->
 
 	</xsl:template>
 	<!--
@@ -2420,7 +2436,71 @@ Log:
 		<!-- If the Print parameter is empty -->
 		<!--<xsl:if test="not(string($Print))">-->
 			<link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
-	<!--	</xsl:if>-->
+		<!--</xsl:if>-->
+	</xsl:template>
+	<!--
+***************************************************************************************************************************************************************
+Name:         PopulatePreheader
+Description:  On the presence of certain indicators on the form, populates large red text notes. Caller should place before the DocumentHeader call.
+Req Param:    TargetNode - form root node.
+Opt Param:    None
+Called By:    Stylesheets
+Calls:        PopulateSpan
+Log:          Specified by UWR 369303 (1040-X Phase II), updated by UWR 369546
+***************************************************************************************************************************************************************
+-->
+	<xsl:template name="PopulatePreheader">
+		<xsl:param name="TargetNode"/>
+		<span style="">
+			<xsl:if test="$TargetNode/AmendedReturnInd">
+				<span style="font-weight:bold;font-size:10pt;color:Red;margin-right:10mm;">
+					<xsl:call-template name="PopulateSpan">
+						<xsl:with-param name="TargetNode" select="$TargetNode/AmendedReturnInd"/>
+					</xsl:call-template>
+					AMENDED RETURN
+				</span>
+			</xsl:if>
+			<xsl:if test="$TargetNode/CorrectedReturnInd">
+				<span style="font-weight:bold;font-size:10pt;color:Red;margin-right:10mm;">
+					<xsl:call-template name="PopulateSpan">
+						<xsl:with-param name="TargetNode" select="$TargetNode/CorrectedReturnInd"/>
+					</xsl:call-template>
+					CORRECTED
+				</span>
+			</xsl:if>
+			<xsl:if test="$TargetNode/SupersededReturnInd">
+				<span style="font-weight:bold;font-size:10pt;color:Red;margin-right:10mm;">
+					<xsl:call-template name="PopulateSpan">
+						<xsl:with-param name="TargetNode" select="$TargetNode/SupersededReturnInd"/>
+					</xsl:call-template>
+					SUPERSEDED
+				</span>
+			</xsl:if>
+			<xsl:if test="$TargetNode/ChangeDt">
+				<span style="font-weight:bold;font-size:10pt;color:Red;margin-right:10mm;">
+					Date of Change: 
+					<xsl:call-template name="PopulateMonthDayYear">
+						<xsl:with-param name="TargetNode" select="$TargetNode/ChangeDt"/>
+					</xsl:call-template>
+				</span>
+			</xsl:if>
+			<xsl:if test="$TargetNode/AddressChangeInd">
+				<span style="font-weight:bold;font-size:10pt;color:Red;margin-right:10mm;">
+					<xsl:call-template name="PopulateSpan">
+						<xsl:with-param name="TargetNode" select="$TargetNode/AddressChangeInd"/>
+					</xsl:call-template>
+					ADDRESS CHANGE
+				</span>
+			</xsl:if>
+			<xsl:if test="$TargetNode/CorrectedInd">
+				<span style="font-weight:bold;font-size:10pt;color:Red;margin-right:10mm;">
+					<xsl:call-template name="PopulateSpan">
+						<xsl:with-param name="TargetNode" select="$TargetNode/CorrectedInd"/>
+					</xsl:call-template>
+					CORRECTED
+				</span>
+			</xsl:if>
+		</span>
 	</xsl:template>
 	<!--
 ***************************************************************************************************************************************************************
@@ -2462,7 +2542,7 @@ Log:
 		<xsl:param name="Jfunc">toggle('<xsl:value-of select="$containerID"/>', '<xsl:value-of select="$imageID"/>', '<xsl:value-of select="$buttonID"/>');</xsl:param>
 		<xsl:param name="overflowed" select="count($TargetNode)&gt;$containerHeight"/>
 		<xsl:if test="$overflowed and (not($Print) or $Print='')">
-			<button style="width:15px;height:14px;padding:0px 0px 0px;cursor:pointer;" TabIndex="1" title="Click here to expand table">
+			<button style="width:15px;height:14px;padding:0px 0px 0px;cursor:pointer;overflow:hidden;" TabIndex="1" title="Click here to expand table">
 				<xsl:attribute name="id"><xsl:value-of select="$buttonID"/></xsl:attribute>
 				<xsl:attribute name="onclick"><xsl:value-of select="$Jfunc"/> return false;</xsl:attribute>
 				<img src="{$NonVersionedImagePath}/expand.gif" width="7" height="8" alt="Click here to expand table" title="Click here to expand table" border="0" align="top">
@@ -2503,7 +2583,7 @@ Log:
 		<xsl:param name="Jfunc">dynamicHeightToggle('<xsl:value-of select="$containerID"/>', '<xsl:value-of select="$imageID"/>', '<xsl:value-of select="$buttonID"/>', '<xsl:value-of select="$headerRowCount"/>', '<xsl:value-of select="$displayRowCount"/>');</xsl:param>
 		<xsl:param name="overflowed" select="count($TargetNode)&gt;$containerHeight"/>
 		<xsl:if test="$overflowed and (not($Print) or $Print='')">
-			<button style="width:15px;height:14px;padding:0px 0px 0px;cursor:pointer;" TabIndex="1" title="Click here to expand table">
+			<button style="width:15px;height:14px;padding:0px 0px 0px;cursor:pointer;overflow:hidden;" TabIndex="1" title="Click here to expand table">
 				<xsl:attribute name="id"><xsl:value-of select="$buttonID"/></xsl:attribute>
 				<xsl:attribute name="onclick"><xsl:value-of select="$Jfunc"/> return false;</xsl:attribute>
 				<img src="{$NonVersionedImagePath}/expand.gif" width="7" height="8" alt="Click here to expand table" title="Click here to expand table" border="0" align="top">
@@ -2544,7 +2624,7 @@ Log:
 		<xsl:param name="Jfunc">dynamicHeightToggle('<xsl:value-of select="$containerID"/>', '<xsl:value-of select="$imageID"/>', '<xsl:value-of select="$buttonID"/>', '<xsl:value-of select="$headerRowCount"/>', '<xsl:value-of select="$displayRowCount"/>');</xsl:param>
 		<xsl:param name="overflowed" select="$DataRowCount&gt;$containerHeight"/>
 		<xsl:if test="$overflowed and (not($Print) or $Print='')">
-			<button style="width:15px;height:14px;padding:0px 0px 0px;cursor:pointer;" TabIndex="1" title="Click here to expand table">
+			<button style="width:15px;height:14px;padding:0px 0px 0px;cursor:pointer;overflow:hidden;" TabIndex="1" title="Click here to expand table">
 				<xsl:attribute name="id"><xsl:value-of select="$buttonID"/></xsl:attribute>
 				<xsl:attribute name="onclick"><xsl:value-of select="$Jfunc"/> return false;</xsl:attribute>
 				<img src="{$NonVersionedImagePath}/expand.gif" width="7" height="8" alt="Click here to expand table" title="Click here to expand table" border="0" align="top">
@@ -2620,7 +2700,7 @@ Log:
 	</xsl:template>
 	<!--
 ***************************************************************************************************************************************************************
-Name:          SetFormLinkInlineRRD (RRD version)
+Name:           SetFormLinkInlineRRD (RRD version)
 Description:    Template to display the form link image (usually pushpin image); image is displayed inline (normally) using img tags
 Req Param:  
 Opt Param:   
@@ -2666,15 +2746,92 @@ Log:
 				<xsl:attribute name="id"><xsl:value-of select="$IDstring"/></xsl:attribute>
 				<xsl:if test="not($Print) or $Print=''">
 					<xsl:attribute name="style">cursor:pointer;</xsl:attribute>
-					<xsl:attribute name="onclick">rtnTree.attachPushPin = '<xsl:value-of select="$IDstring"/>'; showAttachedDocs("<xsl:value-of select="$IDstring"/>", "<xsl:value-of select="$ColorSchema"/>", "<xsl:value-of select="$TargetNode/@referenceDocumentId"/>");</xsl:attribute>
-					<xsl:attribute name="onkeypress">rtnTree.attachPushPin = '<xsl:value-of select="$IDstring"/>'; showAttachedDocs("<xsl:value-of select="$IDstring"/>", "<xsl:value-of select="$ColorSchema"/>", "<xsl:value-of select="$TargetNode/@referenceDocumentId"/>");</xsl:attribute>
+					<xsl:attribute name="onclick">displayAttachmentDocumentListDiv("<xsl:value-of select="$TargetNode/@referenceDocumentId"/>");</xsl:attribute>
+					<xsl:attribute name="onkeypress">displayAttachmentDocumentListDiv("<xsl:value-of select="$TargetNode/@referenceDocumentId"/>");</xsl:attribute>
 				</xsl:if>
 			</img>
+			<!-- This is the div that displays the attachment document list after the pushpin is clicked. -->
+			<div id="attachmentListDiv" class="styAttachmentDocListDiv">
+				<div id="popHead" class="styAttachmentDocListDivTitle">
+					 <span style="width:54mm;padding-bottom:1mm;padding-left:2mm;">
+						   List of Attached Documents:
+					 </span>
+					 <span  style="width:15mm;padding-top:1mm;text-align:right;">
+						   <input type="button" value="Close" class="styButton" style="height:20px;width:55px;" onclick="closeAttachmentDocumentListDiv()" />
+					 </span>
+				</div>
+				<div id="popBody" class="styAttachmentDocListDivBody">
+					<script type="text/javascript">
+					  var docAttrObj = "<xsl:value-of select="$TargetNode/@referenceDocumentId"/>";
+					  var docIdList = docAttrObj.split(" ");	
+					  var docNameList = top.ReturnTree.getDisplayNameByDocId(docIdList);	
+					  var displayIdList = top.ReturnTree.getDisplayIdByDocId(docIdList);
+					  var colorSchemaObj = "<xsl:value-of select="$ColorSchema"/>";
+					  var colorSchema = colorSchemaObj.split(",");
+					  var myOpener = self;
+
+					  var errCode = "InvalidDocId";
+					  var errMsg ="Document Not Found";
+
+					  for( i = 0; i &lt; docIdList.length; i++ ) {
+					    var tabi = i + 1;
+						if( i%2 == 0 ) { 
+						  if(docNameList[i] != null &amp;&amp; docNameList[i] != &quot;&quot; &amp;&amp; docNameList[i] != errCode) {
+						    if(displayIdList[i] != null &amp;&amp;  displayIdList[i] != &quot;&quot;){
+							  document.write("&lt;div tabIndex='" + tabi + "' class='lineItemGrayLink'  style='background-color:" + colorSchema[1] + ";' onclick='myOpener.top.ReturnTree.displayFormByDocId(\"" + docIdList[i] + "\");' onkeypress='myOpener.top.ReturnTree.displayFormByDocId(\"" + docIdList[i] + "\");'&gt;"
+									+ docNameList[i] + " (" + displayIdList[i] + ") " + "&lt;/div&gt;");				
+							} else {
+							  document.write("&lt;div tabIndex='" + tabi + "' class='lineItemGrayLink'  style='background-color:" + colorSchema[1] + ";'  onclick='myOpener.top.ReturnTree.displayFormByDocId(\"" + docIdList[i] + "\");'&gt;"
+									+ docNameList[i] + "&lt;/div&gt;");
+							}
+						  } else {
+						    document.write("&lt;div tabIndex='" + tabi + "'  class='lineItemGrayLink' style='background-color:" + colorSchema[1] + ";' onclick='alert(\"The document with documentId = " + docIdList[i] + " is not found in the return.\");' onkeypress='alert(\"The document with documentId = " + docIdList[i] + " is not found in the return.\");'&gt;" + errMsg + "&lt;/div&gt;");
+						  }
+						} else {
+						  if( docNameList[i] != null &amp;&amp; docNameList[i] != &quot;&quot; &amp;&amp; docNameList[i] != errCode ) {
+						    if(displayIdList[i] != null &amp;&amp; displayIdList[i] != &quot;&quot;) {
+							  document.write("&lt;div tabIndex='" + tabi + "'  class='lineItemClearLink' onclick='myOpener.top.ReturnTree.displayFormByDocId(\"" + docIdList[i] + "\");'  onkeypress='myOpener.top.ReturnTree.displayFormByDocId(\"" + docIdList[i] + "\");'&gt; style='background-color:" + colorSchema[2] + ";'&gt;" 
+								+ docNameList[i] + " (" + displayIdList[i] + ") " + "&lt;/div&gt;");
+							} else {
+							  document.write("&lt;div tabIndex='" + tabi + "'  class='lineItemClearLink' onclick='myOpener.top.ReturnTree.displayFormByDocId(\"" + docIdList[i] + "\");'  onkeypress='myOpener.top.ReturnTree.displayFormByDocId(\"" + docIdList[i] + "\");' style='background-color:" + colorSchema[2] + ";'&gt;"
+								+ docNameList[i] + "&lt;/div&gt;");
+							}
+						  } else {
+						    document.write("&lt;div tabIndex='" + tabi + "'  class='lineItemClearLink' onclick='alert(\"The document with documentId = " + docIdList[i] + " is not found in the return.\");' onkeypress='alert(\"The document with documentId = " + docIdList[i] + " is not found in the return.\");'&gt;" + errMsg + "&lt;/div&gt;");
+						  }
+					    }
+					  }
+					</script>
+				</div>
+			</div>
+			<script type="text/javascript">
+				var listDiv = document.getElementById("attachmentListDiv");
+				
+				/* Display the attachment document list */
+				function displayAttachmentDocumentListDiv(docList) {
+				  var docIdList = docList.split(" ");
+				
+				  // If there is 1 attached document, display the document directly.
+				  if( docIdList.length == 1 )	{
+				    top.ReturnTree.displayFormByDocId( docIdList[0] );
+				    return;
+				  }
+				  // For more than 1 attachments, display the document attachment list
+				  listDiv.style.display = "block";
+				  listDiv.style.left= event.clientX + "px";
+				  listDiv.style.top= event.clientY + "px";
+				}
+				
+				/* Close the attachment document list */
+				function closeAttachmentDocumentListDiv() {
+				  listDiv.style.display = "none";
+				  listDiv.style.width = "300px"; 
+				  listDiv.style.height = "120px";
+				}
+			</script>
 		</xsl:if>
-		<!--/xsl:if-->
 	</xsl:template>
-	
-<!--
+	<!--
 ***************************************************************************************************************************************************************
 Name: SetFormLinkInline
 Description: Template to display the form link image (usually pushpin image); image is displayed inline (normally) using img tags
@@ -2704,8 +2861,6 @@ Log: - Mike Farrell - This is a Modification of the original by Charles Moore
 </xsl:if>
 <!--/xsl:if-->
 </xsl:template>
-	
-	
 	<!--
 ***************************************************************************************************************************************************************
 Name:           LinkToLeftoverBooleanDataTableInline
@@ -2853,6 +3008,11 @@ Log:          2004-12-16 - Added Name and EIN for separated repeating data calls
 					<xsl:with-param name="TargetNode">SpouseSSN</xsl:with-param>
 				</xsl:call-template>
 			</xsl:variable>
+			<xsl:variable name="SSNExists">
+			<xsl:call-template name="PopulateReturnHeaderFiler">
+				<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+			</xsl:call-template>
+		</xsl:variable>
 			<xsl:choose>
 				<xsl:when test="$PrimarySSNExists != ''">
 					<!-- Indicating that the Primary SSN should be displayed -->
@@ -2875,6 +3035,17 @@ Log:          2004-12-16 - Added Name and EIN for separated repeating data calls
 							</td>
 						</tr>
 					</xsl:if>
+				</xsl:when>
+				<xsl:when test="$SSNExists != '' and not($RtnHdrData/Filer/EIN)">
+					<!-- Indicating that the SSN should be displayed -->
+					<tr>
+						<td class="styLeftOverTableRowDesc" style="width:{$DescWidth}mm;" scope="row">SSN:</td>
+						<td class="styLeftOverTableRowAmount" style="width:{$AmountWidth}mm;">
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+							</xsl:call-template>
+						</td>
+					</tr>
 				</xsl:when>
 				<xsl:otherwise>
 					<!-- Indicating that the EIN should be displayed -->
@@ -2946,6 +3117,11 @@ Log:            2009-05-11 - Added support to pull EIN or Primary SSN depending 
 					<xsl:with-param name="TargetNode">SpouseSSN</xsl:with-param>
 				</xsl:call-template>
 			</xsl:variable>
+			<xsl:variable name="SSNExists">
+			<xsl:call-template name="PopulateReturnHeaderFiler">
+				<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+			</xsl:call-template>
+		</xsl:variable>
 			<xsl:choose>
 				<xsl:when test="$PrimarySSNExists != ''">
 					<!-- Indicating that the Primary SSN should be displayed -->
@@ -2968,6 +3144,17 @@ Log:            2009-05-11 - Added support to pull EIN or Primary SSN depending 
 							</td>
 						</tr>
 					</xsl:if>
+				</xsl:when>
+				<xsl:when test="$SSNExists != '' and not($RtnHdrData/Filer/EIN)">
+					<!-- Indicating that the SSN should be displayed -->
+					<tr>
+						<td class="styLeftOverTableRowDesc" style="width:{$DescWidth}mm;" scope="row">SSN:</td>
+						<td class="styLeftOverTableRowAmount" style="width:{$AmountWidth}mm;">
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+							</xsl:call-template>
+						</td>
+					</tr>
 				</xsl:when>
 				<xsl:otherwise>
 					<!-- Indicating that the EIN should be displayed -->
@@ -3244,6 +3431,11 @@ Log:            2009-05-11 - Added support to pull EIN or Primary SSN depending 
 				<xsl:with-param name="TargetNode">SpouseSSN</xsl:with-param>
 			</xsl:call-template>
 		</xsl:variable>
+		<xsl:variable name="SSNExists">
+			<xsl:call-template name="PopulateReturnHeaderFiler">
+				<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+			</xsl:call-template>
+		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="$PrimarySSNExists != ''">
 				<!-- Indicating that the Primary SSN should be displayed -->
@@ -3266,6 +3458,17 @@ Log:            2009-05-11 - Added support to pull EIN or Primary SSN depending 
 						</div>
 					</div>
 				</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SSNExists != '' and not($RtnHdrData/Filer/EIN)">
+				<!-- Indicating that the SSN should be displayed -->
+				<div class="styTopSectionLine">
+					<div class="styTopSectionLineLbl" style="float:left;">SSN: </div>
+					<div style="width:440px;font-size:10pt;float:left;">
+						<xsl:call-template name="PopulateReturnHeaderFiler">
+							<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+						</xsl:call-template>
+					</div>
+				</div>
 			</xsl:when>
 			<xsl:otherwise>
 				<!-- Indicating that the EIN should be displayed -->
@@ -3408,6 +3611,11 @@ Log:            2005-10-14 - Initial creation
 				<xsl:with-param name="TargetNode">SpouseSSN</xsl:with-param>
 			</xsl:call-template>
 		</xsl:variable>
+		<xsl:variable name="SSNExists">
+			<xsl:call-template name="PopulateReturnHeaderFiler">
+				<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+			</xsl:call-template>
+		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="$PrimarySSNExists != ''">
 				<!-- Indicating that the Primary SSN should be displayed -->
@@ -3430,6 +3638,17 @@ Log:            2005-10-14 - Initial creation
 						</div>
 					</div>
 				</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SSNExists != '' and not($RtnHdrData/Filer/EIN)">
+				<!-- Indicating that the SSN should be displayed -->
+				<div class="styTopSectionLineLandscape">
+					<div class="styTopSectionLineLbl" style="float:left;">SSN: </div>
+					<div style="width:700px;font-size:10pt;float:left;">
+						<xsl:call-template name="PopulateReturnHeaderFiler">
+							<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+						</xsl:call-template>
+					</div>
+				</div>
 			</xsl:when>
 			<xsl:otherwise>
 				<!-- Indicating that the EIN should be displayed -->

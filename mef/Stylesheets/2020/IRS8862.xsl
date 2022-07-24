@@ -308,7 +308,7 @@
 						<span style="width:3mm;"/>
 						<img src="{$ImagePath}/8862_Bullet_Sm.gif" alt="SmallBullet"/>
 						<span style="width:3mm;"/>
-						<input type="checkbox" class="styCkbox">
+						<input type="checkbox" class="styCkbox" alt="SameInformationChild1Ind">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form8862Data/QlfyChildMoreThan1PersonGrp[$Position]/SameInformationChild1Ind"/>
 								<xsl:with-param name="BackupName">Form8862DataQlfyChildMoreThan1PersonGrp[$Position]SameInformationChild1Ind</xsl:with-param>
@@ -396,7 +396,7 @@
 						</xsl:call-template>
 						If same as shown for Child 1, check this box.
 						<img src="{$ImagePath}/8862_Bullet_Sm.gif" alt="SmallBullet"/>
-						<input type="checkbox" class="styCkbox">
+						<input type="checkbox" class="styCkbox" alt="SameInformationChild1Ind">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$TargetNode/SameInformationChild1Ind"/>
 								<xsl:with-param name="BackupName">Form8862DataQlfyChildMoreThan1PersonGrp[<xsl:value-of select="$Position"/>]/SameInformationChild1Ind</xsl:with-param>
@@ -472,6 +472,7 @@
 				<xsl:with-param name="TargetNode" select="$TargetNode"/>
 			</xsl:call-template>
 			<input type="checkbox" class="styCkbox">
+			    <xsl:attribute name="alt"><xsl:value-of select="$BackupName"/> Yes</xsl:attribute>
 				<xsl:call-template name="PopulateYesCheckbox">
 					<xsl:with-param name="TargetNode" select="$TargetNode"/>
 					<xsl:with-param name="BackupName" select="$BackupName"/>
@@ -494,7 +495,8 @@
 			<xsl:call-template name="PopulateSpan">
 				<xsl:with-param name="TargetNode" select="$TargetNode"/>
 			</xsl:call-template>
-			<input type="checkbox" class="styCkbox">
+			<input type="checkbox" class="styCkbox" >
+				<xsl:attribute name="alt"><xsl:value-of select="$BackupName"/> No</xsl:attribute>
 				<xsl:call-template name="PopulateNoCheckbox">
 					<xsl:with-param name="TargetNode" select="$TargetNode"/>
 					<xsl:with-param name="BackupName" select="$BackupName"/>
@@ -730,7 +732,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form8862Data/EICClaimedInd"/>
 											</xsl:call-template>
-											<input type="checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox" alt="IRS8862EICClaimedInd">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form8862Data/EICClaimedInd"/>
 													<xsl:with-param name="BackupName">IRS8862EICClaimedInd</xsl:with-param>
@@ -756,7 +758,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form8862Data/CTCACTCODCClaimedInd"/>
 											</xsl:call-template>
-											<input type="checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox" alt="IRS8862CTCACTCODCClaimedInd">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form8862Data/CTCACTCODCClaimedInd"/>
 													<xsl:with-param name="BackupName">IRS8862CTCACTCODCClaimedInd</xsl:with-param>
@@ -779,7 +781,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form8862Data/AOTCClaimedInd"/>
 											</xsl:call-template>
-											<input type="checkbox" class="styCkbox">
+											<input type="checkbox" class="styCkbox" alt="IRS8862AOTCClaimedInd">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form8862Data/AOTCClaimedInd"/>
 													<xsl:with-param name="BackupName">IRS8862AOTCClaimedInd</xsl:with-param>

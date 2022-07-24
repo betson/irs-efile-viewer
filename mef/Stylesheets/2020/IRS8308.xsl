@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by James Ganzy on 07/07/2017 -->
+<!-- Last Modified by James Ganzy on 04/14/2021 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -130,8 +130,10 @@
              
           <!-- Part 1, Transferor Information -->
           <div class="styBB" style="height:4mm;width:187mm;float:none;clear:both;">
-            <span class="styPartName" style="height:4mm;width:12mm;padding-top:.5mm;padding-bottom:.5mm;">Part I</span>
-            <div class="styLNDesc" style="width:175mm;font-size:8pt;padding-left:3mm;"><b>Transferor Information</b> (Beneficial owner of the partnership interest immediately before the transfer of that interest)</div>
+				<span class="styPartName" style="height:4mm;width:12mm;padding-top:.5mm;padding-bottom:.5mm;">Part I</span>
+				<div class="styLNDesc" style="width:175mm;font-size:8pt;padding-left:3mm;">
+					<b>Transferor Information</b> (Beneficial owner of the partnership interest immediately before the transfer of that interest)
+				</div>
           </div>
           
           <div class="styBB" style="width:187mm;">
@@ -259,7 +261,9 @@
     <!-- Part II, Transferee Information -->
     <div class="styBB" style="height:4mm;width:187mm;float:none;clear:both;">
 		<span class="styPartName" style="height:4mm;width:12mm;padding-top:.5mm;padding-bottom:.5mm;">Part II</span>
-            <div class="styLNDesc" style="height:4mm;width:175mm;font-size:8pt;padding-left:3mm;"><b>Transferor Information</b> (Beneficial owner of the partnership interest immediately after the transfer of that interest)</div>
+		<div class="styLNDesc" style="height:4mm;width:175mm;font-size:8pt;padding-left:3mm;">
+			<b>Transferee Information</b> (Beneficial owner of the partnership interest immediately after the transfer of that interest)
+		</div>
     </div>
     <div class="styBB" style="width:187mm;">
 		<div class="styNameBox" style="height:9mm;width:155mm;font-size:7pt;">
@@ -379,10 +383,8 @@
     </div>
                                           
     <div class="styBB" style="height:auto;width:187mm;float:none;clear:both;"> 
-    <div style="height:17mm;width: 38mm; float:left;border-right: thin solid black;font-size: 7pt;padding-right: 4mm;padding-top: 2mm;padding-bottom: 2mm;"><b>Sign here only if you
-			are filing this Form by
-			itself and not with Form
-			1065</b>
+    <div style="height:17mm;width: 38mm; float:left;border-right: thin solid black;font-size: 7pt;padding-right: 4mm;padding-top: 2mm;padding-bottom: 2mm;">
+		<b>Sign here only if you are filing this form by itself and not with Form 1065</b>
 	 </div>
 
 	 <div style="width:145mm;float:right;clear none;font-size: 7pt;">

@@ -61,7 +61,7 @@
 							<div class="styFBT" style="font-size:7pt;height:5mm;padding-top:6mm;">
 								<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"/> 
 								Go to <a style="text-decoration:none;color:black;" href="http://www.irs.gov/Form6251" title="Link to IRS.gov"><i>www.irs.gov/Form6251</i></a> for instructions and the latest information.<br/>
-								<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"/> Attach to Form 1040,  Form 1040-SR, or Form 1040NR . 
+								<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"/> Attach to Form 1040,  Form 1040-SR, or Form 1040-NR . 
 						  </div>
 						</div>
 						<div class="styTYBox" style="width:31mm;height:20mm;border-left-width:1.5px;">
@@ -77,7 +77,7 @@
 					<!-- Name(s) shown on return -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styFNBox" style="width:140mm;height:9mm;padding-top:.25mm;">
-							Name(s) shown on Form 1040, Form 1040-SR, or Form 1040NR<br/>
+							Name(s) shown on Form 1040, Form 1040-SR, or Form 1040-NR<br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
 							</xsl:call-template>
@@ -90,10 +90,10 @@
 							</span>
 						</div>
 					</div>
-					<!-- Part l -->
+					<!-- Part I -->
 					<!-- Part I - Header -->
 					<div style="width:187mm;height:4mm;border-bottom:1px solid black;float:left;padding-top:0mm;">
-						<div class="styPartName" style="height:4mm;font-size:8.5pt;">Part l</div>
+						<div class="styPartName" style="height:4mm;font-size:8.5pt;">Part I</div>
 						<div class="styPartDesc" style="width:167mm;font-size:8.5pt;font-weight:normal;padding-left:2mm;vertical-align:center;">
 							<b>Alternative Minimum Taxable Income</b> (See instructions for how to complete each line.)
 						</div>
@@ -503,15 +503,15 @@
 							</div>
 						</div>
 					</div>
-					<!-- Part ll -->
-					<!-- Part Il - Header -->
+					<!-- Part II -->
+					<!-- Part II - Header -->
 					<div style="width:187mm;height:4.55mm;padding-top:0mm;border-top:1.2px solid black;border-bottom:1px solid black;float:left;">
-						<div class="styPartName" style="height:4.25mm;font-size:8.5pt;">Part ll</div>
+						<div class="styPartName" style="height:4.25mm;font-size:8.5pt;">Part II</div>
 						<div class="styPartDesc" style="width:167mm;font-size:8.5pt;font-weight:normal;padding-left:2mm;vertical-align:center;">
 							<b>Alternative Minimum Tax (AMT)</b>
 						</div>
 					</div>
-					<!-- END Part ll Header-->
+					<!-- END Part II Header-->
 					<!-- Line 5 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;padding-bottom:0mm;padding-left: 3mm;font-size:7pt;">5</div>
@@ -749,9 +749,9 @@
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span>
 						</div>
 					</div>
-					<!-- Part IlI - Header -->
+					<!-- Part III - Header -->
 					<div style="width:187mm;height:8.5mm;border-bottom:1px solid black;border-top:1px solid black;float:left;">
-						<div class="styPartName" style="height:4mm;font-size:8.5pt;">Part lll</div>
+						<div class="styPartName" style="height:4mm;font-size:8.5pt;">Part III</div>
 						<div class="styPartDesc" style="width:167mm;font-size:8.5pt;font-weight:normal;padding-left:2mm;vertical-align:center;">
 							<b>Tax Computation Using Maximum Capital Gains Rates</b>
 							<br/>
@@ -760,7 +760,7 @@
 					  </span>
 						</div>
 					</div>
-					<!-- END Part llI Header-->
+					<!-- END Part III Header-->
 					<!-- Line 12 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-bottom:0mm;padding-left:3mm;">12</div>
@@ -781,7 +781,7 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-top:1.25mm;padding-bottom:0mm;padding-left:3mm;">13</div>
 						<div class="styLNDesc" style="width:135mm;height:4mm;padding-top:1mm;padding-bottom:0mm;">
-					  Enter the amount from line 6 of the Qualified Dividends and Capital Gain Tax Worksheet in the
+					  Enter the amount from line 4 of the Qualified Dividends and Capital Gain Tax Worksheet in the
 					  Instructions for Form 1040 and 1040-SR or the amount from line 13 of the Schedule D Tax Worksheet in
      				  the Instructions for Schedule D (Form 1040), whichever applies (as refigured for the AMT,<br/>
      				  if necessary) (see instructions). If you are filing Form 2555, see instructions for the<br/>
@@ -909,7 +909,7 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;padding-top:0mm;padding-bottom:0mm;padding-left:3mm;">20</div>
 						<div class="styLNDesc" style="font-size:7pt;width:135mm;height:4mm;padding-top:0mm;padding-bottom:0mm;">
-					  Enter the amount from line 7 of the Qualified Dividends and Capital Gain Tax Worksheet <br/> 
+					  Enter the amount from line 5 of the Qualified Dividends and Capital Gain Tax Worksheet <br/> 
 					  or the amount from line 14 of the Schedule D Tax Worksheet, whichever applies (as figured for the regular tax).
 					  If you did not complete either worksheet for the regular tax, enter the amount from Form 1040 or 1040-SR, line 15;
                       if zero or less, enter -0-. If you are filing Form 2555, see instructions for the  amount to enter
@@ -1030,7 +1030,7 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-top:2mm;padding-bottom:0mm;padding-left:3mm;">27</div>
 						<div class="styLNDesc" style="width:135mm;height:4mm;padding-top:2mm;padding-bottom:0mm;">
-						Enter the amount from line 7 of the Qualified Dividends and Capital Gain Tax Worksheet or the <br/> 
+						Enter the amount from line 5 of the Qualified Dividends and Capital Gain Tax Worksheet or the <br/> 
 						amount from line 21 of the Schedule D Tax Worksheet, whichever applies (as figured for the regular tax). 
                         If you did not complete either worksheet for the regular tax, enter the amount from Form 1040 or 1040-SR, 
                         line 15; if zero or less, enter -0-. If you are filing Form 2555, see instructions for the amount to enter

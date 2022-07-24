@@ -879,7 +879,7 @@
 							</tbody>
 						</table>
 					<div style="width:187mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;border-right-width:0px;border-left-width:0px;float:left;">
-          <!-- Tip -->
+					<!-- Tip -->
 					<div style="width:187mm;border-bottom:1px solid black;height:50px;">
 						<div class="styGenericDiv" style="width:18mm;">
 							<img alt="Caution" src="{$ImagePath}/8863_Caution.gif" width="50" height="50"/>
@@ -1046,8 +1046,8 @@ enter
 								<span style="font-weight:bold">(American Opportunity and Lifetime Learning Credits)</span>
 							</div>
 							<div class="styFBT" stype="font-size:7pt;height:auto;padding-top:0mm;">
-							    <img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/> Attach to Form 1040 or 1040-SR.<br/>
-								<img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/> Go to <i>www.irs.gov/Form8863</i> for instructions and the latest information.
+							    <img src="{$ImagePath}/8863_Bullet.gif" alt="Right Arrow"/> Attach to Form 1040 or 1040-SR.<br/>
+								<img src="{$ImagePath}/8863_Bullet.gif" alt="Right Arrow"/> Go to <i>www.irs.gov/Form8863</i> for instructions and the latest information.
 							</div>
 						</div>
 						<div class="styTYBox" style="width:31mm; height:100%">
@@ -1267,19 +1267,15 @@ enter
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-top:1mm;padding-left: 4.25mm">7</div>
 						<div class="styLNDesc" style="font-size:7pt;width:137mm;height:4mm;padding-top:1mm;">
 							Multiply line 1 by line 6. 
-							<label>
-								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$PartIData/RefundableAmerOppCrUnder24Ind"/>
-									<xsl:with-param name="BackupName">PartIDataRefundableAmerOppCrUnder24Ind</xsl:with-param>
-								</xsl:call-template>
-							
+
 									<b>Caution:</b> If you were under age 24 at the end of the year <b>and</b> meet<br/>
 									the conditions described in the instructions, you <b>can't</b> take the refundable American opportunity<br/>
 									<span style="float:left;">credit; skip line 8, enter the amount from line 7 on line 9, and check this box	</span>
 									<!--Dotted Line -->
-									<span class="styDotLn" style="padding-left:1mm;padding-right:1mm;">........</span>				 						        					
-							</label>
-							<img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/>	
+									<span class="styDotLn" style="padding-left:1mm;padding-right:1mm;">........</span>	
+									<img src="{$ImagePath}/8863_Bullet.gif" alt="Right Arrow"/>				 						        					
+
+							
 						</div>
 						<div class="styLNDesc" style="font-size:7pt;width:5mm;height:11mm;padding-top:7mm;">
 							<input type="checkbox"  alt="Refundable American Opportunity Credit Indicator" class="styCkbox">
@@ -1288,6 +1284,12 @@ enter
 									<xsl:with-param name="BackupName">PartIDataRefundableAmerOppCrUnder24Ind</xsl:with-param>
 								</xsl:call-template>
 							</input>
+							<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$PartIData/RefundableAmerOppCrUnder24Ind"/>
+									<xsl:with-param name="BackupName">PartIDataRefundableAmerOppCrUnder24Ind</xsl:with-param>
+								</xsl:call-template>
+							</label>
 						</div>
 						</span>
 						<span style="width:36.9mm;float:right;">				
@@ -1542,7 +1544,7 @@ enter
 						<div class="styLNDesc" style="width:142mm;height:5mm;padding-top:1mm;">
                              Multiply line 12 by line 17. Enter here and on line 1 of the Credit Limit Worksheet (see instructions)
  							<span class="styBoldText" style="width:3mm;"></span>
-							<img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/>
+							<img src="{$ImagePath}/8863_Bullet.gif" alt="Right Arrow"/>
 						</div>
 						</span>
 						<span style="float:right;">

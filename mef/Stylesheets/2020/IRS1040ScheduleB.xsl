@@ -1724,7 +1724,7 @@
 							<!--Start of Part III-->
 					 <div  style="width:187mm;">
 							<!-- left margin Part III -->
-							<div style="width:25.5mm;float:left;">
+							<div style="width:25.5mm;height:41.5;float:left;">
 								<div class="styFMT" style="padding-top:0mm;font-size:12pt;font-family:Arial">
                 Part lll<br/>
                 <div style="width:5mm;padding-top:2.5mm;">
@@ -1732,7 +1732,7 @@
                 Accounts<br/>
                 and Trusts</div>
                 </div>
-								<div style="padding-top:1mm;width:25.5mm;">(See instructions.)
+								<div style="padding-top:1mm;width:25.5mm;"><b>Caution:</b> If required, failure to<br/> file FinCEN Form<br/> 114 may result in<br/> substantial penalties. See instructions.
                 </div>
 							</div>
 							<!-- end left margin -->
@@ -1894,8 +1894,8 @@
 								<!-- end Line 7b text-->
 								<xsl:if test="count($FormData/ForeignCountryCd) &lt;= 5 ">
 									<!-- grey areas -->
-									<div class="styGenericDiv" style="height:9mm;width:8.5mm;background-color:lightgrey;border-left:1px solid black;border-bottom-width:0px;"/>
-									<div class="styGenericDiv" style="height:9mm;width:8.5mm;background-color:lightgrey;border-left:1px solid black;border-bottom-width:0px;"/>
+									<div class="styGenericDiv" style="height:25mm;width:8.5mm;background-color:lightgrey;border-left:1px solid black;border-bottom-width:0px;"/>
+									<div class="styGenericDiv" style="height:25mm;width:8.5mm;background-color:lightgrey;border-left:1px solid black;border-bottom-width:0px;"/>
 								</xsl:if>
 								<!-- end grey areas -->
 								<xsl:if test="count($FormData/ForeignCountryCd) &gt; 5 ">

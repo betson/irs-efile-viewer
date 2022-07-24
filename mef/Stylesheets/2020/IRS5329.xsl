@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by James Ganzy on 07/01/2020 -->
+<!-- Last Modified by James Ganzy on 04/14/2021 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -86,8 +86,8 @@
           <xsl:call-template name="DocumentHeader"/>
           <div class="styBB" style="height:22mm;width:187mm;border-bottom-width:2px;float:none;clear:both;">
             <div class="styFNBox" style="height:22mm;width:28mm;border-right-width:1px;padding-top:.4mm;">
-              <div style="padding-top:1mm;padding-bottom:5mm;">
-                Form<span class="styFormNumber">  5329</span>
+              <div style="padding-top:1mm;padding-bottom:2mm;">
+                Form<span class="styFormNumber">  5329</span>(Rev. February 2021)
               </div>
               <!--General Dependency Push Pin-->
               <xsl:call-template name="SetFormLinkInline">
@@ -107,7 +107,7 @@
                      <div style="height:5mm;width:129mm;">
                     
                       <img src="{$ImagePath}/5329_Bullet_Sm.gif" alt="SmallBullet"/> 
-                        Attach to Form 1040, Form 1040-SR, or Form 1040-NR.<br/>
+                        Attach to Form 1040, 1040-SR, or 1040-NR.<br/>
 							<img src="{$ImagePath}/5329_Bullet_Sm.gif" alt="SmallBullet"/> Go to 
 							<a href="http://www.irs.gov/form5329" title="Link to IRS.gov"><i>www.irs.gov/Form5329</i></a> for instructions and the latest information.
                      </div>
@@ -243,8 +243,8 @@
           </div>
           
           <div class="styBB" style="width:187mm;">
-            If you <b>only</b> owe the additional 10% tax on early distributions, you may be able to report this tax directly on Schedule 2 (Form 1040),
-			line 6, without filing Form 5329. See the instructions for Schedule 2 (Form 1040), line 6.
+				If you <b>only</b> owe the additional 10% tax on the full amount of the early distributions, you may be able to report this tax directly on
+				Schedule 2 (Form 1040), line 6, without filing Form 5329. See instructions.
           </div>
           <!-- End Top Section -->
           <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
@@ -256,10 +256,10 @@
             <div class="styPartName" style="width:15mm;">Part I</div>
 				<div class="styLNDesc" style="height:auto;width:172mm;padding-left:3mm;">
 				  <span style="font-size:8pt;padding-right:1mm;"><b>Additional Tax on Early Distributions.</b></span>
-					Complete this part if you took a taxable distribution (other than a distribution related to a qualified disaster or the coronavirus) before you reached age 59½ from a qualified 
-					retirement plan (including an IRA) or modified endowment contract (unless you are reporting this tax directly on Schedule 2 (Form 1040)—see above). 
-					You may also have to complete this part to indicate that you qualify for an exception to the additional tax 
-					on early distributions or for certain Roth IRA distributions.  See instructions.
+					Complete this part if you took a taxable distribution before you reached age 59½ from 
+					a qualified retirement plan (including an IRA) or modified endowment contract (unless you are reporting this tax
+					directly on Schedule 2 (Form 1040)—see above). You may also have to complete this part to indicate that you qualify for
+					an exception to the additional tax on early distributions or for certain Roth IRA distributions. See instructions.
 				</div>
           </div>
           <!-- Body -->
@@ -295,8 +295,11 @@
                       <xsl:with-param name="TargetNode" select="$Form5329Data/EarlyDistriExceptionReasonCd"/>
                     </xsl:call-template>
                   </span>
+                    <xsl:call-template name="SetFormLinkInline">
+						<xsl:with-param name="TargetNode" select="$Form5329Data/EarlyDistriNotSubjectToTaxAmt"/>
+					</xsl:call-template>
                   <!--Dotted Line-->
-                  <span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">.............</span>	
+                  <span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">............</span>	
                 </div>
               </div>
               <div class="styIRS5329LNDesc" style="height:100%;width:36mm;float:right;padding:0px 0px 0px 0px;">

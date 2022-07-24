@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 12/21/2020 -->
+<!-- Last Modified by Eugenia McDonald on 04/08/2021 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -40,9 +40,9 @@
 			</head>
 			<body class="styBodyClass">
 				<form id="Form1040NRScheduleNEC">
-					<xsl:call-template name="DocumentHeader"/>
+					<xsl:call-template name="DocumentHeaderLandscape"/>
 					<!-- Page 1 -->
-					<div class="sty1040NRScheduleNECLandDiv"
+					<div class="styStdDiv"
 					   style="display:inline;width:256mm;">
 						<!-- Header -->
 						<div class="styStdDivLS">
@@ -771,7 +771,7 @@
 						<br/>
 						<br/>
 						<span class="styRepeatingDataTitle">Schedule NEC, Line 12 - Other Income Type</span>
-						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
+						<table class="styDepTblLandscape" cellspacing="0" style="font-size:7pt;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
 									<th class="styDepTblCell" scope="col" rowspan="1" style="width:140mm;">Other Income Description</th>
@@ -859,7 +859,7 @@
 						<br/>
 						<br/>
 						<span class="styRepeatingDataTitle">Schedule NEC, Line 16 - Capital Gains and Losses From Sales or Exchanges of Property</span>
-						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
+						<table class="styDepTblLandscape" cellspacing="0" style="font-size:7pt;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
 									<th class="styDepTblCell" scope="col" style="width:35mm;">(a) Kind of property and description</th>

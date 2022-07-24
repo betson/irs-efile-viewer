@@ -117,7 +117,7 @@
 					<!--Begin of Part I-->
 						<!-- Part I Left margin -->
 							<div style="width:25mm;float:left;clear:none;border-bottom-width: 0px;height:60mm">
-								<div class="styFMT" style="font-size:12pt;font-family:Arial;">Part l 
+								<div class="styFMT" style="font-size:12pt;font-family:Arial;">Part I 
 									<br/>Interest
                                 </div>
 								<div style="padding-top:1mm;width:25mm;">(See instructions<br/>
@@ -149,7 +149,7 @@
 									<!-- print logic -->
 									<!-- end -->
 									<!--<xsl:call-template name="SetInitialState"/>-->
-									<table class="styTable" cellspacing="0" style="font-size:7pt;" summary="Table displaying Interest and Ordinary Dividends " name="INORDtable" id="INORDtable">
+									<table class="styTable" cellspacing="0" style="font-size:7pt;"  name="INORDtable" id="INORDtable">
 										<thead class="styTableThead">
 										<tr  style="width:161.5mm;float:right;">					
 											<!--Line 1-->
@@ -699,7 +699,7 @@
 								<div  style="width:161.5mm;float:right;">
 								<!-- print logic -->
 									<!--<xsl:call-template name="SetInitialState"/>-->
-									<table class="styTable" cellspacing="0" style="font-size:7pt;" summary="Table displaying Interest and Ordinary Dividends " id="PAYORTable" name="PAYORtable">
+									<table class="styTable" cellspacing="0" style="font-size:7pt;"  id="PAYORTable" name="PAYORtable">
 										<thead class="styTableThead">
 										<tr  style="width:161.5mm;float:right;">
 											<th class="styTableCell" style="border-right-width:0px;border-bottom-width:0px;width:4mm;height:8mm;
@@ -1174,7 +1174,7 @@
 				 <div  style="width:187mm;">
 								<!-- Part II Left margin -->
 								<div style="width:25mm;float:left;clear:none;border-bottom-width:0px;">
-									<div class="styFMT" style="padding-top:2mm;font-size:12pt;font-family:Arial;">Part ll
+									<div class="styFMT" style="padding-top:2mm;font-size:12pt;font-family:Arial;">Part II
 										<br/>
                 Ordinary
                 Dividends
@@ -1208,7 +1208,7 @@
 									<!-- print logic -->
 									<!--<xsl:call-template name="SetInitialState"/>-->
 									<!-- end -->
-									<table class="styTable" cellspacing="0" width="100%" style="font-size:7pt;padding-top:mm;" summary="Table displaying Ordinary Dividends" name="ODtable" id="ODtable">
+									<table class="styTable" cellspacing="0" width="100%" style="font-size:7pt;padding-top:mm;"  name="ODtable" id="ODtable">
 										<thead class="styTableThead">
 											
                                           <tr style="width:161.5mm;float:right;">
@@ -1729,7 +1729,7 @@
 							<!-- left margin Part III -->
 							<div style="width:25.5mm;float:left;">
 								<div class="styFMT" style="padding-top:0mm;font-size:12pt;font-family:Arial">
-                Part lll<br/>
+                Part III<br/>
                 <div style="width:5mm;padding-top:2.5mm;">
                 Foreign<br/>
                 Accounts<br/>
@@ -2105,7 +2105,7 @@
 					<!--Separate print table Line-1 Form 1040 Schedule B, Part I, Group 1-->
 					<xsl:if test="($Print = $Separated) and (count($FormData/Form1040SchBPartIGroup1) &gt; 14)">
 						<span class="styRepeatingDataTitle">Form 1040 Schedule B, Part I, Group 1</span>
-						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;" summary="Table displaying Interest and Ordinary Dividends information">
+						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;" >
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr" style="width:187mm;float:right;">
 									<th class="styDepTblCell" scope="col" rowspan="2" style="width:8mm;height:8mm;">

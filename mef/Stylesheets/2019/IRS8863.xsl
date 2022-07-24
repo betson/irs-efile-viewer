@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 01/06/2020 -->
+<!-- Last Modified by Eugenia McDonald on 11/07/2019 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -189,7 +189,7 @@
 															<xsl:with-param name="TargetNode" select="CurrentYear1098TReceivedInd"/>
 														</xsl:call-template>
 														<div class="styGenericDiv" style="width:11mm; height:8mm;padding-top:3mm; padding-left:0mm;">
-															<input type="checkbox" class="styCkbox" name="Checkbox">
+															<input type="checkbox" class="styCkbox" name="Checkbox" alt="CurrentYear1098TReceivedInd Yes">
 																<xsl:call-template name="PopulateYesCheckbox">
 																	<xsl:with-param name="TargetNode" select="CurrentYear1098TReceivedInd"/>
 																	<xsl:with-param name="BackupName">IRS8863CY1098TReceivedInd<xsl:value-of select="$studentPos"/>-<xsl:number value="position()"/></xsl:with-param>
@@ -204,7 +204,7 @@
 															</label>
 														</div>
 														<div class="styGenericDiv" style="width:11mm;padding-top:3mm; padding-left:0mm">
-															<input type="checkbox" class="styCkbox" name="Checkbox">
+															<input type="checkbox" class="styCkbox" name="Checkbox" alt="CurrentYear1098TReceivedInd No" >
 																<xsl:call-template name="PopulateNoCheckbox">
 																	<xsl:with-param name="TargetNode" select="CurrentYear1098TReceivedInd"/>
 																	<xsl:with-param name="BackupName">IRS8863CY1098TReceivedInd<xsl:value-of select="$studentPos"/>-<xsl:number value="position()"/></xsl:with-param>
@@ -233,7 +233,7 @@
 															<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/CurrentYear1098TReceivedInd"/>
 														</xsl:call-template>
 														<div class="styGenericDiv" style="width:11mm; height:8mm;padding-top:3mm; padding-left:0mm">
-															<input type="checkbox" class="styCkbox" name="Checkbox">
+															<input type="checkbox" class="styCkbox" name="Checkbox" alt="CurrentYear1098TReceivedInd Yes" >
 																<xsl:call-template name="PopulateYesCheckbox">
 																	<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/CurrentYear1098TReceivedInd"/>
 																	<xsl:with-param name="BackupName">IRS8863CY1098TReceivedInd<xsl:value-of select="$studentPos"/>-<xsl:number value="position() + 1"/></xsl:with-param>
@@ -248,7 +248,7 @@
 															</label>
 														</div>
 														<div class="styGenericDiv" style="width:11mm;padding-top:3mm; padding-left:0mm">
-															<input type="checkbox" class="styCkbox" name="Checkbox">
+															<input type="checkbox" class="styCkbox" name="Checkbox" alt="CurrentYear1098TReceivedInd No" >
 																<xsl:call-template name="PopulateNoCheckbox">
 																	<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/CurrentYear1098TReceivedInd"/>
 																	<xsl:with-param name="BackupName">IRS8863CY1098TReceivedInd<xsl:value-of select="$studentPos"/>-<xsl:number value="position() + 1"/></xsl:with-param>
@@ -272,15 +272,14 @@
 													<div class="styGenericDiv" style="width:63%; padding-left:0.5mm">
 													</div>
 													<div class="styGenericDiv" style="width:63%;padding-left:0.5mm;">
-														Did the student receive Form 1098-T from this institution for 2018 with box
-														2 filed in and box 7 checked?
+														Did the student receive Form 1098-T from this institution for 2018 with box 7 checked?
 													</div>
 													<span>
 														<xsl:call-template name="PopulateSpan">
 															<xsl:with-param name="TargetNode" select="PriorYear1098TReceivedInd"/>
 														</xsl:call-template>
 														<div class="styGenericDiv" style="width:11mm; height:10mm;padding-top:5.5mm; padding-left:0mm;">
-															<input type="checkbox" class="styCkbox" name="Checkbox">
+															<input type="checkbox" class="styCkbox" name="Checkbox"  alt="PriorYear1098TReceivedInd Yes" >
 																<xsl:call-template name="PopulateYesCheckbox">
 																	<xsl:with-param name="TargetNode" select="PriorYear1098TReceivedInd"/>
 																	<xsl:with-param name="BackupName">IRS8863PY1098TReceivedInd<xsl:value-of select="$studentPos"/>-<xsl:number value="position()"/></xsl:with-param>
@@ -295,7 +294,7 @@
 															</label>
 														</div>
 														<div class="styGenericDiv" style="width:11mm;padding-top:5.5mm;padding-left:0mm;">
-															<input type="checkbox" class="styCkbox" name="Checkbox">
+															<input type="checkbox" class="styCkbox" name="Checkbox"  alt="PriorYear1098TReceivedInd No" >
 																<xsl:call-template name="PopulateNoCheckbox">
 																	<xsl:with-param name="TargetNode" select="PriorYear1098TReceivedInd"/>
 																	<xsl:with-param name="BackupName">IRS8863PY1098TReceivedInd<xsl:value-of select="$studentPos"/>-<xsl:number value="position()"/></xsl:with-param>
@@ -317,15 +316,14 @@
 													<div class="styGenericDiv" style="width:63%; padding-left:0.5mm">
 													</div>
 													<div class="styGenericDiv" style="width:63%; padding-left:0.5mm;">
-														Did the student receive Form 1098-T from this institution for 2018 with box
-														2 filed in and box 7 checked?
+														Did the student receive Form 1098-T from this institution for 2018 with box 7 checked?
 													</div>
 													<span>
 														<xsl:call-template name="PopulateSpan">
 															<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/PriorYear1098TReceivedInd"/>
 														</xsl:call-template>
 														<div class="styGenericDiv" style="width:11mm; height:9mm;padding-top:5.5mm; padding-left:0mm">
-															<input type="checkbox" class="styCkbox" name="Checkbox">
+															<input type="checkbox" class="styCkbox" name="Checkbox"  alt="PriorYear1098TReceivedInd Yes" >
 																<xsl:call-template name="PopulateYesCheckbox">
 																	<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/PriorYear1098TReceivedInd"/>
 																	<xsl:with-param name="BackupName">IRS8863PY1098TReceivedInd<xsl:value-of select="$studentPos"/>-<xsl:number value="position() + 1"/></xsl:with-param>
@@ -340,7 +338,7 @@
 															</label>
 														</div>
 														<div class="styGenericDiv" style="width:11mm;padding-top:5.5mm; padding-left:0mm">
-															<input type="checkbox" class="styCkbox" name="Checkbox">
+															<input type="checkbox" class="styCkbox" name="Checkbox"  alt="PriorYear1098TReceivedInd No" >
 																<xsl:call-template name="PopulateNoCheckbox">
 																	<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/PriorYear1098TReceivedInd"/>
 																	<xsl:with-param name="BackupName">IRS8863PY1098TReceivedInd<xsl:value-of select="$studentPos"/>-<xsl:number value="position() + 1"/></xsl:with-param>
@@ -477,7 +475,7 @@
 												<xsl:with-param name="TargetNode" select="CurrentYear1098TReceivedInd"/>
 											</xsl:call-template>
 											<div class="styGenericDiv" style="width:11mm; height:8mm;padding-top:3mm; padding-left:0mm;">
-												<input type="checkbox" class="styCkbox" name="Checkbox">
+												<input type="checkbox" class="styCkbox" name="Checkbox"  alt="CurrentYear1098TReceivedInd Yes" >
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="CurrentYear1098TReceivedInd"/>
 														<xsl:with-param name="BackupName">IRS8863CY1098TReceivedInd<xsl:number value="position()"/></xsl:with-param>
@@ -492,7 +490,7 @@
 												</label>
 											</div>
 											<div class="styGenericDiv" style="width:11mm;padding-top:3mm; padding-left:0mm">
-												<input type="checkbox" class="styCkbox" name="Checkbox">
+												<input type="checkbox" class="styCkbox" name="Checkbox"  alt="CurrentYear1098TReceivedInd No" >
 													<xsl:call-template name="PopulateNoCheckbox">
 														<xsl:with-param name="TargetNode" select="CurrentYear1098TReceivedInd"/>
 														<xsl:with-param name="BackupName">IRS8863CY1098TReceivedInd<xsl:number value="position()"/></xsl:with-param>
@@ -521,7 +519,7 @@
 												<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup/CurrentYear1098TReceivedInd"/>
 											</xsl:call-template>
 											<div class="styGenericDiv" style="width:11mm; height:8mm;padding-top:3mm; padding-left:0mm">
-												<input type="checkbox" class="styCkbox" name="Checkbox">
+												<input type="checkbox" class="styCkbox" name="Checkbox"  alt="CurrentYear1098TReceivedInd Yes" >
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup/CurrentYear1098TReceivedInd"/>
 														<xsl:with-param name="BackupName">IRS8863CY1098TReceivedInd<xsl:number value="position() + 1"/></xsl:with-param>
@@ -536,7 +534,7 @@
 												</label>
 											</div>
 											<div class="styGenericDiv" style="width:11mm;padding-top:3mm; padding-left:0mm">
-												<input type="checkbox" class="styCkbox" name="Checkbox">
+												<input type="checkbox" class="styCkbox" name="Checkbox"  alt="CurrentYear1098TReceivedInd No" >
 													<xsl:call-template name="PopulateNoCheckbox">
 														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup/CurrentYear1098TReceivedInd"/>
 														<xsl:with-param name="BackupName">IRS8863CY1098TReceivedInd<xsl:number value="position() + 1"/></xsl:with-param>
@@ -560,15 +558,14 @@
 										<div class="styGenericDiv" style="width:63%; padding-left:0.5mm">
 										</div>
 										<div class="styGenericDiv" style="width:63%;padding-left:0.5mm;">
-											Did the student receive Form 1098-T from this institution for 2018 with box
-											2 filed in and box 7 checked?
+											Did the student receive Form 1098-T from this institution for 2018 with box 7 checked?
 										</div>
 										<span>
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="PriorYear1098TReceivedInd"/>
 											</xsl:call-template>
 											<div class="styGenericDiv" style="width:11mm; height:10mm;padding-top:5.5mm; padding-left:0mm;">
-												<input type="checkbox" class="styCkbox" name="Checkbox">
+												<input type="checkbox" class="styCkbox" name="Checkbox"  alt="PriorYear1098TReceivedInd Yes" >
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="PriorYear1098TReceivedInd"/>
 														<xsl:with-param name="BackupName">IRS8863PY1098TReceivedInd<xsl:number value="position()"/></xsl:with-param>
@@ -583,7 +580,7 @@
 												</label>
 											</div>
 											<div class="styGenericDiv" style="width:11mm;padding-top:5.5mm;padding-left:0mm;">
-												<input type="checkbox" class="styCkbox" name="Checkbox">
+												<input type="checkbox" class="styCkbox" name="Checkbox"  alt="PriorYear1098TReceivedInd No" >
 													<xsl:call-template name="PopulateNoCheckbox">
 														<xsl:with-param name="TargetNode" select="PriorYear1098TReceivedInd"/>
 														<xsl:with-param name="BackupName">IRS8863PY1098TReceivedInd<xsl:number value="position()"/></xsl:with-param>
@@ -605,15 +602,14 @@
 										<div class="styGenericDiv" style="width:63%; padding-left:0.5mm">
 										</div>
 										<div class="styGenericDiv" style="width:63%; padding-left:0.5mm;">
-											Did the student receive Form 1098-T from this institution for 2018 with box
-											2 filed in and box 7 checked?
+											Did the student receive Form 1098-T from this institution for 2018 with box 7 checked?
 										</div>
 										<span>
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup/PriorYear1098TReceivedInd"/>
 											</xsl:call-template>
 											<div class="styGenericDiv" style="width:11mm; height:9mm;padding-top:5.5mm; padding-left:0mm">
-												<input type="checkbox" class="styCkbox" name="Checkbox">
+												<input type="checkbox" class="styCkbox" name="Checkbox"  alt="PriorYear1098TReceivedInd Yes" >
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup/PriorYear1098TReceivedInd"/>
 														<xsl:with-param name="BackupName">IRS8863PY1098TReceivedInd<xsl:number value="position() + 1"/></xsl:with-param>
@@ -628,7 +624,7 @@
 												</label>
 											</div>
 											<div class="styGenericDiv" style="width:11mm;padding-top:5.5mm; padding-left:0mm">
-												<input type="checkbox" class="styCkbox" name="Checkbox">
+												<input type="checkbox" class="styCkbox" name="Checkbox"  alt="PriorYear1098TReceivedInd No" >
 													<xsl:call-template name="PopulateNoCheckbox">
 														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup/PriorYear1098TReceivedInd"/>
 														<xsl:with-param name="BackupName">IRS8863PY1098TReceivedInd<xsl:number value="position() + 1"/></xsl:with-param>
@@ -691,7 +687,7 @@
 											<xsl:with-param name="TargetNode" select="PriorYearCreditClaimedInd"/>
 										</xsl:call-template>
 										<div class="styGenericDiv" style="width:5mm;height:100%;padding-top:2mm; padding-left:1mm;">
-											<input type="checkbox" class="styCkbox" name="Checkbox">
+											<input type="checkbox" class="styCkbox" name="Checkbox"  alt="PriorYearCreditClaimedInd Yes" >
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="PriorYearCreditClaimedInd"/>
 													<xsl:with-param name="BackupName">IRS8863PYCreditClaimedInd<xsl:number value="position()"/></xsl:with-param>
@@ -710,7 +706,7 @@
 											<br/> Go to line 31 for this student.
 										</div>
 										<div class="styGenericDiv" style="width:5mm;padding-top:2mm; padding-left:1mm;height:100%;">
-											<input type="checkbox" class="styCkbox" name="Checkbox">
+											<input type="checkbox" class="styCkbox" name="Checkbox"  alt="PriorYearCreditClaimedInd No" >
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="PriorYearCreditClaimedInd"/>
 													<xsl:with-param name="BackupName">IRS8863PYCreditClaimedInd<xsl:number value="position()"/></xsl:with-param>
@@ -743,7 +739,7 @@
 											<xsl:with-param name="TargetNode" select="AcademicPdEligibleStudentInd"/>
 										</xsl:call-template>
 										<div class="styGenericDiv" style="width:5mm;height:100%;padding-top:3mm; padding-left:1mm">
-											<input type="checkbox" class="styCkbox" name="Checkbox">
+											<input type="checkbox" class="styCkbox" name="Checkbox"  alt="AcademicPdEligibleStudentInd Yes" >
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="AcademicPdEligibleStudentInd"/>
 													<xsl:with-param name="BackupName">IRS8863AcademicPdEligStudentInd<xsl:number value="position()"/></xsl:with-param>
@@ -761,7 +757,7 @@
 											&#150; Go to line 25.
 										</div>
 										<div class="styGenericDiv" style="width:5mm;padding-top:3mm; padding-left:1mm;height:100%;">
-											<input type="checkbox" class="styCkbox" name="Checkbox">
+											<input type="checkbox" class="styCkbox" name="Checkbox"  alt="AcademicPdEligibleStudentInd No" >
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="AcademicPdEligibleStudentInd"/>
 													<xsl:with-param name="BackupName">IRS8863AcademicPdEligStudentInd<xsl:number value="position()"/></xsl:with-param>
@@ -792,7 +788,7 @@
 											<xsl:with-param name="TargetNode" select="PostSecondaryEducationInd"/>
 										</xsl:call-template>
 										<div class="styGenericDiv" style="width:5mm;height:100%;padding-top:2mm; padding-left:1mm">
-											<input type="checkbox" class="styCkbox" name="Checkbox">
+											<input type="checkbox" class="styCkbox" name="Checkbox"  alt="PostSecondaryEducationInd Yes" >
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="PostSecondaryEducationInd"/>
 													<xsl:with-param name="BackupName">IRS8863PostSecondaryEducationInd<xsl:number value="position()"/></xsl:with-param>
@@ -810,7 +806,7 @@
 											&#150; <b>Stop!</b><br/> Go to line 31 for this student.
 										</div>
 										<div class="styGenericDiv" style="width:5mm;padding-top:2mm; padding-left:1mm;height:100%;">
-											<input type="checkbox" class="styCkbox" name="Checkbox">
+											<input type="checkbox" class="styCkbox" name="Checkbox"  alt="PostSecondaryEducationInd No" >
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="PostSecondaryEducationInd"/>
 													<xsl:with-param name="BackupName">IRS8863PostSecondaryEducationInd<xsl:number value="position()"/></xsl:with-param>
@@ -842,7 +838,7 @@
 											<xsl:with-param name="TargetNode" select="DrugFelonyConvictionInd"/>
 										</xsl:call-template>
 										<div class="styGenericDiv" style="width:5mm;height:100%;padding-top:3.5mm; padding-left:1mm">
-											<input type="checkbox" class="styCkbox" name="Checkbox">
+											<input type="checkbox" class="styCkbox" name="Checkbox"  alt="DrugFelonyConvictionInd Yes" >
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="DrugFelonyConvictionInd"/>
 													<xsl:with-param name="BackupName">IRS8863DrugFelonyConvictionInd<xsl:number value="position()"/></xsl:with-param>
@@ -861,7 +857,7 @@
 											<br/> Go to line 31 for this student.
 										</div>
 										<div class="styGenericDiv" style="width:5mm;padding-top:3.5mm; padding-left:1mm;height:100%;">
-											<input type="checkbox" class="styCkbox" name="Checkbox">
+											<input type="checkbox" class="styCkbox" name="Checkbox"  alt="DrugFelonyConvictionInd No" >
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="DrugFelonyConvictionInd"/>
 													<xsl:with-param name="BackupName">IRS8863DrugFelonyConvictionInd<xsl:number value="position()"/></xsl:with-param>
@@ -1050,8 +1046,8 @@ enter
 								<span style="font-weight:bold">(American Opportunity and Lifetime Learning Credits)</span>
 							</div>
 							<div class="styFBT" stype="font-size:7pt;height:auto;padding-top:0mm;">
-							    <img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/> Attach to Form 1040 or 1040-SR.<br/>
-								<img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/> Go to <i>www.irs.gov/Form8863</i> for instructions and the latest information.
+							    <img src="{$ImagePath}/8863_Bullet.gif" alt="Right Arrow"/> Attach to Form 1040 or 1040-SR.<br/>
+								<img src="{$ImagePath}/8863_Bullet.gif" alt="Right Arrow"/> Go to <i>www.irs.gov/Form8863</i> for instructions and the latest information.
 							</div>
 						</div>
 						<div class="styTYBox" style="width:31mm; height:100%">
@@ -1146,7 +1142,7 @@ enter
 					<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-top:1mm;padding-left: 4.25mm">3</div>
 						<div class="styLNDesc" style="font-size:7pt;width:104.98mm;height:4mm;padding-top:1mm;">
-                            Enter the amount from Form 1040 or 1040-SR, line 8b. If you're
+                            Enter the amount from Form 1040 or 1040-SR, line 8. If you're
 		                    filing Form 2555 or 4563, or you're excluding income from Puerto Rico, see Pub. 970 for the amount
 		                    <span style="float:left;"> to enter</span>
 	                        <!--Dotted Line -->
@@ -1271,27 +1267,29 @@ enter
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-top:1mm;padding-left: 4.25mm">7</div>
 						<div class="styLNDesc" style="font-size:7pt;width:137mm;height:4mm;padding-top:1mm;">
 							Multiply line 1 by line 6. 
-							<label>
-								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$PartIData/RefundableAmerOppCrUnder24Ind"/>
-									<xsl:with-param name="BackupName">PartIDataRefundableAmerOppCrUnder24Ind</xsl:with-param>
-								</xsl:call-template>
-							
+
 									<b>Caution:</b> If you were under age 24 at the end of the year <b>and</b> meet<br/>
 									the conditions described in the instructions, you <b>can't</b> take the refundable American opportunity<br/>
 									<span style="float:left;">credit; skip line 8, enter the amount from line 7 on line 9, and check this box	</span>
 									<!--Dotted Line -->
-									<span class="styDotLn" style="padding-left:1mm;padding-right:1mm;">........</span>				 						        					
-							</label>
-							<img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/>	
+									<span class="styDotLn" style="padding-left:1mm;padding-right:1mm;">........</span>	
+									<img src="{$ImagePath}/8863_Bullet.gif" alt="Right Arrow"/>			 						        					
+
+								
 						</div>
 						<div class="styLNDesc" style="font-size:7pt;width:5mm;height:11mm;padding-top:7mm;">
-							<input type="checkbox" class="styCkbox">
+							<input type="checkbox" class="styCkbox"  alt="Refundable American Opportunity Credit Indicator" >
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$PartIData/RefundableAmerOppCrUnder24Ind"/>
 									<xsl:with-param name="BackupName">PartIDataRefundableAmerOppCrUnder24Ind</xsl:with-param>
 								</xsl:call-template>
 							</input>
+							<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$PartIData/RefundableAmerOppCrUnder24Ind"/>
+									<xsl:with-param name="BackupName">PartIDataRefundableAmerOppCrUnder24Ind</xsl:with-param>
+								</xsl:call-template>
+							</label>
 						</div>
 						</span>
 						<span style="width:36.9mm;float:right;">				
@@ -1438,7 +1436,7 @@ enter
 						<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:12mm;padding-left: 2.25mm">14</div>
 						<div class="styLNDesc" style="font-size:7pt;width:104.98mm;height:4mm;">
-			                Enter the amount from Form 1040 or 1040-SR, line 8b. If you're
+			                Enter the amount from Form 1040 or 1040-SR, line 8. If you're
 			                filing Form 2555, or 4563, or you're excluding income from Puerto Rico, see Pub. 970 for the amount
 			                <span style="float:left;"> to enter</span>
                             <!--Dotted Line-->
@@ -1546,7 +1544,7 @@ enter
 						<div class="styLNDesc" style="width:142mm;height:5mm;padding-top:1mm;">
                              Multiply line 12 by line 17. Enter here and on line 1 of the Credit Limit Worksheet (see instructions)
  							<span class="styBoldText" style="width:3mm;"></span>
-							<img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/>
+							<img src="{$ImagePath}/8863_Bullet.gif" alt="Right Arrow"/>
 						</div>
 						</span>
 						<span style="float:right;">

@@ -556,7 +556,7 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!--Part I, Line 9a empty table for separated format -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Section 951A income</td>
@@ -584,7 +584,7 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!--Part I, Line 9b empty table for separated format -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">b</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Foreign branch income</td>
@@ -592,7 +592,7 @@
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-width:2px;">
+
                     <span class="styTableCellPad"/>(<span style="width:16px;">)</span>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;">
@@ -612,7 +612,7 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!--Part I, Line 9c empty table for separated format -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Passive category income</td>
@@ -640,7 +640,7 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!--Part I, Line 9d empty table for separated format -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">d</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">General category income</td>
@@ -668,12 +668,12 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!--Part I, Line 9e empty table for separated format -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">e</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" 
 					  scope="row">Other income*(identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>)</td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px; ">
+
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
@@ -697,7 +697,7 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!--Part I, Line 10 empty table for separated format -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" valign="top">10</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Recapture of overall domestic losses</td>
@@ -725,13 +725,13 @@
                     <span class="styTableCellPad"/>(<span style="width:16px;">)</span>
                   </td>
                 </tr>
-                <!--Part I, Line 11 empty table for separated format -->
+
                 <tr>
-                  <td class="IRS1118ScheduleJ_IndexCell" scope="row" valign="top">11</td>
-                  <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;border-bottom-width:1px;">
+
+
                     <span style="font-weight:bold;">Numerator of Limitation Fraction-</span>Combine lines 8 through 10. 
-                    Enter each result here and on Schedule B, Part II, line 7, of corresponding Form 1118. 
-                    of corresponding Schedule B.</td>
+
+
                   <td class="IRS1118ScheduleJ_GenericCell" valign="bottom" style="font-size:10px;border-bottom-width:1px;">
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
@@ -752,18 +752,18 @@
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;background-color:lightgrey; border-right-width:0px;border-bottom-width:1px;" 
-					  valign="bottom">
+
+
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-			  </tbody>
-			</table>
+
+
 				<div style="width:256mm">
 				    <div style="float: left; clear: none;">
-						<span style="padding-right:0 mm;"><b>* Important:</b> See <i><b>Computer-Generated Schedule J</b>
-								</i>	in instructions.
+
+
 						</span>
 				    </div>
 				</div>
@@ -771,9 +771,9 @@
 				<!-- Page Break and Footer-->
 				
 					<div style="width:256mm;clear:both;padding-top:0.4mm;" class="pageend">
-						<div style="width:120mm;font-weight:bold;font-size:7pt" class="styGenericDiv">For Paperwork Reduction Act Notice, 
+
 						 see the Instructions for Form 1118.</div>
-						<div style="width:40mm;text-align:center;" class="styGenericDiv">Cat. No. 10309U</div>
+
 						<div style="float:right;" class="styGenericDiv"><b>Schedule J (Form 1118) (Rev. 12-2020)</b></div>
 					</div>
 					<br/>
@@ -785,23 +785,23 @@
 					   Schedule J (Form 1118) (Rev. 12-2020)
 						<span style="width:15mm;float:right;">Page <span class="styBoldText" style="font-size:8pt;">2</span>
 						</span>
-					</div>	
+
 					
 				<!-- END Page Header -->
-                <!-- Part II title -->
-			<table cellspacing="0" style="font-size:7pt;">
-			  <tbody>
+
+
+
                 <tr>
                   <td class="IRS1118ScheduleJ_DescCell" colspan="8" scope="row" 
-						 style="padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:2px;
+
                    font-weight:bold;font-size:8pt;width:256mm;padding-left:0px;height:8mm;">
                     <div class="styTitleName" style="height:4.7mm;">Part II</div>
                     <span style="width:3mm;padding-top:1mm;"/> 
                       Year-End Balances of Future Separate Limitation Income That Must Be Recharacterized<br/>
-                    <span style="padding-left:4mm;font-weight:bold;">(section 904(f)(5)(C))</span>
+
                   </td>
                 </tr>
-                <!-- Part II Empty Table Header for separated format -->
+
                 <tr>
                   <th class="IRS1118ScheduleJ_GenericCell" style=" width:58mm;height:10mm;font-weight:normal;text-align:center;" colspan="2" scope="col"/>
                   <th class="IRS1118ScheduleJ_GenericCell" style="height:10mm;font-size:7pt;font-weight:normal;text-align:center;" scope="col">
@@ -830,12 +830,12 @@
 					   <br/>U.S. income
 					</th>
 				</tr>
-                <!-- End Part II Empty Table Header for separated format -->
-                <!--Part II, Line a empty table for separated format -->
+
+
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Section 951A income</td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;" valign="bottom">
+
                     <!--See Additional Data tabel message -->
 					<xsl:call-template name="PopulateAdditionalDataTableMessage">
 					  <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtSection951AIncome"/>
@@ -864,7 +864,7 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>  
-                <!--Part II, Line b empty table for separated format -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">b</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Foreign branch income</td>
@@ -892,7 +892,7 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!--Part II, Line c empty table for separated format -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Passive category income</td>
@@ -904,7 +904,7 @@
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;background-color:lightgrey;">
+
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
 				  </td>
@@ -921,10 +921,10 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>  
-                <!--Part II, Line d empty table for separated format -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">d</td>
-                  <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">General category income </td>
+
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;">
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
@@ -937,7 +937,7 @@
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;background-color:lightgrey">
+
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
@@ -950,10 +950,10 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!--Part II, Line e empty table for separated format -->
+
                 <tr>
-                  <td class="IRS1118ScheduleJ_SubIndexCell" scope="row" style="border-bottom-width:0px;">e</td>
-                  <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;border-bottom-width:0px;" 
+
+
 					  scope="row">Other income*(identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>)</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-bottom-width:0px;">
                     <span class="styTableCellPad"/>
@@ -963,7 +963,7 @@
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="border-bottom-width:0px; ">
+
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
@@ -971,33 +971,33 @@
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="border-bottom-width:0px;font-size:10px;background-color:lightgrey;">
+tyle="border-right-width:1px;font-size:10px;">
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
 				  </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="border-bottom-width:0px;border-right-width:0px;background-color:lightgrey;">
+     <<< merge needed >>>
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!-- Part III title -->
+             <!--Part I, Line 9d empty table for separated <<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_DescCell" colspan="8" scope="row" 
-                  style="width:256mm;border-top-width:2px;border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
-                    <div class="styTitleName" style="height:4.7mm;">Part III
+
+
                     </div>
                     <span style="width:3mm;"/> 
                         Overall Foreign Loss Account Balances (section 904(f)(1))  
                       <span style="padding-left:3mm;">
-						<span style="font-style:italic;font-weight:normal;">Complete for <b>each </b>
-                          separate limitation income category.</span>
-                      </span>
+
+ </td>
+                  <td class="IRS1118ScheduleJ_GenericCell" style="backgro<<< merge needed >>>
                   </td>
                 </tr>
-                <!-- Part III, line 1 empty line in separated format -->
+
                 <tr>
-                  <td class="IRS1118ScheduleJ_IndexCell" scope="row" valign="bottom" style="padding-left:2mm;">1</td>
-                  <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" valign="bottom" scope="row">Beginning balance</td>
+/spa<<< merge needed >>>
+
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px">
                     <!--See Additional Data tabel message -->
 					<xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -1028,7 +1028,7 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!-- Part III, line 2 empty line in separated format -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Current year additions</td>
@@ -1057,7 +1057,7 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!-- Part III, line 3 empty line in separated format  -->
+px;"/>
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Current year reductions (other than recapture)</td>
@@ -1081,7 +1081,7 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!-- Part III, line 4 empty line in separated format  -->
+                  </td>
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Current year recapture (from Part I, line 7)</td>
@@ -1105,7 +1105,7 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!-- Part III, line 5 empty line in separated format -->
+"styGenericDiv"><b>Schedule <<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="border-bottom-width:0px;padding-left:2mm;" valign="top">5</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;border-bottom-width:0px;" scope="row">
@@ -1135,7 +1135,7 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!-- Part IV title -->
+g-top:1mm;float:left">
                 <tr>
                   <td class="IRS1118ScheduleJ_DescCell" colspan="8" scope="row" style="width:256mm;padding-top:0px;padding-bottom:0px;border-top-width:2px;
                    border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
@@ -1144,11 +1144,11 @@
                       Overall Domestic Loss Account Balances (section 904(g)(1))
                   </td>
                 </tr>
-                <!-- Part IV, line 1 empty line in separated format -->
+					   Schedule J (Form 1118) (Rev. 12-2020)
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">1</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Beginning balance</td>
-                  <!--Column (i) -->
+						<span styl<<< merge needed >>>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px">
                     <!--See Additional Data tabel message -->
 					<xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -1178,7 +1178,7 @@
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
-                <!-- Part IV, line 2 empty line in separated format -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Current year additions</td>
@@ -1207,9 +1207,9 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!-- Part IV, line 3 empty line in separated format -->
+ells<<< merge needed >>>
                 <tr>
-                  <!-- new7-->
+
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Current year reductions (other than recapture)</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
@@ -1232,11 +1232,11 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!-- Part IV, line 4 empty line in separated format -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Subtotal-</span>Combine lines 1 through 3.
+e:7pt;font-weight:normal;text-al<<< merge needed >>>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;">
                     <span class="styTableCellPad"/>
@@ -1263,7 +1263,7 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!-- Part IV, line 5 empty line in separated format -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">5</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Current year recapture (from Part I, line 10)</td>
@@ -1292,11 +1292,11 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!-- Part IV, line 6 empty line in separated format -->
+t">(<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Ending balance-</span>Subtract line 5 from line 4.
+
                     </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;">
                     <span class="styTableCellPad"/>
@@ -1325,33 +1325,33 @@
                 </tr>
               </tbody>
             </table>
-				<!-- Begin Footer for Empty Separated Section -->
+
 				<div style="width:256mm">
 				    <div style="float: left; clear: none;">
-						<span style="padding-right:0 mm"><b>* Important:</b> See <i><b>Computer-Generated Schedule J</b></i>
+th>
 							in instructions.
 						</span>
 				    </div>
-					  <span style="width:112mm;"/>						
-					  <span class="styBoldText">Schedule J (Form 1118) (Rev. 12-2020)</span>
+                  <th class<<< merge needed >>>
+mpty<<< merge needed >>>
 				</div>
 				<div class="styFixedUnderline" style="border-bottom-width:2px;width:256mm;"/>
-				<!-- End Footer for Empty Separated Section -->
+                    <span style="width:4px;"/>
 					<div class="pageEnd"/>
           </div>
         </xsl:if>
         <!-- If the Separate Print Option is OFF OR if the Separate Print Option is ON and there is 0 or 1 data -->
-        <!-- for each repeating element, print the table with data inline.-->
-        <xsl:if test=" ($Print != $Separated) or
-            ( ($Print = $Separated) and
-            ( (count($FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt) &lt; 2) and
-             (count($FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/OtherIncomeAmt) &lt; 2) and
-             (count($FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/OtherIncomeAmt) &lt; 2) and
-             (count($FormData/AdjSepLmtOtherIncome) &lt; 2) ) )">
-          <!-- Part I  table 1 This is the primary table I think for inline format-->
-          <div class="IRS1118ScheduleJ_TableContainer" 
-			  style="width:256mm; border-top-width:0px;border-bottom-width:0px;page-break-after:always;display:block" id="adjSpLmInc">
-            <!--Part I table for inline format -->
+                  </td>
+                  <td class="IRS1118ScheduleJ_<<< merge needed >>>
+
+duleJ_GenericCell" style="bo<<< merge needed >>>
+  <<< merge needed >>>
+
+ <<< merge needed >>>
+
+scope="row">c</td>
+                  <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font<<< merge needed >>>
+
             <table cellspacing="0" style="font-size:7pt;">
               <thead style="display:table-row-group;font-weight:normal;text-align:center;">
                 <tr>
@@ -1374,12 +1374,12 @@
                     <br/>General category income
 	          </th>
                   <th class="IRS1118ScheduleJ_GenericCell" 
-					    style="width:32mm;height:10mm;border-right-width:1px;font-size:7pt;font-weight:normal;text-align:center" scope="col">
+
                     <span class="styBoldText">(v)</span>
                     <xsl:call-template name="SetFormLinkInline">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]"/>
                     </xsl:call-template>
-                    <br/>Other income* <!--<xsl:number value="position()" format="1"/>-->
+>
 								(identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>
 								<span class="styUnderlineText" 
 								style="padding-left:2mm; text-align:left;">
@@ -1419,11 +1419,11 @@
               </thead>
               <tfoot/>
               <tbody>
-                <!--Part I, line 1 for inline format -->
+                    <span cla<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">1</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Income or (loss) before adjustments</td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="width:32mm;font-size:10px" valign="bottom">
+
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtSection951AIncome/TotIncmOrLossBfrAdjustmentsAmt"/>
                     </xsl:call-template>
@@ -1454,7 +1454,7 @@
                     </xsl:call-template>
                   </td>
                 </tr>
-                <!--Part I, line 2 for inline format -->
+lass<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">2</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Allocation of separate limitation losses:</td>
@@ -1481,151 +1481,151 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!--Part I, line 2a for inline format  -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Section 951A income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtSection951AIncome/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtForeignBranchIncome/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"/>
+               <div class="styTitleName" style="height:4.7mm;">Part<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtPassiveCategoryIncm/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"/>
+</td>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"/>
+                  <td class="IRS1118ScheduleJ_GenericCell<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:9.5px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtOtherIncome[1]/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part I, line 2b for inline format -->
+="IRS1118ScheduleJ_GenericCe<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">b</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Foreign branch income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtSection951AIncome/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+rt III, line 2 empty line in separated format -->
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtForeignBranchIncome/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+                <tr>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtPassiveCategoryIncm/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+                  <td class="IRS11<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:9.5px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[1]/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px">
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;border-right-width:0px"/>
                 </tr>
-                <!--Part I, line 2c for inline format  -->
+         <<< merge <<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Passive category income</td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:9.5px;" valign="bottom">
+J_Ge<<< merge needed >>>
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtSection951AIncome/AllocationCYSeparateLmtLosses/PassiveCategoryIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtForeignBranchIncome/AllocationCYSeparateLmtLosses/PassiveCategoryIncomeAmt"/>
+ <span class="styTableCellPad"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtPassiveCategoryIncm/AllocationCYSeparateLmtLosses/PassiveCategoryIncomeAmt"/>
+                    <span style="width:1<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/PassiveCategoryIncomeAmt"/>
+        <span style="width:16px;"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:9.5px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtOtherIncome[1]/AllocationCYSeparateLmtLosses/PassiveCategoryIncomeAmt"/>
+                  </td>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part I, line 2d for inline format -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">d</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">General category income </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtSection951AIncome/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtForeignBranchIncome/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+J_GenericCell" s<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtPassiveCategoryIncm/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+th:16px;"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+                  </td>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:9.5px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtOtherIncome[1]/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+           <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;border-right-width:0px"/>
                 </tr>
-                <!--Part I, line 2e for inline format  -->
+tMessage" select=" 'true' <<< merge needed >>>
                 <!--Need to show the row e even when there is no data -->
                 <xsl:if test="not($FormData/AllocationSepLmtLossOthIncmGrp)">
                   <tr>
@@ -1637,10 +1637,10 @@
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;">
                       <span class="styTableCellPad"/>(<span style="width:16px;"/>)
                     </td>
-                    <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;">
+tions</td>
                       <span class="styTableCellPad"/>(<span style="width:16px;"/>)
                     </td>
-                    <td class="IRS1118ScheduleJ_GenericCell" style="border-top-width:1px;font-size:10px;">
+                  <td<<< merge needed >>>
                       <span class="styTableCellPad"/>(<span style="width:16px;"/>)
                     </td>
                     <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:10px;">
@@ -1649,7 +1649,7 @@
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;"/>
                   </tr>
                 </xsl:if>
-                <!-- Part I Line 2e repeating lines Regular Print-->
+Ce<<< merge needed >>>
                 <!-- Tracks the number of rows repeating for e to determine the color that row 3 would start. -->
                 <xsl:variable name="twoICounter" select="count($FormData/AllocationSepLmtLossOthIncmGrp)"/>
                 <xsl:for-each select="$FormData/AllocationSepLmtLossOthIncmGrp">
@@ -1661,9 +1661,9 @@
                   <tr>
                     <!-- If the position of the repeating e row is odd, then the current row is set to styDepTblRow1. -->
                     <!-- Otherwise, the current row is set to styDepTblRow2.                                          -->
-                    <td class="IRS1118ScheduleJ_SubIndexCell" style="" scope="row">e</td>
+
                     <td class="styTableCell" style="text-align:left;padding-left:1mm">
-							Other income*
+"/>
 								(identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>
 								<span class="styUnderlineText" 
 								style="padding-left:2mm; text-align:left;">
@@ -1693,25 +1693,25 @@
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                       <xsl:call-template name="PopulateNegativeNumber">
                         <xsl:with-param name="TargetNode" 
-								select="Section951AIncomeAmt"/>
+                  </td>
                       </xsl:call-template>
                     </td>
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                       <xsl:call-template name="PopulateNegativeNumber">
                         <xsl:with-param name="TargetNode" 
-								select="ForeignBranchIncomeAmt"/>
+              <<< merge needed >>>
                       </xsl:call-template>
                     </td>
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                       <xsl:call-template name="PopulateNegativeNumber">
                         <xsl:with-param name="TargetNode" 
-								select="PassiveCategoryIncomeAmt"/>
+e 4.
                       </xsl:call-template>
                     </td>
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                       <xsl:call-template name="PopulateNegativeNumber">
                         <xsl:with-param name="TargetNode" 
-								select="GeneralCategoryIncomeAmt"/>
+                    </td>
                       </xsl:call-template>
                     </td>
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px; border-right-width:1px;border-width:2px;" valign="bottom">
@@ -1726,8 +1726,8 @@
                     <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;border-right-width:0px"/>
                   </tr>
                 </xsl:for-each>
-                <!-- End Part I Line 2e repeating lines -->
-                <!--Part I, line 3 for inline format -->
+     <<< merge needed >>>
+
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
@@ -1735,41 +1735,41 @@
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtSection951AIncome/TotIncomeOrLossCYAllocationAmt"/>
+ <span class="styTableCellPa<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtForeignBranchIncome/TotIncomeOrLossCYAllocationAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtPassiveCategoryIncm/TotIncomeOrLossCYAllocationAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtGeneralCategoryIncm/TotIncomeOrLossCYAllocationAmt"/>
+ze:10px;">
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/TotIncomeOrLossCYAllocationAmt"/>
+               <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;border-top-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtUSIncome/TotIncomeOrLossCYAllocationAmt"/>
+ass="styTableCellPad"/>
                     </xsl:call-template>
                   </td>
                 </tr>
-                <!--Part I, line 4 for inline format -->
+                    <s<<< merge neede<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Allocation of overall foreign losses</td>
@@ -1798,13 +1798,13 @@
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/OverallForeignLossesAmt"/>
                     </xsl:call-template>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:9.5px;border-right-width:0px" valign="bottom">
+
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtUSIncome/OverallForeignLossesAmt"/>
                     </xsl:call-template>
                   </td>
                 </tr>
-                <!--Part I, line 5 for inline format -->
+1px;font-size:10px;">
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">5</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Allocation of domestic losses</td>
@@ -1830,7 +1830,7 @@
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:9.5px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome/DomesticLossesAmt"/>
+    <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:10px;" valign="bottom">
@@ -1839,7 +1839,7 @@
                     </xsl:call-template>
                   </td>
                 </tr>
-                <!--Part I, line 6 for inline format  -->
+                    <span s<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row">
@@ -1877,7 +1877,7 @@
                     </xsl:call-template>
                   </td>
                 </tr>
-                <!--Part I, line 7 for inline format -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">7</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Recapture of overall foreign losses</td>
@@ -1912,16 +1912,16 @@
                     </xsl:call-template>
                   </td>
                 </tr>
-                <!--Part I, line 8 for inline format -->
+s<<< merge needed >>>
                 <!-- Tracks the number of rows repeating for e to determine the color that the row 8 would start. -->
-                <!--<xsl:variable name="sevenICount" select="count($FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/OtherIncomeAmt)"/>
+
                 <xsl:for-each select="$FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/OtherIncomeAmt">
                   <xsl:variable name="pos" select="position()"/>
-                  --><!--///////////////////////////////////////////////////////////////////////////////////
+span class="styTableCellPad"/>
                         Note that the repeating rows are assumed to be filled in full by the corresponding columns - otherwise there is no way to
                         find out how they line up.  Hence the number of repetition are assumed to be the SAME for all columns.
-                        ///////////////////////////////////////////////////////////////////////////////////--><!--
-                </xsl:for-each>-->
+                    <span style="width:16px;"/>
+    <<< merge needed >>>
                 <!-- end repeating rows -->
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">8</td>
@@ -1958,7 +1958,7 @@
                     </xsl:call-template>
                   </td>
                 </tr>
-                <!--Part I, line 9 for inline format  -->
+ncome
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">9</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Recharacterization of separate limitation income:</td>
@@ -1984,147 +1984,147 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!--Part I, line 9a for inline format  -->
+	          </th>
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
-                  <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Section 951A income </td>
+     <<< merge needed >>>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtSection951AIncome/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+therIncome/OtherIncomeDesc"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtForeignBranchIncome/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+	<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtPassiveCategoryIncm/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+t<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-bottom-width:1px;border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part I, line 9b for inline format -->
+tegoryIncm<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">b</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Foreign branch income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtSection951AIncome/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-width:2px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtForeignBranchIncome/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+;" vali<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtPassiveCategoryIncm/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:1px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+</td>
                     </xsl:call-template>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;border-bottom-width:1px;border-right-width:0px"/>
+                  <td class="IRS1118ScheduleJ_G<<< merge needed >>>
                 </tr>
-                <!--Part I, line 9c for inline format  -->
+               <span class="styTabl<<<<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Passive category income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtSection951AIncome/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtForeignBranchIncome/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+ound-color:lightgrey<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtPassiveCategoryIncm/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+idth:2px;font-size:10px;" valign="bottom">
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-bottom-width:1px;border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part I, line 9d for inline format -->
+       <<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">d</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">General category income </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtSection951AIncome/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtForeignBranchIncome/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+me="TargetNode" 
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtPassiveCategoryIncm/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+							  select="$FormData/A<<< merge needed >>>
                     </xsl:call-template>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:9.5px;" valign="bottom">
+tiv<<< merge needed >>>
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+:call-template>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:1px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+                  </td>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;border-right-width:0px"/>
                 </tr>
-                <!--Part I, line 9e for inline format and regular print-->
+ <<< merge needed >>>
                 <xsl:if test="not($FormData/RchrctrztnSepLmtOtherIncmGrp)">
                   <tr>
                     <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">e</td>
@@ -2144,10 +2144,10 @@
                     <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;">
                       <span class="styTableCellPad"/>(<span style="width:16px;"/>)
                     </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgreyborder-bottom-width:1px;"/>
+<<< merge needed >>>
                   </tr>
                 </xsl:if>
-                  <!-- Part I Line 9e repeating table inline and regular print-->
+
                 <xsl:for-each select="$FormData/RchrctrztnSepLmtOtherIncmGrp">
                   <xsl:variable name="pos" select="position()"/>
                   <!--///////////////////////////////////////////////////////////////////////////////////
@@ -2159,7 +2159,7 @@
                     <!-- Otherwise, the current row is set to styDepTblRow2.                                          -->
                     <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">e</td>
                     <td class="styTableCell" style="text-align:left;padding-left:1mm">
-						Other income*  (identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>
+tegoryIncm/AllocationCYSepar<<< merge needed >>>
 						<span class="styUnderlineText" 
 						style="padding-left:2mm; text-align:left;">
 							<xsl:call-template name="PopulateText">
@@ -2187,22 +2187,22 @@
 					</td>
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px; " valign="bottom">
                       <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="Section951AIncomeAmt"/>
+>
                       </xsl:call-template>
                     </td>
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                       <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="ForeignBranchIncomeAmt"/>
+                    <xsl:call-template name="PopulateNegativeNumber">
                       </xsl:call-template>
                     </td>
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px; " valign="bottom">
                       <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="PassiveCategoryIncomeAmt"/>
+        <<< merge needed >>>
                       </xsl:call-template>
                     </td>
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                       <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="GeneralCategoryIncomeAmt"/>
+
                       </xsl:call-template>
                     </td>
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px; border-right-width:1px;border-width:2px;" valign="bottom">
@@ -2213,12 +2213,12 @@
 							</xsl:call-template>
 							<!--<br/>
 						</xsl:for-each>-->
-					</td>	
+
                     <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;border-right-width:0px"/>
                   </tr>
                 </xsl:for-each>
-                <!-- End Part I Line 9e repeating table -->
-                <!--Part I, line 10 for inline format  -->
+ow">c</td>
+         <<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" valign="top">10</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Recapture of overall domestic losses</td>
@@ -2230,7 +2230,7 @@
 						  Indicator
                       </xsl:with-param>
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtSection951AIncome/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+    <<< merge needed >>>
                     </xsl:call-template>
                    </span>
                     <xsl:call-template name="PopulateAmount">
@@ -2244,7 +2244,7 @@
                       <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Passive Income Colun (ii) - Allocation of domestic losses Indicator
                       </xsl:with-param>
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtForeignBranchIncome/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+
                     </xsl:call-template>
                     </span>
                     <xsl:call-template name="PopulateAmount">
@@ -2259,7 +2259,7 @@
 						  Indicator
                       </xsl:with-param>
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtPassiveCategoryIncm/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+"/>
                     </xsl:call-template>
                    </span>
                     <xsl:call-template name="PopulateAmount">
@@ -2273,7 +2273,7 @@
                       <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Passive Income Colun (ii) - Allocation of domestic losses Indicator
                       </xsl:with-param>
                       <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtGeneralCategoryIncm/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+ <<< merge needed >>>
                     </xsl:call-template>
                     </span>
                     <xsl:call-template name="PopulateAmount">
@@ -2294,7 +2294,7 @@
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/RcptrOverallDomesticLossesAmt"/>
                     </xsl:call-template>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:9px;border-width:2px;" valign="bottom">
+eneral category income </td>
                     <!--Pen and ink image -->
                    <span style="padding-right:2mm">
                    <xsl:call-template name="LinkToLeftoverDataTableInline">
@@ -2309,12 +2309,12 @@
                     </xsl:call-template>
                   </td>
                 </tr>
-                <!--Part I, line 11 for inline format -->
+                  <td cla<<< me<<< merge needed >>>
                 <tr>
-                  <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="border-bottom-width:2px;" valign="top">11</td>
-                  <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;border-bottom-width:2px;">
+reignBranchIncome/AllocationCYSep<<< merge needed >>>
+ </td>
                     <span style="font-weight:bold;">Numerator of Limitation Fraction-</span>Combine lines 8 through 10. 
-						Enter each result here and on Schedule B, Part II, line 7, of corresponding Form 1118. </td>
+                  <t<<< merge needed >>>
                   <td class="IRS1118ScheduleJ_GenericCell" valign="bottom" style="font-size:10px;border-bottom-width:2px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtSection951AIncome/NumLimitationFractionAmt"/>
@@ -2335,31 +2335,31 @@
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/NumLimitationFractionAmt"/>
                     </xsl:call-template>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:1px;border-bottom-width:2px;" valign="bottom">
+18ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/NumLimitationFractionAmt"/>
                     </xsl:call-template>
                   </td>
-                    <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;border-right-width:0px;border-bottom-width:2px;"/>
+        <<< merge needed >>>
                 </tr>
-            </tbody>
-        </table>
-			<!-- Start footer Bottom Part I in regular print mode -->
+                <tr>
+      <<< merge needed >>>
+<<< merge needed >>>
 				<div style="width:256mm">
 				    <div style="float: left; clear: none;">
-						<span style="padding-right:0 mm;"><b>* Important:</b> See <i><b>Computer-Generated Schedule J</b></i>	
+
 							in instructions.
 						</span>
 				    </div>
 				</div>
 				<div class="styFixedUnderline" style="border-bottom-width:2px;width:256mm;"/>
-			<!-- End footer Bottom Part I in regular print mode -->
+:call-template><<< merge needed >>>
 				<!-- Page Break and Footer-->
 				
 					<div style="width:256mm;clear:both;padding-top:0.4mm;" class="pageend">
-						<div style="width:120mm;font-weight:bold;font-size:7pt" class="styGenericDiv">For Paperwork Reduction Act Notice,
+
 						 see the Instructions for Form 1118.</div>
-						<div style="width:80mm;text-align:center" class="styGenericDiv">Cat. No. 10309U</div>
+>
 						<div style="float:right;" class="styGenericDiv"><b>Schedule J (Form 1118) (Rev. 12-2020)</b></div>
 					</div>
 					<br/>
@@ -2373,9 +2373,9 @@
 						</span>
 					</div>
 				<!-- END Page Header -->
-                <!-- Part II Title for inline format -->
-		<table cellspacing="0" style="font-size:7pt;">
-		  <tbody>
+                <tr>
+   <<< merge needed >>>
+lect="$FormData/AdjSepLmtGen<<< merge needed ><<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_DescCell" colspan="8" scope="row" 
 						  style="padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:2px;
@@ -2383,38 +2383,38 @@
                     <div class="styTitleName" style="height:4.7mm;">Part II</div>
                     <span style="width:3mm;padding-top:1mm;"/> 
                       Year-End Balances of Future Separate Limitation Income That Must Be Recharacterized<br/>
-                    <span style="padding-left:4mm;font-weight:bold;bac">(section 904(f)(5)(C))</span>
+emplate name="PopulateAmount"><<< merge needed >>>
                   </td>
                 </tr>
-                <!-- Part II Header for inline format -->
-				 <thead style="display:table-row-group;font-weight:normal;text-align:center;">
-					<tr>
-					  <th class="IRS1118ScheduleJ_GenericCell" style="width:58mm;height:10mm;font-weight:normal;text-align:center;" colspan="2" scope="col">
-					  <span style="width:1px;" /></th>
+>
+                  <td c<<< merge needed >>>
+
+getNode" select="$For<<< merge needed >>>
+Data/AdjSepLmtUSIncome/OverallForeignLossesAmt"/>
 					  <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;" scope="col">
-						<span class="styBoldText">(i)</span>
-						<br/>Section 951A income
+                    </x<<< merge needed <<< merge needed >>>
+              <xs<<< merge needed >>>
 					  </th>
 					  <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;" scope="col">
-						<span class="styBoldText">(ii)</span>
-						<br/>Foreign branch income
+
+bottom">
 					  </th>
 					  <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;" scope="col">
-						<span class="styBoldText">(iii)</span>
-						<br/>Passive category income
+                    <xsl:call-template name="Popul<<< merge needed >>>
+heduleJ_GenericCell" style="font-size:9.5px;" valign="bottom">
 					  </th>
 					  <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;" scope="col">
-						<span class="styBoldText">(iv)</span>
-						<br/>General category income
+                    <xsl<<< me<<< merge needed >>>
+              <!--Part I, line 6 for inline format  -->
 					  </th>
 					  <th class="IRS1118ScheduleJ_GenericCell" 
-							style="width:32mm;height:10mm;border-right-width:1px;font-size:7pt;font-weight:normal;text-align:center;" 
-								scope="col">
-						<span class="styBoldText">(v)</span>
-						<xsl:call-template name="SetFormLinkInline">
-						  <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]"/>	
+            <<< merge needed >>>
+ style="font-s<<< merge needed >>>
+
+
+AndAllocnCYAmt"/>
 						</xsl:call-template>
-						<br/>Other income* <!--<xsl:number value="position()" format="1"/>-->
+         <<< merge needed >>>
 								(identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>
 								<span class="styUnderlineText" 
 								style="padding-left:2mm; text-align:left;">
@@ -2442,19 +2442,19 @@
 								</span>
 					  </th>
 					  <th class="IRS1118ScheduleJ_GenericCell" 
-							style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;border-right-width:0px;" 
-							scope="col">
-						<span class="styBoldText">(vi)</span>
-						<br/>U.S. income
-								<xsl:call-template name="SetFormLinkInline">
-						  <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtUSIncome"/>
-						  <xsl:with-param name="Style">width:10mm;text-align:right;padding-left:16mm</xsl:with-param>
+elec<<< merge needed >>>
+
+
+
+
+
+
 						</xsl:call-template>
 					  </th>
-					</tr>
-				 </thead>
-				 <!-- End Part II Header for inline format -->
-                <!--Part II line a for inline format -->
+
+foreign losses</td>
+                  <t<<< merge needed >>>
+ect="$FormData/AdjSepLmtSecti<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Section 951A income</td>
@@ -2463,37 +2463,37 @@
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtForeignBranchIncome/EOYBalancesOfFutureSepLmtIncm/Section951AIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtPassiveCategoryIncm/EOYBalancesOfFutureSepLmtIncm/Section951AIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/Section951AIncomeAmt"/>
+<td class="IRS1118Schedu<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome	/EOYBalancesOfFutureSepLmtIncm/Section951AIncomeAmt"/>
+  </tr>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part II line b for inline format  -->
+<<< merge n<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">b</td>
-                  <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Foreign branch income </td>
+//////
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtSection951AIncome/EOYBalancesOfFutureSepLmtIncm/ForeignBranchIncomeAmt"/>
+                        Note<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey">
@@ -2501,37 +2501,37 @@
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtPassiveCategoryIncm/EOYBalancesOfFutureSepLmtIncm/ForeignBranchIncomeAmt"/>
+adding-left:2m<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/ForeignBranchIncomeAmt"/>
+IRS1118S<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/EOYBalancesOfFutureSepLmtIncm/ForeignBranchIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part II line c for inline format -->
+ass="styTableCellPad"/>
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
-                  <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Passive category income  </td>
+              <<< merge needed >>>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtSection951AIncome/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+x;"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtForeignBranchIncome/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+                  </td>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;">
@@ -2539,50 +2539,50 @@
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+                  <td clas<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+              <span s<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part II line d for inline format  -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">d</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">General category income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtSection951AIncome/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+$FormData<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtForeignBranchIncome/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+eAmt"/><<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtPassiveCategoryIncm/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+<<< merge needed >>><<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;"/>
-                  <!-- This is just a space between the greyed out cell and the next cell.  No data, just a break in the paragraph for readability sake. -->
+
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+cheduleJ_Gene<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part II line e for inline format  repeating rows -->
+c<<< merge needed >>>
                 <!-- blank lines, row e,  if no data -->
                 <xsl:if test="not($FormData/EOYBalanceSepLmtOtherIncmGrp)">
                   <tr>
@@ -2599,23 +2599,23 @@
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/PassiveCategoryIncomeAmt/EOYBalancesOfFutureSepLmtIncm/OtherIncomeAmt"/>
+ttom">
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/GeneralCategoryIncomeAmt/EOYBalancesOfFutureSepLmtIncm/OtherIncomeAmt"/>
+                    <xsl:call-template name="PopulateAmount">
                     </xsl:call-template>
                   </td>
-                    <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:1px;border-bottom-width:0px;background-color:lightgrey;">
+                      <xsl:with-param na<<< merge needed >>>
                       <span class="styTableCellPad"/>
                       <span style="width:16px;"/>
                     </td>
-					<td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
+  <t<<< merge needed >>>
                   </tr>
                 </xsl:if>
-                <!-- Part II Line e repeating table -->
+align="bottom">
                 <xsl:for-each select="$FormData/EOYBalanceSepLmtOtherIncmGrp">
                   <xsl:variable name="pos" select="position()"/>
                   <!--///////////////////////////////////////////////////////////////////////////////////
@@ -2625,7 +2625,7 @@
                   <tr>
                     <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">e</td>
                     <td class="styTableCell" style="text-align:left;padding-left:1mm">
-							Other income*  (identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>
+  <<< merge needed >>>
 								<span class="styUnderlineText" 
 								style="padding-left:2mm; text-align:left;">
 									<xsl:call-template name="PopulateText">
@@ -2654,13 +2654,13 @@
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" 
-                        select="Section951AIncomeAmt"/>
+
                       </xsl:call-template>
                     </td>
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" 
-                        select="ForeignBranchIncomeAmt"/>
+eCategoryIncm/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
                       </xsl:call-template>
                     </td>
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
@@ -2672,10 +2672,10 @@
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" 
-                        select="GeneralCategoryIncomeAmt"/>
+                    </xsl:c<<< merge needed >>>
                       </xsl:call-template>
                     </td>
-                    <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1 solid black;font-size:10px;" valign="bottom">
+        <xsl:call-template name="PopulateA<<< merge needed >>>
 						<!--<xsl:for-each select="OtherIncomeAmt">
 							<xsl:variable name="pos1" select="position()"/>-->
 							<xsl:call-template name="PopulateAmount">
@@ -2684,15 +2684,15 @@
 							<!--<br/>
 						</xsl:for-each>-->
                     </td>
-                    <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
+aracterizationSepL<<< merge needed >>>
                   </tr>
                 </xsl:for-each>
-                <!-- End Part II Line e repeating table -->
-                <!--Part III Title in inline format -->
+    <xsl:call-template name="PopulateAmount">
+                      <<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_DescCell" colspan="8" scope="row" style="width:256mm;padding-top:0px;padding-bottom:0px;border-top-width:2px;
                    border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
-                    <div class="styTitleName" style="height:4mm;">Part III</div>
+      </td>
                     <span style="width:3mm;"/> 
                         Overall Foreign Loss Account Balances (section 904(f)(1))  
                     <span style="font-style:italic;font-weight:normal;">
@@ -2702,98 +2702,98 @@
                     </span>
                   </td>
                 </tr>
-                <!--part III, Line 1 inline format -->
+                  <td class="IRS1118ScheduleJ<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">1</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Beginning balance</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtSection951AIncome/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtForeignBranchIncome/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+ for inline format  -->
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+                <t<<< merge needed ><<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+       <td class="IRS1118ScheduleJ_DescCell" s<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+yIncomeAmt"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--part III, Line 2 inline format  -->
+                    </xsl:call<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Current year additions</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtSection951AIncome/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtForeignBranchIncome/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+ode" select="$FormDat<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+In<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--part III, Line 3 inline format  -->
+ <<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Current year reductions (other than recapture)</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtSection951AIncome/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtForeignBranchIncome/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+"font-size:10px;" valign="bottom">
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+                    <xsl:call-template name="PopulateAmount">
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+                      <xsl:with-pa<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
@@ -2803,43 +2803,43 @@
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--part III, Line 4 inline format -->
+epLmtSection951AIncome/RecharacterizationSepLmtIncm/GeneralCat<<< merge need<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Current year recapture (from Part I, line 7)</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtSection951AIncome/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtForeignBranchIncome/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+Cell" style="font-size:10px;border-right-width:1px;" valig<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+IRS1118S<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--part III, Line 5 inline format  -->
+cheduleJ_GenericCell">
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="border-bottom-width:0px;padding-left:2mm;" valign="top">5</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;border-bottom-width:0px;" scope="row">
@@ -2847,40 +2847,40 @@
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-bottom-width:0px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtSection951AIncome/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
+                     <<< merge needed >>>
                     </xsl:call-template>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" 
-                  style="font-size:10px;border-bottom-width:0px;" valign="bottom">
+
+Cell" style="border-widt<<< merge needed >>>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtForeignBranchIncome/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
+bottom-width:1px;"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:1px;border-bottom-width:0px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
+                <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-bottom-width:0px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtGeneralCategoryIncm//OverallForeignLossAcctBalances/EndingBalanceAmt"/>
+hen the current row is set <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:1px;border-bottom-width:0px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
+
                     </xsl:call-template>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey;">
+
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!-- Part IV title for inline format -->
+lat<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_DescCell" colspan="8" scope="row" style="width:256mm;padding-top:0px;padding-bottom:0px;border-top-width:2px;
                    border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
@@ -2889,115 +2889,115 @@
                       Overall Domestic Loss Account Balances (section 904(g)(1))
                   </td>
                 </tr>
-                <!--Part IV, Line 1 for inline format  -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">1</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Beginning balance</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtSection951AIncome/OverallDomLossAcctBalances/BeginningBalanceAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtForeignBranchIncome/OverallDomLossAcctBalances/BeginningBalanceAmt"/>
+ame="TargetNode" select="Section951AIncomeAmt"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallDomLossAcctBalances/BeginningBalanceAmt"/>
+    <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallDomLossAcctBalances/BeginningBalanceAmt"/>
+                    <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/OverallDomLossAcctBalances/BeginningBalanceAmt"/>
+me="TargetNode" select="PassiveCategoryIn<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part IV, Line 2 for inline format   -->
+tic losses<<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Current year additions</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtSection951AIncome/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+< difference resolved - line(s) deleted ><<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtForeignBranchIncome/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode"
-                      select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+    </xsl:call-template>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+              <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+/xsl<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part IV, Line 3 for inline format   -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Current year reductions (other than recapture)</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtSection951AIncome/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtForeignBranchIncome/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+Data/AdjSepLmtOtherIncome[1]<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+PopulateNegativeNumber">
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+                      <xsl:with<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part IV, Line 4 for inline format   -->
+
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
@@ -3005,72 +3005,72 @@
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtSection951AIncome/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtForeignBranchIncome/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+IndexCell" scope="row" <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+                    </xsl:call-template>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part IV, Line 5 for inline format   -->
+ <<< mer<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">5</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Current year recapture (from Part I, line 10)</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtSection951AIncome/ OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+             <td class="IRS1118Schedu<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtForeignBranchIncome/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode"
-                       select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+th-param name="TargetNod<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+tructions.
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part IV, Line 6 for inline format   -->
+	<<< merge needed >>>
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
@@ -3079,31 +3079,31 @@
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtSection951AIncome/OverallDomLossAcctBalances/EndingBalanceAmt"/>
+/b></div>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtForeignBranchIncome/OverallDomLossAcctBalances/EndingBalanceAmt"/>
+					</div>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallDomLossAcctBalances/EndingBalanceAmt"/>
+					<br/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallDomLossAcctBalances/EndingBalanceAmt"/>
+					<div class=<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/OverallDomLossAcctBalances/EndingBalanceAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;">
@@ -3113,51 +3113,51 @@
                 </tr>
               </tbody>
             </table>
-				<!-- Begin Footer Bottom Part IV in regular print mode-->
+
 				<div style="width:256mm">
-					<div style="float: left; clear: none;">
-						<span style="padding-right:0 mm"><b>* Important:</b> See <i><b>Computer-Generated Schedule J</b></i>	
+idth:3mm;padding-top:1mm;"/> 
+           <<< merge needed >>>
 							in instructions.
 						</span>
 					</div>
-						  <span style="width:112mm;"/>
-						  <span class="styBoldText">Schedule J (Form 1118) (Rev. 12-2020)</span>
+styBoldText">(ii)</span>
+						<br/>Foreign branch income
 				</div>
 				<div class="styFixedUnderline" style="border-bottom-width:2px;width:256mm;"/>
-				<!-- End Footer Bottom Part IV in regular print mode -->
-				<div class="pageEnd"/>
+					  </th>
+					  <th clas<<< merge needed >>>
           </div>
         </xsl:if>
-  <!-- If the Separate Print Option is OFF, repeat table for the repeating column v. -->
-  <!-- the repeating columns of column v is displayed below -->
-  <!-- first column v -->
-  <xsl:if test="($Print != $Separated) and count($FormData/AdjSepLmtOtherIncome) &gt; 1">
-    <xsl:for-each select="$FormData/AdjSepLmtOtherIncome">
-      <xsl:variable name="pos" select="position()"/>
+
+e[1]"/>	
+						</xsl:call-template<<< merge needed >>>
+
+templ<<< merge needed >>>
+
             <xsl:if test="$pos mod 4 = 2">
-        <!-- //////////////////////////////////////////////////////////////////////////////////////////
+
               Repeat the Whole Table Here - Column v displayed as many times as required at four per page
           ///////////////////////////////////////////////////////////////////////////////////////// -->
               <br/>
               <span class="styRepeatingDataTitle" style="width:256mm;">Form 1118 Schedule J, Parts I - II Column (v) Other Income (Continue)</span>
-              <!-- Part I Title for repeating Column (v) for inline format -->
-              <div class="styBB" style="width:256mm;border-top-width:1px;">
-                   <div class="styTitleName" style="height:4.7mm;border-bottom-width:1px;">Part I</div>
-                   <div class="styTitleDesc" style="height:auto;font-size:8pt;padding-left:4px;border-right-width:0px;border-top-width:1px;border-bottom-width:1px;">
-                       <b>Adjustments to Separate Limitation Income or (Losses) in Determining Numerators of Limitation Fractions </b>
-                  <span class="styNormalText">(see instructions.)</span>
-                  </div>
+:with-param name="TargetNode" select="$FormData/AdjSepLmtUSIncome"/>
+						  <xsl:wit<<< merge needed >>>
+
+
+                     <<<< me<<< merge needed >>>
+
+
               </div>
-              <!-- Part I Table for repeating Column (v) for inline format-->
+ulateAmount">
               <div class="IRS1118ScheduleJ_TableContainer" style="width:256mm;border-top-width:0px;border-bottom-width:0px;page-break-after:always;display:block" 
               id="adSeLmIn">
                 <table cellspacing="0" style="font-size:7pt;">
-                  <thead style="display:table-row-group;font-weight:normal;text-align:center;">
+                     <<< merge needed >>>
                     <tr>
                       <th class="IRS1118ScheduleJ_GenericCell" style="width:58mm;height:10mm;font-weight:normal;text-align:center;" colspan="2" scope="col">
                       <span style="width:1px;" /></th>
                       <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;
-						  text-align:center;" scope="col">
+sOfFutureSepLmtIncm/Section951AIncomeAmt"/>
                         <span class="styBoldText">(v)</span>
                         <br/>Other income* <xsl:number value="position()" format="2"/>
 							<br/>(identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>
@@ -3187,7 +3187,7 @@
 								</span>
                       </th>
                       <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;
-                      text-align:center;" scope="col">
+       <<< merge needed ><<< merge needed >>>
                         <span class="styBoldText">(v)</span>
                         <br/>Other income* <xsl:number value="position() +1" format="2"/>
 							<br/>(identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>
@@ -3210,7 +3210,7 @@
 									</xsl:call-template>
 								</span>
 								<span class="styUnderlineText" 
-								style="padding-left:2mm; text-align:left">
+>
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OtherIncomeDesc"/>
 									</xsl:call-template>)
@@ -3246,7 +3246,7 @@
 								</span>
                       </th>
                       <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;
-                      text-align:center;border-right-width:0px;" scope="col">
+                      <xsl:wi<<< merge needed >>>
                         <span class="styBoldText">(v)</span>
                         <br/>Other income* <xsl:number value="position() +3" format="2"/>
 							<br/>(identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>
@@ -3279,7 +3279,7 @@
                   </thead>
                   <tfoot/>
                   <tbody>
-                    <!-- Part I, Line 1 for repeating Column (v) for inline format-->
+              </xsl:call-te<<< merge needed >>>
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" valign="top" style="padding-left:2mm;">1</td>
                       <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Income or (loss) before adjustments</td>
@@ -3304,13 +3304,13 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 2 for repeating Column (v) for inline format-->
+
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
                       <td class="IRS1118ScheduleJ_DescCell" style="width:99mm;font-size:10px;border-right-width:0px;" colspan="5" scope="row">
                       Allocation of separate limitation losses:</td>
                     </tr>
-                    <!-- Part I, Line 2a for repeating Column (v) for inline format-->
+
                     <tr>
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
                       <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Section 951A income</td>
@@ -3323,52 +3323,52 @@
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"/>
+leJ_G<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"/>
+d class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="botto<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 2b for repeating Column (v) for inline format-->
+cheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                     <tr>
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">b</td>
                       <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Foreign branch income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos]/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+                </tr<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+on951AIncome/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+               <xsl:with-par<<< merge <<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+ine format  repeating rows -->
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 2c for repeating Column (v) for inline format-->
+                <!-- blank lines, row e,  if no data -->
                     <tr>
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
                       <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Passive category income</td>
@@ -3381,52 +3381,52 @@
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/AllocationCYSeparateLmtLosses/PassiveCategoryIncomeAmt"/>
+                <xsl:if t<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/AllocationCYSeparateLmtLosses/PassiveCategoryIncomeAmt"/>
+Pad"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/AllocationCYSeparateLmtLosses/PassiveCategoryIncomeAmt"/>
+                      <span style="width:16px;"/>
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 2d for repeating Column (v) for inline format-->
+                    </td>
                     <tr>
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">d</td>
                       <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">General category income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos]/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+ncesOfFutureSepLmtIncm/OtherInco<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+ <<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+/////////////////////////////-->
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 2e for repeating Column (v) for regular format.
+   <<< merge needed >>>
 						Please note that the programming for INLINE is the next set of instructions.-->
                     <xsl:for-each select="$FormData/AllocationSepLmtLossOthIncmGrp">
                       <xsl:variable name="rowpos" select="position()"/>
@@ -3486,8 +3486,8 @@
 						  </td>
 						</tr>
 					</xsl:for-each>
-                    <!-- Part I, Line 2e for repeating Column (v) repeating row for inline format-->
-                    <xsl:for-each select="$FormData/AdjSepLmtSection951AIncome/AllocationCYSeparateLmtLosses/OtherIncomeAmt">
+xsl:call-<<< merge needed >>>
+
                       <xsl:variable name="rowpos" select="position()"/>
                       <!--///////////////////////////////////////////////////////////////////////////////////
                           Note that the repeating rows are assumed to be filled in full by the corresponding columns - otherwise there is no way to
@@ -3495,35 +3495,35 @@
                           ///////////////////////////////////////////////////////////////////////////////////-->
                       <tr>
                         <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">e</td>
-                        <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Other income*</td>
+>
                         <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-width:2px;" valign="bottom">
                           <xsl:call-template name="PopulateAmount">
                             <xsl:with-param name="TargetNode" 
-									select="$FormData/AdjSepLmtOtherIncome[$pos]/AllocationCYSeparateLmtLosses/OtherIncomeAmt[$rowpos]"/>
+									<<< merge needed >>>
                           </xsl:call-template>
                         </td>
                         <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-width:2px;" valign="bottom">
                           <xsl:call-template name="PopulateAmount">
                             <xsl:with-param name="TargetNode" 
-									select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/AllocationCYSeparateLmtLosses/OtherIncomeAmt[$rowpos]"/>
+         <xsl:call-template name="PopulateAmount">
                           </xsl:call-template>
                         </td>
                         <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-width:2px;" valign="bottom">
                           <xsl:call-template name="PopulateAmount">
                             <xsl:with-param name="TargetNode" 
-									select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/AllocationCYSeparateLmtLosses/OtherIncomeAmt[$rowpos]"/>
+        <<< merge needed >>>
                           </xsl:call-template>
                         </td>
-                        <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-width:2px" valign="bottom">
+
                           <xsl:call-template name="PopulateAmount">
                             <xsl:with-param name="TargetNode" 
-									select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/AllocationCYSeparateLmtLosses/OtherIncomeAmt[$rowpos]"/>
+           <xsl:call-template name="PopulateAmount"><<< merge nee<<< merge ne<<< merge needed >>>
                           </xsl:call-template>
                         </td>
                       </tr>
                     </xsl:for-each>
                     <!-- end repeating rows -->
-                    <!-- Part I, Line 3 for repeating Column (v) for inline format-->
+6mm;padding-top:0px;padding-bottom:0px;border-top-wid<<< merge needed >>>
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
@@ -3549,7 +3549,7 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 4 for repeating Column (v) for inline format-->
+
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Allocation of overall foreign losses</td>
@@ -3574,7 +3574,7 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 5 for repeating Column (v)  for inline format-->
+      <div class="styTitleName" style="height<<< merge needed >>>
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">5</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Allocation of domestic losses</td>
@@ -3599,7 +3599,7 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 6 for repeating Column (v) for inline format-->
+d >>>
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">6</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
@@ -3625,7 +3625,7 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 7 for repeating Column (v) for inline format-->
+c;font-weight:normal;">
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">7</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Recapture of overall foreign losses</td>
@@ -3650,7 +3650,7 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 8 for repeating Column (v) for inline format-->
+         <<< merge needed >>>
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">8</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
@@ -3676,129 +3676,129 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 9 for repeating Column (v) repeating row for inline format-->
+         Comple<<< merge needed >>>
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">9</td>
                       <td class="IRS1118ScheduleJ_DescCell" colspan="10" scope="row" style="width:99mm;font-size:10px;border-right-width:0px;">
                       Recharacterization of separate limitation income:</td>
                     </tr>
-                    <!-- Part I, Line 9a for repeating Column (v) for inline format-->
+
                     <tr>
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Section 951A income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos]/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode"
-								   select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+" style="font-size:10px" valign="bottom">
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 9b for repeating Column (v) for inline format-->
+                    <xsl:call-template name="PopulateAmou<<< merge needed >>>
                     <tr>
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">b</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Foreign branch income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos]/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+name="<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+  </xsl:call-template>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+                  </td>
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 9c for repeating Column (v) for inline format-->
+                  <td class="IRS1118Schedul<<< merge needed >>>
                     <tr>
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Passive category income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos]/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+otto<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode"
-								   select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+s="IRS1118ScheduleJ_Ge<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 9d for repeating Column (v) for inline format-->
+l:call-template name="Popu<<< merge needed >>>
                     <tr>
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">d</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">General category income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos]/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+GenericCell" style="border-rig<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+    <<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 9e for repeating Column (v) for regular format.
+                border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
 						Please note that the programming for INLINE is the next set of instructions.-->
                     <xsl:for-each select="$FormData/RchrctrztnSepLmtOtherIncmGrp">
                       <xsl:variable name="rowpos2" select="position()"/>
@@ -3858,44 +3858,44 @@
 						  </td>
 						</tr>
 					</xsl:for-each>
-                    <xsl:for-each select="$FormData/AdjSepLmtSection951AIncome/RecharacterizationSepLmtIncm/OtherIncomeAmt">
+        <<< merge needed >>>
                       <xsl:variable name="rowpos" select="position()"/>
                       <!--///////////////////////////////////////////////////////////////////////////////////
                         Note that the repeating rows are assumed to be filled in full by the corresponding columns - otherwise there is no way to
                         find out how they line up.  Hence the number of repetition are assumed to be the SAME for all columns.
                         ///////////////////////////////////////////////////////////////////////////////////-->
-                      <!-- Part I, Line 9e for repeating Column (v) repeating row for inline format-->
+
                       <tr>
                         <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">e</td>
                         <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Other income*</td>
                         <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-width:2px;" valign="bottom">
                           <xsl:call-template name="PopulateNegativeNumber">
                             <xsl:with-param name="TargetNode" 
-									select="$FormData/AdjSepLmtOtherIncome[$pos]/RecharacterizationSepLmtIncm/OtherIncomeAmt[$rowpos]"/>
+ericCell" style="font<<< merge needed >>>
                           </xsl:call-template>
                         </td>
                         <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-width:2px;" valign="bottom">
                           <xsl:call-template name="PopulateNegativeNumber">
                             <xsl:with-param name="TargetNode" 
-									select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RecharacterizationSepLmtIncm/OtherIncomeAmt[$rowpos]"/>
+
                           </xsl:call-template>
                         </td>
                         <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-width:2px;" valign="bottom">
                           <xsl:call-template name="PopulateNegativeNumber">
                             <xsl:with-param name="TargetNode" 
-									select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RecharacterizationSepLmtIncm/OtherIncomeAmt[$rowpos]"/>
+
                           </xsl:call-template>
                         </td>
                         <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-width:2px;" valign="bottom">
                           <xsl:call-template name="PopulateNegativeNumber">
                             <xsl:with-param name="TargetNode" 
-									select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RecharacterizationSepLmtIncm/OtherIncomeAmt[$rowpos]"/>
+ze:10px" valign="bottom">
                           </xsl:call-template>
                         </td>
                       </tr>
                     </xsl:for-each>
                     <!-- end repeating rows -->
-                    <!-- Part I, Line 10 for repeating Column (v) for inline format-->
+                    <xsl:call-template name="Po<<< merge needed >>>
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" valign="top">10</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Recapture of overall domestic losses</td>
@@ -3906,7 +3906,7 @@
                           <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator
                           </xsl:with-param>
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+
                         </xsl:call-template>
                         </span>
                         <xsl:call-template name="PopulateAmount">
@@ -3950,18 +3950,18 @@
                           <xsl:with-param name="TargetNode" 
                           select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
                         </xsl:call-template>
-                       </span>
+ncome/OverallDomLossAcctBalanc<<< merge needed >>>
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RcptrOverallDomesticLossesAmt"/>
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 11 for repeating Column (iii) for inline format-->
+gn="bottom">
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" valign="top" scope="row">11</td>
                       <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;border-bottom-width:1px;" scope="row">
                         <span style="font-weight:bold;">Numerator of Limitation Fraction-</span>Combine lines 8 through 10.  
-                        Enter each result here and on Schedule B, Part II, line 7, of corresponding Form 1118. 
+                    <xsl:call-template <<< merge needed >>>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
@@ -3984,25 +3984,25 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part II title for repeating Column (v) for inline format-->
+s="IRS1118ScheduleJ_Gene<<< merge needed >>>
                     <tr>
                       <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" 
-                      style="width:256mm;padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:1px;font-weight:bold;
-                      font-size:8pt;padding-left:0px;height:8mm;">
+>
+ <<< merge needed >>>
                         <div class="styTitleName" style="height:4.7mm;">Part II</div>
                         <span style="width:3mm;"/> 
                             Year-End Balances of Future Separate Limitation Income That Must Be Recharacterized<br/>
-                        <span style="padding-left:4mm;font-weight:bold">(section 904(f)(5)(C))</span>
+
                       </td>
                     </tr>
-                    <!-- Part II, Line a for repeating Column v) for inline format-->
+    <xsl:with-param na<<< merge needed >>>
                     <tr>
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Section 951A income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos]/EOYBalancesOfFutureSepLmtIncm/Section951AIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
@@ -4024,14 +4024,14 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part II, Line b for repeating Column (v) for inline format-->
+/tr>
                     <tr>
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">b</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Foreign branch income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos]/EOYBalancesOfFutureSepLmtIncm/ForeignBranchIncomeAmt"/>
+    <<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
@@ -4053,14 +4053,14 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part II, Line c for repeating Column v) for inline format-->
+
                     <tr>
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Passive category income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+       <x<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
@@ -4082,14 +4082,14 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part II, Line d for repeating Column (v) for inline format-->
+
                     <tr>
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">d</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">General category income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-								  select="$FormData/AdjSepLmtOtherIncome[$pos]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+           select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallDomLossAcctBalances/CurrentYearRec<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
@@ -4111,7 +4111,7 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part II, Line e for repeating Column (v) for regular format.
+
 						Please note that the programming for INLINE is the next set of instructions.-->
                     <xsl:for-each select="$FormData/EOYBalanceSepLmtOtherIncmGrp">
                       <xsl:variable name="rowpos2" select="position()"/>
@@ -4171,11 +4171,11 @@
 						  </td>
 						</tr>
 					</xsl:for-each>
-                    <!-- Part II, Line e for repeating Column (v) Repeating row for inline format-->
-                    <xsl:for-each select="$FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/OtherIncomeAmt">
+
+            </td>
                       <xsl:variable name="rowpos" select="position()"/>
-                      <!--//////////////////////////////////////////////////////////////////////////////
-                          Note:  there are no repeating rows in this section
+                  <td class="IRS1118ScheduleJ_Gener!-- If the Separate Print Option is OFF, repeat table for the repeating column v. -->
+  <!-- the repeating columns of column v is displayed below -->
                         ///////////////////////////////////////////////////////////////////////////////////-->
                       <tr>
                         <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">e</td>
@@ -4192,8 +4192,8 @@
                           <span class="styTableCellPad"/>
                           <span style="width:16px;"/>
                         </td>
-                        <td class="IRS1118ScheduleJ_GenericCell" valign="bottom" 
-							style="font-size:10px;border-bottom-width:1px;border-right-width:0px;background-color:lightgrey;">
+  <!-- first column v -->
+  <xsl:if test="($Print != $Separated) and count($FormData/AdjSepLmtOtherIncome) &gt; 1">
                           <span class="styTableCellPad"/>
                           <span style="width:16px;"/>
                         </td>
@@ -4204,18 +4204,18 @@
                     </div>
                     <!-- end repeating rows -->
               <br/>
-              <span class="styRepeatingDataTitle" style="width:256mm;">Form 1118 Schedule J, Parts III - IV Column (v) Other Income (Continue)</span>
+    <xsl:for-each select="$FormData/AdjSepLmtOtherIncome">
               <div class="IRS1118ScheduleJ_TableContainer" style="width:256mm;border-top-width:0px;border-bottom-width:0px;page-break-after:always;display:block" 
               id="adSeLmIn">
                 <table cellspacing="0" style="font-size:7pt;">
-                     <!--Part III title for Repeating Column (v) for inline format-->
+      <xsl:variable name="pos" select="position()"/>
                     <tr>
                       <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" 
                       style="width:256mm;border-top-width:1px;border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
-                        <div class="styTitleName" style="height:4.7mm;">Part III
-                        </div>
+            <xsl:if test="$pos mod 4 = 2">
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////
                         <span style="width:3mm;"/> 
-                          Overall Foreign Loss Account Balances (section 904(f)(1)) 
+              Repeat the Whole Table Here - Column v displayed as many times as required at four per page
                         <span style="padding-left:3mm;">
                           <span style="font-style:italic;font-weight:normal;">Complete for <b>each </b>
                             separate limitation income category.</span>
@@ -4223,123 +4223,123 @@
                       </td>
                     </tr>
               <tbody>
-                    <!-- Part III, Line 1 for Repeating Column (v) for inline format-->
+          ///////////////////////////////////////////////////////////////////////////////////////// -->
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">1</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Beginning balance</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-                          select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+              <br/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+              <span class="styRepeatingDataTitle" style="width:256mm;">Form 1118 Schedule J, Parts I - II Column (v) Other Income (Continue)</span>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+              <!-- Part I Title for repeating Column (v) for inline format -->
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+              <div class="styBB" style="width:256mm;border-top-width:1px;">
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part III, Line 2 for Repeating Column (v) for inline format-->
+                   <div class="styTitleName" style="height:4.7mm;border-bottom-width:1px;">Part I</div>
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year additions</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+                   <div class="styTitleDesc" style="height:auto;font-size:8pt;padding-left:4px;border-right-width:0px;border-top-width:1px;border-bottom-width:1px;">
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+                       <b>Adjustments to Separate Limitation Income or (Losses) in Determining Numerators of Limitation Fractions </b>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+                  <span class="styNormalText">(see instructions.)</span>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+                  </div>
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part III, Line 3 for Repeating Column (v) for inline format-->
+              </div>
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year reductions (other than recapture)</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+              <!-- Part I Table for repeating Column (v) for inline format-->
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+              <div class="IRS1118ScheduleJ_TableContainer" style="width:256mm;border-top-width:0px;border-bottom-width:0px;page-break-after:always;display:block" 
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+              id="adSeLmIn">
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+                <table cellspacing="0" style="font-size:7pt;">
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part III, Line 4 for Repeating Column (v) for inline format-->
+                  <thead style="display:table-row-group;font-weight:normal;text-align:center;">
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year recapture (from Part I, line 7)</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+                    <tr>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+                      <th class="IRS1118ScheduleJ_GenericCell" style="width:58mm;height:10mm;font-weight:normal;text-align:center;" colspan="2" scope="col">
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 2]/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+                      <span style="width:1px;" /></th>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 3]/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+                      <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part III, Line 5 for Repeating Column v) for inline format-->
+						  text-align:center;" scope="col">
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">5</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
@@ -4365,7 +4365,7 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!--Part IV Title for Repeating Column (v) for inline format-->
+                        <spa<<< merge needed >>>
                     <tr>
                       <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" 
                       style="width:256mm;border-top-width:1px;border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
@@ -4399,7 +4399,7 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!--Part IV Line 2 for Repeating Column (v) for inline format-->
+<<< merge needed >>>
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year additions</td>
@@ -4411,52 +4411,52 @@
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+"PopulateTlineText" 
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+								style="padding-left:2mm; text-align:left;">
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+									<xsl:call-template name="PopulateText">
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!--Part IV Line 3 for Repeating Column (v) for inline format-->
+										<xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 2]/OtherIncomeDesc"/>
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year reductions (other than recapture)</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+									</xsl:call-template>)
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+								</span>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+                      </th>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+                      <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!--Part IV Line 4 for Repeating Column v) for inline format-->
+                      text-align:center;border-right-width:0px;" scope="col">
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
@@ -4469,23 +4469,23 @@
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+                        <span class="styBoldText">(v)</span>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+                        <br/>Other income* <xsl:number value="position() +3" format="2<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!--Part IV Line 5 for Repeating Column (v) for inline format-->
+Populate<<< merge needed >>>
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">5</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year recapture (from Part I, line 10)</td>
@@ -4497,23 +4497,23 @@
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+"><<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 2]/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode"
-							   select="$FormData/AdjSepLmtOtherIncome[$pos + 3]/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!--Part IV Line 6 for Repeating Column (v) for inline format-->
+left:2mm;">1</td>
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">6</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
@@ -4541,131 +4541,131 @@
                     </tr>
                   </tbody>
                 </table>
-					<!-- Begin Footer Continued Section -->
-					<div style="width:256mm">
-					  <div style="float: left; clear: none;">
-							<span style="padding-right:0 mm"><b>* Important:</b> See <i><b>Computer-Generated Schedule J</b></i>	
-								in instructions.
+                      <td class="IRS111<<< m<<< merge needed >>>
+:call-template>
+                      </td>
+<<< merge needed >>>
+ont-size:10px;border-right-width:0px;" valig<<< merge needed >>>
 							</span>
-						</div>
-							<span style="width:112mm;"/>
-							<span class="styBoldText">Schedule J (Form 1118) (Rev. 12-2020)</span>
+
+                <xsl:call-template name="PopulateNegativeNumber">
+                <<< merge needed >>>
 					</div>
 				<div class="styFixedUnderline" style="border-bottom-width:2px;width:256mm;"/>
-					<!-- End Footer Continued Section -->
-						<div class="pageEnd"/>
+    </td>
+                      <td class="IRS1118ScheduleJ_GenericCel<<< merge needed >>>
               </div>
             </xsl:if>
           </xsl:for-each>
         </xsl:if>
         <!-- end display repeating column iii -->
-        <!-- This footer was removed 20151102 and placed at the end of each Part IV (Regular, Inline, and Separated) -->
-        <!--BEGIN FOOTER--><!--
-        <div style="width:256mm">
-          <div style="float: left; clear: none;">
-            <span class="styBoldText">* Important: </span>
-            <span class="styItalicText">See <span class="styBoldText">Computer-Generated Schedule J </span>
-            </span> in instructions.
+
+ class="IRS1118Schedu<<< merge needed >>>
+
+                    </td>
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+                      parateLmtLosses/GeneralCategoryIncomeAmt"/>
+                        </xsl:call-template>
           </div>
-          <span style="width:13mm;"/>
-              Cat. No. 10309U <span style="width:29px;"/>
-          <span class="styBoldText">Schedule J (Form 1118) (Rev. 01-2009)</span>
-        </div>
-        <div class="pageEnd"/>-->
-        <!--END FOOTER-->
-<!-- BEGIN Left Over Table -->  
-  <!-- Additonal Data Title Bar and Button -->
-  <div class="styLeftOverTitleLine" id="LeftoverData">
-    <div class="styLeftOverTitle">
-      Additional Data        
+                      </td>
+                    </tr>
+                    <!-- Part I, Line 2e for repeating Column (v) for regular format.
+						Please note that the programming for INLINE is the next set of instructions.-->
+                    <xsl:for-each select="$FormData/AllocationSepLmtLossOthIncmGrp">
+                      <xsl:variable name="rowpos" select="position()"/>
+						<tr>
+
+l-template name="PopulateText">
+		<<< merge needed >>>
+
     </div>
-    <div class="styLeftOverButtonContainer">
-      <input class="styLeftoverTableBtn" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
-    </div>      
+
+
+
   </div>
-        <!-- ADDITIONAL DATA TABLE -->
-  <table class="styLeftOverTbl">
-    <xsl:call-template name="PopulateCommonLeftover">
-        <xsl:with-param name="TargetNode" select="$FormData"/>
+l:with-param <<< merge needed >>>
+<xsl:with-param name="TargetNode"
+	<<< merge needed >>>
+                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-widt<<< merge needed >>>
         <xsl:with-param name="DescWidth" select="100"/>
     </xsl:call-template>
     <xsl:call-template name="PopulateLeftoverRow">
-        <xsl:with-param name="Desc">Form 1118 Schedule J, Top Left Form Title - US Loss Allocation Under Notice 89-3 Indicator
+
         </xsl:with-param>
-        <xsl:with-param name="TargetNode" select="$FormData/@uSLossAllocUnderNotice89Cd"/>
+
         <xsl:with-param name="DescWidth" select="100"/>
     </xsl:call-template>
     <xsl:call-template name="PopulateLeftoverRow">
-        <xsl:with-param name="Desc">Form 1118 Schedule J, Line 10 General Limitation Income Column (i) - Allocation of domestic losses Indicator
+
         </xsl:with-param>
-        <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+
         <xsl:with-param name="DescWidth" select="100"/>
     </xsl:call-template>
     <xsl:call-template name="PopulateLeftoverRow">
-        <xsl:with-param name="Desc">Form 1118 Schedule J, Line 10 Passive Income Column (ii) - Allocation of domestic losses Indicator</xsl:with-param>
-        <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtPassiveCategoryIncm/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+
+
         <xsl:with-param name="DescWidth" select="100"/>
     </xsl:call-template>
     <xsl:call-template name="PopulateLeftoverRow">
-        <xsl:with-param name="Desc">Form 1118 Schedule J, Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
-        <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
-	    <xsl:with-param name="DescWidth" select="100"/>
+
+
+
     </xsl:call-template>
-  </table>  
-<!-- END Left Over Table header -->  
-        <!--Begin Blue or Separate format table -->
+
+
+
         <!-- If the Separate Print Option is OFF OR if the Separate Print Option is ON and there is 0 or 1 data -->
-        <!-- for each repeating element, print the table with data inline.                                      -->
-        <!-- Changed re Defect 48050 20170525 gdy -->
-        <xsl:if test="
-                         ($Print = $Separated) and
-                         ( (count($FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt) &gt; 1) or
-                            (count($FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/OtherIncomeAmt) &gt; 1) or
-                           (count($FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/OtherIncomeAmt) &gt; 1) or
-                           (count($FormData/AdjSepLmtOtherIncome) &gt; 1) ) ">
-          <!-- Part I  table 1 This is the Blue or Separate format table-->
-          <div>
-            <!--Part I table for Blue or Separate format table -->
-            <table class="styDepTbl" cellspacing="0" style="font-size:7pt;width:256mm">
+
+
+
+
+
+
+
+
+
+
+    </td>
+                      <td class="IRS1118ScheduleJ_GenericCell" style=<<< merge needed >>>
               <thead style="display:table-row-group;font-weight:normal;text-align:center;">
                 <tr class="styDepTblHdr">
-                  <!-- The color of the current row is dependent on the number of rows in 2e and 9e.   -->
-                  <!-- Therefore, if the sum of the number of data for 2e and 9e is odd, set current to-->
-                  <!-- styDepTblRow1. Otherwise, set it to styDepTblRow2.                              -->
-                  <th class="IRS1118ScheduleJ_DescCell" colspan="8" scope="col" 
+          </xsl:call-template>
+        <<< merge needed >>>
+S1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bott<<< merge needed >>>
+ne 6 for repeating Column (v) for inline format-->
 					  style="padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:2px;
-								font-weight:bold;font-size:8pt;width:256mm;padding-left:0px;height:8mm;">
-                    <div class="styTitleName" style="height:4.7mm;">Part I</div>
+                    <tr>
+    <<< merge needed >>>
                         <span style="width:3mm;"/> 
-                    <span class="styBoldText">
-                       Adjustments to Separate Limitation Income or (Losses) in Determining Numerators of Limitation Fractions 
+epLmtOther<<< merge needed >>>
+eduleJ_DescCell" scope="row" style="font-size:10px;">
                     </span>
-                    <span class="styNormalText">(see instructions.)</span>
+                    <<< merge needed >>>
                   </th>
                 </tr>
                 <tr class="styDepTblHdr">
-                  <th class="IRS1118ScheduleJ_GenericCell" style="width:58mm;height:10mm;font-weight:normal;text-align:center;" colspan="2" 
+  <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
 					  scope="col">
-					  <span style="width:1px;" />
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style<<< merge needed >>>
                   </th>
                   <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;" 
 					  scope="col">
-					  <span class="styBoldText">(i)</span>
+
                     <br/>Section 951A income
 				  </th>
-					  <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;" 
-						  scope="col">
+             <td clas<<< merge needed >>>
+
                     <span class="styBoldText">(ii)</span>
                     <br/>Foreign branch income
 				  </th>
                   <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;" 
 					  scope="col">
-                      <span class="styBoldText">(iii)</span>
+    <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <br/>Passive category income
 				  </th>
                   <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;" 
 					  scope="col">
-                      <span class="styBoldText">(iv)</span>
+                        <xsl:c<<< merge needed >>>
                     <br/>General category income
 				  </th>
                   <th class="IRS1118ScheduleJ_GenericCell" 
@@ -4674,7 +4674,7 @@
                     <xsl:call-template name="SetFormLinkInline">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]"/>
                     </xsl:call-template>
-                    <br/>Other income* <!--<xsl:number value="position()" format="0"/>-->
+
 								(identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>
 								<span class="styUnderlineText" 
 								style="padding-left:2mm; text-align:left;">
@@ -4714,7 +4714,7 @@
               </thead>
               <tfoot/>
               <tbody>
-                <!--Part I, line 1 for Blue or Separate format table-->
++ 3]/R<<< merge needed >>>
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">1</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Income or (loss) before adjustments</td>
@@ -4749,162 +4749,162 @@
                     </xsl:call-template>
                   </td>
                 </tr>
-                <!--Part I, line 2 for Blue or Separate format table-->
+
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
-                  <td class="IRS1118ScheduleJ_DescCell" style="width:99mm;font-size:10px;border-right-width:0px;" colspan="7" scope="row">
-                  Allocation of separate limitation losses:</td>
+			<xsl:call-template name="PopulateTex<<< merge needed >>>
+
                 </tr>
-                <!--Part I, line 2a for Blue or Separate format table  -->
+ll-template name="Popul<<< merge needed >>>
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Section 951A income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtSection951AIncome/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtForeignBranchIncome/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtPassiveCategoryIncm/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"/>
+t:2mm; text-align:left;">
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"/>
+								<xsl:call-template name="PopulateText">
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"/>
+									<ss="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-top-width:1px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part I, line 2b for Blue or Separate format table -->
+							<xsl:call-template name="PopulateNegativeNumber">
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">b</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Foreign branch income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtSection951AIncome/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+							  <xsl:with-param name="TargetNode"
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtForeignBranchIncome/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+									  select="OtherIncomeAmt[$pos + 2]"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtPassiveCategoryIncm/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+							</xsl:call-template>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+						  </td>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+						  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;"/>
                 </tr>
-                <!--Part I, line 2c for Blue or Separate format table  -->
+							<xsl:call-template name="PopulateNegativeNumber">
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Passive category income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtSection951AIncome/AllocationCYSeparateLmtLosses/PassiveCategoryIncomeAmt"/>
+							  <xsl:with-param name="TargetNode"
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtForeignBranchIncome/AllocationCYSeparateLmtLosses/PassiveCategoryIncomeAmt"/>
+									  select="OtherIncomeAmt[$pos + 3]"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtPassiveCategoryIncm/AllocationCYSeparateLmtLosses/PassiveCategoryIncomeAmt"/>
+							</xsl:call-template>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/PassiveCategoryIncomeAmt"/>
+						  </td>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/AllocationCYSeparateLmtLosses/PassiveCategoryIncomeAmt"/>
+						</tr>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;"/>
                 </tr>
-                <!--Part I, line 2d for Blue or Separate format table -->
+					</xsl:for-each>
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">d</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">General category income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtSection951AIncome/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+                    <xsl:for-each select="$FormData/AdjSepLmtSection951AIncome/RecharacterizationSepLmtIncm/OtherIncomeAmt">
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtForeignBranchIncome/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+                      <xsl:variable name="rowpos" select="position()"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtPassiveCategoryIncm/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+                      <!--///////////////////////////////////////////////////////////////////////////////////
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+                        Note that the repeating rows are assumed to be filled in full by the corresponding columns - otherwise there is no way to
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtOtherIncome[1]/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+                        find out how they line up.  Hence the number of repetition are assumed to be the SAME for all columns.
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;"/>
                 </tr>
-                <!--Part I, line 2e for Blue or Separate format table  -->
+                        ///////////////////////////////////////////////////////////////////////////////////-->
                 <!--Need to show the row e even when there is no data -->
                 <xsl:if test="not($FormData/AllocationSepLmtLossOthIncmGrp)">
                   <tr class="styDepTblRow1">
                     <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">e</td>
-                    <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Other income*
+                      <!-- Part I, Line 9e for repeating Column (v) repeating row for inline format-->
 								(identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>
 								<span class="styUnderlineText" 
 								style="padding-left:2mm; text-align:left;">
@@ -4946,8 +4946,8 @@
                     <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:10px;">
                       <span class="styTableCellPad"/>
                     </td>
-                    <td class="IRS1118ScheduleJ_GenericCell" style="border-top-width:1px;">
-                      <span class="styTableCellPad"/>(<span style="width:16px;background-color:lightgrey;"/>)
+                      <tr>
+                        <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">e</td>
                     </td>
                   </tr>
                 </xsl:if>
@@ -4971,7 +4971,7 @@
                     <!-- If the position of the repeating e row is odd, then the current row is set to styDepTblRow1. -->
                     <!-- Otherwise, the current row is set to styDepTblRow2.                                          -->
                     <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">e</td>
-                    <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Other income* <br/>
+                        <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;"><<< merge needed >>>
 								(identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>
 								<span class="styUnderlineText" 
 								style="padding-left:2mm; text-align:left;">
@@ -5030,43 +5030,43 @@
                     <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;"/>
                   </tr>
                 </xsl:for-each>
-                <!--Part I, line 3 for Blue or Separate format table -->
+
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
                     <span style="font-weight:bold;">Subtotal-</span> Combine lines 1 through 2e.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtSection951AIncome/TotIncomeOrLossCYAllocationAmt"/>
+<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtForeignBranchIncome/TotIncomeOrLossCYAllocationAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtPassiveCategoryIncm/TotIncomeOrLossCYAllocationAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/TotIncomeOrLossCYAllocationAmt"/>
+<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/TotIncomeOrLossCYAllocationAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;border-top-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtUSIncome/TotIncomeOrLossCYAllocationAmt"/>
+LinkToLeftoverDataTableInline">
                     </xsl:call-template>
                   </td>
                 </tr>
-                <!--Part I, line 4 for Blue or Separate format table -->
+                       <<< merge needed >>>
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Allocation of overall foreign losses</td>
@@ -5101,7 +5101,7 @@
                     </xsl:call-template>
                   </td>
                 </tr>
-                <!--Part I, line 5 for Blue or Separate format table -->
+
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">5</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Allocation of domestic losses</td>
@@ -5127,7 +5127,7 @@
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/DomesticLossesAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:10px;" valign="bottom">
@@ -5136,7 +5136,7 @@
                     </xsl:call-template>
                   </td>
                 </tr>
-                <!--Part I, line 6 for Blue or Separate format table  -->
+:2mm">
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row">
@@ -5174,7 +5174,7 @@
                     </xsl:call-template>
                   </td>
                 </tr>
-                <!--Part I, line 7 for Blue or Separate format table -->
+                        <xsl:call-template name="LinkToLeftoverDataTableInline">
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">7</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Recapture of overall foreign losses</td>
@@ -5209,9 +5209,9 @@
                     </xsl:call-template>
                   </td>
                 </tr>
-                <!--Part I, line 8 for Blue or Separate format table -->
+                          <xsl:with-param name="Desc">Fo<<< merge needed >>>
                 <!-- Tracks the number of rows repeating for e to determine the color that the row 8 would start. -->
-                <xsl:variable name="sevenICount" select="count($FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/OtherIncomeAmt)"/>
+
                 <xsl:for-each select="$FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/OtherIncomeAmt">
                   <xsl:variable name="pos" select="position()"/>
                   <!--///////////////////////////////////////////////////////////////////////////////////
@@ -5255,157 +5255,157 @@
                     </xsl:call-template>
                   </td>
                 </tr>
-                <!--Part I, line 9 for Blue or Separate format table  -->
+
                 <tr class="styDepTblRow1">
-                  <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">9</td>
-                  <td class="IRS1118ScheduleJ_DescCell" colspan="7" style="width:99mm;font-size:10px;border-right-width:0px;" scope="row">
-                  Recharacterization of separate limitation income:</td>
+
+
+                        <!--Pen and ink image -->
                 </tr>
-                <!--Part I, line 9a for Blue or Separate format table  -->
+<<< merge needed >>>
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Section 951A income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtSection951AIncome/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+ <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtForeignBranchIncome/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtPassiveCategoryIncm/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+e" 
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtOtherIncome[1]/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+  <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-top-width:1px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part I, line 9b for Blue or Separate format table -->
+f Limitation Fraction-</span>Combine lines <<< merge needed >>>
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">b</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Foreign branch income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtSection951AIncome/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-width:2px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtForeignBranchIncome/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+     <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:1px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtPassiveCategoryIncm/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:1px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+               <td class="IRS1118Sc<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:1px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtOtherIncome[1]/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;"/>
                 </tr>
-                <!--Part I, line 9c for Blue or Separate format table  -->
+Part II, Line a for r<<< merge needed >>>
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Passive category income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtSection951AIncome/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+                        </xs<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtForeignBranchIncome/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-width:2px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode"
-						 select="$FormData/AdjSepLmtPassiveCategoryIncm/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+              <td class="IRS1118ScheduleJ_DescCell" scope="row" style="f<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtOtherIncome[1]/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+ont-size:10px;" valign="botto<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;"/>
                 </tr>
-                <!--Part I, line 9d for Blue or Separate format table -->
+select="$Fo<<< merge needed <<< merge needed >>>
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">d</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">General category income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtSection951AIncome/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+rgetNode" 
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtForeignBranchIncome/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+								  select="$FormData/AdjSepLmtOtherIncome[$pos]/EOYBalancesOfFutureSepLmtIncm/GeneralCat<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:1px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtPassiveCategoryIncm/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-width:2px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+           <td class="IRS1118ScheduleJ_Ge<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:1px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtOtherIncome[1]/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;"/>
                 </tr>
-                <!--Part I, line 9e for Blue or Separate format table -->
+
                 <xsl:if test="not($FormData/RchrctrztnSepLmtOtherIncmGrp)">
                   <tr class="styDepTblRow1">
                     <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">e</td>
@@ -5426,11 +5426,11 @@
                       <span class="styTableCellPad"/>(<span style="width:16px;"/>)
                     </td>
                     <td class="IRS1118ScheduleJ_GenericCell">
-                      <span class="styTableCellPad"/><span style="width:16px;background-color:lightgrey;"/>
+l" style="font-size:10px;" scope="row">Other Income*
                     </td>
                   </tr>
                 </xsl:if>
-				<xsl:variable name="threeICounter" select="count($FormData/RchrctrztnSepLmtOtherIncmGrp)"/>
+							<br/>
                 <xsl:for-each select="$FormData/RchrctrztnSepLmtOtherIncmGrp">
                   <xsl:variable name="pos" select="position()"/>
                   <!--///////////////////////////////////////////////////////////////////////////////////
@@ -5508,7 +5508,7 @@
                     <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;"/>
                   </tr>
                 </xsl:for-each>
-                <!--Part I, line 10 for Blue or Separate format table  -->
+							(identify <img src="{$ImagePat<<< merge needed >>>
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" valign="top">10</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Recapture of overall domestic losses</td>
@@ -5516,11 +5516,11 @@
                     <!--Pen and ink image -->
                     <span style="padding-right:2mm">
                     <xsl:call-template name="LinkToLeftoverDataTableInline">
-                      <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 General Limitation Income Column (i) - Allocation of domestic losses 	
+
 						  Indicator
                       </xsl:with-param>
                       <xsl:with-param name="TargetNode" 
-                      select="$FormData/AdjSepLmtSection951AIncome/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+td>
                     </xsl:call-template>
                     </span>
                     <xsl:call-template name="PopulateAmount">
@@ -5535,7 +5535,7 @@
 						  Indicator
 					  </xsl:with-param>
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtForeignBranchIncome/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+	<<< merge needed >>>
                     </xsl:call-template>
                     </span>
                     <xsl:call-template name="PopulateAmount">
@@ -5550,7 +5550,7 @@
 						  Indicator
 					  </xsl:with-param>
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtPassiveCategoryIncm/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+
                     </xsl:call-template>
                     </span>
                     <xsl:call-template name="PopulateAmount">
@@ -5565,7 +5565,7 @@
 						  Indicator
 					  </xsl:with-param>
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtGeneralCategoryIncm/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+1118ScheduleJ_SubIndexCell" scope="row">e</td<<< merge needed >>>
                     </xsl:call-template>
                     </span>
                     <xsl:call-template name="PopulateAmount">
@@ -5577,7 +5577,7 @@
                     <span style="padding-right:2mm">
                     <xsl:call-template name="LinkToLeftoverDataTableInline">
                       <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator
-						  </xsl:with-param>
+td>
                       <xsl:with-param name="TargetNode" 
 						  select="$FormData/AdjSepLmtOtherIncome[1]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
                     </xsl:call-template>
@@ -5591,7 +5591,7 @@
                    <span style="padding-right:2mm">
                    <xsl:call-template name="LinkToLeftoverDataTableInline">
                       <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iv) - Allocation of domestic losses Indicator
-						</xsl:with-param>
+   <<< merge needed >>>
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtUSIncome/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
                     </xsl:call-template>
                     </span>
@@ -5601,12 +5601,12 @@
                     </xsl:call-template>
                   </td>
                 </tr>
-                <!--Part I, line 11 for Blue or Separate format table -->
+ass="IRS1118ScheduleJ_GenericCell" valign="bottom" style="font-size:1<<< merge needed >>>
                 <tr class="styDepTblRow1">
-                  <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="border-bottom-width:0px;" valign="top">11</td>
-                  <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;border-bottom-width:0px;">
-                    <span style="font-weight:bold;">Numerator of Limitation Fraction-</span>Combine lines 8 through 10. Enter each result here and on Schedule B, 
-						Part II, line 7, of corresponding Form 1118. 
+eCellPad"/>
+                          <span style="width:16px;"/>
+      <<< merge needed >>>
+/>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" valign="bottom" style="font-size:10px;border-bottom-width:0px;">
                     <xsl:call-template name="PopulateAmount">
@@ -5633,18 +5633,18 @@
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/NumLimitationFractionAmt"/>
                     </xsl:call-template>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey; border-right-width:0px;" valign="bottom"/>
+                      <<< merge needed >>>
                 </tr>
-                <!-- Part II Title for Blue or Separate format table -->
-                <!-- Part II Title for Blue or Separate format table header -->
+
+"font-size:10px;border-bottom-width:1px;border-<<< merge needed >>>
                 <tr class="styDepTblHdr">
                   <td class="IRS1118ScheduleJ_DescCell" colspan="8" scope="row" 
 					  style="padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:2px;
-					            font-weight:bold;font-size:8pt;width:256mm;padding-left:0px;height:8mm;">
+
                     <div class="styTitleName" style="height:4.7mm;">Part II</div>
                     <span style="width:3mm;padding-top:1mm;"/> 
                       Year-End Balances of Future Separate Limitation Income That Must Be Recharacterized<br/>
-                    <span style="padding-left:4mm;font-weight:bold">(section 904(f)(5)(C))</span>
+bl<<< merge needed >>>
                   </td>
                 </tr>
                 <tr class="styDepTblHdr">
@@ -5672,30 +5672,30 @@
                     <xsl:call-template name="SetFormLinkInline">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]"/>
                     </xsl:call-template>
-                    <br/>Other income*
+
 						(identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>
 						<span class="styUnderlineText" 
 						style="padding-left:2mm; text-align:left;">
 							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome/SeparateCategoryCd"/>
+
 							</xsl:call-template>
 						</span>
 						<span class="styUnderlineText" 
 						style="padding-left:2mm; text-align:left;">
 							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome/SanctionedCountryCd"/>
+
 							</xsl:call-template>
 						</span>
 						<span class="styUnderlineText" 
 						style="padding-left:2mm; text-align:left;">
 							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome/TreatyCountryCd"/>
+            </xsl:for-each>
 							</xsl:call-template>
 						</span>
 						<span class="styUnderlineText" 
 						style="padding-left:2mm; text-align:left;">
 							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome/OtherIncomeDesc"/>
+                    </tbody>
 							</xsl:call-template>)
 						</span>
                   </th>
@@ -5709,8 +5709,8 @@
                     </xsl:call-template>
                   </th>
                 </tr>
-                <!-- End Part II Title for Blue or Separate format table header -->
-                <!--Part II line a for Blue or Separate format table -->
+                    </table>
+                  <<< merge needed >>>
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Section 951A income</td>
@@ -5719,37 +5719,37 @@
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtForeignBranchIncome/EOYBalancesOfFutureSepLmtIncm/Section951AIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtPassiveCategoryIncm/EOYBalancesOfFutureSepLmtIncm/Section951AIncomeAmt"/>
+ rows -->
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/Section951AIncomeAmt"/>
+              <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtOtherIncome[1]/EOYBalancesOfFutureSepLmtIncm/Section951AIncomeAmt"/>
+peatin<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part II line b for Blue or Separate format table  -->
+V Column (v) Other Income (Continue)</span>
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">b</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Foreign branch income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtSection951AIncome/EOYBalancesOfFutureSepLmtIncm/ForeignBranchIncomeAmt"/>
+              <div cl<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey">
@@ -5757,87 +5757,87 @@
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtPassiveCategoryIncm/EOYBalancesOfFutureSepLmtIncm/ForeignBranchIncomeAmt"/>
+-width:0px;border-bottom-width:0px;page-break-after:<<< merge ne<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/ForeignBranchIncomeAmt"/>
+dSeLmIn">
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtOtherIncome[1]/EOYBalancesOfFutureSepLmtIncm/ForeignBranchIncomeAmt"/>
+                <table cellsp<<< merge needed >>>
                     </xsl:call-template>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px; background-color:lightgrey;"/>
+        <!--Part III tit<<< merge needed >>>
                 </tr>
-                <!--Part II line c for Blue or Separate format table -->
+
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Passive category income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtSection951AIncome/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+lass="IRS1118Schedu<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtForeignBranchIncome/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+ style="height:4.7mm;">Part III
                     </xsl:call-template>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;background-color:lightgrey;" valign="bottom">
+                        </div>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+           <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtOtherIncome[1]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+all Foreign Loss Account Balances (section 904(f)(1)) 
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part II line d for Blue or Separate format table  -->
+                        <span style="padding-left:3mm;">
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">d</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">General category income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtSection951AIncome/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+                          <span style="font-styl<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtForeignBranchIncome/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtPassiveCategoryIncm/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;"/>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtOtherIncome[1]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+IRS1118ScheduleJ_DescCell<<< merge needed >>>
                     </xsl:call-template>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                   </td>
                 </tr>
-                <!--Part II line e for Blue or Separate format table  repeating rows -->
+ont-size:10px;" valign="bottom">
                 <!-- blank lines, row e,  if no data -->
                 <xsl:if test="not($FormData/EOYBalanceSepLmtOtherIncmGrp)">
                   <tr>
@@ -5851,26 +5851,26 @@
                       <span class="styTableCellPad"/>
                       <span style="width:16px;"/>
                     </td>
-                    <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;border-bottom-width:0px;background-color:lightgrey;">
+                        <xsl:call-template name="PopulateAmount">
                       <span class="styTableCellPad"/>
                       <span style="width:16px;"/>
                     </td>
-                    <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;background-color:lightgrey;">
+      <<< merge needed >>>
                       <span class="styTableCellPad"/>
                       <span style="width:16px;"/>
                     </td>
                   </tr>
                 </xsl:if>
-				<xsl:variable name="fourICounter" select="count($FormData/EOYBalanceSepLmtOtherIncmGrp)"/>
+de" 
                 <xsl:for-each select="$FormData/EOYBalanceSepLmtOtherIncmGrp">
                   <xsl:variable name="pos" select="position()"/>
                   <!--///////////////////////////////////////////////////////////////////////////////////
                         Note that the repeating rows are assumed to be filled in full by the corresponding columns - otherwise there is no way to
                         find out how they line up.  Hence the number of repetition are assumed to be the SAME for all columns.
                         ///////////////////////////////////////////////////////////////////////////////////-->
-                  <!-- ********************************************************************
-						  Note that columns (i) and (ii) do NOT repeat for row e on this table.  Per UWR 211899
-						********************************************************************-->
+							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+    <<< merge needed >>>
+
                   <tr>
                     <xsl:choose>
                       <xsl:when test="position() mod 2 = 1">
@@ -5923,7 +5923,7 @@
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" 
-							select="PassiveCategoryIncomeAmt"/>
+ name="P<<< merge needed >>>
                       </xsl:call-template>
                     </td>
                     <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
@@ -5932,131 +5932,131 @@
 							select="GeneralCategoryIncomeAmt"/>
                       </xsl:call-template>
                     </td>
-                    <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10p;" valign="bottom">
+oreignLossAcctBalances/BeginningBalanceAmt"/>
 						<xsl:call-template name="PopulateAmount">
 						  <xsl:with-param name="TargetNode" select="OtherIncomeAmt"/>
 						</xsl:call-template>
                     </td>
-                    <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;">
+                   <<< merge needed >>>
                       <span class="styTableCellPad"/>
                       <span style="width:16px;"/>
                     </td>
                   </tr>
                 </xsl:for-each>
                 <!-- end repeating rows -->
-                <!--Part III Title in Blue or Separate format table -->
+
                 <tr class="styDepTblHdr">
                   <td class="IRS1118ScheduleJ_DescCell" colspan="8" scope="row" style="width:256mm;padding-top:0px;padding-bottom:0px;border-top-width:2px;
                    border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
-                    <div class="styTitleName" style="height:4.7mm;">Part III</div>
+ for inline format-->
                     <span style="width:3mm;"/> 
                         Overall Foreign Loss Account Balances (section 904(f)(1))  
                     <span style="font-style:italic;font-weight:normal;">
-                      <br/>
+                    <tr>
                       <span style="padding-left:3mm;">
                         Complete for <span style="font-weight:bold;">each </span>
                         separate limitation income category.</span>
                     </span>
                   </td>
                 </tr>
-                <!--part III, Line 1 Blue or Separate format table -->
+                      <td class="IRS1118ScheduleJ_<<< merge needed >>>
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">1</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Beginning balance</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtSection951AIncome/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtForeignBranchIncome/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+pos]/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+                    <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtOtherIncome[1]/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+         <xsl:with-param name="TargetNode" 
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--part III, Line 2 Blue or Separate format table  -->
+							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallFo<<< merge needed >>>
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Current year additions</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtSection951AIncome/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtForeignBranchIncome/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+        <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+						  select="$FormData/AdjSepLmtOtherIncome<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						select="$FormData/AdjSepLmtOtherIncome[1]/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--part III, Line 3 Blue or Separate format table  -->
+xsl:call-template name="P<<< merge needed >>>
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Current year reductions (other than recapture)</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtSection951AIncome/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+getNode" 
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtForeignBranchIncome/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/Ov<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+         <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
@@ -6066,65 +6066,65 @@
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--part III, Line 4 Blue or Separate format table -->
+
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Current year recapture (from Part I, line 7)</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtSection951AIncome/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="b<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtForeignBranchIncome/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+<xsl:<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+entYearReductionsAmt"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+                        </xsl:call-template><<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+lForeignLossAcctBalances/CurrentYearReductionsAmt"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--part III, Line 5 Blue or Separate format table  -->
+          <<< merge needed >>>
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="border-bottom-width:0px;padding-left:2mm;" valign="top">5</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;border-bottom-width:0px;" scope="row">
                     <span style="font-weight:bold;">Ending balance-</span>Combine lines 1 through 4.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-bottom-width:0px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtSection951AIncome/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-bottom-width:0px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtForeignBranchIncome/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
+       </td>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-bottom-width:0px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
+                      <td class="IRS1118ScheduleJ_GenericCell" <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-bottom-width:0px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
+                </td>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:1px;border-bottom-width:0px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
+                    </tr>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;">
@@ -6132,7 +6132,7 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!-- Part IV title for Blue or Separate format table -->
+                    <!-- Part III, Line 4<<< merge needed >>>
                 <tr class="styDepTblHdr">
                   <td class="IRS1118ScheduleJ_DescCell" colspan="8" scope="row" style="width:256mm;padding-top:0px;padding-bottom:0px;border-top-width:2px;
                    border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
@@ -6141,163 +6141,163 @@
                       Overall Domestic Loss Account Balances (section 904(g)(1))
                   </td>
                 </tr>
-                <!--Part IV, Line 1 for Blue or Separate format table  -->
+        </xsl:c<<< merge needed >>>
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">1</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Beginning balance</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtSection951AIncome/OverallDomLossAcctBalances/BeginningBalanceAmt"/>
+                       </xsl:call-t<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtForeignBranchIncome/OverallDomLossAcctBalances/BeginningBalanceAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallDomLossAcctBalances/BeginningBalanceAmt"/>
+verallDomLossAcctBalances/BeginningBalanceAmt"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallDomLossAcctBalances/BeginningBalanceAmt"/>
+              <<< merge <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/OverallDomLossAcctBalances/BeginningBalanceAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part IV, Line 2 for Blue or Separate format table   -->
+epeating Column (v) for inlin<<< merge needed >>>
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Current year additions</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtSection951AIncome/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+ntYearAdditionsAmt"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtForeignBranchIncome/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+                        </xsl:call-templat<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+ont-size:10px;" valign=<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+with-par<<< merge neede<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part IV, Line 3 for Blue or Separate format table   -->
+
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Current year reductions (other than recapture)</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtSection951AIncome/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+ame="TargetNode" 
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtForeignBranchIncome/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+							  select="$<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+pulateNegativeNumber">
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+   <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateNegativeNumber">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part IV, Line 4 for Blue or Separate format table   -->
+ct="$FormData/AdjSepLmtOtherIncome[$pos]/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
                     <span style="font-weight:bold;">Subtotal-</span>Combine lines 1 through 3.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtSection951AIncome/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+          <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtForeignBranchIncome/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+DomLossAcctBalances/AdjustmentsSubtotalAmt"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+                        </xsl:call-template<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part IV, Line 5 for Blue or Separate format table   -->
+
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">5</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Current year recapture (from Part I, line 10)</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtSection951AIncome/ OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+a/AdjSepLmtOtherIncome[$pos + 1]/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtForeignBranchIncome/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+                   <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtPassiveCategoryIncm/ OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+ome[$pos + 3]/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+              <<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
                 </tr>
-                <!--Part IV, Line 6 for Blue or Separate format table   -->
+yle="width:112mm;"/>
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
@@ -6305,27 +6305,27 @@
                       from line 4.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtSection951AIncome/OverallDomLossAcctBalances/EndingBalanceAmt"/>
+							<span class="styBoldText">Schedule J<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtForeignBranchIncome/OverallDomLossAcctBalances/EndingBalanceAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallDomLossAcctBalances/EndingBalanceAmt"/>
+
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallDomLossAcctBalances/EndingBalanceAmt"/>
+of data for 2e and 9e is odd, set current to-->
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]/OverallDomLossAcctBalances/EndingBalanceAmt"/>
+                  <!-- styDepTblRow1<<< merge needed >>>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;">
@@ -6337,32 +6337,32 @@
             </table>
           </div>
         </xsl:if>
-        <!-- If the Separate Print Option is OFF, repeat table for the repeating column v. -->
-        <!-- the repeating columns of column v is displayed below -->
-        <!-- first column v -->
-        <xsl:if test="($Print = $Separated) and count($FormData/AdjSepLmtOtherIncome) &gt; 1">
-          <xsl:for-each select="$FormData/AdjSepLmtOtherIncome">
-            <xsl:variable name="pos" select="position()"/>
+
+                 <span clas<<< merge needed >>>
+
+ol">
+					  <span class="styBoldText">(i)</span>
+                    <br/>Section<<< merge needed >>>
             <xsl:if test="$pos mod 4 = 2">
-              <!-- //////////////////////////////////////////////////////////////////////////////////////////
+
               Repeat the Whole Table Here - Column v displayed as many times as required at four per page
           ///////////////////////////////////////////////////////////////////////////////////////// -->
               <br/>
               <span class="styRepeatingDataTitle" style="width:256mm;">Form 1118 Schedule J, Parts I - II Column (v) Other Income (Continue)</span>
-              <!-- Part I Table for repeating Column (iii) for Blue or Separate format table-->
-              <div>
+yC<<< merge needed >>>
+
                 <table class="styDepTbl" cellspacing="0" style="font-size:7pt;width:256mm">
-                <thead style="display:table-row-group;font-weight:normal;text-align:center;">
+ <xsl:call-template naor Blue or Separate format table  -->
                     <tr class="styDepTblHdr">
-                      <th class="IRS1118ScheduleJ_DescCell" colspan="6" scope="col" 
+                <tr class="st<<< merge needed >>>
 						  style="padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:2px;
-                       font-weight:bold;font-size:8pt;width:256mm;padding-left:0px;height:8mm;">
-                        <div class="styTitleName" style="height:4.7mm;">Part I</div>
+
+me[1]/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"<<< merge need<<< merge needed >>>
                         <span style="width:3mm;"/> 
-                        <span class="styBoldText">
-                             Adjustments to Separate Limitation Income or (Losses) in Determining Numerators of Limitation Fractions 
-                            </span>
-                        <span class="styNormalText">(see instructions.)</span>
+
+style="backg<<< merge needed >>>
+
+!--Part I, line 2c for Blue or<<< merge needed >>>
                       </th>
                     </tr>
                     <tr class="styDepTblHdr">
@@ -6455,8 +6455,8 @@
 									</xsl:call-template>)
 								</span>
                       </th>
-                      <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;border-right-width:0px;" 
-                      scope="col">
+    <xsl:with-param name="T<<< merge needed >>>
+        <xsl:with-param name<<< merge needed >>>
                         <span class="styBoldText">(v)</span>
                         <br/>Other income* <xsl:number value="position() +3" format="2"/>
 							<br/>(identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>
@@ -6489,7 +6489,7 @@
                   </thead>
                   <tfoot/>
                   <tbody>
-                    <!-- Part I, Line 1 for repeating Column (v) for Blue or Separate format table-->
+
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" valign="top" style="padding-left:2mm;">1</td>
                       <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Income or (loss) before adjustments</td>
@@ -6514,13 +6514,13 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 2 for repeating Column (v) for Blue or Separate format table-->
+
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
                       <td class="IRS1118ScheduleJ_DescCell" style="width:99mm;font-size:10px;border-right-width:0px;" colspan="5" scope="row">
                       Allocation of separate limitation losses:</td>
                     </tr>
-                    <!-- Part I, Line 2a for repeating Column (v) for Blue or Separate format table-->
+</x<<< merge needed >>>
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
                       <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Section 951A income</td>
@@ -6533,52 +6533,52 @@
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"/>
+yle="border-width:1px;font-s<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/AllocationCYSeparateLmtLosses/Section951AIncomeAmt"/>
+xsl:with-param name="TargetNode" 
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 2b for repeating Column (V) for Blue or Separate format table-->
+						  select="$FormData/AdjSepLmtGeneralCategoryIncm/All<<< merge needed >>>
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">b</td>
                       <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Foreign branch income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos]/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+                      select="$FormData/AdjSepLmtOtherIncome[1]/AllocationCYSe<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+								<span class="styUnderlineText" 
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/AllocationCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+								style="padding-left:2m<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 2c for repeating Column (v) for Blue or Separate format table-->
+
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
                       <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Passive category income</td>
@@ -6591,52 +6591,52 @@
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/AllocationCYSeparateLmtLosses/PassiveCategoryIncomeAmt"/>
+ll-templat<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/AllocationCYSeparateLmtLosses/PassiveCategoryIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/AllocationCYSeparateLmtLosses/PassiveCategoryIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 2d for repeating Column (V) for Blue or Separate format table-->
+elect="count($FormData/AllocationSepLmtLossOthIncmGrp)"/>
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">d</td>
                       <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">General category income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos]/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+         <<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+    <xsl:attribute <<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/AllocationCYSeparateLmtLosses/GeneralCategoryIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 2e for repeating Column (v) repeating row for Blue or Separate format table-->
+yle="padding-left:2mm; text-align:left;">
                       <!--///////////////////////////////////////////////////////////////////////////////////
                           Note that the repeating rows are assumed to be filled in full by the corresponding columns - otherwise there is no way to
                           find out how they line up.  Hence the number of repetition are assumed to be the SAME for all columns.
@@ -6708,7 +6708,7 @@
 						</tr>
 					</xsl:for-each>
                     <!-- end repeating rows -->
-                    <!-- Part I, Line 3 for repeating Column (v) for Blue or Separate format table-->
+									<xsl:call-template name="PopulateText">
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
@@ -6734,7 +6734,7 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 4 for repeating Column (v) for Blue or Separate format table-->
+										<xsl<<< m<<< merge needed >>>
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Allocation of overall foreign losses</td>
@@ -6759,7 +6759,7 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 5 for repeating Column (v)  for Blue or Separate format table-->
+
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">5</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Allocation of domestic losses</td>
@@ -6784,7 +6784,7 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 6 for repeating Column (v) for Blue or Separate format table-->
+class="I<<< merge needed >>>
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">6</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
@@ -6810,7 +6810,7 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 7 for repeating Column (v) for Blue or Separate format table-->
+
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">7</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Recapture of overall foreign losses</td>
@@ -6835,7 +6835,7 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 8 for repeating Column (v) for Blue or Separate format table-->
+Node" select="$FormData/AdjSepLmtSecti<<<<< merge needed<<< merge needed >>>
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">8</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
@@ -6861,129 +6861,129 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 9 for repeating Column (v) repeating row for Blue or Separate format table-->
+
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">9</td>
                       <td class="IRS1118ScheduleJ_DescCell" colspan="10" scope="row" style="width:99mm;font-size:10px;border-right-width:0px;">
                       Recharacterization of separate limitation income:</td>
                     </tr>
-                    <!-- Part I, Line 9a for repeating Column (v) for Blue or Separate format table-->
+
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Section 951A income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos]/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+rd<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+er">
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/A<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RecharacterizationSepLmtIncm/Section951AIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 9b for repeating Column (v) for Blue or Separate format table-->
+    <<< merge needed >>>
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">b</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Foreign branch income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos]/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+yle="font-siz<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+/span>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+      <td class="IRS<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 9c for repeating Column (v) for Blue or Separate format table-->
+nericCell" <<< merge needed >>>
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Passive category income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos]/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+te<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+ name="Tar<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 9d for repeating Column (v) for Blue or Separate format table-->
+ryIncm/RcptrOverallForeignLossesAmt<<< merge needed >>>
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">d</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">General category income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos]/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+ating for<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+             <tr class="styDepTblRow2">
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+      <<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+me/AdjIncmLossAndLmtIncmAmt"/>
                         </xsl:call-template>
                       </td>
                     </tr>
-                      <!-- Part I, Line 9e for repeating Column (v) repeating row for Blue or Separate format table-->
+   <<< merge needed >>>
                       <!--///////////////////////////////////////////////////////////////////////////////////
                         Note that the repeating rows are assumed to be filled in full by the corresponding columns - otherwise there is no way to
                         find out how they line up.  Hence the number of repetition are assumed to be the SAME for all columns.
@@ -7055,7 +7055,7 @@
 						</tr>
 					</xsl:for-each>
                     <!-- end repeating rows -->
-                    <!-- Part I, Line 10 for repeating Column (v) for Blue or Separate format table-->
+
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" valign="top">10</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Recapture of overall domestic losses</td>
@@ -7066,7 +7066,7 @@
                           <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (v) - Allocation of domestic losses Indicator
                           </xsl:with-param>
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+           <xsl:call-t<<< merge needed >>>
                         </xsl:call-template>
                         </span>
                         <xsl:call-template name="PopulateAmount">
@@ -7077,8 +7077,8 @@
                         <!--Pen and ink image -->
                         <span style="padding-right:2mm">
                         <xsl:call-template name="LinkToLeftoverDataTableInline">
-                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (v) - Allocation of domestic losses Indicato
-                          r</xsl:with-param>
+
+
                           <xsl:with-param name="TargetNode" 
                           select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
                         </xsl:call-template>
@@ -7103,7 +7103,7 @@
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <!--Pen and ink image -->
-                       <span style="padding-right:2mm">
+
                         <xsl:call-template name="LinkToLeftoverDataTableInline">
                           <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (v) - Allocation of domestic losses Indicator
                           </xsl:with-param>
@@ -7116,12 +7116,12 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part I, Line 11 for repeating Column (v) for Blue or Separate format table-->
+
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" valign="top" scope="row">11</td>
                       <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;border-bottom-width:1px;" scope="row">
                         <span style="font-weight:bold;">Numerator of Limitation Fraction-</span>Combine lines 8 through 10.  
-                        Enter each result here and on Schedule B, Part II, line 7, of corresponding Form 1118. </td>
+dth:0px;" s<<< merge needed >>>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/NumLimitationFractionAmt"/>
@@ -7143,25 +7143,25 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part II title for repeating Column (v) for Blue or Separate format table-->
+
                     <tr class="styDepTblHdr">
                       <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" 
-                      style="width:256mm;padding-top:0px;padding-bottom:0px;border-right-width:0px;
-								border-top-width:1px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+class="IRS1118ScheduleJ_GenericCell" style="bord<<< m<<< merge needed >>>
+
                         <div class="styTitleName" style="height:4.7mm;">Part II</div>
                         <span style="width:3mm;"/> 
                             Year-End Balances of Future Separate Limitation Income That Must Be Recharacterized<br/>
-                        <span style="padding-left:4mm;font-weight:normal">(section 904(f)(5)(C))</span>
+class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:<<< merge needed >>>
                       </td>
                     </tr>
-                    <!-- Part II, Line a for repeating Column (v) for Blue or Separate format table-->
+         <td<<< merge needed >>>
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Section 951A income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos]/EOYBalancesOfFutureSepLmtIncm/Section951AIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
@@ -7183,14 +7183,14 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part II, Line b for repeating Column (v) for Blue or Separate format table-->
+
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">b</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Foreign branch income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos]/EOYBalancesOfFutureSepLmtIncm/ForeignBranchIncomeAmt"/>
+t="$FormData/AdjSepLmtOtherIncome[1]/<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
@@ -7212,14 +7212,14 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part II, Line c for repeating Column (v) for Blue or Separate format table-->
+
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Passive category income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+ign="<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
@@ -7241,14 +7241,14 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part II, Line d for repeating Column (v) for Blue or Separate format table-->
+
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">d</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">General category income</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" 
-							  select="$FormData/AdjSepLmtOtherIncome[$pos]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
@@ -7270,7 +7270,7 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part II, Line e for repeating Column (v) Repeating row for Blue or Separate format table-->
+x;border-right-width:1px;" valign="bottom<<< merge needed >>>
                     <xsl:for-each select="$FormData/EOYBalanceSepLmtOtherIncmGrp">
                       <xsl:variable name="rowpos" select="position()"/>
 						<tr>
@@ -7342,124 +7342,124 @@
                     </div>
                     <!-- end repeating rows -->
               <br/>
-				<span class="styRepeatingDataTitle" style="width:256mm;">Form 1118 Schedule J, Parts III - IV Column (v) Other Income (Continue)</span>
-					<div>
+
+
                 <table class="styDepTbl" cellspacing="0" style="font-size:7pt;width:256mm">
-                    <!-- Part III title for Repeating Column (v) for Blue or Separate format table-->
+tyDepTb<<< merge needed >>>
                     <tr class="styDepTblHdr">
                       <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" 
                       style="width:256mm;border-top-width:1px;border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
-                        <div class="styTitleName" style="height:4.7mm;">Part III</div>
+;" valign="bottom">
                         <span style="width:3mm;"/> 
-                          Overall Foreign Loss Account Balances (section 904(f)(1))
+                    <xsl:call-template name="PopulateAmount">
                         <span style="padding-left:3mm;">
                           <span style="font-style:italic;font-weight:normal;">Complete for <b>each </b>
                             separate limitation income category.</span>
                         </span>
                       </td>
                     </tr>
-                    <tbody>
-                    <!-- Part III, Line 1 for Repeating Column (v) for Blue or Separate format table-->
+       <<< merge needed >>>
+      </xsl:call-template>
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">1</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Beginning balance</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+               <<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+--Part I, line 9e fo<<<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part III, Line 2 for Repeating Column (v) for Blue or Separate format table-->
+
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year additions</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+     <<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+therIncmGrp)"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+      <<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+attribute>
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part III, Line 3 for Repeating Column (v) for Blue or Separate format table-->
+                      </xsl:when>
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year reductions (other than recapture)</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+                      <<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+neText" 
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+							style="padding-left:2mm; text-align:left;">
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+							<xsl:call-template na<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part III, Line 4 for Repeating Column (v) for Blue or Separate format table-->
+
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year recapture (from Part I, line 7)</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+      <td class="IRS1118ScheduleJ_GenericCell" st<<< merge needed >>><<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 2]/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 3]/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!-- Part III, Line 5 for Repeating Column (v) for Blue or Separate format table-->
+                  <td class="IRS1118ScheduleJ_GenericCell" valign="bottom" style="font-size:10px;">
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">5</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
@@ -7485,11 +7485,11 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!--Part IV Title for Repeating Column (v) for Blue or Separate format table-->
+                    <!--Pen and ink image -->
                     <tr class="styDepTblHdr">
                       <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" 
-                      style="width:256mm;padding-top:0px;padding-bottom:0px;border-top-width:1px;
-                                border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+      <<< merge needed >>>
+           <span style="padding-right:2mm">
                         <div class="styTitleName" style="height:4.7mm;">Part IV</div>
                         <span style="width:3mm;"/> 
                            Overall Domestic Loss Account Balances (section 904(g)(1)) 
@@ -7520,7 +7520,7 @@
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!--Part IV Line 2 for Repeating Column (v) for Blue or Separate format table-->
+               <<< merge needed >>>
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year additions</td>
@@ -7531,46 +7531,46 @@
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+bleInline">
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+                 <<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+>
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!--Part IV Line 3 for Repeating Column (v) for Blue or Separate format table-->
+                    </xsl:call-template>
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year reductions (other than recapture)</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+                    </span>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+                    <xsl:call-template name="PopulateAmount">
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCate<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateNegativeNumber">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+                    <xsl:call-<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!--Part IV Line 4 for Repeating Column (v) for Blue or Separate format table-->
+
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
@@ -7582,21 +7582,21 @@
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+  </td>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+                  <td class="IRS1118<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!--Part IV Line 5 for Repeating Column (v) for Blue or Separate format table-->
+Cd"/>
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">5</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year recapture (from Part I, line 10)</td>
@@ -7607,21 +7607,21 @@
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+    <<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 2]/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+118ScheduleJ_DescCell" scope="row" style="f<<< merge needed >>>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 3]/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+
                         </xsl:call-template>
                       </td>
                     </tr>
-                    <!--Part IV Line 6 for Repeating Column (v) for Blue or Separate format table-->
+       </xsl:call-templa<<< merge needed >>>
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">6</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
@@ -7654,7 +7654,1878 @@
           </xsl:for-each>
         </xsl:if>
         <!-- end display repeating column iii -->
+e:10px;border-bottom-width:0px;">
+       <<< merge needed >>>
+
+
+   <<< merge needed >>>
+RS1118ScheduleJ_DescCell" colspan="8" scope="row" 
+
+					  style="padding-top:0px;padding-b<<< merge needed >>>
+padding-top:1mm;"/> 
+
+                   <<< merge needed >>>
+"IRS1118ScheduleJ_GenericCell" style="width:58mm;height:10mm;font-weight:n<<< merge needed >>>
+nter;" scope="col">
+
+    <<< merge needed >>>
+            <<< merge needed >>>
+    <span class="styBoldText">(iii)</span>
+
+                    <br<<< merge needed >>>
+nericCell" 
+
+					  style="width:32mm;height:10mm;<<< merge needed >>>
+e[1]"/>
+
+                    </xsl:call-tem<<< merge needed >>>
+Targ<<< merge needed >>>
+$FormData/AdjSepLmtOtherIncome/SanctionedCountryCd"/>
+
+	<<< merge needed >>>
+>
+
+						</span>
+
+						<span class="styUnderlineText" 
+
+						style="p<<< merge needed >>>
+         </th>
+
+             <<< merge needed >>>
+   <xsl:call-template name="SetFormLinkInline">
+
+            <<< merge needed >>>
+        </xsl:call-<<< merge needed >>>
+              <td class="IRS1118ScheduleJ_SubI<<< merge needed >>>
+    <<< merge needed >>>
+eignBranchIncome/EOYBalancesOfFutureS<<< merge needed >>>
+                     <xsl:with-param name="TargetNode" 
+
+						  select="$FormData/AdjSepLmtPa<<< merge needed >>>
+					  sele<<< merge needed >><<< merge needed >>>
+                <td class="IRS1118ScheduleJ_GenericCell" style="border-right-wi<<< merge needed >>>
+heduleJ_DescCell" style="font-size:10px" sco<<< merge needed >>>
+ign<<< merge needed >>>
+mount">
+
+                      <xsl:with-param<<< merge needed >>>
+  select="$FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/ForeignBranchIncomeAmt"/>
+
+                <<< merge needed >>>
+etNode" 
+
+						  se<<< merge needed >>>
+olor:lightgrey;"/>
+
+                </tr>
+
+        <<< merge needed >>>
+come</td>
+
+                  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:<<< merge needed >>>
+PassiveCategory<<< merge needed >>>
+             <xsl:with-param<<< merge needed >>>
+cCell" style="font-size:10px;" valign="botto<<< merge needed >>>
+:call-template>
+
+      <<< merge needed >>>
+ect="$FormData/<<< merge needed >>>
+  </tr>
+
+                <!--Part II line d for Blue or Separate format table  -->
+
+   <<< merge needed >>>
+eral category income</td>
+
+          <<< merge needed >>><<< merge needed >>>
+e name="PopulateAmount">
+
+                      <xsl:with<<< merge needed >>>
+d<<< merge needed >>>
+LmtForeignBranchIncom<<< merge needed >>>
+/EOYBalancesOfFutureSepL<<< merge needed >>>
+tIncm/GeneralCategoryIncomeAmt"/><<< merge <<< merge needed >>>
+              <xsl:with-param name="T<<< merge needed >>><<< merge needed >>>
+CategoryIncomeAmt"/>
+
+                    </xsl:call-template>
+
+ <<< merge needed >>>
+uleJ_GenericCell" style="backg<<< merge neede<<< merge needed >>>
+tom">
+
+                    <xsl:call-template name="PopulateAmount">
+
+                      <xsl:with-param name="TargetNode" 
+
+						  se<<< merge needed <<< merge needed >>>
+eneralCategoryIncomeAmt"/>
+
+             <<< mer<<< merge needed >>>
+                  <td class="IRS1118ScheduleJ_GenericCell" style="b<<< merge needed >>>
+ 
+
+							select="PassiveCategoryIncomeAmt"/>
+
+  <<< merge needed >>>
+plate>
+
+                    </td>
+
+                    <td cla<<< merge needed >>>
+
+
+                <tr class="s<<< merge needed >>>
+                  <xs<<< merge needed >>>
+                  <xsl:with-param name="Target<<< merge needed >>>
+lateAmount">
+
+                      <xsl:with-param name="TargetNode" 
+
+						select="$FormData/AdjSepLmtSection951AIncome<<<<<< merge needed >>>
+name="TargetNode" 
+
+						select="$FormData/AdjSepLmtPassiveCategoryIncm/OverallFore<<< merge needed >>>
+="PopulateAmount">
+
+                      <xsl:with-param n<<< merge needed >>>
+te name="PopulateAmount">
+
+                      <xsl:with-param name="TargetNo<<< merge needed >>>
+-width:0px;background-color:lightgrey;"/>
+
+             <<< merge needed >>>
+ss="IRS1118ScheduleJ<<< merge needed >>>
+mber">
+
+                      <<<< merge need<<< merge needed >>>
+"/>
+
+                    </xsl:call-template>
+<<< merg<<< merge needed >>>
+  </xsl:call-template>
+
+                  </td>
+
+                 <<< merge needed >>>
+eJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
+<<< merge needed >>>
+rRecapture<<< merge needed >>>
+   </xsl:call-template>
+
+                  </td>
+
+                  <td class="IRS1118Schedule<<< merge needed >>>
+         <td class="IRS1118ScheduleJ_GenericCell" style="font-size<<< merge needed >>>
+       <<< merge needed >>>
+rgetNode" select="$FormData/AdjSepLmtOtherIncome[1]/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+
+            <<< merge needed >>>
+2mm;">1</td>
+
+               <<< merge needed >>>
+epLmtGeneralCategory<<< merge needed<<< merge needed >>>
+             </xsl:call-template>
+
+   <<< merge needed >>>
+e name="PopulateNegativeNumber">
+
+       <<< merge needed >>>
+               <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
+
+   <<< m<<< merge needed >>>
+ight<<< merge needed >>>
+order-right-width:0px;back<<< merge needed >>>
+e="font-size:<<< merge needed >>>
+         </xsl:call-template>
+
+                  </td>
+
+                  <t<<< merge needed ><<< merge needed >>>
+siveCategoryIncm/ OverallDomLossAcctBalances/CurrentYearRecaptureA<<< merge nee<<< merge needed >>>
+cheduleJ_GenericCell" style="border-right-width:0px;background-color:lightgrey;"/>
+
+                </tr>
+
+     <<< merge needed >>>
+:bold;">Ending balance-</span>Subtract li<<< merge needed >>>
+anceAmt"/>
+
+                    </xsl:cal<<< merge needed >>>
+TargetNode" select="$FormData/AdjSepLmtForeignBranchInc<<< merge needed >>>
+                   </xsl:call-temp<<< merge needed >>>
+mplate>
+
+                  </td>
+
+                  <td class="IR<<< merge needed >>>
+mplate>
+
+<<< merge needed >>>
+/xsl:if>
+
+        <!-- If the Separate Print Opti<<< merge needed >>>
+therIncome) &gt; 1">
+
+          <xsl:for-each select="$FormData/<<< merge needed >>>
+s required at four per page
+
+          <<< merge needed >>>
+/span>
+
+              <!-- Part I Table for repeating Column (iii) f<<< merge needed >>>
+       <<< merge needed >>>
+left:0px;height:8mm;">
+
+                      <<< merge needed >>>
+yBol<<< merge needed >>>
+cCe<<< merge needed >>>
+djSe<<< merge needed >>>
+						</span>
+
+								<span class="styUnderlineText" 
+
+								style="padding-left:2mm; text-align:left<<< merge needed >>>
+m; te<<< merge needed >>>
+late name="PopulateTe<<< merge needed >>>
+tyle<<< merge needed >>>
+ng<<< merge needed >>>
+e:10px;" scope="row">Income or (loss) before adjustments</td>
+
+   <<< m<<< merge needed >>>
+               <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 3]/T<<< merge needed >>>
+                  </<<< merge needed >>>
+ class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
+
+                      <td class="IR<<< merge needed >>>
+                 Allocation of separate limi<<< merge needed >>>
+hedu<<< merge needed >>>
+all-<<< merge needed >>>
+:0px;" valign="bottom">
+
+                        <xsl:call-templa<<< merge neede<<< merge needed >>>
+onCYSeparateLmtLosses/ForeignBranchIncomeAmt"/>
+
+                   <<< merge needed >>>
+        <<< merge needed >>>
+                  <xsl:call-template <<< merge needed >>>
+tegoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                     <<< merge<<< merge needed >>>
+exCe<<< merge needed >>>
+
+
+							(identify <img src="{$ImagePath<<< merge needed >>>
+name="TargetNode" select="SeparateCategoryCd"/>
+
+								</xsl:call-tem<<< merge needed >>>
+							style="padding-left:2mm; text-align<<< merge needed >>>
+>
+
+					<<< merge needed >>>
+ext">
+
+									<xsl:with-param name="Targe<<< merge needed >>>
+ name="PopulateT<<< <<< merge needed >>>
+ate><<< merge needed >>>
+ + 1]"/>
+
+							</xsl:call-template>
+
+						  </td>
+
+						  <td <<< merge needed >>>
+ na<<< merge needed >>>
+>
+
+							  <xsl:with-param<<< merge needed >>>
+ine 3 for repeating Column (v) for Blue or Separate format table--><<< merge needed >>>
+" scope<<< merge needed >>>
+font-size:10px;" valign="bottom">
+
+                      <<< merge needed >>>
+OtherIncome[$p<<< merge needed >>>
+                    <xsl<<< merge needed >>>
+ell" style="font-size:10px;" v<<< merge needed >>>
+                   <td class="I<<< merge needed >>>
+mt"/>
+
+                      <<< mer<<< merge needed >>>
+                 <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallForeignLossesAmt"/>
+
+                        </xsl:ca<<< merge needed >>><<< merge needed >>>
+        <xsl:call-templ<<< merge needed >>>
+size:1<<< merge needed >>>
+/td>
+
+                    </tr>
+
+                    <!-- Part I, Line 5 for repeating Column (v)  for Blue or Separate format table-->
+
+           <<< merge needed >>>
+sl:call-template>
+
+       <<< merge needed >>>
+valign=<<< merge needed >>>
+"PopulateNegativeNumber">
+
+                          <xsl:with-param name="TargetN<<< merge needed >>>
+getNode" select=<<< merge needed >>>
+      </td>
+
+                    </tr>
+
+ <<< merge needed >>>
+                  <<< merge needed >>>
+e="font-size:10px;"><<< merge needed >>>
+="bottom">
+
+         <<< merge needed >>>
+e:10px;"<<< merge needed >>>
+     <td class="IRS1118ScheduleJ_GenericCe<<< merge needed >>>
+            </xsl:call-template>
+
+                      </td>
+
+                      <td class=<<< merge needed >>>
+rgetNode" select="$FormData/Adj<<< merge needed >>>
+             <!-- Part I, Line 8 fo<<< merge needed >>>
+ select="$FormData/AdjSepLmt<<< merge needed >>>
+      <xsl:call-template name="Popula<<< mer<<< merge needed >>>
+]/AdjIncmLossAndLmtIncmAmt"/>
+
+                        </xsl:call-templat<<< merge needed >>>
+     <<< merge needed >>>
+acterization of separate limitation income:</td>
+
+                    </tr>
+
+                    <!-- P<<< merge ne<<< merge needed >>>
+mount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData<<< merge needed >>>
+          <td class="IRS1118ScheduleJ_Ge<<< merge needed >>>
+ericCell<<< merge needed >>>
+om">
+
+            <<< merge needed >>>
+mplate name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData/AdjSepLmtOtherIncome[$pos]/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RecharacterizationSepLmtIncm/ForeignBranchIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!-- Part I, Line 9c for repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow2">
+
+                      <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Passive category income</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData/AdjSepLmtOtherIncome[$pos]/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!-- Part I, Line 9d for repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow1">
+
+                      <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">d</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">General category income</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData/AdjSepLmtOtherIncome[$pos]/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RecharacterizationSepLmtIncm/GeneralCategoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                      <!-- Part I, Line 9e for repeating Column (v) repeating row for Blue or Separate format table-->
+
+                      <!--///////////////////////////////////////////////////////////////////////////////////
+
+                        Note that the repeating rows are assumed to be filled in full by the corresponding columns - otherwise there is no way to
+
+                        find out how they line up.  Hence the number of repetition are assumed to be the SAME for all columns.
+
+                        ///////////////////////////////////////////////////////////////////////////////////-->
+
+                    <xsl:for-each select="$FormData/RchrctrztnSepLmtOtherIncmGrp">
+
+                      <xsl:variable name="rowpos" select="position()"/>
+
+						<tr>
+
+							<xsl:choose>
+
+							  <xsl:when test="position() mod 2 = 1">
+
+								<xsl:attribute name="class">styDepTblRow1</xsl:attribute>
+
+							  </xsl:when>
+
+							  <xsl:otherwise>
+
+								<xsl:attribute name="class">styDepTblRow2</xsl:attribute>
+
+							  </xsl:otherwise>
+
+							</xsl:choose>
+
+						  <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">e</td>
+
+						  <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Other Income*
+
+							<br/>
+
+							(identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>
+
+							<span class="styUnderlineText" 
+
+							style="padding-left:2mm; text-align:left;">
+
+								<xsl:call-template name="PopulateText">
+
+									<xsl:with-param name="TargetNode" select="SeparateCategoryCd"/>
+
+								</xsl:call-template>
+
+							</span>
+
+							<span class="styUnderlineText" 
+
+							style="padding-left:2mm; text-align:left;">
+
+								<xsl:call-template name="PopulateText">
+
+									<xsl:with-param name="TargetNode" select="SanctionedCountryCd"/>
+
+								</xsl:call-template>
+
+							</span>
+
+							<span class="styUnderlineText" 
+
+							style="padding-left:2mm; text-align:left;">
+
+								<xsl:call-template name="PopulateText">
+
+									<xsl:with-param name="TargetNode" select="TreatyCountryCd"/>
+
+								</xsl:call-template>
+
+							</span>
+
+							<span class="styUnderlineText" 
+
+							style="padding-left:2mm; text-align:left;">
+
+								<xsl:call-template name="PopulateText">
+
+									<xsl:with-param name="TargetNode" select="OtherIncomeDesc"/>
+
+								</xsl:call-template>)
+
+							</span>
+
+						  </td>
+
+						  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+							<xsl:call-template name="PopulateNegativeNumber">
+
+							  <xsl:with-param name="TargetNode" 
+
+									  select="OtherIncomeAmt[$pos]"/>
+
+							</xsl:call-template>
+
+						  </td>
+
+						  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+							<xsl:call-template name="PopulateNegativeNumber">
+
+							  <xsl:with-param name="TargetNode"
+
+									  select="OtherIncomeAmt[$pos + 1]"/>
+
+							</xsl:call-template>
+
+						  </td>
+
+						  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+							<xsl:call-template name="PopulateNegativeNumber">
+
+							  <xsl:with-param name="TargetNode"
+
+									  select="OtherIncomeAmt[$pos + 2]"/>
+
+							</xsl:call-template>
+
+						  </td>
+
+						  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+							<xsl:call-template name="PopulateNegativeNumber">
+
+							  <xsl:with-param name="TargetNode"
+
+									  select="OtherIncomeAmt[$pos + 3]"/>
+
+							</xsl:call-template>
+
+						  </td>
+
+						</tr>
+
+					</xsl:for-each>
+
+                    <!-- end repeating rows -->
+
+                    <!-- Part I, Line 10 for repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow2">
+
+                      <td class="IRS1118ScheduleJ_IndexCell" scope="row" valign="top">10</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Recapture of overall domestic losses</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <!--Pen and ink image -->
+
+                        <span style="padding-right:2mm">
+
+                        <xsl:call-template name="LinkToLeftoverDataTableInline">
+
+                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (v) - Allocation of domestic losses Indicator
+
+                          </xsl:with-param>
+
+                          <xsl:with-param name="TargetNode" 
+
+<<< merge needed >>>
+<<< difference resolved - line(s) deleted >>>
+							  select="$FormData/AdjSepLmtOtherIncome[$pos]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+
+                        </xsl:call-template>
+
+                        </span>
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/RcptrOverallDomesticLossesAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <!--Pen and ink image -->
+
+                        <span style="padding-right:2mm">
+
+                        <xsl:call-template name="LinkToLeftoverDataTableInline">
+
+                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (v) - Allocation of domestic losses Indicato
+
+                          r</xsl:with-param>
+
+                          <xsl:with-param name="TargetNode" 
+
+                          select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+
+                        </xsl:call-template>
+
+                        </span>
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RcptrOverallDomesticLossesAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <!--Pen and ink image -->
+
+                        <span style="padding-right:2mm">
+
+                        <xsl:call-template name="LinkToLeftoverDataTableInline">
+
+                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (v) - Allocation of domestic losses Indicator
+
+                          </xsl:with-param>
+
+                          <xsl:with-param name="TargetNode" 
+
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+
+                        </xsl:call-template>
+
+                        </span>
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RcptrOverallDomesticLossesAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <!--Pen and ink image -->
+
+                       <span style="padding-right:2mm">
+
+                        <xsl:call-template name="LinkToLeftoverDataTableInline">
+
+                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (v) - Allocation of domestic losses Indicator
+
+                          </xsl:with-param>
+
+                          <xsl:with-param name="TargetNode" 
+
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+
+                        </xsl:call-template>
+
+                        </span>
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RcptrOverallDomesticLossesAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!-- Part I, Line 11 for repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow1">
+
+                      <td class="IRS1118ScheduleJ_IndexCell" valign="top" scope="row">11</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;border-bottom-width:1px;" scope="row">
+
+                        <span style="font-weight:bold;">Numerator of Limitation Fraction-</span>Combine lines 8 through 10.  
+
+                        Enter each result here and on Schedule B, Part II, line 7, of corresponding Form 1118. </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/NumLimitationFractionAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/NumLimitationFractionAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/NumLimitationFractionAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/NumLimitationFractionAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!-- Part II title for repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblHdr">
+
+                      <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" 
+
+                      style="width:256mm;padding-top:0px;padding-bottom:0px;border-right-width:0px;
+
+								border-top-width:1px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+
+                        <div class="styTitleName" style="height:4.7mm;">Part II</div>
+
+                        <span style="width:3mm;"/> 
+
+                            Year-End Balances of Future Separate Limitation Income That Must Be Recharacterized<br/>
+
+                        <span style="padding-left:4mm;font-weight:normal">(section 904(f)(5)(C))</span>
+
+                      </td>
+
+                    </tr>
+
+                    <!-- Part II, Line a for repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow1">
+
+                      <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Section 951A income</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData/AdjSepLmtOtherIncome[$pos]/EOYBalancesOfFutureSepLmtIncm/Section951AIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+                          select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/EOYBalancesOfFutureSepLmtIncm/Section951AIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/EOYBalancesOfFutureSepLmtIncm/Section951AIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/EOYBalancesOfFutureSepLmtIncm/Section951AIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!-- Part II, Line b for repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow2">
+
+                      <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">b</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Foreign branch income</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData/AdjSepLmtOtherIncome[$pos]/EOYBalancesOfFutureSepLmtIncm/ForeignBranchIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+                          select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/EOYBalancesOfFutureSepLmtIncm/ForeignBranchIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/EOYBalancesOfFutureSepLmtIncm/ForeignBranchIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/EOYBalancesOfFutureSepLmtIncm/ForeignBranchIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!-- Part II, Line c for repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow1">
+
+                      <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Passive category income</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData/AdjSepLmtOtherIncome[$pos]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+                          select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!-- Part II, Line d for repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow2">
+
+                      <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">d</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">General category income</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+							  select="$FormData/AdjSepLmtOtherIncome[$pos]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+                          select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" 
+
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!-- Part II, Line e for repeating Column (v) Repeating row for Blue or Separate format table-->
+
+                    <xsl:for-each select="$FormData/EOYBalanceSepLmtOtherIncmGrp">
+
+                      <xsl:variable name="rowpos" select="position()"/>
+
+						<tr>
+
+							<xsl:choose>
+
+							  <xsl:when test="position() mod 2 = 1">
+
+								<xsl:attribute name="class">styDepTblRow1</xsl:attribute>
+
+							  </xsl:when>
+
+							  <xsl:otherwise>
+
+								<xsl:attribute name="class">styDepTblRow2</xsl:attribute>
+
+							  </xsl:otherwise>
+
+							</xsl:choose>
+
+						  <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">e</td>
+
+						  <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Other Income*
+
+							<br/>
+
+							(identify <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>
+
+							<span class="styUnderlineText" 
+
+							style="padding-left:2mm; text-align:left;">
+
+								<xsl:call-template name="PopulateText">
+
+									<xsl:with-param name="TargetNode" select="SeparateCategoryCd"/>
+
+								</xsl:call-template>
+
+							</span>
+
+							<span class="styUnderlineText" 
+
+							style="padding-left:2mm; text-align:left;">
+
+								<xsl:call-template name="PopulateText">
+
+									<xsl:with-param name="TargetNode" select="SanctionedCountryCd"/>
+
+								</xsl:call-template>
+
+							</span>
+
+							<span class="styUnderlineText" 
+
+							style="padding-left:2mm; text-align:left;">
+
+								<xsl:call-template name="PopulateText">
+
+									<xsl:with-param name="TargetNode" select="TreatyCountryCd"/>
+
+								</xsl:call-template>
+
+							</span>
+
+							<span class="styUnderlineText" 
+
+							style="padding-left:2mm; text-align:left;">
+
+								<xsl:call-template name="PopulateText">
+
+									<xsl:with-param name="TargetNode" select="OtherIncomeDesc"/>
+
+								</xsl:call-template>)
+
+							</span>
+
+						  </td>
+
+						  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+							<xsl:call-template name="PopulateNegativeNumber">
+
+							  <xsl:with-param name="TargetNode" 
+
+									  select="OtherIncomeAmt[$pos]"/>
+
+							</xsl:call-template>
+
+						  </td>
+
+						  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+							<xsl:call-template name="PopulateNegativeNumber">
+
+							  <xsl:with-param name="TargetNode"
+
+									  select="OtherIncomeAmt[$pos + 1]"/>
+
+							</xsl:call-template>
+
+						  </td>
+
+						  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+							<xsl:call-template name="PopulateNegativeNumber">
+
+							  <xsl:with-param name="TargetNode"
+
+									  select="OtherIncomeAmt[$pos + 2]"/>
+
+							</xsl:call-template>
+
+						  </td>
+
+						  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+							<xsl:call-template name="PopulateNegativeNumber">
+
+							  <xsl:with-param name="TargetNode"
+
+									  select="OtherIncomeAmt[$pos + 3]"/>
+
+							</xsl:call-template>
+
+						  </td>
+
+						</tr>
+
+					</xsl:for-each>
+
+                    </tbody>
+
+                    </table>
+
+                    </div>
+
+                    <!-- end repeating rows -->
+
+              <br/>
+
+				<span class="styRepeatingDataTitle" style="width:256mm;">Form 1118 Schedule J, Parts III - IV Column (v) Other Income (Continue)</span>
+
+					<div>
+
+                <table class="styDepTbl" cellspacing="0" style="font-size:7pt;width:256mm">
+
+                    <!-- Part III title for Repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblHdr">
+
+                      <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" 
+
+                      style="width:256mm;border-top-width:1px;border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+
+                        <div class="styTitleName" style="height:4.7mm;">Part III</div>
+
+                        <span style="width:3mm;"/> 
+
+                          Overall Foreign Loss Account Balances (section 904(f)(1))
+
+                        <span style="padding-left:3mm;">
+
+                          <span style="font-style:italic;font-weight:normal;">Complete for <b>each </b>
+
+                            separate limitation income category.</span>
+
+                        </span>
+
+                      </td>
+
+                    </tr>
+
+                    <tbody>
+
+                    <!-- Part III, Line 1 for Repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow1">
+
+                      <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">1</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Beginning balance</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallForeignLossAcctBalances/BeginningBalanceAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!-- Part III, Line 2 for Repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow2">
+
+                      <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year additions</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallForeignLossAcctBalances/CurrentYearAdditionsAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!-- Part III, Line 3 for Repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow1">
+
+                      <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year reductions (other than recapture)</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateNegativeNumber">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateNegativeNumber">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateNegativeNumber">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateNegativeNumber">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallForeignLossAcctBalances/CurrentYearReductionsAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!-- Part III, Line 4 for Repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow2">
+
+                      <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year recapture (from Part I, line 7)</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateNegativeNumber">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateNegativeNumber">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateNegativeNumber">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 2]/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateNegativeNumber">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 3]/OverallForeignLossAcctBalances/CurrentYearRecaptureAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!-- Part III, Line 5 for Repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow1">
+
+                      <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">5</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
+
+                        <span style="font-weight:bold;">Ending balance-</span>Combine lines 1 through 4.</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!--Part IV Title for Repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblHdr">
+
+                      <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" 
+
+                      style="width:256mm;padding-top:0px;padding-bottom:0px;border-top-width:1px;
+
+                                border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+
+                        <div class="styTitleName" style="height:4.7mm;">Part IV</div>
+
+                        <span style="width:3mm;"/> 
+
+                           Overall Domestic Loss Account Balances (section 904(g)(1)) 
+
+                      </td>
+
+                    </tr>
+
+                    <!--Part IV Line 1 for Repeating Column (v) -->
+
+                    <tr class="styDepTblRow1">
+
+                      <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">1</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Beginning balance</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallDomLossAcctBalances/BeginningBalanceAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallDomLossAcctBalances/BeginningBalanceAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallDomLossAcctBalances/BeginningBalanceAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallDomLossAcctBalances/BeginningBalanceAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!--Part IV Line 2 for Repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow2">
+
+                      <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year additions</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallDomLossAcctBalances/CurrentYearAdditionsAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!--Part IV Line 3 for Repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow1">
+
+                      <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year reductions (other than recapture)</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateNegativeNumber">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateNegativeNumber">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateNegativeNumber">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateNegativeNumber">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallDomLossAcctBalances/CurrentYearReductionsAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!--Part IV Line 4 for Repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow2">
+
+                      <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
+
+                        <span style="font-weight:bold;">Subtotal-</span>Combine lines 1 through 3.</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!--Part IV Line 5 for Repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow1">
+
+                      <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">5</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Current year recapture (from Part I, line 10)</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 2]/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 3]/OverallDomLossAcctBalances/CurrentYearRecaptureAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                    <!--Part IV Line 6 for Repeating Column (v) for Blue or Separate format table-->
+
+                    <tr class="styDepTblRow2">
+
+                      <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">6</td>
+
+                      <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
+
+                        <span style="font-weight:bold;">Ending balance-</span>Subtract line 5 from line 4</td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallDomLossAcctBalances/EndingBalanceAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/OverallDomLossAcctBalances/EndingBalanceAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/OverallDomLossAcctBalances/EndingBalanceAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                      <td class="IRS1118ScheduleJ_GenericCell" valign="bottom" style="font-size:10px;border-right-width:0px;">
+
+                        <xsl:call-template name="PopulateAmount">
+
+                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/OverallDomLossAcctBalances/EndingBalanceAmt"/>
+
+                        </xsl:call-template>
+
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+
+                </table>
+
+              </div>
+
+            </xsl:if>
+
+          </xsl:for-each>
+
+        </xsl:if>
+
+        <!-- end display repeating column iii -->
+
    </body>
+
 </html>
+
 </xsl:template>
+
 </xsl:stylesheet>

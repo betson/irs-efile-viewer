@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 12/20/2020 -->
+<!-- Last Modified by Eugenia McDonald on 03/11/2021 -->
 <!DOCTYPE xsl:stylesheet [
   <!ENTITY nbsp "&#160;">
   <!ENTITY ndash "&#8211;">
@@ -412,7 +412,10 @@
 						<div class="styLNLeftLtrBoxDD">a</div>
 						<div class="styLNDesc" style="width:98mm;">
 							Form 2439
-							<span class="sty1040Sch3DotLn">....................</span>		
+							<xsl:call-template name="SetFormLinkInline">
+								<xsl:with-param name="TargetNode" select="$FormData/TaxPaidByRICOrREITAmt"/>
+							</xsl:call-template>
+							<span class="sty1040Sch3DotLn">...................</span>		
 						</div>
 						<div class="styLNRightNumBox">12a</div>
 						<div class="styLNAmountBox">
@@ -441,10 +444,13 @@
 					</div>		
 					<!-- Line 12c -->
 					<div class="styStdDiv">
-						<div class="styLNLeftLtrBoxDD">c</div>
+						<div class="styLNLeftLtrBoxDD" style="padding-top:3px">c</div>
 						<div class="styLNDesc" style="width:98mm;">
 							Health coverage tax credit from Form 8885
-							<span class="sty1040Sch3DotLn">..........</span>		
+							<xsl:call-template name="SetFormLinkInline">
+								<xsl:with-param name="TargetNode" select="$FormData/HealthCoverageTaxCreditAmt"/>
+							</xsl:call-template>
+							<span class="sty1040Sch3DotLn">.........</span>		
 						</div>
 						<div class="styLNRightNumBox">12c</div>
 						<div class="styLNAmountBox">
