@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 09/04/2019 -->
+<!-- Last Modified by Eugenia McDonald on 06/29/2020 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -529,7 +529,6 @@
 						</div>
 					</div>
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
-					<div class="pageEnd" style="page-break-after:always;display:block;"/>				
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData" style="padding-top:5mm;">
 						<div class="styLeftOverTitle">

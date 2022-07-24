@@ -120,7 +120,7 @@
 					</div>
 					<!-- END Part I  Title -->
 					<!-- Caution line -->
-					<div class="GenericDiv" style="width:187mm; height:4mm; padding-top:1mm;clear:left; float: left;">
+					<div class="styBB" style="width: 187mm; height: 4.5mm; border-top-width: 1px; clear:left; float: left;">
 						<div style="width: 170mm; height: 14mm;">
 								<b>Caution:</b>  If you file Form 2555 or 2555-EZ, <b>stop here;</b> you cannot claim the additional child tax credit.
 							</div>

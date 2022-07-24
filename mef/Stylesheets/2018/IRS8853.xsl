@@ -199,7 +199,7 @@
           <!-- Header -->
           <div style="width:187mm;height:11.5mm;" class="styBB">
             <!-- Content -->
-            <div class="styPartName" style="width:12mm;height:4mm;font-size:8.5pt;">Part l</div>
+            <div class="styPartName" style="width:12mm;height:4mm;font-size:8.5pt;">Part I</div>
             <div class="styPartDesc" style="padding-left:4mm;font-weight:normal;font-size:8.5pt;">
               <b>Archer MSA Contributions and Deductions.</b> See instructions before completing this part. If you are filing jointly and both you and your spouse have 
               high deductible health plans with self-only coverage, complete a separate Part I for each spouse.
@@ -328,7 +328,7 @@
           <!-- Header -->
           <div style="width:187mm;" class="styBB">
             <!-- Content -->
-            <div class="styPartName" style="width:13mm;height:4mm;font-size:8.5pt;">Part ll</div>
+            <div class="styPartName" style="width:13mm;height:4mm;font-size:8.5pt;">Part II</div>
             <div class="styPartDesc" style="padding-left:4mm;font-size:8.5pt;">
               Archer MSA Distributions
             </div>
@@ -705,7 +705,7 @@ MSA at the end of 2017. Also include this amount in the total on Schedule 4 (For
                       <xsl:with-param name="BackupName">Form8853DataForm8853LTCMultipleCopiesInd</xsl:with-param>
                     </xsl:call-template>
                   </label>
-                  <input class="styCkbox" type="checkbox" alt="More than on Section C attached" style="width:3mm;">
+                  <input class="styCkbox" type="checkbox" alt="More than one Section C attached" style="width:3mm;">
                     <xsl:call-template name="PopulateCheckbox">
                       <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/Form8853LTCMultipleCopiesInd"/>
                       <xsl:with-param name="BackupName">Form8853DataForm8853LTCMultipleCopiesInd</xsl:with-param>
@@ -773,7 +773,7 @@ MSA at the end of 2017. Also include this amount in the total on Schedule 4 (For
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
                   </xsl:call-template>
-                  <input type="checkbox" class="styCkbox" alt="Yes">
+                  <input type="checkbox" class="styCkbox" alt="LTCInsuranceOtherPayment Yes">
                     <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd">
                       <xsl:call-template name="PopulateYesCheckbox">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
@@ -801,7 +801,7 @@ MSA at the end of 2017. Also include this amount in the total on Schedule 4 (For
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
                   </xsl:call-template>
-                  <input type="checkbox" class="styCkbox" alt="No">
+                  <input type="checkbox" class="styCkbox" alt="LTCInsuranceOtherPayment No">
                     <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd">
                       <xsl:call-template name="PopulateNoCheckbox">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
@@ -839,7 +839,7 @@ MSA at the end of 2017. Also include this amount in the total on Schedule 4 (For
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
                   </xsl:call-template>
-                  <input type="checkbox" class="styCkbox" alt="Yes">
+                  <input type="checkbox" class="styCkbox" alt="LTCInsuredTerminallyIll Yes">
                     <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd">
                       <xsl:call-template name="PopulateYesCheckbox">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
@@ -867,7 +867,7 @@ MSA at the end of 2017. Also include this amount in the total on Schedule 4 (For
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
                   </xsl:call-template>
-                  <input type="checkbox" class="styCkbox" alt="No">
+                  <input type="checkbox" class="styCkbox" alt="LTCInsuredTerminallyIll No">
                     <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd">
                       <xsl:call-template name="PopulateNoCheckbox">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>

@@ -114,7 +114,9 @@
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form8606Data"/>
 							</xsl:call-template>
-							<br/><br/>
+							<br/>
+							<span class="styAgency" style="padding-top:0.3mm;">(Rev. March 2020)</span>
+							<br/>
 							<span class="styAgency" style="padding-top:2mm;">Department of the Treasury</span>
 							<br/>
 							<span class="styAgency">Internal Revenue Service (99)</span>
@@ -133,7 +135,7 @@
 											<!--Information about Form 8606 and its separate instructions is at <a href="http://www.irs.gov/form8606">www.irs.gov/form8606</a>-->
 											<br/><br/>
 											<img src="{$ImagePath}/8606_Bullet_Sm.gif" alt="SmallBullet"/> 
-                                                  Attach to 2018 Form 1040 or 2018 Form 1040NR.
+                                                  Attach to 2018 Form 1040 or 1040NR.
 										</div>
 									</div>
 								</span>
@@ -403,7 +405,7 @@
 							    	<span class="styNormalText" style="font-size:7pt;padding-bottom:1.5mm;">
 							            <img src="{$ImagePath}/8606_Bullet_Round.gif" alt="RoundBullet"/>
 							            <div style="padding-left:4mm;padding-top:1mm;">You took distributions from a traditional, SEP, or SIMPLE IRA in 2018 <b>and</b> you made nondeductible contributions to a </div><br/>
-							            <div style="padding-left:6mm">traditional IRA in 2018 or an earlier year. For this purpose, a distribution does not include a rollover (other than a repayment of a qualified 2017 disaster distribution (see 2018 Form 8915B)),  qualified charitable distribution,  one-time  distribution to fund an HSA, conversion, recharacterization, or return of certain contributions.</div> 
+							            <div style="padding-left:6mm">traditional IRA in 2018 or an earlier year. For this purpose, a distribution does not include a rollover (other than a repayment of a qualified disaster distribution (see 2018 Forms 8915B and 8915-C)),  qualified charitable distribution,  one-time  distribution to fund an HSA, conversion, recharacterization, or return of certain contributions.</div> 
 							        
 							    	</span>
 							         <span class="styNormalText" style="font-size:7pt;">
@@ -545,8 +547,8 @@
 							<div class="styIRS8606LNLeftNumBox">6</div>
 							<div class="styIRS8606LNDesc" style="width:105mm;height:100%;padding-left:3mm;">
 								Enter the value of <b>all</b> your traditional, SEP, and SIMPLE IRAs as of December 31, 2018, 
-								<span style="float:left;">plus any outstanding rollovers. Subtract any repayments of qualified 2017 disaster distributions 
-								(see 2018 Form 8915B).  If the result is zero or less, enter -0-. See instructions 
+								<span style="float:left;">plus any outstanding rollovers. Subtract any repayments of qualified  disaster distributions 
+								(see 2018 Forms 8915B and 8915-C).  If the result is zero or less, enter -0-. See instructions 
 								<span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
 								</span>
 	                            <!--Dotted Line-->
@@ -589,7 +591,7 @@
 								<div class="styIRS8606LNDesc" style="width:auto;height:100%;font-size:7pt;">
 									<span style="float:left;">
 									Enter your distributions from traditional, SEP, and SIMPLE IRAs in 2018.
-									<b>Do not</b> include rollovers (other than repayments of qualified 2017 disaster distributions (see 2018 Form 8915B)), qualified charitable distributions, a one-time
+									<b>Do not</b> include rollovers (other than repayments of qualified  disaster distributions (see 2018 Forms 8915B and 8915-C)), qualified charitable distributions, a one-time
 									 distribution to fund an HSA, conversions to a Roth IRA, certain returned contributions, or recharacterizations of traditional IRA contributions (see instructions) 
                                         <span class="styDotLn" style="float:right;padding-right:1mm;">..............</span>
                                         </span>
@@ -909,8 +911,7 @@
                              </div>
                              <div class="styLNLeftNumBoxSD" style="padding-left:6mm;height:4mm;float-left">b</div>
 							<div class="styLNDesc" style="float:left;width:142mm;padding-left:2mm;height:3mm;">
-							      Enter the amount on line 15a attributable to qualified 2017 disaster distributions from 2018 Form 8915B.<br/>
-						          (see instructions).  Also, enter this amount on  2018 Form 8915B, line 22.
+							      Enter the amount on line 15a attributable to qualified  disaster distributions from 2018 Forms 8915B and 8915-C (see instructions). Also, enter this amount on 2018 Form 8915B, line 22, <b>or</b> 2018 Form 8915-C, line 13, as applicable
 						          <span class="styDotLn" style="float:right;padding-right:1mm;">..............</span>
 						     </div>
 							<div class="styLNRightNumBox" style="border-bottom-width:1px;font-size:7pt;height:7mm;padding-top:3.5mm;">15b</div>
@@ -1087,7 +1088,7 @@
 							Distributions From Roth IRAs<br/>
 							<span class="styNormalText">
 								Complete this part only if you took a distribution from a Roth IRA in 2018. For this purpose, a distribution does not
-								include a rollover (other than a repayment of a qualified 2017 disaster distribution (see 2018 Form 8915B)), qualified charitable distribution,  one-time 
+								include a rollover (other than a repayment of a qualified  disaster distribution (see 2018 Forms 8915B and 8915-C)), qualified charitable distribution,  one-time 
 								distribution to fund an HSA, recharacterization, or return of certain contributions (see instructions).
 							</span>
 						</div>
@@ -1099,7 +1100,7 @@
 						<div class="styIRS8606LNLeftNumBox" style="padding-left:2.2mm;">19</div>
 						<div class="styIRS8606LNDesc" style="width:144mm;height:100%;padding:1mm 0 0 3mm;">
 								Enter your total nonqualified distributions from Roth IRAs in 2018, including any
-								qualified first-time homebuyer distributions, and any qualified 2017 disaster distributions (see instructions).  Also see 2018 Form 8915B
+								qualified first-time homebuyer distributions, and any qualified  disaster distributions (see instructions).  Also see 2018 Forms 8915B and 8915-C
 								
 								<!--Dotted Line-->
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
@@ -1233,7 +1234,7 @@
                              
                                   <div class="styLNLeftNumBoxSD" style="padding-left:6mm;height:4mm;float:left;">b</div>
 							<div class="styLNDesc" style="width:142mm;padding-left:2mm;height:3mm;float:left">
-							Enter the amount on line 25a attributable to qualified 2017 disaster distributions from 2018 Form 8915B (see instructions).   Also, enter this amount on 2018 Form 8915B, line 23
+							Enter the amount on line 25a attributable to qualified  disaster distributions from 2018 Forms 8915B and 8915-C (see instructions). Also, enter this amount on 2018 Form 8915B, line 23, <b>or</b> 2018 Form 8915-C, line 14, as applicable.
 						          <span class="styDotLn" style="float:right;padding-right:1mm;">.....................</span>
 						     </div>
 							<div class="styLNRightNumBox" style="border-bottom-width:1px;font-size:7pt;height:7mm;padding-top:3.5mm;">25b</div>

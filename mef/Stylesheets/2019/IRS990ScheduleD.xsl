@@ -717,13 +717,13 @@ Complete lines 2a through 2d if the organization held a qualified conservation c
   <div style=" width: 187mm; ">
 <div class="styLNLeftNumBox" style="padding-left: 1mm;padding-top:1mm">1a</div>
  <div class="styLNDesc" style="width:170mm;border-right-width:0;padding-top:.5mm;height:auto;">
- If the organization elected, as permitted under SFAS 116 (ASC 958), not to report in its revenue statement and balance sheet works of art, historical treasures, or other similar assets held for public exhibition, education, or research in furtherance of public service, provide, in Part XIII, the text of the footnote to its financial statements that describes these items.</div>
+ If the organization elected, as permitted under FASB ASC 958, not to report in its revenue statement and balance sheet works of art, historical treasures, or other similar assets held for public exhibition, education, or research in furtherance of public service, provide, in Part XIII, the text of the footnote to its financial statements that describes these items.</div>
 </div>
  
  <div style=" width: 187mm; ">
 <div class="styLNLeftNumBox" style="padding-left: 3mm;padding-top:1mm">b</div>
  <div class="styLNDesc" style="width:170mm;border-right-width:0;padding-top:.5mm;height:auto;">
- If the organization elected, as permitted under SFAS 116 (ASC 958), to report in its revenue statement and balance sheet works of art, historical treasures, or other similar assets held for public exhibition, education, or research in furtherance of public service, provide the following amounts relating to these items:</div>
+ If the organization elected, as permitted under FASB ASC 958, to report in its revenue statement and balance sheet works of art, historical treasures, or other similar assets held for public exhibition, education, or research in furtherance of public service, provide the following amounts relating to these items:</div>
 </div>
  
  <div style=" width: 187mm; ">
@@ -759,7 +759,7 @@ $
   <div style=" width: 187mm; ">
 <div class="styLNLeftNumBox" style="padding-left: 1mm;padding-top:1mm">2</div>
  <div class="styLNDesc" style="width:170mm;border-right-width:0;padding-top:.5mm;height:auto;">
-  If the organization received or held works of art, historical treasures, or other similar assets for financial gain, provide the <br/>following amounts required to be reported under SFAS 116 (ASC 958) relating to these items:</div>
+  If the organization received or held works of art, historical treasures, or other similar assets for financial gain, provide the <br/>following amounts required to be reported under FASB ASC 958 relating to these items:</div>
 </div>
  
  
@@ -1613,7 +1613,7 @@ Permanent endowment
  <div style=" width: 187mm; ">
 <div class="styLNLeftNumBox" style="padding-left: 3mm;padding-top:1mm">c</div>
  <div class="styLNDesc" style="width:179mm;border-right-width:0;padding-top:0mm;height:auto;">
-Temporarily restricted endowment
+Term endowment
  <img src="{$ImagePath}/990SchD_Bullet_Md.gif" alt="SchDMd Bullet"/>
 <span class="styIRS990ScheduleDUnderlineAmount" style="float:none;padding-left:2mm;text-align:center;border-style:dotted">
  
@@ -1652,7 +1652,7 @@ The percentages on lines 2a, 2b, and 2c should equal 100%.
  <div class="styLNLeftNumBox" style="padding-left: 1mm;padding-top:0mm"/>
   <div class="styLNDesc" style="border-right-width:0px; width: 150mm;padding-top:0mm;height:auto;">
     <span style="font-weight:bold;text-align:center;">(i)</span>
-    unrelated organizations
+    Unrelated organizations
     <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm">.................</span>
 
   </div>
@@ -1677,7 +1677,7 @@ The percentages on lines 2a, 2b, and 2c should equal 100%.
  <div class="styLNLeftNumBox" style="padding-left: 3mm;padding-top:0mm"/>
   <div class="styLNDesc" style="border-right-width:0px; width: 150mm;height:auto;">
     <span style="font-weight:bold;text-align:center;">(ii)</span>
-     related organizations
+     Related organizations
     <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm">.................</span>
 
   </div>

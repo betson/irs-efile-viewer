@@ -64,10 +64,11 @@
 							<span class="styFMT" style="font-size:11pt;padding-top:2mm;">Additional Income and Adjustments to Income</span>
 							<br /><br />
 							<span style="font-weight:bold;">
-								&#9658;Attach to Form 1040 or 1040-SR.
+								<img src="{$ImagePath}/1040_Bullet.gif" alt="Right arrow"/>
+								Attach to Form 1040 or 1040-SR.
 							</span><br />
 							<span style="font-weight:bold;">
-								&#9658;Go to
+								<img src="{$ImagePath}/1040_Bullet.gif" alt="Right arrow"/>Go to
 								<span style="font-style:italic">www.irs.gov/Form1040</span>
 								for instructions and the latest information.
 							</span>
@@ -96,6 +97,41 @@
 							<strong>Your social security number</strong>
 							<br />
 							<xsl:call-template name="PopulateReturnHeaderFilerTIN"/>
+						</div>
+					</div>
+					<!-- Cryptocurrency Question -->
+					<div class="styStdDiv" style="border-top:1px solid black;">
+						<div style="width:155mm;float:left;padding:0.5mm 0mm;">
+							At any time during 2019, did you receive, sell, send, exchange, or otherwise acquire any financial interest in any <br /> virtual currency during the year? 
+							<span class="sty1040Sch1DotLn">............................</span>
+						</div>
+						<div style="width:31mm;float:right;padding:0.5mm;font-weight:bold;text-align:left;padding-top:3mm;">
+							<xsl:call-template name="PopulateSpan">
+								<xsl:with-param name="TargetNode" select="$FormData/VirtualCurAcquiredDurTYInd" />
+							</xsl:call-template>
+							<input type="checkbox" alt="Virtual Cur Acquired Dur TY Ind Yes" class="styCkboxNM" style="margin-right:4px;">
+								<xsl:call-template name="PopulateYesCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/VirtualCurAcquiredDurTYInd" />
+									<xsl:with-param name="BackupName">F1040Sch1VirtualCurAcquiredDurTYInd</xsl:with-param>
+								</xsl:call-template>
+							</input>
+							<label>
+								<xsl:call-template name="PopulateLabelYes">
+									<xsl:with-param name="TargetNode" select="$FormData/VirtualCurAcquiredDurTYInd" />
+									<xsl:with-param name="BackupName">F1040Sch1VirtualCurAcquiredDurTYInd</xsl:with-param>
+								</xsl:call-template>Yes</label>
+							<span style="width:16px;"/>
+							<input type="checkbox" alt="Virtual Cur Acquired Dur TY Ind No" class="styCkboxNM" style="margin-right:4px;">
+								<xsl:call-template name="PopulateNoCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/VirtualCurAcquiredDurTYInd" />
+									<xsl:with-param name="BackupName">F1040Sch1VirtualCurAcquiredDurTYInd</xsl:with-param>
+								</xsl:call-template>
+							</input>
+							<label>
+								<xsl:call-template name="PopulateLabelNo">
+									<xsl:with-param name="TargetNode" select="$FormData/VirtualCurAcquiredDurTYInd" />
+									<xsl:with-param name="BackupName">F1040Sch1VirtualCurAcquiredDurTYInd</xsl:with-param>
+								</xsl:call-template>No</label>
 						</div>
 					</div>
 					<!-- Part 1 -->
@@ -135,7 +171,8 @@
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBoxSD" style="padding-left:4.2mm;">b</div>
 						<div class="styLNDesc">
-							Date of original divorce or separation agreement (see instructions) &#9658;
+							Date of original divorce or separation agreement (see instructions)
+							<img src="{$ImagePath}/1040_Bullet.gif" alt="Right arrow"/>
 							<span style="width:40mm;border-bottom:1px dashed black;text-align:center;">
 								<xsl:call-template name="PopulateMonthDayYear">
 									<xsl:with-param name="TargetNode" select="$FormData/DivorceOrSeparationAgreementDt"/>
@@ -243,7 +280,8 @@
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBoxSD">8</div>
 						<div class="styLNDesc" style="height:auto;">
-							Other income. List type and amount &#9658;
+							Other income. List type and amount 
+							<img src="{$ImagePath}/1040_Bullet.gif" alt="Right arrow"/>
 							<span style="width:86.5mm;border-bottom:1px dashed black;text-align:left;">&nbsp;
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$FormData/TotalOtherIncomeAmt"/>
@@ -435,8 +473,11 @@
 						<div class="styLNDesc">
 							Recipient's SSN
 							<span style="float:right;">
-								<span class="sty1040Sch1DotLn" style="float:left;">.....................&#9658;</span>
-								<span style="width:24mm;border-bottom:1px solid black;text-align:center;float:left;margin-right:2.5mm;">
+								<span class="sty1040Sch1DotLn" style="float:left;">.....................
+									<img src="{$ImagePath}/1040_Bullet.gif" alt="Right arrow"/>
+								</span>
+								<span style="width:24mm;border-bottom:1px solid black;text-align:center;float:left;
+									margin-right:2.5mm;">
 									<xsl:if test="not($alimonySep)">
 										<xsl:call-template name="PopulateSSN">
 											<xsl:with-param name="TargetNode" select="$FormData/AlimonyAmountGrp/RecipientSSN"/>
@@ -453,7 +494,8 @@
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBoxSD" style="padding-left:4.2mm;">c</div>
 						<div class="styLNDesc">
-							Date of original divorce or separation agreement (see instructions) &#9658;
+							Date of original divorce or separation agreement (see instructions) 
+							<img src="{$ImagePath}/1040_Bullet.gif" alt="Right arrow"/>
 							<span style="width:40mm;border-bottom:1px dashed black;text-align:center;">
 								<xsl:if test="not($alimonySep)">
 									<xsl:call-template name="PopulateMonthDayYear">
@@ -502,11 +544,11 @@
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBox">21</div>
 						<div class="styLNDesc">
-							Reserved for future use
+							Tuition and fees. Attach Form 8917
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$FormData/TuitionAndFeesDedAmt"/>
 							</xsl:call-template>
-							<span class="sty1040Sch1DotLn">.........................</span>
+							<span class="sty1040Sch1DotLn">......................</span>
 						</div>
 						<div class="styLNRightNumBox">21</div>
 						<div class="styLNAmountBox">
@@ -572,7 +614,7 @@
 							<xsl:with-param name="Desc">Line 7 - Repayment Amount</xsl:with-param>
 							<xsl:with-param name="TargetNode" select="$FormData/UnemploymentCompAmt/@repaymentAmt"/>
 						</xsl:call-template>
-						<xsl:call-template name="PopulateLeftoverRow">
+						<xsl:call-template name="PopulateLeftoverRowCheckbox">
 							<xsl:with-param name="Desc">Line 8 - Protective Section 108(i) ELC Record Indicator</xsl:with-param>
 							<xsl:with-param name="TargetNode" select="$FormData/ProtectiveSec108iELCRecordInd"/>
 						</xsl:call-template>

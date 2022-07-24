@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 06/01/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
-<!-- 06/24/2015 - Changes made for UWR 154016 - Jeremy Nichols -->
-<!-- 02/09/16 - Made changes per UWR #173983 - Jeremy Nichols -->
-<!-- 02/17/16 - Made changes per defect 45744 - Jeremy Nichols -->
-<!-- 02/29/16 - Made changes per defect 45823 - Jeremy Nichols -->
-<!-- 02/29/16 - Made changes per defect 45824 - Jeremy Nichols -->
+<!-- 06/15/2020 - Changes made for UWR 235750 - Jeremy Nichols -->
+<!-- 09/08/2020 - Changes made for UWR 238468 - Jeremy Nichols -->
+<!-- 09/21/2020 - Changes made for UWR 240855 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
   <xsl:include href="CommonPathRef.xsl"/>
@@ -42,8 +39,6 @@
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
       <meta name="Description" content="IRS Form 8849Schedule3"/>
       
-      <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
-      
       <style type="text/css">
         <xsl:if test="not($Print) or $Print=''">
           <xsl:call-template name="IRS8849Schedule3Style"/>
@@ -69,7 +64,7 @@
             <div class="styFNBox" style="width:31mm;height:18mm;border-right-width:1px;border-bottom:1px;">
                <span class="styFormNumber" style="font-size:10pt">Schedule 3</span><br/>
                <span class="styFormNumber" style="font-size:10pt">(Form 8849)</span><br/>
-               <span class="styAgency" style="height:3mm;">(Rev. January 2016)</span>
+               <span class="styAgency" style="height:3mm;">(Rev. January 2021)</span>
                <div class="styAgency" style="height:3mm;">Department of the Treasury</div>
                <span class="styAgency" style="height:3mm;">Internal Revenue Service</span> 
             </div>
@@ -166,13 +161,12 @@
             <div class="styLNDesc" style="width:179mm;height:15mm;padding-top:1.5mm;">
               <span class="styBoldText" style="display:inline;">Caution: </span>
               <span class="styNormalText" style="display:inline;">
-                For 2015: See the instructions and Notice 2016-05 for information on how to make 2015 claims. Do not combine claims for 2015 and
-				2016 on the same Schedule 3 (Form 8849). For 2016: The biodiesel mixture credit and renewable diesel mixture credit must first be taken as a
+                The biodiesel mixture credit and renewable diesel mixture credit must first be taken as a
 				credit against your taxable fuel liability (gasoline, diesel fuel, and kerosene) reported on Form 720. Similarly, the alternative fuel credit must first
 				be taken on Form 720 as a credit against your alternative fuel or compressed natural gas (CNG) tax liability. If you have these tax liabilities and
-				you did not make the claim on Form 720, Schedule C as a credit against those liabilities, you must first file Form 720X, Amended Quarterly
+				you did not make the claim on Form 720, Schedule C as a credit against those liabilities, you must first file Form 720-X, Amended Quarterly
 				Federal Excise Tax Return, before Schedule 3 (Form 8849) can be used for the refund. You cannot claim any amounts on Form 8849 that you
-				claimed (or will claim) on Form 720, Schedule C; Form 720X; or Form 4136, Credit for Federal Tax Paid on Fuels.
+				claimed (or will claim) on Form 720, Schedule C; Form 720-X; or Form 4136, Credit for Federal Tax Paid on Fuels.
               </span><br/>
             </div>
           </div>
@@ -752,10 +746,10 @@
             <span style="width:6mm;"/>
             <span style="width:18mm;font-weight:normal;font-size:6pt;"> Cat. No. 27451F</span>
             <span style="width:6mm;"/>
-            <span style="text-align:right;width:32mm;font-weight:bold;font-size:6pt;">Schedule 3 (Form 8849)</span><span style="font-weight:normal;font-size:6pt;"> (Rev. 1-2016)</span>
+            <span style="text-align:right;width:32mm;font-weight:bold;font-size:6pt;">Schedule 3 (Form 8849)</span><span style="font-weight:normal;font-size:6pt;"> (Rev. 1-2021)</span>
           </div>
           <div class="pageEnd"/>
-     
+          
           <!-- Additonal Data Title Bar and Button -->
           <div class="styLeftOverTitleLine" id="LeftoverData">
             <div class="styLeftOverTitle">Additional Data </div>
@@ -773,6 +767,69 @@
               <xsl:with-param name="DescWidth" select="100"/>
             </xsl:call-template>
           </table>
+	  
+			<!-- Additonal Data Table for separated data from Line 4 -->
+			<xsl:if test="($Print = $Separated) and (count($FormData/ClaimantCustomerInformationGrp) &gt;22) ">
+				<span class="styRepeatingDataTitle">
+					Form 8849, Schedule 3, Line4 - Claimant customer information:
+				</span>
+				<table class="styDepTbl" style="font-size:7pt">
+					<thead class="styTableHead">
+						<tr class="styDepTblHdr">
+							<th scope="col" style="width:50mm;height:5mm;border-left:0px black solid;border-bottom:1px black solid;"><b>Taxpayer Identification No.</b></th>
+							<th scope="col" style="width:87mm;height:5mm;border-left:1px black solid;border-bottom:1px black solid;"><b>Name</b></th>
+							<th scope="col" style="width:50mm;height:5mm;border-left:1px black solid;border-bottom:1px black solid;"><b>Gallons</b></th>
+						</tr>
+					</thead>
+					<tbody>
+						<xsl:for-each select="$FormData/ClaimantCustomerInformationGrp">
+							<tr>
+								<!--Define background colors to the rows -->
+								<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+								<td scope="col" style="width:50mm;height:5mm;text-align:left;border-left:0px black solid;border-bottom:1px black solid;">
+									<!-- If EIN exists -->
+									<xsl:if test="(EIN)">
+										<xsl:call-template name="PopulateEIN">
+											<xsl:with-param name="TargetNode" select="EIN"/>
+										</xsl:call-template>
+										<br/>
+									</xsl:if>
+									<!-- Else if SSN exists -->
+									<xsl:if test="(SSN)">
+										<xsl:call-template name="PopulateSSN">
+											<xsl:with-param name="TargetNode" select="SSN"/>
+										</xsl:call-template>
+										<br/>
+									</xsl:if>
+								</td>
+								<td scope="col" style="width:87mm;height:5mm;text-align:left;border-left:1px black solid;border-bottom:1px black solid;">
+									<xsl:choose>
+										<xsl:when test="PersonNm">
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="PersonNm"/>
+											</xsl:call-template>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1Txt"/>
+											</xsl:call-template>
+											<br/>
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine2Txt"/>
+											</xsl:call-template>
+										</xsl:otherwise>
+									</xsl:choose>
+								</td>
+								<td scope="col" style="width:50mm;height:5mm;border-left:1px black solid;border-bottom:1px black solid;">
+									<xsl:call-template name="PopulateAmount">
+										<xsl:with-param name="TargetNode" select="GallonsQty"/>
+									</xsl:call-template>
+								</td>
+							</tr>
+						</xsl:for-each>
+					</tbody>
+				</table>
+			</xsl:if>
         </form>
       </body>
     </html>

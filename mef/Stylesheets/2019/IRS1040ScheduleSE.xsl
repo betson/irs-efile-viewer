@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Last Modified by Andrew Werner on 8/18/2011 -->
-<!-- Last Modified by Eugenia McDonald on 01/06/2020 -->
+<!-- Last Modified by Eugenia McDonald on 10/22/2019 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -71,7 +71,7 @@
 							</div>
 							<div class="styFST" style="width: 126mm; height: 5mm; padding-top: 1.5mm; font-size: 6.5pt;">	
 								<img src="{$ImagePath}/1040SchSE_Bullet_Md.gif" alt="MediumBullet"/>
-								    Attach to Form 1040, Form 1040-SR, or Form 1040NR. 																
+								    Attach to Form 1040, 1040-SR, or 1040-NR. 																
 							</div>
 						</div>
 						<div class="styTYBox" style="width: 29mm; height: 17.5mm;">
@@ -91,7 +91,7 @@
 					<div class="styBB" style="width:187mm;border-top-width:1px">
 						<div class="styBB" style="width: 109mm; height: 7mm; border-bottom-width: 0px;">
 							<div class="styNameBox" style="width: 109mm; height: 3mm; padding-top: 0.5mm; font-size: 6.5pt; font-weight: normal;">
-								Name of person with <b>self-employment</b> income (as shown on Form 1040, Form 1040-SR, <br/>or Form 1040NR)<br/>
+								Name of person with <b>self-employment</b> income (as shown on Form 1040, 1040-SR, <br/>or 1040-NR)<br/>
 							</div>
 							<div class="styNameBox" style="width: 109mm; height: 4mm; padding-top:.3mm; padding-left:25mm;font-size: 7pt;">
 								<xsl:choose>
@@ -688,7 +688,7 @@
                   <img src="{$ImagePath}/1040SchSE_Bullet_Round.gif" alt="RoundBullet"/>
                   <span style="width:1mm;"/>
                     $132,900 or less, multiply line 4 by 15.3% (0.153). Enter the result here and on
-                  <b>Schedule 2 (Form 1040 or 1040-SR), line 4,</b> or <b>Form 1040-NR, line 55.</b><br/>
+                  <b>Schedule 2 (Form 1040 or 1040-SR), line 4,</b> or <b>Form 1040-NR, line 55</b><br/>
                   <img src="{$ImagePath}/1040SchSE_Bullet_Round.gif" alt="RoundBullet"/>
                   <span style="width:1mm;"/>
                     More than $132,900, multiply line 4 by 2.9% (0.029). Then, add $16,479.60 to the 
@@ -750,7 +750,7 @@
          <div class="styBB" style="width:187mm;border-bottom-width:0px">
             <div class="styBB" style="width: 112mm; height: 7mm; border-bottom-width: 0px;">
                <div class="styNameBox" style="width: 112mm; height: 4mm; padding-top: 0.5mm; font-size: 6pt; font-weight: normal;">
-                 Name of person with <b>self-employment</b> income <span style="font-size:6pt;">(as shown on Form 1040, Form 1040-SR, or 1040NR)</span>
+                 Name of person with <b>self-employment</b> income <span style="font-size:5pt;">(as shown on Form 1040, 1040-SR, or 1040-NR)</span>
                 <br/>
                </div>
                <div class="styNameBox" style="width: 112mm; height: 3mm; padding-bottom:0mm; font-size: 7pt;">
@@ -1067,9 +1067,9 @@
 						<div class="styLNLeftNumBoxSD" style="height:7.4mm;">7</div>
 						<div class="styLNDesc" style="width:139mm;height:7.4mm;">
 							Maximum amount of combined wages and self-employment earnings subject to social security <br/>
-							<span style="float:left;">tax or the 6.2% portion of the 7.65% railroad retirement (tier 1) tax for 2019. Enter $132,900</span>
+							<span style="float:left;">tax or the 6.2% portion of the 7.65% railroad retirement (tier 1) tax for 2019.</span>
 							<span class="styIRS1040ScheduleSEDotLn" style="letter-spacing:3mm; font-weight:bold; float: right; 
-							    padding-right: 1mm;">....</span>
+							    padding-right: 1mm;">.........</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:7.4mm;"><br/>7</div>
 						<div class="styLNAmountBox" style="text-align:right;height:7.4mm;padding-right:1mm;"><br/>
@@ -1275,9 +1275,9 @@
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox">14</div>
 							<div class="styLNDesc" style="width:138.97mm;">
-								<span style="float:left;">Maximum income for optional methods. Enter $5,440</span>
+								<span style="float:left;">Maximum income for optional methods. </span>
 								<span class="styIRS1040ScheduleSEDotLn" style="letter-spacing:3mm; font-weight:bold; float: right; 
-								    padding-right: 1mm;">..................</span>
+								    padding-right: 1mm;">....................</span>
 							</div>
 							<div class="styLNRightNumBox">14</div>
 							<div class="styLNAmountBox" style="padding-right:1mm;">

@@ -479,7 +479,7 @@
 								<br/>
 								<!-- ++++++++++++++ 1st Checkbox +++++++++++++ -->
 								<span style="width:1mm;"/>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="InitialExptrtStmtSpcfdYrInd" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/InitialExptrtStmtSpcfdYrInd"/>
 										<xsl:with-param name="BackupName">IRS8854InitialExptrtStmtSpcfdYrInd</xsl:with-param>
@@ -496,7 +496,7 @@
 								<br/>
 								<!-- ++++++++++++++ 2nd Checkbox +++++++++++++ -->
 								<span style="width:1mm;"/>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="AnnualExptrtStmtBfrSpcfdYrInd" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/AnnualExptrtStmtBfrSpcfdYrInd"/>
 										<xsl:with-param name="BackupName">IRS8854AnnualExptrtStmtBfrSpcfdYrInd</xsl:with-param>
@@ -525,7 +525,7 @@
 								<br/>
 								<!-- ++++++++++++++ 1st Checkbox +++++++++++++ -->
 								<span style="width:1mm;"/>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="ExptrtNotificationCitizenGrpExptrtNotificationCitizenInd" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/ExptrtNotificationCitizenGrp/ExptrtNotificationCitizenInd"/>
 										<xsl:with-param name="BackupName">IRS8854ExptrtNotificationCitizenGrpExptrtNotificationCitizenInd</xsl:with-param>
@@ -548,7 +548,7 @@
 								<br/>
 								<!-- ++++++++++++++ 2nd Checkbox +++++++++++++ -->
 								<span style="width:1mm;"/>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="ExptrtNotifLongTermResidentGrpExptrtNotifLongTermResidentInd" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/ExptrtNotifLongTermResidentGrp/ExptrtNotifLongTermResidentInd"/>
 										<xsl:with-param name="BackupName">IRS8854ExptrtNotifLongTermResidentGrpExptrtNotifLongTermResidentInd</xsl:with-param>
@@ -571,7 +571,7 @@
 								<br/>
 								<!-- ++++++++++++++ 3rd Checkbox +++++++++++++ -->
 								<span style="width:1mm;"/>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox"  alt="ExptrtNotifLongTermDualResGrpExptrtNotifLongTermDualResInd" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/ExptrtNotifLongTermDualResGrp/ExptrtNotifLongTermDualResInd"/>
 										<xsl:with-param name="BackupName">IRS8854ExptrtNotifLongTermDualResGrpExptrtNotifLongTermDualResInd</xsl:with-param>
@@ -648,7 +648,7 @@
 								How you became a U.S. citizen
 								<!-- ++++++++++++++ 1st Checkbox +++++++++++++ -->
 								<span style="width:12mm;"/>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="USCitizenByBirthInd" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/USCitizenByBirthInd"/>
 										<xsl:with-param name="BackupName">IRS8854USCitizenByBirthInd</xsl:with-param>
@@ -664,7 +664,7 @@
 								</label>
 								<!-- ++++++++++++++ 2nd Checkbox +++++++++++++ -->
 								<span style="width:18mm;"/>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="USCitizenByNaturalizationInd" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/USCitizenByNaturalizationInd"/>
 										<xsl:with-param name="BackupName">IRS8854USCitizenByNaturalizationInd</xsl:with-param>
@@ -886,7 +886,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/ExpatriationInformationGrp/DualCitizenBirthUSOthCntryInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="DualCitizenAtBirthAndContInd Yes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/ExpatriationInformationGrp/DualCitizenBirthUSOthCntryInd"/>
 											<xsl:with-param name="BackupName">IRS8854DualCitizenAtBirthAndContInd</xsl:with-param>
@@ -907,7 +907,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/ExpatriationInformationGrp/DualCitizenBirthUSOthCntryInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="DualCitizenAtBirthAndContInd No" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/ExpatriationInformationGrp/DualCitizenBirthUSOthCntryInd"/>
 											<xsl:with-param name="BackupName">IRS8854DualCitizenAtBirthAndContInd</xsl:with-param>
@@ -969,7 +969,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/ExpatriationInformationGrp/USResNoMoreThan10Of15YrInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="USResForNoMoreThan10Of15YrInd Yes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/ExpatriationInformationGrp/USResNoMoreThan10Of15YrInd"/>
 											<xsl:with-param name="BackupName">IRS8854USResForNoMoreThan10Of15YrInd</xsl:with-param>
@@ -990,7 +990,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/ExpatriationInformationGrp/USResNoMoreThan10Of15YrInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="USResForNoMoreThan10Of15YrInd No" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/ExpatriationInformationGrp/USResNoMoreThan10Of15YrInd"/>
 											<xsl:with-param name="BackupName">IRS8854USResForNoMoreThan10Of15YrInd</xsl:with-param>
@@ -1055,7 +1055,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/ExpatriationInformationGrp/Under18USResLessThan10YrInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="Under18AndUSResLessThan10YrInd Yes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/ExpatriationInformationGrp/Under18USResLessThan10YrInd"/>
 											<xsl:with-param name="BackupName">IRS8854Under18AndUSResLessThan10YrInd</xsl:with-param>
@@ -1076,7 +1076,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/ExpatriationInformationGrp/Under18USResLessThan10YrInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="Under18AndUSResLessThan10YrInd No" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/ExpatriationInformationGrp/Under18USResLessThan10YrInd"/>
 											<xsl:with-param name="BackupName">IRS8854Under18AndUSResLessThan10YrInd</xsl:with-param>
@@ -1132,7 +1132,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/ExpatriationInformationGrp/InCompliance5PrecTaxYearInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="InComplianceFor5PrecTaxYearInd Yes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/ExpatriationInformationGrp/InCompliance5PrecTaxYearInd"/>
 											<xsl:with-param name="BackupName">IRS8854InComplianceFor5PrecTaxYearInd</xsl:with-param>
@@ -1153,7 +1153,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/ExpatriationInformationGrp/InCompliance5PrecTaxYearInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="InComplianceFor5PrecTaxYearInd No" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/ExpatriationInformationGrp/InCompliance5PrecTaxYearInd"/>
 											<xsl:with-param name="BackupName">IRS8854InComplianceFor5PrecTaxYearInd</xsl:with-param>
@@ -2013,7 +2013,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/EligibleDeferredCompItemsInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="EligibleDeferredCompItemsInd Yes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/EligibleDeferredCompItemsInd"/>
 											<xsl:with-param name="BackupName">IRS8854EligibleDeferredCompItemsInd</xsl:with-param>
@@ -2034,7 +2034,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/EligibleDeferredCompItemsInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="EligibleDeferredCompItemsInd No" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/EligibleDeferredCompItemsInd"/>
 											<xsl:with-param name="BackupName">IRS8854EligibleDeferredCompItemsInd</xsl:with-param>
@@ -2083,7 +2083,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/IneligibleDeferredCompItemsInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="IneligibleDeferredCompItemsInd Yes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/IneligibleDeferredCompItemsInd"/>
 											<xsl:with-param name="BackupName">IRS8854IneligibleDeferredCompItemsInd</xsl:with-param>
@@ -2104,7 +2104,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/IneligibleDeferredCompItemsInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="IneligibleDeferredCompItemsInd No" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/IneligibleDeferredCompItemsInd"/>
 											<xsl:with-param name="BackupName">IRS8854IneligibleDeferredCompItemsInd</xsl:with-param>
@@ -2157,7 +2157,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/SpecifiedTaxDeferredAccountInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="SpecifiedTaxDeferredAccountInd Yes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/SpecifiedTaxDeferredAccountInd"/>
 											<xsl:with-param name="BackupName">IRS8854SpecifiedTaxDeferredAccountInd</xsl:with-param>
@@ -2178,7 +2178,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/SpecifiedTaxDeferredAccountInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="SpecifiedTaxDeferredAccountInd No" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/SpecifiedTaxDeferredAccountInd"/>
 											<xsl:with-param name="BackupName">IRS8854SpecifiedTaxDeferredAccountInd</xsl:with-param>
@@ -2238,7 +2238,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/NongrantorTrustInterestInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="InterestInNongrantorTrustInd Yes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/NongrantorTrustInterestInd"/>
 											<xsl:with-param name="BackupName">IRS8854InterestInNongrantorTrustInd</xsl:with-param>
@@ -2259,7 +2259,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/NongrantorTrustInterestInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="InterestInNongrantorTrustInd No" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/NongrantorTrustInterestInd"/>
 											<xsl:with-param name="BackupName">IRS8854InterestInNongrantorTrustInd</xsl:with-param>
@@ -2282,7 +2282,7 @@
 							<span style="width:8mm;float:left;height:4mm;"/>
 							<div class="styIRS8854LNDesc" style="width:179mm;">
 								<div class="styIRS8854LNDesc" style="width:4mm;padding-left:0px;">
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="Section877AElectionInd" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/PropertyOwnedDtExpatriationGrp/Section877AElectionInd"/>
 											<xsl:with-param name="BackupName">IRS8854Section877AElectionInd</xsl:with-param>
@@ -2864,7 +2864,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/ExptrtTaxDeferralGrp/TaxDeferSect877AbElectionInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="ElectionToDeferTaxSect877AbInd Yes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/ExptrtTaxDeferralGrp/TaxDeferSect877AbElectionInd"/>
 											<xsl:with-param name="BackupName">IRS8854ElectionToDeferTaxSect877AbInd</xsl:with-param>
@@ -2885,7 +2885,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/ExptrtTaxDeferralGrp/TaxDeferSect877AbElectionInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="ElectionToDeferTaxSect877AbInd No" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/ExptrtTaxDeferralGrp/TaxDeferSect877AbElectionInd"/>
 											<xsl:with-param name="BackupName">IRS8854ElectionToDeferTaxSect877AbInd</xsl:with-param>
@@ -3379,7 +3379,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/AnnualExptrtStmtBfrSpcfdYrGrp/EligDeferredCompItemsDistriInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="EligDeferredCompItemsDistriInd Yes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/AnnualExptrtStmtBfrSpcfdYrGrp/EligDeferredCompItemsDistriInd"/>
 											<xsl:with-param name="BackupName">IRS8854EligDeferredCompItemsDistriInd</xsl:with-param>
@@ -3400,7 +3400,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/AnnualExptrtStmtBfrSpcfdYrGrp/EligDeferredCompItemsDistriInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="EligDeferredCompItemsDistriInd No" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/AnnualExptrtStmtBfrSpcfdYrGrp/EligDeferredCompItemsDistriInd"/>
 											<xsl:with-param name="BackupName">IRS8854EligDeferredCompItemsDistriInd</xsl:with-param>
@@ -3505,7 +3505,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/AnnualExptrtStmtBfrSpcfdYrGrp/NongrantorTrustDistriInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="NongrantorTrustDistriInd Yes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/AnnualExptrtStmtBfrSpcfdYrGrp/NongrantorTrustDistriInd"/>
 											<xsl:with-param name="BackupName">IRS8854NongrantorTrustDistriInd</xsl:with-param>
@@ -3526,7 +3526,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form8854Data/AnnualExptrtStmtBfrSpcfdYrGrp/NongrantorTrustDistriInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" alt="NongrantorTrustDistriInd No" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8854Data/AnnualExptrtStmtBfrSpcfdYrGrp/NongrantorTrustDistriInd"/>
 											<xsl:with-param name="BackupName">IRS8854NongrantorTrustDistriInd</xsl:with-param>
@@ -3679,7 +3679,7 @@
 										<xsl:with-param name="BackupName">IRS1040NR/SelfEmployedLabel</xsl:with-param>
 									</xsl:call-template>
 									Check 
-									<input type="checkbox" class="styCkbox" style="height:10px;width:10px;margin:-2px 4px 0px 1px;">
+									<input type="checkbox" alt="SelfEmployedCheckbox" class="styCkbox" style="height:10px;width:10px;margin:-2px 4px 0px 1px;">
 										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 											<xsl:with-param name="TargetNode">SelfEmployedCheckbox</xsl:with-param>
 											<xsl:with-param name="BackupName">IRS1040NR/SelfEmployedCheckbox</xsl:with-param>

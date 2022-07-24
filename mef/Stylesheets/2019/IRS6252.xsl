@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Updated by Iskilu Lawal 09/10/2019 UWR  # 225328 dro 4 -->
+<!-- Updated by Iskilu Lawal 11/12/2019 UWR  # 225328 dro 4 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -123,14 +123,31 @@
 						</div>
 					</div>
 					<!-- L1 -->
+					
 					<div class="styBB" style="width:187mm;">
+					
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBoxSD">1</div>
-							<div class="styLNDesc" style="width:35mm;">Description of property 
-                <img src="{$ImagePath}/6252_Bullet.gif" alt="Bullet Image"/>
+														
+                      <div class="styLNDesc" style="width:39mm;">
+<div  style="width:29mm;">
+Description of property 
+</div>
+<div  style="width:4mm;">
+               <xsl:call-template name="LinkToLeftoverDataTableInline">
+		<xsl:with-param name="Desc">Installment sale property type code</xsl:with-param>
+	<xsl:with-param name="TargetNode" select="$Form6252Data/InstallmentSalePropertyTypeCd"/>
+	</xsl:call-template>
+</div>
+<div  style="width:2mm;">
+ <img src="{$ImagePath}/6252_Bullet.gif" alt="Bullet Image"/>
+              </div>  
+                
 								<br/>
 							</div>
-							<div class="styForm6252UnderlineText" style="width:144mm;">
+							
+							
+							<div class="styForm6252UnderlineText" style="width:140mm;">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form6252Data/PropertyDesc"/>
 								</xsl:call-template>
@@ -173,7 +190,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form6252Data/PropertySoldToRelatedPartyInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox" name="Checkbox">
+									<input type="checkbox" class="styCkbox" alt="Property Sold To Related Party Yes" name="Checkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form6252Data/PropertySoldToRelatedPartyInd"/>
 										<xsl:with-param name="BackupName"> Yes Property Sold To Related Party </xsl:with-param>	
@@ -194,7 +211,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form6252Data/PropertySoldToRelatedPartyInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox" name="Checkbox">
+									<input type="checkbox" class="styCkbox" alt="Property Sold To Related Party No" name="Checkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form6252Data/PropertySoldToRelatedPartyInd"/>
 										<xsl:with-param name="BackupName"> No Property Sold To Related Party </xsl:with-param>	
@@ -225,7 +242,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form6252Data/PropSoldRltdPartyMrktblSecInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox" name="Checkbox">
+									<input type="checkbox" class="styCkbox" alt="Property Sold Related Party Marketable Security Yes" name="Checkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form6252Data/PropSoldRltdPartyMrktblSecInd"/>
 		<xsl:with-param name="BackupName"> Yes Prop Sold Rltd Party Marketable Sec</xsl:with-param>		
@@ -246,7 +263,7 @@
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form6252Data/PropSoldRltdPartyMrktblSecInd"/>
 									</xsl:call-template>
-									<input type="checkbox" class="styCkbox" name="Checkbox">
+									<input type="checkbox" class="styCkbox" alt="Property Sold Related Party Marketable Security No" name="Checkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form6252Data/PropSoldRltdPartyMrktblSecInd"/>
 		<xsl:with-param name="BackupName"> No Prop Sold Rltd Party Marketable Sec</xsl:with-param>	
@@ -583,8 +600,8 @@ agreement.
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox">19</div>
 								<div class="styLNDesc" style="width:139mm;"> 
-                Gross profit percentage (expressed as a decimal amount). Divide line 16 by line 18.  For years after the 
-                <span style="float:left;">year of sale, see instructions </span>
+                Gross profit percentage (expressed as a decimal amount). Divide line 16 by line 18. (For years after the 
+                <span style="float:left;">year of sale, see instructions) </span>
 									<!--Dotted Line-->
 									<div class="styDotLn" style="float:right;padding-right:1mm;">........................</div>
 								</div>
@@ -823,6 +840,10 @@ agreement.
 											</xsl:call-template>
 										</span>
 									</xsl:if>
+									
+
+
+
 									<!--End of choice -->
 								</div>
 								</xsl:otherwise>
@@ -844,7 +865,7 @@ agreement.
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form6252Data/SecondDispositionInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Property Sold Or Disposed Second Disposition Yes" name="Checkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form6252Data/SecondDispositionInd"/>
 			<xsl:with-param name="BackupName">Yes Property Sold Or Disposed</xsl:with-param>		
@@ -865,7 +886,7 @@ agreement.
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form6252Data/SecondDispositionInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" class="styCkbox" alt="Property Sold Or Disposed Second Disposition No" name="Checkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form6252Data/SecondDispositionInd"/>
 					<xsl:with-param name="BackupName">No Property Sold Or Disposed</xsl:with-param>						
@@ -893,7 +914,7 @@ agreement.
 					</div>
 					<!--L29a-->
 					<div style="width:187mm;">
-						<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:2mm;">a</div>
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:1.5mm;">a</div>
 						<div class="styLNDesc" style="width:146mm;height:auto;">
 							<input type="checkbox" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
@@ -907,7 +928,7 @@ agreement.
 								<xsl:with-param name="BackupName">Second Dispos More 2Yrs Than First</xsl:with-param>	
 								</xsl:call-template>            
 							  The second disposition was more than 2 years after the first disposition (other than dispositions <br/>
-							<span style="float:left;width:12px;"/>of marketable securities).  If this box is checked, enter the date of disposition (mm/dd/yyyy)  
+							<span style="float:left;width:12px;"/><div style="width:37mm;padding-left:5mm">of marketable securities). </div>  If this box is checked, enter the date of disposition (mm/dd/yyyy) 
 							<span class="styBoldText" style="padding-right:1mm;">
 							<span style="width:16px;"/>.
 							<span style="width:16px;"/>.
@@ -923,7 +944,7 @@ agreement.
 					</div>
 					<!--L29b-->
 					<div style="width:187mm;">
-						<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:2mm;">b</div>
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:1.5mm;">b</div>
 						<div class="styLNDesc" style="width:158mm;">
 							<input type="checkbox" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
@@ -941,7 +962,7 @@ agreement.
 					</div>
 					<!--L29c-->
 					<div style="width:187mm;">
-						<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:2mm;">c</div>
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:1.5mm;">c</div>
 						<div class="styLNDesc" style="width:178mm;">
 							<input type="checkbox" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
@@ -960,7 +981,7 @@ agreement.
 					</div>
 					<!--L29d-->
 					<div style="width:187mm;">
-						<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:2mm;">d</div>
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:1.5mm;">d</div>
 						<div class="styLNDesc" style="width:158mm;">
 							<input type="checkbox" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
@@ -979,7 +1000,7 @@ agreement.
 					</div>
 					<!--L29e-->
 					<div style="width:187mm;">
-						<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:2mm;">e</div>
+						<div class="styLNLeftLtrBox" style="padding-left:4mm;padding-top:1.5mm;">e</div>
 						<div class="styLNDesc" style="width:178mm;height:auto;">
 							<input type="checkbox" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
@@ -992,8 +1013,8 @@ agreement.
 									<xsl:with-param name="TargetNode" select="$Form6252Data/NotToAvoidTaxInd"/>
 										<xsl:with-param name="BackupName">Disposition Not To Avoid Tax</xsl:with-param>
 								</xsl:call-template>  
-                  It can be established to the satisfaction of the IRS that tax avoidance wasn't a principal purpose for either of
-                <span style="float:left;width:12px;"/> the dispositions.  If this box is checked, attach an explanation (see instructions).                
+                  It can be established to the satisfaction of the IRS that tax avoidance wasn't a principal purpose for either of the dispositions.
+                <span style="float:left;width:12px;"/><div style="width:100mm;padding-left:5mm;"> If this box is checked, attach an explanation (see instructions). </div>                 
               </label>
 							<span style="width:2px;"/>
 							<!-- Form to Form Link -->
@@ -1156,13 +1177,34 @@ agreement.
 							<input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
 						</div>
 					</div>
+					
 					<!-- Additional Data Table -->
 					<table class="styLeftOverTbl">
 						<xsl:call-template name="PopulateCommonLeftover">
 							<xsl:with-param name="TargetNode" select="$Form6252Data"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
+						<xsl:if test="$Form6252Data/InstallmentSalePropertyTypeCd">
+             <tr>
+                 <td class="styLeftOverTableRowDesc" style="width:100mm;" scope="row">
+                  <label>
+	<xsl:call-template name="PopulateLabel">
+	<xsl:with-param name="TargetNode" select="$Form6252Data/InstallmentSalePropertyTypeCd"/>
+		<xsl:with-param name="BackupName">Installment sale property type code</xsl:with-param>
+	</xsl:call-template>
+	Installment sale property type code
+              </label>
+       </td>
+              <td class="styLeftOverTableRowAmount" style="width:87mm;">
+<xsl:call-template name="PopulateText">
+<xsl:with-param name="TargetNode" select="$Form6252Data/InstallmentSalePropertyTypeCd"/>
+<xsl:with-param name="BackupName">Installment sale property type code</xsl:with-param>
+</xsl:call-template>
+</td>
+</tr>
+</xsl:if>
 					</table>
+					
 					<!-- END Left Over Table -->
 				</form>
 			</body>

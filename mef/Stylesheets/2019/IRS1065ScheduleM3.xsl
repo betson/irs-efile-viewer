@@ -110,7 +110,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/TotalAssetsEndOfTaxYearInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Total Assets End Of Tax Year Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/TotalAssetsEndOfTaxYearInd"/>
 									</xsl:call-template>
@@ -132,7 +132,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/AdjustedTotalAssetsForYearInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Adjusted Total Assets For Year Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/AdjustedTotalAssetsForYearInd"/>
 									</xsl:call-template>
@@ -161,7 +161,7 @@
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/TotalReceiptsForTaxYearInd "/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Total Receipts For Tax Year Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/TotalReceiptsForTaxYearInd "/>
 									</xsl:call-template>
@@ -190,7 +190,7 @@ receipts for the tax year
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/ReportableEntityPartnersGrp/ReportableEntityCheckBoxInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Reportable Entity Check Box Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/ReportableEntityPartnersGrp/ReportableEntityCheckBoxInd"/>
 									</xsl:call-template>
@@ -325,7 +325,7 @@ percent or more in the partnership’s capital, profit, or loss, on any day duri
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/VoluntaryFilerInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Voluntary Filer Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/VoluntaryFilerInd"/>
 									</xsl:call-template>
@@ -362,7 +362,7 @@ percent or more in the partnership’s capital, profit, or loss, on any day duri
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PartnershipFiledSECForm10KInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Partnership Filed S E C Form 10K Yes Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PartnershipFiledSECForm10KInd"/>
 									</xsl:call-template>
@@ -387,7 +387,7 @@ percent or more in the partnership’s capital, profit, or loss, on any day duri
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PartnershipFiledSECForm10KInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Partnership Filed S E C Form 10K No Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PartnershipFiledSECForm10KInd"/>
 									</xsl:call-template>
@@ -419,7 +419,7 @@ percent or more in the partnership’s capital, profit, or loss, on any day duri
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PrtshpPrepCertAudIncmStmtInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Partnership Prepare Certified Audited Income Statement Yes Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PrtshpPrepCertAudIncmStmtInd"/>
 									</xsl:call-template>
@@ -444,7 +444,7 @@ percent or more in the partnership’s capital, profit, or loss, on any day duri
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PrtshpPrepCertAudIncmStmtInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Partnership Prepare Certified Audited Income Statement No Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PrtshpPrepCertAudIncmStmtInd"/>
 									</xsl:call-template>
@@ -477,7 +477,7 @@ percent or more in the partnership’s capital, profit, or loss, on any day duri
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PartnershipPrepareIncmStmtInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Partnership Prepare Income Statement Yes Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PartnershipPrepareIncmStmtInd"/>
 									</xsl:call-template>
@@ -502,7 +502,7 @@ percent or more in the partnership’s capital, profit, or loss, on any day duri
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PartnershipPrepareIncmStmtInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Partnership Prepare Income Statement No Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/ PartnershipPrepareIncmStmtInd"/>
 									</xsl:call-template>
@@ -555,7 +555,7 @@ percent or more in the partnership’s capital, profit, or loss, on any day duri
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PartnershipIncmStmtRestatedInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Partnership Income Statement Restated Yes Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PartnershipIncmStmtRestatedInd"/>
 									</xsl:call-template>
@@ -580,7 +580,7 @@ percent or more in the partnership’s capital, profit, or loss, on any day duri
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PartnershipIncmStmtRestatedInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Partnership Income Statement Restated No Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PartnershipIncmStmtRestatedInd"/>
 									</xsl:call-template>
@@ -617,7 +617,7 @@ percent or more in the partnership’s capital, profit, or loss, on any day duri
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PrtshpStmtRestatedPrev5PrdInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Partnership Statement Restated Preceding 5 Period Yes Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PrtshpStmtRestatedPrev5PrdInd"/>
 									</xsl:call-template>
@@ -642,7 +642,7 @@ percent or more in the partnership’s capital, profit, or loss, on any day duri
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PrtshpStmtRestatedPrev5PrdInd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Partnership Statement Restated Preceding 5 Period No Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1065ScheduleM3/PrtshpStmtRestatedPrev5PrdInd"/>
 									</xsl:call-template>

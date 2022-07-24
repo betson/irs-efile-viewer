@@ -71,7 +71,7 @@
 									</span>
 								</span>
 								<span style="font-size:7pt;">
-									<img src="{$ImagePath}/1120_Bullet_Md.gif" alt="MediumBullet"/> 
+									<img src="{$ImagePath}/1120_Bullet_Md.gif" alt="Medium Right Pointing Arrow"/> 
 									Information about Form 8975 and its separate instructions is at 
 									<a style="text-decoration:none; color:black;" href="http://www.irs.gov/form8975" title="Link to IRS.gov">
 										<i>www.irs.gov/form8975.</i>
@@ -88,10 +88,10 @@
 					<div class="styBB" style="width:256mm;">
 						<div class="styNameBox" style="border-right-width:0px; font-weight:bold;">
 							If this is an amended report, check here
-							<input type="checkbox"  alt="IRS8975 amended report" class="styCkbox">
+							<input type="checkbox"  alt="Amended Report Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/AmendReportInd"/>
-									<xsl:with-param name="BackupName">IRS8975AmendReportInd</xsl:with-param>
+									<xsl:with-param name="BackupName">AmendReportInd</xsl:with-param>
 								</xsl:call-template>
 						    </input>						
 						</div>
@@ -105,7 +105,7 @@
 								<xsl:with-param name="TargetNode" select="$FormData/Form8975ScheduleAAttachCnt"/>
 							</xsl:call-template>
 							<span style="width:1mm;"/>
-							<img src="{$ImagePath}/1120_Bullet_Md.gif" alt="MediumBullet"/>
+							<img src="{$ImagePath}/1120_Bullet_Md.gif" alt="Medium Right Pointing Arrow"/>
 							<span style="width:1mm;"/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$FormData/Form8975ScheduleAAttachCnt"/>

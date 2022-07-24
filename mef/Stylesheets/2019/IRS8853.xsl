@@ -199,7 +199,7 @@
           <!-- Header -->
           <div style="width:187mm;height:11.5mm;" class="styBB">
             <!-- Content -->
-            <div class="styPartName" style="width:12mm;height:4mm;font-size:8.5pt;">Part l</div>
+            <div class="styPartName" style="width:12mm;height:4mm;font-size:8.5pt;">Part I</div>
             <div class="styPartDesc" style="padding-left:4mm;font-weight:normal;font-size:8.5pt;">
               <b>Archer MSA Contributions and Deductions.</b> See instructions before completing this part. If you are filing jointly and both you and your spouse have 
               high deductible health plans with self-only coverage, complete a separate Part I for each spouse.
@@ -328,7 +328,7 @@
           <!-- Header -->
           <div style="width:187mm;" class="styBB">
             <!-- Content -->
-            <div class="styPartName" style="width:13mm;height:4mm;font-size:8.5pt;">Part ll</div>
+            <div class="styPartName" style="width:13mm;height:4mm;font-size:8.5pt;">Part II</div>
             <div class="styPartDesc" style="padding-left:4mm;font-size:8.5pt;">
               Archer MSA Distributions
             </div>
@@ -464,10 +464,10 @@
                 <div class="styIRS8853LNDesc" style="width:auto;height:100%;">
                   <b>Additional 20% tax</b> (see instructions). Enter 20% (0.20) of the distributions included on line 8 that<br/>
                   are subject to the additional 20% tax. Also include this amount in the total on Schedule 2 (Form<br/>
-					1040 or 1040-SR), line 8, or Form 1040-NR, line 60.  Enter “MSA” and the amount on the line next to<br/>
-					Schedule 2 (Form 1040 or 1040-SR), line 8, or box b on Form 1040-NR, line 60.
+					1040 or 1040-SR), line 8, or Form 1040-NR, line 60.  Check box c on Schedule 2 (Form 1040 or 1040-SR), 
+					<br/>line 8, or box b on Form 1040-NR, line 60. Enter “MSA” and the amount on the line next to the box.
                   <!--Dotted Line-->
-       			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1mm;">.........</span>
+       			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1mm;">...</span>
                 </div>
               </div>
               <xsl:call-template name="CreateBox">
@@ -597,10 +597,10 @@
                   <b>Additional 50% tax</b>. Enter 50% (0.50) of the distributions included on line 12 that are subject to <br/>
                   the additional 50% tax. See instructions for the amount to enter if you had a Medicare Advantage MSA<br/>
                   at the end of 2018. Also include this amount in the total on Schedule 2 (Form 1040 or 1040-SR), line 8,<br/>
-				  or Form 1040-NR, line 60. Enter “Med MSA” and the amount on the line next to Schedule 2 (Form  1040 <br/>
-					or 1040-SR), line 8, or box b on Form 1040-NR, line 60.
+				  or Form 1040-NR, line 60. Check box c on Schedule 2 (Form 1040 or 1040-SR), line 8, 
+				  or box b on Form <br/>1040-NR, line 60. Enter “Med MSA” and the amount on the line next to the box.
                   <!--Dotted Line-->
-        			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1mm;">................</span>
+        			 <span class="styDotLn" style="float:none;clear:none;padding:.5mm 0mm 0mm 1mm;">.........</span>
                 </div>
               </div>
               <xsl:call-template name="CreateBox">
@@ -705,7 +705,7 @@
                       <xsl:with-param name="BackupName">Form8853DataForm8853LTCMultipleCopiesInd</xsl:with-param>
                     </xsl:call-template>
                   </label>
-                  <input class="styCkbox" type="checkbox" alt="More than on Section C attached" style="width:3mm;">
+                  <input class="styCkbox" type="checkbox" alt="More than one Section C attached" style="width:3mm;">
                     <xsl:call-template name="PopulateCheckbox">
                       <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/Form8853LTCMultipleCopiesInd"/>
                       <xsl:with-param name="BackupName">Form8853DataForm8853LTCMultipleCopiesInd</xsl:with-param>
@@ -773,7 +773,7 @@
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
                   </xsl:call-template>
-                  <input type="checkbox" class="styCkbox" alt="LTCInsuranceOtherPayment">
+                  <input type="checkbox" class="styCkbox" alt="LTCInsuranceOtherPayment Yes">
                     <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd">
                       <xsl:call-template name="PopulateYesCheckbox">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
@@ -801,7 +801,7 @@
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
                   </xsl:call-template>
-                  <input type="checkbox" class="styCkbox" alt="LTCInsuranceOtherPayment">
+                  <input type="checkbox" class="styCkbox" alt="LTCInsuranceOtherPayment No">
                     <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd">
                       <xsl:call-template name="PopulateNoCheckbox">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuranceOtherPaymentInd"/>
@@ -839,7 +839,7 @@
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
                   </xsl:call-template>
-                  <input type="checkbox" class="styCkbox" alt="LTCInsuredTerminallyIll">
+                  <input type="checkbox" class="styCkbox" alt="LTCInsuredTerminallyIll Yes">
                     <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd">
                       <xsl:call-template name="PopulateYesCheckbox">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
@@ -867,7 +867,7 @@
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>
                   </xsl:call-template>
-                  <input type="checkbox" class="styCkbox" alt="LTCInsuredTerminallyIll">
+                  <input type="checkbox" class="styCkbox" alt="LTCInsuredTerminallyIll No">
                     <xsl:if test="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd">
                       <xsl:call-template name="PopulateNoCheckbox">
                         <xsl:with-param name="TargetNode" select="$Form8853Data/SectCLTCInsuranceCntrctGrp/LTCInsuredTerminallyIllInd"/>

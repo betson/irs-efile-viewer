@@ -6973,7 +6973,7 @@
 							<div class="styIRS1040PRLNLeftNumBox" style="padding-left:.25mm;">4</div>
 									<div class="styIRS1040PRLNDesc" style="width:auto;">
 										Contribuciones por empleados domésticos (vea las instrucciones). Adjunte el Anexo H-PR<br/>
-										(Formulario 1040-PR)
+										(Formulario 1040 or 1040-PR)
 										<!--Dotted Line-->
 									  <span class="styDotLn" style="float:none;clear:none;padding-left:2.75mm;">...........................</span>
 									  <xsl:call-template name="SetFormLinkInline">

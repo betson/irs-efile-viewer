@@ -66,7 +66,7 @@
 								If any line does not apply to you, leave it blank. See separate instructions.
 								<br/>
 								<img alt="Bullet" src="{$ImagePath}/8959_Bullet.gif" height="9" width="9"/>
-								Attach to Form 1040, Form 1040SR, 1040NR, 1040-PR, or 1040-SS.
+								Attach to Form 1040, Form 1040-SR, 1040NR, 1040-PR, or 1040-SS.
 								<br/>
 								<img alt="Bullet" src="{$ImagePath}/8959_Bullet.gif" height="9" width="9"/>
 								Go to <i><a href="http://www.irs.gov/form8959">www.irs.gov/Form8959 </a></i> for instructions and the latest information.
@@ -247,7 +247,7 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">8</div>
 						<div class="styLNDesc" style="width:92.8mm;">
-							Self-employment income from Schedule SE (Form 1040 or 1040SR),<br/>
+							Self-employment income from Schedule SE (Form 1040 or 1040-SR),<br/>
 							Section A, line 4, or Section B, line 6. If you had a loss, enter <br/>
 							<span style="float:left;">-0- (Form 1040-PR and Form 1040-SS filers, see instructions.)</span>
 							<span class="styIRS8959Dots">..</span>
@@ -441,7 +441,7 @@
 					<div style="width:187mm;border-bottom:1px solid black;">
 						<div class="styLNLeftNumBox">18</div>
 						<div class="styLNDesc" style="width:135.86mm;">
-							Add lines 7, 13, and 17. Also include this amount on Schedule 4 (Form 1040 or 1040SR), line 62 (check<br/>
+							Add lines 7, 13, and 17. Also include this amount on Schedule 4 (Form 1040 or 1040-SR), line 62 (check<br/>
 							<span style="float:left;"> box a) (Form 1040NR, 1040-PR, and 1040-SS filers, see instructions), and go to Part V</span>
 							<span class="styIRS8959Dots">....</span>
 						</div>
@@ -543,7 +543,7 @@
 						<div class="styLNLeftNumBox">24</div>
 						<div class="styLNDesc" style="width:135.86mm;">
 							<b>Total Additional Medicare Tax withholding.</b> Add lines 22 and 23. Also include this amount with<br/>
-							  federal income tax withholding on Form 1040 or Form 1040SR, line 17 (Form 1040NR, 1040-PR, and
+							  federal income tax withholding on Form 1040 or Form 1040-SR, line 17 (Form 1040NR, 1040-PR, and
 							<span style="float:left;"> 1040-SS filers, see instructions)</span>
 							<span class="styIRS8959Dots">.................</span>
 						</div>

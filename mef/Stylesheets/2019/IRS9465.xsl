@@ -105,7 +105,7 @@
 								<xsl:with-param name="TargetNode" select="$Form9465Data"/>
 							</xsl:call-template>
 							<!-- should this still say December -->
-							<span class="styAgency">(Rev. December 2018)</span>
+							<span class="styAgency">(Rev. December 2019)</span>
 							<br/>
 							<span class="styAgency">Department of the Treasury</span>
 							<br/>
@@ -814,7 +814,7 @@
 															Also, complete and <br/>attach Form 433-F, <i>Collection Information Statement</i>
 							</label>
 							<!--Dotted Line-->
-							<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">...........................</span>
+							<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">.........................</span>
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form9465Data/CanNotIncreasePaymentInd"/>
@@ -900,7 +900,7 @@
 						
 						<div class="styIRS9465LineItem">
 							<div class="styIRS9465LNLeftNumBox"/>
-							<div class="styIRS9465LNDesc" style="width:181mm;height:auto;font-size:8pt;padding-top:2mm;">
+							<div class="styIRS9465LNDesc" style="width:181mm;height:auto;font-size:7pt;padding-top:1.5mm;">
 								I authorize the U.S. Treasury and its designated Financial Agent to initiate a monthly ACH debit (electronic withdrawal) 
 								entry to the financial institution account indicated for payments of my federal taxes owed, and the financial institution 
 								to debit the entry to this account. This authorization is to remain in full force and effect until I notify the U.S. Treasury 
@@ -911,47 +911,51 @@
 							</div>
 						</div>
 						<!-- (13c) ////////////////////////////////////////////////////-->
-						<div class="styIRS9465LineItem" style="padding-top:17mm">
+						<div class="styIRS9465LineItem" style="padding-top:11mm">
 							<div class="styIRS9465LNLeftNumBox" style="padding-right:0px;padding-top:2mm">
-							<img src="{$ImagePath}/9465_Bullet_Sm.gif" alt="SmallBullet"/>						
-							</div>
+				<!--			<img src="{$ImagePath}/9465_Bullet_Sm.gif" alt="SmallBullet"/>		-->				
+							</div> 
 							
-							<div class="styIRS9465LNDesc" style="width:181mm;height:auto;padding-left:0px;padding-top:2mm;">
+							<div class="styIRS9465LNDesc" style="width:181mm;height:auto;padding-left:0px;padding-top:1.6mm;">
 								<span class="styBoldText" style="width:6mm;text-align:center;height:100%;">c</span>
 								 
 						        <label>						    
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$Form9465Data/NoElectronicPaymentInd"/>
 										<xsl:with-param name="BackupName">Form9465Data/NoElectronicPaymentInd</xsl:with-param>
-									</xsl:call-template>Low-income taxpayers only. If you're unable to make electronic payments through a direct installment agreement (or through  
-									<span style="padding-left:5.8mm;">
-										another debit instrument), check this box and your user fee will be reimbursed (see instructions)
+									</xsl:call-template>Low-income taxpayers only. If you're unable to make electronic payments through a debit instrument by providing your 
+									<span style="padding-left:6.9mm;">
+										banking information on lines 13a and 13b, check this box and your user fee will be reimbursed upon completion of your                                 
                                     </span>
+                                    <span style="padding-left:6.9mm;">
+                                      installment agreement. See instructions
+                                     </span>
 				    		  </label>
 							<!--Dotted Line-->
-							<span class="styDotLn" style="float:none;clear:none;padding-right:.45mm;">..........</span>
+							<span class="styDotLn" style="float:none;clear:none;padding-right:.45mm;">.............................</span>
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form9465Data/NoElectronicPaymentInd"/>
 									<xsl:with-param name="BackupName">Form9465Data/NoElectronicPaymentInd</xsl:with-param>
 								</xsl:call-template>
+								  
 							</input>
 							</div>
 						</div>						
 					</div>
 					<!-- (14) ////////////////////////////////////////////////////-->
 					
-					<div style="width:187mm;padding-bottom:1mm;padding-top:11mm">
+					<div style="width:187mm;padding-bottom:1mm;padding-top:11.5mm">
 						<div class="styIRS9465LNLeftNumBox">14</div>
 						<div class="styIRS9465LNDesc" style="width:181mm;height:auto;">
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form9465Data/PayrollDeductionAgreementInd"/>
 									<xsl:with-param name="BackupName">Form9465Data/PayrollDeductionAgreementInd</xsl:with-param>
-								</xsl:call-template>If you want to make payments by payroll deduction, check this box and attach a completed Form 2159, Payroll Deduction<br/>Agreement.
+								</xsl:call-template>If you want to make payments by payroll deduction, check this box and attach a completed Form
 						</label>
 							<!--Dotted Line-->
-							<span class="styDotLn" style="float:none;clear:none;padding-right:.35mm;">.......................................</span>
+							<span class="styDotLn" style="float:none;clear:none;padding-right:.35mm;">...........</span>
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form9465Data/PayrollDeductionAgreementInd"/>
@@ -1008,7 +1012,7 @@
 					
 					<div style="float:right;">
 							<span style="width:75px;"/>  
-							Form <span class="styBoldText" style="font-size:8pt;">9465</span> (Rev. 12-2018)
+							Form <span class="styBoldText" style="font-size:8pt;">9465</span> (Rev. 12-2019)
 					</div>
 				    <p style="page-break-before: always"/>
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
@@ -1016,7 +1020,7 @@
 				    <!--<br/><br/>-->
 					<!-- BEGIN Part II Title -->
 					<div class="styTBB" style="width:187mm;padding-top:.5mm;">
-						<span class="" style="float:left;clear:none;">Form 9465 (12-2018)</span>
+						<span class="" style="float:left;clear:none;">Form 9465 (12-2019)</span>
 						<span style="float:right;clear:none;">Page <span class="styBoldText" style="font-size:8pt;">2</span>
 						</span>
 					</div>
@@ -1026,7 +1030,7 @@
 					<div class="styIRS9465LineItem" style="height:auto;">
 						<div class="styIRS9465LNDesc" style="width:106mm;height:18mm;padding-left:0mm;">
 							<div class="styPartDesc" style="font-weight: normal;text-align:left;padding-left:0mm;"> 
-							<b>Additional Information.</b> Complete this part only if all 3 conditions apply:  <br/>
+							<b>Additional Information.</b> Complete this part only if all three conditions apply:  <br/>
                              <span style="padding-right:8mm;"/>1. you defaulted on an installment agreement in the past 12 months, <br/>
                              <span style="padding-right:8mm;"/>2. you owe more than $25,000 but not more than $50,000, and <br/>
                              <span style="padding-right:8mm;"/>3. the amount online 11a (or 11b, if applicable) is less than line 10. <br/>
@@ -1576,7 +1580,7 @@
 					<div class="pageEnd" style="width:187mm;border-top:.5mm solid black">
 						<div style="float:right;">
 							<span style="width:75px;"/>  
-							Form <span class="styBoldText" style="font-size:8pt;">9465</span> (Rev. 12-2018)
+							Form <span class="styBoldText" style="font-size:8pt;">9465</span> (Rev. 12-2019)
 						</div>
 					</div>
 					<!-- Additonal Data Title Bar and Button -->

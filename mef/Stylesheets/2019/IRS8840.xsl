@@ -289,7 +289,7 @@
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBoxSD">8</div>
 						<div class="sty8840DescA" style="width:179mm;">
-							Enter the name of the foreign country to which you had a closer connection than to the United States during 2019 <br />
+							Enter the name of the foreign country to which you had a closer connection than to the United States during 2019. <br />
 							<img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/> 
 							<span style="width:174mm;border-bottom:1px dashed black;float:right;">
 								<xsl:call-template name="PopulateCountry8840">
@@ -837,7 +837,7 @@
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBox" style="padding-left:4.5mm;">b</div>
 						<div class="sty8840DescA" style="width:179mm;">
-							Form W-9, Request for Taxpayer Identification Number and Certification 
+							Form W-9, Request for Taxpayer Identification Number and Certification? 
 							<span style="letter-spacing:3.3mm;font-weight:bold;padding-left:8px;">...............</span>
 							<span style="float:right;">
 								<xsl:call-template name="PopulateSpan">
@@ -875,45 +875,6 @@
 					<!-- Line 25c -->
 					<div class="styStdDiv">
 						<div class="styLNLeftNumBox" style="padding-left:4.5mm;">c</div>
-						<div class="sty8840DescA" style="width:179mm;">
-							Form 1078, Certificate of Alien Claiming Residence in the United States?
-							<span style="letter-spacing:3.3mm;font-weight:bold;padding-left:8px;">...............</span>
-							<span style="float:right;">
-								<xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$FormData/Form1078CompletedInd"/>
-								</xsl:call-template>
-								<input type="checkbox" alt="YesForm1078Completed" class="styCkboxNM" style="">
-									<xsl:call-template name="PopulateYesCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/Form1078CompletedInd"/>
-										<xsl:with-param name="BackupName">IRS8840/Form1078CompletedInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<label style="font-weight:bold;margin-right:8px;">
-									<xsl:call-template name="PopulateLabelYes">
-										<xsl:with-param name="TargetNode" select="$FormData/Form1078CompletedInd"/>
-										<xsl:with-param name="BackupName">IRS8840/Form1078CompletedInd</xsl:with-param>
-									</xsl:call-template>
-									Yes
-								</label>
-								<input type="checkbox" alt="NoForm1078Completed" class="styCkboxNM" style="">
-									<xsl:call-template name="PopulateNoCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/Form1078CompletedInd"/>
-										<xsl:with-param name="BackupName">IRS8840/Form1078CompletedInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<label style="font-weight:bold;margin-right:8px;">
-									<xsl:call-template name="PopulateLabelNo">
-										<xsl:with-param name="TargetNode" select="$FormData/Form1078CompletedInd"/>
-										<xsl:with-param name="BackupName">IRS8840/Form1078CompletedInd</xsl:with-param>
-									</xsl:call-template>
-									No
-								</label>
-							</span>
-						</div>
-					</div>
-					<!-- Line 25d -->
-					<div class="styStdDiv">
-						<div class="styLNLeftNumBox" style="padding-left:4.5mm;">d</div>
 						<div class="sty8840DescA" style="width:179mm;">
 							Any other U.S. official forms? If "Yes," indicate the form(s) <img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/>
 							<span style="border-bottom:1px dashed black;width:75mm;margin-left:1mm;">

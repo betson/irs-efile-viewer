@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Sergey Smirnov, 2020.06.25: commented out line 271 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -72,7 +73,7 @@
 							</div>
 							<div style="padding-top:2mm;">
 								<img src="{$ImagePath}/1040SchE_Bullet.gif" alt="Bullet Image"/>
-								<span class="styBoldText" style="font-size:6pt;">Attach to Form 1040,1040-SR,1040-NR, or Form 1041. </span>
+								<span class="styBoldText" style="font-size:6pt;">Attach to Form 1040, 1040-SR, 1040-NR, or 1041.</span>
 							</div>
 							<div style="padding-top:0.5mm;">
 								<img src="{$ImagePath}/1040SchE_Bullet.gif" alt="Bullet Image"/>
@@ -267,7 +268,7 @@
 						<!-- END PART  I Title -->
 						<!-- Part 1, Lines 1 & 2 Table (Start) -->
 						<div class="styTableContainer" style="width:188mm;border-bottom-width:1px;height:auto;" id="PICctn">
-							<xsl:call-template name="SetInitialState"/>
+							<!--<xsl:call-template name="SetInitialState"/> ss: 2020:06.25 -->
 							<table class="styTable" style="border-bottom-width:1px;height:auto;" cellspacing="0" id="PICTable">
 								<tr style="height:2mm;">
 									<td class="styTableCell" scope="col" style="height:2mm;width:5.9mm;border-right-width:0px;text-align:center;font-weight:bold;font-size:8pt;">
@@ -3751,7 +3752,7 @@
 									<div class="styLnDesc" style="padding-top:.5mm;width:141.8mm;padding-left:2mm;padding-right:1mm;height:11mm;">
 										<b> Total rental real estate and royalty income or (loss).</b> Combine lines 24 and 25. Enter the result here.
 								   If Parts II, III, IV, and line 40 on page 2 do not apply to you, also enter this amount on Schedule 1 (Form 1040 or 1040-SR),
-								   line 17, or Form 1040-NR, line 18. Otherwise, include this amount in the total on line 41 on page 2
+								   line 5, or Form 1040-NR, line 18. Otherwise, include this amount in the total on line 41 on page 2
 								   <xsl:call-template name="LinkToLeftoverDataTableInline">
 											<xsl:with-param name="Desc">Part I, Line 26 NonPassive Activity Literal </xsl:with-param>
 											<xsl:with-param name="TargetNode" select="$FormData/TotalIncomeOrLossAmt/@nonpassiveActivityLiteralCd"/>
@@ -3827,8 +3828,8 @@
 					<div style="width:187mm;" class="styBB">
 						<div class="styPartName" style="width:15mm;">Part II</div>
 						<div class="styPartDesc" style="padding-left:3mm;font-weight:normal;height:auto;">
-							<span class="styBoldText">lncome or Loss From Partnerships and S Corporations - <span style="padding-left:.5mm;padding-right:1mm;">Note:</span>
-							</span>If you report a loss, receive a distribution, dispose of stock, or receive a loan repayment from an S corporation, you <b>must</b> check the box in column 
+							<span class="styBoldText">lncome or Loss From Partnerships and S Corporations - Note:
+							</span> If you report a loss, receive a distribution, dispose of stock, or receive a loan repayment from an S corporation, you <b>must</b> check the box in column 
 							<b>(e)</b> on line 28 and attach the required basis computation.   If you report a loss from an at-risk activity for which <span class="styBoldText">any</span> amount is <span class="styBoldText">not</span> at risk, you <span class="styBoldText">must</span> check the box in column <b>(f)</b> on line 28 and attach <span class="styBoldText">Form 6198</span> (see instructions). 
                   </div>
 					</div>
@@ -3892,7 +3893,7 @@
 						<!--
 						</div>-->
 					</div>
-					<div class="styGenericDiv" style="height:2mm;float:right;clear:none;">
+					<div class="styGenericDiv" style="height:4mm;float:right;clear:none;">
 						<xsl:call-template name="SetDynamicTableToggleButton">
 							<xsl:with-param name="TargetNode" select="$FormData/PartnershipOrSCorpGroup"/>
 							<xsl:with-param name="containerHeight" select="2"/>
@@ -5377,7 +5378,7 @@
 								<div class="styLNLeftNumBox" style="padding-left:1mm;">41</div>
 								<div style="width:141mm;padding-top:0.5mm;" class="styLnDesc">
 									<span style="float:left;clear:none;">
-										<span class="styBoldText">Total income or (loss).</span> Combine lines 26, 32, 37, 39, and 40. Enter the result here and on Schedule 1 (Form 1040 or 1040-SR), line 17, or Form 1040-NR, line 18
+										<span class="styBoldText">Total income or (loss).</span> Combine lines 26, 32, 37, 39, and 40. Enter the result here and on Schedule 1 (Form 1040 or 1040-SR), line 5, or Form 1040-NR, line 18
                                           <img src="{$ImagePath}/1040_Bullet.gif" alt="Right pointing arrowhead image"/>
 										
 										<span class="styDotLn" style="clear:none;padding-right:1mm;float:right;">..............</span>
@@ -5403,9 +5404,9 @@
 							<div style="width:99mm;float:left;clear:none;padding-top:0.5mm;">
 								<span class="styBoldText">Reconciliation of farming and fishing income.</span> Enter your <span class="styBoldText">gross  </span> farming
                            and fishing income reported on Form 4835, line 7; Schedule K-1 (Form
-                           1065), box 14, code B; Schedule K-1 (Form 1120S), box 17, code AC; and
+                           1065), box 14, code B; Schedule K-1 (Form 1120-S), box 17, code AC; and
                            Schedule
-                           <span style="float:left;">K-1 (Form 1041), line 14, code F (see instructions)</span>
+                           <span style="float:left;">K-1 (Form 1041), box 14, code F (see instructions)</span>
 								<span class="styDotLn" style="clear:none;padding-right:1mm;float:right;">.......</span>
 							</div>
 							<div class="styShadingCell" style="height:8mm;width:41.95mm;border-top-width:1px;border-bottom-width:1px;">
@@ -5429,7 +5430,7 @@
 						<div class="styBB" style="width:187mm;">
 							<div class="styLNLeftNumBox" style="padding-left:1mm;">43</div>
 							<div style="width:99mm;float:left;padding-top:0.5mm;" class="styLnDesc">
-								<span class="styBoldText">Reconciliation for real estate professionals. </span>  If you were a real estate<br/>
+								<span class="styBoldText">Reconciliation for real estate professionals.</span> If you were a real estate<br/>
                            professional (see instructions), enter the net income or (loss) you reported<br/>
                            anywhere on Form 1040,  Form 1040-SR, or Form 1040-NR from all rental real estate
                            activities in which you materially participated under the passive activity<br/>

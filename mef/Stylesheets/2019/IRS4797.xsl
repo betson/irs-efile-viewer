@@ -3236,7 +3236,7 @@
 								<th class="styIRS4797LNTableCellHeader" style="border-left:0;vertical-align:bottom;width:75mm;" scope="col" colspan="2">
 									<span class="styArialText">
 														These columns relate to the properties on lines 19A through 19D. 
-														<img src="{$ImagePath}/4797_Bullet.gif" alt="Bullet"/>
+														<img src="{$ImagePath}/4797_Bullet.gif" alt="Right Pointing Arrow"/>
 									</span>
 								</th>
 								<th class="styIRS4797LNTableCellHeader" scope="col">Property <xsl:number value="position()" format="A"/>

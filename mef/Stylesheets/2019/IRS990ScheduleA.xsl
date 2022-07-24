@@ -271,12 +271,13 @@
 												<xsl:with-param name="TargetNode" select="SupportedOrganizationName/BusinessNameLine2Txt"/>
 											</xsl:call-template>
 										</div>
+										<span>,</span>
 										<div style="font-family:verdana;font-size:7pt;padding-left:1mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="CityNm"/>
 											</xsl:call-template>
-											
 										</div>
+										<span>,</span>
 					<xsl:if test="StateAbbreviationCd">
 										<div style="font-family:verdana;font-size:7pt;padding-left:1mm;">
 											<xsl:call-template name="PopulateText">

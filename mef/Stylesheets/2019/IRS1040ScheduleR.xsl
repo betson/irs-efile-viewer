@@ -44,18 +44,18 @@
 					<xsl:call-template name="DocumentHeader"/>
 					<!-- Begin Form Number and Name -->
 					<div class="styBB" style="width:187mm;height:21.5mm;">
-						<div class="styFNBox" style="width:28mm;height:21.5mm;">
+						<div class="styFNBox" style="width:31mm;height:21.5mm;">
 							<div style="line-height:180%;">
 								<span class="styFormNumber" style="font-size:8.5pt;">Schedule R</span>
 								<span class="styFormNumber" style="font-size:7pt;">(Form 1040 or 1040-SR)</span>
 							</div>
-							<div style="padding-top:1.3mm;">
+							<div style="padding-top:4mm;">
 								<span class="styAgency">Department of the Treasury</span>
 								<br/>
 								<span class="styAgency">Internal Revenue Service (99)</span>
 							</div>
 						</div>
-						<div class="styFTBox" style="width:105.6mm;height:22mm; padding-top:0.5mm;">
+						<div class="styFTBox" style="width:102.6mm;height:22mm; padding-top:0.5mm;">
 							<div class="styLNDesc" style="height:10mm;font-size: 13pt;font-weight: bold;width:104.6mm;padding-bottom:4.3mm;text-align:center;padding-right:4mm;">Credit for the Elderly or the Disabled
 							</div>
 				<div class="styGenericDiv" style="height:3mm;margin-top:0.5mm;font:size:6pt;width:97mm;">
@@ -71,7 +71,7 @@
         </div>
   						</div>
 					<div class="styLNDesc" style="height:5mm;width:23mm;padding-top:6mm;">
-							<img src="{$ImagePath}/1040SchR_Top_Forms.gif" alt="Bullet Image"/>
+							<img src="{$ImagePath}/1040SchR_Top_Forms.gif" alt="Bullet Image" height="55" width="85"/>
 					</div>
 						<div class="styTYBox" style="width:30mm;height:21.5mm;">
 							<div class="styOMB" style="height:4mm;">OMB No. 1545-0074</div>
@@ -515,8 +515,8 @@
 					<div class="pageEnd"  style="width:187mm;padding-top:1mm;padding-bottom:4mm;font-size:6.5pt;">
 						<div style="width:105mm;font-weight:bold;float:left;clear:none;">
 							For Paperwork Reduction Act Notice, see your tax return instructions.</div>
-						<div style="width:25mm;float:left;clear:none;">Cat. No. 11359K</div>
-						<div class="styPartDesc" style="width:55mm;text-align:right;font-size:6.5pt;float:right;clear:none;">
+						<div style="width:20mm;float:left;clear:none;">Cat. No. 11359K</div>
+						<div class="styPartDesc" style="width:60mm;text-align:right;font-size:6.5pt;float:right;clear:none;">
 							Schedule R (Form 1040 or 1040-SR) 2019
 						</div>
 					</div>

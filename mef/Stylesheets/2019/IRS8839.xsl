@@ -66,7 +66,7 @@
                     <div style="width:110mm;height:5mm;padding-top:1mm;">
                       <br/>  
                       <img src="{$ImagePath}/8839_Bullet_Sm.gif" alt="SmallBullet"/> 
-                      Attach to Form 1040, 1040-SR,  or 1040NR.
+                      Attach to Form 1040, 1040-SR,  or 1040-NR.
                       <br/>
                       <img src="{$ImagePath}/8839_Bullet_Sm.gif" alt="SmallBullet"/> 
                       Go to <a style="text-decoration:none;color:black;" href="http://www.irs.gov/form8839"  title="Link to IRS.gov"> <i>www.irs.gov/form8839</i></a> for instructions and the latest information.
@@ -299,7 +299,7 @@
                     <xsl:call-template name="PopulateSpan">
                       <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptionCrModifAGIGrtrAmtInd"/>
                     </xsl:call-template>
-                    <input type="checkbox" alt="AdoptionCreditModifiedAdjustedGrossIncomeGreaterThanAmount" class="styCkbox" >
+                    <input type="checkbox" alt="AdoptionCreditModifiedAdjustedGrossIncomeGreaterThanAmountNo" class="styCkbox" >
                       <xsl:if test="$Form8839Data/AdoptionCrModifAGIGrtrAmtInd">
                         <xsl:call-template name="PopulateNoCheckbox">
                           <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptionCrModifAGIGrtrAmtInd"/>
@@ -324,7 +324,7 @@
                     <xsl:call-template name="PopulateSpan">
                       <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptionCrModifAGIGrtrAmtInd"/>
                     </xsl:call-template>
-                    <input type="checkbox" alt="AdoptionCreditModifiedAdjustedGrossIncomeGreaterThanAmount" class="styCkbox">
+                    <input type="checkbox" alt="AdoptionCreditModifiedAdjustedGrossIncomeGreaterThanAmountYes" class="styCkbox">
                     <xsl:if test="$Form8839Data/AdoptionCrModifAGIGrtrAmtInd">
                         <xsl:call-template name="PopulateYesCheckbox">
                           <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptionCrModifAGIGrtrAmtInd"/>
@@ -697,9 +697,9 @@
               <div class="styIRS8839LNLeftNumBox">16</div>
               <div class="styIRS8839LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8839LNDesc" style="width:auto;height:100%;">
-                  <b>Adoption Credit.</b> Enter the smaller of line 14 or line 15 here and on Form 1040, line 54, or Form 1040NR,<br />line 51. Check box <b>c</b> on that line and enter <b>"8839"</b> in the space next to box <b>c</b>. If line 15 is smaller than line<br />14, you may have a credit carryforward (see instructions)
+                  <b>Adoption Credit.</b> Enter the smaller of line 14 or line 15 here and on Schedule 3 (Form 1040 or 1040-SR),<br />line 6, or Form 1040-NR, line 51. Check box <b>c</b> on that line and enter <b>"8839"</b> in the space next to box <b>c</b>. If line 15 is smaller than line 14, you may have a credit carryforward (see instructions)
                   <!--Dotted Line-->
-                  <span class="styDotLn" style="float:right;padding-right:1mm;">................</span>	
+                  <span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>	
                 </div>
               </div>
               <div class="styIRS8839LNDesc" style="height:100%;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -729,9 +729,9 @@
                 For Paperwork Reduction Act Notice, see your tax return instructions.
               </span>
                
-                <span style="width:50px;"/>  
+                <span style="width:76px;"/>  
                 <span style="font-size:7pt;">			   Cat. No. 22843L					</span>
-                 <span style="width:28.1mm;"/>   Form <span class="styBoldText" style="font-size:8pt;">8839</span> (2019)
+                 <span style="width:24.1mm;"/>   Form <span class="styBoldText" style="font-size:8pt;">8839</span> (2019)
             </div>
           </div>
           <!-- END Page Break and Footer-->
@@ -921,7 +921,7 @@
                     <xsl:call-template name="PopulateSpan">
                       <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptionBnftModifAGIGrtrAmtInd"/>
                     </xsl:call-template>
-                    <input type="checkbox" alt="EmployerProvidedAdoptionBenefitsPriorYearGreaterThanAmount" class="styCkbox" >
+                    <input type="checkbox" alt="EmployerProvidedAdoptionBenefitsPriorYearGreaterThanAmountNo" class="styCkbox" >
                       <xsl:if test="$Form8839Data/AdoptionBnftModifAGIGrtrAmtInd">
                         <xsl:call-template name="PopulateNoCheckbox">
                           <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptionBnftModifAGIGrtrAmtInd"/>
@@ -948,7 +948,7 @@
                     <xsl:call-template name="PopulateSpan">
                       <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptionBnftModifAGIGrtrAmtInd"/>
                     </xsl:call-template>
-                    <input type="checkbox" alt="EmployerProvidedAdoptionBenefitsPriorYearGreaterThanAmount" class="styCkbox">
+                    <input type="checkbox" alt="EmployerProvidedAdoptionBenefitsPriorYearGreaterThanAmountYes" class="styCkbox">
                       <xsl:if test="$Form8839Data/AdoptionBnftModifAGIGrtrAmtInd">
                         <xsl:call-template name="PopulateYesCheckbox">
                           <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptionBnftModifAGIGrtrAmtInd"/>
@@ -1243,7 +1243,7 @@
                         <xsl:call-template name="PopulateSpan">
                           <xsl:with-param name="TargetNode" select="$Form8839Data/ExcldMoreThanEmplrAdptnBnftInd"/>
                         </xsl:call-template>
-                     <input type="checkbox" alt="ExcludedBenefitsMoreThanEmployerProvidedAdoptionBenefits" class="styCkbox" >
+                     <input type="checkbox" alt="ExcludedBenefitsMoreThanEmployerProvidedAdoptionBenefitsNo" class="styCkbox" >
                           <xsl:if test="$Form8839Data/ExcldMoreThanEmplrAdptnBnftInd">
                             <xsl:call-template name="PopulateNoCheckbox">
                               <xsl:with-param name="TargetNode" select="$Form8839Data/ExcldMoreThanEmplrAdptnBnftInd"/>
@@ -1262,8 +1262,8 @@
                         </xsl:if>
                         <span class="styBoldText">No.</span>
                         <span style="width:5px;"/>Subtract line 28 from line 21. Also, include this amount, if more than zero, on<br/>
-                        <span style="width:11mm;"/>line 7 of Form 1040 or line 8 of Form 1040NR. On the dotted line next to line<br/>
-                        <span style="width:11mm;"/>7 of Form 1040 or line 8 of Form 1040NR, enter “AB.”<br/>
+                        <span style="width:11mm;"/>line 1 of Form 1040 or 1040-SR or line 8 of Form 1040-NR. On the dotted line next to line<br/>
+                        <span style="width:11mm;"/>1 of Form 1040 or 1040-SR or line 8 of Form 1040-NR, enter “AB.”<br/>
                       </label>
                       <!-- ++++++++++++++ Yes Checkbox +++++++++++++ -->
                       <span style="width:1mm;"/>
@@ -1271,7 +1271,7 @@
                         <xsl:call-template name="PopulateSpan">
                           <xsl:with-param name="TargetNode" select="$Form8839Data/ExcldMoreThanEmplrAdptnBnftInd"/>
                         </xsl:call-template>
-                   <input type="checkbox" alt="ExcludedBenefitsMoreThanEmployerProvidedAdoptionBenefits" class="styCkbox">
+                   <input type="checkbox" alt="ExcludedBenefitsMoreThanEmployerProvidedAdoptionBenefitsYes" class="styCkbox">
                           <xsl:if test="$Form8839Data/ExcldMoreThanEmplrAdptnBnftInd">
                             <xsl:call-template name="PopulateYesCheckbox">
                               <xsl:with-param name="TargetNode" select="$Form8839Data/ExcldMoreThanEmplrAdptnBnftInd"/>
@@ -1290,9 +1290,9 @@
                         </xsl:if>
                         <span class="styBoldText">Yes.</span>
                         <span style="width:5px;"/>Subtract line 21 from line 28. Enter the result as a negative number. Reduce<br/>
-                        <span style="width:11mm;"/>the total you would enter on line 7 of Form 1040 or line 8 of Form 1040NR by<br/>
-                        <span style="width:11mm;"/>the amount on Form 8839, line 29. Enter the result on line 7 of Form 1040 or<br/>
-                        <span style="width:11mm;"/>line 8 of Form 1040NR. Enter "SNE" on the dotted line next to the entry line.
+                        <span style="width:11mm;"/>the total you would enter on line 1 of Form 1040 or 1040-SR or line 8 of Form 1040-NR by<br/>
+                        <span style="width:11mm;"/>the amount on Form 8839, line 29. Enter the result on line 1 of Form 1040 or 1040-SR<br/>
+                        <span style="width:11mm;"/>or line 8 of Form 1040-NR. Enter "SNE" on the dotted line next to the entry line.
                       </label>
                     </div>
                     <div class="styIRS8839LNDesc" style="padding:0px 0px 0px 3px;float:left;width:auto;height:auto;">
@@ -1301,7 +1301,7 @@
                     <div class="styIRS8839LNDesc" style="padding:0px 5px 0px 0px;float:right;width:auto;height:auto;">
 			          <!--Dotted Line-->
                       <span class="styBoldText" style="height:100%;padding-top:7.5mm;letter-spacing:3.1mm;">
-                      ....
+                      ..
                       </span>
                     </div>
                   </div>
@@ -2078,7 +2078,7 @@
                 <xsl:call-template name="PopulateSpan">
                   <xsl:with-param name="TargetNode" select="$Child1/AdoptionCreditSameChildPYInd"/>
                 </xsl:call-template>                
-                <input type="checkbox" alt="AdoptionCreditSameChildPriorYear" class="styCkbox" >    
+                <input type="checkbox" alt="AdoptionCreditSameChildPriorYearNo" class="styCkbox" >    
                     <xsl:call-template name="PopulateNoCheckbox">
                       <xsl:with-param name="TargetNode" select="$Child1/AdoptionCreditSameChildPYInd"/>
                       <xsl:with-param name="BackupName">IRS8839Child<xsl:value-of select="$Child1Number"/>AdoptionCreditSameChildPYInd</xsl:with-param>
@@ -2107,7 +2107,7 @@
                 <xsl:call-template name="PopulateSpan">
                   <xsl:with-param name="TargetNode" select="$Child1/AdoptionCreditSameChildPYInd"/>
                 </xsl:call-template>
-                <input type="checkbox" alt="AdoptionCreditSameChildPriorYear" class="styCkbox">
+                <input type="checkbox" alt="AdoptionCreditSameChildPriorYearNo" class="styCkbox">
                  <xsl:choose>
                   <xsl:when test="$Child1/AdoptionCreditSameChildPYInd and (count($Form8839Data/AdoptedChild) &gt;= 1)">  
                     <xsl:call-template name="PopulateYesCheckbox">
@@ -2347,7 +2347,7 @@
                 <xsl:call-template name="PopulateSpan">
                   <xsl:with-param name="TargetNode" select="$Child1/EmployerAdptnBnftSameChldPYInd"/>
                 </xsl:call-template>
-                <input type="checkbox" alt="EmployerAdoptionBenefitsSameChildPriorYear" class="styCkbox">               
+                <input type="checkbox" alt="EmployerAdoptionBenefitsSameChildPriorYearNo" class="styCkbox">               
                      <xsl:call-template name="PopulateNoCheckbox">
                       <xsl:with-param name="TargetNode" select="$Child1/EmployerAdptnBnftSameChldPYInd"/>
                       <xsl:with-param name="BackupName">IRS8839Child<xsl:value-of select="$Child1Number"/>EmployerAdptnBnftSameChldPYInd</xsl:with-param>
@@ -2376,7 +2376,7 @@
                 <xsl:call-template name="PopulateSpan">
                   <xsl:with-param name="TargetNode" select="$Child1/EmployerAdptnBnftSameChldPYInd"/>
                 </xsl:call-template>
-                <input type="checkbox" alt="EmployerAdoptionBenefitsSameChildPriorYear" class="styCkbox">
+                <input type="checkbox" alt="EmployerAdoptionBenefitsSameChildPriorYearYes" class="styCkbox">
                 <xsl:choose>
                   <xsl:when test="$Child1/EmployerAdptnBnftSameChldPYInd and (count($Form8839Data/AdoptedChild) &gt;= 1)">
                     <xsl:call-template name="PopulateYesCheckbox">

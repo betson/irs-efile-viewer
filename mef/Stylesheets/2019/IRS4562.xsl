@@ -278,10 +278,10 @@
 			<xsl:call-template name="InitJS"/>
 			<style type="text/css">
 			  <!--  remember to remove commented out print   -->
-			  <!--<xsl:if test="not($Print) or $Print=''">-->
+			  <xsl:if test="not($Print) or $Print=''">
 				<xsl:call-template name="IRS4562Style"/>
 				<xsl:call-template name="AddOnStyle"/>
-			  <!--</xsl:if>-->				
+			  </xsl:if>				
 			</style>
 			<xsl:call-template name="GlobalStylesForm"/>
 		  </head>
@@ -904,16 +904,16 @@
 					<span class="styFormTDotLnDesc" style="letter-spacing:4mm; font-weight:bold; text-align:right">...................</span>
 					<img src="{$ImagePath}/4562_Bullet_Lg.gif" alt="Right Pointing Arrow"/>
 					<span style="width:1mm;"/>
-					<input type="checkbox" alt="General Asset Account Election" class="styIRS4562Ckbox">
+					<input type="checkbox" alt="General Asset Account Election Indicator" class="styIRS4562Ckbox">
 					  <xsl:call-template name="PopulateCheckbox">
 						<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralAssetAccountElectionInd"/>
-						<xsl:with-param name="BackupName">IRS4562GeneralAssetAccountElection</xsl:with-param>
+						<xsl:with-param name="BackupName">GeneralAssetAccountElection</xsl:with-param>
 					  </xsl:call-template>
 					</input>
 					<label>
 					  <xsl:call-template name="PopulateLabel">
 						<xsl:with-param name="TargetNode" select="$IRS4562Data/GeneralAssetAccountElectionInd"/>
-						<xsl:with-param name="BackupName">IRS4562GeneralAssetAccountElection</xsl:with-param>
+						<xsl:with-param name="BackupName">GeneralAssetAccountElectionLabel</xsl:with-param>
 					  </xsl:call-template>
 					</label>
 				  </div>
@@ -2170,7 +2170,10 @@
 								30-year
 								<span class="styIRS4562TableCellPad"/>
 							</td>
-							<td class="styIRS4562TableCellB" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; background-color:lightgrey;">
+							<td class="styIRS4562TableCellB" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:center;">
+							  <xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="MonthAndYearPlacedInServiceDt"/>
+							  </xsl:call-template>
 							  <span class="styIRS4562TableCellPad"/>
 							</td>
 							<td class="styIRS4562TableCellC" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:right;">
@@ -2533,7 +2536,7 @@
 				  <xsl:call-template name="PopulateSpan">
 					<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceToSupportDeductionInd"/>
 				  </xsl:call-template>
-				  <input type="checkbox" alt="Have Evidence To Support Claims Yes" class="styIRS4562Ckbox">
+				  <input type="checkbox" alt="Have Evidence To Support Claims Indicator Yes" class="styIRS4562Ckbox">
 					<xsl:call-template name="PopulateYesCheckbox">
 					  <xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceToSupportDeductionInd"/>
 					  <xsl:with-param name="BackupName">HaveEvidenceToSupportClaimsYes</xsl:with-param>
@@ -2545,7 +2548,7 @@
 					<label>
 					  <xsl:call-template name="PopulateLabelYes">
 						<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceToSupportDeductionInd"/>
-						<xsl:with-param name="BackupName">HaveEvidenceToSupportClaimsLabel</xsl:with-param>
+						<xsl:with-param name="BackupName">HaveEvidenceToSupportClaimsYesLabel</xsl:with-param>
 					  </xsl:call-template>Yes
 					</label>
 				  </b>
@@ -2554,7 +2557,7 @@
 				  <xsl:call-template name="PopulateSpan">
 					<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceToSupportDeductionInd"/>
 				  </xsl:call-template>
-				  <input type="checkbox"  alt="Have Evidence To Support Claims No" class="styIRS4562Ckbox">
+				  <input type="checkbox"  alt="Have Evidence To Support Claims Indicator No" class="styIRS4562Ckbox">
 					<xsl:call-template name="PopulateNoCheckbox">
 					  <xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceToSupportDeductionInd"/>
 					  <xsl:with-param name="BackupName">HaveEvidenceToSupportClaimsNo</xsl:with-param>
@@ -2566,7 +2569,7 @@
 					<label>
 					  <xsl:call-template name="PopulateLabelNo">
 						<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceToSupportDeductionInd"/>
-						<xsl:with-param name="BackupName">HaveEvidenceToSupportClaimsLabel</xsl:with-param>
+						<xsl:with-param name="BackupName">HaveEvidenceToSupportClaimsNoLabel</xsl:with-param>
 					  </xsl:call-template>No
 					</label>
 				  </b>
@@ -2577,7 +2580,7 @@
 				<xsl:call-template name="PopulateSpan">
 				  <xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
 				</xsl:call-template>
-				<input type="checkbox" alt="Is Evidence Written Yes" class="styIRS4562Ckbox">
+				<input type="checkbox" alt="Is Evidence Written Indicator Yes" class="styIRS4562Ckbox">
 				  <xsl:call-template name="PopulateYesCheckbox">
 					<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
 					<xsl:with-param name="BackupName">IsEvidenceWrittenYes</xsl:with-param>
@@ -2588,7 +2591,7 @@
 					<label>
 					  <xsl:call-template name="PopulateLabelYes">
 						<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
-						<xsl:with-param name="BackupName">IsEvidenceWrittenLabel</xsl:with-param>
+						<xsl:with-param name="BackupName">IsEvidenceWrittenYesLabel</xsl:with-param>
 					  </xsl:call-template>Yes
 					</label>
 				  </b>
@@ -2598,7 +2601,7 @@
 					<xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
 				  </xsl:call-template>
 				  <span style="width:2mm"/>
-				  <input type="checkbox" alt="Is Evidence Written No" class="styIRS4562Ckbox">
+				  <input type="checkbox" alt="Is Evidence Written Indicator No" class="styIRS4562Ckbox">
 					<xsl:call-template name="PopulateNoCheckbox">
 					  <xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
 					  <xsl:with-param name="BackupName">IsEvidenceWrittenNo</xsl:with-param>
@@ -2609,7 +2612,7 @@
 				  <label>
 					<xsl:call-template name="PopulateLabelNo">
 					  <xsl:with-param name="TargetNode" select="$IRS4562Data/EvidenceWrittenInd"/>
-					  <xsl:with-param name="BackupName">IRS4562IsEvidenceWrittenLabel</xsl:with-param>
+					  <xsl:with-param name="BackupName">IsEvidenceWrittenNoLabel</xsl:with-param>
 					</xsl:call-template>No
 				  </label>
 				</b>
@@ -5647,7 +5650,10 @@
                               30-year
                               <span class="styIRS4562TableCellPad"/>
 							</td>
-							<td class="styIRS4562TableCellB" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:0px; border-bottom-width:0px; background-color:lightgrey;">
+							<td class="styIRS4562TableCellB" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:center;">
+							  <xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="MonthAndYearPlacedInServiceDt"/>
+							  </xsl:call-template>
 							  <span class="styIRS4562TableCellPad"/>
 							</td>
 							<td class="styIRS4562TableCellC" style="border-color:black; border-left-width:0px; border-right-width:1px; border-top-width:1px; border-bottom-width:0px; text-align:right;">

@@ -117,7 +117,7 @@
 											<img src="{$ImagePath}/8582CR_Bullet_Sm.gif" alt="Small Bullet"/> 
 											Attach to Form 1040, 1040-SR, or 1041.<br/>
 												<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="Small Bullet"/>
-											Go to <i>www.irs.gov/Form8582CR</i> for latest information.
+											Go to <i>www.irs.gov/Form8582CR</i> for the latest information.
 										</div>
 									</div>
 								</span>

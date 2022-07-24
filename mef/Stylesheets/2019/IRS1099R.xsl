@@ -532,6 +532,9 @@
 										<xsl:call-template name="PopulatePercent">
 											<xsl:with-param name="TargetNode" select="$Form1099RData/RcpntOthDistributionPct"/>
 										</xsl:call-template>
+										<xsl:if test="not($Form1099RData/RcpntOthDistributionPct)">
+										<span style="font-size: 7.5pt;float:right;padding-left:.3mm">%</span>
+										</xsl:if>
 									</span>
 								</span>
 							</div><!-- Closes Boxes 7 and 8 (Distribution Codes and Other) -->

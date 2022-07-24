@@ -638,7 +638,19 @@ Part II, line 13, 16a, or 16b, and that received from any one contributor, durin
 			  </xsl:when>
 			  
 			  <xsl:when test="$Form990ScheduleBData/ContributorInformationGrp[$index]/Paid527j1Ind">
-				<xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/ContributorInformationGrp[$index]/Paid527j1Ind"/> </xsl:call-template>
+				 <input type="Checkbox" class="styIRS990ScheduleBCkbox" alt="Paid527j1Ind">
+            <xsl:call-template name="PopulateCheckbox">
+              <xsl:with-param name="TargetNode" select="$Form990ScheduleBData/ContributorInformationGrp[$index]/Paid527j1Ind"/>
+              <xsl:with-param name="BackupName">IRS990SchBPaid527j1Ind</xsl:with-param>
+            </xsl:call-template>
+          </input>          
+          <label>
+            <xsl:call-template name="PopulateLabel">
+              <xsl:with-param name="TargetNode" select="$Form990ScheduleBData/ContributorInformationGrp[$index]/Paid527j1Ind"/>
+              <xsl:with-param name="BackupName">IRS990SchBPaid527j1Ind</xsl:with-param>
+            </xsl:call-template>
+            Pd. 527(j)(1)
+          </label>          
 			  </xsl:when>
 			  
               <xsl:otherwise>

@@ -56,6 +56,7 @@ Log:
   <xsl:include href="IRS1040SRStyle.xsl"/>
   <xsl:include href="IRS1040SSPRStyle.xsl"/>
   <xsl:include href="IRS1040Style.xsl"/>
+  <xsl:include href="IRS1040XStyle.xsl"/>
   <xsl:include href="IRS1041ScheduleDStyle.xsl"/>
   <xsl:include href="IRS1041ScheduleIStyle.xsl"/>
   <xsl:include href="IRS1041ScheduleJStyle.xsl"/>
@@ -301,6 +302,11 @@ Log:
   <xsl:include href="IRS8992Style.xsl"/>
   <xsl:include href="IRS8993Style.xsl"/>
   <xsl:include href="IRS8994Style.xsl"/>
+  <xsl:include href="IRS8995AScheduleAStyle.xsl"/>
+  <xsl:include href="IRS8995AScheduleBStyle.xsl"/>
+  <xsl:include href="IRS8995AScheduleCStyle.xsl"/>
+  <xsl:include href="IRS8995AScheduleDStyle.xsl"/>
+  <xsl:include href="IRS8995AStyle.xsl"/>
   <xsl:include href="IRS8995Style.xsl"/>
   <xsl:include href="IRS8996Style.xsl"/>
   <xsl:include href="IRS8997Style.xsl"/>
@@ -440,6 +446,9 @@ all PDF stylesheets that are selected for print. -->
               <xsl:when test="@documentName='IRS1040'">
                 <xsl:call-template name="IRS1040Style"/>
                 <xsl:call-template name="IRS1040SRStyle"/>
+              </xsl:when>
+              <xsl:when test="@documentName='IRS1040X'">
+                <xsl:call-template name="IRS1040XStyle"/>
               </xsl:when>
               <xsl:when test="@documentName='IRS1041ScheduleD'">
                 <xsl:call-template name="IRS1041ScheduleDStyle"/>
@@ -1175,6 +1184,21 @@ all PDF stylesheets that are selected for print. -->
               </xsl:when>
               <xsl:when test="@documentName='IRS8994'">
                 <xsl:call-template name="IRS8994Style"/>
+              </xsl:when>
+              <xsl:when test="@documentName='IRS8995AScheduleA'">
+                <xsl:call-template name="IRS8995AScheduleAStyle"/>
+              </xsl:when>
+              <xsl:when test="@documentName='IRS8995AScheduleB'">
+                <xsl:call-template name="IRS8995AScheduleBStyle"/>
+              </xsl:when>
+              <xsl:when test="@documentName='IRS8995AScheduleC'">
+                <xsl:call-template name="IRS8995AScheduleCStyle"/>
+              </xsl:when>
+              <xsl:when test="@documentName='IRS8995AScheduleD'">
+                <xsl:call-template name="IRS8995AScheduleDStyle"/>
+              </xsl:when>
+              <xsl:when test="@documentName='IRS8995A'">
+                <xsl:call-template name="IRS8995AStyle"/>
               </xsl:when>
               <xsl:when test="@documentName='IRS8995'">
                 <xsl:call-template name="IRS8995Style"/>

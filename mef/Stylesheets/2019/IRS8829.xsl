@@ -59,7 +59,7 @@
 						</div>
 						<div class="styFST" style="height:auto;font-size:7pt;">
 						  <img src="{$ImagePath}/8829_Bullet.gif" alt="Bullet Image"/>
-						  File only with Schedule C (Form 1040 or 1040-SR). Use a separate Form 8829 for <br/>
+						  File only with Schedule C (Form 1040 or 1040SR). Use a separate Form 8829 for <br/>
 						  each home you used for business during the year.
 						</div>
 						<div class="styFST" style="height:auto;font-size:7pt;padding-top:1mm;">
@@ -504,7 +504,7 @@
 				    <div class="styGenericDiv" style="width: 187mm;clear:all;">
 						 <span class="styLNLeftNumBox">13</span>
 						 <div class="styLNDesc" style="width:56mm; ">
-							   Multiply line 12, column (b) by line 7
+							   Multiply line 12, column (b), by line 7
 							 <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;"/>
 						 </div>
 						 <div class="styLNRightNumBox" style="background-color:lightgrey;padding-left:mm; border-bottom-width:1px;border-top-width:0px;border-left-width:1px;border-right-width:0px;height:4.9mm;"/>
@@ -523,7 +523,7 @@
 				    <div class="styGenericDiv" style="width: 187mm;clear:all;">
 						<span class="styLNLeftNumBox">14</span>
 						<div class="styLNDesc" style="width:56mm; ;">
-							 <span style="float:left;">Add line 12, column (a) and line 13</span>
+							 <span style="float:left;">Add line 12, column (a), and line 13</span>
 							 <span  class="styDotLn" style="float:right;padding-right:1mm;">..</span>
 						 </div>
 						 <div class="styLNRightNumBox" style="padding-left:mm; border-bottom-width:1px;border-top-width:0px;border-left-width:1px;border-right-width:0px; background-color:lightgrey;"/>

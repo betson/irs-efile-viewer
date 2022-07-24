@@ -53,7 +53,7 @@
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$FormData"/>
 							</xsl:call-template> <br/><br/>
-							<span class="styAgency" style="padding-top:4mm;">Department of the Treasury <br/>Internal Revenue Service</span>
+							<span class="styAgency" style="padding-top:2mm;">Department of the Treasury <br/>Internal Revenue Service</span>
 						</div>
 						<div class="styFTBox" style="width:127mm;height:24mm;">
 							<span class="styFMT" style="font-size:12.5pt;">Paid Preparer's Due Diligence Checklist</span>
@@ -202,7 +202,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/TxpyrProvidedOrObtainedInfoInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="Due Diligence" class="styCkbox">
+									<input type="checkbox" alt="Due DiligenceYes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TxpyrProvidedOrObtainedInfoInd"/>
 											<xsl:with-param name="BackupName">IRS8867TxpyrProvidedOrObtainedInfoInd</xsl:with-param>
@@ -218,7 +218,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>
 							<span style="width:20mm"/>
 							<span>
-									<input type="checkbox" alt="Due Diligence" class="styCkbox">
+									<input type="checkbox" alt="Due DiligenceNo" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TxpyrProvidedOrObtainedInfoInd"/>
 											<xsl:with-param name="BackupName">IRS8867TxpyrProvidedOrObtainedInfoInd</xsl:with-param>
@@ -247,7 +247,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/CompleteApplicableWorksheetCd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="CompleteApplicableWorksheet" class="styCkbox">
+									<input type="checkbox" alt="CompleteApplicableWorksheetYES" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/CompleteApplicableWorksheetCd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'YES'"/>
@@ -265,7 +265,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>
 							<span style="width:10mm"/>
 							<span>
-									<input type="checkbox" alt="CompleteApplicableWorksheet" class="styCkbox">
+									<input type="checkbox" alt="CompleteApplicableWorksheetNO" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/CompleteApplicableWorksheetCd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'NO'"/>
@@ -283,7 +283,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>
 							<span style="width:10mm"/>
 							<span>
-									<input type="checkbox" alt="CompleteApplicableWorksheet" class="styCkbox">
+									<input type="checkbox" alt="CompleteApplicableWorksheetN/A" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/CompleteApplicableWorksheetCd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'N/A'"/>
@@ -313,7 +313,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/SatisfyKnowledgeRequirementInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="SatisfyKnowledgeRequirement" class="styCkbox">
+									<input type="checkbox" alt="SatisfyKnowledgeRequirementYes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/SatisfyKnowledgeRequirementInd"/>
 											<xsl:with-param name="BackupName">IRS8867SatisfyKnowledgeRequirementInd</xsl:with-param>
@@ -329,7 +329,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>		
 							<span style="width:20mm"/>
 							<span>
-									<input type="checkbox" alt="SatisfyKnowledgeRequirement" class="styCkbox">
+									<input type="checkbox" alt="SatisfyKnowledgeRequirementNo" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/SatisfyKnowledgeRequirementInd"/>
 											<xsl:with-param name="BackupName">IRS8867SatisfyKnowledgeRequirementInd</xsl:with-param>
@@ -371,7 +371,7 @@ and Head of Household (HOH) Filing Status</i></span>
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/IncorIncmplInconInfoInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="AnyItemsIncorrect Incomplete Inconsistent" class="styCkbox">
+									<input type="checkbox" alt="AnyItemsIncorrect Incomplete InconsistentYes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/IncorIncmplInconInfoInd"/>
 											<xsl:with-param name="BackupName">IRS8867IncorIncmplInconInfoInd</xsl:with-param>
@@ -387,7 +387,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>
 							<span style="width:20mm"/>
 							<span>
-									<input type="checkbox" alt="AnyItemsIncorrect Incomplete Inconsistent" class="styCkbox">
+									<input type="checkbox" alt="AnyItemsIncorrect Incomplete InconsistentNo" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/IncorIncmplInconInfoInd"/>
 											<xsl:with-param name="BackupName">IRS8867IncorIncmplInconInfoInd</xsl:with-param>
@@ -415,7 +415,7 @@ and Head of Household (HOH) Filing Status</i></span>
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/MakeInquiryInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="MakeInquiry" class="styCkbox">
+									<input type="checkbox" alt="MakeInquiryYes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/MakeInquiryInd"/>
 											<xsl:with-param name="BackupName">IRS8867IncorMakeInquiryInd</xsl:with-param>
@@ -431,7 +431,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>
 							<span style="width:20mm"/>
 							<span>
-									<input type="checkbox" alt="MakeInquiry" class="styCkbox">
+									<input type="checkbox" alt="MakeInquiryNo" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/MakeInquiryInd"/>
 											<xsl:with-param name="BackupName">IRS8867MakeInquiryInd</xsl:with-param>
@@ -461,7 +461,7 @@ and Head of Household (HOH) Filing Status</i></span>
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/DocumentInquiryInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="DocumentInquiry" class="styCkbox">
+									<input type="checkbox" alt="DocumentInquiryYes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/DocumentInquiryInd"/>
 											<xsl:with-param name="BackupName">IRS8867DocumentInquiryInd</xsl:with-param>
@@ -477,7 +477,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>
 							<span style="width:20mm"/>
 							<span>
-									<input type="checkbox" alt="DocumentInquiry" class="styCkbox">
+									<input type="checkbox" alt="DocumentInquiryNo" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/DocumentInquiryInd"/>
 											<xsl:with-param name="BackupName">IRS8867DocumentInquiryInd</xsl:with-param>
@@ -526,7 +526,7 @@ and Head of Household (HOH) Filing Status</i></span>
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/SatisfyRecordRetentionRqrInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="SatisfyRecordRetentionRequirement" class="styCkbox">
+									<input type="checkbox" alt="SatisfyRecordRetentionRequirementYes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/SatisfyRecordRetentionRqrInd"/>
 											<xsl:with-param name="BackupName">IRS8867SatisfyRecordRetentionRqrInd</xsl:with-param>
@@ -542,7 +542,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>
 							<span style="width:20mm"/>
 							<span>
-									<input type="checkbox" alt="SatisfyRecordRetentionRequirement" class="styCkbox">
+									<input type="checkbox" alt="SatisfyRecordRetentionRequirementNo" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/SatisfyRecordRetentionRqrInd"/>
 											<xsl:with-param name="BackupName">IRS8867SatisfyRecordRetentionRqrInd</xsl:with-param>
@@ -575,7 +575,7 @@ and Head of Household (HOH) Filing Status</i></span>
 								<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/SubstantiateCrEligibilityInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="SubstantiateCreditEligibility" class="styCkbox">
+									<input type="checkbox" alt="SubstantiateCreditEligibilityYes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/SubstantiateCrEligibilityInd"/>
 											<xsl:with-param name="BackupName">IRS8867SubstantiateCrEligibilityInd</xsl:with-param>
@@ -591,7 +591,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>
 							<span style="width:20mm"/>
 							<span>
-									<input type="checkbox" alt="SubstantiateCreditEligibility" class="styCkbox">
+									<input type="checkbox" alt="SubstantiateCreditEligibilityNo" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/SubstantiateCrEligibilityInd"/>
 											<xsl:with-param name="BackupName">IRS8867SubstantiateCrEligibilityInd</xsl:with-param>
@@ -620,7 +620,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/PrevDisallowedOrReducedCrCd"/>
 									</xsl:call-template>                                                          
-									<input type="checkbox" alt="PreviousDisallowedOrReducedCredit" class="styCkbox">
+									<input type="checkbox" alt="PreviousDisallowedOrReducedCreditYES" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/PrevDisallowedOrReducedCrCd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'YES'"/>
@@ -638,7 +638,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>
 							<span style="width:10mm"/>
 							<span>
-									<input type="checkbox" alt="PreviousDisallowedOrReducedCredit" class="styCkbox">
+									<input type="checkbox" alt="PreviousDisallowedOrReducedCreditNO" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/PrevDisallowedOrReducedCrCd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'NO'"/>
@@ -656,7 +656,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>
 							<span style="width:10mm"/>
 							<span>
-									<input type="checkbox" alt="PreviousDisallowedOrReducedCredit" class="styCkbox">
+									<input type="checkbox" alt="PreviousDisallowedOrReducedCreditN/A" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/PrevDisallowedOrReducedCrCd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'N/A'"/>
@@ -687,7 +687,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/CompleteRequiredRecertFormCd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="CompleteRequiredRecertificationForm" class="styCkbox">
+									<input type="checkbox" alt="CompleteRequiredRecertificationFormYES" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/CompleteRequiredRecertFormCd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'YES'"/>
@@ -705,7 +705,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>
 							<span style="width:10mm"/>
 							<span>
-									<input type="checkbox" alt="CompleteRequiredRecertificationForm" class="styCkbox">
+									<input type="checkbox" alt="CompleteRequiredRecertificationFormNO" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/CompleteRequiredRecertFormCd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'NO'"/>
@@ -723,7 +723,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>
 							<span style="width:10mm"/>
 							<span>
-									<input type="checkbox" alt="CompleteRequiredRecertificationForm" class="styCkbox">
+									<input type="checkbox" alt="CompleteRequiredRecertificationFormN/A" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/CompleteRequiredRecertFormCd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'N/A'"/>
@@ -756,7 +756,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/QstnToCompleteCorrectSchCCd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="QuestionToCompleteCorrectScheduleC" class="styCkbox">
+									<input type="checkbox" alt="QuestionToCompleteCorrectScheduleCYES" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/QstnToCompleteCorrectSchCCd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'YES'"/>
@@ -773,7 +773,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>
 							<span style="width:10mm"/>
 							<span>
-									<input type="checkbox" alt="QuestionToCompleteCorrectScheduleC" class="styCkbox">
+									<input type="checkbox" alt="QuestionToCompleteCorrectScheduleCNO" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/QstnToCompleteCorrectSchCCd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'NO'"/>
@@ -791,7 +791,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>						
 							<span style="width:10mm"/>
 							<span>
-									<input type="checkbox" alt="QuestionToCompleteCorrectScheduleC" class="styCkbox">
+									<input type="checkbox" alt="QuestionToCompleteCorrectScheduleCN/A" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/QstnToCompleteCorrectSchCCd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'N/A'"/>
@@ -852,7 +852,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/EICEligibleClaimQlfyChildInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="EICEligibleClaimQualifyingChild" class="styCkbox">
+									<input type="checkbox" alt="EICEligibleClaimQualifyingChildYes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/EICEligibleClaimQlfyChildInd"/>
 											<xsl:with-param name="BackupName">IRS8867EICEligibleClaimQlfyChildInd</xsl:with-param>
@@ -867,7 +867,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									</label>
 							</span>
 							<span>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="EICEligibleClaimQlfyChildIndNo" class="styCkbox" >
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/EICEligibleClaimQlfyChildInd"/>
 										<xsl:with-param name="BackupName">IRS8867EICEligibleClaimQlfyChildInd</xsl:with-param>
@@ -898,7 +898,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/ExplainLiveWithChldRqrClaimInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="ExplainLiveWithChildClaim" class="styCkbox">
+									<input type="checkbox" alt="ExplainLiveWithChildClaimYes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/ExplainLiveWithChldRqrClaimInd"/>
 											<xsl:with-param name="BackupName">IRS8867ExplainLiveWithChldRqrClaimInd</xsl:with-param>
@@ -913,7 +913,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									</label>
 							</span>
 							<span>
-									<input type="checkbox" alt="ExplainLiveWithChildClaim" class="styCkbox">
+									<input type="checkbox" alt="ExplainLiveWithChildClaimNo" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/ExplainLiveWithChldRqrClaimInd"/>
 											<xsl:with-param name="BackupName">IRS8867ExplainLiveWithChldRqrClaimInd</xsl:with-param>
@@ -944,7 +944,7 @@ and Head of Household (HOH) Filing Status</i></span>
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/ExplainTiebreakerRulesCd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="ExplainTiebreakerRulesCdYES" class="styCkbox">
 									<xsl:call-template name="PopulateEnumeratedCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ExplainTiebreakerRulesCd"/>
 										<xsl:with-param name="DisplayedCheckboxValue" select="'YES'"/>
@@ -961,7 +961,7 @@ and Head of Household (HOH) Filing Status</i></span>
 								</label>
 							</span>
 							<span>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="ExplainTiebreakerRulesCdNO" class="styCkbox">
 									<xsl:call-template name="PopulateEnumeratedCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ExplainTiebreakerRulesCd"/>
 										<xsl:with-param name="DisplayedCheckboxValue" select="'NO'"/>
@@ -979,7 +979,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>				
 							<span style="width:1mm"/>
 							<span>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="ExplainTiebreakerRulesCdN/A" class="styCkbox">
 									<xsl:call-template name="PopulateEnumeratedCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ExplainTiebreakerRulesCd"/>
 										<xsl:with-param name="DisplayedCheckboxValue" select="'N/A'"/>
@@ -1018,7 +1018,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/USCitizenOrNationalInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="USCitizenOrNational" class="styCkbox">
+									<input type="checkbox" alt="USCitizenOrNationalYes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/USCitizenOrNationalInd"/>
 											<xsl:with-param name="BackupName">IRS8867USCitizenOrNationalInd</xsl:with-param>
@@ -1032,7 +1032,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									</label>
 							</span>
 							<span>
-									<input type="checkbox" alt="USCitizenOrNational" class="styCkbox">
+									<input type="checkbox" alt="USCitizenOrNationalNo" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/USCitizenOrNationalInd"/>
 											<xsl:with-param name="BackupName">IRS8867USCitizenOrNationalInd</xsl:with-param>
@@ -1065,7 +1065,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/ExplainLiveWithChldRqrClaimCd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="ExplainLiveWithChildClaim" class="styCkbox">
+									<input type="checkbox" alt="ExplainLiveWithChildClaimYES" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/ExplainLiveWithChldRqrClaimCd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'YES'"/>
@@ -1082,7 +1082,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									</label>
 							</span>
 							<span>
-									<input type="checkbox" alt="ExplainLiveWithChildClaim" class="styCkbox">
+									<input type="checkbox" alt="ExplainLiveWithChildClaimNO" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/ExplainLiveWithChldRqrClaimCd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'NO'"/>
@@ -1100,7 +1100,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>
 							<span style="width:1mm"/>
 							<span>
-									<input type="checkbox" alt="ExplainLiveWithChildClaim" class="styCkbox">
+									<input type="checkbox" alt="ExplainLiveWithChildClaimN/A" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/ExplainLiveWithChldRqrClaimCd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'N/A'"/>
@@ -1135,7 +1135,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/ExplainRuleClmCrDivPrnts8332Cd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="ExplainRuleClaimingForm8332" class="styCkbox">
+									<input type="checkbox" alt="ExplainRuleClaimingForm8332YES" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/ExplainRuleClmCrDivPrnts8332Cd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'YES'"/>
@@ -1152,7 +1152,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									</label>
 							</span>
 							<span>
-									<input type="checkbox" alt="ExplainRuleClaimingForm8332" class="styCkbox">
+									<input type="checkbox" alt="ExplainRuleClaimingForm8332NO" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/ExplainRuleClmCrDivPrnts8332Cd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'NO'"/>
@@ -1170,7 +1170,7 @@ and Head of Household (HOH) Filing Status</i></span>
 							</span>
 							<span style="width:1mm"/>
 							<span>
-									<input type="checkbox" alt="ExplainRuleClaimingForm8332" class="styCkbox">
+									<input type="checkbox" alt="ExplainRuleClaimingForm8332N/A" class="styCkbox">
 										<xsl:call-template name="PopulateEnumeratedCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/ExplainRuleClmCrDivPrnts8332Cd"/>
 											<xsl:with-param name="DisplayedCheckboxValue" select="'N/A'"/>
@@ -1212,7 +1212,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/SubstProvQlfyTuitionExpnssInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="SubstantiationtProvideQualifiedyTuitionExpenses" class="styCkbox">
+									<input type="checkbox" alt="SubstantiationtProvideQualifiedyTuitionExpensesYes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/SubstProvQlfyTuitionExpnssInd"/>
 											<xsl:with-param name="BackupName">IRS8867SubstProvQlfyTuitionExpnssInd</xsl:with-param>
@@ -1226,7 +1226,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									</label>
 							</span>
 							<span>
-									<input type="checkbox" alt="SubstantiationtProvideQualifiedyTuitionExpenses" class="styCkbox">
+									<input type="checkbox" alt="SubstantiationtProvideQualifiedyTuitionExpensesNo" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/SubstProvQlfyTuitionExpnssInd"/>
 											<xsl:with-param name="BackupName">IRS8867SubstProvQlfyTuitionExpnssInd</xsl:with-param>
@@ -1264,7 +1264,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									<xsl:call-template name="PopulateSpan">   
 										<xsl:with-param name="TargetNode" select="$FormData/EligibleClaimHOHInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="EligibleClaimHOH" class="styCkbox">
+									<input type="checkbox" alt="EligibleClaimHOHYes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/EligibleClaimHOHInd"/>
 											<xsl:with-param name="BackupName">IRS8867EligibleClaimHOHInd</xsl:with-param>
@@ -1278,7 +1278,7 @@ and Head of Household (HOH) Filing Status</i></span>
 									</label>
 							</span>
 							<span>
-									<input type="checkbox" alt="EligibleClaimHOH" class="styCkbox">
+									<input type="checkbox" alt="EligibleClaimHOHNo" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/EligibleClaimHOHInd"/>
 											<xsl:with-param name="BackupName">IRS8867EligibleClaimHOHInd</xsl:with-param>
@@ -1351,7 +1351,7 @@ and</div>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/CrEligibilityCertificationInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="CertifyEligibilityCertification" class="styCkbox">
+									<input type="checkbox" alt="CertifyEligibilityCertificationYes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/CrEligibilityCertificationInd"/>
 											<xsl:with-param name="BackupName">IRS8867CrEligibilityCertificationInd</xsl:with-param>
@@ -1367,7 +1367,7 @@ and</div>
 							</span>
 							<span style="width:13mm"/>
 							<span>
-									<input type="checkbox" alt="CertifyEligibilityCertification" class="styCkbox">
+									<input type="checkbox" alt="CertifyEligibilityCertificationNo" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData//CrEligibilityCertificationInd"/>
 											<xsl:with-param name="BackupName">IRS8867CrEligibilityCertificationInd</xsl:with-param>

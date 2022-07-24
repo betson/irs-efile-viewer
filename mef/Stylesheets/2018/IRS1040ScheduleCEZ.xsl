@@ -272,8 +272,8 @@
 							<div class="styGenericDiv" style="width:187mm;height:auto;">
 								<div class="styLNLeftNumBoxSD" style="width:7mm;text-align:right;margin-right:2mm;height:auto;">F</div>
 								<div class="styLNDesc" style="width:145mm;border-bottom:1px solid black;height:8.8mm;">
-								Did you make any payments in 2018 that would require you to file Form(s) 1099? (see the Schedule C <br/>
-									<span style="float:left;clear:none;">instructions)</span>
+								Did you make any payments in 2018 that would require you to file Form(s) 1099? (see the instructions for<br/>
+									<span style="float:left;clear:none;">Schedule C)</span>
 									<span class="styDotLn" style="float:right;padding-right:1mm;">..............................</span>
 								</div>
 								<div class="styLNAmountBox" style="font-weight:bold;text-align:center;border-left:none;height:auto;">
@@ -448,11 +448,11 @@
 							<span style="font-weight:bold">Form 1040NR, line 13,</span> and 
 							<span style="font-weight:bold">Schedule SE, line 2</span> (see page 2).
 							(Statutory employees <span style="font-weight:bold">do not</span> 
-							report this amount on Schedule SE, line 2.) Estates and trusts, 
-							<span style="float:left;">enter on 
+							report this amount on Schedule SE, line 2.) 
+							<span style="float:left;">Estates and trusts, enter on 
 							<span style="font-weight:bold;">Form 1041, line 3 </span>
 								</span>
-								<span class="styDotLn" style="float:right;padding-right:1mm;">........................</span>
+								<span class="styDotLn" style="float:right;padding-right:1mm;">....................</span>
 							</div>
 							<div class="styLNRightNumBox" style="width:7.8mm;height:14mm;border-bottom:none;padding-top:10.5mm;">
 							3
@@ -477,7 +477,7 @@
 							</xsl:call-template>
 						</xsl:for-each>
 						<xsl:if test="count($FormData/AdditionalVehicleInfoGrp) = 0">
-						<div class="styBB" style="width:187mm;padding:1mm 0mm;">
+						<div class="styBB" style="width:187mm;padding:1mm 0mm;border-top-width: 1px;">
 							<div class="styPartName" style="font-family:sans-serif;height:auto;">Part III</div>
 							<div class="styPartDesc">Information on Your Vehicle. <span style="font-weight:normal">Complete this part</span> only <span style="font-weight:normal">if you are claiming car or truck expenses on line 2.</span>
 							</div>

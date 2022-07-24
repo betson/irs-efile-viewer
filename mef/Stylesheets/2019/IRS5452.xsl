@@ -54,7 +54,7 @@
               Corporate Report of Nondividend Distributions
             </div>
              <div class="styFST" style="font-size:8pt;;font-weight:bold;;padding-top:2mm;">
-              <img src="{$ImagePath}/5452_Bullet.gif" alt="bullet image"/>
+              <img src="{$ImagePath}/5452_Bullet.gif" alt="right pointing arrow"/>
               For calendar year ending December 31,
               <span style="text-decoration:underline;">
                 <xsl:call-template name="PopulateText">
@@ -62,10 +62,10 @@
                 </xsl:call-template>
               </span>
               <br/>
-              <img src="{$ImagePath}/5452_Bullet.gif" alt="bullet image"/>
+              <img src="{$ImagePath}/5452_Bullet.gif" alt="right pointing arrow"/>
               Attach to the corporation’s income tax return.   
               <br/>         
-				<img src="{$ImagePath}/5452_Bullet.gif" alt="bullet image"/>
+				<img src="{$ImagePath}/5452_Bullet.gif" alt="right pointing arrow"/>
 				Go to 
 			   <a style="text-decoration:none; color:black;" href="http://www.irs.gov/form5452" title="Link to IRS.gov">
 					<i>www.irs.gov/Form5452</i>
@@ -108,22 +108,22 @@
           <span class="styDotLn" style="padding-top:0.5mm;">  
             ................      
           </span>
-          <div style="padding-bottom:3.5mm;"><img src="{$ImagePath}/5452_Bullet.gif" alt="bullet image"/></div>
+          <div style="padding-bottom:3.5mm;"><img src="{$ImagePath}/5452_Bullet.gif" alt="right pointing arrow"/></div>
           <span style="width:3mm;"/>    
           <div style="padding-bottom:2.5mm;">          
             <xsl:call-template name="PopulateSpan">
               <xsl:with-param name="TargetNode" select="$FormData/Form5452FiledForPriorYearInd"/>
             </xsl:call-template>
-            <input type="Checkbox" class="styCkbox" style="height:3.5mm">
+            <input type="Checkbox" alt="HasCorpFiledForm5452ForPriorYearYes" class="styCkbox" style="height:3.5mm">
               <xsl:call-template name="PopulateYesCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/Form5452FiledForPriorYearInd"/>
-                <xsl:with-param name="BackupName">5452HasCorpFiledForm5452ForPriorYearYes</xsl:with-param>
+                <xsl:with-param name="BackupName">HasCorpFiledForm5452ForPriorYearYes</xsl:with-param>
               </xsl:call-template>
             </input>          
             <label>
               <xsl:call-template name="PopulateLabelYes">
                 <xsl:with-param name="TargetNode" select="$FormData/Form5452FiledForPriorYearInd"/>
-                <xsl:with-param name="BackupName">5452HasCorpFiledForm5452ForPriorYearLabeYes</xsl:with-param>
+                <xsl:with-param name="BackupName">HasCorpFiledForm5452ForPriorYearLabeYes</xsl:with-param>
               </xsl:call-template>
              <div style="padding-bottom:1mm;">Yes</div>
             </label>
@@ -132,10 +132,10 @@
             <xsl:call-template name="PopulateSpan">
               <xsl:with-param name="TargetNode" select="$FormData/Form5452FiledForPriorYeaearInd"/>
             </xsl:call-template>
-            <input type="Checkbox" class="styCkbox" style="height:3.5mm;">
+            <input type="Checkbox" alt="HasCorpFiledForm5452ForPriorYearNo" class="styCkbox" style="height:3.5mm;">
               <xsl:call-template name="PopulateNoCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/Form5452FiledForPriorYearInd"/>
-                <xsl:with-param name="BackupName">5452HasCorpFiledForm5452ForPriorYearNo</xsl:with-param>
+                <xsl:with-param name="BackupName">HasCorpFiledForm5452ForPriorYearNo</xsl:with-param>
               </xsl:call-template>
             </input>  
             </span>             
@@ -189,22 +189,22 @@
           <span class="styDotLn" style="padding-top:0.5mm;">  
             ...............      
           </span>
-          <div style="padding-bottom:3.5mm;"><img src="{$ImagePath}/5452_Bullet.gif" alt="bullet image"/></div>
+          <div style="padding-bottom:3.5mm;"><img src="{$ImagePath}/5452_Bullet.gif" alt="right pointing arrow"/></div>
           <span style="width:3mm;"/> 
           <div style="padding-bottom:2.5mm;">             
             <xsl:call-template name="PopulateSpan">
               <xsl:with-param name="TargetNode" select="$FormData/DistriPartOfLiquidationInd"/>
             </xsl:call-template>
-            <input type="Checkbox" class="styCkbox" style="height:3.5mm">
+            <input type="Checkbox" alt="DistriPartOrCompLiquidationYes" class="styCkbox" style="height:3.5mm">
               <xsl:call-template name="PopulateYesCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/DistriPartOfLiquidationInd"/>
-                <xsl:with-param name="BackupName">5452DistriPartlOrCompLiquidationYes</xsl:with-param>
+                <xsl:with-param name="BackupName">DistriPartOrCompLiquidationYes</xsl:with-param>
               </xsl:call-template>
             </input>
             <label>
               <xsl:call-template name="PopulateLabelYes">
                 <xsl:with-param name="TargetNode" select="$FormData/DistriPartOfLiquidationInd"/>
-                <xsl:with-param name="BackupName">5452DistriPartlOrCompLiquidationLabelYes</xsl:with-param>
+                <xsl:with-param name="BackupName">DistriPartOrCompLiquidationLabelYes</xsl:with-param>
               </xsl:call-template>
              <div style="padding-bottom:1mm;">Yes</div>
             </label>
@@ -213,17 +213,17 @@
             <xsl:call-template name="PopulateSpan">
               <xsl:with-param name="TargetNode" select="$FormData/DistriPartOfLiquidationInd"/>
             </xsl:call-template>
-            <input type="Checkbox" class="styCkbox" style="height: 3.5mm">
+            <input type="Checkbox" alt="DistriPartOrCompLiquidationNo" class="styCkbox" style="height: 3.5mm">
               <xsl:call-template name="PopulateNoCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/DistriPartOfLiquidationInd"/>
-                <xsl:with-param name="BackupName">5452DistriPartlOrCompLiquidationNo</xsl:with-param>
+                <xsl:with-param name="BackupName">DistriPartOrCompLiquidationNo</xsl:with-param>
               </xsl:call-template>
             </input> 
             </span>              
             <label>
               <xsl:call-template name="PopulateLabelNo">
                 <xsl:with-param name="TargetNode" select="$FormData/DistriPartOfLiquidationInd"/>
-                <xsl:with-param name="BackupName">5452DistriPartlOrCompLiquidationLabelNo</xsl:with-param>
+                <xsl:with-param name="BackupName">DistriPartOrCompLiquidationLabelNo</xsl:with-param>
               </xsl:call-template>
              <div style="padding-bottom:1mm;">No</div>
             </label>      
@@ -251,22 +251,22 @@
           <span class="styDotLn" style="padding-top:0.5mm;">  
             .........      
           </span>
-          <div style="padding-bottom:3.5mm;"><img src="{$ImagePath}/5452_Bullet.gif" alt="bullet image"/></div>
+          <div style="padding-bottom:3.5mm;"><img src="{$ImagePath}/5452_Bullet.gif" alt="right pointing arrow"/></div>
           <span style="width:3mm;"/> 
           <div style="padding-bottom:2.5mm;">    
             <xsl:call-template name="PopulateSpan">
               <xsl:with-param name="TargetNode" select="$FormData/AccumulatedAdjAccountDistriInd"/>
             </xsl:call-template>
-            <input type="Checkbox" class="styCkbox" style="height:3.5mm">
+            <input type="Checkbox" alt="AccumulatedAdjAccountDistriYes" class="styCkbox" style="height:3.5mm">
               <xsl:call-template name="PopulateYesCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/AccumulatedAdjAccountDistriInd"/>
-                <xsl:with-param name="BackupName">5452DistriPartlOrCompLiquidationYes</xsl:with-param>
+                <xsl:with-param name="BackupName">AccumulatedAdjAccountDistriYes</xsl:with-param>
               </xsl:call-template>
             </input>
             <label>
               <xsl:call-template name="PopulateLabelYes">
                 <xsl:with-param name="TargetNode" select="$FormData/AccumulatedAdjAccountDistriInd"/>
-                <xsl:with-param name="BackupName">5452DistriPartlOrCompLiquidationLabelYes</xsl:with-param>
+                <xsl:with-param name="BackupName">AccumulatedAdjAccountDistriYes</xsl:with-param>
               </xsl:call-template>
              <div style="padding-bottom:1mm;">Yes</div>
             </label>
@@ -275,17 +275,17 @@
             <xsl:call-template name="PopulateSpan">
               <xsl:with-param name="TargetNode" select="$FormData/AccumulatedAdjAccountDistriInd"/>
             </xsl:call-template>
-            <input type="Checkbox" class="styCkbox" style="height:3.5mm;">
+            <input type="Checkbox" alt="AccumulatedAdjAccountDistriNo" class="styCkbox" style="height:3.5mm;">
               <xsl:call-template name="PopulateNoCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/AccumulatedAdjAccountDistriInd"/>
-                <xsl:with-param name="BackupName">5452DistriPartlOrCompLiquidationNo</xsl:with-param>
+                <xsl:with-param name="BackupName">AccumulatedAdjAccountDistriNo</xsl:with-param>
               </xsl:call-template>
             </input> 
             </span>              
             <label>
               <xsl:call-template name="PopulateLabelNo">
                 <xsl:with-param name="TargetNode" select="$FormData/AccumulatedAdjAccountDistriInd"/>
-                <xsl:with-param name="BackupName">5452DistriPartlOrCompLiquidationLabelNo</xsl:with-param>
+                <xsl:with-param name="BackupName">DistriPartlOrCompLiquidationLabelNo</xsl:with-param>
               </xsl:call-template>
              <div style="padding-bottom:1mm;">No</div>
             </label>         
@@ -327,7 +327,7 @@
           <div style="width:93mm;">
             <div class="styIRS5452Idx" style="height:4mm;"/>
             <div style="float:left;">beginning of the tax year</div>
-            <div style="float:right;"><span class="styDotLn">....</span><img src="{$ImagePath}/5452_Bullet.gif" alt="Right arrow"/>
+            <div style="float:right;"><span class="styDotLn">....</span><img src="{$ImagePath}/5452_Bullet.gif" alt="right pointing arrow"/>
               <span style="width:2mm;"/>$<span style="width:2mm;"/>
               <span class="styIRS5452Num">
                 <xsl:call-template name="PopulateAmount">
@@ -347,7 +347,7 @@
           <div style="width:93mm;">
             <div class="styIRS5452Idx" style="height:4mm;"/>
             <div style="float:left;">current tax year</div>
-            <div style="float:right;"><span class="styDotLn">.......</span><img src="{$ImagePath}/5452_Bullet.gif" alt="Right arrow"/>
+            <div style="float:right;"><span class="styDotLn">.......</span><img src="{$ImagePath}/5452_Bullet.gif" alt="right pointing arrow"/>
               <span style="width:2mm;"/>$<span style="width:2mm;"/>
               <span class="styIRS5452Num">
                 <xsl:call-template name="PopulateAmount">
@@ -451,11 +451,11 @@
                 <td colspan="3" class="styIRS5452TabCell" style="width:72mm;">
 					Amount Paid During Calendar Year From Earnings &amp; Profits<br/>Since February 28, 1913
 				</td>
-                <td rowspan="2" class="styIRS5452TabCellThick" style="width:13mm; height:16mm;">Percent<br/>Taxable</td>
+                <td rowspan="2" class="styIRS5452TabCellThick" style="width:13mm; height:16mm;">Percentage<br/>Taxable</td>
                 <td rowspan="2" class="styIRS5452TabCell" style="width:24mm; height:16mm;">
 					Amount Paid During<br/>Calendar Year From<br/>Other Than Earnings<br/>&amp; Profits Since<br/>February 28, 1913
 				</td>
-                <td rowspan="2" class="styIRS5452TabCell" style="width:13.5mm; height:16mm; border-right:0;">Percent<br/>Nontaxable</td>
+                <td rowspan="2" class="styIRS5452TabCell" style="width:13.5mm; height:16mm; border-right:0;">Percentage<br/>Nontaxable</td>
               </tr>
               <tr>
                 <td class="styIRS5452TabCell" style="width:23mm;">From the<br/>Current Year</td>
@@ -473,7 +473,7 @@
                   <xsl:with-param name="TargetNode" select="DistributionPaidDt"/>
                 </xsl:call-template>
               </td>
-              <td class="styIRS5452TabCell" style="width:24mm; border-right:0;">
+              <td class="styIRS5452TabCell" style="width:24mm; border-right:0;font-size:6.5pt;">
                 <span style="float:left; padding-left:.4mm;">$</span>
                 <span style="float:right;">
                   <xsl:call-template name="PopulateAmount">
@@ -481,12 +481,12 @@
                   </xsl:call-template>
                 </span>
               </td>
-              <td class="styIRS5452TabCell" style="width:4mm; text-align:center;">
+              <td class="styIRS5452TabCell" style="width:4mm; text-align:center;font-size:6.5pt;">
                 (<xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="TotalDistributionPaidAmt/@distributionShareTypeCd"/>
                 </xsl:call-template>)
               </td>
-              <td class="styIRS5452TabCellThick" style="width:24mm;">
+              <td class="styIRS5452TabCellThick" style="width:24mm;font-size:6.5pt;">
                 <span style="float:left;">$</span>
                 <span style="float:right;">
               <xsl:choose> 
@@ -503,7 +503,7 @@
 		        </xsl:choose> 
                 </span>
               </td>
-              <td class="styIRS5452TabCell" style="width:24mm;">
+              <td class="styIRS5452TabCell" style="width:24mm;font-size:6.5pt;">
                 <span style="float:left; padding-left:.4mm;">$</span>
                 <span style="float:right;">
                   <xsl:call-template name="PopulateAmount">
@@ -511,7 +511,7 @@
                   </xsl:call-template>
                 </span>
               </td>
-              <td class="styIRS5452TabCell" style="width:24mm;">
+              <td class="styIRS5452TabCell" style="width:24mm;font-size:6.5pt;">
                 <span style="float:left; padding-left:.4mm;">$</span>
                 <span style="float:right;">
                   <xsl:call-template name="PopulateAmount">
@@ -519,7 +519,7 @@
                   </xsl:call-template>
                 </span>
               </td>
-              <td class="styIRS5452TabCell" style="width:24mm;">
+              <td class="styIRS5452TabCell" style="width:24mm;font-size:6.5pt;">
                 <span style="float:left; padding-left:.4mm;">$</span>
                 <span style="float:right;">
                   <xsl:call-template name="PopulateAmount">
@@ -527,12 +527,12 @@
                   </xsl:call-template>
                 </span>
               </td>
-              <td class="styIRS5452TabCellThick" style="width:13mm;">
+              <td class="styIRS5452TabCellThick" style="width:13mm;font-size:6.5pt;">
                 <xsl:call-template name="PopulatePercent">
                   <xsl:with-param name="TargetNode" select="TaxableDistributionPct"/>
                 </xsl:call-template>
               </td>
-              <td class="styIRS5452TabCell" style="width:24mm;">
+              <td class="styIRS5452TabCell" style="width:24mm;font-size:6.5pt;">
                 <span style="float:left; padding-left:.4mm;">$</span>
                 <span style="float:right;">
                   <xsl:call-template name="PopulateAmount">
@@ -540,7 +540,7 @@
                   </xsl:call-template>
                 </span>
               </td>            
-              <td class="styIRS5452TabCell" style="width:13.5mm; border-right:0;">
+              <td class="styIRS5452TabCell" style="width:13.5mm; border-right:0;font-size:6.5pt;">
                 <xsl:call-template name="PopulatePercent">
                   <xsl:with-param name="TargetNode" select="NontaxableDistributionPct"/>
                 </xsl:call-template>
@@ -722,7 +722,7 @@
 <!--				<xsl:if test="((count ($FormData/CorporateDistributions)&gt;11) and not ($Print=$Separated))">-->
 				<tr>
 					<td class="styIRS5452TabCell" style="height:12mm; text-align:center; font-weight:bold; font-size:8pt;">Totals</td>
-					<td class="styIRS5452TabCell" style="height:12mm; border-right:1px solid black;" colspan="2">
+					<td class="styIRS5452TabCell" style="height:12mm; border-right:1px solid black;font-size:6.5pt;" colspan="2">
 						<span style="float:left; padding-left:.4mm;">$</span>
 						<span style="float:right;">
 							<xsl:call-template name="PopulateAmount">
@@ -731,7 +731,7 @@
 						</span>
 					</td>
 					<td class="styIRS5452TabCellThick" style="height:12mm; background-color:lightgrey;">&#160;</td>
-					<td class="styIRS5452TabCell" style="height:12mm;">
+					<td class="styIRS5452TabCell" style="height:12mm;font-size:6.5pt;">
 						<span style="float:left; padding-left:.4mm;">$</span>
 						<span style="float:right;">
 							<xsl:call-template name="PopulateAmount">
@@ -739,7 +739,7 @@
 							</xsl:call-template>
 						</span>
 					</td>
-					<td class="styIRS5452TabCell" style="height:12mm;">
+					<td class="styIRS5452TabCell" style="height:12mm;font-size:6.5pt;">
 						<span style="float:left; padding-left:.4mm;">$</span>
 						<span style="float:right;">
 							<xsl:call-template name="PopulateAmount">
@@ -747,7 +747,7 @@
 							</xsl:call-template>
 						</span>
 					</td>
-					<td class="styIRS5452TabCell" style="height:12mm;">
+					<td class="styIRS5452TabCell" style="height:12mm;font-size:6.5pt;">
 						<span style="float:left; padding-left:.4mm;">$</span>
 						<span style="float:right;">
 							<xsl:call-template name="PopulateAmount">
@@ -756,7 +756,7 @@
 						</span>
 					</td>
 					<td class="styIRS5452TabCellThick" style="height:12mm; background-color:lightgrey;">&#160;</td>
-					<td class="styIRS5452TabCell" style="height:12mm;">
+					<td class="styIRS5452TabCell" style="height:12mm;font-size:6.5pt;">
 						<span style="float:left; padding-left:.4mm;">$</span>
 						<span style="float:right;">
 							<xsl:call-template name="PopulateAmount">
@@ -840,11 +840,11 @@
                 <td colspan="3" class="styIRS5452TabCell" style="width:69mm;">
 					Amount Paid During Calendar Year From Earnings &amp; Profits<br/>Since February 28, 1913
 				</td>
-                <td rowspan="2" class="styIRS5452TabCellThick" style="width:12mm; height:16mm;">Percent<br/>Taxable</td>
+                <td rowspan="2" class="styIRS5452TabCellThick" style="width:12mm; height:16mm;">Percentage<br/>Taxable</td>
                 <td rowspan="2" class="styIRS5452TabCell" style="width:23mm; height:16mm;">
 					Amount Paid During<br/>Calendar Year From<br/>Other Than Earnings<br/>&amp; Profits Since<br/>February 28, 1913
 				</td>
-                <td rowspan="2" class="styIRS5452TabCell" style="width:12mm; height:16mm; border-right:0;">Percent<br/>Nontaxable</td>
+                <td rowspan="2" class="styIRS5452TabCell" style="width:12mm; height:16mm; border-right:0;">Percentage<br/>Nontaxable</td>
               </tr>
               <tr class="styDepTblHdr">
                 <td class="styIRS5452TabCell" style="width:23mm;">From the<br/>Current Year</td>
@@ -861,12 +861,12 @@
                   <xsl:otherwise>styDepTblRow2</xsl:otherwise>
                 </xsl:choose>
               </xsl:attribute>
-              <td class="styIRS5452TabCell" style="text-align:center;">
+              <td class="styIRS5452TabCell" style="text-align:center;font-size:6.5pt;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="DistributionPaidDt"/>
                 </xsl:call-template>
               </td>
-              <td class="styIRS5452TabCell" style="width:24mm; border-right:0;">
+              <td class="styIRS5452TabCell" style="width:24mm; border-right:0;font-size:6.5pt;">
                 <span style="float:left; padding-left:.4mm;">$</span>
                 <span style="float:right;">
                   <xsl:call-template name="PopulateAmount">
@@ -874,12 +874,12 @@
                   </xsl:call-template>
                 </span>
               </td>
-              <td class="styIRS5452TabCell" style="width:4mm; text-align:center;">
+              <td class="styIRS5452TabCell" style="width:4mm; text-align:center;font-size:6.5pt;">
                 (<xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="TotalDistributionPaidAmt/@distributionShareTypeCd"/>
                 </xsl:call-template>)
               </td>
-              <td class="styIRS5452TabCellThick">
+              <td class="styIRS5452TabCellThick" style="font-size:6.5pt;">
                 <span style="float:left; padding-left:.4mm;">$</span>
                 <span style="float:right;">
                   <xsl:choose> 
@@ -896,7 +896,7 @@
 		        </xsl:choose> 
                 </span>
               </td>
-              <td class="styIRS5452TabCell">
+              <td class="styIRS5452TabCell" style="font-size:6.5pt;">
                 <span style="float:left; padding-left:.4mm;">$</span>
                 <span style="float:right;">
                   <xsl:call-template name="PopulateAmount">
@@ -904,7 +904,7 @@
                   </xsl:call-template>
                 </span>
               </td>
-              <td class="styIRS5452TabCell">
+              <td class="styIRS5452TabCell" style="font-size:6.5pt;">
                 <span style="float:left; padding-left:.4mm;">$</span>
                 <span style="float:right;">
                   <xsl:call-template name="PopulateAmount">
@@ -912,7 +912,7 @@
                   </xsl:call-template>
                 </span>
               </td>
-              <td class="styIRS5452TabCell">
+              <td class="styIRS5452TabCell" style="font-size:6.5pt;">
                 <span style="float:left; padding-left:.4mm;">$</span>
                 <span style="float:right;">
                   <xsl:call-template name="PopulateAmount">
@@ -920,12 +920,12 @@
                   </xsl:call-template>
                 </span>
               </td>
-              <td class="styIRS5452TabCellThick">
+              <td class="styIRS5452TabCellThick" style="font-size:6.5pt;">
                 <xsl:call-template name="PopulatePercent">
                   <xsl:with-param name="TargetNode" select="TaxableDistributionPct"/>
                 </xsl:call-template>
               </td>
-              <td class="styIRS5452TabCell">
+              <td class="styIRS5452TabCell" style="font-size:6.5pt;">
                 <span style="float:left; padding-left:.4mm;">$</span>
                 <span style="float:right;">
                   <xsl:call-template name="PopulateAmount">
@@ -933,7 +933,7 @@
                   </xsl:call-template>
                 </span>
               </td>            
-              <td class="styIRS5452TabCell" style="border-right:0;">
+              <td class="styIRS5452TabCell" style="border-right:0;font-size:6.5pt;">
                 <xsl:call-template name="PopulatePercent">
                   <xsl:with-param name="TargetNode" select="NontaxableDistributionPct"/>
                 </xsl:call-template>

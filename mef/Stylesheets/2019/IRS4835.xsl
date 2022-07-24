@@ -1356,7 +1356,7 @@
 							If line 32 is a loss, check the box that describes your investment in this activity. See instructions 
 							<!--<span class="styDotLn" style="float:right;padding-left:1.5mm;padding-right:1mm;">...</span>-->
 							<div class="styIRS4835LNDesc" style="width:auto;text-align:right;float:right;padding-left:12mm;">
-								<img src="{$ImagePath}/4626_SMBracket.gif" alt="SmallBullet"/>
+								<img src="{$ImagePath}/4626_SMBracket.gif" alt="Curly Bracket"/>
 							</div>
 							</div>
 							

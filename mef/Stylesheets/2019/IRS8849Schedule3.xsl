@@ -5,6 +5,7 @@
 <!-- 02/17/16 - Made changes per defect 45744 - Jeremy Nichols -->
 <!-- 02/29/16 - Made changes per defect 45823 - Jeremy Nichols -->
 <!-- 02/29/16 - Made changes per defect 45824 - Jeremy Nichols -->
+<!-- 06/15/2020 - Changes made for UWR 235750 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
   <xsl:include href="CommonPathRef.xsl"/>
@@ -69,7 +70,7 @@
             <div class="styFNBox" style="width:31mm;height:18mm;border-right-width:1px;border-bottom:1px;">
                <span class="styFormNumber" style="font-size:10pt">Schedule 3</span><br/>
                <span class="styFormNumber" style="font-size:10pt">(Form 8849)</span><br/>
-               <span class="styAgency" style="height:3mm;">(Rev. January 2016)</span>
+               <span class="styAgency" style="height:3mm;">(Rev. February 2020)</span>
                <div class="styAgency" style="height:3mm;">Department of the Treasury</div>
                <span class="styAgency" style="height:3mm;">Internal Revenue Service</span> 
             </div>
@@ -166,13 +167,13 @@
             <div class="styLNDesc" style="width:179mm;height:15mm;padding-top:1.5mm;">
               <span class="styBoldText" style="display:inline;">Caution: </span>
               <span class="styNormalText" style="display:inline;">
-                For 2015: See the instructions and Notice 2016-05 for information on how to make 2015 claims. Do not combine claims for 2015 and
-				2016 on the same Schedule 3 (Form 8849). For 2016: The biodiesel mixture credit and renewable diesel mixture credit must first be taken as a
+                For 2018 and 2019: See the instructions and Notice 2020-08 for information on how to make 2018 and 2019 claims. Combine claims for 
+				2018 and 2019 on the same Schedule 3 (Form 8849). For 2020 and later year claims: The biodiesel mixture credit and renewable diesel mixture credit must first be taken as a
 				credit against your taxable fuel liability (gasoline, diesel fuel, and kerosene) reported on Form 720. Similarly, the alternative fuel credit must first
 				be taken on Form 720 as a credit against your alternative fuel or compressed natural gas (CNG) tax liability. If you have these tax liabilities and
-				you did not make the claim on Form 720, Schedule C as a credit against those liabilities, you must first file Form 720X, Amended Quarterly
+				you did not make the claim on Form 720, Schedule C as a credit against those liabilities, you must first file Form 720-X, Amended Quarterly
 				Federal Excise Tax Return, before Schedule 3 (Form 8849) can be used for the refund. You cannot claim any amounts on Form 8849 that you
-				claimed (or will claim) on Form 720, Schedule C; Form 720X; or Form 4136, Credit for Federal Tax Paid on Fuels.
+				claimed (or will claim) on Form 720, Schedule C; Form 720-X; or Form 4136, Credit for Federal Tax Paid on Fuels.
               </span><br/>
             </div>
           </div>
@@ -752,7 +753,7 @@
             <span style="width:6mm;"/>
             <span style="width:18mm;font-weight:normal;font-size:6pt;"> Cat. No. 27451F</span>
             <span style="width:6mm;"/>
-            <span style="text-align:right;width:32mm;font-weight:bold;font-size:6pt;">Schedule 3 (Form 8849)</span><span style="font-weight:normal;font-size:6pt;"> (Rev. 1-2016)</span>
+            <span style="text-align:right;width:32mm;font-weight:bold;font-size:6pt;">Schedule 3 (Form 8849)</span><span style="font-weight:normal;font-size:6pt;"> (Rev. 2-2020)</span>
           </div>
           <div class="pageEnd"/>
      

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 09/03/2019 -->
+<!-- Last Modified by Eugenia McDonald on 07/09/2020 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -163,7 +163,7 @@
 							<!--+++++++++++++++++++ Yes/No Checkboxes +++++++++++++++++++-->
 							<div class="styIRS8889LNDesc" style="width:42mm;padding-left:0px;">
 								<div class="styIRS8889LNDesc" style="width:22mm;padding-top:2mm;">
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox" alt="HDHP Self Only Coverage Ind">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8889Data/HDHPSelfOnlyCoverageInd"/>
 											<xsl:with-param name="BackupName">IRS8889HDHPSelfOnlyCoverageInd</xsl:with-param>
@@ -178,7 +178,7 @@
 									</label>
 								</div>
 								<div class="styIRS8889LNDesc" style="width:19mm;padding-top:2mm;">
-									<input type="checkbox" class="styCkbox">
+									<input type="checkbox" class="styCkbox" alt="HDHP Family Coverage Ind">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8889Data/HDHPFamilyCoverageInd"/>
 											<xsl:with-param name="BackupName">IRS8889HDHPFamilyCoverageInd</xsl:with-param>
@@ -621,7 +621,7 @@
 									<img src="{$ImagePath}/8889_Bullet_Md.gif" alt="Bullet Image"/>
 									<span style="width:7px"/>
 								</label>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" class="styCkbox" alt="HSA Distri Addnl Percent Tax Exc Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8889Data/HSADistriAddnlPercentTaxExcInd"/>
 										<xsl:with-param name="BackupName">IRS8889HSADistriAddnlPercentTaxExcInd</xsl:with-param>

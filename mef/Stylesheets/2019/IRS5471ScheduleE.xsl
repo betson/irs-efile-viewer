@@ -65,7 +65,7 @@
 							<span class="styFMT" style="font-size:12pt;padding-top:1mm;">Income, War Profits, and Excess Profits Taxes Paid or Accrued</span>
 							<br /><br />
 							<span style="font-weight:bold;">
-								&#9658;Attach to Form 5471
+								&#9658;Attach to Form 5471.
 							</span><br />
 							<span style="font-weight:bold;">
 								&#9658;Go to
@@ -130,7 +130,7 @@
 							EIN (if any)
 							<br />
 							<xsl:choose>
-								<xsl:when test="$FormData/MissingEINReasonCd">
+								<xsl:when test="$FormData/ForeignCorpMissingEINReasonCd">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$FormData/ForeignCorpMissingEINReasonCd" />
 									</xsl:call-template>
@@ -194,12 +194,6 @@
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$FormData/TxsForeignTaxCrAllowedGrp"/>
 								<xsl:with-param name="containerID" select=" 'Part1Table' "/>
-								<xsl:with-param name="headerHeight" select="1"/>
-								<xsl:with-param name="containerHeight" select="7"/>
-							</xsl:call-template>
-							<xsl:call-template name="SetDynamicTableToggleButton">
-								<xsl:with-param name="TargetNode" select="$FormData/TxsForeignTaxCrAllowedGrp"/>
-								<xsl:with-param name="containerID" select=" 'Part2Table' "/>
 								<xsl:with-param name="headerHeight" select="1"/>
 								<xsl:with-param name="containerHeight" select="7"/>
 							</xsl:call-template>
@@ -313,6 +307,16 @@
 						</table>
 					</div>
 					<!-- Table 2 -->
+					<xsl:if test="(not($Print) or $Print = '') and (count($FormData/TxsForeignTaxCrAllowedGrp) &gt; 7)">
+						<div style="width:256mm;text-align:right;">
+							<xsl:call-template name="SetDynamicTableToggleButton">
+								<xsl:with-param name="TargetNode" select="$FormData/TxsForeignTaxCrAllowedGrp"/>
+								<xsl:with-param name="containerID" select=" 'Part2Table' "/>
+								<xsl:with-param name="headerHeight" select="1"/>
+								<xsl:with-param name="containerHeight" select="7"/>
+							</xsl:call-template>
+						</div>
+					</xsl:if>
 					<div class="styStdDivLS" style="" id="Part2Table">
 						<xsl:call-template name="SetInitialState"/>
 						<table style="display:table;border-collapse:collapse;">
@@ -468,7 +472,7 @@
 							<xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$FormData/Section986a1DElectionInd"/>
 							</xsl:call-template>
-							<input type="checkbox" class="styCkboxNM">
+							<input type="checkbox" class="styCkboxNM" alt="Section 986 a 1 D Election Yes Box">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/Section986a1DElectionInd"/>
 									<xsl:with-param name="BackupName">F5471SchESec986a1Election</xsl:with-param>
@@ -482,7 +486,7 @@
 								</xsl:call-template>Yes
 							</label>
 							<span style="width:6mm;"/>
-							<input type="checkbox" class="styCkboxNM">
+							<input type="checkbox" class="styCkboxNM" alt="Section 986 a 1 D Election No Box">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/Section986a1DElectionInd"/>
 									<xsl:with-param name="BackupName">F5471SchESec986a1Election</xsl:with-param>
@@ -699,11 +703,11 @@
 					<!-- Page footer-->
 					<div class="styStdDivLS pageEnd" style="border-top:2px solid black;">
 						<span style="font-weight:bold;font-family:Arial;">For Paperwork Reduction Act Notice, see instructions.</span>
-						<span style="margin-left:60mm;font-size:6.5pt;">Cat. No. 73197A</span>
-						<span style="float:right;font-weight:bold;font-size:6.5pt;">Schedule E (Form 5471) (12-2019)</span>
+						<span style="margin-left:60mm;font-size:6.5pt;">Cat. No. 71397A</span>
+						<span style="float:right;font-weight:bold;font-size:6.5pt;">Schedule E (Form 5471) (Rev. 12-2019)</span>
 					</div>
 					<div class="styStdDivLS" style="border-bottom:2px solid black;">
-						Schedule E (Form 5471) (12-2019)
+						Schedule E (Form 5471) (Rev. 12-2019)
 						<span style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span></span>
 					</div>
 					<div class="styStdDivLS">
@@ -2093,10 +2097,10 @@
 					</div>
 					<!-- Form footer-->
 					<div class="styStdDivLS pageEnd" style="border-top:1px solid black;">
-						<span style="float:right;font-weight:bold;font-size:6.5pt;">Schedule E (Form 5471) (12-2019)</span>
+						<span style="float:right;font-weight:bold;font-size:6.5pt;">Schedule E (Form 5471) (Rev. 12-2019)</span>
 					</div>
 					<div class="styStdDivLS" style="border-bottom:2px solid black;">
-						Schedule E (Form 5471) (12-2019)
+						Schedule E (Form 5471) (Rev. 12-2019)
 						<span style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">3</span></span>
 					</div>
 					<div class="styStdDivLS">
@@ -2938,7 +2942,7 @@
 						</div>
 					</div>
 					<div class="styStdDivLS pageEnd" style="border-top:1px solid black;">
-						<span style="float:right;font-weight:bold;font-size:6.5pt;">Schedule E (Form 5471) (12-2019)</span>
+						<span style="float:right;font-weight:bold;font-size:6.5pt;">Schedule E (Form 5471) (Rev. 12-2019)</span>
 					</div>
 					<!-- Additional Data title bar and button -->
 					<div class="styLeftOverTitleLineLandscape" id="LeftoverData">

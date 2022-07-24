@@ -566,11 +566,11 @@
 					<div class="pageEnd" style="width:187mm;padding-top:1mm;">
 						<div style="float:left;">
 							<span class="styBoldText">For Paperwork Reduction Act Notice, see your tax return instructions.</span>
-							<span style="width:13mm;"/>
+							<span style="width:3mm;"/>
 							Cat. No. 25513Y
 						</div>
 						<div style="float:right;">
-							<span style="width:40px;"/>
+							<span style="width:26px;"/>
 							<span style="font-weight:bold;">Schedule J (Form 1040 or 1040-SR) 2019</span>
 						</div>
 					</div>

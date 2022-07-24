@@ -9458,7 +9458,7 @@ trustees, and key employees
                 <td class="styLNDesc" style="width:100mm;height:4.5mm;border-bottom: solid black 1px;" colspan="3">
                   <span class="styBoldText">Total assets.</span>
                   <span style="width:1mm;"></span>
-                  <span class="styNormalText"> Add lines 1 through 15 (must equal line 34)</span>
+                  <span class="styNormalText"> Add lines 1 through 15 (must equal line 33)</span>
                   <span style="width:2px;"/>
                 
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm">...</span>
@@ -10149,7 +10149,7 @@ trustees, and key employees
             <!-- L4 -->
             <div style="width:187mm;">
               <div class="styLNLeftNumBoxSD" style="height:4.5mm;">4</div>
-              <div class="styLNDesc" style="width:139mm; height:4.5mm; ">Net assets or fund balances at beginning of year (must equal <span style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-width: font-stretch: ultra-expanded; font-size:10.0px;">Part X</span>, line 33, column (A))
+              <div class="styLNDesc" style="width:139mm; height:4.5mm; ">Net assets or fund balances at beginning of year (must equal <span style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-width: font-stretch: ultra-expanded; font-size:10.0px;">Part X</span>, line 32, column (A))
           <!--Dotted Line-->
                <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;">..</span>
               </div>
@@ -10251,7 +10251,7 @@ trustees, and key employees
            <!--  L10 -->
             <div style="width:187mm;">
               <div class="styLNLeftNumBoxSD" style="height:4.5mm;">10</div>
-              <div class="styLNDesc" style="width:139mm;height:4.5mm;"> Net assets or fund balances at end of year. Combine lines 3 through 9 (must equal <span style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-width: font-stretch: ultra-expanded; font-size:10.0px;">Part X</span>, line 33, column (B))  
+              <div class="styLNDesc" style="width:139mm;height:4.5mm;"> Net assets or fund balances at end of year. Combine lines 3 through 9 (must equal <span style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-width: font-stretch: ultra-expanded; font-size:10.0px;">Part X</span>, line 32, column (B))  
                 <!-- Dotted Line Took out dotted line per TEGE because print version only showed dots with no verbiage-->
                <!-- <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;">.......................</span>-->
               </div>

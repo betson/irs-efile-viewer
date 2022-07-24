@@ -9,6 +9,9 @@
 <!-- 12/13/2018 - Additional changes made per defect 126818 - Jeremy Nichols -->
 <!-- 12/13/2018 - Additional changes made per defect 126819 - Jeremy Nichols -->
 <!-- 01/22/2019 - Additional changes made per defect 126838 - Jeremy Nichols -->
+<!-- 06/08/2020 - Changes made per UWR 234103 - Jeremy Nichols -->
+<!-- 08/10/2020 - Changes made per defect 64928 - Jeremy Nichols -->
+<!-- 09/08/2020 - Changes made per UWR 238150 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -58,7 +61,7 @@
               <span class="styFormText" style="font-size:7pt;width:1mm;"></span>      
               <span class="styFormNumber" style="font-size:20pt;font-weight:bold;">6627</span>      
               <br/>      
-              <span class="styAgency" style="font-weight:normal;">(Rev. January 2019)</span><br/> 
+              <span class="styAgency" style="font-weight:normal;">(Rev. January 2021)</span><br/> 
               <span class="styAgency" style="font-weight:normal;padding-top:0.5mm;">Department of the Treasury</span><br />
               <span class="styAgency" style="font-weight:normal;">Internal Revenue Service</span>
             </div>
@@ -140,64 +143,82 @@
                   </th>
                 </tr>
                 <tr style="padding-top:1mm">
-                  <td class="styTableCell" style="width:94mm;height:8mm;border-right-width:0px;text-align:left">
+                  <td class="styTableCell" style="width:94mm;border-right-width:0px;text-align:left">
                     <div class="styLNLeftNumBoxSD" style="height:5mm;padding-top:1mm">1</div>
                     <div style="width:84mm;height:5mm;float:left;clear:none;padding-top:1mm">Reserved for future use
                     <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:mm">............</span>
                   </div></td>
-                  <td class="styTableCell" style="width:38mm;border-left-width:1px;valign:bottom;background-color:lightgrey;"><span style="width:1px" /></td>
-                  <td class="styTableCell" style="width:17mm;background-color:lightgrey;text-align:center"><span style="width:1px" /></td>
+                  <td class="styTableCell" style="width:38mm;border-left-width:1px;valign:bottom;background-color:lightgrey;"><span style="width:1px" />
+                  </td>
+                  <td class="styTableCell" style="width:17mm;text-align:center;background-color:lightgrey;"><span style="width:1px" /></td>
                   <td class="styTableCell" style="width:38mm;background-color:lightgrey;border-right:0px"><span style="width:1px" /></td>
                 </tr>
                 <tr style="padding-top:1mm">
-                  <td class="styTableCell" style="width:94mm;height:8mm;border-right-width:0px;text-align:left">
+                  <td class="styTableCell" style="width:94mm;border-right-width:0px;text-align:left">
                     <div class="styLNLeftNumBoxSD" style="height:5mm;padding-top:1mm">2</div>
                     <div style="width:84mm;height:5mm;float:left;clear:none;padding-top:1mm">Reserved for future use
                     <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:mm">............</span>
                   </div></td>
-                  <td class="styTableCell" style="width:38mm;border-left-width:1px;valign:bottom;background-color:lightgrey;"><span style="width:1px" /></td>
+                  <td class="styTableCell" style="width:38mm;border-left-width:1px;valign:bottom;background-color:lightgrey;"><span style="width:1px" />
+                  </td>
                   <td class="styTableCell" style="width:17mm;background-color:lightgrey"><span style="width:1px" /></td>
                   <td class="styTableCell" style="width:38mm;background-color:lightgrey;border-right:0px"><span style="width:1px" /></td>
                 </tr>
                 <tr>
-                  <td class="styTableCell" style="width:94mm;height:8mm;border-right-width:0px;text-align:left">
-                    <div class="styLNLeftNumBoxSD" style="height:5mm;padding-top:1mm">3</div>
-                    <div style="width:84mm;height:5mm;float:left;clear:none;padding-top:1mm">Reserved for future use
+                  <td  class="styTableCell" style="width:94mm;border-right-width:0px;text-align:left;padding-bottom:0.5mm">
+                    <div class="styLNLeftNumBoxSD" style="padding-top:1mm">3</div>
+                    <div style="width:84mm;float:left;clear:none;padding-top:1mm;text-align:justify;padding-bottom:1mm;">Reserved for future use
                     <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:mm">............</span>
-                  </div></td>
-				  <td class="styTableCell" style="width:38mm;border-left-width:1px;vertical-align:bottom;padding-bottom:1mm;background-color:lightgrey;"><span style="width:1px" /></td>
-                  <td class="styTableCell" style="width:17mm;text-align:center;background-color:lightgrey;"><span style="width:1px" /></td>
-                  <td class="styTableCell" style="width:38mm;border-right-width:0;background-color:lightgrey;"><span style="width:1px" /></td>
+                    </div>
+                  </td>
+                  <td class="styTableCell" style="width:38mm;border-left-width:1px;vertical-align:bottom;background-color:lightgrey;"><span style="width:1px" />
+                  </td>
+                  <td class="styTableCell" style="width:17mm;text-align:center;background-color:lightgrey;"><span style="width:1px" />
+                  </td>
+                  <td class="styTableCell" style="width:38mm;border-right-width:0;background-color:lightgrey;"><span style="width:1px" />
+                  </td>
                 </tr>
                 <tr>
-                  <td class="styTableCell" style="width:94mm;height:8mm;border-right-width:0px;text-align:left">
-                    <div class="styLNLeftNumBoxSD" style="height:5mm;padding-top:1mm">4</div>
-                    <div style="width:84mm;height:5mm;float:left;clear:none;padding-top:1mm">Reserved for future use
+                  <td  class="styTableCell" style="width:94mm;border-right-width:0px;text-align:left;padding-bottom:1mm;">
+                    <div class="styLNLeftNumBoxSD" style="padding-top:1mm">4</div>
+                    <div style="width:84mm;float:left;clear:none;padding-top:1mm;text-align:justify">Reserved for future use
                     <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:mm">............</span>
-                  </div></td>
-                  <td class="styTableCell" style="width:38mm;border-left-width:1px;vertical-align:bottom;padding-bottom:1mm;background-color:lightgrey;"><span style="width:1px" /></td>
-                  <td class="styTableCell" style="width:17mm;text-align:center;background-color:lightgrey;"><span style="width:1px" /></td>
-                  <td class="styTableCell" style="width:38mm;border-right-width:0;background-color:lightgrey;"><span style="width:1px" /></td>
+                    </div>
+                  </td>
+                  <td class="styTableCell" style="width:38mm;border-left-width:1px;vertical-align:bottom;background-color:lightgrey;"><span style="width:1px" />
+                  </td>
+                  <td class="styTableCell" style="width:17mm;text-align:center;background-color:lightgrey;"><span style="width:1px" />
+                  </td>
+                  <td class="styTableCell" style="width:38mm;border-right-width:0;background-color:lightgrey;"><span style="width:1px" />
+                  </td>
                 </tr>
                 <tr>
-                  <td class="styTableCell" style="width:94mm;height:8mm;border-right-width:0px;text-align:left">
-                    <div class="styLNLeftNumBoxSD" style="height:5mm;padding-top:1mm">5</div>
-                    <div style="width:84mm;height:5mm;float:left;clear:none;padding-top:1mm">Reserved for future use
+                  <td  class="styTableCell" style="width:94mm;border-right-width:0px;text-align:left;padding-bottom:1mm;">
+                    <div class="styLNLeftNumBoxSD" style="padding-top:1mm">5</div>
+                    <div style="width:84mm;float:left;clear:none;padding-top:1mm;text-align:justify">Reserved for future use
                     <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:mm">............</span>
-                  </div></td>
+                      <img src="{$ImagePath}/6627_Bullet_Md.gif" alt="MediumBullet"/>
+                    </div>
+                  </td>
                   <td class="styTableCell" style="width:38mm;border-left-width:1px;background-color:lightgrey"><span style="width:1px" /></td>
                   <td class="styTableCell" style="width:17mm;background-color:lightgrey"><span style="width:1px" /></td>
-                  <td class="styTableCell" style="width:38mm;border-right-width:0;background-color:lightgrey;"><span style="width:1px" /></td>
+                  <td class="styTableCell" style="width:38mm;border-right-width:0;background-color:lightgrey;"><span style="width:1px" />
+                  </td>
                 </tr>
                 <tr>
-                  <td class="styTableCell" style="width:94mm;height:8mm;border-right-width:0px;text-align:left">
-                    <div class="styLNLeftNumBoxSD" style="height:5mm;padding-top:1mm">6</div>
-                    <div style="width:84mm;height:5mm;float:left;clear:none;padding-top:1mm">Reserved for future use
+                  <td  class="styTableCell" style="width:94mm;border-right-width:0px;text-align:left;padding-bottom:1mm;">
+                    <div class="styLNLeftNumBoxSD" style="padding-top:1mm">6</div>
+                    <div style="width:84mm;float:left;clear:none;padding-top:1mm;text-align:justify">Reserved for future use
                     <span style="letter-spacing:3.3mm;font-weight:bold;skiplink:display:none;padding-left:mm">............</span>
-                  </div></td>
-                  <td class="styTableCell" style="width:38mm;border-left-width:1px;vertical-align:bottom;padding-bottom:1mm;background-color:lightgrey;"><span style="width:1px" /></td>
-                  <td class="styTableCell" style="width:17mm;text-align:center;background-color:lightgrey;"><span style="width:1px" /></td>
-                  <td class="styTableCell" style="width:38mm;border-right-width:0;background-color:lightgrey;"><span style="width:1px" /></td>
+                      <img src="{$ImagePath}/6627_Bullet_Md.gif" alt="MediumBullet"/>
+                    </div>
+                  </td>
+                  <td class="styTableCell" style="width:38mm;border-left-width:1px;vertical-align:bottom;padding-bottom:2mm;background-color:lightgrey;"><span style="width:1px" />
+                  </td>
+                  <td class="styTableCell" style="width:17mm;text-align:center;background-color:lightgrey;"><span style="width:1px" />
+                  </td>
+                  <td class="styTableCell" style="width:38mm;pborder-right-width:0;background-color:lightgrey;"><span style="width:1px" />
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -405,7 +426,7 @@
                 </xsl:if>
                 <!--sum-->
                 <tr style="display:inlline;">
-                  <td style="height:8mm;width:6mm;text-align:center;font-weight:bold;border-bottom:1px black solid;border-top:1px black solid;padding-bottom:3.5mm;">
+                  <td style="height:5mm;width:6mm;text-align:center;font-weight:bold;border-bottom:1px black solid;border-top:1px black solid;padding-bottom:3.5mm;">
                     <xsl:if test="(count($FormData/TxOnOzoneDepletingChemicalsGrp) &lt; 4) or ($Print = $Separated)" >
                       <xsl:value-of select="4">
                       </xsl:value-of>
@@ -415,7 +436,7 @@
                       </xsl:value-of>
                     </xsl:if>
                   </td>
-                  <td  colspan="3" style="height:8mm;text-align:left;border-bottom:1px black solid;border-top:1px black solid;">	
+                  <td  colspan="3" style="height:5mm;text-align:left;border-bottom:1px black solid;border-top:1px black solid;">	
                     <span style="font-weight:bold;">Total ozone-depleting chemicals tax.</span>
                     <span style="width:3px;clear:none;"></span>
                     <span style="clear:none;font-weight:normal;">Add all amounts in column (d), include amounts from any</span><br/>
@@ -430,10 +451,10 @@
                     <span class="styBoldText" style="padding-left:5.5mm;"><img src="{$ImagePath}/6627_Bullet_Md.gif" alt="MediumBullet"/> 
                     </span>     
                   </td>
-                  <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
+                  <td style="height:5mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
                     <span style="width:1mm;clear:none;"></span>
-                    <span style="height:8mm;width:2mm;text-align:bottom;padding-top:4mm;padding-right:4mm;">$</span>
-                    <span style="width:36mm;height:8mm;padding-top:5mm;">
+                    <span style="height:5mm;width:2mm;text-align:bottom;padding-top:4mm;padding-right:4mm;">$</span>
+                    <span style="width:36mm;height:5mm;">
                       <xsl:choose>
                         <xsl:when test="(count($FormData/TxOnOzoneDepletingChemicalsGrp) = 0) or (($Print = $Separated) and (count($FormData/TxOnOzoneDepletingChemicalsGrp) &gt; 3))">
                           <span style="width:1px" />
@@ -458,8 +479,8 @@
             <!-- End Set Initial Height of Above Table -->
           </div>      
           
-          <xsl:if test="(count($FormData/TxOnOzoneDepletingChemicalsGrp) &gt; 0) and  ($Print = $Separated)" >
-			<span style="height:10mm;"/>
+          <xsl:if test="($Print = $Separated)" >
+			<span style="height:10mm;width:187mm;"/>
 		  </xsl:if>
 		  
           <!--Begin Page 1 Footer-->
@@ -477,7 +498,7 @@
             <span style="text-align:center;width:6mm;font-weight:bold;font-size:7pt;">
             6627</span> 
             <span style="text-align:right;width:18.5mm;font-weight:normal;font-size:6pt;padding-right:1mm;">
-            (Rev. 1-2019)</span> 
+            (Rev. 1-2021)</span> 
           </div>
           <div class="pageEnd"/>
   
@@ -486,7 +507,7 @@
           <!--Page to Header-->
           <div  style="width:187mm;border-bottom:1px black solid;">
             <span style="width:140mm;font-weight:normal;text-align:left;font-size:7pt;display:inline;"> 
-              Form 6627 (Rev. 1-2019)<span style="width:140mm;"/>
+              Form 6627 (Rev. 1-2021)<span style="width:140mm;"/>
             </span>
             <span style="text-align:right;width:40mm;font-weight:normal;font-size:7pt;display:inline;">
               Page
@@ -688,7 +709,7 @@
           <!-- End Set Initial Height of Above Table -->
   
 		  <xsl:if test="($Print = $Separated)" >
-				<span style="height:8mm;"></span>
+				<span style="height:15.5mm;"></span>
 		  </xsl:if>
   
           <!--BEGIN PART IV-->
@@ -858,7 +879,7 @@
           <!-- End Set Initial Height of Above Table -->
           
           <xsl:if test="($Print = $Separated)" >
-				<span style="height:9mm;"></span>
+				<span style="height:12mm;"></span>
 		  </xsl:if>
 					
           <!--END Part IVTable-->
@@ -875,7 +896,7 @@
             <span style="text-align:center;width:7mm;font-weight:bold;font-size:7pt;">
             6627</span> 
             <span style="text-align:right;width:18mm;font-weight:normal;font-size:6pt;padding-right:1mm;">
-            (Rev. 1-2019)</span>       
+            (Rev. 1-2021)</span>       
           </div>
           <div class="pageEnd"/>
             

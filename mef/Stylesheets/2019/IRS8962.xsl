@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Updated on 07/16/2019 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -123,7 +122,10 @@
 								<img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet"/>
 								Attach to Form 1040, Form 1040SR, or Form 1040NR.<br/>
 								<img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet"/>
-								Go to <i>www.irs.gov/Form8962</i> for instructions and the latest information.
+								Go to
+								<a style="text-decoration:none;color:black;" href="http://www.irs.gov/Form8962" title="Link to IRS.gov">
+									 <i>www.irs.gov/Form8962</i> for instructions and the latest information.
+								</a>
 							</div>
 						</div>
 						<div class="styTYBox" style="width:32mm;border-left:none;">
@@ -169,7 +171,7 @@
 						<div class="styNameBox" style="width:187mm;height:7mm;font-size:6pt;border-right:0px solid black;padding-left:1mm;padding-top:2mm;">
 							You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception
 							<span style="float:right;">						
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" alt="Married Filing Separately Exception Indicator" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/MarriedFilingSeparatelyExcInd"/>								
 										<xsl:with-param name="BackupName">IRS8962MarriedFilingSeparatelyExcInd</xsl:with-param>
@@ -340,7 +342,7 @@
 								<xsl:with-param name="BackupName">IRS8962FederalPovertyTableLocCd[B]</xsl:with-param>
 							</xsl:call-template>							
 						</label><span style="width:5px;" />Hawaii<span style="width:5px;" />
-						<b>c</b><span style="width:5px;" /><input type="checkbox" class="styCkbox">
+						<b>c</b><span style="width:5px;" /><input type="checkbox" alt="Other 48 states and DC" class="styCkbox">
 						<xsl:if test="$FormData/FederalPovertyTableLocCd = 'C'">
 						<xsl:attribute name="checked">checked</xsl:attribute>	
 						</xsl:if>
@@ -1268,7 +1270,7 @@
 					<div class="styBB" style="width:187mm;">
 						<div class="styLNLeftNumBox">26</div>
 						<div class="styLNDesc" style="width:142mm;font-family:Arial;">
-						Net premium tax credit. If line 24 is greater than line 25, subtract line 25 from line 24. Enter the difference here and on Schedule 5 (Form 1040 or 1040SR), line 70, or Form 1040NR, line 65. 
+						Net premium tax credit. If line 24 is greater than line 25, subtract line 25 from line 24. Enter the difference here and on Schedule 3 (Form 1040 or 1040-SR), line 9, or Form 1040-NR, line 65. 
 						If line 24 equals line 25, enter -0-. Stop here. If line 25 is greater than line 24, leave this line blank and continue to line 27
 													<span style="float:right;font-weight:bold;padding-right:3mm;">
 							<span style="width:11px;"/>.
@@ -1359,7 +1361,7 @@
 					<div class="styBB" style="width:187mm;border-bottom-width:0px;float:none;">
 						<div class="styLNLeftNumBox">29</div>
 						<div class="styLNDesc" style="width:142mm;">
-							Excess advance premium tax credit repayment. Enter the smaller of line 27 or line 28 here and on Schedule 2 (Form 1040 or 1040SR), line 46, or Form 1040NR, line 44
+							Excess advance premium tax credit repayment. Enter the smaller of line 27 or line 28 here and on Schedule 2 (Form 1040 or 1040-SR), line 2, or Form 1040-NR, line 44
 							<span style="float:right;font-weight:bold;padding-right:3mm;">
 							<span style="width:11px;"/>.
 							<span style="width:11px;"/>.

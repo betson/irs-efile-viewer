@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 03/14/2019 - Made changes per UWR 2018147 - Jeremy Nichols -->
+<!-- 03/25/2020 - Changes made for defect 127964 - Jeremy Nichols -->
+<!-- 04/27/2020 - Made changes perdefect 127970 - Jeremy Nichols -->
+<!-- 04/27/2020 - Made changes perdefect 127967 - Jeremy Nichols -->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -275,7 +279,10 @@ Check if applicable:</div>
 									<xsl:with-param name="TargetNode" select="$Form2290/VINCorrectionInd"/>
 								  </xsl:call-template>            
 								  VIN Correction
-								</label><br/>
+								</label>
+								<xsl:call-template name="SetFormLinkInline">
+									<xsl:with-param name="TargetNode" select="$Form2290/VINCorrectionInd"/>
+								</xsl:call-template><br/>
 								  <span style="padding-left:0.5mm;padding-top:1mm;">Check this box if you are correcting a vehicle<br/>
 								  identification number (VIN) listed on a previously<br/>
 								  filed Schedule 1 (Form 2290).  <b>Do not</b> check this<br/>
@@ -328,7 +335,20 @@ Check if applicable:</div>
           </div>
 <div style="width:187mm;">
   <div class="styLNLeftNumBox" style=""/>
-  <div class="styLNDesc" style="width:117mm;">enter <span class="styBoldText">201907</span> in the boxes to the right. If NO, see the table on page 3 of the instructions</div>
+  <div class="styLNDesc" style="width:137mm;display:inline;">enter <span class="styBoldText" style="display:inline;">201907</span> in the boxes to the right. If NO, see the table on page 3 of the instructions
+	<!--Dotted Line-->
+	<span class="styBoldText">
+		<span style="width:5px"/>.            
+		<span style="width:8px"/>.
+		<span style="width:8px"/>.  
+		<span style="width:8px"/>.            
+		<span style="width:13px"/> 
+	</span>
+  <span style="padding-top:1mm;display:inline;">
+    <img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/>
+  </span>
+</div>
+  <div class="styLNRightNumBox" style="height:4.5mm;">1</div>
   <div class="styLNAmountBox" style="width:34mm;height:4.5mm;float:right">      
     <xsl:call-template name="PopulateYear">
       <xsl:with-param name="TargetNode" select="$RtnHdrData/FirstUsedDt"/>
@@ -337,132 +357,214 @@ Check if applicable:</div>
       <xsl:with-param name="TargetNode" select="$RtnHdrData/FirstUsedDt"/>
     </xsl:call-template>
   </div>
-  <div class="styLNRightNumBox" style="height:4.5mm;float:right">1</div>
-  <span style="float:right;padding-right:3mm;padding-top:1mm">
-    <img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/>
-  </span>
-  <div class="styDotLn" style="float:right;padding-right:2mm;padding-top:1mm">...</div>
            
            
                </div>
           <!-- Line 2 -->
           <div style="width:187mm;">
             <div class="styLNLeftNumBox" style="">2</div>
-            <div class="styLNDesc" style="width:77mm;">
-              <span class="styBoldText">Tax.</span> Enter the <span class="styBoldText">Total</span> from Form 2290, page 2, column (4)</div>
+            <div class="styLNDesc" style="width:137mm;">
+              <span class="styBoldText">Tax.</span> Enter the <span class="styBoldText">Total</span> from Form 2290, page 2, column (4)
+				<!--Dotted Line-->
+				<span class="styBoldText">
+					<span style="width:5px"/>.            
+					<span style="width:8px"/>.
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.              
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>.
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.            
+					<span style="width:8px"/>.
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.          
+					<span style="width:14px"/> 
+				</span>
+			  <span style="padding-top:1mm;display:inline;">
+				<img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/>
+			  </span>
+			</div>
+            <div class="styLNRightNumBox" >2</div>
             <div class="styLNAmountBox" style="width:34mm;float:right">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$Form2290/TotalTaxComputationAmt"/>
               </xsl:call-template>
             </div>
-            <div class="styLNRightNumBox" style="float:right">2</div>
-            <span style="float:right;padding-right:3mm;padding-top:1mm">
-              <img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/>
-            </span>
-            <span class="styDotLn" style="float:right;padding-right:2mm;padding-top:1mm">.............</span>
           </div>
           <!-- Line 3 -->
           <div style="width:187mm;">
             <div class="styLNLeftNumBox" style="">3</div>
-            <div class="styLNDesc" style="width:98mm;">Additional tax from increase in taxable gross weight (see instructions).  
-    <xsl:call-template name="SetFormLinkInline">
+            <div class="styLNDesc" style="width:137mm;">Additional tax from increase in taxable gross weight (see instructions).  
+			  <xsl:call-template name="SetFormLinkInline">
                 <xsl:with-param name="TargetNode" select="$Form2290/AdditionalTaxAmt"/>
               </xsl:call-template>
+              <!--Dotted Line-->
+				<span class="styBoldText">
+					<span style="width:7px"/>.            
+					<span style="width:8px"/>.
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.   
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.           
+					<span style="width:14px"/> 
+				</span>
+			  <span style="padding-top:1mm;display:inline;">
+				<img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/>
+			  </span>
             </div>
+            <div class="styLNRightNumBox" >3</div>
             <div class="styLNAmountBox" style="width:34mm;float:right">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$Form2290/AdditionalTaxAmt"/>
               </xsl:call-template>
             </div>
-            <div class="styLNRightNumBox" style="float:right">3</div>
-            <span style="float:right;padding-right:3mm;padding-top:1mm">
-              <img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/>
-            </span>
-            <div class="styDotLn" style="float:right;padding-right:2mm;padding-top:1mm">.......</div>
           </div>
           <!-- Line 4 -->
           <div style="width:187mm;">
             <div class="styLNLeftNumBox" style="">4</div>
-            <div class="styLNDesc" style="width:40mm;">
-              <span class="styBoldText">Total tax.</span> Add lines 2 and 3</div>
+            <div class="styLNDesc" style="width:137mm;">
+              <span class="styBoldText">Total tax.</span> Add lines 2 and 3
+				<!--Dotted Line-->
+				<span class="styBoldText">
+					<span style="width:2px"/>.            
+					<span style="width:8px"/>.
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.   
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.   
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>.           
+					<span style="width:12px"/> 
+				</span>
+			  <span style="padding-top:1mm;display:inline;">
+				<img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/>
+			  </span>
+			</div>
+            <div class="styLNRightNumBox" >4</div>
             <div class="styLNAmountBox" style="width:34mm;float:right">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$Form2290/TotalTaxAmt"/>
               </xsl:call-template>
             </div>
-            <div class="styLNRightNumBox" style="float:right">4</div>
-            <span style="float:right;padding-right:3mm;padding-top:1mm">
-              <img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/>
-            </span>
-            <div class="styDotLn" style="float:right;padding-right:2mm;padding-top:1mm">......................</div>
           </div>
           <!-- Line 5 -->
           <div style="width:187mm;">
             <div class="styLNLeftNumBox" style="">5</div>
-            <div class="styLNDesc" style="width:44mm;">
-              <span class="styBoldText">Credits</span> (see instructions).
-    <xsl:call-template name="SetFormLinkInline">
+            <div class="styLNDesc" style="width:137mm;">
+              <span class="styBoldText">Credits</span> (Attach supporting documentation.  See instructions).
+			  <xsl:call-template name="SetFormLinkInline">
                 <xsl:with-param name="TargetNode" select="$Form2290/TaxCreditsAmt"/>
               </xsl:call-template>
+              <!--Dotted Line-->
+				<span class="styBoldText">
+					<span style="width:8px"/>.            
+					<span style="width:8px"/>.
+					<span style="width:8px"/>.            
+					<span style="width:8px"/>.
+					<span style="width:8px"/>.             
+					<span style="width:8px"/>.
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.            
+					<span style="width:8px"/>.
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>.           
+					<span style="width:12px"/> 
+				</span>
+			  <span style="padding-top:1mm;display:inline;">
+				<img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/>
+			  </span>
             </div>
+            <div class="styLNRightNumBox" >5</div>
             <div class="styLNAmountBox" style="width:34mm;float:right">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$Form2290/TaxCreditsAmt"/>
               </xsl:call-template>
             </div>
-            <div class="styLNRightNumBox" style="float:right">5</div>
-            <span style="float:right;padding-right:3mm;padding-top:1mm">
-              <img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/>
-            </span>
-            <div class="styDotLn" style="float:right;padding-right:2mm;padding-top:1mm">.....................</div>
           </div>
           <!-- Line 6 -->
-          <div style="width:187mm;height:4mm">
+          <div style="width:187mm;height:9mm">
             <div class="styLNLeftNumBox" style="">6</div>
-            <div class="styLNDesc" style="width:135mm;">
-              <span class="styBoldText">Balance due.</span> Subtract line 5 from line 4. This is the amount you owe. Check the applicable box if </div>
-            <div class="styLNAmountBox" style="width:34mm;border-bottom-width:0;float:right"/>
-            <div class="styLNRightNumBox" style="border-bottom-width:0;float:right"/>
-          </div>
-          <div style="height:5.5mm;width:187mm;">
-            <div class="styLNLeftNumBox" style=""/>
-            <div class="styLNDesc" style="height:5.5mm;width:70mm;">payment is through: EFTPS<span style="width2mm"/>
-              <input type="checkbox" class="styCkbox">
-                <xsl:call-template name="PopulateCheckbox">
-                  <xsl:with-param name="TargetNode" select="$Form2290/EFTPSPaymentInd"/>
-                  <xsl:with-param name="BackupName">IRS2290EFTPSPayment</xsl:with-param>
-                </xsl:call-template>
-              </input>
-              <label>
-                <xsl:call-template name="PopulateLabel">
-                  <xsl:with-param name="TargetNode" select="$Form2290/EFTPSPaymentInd"/>
-                  <xsl:with-param name="BackupName">IRS2290EFTPSPayment</xsl:with-param>
-                </xsl:call-template>
-              </label><span style="width2mm"/>
-              Credit or Debit Card<span style="width2mm"/>
-              <input type="checkbox" class="styCkbox">
-                <xsl:call-template name="PopulateCheckbox">
-                  <xsl:with-param name="TargetNode" select="$Form2290/CreditDebitCardPaymentInd"/>
-                  <xsl:with-param name="BackupName">IRS2290CreditDebitCardPaymentInd</xsl:with-param>
-                </xsl:call-template>
-              </input>
-              <label>
-                <xsl:call-template name="PopulateLabel">
-                  <xsl:with-param name="TargetNode" select="$Form2290/CreditDebitCardPaymentInd"/>
-                  <xsl:with-param name="BackupName">IRS2290CreditDebitCardPaymentInd</xsl:with-param>
-                </xsl:call-template>
-              </label>
-            </div>
-            <div class="styLNAmountBox" style="height:5.5mm;width:34mm;float:right;border-bottom-width:0px">
+            <div class="styLNDesc" style="width:137mm;">
+              <span class="styBoldText">Balance due.</span> Subtract line 5 from line 4. This is the amount you owe. Check the applicable box if 
+				<div class="styLNDesc" style="height:5.5mm;width:70mm;">payment is through: EFTPS<span style="width2mm"/>
+				  <input type="checkbox" class="styCkbox">
+					<xsl:call-template name="PopulateCheckbox">
+					  <xsl:with-param name="TargetNode" select="$Form2290/EFTPSPaymentInd"/>
+					  <xsl:with-param name="BackupName">IRS2290EFTPSPayment</xsl:with-param>
+					</xsl:call-template>
+				  </input>
+				  <label>
+					<xsl:call-template name="PopulateLabel">
+					  <xsl:with-param name="TargetNode" select="$Form2290/EFTPSPaymentInd"/>
+					  <xsl:with-param name="BackupName">IRS2290EFTPSPayment</xsl:with-param>
+					</xsl:call-template>
+				  </label><span style="width2mm"/>
+				  Credit or Debit Card<span style="width2mm"/>
+				  <input type="checkbox" class="styCkbox">
+					<xsl:call-template name="PopulateCheckbox">
+					  <xsl:with-param name="TargetNode" select="$Form2290/CreditDebitCardPaymentInd"/>
+					  <xsl:with-param name="BackupName">IRS2290CreditDebitCardPaymentInd</xsl:with-param>
+					</xsl:call-template>
+				  </input>
+				  <label>
+					<xsl:call-template name="PopulateLabel">
+					  <xsl:with-param name="TargetNode" select="$Form2290/CreditDebitCardPaymentInd"/>
+					  <xsl:with-param name="BackupName">IRS2290CreditDebitCardPaymentInd</xsl:with-param>
+					</xsl:call-template>
+				  </label>
+				</div>
+				<!--Dotted Line-->
+				<span class="styBoldText" style="padding-top:2mm;">
+					<span style="width:6px"/>.            
+					<span style="width:8px"/>.
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.   
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>.  
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>. 
+					<span style="width:8px"/>.           
+					<span style="width:12px"/> 
+				</span>
+			  <span style="padding-top:2mm;display:inline;">
+				<img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/>
+			  </span>
+			</div>
+            <div class="styLNRightNumBox" style="height:9mm;padding-top:5mm;border-bottom-width:0px;">6</div>
+            <div class="styLNAmountBox" style="height:9mm;width:34mm;padding-top:5mm;border-bottom-width:0px;float:right">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$Form2290/BalanceDueAmt"/>
               </xsl:call-template>
             </div>
-            <div class="styLNRightNumBox" style="height:5.5mm;float:right;border-bottom-width:0px">6</div>
-            <span style="float:right;padding-right:3mm;padding-top:1mm">
-              <img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/>
-            </span>
-            <div class="styDotLn" style="float:right;padding-right:2mm;padding-top:1mm">..............</div>
           </div>
           <!-- Begin Part II -->
           <div class="styBB" style="width:187mm;height:4.75mm;border-top-width:1px">

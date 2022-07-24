@@ -104,7 +104,7 @@
 									<li style="margin-left:25mm;">You performed services for a firm.</li>
 									<li style="margin-left:25mm;">You believe your pay from the firm wasn't for services as an independent contractor.</li>
 									<li style="margin-left:25mm;">The firm didn't withhold your share of social security and Medicare taxes from your pay.</li>
-									<li style="margin-left:25mm;">One of the reasons listed below under <i>Reason codes</i> apply to you.</li>
+									<li style="margin-left:25mm;">One of the reasons listed below under <i>Reason codes</i> applies to you.</li>
 									</span>
 							</div>
 						</div>
@@ -234,10 +234,10 @@
 						<div  style="width:187mm; ">
 							<div class="styLNLeftNumBoxSD" style="height:auto;padding-top:1mm;"> 6</div>
 							<div class="styLNDesc" style="width:139.60mm;height:auto;float:left;padding-top:1mm;">
-								 <b>Total Wages.</b> Combine lines 1 through 5 in column (f). Enter here and include on Form 1040,<br/>
-								 <span style="float:left;">line 1; Form 1040SR, line 1; Form 1040NR, line 8; or Form 1040NR-EZ, line 3</span>
+								 <b>Total Wages.</b> Combine lines 1 through 5 in column (f). Enter here and include on Form 1040 or 1040-SR,<br/>
+								 <span style="float:left;">line 1; Form 1040-NR, line 8; or Form 1040-NR-EZ, line 3</span>
 								<!--Dotted Line-->
-								<span style="float:right;padding-right:3mm;letter-spacing:3.5mm;font-weight:bold;">........</span>
+								<span style="float:right;padding-right:3mm;letter-spacing:3.5mm;font-weight:bold;">..............</span>
 							</div>
 							<div class="styLNRightNumBoxNBB" style="width:7mm;height:auto;padding-top:4mm;border-bottom-width: 1px;">6</div>
 							<div class="styLNAmountBox" style="height:auto;width:32mm;font-size:7pt;padding-top:4mm;border-bottom-width: 1px;">
@@ -353,10 +353,9 @@
 						<div style="width:187mm;">
 							<div class="styLNLeftLtrBox" style="height:auto;padding-top:1mm;padding-left:1mm;">13</div>
 							<div class="styLNDesc" style="width:139.60mm;height:auto;float:left;padding-top:1mm;">
-								<div style="float:left;">Add lines 11 and 12. Enter here; include as tax on your annual tax return (Schedule 4 (Form 1040), line 58; Schedule 4 (Form 1040SR); line 58; Form 1040NR, line 56; Form 1040NR-EZ, line 16; Form 1040-SS, line 6; or Form
-1040-PR, line 6) and see the instructions there
+								<div style="float:left;">Add lines 11 and 12. Enter here; include as tax on your annual tax return (Schedule 2 (Form 1040 or 1040-SR), line 5; Form 1040-NR, line 56; Form 1040-NR-EZ, line 16; Form 1040-SS, line 6; or Form 1040-PR, line 6) and see the instructions there
 									<!--Dotted Line-->
-									<span style="margin-left:3mm;letter-spacing:3.5mm;font-weight:bold;">..........</span>
+									<span style="margin-left:3mm;letter-spacing:3.5mm;font-weight:bold;">....................</span>
 									<span style="width:5px;"/>
 									<span style="margin-left:3mm;"/>
 									<img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet" />
@@ -555,7 +554,7 @@
 							</xsl:if>
 						</xsl:attribute>
 						<span>
-						<input class="styCkbox" type="checkbox" alt="Form 1099 Checkbox">
+						<input class="styCkbox" type="checkbox" alt="Form 1099">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="Form1099ReceivedInd"/>
 								<xsl:with-param name="BackupName">Firm<xsl:value-of select="position()"/>Form1099ReceivedInd</xsl:with-param>
@@ -753,7 +752,7 @@
 							</xsl:if>
 						</xsl:attribute>
 						<span>
-						<input class="styCkbox" id="receivedInd" type="checkbox" alt="Form 1099 Checkbox">
+						<input class="styCkbox" id="receivedInd" type="checkbox" alt="Form 1099">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="Form1099ReceivedInd"/>
 								<xsl:with-param name="BackupName">Firm<xsl:value-of select="position()"/>Form1099ReceivedInd</xsl:with-param>

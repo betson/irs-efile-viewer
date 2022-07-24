@@ -51,15 +51,16 @@
 								<xsl:with-param name="TargetNode" select="$Form5695Data"/>
 							</xsl:call-template>
 							<br/>
+							<span class="styAgency" style="padding-top:.2mm;">(rev. February 2020)</span>
 							<br/>
-							<span class="styAgency" style="padding-top:.5mm;">Department of the Treasury</span>
+							<span class="styAgency" style="padding-top:.7mm;">Department of the Treasury</span>
 							<br/>
 							<span class="styAgency">Internal Revenue Service</span>
 						</div>
 						<div class="styFTBox" style="width:123.5mm;height:19mm;">
 							<!--  Main Title >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 							<div class="styMainTitle" style="height:6mm;padding-top:2mm;">
-								Residential Energy Credit
+								Residential Energy Credits
 							</div>
 							<div class="styGenericDiv" style="height:5mm;font-size:7pt;margin-left:9mm;">
 								<div style="width:100%;height:5mm;font-weight:bold;padding-top:1mm;">
@@ -125,7 +126,7 @@
 					<!-- Begin Part I																								 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<div class="styBB" style="width:187mm;height:4.25mm;border-top-width:0px;">
-						<div class="styPartName" style="font-size:9pt;">Part l</div>
+						<div class="styPartName" style="font-size:9pt;">Part I</div>
 						<div class="styPartDesc" style="font-size:9pt;padding-left:2mm;">Residential Energy Efficient Property Credit <span style="font-weight:normal;">(See instructions before completing this part.)</span>
 						</div>
 					</div>
@@ -275,7 +276,7 @@
 								<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyInUSInd"/>
 							</xsl:call-template>
 							<span style="width:1mm;"/>
-							<input type="checkbox" class="styCkbox">
+							<input type="checkbox" class="styCkbox" alt="HomeLocatedInUSA Yes">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyInUSInd"/>
 									<xsl:with-param name="BackupName">IRS5695RsdntlHomeLocatedInUSAInd</xsl:with-param>
@@ -290,7 +291,7 @@
 								<b>Yes</b>
 							</label>
 							<span style="width:4mm;"/>
-							<input type="checkbox" class="styCkbox">
+							<input type="checkbox" class="styCkbox" alt="HomeLocatedInUSA No">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyInUSInd"/>
 									<xsl:with-param name="BackupName">IRS5695RsdntlHomeLocatedInUSAInd</xsl:with-param>
@@ -575,8 +576,8 @@
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Header -->
 					<div class="styBB" style="width:187mm;height:4.25mm">
-						<div class="styPartName" style="font-size:9pt;">Part ll</div>
-						<div class="styPartDesc" style="font-size:9pt;padding-left:3mm;">Nonbusiness Energy Property Credit   (Reserved for Future Use)</div>
+						<div class="styPartName" style="font-size:9pt;">Part II</div>
+						<div class="styPartDesc" style="font-size:9pt;padding-left:3mm;">Nonbusiness Energy Property Credit</div>
 					</div>
 					<div style="width:187mm;height:3mm;font-size:4pt;">
 						<div class="styLNLeftNumBox" style="height:3mm;font-size:4pt;"/>
@@ -600,7 +601,7 @@
 								<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/HomeLocatedInUSAInd"/>
 							</xsl:call-template>
 							<span style="width:1mm;"/>
-							<input type="checkbox" class="styCkbox">
+							<input type="checkbox" class="styCkbox" alt="HomeLocatedInUSA Yes">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/HomeLocatedInUSAInd"/>
 									<xsl:with-param name="BackupName">IRS5695HomeLocatedInUSAInd</xsl:with-param>
@@ -615,7 +616,7 @@
 								<b>Yes</b>
 							</label>
 							<span style="width:4mm;"/>
-							<input type="checkbox" class="styCkbox">
+							<input type="checkbox" class="styCkbox"  alt="HomeLocatedInUSA No">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/HomeLocatedInUSAInd"/>
 									<xsl:with-param name="BackupName">IRS5695HomeLocatedInUSAInd</xsl:with-param>
@@ -631,7 +632,7 @@
 							</label>
 						</div>
 					</div>
-					<div class="styIRS5695LineItem" style="">
+					<div class="styIRS5695LineItem" style="" >
 						<div class="styLNLeftNumBox"/>
 						<div class="styLNDesc" style="padding-top:3mm;">
 							<b>Caution: </b>
@@ -695,7 +696,7 @@
 								<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/ImprvRltdToConstMainHomeInd"/>
 							</xsl:call-template>
 							<span style="width:1mm;"/>
-							<input type="checkbox" class="styCkbox">
+							<input type="checkbox" class="styCkbox" alt="ImprvRltdToConstMainHome Yes">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/ImprvRltdToConstMainHomeInd"/>
 									<xsl:with-param name="BackupName">IRS5695ImprvRltdToConstMainHomeInd</xsl:with-param>
@@ -710,7 +711,7 @@
 								<b>Yes</b>
 							</label>
 							<span style="width:4mm;"/>
-							<input type="checkbox" class="styCkbox">
+							<input type="checkbox" class="styCkbox" alt="ImprvRltdToConstMainHome No">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/ImprvRltdToConstMainHomeInd"/>
 									<xsl:with-param name="BackupName">IRS5695ImprvRltdToConstMainHomeInd</xsl:with-param>
@@ -845,7 +846,7 @@
 					<div class="styIRS5695LineItem" style="height:10mm;">
 						<div class="styLNLeftLtrBox">f</div>
 						<div class="styLNDesc" style="width:98.05mm;">
-							If you claimed window expenses on your Form 5695 prior to 2016, enter the amount from the Window 
+							If you claimed window expenses on your Form 5695 prior to 2018, enter the amount from the Window 
 							Expense Worksheet (see instructions); otherwise enter -0-
 							<span class="styIRS5695Dots">...................</span>
 						</div>
@@ -1087,7 +1088,7 @@
 						<div class="styLNDesc" style="height:7mm;">
 							<b>Nonbusiness energy property credit.	</b> Enter the smaller of line 28 or line 29.  Also include this<br/>
 							 amount on Schedule 3 (Form 1040), line 53; or Form 1040NR, line 50
-							<span class="styIRS5695Dots">..............</span>
+							<span class="styIRS5695Dots">..........</span>
 						</div>
 						<div class="styLNRightNumBox" style="width:7.8mm;height:7.5mm;">
 							<br/>30</div>

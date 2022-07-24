@@ -203,7 +203,7 @@
 									<span class="styGenericDiv" style="float:right;clear:none;width:7mm;padding-right:0mm;text-align:right;">
 										<xsl:call-template name="SetDynamicTableToggleButton">
 											<xsl:with-param name="TargetNode" select="$Form4684Data/PersonalUseProperties"/>
-											<xsl:with-param name="containerHeight" select="4"/>
+											<xsl:with-param name="containerHeight" select="5"/>
 											<xsl:with-param name="containerID" select=" 'PDctn' "/>
 										</xsl:call-template>
 									</span>
@@ -409,7 +409,7 @@
 					</div>
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form4684Data/PersonalUseProperties"/>
-						<xsl:with-param name="containerHeight" select="4"/>
+						<xsl:with-param name="containerHeight" select="5"/>
 						<xsl:with-param name="containerID" select=" 'PDctn' "/>
 					</xsl:call-template>
 					<!--<br/>-->
@@ -3169,7 +3169,7 @@
 													</xsl:otherwise>
 												</xsl:choose>
 											</td>
-											<td class="styTableCell" style="width:80.5mm;text-align:left; 
+											<td class="styTableCell" style="width:84.3mm;text-align:left; 
 											              border-color:black;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="CasualtyOrTheftDesc"/>
@@ -3192,7 +3192,7 @@
 												<span class="styTableCellPad"/>
 											</td>
 											<td class="styTableCell" 
-											style="width:30mm;border-bottom-width:1px;
+											style="width:31.5mm;border-bottom-width:1px;
 											           border-color:black;border-right-width:0px">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="GainsFromCasualtiesOrTheftAmt"/>
@@ -3207,7 +3207,7 @@
 											 border-right-width:0px;border-bottom-width:0px;font-weight:bold; 
 											 font-size:7pt;padding-left:1mm;border-top-width:1px">29<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="width:80.5mm;
+											<td class="styTableCell" style="width:84.3mm;
 											border-top-width:0px;border-bottom-width:0px;border-top-width:1px;
 											             border-left-width:0px;border-right-width:1px;border-color:black">
 												<span class="styTableCellPad"/>
@@ -3222,7 +3222,7 @@
 											             border-left-width:0px;border-right-width:1px;border-color:black">
                                               (<span style="width:16px;"/>)<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="width:34mm;border-right-width:0px;;border-top-width:1px;
+											<td class="styTableCell" style="width:31.5mm;border-right-width:0px;;border-top-width:1px;
 											border-bottom-width:0px">
 												<span class="styTableCellPad"/>
 											</td>
@@ -3234,7 +3234,7 @@
 											            border-right-width:0px;border-bottom-width:0px;font-weight:bold;">
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="width:80.5mm;border-top-width:1px; 
+											<td class="styTableCell" style="width:84.3mm;border-top-width:1px; 
 											            border-left-width:0px;border-color:black">
 												<span class="styTableCellPad"/>
 											</td>
@@ -3246,7 +3246,7 @@
 											           border-top-width:1px;border-color:black">
                                            (<span style="width:16px;"/>)<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="width:34mm;border-top-width:1px; 
+											<td class="styTableCell" style="width:31.5mm;border-top-width:1px; 
 											           border-right-width:0px;border-color:black">
 												<span class="styTableCellPad"/>
 											</td>
@@ -3261,7 +3261,7 @@
 										         border-bottom-width:0px;text-align:left;border-top-width: 1px;
 										                  font-weight:bold; font-size:7pt;padding-left:1mm">29
 										  </td>
-										<td class="styTableCell" style="width:80.5mm;border-top-width: 1px;  
+										<td class="styTableCell" style="width:84.3mm;border-top-width: 1px;  
 										         text-align:left;border-color:black;height:5mm">
 											<xsl:call-template name="PopulateAdditionalDataTableMessage">
 												<xsl:with-param name="TargetNode" select="$Form4684Data/
@@ -3274,7 +3274,7 @@
 										<td class="styTableCell" style="width:32mm;border-top-width: 1px; 
 										          border-bottom-width: 1px;border-color:black;">
 										</td>
-										<td class="styTableCell" style="width:34mm;border-right-width:0px; 
+										<td class="styTableCell" style="width:31.5mm;border-right-width:0px; 
 										          border-top-width: 1px;border-bottom-width: 1px;border-color:black;">
 											<span style="width:16px;"/>
 											<span class="styTableCellPad"/>
@@ -3284,7 +3284,7 @@
 										<td class="styTableCell" style="width:8mm;border-right-width:0px; 
 										         border-bottom-width:0px;text-align:left;border-top-width: 0px; 
 										                  font-weight:bold; font-size:7pt;padding-left:1mm"/>
-										<td class="styTableCell" style="width:80.5mm;border-top-width: 0px; 
+										<td class="styTableCell" style="width:84.3mm;border-top-width: 0px; 
 										          border-bottom-width: 1px;border-color:black;">
 											<span style="width:16px;"/>
 											<span class="styTableCellPad"/>
@@ -3299,7 +3299,7 @@
 											<span style="width:16px;"/>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:34mm;border-top-width: 0px;  
+										<td class="styTableCell" style="width:31.5mm;border-top-width: 0px;  
 										         border-bottom-width: 1px;border-right-width:0px;border-color:black;">
 											<span style="width:16px;"/>
 											<span class="styTableCellPad"/>
@@ -3319,19 +3319,19 @@
 					<!-- Line 30 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;">30</div>
-						<div class="styLNDesc" style="width:72mm;height:4mm;border-style: solid; border-color: black;border-top-width:1px; 
+						<div class="styLNDesc" style="width:75.3mm;height:4mm;border-style: solid; border-color: black;border-top-width:1px; 
 																		border-bottom-width:0px;border-left-width: 0px; border-right-width: 0px;">
 							<span>
 								<span style="float:left;">
 					            Totals. Add the amounts on line 29
 					            </span>
 								<span class="styBoldText" style="float:right;padding-right:1mm;">
-									<span class="styDotLn">......</span>
+									<span class="styDotLn">........</span>
 								</span>
 							</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.5mm;border-top-width:1px;">30</div>
-						<div class="styLNAmountBox" style="width:32.5mm;font-size: 6pt;height:4.5mm;border-top-width:1px;border-right-width:1px;
+						<div class="styLNAmountBox" style="width:32mm;font-size: 6pt;height:4.5mm;border-top-width:1px;border-right-width:1px;
 																				border-left-width:1px;">
 							<xsl:call-template name="PopulateNegativeNumber">
 								<xsl:with-param name="TargetNode"
@@ -3348,7 +3348,7 @@
 							<span class="styTableCellPad"/>
 						</div>
 						<div class="styLNAmountBox"
-						 style="width:34mm;font-size: 6pt;height:4.5mm;border-top-width:1px;border-left-width:0px;">
+						 style="width:31.5mm;font-size: 6pt;height:4.5mm;border-top-width:1px;border-left-width:0px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" 
 								select="$Form4684Data/ShortTermTotalGainsTheftAmt"/>
@@ -3484,7 +3484,7 @@
 												</xsl:if>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="height:4mm;width:80.5mm;text-align:left;
+											<td class="styTableCell" style="height:4mm;width:84.3mm;text-align:left;
 											border-bottom-width:1px;border-color:black">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="CasualtyOrTheftDesc"/>
@@ -3506,7 +3506,7 @@
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="width:30mm;height:4mm;
+											<td class="styTableCell" style="width:31.5mm;height:4mm;
 											border-color:black;border-right-width:0px">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode"
@@ -3523,7 +3523,7 @@
 											border-bottom-width:0px;font-weight:bold; font-size:7pt;padding-left:1mm;">34
 											<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="height:4mm;width:80.5mm;border-top-width:0px;
+											<td class="styTableCell" style="height:4mm;width:84.3mm;border-top-width:0px;
 											border-bottom-width:0px;border-left-width:0px;border-right-width:1px;
 											border-color:black">
 												<span class="styTableCellPad"/>
@@ -3538,7 +3538,7 @@
 											           border-left-width:0px;border-right-width:1px;border-color:black">
                                               (<span style="width:16px;"/>)<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="height:4mm;width:34mm;
+											<td class="styTableCell" style="height:4mm;width:31.5mm;
 											border-right-width:0px;border-bottom-width:0px;">
 												<span class="styTableCellPad"/>
 											</td>
@@ -3552,7 +3552,7 @@
 												<span class="styTableCellPad"/>
 											</td>
 											<td class="styTableCell" 
-											style="height:4mm;width:80.5mm;border-top-width:1px;border-left-width:0px;
+											style="height:4mm;width:84.3mm;border-top-width:1px;border-left-width:0px;
 											border-color:black">
 												<span class="styTableCellPad"/>
 											</td>
@@ -3564,7 +3564,7 @@
 											style="height:4mm;width:32mm;border-top-width:1px;border-color:black">
                                            (<span style="width:16px;"/>)<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="height:4mm;width:34mm;border-top-width:1px;
+											<td class="styTableCell" style="height:4mm;width:31.5mm;border-top-width:1px;
 											border-right-width:0px;border-color:black;
 											">
 												<span class="styTableCellPad"/>
@@ -3583,7 +3583,7 @@
 										font-weight:bold;font-size:7pt;padding-left:1mm">34<span 
 										class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="height:4mm;width:80.5mm;text-align:left;
+										<td class="styTableCell" style="height:4mm;width:75.3mm;text-align:left;
 										border-right-width:1px;border-bottom-width:1px;border-left-width:0px; 
 										          border-top-width:1px;border-color:black;">
 											<xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -3603,7 +3603,7 @@
 											<span style="width:16px;"/>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="height:4mm;width:34mm;border-right-width:0px;
+										<td class="styTableCell" style="height:4mm;width:31.5mm;border-right-width:0px;
 										border-bottom-width:1px;border-left-width:0px;border-top-width:0px;
 										border-color:black;">
 											<span class="styTableCellPad"/>
@@ -3616,7 +3616,7 @@
 											<span class="styTableCellPad"/>
 										</td>
 										<td class="styTableCell" 
-										style="height:4mm;width:80.5mm;border-right-width:1px;border-bottom-width:1px;
+										style="height:4mm;width:75.3mm;border-right-width:1px;border-bottom-width:1px;
 										font-weight:bold;border-color:black;">
 											<span class="styTableCellPad"/>
 										</td>
@@ -3631,7 +3631,7 @@
 											<span style="width:16px;border-left-width:1px;border-color:black;"/>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:34mm;height:4mm;border-left-width:0px;
+										<td class="styTableCell" style="width:31.5mm;height:4mm;border-left-width:0px;
 										border-right-width:0px;border-bottom-width:1px;border-color:black">
 											<span class="styTableCellPad"/>
 										</td>
@@ -3651,12 +3651,12 @@
 					<!-- Line 35 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;">35</div>
-						<div class="styLNDesc" style="width:72mm;height:4mm;font-size: 6pt;">
+						<div class="styLNDesc" style="width:75.3mm;height:4mm;font-size: 6pt;">
 					          Total losses. Add amounts on line 34, columns (b)(i) and (b)(ii)
 					          <span class="styBoldText"/>
 						</div>
 						<div class="styLNRightNumBox" style="height:4mm;">35</div>
-						<div class="styLNAmountBox" style="width:32.5mm;font-size: 6pt;height:4mm;border-right-width:1px;border-left-width:1px;border-top-width:0px; 
+						<div class="styLNAmountBox" style="width:32mm;font-size: 6pt;height:4mm;border-right-width:1px;border-left-width:1px;border-top-width:0px; 
 						          border-color:black">
 							<xsl:call-template name="PopulateNegativeNumber">
 								<xsl:with-param name="TargetNode" 
@@ -3672,7 +3672,7 @@
 							</xsl:call-template>
 							<span class="styTableCellPad"/>
 						</div>
-						<div class="styLNAmountBox" style="width:34mm;background-color:lightgrey;border-left-width:0px;border-top-width:0px;
+						<div class="styLNAmountBox" style="width:31.5mm;background-color:lightgrey;border-left-width:0px;border-top-width:0px;
 						    height:4mm;border-color:black"/>
 					</div>
 					<!-- line 36-->

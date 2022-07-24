@@ -739,7 +739,7 @@
 							<div style="width:187mm;">
 								<div class="styLNLeftNumBox" style="width:5mm;text-align:center;font-weight:bold;border:none;padding-left:1.5mm;">12</div>
 								<div class="styLNDesc" style="width: 124.8mm;padding-left:2mm;text-align:left;border:none;">
-									<span style="float: left;">Enter the amount from Form 1040 or 1040-SR, line 12b or Form 1040-NR, line 45</span>
+									<span style="float: left;">Enter the amount from Form 1040 or 1040-SR, line 12b (or Form 1040-NR, line 45)</span>
 									<span class="styDotLn" style="float:right;padding-right:2mm;">....</span>
 								</div>
 								<div class="styLNRightNumBox" style="width:8mm;border-bottom-width:1px;border-right:1px;">12</div>

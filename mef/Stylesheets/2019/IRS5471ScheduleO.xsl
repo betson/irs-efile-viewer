@@ -151,18 +151,18 @@
 							<br/>
 							<br/>
 							<span style="font-size:7pt;">
-								<xsl:if test="$Form5471ScheduleO/ForeignCorporationEIN!=''">
-									<xsl:call-template name="PopulateEIN">
-										<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/ForeignCorporationEIN"/>
-									</xsl:call-template>
-								</xsl:if>
-								<xsl:if test="$Form5471ScheduleO/MissingEINReasonCd">
-									<br/>
-									<br/>
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/MissingEINReasonCd"/>
-									</xsl:call-template>
-								</xsl:if>
+							<xsl:choose>
+									<xsl:when test="$Form5471ScheduleO/ForeignCorporationEIN">
+											<xsl:call-template name="PopulateEIN">
+											<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/ForeignCorporationEIN"/>
+											</xsl:call-template>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$Form5471ScheduleO/MissingEINReasonCd"/>
+											</xsl:call-template>
+										</xsl:otherwise>
+							</xsl:choose>
 							</span>
 						</div>
 						<div class="styNameBox" style="float:left;clear:none;padding-left:1mm;width:45mm;height:11mm;border-right-width:0px;border-color:black;">

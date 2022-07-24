@@ -168,7 +168,7 @@
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$Form1120SData/ScheduleM3AttachedInd"/>
-											<xsl:with-param name="BackupName">IRS1120SSchM3Attached</xsl:with-param>
+											<xsl:with-param name="BackupName">SchM3AttachedLabel</xsl:with-param>
 										</xsl:call-template>										
 									</label>
 									<span style="width:2px;float:left;"/>
@@ -176,10 +176,10 @@
 										<xsl:with-param name="TargetNode" select="$Form1120SData/ScheduleM3AttachedInd"/>
 									</xsl:call-template>
 								</div>
-								<input type="checkbox" alt="SchM3Attached" class="styCkbox" style="padding-left:10mm;">
+								<input type="checkbox" alt="SchM3 Attached Indicator" class="styCkbox" style="padding-left:10mm;">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120SData/ScheduleM3AttachedInd"/>
-										<xsl:with-param name="BackupName">IRS1120SSchM3Attached</xsl:with-param>
+										<xsl:with-param name="BackupName">SchM3AttachedIndicator</xsl:with-param>
 									</xsl:call-template>
 								</input>
 							</div>
@@ -273,26 +273,26 @@
 						<input class="styCkbox" type="checkbox" alt="First Year S Corporation Indicator Yes" name="Checkbox" id="dummyidyes" style="width:3mm;">
 							<xsl:call-template name="PopulateYesCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form1120SData/FirstYearSCorporationInd"/>
-								<xsl:with-param name="BackupName">1120SFirstYearSCorporationIndicator Yes</xsl:with-param>
+								<xsl:with-param name="BackupName">FirstYearSCorporationIndicator Yes</xsl:with-param>
 							</xsl:call-template>
 						</input>
 						<label for="dummyidyes">
 							<xsl:call-template name="PopulateLabelYes">
 								<xsl:with-param name="TargetNode" select="$Form1120SData/FirstYearSCorporationInd"/>
-								<xsl:with-param name="BackupName">1120SFirstYearSCorporationIndicatorYesLabel</xsl:with-param>
+								<xsl:with-param name="BackupName">FirstYearSCorporationIndicatorYesLabel</xsl:with-param>
 							</xsl:call-template>
 							Yes
 						</label>
 						<input class="styCkbox" type="checkbox" alt="First Year S Corporation Indicator No" name="Checkbox" id="dummyidno" style="width:3mm;">
 							<xsl:call-template name="PopulateNoCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form1120SData/FirstYearSCorporationInd"/>
-								<xsl:with-param name="BackupName">1120SFirstYearSCorporationIndicatorNo</xsl:with-param>
+								<xsl:with-param name="BackupName">FirstYearSCorporationIndicatorNo</xsl:with-param>
 							</xsl:call-template>
 						</input>
 						<label for="dummyidno">
 							<xsl:call-template name="PopulateLabelNo">
 								<xsl:with-param name="TargetNode" select="$Form1120SData/FirstYearSCorporationInd"/>
-								<xsl:with-param name="BackupName">1120SFirstYearSCorporationIndicatorNoLabel</xsl:with-param>
+								<xsl:with-param name="BackupName">FirstYearSCorporationIndicatorNoLabel</xsl:with-param>
 							</xsl:call-template>
 							No
 						</label>
@@ -312,13 +312,13 @@
 							<input type="checkbox" alt="Final Return Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120SData/FinalReturnInd"/>
-									<xsl:with-param name="BackupName">1120SFinalReturnInd</xsl:with-param>
+									<xsl:with-param name="BackupName">FinalReturnInd</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label style="font-size:6pt; padding-right:1mm;">
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1120SData/FinalReturnInd"/>
-									<xsl:with-param name="BackupName">1120SFinalReturnLabel</xsl:with-param>
+									<xsl:with-param name="BackupName">FinalReturnLabel</xsl:with-param>
 								</xsl:call-template>
 								Final return          
 							</label>
@@ -326,13 +326,13 @@
 							<input type="checkbox" alt="Name Change Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120SData/NameChangeInd"/>
-									<xsl:with-param name="BackupName">1120SNameChangeInd</xsl:with-param>
+									<xsl:with-param name="BackupName">NameChangeIndicator</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label style="font-size:6pt; padding-right:1mm;">
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1120SData/NameChangeInd"/>
-									<xsl:with-param name="BackupName">1120SNameChangeLabel</xsl:with-param>
+									<xsl:with-param name="BackupName">NameChangeLabel</xsl:with-param>
 								</xsl:call-template>
 								Name change          
 							</label>
@@ -340,13 +340,13 @@
 							<input type="checkbox" alt="Address Change Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120SData/AddressChangeInd"/>
-									<xsl:with-param name="BackupName">1120SAddressChangeInd</xsl:with-param>
+									<xsl:with-param name="BackupName">AddressChangeIndicator</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label style="font-size:6pt; padding-right:1mm;">
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1120SData/AddressChangeInd"/>
-									<xsl:with-param name="BackupName">1120SAddressChangeLabel</xsl:with-param>
+									<xsl:with-param name="BackupName">AddressChangeLabel</xsl:with-param>
 								</xsl:call-template>
 								Address change            
 							</label>
@@ -354,13 +354,13 @@
 									<input type="checkbox" alt="Amended Return Indicator" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form1120SData/AmendedReturnInd"/>
-											<xsl:with-param name="BackupName">1120SAmendedReturnInd</xsl:with-param>
+											<xsl:with-param name="BackupName">AmendedReturnIndicator</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<label style="font-size:6pt;">
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$Form1120SData/AmendedReturnInd"/>
-											<xsl:with-param name="BackupName">1120SAmendedReturnLabel</xsl:with-param>
+											<xsl:with-param name="BackupName">AmendedReturnLabel</xsl:with-param>
 										</xsl:call-template>
 										Amended return           
 									</label>
@@ -373,13 +373,13 @@
 									<input type="checkbox" alt="Election Termination Revocation Indicator" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form1120SData/ElectionTerminationRvkInd"/>
-											<xsl:with-param name="BackupName">1120ElectionTerminationRevocationInd</xsl:with-param>
+											<xsl:with-param name="BackupName">ElectionTerminationRevocationIndicator</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<label style="font-size:6pt; padding-right:2mm;">
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$Form1120SData/ElectionTerminationRvkInd"/>
-											<xsl:with-param name="BackupName">1120ElectionTerminationRevocationLabel</xsl:with-param>
+											<xsl:with-param name="BackupName">ElectionTerminationRevocationLabel</xsl:with-param>
 										</xsl:call-template>
 										S election termination or revocation          
 									</label>
@@ -388,13 +388,13 @@
 									<input type="checkbox" alt="Superseded Return Indicator" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form1120SData/SupersededReturnInd"/>
-											<xsl:with-param name="BackupName">1120SSupersededReturnInd</xsl:with-param>
+											<xsl:with-param name="BackupName">SupersededReturnIndicator</xsl:with-param>
 										</xsl:call-template>
 									</input>
 									<label style="font-size:6pt; padding-right:2mm;">
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$Form1120SData/SupersededReturnInd"/>
-											<xsl:with-param name="BackupName">1120SSupersededReturnLabel</xsl:with-param>
+											<xsl:with-param name="BackupName">SupersededReturnLabel</xsl:with-param>
 										</xsl:call-template>
 										Superseded Return            
 									</label>
@@ -427,30 +427,30 @@
 						<div class="styGenericDiv" style="width:182mm; ">
 							Check if corporation:
 						    <span class="styBoldText" style="padding-right:1mm; font-size:7pt;">(1)</span>
-							<input type="checkbox" alt="Sect465AtRiskAggregatedActyInd" class="styCkbox">
+							<input type="checkbox" alt="Sect465At Risk AggregatedActy Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120SData/Sect465AtRiskAggregatedActyInd"/>
-									<xsl:with-param name="BackupName">1120SSect465AtRiskAggregatedActyInd</xsl:with-param>
+									<xsl:with-param name="BackupName">Sect465AtRiskAggregatedActyIndicator</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label style="font-size:6pt; padding-right:2mm;">
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1120SData/Sect465AtRiskAggregatedActyInd"/>
-									<xsl:with-param name="BackupName">1120SSect465AtRiskAggregatedActyInd</xsl:with-param>
+									<xsl:with-param name="BackupName">Sect465AtRiskAggregatedActyLabel</xsl:with-param>
 								</xsl:call-template>
 								Aggregated activities for section 465 at&#8211;risk purposes          
 							</label>
 							<span class="styBoldText" style="padding-right:1mm; font-size:7pt;">(2)</span>
-							<input type="checkbox" alt="Sect469PALGroupedActyInd" class="styCkbox">
+							<input type="checkbox" alt="Sect469 PAL Grouped Acty Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120SData/Sect469PALGroupedActyInd"/>
-									<xsl:with-param name="BackupName">1120SSect469PALGroupedActyInd</xsl:with-param>
+									<xsl:with-param name="BackupName">Sect469PALGroupedActyIndicator</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label style="font-size:6pt; padding-right:2mm;">
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1120SData/Sect469PALGroupedActyInd"/>
-									<xsl:with-param name="BackupName">1120SSect469PALGroupedActyInd</xsl:with-param>
+									<xsl:with-param name="BackupName">Sect469PALGroupedActyILabel</xsl:with-param>
 								</xsl:call-template>
 								Grouped activities for section 469 passive activity purposes       
 							</label>
@@ -1180,17 +1180,17 @@
 									<span class="styDotLn" style="float:right;padding-right:1mm;">....
 										<img src="{$ImagePath}/1120S_Bullet_Md.gif" alt="Arrowt"/>
 										<span style="width:4mm;"/>
-										<input type="checkbox" alt="Form2220Attached" class="styCkbox">
+										<input type="checkbox" alt="Form2220 Attached Indicator" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$Form1120SData/Form2220AttachedInd"/>
-												<xsl:with-param name="BackupName">IRS1120SForm2220Attached</xsl:with-param>
+												<xsl:with-param name="BackupName">Form2220AttachedIndicator</xsl:with-param>
 											</xsl:call-template>
 										</input>
 										
 										<label style="font-size:6pt; padding-right:2mm;">
 							            	<xsl:call-template name="PopulateLabel">
 							                	<xsl:with-param name="TargetNode" select="$Form1120SData/Form2220AttachedInd"/>
-					        		        	<xsl:with-param name="BackupName">IRS1120SForm2220Attached</xsl:with-param>
+					        		        	<xsl:with-param name="BackupName">Form2220AttachedLabel</xsl:with-param>
 							            	</xsl:call-template>
 						            	</label>
 										<span style="width:2mm;"/>
@@ -1306,7 +1306,7 @@
 								<div class="styGenericDiv" style="width:2px;"/>
 								<div style="border-right:3px solid black;border-left:3px solid black;border-bottom:3px solid black;border-top:3px solid black;float:right;width:41mm;" class="styGenericDiv">		
 									&#160;May the IRS discuss this return<br/> &#160;with the preparer shown below <br/>&#160;(see instructions)?
-									<input class="styCkbox" type="checkbox" alt="DiscussWithPaidPreparerIndicatorYes" name="Checkbox" id="dummyidyes" 
+									<input class="styCkbox" type="checkbox" alt="Discuss With Paid Preparer Indicator Yes" name="Checkbox" id="dummyidyes" 
 style="width:3mm;">
 										<xsl:call-template name="PopulateReturnHeaderOfficer">
 											<xsl:with-param name="TargetNode">AuthorizeThirdPartyYesCheckbox</xsl:with-param>
@@ -1320,7 +1320,7 @@ style="width:3mm;">
 										</xsl:call-template>
 										Yes
 									</label>
-									<input class="styCkbox" type="checkbox" alt="DiscussWithPaidPreparerIndicatorNo" name="Checkbox" id="dummyidno" style="width:2.5mm;">
+									<input class="styCkbox" type="checkbox" alt="Discuss With Paid Preparer Indicator No" name="Checkbox" id="dummyidno" style="width:2.5mm;">
 										<xsl:call-template name="PopulateReturnHeaderOfficer">
 											<xsl:with-param name="TargetNode">AuthorizeThirdPartyNoCheckbox</xsl:with-param>
 											<xsl:with-param name="BackupName">DiscussWithPaidPreparerIndicatorNo</xsl:with-param>
@@ -1371,17 +1371,17 @@ style="width:3mm;">
 										<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpDatePrepared</xsl:with-param>
 									</xsl:call-template>
 								</div>
-								<div class="styLNDesc" style="height:7.5mm;width:18.2mm;border-right:1px solid black;padding-top:0mm;padding-bottom:0mm;padding-left:1mm;">
+							<div class="styLNDesc" style="height:7.5mm;width:18.2mm;border-right:1px solid black;padding-top:0mm;padding-bottom:0mm;padding-left:1mm;">
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$RtnHdrData/PreparerPersonGrp/SelfEmployedInd"/>
-											<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpSelfEmployed</xsl:with-param>
+											<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpSelfEmployedLabel</xsl:with-param>
 										</xsl:call-template>
 										Check 
-										<input class="styCkbox" alt="PreparerPersonSelfEmployed" type="checkbox" style="width:4mm;">
+										<input class="styCkbox" alt="Preparer Person Self Employed Indicator" type="checkbox" style="width:4mm;">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$RtnHdrData/PreparerPersonGrp/SelfEmployedInd"/>
-												<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpSelfEmployed</xsl:with-param>
+												<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpSelfEmployedIndicator</xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<span style="width:4px;"/>if<br/>self-employed
@@ -1559,32 +1559,32 @@ style="width:3mm;">
 							<span style="width:8px"/>
 							<!-- BEGIN Schedule B Line 1a -->
 							<span class="styBoldText">a </span>
-							<input type="checkbox" alt="MethodOfAccountingCash" class="styCkbox">
+							<input type="checkbox" alt="Method Of Accounting Cash Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120SScheduleB/MethodOfAccountingCashInd"/>
-									<xsl:with-param name="BackupName">IRS1120SScheduleBMethodOfAccountingCash</xsl:with-param>
+									<xsl:with-param name="BackupName">ScheduleBMethodOfAccountingCashINdicator</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1120SScheduleB/MethodOfAccountingCashInd"/>
-									<xsl:with-param name="BackupName">IRS1120SScheduleBMethodOfAccountingCash</xsl:with-param>
+									<xsl:with-param name="BackupName">ScheduleBMethodOfAccountingCashLabel</xsl:with-param>
 								</xsl:call-template>
 								Cash
 							</label>
 							<span style="width:12px"/>
 							<!-- BEGIN Schedule B Line 1b -->
 							<span class="styBoldText">b </span>
-							<input type="checkbox" alt="MethodOfAccountingAccrual" class="styCkbox">
+							<input type="checkbox" alt="Method Of Accounting Accrual Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120SScheduleB/MethodOfAccountingAccrualInd"/>
-									<xsl:with-param name="BackupName">IRS1120SScheduleBMethodOfAccountingAccrual</xsl:with-param>
+									<xsl:with-param name="BackupName">ScheduleBMethodOfAccountingAccrualIndicator</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1120SScheduleB/MethodOfAccountingAccrualInd"/>
-									<xsl:with-param name="BackupName">IRS1120SScheduleBMethodOfAccountingAccrual</xsl:with-param>
+									<xsl:with-param name="BackupName">ScheduleBMethodOfAccountingAccrualLabel</xsl:with-param>
 								</xsl:call-template>
 								Accrual
 							</label>							
@@ -1598,16 +1598,16 @@ style="width:3mm;">
 					<div style="width:187mm;">
 						<div class="styLNDesc" style="width:44mm;height:5mm;"/>
 						<span class="styBoldText">c </span>
-						<input type="checkbox" alt="MethodOfAccountingOther" class="styCkbox">
+						<input type="checkbox" alt="Method Of Accounting Other Indicator" class="styCkbox">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleB/MethodOfAccountingOtherInd"/>
-								<xsl:with-param name="BackupName">IRS1120SScheduleBMethodOfAccountingOther</xsl:with-param>
+								<xsl:with-param name="BackupName">ScheduleBMethodOfAccountingOtherIndicator</xsl:with-param>
 							</xsl:call-template>
 						</input>
 						<label>
 							<xsl:call-template name="PopulateLabel">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleB/MethodOfAccountingOtherInd"/>
-								<xsl:with-param name="BackupName">IRS1120SScheduleBMethodOfAccountingOther</xsl:with-param>
+								<xsl:with-param name="BackupName">ScheduleBMethodOfAccountingOtherLabel</xsl:with-param>
 							</xsl:call-template>
 							Other (specify)
 						</label>
@@ -2234,16 +2234,16 @@ style="width:3mm;">
 							<span class="styDotLn" style="padding-right:2mm;padding-left:3.5mm;">...</span>								
 							<img src="{$ImagePath}/1120S_Bullet_Md.gif" alt="Arrow"/>
 							<span style="width:4mm"/>
-							<input type="checkbox" alt="OfferedDebtInstruments" class="styCkbox">
+							<input type="checkbox" alt="Offered Deb tInstruments Indicator" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120SScheduleB/OfferedDebtInstrumentsInd"/>
-									<xsl:with-param name="BackupName">IRS1120SScheduleBOfferedDebtInstruments</xsl:with-param>
+									<xsl:with-param name="BackupName">ScheduleBOfferedDebtInstrumentsIndicator</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 							<xsl:call-template name="PopulateLabel">
 								<xsl:with-param name="TargetNode" select="$Form1120SScheduleB/OfferedDebtInstrumentsInd"/>
-								<xsl:with-param name="BackupName">IRS1120SScheduleBOfferedDebtInstruments</xsl:with-param>
+								<xsl:with-param name="BackupName">ScheduleBOfferedDebtInstrumentsLabel</xsl:with-param>
 							</xsl:call-template>
 						</label>
 						</div>
@@ -2970,6 +2970,7 @@ style="width:3mm;">
 						</div>
 						<!-- BEGIN Schedule K, Line 10-->
 						<!-- Exception: IE limitation, browser display take precedent over print out --> 
+							<!-- Exception: IE limitation, browser display take precedent over print out --> 
 						<div class="styGenericDiv" style="width:177mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" >10</div>
@@ -2983,11 +2984,15 @@ style="width:3mm;">
 									<!--Dotted Line-->
 									<div class="styDotLn" style="float:left;padding-right:1mm;">.....</div>
 									Type <img src="{$ImagePath}/1120S_Bullet_Md.gif" alt="Arrow"/>
-									<span  style="width:35mm;">
+									<span  style="width:35mm;padding-left:2mm">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form1120SScheduleK/OtherIncomeLossAmt/@otherIncomeTyp"/>
 										</xsl:call-template>
-									</span>
+										<span  style="padding-left:2mm">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$Form1120SScheduleK/OtherIncomeLossAmt/@globalIntangibleLowTxIncmAmt"/>
+										</xsl:call-template>
+									</span></span>
 								</div>
 							</div>
 							<div style="float:right;clear:none">
@@ -3225,7 +3230,7 @@ style="width:3mm;">
 							</div>
 						</div>
 						<!-- BEGIN Schedule K, Line 13d--> 
-						<div class="styGenericDiv" style="width:177mm;">
+							<div class="styGenericDiv" style="width:177mm;">
 							<div style="float:left;">
 								<div class="styLNLeftNumBox" style="padding-left:4mm;">d</div>
 								<div class="styLNDesc" style="width:123.7mm;">
@@ -3236,7 +3241,7 @@ style="width:3mm;">
 											<xsl:with-param name="TargetNode" select="$Form1120SScheduleK/OtherRentalRealEstateAmt"/>
 											<xsl:with-param name="IDstring">1120SSchKLine10</xsl:with-param>
 										</xsl:call-template>
-										<span style="width:2px;"/>
+										<span style="width:8px;"/>
 									</span>
 									<!--Dotted Line-->
 									<div class="styDotLn" style="float:left;padding-right:1mm;">.</div>
@@ -3258,7 +3263,7 @@ style="width:3mm;">
 							</div>
 						</div>
 						<!-- BEGIN Schedule K, Line 13e--> 
-						<div class="styGenericDiv" style="width:177mm;">
+							<div class="styGenericDiv" style="width:177mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="padding-left:4mm;">e</div>
 								<div class="styLNDesc" style="width:123.7mm;">
@@ -3274,10 +3279,10 @@ style="width:3mm;">
 									<!--Dotted Line-->
 									<div class="styDotLn" style="float:left;padding-right:1mm;">.....</div>
 									Type <img src="{$ImagePath}/1120S_Bullet_Md.gif" alt="Arrow"/>
-									<span style="width:33mm;border-bottom:1px solid black;;padding-left:1mm;">
-										<xsl:call-template name="PopulateText">
+									<span style="width:33mm;border-bottom:1px solid black;;padding-left:1mm;"> See Additional Data
+										<!--<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form1120SScheduleK/OtherRentalCreditsAmt/@otherRentalCreditDesc"/>
-										</xsl:call-template>
+										</xsl:call-template>-->
 									</span>
 								</div>
 							</div>
@@ -3314,7 +3319,7 @@ style="width:3mm;">
 								</div>
 							</div>
 						</div>
-						<!-- BEGIN Schedule K, Line 13g-->
+							<!-- BEGIN Schedule K, Line 13g-->
 						<!-- Exception: IE limitation, browser display take precedent over print out -->   
 						<div class="styGenericDiv" style="width:177mm;">
 							<div style="float:left;">
@@ -3336,7 +3341,12 @@ style="width:3mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form1120SScheduleK/OtherCreditsAmt/@otherCreditsTotalDesc"/>
 										</xsl:call-template>
-									</span>
+									<!--</span>-->
+									<span style=";padding-left:2mm;">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$Form1120SScheduleK/OtherCreditsAmt/@emplrCrPdFamilyMedLeaveAmt"/>
+										</xsl:call-template>
+									</span></span>
 								</div>
 							</div>
 							<div style="float:right;">
@@ -3784,10 +3794,10 @@ style="width:3mm;">
 										<span style="width:5mm;">
 											<img src="{$ImagePath}/1120S_Bullet_Md.gif" alt="Arrow"/>
 										</span>
-										<input type="checkbox" alt="TotalForeignTaxesPaid" class="styCkbox" style="margin:2px;">
+										<input type="checkbox" alt="Total Foreign Taxes Paid Indicator" class="styCkbox" style="margin:2px;">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$Form1120SScheduleK/TotalForeignTaxesPaidInd"/>
-												<xsl:with-param name="BackupName">IRS1120SScheduleKTotalForeignTaxesPaid</xsl:with-param>
+												<xsl:with-param name="BackupName">ScheduleKTotalForeignTaxesPaidIndicator</xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<label>
@@ -3801,16 +3811,16 @@ style="width:3mm;">
 											<xsl:with-param name="TargetNode" select="$Form1120SScheduleK/TotalForeignTaxesPaidInd"/>
 										</xsl:call-template>
 										<span style="width:12px"/>
-										<input type="checkbox" alt="TotalForeignTaxesAccrued" class="styCkbox" style="margin:2px;">
+										<input type="checkbox" alt="Total Foreign Taxes Accrued Indicator" class="styCkbox" style="margin:2px;">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$Form1120SScheduleK/TotalForeignTaxesAccruedInd"/>
-												<xsl:with-param name="BackupName">IRS1120SScheduleKTotalForeignTaxesAccrued</xsl:with-param>
+												<xsl:with-param name="BackupName">ScheduleKTotalForeignTaxesAccruedIndicator</xsl:with-param>
 											</xsl:call-template>
 										</input>
 										<label>
 											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="$Form1120SScheduleK/TotalForeignTaxesAccruedInd"/>
-												<xsl:with-param name="BackupName">IRS1120SScheduleKTotalForeignTaxesAccrued</xsl:with-param>
+												<xsl:with-param name="BackupName">ScheduleKTotalForeignTaxesAccruedLabel</xsl:with-param>
 											</xsl:call-template>
 											<span style="padding-bottom:0mm;">&#160;Accrued</span>
 										</label>
@@ -5650,7 +5660,12 @@ style="width:3mm;">
 							<xsl:with-param name="TargetNode" select="$Form1120SScheduleK/OtherDeductionsAmt/@form4684Cd"/>
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
-						<xsl:call-template name="PopulateLeftoverRow">
+                        <xsl:call-template name="PopulateLeftoverRow">
+							<xsl:with-param name="Desc">Schedule K, Line 13e - OtherRentalCreditsAmt</xsl:with-param>
+							<xsl:with-param name="TargetNode" select="$Form1120SScheduleK/OtherRentalCreditsAmt/@otherRentalCreditDesc"/>
+							<xsl:with-param name="DescWidth" select="100"/>
+						</xsl:call-template>
+                        <xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Schedule K, Line 14n - Other Foreign Tax Information
 						    </xsl:with-param>
 							<xsl:with-param name="TargetNode" select="$Form1120SScheduleK/OtherForeignTaxInformation"/>

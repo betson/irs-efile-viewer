@@ -521,9 +521,10 @@ To File U.S. Income Tax Return</div>
 					</div>
 					<div style="width:172mm;border-left:1px solid black;padding-left:2mm;padding-top:1mm;">
 						<span style="width:1mm;"/>
-						<input type="checkbox" class="styCkbox" title="Approved Application">
+						<input type="checkbox" class="styCkbox" alt="Approved Application">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/.."/>
+								<xsl:with-param name="BackupName">F2350ApprovedApplication</xsl:with-param>
 							</xsl:call-template>
 						</input>
 						<span style="width:2mm;"/>
@@ -531,9 +532,10 @@ To File U.S. Income Tax Return</div>
 					</div>
 					<div style="width:172mm;border-left:1px solid black;padding-left:2mm;padding-top:1mm;">
 						<span style="width:1mm;"/>
-						<input type="checkbox" class="styCkbox" title="Granted a 45-day grace period">
+						<input type="checkbox" class="styCkbox" alt="Granted a 45-day grace period">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/.."/>
+								<xsl:with-param name="BackupName">F2350GrantedGracePeriod</xsl:with-param>
 							</xsl:call-template>
 						</input>
 						<span style="width:2mm;"/>
@@ -543,9 +545,10 @@ To File U.S. Income Tax Return</div>
 					</div>
 					<div style="width:172mm;border-left:1px solid black;padding-left:2mm;padding-top:1mm;">
 						<span style="width:1mm;"/>
-						<input type="checkbox" class="styCkbox" title="Not granting a 45-day grace period">
+						<input type="checkbox" class="styCkbox" alt="Not granting a 45-day grace period">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/.."/>
+								<xsl:with-param name="BackupName">F2350NotGranted</xsl:with-param>
 							</xsl:call-template>
 						</input>
 						<span style="width:2mm;"/>
@@ -554,9 +557,10 @@ To File U.S. Income Tax Return</div>
 					</div>
 					<div style="width:172mm;border-left:1px solid black;padding-left:2mm;padding-top:1mm;">
 						<span style="width:1mm;"/>
-						<input type="checkbox" class="styCkbox" title="Filed after the due date">
+						<input type="checkbox" class="styCkbox" alt="Filed after the due date">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/.."/>
+								<xsl:with-param name="BackupName">F2350FiledAfterDueDate</xsl:with-param>
 							</xsl:call-template>
 						</input>
 						<span style="width:2mm;"/>
@@ -564,9 +568,10 @@ To File U.S. Income Tax Return</div>
 					</div>
 					<div style="width:172mm;border-left:1px solid black;padding-left:2mm;padding-top:1mm;">
 						<span style="width:1mm;"/>
-						<input type="checkbox" class="styCkbox" title="Other">
+						<input type="checkbox" class="styCkbox" alt="Other">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/.."/>
+								<xsl:with-param name="BackupName">F2350OtherResolution</xsl:with-param>
 							</xsl:call-template>
 						</input>
 						<span style="width:2mm;"/>

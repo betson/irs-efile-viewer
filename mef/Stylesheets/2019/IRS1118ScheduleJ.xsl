@@ -177,10 +177,10 @@
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">1</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Income or (loss) before adjustments</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="width:32mm;font-size:10px;" valign="bottom">
-                    <!--See Additionla Data tabel message -->
+                    <!--See Additional Data tabel message -->
 					<xsl:call-template name="PopulateAdditionalDataTableMessage">
 					  <xsl:with-param name="TargetNode" 
-					  select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt"/>
+					  select="$FormData/AdjSepLmtSection951AIncome/AllocationCYSeparateLmtLosses/OtherIncomeAmt"/>
                       <xsl:with-param name="ShortMessage" select=" 'true' "/>
 					</xsl:call-template>
                     <span class="styTableCellPad"/>
@@ -825,9 +825,9 @@
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Section 951A income</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;" valign="bottom">
-                    <!--See Additionla Data tabel message -->
+                    <!--See Additional Data tabel message -->
 					<xsl:call-template name="PopulateAdditionalDataTableMessage">
-					  <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt"/>
+					  <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtSection951AIncome/AllocationCYSeparateLmtLosses/OtherIncomeAmt"/>
                       <xsl:with-param name="ShortMessage" select=" 'true' "/>
 					</xsl:call-template>
                     <span style="width:4px;"/>
@@ -987,9 +987,9 @@
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" valign="bottom" style="padding-left:2mm;">1</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" valign="bottom" scope="row">Beginning balance</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px">
-                    <!--See Additionla Data tabel message -->
+                    <!--See Additional Data tabel message -->
 					<xsl:call-template name="PopulateAdditionalDataTableMessage">
-					  <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt"/>
+					  <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtSection951AIncome/AllocationCYSeparateLmtLosses/OtherIncomeAmt"/>
                       <xsl:with-param name="ShortMessage" select=" 'true' "/>
 					</xsl:call-template>
                     <span class="styTableCellPad"/>
@@ -1138,9 +1138,9 @@
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Beginning balance</td>
                   <!--Column (i) -->
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px">
-                    <!--See Additionla Data tabel message -->
+                    <!--See Additional Data tabel message -->
 					<xsl:call-template name="PopulateAdditionalDataTableMessage">
-					  <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt"/>
+					  <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtSection951AIncome/AllocationCYSeparateLmtLosses/OtherIncomeAmt"/>
                       <xsl:with-param name="ShortMessage" select=" 'true' "/>
 					</xsl:call-template>
                     <span class="styTableCellPad"/>
@@ -2482,7 +2482,7 @@
                   </tr>
                 </xsl:if>
                 <!-- Part II Line e repeating table -->
-                <xsl:for-each select="$FormData/AdjSepLmtPassiveCategoryIncm/EOYBalancesOfFutureSepLmtIncm/OtherIncomeAmt">
+                <xsl:for-each select="$FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/OtherIncomeAmt">
                   <xsl:variable name="pos" select="position()"/>
                   <!--///////////////////////////////////////////////////////////////////////////////////
                         Note that the repeating rows are assumed to be filled in full by the corresponding columns - otherwise there is no way to
@@ -4161,9 +4161,9 @@
         <!-- Changed re Defect 48050 20170525 gdy -->
         <xsl:if test="
                          ($Print = $Separated) and
-                         ( (count($FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt) &gt; 1) and
-                            (count($FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/OtherIncomeAmt) &gt; 1) and
-                           (count($FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/OtherIncomeAmt) &gt; 1) and
+                         ( (count($FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt) &gt; 1) or
+                            (count($FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/OtherIncomeAmt) &gt; 1) or
+                           (count($FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/OtherIncomeAmt) &gt; 1) or
                            (count($FormData/AdjSepLmtOtherIncome) &gt; 1) ) ">
           <!-- Part I  table 1 This is the Blue or Separate format table-->
           <div class="IRS1118ScheduleJ_TableContainer" 
@@ -4817,7 +4817,7 @@
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" 
-						  select="$FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmtt"/>
+						  select="$FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/PassiveCategoryIncomeAmt"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;" valign="bottom">

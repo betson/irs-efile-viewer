@@ -12,6 +12,8 @@
 <!-- 11/21/2018 - Changes made for defect 126895 - Jeremy Nichols -->
 <!-- 01/17/2019 - Changes made for defect 126841 - Jeremy Nichols -->
 <!-- 09/30/2019 - Changes made for UWR 225247 - Jeremy Nichols -->
+<!-- 12/16/2019 - Changes made for defect 128868 - Jeremy Nichols -->
+<!-- 01/14/2020 - Changes made for KISAMS IM00887331 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -299,10 +301,10 @@ lines 1a and 1b, or the amount from the applicable line of your return.
       
       
       <div style="width:187mm;">
-        <div class="styLNLeftNumBox" style="height:4.5mm;">7</div>
-        <div class="styLNDesc" style="width:138mm;height:10mm;">
+        <div class="styLNLeftNumBox" style="height:14mm;">7</div>
+        <div class="styLNDesc" style="width:138mm;height:14mm;">
           <span class="styBoldText">Qualified electric vehicle credit.</span> Enter the <span class="styBoldText">smaller</span> of line 1 or line 6. Report this
-				amount on Schedule 3(Form 1040 or  1040-SR), line 6; Form 1040N-R, line 51; Form
+				amount on Schedule 3(Form 1040 or  1040-SR), line 6; Form 1040-NR, line 51; Form
 				1120, Schedule J, line 5b; or the appropriate line of your return.<br/>
 				If line 6 is smaller than line 1, see instructions    
           <!--Dotted Line-->
@@ -314,9 +316,9 @@ lines 1a and 1b, or the amount from the applicable line of your return.
             
         </div>
         
-     <div class="styLNRightNumBox" style="height:10mm;padding-top:6mm; border-bottom-width: 0px;">7</div>
+     <div class="styLNRightNumBox" style="height:14mm;padding-top:9mm; border-bottom-width: 0px;">7</div>
            
-        <div class="styLNAmountBox" style="height:10mm; padding-top:6mm; border-bottom-width: 0px">
+        <div class="styLNAmountBox" style="height:14mm; padding-top:9mm; border-bottom-width: 0px">
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$FormData/QlfyElecMotorVehCrAmt"/>
           </xsl:call-template>
@@ -326,7 +328,7 @@ lines 1a and 1b, or the amount from the applicable line of your return.
      <div style="width:187mm; border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px">
             <div class="styGenericDiv" style="width:117mm;font-weight:bold;">For  Paperwork Reduction Act Notice, see instructions.</div>
             <div class="styGenericDiv" style="width:23mm;">Cat. No. 14953G</div>
-            <div class="styGenericDiv" style="float:right;">Form <span class="styBoldText">8834</span> (Rev. 10-2019)</div>
+            <div class="styGenericDiv" style="float:right;">Form <span class="styBoldText">8834</span> (Rev. 12-2019)</div>
           </div><br/><br/>
           
           <!-- BEGIN Left Over Table -->

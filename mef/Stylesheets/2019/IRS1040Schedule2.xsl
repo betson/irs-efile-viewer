@@ -64,10 +64,11 @@
 							<span class="styFMT" style="font-size:11pt;padding-top:2mm;">Additional Taxes</span>
 							<br /><br />
 							<span style="font-weight:bold;">
-								&#9658;Attach to Form 1040 or 1040-SR.
+								<img src="{$ImagePath}/1040_Bullet.gif" alt="Right arrow"/>
+								Attach to Form 1040 or 1040-SR.
 							</span><br />
 							<span style="font-weight:bold;">
-								&#9658;Go to
+								<img src="{$ImagePath}/1040_Bullet.gif" alt="Right arrow"/>Go to
 								<span style="font-style:italic">www.irs.gov/Form1040</span>
 								for instructions and the latest information.
 							</span>
@@ -370,7 +371,7 @@
 						</div>
 					</div>
 					<!-- Form footer-->
-					<div class="styStdDiv pageEnd" style="border-top:2px solid black;">
+					<div class="styStdDiv" style="border-top:2px solid black;">
 						<span style="font-weight:bold;font-family:Arial;">For Paperwork Reduction Act Notice, see your tax return instructions.</span>
 						<span style="margin-left:16mm;font-size:6.5pt;">Cat. No. 71478U</span>
 						<span style="float:right;font-weight:bold;font-size:6.5pt;">Schedule 2 (Form 1040 or 1040-SR) 2019</span>

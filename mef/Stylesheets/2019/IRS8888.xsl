@@ -75,7 +75,7 @@
 					<div class="styBB" style="width:187mm;">
 						<div class="styNameBox" style="width:135mm;font-size:7.5pt;font-weight:normal;height:9mm;">
           Name(s) shown on return
-						
+						<br/>
                                  			  <xsl:choose>
                                   
                                                                                      <!-- Name from 1040 Return Header-->
@@ -199,9 +199,8 @@
 										<span style="width:3.5mm;"/>
 										<span>
 											<xsl:call-template name="PopulateSpan">
-												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup"/>
+												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos]/BankAccountTypeCd"/>
 											</xsl:call-template>
-										</span>
 										<input type="checkbox" class="styCkbox" style="height:4mm;width:4mm;">
 											<xsl:call-template name="PopulateNoCheckbox">
 												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos]/BankAccountTypeCd"/>
@@ -211,18 +210,21 @@
 										</input>
 										<span style="width:1mm;"/>
 										<label>
+											<xsl:call-template name="PopulateSpan">
+												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos]/BankAccountTypeCd"/>
+											</xsl:call-template>
 											<xsl:call-template name="PopulateLabelNo">
 												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos]/BankAccountTypeCd"/>
 												<xsl:with-param name="BackupName">IRS8888AccountTypeCd</xsl:with-param>
 											</xsl:call-template>
 											<span style="font-size:8pt;padding-bottom:0mm;padding-top:2mm;font-family:Arial">Checking</span>
 										</label>
+										</span>
 										<span style="width:4mm;"/>
 										<span>
 											<xsl:call-template name="PopulateSpan">
-												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup"/>
+												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos]/BankAccountTypeCd"/>
 											</xsl:call-template>
-										</span>
 										<input type="checkbox" class="styCkbox" style="height:4mm;width:4mm;">
 											<xsl:call-template name="PopulateYesCheckbox">
 												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos]/BankAccountTypeCd"/>
@@ -232,12 +234,16 @@
 										</input>
 										<span style="width:1mm;"/>
 										<label>
+											<xsl:call-template name="PopulateSpan">
+												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos]/BankAccountTypeCd"/>
+											</xsl:call-template>
 											<xsl:call-template name="PopulateLabelYes">
-												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup/BankAccountTypeCd"/>
+												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos]/BankAccountTypeCd"/>
 												<xsl:with-param name="BackupName">IRS8888AccountTypeCd</xsl:with-param>
 											</xsl:call-template>
 											<span style="font-size:8pt;padding-bottom:0mm;padding-top:2mm;font-family:Arial">Savings</span>
 										</label>
+										</span>
 									</div>
 									</span>
 									<span style="float:right;">
@@ -318,9 +324,8 @@
 										<span style="width:3.5mm;"/>
 										<span>
 											<xsl:call-template name="PopulateSpan">
-												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup"/>
+												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 1]/BankAccountTypeCd"/>
 											</xsl:call-template>
-										</span>
 										<input type="checkbox" class="styCkbox" style="height:4mm;width:4mm;">
 											<xsl:call-template name="PopulateNoCheckbox">
 												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 1]/BankAccountTypeCd"/>
@@ -330,18 +335,21 @@
 										</input>
 										<span style="width:1mm;"/>
 										<label>
+											<xsl:call-template name="PopulateSpan">
+												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 1]/BankAccountTypeCd"/>
+											</xsl:call-template>
 											<xsl:call-template name="PopulateLabelNo">
 												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 1]/BankAccountTypeCd"/>
 												<xsl:with-param name="BackupName">IRS8888AccountTypeCd</xsl:with-param>
 											</xsl:call-template>
 											<span style="font-size:8.5pt;padding-bottom:0mm;padding-top:2mm;font-family:Arial;">Checking</span>
 										</label>
+										</span>
 										<span style="width:4mm;"/>
 										<span>
 											<xsl:call-template name="PopulateSpan">
-												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup"/>
+												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 1]/BankAccountTypeCd"/>
 											</xsl:call-template>
-										</span>
 										<input type="checkbox" class="styCkbox" style="height:4mm;width:4mm;">
 											<xsl:call-template name="PopulateYesCheckbox">
 												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 1]/BankAccountTypeCd"/>
@@ -351,12 +359,16 @@
 										</input>
 										<span style="width:1mm;"/>
 										<label>
+										<xsl:call-template name="PopulateSpan">
+												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 1]/BankAccountTypeCd"/>
+											</xsl:call-template>
 											<xsl:call-template name="PopulateLabelYes">
 												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 1]/BankAccountTypeCd"/>
 												<xsl:with-param name="BackupName">IRS8888AccountTypeCd1</xsl:with-param>
 											</xsl:call-template>
 											<span style="font-size:8.5pt;padding-bottom:0mm;padding-top:2mm;font-family:Arial">Savings</span>
 										</label>
+										</span>
 									</div>
 									</span>
 							<!--		<span style="float:right;">
@@ -419,7 +431,7 @@
 									<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:1mm;padding-right:3mm;text-align:right;">b</div>
 									<div class="styLNDesc" style="width:139.5mm;padding-top:0mm;padding-bottom:0mm;">
 										<div class="styLNDesc" style="width:28mm;height:2mm;padding-top:1mm;">Routing number</div>
-										<!-- call routing number -->-
+										<!-- call routing number -->
 										<span class="styLNCtrNumBox" style="width:34mm;border-top-width:1px;padding-top:0mm;padding-bottom:0mm;font-weight:normal;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 2]/RoutingTransitNum"/>
@@ -435,9 +447,8 @@
 										<span style="width:3.5mm;"/>
 										<span>
 											<xsl:call-template name="PopulateSpan">
-												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup"/>
+												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 2]/BankAccountTypeCd"/>
 											</xsl:call-template>
-										</span>
 										<input type="checkbox" class="styCkbox" style="height:4mm;width:4mm;">
 											<xsl:call-template name="PopulateNoCheckbox">
 												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 2]/BankAccountTypeCd"/>
@@ -447,18 +458,21 @@
 										</input>
 										<span style="width:1mm;"/>
 										<label>
+											<xsl:call-template name="PopulateSpan">
+												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 2]/BankAccountTypeCd"/>
+											</xsl:call-template>
 											<xsl:call-template name="PopulateLabelNo">
 												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 2]/BankAccountTypeCd"/>
 												<xsl:with-param name="BackupName">IRS8888AccountTypeCd2</xsl:with-param>
 											</xsl:call-template>
 											<span style="font-size:8.5pt;padding-bottom:0mm;padding-top:2mm;font-family:Arial">Checking</span>
 										</label>
+										</span>
 										<span style="width:7.5mm;"/>
 										<span>
 											<xsl:call-template name="PopulateSpan">
-												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup"/>
+												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 2]/BankAccountTypeCd"/>
 											</xsl:call-template>
-										</span>
 										<input type="checkbox" class="styCkbox" style="height:4mm;width:4mm;padding-left:4mm;">
 											<xsl:call-template name="PopulateYesCheckbox">
 												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 2]/BankAccountTypeCd"/>
@@ -468,12 +482,16 @@
 										</input>
 										<span style="width:1mm;"/>
 										<label>
+											<xsl:call-template name="PopulateSpan">
+												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 2]/BankAccountTypeCd"/>
+											</xsl:call-template>
 											<xsl:call-template name="PopulateLabelYes">
 												<xsl:with-param name="TargetNode" select="$Form8888Data/DirectDepositInfoGroup[$pos + 2]/BankAccountTypeCd"/>
 												<xsl:with-param name="BackupName">IRS8888AccountTypeCd</xsl:with-param>
 											</xsl:call-template>
 											<span style="font-size:8.5pt;padding-bottom:0mm;padding-top:2mm;font-family:Arial">Savings</span>
 										</label>
+										</span>
 									</div>
 									</span>
 					<!--				<span style="float:right;">
@@ -591,6 +609,9 @@
 								          here (First then Last). If beneficiary, also check here
 								          <img src="{$ImagePath}/8888_Bullet_Sm.gif" alt="Bullet"/>
 									<span style="width:.5mm;"/>
+									<xsl:call-template name="PopulateSpan">
+										<xsl:with-param name="TargetNode" select="$Form8888Data/SavingsBondPurchaseInfoGrp[$bondpos]/BeneficiaryInd"/>
+									</xsl:call-template>
 									<input type="checkbox" title="beneficiaryInd" id="beneficiaryInd" alt="alt" class="styCkbox" style="height:4mm;width:4mm;">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8888Data/SavingsBondPurchaseInfoGrp[$bondpos]/BeneficiaryInd"/>
@@ -660,6 +681,9 @@
 								        here (First then Last). If beneficiary, also check here
 								        <img src="{$ImagePath}/8888_Bullet_Sm.gif" alt="Bullet"/>
 									    <span style="width:.5mm;"/>
+									<xsl:call-template name="PopulateSpan">
+										<xsl:with-param name="TargetNode" select="$Form8888Data/SavingsBondPurchaseInfoGrp[$bondpos + 1]/BeneficiaryInd"/>
+									</xsl:call-template>
 									    <input type="checkbox" title="beneficiaryInd2" id="beneficiaryInd2" alt="alt" class="styCkbox" style="height:4mm;width:4mm;">
 									    	<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form8888Data/SavingsBondPurchaseInfoGrp[$bondpos + 1]/BeneficiaryInd"/>

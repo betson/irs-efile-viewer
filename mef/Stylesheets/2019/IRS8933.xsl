@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-<!-- Updated by Iskilu Lawal 10/30/2019_D4 UWR 224918 -->
+<!-- Updated by Iskilu Lawal 7/28/2019_D4 UWR 22519 -->
 <xsl:include href="PopulateTemplate.xsl"/>
 <xsl:include href="CommonPathRef.xsl"/>
 <xsl:include href="AddHeader.xsl"/>
@@ -69,7 +69,7 @@ Attach to your tax return.
 								<!--<img src="{$ImagePath}/8933_Bullet.gif" alt="Bullet Image"/>
 To claim this credit, the qualified facility must capture at least 500,000 metric <br/> tons of carbon Oxide during the tax year.  -->
    </div><br/>
- 							<div class="styFST" style="height:4mm;font-size:7pt;padding-top:1mm;">
+ 							<div class="styFST" style="height:4mm;font-size:7pt;padding-top:4mm;">
 								<img src="{$ImagePath}/8933_Bullet.gif" alt="Bullet Image"/>
 Go to  
 									 <a style="text-decoration:none;color:black;" href="http://www.irs.gov/8933" title="Link to irs.gov">
@@ -202,7 +202,7 @@ Go to
 		<span class="styDotLn" style="float:right;clear:none;padding-right:2mm;">............</span>
       </div>
 <div class="styUnderlineAmount" style="height:4mm;width:41mm;">
-     $22.87
+     $23.40
           </div>
     </div>
     <div class="styIRS8933Multiple" style="height:4mm; width:5mm; "/>
@@ -266,7 +266,7 @@ Go to
 		<span class="styDotLn" style="float:right;clear:none;padding-right:2mm;">............</span>
     </div>
     <div class="styUnderlineAmount" style="height:4mm;width:41mm;">
-    $11.44
+    $11.70
           </div>
     </div>
     <div class="styIRS8933Multiple" style="height:4mm; width:5mm; "/>
@@ -291,7 +291,7 @@ Go to
 
    <div class="styLNLeftNumBox" style="width:6mm;height: 20mm; padding-top: 2mm"/>
    <div class="styIRS8933MedLNDesc" style="height: 22mm; padding-top: 2mm;width:138mm;">
- <b>Qualified carbon oxide captured using carbon capture equipment originally placed in<br/><br/>
+ <b>Qualified carbon oxide captured using carbon capture equipment originally placed in<br/>
 service at a qualified facility on or after February 9, 2018, during the 12-year period beginning on the
 date the equipment was originally placed in service, disposed of in secure geological storage, and not
 used as a tertiary injectant in a qualified enhanced oil or natural gas recovery project, nor used as described in section 45Q(f)(5).
@@ -336,7 +336,7 @@ Section 45Q(a)(3) applicable dollar amount (see instructions)
   <!--Dotted Line-->
 		<span class="styDotLn" style="float:right;clear:none;padding-right:2mm;">...</span>
     </div>
-    <div class="styUnderlineAmount" style="height:4mm;width:41mm;">
+    <div class="styUnderlineAmount" style="height:4mm;width:41mm;">$28.74
      
           </div>
     </div>
@@ -362,7 +362,7 @@ Section 45Q(a)(3) applicable dollar amount (see instructions)
 
    <div class="styLNLeftNumBox" style="width:6mm;height: 18mm; padding-top: 2mm"/>
    <div class="styIRS8933MedLNDesc" style="height: 22mm; padding-top: 2mm;width:138mm;">
- <b>Qualified carbon oxide captured using carbon capture equipment originally placed in<br/><br/>
+ <b>Qualified carbon oxide captured using carbon capture equipment originally placed in<br/>
 service at a qualified facility on or after February 9, 2018, during the 12-year period beginning on the
 date the equipment was originally placed in service, disposed of in secure geological storage, and used as a tertiary injectant in a qualified enhanced oil or natural gas recovery project, or used as described in section 45Q(f)(5)
     </b>
@@ -406,7 +406,7 @@ date the equipment was originally placed in service, disposed of in secure geolo
   <!--Dotted Line-->
 		<span class="styDotLn" style="float:right;clear:none;padding-right:2mm;">...</span>
     </div>
-    <div class="styUnderlineAmount" style="height:4mm;width:41mm;">
+    <div class="styUnderlineAmount" style="height:4mm;width:41mm;">17.76
      
           </div>
     </div>
@@ -433,37 +433,37 @@ date the equipment was originally placed in service, disposed of in secure geolo
     <!-- end Line 4c -->  
     
     <!--  Line 5 -->  
-     <div style="width: 187mm;">
-      <div class="styLNLeftNumBox" style="width:6mm;height:4mm; padding-top: 2.5mm;float:left;clear:none;">5</div>
-    <div class="styLNDesc"   style="width:133mm;padding-top:0mm;padding-bottom:0mm;">
+    <div style="width: 187mm;">
+   		<div class="styLNLeftNumBox" style="width:6mm;height:4mm; padding-top: 2.5mm;float:left;clear:none;">5</div>
+		<div class="styLNDesc"   style="width:138mm;padding-top: 1mm;">Section 45Q(b)(3) election. Check the box if you're making the  election under section 45Q(b)(3).
+			<!--Dotted Line-->
+			<!--<span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">.</span>-->	
+			<span>								
+				<xsl:call-template name="PopulateSpan">
+					<xsl:with-param name="TargetNode" select="$FormData/Section45Qb3ElectionInd"/>
+				</xsl:call-template>
 		
-     		  <div class="styIRS8933MedLNDesc" style="height: 8mm; padding-top: 1mm;width:135mm;padding-left:.5mm;">
+     		  <!--<div class="styIRS8933MedLNDesc" style="height: 8mm; padding-top: 1mm;width:135mm;padding-left:.5mm;">-->
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$FormData/Section45Qb3ElectionInd"/>
 									<xsl:with-param name="BackupName">Section45Qb3ElectionInd</xsl:with-param>
 								</xsl:call-template>
-								<div style="width: 123mm;">
-								Section 45Q(b)(3) election. Check the box if you're making the  election under section 45Q(b)(3).	</div>
 							</label>
 							<span style="width:5px;"/>
-							<input type="checkbox" alt="Section45Qb3ElectionInd" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/Section45Qb3ElectionInd"/>
-										<xsl:with-param name="BackupName">Section45Qb3ElectionInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-						</div>
-     </div>
-     
-     
-   <div class="styIRS8933MedLNDesc" style="height:4mm; width:5mm;"/>
-  <div class="styShadingCellRB" style="height:4mm; width:8mm;background-color:lightgrey; border-right-width:0px;"/>
-    <div class="styShadingCell" style="height:4mm;  border-bottom-width:0px;">      
-    </div>
-    </div>
+							<input type="checkbox"  class="styCkbox" alt="Section 45 Q b 3 Election Indicator" >
+								<xsl:call-template name="PopulateCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/Section45Qb3ElectionInd"/>
+									<xsl:with-param name="BackupName">Section45Qb3ElectionInd</xsl:with-param>
+								</xsl:call-template>
+							</input>
+				</span>
+       </div>
+		<div class="styShadingCellRB" style="height:5mm; width:8mm;background-color:lightgrey; border-right-width:0px;"/>
+	   <div class="styLNAmountBox" style="height:5mm;border-bottom-width:0px; "/>
+   </div>
   
-  <div style="width: 187mm;">
+  <!--<div style="width: 187mm;">
     <div class="styLNLeftNumBox" style="width:6mm;"></div>
     <div class="styIRS8933MedLNDesc" style="width:138mm">
 		
@@ -474,40 +474,37 @@ date the equipment was originally placed in service, disposed of in secure geolo
         <xsl:with-param name="TargetNode" select="$FormData/MetricTonsCapturedUsedAmt"/>
       </xsl:call-template>
     </div>
-    </div>
+    </div>-->
     <!-- end Line 5 -->  
     
     <!--  Line 6 -->  
     <div style="width: 187mm;">
-      <div class="styLNLeftNumBox" style="width:6mm;height: 4mm; padding-top: 2.5mm;float:left;clear:none;">6</div>
-    <div class="styLNDesc"   style="width:133mm;padding-top:0mm;padding-bottom:0mm;">
-		
-     		  <div class="styIRS8933MedLNDesc" style="height: 8mm; padding-top: 1mm;width:135mm;padding-left:.5mm;">
-     		  
-							<label>
-								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$FormData/Section45Qb6ElectionInd"/>
-									<xsl:with-param name="BackupName">Section45Qb6ElectionInd</xsl:with-param>
-								</xsl:call-template>
-								<div style="width: 124mm;">
-							 Section 45Q(f)(6) election. Check the box if you're making the  election under section 45Q(f)(6).	</div>
-							</label>
-							<!--<span style="width:5px;"/>-->
-						<input type="checkbox" alt="Section45Qb6ElectionInd" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/Section45Qb6ElectionInd"/>
-										<xsl:with-param name="BackupName">Section45Qb6ElectionInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-						</div>
-     </div>
-    <div class="styIRS8933MedLNDesc" style="height:4mm; width:5mm;"/>
-  <div class="styShadingCellRB" style="height:4mm; width:8mm;background-color:lightgrey; border-right-width:0px;"/>
-    <div class="styShadingCell" style="height:4mm;  border-bottom-width:0px;">      
-    </div>
+       <div class="styLNLeftNumBox" style="width:6mm;height: 4mm; padding-top: 2.5mm;float:left;clear:none;">6</div>
+		<div class="styLNDesc"   style="width:138mm;padding-top: 1mm;">Section 45Q(f)(6) election. Check the box if you're making the  election under section 45Q(f)(6).
+			<span>								
+				<xsl:call-template name="PopulateSpan">
+					<xsl:with-param name="TargetNode" select="$FormData/Section45Qb3ElectionInd"/>
+				</xsl:call-template>
+				<label>
+					<xsl:call-template name="PopulateLabel">
+						<xsl:with-param name="TargetNode" select="$FormData/Section45Qb6ElectionInd"/>
+						<xsl:with-param name="BackupName">Section45Qb6ElectionInd</xsl:with-param>
+					</xsl:call-template>
+				</label>
+				<span style="width:10px;"/>
+				<input type="checkbox"  class="styCkbox" alt="Section 45 Q b 6 Election Indictor" >
+					<xsl:call-template name="PopulateCheckbox">
+						<xsl:with-param name="TargetNode" select="$FormData/Section45Qb6ElectionInd"/>
+						<xsl:with-param name="BackupName">Section45Qb6ElectionInd</xsl:with-param>
+					</xsl:call-template>
+				</input>
+			</span>					
+	    </div>
+	    <div class="styShadingCellRB" style="height:5mm; width:8mm;background-color:lightgrey; border-right-width:0px;"/>
+	    <div class="styLNAmountBox" style="height:5mm;border-bottom-width:0px; "/>
     </div>
   
-  <div style="width: 187mm;">
+  <!--<div style="width: 187mm;">
     <div class="styLNLeftNumBox" style="width:6mm;"></div>
     <div class="styIRS8933MedLNDesc" style="width:138mm">
 		
@@ -518,42 +515,40 @@ date the equipment was originally placed in service, disposed of in secure geolo
         <xsl:with-param name="TargetNode" select="$FormData/MetricTonsCapturedUsedAmt"/>
       </xsl:call-template>
     </div>
-    </div>
+    </div>-->
     <!-- end Line 6 -->  
     
   
     <!--  Line 7 -->  
     <div style="width: 187mm;">
-      <div class="styLNLeftNumBox" style="width:6mm;height: 4mm; padding-top: 2.5mm;float:left;clear:none;">7</div>
-    <div class="styLNDesc"   style="width:133mm;padding-top:0mm;padding-bottom:0mm;">
-		
-     		 <div class="styIRS8933MedLNDesc" style="height: 8mm; padding-top: 1mm;width:135mm;padding-left:.5mm;">
-     		 
-							<label>
+       <div class="styLNLeftNumBox" style="width:6mm;height: 4mm; padding-top: 2.5mm;float:left;clear:none;">7</div>
+		<div class="styLNDesc"   style="width:138mm;padding-top: 1mm;">Reserved for future use.	
+			<!--Dotted Line-->
+			<span class="styDotLn" style="float:none;clear:none;">.......................</span>  
+			<span>								
+				<xsl:call-template name="PopulateSpan">
+					<xsl:with-param name="TargetNode" select="$FormData/DummyInd"/>
+				</xsl:call-template>
+ 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$FormData/DummyInd"/>
 									<xsl:with-param name="BackupName">IRS8933DummyInd</xsl:with-param>
 								</xsl:call-template>
-								<div style="width: 124mm;">
-							 Reserved for future use.	<!--Dotted Line-->
-		<span class="styDotLn" style="float:right;clear:none;padding-right:2mm;">.....................</span>  </div>
 							</label>
-							
-							<input type="Checkbox" class="styCkbox">
+							<span style="width:3px;"/>
+							<input type="Checkbox" disabled="disabled" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/DummyInd"/>
 									<xsl:with-param name="BackupName">IRS8933DummyInd</xsl:with-param>
 								</xsl:call-template>
 							</input>
-						</div>
-     </div>
-    <div class="styIRS8933MedLNDesc" style="height:4mm; width:5mm;"/>
-  <div class="styShadingCellRB" style="height:4mm; width:8mm;background-color:lightgrey; border-right-width:0px;"/>
-    <div class="styShadingCell" style="height:4mm;  border-bottom-width:0px;">      
-    </div>
+				</span>		
+		</div>
+	   <div class="styShadingCellRB" style="height:5mm; width:8mm;background-color:lightgrey; border-right-width:0px;"/>
+	   <div class="styLNAmountBox" style="height:5mm;border-bottom-width:0px; "/>
     </div>
   
-  <div style="width: 187mm;">
+  <!--<div style="width: 187mm;">
     <div class="styLNLeftNumBox" style="width:6mm;"></div>
     <div class="styIRS8933MedLNDesc" style="width:138mm">
 		
@@ -564,7 +559,7 @@ date the equipment was originally placed in service, disposed of in secure geolo
         <xsl:with-param name="TargetNode" select="$FormData/MetricTonsCapturedUsedAmt"/>
       </xsl:call-template>
     </div>
-    </div>
+    </div>-->
     <!-- end Line 7 -->  
   
   <!--  Line 8 -->  
