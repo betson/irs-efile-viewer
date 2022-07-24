@@ -264,9 +264,9 @@
 							<!-- Big box covers Box 1, Box 2a, OMB No., and Distributions, etc -->
 							<div class="styBB" style="width:89mm;height:26mm;border-bottom:none; ">
 								<!-- Boxes 1 and 2a (Gross Distribution and Taxable amt) -->
-								<div class="styIRS1099RleftBox" style="width:31.3mm;height:26mm;border-left:3px solid black;border-bottom:2px solid black;border-right:0px solid black;border-top:1px solid black;">
+								<div class="styIRS1099RleftBox" style="width:31.3mm;height:25.8mm;border-left:1px solid black;border-bottom:1px solid black;border-right:0px solid black;border-top:1px solid black;">
 									<!-- Box 1 Gross Distribution -->
-									<span class="styIRS1099RleftBox" style="height:12.5mm; border-left:2px ;border-top:2px solid black;border-right:2px solid black;border-bottom:1px solid black;width:31.3mm;">
+									<span class="styIRS1099RleftBox" style="height:12.5mm; border-left:1px ;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;width:31.3mm;">
 										<span style="width:3px;"/>
 										<span style="font-size: 7.5pt;font-weight:bold;">1</span>
 										<span style="width:6px;"/>
@@ -274,7 +274,7 @@
 										<br/>
 										<br/>
 										<span style="width:4px;"/>
-										<span style="padding-top:1.5mm;width:27mm;text-align:right;float:bottom;                                                    font-size:6pt;padding-right:.5mm">
+										<span style="padding-top:1.5mm;width:27mm;text-align:right;float:bottom;font-size:6pt;padding-right:.5mm">
 											<span style="font-size:9pt;float:left;padding-left:.1mm">$</span>
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form1099RData/GrossDistributionAmt"/>
@@ -282,7 +282,7 @@
 										</span>
 									</span>
 									<!-- Box 2a Taxable Amount -->
-									<span class="styIRS1099RleftBox" style="height:12.5mm;border-left:2px;border-right: 2px solid black;                 border-bottom: 2px solid black; width:31.3mm;">
+									<span class="styIRS1099RleftBox" style="height:12.9mm;border-left:1px;border-right: 1px solid black;border-bottom: 1px solid black; width:31.3mm;">
 										<span style="width:2px;"/>
 										<span style="font-size: 7.5pt;font-weight:bold;">2a</span>
 										<span style="width:3px;"/>
@@ -290,7 +290,7 @@
 										<br/>
 										<br/>
 										<span style="width:4px;"/>
-										<span style="padding-top:1.5mm;width:27mm;text-align:right;float:bottom;                                                   font-size:6pt;padding-right:.5mm">
+										<span style="padding-top:1.5mm;width:27mm;text-align:right;float:bottom;font-size:6pt;padding-right:.5mm">
 											<span style="font-size: 9pt;float:left;padding-left:.1mm">$</span>
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form1099RData/TaxableAmt"/>
@@ -348,7 +348,7 @@
 											</input>
 										</span>
 										<!--  Total Distribution -->
-										<span class="styIRS1099RrightBoxWithBottom" style="height:9.5mm;width:33mm;                                       border-bottom:0px solid black;border-left:0px solid black;black;border-right:1px solid black;">
+										<span class="styIRS1099RrightBoxWithBottom" style="height:9.5mm;width:33mm;border-bottom:0px solid black;border-left:0px solid black;black;border-right:1px solid black;">
 											<span style="width:24.5mm;font-size: 7.5pt;">
 												<label>
 													<xsl:call-template name="PopulateLabel">
@@ -387,7 +387,7 @@
 											</span>
 										</span>
 										<!-- Box 4 Federal income tax withheld -->
-										<span class="styIRS1099RrightBoxWithBottom" style="height:16.5mm;width:36.5mm;                                    font-size:6.5pt;border-left:3px solid black;border-bottom:3px solid black;border-right:3px solid black;border-top:3px solid black;">
+										<span class="styIRS1099RrightBoxWithBottom" style="height:16.5mm;width:36.5mm;font-size:6.5pt;border-left:1px solid black;border-bottom:1px solid black;border-right:1px solid black;border-top:1px solid black;">
 											<span style="width:4px;"/>
 											<span style="font-size: 7.5pt;font-weight:bold;">4</span>
 											<span style="width:6px;"/>Federal Income tax
@@ -532,9 +532,6 @@
 										<xsl:call-template name="PopulatePercent">
 											<xsl:with-param name="TargetNode" select="$Form1099RData/RcpntOthDistributionPct"/>
 										</xsl:call-template>
-										<xsl:if test="not($Form1099RData/RcpntOthDistributionPct)">
-										<span style="font-size: 7.5pt;float:right;padding-left:.3mm">%</span>
-										</xsl:if>
 									</span>
 								</span>
 							</div><!-- Closes Boxes 7 and 8 (Distribution Codes and Other) -->

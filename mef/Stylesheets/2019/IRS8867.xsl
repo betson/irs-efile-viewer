@@ -202,7 +202,7 @@ and Head of Household (HOH) Filing Status.</i></span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/TxpyrProvidedOrObtainedInfoInd"/>
 									</xsl:call-template>
-									<input type="checkbox" alt="Due DiligenceYes" class="styCkbox">
+									<input type="checkbox" alt="TxpyrProvidedOrObtainedInfoIndYes" class="styCkbox">
 										<xsl:call-template name="PopulateYesCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TxpyrProvidedOrObtainedInfoInd"/>
 											<xsl:with-param name="BackupName">IRS8867TxpyrProvidedOrObtainedInfoInd</xsl:with-param>
@@ -218,7 +218,7 @@ and Head of Household (HOH) Filing Status.</i></span>
 							</span>
 							<span style="width:20mm"/>
 							<span>
-									<input type="checkbox" alt="Due DiligenceNo" class="styCkbox">
+									<input type="checkbox" alt="TxpyrProvidedOrObtainedInfoIndNo" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TxpyrProvidedOrObtainedInfoInd"/>
 											<xsl:with-param name="BackupName">IRS8867TxpyrProvidedOrObtainedInfoInd</xsl:with-param>
@@ -239,7 +239,7 @@ and Head of Household (HOH) Filing Status.</i></span>
 						<div class="styGenericDiv" style="width:187mm;height:17mm;">
 							<div class="styLNLeftNumBoxBB" style="padding-top:3mm;height:19mm;">2</div>
 							<div class="styIRS8867ChildDesc" style="width:105mm;padding-top:3.1mm;height:14mm;" >
-							  If credits are claimed on the return, did you complete the applicable EIC and/or CTC/ACTC/ODC worksheets found in the Form 1040, 1040-SR, 1040-NR 1040-PR, or 1040-SS instructions, and/or the AOTC worksheet found in the Form 8863 instructions, or your own worksheet(s) that provides the same information, and all related forms and schedules for each credit claimed?<span class="styDotLn" style="float:none;clear:none;padding-left:1.5mm;">.........</span>
+							  If credits are claimed on the return, did you complete the applicable EIC and/or CTC/ACTC/ODC worksheets found in the Form 1040, 1040-SR, 1040-NR, 1040-PR, or 1040-SS instructions, and/or the AOTC worksheet found in the Form 8863 instructions, or your own worksheet(s) that provides the same information, and all related forms and schedules for each credit claimed?<span class="styDotLn" style="float:none;clear:none;padding-left:1.5mm;">.........</span>
 							   <div class="styBB" style="width:105mm;padding-top:.65mm;float:clear"></div>
 							</div>
 							<div class="styIRS8867ChildBox" style="height:19mm;width:73mm;padding-left:10mm;padding-top:10mm;;" >
@@ -942,7 +942,7 @@ and Head of Household (HOH) Filing Status.</i></span>
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$FormData/ExplainTiebreakerRulesCd"/>
 								</xsl:call-template>
-								<input type="checkbox" class="styCkbox">
+								<input type="checkbox" class="styCkbox" alt="ExplainTiebreakerRulesCdYES">
 									<xsl:call-template name="PopulateEnumeratedCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ExplainTiebreakerRulesCd"/>
 										<xsl:with-param name="DisplayedCheckboxValue" select="'YES'"/>

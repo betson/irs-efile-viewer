@@ -8,7 +8,7 @@
 	<xsl:output method="html" indent="yes"/>
 	<xsl:strip-space elements="*"/>
 	<!--  Defines the stage of the data, e.g. original or latest  -->
-	<xsl:param name="IRS5471Data" select="$RtnDoc/IRS5471"/>
+	<xsl:param name="IRS5471Data" select="$RtnDoc/IRS5471"/> 
 	<xsl:param name="IRS5471AData" select="$RtnDoc/IRS5471/IRS5471ScheduleA"/>
 	<xsl:param name="IRS5471BData" select="$RtnDoc/IRS5471/IRS5471ScheduleB"/>
 	<xsl:param name="IRS5471CData" select="$RtnDoc/IRS5471/IRS5471ScheduleC"/>
@@ -125,7 +125,7 @@
 								<img src="{$ImagePath}/5471_Bullet_Title.gif" alt="right pointing arrow"/>
 								<span style="width: 1mm"/>Go to
 										<a style="text-decoration:none; color:black;" href="http://www.irs.gov/form5471" title="Link to IRS.gov">
-									<i>www.irs.gov/form5471</i>
+									<i>www.irs.gov/Form5471</i>
 								</a>	
 										for instructions and the latest information.
 										<br/>
@@ -1738,7 +1738,7 @@
 											<xsl:choose>
 												<xsl:when test="position()=1">
 													<tr>
-														<td class="styTableCell" style="border-color:black; text-align:left; width:70mm;">
+														<td class="styTableCell" style="border-color:black; text-align:left; width:70mm;max-height: auto;overflow: hidden;">
 															<xsl:choose>
 																<xsl:when test="$FSRowCount&gt;4">
 																	<xsl:attribute name="rowspan"><xsl:value-of select="$FSRowCount"/></xsl:attribute>
@@ -1747,6 +1747,8 @@
 																	<xsl:attribute name="rowspan">4</xsl:attribute>
 																</xsl:otherwise>
 															</xsl:choose>
+
+<div class="avoid" style="padding-top:4mm;padding-bottom:4mm;">
 															<xsl:choose>
 																<xsl:when test="../PersonNm != ''">
 																	<xsl:call-template name="PopulateText">
@@ -1813,6 +1815,7 @@
 																</xsl:when>
 															</xsl:choose>
 															<span class="styTableCellPad"/>
+</div>
 														</td>
 														<td class="styTableCell" style="text-align:left; border-color:black; width:60mm;padding-top:0.5mm;padding-bottom:0.5mm;">
 															<xsl:call-template name="PopulateText">

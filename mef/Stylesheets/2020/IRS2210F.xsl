@@ -57,8 +57,8 @@
 				Underpayment of Estimated Tax by<br/>Farmers and Fishermen
 			</div>
 			<div class="styFBT" style="font-size:7pt;height:5mm;padding-top:0mm;margin-top:0mm;">
-				<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"/>  Attach to Form 1040, 1040-SR, 1040-NR, or 1041.<br/>
-				<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"/> Go to <i>www.irs.gov/Form2210F</i> for instructions and the latest information.
+				<img src="{$ImagePath}/2210_Bullet.gif" alt="Right Arrow"/>  Attach to Form 1040, 1040-SR, 1040-NR, or 1041.<br/>
+				<img src="{$ImagePath}/2210_Bullet.gif" alt="Right Arrow"/> Go to <i>www.irs.gov/Form2210F</i> for instructions and the latest information.
 			</div>
 		</div>
 	<div class="styTYBox" style="width:31mm; height:19mm">
@@ -123,7 +123,7 @@
 					<!-- Part I - Header -->
 					<div style="width:187mm;height:4.5mm;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;">
-						<span class="styPartName" style="height:4mm;width:15mm;font-size:13;">Part l</span>
+						<span class="styPartName" style="height:4mm;width:15mm;font-size:13;">Part I</span>
 						<div class="styPartDesc" style="width:167mm;font-weight:normal;" >
 							<span style="font-size:10pt;vertical-align:top;"/>
 							<b>Reasons for Filing.</b>  Check applicable boxes.  If neither applies, <b>do not file Form 2210-F.</b>
@@ -170,7 +170,7 @@
                             </label>
 						</div>
 					</div>
-					<!-- Part lI -->
+					<!-- Part II -->
 					<!-- Part II - Header -->
 					<div style="width:187mm;height:4.5mm;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;float:left;padding-top:0mm;">
@@ -571,17 +571,17 @@
 						</div>
 
 					</div>
-					<!-- Part lll -->
-					<!-- Part Ill - Header -->
+					<!-- Part III -->
+					<!-- Part III - Header -->
 <div style="width:187mm;height:4.5mm;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;float:left;">
-						<span class="styPartName" style="height:4mm;width:18mm;font-size:13;">Part lll</span>
+						<span class="styPartName" style="height:4mm;width:18mm;font-size:13;">Part III</span>
 						<span class="styPartDesc" style="width:167mm;font-weight:normal;">
 							<span style="font-size:10pt;vertical-align:center;"/>
 							<b>Figure the Penalty</b>
 						</span>
 					</div>
-					<!-- END Part lll Header-->
+					<!-- END Part III Header-->
 					<div class="styBB" style="width:187mm;border-bottom:2px solid black;">	
 						<!-- Spacer Row -->
 						<div style="width:187mm;">
@@ -665,7 +665,7 @@
 								</div>
 								<div class="styIRS2210DotLn" style="margin-left:1mm;">......</div>
 								<div style="float:right">
-									<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"></img>
+									<img src="{$ImagePath}/2210_Bullet.gif" alt="Right Arrow"></img>
 								</div>
 							</div>
 							<div class="styLNRightNumBox" style="height:8mm;padding-bottom:0mm;bottom-border-width:1px;">16</div>

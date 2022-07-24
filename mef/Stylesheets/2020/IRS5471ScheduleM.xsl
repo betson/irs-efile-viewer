@@ -49,7 +49,7 @@
             <br/>
             (Form 5471)
           </div>
-          <div class="" style="padding-top:.5mm;font-size:6.5pt;">(Rev. September 2018)</div>
+          <div class="" style="padding-top:.5mm;font-size:6.5pt;">(Rev. December 2018)</div>
           <div class="styAgency" style="padding-top: .5mm;">Department of the Treasury
             <br/>Internal Revenue Service
           </div>
@@ -65,13 +65,13 @@
                 <img src="{$ImagePath}/3800_Bullet.gif" alt="bullet image"/>
                 Go to
                 <a style="text-decoration:none;color:black;" href="http://www.irs.gov/form5471" title="Link to irs.gov">
-                  <i>www.irs.gov/Form5471</i>for instructions and the latest information.
+                  <i>www.irs.gov/Form 5471</i> for instructions and the latest information.
                 </a>                
               </div>
             </span>
           </div>
           <div class="styTYBox" style="width:28mm;height:19mm;border-left-width:2px;">  
-            <div class="styOMB" style="padding-top:8mm;border-bottom-width:0px;">OMB No. 1545-0704</div>
+            <div class="styOMB" style="padding-top:8mm;border-bottom-width:0px;">OMB No. 1545-0123</div>
           </div>
         </div>
         <!--   END FORM HEADER   -->
@@ -132,7 +132,7 @@
 			<br/>			
 				<xsl:choose>
 				 <xsl:when test="$IRS5471ScheduleMData/ForeignCorporationName/BusinessNameLine2Txt">
-				 <xsl:attribute name="style">padding-top:1mm;font-size:6pt;</xsl:attribute>
+				<!-- <xsl:attribute name="style">padding-top:1mm;font-size:6pt;</xsl:attribute>-->
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:attribute name="style">padding-top:3mm;font-size:6pt;</xsl:attribute>
@@ -1284,7 +1284,7 @@
           <div class="styGenericDiv" style="width:110mm;font-weight:bold;">For Paperwork Reduction Act Notice, see the Instructions for Form 5471.</div>
           <div class="styGenericDiv" style="width:19mm;">Cat. No. 49963O</div>
           <div style="width:58mm;text-align:right;font-weight:bold; text-align: right;clear: none">Schedule M(Form 5471) 
-            <span style="font-weight:normal">(Rev. 9-2018)</span>
+            <span style="font-weight:normal">(Rev. 12-2018)</span>
           </div>
         </div>
         <!--     END FORM FOOTER   -->

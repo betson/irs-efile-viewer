@@ -26,8 +26,6 @@
 		width: 187mm;
 		height:6mm; 
 		padding: 0px 0px 0px 0px;
-		border-style: solid;
-		border: 0px 0px 0px 0px;
 		float: none; clear: none;
     }
     .styIRS4563LNLeftNumBox{ /* Double digit item number to the left of the page */
@@ -59,9 +57,6 @@
 		padding-top:.5mm;
 		padding-bottom:.5mm;
 		padding-left:3mm;
-		border-style: solid;
-		border: 1px 1px 1px 1px;
-		border-color:#FF0000;
 		font-size:7pt;
 		float:left; clear: none;
 	}

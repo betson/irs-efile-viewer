@@ -26,8 +26,6 @@
 		width: 187mm;
 		height: auto;
 		padding: 0px 0px 0px 0px;
-		border-style: solid;
-		border: 0px 0px 0px 0px;
 		float: none; clear: none;
     }
     .styIRS8854LNLeftNumBox{ /* Double digit item number to the left of the page */

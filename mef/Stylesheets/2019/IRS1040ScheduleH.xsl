@@ -44,9 +44,9 @@
 					<div style="width:187mm;">					
 					<xsl:call-template name="DocumentHeader"/>
 					<div class="styBB" style="width:187mm;border-bottom-width:2px;">
-						<div class="styFNBox" style="width:31mm;height:26mm;border-right-width:2px;padding-top:.5mm;">
+						<div class="styFNBox" style="width:31mm;height:22mm;border-right-width:2px;padding-top:.5mm;">
 							<div style="padding-top:1mm;">
-								<span class="styFormNumber" style="font-size:12pt;">SCHEDULE H<br/>(Form 1040 or 1040-SR)</span>
+								<span class="styFormNumber" style="font-size:12pt;">SCHEDULE H<br/>(Form 1040 or1040-SR)</span>
 							</div>
 							<!--General Dependency Push Pin-->
 							<xsl:call-template name="SetFormLinkInline">
@@ -70,7 +70,7 @@
 									<div style="width:100%;height:5mm;">
 										<div style="width:100mm;height:5mm;">
 											<img src="{$ImagePath}/1040ScheduleH_Bullet_Sm.gif" alt="SmallBullet"/> 
-                                             Attach to Form 1040, 1040-SR, 1040-NR, 1040-SS, or 1041.<br/>
+                                             Attach to Form 1040, 1040-SR, 1040-NR, 1040NR, 1040-SS, or 1041.<br/>
 											<img src="{$ImagePath}/1040ScheduleH_Bullet_Sm.gif" alt="SmallBullet"/> 
 											Go to <i>www.irs.gov/ScheduleH </i>for instructions and the latest information.
                                             
@@ -79,7 +79,7 @@
 								</span>
 							</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;border-left-width:2px;height:26mm;">
+						<div class="styTYBox" style="width:30mm;border-left-width:2px;height:22mm;">
 							<div class="styOMB" style="height:4mm;font-size:7pt;">OMB No. 1545-1971</div>
 							<div class="styTY">20<span class="styTYColor">19</span>
 							</div>
@@ -259,7 +259,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HsldEmplPdCashWageOverLmtCYInd"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="HouseholdEmployeePaidCashWageOverLimit" class="styCkbox">
+											<input type="checkbox" alt="HouseholdEmployeePaidCashWageOverLimit Yes" class="styCkbox">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HsldEmplPdCashWageOverLmtCYInd"/>
 													<xsl:with-param name="BackupName">IRS1040ScheduleHDataHsldEmplPdCashWageOverLmtCYInd</xsl:with-param>
@@ -281,7 +281,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HsldEmplPdCashWageOverLmtCYInd"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="HouseholdEmployeePaidCashWageOverLimit" class="styCkbox">
+											<input type="checkbox" alt="HouseholdEmployeePaidCashWageOverLimit No" class="styCkbox">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HsldEmplPdCashWageOverLmtCYInd"/>
 													<xsl:with-param name="BackupName">IRS1040ScheduleHDataHsldEmplPdCashWageOverLmtCYInd</xsl:with-param>
@@ -317,7 +317,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HsldEmplFedIncmTaxWithheldInd"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="HouseholdEmployeeFederalIncomeTaxWithheld" class="styCkbox">
+											<input type="checkbox" alt="HouseholdEmployeeFederalIncomeTaxWithheld Yes" class="styCkbox">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HsldEmplFedIncmTaxWithheldInd"/>
 													<xsl:with-param name="BackupName">IRS1040ScheduleHDataHsldEmplFedIncmTaxWithheldInd</xsl:with-param>
@@ -339,7 +339,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HsldEmplFedIncmTaxWithheldInd"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="HouseholdEmployeeFederalIncomeTaxWithheld" class="styCkbox">
+											<input type="checkbox" alt="HouseholdEmployeeFederalIncomeTaxWithheld No" class="styCkbox">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HsldEmplFedIncmTaxWithheldInd"/>
 													<xsl:with-param name="BackupName">IRS1040ScheduleHDataHsldEmplFedIncmTaxWithheldInd</xsl:with-param>
@@ -376,7 +376,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HsldEmplPdCashWageOvrLmtQtrInd"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="HouseholdEmployeePaidCashWagesOverLimit" class="styCkbox">
+											<input type="checkbox" alt="HouseholdEmployeePaidCashWagesOverLimit No" class="styCkbox">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HsldEmplPdCashWageOvrLmtQtrInd"/>
 													<xsl:with-param name="BackupName">IRS1040ScheduleHDataHsldEmplPdCashWageOvrLmtQtrInd</xsl:with-param>
@@ -398,7 +398,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HsldEmplPdCashWageOvrLmtQtrInd"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="HouseholdEmployeePaidCashWagesOverLimit" class="styCkbox">
+											<input type="checkbox" alt="HouseholdEmployeePaidCashWagesOverLimit Yes" class="styCkbox">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HsldEmplPdCashWageOvrLmtQtrInd"/>
 													<xsl:with-param name="BackupName">IRS1040ScheduleHDataHsldEmplPdCashWageOvrLmtQtrInd</xsl:with-param>
@@ -642,7 +642,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HsldEmplPdTotCashWageAnyQtrInd"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="HouseholdEmployeePaidTotalCashWagesAnyQuarter" class="styCkbox">
+											<input type="checkbox" alt="HouseholdEmployeePaidTotalCashWagesAnyQuarter No" class="styCkbox">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HsldEmplPdTotCashWageAnyQtrInd"/>
 													<xsl:with-param name="BackupName">IRS1040ScheduleHDataHsldEmplPdTotCashWageAnyQtrInd</xsl:with-param>
@@ -665,7 +665,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HsldEmplPdTotCashWageAnyQtrInd"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="HouseholdEmployeePaidTotalCashWagesAnyQuarter" class="styCkbox">
+											<input type="checkbox" alt="HouseholdEmployeePaidTotalCashWagesAnyQuarter Yes" class="styCkbox">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/HsldEmplPdTotCashWageAnyQtrInd"/>
 													<xsl:with-param name="BackupName">IRS1040ScheduleHDataHsldEmplPdTotCashWageAnyQtrInd</xsl:with-param>
@@ -722,54 +722,35 @@
 					<div style="width:187mm;height:auto" class="styBB" >
 						<div style="width:187mm;" class="styNBB">
 							<!-- Yes/No Headers ////////////////////////////////////////////////////////////-->
-							<div class="styIRS1040ScheduleHLineItem">
-								<div class="styLNRightNumBoxNBB" style="height:4.5mm;float:right;">No</div>
-								<div class="styLNRightNumBoxNBB" style="height:4.5mm;float:right;">Yes</div>
+							<div class="styIRS1040ScheduleHLineItem" style="width:17.0mm;float:right;padding:0px 0px 0px 0px" > 
+							    <div class="styLNRightNumBoxNBB" style="height:4.5mm; width:8.0mm;float:left;">Yes</div>
+								<div class="styLNRightNumBoxNBB" style="height:4.5mm; width:8.0mm;float:left;">No</div>
 							</div>
 							<!-- (10) ////////////////////////////////////////////////////////////-->
 							<div style="height:auto;">
 								<div class="styIRS1040ScheduleHLNLeftNumBox" style="text-align:left;">10</div>
-								<div class="styIRS1040ScheduleHLNDesc" style="width:148mm;height:auto;">
+								<div class="styIRS1040ScheduleHLNDesc" style="width:148mm; height:auto;">
                                      Did you pay unemployment contributions to only one state? (If you paid contributions to a credit reduction
                                      <span style="float:left;">state, see instructions and check "<b>No.</b>")</span>
                                      <!--Dotted Line-->
 									 <span class="styDotLn" style="float:right;padding-right:1mm;">.....................</span>
 								</div>
-								<div class="styIRS1040ScheduleHLNDesc" style="width:30mm;float:right;padding:0px 0px 0px 0px;">
-									<div class="styLNRightNumBox" style="height:100%;float:right;"/>
-									<div class="styLNRightNumBox" style="height:100%;float:right;"/>
-									<div class="styLNRightNumBox" style="height:100%;float:right;border-width:0px 0px 1px 0px"/>
+								<div class="styIRS1040ScheduleHLNDesc" style="width:25mm;float:right;padding:0px 0px 0px 0px;">
+												<div class="styLNRightNumBox" style="height:100%;float:left; border-width:0px 0px 1px 0px"/>						
+												<div class="styLNRightNumBox" style="height:100%;float:left;"/>
+									<div class="styLNRightNumBox" style="height:100%;float:left;"/>
+
 								</div>
-								<div class="styIRS1040ScheduleHLNDesc" style="width:30mm;float:right;padding:0px 0px 0px 0px;height:auto;">
+								<div class="styIRS1040ScheduleHLNDesc" style="width:25mm;float:right;padding:0px 0px 0px 0px;height:auto;">
+									<!-- Number Box -->									
+									<div class="styLNRightNumBox" style="height:5mm;float:left;padding-top:1.2mm;">10</div>
 									<!-- Yes Checkbox -->
-									<div class="styLNRightNumBox" style="height:5mm;float:right; padding-top:0mm;">
+									<div class="styLNRightNumBox" style="height:5mm;float:left;padding-top:0mm;">
 										<span>
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/UnemplPaidOnlyOneStateInd"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="UnemploymentPaidOnlyOneState" class="styCkbox">
-												<xsl:call-template name="PopulateNoCheckbox">
-													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/UnemplPaidOnlyOneStateInd"/>
-													<xsl:with-param name="BackupName">IRS1040ScheduleHDataUnemplPaidOnlyOneStateInd
-													</xsl:with-param>
-												</xsl:call-template>
-											</input>
-										</span>
-										<label>
-											<xsl:call-template name="PopulateLabelYes">
-												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/UnemplPaidOnlyOneStateInd"/>
-												<xsl:with-param name="BackupName">IRS1040ScheduleHDataUnemplPaidOnlyOneStateInd
-											</xsl:with-param>
-											</xsl:call-template>
-										</label>
-									</div>
-									<!-- No Checkbox -->
-									<div class="styLNRightNumBox" style="height:5mm;float:right;padding-top:0mm;">
-										<span>
-											<xsl:call-template name="PopulateSpan">
-												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/UnemplPaidOnlyOneStateInd"/>
-											</xsl:call-template>
-											<input type="checkbox" alt="UnemploymentPaidOnlyOneState" class="styCkbox">
+											<input type="checkbox" alt="UnemploymentPaidOnlyOneState Yes" class="styCkbox">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/UnemplPaidOnlyOneStateInd"/>
 													<xsl:with-param name="BackupName">IRS1040ScheduleHDataUnemplPaidOnlyOneStateInd
@@ -785,24 +766,69 @@
 											</xsl:call-template>
 										</label>
 									</div>
-									<!-- Number Box -->
-									<div class="styLNRightNumBox" style="height:5mm;float:right;padding-top:1.2mm;">10</div>
+									<!-- No Checkbox -->
+									<div class="styLNRightNumBox" style="height:5mm;float:left; padding-top:0mm;">
+										<span>
+											<xsl:call-template name="PopulateSpan">
+												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/UnemplPaidOnlyOneStateInd"/>
+											</xsl:call-template>
+											<input type="checkbox" alt="UnemploymentPaidOnlyOneState No" class="styCkbox">
+												<xsl:call-template name="PopulateNoCheckbox">
+													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/UnemplPaidOnlyOneStateInd"/>
+													<xsl:with-param name="BackupName">IRS1040ScheduleHDataUnemplPaidOnlyOneStateInd
+													</xsl:with-param>
+												</xsl:call-template>
+											</input>
+										</span>
+										<label>
+											<xsl:call-template name="PopulateLabelYes">
+												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/UnemplPaidOnlyOneStateInd"/>
+												<xsl:with-param name="BackupName">IRS1040ScheduleHDataUnemplPaidOnlyOneStateInd
+											</xsl:with-param>
+											</xsl:call-template>
+										</label>
+									</div>
+									
 								</div>
 							</div>
 							<!-- (11) ////////////////////////////////////////////////////////////-->
 							<div class="styIRS1040ScheduleHLineItem" style="height:auto;">
 								<div class="styIRS1040ScheduleHLNLeftNumBox" style="text-align:left;height:5mm;">11</div>
 								<div class="styIRS1040ScheduleHLNDesc" style="width:153.5mm;height:5mm;">
-								  Did you pay all state unemployment contributions for 2019 by April 15, 2020? Fiscal year filers see instructions
+								  Did you pay all state unemployment contributions for 2020 by April 15, 2021? Fiscal year filers see instructions
 								</div>
-								<div class="styIRS1040ScheduleHLNDesc" style="width:25.5mm;float:right;padding:0px 0px 0px 0px;">
-									<!-- Yes Checkbox -->
-									<div class="styLNRightNumBox" style="height:5mm;float:right;padding-top:0mm;">
+								<div class="styIRS1040ScheduleHLNDesc" style="width:25mm;float:right;padding:0px 0px 0px 0px;">
+								<!-- Number Box -->
+									<div class="styLNRightNumBox" style="height:5mm;float:left;padding-top:1.2mm;">11</div>
+								<!-- Yes Checkbox -->									
+									<div class="styLNRightNumBox" style="height:5mm;float:left;padding-top:0mm;">
 										<span>
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/PayAllStateUnemplContriInd"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="PayAllStateUnemploymentContributions" class="styCkbox">
+											<input type="checkbox" alt="PayAllStateUnemploymentContributions Yes" class="styCkbox">
+												<xsl:call-template name="PopulateYesCheckbox">
+													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/PayAllStateUnemplContriInd"/>
+													<xsl:with-param name="BackupName">IRS1040ScheduleHDataPayAllStateUnemplContriInd
+												</xsl:with-param>
+												</xsl:call-template>
+											</input>
+										</span>
+										<label>
+											<xsl:call-template name="PopulateLabelYes">
+												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/PayAllStateUnemplContriInd"/>
+												<xsl:with-param name="BackupName">IRS1040ScheduleHDataPayAllStateUnemplContriInd
+											</xsl:with-param>
+											</xsl:call-template>
+										</label>
+									</div>									
+								<!-- No Checkbox -->
+									<div class="styLNRightNumBox" style="height:5mm;float:left;padding-top:0mm;">
+										<span>
+											<xsl:call-template name="PopulateSpan">
+												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/PayAllStateUnemplContriInd"/>
+											</xsl:call-template>
+											<input type="checkbox" alt="PayAllStateUnemploymentContributions No" class="styCkbox">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/PayAllStateUnemplContriInd"/>
 													<xsl:with-param name="BackupName">IRS1040ScheduleHDataPayAllStateUnemplContriInd
@@ -818,30 +844,6 @@
 											</xsl:call-template>
 										</label>
 									</div>
-									<!-- No Checkbox -->
-									<div class="styLNRightNumBox" style="height:5mm;float:right;padding-top:0mm;">
-										<span>
-											<xsl:call-template name="PopulateSpan">
-												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/PayAllStateUnemplContriInd"/>
-											</xsl:call-template>
-											<input type="checkbox" alt="PayAllStateUnemploymentContributions" class="styCkbox">
-												<xsl:call-template name="PopulateYesCheckbox">
-													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/PayAllStateUnemplContriInd"/>
-													<xsl:with-param name="BackupName">IRS1040ScheduleHDataPayAllStateUnemplContriInd
-												</xsl:with-param>
-												</xsl:call-template>
-											</input>
-										</span>
-										<label>
-											<xsl:call-template name="PopulateLabelYes">
-												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/PayAllStateUnemplContriInd"/>
-												<xsl:with-param name="BackupName">IRS1040ScheduleHDataPayAllStateUnemplContriInd
-											</xsl:with-param>
-											</xsl:call-template>
-										</label>
-									</div>
-									<!-- Number Box -->
-									<div class="styLNRightNumBox" style="height:5mm;float:right;padding-top:1.2mm;">11</div>
 								</div>
 							</div>
 							<!-- (12) ////////////////////////////////////////////////////////////-->
@@ -852,14 +854,38 @@
                                      <!--Dotted Line-->
 									 <span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
 								</div>
-								<div class="styIRS1040ScheduleHLNDesc" style="width:28mm;float:right;padding:0px 0px 0px 0px;">
+								<div class="styIRS1040ScheduleHLNDesc" style="width:25mm;float:right;padding:0px 0px 0px 0px;">
+									<!-- Number Box -->
+									<div class="styLNRightNumBox" style="height:5mm;float:left;padding-top:1.2mm;">12</div>
 									<!-- Yes Checkbox -->
-									<div class="styLNRightNumBox" style="height:5mm;float:right;padding-top:0mm;">
+									<div class="styLNRightNumBox" style="height:5mm;float:left;padding-top:0mm;">
 										<span>
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/TxblFUTAWagesAlsoTxblUnemplInd"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="TaxableFUTAWagesAlsoTaxableUnemployment" class="styCkbox">
+											<input type="checkbox" alt="TaxableFUTAWagesAlsoTaxableUnemployment Yes" class="styCkbox">
+												<xsl:call-template name="PopulateYesCheckbox">
+													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/TxblFUTAWagesAlsoTxblUnemplInd"/>
+													<xsl:with-param name="BackupName">IRS1040ScheduleHDataTxblFUTAWagesAlsoTxblUnemplInd
+												</xsl:with-param>
+												</xsl:call-template>
+											</input>
+										</span>
+										<label>
+											<xsl:call-template name="PopulateLabelYes">
+												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/TxblFUTAWagesAlsoTxblUnemplInd"/>
+												<xsl:with-param name="BackupName">IRS1040ScheduleHDataTxblFUTAWagesAlsoTxblUnemplInd
+											</xsl:with-param>
+											</xsl:call-template>
+										</label>
+									</div>
+									<!-- No Checkbox -->
+									<div class="styLNRightNumBox" style="height:5mm;float:left;padding-top:0mm;">
+										<span>
+											<xsl:call-template name="PopulateSpan">
+												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/TxblFUTAWagesAlsoTxblUnemplInd"/>
+											</xsl:call-template>
+											<input type="checkbox" alt="TaxableFUTAWagesAlsoTaxableUnemployment No" class="styCkbox">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/TxblFUTAWagesAlsoTxblUnemplInd"/>
 													<xsl:with-param name="BackupName">IRS1040ScheduleHDataTxblFUTAWagesAlsoTxblUnemplInd
@@ -875,30 +901,6 @@
 											</xsl:call-template>
 										</label>
 									</div>
-									<!-- No Checkbox -->
-									<div class="styLNRightNumBox" style="height:5mm;float:right;padding-top:0mm;">
-										<span>
-											<xsl:call-template name="PopulateSpan">
-												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/TxblFUTAWagesAlsoTxblUnemplInd"/>
-											</xsl:call-template>
-											<input type="checkbox" alt="TaxableFUTAWagesAlsoTaxableUnemployment" class="styCkbox">
-												<xsl:call-template name="PopulateYesCheckbox">
-													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/TxblFUTAWagesAlsoTxblUnemplInd"/>
-													<xsl:with-param name="BackupName">IRS1040ScheduleHDataTxblFUTAWagesAlsoTxblUnemplInd
-												</xsl:with-param>
-												</xsl:call-template>
-											</input>
-										</span>
-										<label>
-											<xsl:call-template name="PopulateLabelYes">
-												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/TxblFUTAWagesAlsoTxblUnemplInd"/>
-												<xsl:with-param name="BackupName">IRS1040ScheduleHDataTxblFUTAWagesAlsoTxblUnemplInd
-											</xsl:with-param>
-											</xsl:call-template>
-										</label>
-									</div>
-									<!-- Number Box -->
-									<div class="styLNRightNumBox" style="height:5mm;float:right;padding-top:1.2mm;">12</div>
 								</div>
 							</div>
 							<!-- Spacer ///////////////////////////////////////////////////////-->
@@ -912,13 +914,7 @@
 								<span style="width:31px;"/>If you checked the <span class="styBoldText">"No"</span> box on <span class="styBoldText">any</span> of the lines above, skip Section A and complete Section B.
                         </div>
 						</div>
-					</div>
-					<!-- Section A -->
-					<!-- Header -->
-					<div style="width:187mm;" class="styBB">
-						<div class="styIRS1040ScheduleHLineItem" style="text-align:center;font-size:8pt;height:auto;">
-							<span class="styBoldText">Section A</span>
-						</div>
+
 					</div>
 					<!-- Body -->
 					<div style="width:187mm;" class="styBB">
@@ -1485,7 +1481,7 @@
 								                                             <!--Dotted Line-->
 								       <span class="styDotLn" style="float:right;">...................</span> </span>                             
 							    </div>
-							<input type="checkbox" class="styCkbox">
+							<input type="checkbox" class="styCkbox" alt="CreditReductionStateWrksht">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/UnemplFundMultiStateGroup/CreditReductionStateWrkshtInd"/>
 										<xsl:with-param name="BackupName">IRS1040ScheduleHDataUnemplFundMultiStateGroupCreditReductionStateWrkshtInd</xsl:with-param>
@@ -1595,7 +1591,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/RequiredToFileForm1040Ind"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="RequiredToFileF1040" class="styCkbox">
+											<input type="checkbox" alt="RequiredToFileF1040  Yes" class="styCkbox">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/RequiredToFileForm1040Ind"/>
 													<xsl:with-param name="BackupName">IRS1040ScheduleHDataRequiredToFileF1040Cd</xsl:with-param>
@@ -1618,7 +1614,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/RequiredToFileForm1040Ind"/>
 											</xsl:call-template>
-											<input type="checkbox" alt="RequiredToFileF1040" class="styCkbox">
+											<input type="checkbox" alt="RequiredToFileF1040 No" class="styCkbox">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form1040ScheduleHData/RequiredToFileForm1040Ind"/>
 													<xsl:with-param name="BackupName">IRS1040ScheduleHDataRequiredToFileF1040Cd</xsl:with-param>
@@ -1725,33 +1721,32 @@
 								<div style="width:164mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
 									<div class="styLNDesc" style="height:10mm;width:46.8mm;padding-top:0mm;border-right:1px solid black;padding-left:3px;">
 										Print/Type preparer's name<br/>
-									<!--	******NOTE: UWR 228037 REQUESTED PAID PREPARERER SECTION TO BE BLANK TY2019*****-->
-<!--										<xsl:call-template name="PopulateText">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$RtnHdrData/parerInformationGrp/PreparerPersonNm"/>
 											<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerPersonName</xsl:with-param>
-										</xsl:call-template>-->
+										</xsl:call-template>
 									</div>
 									<div class="styLNDesc" style="height:10mm;;width:46.5mm;padding-top:0mm;border-right:1px solid black;padding-left:1mm;">
 										 Preparer's signature
 									</div>
 										<div class="styLNDesc" style="height:10mm;width:15mm;border-right:1px solid black;padding-top:0mm;padding-left:1mm;">Date <br/>
-<!--										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 											<xsl:with-param name="TargetNode">DateSigned</xsl:with-param>
 											<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationDateSigned</xsl:with-param>
-										</xsl:call-template>-->
+										</xsl:call-template>
 									</div>
 									<div class="styLNDesc" style="height:10mm;width:18mm;border-right:1px solid black;padding-top:.5mm;padding-bottom:0mm;padding-left:1mm;">
 										<label>
-<!--											<xsl:call-template name="PopulateLabel">
+											<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/SelfEmployedInd"/>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationSelfEmployed</xsl:with-param>
-											</xsl:call-template>-->
+											</xsl:call-template>
 										   Check 
-										<input class="styCkbox" type="checkbox" style="height:3.5mm;width:4mm;">
-<!--												<xsl:call-template name="PopulateCheckbox">
+										<input class="styCkbox" type="checkbox" style="height:3.5mm;width:4mm;" alt="SelfEmployed">
+												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/SelfEmployedInd"/>
 													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationSelfEmployed</xsl:with-param>
-												</xsl:call-template>-->
+												</xsl:call-template>
 										</input>
 										<span style="width:4px;"/>if<br/>self-employed
 					                    </label>
@@ -1759,22 +1754,22 @@
 			<div class="styLNDesc" style="height:6mm;width:16mm;padding-top:0mm;padding-left:1mm;">PTIN
 								 <br/>
 										<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerSSN">
-<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">PreparerSSN</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerSSN</xsl:with-param>
-											</xsl:call-template>-->
+											</xsl:call-template>
 										</xsl:if>
 										<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PTIN">
-<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">PTIN</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPTIN</xsl:with-param>
-											</xsl:call-template>-->
+											</xsl:call-template>
 										</xsl:if>
 										<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/STIN">
-<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">STIN</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationSTIN</xsl:with-param>
-											</xsl:call-template>-->
+											</xsl:call-template>
 										</xsl:if>
 									</div>
 								</div>								
@@ -1788,15 +1783,15 @@
 											<span style="width:4px;"/>
 										</span>
 										<div class="styGenericDiv" style="padding-right:.5mm;width:60mm">
-<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerBusinessName1</xsl:with-param>
-											</xsl:call-template>-->
+											</xsl:call-template>
 											<br/>
-<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerBusinessName2</xsl:with-param>
-											</xsl:call-template>-->
+											</xsl:call-template>
 										</div>
 									</div>
 									</div>
@@ -1805,17 +1800,17 @@
 										<img src="{$ImagePath}/1040ScheduleH_Bullet_Sm.gif" alt="Right pointing arrowhead image"/>
 										<span style="width:4px;"/>
 										<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerFirmEIN">
-<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">PreparerFirmIDNumber</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerFirmIDNumber</xsl:with-param>
-											</xsl:call-template>-->
+											</xsl:call-template>
 										</xsl:if>
 										<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/MissingEINReason">
-<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">MissingEINReason</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationMissingEINReason</xsl:with-param>
 											</xsl:call-template>
--->										</xsl:if>
+										</xsl:if>
 									</div>
 								</div>
 								<div style="width:164mm;float:left;clear:none;">
@@ -1824,64 +1819,64 @@
 											 <img src="{$ImagePath}/1040ScheduleH_Bullet_Sm.gif" alt="Right pointing arrowhead image"/>
 										</div>
 										<div class="styGenericDiv" style="padding-right:.5mm;height:auto;">
-<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">AddressLine1Txt</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationAddressLine1</xsl:with-param>
-											</xsl:call-template>-->
+											</xsl:call-template>
 											<br/>
-<!--											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">AddressLine2Txt</xsl:with-param>
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationAddressLine2</xsl:with-param>
-											</xsl:call-template>-->
+											</xsl:call-template>
 											<br/>
 											<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerUSAddress">
-<!--												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 													<xsl:with-param name="TargetNode">CityNm</xsl:with-param>
 													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationUSAddressCity</xsl:with-param>
-												</xsl:call-template>,-->
+												</xsl:call-template>,
 											 <span style="width:2px;"/>
-<!--												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 													<xsl:with-param name="TargetNode">StateAbbreviationCd</xsl:with-param>
 													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationUSAddressState</xsl:with-param>
-												</xsl:call-template>,-->
+												</xsl:call-template>,
 											 <span style="width:2px;"/>
-<!--												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 													<xsl:with-param name="TargetNode">ZIPCd</xsl:with-param>
 													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationUSAddressZip</xsl:with-param>
-												</xsl:call-template>-->
+												</xsl:call-template>
 											</xsl:if>
 											<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerForeignAddress">
-<!--												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 													<xsl:with-param name="TargetNode">CityNm</xsl:with-param>
 													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationForeignAddressCity</xsl:with-param>
-												</xsl:call-template>,-->
+												</xsl:call-template>,
 											 <span style="width:2px;"/>
-<!--												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 													<xsl:with-param name="TargetNode">ProvinceOrStateNm</xsl:with-param>
 													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationForeignProvinceOrState</xsl:with-param>
-												</xsl:call-template>,-->
+												</xsl:call-template>,
 											<span style="width:2px;"/>
-<!--												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 													<xsl:with-param name="TargetNode">ForeignPostalCd</xsl:with-param>
 													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationForeignPostalCd</xsl:with-param>
-												</xsl:call-template>,-->
+												</xsl:call-template>,
 											<span style="width:2px;"/>
-<!--												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 													<xsl:with-param name="TargetNode">CountryCd</xsl:with-param>
 													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationForeignCountryCd</xsl:with-param>
-												</xsl:call-template>-->
+												</xsl:call-template>
 											</xsl:if>
 										</div>
 									</div>
 									<div class="styLNDesc" style="width:32mm;padding-left:1mm;height:8mm;"> Phone no. 
-<!--										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 											<xsl:with-param name="TargetNode">Phone</xsl:with-param>
 											<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPhone</xsl:with-param>
-										</xsl:call-template>-->
-<!--										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
+										</xsl:call-template>
+										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 											<xsl:with-param name="TargetNode">ForeignPhone</xsl:with-param>
 											<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationForeignPhone</xsl:with-param>
-										</xsl:call-template>-->
+										</xsl:call-template>
 									</div>
 								</div>
 							</div>
@@ -1931,7 +1926,7 @@
 												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationSelfEmployed</xsl:with-param>
 											</xsl:call-template>-->
 										   Check 
-										<input class="styCkbox" type="checkbox" style="height:3.5mm;width:4mm;">
+										<input class="styCkbox" type="checkbox" style="height:3.5mm;width:4mm;" >
 												<!--<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/SelfEmployedInd"/>
 													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationSelfEmployed</xsl:with-param>

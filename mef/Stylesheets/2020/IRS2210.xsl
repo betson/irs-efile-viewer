@@ -179,7 +179,7 @@
 								<span style= "width:1mm;"></span><b>Don't file Form 2210.</b> You aren't required to figure<br/>
 								<span style= "width:2mm;"></span>your penalty because the IRS will figure it and send<br/>
 								<span style= "width:2mm;"></span>you a bill for any unpaid amount.  If you want to figure<br/>
-								<span style= "width:2mm;"></span>it, you may use Part lll or Part lV as a worksheet and <br/>
+								<span style= "width:2mm;"></span>it, you may use Part III or Part IV as a worksheet and <br/>
 								<span style= "width:2mm;"></span>enter your penalty amount on your tax return, but <b>don't <br/>
 								<span style= "width:2mm;"></span>file Form 2210.</b>
 							</span>
@@ -187,18 +187,18 @@
 							<span class="styIRS2210Box" style="width:75mm;text-align:left;padding-top:1mm;">
 							<span style= "width:2mm;"></span>You <b>aren't</b> required to figure your penalty because <br/>
 							<span style= "width:2mm;"></span>the IRS will figure it and send you a bill for any unpaid<br/>
-							<span style= "width:2mm;"></span>amount.  If you want to figure it, you may use Part lll<br/>
-							<span style= "width:2mm;"></span>or Part lV as a worksheet and enter your penalty<br/>
+							<span style= "width:2mm;"></span>amount.  If you want to figure it, you may use Part III<br/>
+							<span style= "width:2mm;"></span>or Part IV as a worksheet and enter your penalty<br/>
 							<span style= "width:2mm;"></span>amount on your tax return, but <b>file only page 1 of<br/>
 							<span style= "width:2mm;"></span>Form 2210.</b>
 							</span>
 						</div>
 					</div>
-					<!-- Part l -->
+					<!-- Part I -->
 					<!-- Part I - Header -->
 					<div style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;float:left;padding-top:0mm;">
-						<span class="styPartName" style="height:4mm;width:12mm;font-size:13;">Part l</span>
+						<span class="styPartName" style="height:4mm;width:12mm;font-size:13;">Part I</span>
 						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
 							<span style="font-size:10pt;vertical-align:top;"/>
 							<b>Required Annual Payment</b>
@@ -405,7 +405,7 @@
 										<xsl:with-param name="BackupName">IRS2210OwePenaltyInd</xsl:with-param>
 									</xsl:call-template>
 									<b>Yes.  </b>
-								</label>You may owe a penalty, but <b>don't</b> file Form 2210 unless one or more boxes in Part ll below applies.
+								</label>You may owe a penalty, but <b>don't</b> file Form 2210 unless one or more boxes in Part II below applies.
                         </div>
 						</span>
 						<div>
@@ -420,7 +420,7 @@
 						</div>
 						<div>
 							<span style="width:12.8mm;"/>
-							<span>will figure it and send you a bill for any unpaid amount.  If you want to figure your penalty, you may use Part lll or lV as
+							<span>will figure it and send you a bill for any unpaid amount.  If you want to figure your penalty, you may use Part III or lV as
                             </span>
 						</div>
 						<div>
@@ -429,11 +429,11 @@
 							</span>
 						</div>
 					</div>
-					<!-- Part ll -->
-					<!-- Part Il - Header -->
+					<!-- Part II -->
+					<!-- Part II - Header -->
 					<div style="width:187mm;height:4.5mm;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;">
-						<span class="styPartName" style="height:4mm;width:12mm;font-size:13;">Part ll</span>
+						<span class="styPartName" style="height:4mm;width:12mm;font-size:13;">Part II</span>
 						<div class="styPartDesc" style="width:170mm;font-weight:normal;">
 							<span style="font-size:10pt;vertical-align:top;"/>
 							<b>Reasons for Filing.</b>  Check applicable boxes.  If none apply, <b>don't </b>file Form 2210.
@@ -687,34 +687,30 @@
 						</div>
 					</div>
 					<!-- END Page Header -->
-					<!-- Part lll -->
-					<!-- Part Ill - Header -->
+					<!-- Part III -->
+					<!-- Part III - Header -->
 					<div style="width:187mm;height:4.5mm;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;float:left;">
-						<span class="styPartName" style="height:4mm;width:15mm;font-size:13;">Part lll</span>
+						<span class="styPartName" style="height:4mm;width:15mm;font-size:13;">Part III</span>
 						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
 							<span style="font-size:10pt;vertical-align:center;"/>
 							<b>Short Method</b>
 						</span>
 					</div>
-					<!-- END Part lll Header-->
+					<!-- END Part III Header-->
 					<!--Section 1 Part III-->
-					<div class="styBB" style="width:187mm;height:19mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
-          border-right-width:0px;border-left-width:0px;float:left;">
-						<div style="width:187mm;padding-top:1mm;">
-							<span style="width:14.6mm;"/>
+					<div class="styBB" style="width:187mm;height:19mm; border-style:solid; border-bottom-width:1px;border-top-width:0px;
+											  border-right-width:0px;border-left-width:0px; float:left;">
+						
+						<div style="width:35mm; margin-left: 14.6mm; margin-top:1mm; float:left">
 							<i>
-								<b>Can You Use the</b>
+								<b>Can You Use the<br/>Short Method?</b>
 							</i>
-							<span style="width:11mm;"/>You can use the short method if:
                         </div>
-							<div class="styBB" style="width:50mm;border-bottom-width:0px;">
-								<span style="width:14.6mm;"/>
-								<i>
-									<b>Short Method? </b>
-								</i>
-							</div>
-							<div class="styBB" style="width:130mm;padding-top:.5mm;border-bottom-width:0px;float:left; clear:none;">
+
+						
+						<div class="styBB" style="width:130mm; margin-top:1mm; border-bottom-width:0px;float:left; clear:none;">
+								You can use the short method if:<br/>
 								<img src="{$ImagePath}/2210_Bullet_Round.gif" alt="RoundBullet"/>
 								<span style="width:.05mm;"/>								
 									You made no estimated tax payments (or your only payments were withheld<br/>
@@ -726,32 +722,29 @@
 					</div>
 					<!--Section 2 Part III Instructions-->
 					<div class="styBB" style="width:187mm;border-style:solid; border-bottom-width:2px;border-top-width:0px;border-right-width:0px;border-left-width:0px;float:left;">
-							<div class="styBB" style="width:187mm;border-bottom-width:0px;">
-								<span style="width:14mm;"/>
+							
+							<div style="width:35mm; margin-left: 14.6mm; margin-top:1mm; float:left">
 								<i>
-									<b>Must You Use the</b>
-								</i>
-								<span style="width:10mm;"/>You must use the regular method (Part lV) instead of the short method if:   
-							</div>
-							<div class="styBB" style="width:50.5mm;border-bottom-width:0px;">
-								<span style="width:14mm;"/>
-								<i>
-									<b>Regular Method?</b>
+									<b>Must You Use the<br/>Regular Method?</b>
 								</i>
 							</div>
-							<div class="styBB" style="width:136mm;padding-top:.5mm;border-bottom-width:0px;float:left;clear:none;">
+							
+							<div class="styBB" style="width:136mm; margin-top:1mm; border-bottom-width:0px;float:left;clear:none;">
+								You must use the regular method (Part IV) instead of the short method if:<br/>							
 								<img src="{$ImagePath}/2210_Bullet_Round.gif" alt="RoundBullet"/>
 								<span style="width:.005mm;"/>
 								    You made any estimated tax payments late,<br/>
 								<img src="{$ImagePath}/2210_Bullet_Round.gif" alt="RoundBullet"/>
 								<span style="width:.75mm;"/>										
-									You checked box <b>C</b> or <b>D</b> in Part ll, <b>or</b><br/>
+									You checked box <b>C</b> or <b>D</b> in Part II, <b>or</b><br/>
 								<img src="{$ImagePath}/2210_Bullet_Round.gif" alt="RoundBullet"/>
 								<span style="width:.75mm;"/>										
 									You're filing Form 1040-NR and you didn't receive<br/>													
-								wages as an employee subject to U.S. income tax withholding.									
-						<div class="styBB" style="width:187mm;height:10mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
-          border-right-width:0px;border-left-width:0px;float:right;clear:none;">
+								wages as an employee subject to U.S. income tax withholding.		
+							</div>							
+						    
+						    <div class="styBB" style="width:187mm;height:10mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+                                                       border-right-width:0px;border-left-width:0px;float:right;clear:none;">
 							<div style="width:187mm;height:2mm;">
 								<span style="width:2.25mm;"/>
 								<b>Note:</b>
@@ -759,7 +752,7 @@
 									<span style="width:2.25mm;"/>larger penalty than the regular method. If the payment was only a few days early, the difference is likely to be small.
 							</div>
 						</div>
-					</div>						
+											
 						<!-- Line 10 -->
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="font-size:7pt;height:5mm;padding-bottom:0mm;padding-left: 2.25mm">10
@@ -885,32 +878,22 @@
                             </div>
 							<div class="styLNRightNumBox" style="height:9mm;padding-bottom:0mm;border-bottom-width:0px; background-color:lightgrey; border-right-width:1px;border-right-width:1px;width:8.3mm;"/>
 						</div>
-						<div style="width:187mm;font-family:arial;font-size:7pt;">
-							<div class="styLNLeftNumBox" style="font-size:7pt;height:0mm;padding-bottom:0mm;padding-left: 2.25mm"/>
-							<div class="styLNDesc" style="text-align:bottom;width:135mm;height:2mm;">
-								<span style="width:18mm;height:2mm;"/>
-								<span style="width:13mm;text-align:center;">Amount on</span>
-								<span style="width:14mm;height:2mm;"/>
-								<span style="width:24mm;text-align:center;">Number of days paid</span>
-							</div>
-							<div class="styLNRightNumBox" style="height:4.5mm;border-bottom-width:0px; background-color:lightgrey; border-right-width:1px;border-left-width:1px;width:8.3mm;"/>
-						</div>
+
 						<div style="width:187mm;font-size:7pt;">
 							<div class="styLNLeftNumBox" style="font-size:7pt;height:0mm;padding-bottom:0mm;padding-left: 2.25mm"/>
-							<div class="styLNDesc" style="text-align:bottom;width:135mm;height:2mm;">
-								<span style="float:left">
-									<span style="width:18mm"/>
-									<span style="width:13mm;text-align:center;">line 14</span>
-									<span style="width:14mm;height:2mm;virtical-align:super;text-align:center;">x</span>
-									<span style="width:24mm;height:2mm;text-align:center;">before 4/15/21</span>
-									<span style="width:14mm;text-align:center;">x 0.00008</span>
-									<span style="width:5mm;height:2mm;text-align:center;">.</span>
-								</span>
-								<span class="styIRS2210DotLn" style="float:right;padding-right:2mm;">........</span>
+							<div class="styLNDesc" style="width:135mm;height:8mm;">
+
+									<div style="float:left;width:15mm;height:4mm;margin-left:20mm;text-align:left;">Amount on<br/>line 14</div>
+									<div style="float:left;width:14mm;height:4mm;virtical-align:center;text-align:center;">x</div>
+									<div style="float:left;width:30mm;height:4mm;text-align:left;">Number of days paid<br/>before 4/15/21</div>
+									<div style="float:left;width:14mm;height:4mm;text-align:center;">x 0.00008</div>
+									<div style="float:left;width:5mm;height:4mm;text-align:center;">.</div>
+									<div class="styIRS2210DotLn" style="float:left;padding-right:2mm;">.......</div>
+								
 							</div>
-							<div class="styLNRightNumBox" style="height:5mm;border-bottom-width:1px; border-right-width:1px;width:8.3mm;padding-bottom:0;padding-top:1.5mm">16
+							<div class="styLNRightNumBox" style="height:8mm;border-bottom-width:1px; border-right-width:1px;width:8.3mm;padding-bottom:0;padding-top:1.5mm">16
                             </div>
-							<div class="styLNAmountBox" style="width:35mm;height:5mm;border-left-width:0px;border-bottom-width:1px;padding-bottom:0;padding-top:1.5mm">
+							<div class="styLNAmountBox" style="width:35mm;height:8mm;border-left-width:0px;border-bottom-width:1px;padding-bottom:0;padding-top:1.5mm">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2210Data/DueDatePaidMultipliedAmt"/>
 								</xsl:call-template>
@@ -975,17 +958,17 @@
 						</div>
 					</div>
 					<!-- END Page Header -->
-					<!-- Part lV -->
-					<!-- Part lV - Header -->
+					<!-- Part IV -->
+					<!-- Part IV - Header -->
 					<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;float:left;">
-						<span class="styPartName" style="height:4mm;width:15mm;font-size:13;">Part lV</span>
+						<span class="styPartName" style="height:4mm;width:15mm;font-size:13;">Part IV</span>
 						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
 							<span style="font-size:10pt;auto;vertical-align:center;"/>
 							<b>Regular Method</b> (See the instructions if you're filing Form 1040-NR.)
                         </span>
 					</div>
-					<!-- END Part lV Header-->
+					<!-- END Part IV Header-->
 					<!-- Section A header-->
 					<div style="width:187mm;border:0px solid black;border-bottom-width:1px;">
 						<span class="styLNDesc" style="width:80mm;height:13.6mm;font-size:8pt;padding-top:2mm;">
@@ -1259,33 +1242,33 @@
 							<span style="float:left;"> the next column </span>
 							<span class="styIRS2210DotLn">............</span>
 						</div>
-						<span class="styLNRightNumBox" style="font-size:7pt;height:10mm; width:7.1mm; border-bottom-width:0px; border-right-width:1px;padding-top:6mm;">26</span>
-						<span class="styLNDesc" style="font-size:6pt; width:25mm; height:10mm; ;border-style: solid; text-align:right; border-color:black; border-top-width:0px; border-bottom-width:0px; border-left-width:0px; border-right-width:1px; padding-top:6mm;">
+						<div class="styLNRightNumBox" style="font-size:7pt;height:10mm; width:7.1mm; border-bottom-width:0px; border-right-width:1px;padding-top:6mm;">26</div>
+						<div class="styLNDesc" style="font-size:6pt; width:25mm; height:10mm; ;border-style: solid; text-align:right; border-color:black; border-top-width:0px; border-bottom-width:0px; border-left-width:0px; border-right-width:1px; padding-top:6mm;">
 							<!--<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2210Data/OverpaymentAAmt"/>
 							</xsl:call-template>-->
-						</span>
-						<span class="styLNDesc" style="font-size:6pt; width:25mm; height:10mm; border-style: solid;text-align:right; border-color:black; border-top-width:0px; border-bottom-width:0px; border-left-width:0px; border-right-width:1px; padding-top:6mm;">
+						</div>
+						<div class="styLNDesc" style="font-size:6pt; width:25mm; height:10mm; border-style: solid;text-align:right; border-color:black; border-top-width:0px; border-bottom-width:0px; border-left-width:0px; border-right-width:1px; padding-top:6mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2210Data/OverpaymentBAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="styLNDesc" style="font-size:6pt; width:25mm; height:10mm; border-style: solid;text-align:right; border-color:black; border-top-width:0px; border-bottom-width:0px; border-left-width:0px; border-right-width:1px; padding-top:6mm;">
+						</div>
+						<div class="styLNDesc" style="font-size:6pt; width:25mm; height:10mm; border-style: solid;text-align:right; border-color:black; border-top-width:0px; border-bottom-width:0px; border-left-width:0px; border-right-width:1px; padding-top:6mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2210Data/OverpaymentCAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="styLNDesc" style="font-size:7pt; width:24.9mm; height:10mm; border-style: solid; padding-top:0mm;padding-bottom:0mm;border-color:black; background-color:lightgrey; border-top-width:0px;border-left-width:0px; border-right-width:0px; border-bottom-width:0px;"/>
+						</div>
+						<div class="styLNDesc" style="font-size:7pt; width:24.9mm; height:10mm; border-style: solid; padding-top:0mm;padding-bottom:0mm;border-color:black; background-color:lightgrey; border-top-width:0px;border-left-width:0px; border-right-width:0px; border-bottom-width:0px;"/>
 					</div>
 					<!--Section B Figure the Penalty-->
 					<div class="styLNDesc" style="padding-top:1mm;padding-bottom:0mm;width:187mm;font-size:8pt; height:5mm; border-style: solid; border-color:black;border-top-width:1px; border-bottom-width:1px;border-left-width:0px; border-right-width:0px;">
-						<b>Section B—Figure the Penalty</b> (Use the Worksheet for Form 2210, Part IV, Section B—Figure the Penalty in the instructions.)</div>
+						<b>Section B-Figure the Penalty</b> (Use the Worksheet for Form 2210, Part IV, Section B-Figure the Penalty in the instructions.)</div>
 					<!--Line 27-->
 					<div class="styBB" style="width:187mm;border-bottom-width:2px;">
 						<span class="styLNLeftNumBox" style="width:7mm;height:9mm;">27</span>
 						<div class="styLNDesc" style="width:140mm;font-size:7pt;border-right-width:1px;height:9mm;;">
 							<b>Penalty.
-        </b>  Enter the total penalty from line 14 of the Worksheet for Form 2210, Part IV, Section B—Figure
+        </b>  Enter the total penalty from line 14 of the Worksheet for Form 2210, Part IV, Section B-Figure
 the Penalty. Also include this amount on Form 1040, 1040-SR, or 1040-NR, line 38; or Form 1041, line 27.<br/>
  <b> Don't file Form 2210 unless you checked a box in Part II</b>
 							<span style="width:2mm;"/>
@@ -1332,7 +1315,7 @@ the Penalty. Also include this amount on Form 1040, 1040-SR, or 1040-NR, line 38
 					<!-- END Page Header -->
 					<div class="styBB" style="width:187mm;border-top-width:1px;float:left;clear:none;">
 						<div class="styLNDesc" style="width:187mm;font-size:8pt;border-right-width:1px;height:4mm;">
-							<b>Schedule AI—Annualized Income Installment Method</b> (See the instructions.)
+							<b>Schedule AIAnnualized Income Installment Method</b> (See the instructions.)
                         </div>
 					</div>
 					<div class="styBB" style="width:187mm;float:left;clear:none;">
@@ -1354,11 +1337,11 @@ the Penalty. Also include this amount on Form 1040, 1040-SR, or 1040-NR, line 38
 							<br/>1/1/20-12/31/20
                         </div>
 					</div>
-					<!-- Part l -->
+					<!-- Part I -->
 					<!-- Part I - Header -->
 					<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:1px;
           border-right-width:0px;border-left-width:0px;float:left;clear:none;">
-						<span class="styPartName" style="height:4mm;width:12mm;font-size:13;">Part l</span>
+						<span class="styPartName" style="height:4mm;width:12mm;font-size:13;">Part I</span>
 						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
 							<span style="font-size:10pt;vertical-align:top;"/>
 							<b>Annualized Income Installments</b>
@@ -1887,7 +1870,7 @@ the Penalty. Also include this amount on Form 1040, 1040-SR, or 1040-NR, line 38
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="padding-left: 2.25mm;height:11mm;">18</div>
 							<div class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:11mm;">For each period, enter the same type of credits as allowed on Form
-								2210, Part l, lines 1 and 3.  <span style="float:left;">See Instructions</span>
+								2210, Part I, lines 1 and 3.  <span style="float:left;">See Instructions</span>
 								<span class="styIRS2210DotLn">...........</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:11mm; width:6mm;  border-bottom-width:1px; border-right-width:1px; padding-top:7mm; ">18
@@ -2143,7 +2126,7 @@ the Penalty. Also include this amount on Form 1040, 1040-SR, or 1040-NR, line 38
 							<div class="styLNLeftNumBox" style="padding-left: 2.25mm;height:5mm;">27</div>
 							<div class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:5mm;">
                                 Enter the <b>smaller</b> of line 23 or line 26 here and on 
-								<span style="float:left;">Form 2210, Part lV, line 18</span>
+								<span style="float:left;">Form 2210, Part IV, line 18</span>
 								<span class="styIRS2210DotLn">......
                                     <img src="{$ImagePath}/2210_Bullet_Md.gif" alt="MediumBullet"/>
 								</span>
@@ -2245,7 +2228,7 @@ the Penalty. Also include this amount on Form 1040, 1040-SR, or 1040-NR, line 38
 	<xsl:template match="SEWSByQtr" name="SEWSByQtr">
 		<div style="width:187mm;float:none;clear:none;">
 			<!-- Part II -->
-			<!-- Part || - Header -->
+			<!-- Part II - Header -->
 			<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px; border-top-width:1px;
           border-right-width:0px; border-left-width:0px;float:left;clear:none;">
 				<span class="styPartName" style="height:4mm;width:14mm; font-family:arial; font-size:13;">Part II</span>

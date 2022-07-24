@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Last Modified by James Ganzy on 04/13/2021 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -63,6 +64,13 @@
 									<xsl:with-param name="TargetNode" select="$Form4684Data/@revenueProcedure200920Cd"/>
 									<xsl:with-param name="Style">padding-left:3mm;</xsl:with-param>
 								</xsl:call-template>
+								<xsl:if test="$Form4684Data/FederallyDeclaredDisasterDesc">
+									<xsl:call-template name="LinkToLeftoverDataTableInline">
+										<xsl:with-param name="Desc">Federally Declared Disaster Description</xsl:with-param>
+										<xsl:with-param name="TargetNode" select="$Form4684Data/FederallyDeclaredDisasterDesc"/>
+										<xsl:with-param name="Style">padding-left:3mm;</xsl:with-param>
+									</xsl:call-template>
+								</xsl:if>	
 								<br/>
 								<span class="styAgency">Department of the Treasury</span>
 								<br/>
@@ -1632,10 +1640,10 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;">17</div>
 						<div class="styLNDesc" style="width:139mm;height:4mm;">
-							Enter 10% of your adjusted gross income from Form 1040 or Form 1040-SR, 
-							line 8b, or Form 1040-NR, line 35. Estates and trusts, see instructions
+							Enter 10% of your adjusted gross income from Form 1040, 1040-SR, or 1040-NR, line 11. Estates and trusts, 
+							see instructions
 								<span class="styBoldText" style="float:right;padding-right:2mm;">
-									<span class="styDotLn">......................</span>
+									<span class="styDotLn">.............................</span>
 								</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:7mm;padding-top:4mm">17</div>
@@ -3158,7 +3166,7 @@
 							</xsl:if>
 						</div>
 					</div>
-					<div class="styIRS4684TableContainer" style="height:8mm;"  id="STctn">
+					<div class="styIRS4684TableContainer" style="height:auto;"  id="STctn">
 						<xsl:call-template name="SetInitialState"/>
 						<table class="styTable" cellspacing="0">
 							<thead/>
@@ -3175,7 +3183,7 @@
 												<xsl:choose>
 													<xsl:when test="position()=1">
 														<xsl:attribute name="style">width:8mm;
-													text-align:left;border-right-width:0px;border-bottom-width:0px;
+													text-align:left;border-right-width:0px;border-bottom-width:0px;border-top-width:1px;
 													font-weight:bold;font-size:7pt;padding-left:1mm;
 													border-color:black;
 													</xsl:attribute>29
@@ -3185,14 +3193,14 @@
 													</xsl:otherwise>
 												</xsl:choose>
 											</td>
-											<td class="styTableCell" style="width:84.3mm;text-align:left; 
-											              border-color:black;">
+											<td class="styTableCell" style="width:84mm;text-align:left; 
+											              border-color:black;border-bottom-width:0px;border-top-width:1px">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="CasualtyOrTheftDesc"/>
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="width:32mm;border-bottom-width:1px;
+											<td class="styTableCell" style="width:32mm;border-bottom-width:0px;border-top-width:1px;
 											           border-color:black">
 												<xsl:call-template name="PopulateNegativeNumber">
 													<xsl:with-param name="TargetNode" select="TradeOrRentalPropertyAmt"/>
@@ -3200,7 +3208,7 @@
 												<span class="styTableCellPad"/>
 											</td>
 											<td class="styTableCell" style="width:32mm;  
-											            border-bottom-width:1px;border-color:black">
+											            border-bottom-width:0px;border-top-width:1px;border-color:black">
 												<xsl:call-template name="PopulateNegativeNumber">
 													<xsl:with-param name="TargetNode" 
 													select="IncomeProducingPropertyAmt"/>
@@ -3208,7 +3216,7 @@
 												<span class="styTableCellPad"/>
 											</td>
 											<td class="styTableCell" 
-											style="width:31.5mm;border-bottom-width:1px;
+											style="width:31.5mm;border-bottom-width:0px;border-top-width:1px;
 											           border-color:black;border-right-width:0px">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="GainsFromCasualtiesOrTheftAmt"/>
@@ -3223,22 +3231,22 @@
 											 border-right-width:0px;border-bottom-width:0px;font-weight:bold; 
 											 font-size:7pt;padding-left:1mm;border-top-width:1px">29<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="width:84.3mm;
+											<td class="styTableCell" style="width:84mm;
 											border-top-width:0px;border-bottom-width:0px;border-top-width:1px;
 											             border-left-width:0px;border-right-width:1px;border-color:black">
 												<span class="styTableCellPad"/>
 											</td>
 											<td class="styTableCell" 
-											style="width:32mm;border-top-width:0px;border-bottom-width:0px;
-											             border-left-width:0px;border-right-width:1px;border-color:black;border-top-width:1px">
+											style="width:32mm;border-top-width:1px;border-bottom-width:0px;
+											             border-left-width:0px;border-right-width:1px;border-color:black;">
               								  (<span style="width:16px;"/>)<span class="styTableCellPad"/>
 											</td>
 											<td class="styTableCell" 
-											style="width:32mm;border-top-width:0px;border-bottom-width:0px;;border-top-width:1px;
+											style="width:32mm;border-top-width:1px;border-bottom-width:0px;
 											             border-left-width:0px;border-right-width:1px;border-color:black">
                                               (<span style="width:16px;"/>)<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="width:31.5mm;border-right-width:0px;;border-top-width:1px;
+											<td class="styTableCell" style="width:31.5mm;border-right-width:0px;border-top-width:1px;
 											border-bottom-width:0px">
 												<span class="styTableCellPad"/>
 											</td>
@@ -3250,19 +3258,18 @@
 											            border-right-width:0px;border-bottom-width:0px;font-weight:bold;">
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="width:84.3mm;border-top-width:1px; 
+											<td class="styTableCell" style="width:84mm;border-bottom-width:0px;border-top-width:1px;
 											            border-left-width:0px;border-color:black">
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="width:32mm;border-top-width:1px;
+											<td class="styTableCell" style="width:32mm;border-bottom-width:0px;border-top-width:1px;
 											            border-color:black">
                                             (<span style="width:16px;"/>)<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="width:32mm; 
-											           border-top-width:1px;border-color:black">
+											<td class="styTableCell" style="width:32mm; border-bottom-width:0px;border-top-width:1px;border-color:black">
                                            (<span style="width:16px;"/>)<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="width:31.5mm;border-top-width:1px; 
+											<td class="styTableCell" style="width:31.5mm;border-bottom-width:0px;border-top-width:1px;
 											           border-right-width:0px;border-color:black">
 												<span class="styTableCellPad"/>
 											</td>
@@ -3277,21 +3284,20 @@
 										         border-bottom-width:0px;text-align:left;border-top-width: 1px;
 										                  font-weight:bold; font-size:7pt;padding-left:1mm">29
 										  </td>
-										<td class="styTableCell" style="width:84.3mm;border-top-width: 1px;  
+										<td class="styTableCell" style="width:84mm;border-bottom-width:0px;border-top-width:1px; 
 										         text-align:left;border-color:black;height:5mm">
 											<xsl:call-template name="PopulateAdditionalDataTableMessage">
 												<xsl:with-param name="TargetNode" select="$Form4684Data/
 												ShortTermTheftProperty"/>
 											</xsl:call-template>
 										</td>
-										<td class="styTableCell" style="width:32mm;border-top-width: 1px; 
-										          border-bottom-width: 1px;border-color:black;">
+										<td class="styTableCell" style="width:32mm;border-bottom-width:0px;border-top-width:1px;border-color:black;">
 										</td>
 										<td class="styTableCell" style="width:32mm;border-top-width: 1px; 
 										          border-bottom-width: 1px;border-color:black;">
 										</td>
 										<td class="styTableCell" style="width:31.5mm;border-right-width:0px; 
-										          border-top-width: 1px;border-bottom-width: 1px;border-color:black;">
+										          border-bottom-width:0px;border-top-width:1px;border-color:black;">
 											<span style="width:16px;"/>
 											<span class="styTableCellPad"/>
 										</td>
@@ -3300,23 +3306,19 @@
 										<td class="styTableCell" style="width:8mm;border-right-width:0px; 
 										         border-bottom-width:0px;text-align:left;border-top-width: 0px; 
 										                  font-weight:bold; font-size:7pt;padding-left:1mm"/>
-										<td class="styTableCell" style="width:84.3mm;border-top-width: 0px; 
-										          border-bottom-width: 1px;border-color:black;">
+										<td class="styTableCell" style="width:84mm;border-bottom-width:0px;border-top-width:1px;border-color:black;">
 											<span style="width:16px;"/>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:32mm;border-top-width: 0px; 
-										          border-bottom-width: 1px;border-color:black;">
+										<td class="styTableCell" style="width:32mm;border-bottom-width:0px;border-top-width:1px;border-color:black;">
 											<span style="width:16px;"/>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:32mm;border-top-width: 0px;  
-										         border-bottom-width:1px;border-color:black;">
+										<td class="styTableCell" style="width:32mm;border-bottom-width:0px;border-top-width:1px;border-color:black;">
 											<span style="width:16px;"/>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:31.5mm;border-top-width: 0px;  
-										         border-bottom-width: 1px;border-right-width:0px;border-color:black;">
+										<td class="styTableCell" style="width:31.5mm;border-bottom-width:0px;border-top-width:1px;border-right-width:0px;border-color:black;">
 											<span style="width:16px;"/>
 											<span class="styTableCellPad"/>
 										</td>
@@ -4948,7 +4950,7 @@
 							<div class="styPartName" style="background-color:black;width:12mm">Part I</div>
 							<div class="styPartDesc" style="width:168mm;">Election Statement</div>
 						</div>
-						<div class="styLNDesc"  style="height:20mm;width:187mm;text-align:left;">
+						<div class="styLNDesc"  style="height:auto;width:187mm;text-align:left;">
 							<div style="height:12mm;width:187mm;">
 								By providing all of the information below, the taxpayer elects, under section 165(i) of the Internal Revenue Code, to deduct a loss attributable to 
 								a federally declared disaster and that occurred in a federally declared disaster area in the tax year immediately preceding the tax year the loss 
@@ -5195,6 +5197,50 @@
 						</xsl:call-template>
 					<!-- Adding pen image -->
 					</table>
+
+				<!-- Begin Separated Repeating data table for Federally Declared Disaster Description-->
+					<xsl:if test="$Form4684Data/FederallyDeclaredDisasterDesc">
+					   <table class="styDepTbl" cellspacing="0" style="font-size:8pt;width:100mm;">
+						  <thead class="styTableThead">
+							 <tr class="styDepTblHdr">
+								<th class="styDepTblCell" scope="col" rowspan="1" style="width:100mm;">
+								   Federally Declared Disaster Description
+								</th>
+							 </tr>
+						  </thead>
+						  <tbody>
+							 <xsl:for-each select="$Form4684Data/FederallyDeclaredDisasterDesc">
+								<tr style="border-color:black;height:6mm;">
+								   <xsl:attribute name="class">
+									  <xsl:choose>
+										 <xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+										 <xsl:otherwise>styDepTblRow2</xsl:otherwise>
+									  </xsl:choose>
+								   </xsl:attribute>
+								   <td class="styTableCellText" style="width:50mm;">
+									  <div style="width:6.5mm;" class="styLNDesc">
+										 <div style="width:6mm;font-weight:bold;float:right;clear:none;">
+											<span class="styBoldText" style="float:right;text-align:right;padding-right:2mm;">
+											   <xsl:value-of select="position()"/>
+											</span>
+										 </div>
+									  </div>
+									  <div style="width:80mm;float:none;clear:none;padding-top:.5mm;">
+										   <xsl:variable name="pos" select="position()"/>
+										   <xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="$Form4684Data/FederallyDeclaredDisasterDesc[$pos]"/>
+												<xsl:with-param name="BackupName">IRS4684FederallyDeclaredDisasterDesc</xsl:with-param>
+										 </xsl:call-template>
+									  </div>
+								   </td>
+								</tr>
+							 </xsl:for-each>
+						  </tbody>
+					   </table>
+					</xsl:if>
+					<br/>
+				<!--End Separated Repeating data table for Federally Declared Disaster Description-->       
+				
 					<xsl:if test="($Print = $Separated) and (count($Form4684Data/PersonalUseProperties)&gt; 4)">
 						<br/>
 						<br/>

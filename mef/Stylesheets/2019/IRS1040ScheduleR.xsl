@@ -60,18 +60,18 @@
 							</div>
 				<div class="styGenericDiv" style="height:3mm;margin-top:0.5mm;font:size:6pt;width:97mm;">
 				                <span style="font-weight: bold;  ;">
-								<img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/>
+								<img src="{$ImagePath}/1040SchB_Bullet.gif" alt="right arrow"/>
 								<span style="width:0.5mm;"/>
 								Complete and attach to Form 1040 or Form 1040-SR.</span>
        <br/>
                                 <span style="font-weight: bold;  ;">
-								<img src="{$ImagePath}/1040SchB_Bullet.gif" alt="Bullet Image"/>
+								<img src="{$ImagePath}/1040SchB_Bullet.gif" alt="right arrow"/>
 								<span style="width:0.5mm;"/>
 								Go to <i><a style="text-decoration:none;color:black;" href="http://IRS.gov/ScheduleR">www.irs.gov/ScheduleR.</a></i> for instructions and<br/> the latest information.</span>
         </div>
   						</div>
 					<div class="styLNDesc" style="height:5mm;width:23mm;padding-top:6mm;">
-							<img src="{$ImagePath}/1040SchR_Top_Forms.gif" alt="Bullet Image" height="55" width="85"/>
+							<img src="{$ImagePath}/1040SchR_Top_Forms.gif" alt="1040SchR Top Forms" height="55" width="85"/>
 					</div>
 						<div class="styTYBox" style="width:30mm;height:21.5mm;">
 							<div class="styOMB" style="height:4mm;">OMB No. 1545-0074</div>
@@ -125,7 +125,7 @@
 					</div>
 					<!-- BEGIN Part I Title -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styPartName" style="width:12mm;font-size: 9pt;">Part l</div>
+						<div class="styPartName" style="width:12mm;font-size: 9pt;">Part I</div>
 						<div class="styPartDesc" style="font-size: 9pt;padding-left:6mm;width:160mm;">Check the Box for Your Filing Status and Age</div>
 					</div>
 					<!-- END Part I Title -->
@@ -423,21 +423,21 @@
 							<div class="styLNDesc" style="padding-bottom:5mm;">
 								<img src="{$ImagePath}/1040SchR_Line.gif" alt="Line Image"/> Yes 
 						<img src="{$ImagePath}/1040SchR_Line.gif" alt="Line Image"/>
-								<img src="{$ImagePath}/1040SchR_Bullet_Sm.gif" alt="Bullet Image"/>
+								<img src="{$ImagePath}/1040SchR_Bullet_Sm.gif" alt="right arrow"/>
 								<span style="width:2mm;"/>
-								<span style="font-weight:normal;">Skip Part ll and complete Part lll on the back.</span>
+								<span style="font-weight:normal;">Skip Part II and complete Part III on the back.</span>
 							</div>
 							<img src="{$ImagePath}/1040SchR_Line.gif" alt="Line Image"/> No <span style="width:1mm;"/>
 							<img src="{$ImagePath}/1040SchR_Line.gif" alt="Line Image"/>
-							<img src="{$ImagePath}/1040SchR_Bullet_Sm.gif" alt="Bullet Image"/>
+							<img src="{$ImagePath}/1040SchR_Bullet_Sm.gif" alt="right arrow"/>
 							<span style="width:2mm;"/>
-							<span style="font-weight:normal;">Complete Parts ll and lll.</span>
+							<span style="font-weight:normal;">Complete Parts II and III.</span>
 						</div>
 						<span class="styPartDesc" style="height:4mm;"/>
 					</div>
 					<!-- BEGIN Part II Title Statement of Permanent and Total Disability-->
 					<div class="styBB" style="width:187mm;">
-						<div class="styPartName" style="width:14mm;font-size: 9pt;">Part ll</div>
+						<div class="styPartName" style="width:14mm;font-size: 9pt;">Part II</div>
 						<div class="styPartDesc" style="width:173mm;font-size: 8.5pt;padding-left:4mm;">Statement of Permanent and Total Disability
 						 <span style="font-weight:normal;"> (Complete </span> only <span style="font-weight:normal;"> if you checked box 2, 4, 5, 6, or 9 above.)</span>
 						</div>
@@ -469,7 +469,7 @@
                                 <xsl:with-param name="TargetNode" select="$Form1040ScheduleRData/PriorYearStatementInd/@personFirstNm"/>
                             </xsl:call-template>
                             <span style="width:3px;"/>
-							<img src="{$ImagePath}/1040SchR_Bullet_Sm.gif" alt="Bullet Image"/>
+							<img src="{$ImagePath}/1040SchR_Bullet_Sm.gif" alt="right arrow"/>
 							<span style="width:3mm"/>
 						</div>
 						<div class="styForm1040SchRCkBox" style="width:12mm;padding-top:4mm;">
@@ -530,7 +530,7 @@
 					</div>
 					<!-- BEGIN Part III Title Figure Your Credit-->
 					<div class="styBB" style="width:187mm;">
-						<div class="styPartName" style="width:14mm;font-size: 9pt;">Part lll</div>
+						<div class="styPartName" style="width:14mm;font-size: 9pt;">Part III</div>
 						<div class="styPartDesc" style="width:173mm;font-size: 9pt;padding-left:4mm;">Figure Your Credit 
 		 </div>
 					</div>
@@ -540,7 +540,7 @@
 						<span style="float:left;">
 							<div class="styLNLeftNumBox" style="padding-left:0mm;">10</div>
 							<div class="styLNDesc" style="width:80.5mm;">
-								<b> If you checked (in Part l):</b>
+								<b> If you checked (in Part I):</b>
 							</div>
 							<div class="styLNDesc" style="width:60mm;padding-right:0mm;">
 								<b>Enter:</b>
@@ -593,12 +593,12 @@
 					</div>
 					<div class="styNBB" style="width:187mm;font-size: 8.5pt;padding-top:0mm;padding-left:8mm;float:left;clear:none;">
 						<div class="styPartDesc" style="width:27mm;height:12mm;padding-left:.5mm;border-style: solid; border-color: black;border-top-width: 2px;border-bottom-width: 2px; border-left-width: 2px;border-right-width: 2px;float:left;clear:none;">
-						 		Did you check<br/>box 2, 4, 5, 6,<br/>or 9 in Part l?
+						 		Did you check<br/>box 2, 4, 5, 6,<br/>or 9 in Part I?
 						</div>
 						<div class="styPartDesc" style="width:53mm;height:1mm;padding-left:0mm;padding-top:0mm;float:left;clear:none;">
 							<img src="{$ImagePath}/1040SchR_Long_Line.gif" alt="Line Image"/> Yes 
 									<img src="{$ImagePath}/1040SchR_Long_Line.gif" alt="Line Image"/>
-							<img src="{$ImagePath}/1040SchR_Bullet_Sm.gif" alt="Bullet Image"/>
+							<img src="{$ImagePath}/1040SchR_Bullet_Sm.gif" alt="right arrow"/>
 						</div>
 						<div class="styPartDesc" style="width:61.3mm;padding-top:1mm;float:left;clear:none;">
 							<span style="width:2mm;"/>
@@ -610,7 +610,7 @@
 								<img src="{$ImagePath}/1040SchR_Long_Line.gif" alt="Line Image"/> No 
 										<span style="width:1mm;"/>
 								<img src="{$ImagePath}/1040SchR_Long_Line.gif" alt="Line Image"/>
-								<img src="{$ImagePath}/1040SchR_Bullet_Sm.gif" alt="Bullet Image"/>
+								<img src="{$ImagePath}/1040SchR_Bullet_Sm.gif" alt="right arrow"/>
 							</div>
 							<div class="styPartDesc" style="width:61.3mm;padding-top:1mm;float:left;clear:none;">
 								<span style="width:2mm;"/>
@@ -627,7 +627,7 @@
 					<div class="styNBB" style="width:187mm;font-size:8.5pt;">
 						<span style="float:left;"><div class="styLNLeftNumBox" style="height:2mm;padding-left:0mm;padding-top:0mm;">11</div>
 						<div class="styLNDesc" style="width:140.5mm;height:4mm;padding-top:0mm;">
-							<b> If you checked (in Part l):</b>
+							<b> If you checked (in Part I):</b>
 						</div></span>
 						<span style="float:right;"><div class="styForm1040SchRColBoxGrey" style="height:5mm;width:5.7mm;padding-top:0mm;   text-align:center;border-style:solid;border-right-width:0px;border-left-width:1px;         border-top-width:0px;border-bottom-width:0px;border-color:black;"/>
 						<div class="styLNAmountBox" style="height:5mm;padding-top:0mm;border-left:1px solid black;         border-bottom-width:0px;border-right-width:0px;"/></span>
@@ -781,7 +781,7 @@
 					<div class="styNBB" style="width:187mm;font-size:8.5pt;">
 						<span style="float:left;"><div class="styLNLeftNumBox" style="padding-left:0mm;">15</div>
 						<div class="styLNDesc" style="width:64.3mm;padding-right:15px;">
-							<span style="float:left;"><b> If you checked (in Part l):</b></span>
+							<span style="float:left;"><b> If you checked (in Part I):</b></span>
 							<span style="float:right;"><b>Enter:</b></span>
 						</div></span>
 						<span style="float:right;"><div class="styForm1040SchRColBoxGrey" style="height:4.8mm;width:6mm;padding-top:0mm;  padding-bottom:0mm;text-align:center;border-style:solid;border-right-width:1px;         border-left-width:1px;border-top-width:0px;border-bottom-width:0px;border-color:black;"/>

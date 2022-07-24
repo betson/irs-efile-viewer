@@ -322,7 +322,7 @@
 							<div class="styLNLeftNumBoxSD"   style="height:auto;">9</div>
 							<div class="styLNDesc"   style="height:auto;">
 								<b>Current year mortgage interest credit.</b> Enter the <b>smaller</b> of line 7 or line 8. Also include this <br/>
-								amount in the total on Schedule 3 (Form 1040) line 54. Check box <b>c</b> on that line and enter "8396" in the space next to that box
+								amount in the total on Schedule 3 (Form 1040), line 6. Check box <b>c</b> on that line and enter "8396" in the space next to that box
 								<span class="styIRS8396Dots">.........................</span>
 							</div>
 							<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;padding-bottom:0px;height:auto;">

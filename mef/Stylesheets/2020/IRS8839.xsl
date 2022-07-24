@@ -1505,15 +1505,21 @@
       </td>
       <!--(c) Disabled Child Over 18-->
       <td class="styIRS8839TableCell" style="width:8%;font-size: 7pt; text-align:center;">
-        <input class="styCkbox" type="checkbox" alt="Disabled Child Over 18" style="width:4mm;"><xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>Over18Blank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>Over18Blank</xsl:attribute></label>
+        <input class="styCkbox" type="checkbox" style="width:4mm;">
+        <xsl:attribute name="alt">Child <xsl:value-of select="$Number"/> Disabled Child Over 18</xsl:attribute>
+        <xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>Over18Blank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>Over18Blank</xsl:attribute></label>
       </td>
       <!--(d) Child With Special Needs-->
       <td class="styIRS8839TableCell" style="width:8%;font-size: 7pt; text-align:center;">
-        <input class="styCkbox" alt="Child With Special Needs" type="checkbox" style="width:4mm;"><xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>SpecialNeedsBlank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>SpecialNeedsBlank</xsl:attribute></label>
+        <input class="styCkbox" type="checkbox" style="width:4mm;">
+<xsl:attribute name="alt">Child <xsl:value-of select="$Number"/> Child With Special Needs</xsl:attribute>        
+        <xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>SpecialNeedsBlank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>SpecialNeedsBlank</xsl:attribute></label>
       </td>
       <!--(e) Foreign Child Indicator-->
       <td class="styIRS8839TableCell" style="width:8%;font-size: 7pt; text-align:center;">
-        <input class="styCkbox" alt="Foreign Child" type="checkbox" style="width:4mm;"><xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>ForeignBlank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>ForeignBlank</xsl:attribute></label>
+        <input class="styCkbox" type="checkbox" style="width:4mm;">
+<xsl:attribute name="alt">Child <xsl:value-of select="$Number"/> Foreign Child</xsl:attribute>        
+        <xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>ForeignBlank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>ForeignBlank</xsl:attribute></label>
       </td>
       <!--(f) Child's SSN-->
       <td class="styIRS8839TableCell" style="width:14%;font-size: 7pt; text-align:center;">
@@ -1521,7 +1527,9 @@
       </td>
       <!--(g) adoption became final in 2014 or earlier Indicator-->
       <td class="styIRS8839TableCell" style="width:44%;font-size: 7pt; text-align:center;border-right-width:0px;">
-        <input class="styCkbox" alt="adoption became final in 2014 or earlier" type="checkbox" style="width:4mm;"><xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>FinalBlank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>FinalBlank</xsl:attribute></label>
+        <input class="styCkbox" alt="adoption became final in 2014 or earlier" type="checkbox" style="width:4mm;">
+<xsl:attribute name="alt">Child <xsl:value-of select="$Number"/> adoption became final in 2014 or earlier</xsl:attribute>        
+        <xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>FinalBlank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>FinalBlank</xsl:attribute></label>
       </td>
     </tr>
   </xsl:template>

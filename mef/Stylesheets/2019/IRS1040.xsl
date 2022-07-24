@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Last Modified by Eugenia McDonald on 01/27/2022 -->
 <!DOCTYPE xsl:stylesheet [
   <!ENTITY nbsp "&#160;">
   <!ENTITY ndash "&#8211;">
@@ -403,10 +404,15 @@
 							&nbsp;
 						</div>
 						<div class="styIRS1040HeaderCell" style="width:45.8mm;height:10.5mm;border-right-width:0px;">
-							If <label><xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$FormData/MoreDependentsInd"/>
-								<xsl:with-param name="BackupName">IRS1040MoreDependentsInd</xsl:with-param>
-							</xsl:call-template>more than four dependents</label>, see instructions and <img src="{$ImagePath}/1040_Check.gif" alt="Check"/> here &#9658;
+							If more than four dependents,<br/>see instructions and <img src="{$ImagePath}/1040_Check.gif" alt="Check"/> here 
+							<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$FormData/MoreDependentsInd"/>
+									<xsl:with-param name="BackupName">IRS1040MoreDependentsInd</xsl:with-param>
+								</xsl:call-template>
+							</label> 
+							<img src="{$ImagePath}/1040_Bullet.gif" alt="Right pointing arrowhead image"/>
+							<span style="width:2px;"/>
 							<input type="checkbox" class="styCkboxNM" style="">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/MoreDependentsInd"/>
@@ -1890,7 +1896,7 @@
 									<span style="width:60%;padding-top:0px;padding-right:5mm;float:right;text-align:center;padding-top:0.8mm">
 										<div class="styLNCtrNumBox" style="height:3mm;width:23mm;border-top-width:1px;font-weight:normal">
 											<xsl:call-template name="PopulatePin">
-												<xsl:with-param name="TargetNode" select="$RtnHdrData/IdentityProtectionPIN"/>
+												<xsl:with-param name="TargetNode" select="$RtnHdrData/SpouseIdentityProtectionPIN"/>
 											</xsl:call-template>
 										</div>
 									</span>

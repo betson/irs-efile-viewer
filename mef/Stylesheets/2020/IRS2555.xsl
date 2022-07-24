@@ -175,15 +175,15 @@
           <div style="width:187mm;margin-top:1mm;">
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;">5</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div style="float:left;width:35mm;margin-right:3mm;padding-left:5mm">
-              <img alt="right arrow" src="{$ImagePath}/2555_med_rt_arrow.gif" style="float:right;"/>
+            <div style="float:left;width:35mm;margin-right:3mm;padding-left:5mm"> 
               Employer is (check<br/>
               any that apply):
+              <img alt="right arrow" src="{$ImagePath}/2555_med_rt_arrow.gif" style="float:right;"/>
             </div>
             <div style="float:left;width:143mm;">
               <span style="width:60mm;padding:.5mm 0mm;">
                 <b>a</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Employer Foreign Entity Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/EmployerForeignEntityInd"/>
                     <xsl:with-param name="BackupName">IRS2555EmployerForeignEntityInd</xsl:with-param>
@@ -199,7 +199,7 @@
               </span>
               <span style="width:45mm;padding:.5mm 0mm;">
                 <b>b</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Employer United States Company Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/EmployerUnitedStatesCompanyInd"/>
                     <xsl:with-param name="BackupName">IRS2555EmployerUnitedStatesCompanyInd</xsl:with-param>
@@ -214,7 +214,7 @@
               </span>
               <span style="width:28mm;padding:.5mm 0mm;">
                 <b>c</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Self Employment Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/SelfEmploymentInd"/>
                     <xsl:with-param name="BackupName">IRS2555SelfEmploymentInd</xsl:with-param>
@@ -231,7 +231,7 @@
               <br/>
               <span style="width:60mm;padding:.5mm 0mm;">
                 <b>d</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Foreign Affiliate Employer Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/ForeignAffiliateEmployerInd"/>
                     <xsl:with-param name="BackupName">IRS2555ForeignAffiliateEmployerInd</xsl:with-param>
@@ -247,7 +247,7 @@
               </span>
               <span style="width:73mm;padding:.5mm 0mm">
                 <b>e</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Other Employer Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/OtherEmployerTypeGroup/OtherEmployerInd"/>
                     <xsl:with-param name="BackupName">IRS2555OtherEmployerTypeGroupOtherEmployerInd</xsl:with-param>
@@ -293,11 +293,11 @@
 				<xsl:with-param name="BackupName">IRS2555NoFrgnEarnIncExclPrevFiledInd</xsl:with-param>
 			  </xsl:call-template>
               If you didn't previously file Form 2555 or 2555-EZ to claim either of the exclusions, check here 
-              </label>
               <img src="{$ImagePath}/2555_Bullet.gif" width="9" height="9" alt="Bullet" style="margin-right:0.5mm;"/>
+              </label>
             </div>
             <div style="float:left;width:5mm;text-align:center;">
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="No Frgn Earn Inc Excl Prev Filed Ind">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/NoFrgnEarnIncExclPrevFiledInd"/>
                   <xsl:with-param name="BackupName">IRS2555NoFrgnEarnIncExclPrevFiledInd</xsl:with-param>
@@ -317,7 +317,7 @@
 			  <xsl:call-template name="PopulateSpan">
 			    <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Foreign Earn Inc Excl Revoked Ind Yes">
                 <xsl:call-template name="PopulateYesCheckbox">
 					<xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
 					<xsl:with-param name="BackupName">IRS2555ForeignEarnIncExclRevokedInd</xsl:with-param>
@@ -336,7 +336,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Foreign Earn Inc Excl Revoked Ind No">
                 <xsl:call-template name="PopulateNoCheckbox">
 					<xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
 					<xsl:with-param name="BackupName">IRS2555ForeignEarnIncExclRevokedInd</xsl:with-param>
@@ -402,7 +402,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/SeparateForeignResidenceInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Separate Foreign Residence Ind Yes">
                 <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/SeparateForeignResidenceInd"/>
                     <xsl:with-param name="BackupName">IRS2555SeparateForeignResidenceInd</xsl:with-param>
@@ -421,7 +421,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/SeparateForeignResidenceInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Separate Foreign Residence Ind No">
                 <xsl:call-template name="PopulateNoCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/SeparateForeignResidenceInd"/>
                     <xsl:with-param name="BackupName">IRS2555SeparateForeignResidenceInd</xsl:with-param>
@@ -586,13 +586,13 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-left:2mm;padding-top:2mm">11</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div style="float:left;width:60mm;margin-right:3mm;padding-left:5mm;padding-top:2mm">
-              <img src="{$ImagePath}/2555_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:.5mm 1mm;float:right;"/>
               Kind of living quarters in foreign country
+              <img src="{$ImagePath}/2555_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:.5mm 1mm;float:right;"/>
             </div>
             <div style="float:left;width:115mm;clear:none;">
               <span style="width:35mm;padding:.5mm 0mm;">
                 <b>a</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Purchased House Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/PurchasedHouseInd"/>
                     <xsl:with-param name="BackupName">IRS2555PurchasedHouseInd</xsl:with-param>
@@ -608,7 +608,7 @@
               </span>
               <span style="width:45mm;padding:.5mm 0mm;">
                 <b>b</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Rented House Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/RentedHouseInd"/>
                     <xsl:with-param name="BackupName">IRS2555RentedHouseInd</xsl:with-param>
@@ -624,7 +624,7 @@
               </span>
               <span style="width:30mm;padding:.5mm 0mm;">
                 <b>c</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Rented Room Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/RentedRoomInd"/>
                     <xsl:with-param name="BackupName">IRS2555RentedRoomInd</xsl:with-param>
@@ -641,7 +641,7 @@
               <br/>
               <span style="width:80mm;padding:.5mm 0mm;">
                 <b>d</b>
-                <input type="checkbox" style="height:3.5mm;">
+                <input type="checkbox" style="height:3.5mm;" alt="Employer Furnished Quarters Ind">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/EmployerFurnishedQuartersInd"/>
                     <xsl:with-param name="BackupName">IRS2555EmployerFurnishedQuartersInd</xsl:with-param>
@@ -671,7 +671,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/FamilyLivedAbroadInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Family Lived Abroad Ind Yes">
                 <xsl:call-template name="PopulateYesCheckbox">
 					<xsl:with-param name="TargetNode" select="$FormData/FamilyLivedAbroadInd"/>
 					<xsl:with-param name="BackupName">IRS2555FamilyLivedAbroadInd</xsl:with-param>
@@ -690,7 +690,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/FamilyLivedAbroadInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Family Lived Abroad Ind No">
                 <xsl:call-template name="PopulateNoCheckbox">
 					<xsl:with-param name="TargetNode" select="$FormData/FamilyLivedAbroadInd"/>
 					<xsl:with-param name="BackupName">IRS2555FamilyLivedAbroadInd</xsl:with-param>
@@ -746,7 +746,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/SubmittedNonResidentStmtInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Submitted Non Resident Stmt Ind Yes">
                 <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/SubmittedNonResidentStmtInd"/>
                     <xsl:with-param name="BackupName">IRS2555SubmittedNonResidentStmtInd</xsl:with-param>
@@ -765,7 +765,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/SubmittedNonResidentStmtInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Submitted Non Resident Stmt Ind No">
                 <xsl:call-template name="PopulateNoCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/SubmittedNonResidentStmtInd"/>
                     <xsl:with-param name="BackupName">IRS2555SubmittedNonResidentStmtInd</xsl:with-param>
@@ -795,7 +795,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/RequiredToPayIncomeTaxInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Required To Pay Income Tax Ind Yes">
                 <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/RequiredToPayIncomeTaxInd"/>
                     <xsl:with-param name="BackupName">IRS2555RequiredToPayIncomeTaxInd</xsl:with-param>
@@ -814,7 +814,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/RequiredToPayIncomeTaxInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Required To Pay Income Tax Ind No">
                 <xsl:call-template name="PopulateNoCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/RequiredToPayIncomeTaxInd"/>
                     <xsl:with-param name="BackupName">IRS2555RequiredToPayIncomeTaxInd</xsl:with-param>
@@ -1155,7 +1155,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/VisaLimitStayOrEmploymentInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Visa Limit Stay Or Employment Ind Yes">
                 <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/VisaLimitStayOrEmploymentInd"/>
                     <xsl:with-param name="BackupName">IRS2555VisaLimitStayOrEmploymentInd</xsl:with-param>
@@ -1174,7 +1174,7 @@
               <xsl:call-template name="PopulateSpan">
 				    <xsl:with-param name="TargetNode" select="$FormData/VisaLimitStayOrEmploymentInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Visa Limit Stay Or Employment Ind No">
                 <xsl:call-template name="PopulateNoCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/VisaLimitStayOrEmploymentInd"/>
                     <xsl:with-param name="BackupName">IRS2555VisaLimitStayOrEmploymentInd</xsl:with-param>
@@ -1204,7 +1204,7 @@
               <xsl:call-template name="PopulateSpan">
 			        <xsl:with-param name="TargetNode" select="$FormData/MaintainedHouseInUSInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Maintained House In US Ind Yes">
                 <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/MaintainedHouseInUSInd"/>
                     <xsl:with-param name="BackupName">IRS2555MaintainedHouseInUSInd</xsl:with-param>
@@ -1223,7 +1223,7 @@
               <xsl:call-template name="PopulateSpan">
 			    <xsl:with-param name="TargetNode" select="$FormData/MaintainedHouseInUSInd"/>
 			  </xsl:call-template>
-              <input type="checkbox" style="height:3.5mm;">
+              <input type="checkbox" style="height:3.5mm;" alt="Maintained House In US Ind No">
                 <xsl:call-template name="PopulateNoCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/MaintainedHouseInUSInd"/>
                     <xsl:with-param name="BackupName">IRS2555MaintainedHouseInUSInd</xsl:with-param>
@@ -2297,7 +2297,7 @@
             <xsl:call-template name="PopulateSpan">
 			    <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
 			</xsl:call-template>
-            <input type="checkbox" style="height:3.5mm;">
+            <input type="checkbox" style="height:3.5mm;" alt="Claiming Housing Excl Or Ded Ind Yes">
               <xsl:call-template name="PopulateYesCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
                 <xsl:with-param name="BackupName">IRS2555ClaimingHousingExclOrDedInd</xsl:with-param>
@@ -2316,7 +2316,7 @@
             <xsl:call-template name="PopulateSpan">
 			    <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
 			</xsl:call-template>
-            <input type="checkbox" style="height:3.5mm;">
+            <input type="checkbox" style="height:3.5mm;" alt="Claiming Housing Excl Or Ded Ind No">
               <xsl:call-template name="PopulateNoCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
                 <xsl:with-param name="BackupName">IRS2555ClaimingHousingExclOrDedInd</xsl:with-param>
@@ -2585,7 +2585,7 @@
             </div>
           </div>
           <!-- Line 38 -->
-          <div style="width:187mm;height:12mm">
+          <div style="width:187mm;height:15mm">
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:.5mm">38</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div style="float:left;position:relative;">
@@ -2593,16 +2593,21 @@
                 <img alt="right bracket" src="{$ImagePath}/2555_sm_lft_bracket.gif" style="float:right;"/>
               </div>
               <div class="styLNDesc" style="font-size:7pt;width:81mm;height:3mm;padding-right:4mm;padding-left:5mm">
-                <li>If you completed Part VI, enter the number from line 31.</li>
-                <li>All others, enter the number of days in your qualifying period that fall within your 2020 tax year (see the instructions for line 31).</li>
+                <img alt="Bullet Round" src="{$ImagePath}/2441_Bullet_Round.gif"/> <span style="width:8px;"/>
+                If you completed Part VI, enter the number from line
+                <span style="width:12px;"/> 31.<br/>
+                <img alt="Bullet Round" src="{$ImagePath}/2441_Bullet_Round.gif"/> <span style="width:8px;"/>
+                All others, enter the number of days in your qualifying<br/>
+                <span style="width:12px;"/> period that fall within your 2020 tax year (see the <br/>
+                <span style="width:12px;"/> instructions for line 31).
               </div>
             </div>
             <div style="float:left;">
-              <div style="height:12mm;width:8mm;font-weight:bold;text-align:center;border-bottom:1px solid black;
+              <div style="height:15mm;width:8mm;font-weight:bold;text-align:center;border-bottom:1px solid black;
                 border-left:1px solid black;padding-top:8mm;">38</div>
             </div>
             <div style="float:left;">
-              <div class="styLNAmountBox" style="height:12mm;width:42mm;border-bottom:1px solid black;padding-top:8mm">
+              <div class="styLNAmountBox" style="height:15mm;width:42mm;border-bottom:1px solid black;padding-top:8mm">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncmExclQlfyDaysCnt"/>
                 </xsl:call-template>
@@ -2610,10 +2615,10 @@
               </div>
             </div>
             <div style="float:left;">
-              <div style="height:12mm;width:8mm;border-left:1px solid black;background-color:lightgrey;"/>
+              <div style="height:15mm;width:8mm;border-left:1px solid black;background-color:lightgrey;"/>
             </div>
             <div style="float:left;">
-              <div class="styLNAmountBox" style="height:12mm;width:42mm;border-bottom:none;"/>
+              <div class="styLNAmountBox" style="height:15mm;width:42mm;border-bottom:none;"/>
             </div>
           </div>
           <!-- Line 39 -->
@@ -2625,9 +2630,12 @@
                 <img alt="right bracket" src="{$ImagePath}/2555_sm_lft_bracket.gif" style="float:right;"/>
               </div>
               <div class="styLNDesc" style="font-size:7pt;width:131mm;height:3mm;padding-right:4mm;padding-left:5mm">
-                <li>If line 38 and the number of days in your 2020 tax year (usually 366) are the same, enter "1.000."</li>
-                <li>Otherwise, divide line 38 by the number of days in your 2020 tax year and enter the result as a decimal
-                 (rounded to at least three places).</li>
+              <img alt="Bullet Round" src="{$ImagePath}/2441_Bullet_Round.gif"/> <span style="width:8px;"/>
+                If line 38 and the number of days in your 2020 tax year (usually 366) are the same, enter <br/>
+                <span style="width:12px;"/> "1.000." <br/>
+                <img alt="Bullet Round" src="{$ImagePath}/2441_Bullet_Round.gif"/> <span style="width:8px;"/>
+                Otherwise, divide line 38 by the number of days in your 2020 tax year and enter the result as <br/>
+                <span style="width:12px;"/> a decimal (rounded to at least three places).
               </div>
             </div>
             <div style="float:left;">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 02/09/2021 -->
+<!-- Last Modified by Eugenia McDonald on 04/11/2022 -->
 <!DOCTYPE xsl:stylesheet [
   <!ENTITY nbsp "&#160;">
   <!ENTITY mdash "&#8212;">
@@ -297,11 +297,11 @@
 					</div>
 					<!-- Changes section -->
 					<div class="styStdDiv">
-						<div class="styGenericDiv" style="width:107mm;height:10mm;padding-right:5mm;padding-top:2px;">
+						<div class="styGenericDiv" style="width:107mm;height:13.3mm;padding-right:5mm;padding-top:6px;">
 							<strong>Amended return filing status. </strong> You <strong>must</strong> check one box even if you are not changing your filing status. 
 							<strong>Caution: </strong> In general, you can't change your filing status from a joint return to separate returns after the due date.
 						</div>
-						<div class="styGenericDiv" style="width:80mm;height:11mm;padding-top:2px;padding-left:2px;border-left:1px solid black;border-bottom:1px solid black;">
+						<div class="styGenericDiv" style="width:80mm;height:12mm;padding-top:6px;padding-left:2px;border-left:1px solid black;border-bottom:1px solid black;">
 							<input type="checkbox" class="styCkboxNM" style="margin-right:4px;">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/HealthCareRspnsCoverageInd"/>
@@ -790,18 +790,18 @@
 							tier 1 RRTA tax withheld (<strong>If changing, </strong> see instructions)
 							<span class="sty1040XDotLn">..</span>
 						</div>
-						<div class="sty1040XRightNumBox" style="height:7mm;"><br />12</div>
-						<div class="sty1040XAmtBox" style="height:7mm;"><br />
+						<div class="sty1040XRightNumBox" style="height:7mm;padding-top:3.5mm">12</div>
+						<div class="sty1040XAmtBox" style="height:7mm;padding-top:3.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/OriginalRptOrAsPrevAdjGrp/FedIncmExSocSecRRTAWthldTxAmt" />
 							</xsl:call-template>
 						</div>
-						<div class="sty1040XAmtBox" style="height:7mm;"><br />
+						<div class="sty1040XAmtBox" style="height:7mm;padding-top:3.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/NetChangeOrigRptOrPrevAdjGrp/FedIncmExSocSecRRTAWthldTxAmt" />
 							</xsl:call-template>
 						</div>
-						<div class="sty1040XAmtBox" style="height:7mm;"><br />
+						<div class="sty1040XAmtBox" style="height:7mm;padding-top:3.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/CorrectNumberOrAmountGrp/FedIncmExSocSecRRTAWthldTxAmt" />
 							</xsl:call-template>
@@ -1291,33 +1291,30 @@
 					</div>
 					<!-- Line 30 -->
 					<div class="styStdDiv" style="min-height:4.7mm;height:auto;">
-						<div class="styLNLeftNumBox">30</div>
-						<div class="sty1040XDesc" style="width:178mm;min-height:4.7mm;height:auto;">
+						<div class="styLNLeftNumBox" style="padding-top:1.8mm">30</div>
+						<div class="sty1040XDesc" style="width:172mm;min-height:4.7mm;height:auto;">
 							List <strong>ALL</strong> dependents (children and others) claimed on this amended return. 
 							If more than 4 dependents, see inst. and <img src="{$ImagePath}/1040X_Check.gif" alt="Check"/> here
-							<span style="float:right;">
-								<span class="sty1040XDotLn" style="float:none;margin-right:-3px;">...</span>
-								<img src="{$ImagePath}/56_Bullet.gif" alt="Right arrow"/><span style="width:4px"/> 
-								<input type="checkbox" class="styCkboxNM" style="margin-right:6px;" alt="More than four dependents">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/MoreDependentsInd"/>
-										<xsl:with-param name="BackupName">IRS1040XMoreDependentsInd</xsl:with-param>
+							<img src="{$ImagePath}/56_Bullet.gif" alt="Right arrow"/><span style="width:1px"/> 
+							<input type="checkbox" class="styCkboxNM" style="margin-right:1px;" alt="More than four dependents">
+								<xsl:call-template name="PopulateCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/MoreDependentsInd"/>
+									<xsl:with-param name="BackupName">IRS1040XMoreDependentsInd</xsl:with-param>
+								</xsl:call-template>
+							</input>
+							<!-- Dependents table -->
+							<xsl:if test="(count($FormData/DependentDetail) &gt; 4) and (not($Print) or $Print='')">
+								<div style="text-align:right;">
+									<xsl:call-template name="SetDynamicTableToggleButton">
+										<xsl:with-param name="TargetNode" select="$FormData/DependentDetail"/>
+										<xsl:with-param name="containerHeight" select="4"/>
+										<xsl:with-param name="headerHeight" select="2"/>
+										<xsl:with-param name="containerID" select=" 'depdContainerId' "/>
 									</xsl:call-template>
-								</input>
-							</span>
+								</div>
+							</xsl:if>
 						</div>
 					</div>
-					<!-- Dependents table -->
-					<xsl:if test="(count($FormData/DependentDetail) &gt; 4) and (not($Print) or $Print='')">
-						<div class="styStdDiv" style="text-align:right;">
-							<xsl:call-template name="SetDynamicTableToggleButton">
-								<xsl:with-param name="TargetNode" select="$FormData/DependentDetail"/>
-								<xsl:with-param name="containerHeight" select="4"/>
-								<xsl:with-param name="headerHeight" select="2"/>
-								<xsl:with-param name="containerID" select=" 'depdContainerId' "/>
-							</xsl:call-template>
-						</div>
-					</xsl:if>
 					<!-- Dependents area -->
 					<div class="sty1040XDepdContainer" style="" id="depdContainerId">
 						<xsl:call-template name="SetInitialState"/>
@@ -1941,7 +1938,7 @@
 						<br />
 						<br />
 						<span class="styRepeatingDataTitle">Form 1040X - Dependents </span>
-						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
+						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;border-collapse:collapse;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
 									<th class="styDepTblCell" rowspan="2" scope="col" style="width:63.4mm;text-align:left;padding-left:1mm;padding-top:0mm;">

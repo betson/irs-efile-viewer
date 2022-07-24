@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 07/09/2020 -->
+<!-- Last Modified by Eugenia McDonald on 03/04/2021 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -603,30 +603,25 @@
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 						<div class="styIRS8889LineItem" style="height:9mm;">
 							<div class="styIRS8889LNLeftNumBox" style="padding-left:2.5mm;">17a</div>
-							<div class="styIRS8889LNDesc" style="height:auto;width:137mm;">							   										
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$Form8889Data/HSADistriAddnlPercentTaxExcInd"/>
-										<xsl:with-param name="BackupName">IRS8889HSADistriAddnlPercentTaxExcInd</xsl:with-param>
-									</xsl:call-template>
-								<span style="float:left;">If any of the distributions included on line 16 meet any of the <span class="styBoldText">Exceptions 
-								  to the Additional 20% Tax</span> </span>
+							<div class="styIRS8889LNDesc" style="height:auto;width:137mm;">
+								<span style="float:left;">If any of the distributions included on line 16 meet any of the 
+									<span class="styBoldText">Exceptions to the Additional 20% Tax</span>
+								</span>
 								<span>
 									<span  style="float:left;">(see instructions), check here</span>
 									<span style="width:1mm"/>								   
-									  <!--Dotted Line-->
-									  <span class="styDotLn" style="float:right;padding-right:.5mm;">.....................</span>
-								  </span>
-									<span style="width:5px"/>
-									<img src="{$ImagePath}/8889_Bullet_Md.gif" alt="Bullet Image"/>
-									<span style="width:7px"/>
-								</label>
+									<!--Dotted Line-->
+									<span class="styDotLn" style="float:right;padding-right:.5mm;">.....................</span>
+								</span>
+								<span style="width:5px"/>
+								<img src="{$ImagePath}/8889_Bullet_Md.gif" alt="Right arrow"/>
+								<span style="width:7px"/>
 								<input type="checkbox" class="styCkbox" alt="HSA Distri Addnl Percent Tax Exc Ind">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8889Data/HSADistriAddnlPercentTaxExcInd"/>
 										<xsl:with-param name="BackupName">IRS8889HSADistriAddnlPercentTaxExcInd</xsl:with-param>
 									</xsl:call-template>
-								</input>
+								</input>							   										
 							</div>
 							<span style="width:42mm;">
 								<div class="styLNRightNumBox" style="background-color:lightgrey;height:5mm;border-bottom-width:0px;"/>

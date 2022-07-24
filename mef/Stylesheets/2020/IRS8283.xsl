@@ -806,8 +806,8 @@
 						</div>
 						<div  style="width:172mm;float:left;clear:none;">
 							<span style="font-size:8pt;">
-								<b> Donated Property Over $5,000 (Except Publicly Traded Securities, Vehicles, Intellectual Property or Inventory reported in Section A) &#8212;</b>
-							 Complete this section for one item (or one group of similar items) for which you claimed a deduction of more than $5,000 per item or group (except contributions reported in Section A). Provide a separate form for each property donated unless it is part of a group of similar items. An appraisal is generally required for property listed in Section B (see instructions).</span>
+								<b> Donated Property Over $5,000 (Except Publicly Traded Securities, Vehicles, Intellectual Property or Inventory reported in Section A) &#8212;</b>Complete this section for one item (or a group of similar items) for which you claimed a deduction of more than $5,000 per item or group (except contributions reportable in Section A). Provide a separate form for each item donated unless it is part of a group of similar items. A
+qualified appraisal is generally required for items reportable in Section B. See instructions.</span>
 							</div>
                           </div>
                          <div>
@@ -900,7 +900,7 @@
 					</div>
 					<!-- Line 2 b, e, h, i -->					
 					<div style="width:187mm;font-size:6pt;">
-					<!-- Line 4 b -->
+					<!-- Line 2 b -->
 						<span style="width:5mm;"/>
 						<span style="width:52mm;height:4.5mm;text-align:left;">b 
 							<input type="checkbox" alt="QualifiedConservationContrInd"  class="styCkbox" name="Checkbox">
@@ -1455,11 +1455,8 @@
 										<div style="width:187mm;border-top-width:0px">
 											<div class="styPartName" style="width:16mm;">Part II</div>
 											<div style="font-family:verdana;font-size:8pt;font-weight:normal;width:171mm;padding-left:3mm;">
-											<b>Partial Interests and Restricted Use Property&#8212;</b>
-											Complete lines 4a through 4e if you gave less than an entire interest in
-											 a property listed in Section A, Part I.  Complete lines 5a through 5c if conditions were 
-											 placed on a contribution listed in Section A, Part I; also attach the required 
-											 statement (see instructions).
+											<b>Partial Interests and Restricted Use Property (Other Than Qualified Conservation Contributions) &#8212;</b>
+											Complete lines 4a through 4e if you gave less than an entire interest in a property listed in Section B, Part I.  Complete lines 5a through 5c if conditions were placed on a contribution listed in Section B, Part I; also attach the required statement. See instructions.
 										</div>
 										</div>
 									</th>
@@ -1469,7 +1466,7 @@
 										<div style="width:187mm;">
 											<div class="styLNLeftNumBox" style="height:8mm;">4a</div>
 											<div class="styLNDesc" style="height:8mm;font-weight:normal;">
-											Enter the letter from Section A, Part I that identifies the property for which you gave less than an entire interest</div>
+											Enter the letter from Section B, Part I that identifies the property for which you gave less than an entire interest</div>
 											<div class="" style="float:right;">
 												<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="right pointing arrow"/>
 												<span style="width:6px;"/>
@@ -1486,7 +1483,7 @@
 											<div class="styLNLeftLtrBox" style="height:4.5mm;">b</div>
 											<div class="styLNDesc" style="width:179mm;height:4mm;font-weight:normal;">
 												<div class="styGenericDiv" style="width:95mm;">
-												    Total amount claimed as a deduction for the property listed in Section A, Part I:
+												    Total amount claimed as a deduction for the property listed in Section B, Part I:
                                                 </div>
 												<div class="styGenericDiv" style="padding-left:0mm;width:45mm;">
 													<b>(1)</b>
@@ -1588,7 +1585,7 @@
 											</div>
 										</div>
 										<div class="styBB" style="width:183mm;margin-left:4mm;float:left;"/>
-										<xsl:choose>
+										<!--<xsl:choose>
 											<xsl:when 
 											test="$Form8283Data/InformationOnDonatedProperty/DonatedPropertyRestrictionInd=1">
 												<div style="width:186mm;float:left;">
@@ -1605,7 +1602,7 @@
 													<div class="styLNLeftLtrBox" style="height:4mm;"/>
 													<div class="styLNDesc" style="width:166mm;height:4mm;font-weight:normal;padding-bottom:0mm;padding-top:0mm">
 														<span style="float:left;">property? </span>
-														<!--Dotted Line-->
+														--><!--Dotted Line--><!--
 														<div class="styDotLn" 
 														style="float:right;padding-right:1mm;">...................................</div>
 													</div>
@@ -1632,7 +1629,7 @@
 														<span style="float:left;">
 															property?
 														</span>
-														<!--Dotted Line-->
+														--><!--Dotted Line--><!--
 														<div class="styDotLn" style="float:right;padding-right:1mm;">.....................................</div>
 													</div>
 													<div class="styLNAmountBox" style="width:6mm;height:4.5mm;padding-top:0mm;padding-bottom:0mm;">
@@ -1642,7 +1639,7 @@
 													float:right; text-align: center;"/>
 												</div>
 											</xsl:otherwise>
-										</xsl:choose>
+										</xsl:choose>-->
 										<div style="width:187mm;">
 											<div class="styLNLeftLtrBox" style="height:4mm;padding-bottom:0mm;padding-top:0mm">b</div>
 											<div class="styLNDesc" style="width:166mm;height:4mm;font-weight:normal;padding-bottom:0mm;padding-top:0mm">
@@ -1700,9 +1697,9 @@
 							</xsl:if>
 							<!--end empty Section A Part II-->
 							<!--Normal reapeating data for Section A Part II-->
-							<xsl:if test="((count($Form8283Data/InformationOnDonatedProperty)
+							<xsl:if test="((count($Form8283Data/PropertyInformation)
 							 &lt;= 5) or ($Print != $Separated))">
-								<xsl:for-each select="$Form8283Data/InformationOnDonatedProperty">
+								<xsl:for-each select="$Form8283Data/PropertyInformation">
 									<tr>
 										<th scope="col" colspan="7" class="styTableCell" style="width:187mm;text-align:left;font-size:7pt;border-right:none;">
 											<div style="width:187mm;border-top-width:0px">
@@ -2052,11 +2049,11 @@
 					</div>
 					<div style="width:187mm;"/>
 					<div class="styBB" style="width:187mm;">
-					Signature of taxpayer (donor)<span style="width:2mm;"/>
+						Signature of taxpayer (donor)<span style="width:2mm;"/>
 						<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="right pointing arrow"/>
 						<span style="width:105mm;"/>Date<span style="width:2mm;"/>
 						<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="right pointing arrow"/>
-					</div><br/><br/><br/><br/>
+					</div><br/><br/><br/><br/><br/><br/>
 					<div class="styBB" style="width:187mm;border-top-width:0px">
 						<span class="styPartName" style="width:16mm;">Part IV</span>
 						<span style="font-family:verdana;font-size:8pt;font-weight:bold;">

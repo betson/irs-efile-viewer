@@ -31,10 +31,10 @@
     <xsl:call-template name="InitJS">
     </xsl:call-template>
  <style type="text/css"> 
-<xsl:if test="not($Print) or $Print=''">
+ <xsl:if test="not($Print) or $Print=''">
         <xsl:call-template name="IRS1040ScheduleCStyle"/>
         <xsl:call-template name="AddOnStyle"/>
-</xsl:if>
+ </xsl:if>
   </style>  
   <xsl:call-template name="GlobalStylesForm"/>
 </head>
@@ -67,8 +67,8 @@
 				<b>(Sole Proprietorship)</b>
 		</div>   
 		<div class="styFBT" style="height:3mm;margin-top:1mm;font:size:6pt;width:127mm;">
-			 <img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Bullet Image"/>Go to <i><a href="http://www.irs.gov/schedulec">www.irs.gov/ScheduleC</a></i> for instructions and the latest information.<br/>
-			  <span style="margin-top:1mm;"><img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Bullet Image"/> Attach to Form 1040, 1040-SR, 1040-NR, or 1041; partnerships generally must file Form 1065.</span>        
+			 <img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Right Arrow"/>Go to <i><a href="http://www.irs.gov/schedulec">www.irs.gov/ScheduleC</a></i> for instructions and the latest information.<br/>
+			  <span style="margin-top:1mm;"><img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Right Arrow"/> Attach to Form 1040, 1040-SR, 1040-NR, or 1041; partnerships generally must file Form 1065.</span>        
 		</div>
 	</div>	
 	<div class="styTYBox" style="width:29mm;height:21mm;">
@@ -149,7 +149,7 @@
 		<div class="styLNLeftNumBox" style="width:3.6mm;padding-top:1mm; height:4.5mm;">B</div>
 		<div style="padding-top:1mm;width:43mm;">Enter code from instructions</div>
 		<br/>
-		<span style="padding-left:5.5mm;"><img src="{$ImagePath}/1040SchC_Bullet_Lg.gif" alt="Bullet Image"/></span>
+		<span style="padding-left:5.5mm;"><img src="{$ImagePath}/1040SchC_Bullet_Lg.gif" alt="Right Arrow"/></span>
 		<span class="styEINFld" style="width:30mm;font-size:6pt; text-align:center;">
 			<xsl:if test="$Form1040ScheduleCData/PrincipalBusinessActivityCd">
 				<xsl:call-template name="PopulateText">
@@ -201,7 +201,7 @@
 	<div class="styLNLeftNumBox" style="height:4mm;width:3mm;padding-top:1mm;padding-left: 0px">E</div>
 	<div class="styLNDesc" style="width:65mm;height:auto;padding-top:1mm;">
 		Business address (including suite or room no.) 
-		<img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Bullet Image"/>   
+		<img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Right Arrow"/>   
 		<br/>City, town or post office, state, and ZIP code
 	</div>
 	<div class="styLNDesc" style="width:119mm;height:auto;padding-top:1mm;">
@@ -277,7 +277,7 @@
 	<div class="styLNDesc" style="width:152mm;height:auto;">
 		Accounting method:   <span style="width:2px;"/> 
 		<span class="styBoldText">(1)<span style="width: 2mm;"/></span>
-		<input type="checkbox" class="styCkbox">
+		<input type="checkbox" alt="MethodOfAccountingCashInd" class="styCkbox">
 			<xsl:call-template name="PopulateCheckbox">
 				<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/MethodOfAccountingCashInd"/>
 				<xsl:with-param name="BackupName">IRS1040ScheduleCAccountingMethodCash</xsl:with-param>
@@ -292,7 +292,7 @@
 		</label>
 		<span style="width:20px;"/>
 		<span class="styBoldText">(2)<span style="width: 2mm;"/></span>
-		<input type="checkbox" class="styCkbox">
+		<input type="checkbox" alt="MethodOfAccountingAccrualInd" class="styCkbox">
 			<xsl:call-template name="PopulateCheckbox">
 				<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/MethodOfAccountingAccrualInd"/>
 				<xsl:with-param name="BackupName">IRS1040ScheduleCAccountingMethodAccrual</xsl:with-param>
@@ -307,7 +307,7 @@
 		</label>   
 		<span style="width:20px;"/>
 		<span class="styBoldText">(3)<span style="width: 2mm;"/></span>
-		<input type="checkbox" class="styCkbox">
+		<input type="checkbox" alt="MethodOfAccountingOtherInd" class="styCkbox">
 			<xsl:call-template name="PopulateCheckbox">
 				<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/MethodOfAccountingOtherInd"/>
 				<xsl:with-param name="BackupName">IRS1040ScheduleCAccountingMethodOther</xsl:with-param>
@@ -321,7 +321,7 @@
 			Other (specify)
 		</label>   
 		<span style="width:10mm;"/>
-		<img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Bullet Image"/>
+		<img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Right Arrow"/>
 		<span style="width:25mm;border-bottom:1px solid black;">
 			<xsl:if test="$Form1040ScheduleCData/MethodOfAccountingOtherInd">
 				<xsl:call-template name="PopulateText">
@@ -345,7 +345,7 @@
 							<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/MaterialParticipationInCYInd"/>
 							<xsl:with-param name="BackupName">IRS1040ScheduleCMaterialParticipationInCYInd"</xsl:with-param>
 					</xsl:call-template>
-					<input type="checkbox" class="styCkbox" name="Checkbox">
+					<input type="checkbox" alt="MaterialParticipationInCYIndYes" class="styCkbox" name="Checkbox">
 						<xsl:call-template name="PopulateYesCheckbox">
 							<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/MaterialParticipationInCYInd"/>
 							<xsl:with-param name="BackupName">IRS1040ScheduleCMaterialParticipationInCYInd"</xsl:with-param>
@@ -358,7 +358,7 @@
 					</xsl:call-template>
 					<b>Yes</b> 
 				</label>			                    
-				<input type="checkbox" class="styCkbox" name="Checkbox">
+				<input type="checkbox" class="styCkbox" alt="MaterialParticipationInCYIndNo" name="Checkbox">
 					<xsl:call-template name="PopulateNoCheckbox">
 						<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/MaterialParticipationInCYInd"/>
 						<xsl:with-param name="BackupName">IRS1040ScheduleCMaterialParticipationInCYInd"</xsl:with-param>
@@ -392,11 +392,11 @@
 					<div class="styDotLn" style="float:right;">..................</div>	
 				</div>
 				<div style="float:right;">
-	              <img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Bullet Image"/>
+	              <img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Right Arrow"/>
 				</div>				
 			</div>
 			<div class="styGenericDiv" style="width:24mm;height:4mm;float:right;">
-				<input type="checkbox" alt="NewBusinessInCurrentYear" class="styCkbox">
+				<input type="checkbox" alt="NewBusinessInCurrentYearInd" class="styCkbox">
 					<xsl:call-template name="PopulateCheckbox">
 						<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/NewBusinessInCurrentYearInd"/>
 						<xsl:with-param name="BackupName">IRS1040ScheduleCNewBusinessInCurrentYearInd</xsl:with-param>
@@ -418,7 +418,7 @@
 							<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/PaymentRqrFilingForm1099Ind"/>
 							<xsl:with-param name="BackupName">IRS1040ScheduleCPaymentRqrFilingForm1099Ind</xsl:with-param>
 					</xsl:call-template>
-					<input type="checkbox" class="styCkbox" name="Checkbox">
+					<input type="checkbox" class="styCkbox" alt="PaymentRqrFilingForm1099IndYes" name="Checkbox">
 						<xsl:call-template name="PopulateYesCheckbox">
 							<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/PaymentRqrFilingForm1099Ind"/>
 							<xsl:with-param name="BackupName">IRS1040ScheduleCPaymentRqrFilingForm1099Ind</xsl:with-param>
@@ -431,7 +431,7 @@
 					</xsl:call-template>
 					<b>Yes</b> 
 				</label>                    
-				<input type="checkbox" class="styCkbox" name="Checkbox">
+				<input type="checkbox" class="styCkbox" alt="PaymentRqrFilingForm1099IndNo" name="Checkbox">
 					<xsl:call-template name="PopulateNoCheckbox">
 						<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/PaymentRqrFilingForm1099Ind"/>
 						<xsl:with-param name="BackupName">IRS1040ScheduleCPaymentRqrFilingForm1099Ind</xsl:with-param>
@@ -461,7 +461,7 @@
 							<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/RequiredForm1099FiledInd" />
 							<xsl:with-param name="BackupName">IRS1040ScheduleCRequiredForm1099FiledInd</xsl:with-param>
 						</xsl:call-template>				
-						<input type="checkbox" class="styCkbox" name="Checkbox">
+						<input type="checkbox" class="styCkbox" alt="RequiredForm1099FiledIndYes" name="Checkbox">
 							<xsl:call-template name="PopulateYesCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/RequiredForm1099FiledInd"/>
 								<xsl:with-param name="BackupName">IRS1040ScheduleCRequiredForm1099FiledInd</xsl:with-param>
@@ -474,7 +474,7 @@
 							</xsl:call-template>
 							<b>Yes</b> 
 						</label>                    
-						<input type="checkbox" class="styCkbox" name="Checkbox">
+						<input type="checkbox" class="styCkbox" alt="RequiredForm1099FiledIndNo" name="Checkbox">
 							<xsl:call-template name="PopulateNoCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/RequiredForm1099FiledInd"/>
 								<xsl:with-param name="BackupName">IRS1040ScheduleCRequiredForm1099FiledInd</xsl:with-param>
@@ -510,10 +510,10 @@
 					<span style="float:left;">to you on Form W-2 and the "Statutory employee" box on that form was checked</span>
 					<span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
                 </span>
-			<img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Bullet Image"/>
+			<img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Right Arrow"/>
 		</span>
 		<span style="width:8mm;padding-top:2mm;">
-			<input type="checkbox" class="styCkbox" name="Checkbox">
+			<input type="checkbox" class="styCkbox" alt="StatutoryEmployeeFromW2Ind" name="Checkbox">
 				<xsl:call-template name="PopulateCheckbox">
 					<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/StatutoryEmployeeFromW2Ind"/>
 					<xsl:with-param name="BackupName">IRS1040ScheduleCRequiredForm1099FiledInd</xsl:with-param>
@@ -622,7 +622,7 @@
 		<!--Dotted Line-->
         <span class="styDotLn" style="float:right;padding-right:1mm;">......................</span>      
          </span>	 
-		<img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Bullet Image"/>
+		<img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Right Arrow"/>
 	</div>      
 	<div class="styLNRightNumBox" style="height:4mm;border-bottom-width: 0px;width:8mm; ">7</div>
 	<div class="styLNAmountBox" style="height:4mm;border-bottom-width: 0px; width:31.5mm;">
@@ -1124,7 +1124,7 @@ Enter expenses for business use of your home
 			<!--Dotted Line-->
 			<span  class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
 		</span>     
-		<img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Bullet Image"/> 
+		<img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Right Arrow"/> 
 	</div>
 	<div class="styLNRightNumBox" style="height:100%;padding-top:0mm;width:7.5mm;">      
 		28
@@ -1191,9 +1191,11 @@ Enter expenses for business use of your home
 <div style="width:187mm;float:none;clear:both;height:6mm;height:auto;">
 	<div class="styLNLeftNumBox" style="height:100%; padding-top:0mm;">31</div>
 	<div class="styLNDesc" style="width:135.8mm;padding-top:0mm;padding-bottom:0mm;height:auto;">
-		<span class="styBoldText">Net profit or (loss). </span> Subtract line 30 from line 29.
-		<span style="padding-left: 3.5mm;">
-		<li>If a profit, enter on both <b>Schedule 1 (Form 1040), line 3 </b> and on <b> Schedule SE, line 2.</b> (If you checked the box on line 1, see instructions). Estates and trusts, enter on <b>Form 1041, line 3.</b>
+		<span class="styBoldText">Net profit or (loss). </span> Subtract line 30 from line 29.<br/>
+		
+		<img src="{$ImagePath}/1040_EIC_Bullet_Round.gif" height="4mm;" alt="Round Bullet"/>
+		<span style="width:9px;"/>If a profit, enter on both <b>Schedule 1 (Form 1040), line 3 </b> and on <b> Schedule SE, line 2.</b> (If you <br/>
+		<span style="width:14px;"/>checked the box on line 1, see instructions). Estates and trusts, enter on <b>Form 1041, line 3.</b>
 		<xsl:call-template name="LinkToLeftoverDataTableInline">
 			<xsl:with-param name="Desc">Line 31 - Passive Activity Loss Literal </xsl:with-param>
 			<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/NetProfitOrLossAmt/@passiveActivityLossLiteralCd"/>
@@ -1202,9 +1204,10 @@ Enter expenses for business use of your home
 			<xsl:with-param name="Desc">Line 31 - Passive Activity Loss Amount</xsl:with-param>
 			<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/NetProfitOrLossAmt/@passiveActivityLossAmt"/>      
 		</xsl:call-template>
-		<br/></li>   
-		<li>If a loss, you <span class="styBoldText">must</span> go to line 32.</li>
-		</span>             
+		<br/>
+		
+		<img src="{$ImagePath}/1040_EIC_Bullet_Round.gif" height="4mm;" alt="Round Bullet"/><span style="width:9px;"/>If a loss, you <span class="styBoldText">must</span> go to line 32.
+		
 	</div>
 	<div class="styLNDesc" style="width:4mm; height:3.65mm;padding-top:1.65mm;">
 		<img src="{$ImagePath}/1040SchC_Bracket.gif" height="40mm" alt="Curly Bracket Image"/>        
@@ -1223,12 +1226,15 @@ Enter expenses for business use of your home
 <div class="styBB" style="width:187mm;float:none;clear:both;height:18mm;">
 	<div class="styLNLeftNumBox" style="height:100%; padding-top:0mm;">32</div>
 	<div class="styLNDesc" style="width:131mm;padding-top:0mm;padding-bottom:0mm;">
-		If you have a loss, check the box that describes your investment in this activity (see instructions).
-		<span style="padding-left: 3.5mm;">                 
-		<li>If you checked 32a, enter the loss on both <span class="styBoldText">Schedule 1 (Form 1040), line 3 </span> and on <span class="styBoldText   ">Schedule SE, line 2</span>. (If you checked the box on line 1, see the line 31 instructions). Estates and trusts, enter on <b>Form 1041, line 3.</b>
-		</li>
-		<li>If you checked 32b, you <span class="styBoldText">must</span> attach <span class="styBoldText">Form 6198.</span> Your loss may be limited.</li>
-		</span>
+		If you have a loss, check the box that describes your investment in this activity (see instructions).<br/>
+		
+		<img src="{$ImagePath}/1040_EIC_Bullet_Round.gif" height="4mm" alt="Round Bullet"/>
+		<span style="width:9px;"/>If you checked 32a, enter the loss on both <span class="styBoldText">Schedule 1 (Form 1040), line 3 </span> and on <br/>
+		<span style="width:14px;"/><span class="styBoldText">Schedule SE, line 2</span>. (If you checked the box on line 1, see the line 31 instructions).<br/>
+		<span style="width:14px;"/>Estates and trusts, enter on <b>Form 1041, line 3.</b><br/>
+		
+		<img src="{$ImagePath}/1040_EIC_Bullet_Round.gif" height="4mm" alt="Round Bullet"/><span style="width:9px;"/>If you checked 32b, you <span class="styBoldText">must</span> attach <span class="styBoldText">Form 6198.</span> Your loss may be limited.
+		
 	</div>      
 	<div class="styLNDesc" style="width:4mm; height:100%;padding-top:3mm;">
 		<img src="{$ImagePath}/1040SchC_Bracket.gif" align="bottom" height="42mm" alt="Curly Bracket Image"/>              
@@ -1244,7 +1250,7 @@ Enter expenses for business use of your home
 					<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/AllInvestmentIsAtRiskInd"/>
 					<xsl:with-param name="BackupName">IRS1040ScheduleCAllInvestmentIsAtRiskInd</xsl:with-param>
 				</xsl:call-template>		
-				<input type="checkbox" class="styCkbox">
+				<input type="checkbox" alt="AllInvestmentIsAtRiskInd" class="styCkbox">
 					<xsl:call-template name="PopulateCheckbox">
 						<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/AllInvestmentIsAtRiskInd"/>
 						<xsl:with-param name="BackupName">IRS1040ScheduleCAllInvestmentIsAtRiskInd</xsl:with-param>
@@ -1264,7 +1270,7 @@ Enter expenses for business use of your home
 			<span style="width:.5mm;"/>
 			<span class="styBoldText">32b</span>
 			<span style="width:1px"/>
-			<input type="checkbox" class="styCkbox">
+			<input type="checkbox" alt="SomeInvestmentIsNotAtRiskInd" class="styCkbox">
 				<xsl:call-template name="PopulateCheckbox">
 					<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/SomeInvestmentIsNotAtRiskInd"/>
 					<xsl:with-param name="BackupName">IRS1040ScheduleCSomeInvestmentIsNotAtRiskInd</xsl:with-param>
@@ -1318,7 +1324,7 @@ Enter expenses for business use of your home
 				<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/ClosingInventoryCostMethodInd"/>
 				<xsl:with-param name="BackupName">IRS1040ScheduleCClosingInventoryCostMethodInd</xsl:with-param>
 			</xsl:call-template>							
-			<input type="checkbox" class="styCkbox">
+			<input type="checkbox" alt="ClosingInventoryCostMethodInd" class="styCkbox">
 			  <xsl:call-template name="PopulateCheckbox">
 				<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/ClosingInventoryCostMethodInd"/>
 				<xsl:with-param name="BackupName">IRS1040ScheduleCClosingInventoryCostMethodInd</xsl:with-param>
@@ -1334,7 +1340,7 @@ Enter expenses for business use of your home
         </span>
       </div>
       <div class="styLNDesc" style="width: 50mm; height:8mm;padding-top:9mm;height:auto;"><b> b </b>         
-        <input type="checkbox" class="styCkbox">
+        <input type="checkbox" alt="LowerOfCostOrMarketMethodInd" class="styCkbox">
           <xsl:call-template name="PopulateCheckbox">
             <xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/LowerOfCostOrMarketMethodInd"/>
             <xsl:with-param name="BackupName">IRS1040ScheduleCLowerOfCostOrMarketMethodInd</xsl:with-param>
@@ -1349,7 +1355,7 @@ Enter expenses for business use of your home
         </label>
       </div>
       <div class="styLNDesc" style="width: 48mm; height:8mm;padding-top:9mm;height:auto;"><b> c </b>          
-        <input type="checkbox" class="styCkbox">
+        <input type="checkbox" alt="OtherClosingInventoryMethodInd" class="styCkbox">
           <xsl:call-template name="PopulateCheckbox">
             <xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/OtherClosingInventoryMethodInd"/>
             <xsl:with-param name="BackupName">IRS1040ScheduleCOtherClosingInventoryMethodInd</xsl:with-param>
@@ -1388,7 +1394,7 @@ Enter expenses for business use of your home
 					<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/ChangeInValuationsInd"/>
 					<xsl:with-param name="BackupName">IRS1040ScheduleCChangeInValuationsInd</xsl:with-param>
 				</xsl:call-template>			   
-				<input type="checkbox" class="styCkbox" name="Checkbox">
+				<input type="checkbox" alt="ChangeInValuationsIndYes" class="styCkbox" name="Checkbox">
 				 <xsl:call-template name="PopulateYesCheckbox">
 					<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/ChangeInValuationsInd"/>
 					<xsl:with-param name="BackupName">IRS1040ScheduleCChangeInValuationsInd</xsl:with-param>
@@ -1403,7 +1409,7 @@ Enter expenses for business use of your home
 			  <b>Yes</b>
 			</label>                    
 				 <span style="width: 4mm;"/>
-			 <input type="checkbox" class="styCkbox" name="Checkbox">
+			 <input type="checkbox" alt="ChangeInValuationsIndNo" class="styCkbox" name="Checkbox">
 				<xsl:call-template name="PopulateNoCheckbox">
 				<xsl:with-param name="TargetNode" select="$Form1040ScheduleCData/ChangeInValuationsInd"/>
 				<xsl:with-param name="BackupName">IRS1040ScheduleCChangeInValuationsInd</xsl:with-param>
@@ -1611,7 +1617,7 @@ Enter expenses for business use of your home
 		  <div class="styLNLeftNumBox" style="height:8mm;padding-top:5mm;">43</div>      
 		  <div class="styGenericDiv" style="width:120mm; height:8mm;padding-top:5mm;">          
 			When did you place your vehicle in service for business purposes? (month, day, year)     
-			<img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Bullet Image"/> 
+			<img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Right Arrow"/> 
 		  </div>
 		  <div class="styLNAmountBox" style="height:auto;padding-top:5mm;width:31.5mm; border-bottom-width: 1px; border-left-width: 0px;text-align:left;">   
 			<xsl:call-template name="PopulateMonthDayYear">
@@ -1675,7 +1681,7 @@ Enter expenses for business use of your home
 							<xsl:with-param name="TargetNode" select="VehicleAvailableOffDutyHrsInd"/>
 							<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>AvailableForOffDutyHoursInd</xsl:with-param>
 						</xsl:call-template>           
-						<input type="checkbox" class="styCkbox" name="Checkbox">
+						<input type="checkbox" alt="VehicleAvailableOffDutyHrsIndYes" class="styCkbox" name="Checkbox">
 						 <xsl:call-template name="PopulateYesCheckbox">
 							<xsl:with-param name="TargetNode" select="VehicleAvailableOffDutyHrsInd"/>
 							<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>AvailableForOffDutyHoursInd</xsl:with-param>
@@ -1690,7 +1696,7 @@ Enter expenses for business use of your home
 			 <span class="styBoldText"> Yes</span>
 			</label>                    
 				 <span style="width: 5mm;"/>
-			 <input type="checkbox" class="styCkbox" name="Checkbox">
+			 <input type="checkbox" alt="VehicleAvailableOffDutyHrsIndNo" class="styCkbox" name="Checkbox">
 				<xsl:call-template name="PopulateNoCheckbox">
 				<xsl:with-param name="TargetNode" select="VehicleAvailableOffDutyHrsInd"/>
 				<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>AvailableForOffDutyHoursInd</xsl:with-param>
@@ -1724,7 +1730,7 @@ Enter expenses for business use of your home
 						<xsl:with-param name="TargetNode" select="AnotherVehicleForPrsnlUseInd"/>
 						<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>AnotherVehicleInd</xsl:with-param>
 					</xsl:call-template>
-					<input type="checkbox" class="styCkbox" name="Checkbox">
+					<input type="checkbox" alt="AnotherVehicleForPrsnlUseIndYes" class="styCkbox" name="Checkbox">
 					 <xsl:call-template name="PopulateYesCheckbox">
 						<xsl:with-param name="TargetNode" select="AnotherVehicleForPrsnlUseInd"/>
 						<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>AnotherVehicleInd</xsl:with-param>
@@ -1739,7 +1745,7 @@ Enter expenses for business use of your home
 				  <span class="styBoldText"> Yes</span>
 				</label>                    
 				 <span style="width: 5mm;"/>
-			 <input type="checkbox" class="styCkbox" name="Checkbox">
+			 <input type="checkbox" alt="AnotherVehicleForPrsnlUseIndNo" class="styCkbox" name="Checkbox">
 				<xsl:call-template name="PopulateNoCheckbox">
 				<xsl:with-param name="TargetNode" select="AnotherVehicleForPrsnlUseInd"/>
 				<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>AnotherVehicleInd</xsl:with-param>
@@ -1773,7 +1779,7 @@ Enter expenses for business use of your home
 							<xsl:with-param name="TargetNode" select="EvidenceToSupportDeductionInd"/>
 							<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>EvidenceToSupportDeductionInd</xsl:with-param>
 						</xsl:call-template>     
-						<input type="checkbox" class="styCkbox" name="Checkbox">
+						<input type="checkbox" alt="EvidenceToSupportDeductionIndYes" class="styCkbox" name="Checkbox">
 						 <xsl:call-template name="PopulateYesCheckbox">
 							<xsl:with-param name="TargetNode" select="EvidenceToSupportDeductionInd"/>
 							<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>EvidenceToSupportDeductionInd</xsl:with-param>
@@ -1787,7 +1793,7 @@ Enter expenses for business use of your home
 						   <span class="styBoldText"> Yes</span>
 						</label>                    
 							 <span style="width: 5mm;"/>
-						 <input type="checkbox" class="styCkbox" name="Checkbox">
+						 <input type="checkbox"  alt="EvidenceToSupportDeductionIndNo" class="styCkbox" name="Checkbox">
 							<xsl:call-template name="PopulateNoCheckbox">
 							<xsl:with-param name="TargetNode" select="EvidenceToSupportDeductionInd"/>
 							<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>EvidenceToSupportDeductionInd</xsl:with-param>
@@ -1816,7 +1822,7 @@ Enter expenses for business use of your home
 							  <xsl:with-param name="TargetNode" select="EvidenceWrittenInd"/>
 							  <xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>EvidenceWrittenInd</xsl:with-param>
 						</xsl:call-template>
-					<input type="checkbox" class="styCkbox" name="Checkbox">
+					<input type="checkbox" alt="EvidenceWrittenIndYes" class="styCkbox" name="Checkbox">
 					 <xsl:call-template name="PopulateYesCheckbox">
 						<xsl:with-param name="TargetNode" select="EvidenceWrittenInd"/>
 						<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>EvidenceWrittenInd</xsl:with-param>
@@ -1830,7 +1836,7 @@ Enter expenses for business use of your home
 					   <span class="styBoldText"> Yes</span>
 					</label>                    
 						 <span style="width: 5mm;"/>
-					 <input type="checkbox" class="styCkbox" name="Checkbox">
+					 <input type="checkbox" alt="EvidenceWrittenIndNo" class="styCkbox" name="Checkbox">
 						<xsl:call-template name="PopulateNoCheckbox">
 						<xsl:with-param name="TargetNode" select="EvidenceWrittenInd"/>
 						<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>EvidenceWrittenInd</xsl:with-param>
@@ -1870,7 +1876,7 @@ Enter expenses for business use of your home
 		  <div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;">43</div>      
 		  <div class="styGenericDiv" style="width:120mm; height:4mm;padding-top:1mm;">          
 			When did you place your vehicle in service for business purposes? (month, day, year)     
-			<img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Bullet Image"/> 
+			<img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Right Arrow"/> 
 		  </div>
 		  <div class="styLNAmountBox" style="height:4mm;width:37.5mm; border-bottom-width: 1px; border-left-width: 0px;text-align:left;">        
 			<xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -1934,7 +1940,7 @@ Enter expenses for business use of your home
 						<xsl:with-param name="TargetNode" select="VehicleAvailableOffDutyHrsInd"/>
 						<xsl:with-param name="BackupName">IRS1040ScheduleCAvailableForOffDutyHoursInd</xsl:with-param>
 					</xsl:call-template>
-					<input type="checkbox" class="styCkbox" name="Checkbox">
+					<input type="checkbox" alt="VehicleAvailableOffDutyHrsIndYes" class="styCkbox" name="Checkbox">
 					 <xsl:call-template name="PopulateYesCheckbox">
 						<xsl:with-param name="TargetNode" select="VehicleAvailableOffDutyHrsInd"/>
 						<xsl:with-param name="BackupName">IRS1040ScheduleCAvailableForOffDutyHoursInd</xsl:with-param>
@@ -1949,7 +1955,7 @@ Enter expenses for business use of your home
 				 <span class="styBoldText"> Yes</span>
 				</label>                    
 					 <span style="width: 5mm;"/>
-				 <input type="checkbox" class="styCkbox" name="Checkbox">
+				 <input type="checkbox" alt="VehicleAvailableOffDutyHrsIndNo" class="styCkbox" name="Checkbox">
 					<xsl:call-template name="PopulateNoCheckbox">
 					<xsl:with-param name="TargetNode" select="VehicleAvailableOffDutyHrsInd"/>
 					<xsl:with-param name="BackupName">IRS1040ScheduleCAvailableForOffDutyHoursInd</xsl:with-param>
@@ -1983,7 +1989,7 @@ Enter expenses for business use of your home
 						<xsl:with-param name="TargetNode" select="AnotherVehicleForPrsnlUseInd"/>
 						<xsl:with-param name="BackupName">IRS1040ScheduleCAnotherVehicleInd</xsl:with-param>
 					</xsl:call-template>
-					<input type="checkbox" class="styCkbox" name="Checkbox">
+					<input type="checkbox" alt="AnotherVehicleForPrsnlUseIndYes" class="styCkbox" name="Checkbox">
 					 <xsl:call-template name="PopulateYesCheckbox">
 						<xsl:with-param name="TargetNode" select="AnotherVehicleForPrsnlUseInd"/>
 						<xsl:with-param name="BackupName">IRS1040ScheduleCAnotherVehicleInd</xsl:with-param>
@@ -1998,7 +2004,7 @@ Enter expenses for business use of your home
 			  <span class="styBoldText"> Yes</span>
 			</label>                    
 				 <span style="width: 5mm;"/>
-			 <input type="checkbox" class="styCkbox" name="Checkbox">
+			 <input type="checkbox" alt="AnotherVehicleForPrsnlUseIndNo" class="styCkbox" name="Checkbox">
 				<xsl:call-template name="PopulateNoCheckbox">
 				<xsl:with-param name="TargetNode" select="AnotherVehicleForPrsnlUseInd"/>
 				<xsl:with-param name="BackupName">IRS1040ScheduleCAnotherVehicleInd</xsl:with-param>
@@ -2032,7 +2038,7 @@ Enter expenses for business use of your home
 									<xsl:with-param name="TargetNode" select="EvidenceToSupportDeductionInd"/>
 									<xsl:with-param name="BackupName">IRS1040ScheduleCEvidenceToSupportDeductionInd</xsl:with-param>
 								</xsl:call-template>					  
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" alt="EvidenceToSupportDeductionIndYes" class="styCkbox" name="Checkbox">
 								 <xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="EvidenceToSupportDeductionInd"/>
 									<xsl:with-param name="BackupName">IRS1040ScheduleCEvidenceToSupportDeductionInd</xsl:with-param>
@@ -2046,7 +2052,7 @@ Enter expenses for business use of your home
 								   <span class="styBoldText"> Yes</span>
 								</label>                    
 									 <span style="width: 5mm;"/>
-								 <input type="checkbox" class="styCkbox" name="Checkbox">
+								 <input type="checkbox" alt="EvidenceToSupportDeductionIndNo"  class="styCkbox" name="Checkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="EvidenceToSupportDeductionInd"/>
 									<xsl:with-param name="BackupName">IRS1040ScheduleCEvidenceToSupportDeductionInd</xsl:with-param>
@@ -2077,7 +2083,7 @@ Enter expenses for business use of your home
 							<xsl:with-param name="TargetNode" select="EvidenceWrittenInd"/>
 							<xsl:with-param name="BackupName">IRS1040ScheduleCEvidenceWrittenInd</xsl:with-param>
 						</xsl:call-template>
-						<input type="checkbox" class="styCkbox" name="Checkbox">
+						<input type="checkbox" alt="EvidenceWrittenIndYes" class="styCkbox" name="Checkbox">
 						 <xsl:call-template name="PopulateYesCheckbox">
 							<xsl:with-param name="TargetNode" select="EvidenceWrittenInd"/>
 							<xsl:with-param name="BackupName">IRS1040ScheduleCEvidenceWrittenInd</xsl:with-param>
@@ -2091,7 +2097,7 @@ Enter expenses for business use of your home
 						   <span class="styBoldText"> Yes</span>
 						</label>                    
 							 <span style="width: 5mm;"/>
-						 <input type="checkbox" class="styCkbox" name="Checkbox">
+						 <input type="checkbox" alt="EvidenceWrittenIndNo" class="styCkbox" name="Checkbox">
 							<xsl:call-template name="PopulateNoCheckbox">
 							<xsl:with-param name="TargetNode" select="EvidenceWrittenInd"/>
 							<xsl:with-param name="BackupName">IRS1040ScheduleCEvidenceWrittenInd</xsl:with-param>
@@ -2414,7 +2420,7 @@ Enter expenses for business use of your home
       <div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;text-align:left">43</div>      
       <div class="styLNDesc" style="width:145mm; height:4mm;padding-top:1mm;text-align:left">          
         When did you place your vehicle in service for business purposes? (month, day, year)     
-        <img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Bullet Image"/> 
+        <img src="{$ImagePath}/1040SchC_Bullet_Sm.gif" alt="Right Arrow"/> 
       </div>
       <div class="styLNAmountBox" style="height:4mm;width:31.5mm; border-bottom-width: 1px; border-left-width: 0px;">        
         <xsl:call-template name="PopulateMonthDayYear">
@@ -2495,7 +2501,7 @@ Enter expenses for business use of your home
 					<xsl:with-param name="TargetNode" select="VehicleAvailableOffDutyHrsInd"/>
 					<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>AvailableForOffDutyHoursInd</xsl:with-param>
 				</xsl:call-template>    
-				<input type="checkbox" class="styCkbox" name="Checkbox">
+				<input type="checkbox" alt="VehicleAvailableOffDutyHrsIndYes" class="styCkbox" name="Checkbox">
 				 <xsl:call-template name="PopulateYesCheckbox">
 					<xsl:with-param name="TargetNode" select="VehicleAvailableOffDutyHrsInd"/>
 					<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>AvailableForOffDutyHoursInd</xsl:with-param>
@@ -2509,7 +2515,7 @@ Enter expenses for business use of your home
 				 <span class="styBoldText"> Yes</span>
 				</label>                    
 					 <span style="width: 5mm;"/>
-				 <input type="checkbox" class="styCkbox" name="Checkbox">
+				 <input type="checkbox" alt="VehicleAvailableOffDutyHrsIndNo" class="styCkbox" name="Checkbox">
 					<xsl:call-template name="PopulateNoCheckbox">
 					<xsl:with-param name="TargetNode" select="VehicleAvailableOffDutyHrsInd"/>
 					<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>AvailableForOffDutyHoursInd</xsl:with-param>
@@ -2552,7 +2558,7 @@ Enter expenses for business use of your home
 					<xsl:with-param name="TargetNode" select="AnotherVehicleForPrsnlUseInd"/>
 					<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>AnotherVehicleInd</xsl:with-param>
 				</xsl:call-template>
-				<input type="checkbox" class="styCkbox" name="Checkbox">
+				<input type="checkbox" alt="AnotherVehicleForPrsnlUseIndYes" class="styCkbox" name="Checkbox">
 				 <xsl:call-template name="PopulateYesCheckbox">
 					<xsl:with-param name="TargetNode" select="AnotherVehicleForPrsnlUseInd"/>
 					<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>AnotherVehicleInd</xsl:with-param>
@@ -2566,7 +2572,7 @@ Enter expenses for business use of your home
 				  <span class="styBoldText"> Yes</span>
 				</label>                    
 					 <span style="width: 5mm;"/>
-				 <input type="checkbox" class="styCkbox" name="Checkbox">
+				 <input type="checkbox" alt="AnotherVehicleForPrsnlUseIndNo" class="styCkbox" name="Checkbox">
 					<xsl:call-template name="PopulateNoCheckbox">
 					<xsl:with-param name="TargetNode" select="AnotherVehicleForPrsnlUseInd"/>
 					<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>AnotherVehicleInd</xsl:with-param>
@@ -2608,7 +2614,7 @@ Enter expenses for business use of your home
 						<xsl:with-param name="TargetNode" select="EvidenceToSupportDeductionInd"/>
 						<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>EvidenceToSupportDeductionInd</xsl:with-param>
 				  </xsl:call-template>
-					<input type="checkbox" class="styCkbox" name="Checkbox">
+					<input type="checkbox" alt="EvidenceToSupportDeductionIndYes" class="styCkbox" name="Checkbox">
 					 <xsl:call-template name="PopulateYesCheckbox">
 						<xsl:with-param name="TargetNode" select="EvidenceToSupportDeductionInd"/>
 						<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>EvidenceToSupportDeductionInd</xsl:with-param>
@@ -2622,7 +2628,7 @@ Enter expenses for business use of your home
 					   <span class="styBoldText"> Yes</span>
 					</label>                    
 						 <span style="width: 5mm;"/>
-					 <input type="checkbox" class="styCkbox" name="Checkbox">
+					 <input type="checkbox" alt="EvidenceToSupportDeductionIndNo" class="styCkbox" name="Checkbox">
 						<xsl:call-template name="PopulateNoCheckbox">
 						<xsl:with-param name="TargetNode" select="EvidenceToSupportDeductionInd"/>
 						<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>EvidenceToSupportDeductionInd</xsl:with-param>
@@ -2653,7 +2659,7 @@ Enter expenses for business use of your home
 					<xsl:with-param name="TargetNode" select="EvidenceWrittenInd"/>
 					<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>EvidenceWrittenInd</xsl:with-param>
 				</xsl:call-template>    
-				<input type="checkbox" class="styCkbox" name="Checkbox">
+				<input type="checkbox" alt="EvidenceWrittenIndYes" class="styCkbox" name="Checkbox">
 				 <xsl:call-template name="PopulateYesCheckbox">
 					<xsl:with-param name="TargetNode" select="EvidenceWrittenInd"/>
 					<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>EvidenceWrittenInd</xsl:with-param>
@@ -2667,7 +2673,7 @@ Enter expenses for business use of your home
 				   <span class="styBoldText"> Yes</span>
 				</label>                    
 					 <span style="width: 5mm;"/>
-				 <input type="checkbox" class="styCkbox" name="Checkbox">
+				 <input type="checkbox" alt="EvidenceWrittenIndNo" class="styCkbox" name="Checkbox">
 					<xsl:call-template name="PopulateNoCheckbox">
 					<xsl:with-param name="TargetNode" select="EvidenceWrittenInd"/>
 					<xsl:with-param name="BackupName">IRS1040ScheduleCAVI<xsl:number value="position()"/>EvidenceWrittenInd</xsl:with-param>

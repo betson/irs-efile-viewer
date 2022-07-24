@@ -179,9 +179,9 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;">5</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div style="float:left;width:35mm;margin-right:3mm;padding-left:5mm">
-              <img alt="right arrow" src="{$ImagePath}/2555_med_rt_arrow.gif" style="float:right;"/>
               Employer is (check<br/>
               any that apply):
+              <img alt="right arrow" src="{$ImagePath}/2555_med_rt_arrow.gif" style="float:right;"/>
             </div>
             <div style="float:left;width:143mm;">
               <span style="width:60mm;padding:.5mm 0mm;">
@@ -295,9 +295,9 @@
 				<xsl:with-param name="TargetNode" select="$FormData/NoFrgnEarnIncExclPrevFiledInd"/>
 				<xsl:with-param name="BackupName">IRS2555NoFrgnEarnIncExclPrevFiledInd</xsl:with-param>
 			  </xsl:call-template>
-              If you didn't previously file Form 2555 or 2555-EZ to claim either of the exclusions, check here 
+              If you didn't previously file Form 2555 or 2555-EZ to claim either of the exclusions, check here
+              <img src="{$ImagePath}/2555_Bullet.gif" width="9" height="9" alt="Bullet" style="margin-right:0.5mm;"/> 
               </label>
-              <img src="{$ImagePath}/2555_Bullet.gif" width="9" height="9" alt="Bullet" style="margin-right:0.5mm;"/>
             </div>
             <div style="float:left;width:5mm;text-align:center;">
               <input type="checkbox" style="height:3.5mm;" alt="No Frgn Earn Inc Excl Prev Filed Ind">
@@ -588,8 +588,8 @@
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-left:2mm;padding-top:2mm">11</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div style="float:left;width:60mm;margin-right:3mm;padding-left:5mm;padding-top:2mm">
-              <img src="{$ImagePath}/2555_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:.5mm 1mm;float:right;"/>
               Kind of living quarters in foreign country
+              <img src="{$ImagePath}/2555_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:.5mm 1mm;float:right;"/>
             </div>
             <div style="float:left;width:115mm;clear:none;">
               <span style="width:35mm;padding:.5mm 0mm;">

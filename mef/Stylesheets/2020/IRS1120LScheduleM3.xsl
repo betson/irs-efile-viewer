@@ -3488,9 +3488,9 @@
 						<!-- Part III - Line 25 -->
 						<tr>
 							<td class="styIRS1120LScheduleM3NumberCell">25</td>
-							<td>Section 807(f) adjustments for change in computing<br/>
-							 <span style="float:left;">reserves</span>
-								<span class="styDotLn" style="float:right;padding-right:2mm;">................</span>
+							<td>Section 807(f) and Reserve Transition Relief adjustments <br/>
+							 <span style="float:left;">for change in computing reserves (see instructions)</span>
+								<span class="styDotLn" style="float:right;padding-right:2mm;">...</span>
 							</td>
 							<td class="styIRS1120LScheduleM3ShadedCell" style="border-bottom-width:0px;">
 								<span style="width:1mm"/>

@@ -103,7 +103,7 @@
              </xsl:call-template>
             </div>
           </div>
-          <!--End Name/EIN-->
+          <!--End Name/EIN--> 
           <!--Begin Part 1-->
           <!--Part 1 Header-->
           <div class="styBB" style="width:187mm;height:11.5mm">
@@ -1612,7 +1612,7 @@
                 <!--Note-->
                 <tr>
                   <td class="sty1120FSchHLNLeftNumBox"/>
-                  <td class="sty1120FSchHLNDescShort" colspan="5" style="width:181mm;"> <b>Note:</b> Line 41, column (a) is the total of the deductions reported on Form 1120&#45;F, Section II, lines 12, 13, 14, 16, 17, 19 through 25, and 27.
+                  <td class="sty1120FSchHLNDescShort" colspan="5" style="width:181mm;"> <b>Note:</b> Line 41, column (a) is the total of the deductions reported on Form 1120&#45;F, Section II, lines 12, 13, 14, 16, 17, 19 through 24, and 27.
                 </td>
                 </tr>
               </tbody>

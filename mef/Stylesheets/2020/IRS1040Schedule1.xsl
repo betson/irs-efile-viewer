@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 01/14/2021 -->
+<!-- Last Modified by Eugenia McDonald on 04/12/2021 -->
 <!DOCTYPE xsl:stylesheet [
   <!ENTITY nbsp "&#160;">
   <!ENTITY ndash "&#8211;">
@@ -146,7 +146,7 @@
 							<span style="width:40mm;border-bottom:1px dashed black;text-align:center;">
 								<xsl:if test="not($alimonyRec)">
 									<xsl:call-template name="PopulateMonthDayYear">
-										<xsl:with-param name="TargetNode" select="$FormData/AlimonyAmountGrp/DivorceOrSeparationAgreementDt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/AlimonyReceivedGrp/DivorceOrSeparationAgreementDt"/>
 									</xsl:call-template>
 								</xsl:if>
 								<xsl:if test="$alimonyRec">See Additional Data Table</xsl:if>

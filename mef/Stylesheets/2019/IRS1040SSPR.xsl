@@ -1321,12 +1321,10 @@
                 For Disclosure, Privacy Act, and Paperwork Reduction Act Notice, see instructions.
               </span>
             </div>
-            <div style="float:right;">
-              <span style="width:50px;"/>  
-                Form <span class="styBoldText" style="font-size:8pt;">1040-SS</span> (2019)
-            </div>
-            <div style="float:right;text-align:center;width:26mm;font-size:7pt;">
+            <div style="float:right; font-size:7pt;">
               Cat. No. 17184B
+              <span style="width:50px;"/>  
+              Form <span class="styBoldText" style="font-size:8pt;">1040-SS</span> (2019)
             </div>
           </div>
    		  <p style="page-break-before: always"/>           
@@ -5342,11 +5340,15 @@
 						</xsl:call-template>
 					</xsl:otherwise>
 				</xsl:choose>
-      </div>
+
       <!-- (25b) ////////////////////////////////////////////////////-->
-       <div class="styIRS1040SSPRLineItem" style="width:187mm;">
-          <div class="styIRS1040SSPRCleanDiv" style="width:41mm;height:100%;padding:0px 0px 0px 0px;float:right;">
-            <div class="styIRS1040SSPRCleanDiv" style="padding-left:4mm;width:100%;height:100%;float:right;">
+        <div class="styIRS1040SSPRLineItem" style="height:4mm;">
+          <div class="styIRS1040SSPRLNLeftNumBox" style="padding-top:.5mm;">25b</div>
+          <div class="styIRS1040SSPRLNDesc" style="width:auto;height:4mm;">
+                Total other expenses
+          </div>
+          <div class="styGenericDiv" style="width:37mm;height:4mm;padding:0px 0px 0px 0px;float:right;">
+            <div class="styGenericDiv" style="width:100%;height:4mm;float:right;">
               <xsl:choose>
                 <xsl:when test="$TargetNode">
                   <xsl:call-template name="CreateBox_1040SS">
@@ -5365,20 +5367,9 @@
                 </xsl:otherwise>
               </xsl:choose>
             </div>
-          </div>          
-          <div class="styIRS1040SSPRCleanDiv" style="width:43mm;height:auto;padding:0px 0px 0px 0px;float:right;">
-            <div class="styIRS1040SSPRLNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
-              <div class="styIRS1040SSPRLNDesc" style="width:auto;height:100%;">
-                Total other expenses
-              </div>
-              <div class="styIRS1040SSPRLNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 0px 0px 0px;">
- 				<!--Dotted Line-->
-				<span class="styDotLn" style="float:none;clear:none;padding-left:0mm;">...</span>							
-              </div>
-            </div>
           </div>
-          <div class="styIRS1040SSPRLNLeftNumBox" style="padding:.5mm 0mm 0mm 0mm;float:right;">25b</div>
-        </div>
+        </div>      
+      </div>
     <!-- (26) ////////////////////////////////////////////////////-->
       <div class="styIRS1040SSPRLineItem" style="width:187mm;height:4mm;border-top:1px solid black;">
         <div class="styIRS1040SSPRLNLeftNumBox" style="padding-top:.75mm;">26</div>
@@ -6621,7 +6612,7 @@
 					<div class="styBB" style="width:187mm;height:41mm;">
 						<div class="styIRS1040PRCleanDiv" style="width:4%;height:100%;">
 							<span style="width:100%;height:auto;padding-top:5mm;">
-								<img src="{$ImagePath}/1040PR_Please_Print.gif" alt="Please Type or Print"/>
+								<img src="{$ImagePath}/1040PR_Please_Print.gif" alt="Escriba a maquinilla o con letra de molde"/>
 							</span>
 						</div>
 						<div class="styIRS1040PRCleanDiv" style="width:96%;height:100%;border-left-width:1px;">
@@ -6975,7 +6966,7 @@
 										Contribuciones por empleados domésticos (vea las instrucciones). Adjunte el Anexo H-PR<br/>
 										(Formulario 1040 or 1040-PR)
 										<!--Dotted Line-->
-									  <span class="styDotLn" style="float:none;clear:none;padding-left:2.75mm;">...........................</span>
+									  <span class="styDotLn" style="float:none;clear:none;padding-left:2.75mm;">........................</span>
 									  <xsl:call-template name="SetFormLinkInline">
 									    <xsl:with-param name="TargetNode" select="$Form1040SSPRData/HouseholdEmploymentTaxAmt"/>
 									  </xsl:call-template>									  
@@ -7254,18 +7245,18 @@
 												</xsl:otherwise>
 											</xsl:choose>
 											<img src="{$ImagePath}/1040PR_Bullet_Sm.gif" alt="Small Arrow"/>																				
-											<input type="checkbox" alt="Formulario 8888Ind" class="styCkbox">
+											<input type="checkbox" alt="Form8888Ind" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="$Form1040PRData/Form8888Ind"/>
 													<xsl:with-param name="BackupName">Form1040PRDataForm8888Ind</xsl:with-param>
 												</xsl:call-template>
 											</input>
-											<label>
+											<!--<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="$Form1040PRData/Form8888Ind"/>
 													<xsl:with-param name="BackupName">Form1040PRDataForm8888Ind</xsl:with-param>
 												</xsl:call-template>
-											</label>
+											</label>-->
 										</span>													
 						<div class="styIRS1040PRCleanDiv" style="width:37mm;padding:0px 0px 0px 0px;float:right;">
 								<div class="styIRS1040PRCleanDiv" style="width:100%;float:right;">
@@ -7384,22 +7375,16 @@
 											<img src="{$ImagePath}/1040PR_Bullet_Sm.gif" alt="Small Bullet"/>
 									</div>
 							<div class="styIRS1040PRCleanDiv" style="width:75mm;padding:0px 0px 0px 0px;float:right;">
-								<div class="styIRS1040PRCleanDiv" style="width:100%;float:right;">
-									<xsl:call-template name="CreateBox_1040PR">
-										<xsl:with-param name="AmountBoxStyle">height:3.4mm;border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">height:3.4mm;border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-									</xsl:call-template>
-								</div>
-								<div class="styIRS1040PRCleanDiv" style="width:37mm;height:auto;float:right;">
-									<xsl:call-template name="CreateBox_1040PR">
-										<xsl:with-param name="AmountBoxStyle">height:3mm;border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">height:3mm;border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-									</xsl:call-template>
-								</div>
-								<div class="styIRS1040PRCleanDiv" style="width:37mm;height:4mm;float:right;">
+								<div class="styIRS1040PRCleanDiv" style="width:37mm;height:4mm;float:left;padding-top:3.0mm;" >
 									<xsl:call-template name="CreateBox_1040PR">
 										<xsl:with-param name="Number">14</xsl:with-param>
 										<xsl:with-param name="TargetNode" select="$Form1040PRData/AppliedToEsTaxAmt"/>
+									</xsl:call-template>
+								</div>
+								<div class="styIRS1040PRCleanDiv" style="width:37mm;float:right;">
+									<xsl:call-template name="CreateBox_1040PR">
+										<xsl:with-param name="AmountBoxStyle">height:6.4mm;border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">height:6.4mm;border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
 									</xsl:call-template>
 								</div>
 							</div>
@@ -8498,51 +8483,50 @@
 		<xsl:param name="NumberBoxStyle"/>
 		<xsl:param name="Width">29mm</xsl:param>
 		<xsl:param name="Height">4mm</xsl:param>
-		<div class="styLNAmountBox">
-			<xsl:attribute name="style">
-				width:<xsl:value-of select="$Width"/>;height:4mm;<xsl:value-of select="$Height"/>;
-				border-right-width:0px;float:right;text-align:right;padding-right:2px;font-size:7pt;
-				<xsl:choose><xsl:when test="$TargetNode"><xsl:choose><xsl:when test="$TargetNode/@referenceDocumentId">padding-top:2px;</xsl:when><xsl:otherwise>padding-top:4px;</xsl:otherwise></xsl:choose></xsl:when><xsl:otherwise>padding-top:3px;</xsl:otherwise></xsl:choose><xsl:if test="$AmountBoxStyle"><xsl:value-of select="$AmountBoxStyle"/></xsl:if></xsl:attribute>
-			<xsl:choose>
-				<xsl:when test="$TargetNode">
-					<xsl:if test="$AddParentheses">
-						(<span style="width:5px;"/>
-					</xsl:if>
-					<xsl:choose>
-						<xsl:when test="$PopulateAsText">
-							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$TargetNode"/>
-							</xsl:call-template>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$TargetNode"/>
-							</xsl:call-template>
-						</xsl:otherwise>
-					</xsl:choose>
-					<xsl:if test="$AddParentheses">
-						<span style="width:5px;"/>)
-					</xsl:if>
-				</xsl:when>
-				<xsl:when test="$StaticText">
-					<xsl:value-of select="$StaticText"/>
-				</xsl:when>
-				<xsl:when test="not($TargetNode) and not($StaticText) and $AddParentheses">
-					(<span style="width:23mm;"/>)
-				</xsl:when>
-			</xsl:choose>
-		</div>
 		<div class="styLNRightNumBox">
-			<xsl:attribute name="style">
-				float:right;
-				padding:2px 0px 0px 0px;
-				border-right-width:0px;font-size:8pt;
-				height:4mm;<xsl:value-of select="$Height"/>;
-				<xsl:if test="$NumberBoxStyle"><xsl:value-of select="$NumberBoxStyle"/></xsl:if></xsl:attribute>
-			<xsl:if test="$Number">
-				<xsl:value-of select="$Number"/>
-			</xsl:if>
-		</div>
+      <xsl:attribute name="style">
+        padding:2px 0px 0px 0px;
+        border-right-width:0px;font-size:8pt;
+        height:4mm<xsl:value-of select="$Height"/>;
+        <xsl:if test="$NumberBoxStyle"><xsl:value-of select="$NumberBoxStyle"/></xsl:if></xsl:attribute>
+      <xsl:if test="$Number">
+        <xsl:value-of select="$Number"/>
+      </xsl:if>
+    </div>
+    <div class="styLNAmountBox">
+      <xsl:attribute name="style">
+        width:<xsl:value-of select="$Width"/>;height:4mm<xsl:value-of select="$Height"/>;
+        border-right-width:0px;text-align:right;padding-right:2px;font-size:7pt;
+        <xsl:choose><xsl:when test="$TargetNode"><xsl:choose><xsl:when test="$TargetNode/@referenceDocumentId">padding-top:2px;</xsl:when><xsl:otherwise>padding-top:4px;</xsl:otherwise></xsl:choose></xsl:when><xsl:otherwise>padding-top:3px;</xsl:otherwise></xsl:choose><xsl:if test="$AmountBoxStyle"><xsl:value-of select="$AmountBoxStyle"/></xsl:if></xsl:attribute>
+      <xsl:choose>
+        <xsl:when test="$TargetNode">
+          <xsl:if test="$AddParentheses">
+            (<span style="width:5px;"/>
+          </xsl:if>
+          <xsl:choose>
+            <xsl:when test="$PopulateAsText">
+              <xsl:call-template name="PopulateText">
+                <xsl:with-param name="TargetNode" select="$TargetNode"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:call-template name="PopulateAmount">
+                <xsl:with-param name="TargetNode" select="$TargetNode"/>
+              </xsl:call-template>
+            </xsl:otherwise>
+          </xsl:choose>
+          <xsl:if test="$AddParentheses">
+            <span style="width:5px;"/>)
+          </xsl:if>
+        </xsl:when>
+        <xsl:when test="$StaticText">
+          <xsl:value-of select="$StaticText"/>
+        </xsl:when>
+        <xsl:when test="not($TargetNode) and not($StaticText) and $AddParentheses">
+          (<span style="width:23mm;"/>)
+        </xsl:when>
+      </xsl:choose>
+    </div>
 	</xsl:template>
 	<!-- ////////////////////////////////////////////////////////////// (Template:	GenerateEmptyItems_1040PR) -->
 	  <xsl:template name="GenerateEmptyItems_1040PR">
@@ -11773,43 +11757,37 @@
 						</xsl:call-template>
 					</xsl:otherwise>
 				</xsl:choose>
-          </div>
+
 <!-- (25b) ////////////////////////////////////////////////////-->
-	<div class="styIRS1040PRLineItem" style="width:187mm;">					
-					<div class="styIRS1040PRCleanDiv" style="width:37mm;height:100%;padding:0px 0px 0px 0px;float:right;">
-						<div class="styIRS1040PRCleanDiv" style="width:100%;height:100%;float:right;">
-							<xsl:choose>
-								<xsl:when test="$TargetNode">
-									<xsl:call-template name="CreateBox_1040PR">
-										<xsl:with-param name="Number">25b</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
-										<xsl:with-param name="TargetNode" select="$TargetNode/TotalOtherExpensesAmt"/>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:call-template name="CreateBox_1040PR">
-										<xsl:with-param name="Number">25b</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
-									</xsl:call-template>
-								</xsl:otherwise>
-							</xsl:choose>
-						</div>
-					</div>					
-					<div class="styIRS1040PRCleanDiv" style="width:47mm;height:auto;padding:0px 0px 0px 0px;float:right;">
-						<div class="styIRS1040PRLNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
-							<div class="styIRS1040PRLNDesc" style="width:auto;padding-bottom:0mm;">
-								Total de los demás gastos
-							</div>
-							<div class="styIRS1040PRLNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 8px 0px 0px;">
-						<!--Dotted Line-->
-						<span class="styDotLn" style="float:none;clear:none;padding-left:0mm;">...</span>							
-						</div>
-						</div>
-					</div>
-					<div class="styIRS1040PRLNLeftNumBox" style="padding:.5mm 0mm 0mm 0mm; float:right;">b</div>
-				</div>		
+	      <div class="styIRS1040SSPRLineItem" style="height:4mm;">
+          <div class="styIRS1040SSPRLNLeftNumBox" style="padding-top:.5mm;">25b</div>
+          <div class="styIRS1040SSPRLNDesc" style="width:auto;height:4mm;">
+                Total de los demás gastos
+          </div>
+          <div class="styGenericDiv" style="width:37mm;height:4mm;padding:0px 0px 0px 0px;float:right;">
+            <div class="styGenericDiv" style="width:100%;height:4mm;float:right;">
+              <xsl:choose>
+                <xsl:when test="$TargetNode">
+                  <xsl:call-template name="CreateBox_1040SS">
+                    <xsl:with-param name="Number">25b</xsl:with-param>
+                    <xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+                    <xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
+                    <xsl:with-param name="TargetNode" select="$TargetNode/TotalOtherExpensesAmt"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:call-template name="CreateBox_1040SS">
+                    <xsl:with-param name="Number">25b</xsl:with-param>
+                    <xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+                    <xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
+                  </xsl:call-template>
+                </xsl:otherwise>
+              </xsl:choose>
+            </div>
+          </div>
+        </div>      				
+				
+          </div>
 	<!-- (26) ////////////////////////////////////////////////////-->
 			<div class="styIRS1040PRLineItem" style="width:187mm;height:4mm;border-top:1px solid black;">
 				<div class="styIRS1040PRLNLeftNumBox" style="padding-top:.5mm;">26</div>
@@ -11865,7 +11843,7 @@
 					</div>
 				</div>
 				 </div>
-			</div>
+</div>
 			<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 			<!-- Page Break and Footer-->
 			<div class="pageEnd" style="width:187mm;padding-top:.25mm;">
@@ -11953,18 +11931,18 @@
 					<img src="{$ImagePath}/1040PR_Bullet_Sm.gif" alt="Small Bullet"/>
 					</div>
 					<span style="display:inline;">
-					<input type="checkbox" alt="radicó el Formulario 4361" class="styCkbox" style="float:right;margin:0mm 0mm;">
+					<input type="checkbox" alt="Radicó el Formulario 4361" class="styCkbox" style="float:right;margin:0mm 0mm;">
 						<xsl:call-template name="PopulateCheckbox">
 							<xsl:with-param name="TargetNode" select="$TargetNode/ExemptForm4361Ind"/>
 							<xsl:with-param name="BackupName">Form1040PRDataSelfEmploymentTaxGrp<xsl:number value="position()"/>ExemptForm4361Ind</xsl:with-param>
 						</xsl:call-template>
 					</input>
-					<label>
+					<!--<label>
 						<xsl:call-template name="PopulateLabel">
 							<xsl:with-param name="TargetNode" select="$TargetNode/ExemptForm4361Ind"/>
 							<xsl:with-param name="BackupName">Form1040PRDataSelfEmploymentTaxGrp<xsl:number value="position()"/>ExemptForm4361Ind</xsl:with-param>
 						</xsl:call-template>
-					</label>
+					</label>-->
 				</span>
 			</div>
 			<!-- (1a) ////////////////////////////////////////////////////-->

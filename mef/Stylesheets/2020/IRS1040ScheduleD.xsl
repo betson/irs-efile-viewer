@@ -920,7 +920,7 @@
            <div class="styLNLeftNumBox" style="width:6mm;padding-top:1mm;"/>
           <div class="styLNDesc" style="width: 135mm;">
               <img src="{$ImagePath}/1040SchD_Bullet_Round.gif" alt="bullet image"/>
-            <span style="width: .5mm"/>  If line 16 is a<b> gain, </b>enter the amount from line 16 on Form 1040 , 1040-SR, or 1040-NR, line 7. Then go to line 17 below.
+            <span style="width: .5mm"/>  If line 16 is a<b> gain, </b>enter the amount from line 16 on Form 1040, 1040-SR, or 1040-NR, line 7. Then go to line 17 below.
           </div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;height:8mm;"/>
           <div class="styLNAmountBox" style="width: 37mm;border-bottom-width:0px;height:8mm;"/>
@@ -945,7 +945,7 @@
             <span>
               <img src="{$ImagePath}/1040SchD_Bullet_Round.gif" alt="bullet image"/>
             </span>
-              <span style="width:1mm"/> If line 16 is <b>zero,</b> skip lines 17 through 21 below and enter -0- on Form 1040 , 1040-SR, or 1040-NR, line 7. Then go to line 22.    
+              <span style="width:1mm"/> If line 16 is <b>zero,</b> skip lines 17 through 21 below and enter -0- on Form 1040, 1040-SR, or 1040-NR, line 7. Then go to line 22.    
           </div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;height:9mm;"/>
           <div class="styLNAmountBox" style="width:37mm;border-bottom-width:0px;height:9mm;"/>
@@ -1114,9 +1114,9 @@
         </xsl:call-template>
         <span style="font-weight:bold;padding-left:1mm;">Yes.</span>
       </label>
-            Complete the <b>Qualified Dividends and Capital Gain Tax Worksheet </b>
+			Complete the <b>Qualified Dividends and Capital Gain Tax Worksheet </b>
 			in the instructions for<br/>
-			<span style="width: 6mm" />1040 and 1040-SR, line 16. <b>Don't</b> 
+			<span style="width: 6mm" />Forms 1040 and 1040-SR, line 16. <b>Don't</b> 
 			complete lines 21 and 22 below.
           </div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;height:10.5mm;"/>
@@ -1150,7 +1150,7 @@
         <!-- BEGIN LINE 21 -->
         <div class="styGenericDiv " style="width:187mm;">
             <div class="styLNLeftNumBox" style="width:6mm;">21</div>
-          <div class="styLNDesc" style="width: 135mm;">If line 16 is a loss, enter here and on Form 1040 , 1040-SR, or1040-NR, line 7, the <b>smaller</b> of:
+          <div class="styLNDesc" style="width: 135mm;">If line 16 is a loss, enter here and on Form 1040, 1040-SR, or 1040-NR, line 7, the <b>smaller</b> of:
           </div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;height:6mm"/>
           <div class="styLNAmountBox" style="width:37mm;border-bottom-width:0px;height:6mm"/>

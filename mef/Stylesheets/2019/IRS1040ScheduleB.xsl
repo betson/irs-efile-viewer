@@ -117,7 +117,7 @@
 					<!--Begin of Part I-->
 						<!-- Part I Left margin -->
 							<div style="width:25mm;float:left;clear:none;border-bottom-width: 0px;height:60mm">
-								<div class="styFMT" style="font-size:12pt;font-family:Arial;">Part l 
+								<div class="styFMT" style="font-size:12pt;font-family:Arial;">Part I 
 									<br/>Interest
                                 </div>
 								<div style="padding-top:1mm;width:25mm;">(See instructions<br/>
@@ -1173,7 +1173,7 @@
 				 <div  style="width:187mm;">
 								<!-- Part II Left margin -->
 								<div style="width:25mm;float:left;clear:none;border-bottom-width:0px;">
-									<div class="styFMT" style="padding-top:2mm;font-size:12pt;font-family:Arial;">Part ll
+									<div class="styFMT" style="padding-top:2mm;font-size:12pt;font-family:Arial;">Part II
 										<br/>
                 Ordinary
                 Dividends
@@ -1724,15 +1724,15 @@
 							<!--Start of Part III-->
 					 <div  style="width:187mm;">
 							<!-- left margin Part III -->
-							<div style="width:25.5mm;float:left;">
+							<div style="width:25.5mm;height:38.5;float:left;">
 								<div class="styFMT" style="padding-top:0mm;font-size:12pt;font-family:Arial">
-                Part lll<br/>
+                Part III<br/>
                 <div style="width:5mm;padding-top:2.5mm;">
                 Foreign<br/>
                 Accounts<br/>
                 and Trusts</div>
                 </div>
-								<div style="padding-top:1mm;width:25.5mm;">(See instructions.)
+								<div style="padding-top:1mm;width:25.5mm;"><b>Caution:</b> If required, failure to<br/> file FinCEN Form<br/> 114 may result in<br/> substantial penalties. See instructions.
                 </div>
 							</div>
 							<!-- end left margin -->
@@ -1876,7 +1876,7 @@
 							<!-- Line 7b text -->
 							<div class="styGenericDiv" style="width:158mm;border-bottom-width:0px;">
 								<div class="styLNLeftNumBox" style="padding-left:1.5mm;width:6mm;">b</div>
-								<div class="styLNDesc" style="width:135mm;float:left;clear:none;padding-right:1mm;">
+								<div class="styLNDesc" style="width:135mm;height:15mm;float:left;clear:none;padding-right:1mm;">
 										If you are required to file FinCEN Form 114, enter the name of the foreign
 										country where the financial account is located 
 										<span style="width:1mm;"/>
@@ -1894,15 +1894,15 @@
 								<!-- end Line 7b text-->
 								<xsl:if test="count($FormData/ForeignCountryCd) &lt;= 5 ">
 									<!-- grey areas -->
-									<div class="styGenericDiv" style="height:9mm;width:8.5mm;background-color:lightgrey;border-left:1px solid black;border-bottom-width:0px;"/>
-									<div class="styGenericDiv" style="height:9mm;width:8.5mm;background-color:lightgrey;border-left:1px solid black;border-bottom-width:0px;"/>
+									<div class="styGenericDiv" style="height:22mm;width:8.5mm;background-color:lightgrey;border-left:1px solid black;border-bottom-width:0px;"/>
+									<div class="styGenericDiv" style="height:22mm;width:8.5mm;background-color:lightgrey;border-left:1px solid black;border-bottom-width:0px;"/>
 								</xsl:if>
 								<!-- end grey areas -->
 								<xsl:if test="count($FormData/ForeignCountryCd) &gt; 5 ">
 									<!-- end Line 7b text-->
 									<!-- grey areas -->
-									<div class="styGenericDiv" style="height:10.7mm;width:8.5mm;background-color:lightgrey;border-left:1px solid black;border-bottom-width:0px;"/>
-									<div class="styGenericDiv" style="height:10.7mm;width:8.5mm;background-color:lightgrey;border-left:1px solid black;border-bottom-width:0px;"/>
+									<div class="styGenericDiv" style="height:13.7mm;width:8.5mm;background-color:lightgrey;border-left:1px solid black;border-bottom-width:0px;"/>
+									<div class="styGenericDiv" style="height:13.7mm;width:8.5mm;background-color:lightgrey;border-left:1px solid black;border-bottom-width:0px;"/>
 								</xsl:if>
 								<!-- end grey areas -->
 							</div>

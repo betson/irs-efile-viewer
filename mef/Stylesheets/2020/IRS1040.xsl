@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 02/11/2021 -->
+<!-- Last Modified by Eugenia McDonald on 01/27/2022 -->
 <!DOCTYPE xsl:stylesheet [
   <!ENTITY nbsp "&#160;">
   <!ENTITY ndash "&#8211;">
@@ -598,12 +598,12 @@
 						</div>
 					</div>
 					<!-- Dependents area -->
-					<div class="sty1040SRDepdContainer" style="" id="depdContainerId">
+					<div class="sty1040DepdContainer" style="">
 						<div class="styGenericDiv" style="width:20mm;padding-top:1mm;
-							font-family:Arial;font-size:9pt;border-bottom:0px solid black;height:24.3mm;">
+							font-family:Arial;font-size:8pt;border-bottom:0px solid black;height:24.3mm;">
 							<div style="width:100%;padding-bottom:3mm;padding-left:1mm;">
 								<strong>Dependents</strong><br /><br/>
-								<span style="font-size:8pt;font-family:Arial Narrow">
+								<span style="font-size:7pt;font-family:Arial Narrow">
 									If more<br/>than four <br/>dependents,<br/>see instructions<br/>and check<br/>here
 						  			<label>
 										<xsl:call-template name="PopulateLabel">
@@ -649,6 +649,7 @@
 					</div>
 					<div style="width:166mm;float:right">
 						<div class="sty1040DepdContainer" style="width:166mm;" id="depdContainerId">-->
+						<div class="sty1040DepdContainer2" style="" id="depdContainerId">
 							<xsl:call-template name="SetInitialState"/>
 							<table class="styTable" style="display:table;font-size:6pt;">	
 								<thead class="styTableThead">
@@ -892,7 +893,8 @@
 								<!-- End of filler rows -->
 							</tbody>
 						</table>
-						</div>
+					  </div>	
+					</div>
 					<!--</div>
 					</div>-->
 					<!-- Set Initial Height of Above Table -->
@@ -2311,7 +2313,7 @@
 										<div class="styLNCtrNumBox" style="height:3mm;width:23mm;border-top-width:1px;
 											font-weight:normal">
 											<xsl:call-template name="PopulatePin">
-												<xsl:with-param name="TargetNode" select="$RtnHdrData/IdentityProtectionPIN"/>
+												<xsl:with-param name="TargetNode" select="$RtnHdrData/SpouseIdentityProtectionPIN"/>
 											</xsl:call-template>
 										</div>
 									</span>

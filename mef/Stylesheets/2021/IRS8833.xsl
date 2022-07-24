@@ -47,7 +47,7 @@
 						<div class="styFNBox" style="width:31mm;font-size: 7pt;height: 19mm">
       Form <span class="styFormNumber">8833</span>
 							<br/>
-      (Rev. August 2006)      
+      (Rev. December 2021)      
       <span class="styAgency">Department of the Treasury</span>
 							<br/>
 							<span class="styAgency">Internal Revenue Service</span>
@@ -338,8 +338,8 @@
 						<span class="styBoldText">For Paperwork Reduction Act Notice, see page 3. </span>
 						<span style="width:100px;"/>                      
     Cat. No. 14895L 
-    <span style="width:135px;"/>  
-    Form <span class="styBoldText">8833</span> (Rev. 8-2006)
+    <span style="width:133px;"/>  
+    Form <span class="styBoldText">8833</span> (Rev. 12-2021)
   </div>
 					<br/>
 					<br class="pageEnd"/>
