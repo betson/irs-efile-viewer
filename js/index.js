@@ -20,8 +20,20 @@ function loadFile() {
         // potential to be confusing if URLs are copied/pasted
         // between users/sessions.
         var newId = uniqueId();
-        sessionStorage.setItem(newId, fileText);
-        sessionStorage.setItem(newId+'_name', myFile.name);
+        try {
+            sessionStorage.setItem(newId, fileText);
+            sessionStorage.setItem(newId+'_name', myFile.name);
+        }
+        catch(err) {
+            if(err.name === "QuotaExceededError") {
+                sessionStorage.clear();
+                sessionStorage.setItem(newId, fileText);
+                sessionStorage.setItem(newId+'_name', myFile.name);
+            }
+            else {
+                throw err;
+            }
+        }
 
         location.href = '{{ site.github.url }}/transform.html?h=' + newId;
     }).catch(function(err) {
