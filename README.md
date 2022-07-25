@@ -1,6 +1,6 @@
 # IRS e-File Viewer
 
-In June 2016, the [IRS released](https://aws.amazon.com/blogs/publicsector/irs-990-filing-data-now-available-as-an-aws-public-data-set/) over a million electronic 990 filings (nonprofit annual tax filings) as XML documents. These filings are accessible on [AWS](https://aws.amazon.com/public-datasets/irs-990/).
+In June 2016, the [IRS released](https://aws.amazon.com/blogs/publicsector/irs-990-filing-data-now-available-as-an-aws-public-data-set/) over a million electronic 990 filings (nonprofit annual tax filings) as XML documents. These filings are accessible on [AWS](https://aws.amazon.com/public-datasets/irs-990/) and at [IRS.gov](https://www.irs.gov/charities-non-profits/tax-exempt-organization-search).
 
 This utility allows users to visualize individual 990 XML filings in a format representing a standard IRS form.
 
