@@ -7,14 +7,14 @@ This utility allows users to visualize individual 990 XML filings in a format re
 ![Form Transformation](img/xml_to_form.png)
 
 ## Project Structure
-The IRS publishes stylesheets that can be used to transform an XML document into HTML. Specifically, these XSLT (eXtensible Stylesheet Language Transformation) files are distributed each year by the IRS so that tax preparers can generate tools that submit tax filings in the proper format. The [/mef](/mef) directory contains the full set of stylesheets provided by the IRS. However, since only the form 990s and related schedules are available, these are the only ones used by this utility.
+The IRS publishes stylesheets that can be used to transform an XML document into HTML. Specifically, these XSLT (eXtensible Stylesheet Language Transformation) files are distributed each year by the IRS so that tax preparers can generate tools that submit tax filings in the proper format. The [/mef](/mef) directory contains the full set of stylesheets provided by the IRS. This tool can be used to transform and visualize any IRS e-file document. However, since only the form 990s and related schedules are available, these are the only ones that have been tested.
 
-Standard libraries exist to execute XML transformations; however, modern browsers are also able to execute these tranformations natively. Preventing the need for backend processing, all XML modifications and transformations are applied client-side in the browser. Thus, this utility is able to hosted as a static site.
+Standard libraries exist to execute XML transformations; however, modern browsers are also able to execute these tranformations natively. Preventing the need for backend processing, all XML modifications and transformations are applied client-side in the browser. Thus, this utility is able to hosted as a [static site](https://betson.github.io/irs-efile-viewer).
 
 This repository is configured as a Jekyll project in order to support the relative links that exist throughout the IRS stylesheets. These links need to be processed through Jekyll in order to route properly, so a number of the stylesheets have been modified to include Jekyll front matter and variables.
 
 ## Setup
-**Dependencies**: git, Ruby, Bundler Rubygem
+**Dependencies**: git, Ruby, Bundler Rubygem, [ack](https://beyondgrep.com/)
 
 ```
 gem install bundler

@@ -1,3 +1,38 @@
+# Import Tax Year
+#
+# This is the main script to execute when importing a new tax year. This script
+# takes a single argument for the IRS source directory to import. These resources
+# are found at https://www.irs.gov/e-file-providers/modernized-e-file-mef-stylesheets.
+# The IRS publishes a zip archive for the stylesheet assets for all forms for each
+# tax year. To import a new tax year, first you would download and unpack the .zip.
+# Then execute this script:
+# $ script/import_taxyear.rb path/to/PY20XXRYY
+#
+# WARNING: The archive for each tax year contains files for multiple years. This
+# represents fixes for those prior years that didn't appear in the original release.
+# It's not clear why these fixes aren't localized to just the archive for a particular
+# tax year - especially since each tax year gets updated releases as well.
+#
+# The result is that new tax years should be imported sequentially. ex: first 2019, then
+# 2020, then 2021, etc. If Tax Year 2020 is re-imported after TY 2021 has already been
+# imported, then you may potentially overwrite fixes that were only introduced within the
+# 2021 archive.
+#
+# Additionally, it's common for there to be over 10 releases for a tax year. And to make
+# things more challenging, the IRS will release updates to multiple tax years within a
+# calendar year. For example right now:
+#     TY 2022 - Release 01 - Last Updated 06-30-2022
+#     TY 2021 - Release 11 - Last Updated 05-23-2022
+#
+# For this reason, I would wait to import a tax year until AFTER that tax year is over.
+# That way you have a higher liklihood of importing the last release for the tax year,
+# and you don't run into issues with the archives potentially overwriting importing files.
+#
+# Since there's a 1-2 year lag before the IRS publishes any 990 forms of a given tax year,
+# this doesn't have a large functional impact. Though there's no problem with importing
+# the latest tax year for personal use (ex: reviewing e-file documents that you generate
+# yourself). You just need to take good notes on which release version you imported and
+# what date you accessed the files from the IRS.
 require 'fileutils'
 require 'set'
 require 'shellwords'
@@ -114,6 +149,8 @@ Dir.chdir(SOURCE_DIRECTORY) do
     #   - rrprd/common -- Images shared by all stylesheets
     #   - rrprd/sdi    -- Resources used by a particular tax year's stylesheets
     #   - Stylesheets  -- Individual stylesheets (.xsl) for each form and schedule
+
+    # A - rrprd/common
     source_dir_prefix = "./mef/rrprd/common/images"
     Dir.each_child(source_dir_prefix) do |x|
         next if x.start_with?(".")
@@ -125,6 +162,7 @@ Dir.chdir(SOURCE_DIRECTORY) do
     end
     puts "  Common images complete..."
 
+    # B - rrprd/sdi
     source_dir_prefix = "./mef/rrprd/sdi/versioned"
     target_dir_prefix = "rrprd/sdi/versioned"
     types = ["images", "scripts", "styles"]
@@ -156,6 +194,7 @@ Dir.chdir(SOURCE_DIRECTORY) do
         end
     end
 
+    # C - Stylesheets
     source_dir_prefix = "./mef/Stylesheets"
     target_dir_prefix = "Stylesheets"
     Dir.each_child(source_dir_prefix) do |year_directory|

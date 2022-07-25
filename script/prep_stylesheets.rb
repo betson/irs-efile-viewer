@@ -1,10 +1,13 @@
+# Prep Stylesheets
+#
+# This script is designed to be idempotent. It can be run from any directory
+# within the project, and it automatically cleans up all files within /mef
+# based on known rules. It is executed at the end of `import_taxyear.rb`,
+# but it can be run independently if needed.
 def prep_stylesheets
     root_directory = File.expand_path("..", __dir__)
     mef_directory = File.expand_path("mef", root_directory)
     Dir.chdir(mef_directory) do
-
-        # update each file in directory to have CRLF
-        # find . -type f -name "*.xsl" -print0 | xargs -0 sed -i '' "s/\r*$/\r/"
 
         # Find and update all files that have relative URLs to other assets
         # Dependency: ack
